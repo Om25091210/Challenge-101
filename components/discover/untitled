@@ -1,0 +1,15 @@
+
+
+sudo git init
+
+sudo git add .
+
+ sudo git commit -m "Initial commit-RL"
+
+
+ sudo git remote add origin https://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@github.com/Multiplayr/htmls.git
+
+
+git branch -M main
+
+ sudo git push -u origin main

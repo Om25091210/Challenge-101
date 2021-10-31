@@ -17,7 +17,10 @@ ul,li{list-style:none;}
 a:hover{text-decoration:none;}
 
 body{margin:0;padding:0;font-family:'Titillium Web', sans-serif;font-weight:400;color:#000000;line-height:1.2;background:#f3f6f9;}
+.top_click { display:none; }
 
+h1{font-size: 25px; font-weight: 700;}
+h2{ font-size: 18px; font-weight: 700;}
 
 /* ------- Header css -------------- */
 header{position:fixed;top:0;width:100%;height:79px;background:#fff;z-index:12;}
@@ -551,7 +554,7 @@ ul.top_menu .drop_down_bg.profile_drop_down{width:150px; top:48px}
 
   .profile_box{ float: left; width: 100%; position:relative; }
   .profile_box .profile_cover_photo{ position: absolute; width: 100%; height: 400px; left: 0; top:0;}
-  .profile_box .profile_cover_photo img{ height: 400px; width: 100%;}
+  .profile_box .profile_cover_photo img{ height: 400px; width: 100%; object-fit: cover;}
   .profile_dp_box{ display: flex;  ;padding: 25px; justify-content: space-between; position: relative;     margin-top: 285px; }
   .profile_dp_box .profile_pic{ width: 155px; height: 155px; border:5px solid #202028; border-radius: 10px; margin-right: 25px;}
   .profile_dp_box .profile_pic img{ object-fit: cover; width: 100%; height: 100%; border-radius: 5px;}
@@ -564,6 +567,7 @@ ul.top_menu .drop_down_bg.profile_drop_down{width:150px; top:48px}
   .profile_dp_box .top_details .flag{ margin:5px 10px 0 10px;}
   .profile_dp_box .top_details .tick .active{ margin-top: 5px; font-size: 11px; color: #fff; text-align:center; line-height: 20px; width: 22px; height: 22px; display: inline-block; border-radius: 50%; border:1px solid #000; background: #7239ea;}
   .profile_dp_box .top_details .button a{ margin-left: 10px; background: #7239ea; color: #fff; font-size: 11px; text-align: center; padding: 5px 20px; border-radius: 10px;}
+  .profile_dp_box .top_details .button a:hover{ background: #000;}
   .profile_dp_box .bottom_details{display: flex;     justify-content: space-between;}
   .profile_dp_box .bottom_details .current_status{ display: flex;}
   .profile_dp_box .bottom_details .current_team, .profile_dp_box .bottom_details .game_role{ display: flex; flex-direction: column; align-items: center;margin: 20px 15px}
@@ -675,7 +679,7 @@ ul.top_menu .drop_down_bg.profile_drop_down{width:150px; top:48px}
 /* -------------- Team Page ------------------ */
 
 .profile_dp_box .bottom_details.team_details{ margin-top: 15px;}
-.bottom_details.team_details h5{ font-size: 17px; font-weight: 700; text-transform: uppercase;}
+.bottom_details.team_details h5{ font-size: 17px; font-weight: 700; text-transform: uppercase; margin-right: 20px;}
 .bottom_details.team_details .current_status{align-items: center;}
 .bottom_details.team_details .ct{ font-size: 17px; font-weight: 700; display: flex;}
 .bottom_details.team_details .ct i{ color: #00a651; margin-top: 5px; margin-right: 5px;}
@@ -694,7 +698,7 @@ ul.top_menu .drop_down_bg.profile_drop_down{width:150px; top:48px}
   margin-right: 10px;
 }
 
-.team_pos li .pos_name{ font-size: 10px; font-weight: 400;}
+.team_pos li .pos_name{ font-size: 10px; font-weight: 400; text-transform: uppercase;}
 .team_pos li .imgs img{ width: 100%; height: 100%; object-fit: cover;}
 
 .bio_box .right_team_bio {
@@ -708,7 +712,7 @@ ul.top_menu .drop_down_bg.profile_drop_down{width:150px; top:48px}
 .sponser ul {
   display: flex;
   align-items: center;
-  justify-content: space-between; background: #ddd; padding: 20px; border-radius: 10px;
+  justify-content: space-between; padding: 20px; border-radius: 10px;
 }
 
 .bio_box .right_team_bio  h5{ font-size: 12px; font-weight: 700; padding-bottom: 20px;}
@@ -784,15 +788,225 @@ transition: transform .5s ease, -webkit-transform .5s ease;
 .brief{ font-size: 14px; line-height: 25px;}
 
 
+.products li{ float: left; width: 23.5%; margin-right: 2%; margin-bottom: 20px; background: #fff; padding: 20px 2%; border-radius: 10px;}
+.products li:nth-child(4n){ margin-right:0}
+.products li .pro_img{ width: 100%; position: relative; }
+.products li .pro_img .size_option{ position: absolute; color: #fff; font-size: 12px; display: none; padding: 5px 10px; top:-20px; border:1px solid #ff3744; border-radius: 20px; background: #000; right: 0;}
+.products li .pro_img:hover .size_option{ display: block;}
+.products li .pro_img img{width: 100%; height: 250px; object-fit: cover; border-radius: 10px;}
+.products li .name_dots{display: flex; justify-content: space-between; margin-top: 10px; align-items: center;}
+.products li .name_dots h4{ text-transform: uppercase; font-size: 12px; font-weight: 700;}
+.products li .name_dots a{color:#000;}
+.products li .stars{display: flex; justify-content: flex-start; margin-top:10px;      align-items: center;}
+.products li .stars a{ color: #7239ea; margin-right: 5px;}
+.products li .stars .price{ margin-left: 10px; text-transform: uppercase; font-size: 12px; font-weight: 700;}
+.products li .likes{ float: right; text-transform: uppercase; font-size: 12px; font-weight: 700;}
+.products li .likes a{ color:#000;}
+
+/* ------------- Discovery page ------------- */
+
+.discovery_page{ float: left; width: 100%; background: #fff; padding: 20px; border-radius: 10px;}
+.discovery_page .tit span, .discovery_page .tit i{ background: #27272f; display: inline-block; color: #fff; 
+  font-size: 30px; font-weight: 700; letter-spacing: -1px; padding:5px 20px; border-radius: 5px;}
+  .discovery_page .tit i{ padding:8px 10px; margin-top: 10px;}
+.discovery_page h3{ text-transform: uppercase; font-size: 14px; font-weight: 700; display: inline;  margin-right: 20px;}
+.profile_tab_btn.discover_tab_btn{ border:0; padding: 0;}
+.profile_tab_btn.discover_tab_btn li{ float: left; background: #561cde; width: 19.2%; margin-right: 1%; border-radius:5px;}
+.profile_tab_btn.discover_tab_btn li:last-child{ margin-right: 0;}
+.discover_tab_btn.profile_tab_btn li a{ color: #fff; text-align: center;  width: 100%; padding: 15px 0; display: block; font-size: 15px;}
+.discover_tab_btn.profile_tab_btn li.active, .discover_tab_btn.profile_tab_btn li:hover{ background: #27272f;}
+.discover_tab_btn.profile_tab_btn li.active:after{ display: none;}
+
+.team_search{ display: flex; justify-content: space-between; margin-top: 20px;}
+.team_search .searchbox {display: flex;width: auto;position: relative;align-items: center; }
+.team_search .searchbox input[type="search"]{float:left;width:350px;height:33px;padding:0px 40px 0px 10px;overflow:hidden;box-sizing:border-box;letter-spacing:1px;border:1px solid #ddd;border-radius:5px;font-weight:400;}
+.team_search .searchbox input[type="submit"]{border:0;background:url(../images/search-icon.png) 0 7px no-repeat;height:30px;width:20px;position:absolute;right:5px;cursor:pointer;transition:0.3s ease-out;}
+.team_search .searchbox input[type="submit"]:hover{background-position:0 -20px;}
+.team_search .searchbox input[type="submit"]:focus{outline:0;}
+
+.team_search .advance {display: flex;justify-content: space-between;align-items: center;align-content: center;}
+.team_search .advance .views {margin-right: 20px;font-size: 13px;color: #000;display: flex;align-items: center;}
+.team_search .advance .views .custom-checkbox{ margin-left:10px;}
+
+.team_filter{display: flex;justify-content: space-between;align-items: center;align-content: center; margin-top:50px;}
+
+.team_filter .dropdown-menu a{ font-size: 13px; font-weight: 300; color:#000}
+.team_filter  .btn { border:1px solid #ddd}
+.team_filter .dropdown-menu input{ margin-left: 10px;}
+
+.team_filter .drop_downs {
+  display: flex;
+  width: 60%;
+  justify-content: flex-start; flex-wrap: wrap; border-right: 1px solid #ddd; margin-right: 20px;
+}
+
+.team_filter .drop_downs .button-group {
+  flex: 0 0 14%;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center; margin-right: 10px;
+}
+
+.team_filter .drop_downs .button-group .custom-checkbox{ margin-left: 10px;}
+.team_filter .drop_downs .button-group .dropdown-menu{ padding: 10px;}
+.team_filter .drop_downs .button-group .dropdown-menu li{ position: relative;}
+.team_filter .drop_downs .button-group .dropdown-menu li a{ font-size: 12px; text-transform: uppercase; font-weight: 400; color: #000;}
+.team_filter .drop_downs .button-group .dropdown-menu li input{ position:absolute; right:0}
+
+.team_filter .drop_downs .button-group .drop_name{text-transform: uppercase; font-size: 13px;}
+
+.filters{ display: flex; width: 40%;     align-items: start; }
+.filters h3{ margin-right: 10px;}
+.filters .close1{ background: #7239ea; font-size: 15px; color: #fff; margin-right: 20px; border-radius: 5px; padding: 5px 10px;}
+.filter_list{ display: flex; flex-wrap: wrap;}
+.team_filter .filter_list .filter1{ position: relative; font-size: 11px; background: #33333c; padding: 7px 10px;  border-radius: 5px; margin-bottom: 5px; display:inline; color: #fff; margin-right: 5px;}
+.team_filter .filter_list .filter1 .close2{ position: static; font-size: 12px; color: #fff;}
+
+.team_row {
+  float: left;
+  width: 100%;
+  padding:70px 30px 70px 80px;
+  border-radius: 10px;
+  background: #202028;
+  color: #fff; position: relative; margin-top: 20px;
+  
+}
+
+.inner_team{display: flex;justify-content: space-between;align-items: center;}
+
+.team_row span, .team_row .logo_box{ display: flex;     align-items: center;}
+.team_row .stars {
+  background: #7239ea;
+  color: #fff;padding: 5px 7px;position: absolute;top: 10px;left: 10px;border-radius: 5px;font-size: 25px;
+}
+
+.team_row .stars.disable{ background: none; color: #35353f;}
+
+.team_row img{ margin: 0 3px;}
+.team_row span b{ padding: 0 10px; font-size: 11px;}
+.team_row .logo_box h3{ margin:0 20px;}
+
+.team_row span.remarks{ width: 190px; justify-content: center; text-align: center; flex-wrap: wrap;}
+.team_row span.remarks h4{ color: #3db4ef; font-size: 11px;}
+.team_row span.remarks h4 b{ font-size: 12px; text-transform: uppercase; color: #fff;}
+
+.team_row .mores{ display: flex; width: 220px; justify-content: space-between;}
+.team_row .mores .fa{ margin-right: 2px;}
+
+.team_row .join{ background: #7239ea; color: #fff; padding: 10px 20px; border-radius: 5px; font-size: 12px;}
+
+
+
+
+.overview_box{ float: left; width:100%; margin-top: 50px;  padding: 30px 2%; background: #202028; border-radius: 10px;}
+.team_overview{ display: flex;     justify-content: space-around; align-items: center; margin-top: 50px; color: #fff;} 
+.overview_box h2{ font-size: 20px; color: #fff; font-weight: 700; text-transform: uppercase;
+   border-bottom: 2px solid #1d1d25; margin-bottom: 20px; padding-bottom: 10px; margin: 0 5%; position: relative;}
+   .overview_box h2:after{ content: ""; position: absolute; width: 100px; border-bottom: 3px solid #d4dd6b; left: 0; bottom: 0;}
+
+.team_overview .over_prof {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.team_overview .over_prof h3{ margin-right: 0; margin-top: 20px;}
+.team_overview .pics{ width: 95px; height: 95px; background: #ddd; border-radius: 5px;}
+
+
+.team_overview h4{ font-size: 12px; text-transform: uppercase; padding-bottom: 10px;}
+.team_overview p{font-size: 12px; text-transform: uppercase; font-weight: 700; padding-bottom: 20px;}
+
+.team_overview  .ranking div{ display: inline-block; margin-right: 10px; margin-bottom: 20px; font-size: 12px; 
+  text-transform: uppercase; font-weight: 700;}
+.team_overview .ranking div span {
+  display: flex;
+  align-items: flex-start;
+}
+
+.team_overview .ranking div.past {display: flex; align-items: center; }
+.team_overview .ranking div.past b{ padding: 0 10px;}
+
+
+
+.team_overview  .ranking div span i{ color: #00a651; font-size: 20px; margin-right: 10px;}
+
+.round{ width: 7px; height: 7px; border-radius: 50%; display: inline-block; margin-right: 5px;}
+.green{ background: #00a651;}
+.red{ background: #ff0c00;}
+.range_slider .slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 5px;
+  border-radius: 5px;  
+  background: #848484;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s; position: static !important; margin-left: 0 !important;
+}
+
+.range_slider .slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%; 
+  background: #000;
+  cursor: pointer;
+}
+
+.range_slider .slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #000;
+  cursor: pointer;
+}
+
+.range_slider li:first-child{ font-size: 12px;}
+
+.range_slider li:last-child {
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+}
+.range_slider li span{ border:1px solid #ddd; border-radius: 5px; padding: 5px 5px;}
+
+.coach_overview .match{ width: 25%;}
+
+
+.coach_overview .match p {
+    font-size: 11px;
+    font-weight: 400;
+    text-transform: capitalize;
+}
+
+
+.arena_team_row{padding:70px 30px 70px 30px}
+.arena_team_row h3 b{ display: block; font-size: 11px;}
+
+
+.job_filter.team_filter .drop_downs .button-group{flex: 0 0 22%;}
+.team_row.arena_team_row .mores{flex-direction: column; font-size: 12px;}
+.team_row.arena_team_row .mores b{ color: #3db4ef;}
+
+
 
 @media screen and (max-width:1500px){
     .main_middle{ width: 800px;}
+    .main_middle.profile_middle{ float: right; width: calc(100% - 150px); margin: 150px 20px 20px 0px;}
     .write_post .right_links {width: 320px;}
+
 }
 
 @media screen and (max-width:1365px){
 
     .main_middle{margin: 150px auto 0 140px;}
+   
+
+
     .left_side nav li .title {
         position: absolute;
         left: 0;
@@ -802,13 +1016,16 @@ transition: transform .5s ease, -webkit-transform .5s ease;
         right: 0;
         top: inherit;
     }
+
+    .left_side nav{ margin-left: 0;}
+    .left_side nav li{ text-align: center;}
+    
 }
 
 
 @media screen and (max-width:1240px){
-    .main_middle {
-        width: 590px;
-    }
+    .main_middle { width: 590px;}
+    
 
     .write_post{flex-wrap: wrap; height: auto;}
     .write_post .right_links {
@@ -820,15 +1037,263 @@ transition: transform .5s ease, -webkit-transform .5s ease;
 
     .write_post textarea{ width: calc(100% - 122px);}
     .users_share_box{flex-wrap: wrap;}
-    .users_share_box .shere {
-        width: 100%;
-        display: block;
-        padding: 20px 0;
-    }
-
+    .users_share_box .shere {width: 100%;display: block; padding: 20px 0;}
     .users_share_box .shere a{ margin-left: 0; margin-right: 20px;}
 
     .post_comments p{ font-size: 13px;}
     .post .heads h4{ font-size: 14px;}
+    .profile_left_post .users_share_box .shere {width: 100%;}
+    .all_stats ul li img{ height: 30px;} 
+    .games_details li .nm{ width: 85px;}
+
+    .cart-row a{ width: 49%;}
+    .profile_tab_btn li{ margin-right: 5px;}
+
+    /* ------------- discovery page ------------------------ */
+
+    .team_search .searchbox input[type="search"]{ width: 250px;}
+    .team_row{ padding: 70px 20px 70px 20px;}
+    .team_row span.remarks{ width: 125px;}
+    .team_row span.remarks p{ font-size: 12px;}
+    
+
+}
+
+@media screen and (max-width:1023px){
+
+    .main_middle{ float: right; width: calc(100% - 200px); margin: 120px 20px 20px 0;}
+    .right_side{ position: static; float: right; width: calc(100% - 200px); margin: 0px 20px 20px 0; padding-bottom: 20px;}
+    .my_team .team {justify-content: flex-start;}
+    .my_team .team li{ margin-right: 10px;}
+    .my_team .team li a img{ display: block;}
+
+    /* ------- profile ------------------ */
+
+    .profile_left_post{ width: 100%;}
+    .profile_match_details{ float: left; width: 100%;}
+    .profile_dp_box .top_details .button a{ padding: 5px 10px;}
+    .profile_dp_box .bottom_details{flex-wrap: wrap;}
+
+    /* --------- team ---------------- */
+
+    .product_box .product-detail-box{margin: 0 0 0 10px; width: 45%;}
+    .product_box .product-detail-box h1{ font-size: 20px;}
+    .product_box .product-detail-box .price{ font-size: 15px;}
+    .cart-row a{ font-size: 13px;}
+    .profile_tab_btn li.active:after{ bottom: -5px;}
+    .profile_tab_btn li{ margin-bottom: 10px;}
+
+    .products li{ float: left; width: 32%; margin-right: 2%; margin-bottom: 20px;}
+    .products li:nth-child(4n){ margin-right:2%}
+    .products li:nth-child(3n){ margin-right:0}
+
+
+  /* ------------- discovery page ------------------------ */
+
+  .team_search, .team_filter{flex-wrap: wrap;}
+  .team_search .searchbox{ margin-bottom: 20px;}
+  .team_filter .drop_downs{ width: 100%; border: 0;}
+  .filters{ width: 100%;}
+  .inner_team{flex-wrap: wrap;}
+  .team_overview{flex-wrap: wrap;}
+
+
+}
+
+
+@media screen and (max-width:900px){
+
+
+}
+
+@media screen and (max-width:799px){
+
+    .products li{ float: left; width: 48%; margin-right: 2%; margin-bottom: 20px;}
+    .products li:nth-child(4n){ margin-right:2%}
+    .products li:nth-child(3n){ margin-right:2%}
+    .products li:nth-child(2n){ margin-right:0}
+
+}
+
+@media screen and (max-width:768px){
+
+
+}
+
+@media screen and (max-width:767px){
+
+    header .searchbox{ display: none;}
+    .left_side{ opacity: 0; left:-100px; transition: 0.3s ease-in-out;}
+    .left_side:hover, header .logo.bigwidth{ width: 100px;}
+    .left_side nav li .title{ display: block;}
+
+    .left_side.show_left_menu{  opacity: 1; left:0;}
+
+    .main_middle,  .right_side, .main_middle.profile_middle {
+        float: right;
+        width: 96%;
+        margin: 120px 2% 20px 2%;
+    }
+
+    .right_side{ margin-top: 0px;}
+ 
+    .post .heads .user, .profile_left_post .post .heads .user{ width: 50px; height: 50px;}
+    .post .left_details, .profile_left_post .post .left_details{ width: 100%; height: auto;     flex-direction: inherit; justify-content: space-between;}
+    .post .right_details, .profile_left_post .post .right_details{ float: left; width: 100%;}
+    .post .left_details a i {font-size: 15px;}
+
+    .add_comment_box .add_comments textarea{ font-size: 12px;}
+
+    .write_post textarea{ font-size: 12px;}
+    .write_post .team_slider{ width: 50px;}
+    .three_nav li a{ font-size: 15px;}
+    
+
+/* --------- profile -------------- */
+
+.profile_box .profile_cover_photo img{ height: 230px;}
+
+
+
+.profile_dp_box{flex-wrap: wrap; margin-top: 85px;}
+
+.profile_dp_box .profile_details{ width: 100%;}
+.profile_dp_box .bottom_details .were{ font-size: 13px;}
+.all_stats ul li{ flex: 1 1 45%;}
+.profile_dp_box .top_details .name_box{ color: #000;}
+.profile_dp_box .top_details .name_box .game_name{ font-size: 18px;}
+
+
+
+.bio_box{    flex-direction: column;}
+.bio_box .left_bio, .bio_box .right_bio{ width: 100%; margin-bottom: 20px;}
+
+
+/* ------------ team ----------------- */
+
+.bio_box .right_team_bio{ border: 0; padding-left: 0;}
+
+.product_box .slide-box{ height: auto;}
+.product_box .product-img-box{ width: 100%;}
+.product_box .product-detail-box{ float: left; width: 100%; margin: 20px 0;}
+.product-detail-box .row{ margin: 0;}
+.product_box .product-detail-box h1{ padding: 14px 0 0 14px;}
+.bio_box .right_team_bio{ width: 100%;}
+.profile_tab_btn{ padding: 10px;}
+.profile_tab_btn li{ width: 31%;}
+.profile_tab_btn li a {
+    background: #ddd;
+    width: 100%;
+    float: left;
+    padding: 10px;
+}
+
+
+  /* ------------- discovery page ------------------------ */
+  .profile_tab_btn.discover_tab_btn li a{ background: none;}
+  .profile_tab_btn.discover_tab_btn li{ width: 32%;}
+  .discover_tab_btn.profile_tab_btn li a{ padding: 10px 0;}
+  .team_search .advance{ flex-wrap:wrap; justify-content: flex-start;}
+  .inner_team{ height: 150px;}
+
+
+    /* ------------------------------------------- mobile menu css ---------------------------------------- */
+
+    .top_click {
+        display: block;
+        position: absolute;
+        left: 110px;
+        top: 13px;
+    }
+.three_line { display:block; position:relative; overflow:hidden; margin:0; padding:0; width:45px; height:45px; font-size:0; text-indent:-9999px; -webkit-appearance:none; -moz-appearance:none; appearance:none; box-shadow:none; border-radius:none; border:none; cursor:pointer; -webkit-transition:background .3s; transition:background .3s }
+.three_line:focus { outline:0 }
+.three_line span { display:block; position:absolute; top:22px; left:9px; right:9px; height:4px; background:#000 }
+.three_line span::after, .three_line span::before { position:absolute; display:block; left:0; width:100%; height:4px; background-color:#000; content:"" }
+
+.three_line span::before { top:-10px }
+.three_line span::after { bottom:-10px }
+.three_line--htx { background-color:none }
+.three_line--htx span { }
+.three_line--htx span::after, .three_line--htx span::before { -webkit-transition-duration:.3s, .3s; transition-duration:.3s, .3s; -webkit-transition-delay:.3s, 0s; transition-delay:.3s, 0s }
+.three_line--htx span::before { -webkit-transition-property:top, -webkit-transform; transition-property:top, transform }
+.three_line--htx span::after { -webkit-transition-property:bottom, -webkit-transform; transition-property:bottom, transform }
+.active .three_line--htx { z-index:999; }
+.active .three_line--htx span { background:0 0 }
+.active .three_line--htx span::before { top:0; -webkit-transform:rotate(45deg); -ms-transform:rotate(45deg); transform:rotate(45deg); background-color:#000 }
+.active .three_line--htx span::after { bottom:0; -webkit-transform:rotate(-45deg); -ms-transform:rotate(-45deg); transform:rotate(-45deg); background-color:#000 }
+.active .three_line--htx span::after, .active .three_line--htx span::before { -webkit-transition-delay:0s, .3s; transition-delay:0s, .3s }
+
+
+}
+
+
+@media screen and (max-width:479px){
+
+    header { height:65px;}
+    header .logo{ width: 50px; height: 65px;}
+    header .logo a{ margin-top: 15px;}
+    .left_side { top:65px}
+
+    ul.top_menu .drop_down_bg.bell_drop_down{ width: 275px;}
+    ul.top_menu .drop_down_bg {width: 230px;right: 0;left: 0;}
+
+    ul.top_menu .drop_down_bg:after{ left: 0; right: inherit;}
+    ul.top_menu .drop_down_bg.bell_drop_down {width: 275px;left: -135px;right: 0;}
+    ul.top_menu .drop_down_bg.bell_drop_down:after{ left: 145px;}
+    ul.top_menu .drop_down_bg.profile_drop_down {width: 150px; left: inherit;right: 0;}
+    ul.top_menu  .drop_down_bg.profile_drop_down:after{left: 118px;right: inherit;}
+
+    ul.top_menu li.profile{ margin-left: 0;}
+    ul.top_menu li{padding: 0 10px;}
+    .top_click{ left: 60px;}
+    .comments_point{flex-wrap: wrap; text-align: center;justify-content: start;}
+    .comments_point .pinned{ margin-top: 10px;}
+    .users_share_box .more_user {align-items: center;flex-wrap: wrap;}
+    .users_share_box .more_user .others{ margin-left: 0; padding: 10px 0;}
+
+ /* ------- profile ---------- */
+
+        
+        .profile_dp_box { padding: 10px;}
+        .product_box { padding: 0;}
+        .main_middle, .right_side, .main_middle.profile_middle{ margin:90px 2% 20px 2%;}
+        .sponser {margin-top: 20px;}
+        .sponser ul{ padding: 0;}
+
+        .games_details li{ width: 100%;}
+        .games_details li .nm{ width: 110px;}
+         
+        .product_box .product-detail-box .price{ margin: 0; padding: 10px 0;}
+
+        /* ------- team -------------- */
+
+        .size-option .size-chart{ width: 300px;}
+        .bottom_details.team_details h5{ font-size: 17px;}
+        .profile_dp_box .top_details {flex-wrap: wrap;justify-content: left;align-content: flex-start; align-items: center;}
+        .profile_dp_box .top_details .button a{ margin: 10px 0;}
+        .sponser ul li img{ width: 70%;}
+        .profile_dp_box .top_details .tick{ margin-right: 5px;}
+
+        .products ul{ display: flex;flex-direction: column;align-content: center;align-items: center;}
+        .products li{ float: left; width:320px; margin-right:0; margin-bottom: 20px; padding: 20px;}
+        .products li:nth-child(4n){ margin-right:0}
+        .products li:nth-child(3n){ margin-right:0}
+        .products li:nth-child(2n){ margin-right:0}
+
+
+        /* ------------- discovery page ------------------------ */
+
+        .team_search, .team_filter {
+            flex-wrap: wrap;
+            flex-direction: column;
+        }
+
+        .discovery_page .tit span, .discovery_page .tit i{ font-size: 20px;}
+        .discovery_page .tit i{ padding: 7px 10px;}
+        .inner_team {height: 291px;justify-content: center;}
+        .team_overview {flex-direction: column;}
+
+        .team_overview{ display: block;}
+        .coach_overview .match{ width: 100%;}
 
 }
