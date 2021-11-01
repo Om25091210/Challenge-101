@@ -9,7 +9,7 @@ const SignedHeader = () => (
   <div className="right_menu">
     <div className="searchbox">
       <input type="search" placeholder="Search"  />
-      <input type="submit"  />
+      <input type="submit" value=""  />
     </div>
     <ul className="top_menu">
       <li><a href="#"><img src="/assets/media/dash/plus.png" alt=""/></a>
