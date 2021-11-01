@@ -22,6 +22,25 @@ $(document).ready(function() {
   });
 
 
+  if((screen.width<=767))
+  {
+  
+  
+  
+  $(".top_click").click(function(){	
+  
+  $(".left_side").toggleClass("show_left_menu");
+  
+  $(this).toggleClass("active");	
+  
+  
+  
+    });
+
+  }
+
+
+
  /* ----------- create post slider ----------------- */
 
     $('.user_slider').slick({
@@ -153,6 +172,8 @@ $(document).ready(function() {
         });
     })(jQuery);
 
+    
+   
         }); 
 
 

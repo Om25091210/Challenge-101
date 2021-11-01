@@ -57,11 +57,25 @@ console.log('calling signup axios');
 
   return (
 
-  <div>
+  <>
 
     <MetaDash />
 
+
     <SignedHeader />
+
+    
+    <div className="welcome">
+              {user && (
+                <>
+                  <h1>
+                    Welcome, <b>{user.username}</b>
+                  </h1>
+                </>
+              )}
+            </div>
+
+    
 
     <LeftNav />
 
@@ -71,15 +85,7 @@ console.log('calling signup axios');
     <RightSection />
    
 
-                <div>
-              {user && (
-                <>
-                  <h1 className="my-6 text-center text-3xl font-extrabold text-gray-900">
-                    Welcome, {user.username}
-                  </h1>
-                </>
-              )}
-            </div>
+                
 
 
         <script src="/assets/plugins/global/plugins.bundle.js"/>
@@ -93,7 +99,7 @@ console.log('calling signup axios');
 
 
 
-</div>
+</>
 
   )
 }

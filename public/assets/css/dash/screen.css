@@ -54,9 +54,29 @@
     .cart-row a{ width: 49%;}
     .profile_tab_btn li{ margin-right: 5px;}
 
+    /* ------------- discovery page ------------------------ */
+
+    .team_search .searchbox input[type="search"]{ width: 250px;}
+    .team_row{ padding: 70px 20px 70px 20px;}
+    .team_row span.remarks{ width: 125px;}
+    .team_row span.remarks p{ font-size: 12px;}
+
+    .welcome{ top:25px}
+    .welcome b { display: block;}
+    
+
 }
 
 @media screen and (max-width:1023px){
+
+    .welcome {
+        position: relative;
+        top: 79px;
+        z-index: 9;
+        left: 0;
+        text-align: center;
+        padding: 20px 0;
+    }
 
     .main_middle{ float: right; width: calc(100% - 200px); margin: 120px 20px 20px 0;}
     .right_side{ position: static; float: right; width: calc(100% - 200px); margin: 0px 20px 20px 0; padding-bottom: 20px;}
@@ -83,6 +103,16 @@
     .products li{ float: left; width: 32%; margin-right: 2%; margin-bottom: 20px;}
     .products li:nth-child(4n){ margin-right:2%}
     .products li:nth-child(3n){ margin-right:0}
+
+
+  /* ------------- discovery page ------------------------ */
+
+  .team_search, .team_filter{flex-wrap: wrap;}
+  .team_search .searchbox{ margin-bottom: 20px;}
+  .team_filter .drop_downs{ width: 100%; border: 0;}
+  .filters{ width: 100%;}
+  .inner_team{flex-wrap: wrap;}
+  .team_overview{flex-wrap: wrap;}
 
 
 }
@@ -176,6 +206,14 @@
 }
 
 
+  /* ------------- discovery page ------------------------ */
+  .profile_tab_btn.discover_tab_btn li a{ background: none;}
+  .profile_tab_btn.discover_tab_btn li{ width: 32%;}
+  .discover_tab_btn.profile_tab_btn li a{ padding: 10px 0;}
+  .team_search .advance{ flex-wrap:wrap; justify-content: flex-start;}
+  .inner_team{ height: 150px;}
+
+
     /* ------------------------------------------- mobile menu css ---------------------------------------- */
 
     .top_click {
@@ -258,5 +296,21 @@
         .products li:nth-child(4n){ margin-right:0}
         .products li:nth-child(3n){ margin-right:0}
         .products li:nth-child(2n){ margin-right:0}
+
+
+        /* ------------- discovery page ------------------------ */
+
+        .team_search, .team_filter {
+            flex-wrap: wrap;
+            flex-direction: column;
+        }
+
+        .discovery_page .tit span, .discovery_page .tit i{ font-size: 20px;}
+        .discovery_page .tit i{ padding: 7px 10px;}
+        .inner_team {height: 291px;justify-content: center;}
+        .team_overview {flex-direction: column;}
+
+        .team_overview{ display: block;}
+        .coach_overview .match{ width: 100%;}
 
 }

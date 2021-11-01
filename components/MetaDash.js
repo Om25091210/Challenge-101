@@ -7,7 +7,7 @@ const MetaDash = () => (
 	<meta charSet="utf-8" />
 	<meta name="description" content="Multiplayr - Home of Esports" />
 	<meta name="keywords" content=" Multiplayr - Home of Esports" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
 	<meta property="og:locale" content="en_US" />
 	<meta property="og:type" content="dashboard" />
 	<meta property="og:title" content="Multiplayr - Home of Esports" />
@@ -22,6 +22,7 @@ const MetaDash = () => (
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
 
 	<link href="/assets/css/dash/bootstrap.css" rel="stylesheet" type="text/css" />
+	<link href="/assets/css/dash/layout.css" rel="stylesheet" type="text/css" />
 	<link href="/assets/css/dash/screen.css" rel="stylesheet" type="text/css" />
 	<link href="/assets/css/dash/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
 	<link href="/assets/css/dash/slick.css" rel="stylesheet" type="text/css" />
