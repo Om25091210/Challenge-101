@@ -63,18 +63,6 @@ console.log('calling signup axios');
 
 
     <SignedHeader />
-
-    
-    <div className="welcome">
-              {user && (
-                <>
-                  <h1>
-                    Welcome, <b>{user.username}</b>
-                  </h1>
-                </>
-              )}
-            </div>
-
     
 
     <LeftNav />

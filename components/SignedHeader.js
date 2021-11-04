@@ -74,7 +74,7 @@ const SignedHeader = () => (
     <li className="profile"> <a href="#"><img src="/assets/media/profile.jpg" alt="Profile"/></a>
       <div className="drop_down_bg profile_drop_down">
         <ul>
-          <li><a href="#"><i className="fa fa-user" aria-hidden="true"></i> Profile</a></li>
+          <li><a href="/profile"><i className="fa fa-user" aria-hidden="true"></i> Profile</a></li>
           <li><a href="#"><i className="fa fa-inbox" aria-hidden="true"></i> Inbox</a></li>
           <li><a href="#"><i className="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
         </ul>

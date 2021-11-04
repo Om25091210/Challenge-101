@@ -55,7 +55,7 @@ const RightSection = () => (
   </div>
   <div className="recent_activity my_team">
     <h2>My Team </h2>
-    <a href="javascript:void(0)" className="mng">Manage</a>
+    <a href="/team" className="mng">Manage</a>
     <div className="white_box">
       <ul className="team">
         <li><a href="#"><img src="/assets/media/dash/team1.png" alt=""/>Fnatic</a></li>
