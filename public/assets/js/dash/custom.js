@@ -22,25 +22,6 @@ $(document).ready(function() {
   });
 
 
-  if((screen.width<=767))
-  {
-  
-  
-  
-  $(".top_click").click(function(){	
-  
-  $(".left_side").toggleClass("show_left_menu");
-  
-  $(this).toggleClass("active");	
-  
-  
-  
-    });
-
-  }
-
-
-
  /* ----------- create post slider ----------------- */
 
     $('.user_slider').slick({
@@ -172,8 +153,47 @@ $(document).ready(function() {
         });
     })(jQuery);
 
+
+    if((screen.width<=767))
+    {
     
-   
+    
+    
+    $(".top_click").click(function(){	
+    
+    $(".left_side").toggleClass("show_left_menu");
+    
+    $(this).toggleClass("active");	
+    
+    
+    
+      });
+
+    }
+
+    var options = [];
+
+$( '.dropdown-menu a' ).on( 'click', function( event ) {
+
+   var $target = $( event.currentTarget ),
+       val = $target.attr( 'data-value' ),
+       $inp = $target.find( 'input' ),
+       idx;
+
+   if ( ( idx = options.indexOf( val ) ) > -1 ) {
+      options.splice( idx, 1 );
+      setTimeout( function() { $inp.prop( 'checked', false ) }, 0);
+   } else {
+      options.push( val );
+      setTimeout( function() { $inp.prop( 'checked', true ) }, 0);
+   }
+
+   $( event.target ).blur();
+      
+   console.log( options );
+   return false;
+});
+
         }); 
 
 

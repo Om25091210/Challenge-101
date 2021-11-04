@@ -555,3 +555,49 @@ ul.top_menu .drop_down_bg.profile_drop_down{width:150px; top:48px}
         .coach_overview .match{ width: 100%;}
 
 }
+
+
+
+
+/* -------------- Ranking page --------------- */
+
+.ranking_table{ float: left; width: 100%; background: #fff; border-radius: 5px; padding: 20px; margin-top: 20px;}
+
+.heads_row, .row_box .cols_box{ display: flex;  flex-direction: row;  flex-grow: 1;    justify-content: space-between; }
+.heads_row .heads, .row_box .cols{ flex:0 0 10%; text-transform: uppercase; font-size: 14px;  text-align: center; padding: 20px 0;}
+
+.heads_row, .row_box{border-bottom: 1px solid #ddd;}
+
+.more_data {
+  align-items: center;
+  display: none;
+  flex-direction: row;
+  flex-grow: 1;
+  justify-content: space-between;
+  text-transform: uppercase;
+  margin-left: 55px;
+  padding: 30px 0;
+  border-top: 1px solid #ddd;
+}
+.more_data .pic {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 250px
+}
+.more_data .pic .tumb{ border-radius: 5px; overflow: hidden; width: 90px; height: 90px;}
+.more_data .pic .tumb img{ object-fit: cover; width: 100%; height: 100%;}
+.more_data .pic h3{ font-size: 19px;}
+.more_data .total{ font-size: 14px; text-transform: uppercase; text-align: center;}
+.more_data .total p{ padding: 5px 0;}
+
+.more_data .follows{ width: 220px;}
+.more_data button{ background: #7239ea; padding: 10px 20px; text-align: center; color: #fff; font-size: 14px; border:0; width: 100%; border-radius: 5px; margin-bottom: 10px;}
+.more_data .ate{ background: #343439;  padding: 10px 20px; color: #fff; font-size: 14px; border:0; width: 100%; border-radius: 5px; display: flex;
+  align-items: center;
+  justify-content: space-between;}
+.more_data .ate .circle{ display: inline-block; width: 30px; height:30px; border-radius: 50%; border:1px solid #fff;}
+
+.row_box:hover .more_data{ display: flex;}
+
+

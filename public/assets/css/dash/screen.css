@@ -60,23 +60,16 @@
     .team_row{ padding: 70px 20px 70px 20px;}
     .team_row span.remarks{ width: 125px;}
     .team_row span.remarks p{ font-size: 12px;}
-
-    .welcome{ top:25px}
-    .welcome b { display: block;}
     
 
 }
 
-@media screen and (max-width:1023px){
+@media screen and (max-width:1300px){
+.top_game, .bottom_game{ flex-wrap: wrap;}
 
-    .welcome {
-        position: relative;
-        top: 79px;
-        z-index: 9;
-        left: 0;
-        text-align: center;
-        padding: 20px 0;
-    }
+}
+
+@media screen and (max-width:1023px){
 
     .main_middle{ float: right; width: calc(100% - 200px); margin: 120px 20px 20px 0;}
     .right_side{ position: static; float: right; width: calc(100% - 200px); margin: 0px 20px 20px 0; padding-bottom: 20px;}
@@ -120,6 +113,11 @@
 
 @media screen and (max-width:900px){
 
+    .game_pos{ width: 100%;}
+    .game_pos::after{ display: none;}
+    .right_game_details{ float: left; width: 100%;}
+    .row_box:hover .more_data{ flex-wrap: wrap;}
+    .row_box:hover .more_data .chart{ margin: 10px 0;}
 
 }
 
