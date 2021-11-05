@@ -9,6 +9,7 @@ const Jobs = (props) => (
 
       <div className="tab hide" id="jobs">
         
+        <div className="white_bg">
         <div className="team_search" >
           <div className="searchbox">
             <h3>Search</h3>
@@ -118,6 +119,9 @@ const Jobs = (props) => (
 
           
         </div>
+        </div>
+
+
         <div className="team_row arena_team_row">
          
           <div className="inner_team" >

@@ -128,10 +128,40 @@
     .products li:nth-child(3n){ margin-right:2%}
     .products li:nth-child(2n){ margin-right:0}
 
+    /* ----------- match page ------------------ */
+    .match_board {
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .participate_team .team_photo .team_name, .participate_team .team_photo .count{ position: static; }
+
+    .participate_team.rightside  .team_photo{ display: flex; flex-direction: column-reverse; align-items: center;}
+    .participate_details{ margin: 20px 0;}
+
+    .players_box .team_mem {
+        border-top: 1px solid #ddd;
+        padding-top: 20px;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .players_box .pic{ margin-bottom: 10px;}
+
+    .stats_table {
+        width: 100%;
+        float: left;
+        overflow-y: auto;
+    }
+
 }
 
 @media screen and (max-width:768px){
 
+    .stat_chart{flex-direction: column;}
+    .stat_chart .chart1{ margin-bottom: 10px;}
 
 }
 

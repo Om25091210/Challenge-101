@@ -9,6 +9,8 @@ const Coaches = (props) => (
       <div className="tab hide" id="coaches">
        
 
+       <div className="white_bg">
+
         <div className="team_search" >
           <div className="searchbox">
             <h3>Search</h3>
@@ -195,7 +197,8 @@ const Coaches = (props) => (
           </div>
         </div>
         
-        
+        </div>
+
         <div className="team_row">
           <div className="stars"><i className="fa fa-star" aria-hidden="true"></i></div>
           <div className="inner_team" >

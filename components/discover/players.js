@@ -6,6 +6,7 @@ import Head from 'next/head'
 const Players = (props) => (
 
       <div className="tab hide" id="players">
+        <div className="white_bg">
         <div className="team_search" >
           <div className="searchbox">
             <h3>Search</h3>
@@ -209,6 +210,7 @@ const Players = (props) => (
             <h3>Filters</h3>
             <div className="filter_list"> <span className="filter1"> Games: Call of Duty <a href="#" className="close2">X</a></span> <span className="filter1"> Category: LAN <a href="#" className="close2">X</a></span> <span className="filter1"> Type: Pro <a href="#" className="close2">X</a></span> <span className="filter1"> Rank: Legend <a href="#" className="close2">X</a></span> <span className="filter1"> Platform: Mobile <a href="#" className="close2">X</a></span> </div>
           </div>
+        </div>
         </div>
         
         

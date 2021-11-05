@@ -811,11 +811,19 @@ transition: transform .5s ease, -webkit-transform .5s ease;
 .discovery_page{ float: left; width: 100%;padding: 20px; border-radius: 10px;}
 .discovery_page .tit span, .discovery_page .tit i{ background: #dfdfdf; display: inline-block; color: #000; 
   font-size: 18px; font-weight: 700; letter-spacing: -1px; padding:5px 10px; border-radius: 5px;}
-  .discovery_page .tit i{ padding:12px 10px; margin-top: 10px;}
+  .discovery_page .tit i{     padding: 12px 10px;
+    margin-top: 6px;
+    margin-left: 5px;
+    display: inline-block;}
 
   .discovery_page .tit span .icon{ background: #561cde; padding: 5px; display:inline-block; border-radius: 5px; margin-right: 10px;}
 
-  .other_logo{ display: none  !important; transition: 0.3s ease-in-out; vertical-align: middle; padding: 9px 0 !important; width: 20px !important}
+  .other_logo{     display: none  !important;
+    transition: 0.3s ease-in-out;
+    vertical-align: middle;
+    padding: 9px 0 !important;
+    width: 20px !important;
+    margin: -5px 1px 0 3px;}
   .other_logo img{ width: 25px;}
   .discovery_page .tit:hover .other_logo{ display: inline-block !important}
 
@@ -1097,3 +1105,77 @@ transition: transform .5s ease, -webkit-transform .5s ease;
 .arena_bio .internet li{ font-size: 14px; text-transform: uppercase; margin-top: 20px; border-right: 1px solid #ddd; padding-right: 20px;}
 .arena_bio .internet li:last-child{ border:0}
 .arena_bio .internet li b{ font-weight: 700; display: block;}
+
+
+/* ------------ Match page ------------------- */
+
+.match_page{ background: #fff; float:left; width: 100%; padding: 20px; border-radius: 5px;}
+.match_page h2{ font-size: 20px; text-transform: uppercase; text-align: center;}
+.match_page h2 b{ display: block;}
+.match_page .pic{ width: 110px; height: 110px; background: #292931; display: inline-block; border-radius: 5px;} 
+.match_heads{ float: left; width: 100%; margin: 30px 0;}
+.match_heads ul {display: flex;justify-content: space-between; border:1px solid #ddd}
+.match_heads ul li{ padding: 10px; border-left: 1px solid #ddd;}
+.match_heads ul li h4{font-size: 13px; text-transform: uppercase; font-weight: 400; }
+.match_heads ul li h3{font-size: 17px; text-transform: uppercase; font-weight: 700; }
+
+.match_board {display: flex;width: 100%;justify-content: space-between; padding-top: 50px;}
+.participate_team{ text-align: center;}
+.participate_team .team_photo{ position: relative;}
+
+.participate_team .team_photo .team_name{ font-size: 20px; text-transform: uppercase; font-weight: 700; 
+  position: absolute; right: -70px; top:40px}
+.participate_team .team_photo .count{font-size: 60px; text-transform: uppercase; font-weight: 700; position: absolute;  right: -170px; top:20px}
+.participate_team .ranked, .participate_team .team_form{font-size: 16px; text-transform: uppercase; text-align: center; padding: 10px 0;  }
+.participate_team .players .round{ width: 20px; height: 20px; font-size: 11px; text-align: center; line-height: 20px; color: #fff;}
+
+.participate_team.rightside  .team_photo .team_name{ right:inherit; left: -40px;}
+.participate_team.rightside .team_photo .count{ right:inherit; left: -140px;}
+
+.participate_details{ text-align: center; width: 320px;}
+.participate_details .live{ padding-bottom: 20px;}
+.participate_details .live .round{width: 16px; height: 16px; vertical-align: bottom;}
+.participate_details .date, .participate_details .time, .participate_details .map{font-size: 17px; text-transform: uppercase; font-weight: 700;}
+
+.participate_details .head_to_head{ font-size: 20px; text-transform: uppercase; padding: 20px 0 10px 0;}
+.participate_details .heads_num span{ border: 1px solid #ddd; display: inline-block; margin:0 1%; }
+.participate_details .heads_num span b{ text-align: center; width: 40px; display: inline-block; padding: 10px 0;}
+.participate_details .heads_num span b:first-child{ border-right: 1px solid #ddd;}
+
+.players_box{ display: flex; width: 100%; justify-content: space-between; margin-top: 50px;}
+
+.players_box .team_mem{ border-top: 1px solid #ddd; padding-top: 20px;}
+.players_box .team_mem .pic{ margin-right: 5px; width: 90px; height: 90px;}
+
+.stats_box{ float: left; width: 100%; margin-top: 50px;}
+.stats_box h3{ background: #ddd; font-size: 20px; padding: 20px; width: 100%; display: block; border-radius: 5px; }
+
+
+.stats_table { margin-top: 50px;}
+.stats_table .bdr_clr_green{ border-left: 5px solid #00ff5b; font-size: 14px; font-weight: 700;}
+.stats_table .bdr_clr_blue{ border-left: 5px solid #00deff; font-size: 14px; font-weight: 700;}
+.stats_table .bdr_clr_green{ border-left: 5px solid #00ff5b; font-size: 14px; font-weight: 700;}
+
+.stats_table .table{ border:1px solid #ddd}
+.stats_table .table th{ font-style: italic; font-weight: 700; font-size: 14px; text-align: center;}
+.stats_table .table td{ font-size: 13px; text-align: center; border-bottom:1px solid #ddd}
+.stats_table .table th:first-child, .stats_table .table th:nth-child(2){ text-align: left;}
+.stats_table .table td:first-child, .stats_table .table td:nth-child(2){ text-align: left;}
+
+.stats_table .dp{ display: inline-block; width:30px; height:30px; border-radius: 5px; overflow:hidden; vertical-align: middle;}
+.stats_table .dp img{ width: 100%; height: 100%; object-fit: cover;}
+.stats_table .dp_name{ display: inline-block; font-size: 13px; vertical-align: middle;}
+.stats_table .dp_name b{ display: block; font-weight: 700;}
+.stats_table .star{ width: 20px; height: 20px; display: inline-block; border-radius: 50%; border:1px solid #ddd; text-align: center; line-height:17px;}
+.stats_table .star .fa{ font-size: 11px;}
+
+.stat_chart{ display: flex; justify-content: space-between; width: 100%;}
+.stat_chart .chart1{ float: left; width: 100%; text-align: center; border:1px solid #ddd; text-align: center;}
+.stat_chart h3{ text-transform: uppercase; font-size: 15px; font-weight: 700; padding: 10px; border-bottom: 1px solid #ddd; margin-bottom: 10px;}
+
+.game_chart{ display: flex; flex-wrap: wrap; justify-content: center;}
+.game_chart a{ flex:0 0 25%; margin: 20px 0;}
+
+.game_chart .icon{ width: 30px; height: 30px; display:inline-block; border-radius: 50%; border:3px solid #000; line-height: 22px;}
+.game_chart  h4{ font-size: 14px; color: #000; font-style: italic; font-weight: 700;}
+.game_chart  p{font-size: 11px; color: #000; }

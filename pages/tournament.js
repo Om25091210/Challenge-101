@@ -196,6 +196,7 @@ function Tournament() {
 <script src="/assets/plugins/global/plugins.bundle.js"/>
 <script src="/assets/js/scripts.bundle.js"/>
 <script src="/assets/plugins/global/plugins.bundle.js"/>
+<script src="/assets/js/dash/bootstrap.bundle.min.js"></script>
 <script src="/assets/js/dash/jquery.mCustomScrollbar.js"/>
 <script src="/assets/js/dash/slick.js"/>
 <script src="/assets/js/dash/custom.js"/>

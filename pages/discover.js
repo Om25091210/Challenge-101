@@ -51,8 +51,23 @@ function Discover() {
 <div className="main_middle profile_middle"> 
  
   <div className="discovery_page">
+
+  <div class="white_bg">
     <h2>GAME</h2>
-    <div className="tit"><span>Fortnite</span> <i className="fa fa-angle-right" aria-hidden="true"></i></div>
+   
+
+    <div class="tit">
+      <a href="#"><span>
+        <b class="icon"><img src="/assets/media/ranking/console.png" alt="" /></b> Browse Games</span>
+         <i class="fa fa-angle-right" aria-hidden="true"></i> 
+         <span class="other_logo"><img src="/assets/media/team1.png" alt="" /></span>
+         <span class="other_logo"><img src="/assets/media/team1.png" alt="" /></span>
+        
+        </a> 
+        
+        </div>
+
+
     <ul className="profile_tab_btn discover_tab_btn">
       <li className="active"><a href="javascript:void(0);" rel="teams">TEAMS </a></li>
       <li><a href="javascript:void(0);" rel="players"> PLAYERS</a></li>
@@ -60,6 +75,7 @@ function Discover() {
       <li><a href="javascript:void(0);" rel="arenas"> ARENAS</a></li>
       <li><a href="javascript:void(0);" rel="jobs"> JOBS </a></li>
     </ul>
+    </div>
 
 	 <div className="prfoile_tab_data ">
 	 
@@ -85,6 +101,7 @@ function Discover() {
 <script src="/assets/plugins/global/plugins.bundle.js"/>
 <script src="/assets/js/scripts.bundle.js"/>
 <script src="/assets/plugins/global/plugins.bundle.js"/>
+<script src="/assets/js/dash/bootstrap.bundle.min.js"></script>
 <script src="/assets/js/dash/jquery.mCustomScrollbar.js"/>
 <script src="/assets/js/dash/slick.js"/>
 <script src="/assets/js/dash/custom.js"/>

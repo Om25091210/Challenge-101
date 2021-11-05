@@ -8,7 +8,7 @@ const Arenas = (props) => (
 
       <div className="tab hide" id="arenas">
        
-
+       <div className="white_bg">
         <div className="team_search" >
           <div className="searchbox">
             <h3>Search</h3>
@@ -188,6 +188,10 @@ const Arenas = (props) => (
 
           
         </div>
+        </div>
+
+
+
         <div className="team_row arena_team_row">
          
           <div className="inner_team" >

@@ -6,6 +6,8 @@ const Teams = (props) => (
 
 
       <div className="tab" id="teams">
+
+     <div className="white_bg">
         <div className="team_search" >
           <div className="searchbox">
             <h3>Search</h3>
@@ -32,7 +34,8 @@ const Teams = (props) => (
         <div className="team_filter">
           <div className="drop_downs">
             <div className="button-group">
-              <button type="button" className="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"> <span className="drop_name">Roles</span> <span className="caret"></span> </button>
+              <button type="button" className="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"> 
+              <span className="drop_name">Roles</span> <span className="caret"></span> </button>
               <ul className="dropdown-menu">
                 <li><a href="#" className="small" data-value="option1" tabIndex="-1">
                   <input type="checkbox"/>
@@ -210,7 +213,7 @@ const Teams = (props) => (
             <div className="filter_list"> <span className="filter1"> Games: Call of Duty <a href="#" className="close2">X</a></span> <span className="filter1"> Category: LAN <a href="#" className="close2">X</a></span> <span className="filter1"> Type: Pro <a href="#" className="close2">X</a></span> <span className="filter1"> Rank: Legend <a href="#" className="close2">X</a></span> <span className="filter1"> Platform: Mobile <a href="#" className="close2">X</a></span> </div>
           </div>
         </div>
-        
+     </div>   
         
         <div className="team_row">
           <div className="stars"><i className="fa fa-star" aria-hidden="true"></i></div>
