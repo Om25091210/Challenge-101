@@ -151,7 +151,7 @@ $(document).ready(function() {
         $(window).load(function () {
             $(".content").mCustomScrollbar();
         });
-    })(jQuery);
+    });
 
 
     if((screen.width<=767))
