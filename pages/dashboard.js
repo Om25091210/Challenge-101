@@ -14,8 +14,6 @@ import { useRouter } from 'next/router'
 
 import SignOut from '../pages/user/signout'
 
-import axios from 'axios';
-import baseURL from '../utils/baseURL';
 
 
 function Dashboard(req,res) {
@@ -35,25 +33,6 @@ function Dashboard(req,res) {
         
         )
   }, [])
-
-
-  if (user){
-
-// RR
-
-console.log('calling signup axios');
-
-    const email = user.email
-    const password = user.password
-    const name= user.name
-      const res =  axios.post(`${baseURL}/api/signup/`, {
-      email,
-      password,
-      name
-    });
-// RR
-
-  }
 
   return (
 
