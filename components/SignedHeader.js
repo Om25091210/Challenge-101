@@ -6,8 +6,8 @@ const SignedHeader = () => (
 <header>
   <div className="logo"><a href="#"><img src="/assets/media/dash/logo.png" alt="Logo" /></a></div>
 
-  <div class="sb-toggle-right  top_click"> <a href="javascript:void(0);">
-    <div class="three_line three_line--htx"><span>toggle menu</span> </div>
+  <div className="sb-toggle-right  top_click"> <a href="javascript:void(0);">
+    <div className="three_line three_line--htx"><span>toggle menu</span> </div>
     </a></div>
 
   <div className="right_menu">
