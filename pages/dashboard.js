@@ -12,10 +12,6 @@ import RightSection from '../components/RightSection';
 import FooterMain from '../components/FooterMain';
 import { useRouter } from 'next/router'
 
-import SignOut from '../pages/user/signout'
-
-
-
 function Dashboard(req,res) {
 
   const [user, setUser] = useState(null)
