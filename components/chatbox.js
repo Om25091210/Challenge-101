@@ -3,30 +3,45 @@ import { useRouter } from 'next/router'
 import axios from 'axios';
 import baseURL from '../utils/baseURL';
 import { useForm } from "react-hook-form";
+import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
+
+const queryClient = new QueryClient()
+
+ export default function ChatBox(){
+  return(<QueryClientProvider client={queryClient} contextSharing={true}>
+        <WChatbox/>
+    </QueryClientProvider>
+  );
+}
+
+function WChatbox(req,res) {
 
 
-function Chatbox(req,res) {
+  const [searchText, setSearchText] = useState('');
 
-  const { register, handleSubmit } = useForm();
-  const router = useRouter()
-  var data = []
+  const router = useRouter();
 
-  async function searchfriend({ username }) {
-    try {
-       const res  = await axios.post(`${baseURL}/api/friendrequests/search`, {
-        username
+  const { data, isLoading, isSuccess } = useQuery(
+    ['search', searchText],
+    async () => {
+      const CancelToken = axios.CancelToken;
+      const source = CancelToken.source();
+
+      const promise = await axios.get(`${baseURL}/api/friendrequests/search/${searchText}`, {
+        cancelToken: source.token,
       });
-       console.log("RERERERERERERERE")
-       data = res.data;
-       console.log(data)
 
+      promise.cancel = () => {
+        source.cancel();
+      };
 
-    } catch (error) {
-      console.log(error)
+      console.log(promise.data)
+      return promise.data;
+    },
+    {
+      enabled: !!searchText,
     }
-
-  }
-
+  );
 
 
   return (
@@ -57,28 +72,72 @@ function Chatbox(req,res) {
             <div className="card mb-sm-3 mb-md-0 contacts_card dlab-chat-user-box">
             <div className="card-header chat-list-header text-center">
               <a href="javascript:void(0);"><svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="18px" height="18px" viewBox="0 0 24 24" version="1.1"><g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd"><rect fill="#000000" x="4" y="11" width="16" height="2" rx="1"/><rect fill="#000000" opacity="0.3" transform="translate(12.000000, 12.000000) rotate(-270.000000) translate(-12.000000, -12.000000) " x="4" y="11" width="16" height="2" rx="1"/></g></svg></a>
-              
-          <div className="w-lg-100px bg-body rounded shadow-sm p-10 p-lg-15 mx-auto">
-            <form className="form w-100" noValidate="noValidate" onSubmit={handleSubmit(searchfriend)}>
 
-              <div className="fv-row mb-100">
-                <label className="form-label fs-6 fw-bolder text-dark">Email</label>
-                <input {...register('username', { required: true })} className="form-control form-control-lg form-control-solid" type="text" name="username" autoComplete="off" />
-              </div>
-              <div className="text-center">
-                <button type="submit" id="kt_sign_in_submit" className="btn btn-lg btn-primary w-100 mb-5">
-                  <span className="indicator-label">Find</span>
-                </button>
-              </div>
-            </form>
+
+
+    <div className="relative flex-1 flex items-center justify-center px-2 lg:ml-6 lg:justify-end">
+      <div className="max-w-lg w-full lg:max-w-xs">
+        <label htmlFor="search" className="sr-only">
+          Search
+        </label>
+        <div className="relative">
+          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            
           </div>
+          <input
+            id="search"
+            name="search"
+            className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-pink-500 focus:border-pink-500 sm:text-sm"
+            placeholder="Search for users and posts..."
+            type="search"
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+            autoComplete="off"
+          />
+          {searchText.trim() !== '' && !isLoading && isSuccess && (
+            <div className="absolute top-14 w-full bg-white z-50 px-2 py-4 shadow-2xl rounded">
+              <h1 className="text-sm font-semibold mb-2">Users</h1>
+              <div className="flex flex-col space-y-2">
+                {!data || data.length === 0 ? (
+                  <p className="text-gray-400 text-xs">No users found..</p>
+                ) : (
+                  data.map((user) => (
+
+            <ul className="contacts">
+              <li className="active dlab-chat-user">
+                <div className="d-flex bd-highlight">
+                  <div className="img_cont">
+                    <img src="/assets/media/avatar/1.jpg" className="rounded-circle user_img" alt=""/>
+                    <span className="online_icon"></span>
+                  </div>
+                  <div className="user_info">
+                    <span> {user.name.length > 20
+                          ? user.name.substring(0, 20) + '...'
+                          : user.name}</span>
+                  </div>
+                </div>
+                    <form action="" method="get" class="add_friend" >
+            <input type="hidden" name="receiverName" className="receiverName" value="{{user.name}}"/>
+            <input type="hidden" name="sender-name" className="sender-name" value="{{user.username}}"/>
+            <button type="submit" onClick={addFriend('{{user.name}}')} className="btn add accept friend-add"><i class="fa fa-user"></i> Add Friend</button>
+        </form>
+              </li>
+            </ul>
 
 
-     <ul>
-      {data.map( (result) => (
-        <li>{result.name}</li>
-      ))}
-    </ul>
+
+                  ))
+                )}
+
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+
+
+
 
 
 
@@ -462,5 +521,4 @@ function Chatbox(req,res) {
   )
 }
 
-export default Chatbox
 
