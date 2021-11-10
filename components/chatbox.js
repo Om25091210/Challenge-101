@@ -4,16 +4,23 @@ import axios from 'axios';
 import baseURL from '../utils/baseURL';
 import { useForm } from "react-hook-form";
 
+
 function Chatbox(req,res) {
 
   const { register, handleSubmit } = useForm();
   const router = useRouter()
-const  data  = []
+  var data = []
+
   async function searchfriend({ username }) {
     try {
-       const data  = await axios.post(`${baseURL}/api/friendrequests/search`, {
+       const res  = await axios.post(`${baseURL}/api/friendrequests/search`, {
         username
       });
+       console.log("RERERERERERERERE")
+       data = res.data;
+       console.log(data)
+
+
     } catch (error) {
       console.log(error)
     }
@@ -51,20 +58,29 @@ const  data  = []
             <div className="card-header chat-list-header text-center">
               <a href="javascript:void(0);"><svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="18px" height="18px" viewBox="0 0 24 24" version="1.1"><g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd"><rect fill="#000000" x="4" y="11" width="16" height="2" rx="1"/><rect fill="#000000" opacity="0.3" transform="translate(12.000000, 12.000000) rotate(-270.000000) translate(-12.000000, -12.000000) " x="4" y="11" width="16" height="2" rx="1"/></g></svg></a>
               
-          <div className="w-lg-50px bg-body rounded shadow-sm p-10 p-lg-15 mx-auto">
-            <form className="form w-50" noValidate="noValidate" onSubmit={handleSubmit(searchfriend)}>
+          <div className="w-lg-100px bg-body rounded shadow-sm p-10 p-lg-15 mx-auto">
+            <form className="form w-100" noValidate="noValidate" onSubmit={handleSubmit(searchfriend)}>
 
-              <div className="fv-row mb-10">
+              <div className="fv-row mb-100">
                 <label className="form-label fs-6 fw-bolder text-dark">Email</label>
                 <input {...register('username', { required: true })} className="form-control form-control-lg form-control-solid" type="text" name="username" autoComplete="off" />
               </div>
               <div className="text-center">
-                <button type="submit" id="kt_sign_in_submit" className="btn btn-lg btn-primary w-50 mb-5">
-                  <span className="indicator-label">Continue</span>
+                <button type="submit" id="kt_sign_in_submit" className="btn btn-lg btn-primary w-100 mb-5">
+                  <span className="indicator-label">Find</span>
                 </button>
               </div>
             </form>
           </div>
+
+
+     <ul>
+      {data.map( (result) => (
+        <li>{result.name}</li>
+      ))}
+    </ul>
+
+
 
               <div>
                 <h6 className="mb-1">Chat List</h6>

@@ -12,8 +12,6 @@ import TeamRows from '../components/tournament/TeamRows';
 import FooterMain from '../components/FooterMain';
 import { useRouter } from 'next/router'
 
-import SignOut from '../pages/user/signout'
-
 
 function Tournament() {
 

@@ -5,7 +5,7 @@ import Head from 'next/head'
 import MetaDash from '../components/MetaDash';
 import SignedHeader from '../components/SignedHeader';
 import LeftNav from '../components/LeftNav';
-import SignedMainContent from '../components/SignedMainContent';
+import SignedMainContent from '../components/dashboard/SignedMainContent';
 import RightSection from '../components/RightSection';
 
 
