@@ -5,13 +5,30 @@ import FooterMain from '../../components/FooterMain';
 
 import { Auth } from 'aws-amplify';
 import { useForm } from "react-hook-form";
+import axios from 'axios';
+import baseURL from '../../utils/baseURL';
 
 
 export default function Register({ setStatus, setUser }) {
 
   const { register, handleSubmit } = useForm();
 
-  async function signUp({ email, username, password }) {
+ const signupUser = async (
+  { username, password, name}
+
+) => {
+  try {
+    const res = await axios.post(`${baseURL}/api/signup`, {
+      username,
+      password,
+      name,
+    });
+  } catch (error) {
+  	console.log(error)
+  }
+};
+
+  async function signUp({ email, username, password, firstname, lastname }) {
     try {
       await Auth.signUp({
         username,
@@ -30,8 +47,27 @@ export default function Register({ setStatus, setUser }) {
     } catch (error) {
       console.log('error signing up:', error);
     }
+
+
+console.log('calling signup axios');
+
+        const name= firstname + ' ' + lastname
+
+    const res = signupUser({username, password, name });
+          console.log(res.data);
+
   }
 
+
+
+
+
+// RR
+
+
+
+
+// RR
 
   return (
 

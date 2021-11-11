@@ -52,16 +52,16 @@ function Discover() {
  
   <div className="discovery_page">
 
-  <div class="white_bg">
+  <div className="white_bg">
     <h2>GAME</h2>
    
 
-    <div class="tit">
+    <div className="tit">
       <a href="#"><span>
-        <b class="icon"><img src="/assets/media/ranking/console.png" alt="" /></b> Browse Games</span>
-         <i class="fa fa-angle-right" aria-hidden="true"></i> 
-         <span class="other_logo"><img src="/assets/media/team1.png" alt="" /></span>
-         <span class="other_logo"><img src="/assets/media/team1.png" alt="" /></span>
+        <b className="icon"><img src="/assets/media/ranking/console.png" alt="" /></b> Browse Games</span>
+         <i className="fa fa-angle-right" aria-hidden="true"></i> 
+         <span className="other_logo"><img src="/assets/media/team1.png" alt="" /></span>
+         <span className="other_logo"><img src="/assets/media/team1.png" alt="" /></span>
         
         </a> 
         

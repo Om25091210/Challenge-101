@@ -1,13 +1,32 @@
 import Head from 'next/head';
 import Chatbox from './chatbox';
+import { useState } from 'react'
+import { useRouter } from 'next/router'
+import { Auth } from 'aws-amplify';
 
-const SignedHeader = () => (
+
+function SignedHeader(req,res) {
+
+const router = useRouter()
+
+async function signOut() {
+
+  try {
+    await Auth.signOut();
+    router.push('/')
+
+  } catch (error) {
+    console.log('error signing out: ', error);
+  }
+}
+
+  return (
 
 <header>
   <div className="logo"><a href="#"><img src="/assets/media/dash/logo.png" alt="Logo" /></a></div>
 
-  <div class="sb-toggle-right  top_click"> <a href="javascript:void(0);">
-    <div class="three_line three_line--htx"><span>toggle menu</span> </div>
+  <div className="sb-toggle-right  top_click"> <a href="#!">
+    <div className="three_line three_line--htx"><span>toggle menu</span> </div>
     </a></div>
 
   <div className="right_menu">
@@ -76,7 +95,8 @@ const SignedHeader = () => (
         <ul>
           <li><a href="/profile"><i className="fa fa-user" aria-hidden="true"></i> Profile</a></li>
           <li><a href="#"><i className="fa fa-inbox" aria-hidden="true"></i> Inbox</a></li>
-          <li><a href="#"><i className="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
+          <li>
+          <a href="#!" onClick={() => signOut()}><i className="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
         </ul>
       </div>
     </li>
@@ -85,6 +105,8 @@ const SignedHeader = () => (
 </header>
 
 
-    );
+  )
+}
 
-    export default SignedHeader;
+export default SignedHeader
+

@@ -46,7 +46,7 @@ function Team() {
     <LeftNav />
 
 
-<div class="main_middle profile_middle"> 
+<div className="main_middle profile_middle"> 
  
 
 	    <TeamProfileBox />
