@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import axios from 'axios';
 import baseURL from '../utils/baseURL';
@@ -7,14 +7,37 @@ import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
 
 const queryClient = new QueryClient()
 
- export default function ChatBox(){
+
+export default function ChatBox ({user}) {
+
   return(<QueryClientProvider client={queryClient} contextSharing={true}>
-        <WChatbox/>
+        <WChatbox user={user}/>
     </QueryClientProvider>
   );
 }
 
-function WChatbox(req,res) {
+const WChatbox = ({user}) => {
+
+  const [receiverName, setReceiverName] = useState('');
+  const { register, handleSubmit } = useForm();
+
+ const addFriend = async (
+  { receiverName }
+
+) => {
+  try {
+    
+    console.log('ccccccchhhhhhhhhh');
+    console.log(receiverName)
+    var usrname = user.username
+    const res = await axios.post(`${baseURL}/api/friendrequests/search`, {
+      usrname,
+      receiverName,
+    });
+  } catch (error) {
+    console.log(error)
+  }
+};
 
 
   const [searchText, setSearchText] = useState('');
@@ -106,7 +129,7 @@ function WChatbox(req,res) {
                {!data || data.length === 0 ? (
                  <p>No users found..</p>
                ) : (
-                 data.map((user) => (
+                 data.map((resultuser) => (
 
            <ul className="contacts">
              <li className="active dlab-chat-user">
@@ -116,16 +139,20 @@ function WChatbox(req,res) {
                    <span className="online_icon"></span>
                  </div>
                  <div className="user_info">
-                   <span> {user.name.length > 20
-                         ? user.name.substring(0, 20) + '...'
-                         : user.name}</span>
+                   <span> {resultuser.name.length > 20
+                         ? resultuser.name.substring(0, 20) + '...'
+                         : resultuser.name}</span>
                  </div>
                </div>
-                   <form action="" method="get" class="add_friend" >
-           <input type="hidden" name="receiverName" className="receiverName" value="{{user.name}}"/>
-           <input type="hidden" name="sender-name" className="sender-name" value="{{user.username}}"/>
-           <button type="submit" onClick={addFriend('{{user.name}}')} className="btn add accept friend-add"><i class="fa fa-user"></i> Add Friend</button>
-       </form>
+
+
+            <form className="form w-100" method="POST" noValidate="novalidate" onSubmit={handleSubmit(addFriend)}>
+
+            <input type="hidden" name="receiverName" {...register('receiverName')} className="receiverName" value={resultuser.email}/>
+            <button type="submit" className="btn add accept friend-add"><i className="fa fa-user"></i> Add Friend</button>
+        </form>
+
+
              </li>
            </ul>
 

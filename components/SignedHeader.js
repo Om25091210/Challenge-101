@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import { Auth } from 'aws-amplify';
 
 
-function SignedHeader(req,res) {
+const SignedHeader = ({user}) => {
 
 const router = useRouter()
 
@@ -55,7 +55,7 @@ async function signOut() {
         </g>
         </svg> <span  className="pop">20</span></a>
 
-        <Chatbox/>
+        <Chatbox user={user}/>
 
       </li>
     

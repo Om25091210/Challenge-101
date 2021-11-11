@@ -69,11 +69,11 @@ function Discover() {
 
 
     <ul className="profile_tab_btn discover_tab_btn">
-      <li className="active"><a href="javascript:void(0);" rel="teams">TEAMS </a></li>
-      <li><a href="javascript:void(0);" rel="players"> PLAYERS</a></li>
-      <li><a href="javascript:void(0);" rel="coaches"> COACHES </a></li>
-      <li><a href="javascript:void(0);" rel="arenas"> ARENAS</a></li>
-      <li><a href="javascript:void(0);" rel="jobs"> JOBS </a></li>
+      <li className="active"><a href="#!" rel="teams">TEAMS </a></li>
+      <li><a href="#!" rel="players"> PLAYERS</a></li>
+      <li><a href="#!" rel="coaches"> COACHES </a></li>
+      <li><a href="#!" rel="arenas"> ARENAS</a></li>
+      <li><a href="#!" rel="jobs"> JOBS </a></li>
     </ul>
     </div>
 

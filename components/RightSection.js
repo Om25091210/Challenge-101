@@ -1,5 +1,7 @@
 
-const RightSection = () => (
+import FriendRequests from '../components/dashboard/friendRequests';
+
+const RightSection = ({user}) => (
 
 <div className="right_side overhight">
   <div className="recent_activity">
@@ -10,14 +12,9 @@ const RightSection = () => (
       <div className="activity_tag"> <a href="#"> <span className="act_img"><img src="/assets/media/dash/user.jpg" alt=""/></span> <span className="act_name">Jonah has sent you a friend request. </span> </a> </div>
     </div>
   </div>
-  <div className="recent_activity freind_request">
-    <h2>FRIEND REQUESTS</h2>
-    <a href="javascript:void(0)" className="hideShow">Hide <i className="fa fa-angle-down" aria-hidden="true"></i> <i className="fa fa-angle-up" aria-hidden="true"></i></a>
-    <div className="white_box">
-      <div className="activity_tag"> <a href="#"> <span className="act_img"><img src="/assets/media/dash/user.png" alt=""/></span> <span className="act_name">TheMadTitan</span> <span className="accept">accept</span> <span className="close">X</span> </a> </div>
-      <div className="activity_tag"> <a href="#"> <span className="act_img"><img src="/assets/media/dash/user.jpg" alt=""/></span> <span className="act_name">Rocky</span> <span className="accept">accept</span> <span className="close">X</span> </a> </div>
-    </div>
-  </div>
+
+ <FriendRequests user={user}/>
+
   <div className="recent_activity suggested_player">
     <h2>Suggested Players</h2>
     <a href="javascript:void(0)" className="all">ALL</a>

@@ -37,7 +37,7 @@ function Dashboard(req,res) {
     <MetaDash />
 
 
-    <SignedHeader />
+    <SignedHeader user={user}/>
     
 
     <LeftNav />
@@ -45,7 +45,7 @@ function Dashboard(req,res) {
     <SignedMainContent />
 
 
-    <RightSection />
+    <RightSection user={user}/>
    
 
                 
