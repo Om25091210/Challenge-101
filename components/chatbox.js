@@ -4,6 +4,7 @@ import axios from 'axios';
 import baseURL from '../utils/baseURL';
 import { useForm } from "react-hook-form";
 import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
+import cookie from 'js-cookie';
 
 const queryClient = new QueryClient()
 
@@ -67,7 +68,32 @@ const WChatbox = ({user}) => {
       enabled: !!searchText,
     }
   );
+  
+  const [userId, setUserId] = useState('');
 
+  const { frdata } = useQuery(
+    ['userId'],
+    async () => {
+      const CancelToken = axios.CancelToken;
+      const source = CancelToken.source();
+
+      const promise = await axios.get(`${baseURL}/api/friendrequests/list/${user._id}`, {
+        cancelToken: source.token,
+      });
+
+      promise.cancel = () => {
+        source.cancel();
+      };
+
+      console.log(promise.data)
+      return promise.data;
+    },
+    {
+      enabled: !!userId,
+    }
+  );
+  
+  console.log(frdata);
 
   return (
 
