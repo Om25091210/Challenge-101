@@ -1,33 +1,43 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import Meta from '../../components/Meta';
-import FooterMain from '../../components/FooterMain';
-import { useState } from 'react'
+import Meta from '../components/Meta';
+import FooterMain from '../components/FooterMain';
+import { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
+var FormData = require('form-data');
 
-import { Auth } from 'aws-amplify';
-import { useForm } from "react-hook-form";
-import { useRouter } from 'next/router'
+import { onboardUser } from '../utils/auth';
 
 
-export default function Register({ user, setUser }) {
+export default function Confirm() {
 
-  const { register, handleSubmit } = useForm();
-  const router = useRouter()
+  const [loading, setLoading] = useState(false);
 
-  async function confirmSignUp({ code }) {
-    try {
-      await Auth.confirmSignUp(user.username, code);
+  const [user, setUser] = useState({
+    code: '',
+  });
 
-      await Auth.signIn(user.username, user.password);
 
-      setUser(null)
+  const { code } = user;
 
-      router.push('/dashboard')
-    } catch (error) {
-      console.log('error confirming sign up', error);
-    }
-  }
+  const handleChange = (e) => {
+    setUser((prevState) => ({ ...prevState, [e.target.name]: e.target.value }));
+  };
 
+  const formdata = new FormData();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+   var token = user.code
+    await  onboardUser(token, formdata, setLoading, toast);
+
+  };
+
+  useEffect(() => {
+    const isUser = Object.values({ code }).every((item) =>
+      Boolean(item)
+    );
+  }, [user]);
 
 
 return (
@@ -51,11 +61,11 @@ return (
 						your email.</div>
 
 						<div className="w-lg-500px bg-body rounded shadow-sm p-10 p-lg-15 mx-auto">
-						<form className="form w-100" noValidate="noValidate" id="kt_sign_in_form" onSubmit={handleSubmit(confirmSignUp)}>
+						<form className="form w-100" noValidate="noValidate" id="kt_sign_in_form" onSubmit={handleSubmit}>
 
 							<div className="fv-row mb-10">
 								<label className="form-label fs-6 fw-bolder text-dark">Verification Code</label>
-								<input {...register('code', { required: true })} id="code" className="form-control form-control-lg form-control-solid" type="number" name="code" autoComplete="off" />
+								<input id="code" className="form-control form-control-lg form-control-solid" type="text" name="code" value={code} onChange={handleChange} autoComplete="off" />
 							</div>
 
 						<div className="text-center mb-10">

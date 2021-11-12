@@ -1,24 +1,11 @@
 import Head from 'next/head';
 import Chatbox from './chatbox';
 import { useState } from 'react'
-import { useRouter } from 'next/router'
-import { Auth } from 'aws-amplify';
+
+import { logoutUser } from '../utils/auth';
 
 
 const SignedHeader = ({user}) => {
-
-const router = useRouter()
-
-async function signOut() {
-
-  try {
-    await Auth.signOut();
-    router.push('/')
-
-  } catch (error) {
-    console.log('error signing out: ', error);
-  }
-}
 
   return (
 
@@ -96,7 +83,7 @@ async function signOut() {
           <li><a href="/profile"><i className="fa fa-user" aria-hidden="true"></i> Profile</a></li>
           <li><a href="#"><i className="fa fa-inbox" aria-hidden="true"></i> Inbox</a></li>
           <li>
-          <a href="#!" onClick={() => signOut()}><i className="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
+          <a href="#!" onClick={logoutUser}><i className="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
         </ul>
       </div>
     </li>

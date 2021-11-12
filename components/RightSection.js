@@ -6,7 +6,7 @@ const RightSection = ({user}) => (
 <div className="right_side overhight">
   <div className="recent_activity">
     <h2>RECENT ACTIVITY</h2>
-    <a href="javascript:void(0)" className="hideShow">Hide <i className="fa fa-angle-down" aria-hidden="true"></i> <i className="fa fa-angle-up" aria-hidden="true"></i></a>
+    <a href="#!" className="hideShow">Hide <i className="fa fa-angle-down" aria-hidden="true"></i> <i className="fa fa-angle-up" aria-hidden="true"></i></a>
     <div className="white_box">
       <div className="activity_tag"> <a href="#"> <span className="act_img"><img src="/assets/media/dash/user1.png" alt=""/></span> <span className="act_name">You have been invited to join TWW - The Werewolves. </span> </a> </div>
       <div className="activity_tag"> <a href="#"> <span className="act_img"><img src="/assets/media/dash/user.jpg" alt=""/></span> <span className="act_name">Jonah has sent you a friend request. </span> </a> </div>
@@ -17,7 +17,7 @@ const RightSection = ({user}) => (
 
   <div className="recent_activity suggested_player">
     <h2>Suggested Players</h2>
-    <a href="javascript:void(0)" className="all">ALL</a>
+    <a href="#!" className="all">ALL</a>
     <div className="white_box">
       <ul>
         <li className="disable"><a href="#">

@@ -103,7 +103,7 @@ const TeamProfileData = (props) => (
                     <div className="col-lg-12">
                         <ul>
                             <li>
-                                <a href="javascript:void(0)">Choose Size</a>
+                                <a href="#!">Choose Size</a>
                                 <div className="content size-chart mCustomScrollbar">
                                     <ul>
                                         <li>36 x 5 inches<span>Out of  Stock</span></li>
@@ -115,7 +115,7 @@ const TeamProfileData = (props) => (
                                 </div>
                             </li>
                             <li>
-                                <a href="javascript:void(0)">Qty</a>
+                                <a href="#!">Qty</a>
                                 <div className="content size-chart qty mCustomScrollbar">
                                     <ul>
                                         <li>1</li>
@@ -131,9 +131,9 @@ const TeamProfileData = (props) => (
                 </div>
                 <div className="row cart-row">
                     <div className="col-lg-12 col-md-12 col-xs-12">
-                        <a href="javascript:void(0)" className="btn btn-primary"><i className="fa fa-shopping-basket"></i> Add To Bag </a>
+                        <a href="#!" className="btn btn-primary"><i className="fa fa-shopping-basket"></i> Add To Bag </a>
 
-                        <a href="javascript:void(0)" className="btn btn-primary"><i className="fa fa-heart-o" aria-hidden="true"></i> Add To wishlist </a>
+                        <a href="#!" className="btn btn-primary"><i className="fa fa-heart-o" aria-hidden="true"></i> Add To wishlist </a>
                     </div>
                  
                 </div>
