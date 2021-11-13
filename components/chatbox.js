@@ -21,6 +21,7 @@ const WChatbox = ({user}) => {
 
   const [receiverName, setReceiverName] = useState('');
   const [receiverEmail, setReceiverEmail] = useState('');
+  const [list, setList] = useState([]);
 
   const { register, handleSubmit } = useForm();
 
@@ -30,8 +31,6 @@ const WChatbox = ({user}) => {
 ) => {
   try {
     
-    console.log('ccccccchhhhhhhhhh');
-    console.log(receiverName)
     const res = await axios.post(`${baseURL}/api/friendrequests/search`, {
       user,
       receiverEmail,
@@ -61,44 +60,35 @@ const WChatbox = ({user}) => {
         source.cancel();
       };
 
-      console.log(promise.data)
       return promise.data;
     },
     {
       enabled: !!searchText,
     }
   );
+
   
-  const [userId, setUserId] = useState('');
+function getList() {
 
-  const { frdata } = useQuery(
-    ['userId'],
-    async () => {
-      const CancelToken = axios.CancelToken;
-      const source = CancelToken.source();
+return fetch(`${baseURL}/api/friendrequests/list/${user._id}`)
+    .then(data => data.json() )
 
-      const promise = await axios.get(`${baseURL}/api/friendrequests/list/${user._id}`, {
-        cancelToken: source.token,
-      });
+}  
 
-      promise.cancel = () => {
-        source.cancel();
-      };
+  useEffect(() => {
+    let mounted = true;
+    getList()
+      .then(items => {
+        if(mounted) {
+          setList(items)
+        }
+      })
+    return () => mounted = false;
+  }, [])
 
-      console.log(promise.data)
-      return promise.data;
-    },
-    {
-      enabled: !!userId,
-    }
-  );
-  
-  console.log(frdata);
 
   return (
 
-
-    
        <div className="chatbox">
         <div className="chatbox-close"></div>
 
@@ -123,12 +113,6 @@ const WChatbox = ({user}) => {
             <div className="card mb-sm-3 mb-md-0 contacts_card dlab-chat-user-box">
             <div className="card-header chat-list-header text-center">
               <a href="#!"><svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="18px" height="18px" viewBox="0 0 24 24" version="1.1"><g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd"><rect fill="#000000" x="4" y="11" width="16" height="2" rx="1"/><rect fill="#000000" opacity="0.3" transform="translate(12.000000, 12.000000) rotate(-270.000000) translate(-12.000000, -12.000000) " x="4" y="11" width="16" height="2" rx="1"/></g></svg></a>
-  
-
-
-
-
-
 
               <div>
                 <h6 className="mb-1">Chat List</h6>
@@ -197,194 +181,33 @@ const WChatbox = ({user}) => {
        </div>
 
             </div>
-           
-            <ul className="contacts">
-              <li className="name-first-letter">A</li>
-              <li className="active dlab-chat-user">
+                      
+               {!list || list.length === 0 ? (
+                 <p>No friends to chat..</p>
+               ) : (
+                <ul className="contacts">
+               
+              {list.map((item,index) => (
+
+
+              <li key={index} className="active dlab-chat-user">
                 <div className="d-flex bd-highlight">
                   <div className="img_cont">
-                    <img src="/assets/media/avatar/1.jpg" className="rounded-circle user_img" alt=""/>
+                    <img src="{item.profilePicUrl}" className="rounded-circle user_img" alt=""/>
                     <span className="online_icon"></span>
                   </div>
                   <div className="user_info">
-                    <span>Archie Parker</span>
-                    <p>Kalid is online</p>
+                    <span>{item.friendName}</span>
+                    <p>{item.friendUsername} is online</p>
                   </div>
                 </div>
               </li>
-              <li className="dlab-chat-user">
-                <div className="d-flex bd-highlight">
-                  <div className="img_cont">
-                    <img src="/assets/media/avatar/2.jpg" className="rounded-circle user_img" alt=""/>
-                    <span className="online_icon offline"></span>
-                  </div>
-                  <div className="user_info">
-                    <span>Alfie Mason</span>
-                    <p>Taherah left 7 mins ago</p>
-                  </div>
-                </div>
-              </li>
-              <li className="dlab-chat-user">
-                <div className="d-flex bd-highlight">
-                  <div className="img_cont">
-                    <img src="/assets/media/avatar/3.jpg" className="rounded-circle user_img" alt=""/>
-                    <span className="online_icon"></span>
-                  </div>
-                  <div className="user_info">
-                    <span>AharlieKane</span>
-                    <p>Sami is online</p>
-                  </div>
-                </div>
-              </li>
-              <li className="dlab-chat-user">
-                <div className="d-flex bd-highlight">
-                  <div className="img_cont">
-                    <img src="/assets/media/avatar/4.jpg" className="rounded-circle user_img" alt=""/>
-                    <span className="online_icon offline"></span>
-                  </div>
-                  <div className="user_info">
-                    <span>Athan Jacoby</span>
-                    <p>Nargis left 30 mins ago</p>
-                  </div>
-                </div>
-              </li>
-              <li className="name-first-letter">B</li>
-              <li className="dlab-chat-user">
-                <div className="d-flex bd-highlight">
-                  <div className="img_cont">
-                    <img src="/assets/media/avatar/5.jpg" className="rounded-circle user_img" alt=""/>
-                    <span className="online_icon offline"></span>
-                  </div>
-                  <div className="user_info">
-                    <span>Bashid Samim</span>
-                    <p>Rashid left 50 mins ago</p>
-                  </div>
-                </div>
-              </li>
-              <li className="dlab-chat-user">
-                <div className="d-flex bd-highlight">
-                  <div className="img_cont">
-                    <img src="/assets/media/avatar/1.jpg" className="rounded-circle user_img" alt=""/>
-                    <span className="online_icon"></span>
-                  </div>
-                  <div className="user_info">
-                    <span>Breddie Ronan</span>
-                    <p>Kalid is online</p>
-                  </div>
-                </div>
-              </li>
-              <li className="dlab-chat-user">
-                <div className="d-flex bd-highlight">
-                  <div className="img_cont">
-                    <img src="/assets/media/avatar/2.jpg" className="rounded-circle user_img" alt=""/>
-                    <span className="online_icon offline"></span>
-                  </div>
-                  <div className="user_info">
-                    <span>Ceorge Carson</span>
-                    <p>Taherah left 7 mins ago</p>
-                  </div>
-                </div>
-              </li>
-              <li className="name-first-letter">D</li>
-              <li className="dlab-chat-user">
-                <div className="d-flex bd-highlight">
-                  <div className="img_cont">
-                    <img src="/assets/media/avatar/3.jpg" className="rounded-circle user_img" alt=""/>
-                    <span className="online_icon"></span>
-                  </div>
-                  <div className="user_info">
-                    <span>Darry Parker</span>
-                    <p>Sami is online</p>
-                  </div>
-                </div>
-              </li>
-              <li className="dlab-chat-user">
-                <div className="d-flex bd-highlight">
-                  <div className="img_cont">
-                    <img src="/assets/media/avatar/4.jpg" className="rounded-circle user_img" alt=""/>
-                    <span className="online_icon offline"></span>
-                  </div>
-                  <div className="user_info">
-                    <span>Denry Hunter</span>
-                    <p>Nargis left 30 mins ago</p>
-                  </div>
-                </div>
-              </li>
-              <li className="name-first-letter">J</li>
-              <li className="dlab-chat-user">
-                <div className="d-flex bd-highlight">
-                  <div className="img_cont">
-                    <img src="/assets/media/avatar/5.jpg" className="rounded-circle user_img" alt=""/>
-                    <span className="online_icon offline"></span>
-                  </div>
-                  <div className="user_info">
-                    <span>Jack Ronan</span>
-                    <p>Rashid left 50 mins ago</p>
-                  </div>
-                </div>
-              </li>
-              <li className="dlab-chat-user">
-                <div className="d-flex bd-highlight">
-                  <div className="img_cont">
-                    <img src="/assets/media/avatar/1.jpg" className="rounded-circle user_img" alt=""/>
-                    <span className="online_icon"></span>
-                  </div>
-                  <div className="user_info">
-                    <span>Jacob Tucker</span>
-                    <p>Kalid is online</p>
-                  </div>
-                </div>
-              </li>
-              <li className="dlab-chat-user">
-                <div className="d-flex bd-highlight">
-                  <div className="img_cont">
-                    <img src="/assets/media/avatar/2.jpg" className="rounded-circle user_img" alt=""/>
-                    <span className="online_icon offline"></span>
-                  </div>
-                  <div className="user_info">
-                    <span>James Logan</span>
-                    <p>Taherah left 7 mins ago</p>
-                  </div>
-                </div>
-              </li>
-              <li className="dlab-chat-user">
-                <div className="d-flex bd-highlight">
-                  <div className="img_cont">
-                    <img src="/assets/media/avatar/3.jpg" className="rounded-circle user_img" alt=""/>
-                    <span className="online_icon"></span>
-                  </div>
-                  <div className="user_info">
-                    <span>Joshua Weston</span>
-                    <p>Sami is online</p>
-                  </div>
-                </div>
-              </li>
-              <li className="name-first-letter">O</li>
-              <li className="dlab-chat-user">
-                <div className="d-flex bd-highlight">
-                  <div className="img_cont">
-                    <img src="/assets/media/avatar/4.jpg" className="rounded-circle user_img" alt=""/>
-                    <span className="online_icon offline"></span>
-                  </div>
-                  <div className="user_info">
-                    <span>Oliver Acker</span>
-                    <p>Nargis left 30 mins ago</p>
-                  </div>
-                </div>
-              </li>
-              <li className="dlab-chat-user">
-                <div className="d-flex bd-highlight">
-                  <div className="img_cont">
-                    <img src="/assets/media/avatar/5.jpg" className="rounded-circle user_img" alt=""/>
-                    <span className="online_icon offline"></span>
-                  </div>
-                  <div className="user_info">
-                    <span>Oscar Weston</span>
-                    <p>Rashid left 50 mins ago</p>
-                  </div>
-                </div>
-              </li>
-            </ul>
+
+                ) )}
+
+                </ul>
+               )}     
+
           </div>
 
 
@@ -545,18 +368,11 @@ const WChatbox = ({user}) => {
               </div>
             </div>
 
-       /** end user chat **/
-
-
           </div>
            
-        
-
-
-       
+           
 
         </div>
-
 
 
          </div>
@@ -564,11 +380,8 @@ const WChatbox = ({user}) => {
 
        </div>
 
-     /** end chat box **/
-
 
 
   )
 }
-
 

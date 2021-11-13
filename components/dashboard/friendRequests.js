@@ -42,8 +42,6 @@ const friendRequests = ({user}) => {
   }
 };
 
-console.log(user.request)
-
 return (
 
   <div className="recent_activity freind_request">
