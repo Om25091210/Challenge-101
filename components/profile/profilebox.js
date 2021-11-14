@@ -1,11 +1,57 @@
 import PropTypes from 'prop-types';
 import Head from 'next/head'
+var FormData = require('form-data');
+import axios from 'axios';
+import baseURL from '../../utils/baseURL';
+import { useState, useEffect } from 'react';
+import { QueryClient, QueryClientProvider, useQuery, useMutation} from 'react-query'
+import { toast } from 'react-toastify';
+import cookie from 'js-cookie';
 
-const ProfileBox = (props) => (
+
+const queryClient = new QueryClient()
+
+
+export default function ProfileBox ({user}) {
+
+  return(<QueryClientProvider client={queryClient} contextSharing={true}>
+        <ProfileBoxWrap user={user}/>
+    </QueryClientProvider>
+  );
+}
+
+
+const ProfileBoxWrap = ({ user }) => {
+
+  const [profilePic, setProfilePic] = useState(null);
+
+  const mutation = useMutation(async (formdata) => {
+    await axios.put(`${baseURL}/api/auth`, formdata, {
+      headers: {
+        Authorization: cookie.get('token'),
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+  });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formdata = new FormData();
+    formdata.append('profilePic', profilePic);
+
+    try {
+      await mutation.mutateAsync(formdata);
+      toast.success('User settings have been updated');
+    } catch (err) {
+      toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+    }
+  };
+
+  return (
 
   <div className="profile_box">
  <div className="profile_cover_photo">
-
+dfsfasdf
     <img src="/assets/media/profile/cover_bg.jpg" alt="cover image"/>
 
 
@@ -14,9 +60,42 @@ const ProfileBox = (props) => (
  <div className="profile_dp_box">
 
   <div className="profile_pic">
+ <form onSubmit={handleSubmit}>
+      <img
+        className="rounded-full h-full w-full object-cover"
+        src={
+          profilePic
+            ? URL.createObjectURL(profilePic)
+            : user.profilePicUrl
+        }
+        alt={user.name}
+      />
 
-    <img src="/assets/media/profile/dp.jpg" alt=""/>
 
+    <div className="ml-5 rounded-md shadow-sm">
+      <div className="group relative border border-gray-300 rounded-md py-2 px-3 flex items-center justify-center hover:bg-gray-50 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-pink-500">
+        <label
+          htmlFor="user-photo"
+          className="relative text-sm leading-4 font-medium text-gray-700 pointer-events-none"
+        >
+          <span>Change</span>
+          <span className="sr-only"> user photo</span>
+        </label>
+        <input
+          id="user-photo"
+          name="user-photo"
+          type="file"
+          className="absolute w-full h-full opacity-0 cursor-pointer border-gray-300 rounded-md"
+          onChange={(e) => {
+            setProfilePic(e.target.files[0]);
+            handleSubmit(e);
+            }
+        }
+        />
+      </div>
+    </div>
+
+    </form>
   </div>
 
   <div className="profile_details">
@@ -144,4 +223,4 @@ const ProfileBox = (props) => (
 
 );
 
-export default ProfileBox;
+}

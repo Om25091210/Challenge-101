@@ -1,6 +1,4 @@
 import { useState, useEffect } from 'react'
-import { Auth } from 'aws-amplify'
-import { withAuthenticator } from '@aws-amplify/ui-react'
 import Head from 'next/head'
 import MetaDash from '../components/MetaDash';
 import SignedHeader from '../components/SignedHeader';
@@ -11,29 +9,10 @@ import TeamProfileData from '../components/team/TeamProfileData';
 
 
 import FooterMain from '../components/FooterMain';
-import { useRouter } from 'next/router'
-
-import SignOut from '../pages/user/signout'
 
 
-function Team() {
 
-  const [user, setUser] = useState(null)
-  const router = useRouter()
-
-  useEffect(() => {
-
-    Auth.currentAuthenticatedUser()
-      .then(user => {
-        console.log(user);
-        setUser(user)
-      })
-      .catch(
-        err => router.push("/")
-        
-        )
-  }, [])
-
+const Team = ({ user }) => {
 
   return (
 
@@ -41,7 +20,7 @@ function Team() {
 
     <MetaDash />
 
-    <SignedHeader />
+    <SignedHeader user={user}/>
 
     <LeftNav />
 

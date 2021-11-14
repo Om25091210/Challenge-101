@@ -15,10 +15,8 @@ import Jobs from '../components/discover/Jobs';
 import FooterMain from '../components/FooterMain';
 import { useRouter } from 'next/router'
 
-import SignOut from '../pages/user/signout'
 
-
-function Discover() {
+const Discover = ({ user }) => {
 
   const [user, setUser] = useState(null)
   const router = useRouter()
@@ -43,7 +41,7 @@ function Discover() {
 
     <MetaDash />
 
-    <SignedHeader />
+    <SignedHeader user={user}/>
 
     <LeftNav />
 

@@ -68,7 +68,7 @@ const WChatbox = ({user}) => {
   );
 
   
-function getList() {
+function getList({user}) {
 
 return fetch(`${baseURL}/api/friendrequests/list/${user._id}`)
     .then(data => data.json() )
@@ -77,7 +77,7 @@ return fetch(`${baseURL}/api/friendrequests/list/${user._id}`)
 
   useEffect(() => {
     let mounted = true;
-    getList()
+    getList({user})
       .then(items => {
         if(mounted) {
           setList(items)

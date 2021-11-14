@@ -1,6 +1,4 @@
 import { useState, useEffect } from 'react'
-import { Auth } from 'aws-amplify'
-import { withAuthenticator } from '@aws-amplify/ui-react'
 import Head from 'next/head'
 import MetaDash from '../components/MetaDash';
 import SignedHeader from '../components/SignedHeader';
@@ -13,26 +11,8 @@ import ProfileData from '../components/profile/ProfileData';
 import FooterMain from '../components/FooterMain';
 import { useRouter } from 'next/router'
 
-import SignOut from '../pages/user/signout'
 
-
-function Profile() {
-
-  const [user, setUser] = useState(null)
-  const router = useRouter()
-
-  useEffect(() => {
-
-    Auth.currentAuthenticatedUser()
-      .then(user => {
-        console.log(user);
-        setUser(user)
-      })
-      .catch(
-        err => router.push("/")
-        
-        )
-  }, [])
+const Profile = ({ user }) => {
 
 
   return (
@@ -41,7 +21,7 @@ function Profile() {
 
     <MetaDash />
 
-    <SignedHeader />
+    <SignedHeader user={user}/>
 
     <LeftNav />
 
@@ -49,7 +29,7 @@ function Profile() {
 <div className="main_middle profile_middle"> 
  
 
-	    <ProfileBox />
+	    <ProfileBox user={user}/>
 
 	    <ProfileTabs />
 
