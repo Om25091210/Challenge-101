@@ -1,7 +1,39 @@
-import PropTypes from 'prop-types';
-import Head from 'next/head'
+import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
+import axios from 'axios';
+import baseURL from '../../utils/baseURL';
+import { useForm } from "react-hook-form";
+import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
+import cookie from 'js-cookie';
 
-const TeamProfileBox = (props) => (
+
+const TeamProfileBox = ({user}) => {
+
+const [team, setTeam] = useState([]);
+
+const teamId = '6191520fd802397e7abf218d';
+
+function getTeamInfo({teamId}) {
+
+return fetch(`${baseURL}/api/teams/${teamId}`)
+    .then(data => data.json() )
+
+}  
+
+  useEffect(() => {
+    let mounted = true;
+    getTeamInfo({teamId})
+      .then(team => {
+        if(mounted) {
+          setTeam(team)
+        }
+      })
+    return () => mounted = false;
+  }, [])
+
+console.log(team)
+
+  return (
 
   <div className="profile_box">
  <div className="profile_cover_photo">
@@ -15,7 +47,7 @@ const TeamProfileBox = (props) => (
 
   <div className="profile_pic">
 
-    <img src="/assets/media/profile/dp.jpg" alt=""/>
+    <img src="{team.profilePicUrl}" alt=""/>
 
   </div>
 
@@ -23,7 +55,7 @@ const TeamProfileBox = (props) => (
 
   <div className="top_details">  
 <div className="name_box">
-    <span className="game_name"> TheMadTitan </span>
+    <span className="game_name"> {team.name} </span>
     <span className="name">Founded May 2011</span>
     <span className="follower">2 M followers</span>
 
@@ -96,8 +128,7 @@ const TeamProfileBox = (props) => (
 </div>
     </div>
 
-    <p>The Werewolves is a professional Esports gaming team, consisting 
-        of players from across India competing in Esports Tournaments. </p>
+    <p>{team.description} </p>
 
 
         <div className="team_pos">
@@ -153,6 +184,9 @@ const TeamProfileBox = (props) => (
   </div>
 
 
-);
+
+  )
+}
+
 
 export default TeamProfileBox;
