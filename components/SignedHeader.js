@@ -77,7 +77,14 @@ const SignedHeader = ({user}) => {
         </g>
         </svg> </a></li>
   
-    <li className="profile"> <a href="#"><img src="/assets/media/profile.jpg" alt="Profile"/></a>
+    <li className="profile"> 
+
+    <a href="#">
+      <img 
+        src={user.profilePicUrl}
+        alt={user.name}
+      />
+    </a>
       <div className="drop_down_bg profile_drop_down">
         <ul>
           <li><a href="/profile"><i className="fa fa-user" aria-hidden="true"></i> Profile</a></li>

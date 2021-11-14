@@ -51,10 +51,7 @@ const ProfileBoxWrap = ({ user }) => {
 
   <div className="profile_box">
  <div className="profile_cover_photo">
-dfsfasdf
     <img src="/assets/media/profile/cover_bg.jpg" alt="cover image"/>
-
-
  </div>
 
  <div className="profile_dp_box">
