@@ -9,10 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@aws-amplify/ui-react": "^1.2.20",
-    "aws-amplify": "^4.3.2",
-    "aws-cognito-next": "^3.0.4",
     "@heroicons/react": "^1.0.5",
+    "axios": "^0.24.0",
     "cssnano": "^4.1.10",
     "del": "^6.0.0",
     "nookies": "^2.5.2",

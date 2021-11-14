@@ -1,6 +1,4 @@
 import { useState, useEffect } from 'react'
-import { Auth } from 'aws-amplify'
-import { withAuthenticator } from '@aws-amplify/ui-react'
 import Head from 'next/head'
 import MetaDash from '../components/MetaDash';
 import SignedHeader from '../components/SignedHeader';
@@ -11,29 +9,10 @@ import Players from '../components/discover/Players';
 import Arenas from '../components/discover/Arenas';
 import Jobs from '../components/discover/Jobs';
 
-
 import FooterMain from '../components/FooterMain';
-import { useRouter } from 'next/router'
 
 
 const Discover = ({ user }) => {
-
-  const [user, setUser] = useState(null)
-  const router = useRouter()
-
-  useEffect(() => {
-
-    Auth.currentAuthenticatedUser()
-      .then(user => {
-        console.log(user);
-        setUser(user)
-      })
-      .catch(
-        err => router.push("/")
-        
-        )
-  }, [])
-
 
   return (
 
@@ -95,7 +74,6 @@ const Discover = ({ user }) => {
 </div>
 
 
-
 <script src="/assets/plugins/global/plugins.bundle.js"/>
 <script src="/assets/js/scripts.bundle.js"/>
 <script src="/assets/plugins/global/plugins.bundle.js"/>
@@ -103,8 +81,6 @@ const Discover = ({ user }) => {
 <script src="/assets/js/dash/jquery.mCustomScrollbar.js"/>
 <script src="/assets/js/dash/slick.js"/>
 <script src="/assets/js/dash/custom.js"/>
-
-
 
 
 </div>

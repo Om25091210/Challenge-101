@@ -1,4 +1,3 @@
-import Amplify from 'aws-amplify'
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Hydrate } from 'react-query/hydration';
 import { ReactQueryDevtools } from 'react-query/devtools';
@@ -11,7 +10,6 @@ import Script from 'next/script';
 import axios from 'axios';
 import baseURL from '../utils/baseURL';
 
-import config from '../src/config/aws-exports'
 
 import {getCookieValue, setCookieValue} from '../utils/helpers'
 

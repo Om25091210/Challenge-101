@@ -11,8 +11,6 @@ import FooterMain from '../components/FooterMain';
 
 const Ranking = ({ user }) => {
 
-
-
   return (
 
   <div>

@@ -14,9 +14,6 @@ import FooterMain from '../components/FooterMain';
 
 const Matches = ({ user }) => {
 
-
-
-
   return (
 
   <div>

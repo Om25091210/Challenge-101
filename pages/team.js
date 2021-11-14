@@ -11,7 +11,6 @@ import TeamProfileData from '../components/team/TeamProfileData';
 import FooterMain from '../components/FooterMain';
 
 
-
 const Team = ({ user }) => {
 
   return (

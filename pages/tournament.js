@@ -5,13 +5,10 @@ import SignedHeader from '../components/SignedHeader';
 import LeftNav from '../components/LeftNav';
 import TeamFilter from '../components/ranking/TeamFilter';
 import TeamRows from '../components/tournament/TeamRows';
-
-
 import FooterMain from '../components/FooterMain';
 
 
 const Tournament = ({ user }) => {
-
 
   return (
 
