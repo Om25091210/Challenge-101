@@ -1,12 +1,3 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-<meta charset="utf-8">
-<title>Multiplayr - Home of Esports</title>
-</head>
-
-<body>
-
 <table width="600" cellspacing="0" cellpadding="0" style="border:1px solid #000;" align="center">
   <tr>
     <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -14,7 +5,7 @@
         <td style="background:#7239ea; height:100px;" valign="middle"><table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <td>&nbsp;</td>
-            <td><img src="images/logo.png" width="120" alt=""></td>
+            <td><img src="images/logo.png" width="120" alt="" /></td>
             <td>&nbsp;</td>
           </tr>
         </table></td>
@@ -71,7 +62,3 @@
     </table></td>
   </tr>
 </table>
-
-
-</body>
-</html>
