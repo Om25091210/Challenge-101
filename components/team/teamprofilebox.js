@@ -6,36 +6,27 @@ import { useForm } from "react-hook-form";
 import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
 import cookie from 'js-cookie';
 
-
 const TeamProfileBox = ({user}) => {
 
-const [team, setTeam] = useState([]);
-
-const teamId = '6191520fd802397e7abf218d';
-
-function getTeamInfo({teamId}) {
-
-return fetch(`${baseURL}/api/teams/${teamId}`)
-    .then(data => data.json() )
-
-}  
+  const [data, setData] = useState(null);
+  const teamId = '6191520fd802397e7abf218d';
 
   useEffect(() => {
-    let mounted = true;
-    getTeamInfo({teamId})
-      .then(team => {
-        if(mounted) {
-          setTeam(team)
-        }
-      })
-    return () => mounted = false;
-  }, [])
+    const fetchData = async () => {
+      const response = await fetch(`${baseURL}/api/teams/${teamId}`);
+      const newData = await response.json();
+      setData(newData);
+    };
+    fetchData();
+  }, []);
 
-console.log(team)
+  console.log(data)
+
+if (data) {
 
   return (
 
-  <div className="profile_box">
+ <div className="profile_box">
  <div className="profile_cover_photo">
 
     <img src="/assets/media/profile/cover_bg.jpg" alt="cover image"/>
@@ -47,7 +38,7 @@ console.log(team)
 
   <div className="profile_pic">
 
-    <img src="{team.profilePicUrl}" alt=""/>
+    <img src={data.team.logoUrl} alt=""/>
 
   </div>
 
@@ -55,14 +46,21 @@ console.log(team)
 
   <div className="top_details">  
 <div className="name_box">
-    <span className="game_name"> {team.name} </span>
+    <span className="game_name"> {data.team.name} </span>
     <span className="name">Founded May 2011</span>
     <span className="follower">2 M followers</span>
 
 
 </div>
-<div className="flag"><img src="/assets/media/profile/flag.png" alt="flag"/></div>
-<div className="tick"><span className="active"><i className="fa fa-check" aria-hidden="true"></i></span></div>
+<div className="flag">{data.team.region}</div>
+<div className="tick"><span className="active">
+
+{data.team.isVerified ? 
+    ( <i className="fa fa-check" aria-hidden="true"></i> ) :
+    ( <i className="fa fa-question-circle" aria-hidden="true"></i> ) 
+}
+
+</span></div>
 <div className="button"><a href="#" className="btn">FOLLOW</a> <a href="#" className="btn">ASK TO JOIN</a></div>
 
   </div>
@@ -86,15 +84,25 @@ console.log(team)
 
     <div className="current_status">
         <h5>RANKING</h5>
-<div className="current_team">
-   <span className="ct"> <i className="fa fa-sort-asc" aria-hidden="true"></i> 58</span>
-   <span className="were">country </span>
-</div>
-   <div className="game_role">
-   <span className="ct"><i className="fa fa-sort-asc" aria-hidden="true"></i> 4219</span>
-   <span className="were">WORLDWIDE</span>
-</div>
 
+
+
+            {!data.team.ranks || data.team.ranks.length === 0 ? (
+                 <p>No ranks defined..</p>
+               ) : (
+
+             data.team.ranks.map((item,index) => (
+
+            <div key={index} className="current_team">
+               <span className="ct"> <i className="fa fa-sort-asc" aria-hidden="true"></i> {item.rank}</span>
+               <span className="were">{item.rankType} </span>
+            </div>
+            ) ) 
+
+            )}  
+
+
+        
 </div>
 
 
@@ -128,8 +136,10 @@ console.log(team)
 </div>
     </div>
 
-    <p>{team.description} </p>
+    <p>{data.team.description} </p>
 
+
+    <p class="team_pos"><span className="position">REGION:</span> {data.team.region} </p>
 
         <div className="team_pos">
 
@@ -154,10 +164,12 @@ console.log(team)
         <div className="team_pos">
 
             <ul>
-   
-          <li><span className="position">arena:</span>  <span className="pos_name"><img src="/assets/media/team/game1.png" alt=""/> LXG Gamin</span></li>
-   
-          
+            <h5 className="position">ARENAS:</h5> 
+             {data.arenas.map((item,index) => (
+
+            <li key={index}><span className="pos_name"><img src=
+            {item.logoUrl} alt=""/> {item.name}</span></li>
+            ) )}          
    
            </ul>
    
@@ -168,10 +180,20 @@ console.log(team)
         <h5>SPONSORS</h5>
         
         <ul>        
-        <li><img src="/assets/media/team/sponser1.png" alt=""/></li>
-        <li><img src="/assets/media/team/sponser2.png" alt=""/></li>
-            <li><img src="/assets/media/team/sponser3.png" alt=""/></li>
-                <li> <img src="/assets/media/team/sponser4.png" alt=""/></li>
+
+            {!data.sponsors || data.sponsors.length === 0 ? (
+                 <p>No sponsors defined..</p>
+               ) : (
+
+             data.sponsors.map((item,index) => (
+
+            <li key={index}><img src=
+            {item.logoUrl} alt=""/> <p>{item.name}</p></li>
+            ) ) 
+
+            )}          
+   
+
     </ul>
 
     </div>
@@ -185,7 +207,11 @@ console.log(team)
 
 
 
-  )
+  ) 
+} else {
+    return null;
+  }
+
 }
 
 
