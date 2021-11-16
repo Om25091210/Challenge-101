@@ -1,24 +1,28 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import Meta from '../components/Meta';
-import FooterMain from '../components/FooterMain';
+import Meta from '../../components/Meta';
+import FooterMain from '../../components/FooterMain';
 import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 var FormData = require('form-data');
 
-import { onboardUser } from '../utils/auth';
+import { onboardUser } from '../../utils/auth';
+import { useRouter } from 'next/router'
 
 
 export default function Confirm() {
+
+  const router = useRouter();
 
   const [loading, setLoading] = useState(false);
 
   const [user, setUser] = useState({
     code: '',
   });
+  const { verificationToken } = router.query;
 
+  console.log(verificationToken);
 
-  const { code } = user;
 
   const handleChange = (e) => {
     setUser((prevState) => ({ ...prevState, [e.target.name]: e.target.value }));
@@ -28,13 +32,12 @@ export default function Confirm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-   var token = user.code
-    await  onboardUser(token, formdata, setLoading, toast);
+    await  onboardUser(verificationToken, formdata, setLoading, toast);
 
   };
 
   useEffect(() => {
-    const isUser = Object.values({ code }).every((item) =>
+    const isUser = Object.values({ verificationToken }).every((item) =>
       Boolean(item)
     );
   }, [user]);
@@ -65,7 +68,7 @@ return (
 
 							<div className="fv-row mb-10">
 								<label className="form-label fs-6 fw-bolder text-dark">Verification Code</label>
-								<input id="code" className="form-control form-control-lg form-control-solid" type="text" name="code" value={code} onChange={handleChange} autoComplete="off" />
+								<input className="form-control form-control-lg form-control-solid" type="text" name="verificationToken" value={verificationToken} onChange={handleChange} autoComplete="off" />
 							</div>
 
 						<div className="text-center mb-10">

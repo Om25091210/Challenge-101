@@ -2,6 +2,9 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { Hydrate } from 'react-query/hydration';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { useState, useEffect } from 'react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import { useRouter } from 'next/router';
 import * as gtag from '../lib/gtag';
 import { parseCookies, destroyCookie } from 'nookies';
@@ -56,10 +59,12 @@ const MyApp = ({ Component, pageProps }) => {
 
 
     <QueryClientProvider client={queryClient}>
+        <ToastContainer />
         <ReactQueryDevtools />
-    </QueryClientProvider>
 
       <Component {...pageProps} /> 
+
+    </QueryClientProvider>
 
     </>
 
@@ -105,7 +110,6 @@ MyApp.getInitialProps = async ({ ctx }) => {
     } catch (err) {
       console.log('Error in Protected routes.....')
       destroyCookie(ctx, 'token');
-      redirectUser(ctx, '/login');
     }
   }
 
