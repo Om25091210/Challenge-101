@@ -42,6 +42,8 @@ const friendRequests = ({user}) => {
   }
 };
 
+if (user) {
+
 return (
 
   <div className="recent_activity freind_request">
@@ -87,6 +89,9 @@ return (
 
   
 );
+} else {
+  return null
+}
 
 }
 

@@ -7,7 +7,10 @@ import { logoutUser } from '../utils/auth';
 
 const SignedHeader = ({user}) => {
 
+if (user)  {
+
   return (
+
 
 <header>
   <div className="logo"><a href="#"><img src="/assets/media/dash/logo.png" alt="Logo" /></a></div>
@@ -100,6 +103,11 @@ const SignedHeader = ({user}) => {
 
 
   )
+
+} else {
+  return null
+}
+
 }
 
 export default SignedHeader

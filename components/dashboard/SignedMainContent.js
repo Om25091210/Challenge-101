@@ -5,6 +5,8 @@ import { QueryClient, QueryClientProvider, useQuery, useMutation } from 'react-q
 import cookie from 'js-cookie'
 import CommentForm from '../comments/CommentForm';
 var FormData = require('form-data');
+import { toast } from 'react-toastify';
+import { useRouter } from 'next/router';
 
 
 const queryClient = new QueryClient()
@@ -18,26 +20,50 @@ export default function SignedMainContent(){
 
 const SignedMainContent1 = (req, res) => {
   const [post, setPost] = useState([]);
-  const [description, setDescription] = useState("")
-  const [images,setImages] = useState(null)
+  const [description, setDescription] = useState('');
+  const [images, setImages] = useState([]);
+  const [image, setImage] = useState(null);
+  const router = useRouter();
 
-  //Adding Post
-  const handleButton = async (e) => {
-    e.preventDefault()
-    const formData = new FormData()
-    formData.append("description", description)
-    formData.append("images",images)
 
-    axios.post(`${baseURL}/api/posts`,formData,{
-      headers: {
-        'Content-type': 'application/json',
-        "Authorization": cookie.get('token'), },
-    })
-      .then(res => {
-        console.log(res.data)
+  const mutation = useMutation(
+    async (formdata) =>
+      await axios.post(`${baseURL}/api/posts`, formdata, {
+        headers: {
+          Authorization: cookie.get('token'),
+          'Content-Type': 'multipart/form-data',
+        },
       })
-    setDescription("")
-  }
+  );
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formdata = new FormData();
+
+    if (description.trim() === '') {
+      return toast.error('Please add a description');
+    }
+
+    formdata.append('description', description);
+    formdata.append('image', image);
+
+
+//    for (const key of Object.keys(images)) {
+//      formdata.append('images', images[key]);
+//    }
+
+    try {
+      await mutation.mutateAsync(formdata);
+      toast.success('Your post has been successfully uploaded');
+      setDescription('');
+      setImage(null);
+      router.push('/dashboard');
+
+    } catch (err) {
+      toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+    }
+  };
+
 
   //Fetching all the posts
   const fetchPosts = async () => {
@@ -50,7 +76,7 @@ const SignedMainContent1 = (req, res) => {
   return(
     <div className="main_middle"> 
         
-      <form className="write_post" onSubmit={(e) => e.preventDefault()}>
+      <form className="write_post" onSubmit={handleSubmit}>
       <div className="team_slider">
         <ul className="user_slider">
           <li><img src="/assets/media/dash/user.jpg" alt=""/></li>
@@ -64,16 +90,15 @@ const SignedMainContent1 = (req, res) => {
       
       <div className="right_links"> 
           <div className="post_img">
-            <input type="file" id="file" name="files[]" multiple onChange={(e) => {
-              setImages(e.target.files[0])
-            }}/>
+            <input type="file" id="file" name="files[]" onChange={(e) => setImage(e.target.files[0])} 
+            accept="image/*" />
             </div>
           <a href="#"><img src="/assets/media/dash/cal-icon.png" alt=""/></a>
            <a href="#"><img src="/assets/media/dash/game-icon.png" alt=""/></a> 
            <a href="#"><img src="/assets/media/dash/live-icon.png" alt=""/></a> 
            <a href="#"><img src="/assets/media/dash/twitter-icon.png" alt=""/></a>
             </div>
-            <button onClick={(e) => {handleButton(e)}}>Submit</button>
+            <button type="submit" disabled={mutation.isLoading}>Submit</button>
       </form>
     
     

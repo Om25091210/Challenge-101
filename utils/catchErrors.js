@@ -1,3 +1,5 @@
+import { toast } from 'react-toastify';
+
 const catchErrors = (error) => {
   let errorMsg = '';
 
@@ -11,6 +13,7 @@ const catchErrors = (error) => {
     errorMsg = error.message;
     console.error(errorMsg);
   }
+  toast.error(errorMsg);
   return errorMsg;
 };
 
