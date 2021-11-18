@@ -3,14 +3,27 @@ import Head from 'next/head'
 import {MPNumberFormat} from '../../utils/helpers'
 import { format } from 'date-fns';
 
-const TeamRows = ({tournaments}) => {
+const TeamRows = ({tournaments , searchResults}) => {
 
+      console.log('SSSDFDFDFDFDFDFD');
+      console.log(searchResults);
+            console.log(tournaments);
+
+    if (searchResults.length>0) {
+      tournaments = searchResults
+      console.log('ttttttttt');
+      console.log(tournaments);
+    }
 
    if (tournaments) {
+
+
 
   return (
 
 <div>
+
+
 
               
              {!tournaments || tournaments.length === 0 ? (
