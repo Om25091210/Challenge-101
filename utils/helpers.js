@@ -1,3 +1,17 @@
+import NumberFormat from 'react-number-format';
+
+function MPNumberFormat({ value, currency }) {
+  return (
+    <NumberFormat
+      value={value}
+      displayType={'text'}
+      thousandSeparator={true}
+      prefix={currency}
+      renderText={formattedValue => <span>{formattedValue}</span>} 
+    />
+  );
+}
+
 function getCookieValue(key, decode = false) {
 	if (!process.browser) {
 		return;
@@ -42,5 +56,6 @@ function setCookieValue(key, value, seconds, path, encode = false) {
 export {
     setCookieValue,
     getCookieValue,
-    deleteCookie
+    deleteCookie,
+    MPNumberFormat
 }

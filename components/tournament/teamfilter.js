@@ -113,7 +113,6 @@ const TeamFilter = (props) => (
       </div>
 
 
-
     );
 
 export default TeamFilter;
