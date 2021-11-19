@@ -71,7 +71,7 @@ const AddComment = ({postId}) => {
         <button onClick={handleButtonForm}><img src="/assets/media/dash/send.png" alt=""/></button>
         
       </form>
-        <CommentList postList={postId._id} />
+        <CommentList postList={postId} />
       </div>
       )
 }

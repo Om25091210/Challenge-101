@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios';
 import baseURL from '../../utils/baseURL';
 import { QueryClient, QueryClientProvider, useQuery, useMutation } from 'react-query'
@@ -7,7 +7,8 @@ import CommentForm from '../comments/CommentForm';
 var FormData = require('form-data');
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
-
+import EditPost from './EditPost';
+import DeletePost from './DeletePost'
 
 const queryClient = new QueryClient()
 
@@ -19,9 +20,8 @@ export default function SignedMainContent(){
 }
 
 const SignedMainContent1 = (req, res) => {
-  const [post, setPost] = useState([]);
+  const [posts, setPosts] = useState([]);
   const [description, setDescription] = useState('');
-  const [images, setImages] = useState([]);
   const [image, setImage] = useState(null);
   const router = useRouter();
 
@@ -58,7 +58,6 @@ const SignedMainContent1 = (req, res) => {
       setDescription('');
       setImage(null);
       router.push('/dashboard');
-
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }
@@ -71,7 +70,7 @@ const SignedMainContent1 = (req, res) => {
     return promise.data.posts;
   }
 
-  const { data, status} = useQuery(post,fetchPosts)
+  const { data, status} = useQuery(posts,fetchPosts)
 
   return(
     <div className="main_middle"> 
@@ -129,10 +128,10 @@ const SignedMainContent1 = (req, res) => {
             <div className="three_dots"><a href="#"> <i className="fa fa-ellipsis-v" aria-hidden="true"></i></a>
               <div className="three_dots_dropdown">
                 <ul>
-                  <li><a href="#">Edit</a></li>
+                  <li> <EditPost postId={post}/></li>
                   <li><a href="#">Share to</a></li>
                   <li><a href="#">Copy Link</a></li>
-                  <li><a href="#">Delete</a></li>
+                  <li><DeletePost postId={post._id} /></li>
                 </ul>
               </div>
             </div>
