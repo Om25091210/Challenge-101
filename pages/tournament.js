@@ -104,7 +104,7 @@ const Tournament = ({ user }) => {
           <h3>Favourite</h3>
           <div className="custom-control custom-switch">
             <input type="checkbox" className="custom-control-input" id="customSwitch1"/>
-            <label className="custom-control-label" for="customSwitch1"></label>
+            <label className="custom-control-label" htmlFor="customSwitch1"></label>
           </div>
         </div>
       </div>
