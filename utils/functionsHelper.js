@@ -45,3 +45,15 @@ export const getTournaments = async () => {
   });
   return data;
 };
+
+//Get Teams, Ranking, Tournaments
+export const getTeamsRankingTournaments = async (filters) => {
+
+  const  teamIds  = await axios.get(`${baseURL}/api/teams/`, {
+  });
+
+
+  console.log(teamIds.data);
+
+
+};

@@ -5,11 +5,56 @@ import SignedHeader from '../components/SignedHeader';
 import LeftNav from '../components/LeftNav';
 import TeamFilter from '../components/ranking/TeamFilter';
 import RankingTable from '../components/ranking/RankingTable';
-
 import FooterMain from '../components/FooterMain';
+
+import { toast } from 'react-toastify';
+import { useForm } from "react-hook-form";
+import axios from 'axios';
+import baseURL from '../utils/baseURL';
+import { useRouter } from 'next/router';
+import cookie from 'js-cookie';
+import { useQuery, useMutation } from 'react-query'
+import { searchTournaments, getTeamsRankingTournaments } from '../utils/functionsHelper';
 
 
 const Ranking = ({ user }) => {
+
+  const [searchObj, setSearchObj] = useState({
+    search: '',
+    filters: '',
+  });
+
+  const [searchText, setSearchText] = useState('');
+  const [status, setStatus] = useState('confirm');
+  const [searchResults, setSearchResults] = useState([]);
+
+  const router = useRouter();
+
+  let cancel;
+  var sdata ;
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState(null);
+  const [formLoading, setFormLoading] = useState(false);
+  const [submitDisabled, setSubmitDisabled] = useState(true);
+
+  const { search, filters } = searchObj;
+
+  const handleChange = (e) => {
+    setSearchObj((prevState) => ({ ...prevState, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    sdata = await searchTournaments(searchObj, setError, setFormLoading, toast, setStatus);
+    setSearchResults(sdata);
+  };
+
+
+   const { data } = useQuery([], () =>
+    getTeamsRankingTournaments()
+  );
+
 
   return (
 

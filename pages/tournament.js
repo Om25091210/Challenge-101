@@ -13,7 +13,7 @@ import baseURL from '../utils/baseURL';
 import { useRouter } from 'next/router';
 import cookie from 'js-cookie';
 import { useQuery, useMutation } from 'react-query'
-import { searchTournaments, getTournaments } from '../utils/tournamentHelper';
+import { searchTournaments, getTournaments } from '../utils/functionsHelper';
 
 
 const Tournament = ({ user }) => {
