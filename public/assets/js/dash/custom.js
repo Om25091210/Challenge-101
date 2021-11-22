@@ -34,6 +34,15 @@ $(document).ready(function() {
   
       });
 
+      $('.edit_slider').slick({
+        infinite: false,
+        vertical: false,
+  verticalSwiping: true,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  
+      });
+
 
       /* ----------- input type file tabs ----------------- */
 

@@ -23,6 +23,8 @@ const SignedMainContent1 = (req, res) => {
   const [posts, setPosts] = useState([]);
   const [description, setDescription] = useState('');
   const [image, setImage] = useState(null);
+  const [myModal, setMyModal] = useState(false)
+  const [deleteModal, setDeleteModal] = useState(false)
   const router = useRouter();
 
 
@@ -128,16 +130,19 @@ const SignedMainContent1 = (req, res) => {
             <div className="three_dots"><a href="#"> <i className="fa fa-ellipsis-v" aria-hidden="true"></i></a>
               <div className="three_dots_dropdown">
                 <ul>
-                  <li> <EditPost postId={post}/></li>
+                  <li><button onClick={()=> setMyModal(true)} >Edit</button></li>
                   <li><a href="#">Share to</a></li>
                   <li><a href="#">Copy Link</a></li>
-                  <li><DeletePost postId={post._id} /></li>
+                  <button onClick={()=> setDeleteModal(true)} >Delete</button>
                 </ul>
               </div>
             </div>
           </div>
         </div>
 
+           
+    { myModal && <EditPost setMyModal={setMyModal} postId={post} />}
+    { deleteModal && <DeletePost setDeleteModal={setDeleteModal} postId={post} />}
         <CommentForm postId={post} /> 
 
 
@@ -150,9 +155,11 @@ const SignedMainContent1 = (req, res) => {
     )}    
       
     </div>
-    
-    
+ 
+
   </div>
+  
+ 
   
   )
   }

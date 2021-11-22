@@ -1,4 +1,9 @@
-<table width="600" cellspacing="0" cellpadding="0" style="border:1px solid #000;" align="center">
+
+const Email = () => (
+
+  <>
+  
+  <table width="600" cellspacing="0" cellpadding="0" style="border:1px solid #000;" align="center">
   <tr>
     <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
@@ -62,3 +67,10 @@
     </table></td>
   </tr>
 </table>
+  
+  </>
+  
+  );
+  
+  export default Email;
+

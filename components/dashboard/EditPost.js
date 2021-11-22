@@ -9,16 +9,16 @@ var FormData = require('form-data');
 
 const queryClient = new QueryClient()
 
-export default function EditPost({postId}){
+export default function EditPost({postId, setMyModal}){
   return(<QueryClientProvider client={queryClient} contextSharing={true}>
-        <Edit_Post postId={postId} />
+        <Edit_Post postId={postId} setMyModal={setMyModal} />
     </QueryClientProvider>
   );
 }
 
-const Edit_Post = ({postId}) => {
+const Edit_Post = ({postId, setMyModal}) => {
     const [posts, setPosts] = useState([postId])
-    const [myModal, setMyModal] = useState(false)
+   
 
     const { data } = useQuery(['posts', postId._id], () => postId);    
     const [description, setDescription] = useState(posts[0].description);
@@ -58,12 +58,10 @@ const Edit_Post = ({postId}) => {
 
     return (
         <>
-        <div>
-        <button onClick={()=> setMyModal(true)} >Edit</button>
-        </div>
-        { myModal && (
-            <div>
-            <form  className="edit_post" onSubmit={handleSubmit}>
+  
+        
+            <div className="edit_post">
+            <form  onSubmit={handleSubmit}>
                 <h4>Edit Post</h4>
                 <button onClick={()=>setMyModal(false)} className="close" > X </button>
 
@@ -71,15 +69,13 @@ const Edit_Post = ({postId}) => {
       <div className="team_slider">
         <ul className="user_slider">
           <li><img src="/assets/media/dash/user.jpg" alt=""/></li>
-          <li><img src="/assets/media/dash/user.jpg" alt=""/></li>
-          <li><img src="/assets/media/dash/user.jpg" alt=""/></li>
-          <li><img src="/assets/media/dash/user.jpg" alt=""/></li>        
+              
         </ul>
       </div>
 
       <textarea placeholder="Edit a post" id="description" name="description" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
       {/* <div className="post_data"><img src={image} alt="" /></div>    */}
-      <div className="right_links"> 
+      <div className="right_links d-flex edit_share"> 
           <div className="post_img">
             <input type="file" id="file" name="files[]" onChange={(e) => setImage(e.target.files[0])}
             accept="image/*" />
@@ -89,14 +85,16 @@ const Edit_Post = ({postId}) => {
            <a href="#"><img src="/assets/media/dash/live-icon.png" alt=""/></a> 
            <a href="#"><img src="/assets/media/dash/twitter-icon.png" alt=""/></a>
             </div>
-            <button onClick={()=>setMyModal(false)} >Cancel</button>
-            <button type="submit" disabled={mutation.isLoading}>Submit</button>
+            <button onClick={()=>setMyModal(false)} className="btn" >Cancel</button>
+            <button type="submit" disabled={mutation.isLoading} className="btn">Submit</button>
+
+           
       </form>
 
       <div className="overlay"></div>
 
         </div>
-        )}
+  
         
         </>
     )
