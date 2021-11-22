@@ -8,6 +8,7 @@ var FormData = require('form-data');
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 import CustomPost from './CustomPost';
+import LikePost from '../postLikes/LikePost';
 
 const queryClient = new QueryClient()
 
@@ -125,7 +126,7 @@ const SignedMainContent1 = () => {
         <div className="post_data"><img src={post.images} alt="" /></div>
         <div className="users_share_box">
           <div className="more_user"> <a href="#"><img src="/assets/media/dash/1.jpg" alt="user"/><span className="online"></span></a> <a href="#"><img src="/assets/media/dash/2.jpg" alt="user"/><span className="online"></span></a> <a href="#"><img src="/assets/media/dash/3.jpg" alt="user"/><span className="offiline"></span></a> <a href="#" className="more">+3</a> <span className="others">Ashwin, George and 5 others have liked your post.</span> </div>
-          <div className="shere"> <a href="#"> <i className="fa fa-heart" aria-hidden="true"></i> <span>Like</span> </a> <a href="#"> <i className="fa fa-share-alt" aria-hidden="true"></i> <span>Share</span> </a>
+          <div className="shere"> <LikePost postId={post._id} /> <a href="#"> <i className="fa fa-share-alt" aria-hidden="true"></i> <span>Share</span> </a>
             <div className="three_dots"><a href="#"> <i className="fa fa-ellipsis-v" aria-hidden="true"></i></a>
               <CustomPost post={post} />
             </div>
