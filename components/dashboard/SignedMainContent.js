@@ -91,8 +91,8 @@ const SignedMainContent1 = (req, res) => {
       
       <div className="right_links"> 
           <div className="post_img">
-            <input type="file" id="file" name="files[]" onChange={(e) => setImage(e.target.files[0])} 
-            accept="image/*" />
+            <input type="file" id="files" name="files[]" onChange={(e) => setImage(e.target.files[0])}  accept="image/*" />
+            
             </div>
           <a href="#"><img src="/assets/media/dash/cal-icon.png" alt=""/></a>
            <a href="#"><img src="/assets/media/dash/game-icon.png" alt=""/></a> 
@@ -143,7 +143,7 @@ const SignedMainContent1 = (req, res) => {
            
     { myModal && <EditPost setMyModal={setMyModal} postId={post} />}
     { deleteModal && <DeletePost setDeleteModal={setDeleteModal} postId={post} />}
-        <CommentForm postId={post} /> 
+    <CommentForm postId={post} /> 
 
 
       </div>
@@ -158,6 +158,7 @@ const SignedMainContent1 = (req, res) => {
  
 
   </div>
+
   
  
   
