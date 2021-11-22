@@ -27,6 +27,7 @@ const Ranking = ({ user }) => {
   const [searchText, setSearchText] = useState('');
   const [status, setStatus] = useState('confirm');
   const [searchResults, setSearchResults] = useState([]);
+  const [data, setData] = useState([]);
 
   const router = useRouter();
 
@@ -51,10 +52,9 @@ const Ranking = ({ user }) => {
   };
 
 
-   const { data } = useQuery([], () =>
+   const teamsRanks = useQuery([], () =>
     getTeamsRankingTournaments()
   );
-
 
   return (
 
@@ -102,7 +102,7 @@ const Ranking = ({ user }) => {
 
       </div>
     </div>
-    	<RankingTable />
+    	<RankingTable teamranking={teamsRanks.data}/>
   </div>
 </div>
 
