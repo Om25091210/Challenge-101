@@ -29,6 +29,8 @@ const AddComment = ({postId}) => {
       setComment("")
     }
 
+    //console.log(postId)
+
     const addingComment = async () =>{
         const res = await fetch(`${baseURL}/api/comments/${postId._id}`,{
           method: "POST",

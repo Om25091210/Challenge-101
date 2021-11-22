@@ -135,9 +135,13 @@ const SignedMainContent1 = (req, res) => {
                   <li><a href="#">Copy Link</a></li>
                   <button onClick={()=> setDeleteModal(true)} >Delete</button>
                 </ul>
+               
               </div>
+              
             </div>
+           
           </div>
+          
         </div>
 
            
