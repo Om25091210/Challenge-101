@@ -6,7 +6,7 @@ import baseURL from './baseURL';
 import catchErrors from './catchErrors';
 
 export const registerUser = async (
-  { name, username, email, password },
+  { firstname, lastname, username, email, password },
   setError,
   setLoading,
   toast,
@@ -14,6 +14,7 @@ export const registerUser = async (
 ) => {
   setLoading(true);
   try {
+    var name = firstname + ' ' + lastname;
     const res = await axios.post(`${baseURL}/api/signup`, {
       name,
       username,
@@ -21,8 +22,8 @@ export const registerUser = async (
       password,
     });
     toast.info(res.data.msg);
-    setStatus('confirm');
-    Router.push('/confirm');
+    setStatus('verify');
+    Router.push(`/verify`);
   } catch (error) {
     const errorMsg = catchErrors(error);
     setError(errorMsg);
