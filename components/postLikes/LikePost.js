@@ -16,11 +16,13 @@ export default function LikePost({postId}){
 const AddLike = ({postId}) =>{
 
     const [like, setLike] = useState(false)
+    const [isActive, setActive] = useState(false)
 
     const handleLike = (e) =>{
         e.preventDefault()
         mutate({like})
         setLike(true)
+        setActive(!isActive);
     }
 
     const addingLike = async() =>{
@@ -44,7 +46,7 @@ const AddLike = ({postId}) =>{
 
 
 return(
-    <a onClick={handleLike} > <i className="fa fa-heart" aria-hidden="true"></i> <span>Like</span> </a> 
+    <a onClick={handleLike} className={isActive ? 'active': null}  > <i className="fa fa-heart" aria-hidden="true"></i> <span>Like</span> </a> 
 )
 
 

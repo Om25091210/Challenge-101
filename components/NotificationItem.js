@@ -51,18 +51,18 @@ return (
       <div> {notify.map((notification) => (
 
     <li className="notif_tag">
-      <div >
+
         
           {notification.type === 'comment' ? (
             <>
               
-              <li className="notif_tag">
+            
               <span className="notif_img"><img src={notification.user.profilePicUrl}
             /></span> <span className="notif_name"> 
 
         
-                <div >
-                  <div >
+             
+             
                     
                     
                       <a href={`/profile/${notification.user.username}`} onClick={handleClick}>
@@ -72,10 +72,10 @@ return (
                       <a  href={`/posts/${notification.post._id}`} onClick={handleClick}>
                         {notification.post.description}
                       </a>
-                  </div>
+                  
                   {/* don't have data in text */}
                   <p >{notification.text}</p> 
-                </div>
+              
                 <p >
                   {formatDistanceToNowStrict(new Date(notification.date), {
                     addSuffix: true,
@@ -83,17 +83,17 @@ return (
                 </p>
               </span>
                 
-              </li>
+           
 
             </>
           ) : notification.type === 'reply' ? (
             <>
-              <li className="notif_tag">
+            
               <span className="notif_img"><img src={notification.user.profilePicUrl}
             /></span> <span className="notif_name"> 
 
-                <div >
-                  <div>
+               
+                
                     
                    
                       <a  href={`/profile/${notification.user.username}`} onClick={handleClick}>
@@ -106,10 +106,10 @@ return (
                         {notification.post.description}
                       </a>
                 
-                  </div>
+                
                   {/* replies is not available */}
                   <p >{notification.text}</p>
-                </div>
+            
                 <p >
                   {formatDistanceToNowStrict(new Date(notification.date), {
                     addSuffix: true,
@@ -117,42 +117,42 @@ return (
                 </p>
               </span>
                 
-              </li>
+            
             </>
           ) : notification.type === 'follow' ? (
             <>
               
-              <li className="notif_tag">
+            
               <span className="notif_img"><img src={notification.user.profilePicUrl}
             /></span> <span className="notif_name"> 
 
-              <div >
-                <div >
+           
+              
                   
                     <a  href={`/profile/${notification.user.username}`} onClick={handleClick}>
                       {notification.user.username}
                     </a>{' '}
                   started following you
-                </div>
+              
                 <p >
                   {formatDistanceToNowStrict(new Date(notification.date), {
                     addSuffix: true,
                   })}
                 </p>
-              </div>
+             
 
               </span>
-              </li>
+          
             </>
           ) : notification.type === 'like' ? (
             <>
              
-             <li className="notif_tag">
+            
               <span className="notif_img"><img src={notification.user.profilePicUrl}
             /></span> <span className="notif_name"> 
              
-              <div >
-                <div>
+     
+            
                  
                   
                     <a  href={`/profile/${notification.user.username}`} onClick={handleClick}>
@@ -165,46 +165,46 @@ return (
                       {notification.post.description}
                     </a>
                 
-                </div>
+           
                 <p >
                   {formatDistanceToNowStrict(new Date(notification.date), {
                     addSuffix: true,
                   })}
                 </p>
-              </div>
+         
 
               </span>
-              </li>
+            
             </>
           ) : notification.type === 'badge' ? (
             <>
              
-             <li className="notif_tag">
+           
               <span className="notif_img"><img src={notification.user.profilePicUrl}
             /></span> <span className="notif_name"> 
               
-              <div >
-                <div>
+           
+           
                   You have been awarded the{' '}
                   <span >
                     {/* Badge is not available */}
                     {notification.text} badge
                   </span>
                   .
-                </div>
+        
                 <p >
                   {formatDistanceToNowStrict(new Date(notification.date), {
                     addSuffix: true,
                   })}
                 </p>
-              </div>
+       
 
               </span>
-              </li>
+          
             </>
           ) : null}
 
-      </div>
+  
     </li>
 
  )
