@@ -1,4 +1,4 @@
-import baseURL from "../../utils/baseURL";
+import baseURL from "../../../utils/baseURL";
 import { QueryClient, QueryClientProvider, useMutation } from 'react-query'
 import cookie from 'js-cookie'
 import { toast } from 'react-toastify';
@@ -6,33 +6,30 @@ import axios from "axios"
 
 const queryClient = new QueryClient()
 
-
-export default function DeleteComment({postId, comment}){
+export default function DeleteReply({postId, commentId, replyId}){
   return(<QueryClientProvider client={queryClient} contextSharing={true}>
-        <Delete_Comment  postId={postId} comment={comment}/>
-
+        <Delete_Reply  postId={postId} commentId={commentId} replyId={replyId}/>
     </QueryClientProvider>
   );
 }
 
 
-const Delete_Comment = ({postId, comment}) => {
+const Delete_Reply = ({postId, commentId, replyId}) => {
 
-    const DeleteComment = async() =>{
-        await axios.delete(`${baseURL}/api/comments/${postId}/${comment._id}`,{
+    const deletereply = async() =>{
+        await axios.delete(`${baseURL}/api/comments/${postId}/${commentId}/${replyId}`,{
             headers: {
               Authorization: cookie.get('token'),
             }
           })
       }
 
-    const { mutateAsync } = useMutation(DeleteComment)
+    const { mutateAsync } = useMutation(deletereply)
 
     const deletehandlesubmit = async (e) => {
         e.preventDefault()
     try{
-
-        await mutateAsync(comment)
+        await mutateAsync(commentId)
         queryClient.invalidateQueries()
         toast.success('Your comment has been successfully deleted');
     }catch (err) {
@@ -42,7 +39,7 @@ const Delete_Comment = ({postId, comment}) => {
   
 
   return (
-    <div className="delete_comment">
+    <div className="delete_btn">
     <button onClick={deletehandlesubmit}> 
     Delete
     </button>

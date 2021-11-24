@@ -3,6 +3,7 @@ import axios from "axios";
 import baseURL from "../../utils/baseURL";
 import LikeComment from "./LikeComment";
 import DeleteComment from "./DeleteComment"
+
 import ReplyComment from "./ReplyComment";
 import ReplyList from "./ReplyList";
 
@@ -33,7 +34,9 @@ const CommentList = ({ postList }) => {
                   {comments.map((comment) => (
           <div key={comment._id}>
             <div className="comments_point">
-              <LikeComment postId={postId} commentId={comment} />
+
+              <LikeComment postId={postId} comment={comment} />
+
               <div className="user">
                 <img src="/assets/media/dash/user.jpg" alt="" />
               </div>
@@ -49,9 +52,11 @@ const CommentList = ({ postList }) => {
             </div>
             <div className="first_reply">
 
-              <DeleteComment postId={postId} commentId={comment} />
+
+              <DeleteComment postId={postId} comment={comment} />
               <ReplyComment postId={postId} commentId={comment._id} />
-              </div>
+            </div>
+
               <ReplyList postId={postId} commentId={comment._id} />
           </div>
         ))}
