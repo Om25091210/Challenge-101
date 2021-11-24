@@ -25,8 +25,13 @@ const Calendar = ({ user }) => {
 
 
 <div className="main_middle profile_middle">
+<<<<<<< HEAD
 <div className="calendar_page">
     <div className="white_bg">
+=======
+<div class="calendar_page discovery_page">
+    <div class="white_bg">
+>>>>>>> 392d1d5178f226f5c3fea2dbdaee459fa0bd5865
       <h2>GAME</h2>
       <div className="tit"> <a href="#"><span> <b className="icon">
           <img src="/assets/media/ranking/console.png" alt="" /></b> Browse Games</span> 

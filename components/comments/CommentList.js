@@ -3,8 +3,9 @@ import axios from "axios";
 import baseURL from "../../utils/baseURL";
 import LikeComment from "./LikeComment";
 import DeleteComment from "./DeleteComment"
-import ReplyComment from "./replies/ReplyComment";
-import ReplyList from "./replies/ReplyList";
+
+import ReplyComment from "./ReplyComment";
+import ReplyList from "./ReplyList";
 
 const CommentList = ({ postList }) => {
   const [comments, setComments] = useState([]);
@@ -33,7 +34,9 @@ const CommentList = ({ postList }) => {
                   {comments.map((comment) => (
           <div key={comment._id}>
             <div className="comments_point">
+
               <LikeComment postId={postId} comment={comment} />
+
               <div className="user">
                 <img src="/assets/media/dash/user.jpg" alt="" />
               </div>
@@ -45,11 +48,15 @@ const CommentList = ({ postList }) => {
               <a href="#" className="pinned">
                 Pinned by Creator
               </a>{" "}
+            
             </div>
             <div className="first_reply">
+
+
               <DeleteComment postId={postId} comment={comment} />
               <ReplyComment postId={postId} commentId={comment._id} />
             </div>
+
               <ReplyList postId={postId} commentId={comment._id} />
           </div>
         ))}
