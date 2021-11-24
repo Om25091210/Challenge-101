@@ -25,13 +25,13 @@ const Calendar = ({ user }) => {
 
 
 <div className="main_middle profile_middle">
-<div class="calendar_page">
-    <div class="white_bg">
+<div className="calendar_page">
+    <div className="white_bg">
       <h2>GAME</h2>
-      <div class="tit"> <a href="#"><span> <b class="icon">
+      <div className="tit"> <a href="#"><span> <b className="icon">
           <img src="/assets/media/ranking/console.png" alt="" /></b> Browse Games</span> 
-          <i class="fa fa-angle-right" aria-hidden="true" ></i> <span class="other_logo">
-              <img src="/assets/media/team1.png" alt="" /></span> <span class="other_logo">
+          <i className="fa fa-angle-right" aria-hidden="true" ></i> <span className="other_logo">
+              <img src="/assets/media/team1.png" alt="" /></span> <span className="other_logo">
                   <img src="/assets/media/team1.png" alt="" /></span> </a> </div>
 
 

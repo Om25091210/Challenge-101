@@ -7,7 +7,7 @@ import Head from 'next/head'
 const Date = (props) => (
 
     
-    <div class="white_bg"> 
+    <div className="white_bg"> 
       
     <img src="/assets/media/calendar/date.jpg" /> 
     
