@@ -1,19 +1,25 @@
+import React from "react";
+import TimeCalendar from "react-timecalendar";
 
+const openHours = [
+  [9.5, 15],
+  [9, 23.5],
+];
+function loggingTime(time) {
+  console.log(time);
+}
+const Date = () => (
 
+  <div className="calendar_box">  
+  <TimeCalendar
+    clickable
+    timeSlot={30}
+    openHours={false}
 
-import PropTypes from 'prop-types';
-import Head from 'next/head'
+  />
 
-const Date = (props) => (
-
-    
-    <div class="white_bg"> 
-      
-    <img src="/assets/media/calendar/date.jpg" /> 
-    
-    </div>
-
+</div>
 
 );
 
-export default Date;               
+export default Date;

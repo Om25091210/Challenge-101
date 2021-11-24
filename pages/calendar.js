@@ -25,7 +25,7 @@ const Calendar = ({ user }) => {
 
 
 <div className="main_middle profile_middle">
-<div class="calendar_page">
+<div class="calendar_page discovery_page">
     <div class="white_bg">
       <h2>GAME</h2>
       <div class="tit"> <a href="#"><span> <b class="icon">
