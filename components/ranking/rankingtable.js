@@ -62,7 +62,7 @@ const RankingTable = ({teamranking }) => {
                       <div className="chart"><img src="/assets/media/ranking/chart.png" alt=""/></div>
                       <div className="follows">
                         <button>Follow</button>
-                        <div className="ate"> ATE <span className="circle"></span> 16-3 <span className="circle"></span> TWW </div>
+                        <div className="ate"> {result.matches[0] ? result.matches[0].teams[0].teamName.substring(0,7) +'...' : 'Not Mentioned'} <span className="circle"></span> 16-3 <span className="circle"></span> {result.matches[0] ? result.matches[0].teams[1].teamName.substring(0,7) +'...' : 'Not Mentioned'} </div>
                       </div>
                             
                      </div>        
@@ -74,7 +74,6 @@ const RankingTable = ({teamranking }) => {
 
                    
                   </div>
-
 
                )
 
