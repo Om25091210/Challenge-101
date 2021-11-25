@@ -6,15 +6,12 @@ import axios from "axios"
 
 const queryClient = new QueryClient()
 
-
 export default function DeleteComment({postId, comment}){
   return(<QueryClientProvider client={queryClient} contextSharing={true}>
         <Delete_Comment  postId={postId} comment={comment}/>
-
     </QueryClientProvider>
   );
 }
-
 
 const Delete_Comment = ({postId, comment}) => {
 
@@ -31,7 +28,6 @@ const Delete_Comment = ({postId, comment}) => {
     const deletehandlesubmit = async (e) => {
         e.preventDefault()
     try{
-
         await mutateAsync(comment)
         queryClient.invalidateQueries()
         toast.success('Your comment has been successfully deleted');
