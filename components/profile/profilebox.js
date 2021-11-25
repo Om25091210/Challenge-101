@@ -69,20 +69,15 @@ const ProfileBoxWrap = ({ user }) => {
       />
 
 
-    <div className="ml-5 rounded-md shadow-sm">
-      <div className="group relative border border-gray-300 rounded-md py-2 px-3 flex items-center justify-center hover:bg-gray-50 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-pink-500">
-        <label
-          htmlFor="user-photo"
-          className="relative text-sm leading-4 font-medium text-gray-700 pointer-events-none"
-        >
-          <span>Change</span>
-          <span className="sr-only"> user photo</span>
-        </label>
+    
+      <div className="edit_phot">
+       
+        <label for="user-photo" class="btn-1"> user photo</label>
         <input
           id="user-photo"
           name="user-photo"
           type="file"
-          className="absolute w-full h-full opacity-0 cursor-pointer border-gray-300 rounded-md"
+          className="custom-file-input"
           onChange={(e) => {
             setProfilePic(e.target.files[0]);
             handleSubmit(e);
@@ -90,7 +85,7 @@ const ProfileBoxWrap = ({ user }) => {
         }
         />
       </div>
-    </div>
+    
 
     </form>
   </div>

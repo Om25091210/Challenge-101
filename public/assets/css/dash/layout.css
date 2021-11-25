@@ -1293,3 +1293,40 @@ transition: transform .5s ease, -webkit-transform .5s ease;
 
 .calendar_box{ float: left; width: 100%; margin: 20px 0;}
 .calendar_box .body .row .cell{ height: 3em !important}
+
+
+.edit_phot [type=file] {
+  height: 0;
+  overflow: hidden;
+  width: 0;
+}
+
+.edit_phot [type=file] + label {
+  background: #f15d22;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Rubik", sans-serif;
+  font-size: inherit;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  outline: none;
+  padding: 1rem 50px;
+  position: relative;
+  transition: all 0.3s;
+  vertical-align: middle;
+}
+.edit_phot [type=file] + label:hover {
+  background-color: #d3460d;
+}
+.edit_phot [type=file] + label.btn-1 {
+  background-color: #f79159;
+  box-shadow: 0 6px #f57128;
+  transition: none;
+}
+.edit_phot [type=file] + label.btn-1:hover {
+  box-shadow: 0 4px #f57128;
+  top: 2px;
+}
