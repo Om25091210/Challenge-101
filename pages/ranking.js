@@ -56,6 +56,8 @@ const Ranking = ({ user }) => {
     getTeamsRankingTournaments()
   );
 
+   console.log(teamsRanks);
+
   return (
 
   <div>
