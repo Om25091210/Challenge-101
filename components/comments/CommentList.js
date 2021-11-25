@@ -16,6 +16,7 @@ const CommentList = ({ postList }) => {
       .get(`${baseURL}/api/comments/${postList._id}`)
       .then((res) => {
         setComments(res.data);
+        refetch();
       })
       .catch((err) => {
         console.log(err);

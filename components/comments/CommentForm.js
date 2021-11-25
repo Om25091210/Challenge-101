@@ -45,7 +45,7 @@ const AddComment = ({postId}) => {
         return res.json()
       }
 
-      const { mutate, isLoading, isError } = useMutation(addingComment,{
+      const { mutate, isLoading, isError, refetch } = useMutation(addingComment,{
         onSuccess: (successData) =>{
           console.log(successData);
         }
