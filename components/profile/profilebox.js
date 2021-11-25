@@ -70,9 +70,9 @@ const ProfileBoxWrap = ({ user }) => {
 
 
     
-      <div className="edit_phot">
+      <div className="edit_photo">
        
-        <label for="user-photo" class="btn-1"> user photo</label>
+        <label for="user-photo" className="edit_label"> Update photo</label>
         <input
           id="user-photo"
           name="user-photo"

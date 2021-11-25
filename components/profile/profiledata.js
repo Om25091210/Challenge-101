@@ -64,7 +64,7 @@ return(
           </div>))}
         </div>  
       </div>
-    </div>
+   
 
     <div className="profile_match_details">
         
@@ -132,13 +132,14 @@ return(
 
 
     </div>
-
+    </div>
 
     
     
 	<div className="tab hide" id="statistics"> 222222222 </div>
 	<div className="tab hide" id="achievement"> 33333 </div>
 	<div className="tab hide" id="matches"> 44444 </div>
+
   </div>
 </>   
   
