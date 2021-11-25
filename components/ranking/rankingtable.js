@@ -30,12 +30,12 @@ const RankingTable = ({teamranking }) => {
 
                   <div className="row_box">
                     <div className="cols_box">
-                      <div className="cols">1</div>
+                      <div className="cols">{result.ranks[0] ? result.ranks[0].rank : 'Not Ranked'}</div>
                       <div className="cols">{result.team.name} </div>
-                      <div className="cols">1620</div>
-                      <div className="cols">80</div>
-                      <div className="cols">240/40</div>
-                      <div className="cols">80%</div>
+                      <div className="cols">{result.ranks[0] ? result.ranks[0].points : 'Not Defined'}</div>
+                      <div className="cols">{result.tournament.length}</div>
+                      <div className="cols">{result.ranks[0] ? result.ranks[0].won : 0}/{result.ranks[0] ? result.ranks[0].loss : 0}</div>
+                      <div className="cols">{result.ranks[0] ? Math.round((result.ranks[0].won / result.ranks[0].loss) * 100) : 0}%</div>
                       <div className="cols"> <span className="round green"></span> <span className="round green"></span> <span className="round red"></span> <span className="round red"></span> <span className="round green"></span> </div>
                       <div className="cols">$45,000</div>
                     </div>
