@@ -14,7 +14,7 @@ const queryClient = new QueryClient()
 
 export default function ProfileBox ({user}) {
 
-  return(<QueryClientProvider client={queryClient} contextSharing={true}>
+return(<QueryClientProvider client={queryClient} contextSharing={true}>
         <ProfileBoxWrap user={user}/>
     </QueryClientProvider>
   );
