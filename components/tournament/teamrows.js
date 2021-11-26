@@ -29,7 +29,7 @@ const TeamRows = ({tournaments , searchResults}) => {
                     <div className="top_game">
                       <div className="date">
                         <h3>{result.tournament.name}</h3>
-                        {format(new Date(result.tournament.startDate), 'd MMM yyyy, hh:mm a')}
+                        {result.tournament.startDate ? format(new Date(result.tournament.startDate), 'd MMM yyyy, hh:mm a') : 'Not defined'}
                         </div>
                       <div className="reg">
                         <button className="active">{result.tournament.status}</button>
