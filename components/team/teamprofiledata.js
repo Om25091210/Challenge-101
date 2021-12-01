@@ -153,7 +153,95 @@ const TeamProfileData = (props) => (
     </div>
 	<div className="tab hide" id="statistics"> 222222222 </div>
 	<div className="tab hide" id="achievement"> 33333 </div>
-	<div className="tab hide" id="matches"> 44444 </div>
+	<div className="tab hide" id="matches"> 44444 444444 </div>
+    <div className="tab hide" id="merchandise">
+        <div class="products">
+        <ul>
+          <li>
+            <div class="pro_img"> 
+              <a href="#"><img src="images/team/tshirt1.jpg" alt="" /></a> 
+
+              <span class="size_option">36d 12h 13m 18s</span>
+            
+            </div>
+            <div class="pro_bottom">
+              <div class="name_dots">
+                <h4>ALCHEMISTS MEN-SHIRT</h4>
+                <a href="#"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a> </div>
+               <div class="stars"> 
+                <a href="#"><i class="fa fa-star" aria-hidden="true"></i></a> 
+                <a href="#"><i class="fa fa-star" aria-hidden="true"></i></a> 
+                <a href="#"><i class="fa fa-star" aria-hidden="true"></i></a> 
+                <a href="#"><i class="fa fa-star" aria-hidden="true"></i></a> 
+                <a href="#"><i class="fa fa-star" aria-hidden="true"></i></a>
+                <div class="price"> $19.00</div>
+              </div>
+            </div>
+            <div class="likes"><a href="#"><i class="fa fa-heart" aria-hidden="true"></i> 80 </a></div>
+          </li>
+
+          <li>
+            <div class="pro_img"> <img src="images/team/tshirt2.jpg" alt="" /> <span class="size_option">36d 12h 13m 18s</span> </div>
+            <div class="pro_bottom">
+              <div class="name_dots">
+                <h4>ALCHEMISTS MEN-SHIRT</h4>
+                <a href="#"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a> </div>
+               <div class="stars"> 
+                <a href="#"><i class="fa fa-star" aria-hidden="true"></i></a> 
+                <a href="#"><i class="fa fa-star" aria-hidden="true"></i></a> 
+                <a href="#"><i class="fa fa-star" aria-hidden="true"></i></a> 
+                <a href="#"><i class="fa fa-star" aria-hidden="true"></i></a> 
+                <a href="#"><i class="fa fa-star" aria-hidden="true"></i></a>
+                <div class="price"> $19.00</div>
+              </div>
+            </div>
+            <div class="likes"><a href="#"><i class="fa fa-heart" aria-hidden="true"></i> 80 </a></div>
+          </li>
+
+          <li>
+            <div class="pro_img"> <img src="images/team/tshirt1.jpg" alt="" />  <span class="size_option">36d 12h 13m 18s</span></div>
+            <div class="pro_bottom">
+              <div class="name_dots">
+                <h4>ALCHEMISTS MEN-SHIRT</h4>
+                <a href="#"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a> </div>
+               <div class="stars"> 
+                <a href="#"><i class="fa fa-star" aria-hidden="true"></i></a> 
+                <a href="#"><i class="fa fa-star" aria-hidden="true"></i></a> 
+                <a href="#"><i class="fa fa-star" aria-hidden="true"></i></a> 
+                <a href="#"><i class="fa fa-star" aria-hidden="true"></i></a> 
+                <a href="#"><i class="fa fa-star" aria-hidden="true"></i></a>
+                <div class="price"> $19.00</div>
+              </div>
+            </div>
+            <div class="likes"><a href="#"><i class="fa fa-heart" aria-hidden="true"></i> 80 </a></div>
+          </li>
+
+
+          <li>
+            <div class="pro_img"> <img src="images/team/cup.jpg" alt="" /> <span class="size_option">36d 12h 13m 18s</span></div>
+            <div class="pro_bottom">
+              <div class="name_dots">
+                <h4>ALCHEMISTS MEN-SHIRT</h4>
+                <a href="#"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a> </div>
+               <div class="stars"> 
+                <a href="#"><i class="fa fa-star" aria-hidden="true"></i></a> 
+                <a href="#"><i class="fa fa-star" aria-hidden="true"></i></a> 
+                <a href="#"><i class="fa fa-star" aria-hidden="true"></i></a> 
+                <a href="#"><i class="fa fa-star" aria-hidden="true"></i></a> 
+                <a href="#"><i class="fa fa-star" aria-hidden="true"></i></a>
+                <div class="price"> $19.00</div>
+              </div>
+            </div>
+            <div class="likes"><a href="#"><i class="fa fa-heart" aria-hidden="true"></i> 80 </a></div>
+          </li>
+
+          
+
+
+        </ul>
+      </div>
+      
+      </div>
 </div>
 
  

@@ -9,12 +9,12 @@ const TeamTabs = (props) => (
 	<li><a href="#!" rel="statistics">STATISTICS</a></li>
 	<li><a href="#!" rel="achievement"> ACHIEVEMENTS</a></li>
 	<li><a href="#!" rel="matches">MATCHES</a></li>
-    <li><a href="#!" rel="merchandise">merchandise</a></li>
-    <li><a href="#!" rel="steams">STREAMS</a></li>
-    <li><a href="#!" rel="photos">Photos</a></li>
-    <li><a href="#!" rel="video">Videos/streams</a></li>
-    <li><a href="#!" rel="sponsors">SPONSORS</a></li>
-    <li><a href="#!" rel="rigs">rigs</a></li>
+  <li><a href="#!" rel="merchandise">merchandise</a></li>
+  <li><a href="#!" rel="steams">STREAMS</a></li>
+  <li><a href="#!" rel="photos">Photos</a></li>
+  <li><a href="#!" rel="video">Videos/streams</a></li>
+  <li><a href="#!" rel="sponsors">SPONSORS</a></li>
+  <li><a href="#!" rel="rigs">rigs</a></li>
 </ul>
 
 
