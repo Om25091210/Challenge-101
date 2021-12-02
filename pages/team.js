@@ -26,7 +26,7 @@ const Team = ({ user }) => {
 <div className="main_middle profile_middle"> 
  
 
-	    {/* <TeamProfileBox /> */}
+	    <TeamProfileBox /> 
 
 	    <TeamTabs />
 
