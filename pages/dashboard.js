@@ -9,6 +9,7 @@ import FooterMain from '../components/FooterMain';
 
 const Dashboard = ({ user }) => {
 
+console.log(user);
 
   return (
 

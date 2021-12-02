@@ -8,6 +8,7 @@ import NotificationItem from './NotificationItem';
 
 const SignedHeader = ({user}) => {
 
+
 if (user)  {
 
   return (

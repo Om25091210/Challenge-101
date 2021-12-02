@@ -1,19 +1,32 @@
-import { useState } from 'react'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
+import Cmp, { getData } from 'page-components/folder';
+import { getLocaleFromContext } from '@lib/app-config';
 
+import nextI18NextConfig from '../next-i18next.config.js';
 
-export default function Index() {
-  const [status, setStatus] = useState('sign-in')
-  const [user, setUser] = useState(null)
+export async function getStaticProps(context) {
+  const { preview } = context;
+  const locale = getLocaleFromContext(context);
 
-  console.log(status);
+  const data = await getData({
+    asPath: '/frontpage-2021',
+    language: locale.crystallizeCatalogueLanguage,
+    preview
+  });
 
-  return (
-    
-    <div>
-      <main>
-
-      </main>
-    </div>
-  )
+  return {
+    props: {
+      ...data,
+      hidePageHeader: true,
+      ...(await serverSideTranslations(
+        context.locale,
+        ['common', 'basket'],
+        nextI18NextConfig
+      ))
+    },
+    revalidate: 1
+  };
 }
+
+export default Cmp;

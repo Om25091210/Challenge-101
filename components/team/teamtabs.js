@@ -5,7 +5,8 @@ const TeamTabs = (props) => (
 
   
   <ul className="profile_tab_btn">
-	<li className="active"><a href="#!" rel="feed">FEED</a></li>
+  <li className="active"><a href="#!" rel="overview">OVERVIEW</a></li>
+	<li><a href="#!" rel="feed">FEED</a></li>
 	<li><a href="#!" rel="statistics">STATISTICS</a></li>
 	<li><a href="#!" rel="achievement"> ACHIEVEMENTS</a></li>
 	<li><a href="#!" rel="matches">MATCHES</a></li>

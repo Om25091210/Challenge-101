@@ -1,12 +1,18 @@
 
-import PropTypes from 'prop-types';
-import Head from 'next/head'
+
 
 const TeamProfileData = (props) => (
 
 
 <div className="prfoile_tab_data">
-	<div className="tab" id="feed"> 
+	
+    <div className="tab" id="overview"> 
+    
+
+
+    </div>
+
+    <div className="tab hide" id="feed"> 
         
    
         <div className="product_box">

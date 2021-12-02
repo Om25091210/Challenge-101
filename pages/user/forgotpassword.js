@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import Meta from '../../components/Meta';
-import FooterMain from '../../components/FooterMain';
+import Meta from '@components/Meta';
+import FooterMain from '@components/FooterMain';
 import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { useForm } from "react-hook-form";

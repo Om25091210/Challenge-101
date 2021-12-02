@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { setCookieValue, getCookieValue } from '../../utils/helpers';
 
-import themeOptions from '../../components/theme/theme-options';
+import themeOptions from './theme-options';
 
 const DarkMode = React.memo(() => {
 	const [theme, setTheme] = useState(themeOptions.LIGHT);
