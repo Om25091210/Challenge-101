@@ -12,6 +12,7 @@ const ReplyList = ({postId, commentId}) => {
             .get(`${baseURL}/api/comments/${postId}/${commentId}`)
             .then((res) => {
                 setReplies(res.data)
+                
             })
             .catch((err) => {
                 console.log(err)

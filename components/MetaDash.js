@@ -26,6 +26,8 @@ const MetaDash = () => (
 	<link href="/assets/css/dash/screen.css" rel="stylesheet" type="text/css" />
 	<link href="/assets/css/dash/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
 	<link href="/assets/css/dash/slick.css" rel="stylesheet" type="text/css" />
+	<link href="/assets/css/dash/jquery.fancybox.css" rel="stylesheet" type="text/css" />
+	<link href="/assets/css/dash/jquery.fancybox-buttons.css" rel="stylesheet" type="text/css" />
 
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
 

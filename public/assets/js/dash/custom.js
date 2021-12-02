@@ -124,7 +124,8 @@ $(document).ready(function() {
         slidesToShow: 1,
         slidesToScroll: 1,
         arrows: true,
-        fade: true,
+        infinite: false,
+        fade: false,
             
       });
 
@@ -203,6 +204,18 @@ $( '.dropdown-menu a' ).on( 'click', function( event ) {
    console.log( options );
    return false;
 });
+
+$('.fancybox').fancybox();
+$(".quickpoup").fancybox({
+
+  wrapCSS : 'quickcss',
+'width':1200,
+  'height':600,
+  'autoSize' : false
+
+
+});
+
 
  }); 
 

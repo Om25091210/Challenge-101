@@ -13,6 +13,15 @@ export default function DeleteComment({postId, comment}){
   );
 }
 
+function refreshPage() {
+  
+  setTimeout(function(){
+    window.location.reload(false);
+}, 5000);
+}
+
+
+
 const Delete_Comment = ({postId, comment}) => {
 
     const DeleteComment = async() =>{
@@ -24,6 +33,7 @@ const Delete_Comment = ({postId, comment}) => {
       }
 
     const { mutateAsync } = useMutation(DeleteComment)
+   
 
     const deletehandlesubmit = async (e) => {
         e.preventDefault()
@@ -34,6 +44,8 @@ const Delete_Comment = ({postId, comment}) => {
     }catch (err) {
         toast.error(err.response?.data?.msg || 'Please recheck your inputs')
     }
+
+    refreshPage()
   }
   
 

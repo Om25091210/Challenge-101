@@ -37,10 +37,10 @@ const Calendar = ({ user }) => {
 
 
    
-<Date />
+         <Date />
 
 
-     <Match />
+
     </div>
   </div>
 </div>
