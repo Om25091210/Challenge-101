@@ -1320,3 +1320,74 @@ transition: transform .5s ease, -webkit-transform .5s ease;
   border-radius: 5px;
   font-size: 12px;
   font-weight: 700;  cursor: pointer;}
+
+
+  /* ------------------ Squads ----------------------- */
+
+.squads_box{ float: left; width: 100%;}
+
+.squads_box li{ float: left; width: 49%; margin-bottom: 20px;}
+.squads_box li:nth-child(2n){ float: right;}
+
+.squad_img{ float: left; width: 100%; position: relative;}
+.squad_img .squad_bg{ display: block;}
+.squad_img:after{ content: ""; background: rgba(0,0,0,0.8); position: absolute; width: 100%; height: 100%; z-index: 2; top:0; left: 0;}
+.squad_img h2{ position:absolute; top:20%; text-align: center; left: 0; right: 0; color: #fff; z-index: 10;}
+.squad_img .plyars{ background: #202028;float: left;width: 100%;position: absolute;bottom: 0;height:50%;left: 0;right: 0;text-align: center; padding-top:9%; z-index: 10;}
+.squad_img .plyars a{ display: inline-block; width: 40px; height: 40px; border-radius: 50%; overflow: hidden; margin: 0 5px;}
+.squad_btn{     float: left;
+  width: 100%;
+  display: flex;
+  justify-content: space-between; background: #1a1a20; height: 60px;}
+
+  .squad_btn .cuntry_name{ color: #fff; font-size: 18px; padding: 25px 0 0 0; text-align: center; width: 50%;}
+  .squad_btn a{ background: #6931f9; padding:25px 0 0 0; text-align: center; width: 50%; color: #fff; font-size: 12px;}
+
+  .selections{    display: flex;
+    justify-content: end; padding: 30px 0;}
+
+  .selections .button-group{
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  }
+
+  .selections .button-group .drop_name{ margin-right: 10px;}
+
+
+  /* -------------------- Achiments -------------- */
+
+  .tab h2{ text-transform: uppercase;}
+
+  .features ul{ margin-top: 20px;}
+
+  .features li{ width:200px; background: #ddd; border-radius: 5px; text-align: center; padding: 20px;}
+  .features li .img{     background: #272a2f;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;}
+  .features li .img i{ color: #fff; font-size: 25px;}
+  .features li .tit{ color: #000; font-size: 15px;}
+  .features li p{ font-size: 11px;}
+
+  .trophy_cabinate{ margin: 50px 0;}
+  .trophy_cabinate h3{ background: #ddd; font-size: 20px; width: 100%; padding: 20px 0 20px 50px; border-radius: 5px; text-transform: uppercase;}
+  .trophy_cabinate ul{ margin: 20px 0;}
+  .trophy_cabinate ul li{ float: left; width: 23%; margin-right: 2%; text-align: center;}
+  .trophy_cabinate ul li:last-child{ margin-right: 0;}
+
+  .trophy_cabinate ul li .num{ font-size: 51px; font-weight: 700;}
+  .trophy_cabinate ul li h4{ font-size: 20px; padding-bottom: 30px; text-transform: uppercase;}
+  .trophy_cabinate ul li h5{font-size: 16px; text-transform: uppercase;}
+
+  .tournament_table{ float: left; width: 100%; margin: 20px 0;}
+
+  .tournament_table .table{ margin: 20px 0;}
+  .tournament_table .table td, .tournament_table .table th{ font-size: 15px; text-transform: uppercase;}
+  .table .thead-light{ border-radius: 5px; background: #ddd;}
+  .table .thead-light th{ background: none;}
