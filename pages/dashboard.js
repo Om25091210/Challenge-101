@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react'
-import Head from 'next/head'
+import { useState, useEffect } from 'react';
+import Head from 'next/head';
 import MetaDash from '../components/MetaDash';
 import SignedHeader from '../components/SignedHeader';
 import LeftNav from '../components/LeftNav';
@@ -8,40 +8,32 @@ import RightSection from '../components/RightSection';
 import FooterMain from '../components/FooterMain';
 
 const Dashboard = ({ user }) => {
-
-console.log(user);
+  console.log(user);
 
   return (
+    <>
+      <MetaDash />
 
-  <>
+      <SignedHeader user={user} />
 
-    <MetaDash />
+      <LeftNav />
 
+      <SignedMainContent />
 
-    <SignedHeader user={user}/>
-    
+      <RightSection user={user} />
 
-    <LeftNav />
+      <script src="/assets/js/dash/jquery-2.1.4.min.js" />
+      <script src="/assets/plugins/global/plugins.bundle.js" />
+      <script src="/assets/js/scripts.bundle.js" />
 
-    <SignedMainContent />
+      <script src="/assets/plugins/global/plugins.bundle.js" />
+      <script src="/assets/js/dash/jquery.mCustomScrollbar.js" />
+      <script src="/assets/js/dash/jquery.fancybox.js" />
+      <script src="/assets/js/dash/jquery.fancybox-buttons.js" />
+      <script src="/assets/js/dash/slick.js" />
+      <script src="/assets/js/dash/custom.js" />
+    </>
+  );
+};
 
-
-    <RightSection user={user}/>
-   
-    <script src="/assets/js/dash/jquery-2.1.4.min.js"/>
-  <script src="/assets/plugins/global/plugins.bundle.js"/>
-  <script src="/assets/js/scripts.bundle.js"/>
-
-  <script src="/assets/plugins/global/plugins.bundle.js"/>
-  <script src="/assets/js/dash/jquery.mCustomScrollbar.js"/>
-  <script src="/assets/js/dash/slick.js"/>
-  <script src="/assets/js/dash/custom.js"/>
-
-
-
-</>
-
-  )
-}
-
-export default Dashboard
+export default Dashboard;
