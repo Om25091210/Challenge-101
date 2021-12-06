@@ -28,8 +28,8 @@ const DateCal = () => {
     return [year, month, day].join('-');
   }
 
-  //console.log(formatDate(startDate));
-  //console.log(formatDate(endDate));
+  console.log(formatDate(startDate));
+  console.log(formatDate(endDate));
 
   const [tournament, SetTournament] = useState([]);
 
@@ -67,22 +67,55 @@ const DateCal = () => {
           inline
           dateFormat="MMMM d, yyyy"
         />
-
-        <div>Date - {}</div>
       </div>
 
-      <div>
+      <div className="all_matches">
+        <h2>Xenowatch league-week6</h2>
+
         {result.length === 0 ? (
           <p>No data</p>
         ) : (
-          <div>
+          <div className="match_box">
             {result.map((tour) => (
-              <div key={tour._id}>
-                <p>{tour.tournament.name}</p>
-                <p>{tour.tournament.description}</p>
-                <p>{tour.tournament.status}</p>
-                <p>{tour.tournament.tournament_type}</p>
-                <p>{tour.tournament.prizepool}</p>
+              <div className="match_table" key={tour._id}>
+                <div className="head_row">
+                  <div className="tm">11:00PCT</div>
+                  <div className="live">
+                    <b>Live</b> 25:20
+                  </div>
+                </div>
+                <div className="data_col1">
+                  <div className="top">
+                    <div className="lft_dp">
+                      {' '}
+                      <span class="dp">
+                        <img src={tour.tournament.imgUrl} alt="" />
+                      </span>{' '}
+                      <span class="dp_name">{tour.tournament.name}</span>{' '}
+                    </div>
+                    <div className="num">3</div>
+                  </div>
+                  <div className="top">
+                    <div className="lft_dp">
+                      {' '}
+                      <span class="dp">
+                        <img src={tour.tournament.imgUrl} alt="" />
+                      </span>{' '}
+                      <span class="dp_name">{tour.tournament.description}</span>{' '}
+                    </div>
+                    <div className="num">3</div>
+                  </div>
+                </div>
+                <div className="data_col2">
+                  {' '}
+                  <a href="#">
+                    <img src="/assets/media/calendar/stats.jpg" /> Full Match
+                    Stats
+                  </a>{' '}
+                  <a href="#">
+                    <img src="/assets/media/calendar/play.jpg" /> Watch Replay
+                  </a>{' '}
+                </div>
               </div>
             ))}
           </div>

@@ -1279,7 +1279,7 @@ transition: transform .5s ease, -webkit-transform .5s ease;
 
 /*-------- Calender ----------------- */
 
-.all_matches{ margin-bottom: 20px;}
+.all_matches{ margin-bottom: 20px; float: left; width: 100%;}
 .all_matches h2{ font-size: 20px; color: #000; font-weight: 700; text-transform: uppercase; border-bottom: 2px solid #ddd; margin-bottom: 20px; padding-bottom: 10px;  position: relative;}
 .all_matches h2:after{ content: ""; position: absolute; width: 100px; border-bottom: 3px solid #7239ea; left: 0; bottom: 0;}
 
@@ -1296,7 +1296,14 @@ transition: transform .5s ease, -webkit-transform .5s ease;
   .top{display: flex;align-items: center;     border-top: 1px solid #ddd; justify-content: space-between; width: 100%; padding: 10px;}
 
   .lft_dp{  display: flex;align-items: center;justify-content: space-between;}
-  .lft_dp .dp{ margin-right: 10px;}
+  .lft_dp .dp{ margin-right: 10px;     margin-right: 10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: block;}
+    .lft_dp .dp img{ width: 100%; height: 100%; object-fit: cover;}
+    .lft_dp .dp_name{ width:85%;}
   .dp_name b{ display: block;}
 
   .data_col2 a{ padding: 20px 0;}
@@ -1418,3 +1425,24 @@ transition: transform .5s ease, -webkit-transform .5s ease;
   .tournament_table .table td, .tournament_table .table th{ font-size: 15px; text-transform: uppercase;}
   .table .thead-light{ border-radius: 5px; background: #ddd;}
   .table .thead-light th{ background: none;}
+
+
+  /* calender css */
+
+  .calendar_box .react-datepicker{ width: 100%; border-radius: 0;  border: 1px solid #eee;}
+  .calendar_box .react-datepicker__month-container{ width: 100%;}
+ .calendar_box .react-datepicker__day, .calendar_box .react-datepicker__time-name{ text-align: right; padding:10px; font-size: 14px; border-radius: 0; margin: 0; width:14.3%; height: 80px; border-right: 1px solid #eee;}
+ .calendar_box  .react-datepicker__day-names{border-top: 1px solid #eee;}
+ .calendar_box .react-datepicker__day-name{ width:14.3%; height: 30px;  }
+ .calendar_box .react-datepicker__header{ background: none; border-bottom: 1px solid #eee;}
+ .calendar_box .react-datepicker__month{ margin: 0;}
+ .calendar_box .react-datepicker__current-month{     padding: 17px 0 23px 0;}
+ .calendar_box .react-datepicker__week{ border-top: 1px solid #eee;}
+ .calendar_box .react-datepicker__day--outside-month{ color: #b3b2b2;}
+
+ .calendar_box  .react-datepicker__navigation{ top:18px}
+
+ .calendar_box .react-datepicker__day:hover, 
+ .calendar_box .react-datepicker__month-text:hover, 
+ .calendar_box .react-datepicker__quarter-text:hover,
+ .calendar_box .react-datepicker__year-text:hover{ border-radius: 0;}
