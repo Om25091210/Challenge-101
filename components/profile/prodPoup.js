@@ -8,7 +8,7 @@ const prodPoup = ()=>{
     return(
     <>
     
-    <div id="prod1" class="quick_view" style={{display:'none'}}>
+    <div id="prod1" className="quick_view" style={{display:'none'}}>
       <div className="product_box">
         <div className="product-img-box">
           <div className="prod_big_thumb">

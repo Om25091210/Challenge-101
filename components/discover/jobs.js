@@ -1,11 +1,30 @@
+import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
+import axios from 'axios';
+import baseURL from '../../utils/baseURL';
+import { useForm } from "react-hook-form";
+import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
+import cookie from 'js-cookie';
 
+const Jobs = () => {
 
+  const [data, setData] = useState(null);
 
+  var ftype="JOBS";
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(`${baseURL}/api/filters/${ftype}`);
+      const newData = await response.json();
+      setData(newData);
+    };
+    fetchData();
+  }, []);
 
-import PropTypes from 'prop-types';
-import Head from 'next/head'
+  console.log(data)
 
-const Jobs = (props) => (
+if (data) {
+
+    return (
 
       <div className="tab hide" id="jobs">
         
@@ -36,76 +55,28 @@ const Jobs = (props) => (
         <div className="team_filter job_filter">
           <div className="drop_downs">
             
-            <div className="button-group"> <span className="drop_name">Editor</span>
-              <div className="custom-control custom-checkbox">
-                <input type="checkbox" className="custom-control-input" id="Editor"/>
-                <label className="custom-control-label" for="Editor"></label>
-              </div>
-            </div>
-       
 
-            <div className="button-group"> <span className="drop_name">Movie Maker</span>
-              <div className="custom-control custom-checkbox">
-                <input type="checkbox" className="custom-control-input" id="Movie"/>
-                <label className="custom-control-label" for="Movie"></label>
-              </div>
-            </div>
+           {  data.filter.metadata.map((filter,index) => (
 
-            <div className="button-group"> <span className="drop_name">Web Designer</span>
+
+            <div key={index} className="button-group">
+
+              <span className="drop_name">{filter.key}</span> 
+             
+             {filter.value.map((val,idx) => (
+              
               <div className="custom-control custom-checkbox">
-                <input type="checkbox" className="custom-control-input" id="Web"/>
-                <label className="custom-control-label" for="Web"></label>
-              </div>
+              <input type="checkbox" className="custom-control-input" id={val}/>
+              <label className="custom-control-label" for={val}></label>
+               </div>
+
+            ) )}    
+
             </div>
 
-            <div className="button-group"> <span className="drop_name">Nurtitionist</span>
-              <div className="custom-control custom-checkbox">
-                <input type="checkbox" className="custom-control-input" id="Nurtitionist"/>
-                <label className="custom-control-label" for="Nurtitionist"></label>
-              </div>
-            </div>
 
-            <div className="button-group"> <span className="drop_name">Staff</span>
-              <div className="custom-control custom-checkbox">
-                <input type="checkbox" className="custom-control-input" id="Staff"/>
-                <label className="custom-control-label" for="Staff"></label>
-              </div>
-            </div>
+            ) ) }
 
-            <div className="button-group"> <span className="drop_name">Shoutcaster</span>
-              <div className="custom-control custom-checkbox">
-                <input type="checkbox" className="custom-control-input" id="Shoutcaster"/>
-                <label className="custom-control-label" for="Shoutcaster"></label>
-              </div>
-            </div>
-
-            <div className="button-group"> <span className="drop_name">Manager</span>
-              <div className="custom-control custom-checkbox">
-                <input type="checkbox" className="custom-control-input" id="Manager"/>
-                <label className="custom-control-label" for="Manager"></label>
-              </div>
-            </div>
-
-            <div className="button-group"> <span className="drop_name">Psychologist</span>
-              <div className="custom-control custom-checkbox">
-                <input type="checkbox" className="custom-control-input" id="Psychologist"/>
-                <label className="custom-control-label" for="Psychologist"></label>
-              </div>
-            </div>
-
-            <div className="button-group"> <span className="drop_name">Cxo</span>
-              <div className="custom-control custom-checkbox">
-                <input type="checkbox" className="custom-control-input" id="Cxo"/>
-                <label className="custom-control-label" for="Cxo"></label>
-              </div>
-            </div>
-
-            <div className="button-group"> <span className="drop_name">Others</span>
-              <div className="custom-control custom-checkbox">
-                <input type="checkbox" className="custom-control-input" id="Others"/>
-                <label className="custom-control-label" for="Others"></label>
-              </div>
-            </div>
 
           </div>
 
@@ -147,7 +118,12 @@ const Jobs = (props) => (
       </div>
 
 
+)
 
-);
+}else {
+    return null;
+  }
+
+}
 
 export default Jobs;         

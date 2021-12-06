@@ -1,9 +1,11 @@
 
-import PropTypes from 'prop-types';
-import Head from 'next/head'
+import Filters from '../common/Filters';
 
-const Teams = (props) => (
+const Teams = ({user}) => {
 
+
+
+    return (
 
       <div className="tab" id="teams">
 
@@ -31,188 +33,10 @@ const Teams = (props) => (
           </div>
         </div>
         
-        <div className="team_filter">
-          <div className="drop_downs">
-            <div className="button-group">
-              <button type="button" className="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"> 
-              <span className="drop_name">Roles</span> <span className="caret"></span> </button>
-              <ul className="dropdown-menu">
-                <li><a href="#" className="small" data-value="option1" tabIndex="-1">
-                  <input type="checkbox"/>
-                  Sniper</a></li>
-                <li><a href="#" className="small" data-value="option2" tabIndex="-1">
-                  <input type="checkbox"/>
-                  AR</a></li>
-                <li><a href="#" className="small" data-value="option3" tabIndex="-1">
-                  <input type="checkbox"/>
-                  Shotgun</a></li>
-                <li><a href="#" className="small" data-value="option4" tabIndex="-1">
-                  <input type="checkbox"/>
-                  Pistol</a></li>
-                <li><a href="#" className="small" data-value="option5" tabIndex="-1">
-                  <input type="checkbox"/>
-                  Marksman Rifile</a></li>
-                <li><a href="#" className="small" data-value="option6" tabIndex="-1">
-                  <input type="checkbox"/>
-                  SMGs</a></li>
-              </ul>
-            </div>
-            <div className="button-group">
-              <button type="button" className="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"> <span className="drop_name"> REGIONS</span> <span className="caret"></span> </button>
-              <ul className="dropdown-menu">
-                <li><a href="#" className="small" data-value="option1" tabIndex="-1"> Assam
-                  <input type="checkbox"/>
-                  </a></li>
-                <li><a href="#" className="small" data-value="option2" tabIndex="-1"> Arunachal Pradesh
-                  <input type="checkbox"/>
-                  </a></li>
-                <li><a href="#" className="small" data-value="option3" tabIndex="-1"> Karnataka
-                  <input type="checkbox"/>
-                  </a></li>
-                <li><a href="#" className="small" data-value="option4" tabIndex="-1"> Delhi
-                  <input type="checkbox"/>
-                  </a></li>
-                <li><a href="#" className="small" data-value="option5" tabIndex="-1"> Maharasthra
-                  <input type="checkbox"/>
-                  </a></li>
-              </ul>
-            </div>
-            <div className="button-group">
-              <button type="button" className="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"> <span className="drop_name"> TYPE </span> <span className="caret"></span> </button>
-              <ul className="dropdown-menu">
-                <li><a href="#" className="small" data-value="option1" tabIndex="-1">
-                  <input type="checkbox"/>
-                  Casual</a></li>
-                <li><a href="#" className="small" data-value="option2" tabIndex="-1">
-                  <input type="checkbox"/>
-                  Semi-pro</a></li>
-                <li><a href="#" className="small" data-value="option3" tabIndex="-1">
-                  <input type="checkbox"/>
-                  Pro</a></li>
-                <li><a href="#" className="small" data-value="option4" tabIndex="-1">
-                  <input type="checkbox"/>
-                  Local Lans</a></li>
-              </ul>
-            </div>
-            <div className="button-group">
-              <button type="button" className="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"> <span className="drop_name"> PLATFORM</span> <span className="caret"></span> </button>
-              <ul className="dropdown-menu">
-                <li><a href="#" className="small" data-value="option1" tabIndex="-1">
-                  <input type="checkbox"/>
-                  PC</a></li>
-                <li><a href="#" className="small" data-value="option2" tabIndex="-1">
-                  <input type="checkbox"/>
-                  Console</a></li>
-                <li><a href="#" className="small" data-value="option3" tabIndex="-1">
-                  <input type="checkbox"/>
-                  Mobile</a></li>
-              </ul>
-            </div>
-            <div className="button-group">
-              <button type="button" className="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"> <span className="drop_name"> ELO</span> <span className="caret"></span> </button>
-              <ul className="dropdown-menu">
-                <li><a href="#" className="small" data-value="option1" tabIndex="-1">
-                  <input type="checkbox"/>
-                  Less than 1500</a></li>
-                <li><a href="#" className="small" data-value="option2" tabIndex="-1">
-                  <input type="checkbox"/>
-                  1500-2500</a></li>
-                <li><a href="#" className="small" data-value="option3" tabIndex="-1">
-                  <input type="checkbox"/>
-                  Greater then 25000</a></li>
-              </ul>
-            </div>
-            <div className="button-group">
-              <button type="button" className="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"> <span className="drop_name"> TIMING</span> <span className="caret"></span> </button>
-              <ul className="dropdown-menu">
-                <li><a href="#" className="small" data-value="option1" tabIndex="-1">
-                  <input type="checkbox"/>
-                  TIMING</a></li>
-                <li><a href="#" className="small" data-value="option2" tabIndex="-1">
-                  <input type="checkbox"/>
-                  TIMING</a></li>
-                <li><a href="#" className="small" data-value="option3" tabIndex="-1">
-                  <input type="checkbox"/>
-                  TIMING</a></li>
-              </ul>
-            </div>
-            <div className="button-group"> <span className="drop_name">Microphone</span>
-              <div className="custom-control custom-checkbox">
-                <input type="checkbox" className="custom-control-input" id="Microphone"/>
-                <label className="custom-control-label" for="Microphone"></label>
-              </div>
-            </div>
-            <div className="button-group"> <span className="drop_name">Verified</span>
-              <div className="custom-control custom-checkbox">
-                <input type="checkbox" className="custom-control-input" id="Verified"/>
-                <label className="custom-control-label" for="Verified"></label>
-              </div>
-            </div>
-            <div className="button-group">
-              <button type="button" className="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"> <span className="drop_name">Language</span> <span className="caret"></span> </button>
-              <ul className="dropdown-menu">
-                <li><a href="#" className="small" data-value="option1" tabIndex="-1">
-                  <input type="checkbox"/>
-                  English</a></li>
-                <li><a href="#" className="small" data-value="option2" tabIndex="-1">
-                  <input type="checkbox"/>
-                  Hindi</a></li>
-                <li><a href="#" className="small" data-value="option3" tabIndex="-1">
-                  <input type="checkbox"/>
-                  Tamil</a></li>
-                <li><a href="#" className="small" data-value="option4" tabIndex="-1">
-                  <input type="checkbox"/>
-                  Bengali</a></li>
-              </ul>
-            </div>
-            <div className="button-group">
-              <button type="button" className="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"> <span className="drop_name">Date</span> <span className="caret"></span> </button>
-              <ul className="dropdown-menu">
-                <li><a href="#" className="small" data-value="option1" tabIndex="-1">
-                  <input type="checkbox"/>
-                  Most Recent</a></li>
-                <li><a href="#" className="small" data-value="option2" tabIndex="-1">
-                  <input type="checkbox"/>
-                  This Month</a></li>
-                <li><a href="#" className="small" data-value="option3" tabIndex="-1">
-                  <input type="checkbox"/>
-                  All</a></li>
-              </ul>
-            </div>
-            <div className="button-group">
-              <button type="button" className="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"> <span className="drop_name">Gender</span> <span className="caret"></span> </button>
-              <ul className="dropdown-menu">
-                <li><a href="#" className="small" data-value="option1" tabIndex="-1">
-                  <input type="checkbox"/>
-                  Male</a></li>
-                <li><a href="#" className="small" data-value="option2" tabIndex="-1">
-                  <input type="checkbox"/>
-                  Female</a></li>
-                <li><a href="#" className="small" data-value="option3" tabIndex="-1">
-                  <input type="checkbox"/>
-                  Others</a></li>
-              </ul>
-            </div>
-            <div className="button-group">
-              <button type="button" className="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"> <span className="drop_name">Paid</span> <span className="caret"></span> </button>
-              <ul className="dropdown-menu">
-                <li><a href="#" className="small" data-value="option1" tabIndex="-1">
-                  <input type="checkbox"/>
-                  Unpaid</a></li>
-                <li><a href="#" className="small" data-value="option2" tabIndex="-1">
-                  <input type="checkbox"/>
-                  Paid</a></li>
-                <li><a href="#" className="small" data-value="option3" tabIndex="-1">
-                  <input type="checkbox"/>
-                  Prize money sharing</a></li>
-              </ul>
-            </div>
-          </div>
-          <div className="filters"> <a href="#" className="close1">X</a>
-            <h3>Filters</h3>
-            <div className="filter_list"> <span className="filter1"> Games: Call of Duty <a href="#" className="close2">X</a></span> <span className="filter1"> Category: LAN <a href="#" className="close2">X</a></span> <span className="filter1"> Type: Pro <a href="#" className="close2">X</a></span> <span className="filter1"> Rank: Legend <a href="#" className="close2">X</a></span> <span className="filter1"> Platform: Mobile <a href="#" className="close2">X</a></span> </div>
-          </div>
-        </div>
+
+          <Filters ftype={"TEAMS"}/>
+
+
      </div>   
         
         <div className="team_row">
@@ -299,7 +123,9 @@ const Teams = (props) => (
       </div>
 
 
-);
+)
+
+}
 
 export default Teams;        
         

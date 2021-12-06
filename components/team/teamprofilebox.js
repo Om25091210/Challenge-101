@@ -139,7 +139,7 @@ if (data) {
     <p>{data.team.description} </p>
 
 
-    <p class="team_pos"><span className="position">REGION:</span> {data.team.region} </p>
+    <p className="team_pos"><span className="position">REGION:</span> {data.team.region} </p>
 
         <div className="team_pos">
 

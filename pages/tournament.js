@@ -14,6 +14,7 @@ import { useRouter } from 'next/router';
 import cookie from 'js-cookie';
 import { useQuery, useMutation } from 'react-query'
 import { searchTournaments, getTournaments } from '../utils/functionsHelper';
+import Filters from '../components/common/Filters';
 
 
 const Tournament = ({ user }) => {
@@ -109,7 +110,9 @@ const Tournament = ({ user }) => {
         </div>
       </div>
       
-      <TeamFilter />
+      
+      <Filters ftype={"TOURNAMENTS"}/>
+
 
     </div>
   </div>

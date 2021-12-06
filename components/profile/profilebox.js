@@ -38,7 +38,6 @@ const ProfileBoxWrap = ({ user }) => {
     e.preventDefault();
     const formdata = new FormData();
     formdata.append('profilePic', profilePic);
-
     try {
       await mutation.mutateAsync(formdata);
       toast.success('User settings have been updated');
