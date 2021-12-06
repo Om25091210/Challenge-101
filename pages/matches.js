@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react'
-import Head from 'next/head'
+import { useState, useEffect } from 'react';
+import Head from 'next/head';
 import MetaDash from '../components/MetaDash';
 import SignedHeader from '../components/SignedHeader';
 import LeftNav from '../components/LeftNav';
@@ -8,55 +8,29 @@ import MatchTable from '../components/matches/matchtable';
 import MatchBoard from '../components/matches/MatchBoard';
 import StatsChart from '../components/matches/statschart';
 
-
 import FooterMain from '../components/FooterMain';
-
+import AllScript from './AllScript';
 
 const Matches = ({ user }) => {
-
   return (
+    <>
+      <MetaDash />
 
-  <div>
+      <SignedHeader user={user} />
 
-    <MetaDash />
+      <LeftNav />
 
-    <SignedHeader user={user}/>
+      <div className="main_middle profile_middle">
+        <div className="match_page">
+          <MatchBoard />
+          <MatchTable />
+          <StatsChart />
+        </div>
+      </div>
 
-    <LeftNav />
+      <AllScript />
+    </>
+  );
+};
 
-
-    <div className="main_middle profile_middle">
-<div className="match_page">
-
-  
-
-  <MatchBoard />
- <MatchTable />
- <StatsChart />
-  
- 
-  
-
-
-
-</div>
-</div>
-
-
-
-<script src="/assets/plugins/global/plugins.bundle.js"/>
-<script src="/assets/js/scripts.bundle.js"/>
-<script src="/assets/plugins/global/plugins.bundle.js"/>
-<script src="/assets/js/dash/bootstrap.bundle.min.js"></script>
-<script src="/assets/js/dash/jquery.mCustomScrollbar.js"/>
-<script src="/assets/js/dash/slick.js"/>
-<script src="/assets/js/dash/custom.js"/>
-
-
-
-</div>
-
-  )
-}
-
-export default Matches
+export default Matches;

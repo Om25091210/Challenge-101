@@ -42,7 +42,7 @@ if (data) {
 
              {filter.value.map((val,idx) => (
 
-                <li key={idx}><a href="#" className="small" data-value="{val}" tabIndex="{idx}">
+                <li key={idx}><a href="#" className="small" data-value={val} tabIndex={idx}>
                   <input type="checkbox"/>
                   {val}</a></li>
 
