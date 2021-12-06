@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react'
-import Head from 'next/head'
+import { useState, useEffect } from 'react';
+import Head from 'next/head';
 import MetaDash from '../components/MetaDash';
 import SignedHeader from '../components/SignedHeader';
 import LeftNav from '../components/LeftNav';
@@ -10,82 +10,90 @@ import Arenas from '../components/discover/Arenas';
 import Jobs from '../components/discover/Jobs';
 
 import FooterMain from '../components/FooterMain';
-
+import AllScript from './AllScript';
 
 const Discover = ({ user }) => {
-
   return (
+    <>
+      <MetaDash />
 
-  <div>
+      <SignedHeader user={user} />
 
-    <MetaDash />
+      <LeftNav />
 
-    <SignedHeader user={user}/>
+      <div className="main_middle profile_middle">
+        <div className="discovery_page">
+          <div className="white_bg">
+            <h2>GAME</h2>
 
-    <LeftNav />
+            <div className="tit">
+              <a href="#">
+                <span>
+                  <b className="icon">
+                    <img src="/assets/media/ranking/console.png" alt="" />
+                  </b>{' '}
+                  Browse Games
+                </span>
+                <i className="fa fa-angle-right" aria-hidden="true"></i>
+                <span className="other_logo">
+                  <img src="/assets/media/team1.png" alt="" />
+                </span>
+                <span className="other_logo">
+                  <img src="/assets/media/team1.png" alt="" />
+                </span>
+              </a>
+            </div>
 
+            <ul className="profile_tab_btn discover_tab_btn">
+              <li className="active">
+                <a href="#!" rel="teams">
+                  TEAMS{' '}
+                </a>
+              </li>
+              <li>
+                <a href="#!" rel="players">
+                  {' '}
+                  PLAYERS
+                </a>
+              </li>
+              <li>
+                <a href="#!" rel="coaches">
+                  {' '}
+                  COACHES{' '}
+                </a>
+              </li>
+              <li>
+                <a href="#!" rel="arenas">
+                  {' '}
+                  ARENAS
+                </a>
+              </li>
+              <li>
+                <a href="#!" rel="jobs">
+                  {' '}
+                  JOBS{' '}
+                </a>
+              </li>
+            </ul>
+          </div>
 
-<div className="main_middle profile_middle"> 
- 
-  <div className="discovery_page">
+          <div className="prfoile_tab_data ">
+            <Teams />
 
-  <div className="white_bg">
-    <h2>GAME</h2>
-   
+            <Players />
 
-    <div className="tit">
-      <a href="#"><span>
-        <b className="icon"><img src="/assets/media/ranking/console.png" alt="" /></b> Browse Games</span>
-         <i className="fa fa-angle-right" aria-hidden="true"></i> 
-         <span className="other_logo"><img src="/assets/media/team1.png" alt="" /></span>
-         <span className="other_logo"><img src="/assets/media/team1.png" alt="" /></span>
-        
-        </a> 
-        
+            <Coaches />
+
+            <Arenas />
+
+            <Jobs />
+          </div>
         </div>
+      </div>
 
+      <AllScript />
+    </>
+  );
+};
 
-    <ul className="profile_tab_btn discover_tab_btn">
-      <li className="active"><a href="#!" rel="teams">TEAMS </a></li>
-      <li><a href="#!" rel="players"> PLAYERS</a></li>
-      <li><a href="#!" rel="coaches"> COACHES </a></li>
-      <li><a href="#!" rel="arenas"> ARENAS</a></li>
-      <li><a href="#!" rel="jobs"> JOBS </a></li>
-    </ul>
-    </div>
-
-	 <div className="prfoile_tab_data ">
-	 
-	 	<Teams/>
-
-	 	<Players/>
-
-	 	<Coaches />
-
-	 	<Arenas />
-
-	 	<Jobs />
-
-	 </div>
-
-   
-    </div>
-  
-</div>
-
-
-<script src="/assets/plugins/global/plugins.bundle.js"/>
-<script src="/assets/js/scripts.bundle.js"/>
-<script src="/assets/plugins/global/plugins.bundle.js"/>
-<script src="/assets/js/dash/bootstrap.bundle.min.js"></script>
-<script src="/assets/js/dash/jquery.mCustomScrollbar.js"/>
-<script src="/assets/js/dash/slick.js"/>
-<script src="/assets/js/dash/custom.js"/>
-
-
-</div>
-
-  )
-}
-
-export default Discover
+export default Discover;

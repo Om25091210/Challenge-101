@@ -1,67 +1,54 @@
-import { useState, useEffect } from 'react'
-import Head from 'next/head'
+import { useState, useEffect } from 'react';
+import Head from 'next/head';
 import MetaDash from '../components/MetaDash';
 import SignedHeader from '../components/SignedHeader';
 import LeftNav from '../components/LeftNav';
 import Date from '../components/calendar/date';
 import Match from '../components/calendar/match';
-
-
 import FooterMain from '../components/FooterMain';
-
+import AllScript from './AllScript';
 
 const Calendar = ({ user }) => {
-
   return (
+    <>
+      <MetaDash />
 
-  <div>
+      <SignedHeader user={user} />
 
-    <MetaDash />
+      <LeftNav />
 
-    <SignedHeader user={user}/>
+      <div className="main_middle profile_middle">
+        <div className="calendar_page discovery_page">
+          <div className="white_bg">
+            <h2>GAME</h2>
+            <div className="tit">
+              {' '}
+              <a href="#">
+                <span>
+                  {' '}
+                  <b className="icon">
+                    <img src="/assets/media/ranking/console.png" alt="" />
+                  </b>{' '}
+                  Browse Games
+                </span>
+                <i className="fa fa-angle-right" aria-hidden="true"></i>{' '}
+                <span className="other_logo">
+                  <img src="/assets/media/team1.png" alt="" />
+                </span>{' '}
+                <span className="other_logo">
+                  <img src="/assets/media/team1.png" alt="" />
+                </span>{' '}
+              </a>{' '}
+            </div>
 
-    <LeftNav />
+            <Date />
+          </div>
+        </div>
+      </div>
 
+      <AllScript />
+    </>
+  );
+};
 
-
-<div className="main_middle profile_middle">
-
-<div className="calendar_page discovery_page">
-    <div className="white_bg">
-      <h2>GAME</h2>
-      <div className="tit"> <a href="#"><span> <b className="icon">
-          <img src="/assets/media/ranking/console.png" alt="" /></b> Browse Games</span> 
-          <i className="fa fa-angle-right" aria-hidden="true" ></i> <span className="other_logo">
-              <img src="/assets/media/team1.png" alt="" /></span> <span className="other_logo">
-                  <img src="/assets/media/team1.png" alt="" /></span> </a> </div>
-
-
-   
-         <Date />
-
-
-
-    </div>
-  </div>
-</div>
-
-
-
-
-
-
-<script src="/assets/plugins/global/plugins.bundle.js"/>
-<script src="/assets/js/scripts.bundle.js"/>
-<script src="/assets/plugins/global/plugins.bundle.js"/>
-<script src="/assets/js/dash/jquery.mCustomScrollbar.js"/>
-<script src="/assets/js/dash/slick.js"/>
-<script src="/assets/js/dash/custom.js"/>
-
-
-
-</div>
-
-  )
-}
-
-export default Calendar
+export default Calendar;

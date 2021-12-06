@@ -6,12 +6,12 @@ import LeftNav from '@components/LeftNav';
 import TeamProfileBox from '@components/team/TeamProfileBox';
 import TeamTabs from '@components/team/TeamTabs';
 import TeamProfileData from '@components/team/TeamProfileData';
-
 import FooterMain from '@components/FooterMain';
+import AllScript from './AllScript';
 
 const Team = ({ user }) => {
   return (
-    <div>
+    <>
       <MetaDash />
 
       <SignedHeader user={user} />
@@ -26,15 +26,8 @@ const Team = ({ user }) => {
         <TeamProfileData />
       </div>
 
-      <script src="/assets/plugins/global/plugins.bundle.js" />
-      <script src="/assets/js/scripts.bundle.js" />
-      <script src="/assets/plugins/global/plugins.bundle.js" />
-      <script src="/assets/js/dash/jquery.mCustomScrollbar.js" />
-      <script src="/assets/js/dash/slick.js" />
-      <script src="/assets/js/dash/jquery.fancybox.js" />
-      <script src="/assets/js/dash/jquery.fancybox-buttons.js" />
-      <script src="/assets/js/dash/custom.js" />
-    </div>
+      <AllScript />
+    </>
   );
 };
 
