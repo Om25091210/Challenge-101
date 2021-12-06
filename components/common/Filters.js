@@ -8,7 +8,27 @@ import cookie from 'js-cookie';
 
 const Filters = ({ftype}) => {
 
+
   const [data, setData] = useState(null);
+
+  const [selectedFilters, setSelectedFilters] = useState([]);
+
+  const handleSelectFilter = (event) => {
+
+    const filtered = event.target.value;
+
+    if (!selectedFilters.includes(filtered)) {
+      setSelectedFilters([...selectedFilters, filtered]);
+    } else {
+      setSelectedFilters(
+        selectedFilters.filter((selFilter) => {
+          return selFilter !== filtered;
+        })
+      );
+    }
+
+  };
+
 
 
   useEffect(() => {
@@ -21,6 +41,11 @@ const Filters = ({ftype}) => {
   }, []);
 
   console.log(data)
+
+
+
+
+  console.log(selectedFilters);
 
 if (data) {
 
@@ -43,7 +68,7 @@ if (data) {
              {filter.value.map((val,idx) => (
 
                 <li key={idx}><a href="#" className="small" data-value={val} tabIndex={idx}>
-                  <input type="checkbox"/>
+                  <input type="checkbox" checked={selectedFilters.includes(val)} onChange={handleSelectFilter} id={val} value={val}/>
                   {val}</a></li>
 
             ) )}    
@@ -72,11 +97,24 @@ if (data) {
 
           <div className="filters"> <a href="#" className="close1">X</a>
             <h3>Filters</h3>
-            <div className="filter_list"> <span className="filter1"> Games: Call of Duty <a href="#" className="close2">X</a></span> <span className="filter1"> Category: LAN <a href="#" className="close2">X</a></span> <span className="filter1"> Type: Pro <a href="#" className="close2">X</a></span> <span className="filter1"> Rank: Legend <a href="#" className="close2">X</a></span> <span className="filter1"> Platform: Mobile <a href="#" className="close2">X</a></span> </div>
+            <div className="filter_list"> <span className="filter1"> Games: Call of Duty <a href="#" className="close2">X</a></span> <span className="filter1"> Category: LAN <a href="#" className="close2">X</a></span> <span className="filter1"> Type: Pro <a href="#" className="close2">X</a></span> 
+
+
+             {selectedFilters.map((val,idx) => (
+
+            <span className="filter1"> {val} <a href="#" className="close2">X</a></span> 
+
+              ) )} 
+
+            </div>
+          
+
+           
+
           </div>
 
         </div>
-        
+
 )
 
 }else {
