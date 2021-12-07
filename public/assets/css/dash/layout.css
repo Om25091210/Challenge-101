@@ -640,6 +640,11 @@ ul.top_menu li.profile a{ display: inline-block;}
 }
 
 
+.sender_box .img_cont_msg{ float: right;}
+.receiver_box .img_cont_msg{ float: left;}
+.sender_box .msg_cotainer_send{ width: 84%; }
+.receiver_box .msg_cotainer{ width: 84%; margin-left: 40px;}
+
   /* -------------Profile css --------------------- */
 
   .main_middle.profile_middle{ width: 1200px;}
