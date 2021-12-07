@@ -29,6 +29,14 @@ h2{ font-size: 18px; font-weight: 700; }
 .overlay.show{display: block;}
 
 /* ------- Header css -------------- */
+
+.without_login_header{ text-align: right;}
+.without_login_header ul {
+  display: flex;
+  justify-content: right;
+  padding: 25px;
+}
+
 header{position:fixed;top:0;width:100%;height:79px;background:#fff;z-index:12;}
 header .logo{    width: 100px; text-align: center;
   display: block;
@@ -640,6 +648,11 @@ ul.top_menu li.profile a{ display: inline-block;}
 }
 
 
+.sender_box .img_cont_msg{ float: right;}
+.receiver_box .img_cont_msg{ float: left;}
+.sender_box .msg_cotainer_send{ width: 84%; }
+.receiver_box .msg_cotainer{ width: 84%; margin-left: 40px;}
+
   /* -------------Profile css --------------------- */
 
   .main_middle.profile_middle{ width: 1200px;}
@@ -947,7 +960,7 @@ transition: transform .5s ease, -webkit-transform .5s ease;
 .team_filter{display: flex;justify-content: space-between;align-items: center;align-content: center; margin-top:50px;}
 
 .team_filter .dropdown-menu a{ font-size: 13px; font-weight: 300; color:#000}
-.team_filter  .btn { border-right:1px solid #ddd}
+.team_filter .btn { border-right:1px solid #ddd; background: none;  color:#000; border-radius: 0; padding:0 10px;}
 .team_filter .dropdown-menu input{ margin-left: 10px;}
 
 .team_filter .drop_downs {
