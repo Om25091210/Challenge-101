@@ -11,8 +11,7 @@ const SignedHeader = ({
   setChats,
   sendMessage,
   messages,
-  messagesWith,
-  connectedUsers
+  messagesWith
 }) => {
   if (user) {
     return (
@@ -112,13 +111,12 @@ const SignedHeader = ({
                     />
                   </g>
                 </svg>{' '}
-                <span className="pop">{chats.length}</span>
+                <span className="pop">2</span>
               </a>
 
               <ChatSection
                 user={user}
                 messagesWith={messagesWith}
-                connectedUsers={connectedUsers}
                 chats={chats}
                 setChats={setChats}
                 sendMessage={sendMessage}

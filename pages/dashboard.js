@@ -200,7 +200,6 @@ const Dashboard = ({ user }) => {
       <SignedHeader
         user={user}
         messagesWith={chat}
-        connectedUsers={connectedUsers}
         chats={chats}
         setChats={setChats}
         sendMessage={sendMessage}

@@ -12,17 +12,10 @@ const ChatSection = ({
   setChats,
   sendMessage,
   messages,
-  messagesWith,
-  connectedUsers
+  messagesWith
 }) => {
   const [messager, setMessager] = useState({});
 
-  const isOnline =
-    connectedUsers.length > 0 &&
-    connectedUsers.filter((user) => user.userId === chat.messagesWith).length >
-      0;
-
-  console.log(isOnline);
   useEffect(() => {
     axios
       .get(`${baseURL}/api/chats/user/${messagesWith}`, {
@@ -97,13 +90,7 @@ const ChatSection = ({
 
                   <div>
                     <h6 className="mb-1">Chat with {messager.name}</h6>
-                    <p
-                      className={
-                        isOnline ? 'mb-0 text-success' : 'mb-0 text-fail'
-                      }
-                    >
-                      Online
-                    </p>
+                    <p className={'mb-0 text-success'}>Online</p>
                   </div>
 
                   <div className="dropdown">
