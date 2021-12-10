@@ -1563,7 +1563,7 @@ transition: transform .5s ease, -webkit-transform .5s ease;
 
 .sponsers_box { float: left; width: 100%;}
 .sponsers_box ul{ display: flex;  color: #afafbc;     flex-wrap: wrap; }
-.sponsers_box ul li{ flex:0 0 33.333%; border-right: 1px solid #3d3d41; border-bottom: 1px solid #3d3d41;}
+.sponsers_box ul li{ flex:0 0 33.333%; border-right: 1px solid #3d3d41; border-bottom: 1px solid #3d3d41;background: #14141c;}
 .sponsers_box ul li .sponser_name{ background: #0c0c11; text-align: center; padding: 20px;}
 .sponsers_box .sponser_data{ padding: 40px 20px; text-align: center; background: #14141c;}
 .sponsers_box .sponser_data span{color:#fff; font-size: 11px; text-transform: uppercase; padding: 4px 10px; display: inline-block; border-radius: 5px;}

@@ -1,5 +1,6 @@
 import PoUp from './Poup';
 import TeamAbout from './TeamAbout'
+import TeamSponsors from './TeamSponsors'
 
 const TeamProfileData = ({user, data}) => {
   
@@ -1143,103 +1144,8 @@ const TeamProfileData = ({user, data}) => {
 
       <TeamAbout data={data}/>
 
-      <div className="tab hide" id="sponsors">
-        <div className="sponsers_box">
-          <ul>
-            <li>
-              <div className="sponser_name">
-                <img src="/assets/media/sponsers/1.jpg" alt="" />
-              </div>
-              <div className="sponser_data">
-                {' '}
-                <span className="head_spons_bg">Head Sponsor</span>
-                <p>
-                  Roccat is the world 4yh-largest PC vendor by 2015 unit
-                  sales.[3] Asus appers in BusinessWeek's infoTech 100 and
-                  Asia's Top IT Companies rankings, and it ranked first in the
-                  IT.
-                </p>
-              </div>
-            </li>
-            <li>
-              <div className="sponser_name">
-                <img src="/assets/media/sponsers/2.jpg" alt="" />
-              </div>
-              <div className="sponser_data">
-                {' '}
-                <span className="sponser_bg">Head Sponsor</span>
-                <p>
-                  Roccat is the world 4yh-largest PC vendor by 2015 unit
-                  sales.[3] Asus appers in BusinessWeek's infoTech 100 and
-                  Asia's Top IT Companies rankings, and it ranked first in the
-                  IT.
-                </p>
-              </div>
-            </li>
-            <li>
-              <div className="sponser_name">
-                <img src="/assets/media/sponsers/3.jpg" alt="" />
-              </div>
-              <div className="sponser_data">
-                {' '}
-                <span className="promotor_bg">Head Sponsor</span>
-                <p>
-                  Roccat is the world 4yh-largest PC vendor by 2015 unit
-                  sales.[3] Asus appers in BusinessWeek's infoTech 100 and
-                  Asia's Top IT Companies rankings, and it ranked first in the
-                  IT.
-                </p>
-              </div>
-            </li>
+      <TeamSponsors data={data} />
 
-            <li>
-              <div className="sponser_name">
-                <img src="/assets/media/sponsers/4.jpg" alt="" />
-              </div>
-              <div className="sponser_data">
-                {' '}
-                <span className="head_spons_bg">Head Sponsor</span>
-                <p>
-                  Roccat is the world 4yh-largest PC vendor by 2015 unit
-                  sales.[3] Asus appers in BusinessWeek's infoTech 100 and
-                  Asia's Top IT Companies rankings, and it ranked first in the
-                  IT.
-                </p>
-              </div>
-            </li>
-            <li>
-              <div className="sponser_name">
-                <img src="/assets/media/sponsers/5.jpg" alt="" />
-              </div>
-              <div className="sponser_data">
-                {' '}
-                <span className="sponser_bg">Head Sponsor</span>
-                <p>
-                  Roccat is the world 4yh-largest PC vendor by 2015 unit
-                  sales.[3] Asus appers in BusinessWeek's infoTech 100 and
-                  Asia's Top IT Companies rankings, and it ranked first in the
-                  IT.
-                </p>
-              </div>
-            </li>
-            <li>
-              <div className="sponser_name">
-                <img src="/assets/media/sponsers/6.jpg" alt="" />
-              </div>
-              <div className="sponser_data">
-                {' '}
-                <span className="promotor_bg">Head Sponsor</span>
-                <p>
-                  Roccat is the world 4yh-largest PC vendor by 2015 unit
-                  sales.[3] Asus appers in BusinessWeek's infoTech 100 and
-                  Asia's Top IT Companies rankings, and it ranked first in the
-                  IT.
-                </p>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
       <div className="tab hide" id="rigs">
         <div className="rigs">
           <ul>

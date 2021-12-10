@@ -173,7 +173,7 @@ const TeamProfileBox = ({user, data}) => {
              data.sponsors.map((item,index) => (
 
             <li key={index}><img src=
-            {item.logoUrl} alt=""/> <p>{item.name}</p></li>
+            {item.imgUrl} alt=""/> </li>
             ) ) 
 
             )}          
