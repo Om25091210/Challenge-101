@@ -12,10 +12,12 @@ const Filters = ({ftype}) => {
   const [data, setData] = useState(null);
 
   const [selectedFilters, setSelectedFilters] = useState([]);
+  const [selectedMapFilters, setSelectedMapFilters] = useState([]);
 
   const handleSelectFilter = (event) => {
 
     const filtered = event.target.value;
+    const name = event.target.name;
 
     if (!selectedFilters.includes(filtered)) {
       setSelectedFilters([...selectedFilters, filtered]);
@@ -26,6 +28,19 @@ const Filters = ({ftype}) => {
         })
       );
     }
+
+    var found = selectedMapFilters.find(element => element.key.includes(name));
+    console.log(found);
+    if (found) {
+      setSelectedMapFilters([{"key":name, "values":selectedFilters}]);
+
+    } else {
+          var arr = found.values;
+          arr.push(filtered);
+          setSelectedMapFilters([{"key":name, "values":arr}]);
+        
+    }
+
 
   };
 
@@ -40,12 +55,14 @@ const Filters = ({ftype}) => {
     fetchData();
   }, []);
 
-  console.log(data)
+
+
+  console.log(selectedMapFilters)
 
 
 
 
-  console.log(selectedFilters);
+
 
 if (data) {
 
@@ -68,7 +85,7 @@ if (data) {
              {filter.value.map((val,idx) => (
 
                 <li key={idx}><a href="#" className="small" data-value={val} tabIndex={idx}>
-                  <input type="checkbox" checked={selectedFilters.includes(val)} onChange={handleSelectFilter} id={val} value={val}/>
+                  <input type="checkbox" name={filter.key} checked={selectedFilters.includes(val)} onChange={handleSelectFilter} id={val} value={val}/>
                   {val}</a></li>
 
             ) )}    

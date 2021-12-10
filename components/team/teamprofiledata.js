@@ -1,6 +1,10 @@
 import PoUp from './Poup';
+import TeamAbout from './TeamAbout'
 
-const TeamProfileData = (props) => (
+const TeamProfileData = ({user, data}) => {
+  
+  return (
+
   <>
     <div className="prfoile_tab_data white_bg">
       <div className="tab" id="overview">
@@ -88,14 +92,14 @@ const TeamProfileData = (props) => (
               <div className="squad_btn">
                 {' '}
                 <span className="cuntry_name">INDIA</span>{' '}
-                <a href="javascript:void(0)" className="view">
+                <a href="#!" className="view">
                   VIEW TEAM{' '}
                   <i className="fa fa-long-arrow-right" aria-hidden="true"></i>
                 </a>{' '}
               </div>
               <div className="squads_details">
                 {' '}
-                <a href="javascript:void(0)" className="squads_close">
+                <a href="#!" className="squads_close">
                   X
                 </a>
                 <div className="banner">
@@ -186,14 +190,14 @@ const TeamProfileData = (props) => (
               <div className="squad_btn">
                 {' '}
                 <span className="cuntry_name">INDIA</span>
-                <a href="javascript:void(0)" className="view">
+                <a href="#!" className="view">
                   VIEW TEAM{' '}
                   <i className="fa fa-long-arrow-right" aria-hidden="true"></i>
                 </a>{' '}
               </div>
               <div className="squads_details">
                 {' '}
-                <a href="javascript:void(0)" className="squads_close">
+                <a href="#!" className="squads_close">
                   X
                 </a>
                 <div className="banner">
@@ -1136,89 +1140,9 @@ const TeamProfileData = (props) => (
       <div className="tab hide" id="jobs">
         jobs
       </div>
-      <div className="tab hide" id="about">
-        <div className="our_team">
-          <div className="about_team">
-            <div className="about">
-              <h2>OUR TEAM</h2>
-              <p>
-                From playing Nintendo, action and shooter games we have <br />
-                always wanted to achieve something in the big
-              </p>
-            </div>
-            <div className="team_mails">
-              <h3>
-                <i className="fa fa-home" aria-hidden="true"></i> Mangement
-              </h3>
-              <a href="#">office@pixiesquad.com</a>{' '}
-            </div>
-            <div className="team_mails">
-              <h3>
-                <i className="fa fa-life-ring" aria-hidden="true"></i> Support
-              </h3>
-              <a href="#">help@pixiesquad.com</a>{' '}
-            </div>
-            <div className="team_mails">
-              <h3>
-                <i className="fa fa-pencil" aria-hidden="true"></i> Mangement
-              </h3>
-              <a href="#">news@pixiesquad.com</a>{' '}
-            </div>
-          </div>
-          <div className="team_member">
-            <ul>
-              <li>
-                <div className="dp">
-                  {' '}
-                  <img src="/assets/media/user.png" alt="" />{' '}
-                </div>
-                <h3>Coach</h3>
-                <h4>Evan Miles</h4>
-              </li>
-              <li>
-                <div className="dp">
-                  {' '}
-                  <img src="/assets/media/user.png" alt="" />{' '}
-                </div>
-                <h3>Coach</h3>
-                <h4>Evan Miles</h4>
-              </li>
-              <li>
-                <div className="dp">
-                  {' '}
-                  <img src="/assets/media/user.png" alt="" />{' '}
-                </div>
-                <h3> MANAGER</h3>
-                <h4>Evan Miles</h4>
-              </li>
-              <li>
-                <div className="dp">
-                  {' '}
-                  <img src="/assets/media/user.png" alt="" />{' '}
-                </div>
-                <h3>Coach</h3>
-                <h4>Evan Miles</h4>
-              </li>
-              <li>
-                <div className="dp">
-                  {' '}
-                  <img src="/assets/media/user.png" alt="" />{' '}
-                </div>
-                <h3> MASSAGIST</h3>
-                <h4>Evan Miles</h4>
-              </li>
-              <li>
-                <div className="dp">
-                  {' '}
-                  <img src="/assets/media/user.png" alt="" />{' '}
-                </div>
-                <h3>PHYHOLOGIST</h3>
-                <h4>Evan Miles</h4>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
+
+      <TeamAbout data={data}/>
+
       <div className="tab hide" id="sponsors">
         <div className="sponsers_box">
           <ul>
@@ -1457,7 +1381,7 @@ const TeamProfileData = (props) => (
               <ul>
                 <li>
                   {' '}
-                  <a href="javascript:void(0)">Qty</a>
+                  <a href="#!">Qty</a>
                   <div className="content size-chart qty mCustomScrollbar">
                     <ul>
                       <li>1</li>
@@ -1474,10 +1398,10 @@ const TeamProfileData = (props) => (
           <div className="row cart-row">
             <div className="col-lg-12 col-md-12 col-xs-12">
               {' '}
-              <a href="javascript:void(0)" className="btn btn-primary">
+              <a href="#!" className="btn btn-primary">
                 <i className="fa fa-shopping-basket"></i> Add To Bag{' '}
               </a>{' '}
-              <a href="javascript:void(0)" className="btn btn-primary">
+              <a href="#!" className="btn btn-primary">
                 <i className="fa fa-heart-o" aria-hidden="true"></i> Add To
                 wishlist{' '}
               </a>{' '}
@@ -1490,5 +1414,7 @@ const TeamProfileData = (props) => (
     <PoUp />
   </>
 );
+
+}
 
 export default TeamProfileData;

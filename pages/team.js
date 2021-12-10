@@ -8,8 +8,26 @@ import TeamTabs from '@components/team/TeamTabs';
 import TeamProfileData from '@components/team/TeamProfileData';
 import FooterMain from '@components/FooterMain';
 import AllScript from './AllScript';
+import baseURL from '../utils/baseURL';
 
 const Team = ({ user }) => {
+
+  const [data, setData] = useState(null);
+  const teamId = '6191520fd802397e7abf218d';
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(`${baseURL}/api/teams/${teamId}`);
+      const newData = await response.json();
+      setData(newData);
+    };
+    fetchData();
+  }, []);
+
+  console.log(data)
+
+if (data) {
+
   return (
     <>
       <MetaDash />
@@ -19,16 +37,18 @@ const Team = ({ user }) => {
       <LeftNav />
 
       <div className="main_middle profile_middle">
-        {/* <TeamProfileBox />  */}
+         <TeamProfileBox user={user} data={data}/>  
 
-        <TeamTabs />
+        <TeamTabs user={user} data={data}/>
 
-        <TeamProfileData />
+        <TeamProfileData user={user} data={data}/>
       </div>
 
       <AllScript />
     </>
-  );
+  ) } else {
+    return null;
+  }
 };
 
 export default Team;

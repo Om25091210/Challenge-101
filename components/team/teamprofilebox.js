@@ -6,23 +6,8 @@ import { useForm } from "react-hook-form";
 import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
 import cookie from 'js-cookie';
 
-const TeamProfileBox = ({user}) => {
+const TeamProfileBox = ({user, data}) => {
 
-  const [data, setData] = useState(null);
-  const teamId = '6191520fd802397e7abf218d';
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch(`${baseURL}/api/teams/${teamId}`);
-      const newData = await response.json();
-      setData(newData);
-    };
-    fetchData();
-  }, []);
-
-  console.log(data)
-
-if (data) {
 
   return (
 
@@ -38,7 +23,7 @@ if (data) {
 
   <div className="profile_pic">
 
-    <img src={data.team.logoUrl} alt=""/>
+    <img src={data.team.imgUrl} alt=""/>
 
   </div>
 
@@ -208,9 +193,6 @@ if (data) {
 
 
   ) 
-} else {
-    return null;
-  }
 
 }
 

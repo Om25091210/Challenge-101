@@ -1651,7 +1651,7 @@ const ProfileData = ({ user }) => {
                 <ul>
                   <li>
                     {' '}
-                    <a href="javascript:void(0)">Qty</a>
+                    <a href="#!">Qty</a>
                     <div className="content size-chart qty mCustomScrollbar">
                       <ul>
                         <li>1</li>
@@ -1668,10 +1668,10 @@ const ProfileData = ({ user }) => {
             <div className="row cart-row">
               <div className="col-lg-12 col-md-12 col-xs-12">
                 {' '}
-                <a href="javascript:void(0)" className="btn btn-primary">
+                <a href="#!" className="btn btn-primary">
                   <i className="fa fa-shopping-basket"></i> Add To Bag{' '}
                 </a>{' '}
-                <a href="javascript:void(0)" className="btn btn-primary">
+                <a href="#!" className="btn btn-primary">
                   <i className="fa fa-heart-o" aria-hidden="true"></i> Add To
                   wishlist{' '}
                 </a>{' '}

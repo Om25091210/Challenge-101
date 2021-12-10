@@ -1,7 +1,10 @@
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 
-const TeamTabs = (props) => (
+const TeamTabs = () => {
+
+  return (
+
   <ul className="profile_tab_btn">
     <li className="active">
       <a href="#!" rel="overview">
@@ -69,6 +72,7 @@ const TeamTabs = (props) => (
       </a>
     </li>
   </ul>
-);
+)
+}
 
 export default TeamTabs;
