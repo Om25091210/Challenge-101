@@ -9,7 +9,7 @@ const TeamTabs = (props) => (
       </a>
     </li>
     <li>
-      <a href="#!" rel="Squads">
+      <a href="#!" rel="squads">
         Squads
       </a>
     </li>

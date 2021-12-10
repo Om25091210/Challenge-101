@@ -1459,3 +1459,115 @@ transition: transform .5s ease, -webkit-transform .5s ease;
  .calendar_box .react-datepicker__month-text:hover, 
  .calendar_box .react-datepicker__quarter-text:hover,
  .calendar_box .react-datepicker__year-text:hover{ border-radius: 0;}
+
+
+ /* ------------------ Video section -------------------- */
+
+ .video_box{ float: left; width: 100%;}
+ .video_box li{ float: left; width:32%; margin-right: 2%; margin-bottom: 30px; background: #392d49; border-radius: 5px; height: 380px; overflow: hidden;}
+ .video_box li .video{ float: left; width: 100%;}
+ .video_box li .video img{ width: 100%;}
+ .video_box li:nth-child(3n){ margin-right: 0;}
+
+ .video_box li .bottom_data{ float: left; width: 100%; padding: 20px; color: #fff;}
+ .video_box li .bottom_data a{ transform: skew(-14deg, 0deg);display: inline-block; background: #1bd75e; color: #fff; padding: 4px 8px; font-size: 11px; text-transform: uppercase; font-weight: 700;}
+ .video_box li .bottom_data a.red{ background: #f92552;}
+ .video_box li .bottom_data a.yellow{ background: #ffb400;}
+ .video_box li .bottom_data h2{ font-size: 15px; font-style: italic; padding:10px 0;}
+ .video_box li .bottom_data span{ font-size: 11px; margin-right: 10px; color:#a9a0b1}
+ .video_box li .bottom_data span i{ margin-right: 5px;}
+
+ .videocss iframe{ width: 100%; height: 400px;}
+
+   /* ------------------ particepents section -------------------- */
+
+ .participants{ float: left; width: 100%;}
+ .participants .banner{ position: relative; float: left; width: 100%; margin-bottom: 30px;}
+ .participants .banner:after{ content: ""; left: 0; top:0; position: absolute; width: 100%; height: 100%; background: rgba(0,0,0,0.6);}
+ .participants .banner h2{ position: absolute; left: 0; right: 0; text-align: center; top:40%; color: #fff; z-index: 999;}
+ .participants .banner img{ display: block;}
+
+ .groupds_box{ float: left; width: 100%; display: flex; justify-content: space-between;}
+ .groupds_box .group{ width: 48%;}
+ .groupds_box .title_bg{ background: #6931f9; padding: 8px 20px; width: 100%; display: block; color: #fff; text-transform: uppercase;}
+ .group b{ width: 30px; display: inline-block; text-align: center;}
+ .group td img{ display: inline-block; vertical-align: middle;}
+ .group td strong{ font-size: 14px; font-weight: 400; padding: 0 0 0 10px; text-transform: capitalize;}
+
+ .group tr {background-color: rgba(0,0,0,.05);     border-top: 5px solid #fff; border-bottom: 5px solid #fff;}
+
+
+ /* ------------------ matches section -------------------- */
+
+.matches_box .heads_bg{ background: #ddd; font-size: 20px; width: 100%; padding: 20px 0 20px 50px; border-radius: 5px; text-transform: uppercase;}
+.matches_box .heads_bg span{ float: right; padding-right:40px; font-size: 13px;}
+.matches_box .heads_bg span b{ background: #00a651; border-radius: 10px; padding: 3px 7px; font-size: 11px;}
+.matches_box .match_row{ border-radius: 5px; display: flex;justify-content: space-between;align-items: center; background: #ddd; padding: 40px; margin: 20px 0;}
+.match_row .team_a, .match_row .team_b{ display: flex;     align-items: center;}
+.match_row .team_name{ margin:0 20px;}
+.match_row .team_name h3{ font-size: 18px; padding-bottom: 10px;}
+.match_row .team_name a{}
+.match_row .team_b{flex-direction: row-reverse;}
+.match_row .team_vs{ text-align: center;}
+.match_row .team_vs p{ font-size: 14px; text-transform: uppercase;}
+.match_row .team_vs a{  color: #6931f9; font-size: 14px; letter-spacing: 0.030em;}
+.match_row .team_vs .vs{ font-size: 40px; color: #000; font-weight: 700; padding: 20px 0;}
+
+.next_matches{ background: #f7f7f7; border-radius: 5px; overflow: hidden;}
+.next_matches .bdr_clr_green{ border-left: 5px solid #00ff5b; padding: 25px 15px;}
+.next_matches .stats_table{margin-top: 0;}
+.next_matches .stats_table td{ border-bottom:1px solid #dee2e6; border-top:1px solid #dee2e6}
+.next_matches a{ background: #4b3b60; padding: 5px 20px; border-radius: 20px; color: #fff;}
+.next_matches a.sold{ background: #30263d; color: #5c5368;}
+
+
+/* ------------ Our Team ----------------------- */
+
+.our_team{ float: left; width: 100%;}
+.about_team{ display: flex; justify-content: space-between;}
+.about_team h2{ padding-bottom: 20px;}
+.about{ margin-right: 5%;}
+.team_mails{ background: #3b3b3b; padding: 20px; color: #fff; border-radius: 5px; width: 200px; margin-left: 20px; font-size: 14px;}
+.team_mails a{ color: #fff; font-size: 12px;;}
+
+.team_member{ float: left;  width: 100%; margin: 20px 0; border-top:1px solid #636363; margin-top: 50px; }
+.team_member ul{ margin-top: 50px;}
+.team_member li{ float: left; width: 22%; margin-right: 4%; margin-bottom: 30px; text-align: center;}
+.team_member li .dp{ float: left; width: 100%; height: 200px;   background: #0d0c12;overflow: hidden; margin-bottom: 20px; border-radius: 5px;}
+.team_member li .dp img{ width: 100%;  object-fit: cover;}
+.team_member li:nth-child(4n){ margin-right: 0;}
+.team_member li h3{  font-size: 15px; font-size: 500; padding-bottom: 10px;}
+.team_member li h4{ font-size: 16px; font-weight: 700;}
+
+/*-------------- Rigs ----------------- */
+
+.rigs{ float: left; width: 100%;}
+.rigs li{ float: left; width: 32%; margin-right: 2%; height: 220px; padding: 20px; margin-bottom: 20px; background: #202028; position: relative;} 
+.rigs li:nth-child(3n){ margin-right: 0;}
+.rigs li .lft_prod_det{ float: left; width: 45%; text-align: left; color: #fff;  }
+.rigs li .lft_prod_det .new{ background: #8dbe0a; padding: 5px; width: 50px; display: block; text-align: center;}
+.rigs li .lft_prod_det .prod_brand{ font-size: 17px; font-weight: 700; padding: 5px 0 0 0; text-transform: uppercase;}
+.rigs li .lft_prod_det .prod_name{ color: #60584a;}
+.rigs li .lft_prod_det  a{ background: #6931f9; text-transform: uppercase; font-weight: 700; padding: 15px 40px; position: absolute; left: 0; bottom: 0; color: #fff;}
+.rigs li .prod_img{    float: right;
+ width: 45%;
+ text-align: center;
+ height: 100%;
+ vertical-align: middle;
+ display: flex;
+ align-items: center;
+ justify-content: flex-end;}
+.rigs li .prod_img img{ width: 70%;}
+
+/* ----------Sponsers ------------ */
+
+.sponsers_box { float: left; width: 100%;}
+.sponsers_box ul{ display: flex;  color: #afafbc;     flex-wrap: wrap; }
+.sponsers_box ul li{ flex:0 0 33.333%; border-right: 1px solid #3d3d41; border-bottom: 1px solid #3d3d41;}
+.sponsers_box ul li .sponser_name{ background: #0c0c11; text-align: center; padding: 20px;}
+.sponsers_box .sponser_data{ padding: 40px 20px; text-align: center; background: #14141c;}
+.sponsers_box .sponser_data span{color:#fff; font-size: 11px; text-transform: uppercase; padding: 4px 10px; display: inline-block; border-radius: 5px;}
+.sponsers_box .sponser_data .head_spons_bg{ background: #de442b; }
+.sponsers_box .sponser_data .sponser_bg{ background:#433e59}
+.sponsers_box .sponser_data .promotor_bg{ background:#39bffd}
+.sponsers_box .sponser_data p{ text-align: left; margin-top: 20px; font-size: 14px; line-height: 30px;}
