@@ -1571,3 +1571,39 @@ transition: transform .5s ease, -webkit-transform .5s ease;
 .sponsers_box .sponser_data .sponser_bg{ background:#433e59}
 .sponsers_box .sponser_data .promotor_bg{ background:#39bffd}
 .sponsers_box .sponser_data p{ text-align: left; margin-top: 20px; font-size: 14px; line-height: 30px;}
+
+/* -----------------Gallery ------------ */
+
+.gallery_box{ float: left; width: 100%;}
+
+.imagess_box{ float: left; width: 32%; margin-bottom: 20px; background: #ddd; border-radius: 5px; overflow: hidden; margin-right: 2%;}
+.imagess_box:nth-child(3n){ margin-right: 0;}
+.imagess_box li{ display: none;}
+.imagess_box li img{ width: 100%; object-fit: cover;}
+.imagess_box li:nth-child(1){display: block; float: left; width: 100%; margin-bottom:5px;}
+.imagess_box li:nth-child(2){display: block; float: left; width: 32%; margin-right: 2%;}
+.imagess_box li:nth-child(3){display: block;float: left; width: 32%; margin-right: 2%;}
+.imagess_box li:nth-child(4){display: block;float: left; width: 32%;}
+
+.imagess{ float: left; width: 100%; position: relative;}
+.imagess .total_images{     position: absolute;
+  bottom: 4px;
+  right: 1px;
+  background: rgba(0,0,0,0.5);
+  width: 112px;
+  height: 108px;
+  color: #fff;
+  text-align: center;
+  padding-top: 30px;
+  font-size: 35px;}
+
+  .imagess_box .bottom_data{     display: flex;
+    width: 100%;
+    padding: 20px;
+    align-items: center;
+    justify-content: space-around;}
+
+    .imagess_box .bottom_data .img_icon{ width: 70px; height: 50px; border-radius: 50%; border:5px solid #00ff5b; text-align: center;}
+    .imagess_box .bottom_data .img_icon i{ font-size: 20px; padding-top: 27%;}
+    .imagess_box .bottom_data h2{ font-size: 15px; margin-left: 20px;}
+    .imagess_box .bottom_data .update{ font-size: 11px; color: #8a7f95;}

@@ -30,7 +30,7 @@ const ProfileData = ({ user }) => {
   return (
     <>
       <div className="prfoile_tab_data">
-        <div className="tab" id="feed">
+        <div className="tab hide" id="feed">
           <div className="profile_left_post">
             <div className="post">
               {profile.map((pro) => (
@@ -638,8 +638,596 @@ const ProfileData = ({ user }) => {
           {' '}
           steams steams steams steams{' '}
         </div>
-        <div className="tab hide" id="photos">
-          photos photos photos photos{' '}
+        <div className="tab " id="photos">
+          <div className="gallery_box">
+            <div className="imagess_box">
+              <div className="imagess">
+                <ul>
+                  <li>
+                    <a
+                      className="fancybox"
+                      href="/assets/media/gallery/1.jpg"
+                      data-fancybox-group="gallery"
+                      title="Image1"
+                    >
+                      <img src="/assets/media/gallery/1.jpg" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="fancybox"
+                      href="/assets/media/gallery/2.jpg"
+                      data-fancybox-group="gallery"
+                      title="Image2"
+                    >
+                      <img src="/assets/media/gallery/2.jpg" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="fancybox"
+                      href="/assets/media/gallery/3.jpg"
+                      data-fancybox-group="gallery"
+                      title="Image3"
+                    >
+                      <img src="/assets/media/gallery/3.jpg" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="fancybox"
+                      href="/assets/media/gallery/3.jpg"
+                      data-fancybox-group="gallery"
+                      title="Image4"
+                    >
+                      <img src="/assets/media/gallery/3.jpg" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="fancybox"
+                      href="/assets/media/gallery/3.jpg"
+                      data-fancybox-group="gallery"
+                      title="Image5"
+                    >
+                      <img src="/assets/media/gallery/3.jpg" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="fancybox"
+                      href="/assets/media/gallery/1.jpg"
+                      data-fancybox-group="gallery"
+                      title="Image6"
+                    >
+                      <img src="/assets/media/gallery/3.jpg" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="fancybox"
+                      href="/assets/media/gallery/2.jpg"
+                      data-fancybox-group="gallery"
+                      title="Image7"
+                    >
+                      <img src="/assets/media/gallery/3.jpg" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="fancybox"
+                      href="/assets/media/gallery/3.jpg"
+                      data-fancybox-group="gallery"
+                      title="Image8"
+                    >
+                      <img src="/assets/media/gallery/3.jpg" alt="" />
+                    </a>
+                  </li>
+                </ul>
+                <span className="total_images">+10</span>{' '}
+              </div>
+              <div className="bottom_data">
+                {' '}
+                <span className="img_icon">
+                  <i className="fa fa-picture-o" aria-hidden="true"></i>
+                </span>
+                <h2>
+                  New Xenowatch Characters{' '}
+                  <span className="update">Updated:March 12th, 2018</span>
+                </h2>
+              </div>
+            </div>
+
+            <div className="imagess_box">
+              <div className="imagess">
+                <ul>
+                  <li>
+                    <a
+                      className="fancybox"
+                      href="/assets/media/gallery/1.jpg"
+                      data-fancybox-group="gallery"
+                      title="Image1"
+                    >
+                      <img src="/assets/media/gallery/1.jpg" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="fancybox"
+                      href="/assets/media/gallery/2.jpg"
+                      data-fancybox-group="gallery"
+                      title="Image2"
+                    >
+                      <img src="/assets/media/gallery/2.jpg" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="fancybox"
+                      href="/assets/media/gallery/3.jpg"
+                      data-fancybox-group="gallery"
+                      title="Image3"
+                    >
+                      <img src="/assets/media/gallery/3.jpg" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="fancybox"
+                      href="/assets/media/gallery/3.jpg"
+                      data-fancybox-group="gallery"
+                      title="Image4"
+                    >
+                      <img src="/assets/media/gallery/3.jpg" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="fancybox"
+                      href="/assets/media/gallery/3.jpg"
+                      data-fancybox-group="gallery"
+                      title="Image5"
+                    >
+                      <img src="/assets/media/gallery/3.jpg" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="fancybox"
+                      href="/assets/media/gallery/1.jpg"
+                      data-fancybox-group="gallery"
+                      title="Image6"
+                    >
+                      <img src="/assets/media/gallery/3.jpg" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="fancybox"
+                      href="/assets/media/gallery/2.jpg"
+                      data-fancybox-group="gallery"
+                      title="Image7"
+                    >
+                      <img src="/assets/media/gallery/3.jpg" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="fancybox"
+                      href="/assets/media/gallery/3.jpg"
+                      data-fancybox-group="gallery"
+                      title="Image8"
+                    >
+                      <img src="/assets/media/gallery/3.jpg" alt="" />
+                    </a>
+                  </li>
+                </ul>
+                <span className="total_images">+10</span>{' '}
+              </div>
+              <div className="bottom_data">
+                {' '}
+                <span className="img_icon">
+                  <i className="fa fa-picture-o" aria-hidden="true"></i>
+                </span>
+                <h2>
+                  New Xenowatch Characters{' '}
+                  <span className="update">Updated:March 12th, 2018</span>
+                </h2>
+              </div>
+            </div>
+
+            <div className="imagess_box">
+              <div className="imagess">
+                <ul>
+                  <li>
+                    <a
+                      className="fancybox"
+                      href="/assets/media/gallery/1.jpg"
+                      data-fancybox-group="gallery2"
+                      title="Image1"
+                    >
+                      <img src="/assets/media/gallery/1.jpg" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="fancybox"
+                      href="/assets/media/gallery/2.jpg"
+                      data-fancybox-group="gallery2"
+                      title="Image2"
+                    >
+                      <img src="/assets/media/gallery/2.jpg" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="fancybox"
+                      href="/assets/media/gallery/3.jpg"
+                      data-fancybox-group="gallery2"
+                      title="Image3"
+                    >
+                      <img src="/assets/media/gallery/3.jpg" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="fancybox"
+                      href="/assets/media/gallery/3.jpg"
+                      data-fancybox-group="gallery2"
+                      title="Image4"
+                    >
+                      <img src="/assets/media/gallery/3.jpg" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="fancybox"
+                      href="/assets/media/gallery/3.jpg"
+                      data-fancybox-group="gallery2"
+                      title="Image5"
+                    >
+                      <img src="/assets/media/gallery/3.jpg" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="fancybox"
+                      href="/assets/media/gallery/1.jpg"
+                      data-fancybox-group="gallery2"
+                      title="Image6"
+                    >
+                      <img src="/assets/media/gallery/3.jpg" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="fancybox"
+                      href="/assets/media/gallery/2.jpg"
+                      data-fancybox-group="gallery2"
+                      title="Image7"
+                    >
+                      <img src="/assets/media/gallery/3.jpg" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="fancybox"
+                      href="/assets/media/gallery/3.jpg"
+                      data-fancybox-group="gallery2"
+                      title="Image8"
+                    >
+                      <img src="/assets/media/gallery/3.jpg" alt="" />
+                    </a>
+                  </li>
+                </ul>
+                <span className="total_images">+10</span>{' '}
+              </div>
+              <div className="bottom_data">
+                {' '}
+                <span className="img_icon">
+                  <i className="fa fa-picture-o" aria-hidden="true"></i>
+                </span>
+                <h2>
+                  New Xenowatch Characters{' '}
+                  <span className="update">Updated:March 12th, 2018</span>
+                </h2>
+              </div>
+            </div>
+
+            <div className="imagess_box">
+              <div className="imagess">
+                <ul>
+                  <li>
+                    <a
+                      className="fancybox"
+                      href="/assets/media/gallery/1.jpg"
+                      data-fancybox-group="gallery3"
+                      title="Image1"
+                    >
+                      <img src="/assets/media/gallery/1.jpg" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="fancybox"
+                      href="/assets/media/gallery/2.jpg"
+                      data-fancybox-group="gallery3"
+                      title="Image2"
+                    >
+                      <img src="/assets/media/gallery/2.jpg" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="fancybox"
+                      href="/assets/media/gallery/3.jpg"
+                      data-fancybox-group="gallery3"
+                      title="Image3"
+                    >
+                      <img src="/assets/media/gallery/3.jpg" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="fancybox"
+                      href="/assets/media/gallery/3.jpg"
+                      data-fancybox-group="gallery3"
+                      title="Image4"
+                    >
+                      <img src="/assets/media/gallery/3.jpg" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="fancybox"
+                      href="/assets/media/gallery/3.jpg"
+                      data-fancybox-group="gallery3"
+                      title="Image5"
+                    >
+                      <img src="/assets/media/gallery/3.jpg" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="fancybox"
+                      href="/assets/media/gallery/1.jpg"
+                      data-fancybox-group="gallery3"
+                      title="Image6"
+                    >
+                      <img src="/assets/media/gallery/3.jpg" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="fancybox"
+                      href="/assets/media/gallery/2.jpg"
+                      data-fancybox-group="gallery3"
+                      title="Image7"
+                    >
+                      <img src="/assets/media/gallery/3.jpg" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="fancybox"
+                      href="/assets/media/gallery/3.jpg"
+                      data-fancybox-group="gallery3"
+                      title="Image8"
+                    >
+                      <img src="/assets/media/gallery/3.jpg" alt="" />
+                    </a>
+                  </li>
+                </ul>
+                <span className="total_images">+10</span>{' '}
+              </div>
+              <div className="bottom_data">
+                {' '}
+                <span className="img_icon">
+                  <i className="fa fa-picture-o" aria-hidden="true"></i>
+                </span>
+                <h2>
+                  New Xenowatch Characters{' '}
+                  <span className="update">Updated:March 12th, 2018</span>
+                </h2>
+              </div>
+            </div>
+
+            <div className="imagess_box">
+              <div className="imagess">
+                <ul>
+                  <li>
+                    <a
+                      className="fancybox"
+                      href="/assets/media/gallery/1.jpg"
+                      data-fancybox-group="gallery4"
+                      title="Image1"
+                    >
+                      <img src="/assets/media/gallery/1.jpg" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="fancybox"
+                      href="/assets/media/gallery/2.jpg"
+                      data-fancybox-group="gallery4"
+                      title="Image2"
+                    >
+                      <img src="/assets/media/gallery/2.jpg" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="fancybox"
+                      href="/assets/media/gallery/3.jpg"
+                      data-fancybox-group="gallery4"
+                      title="Image3"
+                    >
+                      <img src="/assets/media/gallery/3.jpg" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="fancybox"
+                      href="/assets/media/gallery/3.jpg"
+                      data-fancybox-group="gallery4"
+                      title="Image4"
+                    >
+                      <img src="/assets/media/gallery/3.jpg" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="fancybox"
+                      href="/assets/media/gallery/3.jpg"
+                      data-fancybox-group="gallery4"
+                      title="Image5"
+                    >
+                      <img src="/assets/media/gallery/3.jpg" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="fancybox"
+                      href="/assets/media/gallery/1.jpg"
+                      data-fancybox-group="gallery4"
+                      title="Image6"
+                    >
+                      <img src="/assets/media/gallery/3.jpg" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="fancybox"
+                      href="/assets/media/gallery/2.jpg"
+                      data-fancybox-group="gallery4"
+                      title="Image7"
+                    >
+                      <img src="/assets/media/gallery/3.jpg" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="fancybox"
+                      href="/assets/media/gallery/3.jpg"
+                      data-fancybox-group="gallery4"
+                      title="Image8"
+                    >
+                      <img src="/assets/media/gallery/3.jpg" alt="" />
+                    </a>
+                  </li>
+                </ul>
+                <span className="total_images">+10</span>{' '}
+              </div>
+              <div className="bottom_data">
+                {' '}
+                <span className="img_icon">
+                  <i className="fa fa-picture-o" aria-hidden="true"></i>
+                </span>
+                <h2>
+                  New Xenowatch Characters{' '}
+                  <span className="update">Updated:March 12th, 2018</span>
+                </h2>
+              </div>
+            </div>
+
+            <div className="imagess_box">
+              <div className="imagess">
+                <ul>
+                  <li>
+                    <a
+                      className="fancybox"
+                      href="/assets/media/gallery/1.jpg"
+                      data-fancybox-group="gallery5"
+                      title="Image1"
+                    >
+                      <img src="/assets/media/gallery/1.jpg" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="fancybox"
+                      href="/assets/media/gallery/2.jpg"
+                      data-fancybox-group="gallery5"
+                      title="Image2"
+                    >
+                      <img src="/assets/media/gallery/2.jpg" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="fancybox"
+                      href="/assets/media/gallery/3.jpg"
+                      data-fancybox-group="gallery5"
+                      title="Image3"
+                    >
+                      <img src="/assets/media/gallery/3.jpg" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="fancybox"
+                      href="/assets/media/gallery/3.jpg"
+                      data-fancybox-group="gallery5"
+                      title="Image4"
+                    >
+                      <img src="/assets/media/gallery/3.jpg" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="fancybox"
+                      href="/assets/media/gallery/3.jpg"
+                      data-fancybox-group="gallery5"
+                      title="Image5"
+                    >
+                      <img src="/assets/media/gallery/3.jpg" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="fancybox"
+                      href="/assets/media/gallery/1.jpg"
+                      data-fancybox-group="gallery5"
+                      title="Image6"
+                    >
+                      <img src="/assets/media/gallery/3.jpg" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="fancybox"
+                      href="/assets/media/gallery/2.jpg"
+                      data-fancybox-group="gallery5"
+                      title="Image7"
+                    >
+                      <img src="/assets/media/gallery/3.jpg" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="fancybox"
+                      href="/assets/media/gallery/3.jpg"
+                      data-fancybox-group="gallery5"
+                      title="Image8"
+                    >
+                      <img src="/assets/media/gallery/3.jpg" alt="" />
+                    </a>
+                  </li>
+                </ul>
+                <span className="total_images">+10</span>{' '}
+              </div>
+              <div className="bottom_data">
+                {' '}
+                <span className="img_icon">
+                  <i className="fa fa-picture-o" aria-hidden="true"></i>
+                </span>
+                <h2>
+                  New Xenowatch Characters{' '}
+                  <span className="update">Updated:March 12th, 2018</span>
+                </h2>
+              </div>
+            </div>
+          </div>
         </div>
         <div className="tab hide" id="video">
           <div className="video_box">
