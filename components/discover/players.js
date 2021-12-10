@@ -19,13 +19,13 @@ const Players = ({user}) => {
               EXCLUDE     “ALREADY VIEWED”
               <div className="custom-control custom-checkbox">
                 <input type="checkbox" className="custom-control-input" id="customCheck1"/>
-                <label className="custom-control-label" for="customCheck1"></label>
+                <label className="custom-control-label" htmlFor="customCheck1"></label>
               </div>
             </div>
             <h3>Favourite</h3>
             <div className="custom-control custom-switch">
               <input type="checkbox" className="custom-control-input" id="customSwitch1"/>
-              <label className="custom-control-label" for="customSwitch1"></label>
+              <label className="custom-control-label" htmlFor="customSwitch1"></label>
             </div>
           </div>
         </div>

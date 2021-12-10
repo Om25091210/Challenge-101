@@ -1405,9 +1405,9 @@ const ProfileData = ({ user }) => {
                 height="100%"
                 src="https://www.youtube.com/embed/9e9FQCA01dI"
                 title="YouTube video player"
-                frameborder="0"
+                frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
+                allowFullScreen
               ></iframe>
             </div>
           </div>

@@ -24,7 +24,7 @@ const TeamProfileData = ({user, data}) => {
                   className="custom-control-input"
                   id="All"
                 />
-                <label className="custom-control-label" for="All"></label>
+                <label className="custom-control-label" htmlFor="All"></label>
               </div>
             </div>
             <div className="button-group">
@@ -36,7 +36,7 @@ const TeamProfileData = ({user, data}) => {
                   className="custom-control-input"
                   id="Fortnite"
                 />
-                <label className="custom-control-label" for="Fortnite"></label>
+                <label className="custom-control-label" htmlFor="Fortnite"></label>
               </div>
             </div>
             <div className="button-group">
@@ -48,7 +48,7 @@ const TeamProfileData = ({user, data}) => {
                   className="custom-control-input"
                   id="Call"
                 />
-                <label className="custom-control-label" for="Call"></label>
+                <label className="custom-control-label" htmlFor="Call"></label>
               </div>
             </div>
             <div className="button-group">
@@ -60,7 +60,7 @@ const TeamProfileData = ({user, data}) => {
                   className="custom-control-input"
                   id="Fifa"
                 />
-                <label className="custom-control-label" for="Fifa"></label>
+                <label className="custom-control-label" htmlFor="Fifa"></label>
               </div>
             </div>
           </div>
@@ -1131,9 +1131,9 @@ const TeamProfileData = ({user, data}) => {
               height="100%"
               src="https://www.youtube.com/embed/9e9FQCA01dI"
               title="YouTube video player"
-              frameborder="0"
+              frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
+              allowFullScreen
             ></iframe>
           </div>
         </div>

@@ -100,13 +100,13 @@ if (data) {
            <div className="button-group"> <span className="drop_name">Microphone</span>
               <div className="custom-control custom-checkbox">
                 <input type="checkbox" className="custom-control-input" id="Microphone"/>
-                <label className="custom-control-label" for="Microphone"></label>
+                <label className="custom-control-label" htmlFor="Microphone"></label>
               </div>
             </div>
             <div className="button-group"> <span className="drop_name">Verified</span>
               <div className="custom-control custom-checkbox">
                 <input type="checkbox" className="custom-control-input" id="Verified"/>
-                <label className="custom-control-label" for="Verified"></label>
+                <label className="custom-control-label" htmlFor="Verified"></label>
               </div>
             </div>
 

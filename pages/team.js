@@ -12,7 +12,7 @@ import baseURL from '../utils/baseURL';
 
 const Team = ({ user }) => {
 
-  const [data, setData] = useState(null);
+  const [data, setData] = useState();
   const teamId = '6191520fd802397e7abf218d';
 
   useEffect(() => {
@@ -37,11 +37,13 @@ if (data) {
       <LeftNav />
 
       <div className="main_middle profile_middle">
+         
          <TeamProfileBox user={user} data={data}/>  
 
         <TeamTabs user={user} data={data}/>
 
         <TeamProfileData user={user} data={data}/>
+      
       </div>
 
       <AllScript />
