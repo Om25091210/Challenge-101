@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ChatDisplay from './ChatDisplay';
 import ChatInput from './ChatInput';
-import ChatBox from './chatbox';
+import ChatBox from './ChatBox';
 import cookie from 'js-cookie';
 import axios from 'axios';
 import baseURL from '../../utils/baseURL';

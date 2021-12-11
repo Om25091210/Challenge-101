@@ -6,17 +6,7 @@ import { useForm } from 'react-hook-form';
 import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
 import Link from 'next/link';
 
-const queryClient = new QueryClient();
-
-export default function ChatBox({ user, chats, setChats }) {
-  return (
-    <QueryClientProvider client={queryClient} contextSharing={true}>
-      <WChatbox user={user} chats={chats} setChats={setChats} />
-    </QueryClientProvider>
-  );
-}
-
-const WChatbox = ({ user, chats, setChats }) => {
+const ChatBox = ({ user, chats, setChats }) => {
   const [receiverName, setReceiverName] = useState('');
   const [receiverEmail, setReceiverEmail] = useState('');
   const [list, setList] = useState([]);
@@ -267,8 +257,12 @@ const WChatbox = ({ user, chats, setChats }) => {
             <p>No friends to chat..</p>
           ) : (
             <ul className="contacts">
-              {list.map((user) => (
-                <li className="active dlab-chat-user" onClick={() => test()}>
+              {list.map((user, index) => (
+                <li
+                  key={index}
+                  className="active dlab-chat-user"
+                  onClick={() => test()}
+                >
                   <Link
                     as={`/dashboard`}
                     href={`/dashboard?chat=${user.friendId}`}
@@ -301,3 +295,5 @@ const WChatbox = ({ user, chats, setChats }) => {
     </>
   );
 };
+
+export default ChatBox;

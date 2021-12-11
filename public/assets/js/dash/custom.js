@@ -193,4 +193,11 @@ $(document).ready(function () {
     height: 600,
     autoSize: false
   });
+
+  $('.videos').fancybox({
+    wrapCSS: 'videocss',
+    width: 600,
+    height: 400,
+    autoSize: false
+  });
 });
