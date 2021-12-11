@@ -36,6 +36,7 @@ const WChatbox = ({ user, chats, setChats }) => {
   };
 
   const [searchText, setSearchText] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const router = useRouter();
 
@@ -64,9 +65,11 @@ const WChatbox = ({ user, chats, setChats }) => {
   );
 
   async function getList({ user }) {
-    return await fetch(
-      `${baseURL}/api/friendrequests/list/${user._id}`
-    ).then((data) => data.json());
+    return await fetch(`${baseURL}/api/friendrequests/list/${user._id}`)
+      .then((data) => data.json())
+      .finally(() => {
+        setLoading(true);
+      });
   }
 
   useEffect(() => {
@@ -110,6 +113,8 @@ const WChatbox = ({ user, chats, setChats }) => {
       jQuery('.dlab-chat-history-box').removeClass('d-none');
     });
   };
+
+  const isFriend = user.friendsList.filter((x) => !list.includes(x));
 
   return (
     <>
@@ -188,59 +193,68 @@ const WChatbox = ({ user, chats, setChats }) => {
                   {!data || data.length === 0 ? (
                     <p>No users found..</p>
                   ) : (
-                    data.map((resultuser) => (
-                      <ul className="contacts">
-                        <li className="active dlab-chat-user ">
-                          <div className="d-flex bd-highlight">
-                            <div className="img_cont">
-                              <img
-                                src="/assets/media/avatar/1.jpg"
-                                className="rounded-circle user_img"
-                                alt=""
-                              />
-                              <span className="online_icon"></span>
+                    data
+                      .filter(
+                        (resultuser) => resultuser.username !== user.username
+                      )
+                      .map((resultuser) => (
+                        <ul className="contacts">
+                          <li className="active dlab-chat-user ">
+                            <div className="d-flex bd-highlight">
+                              <div className="img_cont">
+                                <img
+                                  src={resultuser.profilePicUrl}
+                                  className="rounded-circle user_img"
+                                  alt=""
+                                />
+                                <span className="online_icon"></span>
+                              </div>
+                              <div className="user_info">
+                                <span>
+                                  {' '}
+                                  {resultuser.name.length > 20
+                                    ? resultuser.name.substring(0, 20) + '...'
+                                    : resultuser.name}
+                                </span>
+                              </div>
                             </div>
-                            <div className="user_info">
-                              <span>
-                                {' '}
-                                {resultuser.name.length > 20
-                                  ? resultuser.name.substring(0, 20) + '...'
-                                  : resultuser.name}
-                              </span>
-                            </div>
-                          </div>
 
-                          <form
-                            className="form w-100"
-                            method="POST"
-                            noValidate="novalidate"
-                            onSubmit={handleSubmit(addFriend)}
-                          >
-                            <input
-                              type="hidden"
-                              name="receiverEmail"
-                              {...register('receiverEmail')}
-                              className="receiverEmail"
-                              value={resultuser.email}
-                            />
-                            <input
-                              type="hidden"
-                              name="receiverName"
-                              {...register('receiverName')}
-                              className="receiverName"
-                              value={resultuser.username}
-                            />
-
-                            <button
-                              type="submit"
-                              className="btn add accept friend-add"
+                            <form
+                              className="form w-100"
+                              method="POST"
+                              noValidate="novalidate"
+                              onSubmit={handleSubmit(addFriend)}
                             >
-                              <i className="fa fa-user"></i> Add Friend
-                            </button>
-                          </form>
-                        </li>
-                      </ul>
-                    ))
+                              <input
+                                type="hidden"
+                                name="receiverEmail"
+                                {...register('receiverEmail')}
+                                className="receiverEmail"
+                                value={resultuser.email}
+                              />
+                              <input
+                                type="hidden"
+                                name="receiverName"
+                                {...register('receiverName')}
+                                className="receiverName"
+                                value={resultuser.username}
+                              />
+
+                              <button
+                                type="submit"
+                                className="btn add accept friend-add"
+                              >
+                                <i className="fa fa-user"></i>
+                                {isFriend.find(
+                                  ({ friendId }) => friendId === resultuser._id
+                                )
+                                  ? 'Friends'
+                                  : 'Add Friend'}
+                              </button>
+                            </form>
+                          </li>
+                        </ul>
+                      ))
                   )}
                 </div>
               </div>

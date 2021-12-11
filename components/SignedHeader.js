@@ -11,7 +11,8 @@ const SignedHeader = ({
   setChats,
   sendMessage,
   messages,
-  messagesWith
+  messagesWith,
+  isOnline
 }) => {
   if (user) {
     return (
@@ -121,6 +122,7 @@ const SignedHeader = ({
                 setChats={setChats}
                 sendMessage={sendMessage}
                 messages={messages}
+                isOnline={isOnline}
               />
             </li>
 

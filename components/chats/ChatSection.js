@@ -12,7 +12,8 @@ const ChatSection = ({
   setChats,
   sendMessage,
   messages,
-  messagesWith
+  messagesWith,
+  isOnline
 }) => {
   const [messager, setMessager] = useState({});
 
@@ -90,7 +91,13 @@ const ChatSection = ({
 
                   <div>
                     <h6 className="mb-1">Chat with {messager.name}</h6>
-                    <p className={'mb-0 text-success'}>Online</p>
+                    <p
+                      className={
+                        isOnline ? 'mb-0 text-success' : 'mb-0 text-failure'
+                      }
+                    >
+                      Online
+                    </p>
                   </div>
 
                   <div className="dropdown">

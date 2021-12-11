@@ -50,6 +50,10 @@ const Dashboard = ({ user }) => {
 
   const socket = useRef();
 
+  const isOnline =
+    connectedUsers.length > 0 &&
+    connectedUsers.filter((user) => user.userId === chat.messagesWith).length >
+      0;
   //
   const openChatId = useRef('');
   const divRef = useRef();
@@ -204,6 +208,7 @@ const Dashboard = ({ user }) => {
         setChats={setChats}
         sendMessage={sendMessage}
         messages={messages}
+        isOnline={isOnline}
       />
 
       <LeftNav />
