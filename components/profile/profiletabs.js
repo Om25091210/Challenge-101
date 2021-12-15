@@ -4,7 +4,7 @@ import Head from 'next/head';
 const ProfileTabs = (props) => (
   <ul className="profile_tab_btn">
     <li>
-      <a href="#!" rel="feed">
+      <a href="#!" className="active" rel="feed">
         FEED
       </a>
     </li>
@@ -34,7 +34,7 @@ const ProfileTabs = (props) => (
         STREAMS
       </a>
     </li>
-    <li className="active">
+    <li>
       <a href="#!" rel="photos">
         Photos
       </a>

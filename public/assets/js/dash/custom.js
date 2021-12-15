@@ -23,6 +23,7 @@ $(document).ready(function () {
   $('.squads_close').click(function () {
     $(this).parent().removeClass('show');
   });
+
   /* ----------- create post slider ----------------- */
 
   $('.user_slider').slick({
@@ -105,7 +106,7 @@ $(document).ready(function () {
   /* -------  Profile ------------*/
 
   $('.profile_tab_btn li a').click(function () {
-    $('.tab').addClass('hide');
+    $('.prfoile_tab_data .tab').addClass('hide');
     var rel = jQuery(this).attr('rel');
     $('#' + rel).removeClass('hide');
     $('.profile_tab_btn li a').parent().removeClass('active');
@@ -120,6 +121,21 @@ $(document).ready(function () {
     arrows: true,
     infinite: false,
     fade: false
+  });
+
+  $('.fancybox').fancybox();
+  $('.quickpoup').fancybox({
+    wrapCSS: 'quickcss',
+    width: 1200,
+    height: 600,
+    autoSize: false
+  });
+
+  $('.videos').fancybox({
+    wrapCSS: 'videocss',
+    width: 600,
+    height: 400,
+    autoSize: false
   });
 
   $('.size-option ul li')
@@ -184,20 +200,5 @@ $(document).ready(function () {
 
     console.log(options);
     return false;
-  });
-
-  $('.fancybox').fancybox();
-  $('.quickpoup').fancybox({
-    wrapCSS: 'quickcss',
-    width: 1200,
-    height: 600,
-    autoSize: false
-  });
-
-  $('.videos').fancybox({
-    wrapCSS: 'videocss',
-    width: 600,
-    height: 400,
-    autoSize: false
   });
 });

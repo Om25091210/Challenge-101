@@ -30,7 +30,7 @@ const ProfileData = ({ user }) => {
   return (
     <>
       <div className="prfoile_tab_data">
-        <div className="tab hide" id="feed">
+        <div className="tab" id="feed">
           <div className="profile_left_post">
             <div className="post">
               {profile.map((pro) => (
@@ -638,7 +638,7 @@ const ProfileData = ({ user }) => {
           {' '}
           steams steams steams steams{' '}
         </div>
-        <div className="tab " id="photos">
+        <div className="tab hide" id="photos">
           <div className="gallery_box">
             <div className="imagess_box">
               <div className="imagess">

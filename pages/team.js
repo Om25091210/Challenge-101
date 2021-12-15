@@ -10,21 +10,7 @@ import FooterMain from '@components/FooterMain';
 import AllScript from './AllScript';
 import baseURL from '../utils/baseURL';
 
-const Team = ({ user }) => {
-  const [data, setData] = useState();
-  const teamId = '6191520fd802397e7abf218d';
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch(`${baseURL}/api/teams/${teamId}`);
-      const newData = await response.json();
-      setData(newData);
-    };
-    fetchData();
-  }, []);
-
-  console.log(data);
-
+const Team = ({ user, data }) => {
   if (data) {
     return (
       <>
@@ -47,6 +33,22 @@ const Team = ({ user }) => {
     );
   } else {
     return null;
+  }
+};
+
+export const getServerSideProps = async () => {
+  try {
+    const teamId = '61a266a3564905381144bdbe';
+    const response = await fetch(`${baseURL}/api/teams/${teamId}`);
+    const data = await response.json();
+
+    return {
+      props: { data }
+    };
+  } catch {
+    return {
+      props: {}
+    };
   }
 };
 
