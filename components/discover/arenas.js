@@ -1,6 +1,15 @@
 import Filters from '../common/Filters';
+import baseURL from '@utils/baseURL';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
 
 const Arenas = ({ user }) => {
+  const [arenas, setArenas] = useState([]);
+
+  useEffect(() => {
+    axios.get(`${baseURL}/api/arenas`).then((res) => setArenas(res.data));
+  }, []);
+
   return (
     <div className="tab hide" id="arenas">
       <div className="white_bg">
@@ -44,32 +53,35 @@ const Arenas = ({ user }) => {
         <Filters ftype={'ARENAS'} />
       </div>
 
-      <div className="team_row arena_team_row">
-        <div className="inner_team">
-          <div className="logo_box">
-            <img src="/assets/media/discover/lxg.png" alt="" />
-            <h3>
-              LXG Esports Arena{' '}
-              <b>
-                <i className="fa fa-map-marker" aria-hidden="true"></i>{' '}
-                IndraNagar, Banglore
-              </b>
-            </h3>
-            <p></p>
-          </div>
-          <span className="remarks">
-            <img src="/assets/media/discover/logos.png" alt="" />
-          </span>
-          <div className="mores">
-            <span>
-              <img src="/assets/media/discover/icons.png" alt="" />
+      {arenas.map((ara) => (
+        <div className="team_row arena_team_row">
+          <div className="inner_team">
+            <div className="logo_box">
+              <img src="/assets/media/discover/lxg.png" alt="" />
+              <h3>
+                {' '}
+                {ara.name}{' '}
+                <b>
+                  <i className="fa fa-map-marker" aria-hidden="true"></i>{' '}
+                  {ara.location}
+                </b>
+              </h3>
+              <p></p>
+            </div>
+            <span className="remarks">
+              <img src="/assets/media/discover/logos.png" alt="" />
             </span>
+            <div className="mores">
+              <span>
+                <img src="/assets/media/discover/icons.png" alt="" />
+              </span>
+            </div>
+            <a href="#" className="join">
+              Book Seats
+            </a>{' '}
           </div>
-          <a href="#" className="join">
-            Book Seats
-          </a>{' '}
         </div>
-      </div>
+      ))}
     </div>
   );
 };

@@ -1,6 +1,16 @@
 import Filters from '../common/Filters';
 
+import axios from 'axios';
+import { useState, useEffect } from 'react';
+import baseURL from '@utils/baseURL';
+
 const Teams = ({ user }) => {
+  const [team, setTeam] = useState([]);
+
+  useEffect(() => {
+    axios.get(`${baseURL}/api/teams`).then((res) => setTeam(res.data));
+  }, []);
+
   return (
     <div className="tab" id="teams">
       <div className="white_bg">
@@ -44,78 +54,48 @@ const Teams = ({ user }) => {
         <Filters ftype={'TEAMS'} />
       </div>
 
-      <div className="team_row">
-        <div className="stars">
-          <i className="fa fa-star" aria-hidden="true"></i>
-        </div>
-        <div className="inner_team">
-          <div className="logo_box">
-            {' '}
-            <img src="/assets/media/discover/team1.png" alt="" />
-            <h3>Kingsmen</h3>
-            <img src="/assets/media/discover/country.png" alt="" />{' '}
+      {team.map((team) => (
+        <div className="team_row">
+          <div className="stars">
+            <i className="fa fa-star" aria-hidden="true"></i>
           </div>
-          <span className="logo">
-            <img src="/assets/media/discover/apex.png" alt="" />
-          </span>{' '}
-          <span className="remarks">
-            <h4>ROLE</h4>
-            <p>Support Scout Sniper Driver Fragger Ingame leader</p>
-          </span>
-          <div className="mores">
-            {' '}
-            <span>
-              <img src="/assets/media/discover/desk.png" alt="" />
+          <div className="inner_team">
+            <div className="logo_box">
+              {' '}
+              <img src="/assets/media/discover/team1.png" alt="" />
+              <h3>{team.team.name}</h3>
+              <img
+                src="/assets/media/discover/country.png"
+                alt={team.team.name}
+              />{' '}
+            </div>
+            <span className="logo">
+              <img src="/assets/media/discover/apex.png" alt="" />
             </span>{' '}
-            <span>
-              <img src="/assets/media/discover/mice.png" alt="" /> <b>On</b>
-            </span>{' '}
-            <span>
-              <img src="/assets/media/discover/translator.png" alt="" />{' '}
-              <b>EN, HI</b>
-            </span>{' '}
+            <span className="remarks">
+              <h4>ROLE</h4>
+              <p>Support Scout Sniper Driver Fragger Ingame leader</p>
+            </span>
+            <div className="mores">
+              {' '}
+              <span>
+                <img src="/assets/media/discover/desk.png" alt="" />
+              </span>{' '}
+              <span>
+                <img src="/assets/media/discover/mice.png" alt="" /> <b>On</b>
+              </span>{' '}
+              <span>
+                <img src="/assets/media/discover/translator.png" alt="" />{' '}
+                <b>EN, HI</b>
+              </span>{' '}
+            </div>
+            <a href="#" className="join">
+              REQUEST TO JOIN
+            </a>{' '}
           </div>
-          <a href="#" className="join">
-            REQUEST TO JOIN
-          </a>{' '}
         </div>
-      </div>
-      <div className="team_row">
-        <div className="stars">
-          <i className="fa fa-star" aria-hidden="true"></i>
-        </div>
-        <div className="inner_team">
-          <div className="logo_box">
-            {' '}
-            <img src="/assets/media/discover/team1.png" alt="" />
-            <h3>Kingsmen</h3>
-            <img src="/assets/media/discover/country.png" alt="" />{' '}
-          </div>
-          <span className="logo">
-            <img src="/assets/media/discover/apex.png" alt="" />
-          </span>{' '}
-          <span className="remarks">
-            <h4>ROLE</h4>
-            <p>Support Scout Sniper Driver Fragger Ingame leader</p>
-          </span>
-          <div className="mores">
-            {' '}
-            <span>
-              <img src="/assets/media/discover/desk.png" alt="" />
-            </span>{' '}
-            <span>
-              <img src="/assets/media/discover/mice.png" alt="" /> <b>On</b>
-            </span>{' '}
-            <span>
-              <img src="/assets/media/discover/translator.png" alt="" />{' '}
-              <b>EN, HI</b>
-            </span>{' '}
-          </div>
-          <a href="#" className="join">
-            REQUEST TO JOIN
-          </a>{' '}
-        </div>
-      </div>
+      ))}
+
       <div className="overview_box">
         <div className="team_row">
           <div className="stars disable">
