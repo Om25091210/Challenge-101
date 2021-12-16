@@ -233,7 +233,212 @@ const Tournament1 = ({ user }) => {
               <h2>squads</h2>
             </div>
             <div className="tab hide" id="participants">
-              <h2>achievement</h2>
+              <div className="participants">
+                <div className="selections">
+                  <div className="button-group">
+                    {' '}
+                    <span className="drop_name">All</span>
+                    <div className="custom-control custom-checkbox">
+                      <input
+                        type="checkbox"
+                        className="custom-control-input"
+                        id="All"
+                      />
+                      <label className="custom-control-label" for="All"></label>
+                    </div>
+                  </div>
+                  <div className="button-group">
+                    {' '}
+                    <span className="drop_name">Fortnite</span>
+                    <div className="custom-control custom-checkbox">
+                      <input
+                        type="checkbox"
+                        className="custom-control-input"
+                        id="Fortnite"
+                      />
+                      <label
+                        className="custom-control-label"
+                        for="Fortnite"
+                      ></label>
+                    </div>
+                  </div>
+                  <div className="button-group">
+                    {' '}
+                    <span className="drop_name">Call of Duty WW2</span>
+                    <div className="custom-control custom-checkbox">
+                      <input
+                        type="checkbox"
+                        className="custom-control-input"
+                        id="Call"
+                      />
+                      <label
+                        className="custom-control-label"
+                        for="Call"
+                      ></label>
+                    </div>
+                  </div>
+                  <div className="button-group">
+                    {' '}
+                    <span className="drop_name">Fifa 2018</span>
+                    <div className="custom-control custom-checkbox">
+                      <input
+                        type="checkbox"
+                        className="custom-control-input"
+                        id="Fifa"
+                      />
+                      <label
+                        className="custom-control-label"
+                        for="Fifa"
+                      ></label>
+                    </div>
+                  </div>
+                </div>
+                <div className="banner">
+                  {' '}
+                  <img src="/assets/media/squads/banner.jpg" alt="" />
+                  <h2>DOTA 2</h2>
+                </div>
+                <div className="groupds_box">
+                  <div className="group">
+                    <div className="title_bg">Group A</div>
+                    <table className="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">Competitor</th>
+                          <th scope="col">
+                            <b>M</b> <b>W</b> <b>D</b> <b>L</b> <b>P</b>
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <img src="/assets/media/teams/team1.png" alt="" />{' '}
+                            <strong>Team Flawed Bot</strong>
+                          </td>
+                          <td>
+                            <b>46</b> <b>23</b> <b>1</b> <b>22</b> <b>123</b>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <img src="/assets/media/teams/team2.png" alt="" />{' '}
+                            <strong>Wings Gaming</strong>
+                          </td>
+                          <td>
+                            <b>46</b> <b>23</b> <b>1</b> <b>22</b> <b>123</b>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <img src="/assets/media/teams/team3.png" alt="" />{' '}
+                            <strong>Fnatic eSports</strong>
+                          </td>
+                          <td>
+                            <b>46</b> <b>23</b> <b>1</b> <b>22</b> <b>123</b>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <img src="/assets/media/teams/team4.png" alt="" />{' '}
+                            <strong>inictus Gaming</strong>
+                          </td>
+                          <td>
+                            <b>46</b> <b>23</b> <b>1</b> <b>22</b> <b>123</b>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <img src="/assets/media/teams/team5.png" alt="" />{' '}
+                            <strong>Fortuna eSports</strong>
+                          </td>
+                          <td>
+                            <b>46</b> <b>23</b> <b>1</b> <b>22</b> <b>123</b>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <img src="/assets/media/teams/team6.png" alt="" />{' '}
+                            <strong>Gambit Gaming</strong>
+                          </td>
+                          <td>
+                            <b>46</b> <b>23</b> <b>1</b> <b>22</b> <b>123</b>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div className="group">
+                    <div className="title_bg">Group B</div>
+                    <table className="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">Competitor</th>
+                          <th scope="col">
+                            <b>M</b> <b>W</b> <b>D</b> <b>L</b> <b>P</b>
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <img src="/assets/media/teams/team1.png" alt="" />{' '}
+                            <strong>Team Flawed Bot</strong>
+                          </td>
+                          <td>
+                            <b>46</b> <b>23</b> <b>1</b> <b>22</b> <b>123</b>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <img src="/assets/media/teams/team2.png" alt="" />{' '}
+                            <strong>Wings Gaming</strong>
+                          </td>
+                          <td>
+                            <b>46</b> <b>23</b> <b>1</b> <b>22</b> <b>123</b>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <img src="/assets/media/teams/team3.png" alt="" />{' '}
+                            <strong>Fnatic eSports</strong>
+                          </td>
+                          <td>
+                            <b>46</b> <b>23</b> <b>1</b> <b>22</b> <b>123</b>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <img src="/assets/media/teams/team4.png" alt="" />{' '}
+                            <strong>inictus Gaming</strong>
+                          </td>
+                          <td>
+                            <b>46</b> <b>23</b> <b>1</b> <b>22</b> <b>123</b>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <img src="/assets/media/teams/team5.png" alt="" />{' '}
+                            <strong>Fortuna eSports</strong>
+                          </td>
+                          <td>
+                            <b>46</b> <b>23</b> <b>1</b> <b>22</b> <b>123</b>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <img src="/assets/media/teams/team6.png" alt="" />{' '}
+                            <strong>Gambit Gaming</strong>
+                          </td>
+                          <td>
+                            <b>46</b> <b>23</b> <b>1</b> <b>22</b> <b>123</b>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
             </div>
             <div className="tab hide" id="matches">
               <h2>matches</h2>

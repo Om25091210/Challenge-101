@@ -11,6 +11,8 @@ import AllScript from './AllScript';
 import baseURL from '../utils/baseURL';
 
 const Team = ({ user, data }) => {
+  console.log(data);
+
   if (data) {
     return (
       <>
@@ -38,7 +40,7 @@ const Team = ({ user, data }) => {
 
 export const getServerSideProps = async () => {
   try {
-    const teamId = '61a266a3564905381144bdbe';
+    const teamId = '6191520fd802397e7abf218d';
     const response = await fetch(`${baseURL}/api/teams/${teamId}`);
     const data = await response.json();
 
