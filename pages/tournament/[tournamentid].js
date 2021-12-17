@@ -10,28 +10,13 @@ import { getTournament } from '@utils/functionsHelper';
 import axios from 'axios';
 import baseURL from '@utils/baseURL';
 import { useState, useEffect } from 'react';
+import {MPNumberFormat} from '@utils/helpers'
+import { format } from 'date-fns';
 
 
 const TournamentDetail = ({ user , data }) => {
 
-  const [tournament, setTournament] = useState();
-const router = useRouter()
-  const {tournamentid} = router.query
-
-  useEffect(() => {
-    axios
-      .get(`${baseURL}/api/tournaments/${tournamentid}`)
-      .then((res) => {
-        setTournament(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-
-  console.log(tournament);
-
-  if (tournament) {
+  if (data) {
 
   return (
     <>
@@ -60,13 +45,13 @@ const router = useRouter()
                     {' '}
                     <span className="game_name">
                       {' '}
-                      {tournament.tournament.name}{' '}
+                      {data.tournament.name}{' '}
                     </span>{' '}
                     <span className="name">
                       Indoor Stadium, Bangalore Feb 18th - 20th 10 AM IST
                     </span>{' '}
                     <span className="follower">
-                      {tournament.tournament.description}
+                      {data.tournament.description}
                     </span>{' '}
                   </div>
                   <div className="flag">
@@ -101,7 +86,7 @@ const router = useRouter()
                 <h5>SPONSORS</h5>
 			
 			        <>
-			          {tournament.sponsors.map((item, index) => (
+			          {data.sponsors.map((item, index) => (
 			            <span key={index}>			              
 			                <img src={item.imgUrl} alt={item.sponsorId} />
 			            </span>
@@ -112,8 +97,8 @@ const router = useRouter()
 
               <div className="logos">
                 <h5>Price</h5>
+                <span><MPNumberFormat value={data.tournament.prizepool} currency={data.tournament.currency} /></span>
 
-                <span>$8,000,000</span>
               </div>
             </div>
             <div className="bio_box team_bio arena_bio">
@@ -139,12 +124,20 @@ const router = useRouter()
                   </div>
                 </div>
                 <p>
-                  {tournament.tournament.detaildescription ? tournament.tournament.detaildescription : tournament.tournament.description}
+                  {data.tournament.detaildescription ? data.tournament.detaildescription : data.tournament.description}
                 </p>
 
                 <div className="games">
-                  <h3>organizer: : </h3>
-                  <img src="/assets/media/category/1.png" alt="" /> Multiplayr
+                  <h3>organizer:</h3>
+                  
+			        <>
+			          {data.organizers.map((item, index) => (
+			            <span key={index}>			              
+			                <img src={item.imgUrl} alt={item.name} /> {item.name}
+			            </span>
+			          ))}
+			        </>
+
                 </div>
 
                 <div className="games">
@@ -163,15 +156,15 @@ const router = useRouter()
               <div className="right_team_bio">
                 <div className="games">
                   <h2>GAMES</h2>
-                  <a href="#">
-                    <img src="/assets/media/profile/game1.png" alt="" />
-                  </a>
-                  <a href="#">
-                    <img src="/assets/media/profile/game2.png" alt="" />
-                  </a>
-                  <a href="#">
-                    <img src="/assets/media/profile/game3.png" alt="" />
-                  </a>
+
+                  	<>
+			          {data.games.map((item, index) => (
+			            <span key={index}>			              
+			                <img src={item.imgUrl} alt={item.name} /> {item.name}
+			            </span>
+			          ))}
+			        </>
+
                 </div>
                 <div className="internet">
                   <ul>
@@ -510,15 +503,12 @@ const router = useRouter()
 }
 };
 
-export const getInitialProps = async ({ query }) => {
+export const getServerSideProps = async ({ query }) => {
   try {
   
-  	console.log(query.tournamentid);
-
     const response = await fetch(`${baseURL}/api/tournaments/${query.tournamentid}`);
     const data = await response.json();
 
-  	console.log({data});
     return {
       props: { data }
     };
