@@ -30,8 +30,10 @@ const Filters = ({ ftype }) => {
       element.key.includes(name)
     );
     console.log(found);
-    if (found) {
-      setSelectedMapFilters([{ key: name, values: selectedFilters }]);
+    if (found == undefined ) {
+      var arr = [];
+      arr.push(filtered);
+      setSelectedMapFilters([{ key: name, values: arr }]);
     } else {
       var arr = found.values;
       arr.push(filtered);
@@ -150,13 +152,22 @@ const Filters = ({ ftype }) => {
                 X
               </a>
             </span>
-            {selectedFilters.map((val, idx) => (
+            {selectedMapFilters.map((filter, idx) => (
               <span className="filter1">
                 {' '}
-                {val}{' '}
+                {filter.key}: 
+                
+                {filter.values.map((filval, idxv) => (
+                <>
+                {filval}
+                {' '}
                 <a href="#" className="close2">
                   X
                 </a>
+                {' '}
+                </>
+                ))}
+
               </span>
             ))}
           </div>

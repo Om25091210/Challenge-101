@@ -3,8 +3,7 @@ import Head from 'next/head';
 import MetaDash from '../components/MetaDash';
 import SignedHeader from '../components/SignedHeader';
 import LeftNav from '../components/LeftNav';
-import TeamFilter from '../components/ranking/TeamFilter';
-import TeamRows from '../components/tournament/TeamRows';
+import TournamentRows from '../components/tournament/TournamentRows';
 import FooterMain from '../components/FooterMain';
 import AllScript from './AllScript';
 import { toast } from 'react-toastify';
@@ -32,7 +31,6 @@ const Tournament = ({ user }) => {
   let cancel;
   var sdata;
 
-  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState(null);
   const [formLoading, setFormLoading] = useState(false);
   const [submitDisabled, setSubmitDisabled] = useState(true);
@@ -133,7 +131,7 @@ const Tournament = ({ user }) => {
             </div>
           </div>
 
-          <TeamRows tournaments={data} searchResults={searchResults} />
+          <TournamentRows tournaments={data} searchResults={searchResults} />
         </div>
       </div>
             

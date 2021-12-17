@@ -2,8 +2,9 @@
 import Head from 'next/head'
 import {MPNumberFormat} from '../../utils/helpers'
 import { format } from 'date-fns';
+import Link from "next/link"
 
-const TeamRows = ({tournaments , searchResults}) => {
+const TournamentRows = ({tournaments , searchResults}) => {
 
     if (searchResults.length>0) {
       tournaments = searchResults
@@ -22,13 +23,14 @@ const TeamRows = ({tournaments , searchResults}) => {
              ) : (
                tournaments.map((result) => (
 
-
                 <div className="game_row"> <span className="star live"><i className="fa fa-star" aria-hidden="true"></i></span>
                   <div className="game_pos"></div>
                   <div className="right_game_details">
                     <div className="top_game">
                       <div className="date">
-                        <h3>{result.tournament.name}</h3>
+                        <Link href={`/tournament/${result.tournament._id}`}>
+                          <a><h3>{result.tournament.name}</h3></a>
+                        </Link>
                         {result.tournament.startDate ? format(new Date(result.tournament.startDate), 'd MMM yyyy, hh:mm a') : 'Not defined'}
                         </div>
                       <div className="reg">
@@ -64,4 +66,4 @@ const TeamRows = ({tournaments , searchResults}) => {
                }
     }
 
-export default TeamRows;
+export default TournamentRows;
