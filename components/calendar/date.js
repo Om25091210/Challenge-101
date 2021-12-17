@@ -80,20 +80,20 @@ import 'react-datepicker/dist/react-datepicker.css';
                   <div className="top">
                     <div className="lft_dp">
                       {' '}
-                      <span class="dp">
+                      <span className="dp">
                         <img src={tour.tournament.imgUrl} alt="" />
                       </span>{' '}
-                      <span class="dp_name">{tour.tournament.name}</span>{' '}
+                      <span className="dp_name">{tour.tournament.name}</span>{' '}
                     </div>
                     <div className="num">3</div>
                   </div>
                   <div className="top">
                     <div className="lft_dp">
                       {' '}
-                      <span class="dp">
+                      <span className="dp">
                         <img src={tour.tournament.imgUrl} alt="" />
                       </span>{' '}
-                      <span class="dp_name">{tour.tournament.description}</span>{' '}
+                      <span className="dp_name">{tour.tournament.description}</span>{' '}
                     </div>
                     <div className="num">3</div>
                   </div>
