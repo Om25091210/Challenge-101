@@ -1,58 +1,50 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import baseURL from '../../utils/baseURL';
+import baseURL from '@utils/baseURL';
 import { QueryClient, QueryClientProvider, useMutation } from 'react-query';
 
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-const DateCal = () => {
+ const DateCal = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(null);
+  const [tournaments, setTournaments] = useState([]);
+
   const onChange = (dates) => {
     const [start, end] = dates;
+
     setStartDate(start);
     setEndDate(end);
+
+        if (startDate) {
+          if (endDate) {
+
+          getTours(startDate,endDate)
+            .then(items => {
+                setTournaments(items)
+            })
+          } 
+        }
+
   };
-
-  function formatDate(date) {
-    var d = new Date(date),
-      month = '' + (d.getMonth() + 1),
-      day = '' + d.getDate(),
-      year = d.getFullYear();
-
-    if (month.length < 2) month = '0' + month;
-    if (day.length < 2) day = '0' + day;
-
-    return [year, month, day].join('-');
-  }
-
-  console.log(formatDate(startDate));
-  console.log(formatDate(endDate));
 
   const [tournament, SetTournament] = useState([]);
 
-  useEffect(() => {
-    axios
-      .get(`${baseURL}/api/tournaments/`)
-      .then((res) => {
-        SetTournament(res.data);
-        // console.log(tournament)
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
 
-  //const result = tournament.filter(d=>(d.tournament.region) == "BHARAT");
+    function getTours(startDate,endDate) {
+      const requestOptions = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ startDate: startDate, endDate : endDate })
+      };
+    return fetch(`${baseURL}/api/tournaments/tournamentsbydate`, requestOptions)
+        .then(data => data.json())
 
-  var result = tournament.filter((a) => {
-    var dates = formatDate(a.tournament.startDate);
-    return dates >= formatDate(startDate) && dates <= formatDate(endDate);
-  });
+    }  
 
-  console.log(result);
+  console.log(tournaments);
 
   return (
     <>
@@ -72,11 +64,11 @@ const DateCal = () => {
       <div className="all_matches">
         <h2>Xenowatch league-week6</h2>
 
-        {result.length === 0 ? (
-          <p>No data</p>
+        {tournaments.length === 0 ? (
+          <p>No Tournaments are scheduled between selected dates. Please change the dates and check again! </p>
         ) : (
           <div className="match_box">
-            {result.map((tour) => (
+            {tournaments.map((tour) => (
               <div className="match_table" key={tour._id}>
                 <div className="head_row">
                   <div className="tm">11:00PCT</div>

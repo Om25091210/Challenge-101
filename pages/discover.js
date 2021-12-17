@@ -1,15 +1,15 @@
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
-import MetaDash from '../components/MetaDash';
-import SignedHeader from '../components/SignedHeader';
-import LeftNav from '../components/LeftNav';
-import Teams from '../components/discover/Teams';
-import Coaches from '../components/discover/Coaches';
-import Players from '../components/discover/Players';
-import Arenas from '../components/discover/Arenas';
-import Jobs from '../components/discover/Jobs';
+import MetaDash from '@components/MetaDash';
+import SignedHeader from '@components/SignedHeader';
+import LeftNav from '@components/LeftNav';
+import Teams from '@components/discover/Teams';
+import Coaches from '@components/discover/Coaches';
+import Players from '@components/discover/Players';
+import Arenas from '@components/discover/Arenas';
+import Jobs from '@components/discover/Jobs';
 
-import FooterMain from '../components/FooterMain';
+import FooterMain from '@components/FooterMain';
 import AllScript from './AllScript';
 
 const Discover = ({ user }) => {

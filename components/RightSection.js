@@ -1,5 +1,5 @@
 
-import FriendRequests from '../components/dashboard/friendRequests';
+import FriendRequests from '@components/dashboard/friendRequests';
 
 const RightSection = ({user}) => (
 

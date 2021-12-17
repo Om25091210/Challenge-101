@@ -6,7 +6,7 @@ import {
   isDescriptionComponent,
   isSpecsComponent,
   isRelatedProductsComponent
-} from '../utils';
+} from '@utils';
 import ShapeComponents from '@components/shape/components';
 import getRelativePriceVariants from '@lib/pricing';
 import Collection from '@components/item-collection';

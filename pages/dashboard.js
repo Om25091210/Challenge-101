@@ -3,13 +3,13 @@ import cookie from 'js-cookie';
 import io from 'socket.io-client';
 import { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import baseURL from '../utils/baseURL';
-import getUserInfo from '../utils/getUserInfo';
-import MetaDash from '../components/MetaDash';
-import SignedHeader from '../components/SignedHeader';
-import LeftNav from '../components/LeftNav';
-import SignedMainContent from '../components/dashboard/SignedMainContent';
-import RightSection from '../components/RightSection';
+import baseURL from '@utils/baseURL';
+import getUserInfo from '@utils/getUserInfo';
+import MetaDash from '@components/MetaDash';
+import SignedHeader from '@components/SignedHeader';
+import LeftNav from '@components/LeftNav';
+import SignedMainContent from '@components/dashboard/SignedMainContent';
+import RightSection from '@components/RightSection';
 import AllScript from './AllScript';
 
 const scrollToBottom = (divRef) => {

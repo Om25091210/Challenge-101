@@ -1,13 +1,13 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import Meta from '../components/Meta';
-import FooterMain from '../components/FooterMain';
+import Meta from '@components/Meta';
+import FooterMain from '@components/FooterMain';
 import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 
 import { useRouter } from 'next/router'
 import { useForm } from "react-hook-form";
-import { loginUser } from '../utils/auth';
+import { loginUser } from '@utils/auth';
 
 
 const SignIn = () => {

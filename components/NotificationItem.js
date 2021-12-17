@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { formatDistanceToNowStrict } from 'date-fns';
 import cookie from 'js-cookie';
-import baseURL from '../utils/baseURL';
+import baseURL from '@utils/baseURL';
 import {useState, useEffect} from 'react'
 
 

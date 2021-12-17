@@ -1,12 +1,12 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import Meta from '../components/Meta';
-import FooterMain from '../components/FooterMain';
+import Meta from '@components/Meta';
+import FooterMain from '@components/FooterMain';
 import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { useForm } from "react-hook-form";
 import axios from 'axios';
-import baseURL from '../utils/baseURL';
+import baseURL from '@utils/baseURL';
 import {
   LockClosedIcon,
   MailIcon,
@@ -18,7 +18,7 @@ import {
   XIcon,
 } from '@heroicons/react/outline';
 
-import { registerUser } from '../utils/auth';
+import { registerUser } from '@utils/auth';
 
 const usernameRegex = /^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{0,29}$/;
 let cancel;

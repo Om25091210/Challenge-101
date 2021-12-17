@@ -8,7 +8,7 @@ import PageHeader from '@components/page-header';
 import ShapeComponents from '@components/shape/components';
 import { FolderNotFound } from './components/folder-not-found';
 import { getData } from '../get-data';
-import { getFolderTitle } from '../utils';
+import { getFolderTitle } from '@utils';
 
 export { getData, getFolderTitle };
 

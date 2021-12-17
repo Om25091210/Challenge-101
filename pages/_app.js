@@ -9,7 +9,7 @@ import { BasketProvider } from '@components/basket';
 import { simplyFetchFromGraph } from '@lib/graph';
 import { getLocaleFromContext, defaultLocale } from '@lib/app-config';
 import axios from 'axios';
-import baseURL from '../utils/baseURL';
+import baseURL from '@utils/baseURL';
 import nextI18NextConfig from '../next-i18next.config.js';
 
 import { Hydrate } from 'react-query/hydration';
@@ -20,9 +20,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/router';
 import * as gtag from '../lib/gtag';
 import { parseCookies, destroyCookie } from 'nookies';
-import { redirectUser } from '../utils/auth';
+import { redirectUser } from '@utils/auth';
 import Script from 'next/script';
-import {getCookieValue, setCookieValue} from '../utils/helpers';
+import {getCookieValue, setCookieValue} from '@utils/helpers';
 
 
 function MyApp({ Component, pageProps, commonData }) {

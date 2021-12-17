@@ -6,7 +6,7 @@ import { useLocale } from '@lib/app-config';
 import getRelativePriceVariants from '@lib/pricing';
 import Price from './components/price';
 import { Outer, Footer, ImageWrapper, Img, Inner } from './styles';
-import { findDefaultVariant } from '../utils';
+import { findDefaultVariant } from '@utils';
 
 export default function ProductItem({ data }) {
   const locale = useLocale();

@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
-import MetaDash from '../components/MetaDash';
-import SignedHeader from '../components/SignedHeader';
-import LeftNav from '../components/LeftNav';
+import MetaDash from '@components/MetaDash';
+import SignedHeader from '@components/SignedHeader';
+import LeftNav from '@components/LeftNav';
 
-import MatchTable from '../components/matches/matchtable';
-import MatchBoard from '../components/matches/MatchBoard';
-import StatsChart from '../components/matches/statschart';
+import MatchTable from '@components/matches/matchtable';
+import MatchBoard from '@components/matches/MatchBoard';
+import StatsChart from '@components/matches/statschart';
 
-import FooterMain from '../components/FooterMain';
+import FooterMain from '@components/FooterMain';
 import AllScript from './AllScript';
 
 const Matches = ({ user }) => {

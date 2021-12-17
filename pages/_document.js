@@ -2,7 +2,7 @@ import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 
 import React from 'react';
-import themeOptions from '../components/theme/theme-options';
+import themeOptions from '@components/theme/theme-options';
 
 
 export default class MyDocument extends Document {

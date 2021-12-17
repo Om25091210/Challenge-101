@@ -1,20 +1,20 @@
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
-import MetaDash from '../components/MetaDash';
-import SignedHeader from '../components/SignedHeader';
-import LeftNav from '../components/LeftNav';
-import TournamentRows from '../components/tournament/TournamentRows';
-import FooterMain from '../components/FooterMain';
+import MetaDash from '@components/MetaDash';
+import SignedHeader from '@components/SignedHeader';
+import LeftNav from '@components/LeftNav';
+import TournamentRows from '@components/tournament/TournamentRows';
+import FooterMain from '@components/FooterMain';
 import AllScript from './AllScript';
 import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
-import baseURL from '../utils/baseURL';
+import baseURL from '@utils/baseURL';
 import { useRouter } from 'next/router';
 import cookie from 'js-cookie';
 import { useQuery, useMutation } from 'react-query';
-import { searchTournaments, getTournaments } from '../utils/functionsHelper';
-import Filters from '../components/common/Filters';
+import { searchTournaments, getTournaments } from '@utils/functionsHelper';
+import Filters from '@components/common/Filters';
 
 const Tournament = ({ user }) => {
   const [searchObj, setSearchObj] = useState({

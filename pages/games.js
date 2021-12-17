@@ -1,9 +1,9 @@
-import MetaDash from '../components/MetaDash';
-import SignedHeader from '../components/SignedHeader';
-import LeftNav from '../components/LeftNav';
+import MetaDash from '@components/MetaDash';
+import SignedHeader from '@components/SignedHeader';
+import LeftNav from '@components/LeftNav';
 import AllScript from './AllScript';
 
-const Tournament1 = ({ user }) => {
+const Games = ({ user }) => {
   return (
     <>
       <MetaDash />
@@ -119,54 +119,54 @@ const Tournament1 = ({ user }) => {
 
           <ul className="profile_tab_btn">
             <li className="active">
-              <a href="javascript:void(0);" rel="overview">
+              <a href="#!" rel="overview">
                 OVERVIEW
               </a>
             </li>
             <li>
-              <a href="javascript:void(0);" rel="tournament">
+              <a href="#!" rel="tournament">
                 TOURNAMENTS
               </a>
             </li>
             <li>
-              <a href="javascript:void(0);" rel="participants">
+              <a href="#!" rel="participants">
                 {' '}
                 PARTICIPANTS
               </a>
             </li>
             <li>
-              <a href="javascript:void(0);" rel="league">
+              <a href="#!" rel="league">
                 LEAGUES
               </a>
             </li>
             <li>
-              <a href="javascript:void(0);" rel="ladder">
+              <a href="#!" rel="ladder">
                 LADDER
               </a>
             </li>
             <li>
-              <a href="javascript:void(0);" rel="matches">
+              <a href="#!" rel="matches">
                 {' '}
                 MATCHES
               </a>
             </li>
             <li>
-              <a href="javascript:void(0);" rel="video">
+              <a href="#!" rel="video">
                 VIDEOS/STREAMS{' '}
               </a>
             </li>
             <li>
-              <a href="javascript:void(0);" rel="teams">
+              <a href="#!" rel="teams">
                 TEAMS
               </a>
             </li>
             <li>
-              <a href="javascript:void(0);" rel="players">
+              <a href="#!" rel="players">
                 PLAYERS
               </a>
             </li>
             <li>
-              <a href="javascript:void(0);" rel="communities">
+              <a href="#!" rel="communities">
                 COMMUNITIES
               </a>
             </li>
@@ -214,4 +214,4 @@ const Tournament1 = ({ user }) => {
   );
 };
 
-export default Tournament1;
+export default Games;

@@ -189,64 +189,64 @@ const TournamentDetail = ({ user , data }) => {
 
           <ul className="profile_tab_btn">
             <li className="active">
-              <a href="javascript:void(0);" rel="overview">
+              <a href="#!" rel="overview">
                 Overview
               </a>
             </li>
             <li>
-              <a href="javascript:void(0);" rel="series">
+              <a href="#!" rel="series">
                 TOURNAMENT SERIES
               </a>
             </li>
             <li>
-              <a href="javascript:void(0);" rel="participants">
+              <a href="#!" rel="participants">
                 {' '}
                 PARTICIPANTS
               </a>
             </li>
             <li>
-              <a href="javascript:void(0);" rel="matches">
+              <a href="#!" rel="matches">
                 Matches
               </a>
             </li>
             <li>
-              <a href="javascript:void(0);" rel="result">
+              <a href="#!" rel="result">
                 SCHEDULE/RESULTS
               </a>
             </li>
             <li>
-              <a href="javascript:void(0);" rel="store">
+              <a href="#!" rel="store">
                 {' '}
                 Store
               </a>
             </li>
             <li>
-              <a href="javascript:void(0);" rel="video">
+              <a href="#!" rel="video">
                 VIDEOS/STREAMS{' '}
               </a>
             </li>
             <li>
-              <a href="javascript:void(0);" rel="media">
+              <a href="#!" rel="media">
                 MEDIA
               </a>
             </li>
             <li>
-              <a href="javascript:void(0);" rel="jobs">
+              <a href="#!" rel="jobs">
                 Jobs
               </a>
             </li>
             <li>
-              <a href="javascript:void(0);" rel="about">
+              <a href="#!" rel="about">
                 About
               </a>
             </li>
             <li>
-              <a href="javascript:void(0);" rel="sponsors">
+              <a href="#!" rel="sponsors">
                 Sponsors
               </a>
             </li>
             <li>
-              <a href="javascript:void(0);" rel="rigs">
+              <a href="#!" rel="rigs">
                 Rigs
               </a>
             </li>
@@ -270,7 +270,7 @@ const TournamentDetail = ({ user , data }) => {
                         className="custom-control-input"
                         id="All"
                       />
-                      <label className="custom-control-label" for="All"></label>
+                      <label className="custom-control-label" htmlFor="All"></label>
                     </div>
                   </div>
                   <div className="button-group">
@@ -284,7 +284,7 @@ const TournamentDetail = ({ user , data }) => {
                       />
                       <label
                         className="custom-control-label"
-                        for="Fortnite"
+                        htmlFor="Fortnite"
                       ></label>
                     </div>
                   </div>
@@ -299,7 +299,7 @@ const TournamentDetail = ({ user , data }) => {
                       />
                       <label
                         className="custom-control-label"
-                        for="Call"
+                        htmlFor="Call"
                       ></label>
                     </div>
                   </div>
@@ -314,7 +314,7 @@ const TournamentDetail = ({ user , data }) => {
                       />
                       <label
                         className="custom-control-label"
-                        for="Fifa"
+                        htmlFor="Fifa"
                       ></label>
                     </div>
                   </div>

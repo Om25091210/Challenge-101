@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { useState } from 'react';
 
-import { logoutUser } from '../utils/auth';
+import { logoutUser } from '@utils/auth';
 import NotificationItem from './NotificationItem';
 import ChatSection from './chats/ChatSection';
 

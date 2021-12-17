@@ -8,7 +8,7 @@ import TopicTag from '@components/topic-tag';
 import Price from './components/price';
 
 import { Outer, Footer, ImageWrapper, Img, Inner, Tags } from './styles';
-import { findDefaultVariant } from '../utils';
+import { findDefaultVariant } from '@utils';
 
 export default function ProductItem({ data }) {
   const locale = useLocale();

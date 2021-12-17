@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
-import MetaDash from '../components/MetaDash';
-import SignedHeader from '../components/SignedHeader';
-import LeftNav from '../components/LeftNav';
-import Date from '../components/calendar/date';
-import Match from '../components/calendar/match';
-import FooterMain from '../components/FooterMain';
+import MetaDash from '@components/MetaDash';
+import SignedHeader from '@components/SignedHeader';
+import LeftNav from '@components/LeftNav';
+import DateCal from '@components/calendar/Date';
+import Match from '@components/calendar/match';
+import FooterMain from '@components/FooterMain';
 import AllScript from './AllScript';
 
 const Calendar = ({ user }) => {
@@ -42,7 +42,7 @@ const Calendar = ({ user }) => {
               </a>{' '}
             </div>
 
-            <Date />
+            <DateCal />
           </div>
         </div>
       </div>

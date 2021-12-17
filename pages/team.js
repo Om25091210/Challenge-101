@@ -8,7 +8,7 @@ import TeamTabs from '@components/team/TeamTabs';
 import TeamProfileData from '@components/team/TeamProfileData';
 import FooterMain from '@components/FooterMain';
 import AllScript from './AllScript';
-import baseURL from '../utils/baseURL';
+import baseURL from '@utils/baseURL';
 
 const Team = ({ user, data }) => {
   console.log(data);
