@@ -1148,20 +1148,20 @@ transition: transform .5s ease, -webkit-transform .5s ease;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 250px
+  width: 250px; 
 }
-.more_data .pic .tumb{ border-radius: 5px; overflow: hidden; width: 90px; height: 90px;}
+.more_data .pic .tumb{ border-radius: 5px; overflow: hidden; width: 90px; height: 90px; flex-shrink: 0; margin-right: 5px;}
 .more_data .pic .tumb img{ object-fit: cover; width: 100%; height: 100%;}
-.more_data .pic h3{ font-size: 19px;}
+.more_data .pic h3{ font-size: 14px;}
 .more_data .total{ font-size: 14px; text-transform: uppercase; text-align: center;}
 .more_data .total p{ padding: 5px 0;}
 
 .more_data .follows{ width: 220px;}
 .more_data button{ background: #7239ea; padding: 10px 20px; text-align: center; color: #fff; font-size: 14px; border:0; width: 100%; border-radius: 5px; margin-bottom: 10px;}
-.more_data .ate{ background: #343439;  padding: 10px 20px; color: #fff; font-size: 14px; border:0; width: 100%; border-radius: 5px; display: flex;
+.more_data .ate{ background: #343439;  padding: 10px 20px; color: #fff; font-size:9px; border:0; width: 100%; border-radius: 5px; display: flex;
   align-items: center;
   justify-content: space-between;}
-.more_data .ate .circle{ display: inline-block; width: 30px; height:30px; border-radius: 50%; border:1px solid #fff;}
+.more_data .ate .circle{ display: inline-block; width: 30px; height:30px; border-radius: 50%; border:1px solid #fff;  flex-shrink: 0;}
 
 .row_box:hover .more_data{ display: flex;}
 
@@ -1508,7 +1508,7 @@ transition: transform .5s ease, -webkit-transform .5s ease;
 .match_row .team_a, .match_row .team_b{ display: flex;     align-items: center;}
 .match_row .team_name{ margin:0 20px;}
 .match_row .team_name h3{ font-size: 18px; padding-bottom: 10px;}
-.match_row .team_name a{}
+
 .match_row .team_b{flex-direction: row-reverse;}
 .match_row .team_vs{ text-align: center;}
 .match_row .team_vs p{ font-size: 14px; text-transform: uppercase;}
