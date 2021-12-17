@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { logoutUser } from '../utils/auth';
 import NotificationItem from './NotificationItem';
 import ChatSection from './chats/ChatSection';
+import Link from 'next/link';
 
 const SignedHeader = ({
   user,
@@ -158,9 +159,12 @@ const SignedHeader = ({
               <div className="drop_down_bg profile_drop_down">
                 <ul>
                   <li>
-                    <a href="/profile">
-                      <i className="fa fa-user" aria-hidden="true"></i> Profile
-                    </a>
+                    <Link href={`/${user.username}`}>
+                      <a>
+                        <i className="fa fa-user" aria-hidden="true"></i>{' '}
+                        Profile
+                      </a>
+                    </Link>
                   </li>
                   <li>
                     <a href="#">
