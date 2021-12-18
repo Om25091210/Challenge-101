@@ -160,11 +160,9 @@ const ProfileBoxWrap = ({ user, Userdata }) => {
 
               <div className="badges">
                 <h5>BADGES</h5>
-                <img src="/assets/media/profile/badges1.png" alt="" />
-                <img src="/assets/media/profile/badges2.png" alt="" />
-                <img src="/assets/media/profile/badges3.png" alt="" />
-                <img src="/assets/media/profile/badges4.png" alt="" />
-                <img src="/assets/media/profile/badges5.png" alt="" />
+                {Userdata[0].profile.badges.map((bdg) => (
+                  <img src={bdg.image} alt="" />
+                ))}
               </div>
             </div>
           </div>

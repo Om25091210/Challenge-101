@@ -180,7 +180,7 @@ export const NotificationItem = () => {
                     ) : notification.type === 'badge' ? (
                       <>
                         <span className="notif_img">
-                          <img src={notification.user.profilePicUrl} />
+                          <img src="" />
                         </span>{' '}
                         <span className="notif_name">
                           You have been awarded the{' '}
