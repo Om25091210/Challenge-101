@@ -182,15 +182,15 @@ const ProfileBox = ({ user, Userdata }) => {
 
             <div className="games">
               <h2>GAMES</h2>
-              <a href="#">
-                <img src="/assets/media/profile/game1.png" alt="" />
-              </a>
-              <a href="#">
-                <img src="/assets/media/profile/game2.png" alt="" />
-              </a>
-              <a href="#">
-                <img src="/assets/media/profile/game3.png" alt="" />
-              </a>
+
+              <>
+                {Userdata[0].games.map((item, index) => (
+                  <span key={index}>                    
+                      <img src={item.imgUrl} alt={item.name} /> {item.name}
+                  </span>
+                ))}
+              </>
+
             </div>
           </div>
 

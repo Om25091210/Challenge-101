@@ -11,10 +11,8 @@ import { useRouter } from 'next/router';
 
 const Profile = ({ user, Userdata }) => {
   const router = useRouter();
-  useEffect(() => {
-    router.replace('/profile', undefined, { shallow: true });
-  }, [Userdata]);
 
+  console.log(Userdata);
   return (
     <>
       <MetaDash />
