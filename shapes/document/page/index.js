@@ -4,7 +4,7 @@ import Microformat from '@components/microformat';
 import { DocumentHeader } from './components/header';
 import { DocumentRelatedContentSection } from './components/related-content';
 import { getData } from '../get-data';
-import { getDocumentTitle, getArticlesWithoutRepeatedElements } from '@utils';
+import { getDocumentTitle, getArticlesWithoutRepeatedElements } from '../utils';
 import {
   Img,
   Outer,
