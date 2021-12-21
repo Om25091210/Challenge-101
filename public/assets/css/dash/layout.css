@@ -1780,6 +1780,7 @@ main{ float: left; width: 100%; margin-top: 100px;}
     .right_products .eZXbfV figure{ height: 300px;}
     .right_products .eZXbfV figure img{ object-fit: cover;}
     .right_products .cEPfRQ ul > li{border: 1px solid #ddd;}
+    .right_products .cEPfRQ ul > li .tag{ font-size: 12px;}
     .right_products .fTBHtd{ border: 0;}
     .right_products .eZXbfV{ border:0}
     .right_products .hjcoaK{ padding: 10px;}
