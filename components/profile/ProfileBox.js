@@ -173,7 +173,7 @@ const ProfileBox = ({ user, Userdata }) => {
 
               <div className="badges">
                 <h5>BADGES</h5>
-                {Userdata[0].profile.badges.map((bdg) => (
+                {Userdata[0].badges.map((bdg) => (
                   <img src={bdg.image} alt="" />
                 ))}
               </div>
