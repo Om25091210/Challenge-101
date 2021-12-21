@@ -70,7 +70,7 @@ function LeftNav() {
             <Link href="/">
               <a className="">
                 <span className="iconbg">
-                  <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+                  <i className="fa fa-shopping-bag" aria-hidden="true"></i>
                 </span>{' '}
                 <span className="title">SHOP</span>
               </a>
