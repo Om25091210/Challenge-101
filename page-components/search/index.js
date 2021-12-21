@@ -173,20 +173,28 @@ export default function SearchPage(props) {
       <Outer>
         <PageHeader {...{ title, description }} />
         <Stackable stacks={stacks} />
-        <ListOuter>
-          <SearchActions>
-            <Facets
-              aggregations={data.aggregations}
-              spec={spec}
-              changeQuery={changeQuery}
-              totalResults={totalResults}
-            />
-            <LocateRight>
-              <OrderBy orderBy={spec.orderBy} onChange={handleOrderByChange} />
-            </LocateRight>
-          </SearchActions>
-          <SearchCount count={totalResults} />
-          <Results {...data.search} spec={spec} navigate={navigate} />
+        <ListOuter className="product_box">
+          <div className="left_filter">
+            <SearchActions>
+              <Facets
+                aggregations={data.aggregations}
+                spec={spec}
+                changeQuery={changeQuery}
+                totalResults={totalResults}
+              />
+              <LocateRight className="sortby">
+                <span>Sort By</span>{' '}
+                <OrderBy
+                  orderBy={spec.orderBy}
+                  onChange={handleOrderByChange}
+                />
+              </LocateRight>
+            </SearchActions>
+          </div>
+          <div className="right_products">
+            <SearchCount count={totalResults} />
+            <Results {...data.search} spec={spec} navigate={navigate} />
+          </div>
         </ListOuter>
       </Outer>
     </Layout>

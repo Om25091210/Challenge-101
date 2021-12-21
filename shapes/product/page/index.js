@@ -67,61 +67,65 @@ export default function ProductShape({ product, locale }) {
 
   return (
     <>
-      <Inner>
-        <Content>
-          <Media>
-            {selectedVariant?.images?.map((img) => (
-              <ImgContainer
-                key={img?.url}
-                portrait={verifyImagePotraitOrientation({
-                  width: img?.variants?.[0]?.width,
-                  height: img?.variants?.[0].height
-                })}
-              >
-                <Img {...img} alt={name} />
-              </ImgContainer>
-            ))}
-          </Media>
-          <Specs>
-            <ShapeComponents components={[specifications]} />
-          </Specs>
-          {descriptionComponent && (
-            <Description>
-              <DescriptionWrapper>
-                <ShapeComponents
-                  className="description"
-                  components={[descriptionComponent]}
+      <Inner className="product_details_box">
+        <div className="product_details">
+          <Content className="left_prod_img">
+            <Media>
+              {selectedVariant?.images?.map((img) => (
+                <ImgContainer
+                  key={img?.url}
+                  portrait={verifyImagePotraitOrientation({
+                    width: img?.variants?.[0]?.width,
+                    height: img?.variants?.[0].height
+                  })}
+                >
+                  <Img {...img} alt={name} />
+                </ImgContainer>
+              ))}
+            </Media>
+          </Content>
+
+          <Actions className="right_prod_details">
+            <ActionsSticky>
+              <Title>{name}</Title>
+              {summaryComponent && (
+                <Summary>
+                  <ContentTransformer json={summaryComponent?.content?.json} />
+                </Summary>
+              )}
+              {topics?.map((topic) => (
+                <TopicTag {...topic} key={topic.id} />
+              ))}
+              {hasVariants && (
+                <VariantSelector
+                  variants={variants}
+                  selectedVariant={selectedVariant}
+                  onVariantChange={onVariantChange}
                 />
-              </DescriptionWrapper>
-            </Description>
-          )}
-        </Content>
-        <Actions>
-          <ActionsSticky>
-            <Title>{name}</Title>
-            {summaryComponent && (
-              <Summary>
-                <ContentTransformer json={summaryComponent?.content?.json} />
-              </Summary>
-            )}
-            {topics?.map((topic) => (
-              <TopicTag {...topic} key={topic.id} />
-            ))}
-            {hasVariants && (
-              <VariantSelector
-                variants={variants}
+              )}
+              <Buy
+                product={product}
                 selectedVariant={selectedVariant}
-                onVariantChange={onVariantChange}
+                pricing={pricing}
               />
-            )}
-            <Buy
-              product={product}
-              selectedVariant={selectedVariant}
-              pricing={pricing}
-            />
-            <Stock selectedVariant={selectedVariant} />
-          </ActionsSticky>
-        </Actions>
+              <Stock selectedVariant={selectedVariant} />
+
+              <Specs className="prod_dim">
+                <ShapeComponents components={[specifications]} />
+              </Specs>
+              {descriptionComponent && (
+                <Description className="prod_discp">
+                  <DescriptionWrapper>
+                    <ShapeComponents
+                      className="description"
+                      components={[descriptionComponent]}
+                    />
+                  </DescriptionWrapper>
+                </Description>
+              )}
+            </ActionsSticky>
+          </Actions>
+        </div>
       </Inner>
 
       {Boolean(relatedProducts) && (

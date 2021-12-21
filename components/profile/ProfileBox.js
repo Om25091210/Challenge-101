@@ -8,9 +8,10 @@ import { useMutation } from 'react-query';
 import { toast } from 'react-toastify';
 import cookie from 'js-cookie';
 
-
 const ProfileBox = ({ user, Userdata }) => {
   const [profilePic, setProfilePic] = useState(null);
+  const [bio, setBio] = useState(Userdata[0].profile.bio);
+  const [showform, setShowForm] = useState(false);
 
   const [follow, setFollow] = useState(false);
   const followhandlesubmit = async (e) => {
@@ -31,6 +32,7 @@ const ProfileBox = ({ user, Userdata }) => {
   const { mutate } = useMutation(addFollow);
 
   const SrhUser = Userdata[0].profile.user;
+  const profileId = Userdata[0].profile._id;
   const isLoggedInUser = user._id === SrhUser._id;
   console.log(isLoggedInUser);
 
@@ -58,6 +60,34 @@ const ProfileBox = ({ user, Userdata }) => {
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }
+  };
+
+  const onChange = (e) => {
+    setBio(e.target.value);
+  };
+
+  const addingBio = async () => {
+    const res = await fetch(`${baseURL}/api/profile/${profileId}`, {
+      method: 'PUT',
+      body: JSON.stringify({
+        bio
+      }),
+      headers: {
+        'Content-type': 'application/json',
+        Authorization: cookie.get('token')
+      }
+    });
+    return res.json();
+  };
+
+  const handleButtonForm = () => {
+    addingBio();
+    setBio('');
+    setShowForm(false);
+  };
+
+  const ClickShowForm = () => {
+    setShowForm(true);
   };
 
   return (
@@ -174,23 +204,36 @@ const ProfileBox = ({ user, Userdata }) => {
               </div>
             </div>
 
-            <p>
-              Sonu Singh is an veteran player playing for Fnatic in the past and
-              winning 5 major world championships including Intel Extreme
-              Masters.{' '}
-            </p>
+            {!showform ? <p>{Userdata[0].profile.bio}</p> : ''}
 
+            {showform ? (
+              <form onSubmit={(e) => e.preventDefault()}>
+                <textarea
+                  name="text"
+                  value={bio}
+                  onChange={onChange}
+                ></textarea>
+                <button onClick={handleButtonForm} className="btn">
+                  Update
+                </button>
+              </form>
+            ) : (
+              ''
+            )}
+
+            <button className="bio_edit" onClick={ClickShowForm}>
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+            </button>
             <div className="games">
               <h2>GAMES</h2>
 
               <>
                 {Userdata[0].games.map((item, index) => (
-                  <span key={index}>                    
-                      <img src={item.imgUrl} alt={item.name} /> {item.name}
+                  <span key={index}>
+                    <img src={item.imgUrl} alt={item.name} /> {item.name}
                   </span>
                 ))}
               </>
-
             </div>
           </div>
 
@@ -222,7 +265,6 @@ const ProfileBox = ({ user, Userdata }) => {
           </div>
         </div>
       </div>
-      )
     </>
   );
 };
