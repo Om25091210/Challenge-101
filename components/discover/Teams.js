@@ -17,8 +17,8 @@ const Teams = ({ user }) => {
         <div className="team_search">
           <div className="searchbox">
             <h3>Search</h3>
-            <input type="search" value="" placeholder="Search" />
-            <input type="submit" value="" />
+            <input type="search" placeholder="Search" />
+            <input type="submit" />
           </div>
           <div className="advance">
             <div className="views">
@@ -181,10 +181,10 @@ const Teams = ({ user }) => {
             <h4>Prize Earned</h4>
             <p>USD 912.804</p>
           </div>
-          <dic className="percentage">
+          <div className="percentage">
             {' '}
             <img src="/assets/media/discover/percentage.png" alt="" />{' '}
-          </dic>
+          </div>
         </div>
       </div>
     </div>

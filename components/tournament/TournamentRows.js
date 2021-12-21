@@ -21,9 +21,9 @@ const TournamentRows = ({tournaments , searchResults}) => {
                <span className="act_name">No new tournaments ...</span>
                </div>
              ) : (
-               tournaments.map((result) => (
+               tournaments.map((result, idx) => (
 
-                <div className="game_row"> <span className="star live"><i className="fa fa-star" aria-hidden="true"></i></span>
+                <div className="game_row" key={idx}> <span className="star live"><i className="fa fa-star" aria-hidden="true"></i></span>
                   <div className="game_pos"></div>
                   <div className="right_game_details">
                     <div className="top_game">

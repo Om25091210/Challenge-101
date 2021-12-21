@@ -26,9 +26,9 @@ const RankingTable = ({teamranking }) => {
                <span className="act_name">No teams are ranked yet ...</span>
                </div>
              ) : (
-               teamranking.map((result) => (
+               teamranking.map((result, idx) => (
 
-                  <div className="row_box">
+                  <div className="row_box" key={idx}>
                     <div className="cols_box">
                       <div className="cols">{result.ranks ? (result.ranks[0] ? result.ranks[0].rank : 'Not Ranked' ) : 'Not Ranked'}</div>
                       <div className="cols">{result.team.name} </div>
@@ -49,8 +49,8 @@ const RankingTable = ({teamranking }) => {
                      </div>
                      </div>
                    ) : (
-                     result.tournament.map((tresult) => (
-                    <div className="more_data">
+                     result.tournament.map((tresult, idx) => (
+                    <div className="more_data" key={idx}>
                       <div className="pic">
                         <div className="tumb"><img src={tresult.imgUrl} alt=""/></div>
                         <h3>{tresult.name}</h3>
