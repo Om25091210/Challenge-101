@@ -28,6 +28,120 @@ h2{ font-size: 18px; font-weight: 700; }
 .overlay{ position: fixed; width:100%; height: 100%; left: 0; top:0; background: rgba(0,0,0,0.2); z-index: -1; display: block;}
 .overlay.show{display: block;}
 
+
+/* --------- Ecommerce Home page -------------------- */
+
+
+
+.inner_header {
+   width: 100%; float: left;
+  padding: 10px 25px;     display: flex; justify-content: space-between;
+}
+.inner_header .shoplogo{ float: left; width: 100px;}
+.inner_header nav{ float: left; width: auto;}
+.inner_header nav ul {
+  display: flex;
+  padding-top: 8px;
+  margin: 0;
+}
+.inner_header nav ul li{ padding: 10px;}
+.inner_header nav ul li a{ font-size: 14px; color: #000; font-weight: 400; text-transform: uppercase;}
+.inner_header .right_items{ float: right; display: flex; align-items: center;}
+.inner_header .right_items button{ position: relative; margin-left: 10px; background: none; width: 40px; height: 40px; border:1px solid #ddd; border-radius: 50%;}
+.inner_header .right_items button .quantity {
+  position: absolute;
+  top: 0;
+  right: -11px;
+  background: #000;
+  color: #fff;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  padding-top: 3px;
+  text-align: center;
+  font-size: 11px;
+  box-shadow: -1px 2px 1px #fff;
+}
+.inner_header .right_items button svg{ width:45px;}
+
+main{ float: left; width: 100%; margin-top: 100px;}
+
+.search_wrap{
+  position: fixed;
+  left: 0;
+  width: 100%;
+  top: 0;
+  background: #fff;
+  z-index: 10;
+  box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.05);
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: all 0.2s ease-in-out;
+  max-height: 100vh;
+}
+
+.theme-construction {
+  --radius: 0;
+  --baseFg: #000000;
+  --baseBg: #ffffff;
+  --accentFg: black;
+  --accentBg: #dddddd;
+}
+select {
+  -webkit-appearance: none;
+  appearance: none;
+  color: var(--baseFg);
+  border: 1px solid var(--baseFg);
+  line-height: 1;
+  outline: 0;
+  padding: 0.65em 2.5em 0.55em 0.75em;
+  border-radius: var(--radius);
+  background-color: var(--baseBg);
+  background-image: linear-gradient(var(--baseFg), var(--baseFg)),
+    linear-gradient(-135deg, transparent 50%, var(--accentBg) 50%),
+    linear-gradient(-225deg, transparent 50%, var(--accentBg) 50%),
+    linear-gradient(var(--accentBg) 42%, var(--accentFg) 42%);
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+  background-size:1px 100%, 20px 27px, 24px 27px, 20px 100%;
+  background-position: right 20px center, right bottom, right bottom, right bottom;   
+}
+
+select:hover {
+  background-image: linear-gradient(var(--accentFg), var(--accentFg)),
+    linear-gradient(-135deg, transparent 50%, var(--accentFg) 50%),
+    linear-gradient(-225deg, transparent 50%, var(--accentFg) 50%),
+    linear-gradient(var(--accentFg) 42%, var(--accentBg) 42%);
+}
+
+select:active {
+  background-image: linear-gradient(var(--accentFg), var(--accentFg)),
+    linear-gradient(-135deg, transparent 50%, var(--accentFg) 50%),
+    linear-gradient(-225deg, transparent 50%, var(--accentFg) 50%),
+    linear-gradient(var(--accentFg) 42%, var(--accentBg) 42%);
+  color: var(--accentBg);
+  border-color: var(--accentFg);
+  background-color: var(--accentFg);
+}
+
+.inner_header .right_items .shop_search{ border:1px solid #ddd; border-radius: 20px;}
+.inner_header .right_items form button{ background: #000;}
+
+.inner_header .right_items .search_close{ position: absolute; border:0}
+
+.shop_footer{ position: fixed; bottom: 0; width: 100%; padding: 20px 25px; background: #000; color: #fff; display: flex;
+  justify-content: space-between;}
+
+  .shop_footer li a{ color: #fff; font-size: 12px;}
+
+  .basket_box{ padding: 0;
+    text-align: center;
+    height: 100vh;
+    box-shadow: 3px 9px 10px #000; background: #ddd;}
+  .basket_box h4{ text-transform: uppercase;
+    background: #000;
+    color: #fff;
+    padding: 15px;}
+
 /* ------- Header css -------------- */
 
 .without_login_header{ text-align: right;}
@@ -689,10 +803,25 @@ ul.top_menu li.profile a{ display: inline-block;}
 .bottom_details .badges h5{ font-size: 11px; font-weight: 500; text-transform: uppercase;}
 
 .bio_box{ float: left; width: 100%; background: #fff; padding: 20px; margin-top: 10px; display: flex; justify-content: space-between; border-top: 1px solid #ddd; padding-top: 20px;}
-.bio_box .left_bio{ width: 50%;}
+.bio_box .left_bio{ width: 50%; position: relative;}
 .bio_box .left_bio .top_bio{ display: flex; margin-bottom: 20px;}
 .bio_box .left_bio .top_bio h3{ font-weight: 700; margin-right: 10px; font-size: 17px;}
 .bio_box .left_bio .top_bio .socail a{ color: #000; margin-right: 10px;}
+.bio_box .left_bio p{    font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;}
+
+.bio_box .left_bio .bio_edit{     border: 0;
+  right: 0;
+  background: none;
+  position: absolute;
+  top:0;}
+
+.bio_box .left_bio form textarea{    width: 91%; margin: 10px 0;
+  resize: none;
+  height: 81px;
+  float: left;}
+
 .bio_box  .games {
   display: flex;
   margin-top: 20px;
@@ -702,6 +831,7 @@ ul.top_menu li.profile a{ display: inline-block;}
 
 .bio_box .games h2{ margin-right: 20px;}
 .bio_box .games a{ margin-right: 20px;}
+
 
 .bio_box .right_bio{width: 40%; }
 .game_btn{ background: #7239ea; border:0; width: 100%; font-size: 18px; font-weight: 600; color:#fff; padding: 10px 20px; border-radius: 10px; text-align: center;}

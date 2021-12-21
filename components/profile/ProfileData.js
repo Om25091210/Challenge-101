@@ -8,23 +8,10 @@ import CustomPost from '../dashboard/CustomPost';
 import LikePost from '../postLikes/LikePost';
 import CommentForm from '../comments/CommentForm';
 import ProdPoup from '../profile/prodPoup';
+import Moment from 'moment';
 
 const ProfileData = ({ user }) => {
-  const [profile, setProfile] = useState([]);
-  // console.log(user)
-
-  useEffect(() => {
-    axios
-      .get(`${baseURL}/api/profile/${user.username}`)
-      .then((res) => {
-        console.log(res.data);
-        setProfile(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-
+  const [profile, setProfile] = useState(user);
   console.log(profile);
 
   return (
@@ -35,92 +22,106 @@ const ProfileData = ({ user }) => {
             <div className="post">
               {profile.map((pro) => (
                 <div key={pro._id}>
-                  {profile[0].posts.map((post) => (
-                    <div key={post._id}>
-                      <div className="heads">
-                        <div className="user">
-                          <img src={post.user.profilePicUrl} alt="" />
-                        </div>
-                        <h4>{post.description}</h4>
-                      </div>
-                      <div className="left_details">
-                        {' '}
-                        <a href="#">
-                          {' '}
-                          <i
-                            className="fa fa-heart"
-                            aria-hidden="true"
-                          ></i>{' '}
-                          <span>{post.likes.length}</span>{' '}
-                        </a>{' '}
-                        <a href="#">
-                          {' '}
-                          <i className="fa fa-eye" aria-hidden="true"></i>{' '}
-                          <span>{post.views}</span>{' '}
-                        </a>{' '}
-                        <a href="#">
-                          {' '}
-                          <i
-                            className="fa fa-commenting"
-                            aria-hidden="true"
-                          ></i>{' '}
-                          <span>0</span>{' '}
-                        </a>{' '}
-                      </div>
-                      <div className="right_details">
-                        <div className="post_data">
-                          <img src={post.images} alt="" />
-                        </div>
-                        <div className="users_share_box">
-                          <div className="more_user">
-                            {' '}
-                            <a href="#">
-                              <img src="/assets/media/dash/1.jpg" alt="user" />
-                              <span className="online"></span>
-                            </a>{' '}
-                            <a href="#">
-                              <img src="/assets/media/dash/2.jpg" alt="user" />
-                              <span className="online"></span>
-                            </a>{' '}
-                            <a href="#">
-                              <img src="/assets/media/dash/3.jpg" alt="user" />
-                              <span className="offiline"></span>
-                            </a>{' '}
-                            <a href="#" className="more">
-                              +3
-                            </a>{' '}
-                            <span className="others">
-                              Ashwin, George and 5 others have liked your post.
-                            </span>{' '}
+                  {profile[0].posts.length !== 0 &&
+                    profile[0].posts.map((post) => (
+                      <div key={post._id}>
+                        <div className="heads">
+                          <div className="user">
+                            <img src={post.user.profilePicUrl} alt="" />
                           </div>
-                          <div className="shere">
+                          <h4>{post.description}</h4>
+                        </div>
+                        <div className="left_details">
+                          {' '}
+                          <a href="#">
                             {' '}
-                            <LikePost postId={post._id} />{' '}
-                            <a href="#">
+                            <i
+                              className="fa fa-heart"
+                              aria-hidden="true"
+                            ></i>{' '}
+                            <span>{post.likes.length}</span>{' '}
+                          </a>{' '}
+                          <a href="#">
+                            {' '}
+                            <i
+                              className="fa fa-eye"
+                              aria-hidden="true"
+                            ></i>{' '}
+                            <span>{post.views}</span>{' '}
+                          </a>{' '}
+                          <a href="#">
+                            {' '}
+                            <i
+                              className="fa fa-commenting"
+                              aria-hidden="true"
+                            ></i>{' '}
+                            <span>0</span>{' '}
+                          </a>{' '}
+                        </div>
+                        <div className="right_details">
+                          <div className="post_data">
+                            <img src={post.images} alt="" />
+                          </div>
+                          <div className="users_share_box">
+                            <div className="more_user">
                               {' '}
-                              <i
-                                className="fa fa-share-alt"
-                                aria-hidden="true"
-                              ></i>{' '}
-                              <span>Share</span>{' '}
-                            </a>
-                            <div className="three_dots">
+                              <a href="#">
+                                <img
+                                  src="/assets/media/dash/1.jpg"
+                                  alt="user"
+                                />
+                                <span className="online"></span>
+                              </a>{' '}
+                              <a href="#">
+                                <img
+                                  src="/assets/media/dash/2.jpg"
+                                  alt="user"
+                                />
+                                <span className="online"></span>
+                              </a>{' '}
+                              <a href="#">
+                                <img
+                                  src="/assets/media/dash/3.jpg"
+                                  alt="user"
+                                />
+                                <span className="offiline"></span>
+                              </a>{' '}
+                              <a href="#" className="more">
+                                +3
+                              </a>{' '}
+                              <span className="others">
+                                Ashwin, George and 5 others have liked your
+                                post.
+                              </span>{' '}
+                            </div>
+                            <div className="shere">
+                              {' '}
+                              <LikePost postId={post._id} />{' '}
                               <a href="#">
                                 {' '}
                                 <i
-                                  className="fa fa-ellipsis-v"
+                                  className="fa fa-share-alt"
                                   aria-hidden="true"
-                                ></i>
+                                ></i>{' '}
+                                <span>Share</span>{' '}
                               </a>
-                              <CustomPost post={post} />
+                              <div className="three_dots">
+                                <a href="#">
+                                  {' '}
+                                  <i
+                                    className="fa fa-ellipsis-v"
+                                    aria-hidden="true"
+                                  ></i>
+                                </a>
+                                <CustomPost post={post} />
+                              </div>
                             </div>
                           </div>
-                        </div>
 
-                        <CommentForm postId={post} />
+                          <CommentForm postId={post} />
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
                 </div>
               ))}
             </div>
@@ -286,179 +287,34 @@ const ProfileData = ({ user }) => {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>06-12-2018</td>
-                    <td>
-                      <span className="dp">
-                        <img src="/assets/media/teams/team1.png" alt="" />
-                      </span>{' '}
-                      <span className="dp_name">
-                        <b>Lucky Clovers</b>Ireland
-                      </span>
-                    </td>
-                    <td>Heroes League Cup</td>
-                    <td>Semi-Finals</td>
-                    <td>9:00PM EST</td>
-                    <td>3-2 Win</td>
-                    <td>View Match</td>
-                    <td>
-                      <a href="#">Buy Match Tickets</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>06-12-2018</td>
-                    <td>
-                      <span className="dp">
-                        <img src="/assets/media/teams/team1.png" alt="" />
-                      </span>{' '}
-                      <span className="dp_name">
-                        <b>Lucky Clovers</b>Ireland
-                      </span>
-                    </td>
-                    <td>Heroes League Cup</td>
-                    <td>Semi-Finals</td>
-                    <td>9:00PM EST</td>
-                    <td>3-2 Win</td>
-                    <td>View Match</td>
-                    <td>
-                      <a href="#">Buy Match Tickets</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>06-12-2018</td>
-                    <td>
-                      <span className="dp">
-                        <img src="/assets/media/teams/team1.png" alt="" />
-                      </span>{' '}
-                      <span className="dp_name">
-                        <b>Lucky Clovers</b>Ireland
-                      </span>
-                    </td>
-                    <td>Heroes League Cup</td>
-                    <td>Semi-Finals</td>
-                    <td>9:00PM EST</td>
-                    <td>3-2 Loss</td>
-                    <td>View Match</td>
-                    <td>
-                      <a href="#" className="sold">
-                        Buy Match Tickets
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>06-12-2018</td>
-                    <td>
-                      <span className="dp">
-                        <img src="/assets/media/teams/team2.png" alt="" />
-                      </span>{' '}
-                      <span className="dp_name">
-                        <b>Lucky Clovers</b>Ireland
-                      </span>
-                    </td>
-                    <td>Heroes League Cup</td>
-                    <td>Semi-Finals</td>
-                    <td>9:00PM EST</td>
-                    <td>3-2 Loss</td>
-                    <td>View Match</td>
-                    <td>
-                      <a href="#">Buy Match Tickets</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>06-12-2018</td>
-                    <td>
-                      <span className="dp">
-                        <img src="/assets/media/teams/team3.png" alt="" />
-                      </span>{' '}
-                      <span className="dp_name">
-                        <b>Lucky Clovers</b>Ireland
-                      </span>
-                    </td>
-                    <td>Heroes League Cup</td>
-                    <td>Semi-Finals</td>
-                    <td>9:00PM EST</td>
-                    <td>Notify</td>
-                    <td>View Match</td>
-                    <td>
-                      <a href="#">Buy Match Tickets</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>06-12-2018</td>
-                    <td>
-                      <span className="dp">
-                        <img src="/assets/media/teams/team1.png" alt="" />
-                      </span>{' '}
-                      <span className="dp_name">
-                        <b>Lucky Clovers</b>Ireland
-                      </span>
-                    </td>
-                    <td>Heroes League Cup</td>
-                    <td>Semi-Finals</td>
-                    <td>9:00PM EST</td>
-                    <td>3-2 Win</td>
-                    <td>View Match</td>
-                    <td>
-                      <a href="#">Buy Match Tickets</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>06-12-2018</td>
-                    <td>
-                      <span className="dp">
-                        <img src="/assets/media/teams/team2.png" alt="" />
-                      </span>{' '}
-                      <span className="dp_name">
-                        <b>Lucky Clovers</b>Ireland
-                      </span>
-                    </td>
-                    <td>Heroes League Cup</td>
-                    <td>Semi-Finals</td>
-                    <td>9:00PM EST</td>
-                    <td>3-2 Win</td>
-                    <td>View Match</td>
-                    <td>
-                      <a href="#">Buy Match Tickets</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>06-12-2018</td>
-                    <td>
-                      <span className="dp">
-                        <img src="/assets/media/teams/team3.png" alt="" />
-                      </span>{' '}
-                      <span className="dp_name">
-                        <b>Lucky Clovers</b>Ireland
-                      </span>
-                    </td>
-                    <td>Heroes League Cup</td>
-                    <td>Semi-Finals</td>
-                    <td>9:00PM EST</td>
-                    <td>3-2 Win</td>
-                    <td>View Match</td>
-                    <td>
-                      <a href="#">Buy Match Tickets</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>06-12-2018</td>
-                    <td>
-                      <span className="dp">
-                        <img src="/assets/media/teams/team4.png" alt="" />
-                      </span>{' '}
-                      <span className="dp_name">
-                        <b>Lucky Clovers</b>Ireland
-                      </span>
-                    </td>
-                    <td>Heroes League Cup</td>
-                    <td>Semi-Finals</td>
-                    <td>9:00PM EST</td>
-                    <td>3-2 Win</td>
-                    <td>View Match</td>
-                    <td>
-                      <a href="#">Buy Match Tickets</a>
-                    </td>
-                  </tr>
+                  {profile[0].matches.map((match, index) => {
+                    return (
+                      <>
+                        <tr key={index}>
+                          <td>
+                            {Moment(match.startDate).format('DD-MM-YYYY')}
+                          </td>
+                          <td>
+                            <span className="dp">
+                              <img src="/assets/media/teams/team1.png" alt="" />
+                            </span>{' '}
+                            <span className="dp_name">
+                              <b>{match.teams[1].teamName}</b>
+                              {match.region}
+                            </span>
+                          </td>
+                          <td>{match.name}</td>
+                          <td>Semi-Finals</td>
+                          <td>{Moment(match.startDate).format('h:m')}</td>
+                          <td>3-2 Win</td>
+                          <td>View Match</td>
+                          <td>
+                            <a href="#">Buy Match Tickets</a>
+                          </td>
+                        </tr>
+                      </>
+                    );
+                  })}
                 </tbody>
               </table>
             </div>
@@ -1415,97 +1271,24 @@ const ProfileData = ({ user }) => {
         <div className="tab hide" id="sponsors">
           <div className="sponsers_box">
             <ul>
-              <li>
-                <div className="sponser_name">
-                  <img src="/assets/media/sponsers/1.jpg" alt="" />
-                </div>
-                <div className="sponser_data">
-                  {' '}
-                  <span className="head_spons_bg">Head Sponsor</span>
-                  <p>
-                    Roccat is the world 4yh-largest PC vendor by 2015 unit
-                    sales.[3] Asus appers in BusinessWeek's infoTech 100 and
-                    Asia's Top IT Companies rankings, and it ranked first in the
-                    IT.
-                  </p>
-                </div>
-              </li>
-              <li>
-                <div className="sponser_name">
-                  <img src="/assets/media/sponsers/2.jpg" alt="" />
-                </div>
-                <div className="sponser_data">
-                  {' '}
-                  <span className="sponser_bg">Head Sponsor</span>
-                  <p>
-                    Roccat is the world 4yh-largest PC vendor by 2015 unit
-                    sales.[3] Asus appers in BusinessWeek's infoTech 100 and
-                    Asia's Top IT Companies rankings, and it ranked first in the
-                    IT.
-                  </p>
-                </div>
-              </li>
-              <li>
-                <div className="sponser_name">
-                  <img src="/assets/media/sponsers/3.jpg" alt="" />
-                </div>
-                <div className="sponser_data">
-                  {' '}
-                  <span className="promotor_bg">Head Sponsor</span>
-                  <p>
-                    Roccat is the world 4yh-largest PC vendor by 2015 unit
-                    sales.[3] Asus appers in BusinessWeek's infoTech 100 and
-                    Asia's Top IT Companies rankings, and it ranked first in the
-                    IT.
-                  </p>
-                </div>
-              </li>
-
-              <li>
-                <div className="sponser_name">
-                  <img src="/assets/media/sponsers/4.jpg" alt="" />
-                </div>
-                <div className="sponser_data">
-                  {' '}
-                  <span className="head_spons_bg">Head Sponsor</span>
-                  <p>
-                    Roccat is the world 4yh-largest PC vendor by 2015 unit
-                    sales.[3] Asus appers in BusinessWeek's infoTech 100 and
-                    Asia's Top IT Companies rankings, and it ranked first in the
-                    IT.
-                  </p>
-                </div>
-              </li>
-              <li>
-                <div className="sponser_name">
-                  <img src="/assets/media/sponsers/5.jpg" alt="" />
-                </div>
-                <div className="sponser_data">
-                  {' '}
-                  <span className="sponser_bg">Head Sponsor</span>
-                  <p>
-                    Roccat is the world 4yh-largest PC vendor by 2015 unit
-                    sales.[3] Asus appers in BusinessWeek's infoTech 100 and
-                    Asia's Top IT Companies rankings, and it ranked first in the
-                    IT.
-                  </p>
-                </div>
-              </li>
-              <li>
-                <div className="sponser_name">
-                  <img src="/assets/media/sponsers/6.jpg" alt="" />
-                </div>
-                <div className="sponser_data">
-                  {' '}
-                  <span className="promotor_bg">Head Sponsor</span>
-                  <p>
-                    Roccat is the world 4yh-largest PC vendor by 2015 unit
-                    sales.[3] Asus appers in BusinessWeek's infoTech 100 and
-                    Asia's Top IT Companies rankings, and it ranked first in the
-                    IT.
-                  </p>
-                </div>
-              </li>
+              {profile[0].sponsors.length === 0 ? (
+                <div>No Sponsors</div>
+              ) : (
+                profile[0].sponsors.map((spons, index) => {
+                  return (
+                    <li key={index}>
+                      <div className="sponser_name">
+                        <img src={spons.logoUrl} alt="" />
+                      </div>
+                      <div className="sponser_data">
+                        {' '}
+                        <span className="head_spons_bg">{spons.name}</span>
+                        <p>{spons.description}</p>
+                      </div>
+                    </li>
+                  );
+                })
+              )}
             </ul>
           </div>
         </div>
