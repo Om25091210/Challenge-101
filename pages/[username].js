@@ -13,30 +13,25 @@ const Profile = ({ user, Userdata }) => {
   const router = useRouter();
 
   if (Userdata[0]) {
+    return (
+      <>
+        <MetaDash />
+        <SignedHeader user={user} />
+        <LeftNav />
 
-  return (
-    <>
-      <MetaDash />
-      <SignedHeader user={user} />
-      <LeftNav />
+        <div className="main_middle profile_middle">
+          <ProfileBox user={user} Userdata={Userdata} />
+          <ProfileTabs />
+          <ProfileData user={Userdata} />
+        </div>
 
-      <div className="main_middle profile_middle">
-        <ProfileBox user={user} Userdata={Userdata} />
-        <ProfileTabs />
-        <ProfileData user={user} />
-      </div>
-
-      <AllScript />
-    </>
-  );
-
-} else {
-  return null
-}
-
+        <AllScript />
+      </>
+    );
+  } else {
+    return null;
+  }
 };
-
-
 
 export const getServerSideProps = async (context) => {
   const { username } = context.params;

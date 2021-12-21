@@ -34,12 +34,10 @@ const ProfileBox = ({ user, Userdata }) => {
   const SrhUser = Userdata[0].profile.user;
   const profileId = Userdata[0].profile._id;
   const isLoggedInUser = user._id === SrhUser._id;
-  console.log(isLoggedInUser);
 
   const isFollow = Userdata[0].followers
     .filter((x) => x.user === user._id)
     .map((x) => x.user);
-  console.log(isFollow);
 
   const mutation = useMutation(async (formdata) => {
     await axios.put(`${baseURL}/api/auth`, formdata, {
@@ -84,10 +82,9 @@ const ProfileBox = ({ user, Userdata }) => {
     addingBio();
     setBio('');
     setShowForm(false);
-  };
-
-  const ClickShowForm = () => {
-    setShowForm(true);
+    window.setTimeout(function () {
+      location.reload();
+    }, 400);
   };
 
   return (
@@ -204,7 +201,7 @@ const ProfileBox = ({ user, Userdata }) => {
               </div>
             </div>
 
-            {!showform ? <p>{Userdata[0].profile.bio}</p> : ''}
+            {!showform ? <p> {Userdata[0].profile.bio} </p> : null}
 
             {showform ? (
               <form onSubmit={(e) => e.preventDefault()}>
@@ -221,9 +218,17 @@ const ProfileBox = ({ user, Userdata }) => {
               ''
             )}
 
-            <button className="bio_edit" onClick={ClickShowForm}>
-              <i class="fa fa-pencil" aria-hidden="true"></i>
-            </button>
+            {isLoggedInUser ? (
+              <button
+                className="bio_edit"
+                onClick={() => {
+                  setShowForm(true);
+                }}
+              >
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+              </button>
+            ) : null}
+
             <div className="games">
               <h2>GAMES</h2>
 
