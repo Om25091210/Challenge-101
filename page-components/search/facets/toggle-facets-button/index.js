@@ -12,6 +12,7 @@ export const ButtonToggleFacets = React.forwardRef(
 
     return (
       <Button
+        className="filter_btn"
         {...rest}
         ref={ref}
         style={{

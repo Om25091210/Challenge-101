@@ -3,7 +3,7 @@ import Head from 'next/head';
 import CrystallizeLayout from '@crystallize/react-layout';
 
 import { Spinner } from 'ui';
-import GlobalStyle from 'ui/global';
+// import GlobalStyle from 'ui/global';
 import { useRouter } from 'next/router';
 import Aside from './aside';
 import Header from './header';
@@ -89,18 +89,18 @@ export default function Layout({
 
         <meta property="twitter:card" content="summary_large_image" />
       </Head>
-      <GlobalStyle />
+      {/* <GlobalStyle /> */}
 
       {simple ? (
         <>
           <Header simple={simple} preview={preview} />
-          <Main>{loading ? <Loader /> : children}</Main>
+          <main>{loading ? <Loader /> : children}</main>
           <Footer />
         </>
       ) : (
         <CrystallizeLayout right={Aside}>
           <Header simple={simple} preview={preview} />
-          <Main>{loading ? <Loader /> : children}</Main>
+          <main>{loading ? <Loader /> : children}</main>
           <Footer />
         </CrystallizeLayout>
       )}

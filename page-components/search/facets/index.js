@@ -124,12 +124,12 @@ export default function Facets({
     priceRange?.max !== price?.max;
 
   return (
-    <Outer>
+    <Outer className="shop_filter_box">
       <ButtonToggleFacets
         onClick={toggleFilters}
         areFacetsShown={areFacetsShown}
       />
-      <FacetsDisplayer $show={areFacetsShown}>
+      <FacetsDisplayer className="filter_input" $show={areFacetsShown}>
         {price && price.min !== price.max && (
           <FacetGroup
             title={t('facets.price.title')}
@@ -165,7 +165,7 @@ export default function Facets({
               action={
                 hasFiltersApplied && (
                   <FaceGroupAction onClick={handleAttributeValueChange}>
-                    {t('facets.reset')}
+                    {/* {t('facets.reset')} */} X
                   </FaceGroupAction>
                 )
               }

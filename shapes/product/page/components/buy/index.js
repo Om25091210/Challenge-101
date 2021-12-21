@@ -88,6 +88,7 @@ export default function BuyButton({ product, selectedVariant, pricing }) {
         </Price>
       )}
       <Button
+        className="btn"
         width="250px"
         onClick={buy}
         disabled={!pricing?.defaultPrice.currency}
