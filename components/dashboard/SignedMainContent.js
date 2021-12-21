@@ -148,18 +148,18 @@ const SignedMainContent1 = () => {
 
       <ul className="profile_tab_btn three_nav">
         <li className="active">
-          <a href="javascript:void(0);" rel="for-you">
+          <a href="#!" rel="Discover">
+            Discover
+          </a>
+        </li>      
+        <li>
+          <a href="#!" rel="for-you">
             For You
           </a>
         </li>
         <li>
-          <a href="javascript:void(0);" rel="Following">
+          <a href="#!" rel="Following">
             Following
-          </a>
-        </li>
-        <li>
-          <a href="javascript:void(0);" rel="Discover">
-            Discover
           </a>
         </li>
       </ul>
