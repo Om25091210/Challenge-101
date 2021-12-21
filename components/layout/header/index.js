@@ -55,7 +55,7 @@ export default function Header({ simple, preview }) {
             <Link href="/account" passHref>
               <button as="a" aria-label="User area">
                 {/* <IconUser /> */}
-                <i class="fa fa-user" aria-hidden="true"></i>
+                <i className="fa fa-user" aria-hidden="true"></i>
               </button>
             </Link>
 

@@ -54,8 +54,8 @@ const Teams = ({ user }) => {
         <Filters ftype={'TEAMS'} />
       </div>
 
-      {team.map((team) => (
-        <div className="team_row">
+      {team.map((team, idx) => (
+        <div className="team_row" key={idx}>
           <div className="stars">
             <i className="fa fa-star" aria-hidden="true"></i>
           </div>

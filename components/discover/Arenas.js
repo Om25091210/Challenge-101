@@ -53,8 +53,8 @@ const Arenas = ({ user }) => {
         <Filters ftype={'ARENAS'} />
       </div>
 
-      {arenas.map((ara) => (
-        <div className="team_row arena_team_row">
+      {arenas.map((ara, idx) => (
+        <div className="team_row arena_team_row" key={idx}>
           <div className="inner_team">
             <div className="logo_box">
               <img src="/assets/media/discover/lxg.png" alt="" />

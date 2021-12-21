@@ -15,7 +15,7 @@ const BasketButton = () => {
       type="button"
       aria-label={t('title')}
     >
-      <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+      <i className="fa fa-shopping-cart" aria-hidden="true"></i>
       <div className="quantity">{totalQuantity}</div>
     </button>
   );

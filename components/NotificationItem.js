@@ -61,8 +61,8 @@ export const NotificationItem = () => {
             ) : (
               <div>
                 {' '}
-                {notify.map((notification) => (
-                  <li className="notif_tag">
+                {notify.map((notification, idx) => (
+                  <li className="notif_tag" key={idx}>
                     {notification.type === 'comment' ? (
                       <>
                         <span className="notif_img">

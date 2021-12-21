@@ -126,7 +126,7 @@ export default function Search() {
         onClick={onClickSearchBtn}
         aria-label={t('search.label')}
       >
-        <i class="fa fa-search" aria-hidden="true"></i>
+        <i className="fa fa-search" aria-hidden="true"></i>
       </button>
       <SearchWrapper isOpen={isOpen}>
         <Outer ref={outerRef}>
@@ -146,7 +146,7 @@ export default function Search() {
             />
             {status === 'searching' && <InputSpinner />}
             <InputButton>
-              <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+              <i className="fa fa-long-arrow-right" aria-hidden="true"></i>
             </InputButton>
           </InputGroup>
           {status !== 'idle' && isOpen && searchTerm !== '' && (

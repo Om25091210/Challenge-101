@@ -69,13 +69,13 @@ const Jobs = () => {
                   <span className="drop_name">{filter.key}</span>
 
                   {filter.value.map((val, idx) => (
-                    <div className="custom-control custom-checkbox">
+                    <div className="custom-control custom-checkbox" key={idx}>
                       <input
                         type="checkbox"
                         className="custom-control-input"
                         id={val}
                       />
-                      <label className="custom-control-label" for={val}></label>
+                      <label className="custom-control-label" htmlFor={val}></label>
                     </div>
                   ))}
                 </div>

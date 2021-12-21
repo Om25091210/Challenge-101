@@ -225,7 +225,7 @@ const ProfileBox = ({ user, Userdata }) => {
                   setShowForm(true);
                 }}
               >
-                <i class="fa fa-pencil" aria-hidden="true"></i>
+                <i className="fa fa-pencil" aria-hidden="true"></i>
               </button>
             ) : null}
 
