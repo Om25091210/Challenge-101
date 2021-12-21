@@ -4,7 +4,7 @@ import ChatInput from './ChatInput';
 import ChatBox from './ChatBox';
 import cookie from 'js-cookie';
 import axios from 'axios';
-import baseURL from '../../utils/baseURL';
+import baseURL from '@utils/baseURL';
 
 const ChatSection = ({
   user,
@@ -18,6 +18,9 @@ const ChatSection = ({
   const [messager, setMessager] = useState({});
 
   useEffect(() => {
+
+    if (messagesWith != undefined) {
+
     axios
       .get(`${baseURL}/api/chats/user/${messagesWith}`, {
         headers: {
@@ -30,6 +33,8 @@ const ChatSection = ({
       .catch((err) => {
         console.log(err);
       });
+    }
+
   }, [messagesWith]);
 
   return (

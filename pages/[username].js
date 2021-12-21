@@ -12,7 +12,8 @@ import { useRouter } from 'next/router';
 const Profile = ({ user, Userdata }) => {
   const router = useRouter();
 
-  console.log(Userdata);
+  if (Userdata[0]) {
+
   return (
     <>
       <MetaDash />
@@ -28,7 +29,14 @@ const Profile = ({ user, Userdata }) => {
       <AllScript />
     </>
   );
+
+} else {
+  return null
+}
+
 };
+
+
 
 export const getServerSideProps = async (context) => {
   const { username } = context.params;

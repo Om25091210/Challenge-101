@@ -73,6 +73,7 @@ const ChatBox = ({ user, chats, setChats }) => {
   }, []);
 
   const addChat = ({ user }) => {
+
     const alreadyInChat =
       chats.length > 0 &&
       chats.filter((chat) => chat.messagesWith === user.friendId).length > 0;
