@@ -1,3 +1,5 @@
+import Script from 'next/script'
+
 const AllScript = () => {
   return (
     <>

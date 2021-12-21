@@ -28,8 +28,8 @@ const Jobs = () => {
           <div className="team_search">
             <div className="searchbox">
               <h3>Search</h3>
-              <input type="search" value="" placeholder="Search" />
-              <input type="submit" value="" />
+              <input type="search" placeholder="Search" />
+              <input type="submit" />
             </div>
             <div className="advance">
               <div className="views">
