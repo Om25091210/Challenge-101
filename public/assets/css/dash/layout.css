@@ -1641,7 +1641,7 @@ transition: transform .5s ease, -webkit-transform .5s ease;
 
     /* --------- Ecommerce Home page -------------------- */
 
-
+.kZtJuQ{ min-height: 600px  !important}
 
 .inner_header {width: 100%; float: left; padding: 10px 25px; display: flex; justify-content: space-between;}
 .inner_header .shoplogo{ float: left; width: 100px;}
