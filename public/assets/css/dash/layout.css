@@ -128,6 +128,7 @@ ul.top_menu li.profile a{ display: inline-block;}
 
 /* ------- middle css -------------- */
 
+.team_slider .slick-list{ height: 47px !important}
 
 .main_middle{width:1000px;margin:150px auto 0 auto;}
 .write_post{border-radius:5px;padding:3px 10px;background:#fff;display:flex;width:100%;align-items:center;height:90px;justify-content:flex-start;border:1px solid #e1e1e1;margin-bottom:30px;}
