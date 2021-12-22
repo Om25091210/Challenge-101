@@ -1,4 +1,4 @@
-import Script from 'next/script';
+import Document, { Head, Main, NextScript } from 'next/document';
 
 import Customjs from './newcustom';
 
