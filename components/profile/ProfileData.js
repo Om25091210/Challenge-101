@@ -20,11 +20,11 @@ const ProfileData = ({ user }) => {
         <div className="tab" id="feed">
           <div className="profile_left_post">
             <div className="post">
-              {profile.map((pro) => (
-                <div key={pro._id}>
+              {profile.map((pro, idx) => (
+                <div key={idx}>
                   {profile[0].posts.length !== 0 &&
-                    profile[0].posts.map((post) => (
-                      <div key={post._id}>
+                    profile[0].posts.map((post, index) => (
+                      <div key={index}>
                         <div className="heads">
                           <div className="user">
                             <img src={post.user.profilePicUrl} alt="" />

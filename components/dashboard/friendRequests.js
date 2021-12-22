@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import axios from 'axios';
-import baseURL from '../../utils/baseURL';
+import baseURL from '@utils/baseURL';
 import { useForm } from "react-hook-form";
 
 
@@ -56,9 +56,9 @@ return (
                <span className="act_name">No new invites ...</span>
                </div>
              ) : (
-               user.request.map((resultuser) => (
+               user.request.map((resultuser, idx) => (
 
-                   <div className="activity_tag"> 
+                   <div className="activity_tag" key={idx}> 
 
 
                    <a href="#!"> <span className="act_img"><img src="/assets/media/dash/user.png" alt=""/></span> <span className="act_name">{resultuser.username.length > 12
