@@ -236,11 +236,15 @@ const ProfileBox = ({ user, Userdata }) => {
                 <ul className="games_btn">
                   {Userdata[0].games.map((item, index) => (
                     <>
-                      <li className="active">
+                      <li
+                        className={`${
+                          `item${index}` == 'item0' ? 'active' : ''
+                        }`}
+                      >
                         <a href="javascript:void(0);" rel={`item${index}`}>
                           <span key={index}>
                             <img src={item.imgUrl} alt={item.name} />{' '}
-                            {item.name}
+                            <p>{item.name}</p>
                           </span>
                         </a>
                       </li>
@@ -252,10 +256,15 @@ const ProfileBox = ({ user, Userdata }) => {
           </div>
 
           <div className="right_bio">
-            <div class="games_data white_bg">
+            <div className="games_data white_bg">
               {Userdata[0].games.map((item, index) => (
                 <>
-                  <div class="tab hide1" id={`item${index}`}>
+                  <div
+                    className={`tab ${
+                      `item${index}` == 'item0' ? '' : 'hide1'
+                    }`}
+                    id={`item${index}`}
+                  >
                     <div key={index} className="game_btn">
                       {item.name}
                     </div>
