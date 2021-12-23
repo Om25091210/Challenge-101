@@ -3,16 +3,45 @@ import Head from 'next/head';
 import GameDetails from './gamedetails';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import baseURL from '../../utils/baseURL';
+import baseURL from '@utils/baseURL';
 import CustomPost from '../dashboard/CustomPost';
 import LikePost from '../postLikes/LikePost';
 import CommentForm from '../comments/CommentForm';
 import ProdPoup from '../profile/prodPoup';
 import Moment from 'moment';
+var FormData = require('form-data');
+import { useMutation } from 'react-query';
+import { toast } from 'react-toastify';
+import cookie from 'js-cookie';
 
 const ProfileData = ({ user }) => {
   const [profile, setProfile] = useState(user);
-  console.log(profile);
+
+  const [uploadedImages, setUploadedImages] = useState();
+
+  const [profilePic, setProfilePic] = useState(null);
+
+  const mutation = useMutation(async (formdata) => {
+    await axios.put(`${baseURL}/api/uploads/uploadVideos`, formdata, {
+      headers: {
+        Authorization: cookie.get('token'),
+        'Content-Type': 'multipart/form-data'
+      }
+    });
+  });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formdata = new FormData();
+    formdata.append('uploadedImages', uploadedImages);
+    try {
+      await mutation.mutateAsync(formdata);
+      toast.success('User videos have been updated');
+    } catch (err) {
+      toast.error(err.response?.data?.msg || 'Please upload your videos again');
+    }
+  };
+
 
   return (
     <>
@@ -1088,6 +1117,19 @@ const ProfileData = ({ user }) => {
         <div className="tab hide" id="video">
           <div className="video_box">
             <ul>
+            <li>
+ <form onSubmit={handleSubmit} enctype="multipart/form-data">
+  <input type="file" name="uploadedImages"  onChange={(e) => {
+                      setUploadedImages(e.target.files[0]);
+                      handleSubmit(e);
+                    }} multiple/>
+
+
+  <input type="submit" value="uploading_img"/>
+</form>
+
+
+            </li>
               <li>
                 <a href="#video_1" className="videos">
                   {' '}

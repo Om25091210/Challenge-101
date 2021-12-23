@@ -3,7 +3,7 @@ import Head from 'next/head';
 import MetaDash from '@components/MetaDash';
 import SignedHeader from '@components/SignedHeader';
 import LeftNav from '@components/LeftNav';
-import DateCal from '@components/calendar/Date';
+import DateCal from '@components/calendar/DateCal';
 import Match from '@components/calendar/match';
 import FooterMain from '@components/FooterMain';
 import AllScript from './AllScript';
