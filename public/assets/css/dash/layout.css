@@ -844,6 +844,16 @@ ul.top_menu li.profile a{ display: inline-block;}
   justify-content: space-between; padding: 20px; border-radius: 10px;
 }
 
+.sponser ul li{    flex: 0 0 20%;
+  margin-right: 5px;
+  border: 1px solid #ddd;
+  height: 50px;
+  background: #ddd;
+  padding: 10px;
+  text-align: center;}
+
+  .sponser ul li img{ height: 25px; object-fit: cover;}
+
 .bio_box .right_team_bio  h5{ font-size: 12px; font-weight: 700; padding-bottom: 20px;}
 
 
@@ -921,8 +931,8 @@ transition: transform .5s ease, -webkit-transform .5s ease;
 .products li{ float: left; width: 23.5%; margin-right: 2%; margin-bottom: 20px; background: #fff; padding: 20px 2%; border-radius: 10px;}
 .products li:nth-child(4n){ margin-right:0}
 .products li .pro_img{ width: 100%; position: relative; }
-.products li .pro_img .size_option{ position: absolute; color: #fff; font-size: 12px; display: none; padding: 5px 10px; top:-20px; border:1px solid #ff3744; border-radius: 20px; background: #000; right: 0;}
-.products li .pro_img:hover .size_option{ display: block;}
+.products li .pro_img .size_option{ position: absolute; color: #fff; font-size: 12px; display: block; padding: 5px 10px; top:-20px; border:1px solid #ff3744; border-radius: 20px; background: #000; right: 0;}
+
 .products li .pro_img img{width: 100%; height: 250px; object-fit: cover; border-radius: 10px;}
 .products li .name_dots{display: flex; justify-content: space-between; margin-top: 10px; align-items: center;}
 .products li .name_dots h4{ text-transform: uppercase; font-size: 12px; font-weight: 700;}

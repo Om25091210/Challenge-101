@@ -8,7 +8,241 @@ const TeamProfileData = ({ user, data }) => {
       <div className="prfoile_tab_data white_bg">
         <div className="tab" id="overview">
           {' '}
-          111111111
+          <div className="profile_left_post">
+            <div className="post">
+              <div className="heads">
+                <div className="user">
+                  <img src="/assets/media/user.jpg" alt="" />
+                </div>
+                <h4>TheMadTitan</h4>
+              </div>
+              <div className="left_details">
+                {' '}
+                <a href="#">
+                  {' '}
+                  <i className="fa fa-heart" aria-hidden="true"></i>{' '}
+                  <span>1.7k</span>{' '}
+                </a>{' '}
+                <a href="#">
+                  {' '}
+                  <i className="fa fa-eye" aria-hidden="true"></i>{' '}
+                  <span>239k</span>{' '}
+                </a>{' '}
+                <a href="#">
+                  {' '}
+                  <i className="fa fa-commenting" aria-hidden="true"></i>{' '}
+                  <span>232k</span>{' '}
+                </a>{' '}
+              </div>
+              <div className="right_details">
+                <div className="post_data"></div>
+                <div className="users_share_box">
+                  <div className="more_user">
+                    {' '}
+                    <a href="#">
+                      <img src="/assets/media/1.jpg" alt="user" />
+                      <span className="online"></span>
+                    </a>{' '}
+                    <a href="#">
+                      <img src="/assets/media/2.jpg" alt="user" />
+                      <span className="online"></span>
+                    </a>{' '}
+                    <a href="#">
+                      <img src="/assets/media/3.jpg" alt="user" />
+                      <span className="offiline"></span>
+                    </a>{' '}
+                    <a href="#" className="more">
+                      +3
+                    </a>{' '}
+                    <span className="others">
+                      Ashwin, George and 5 others have liked your post.
+                    </span>{' '}
+                  </div>
+                  <div className="shere">
+                    {' '}
+                    <a href="#">
+                      {' '}
+                      <i className="fa fa-heart" aria-hidden="true"></i>{' '}
+                      <span>Like</span>{' '}
+                    </a>{' '}
+                    <a href="#">
+                      {' '}
+                      <i
+                        className="fa fa-share-alt"
+                        aria-hidden="true"
+                      ></i>{' '}
+                      <span>Share</span>{' '}
+                    </a>
+                    <div className="three_dots">
+                      <a href="#">
+                        {' '}
+                        <i className="fa fa-ellipsis-v" aria-hidden="true"></i>
+                      </a>
+                      <div className="three_dots_dropdown">
+                        <ul>
+                          <li>
+                            <a href="#">Edit</a>
+                          </li>
+                          <li>
+                            <a href="#">Share to</a>
+                          </li>
+                          <li>
+                            <a href="#">Copy Link</a>
+                          </li>
+                          <li>
+                            <a href="#">Delet</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* <!--Start Add comments--> */}
+
+                <div className="add_comment_box">
+                  <div className="add_comments">
+                    <div className="user">
+                      <img src="/assets/media/user.jpg" alt="" />
+                    </div>
+                    <textarea placeholder="Add a comment"></textarea>
+                    <a href="#" className="gif">
+                      GIF
+                    </a>{' '}
+                    <a href="#" className="smile">
+                      <img src="/assets/media/smile.png" alt="" />
+                    </a>{' '}
+                  </div>
+                  <button>
+                    <img src="/assets/media/send.png" alt="" />
+                  </button>
+                </div>
+
+                {/* <!--Start Add comments--> */}
+
+                <div className="post_comments">
+                  <div className="pop_comment">Popular Comments</div>
+                  <div className="comments_point">
+                    <div className="fire">
+                      <img src="/assets/media/fire.png" alt="" />{' '}
+                      <span>45</span>
+                    </div>
+                    <div className="user">
+                      <img src="/assets/media/user.jpg" alt="" />
+                    </div>
+                    <h3>TheMadTitan</h3>
+                    <a href="#" className="create">
+                      Creator
+                    </a>{' '}
+                    <span className="days">2 days ago</span>{' '}
+                    <a href="#" className="pinned">
+                      Pinned by Creator
+                    </a>{' '}
+                  </div>
+                  <p>Thank you everyone for all of your support.</p>
+                  <div className="loadmore">
+                    <a href="#">
+                      Load comments{' '}
+                      <i className="fa fa-angle-down" aria-hidden="true"></i>
+                    </a>
+                  </div>
+                </div>
+
+                {/* <!--End Add comments-->  */}
+              </div>
+            </div>
+          </div>
+          <div className="profile_match_details">
+            <div className="all_stats">
+              <ul>
+                <li>
+                  <img src="/assets/media/profile/fire1.png" alt="" />
+                  <div className="two_value">
+                    <span className="num">108</span>
+                    <span className="names">MATCHES PLAYED</span>
+                  </div>
+                </li>
+                <li>
+                  <img src="/assets/media/profile/won.png" alt="" />
+
+                  <div className="two_value">
+                    <span className="num">71</span>
+                    <span className="names">MATCHES WON</span>
+                  </div>
+                </li>
+                <li>
+                  <img src="/assets/media/profile/cup.png" alt="" />
+
+                  <div className="two_value">
+                    <span className="num">12</span>
+                    <span className="names">TROPHIES</span>
+                  </div>
+                </li>
+                <li>
+                  <img src="/assets/media/profile/money.png" alt="" />
+                  <div className="two_value">
+                    <span className="num">$40K</span>
+                    <span className="names">EARNINGS</span>
+                  </div>
+                </li>
+                <li>
+                  <img src="/assets/media/profile/streak.png" alt="" />
+                  <div className="two_value">
+                    <span className="num">26</span>
+                    <span className="names">WINNING STREAK</span>
+                  </div>
+                </li>
+                <li>
+                  <div className="two_value">
+                    <a href="#" className="names">
+                      All Stat
+                    </a>
+                  </div>{' '}
+                  <i className="fa fa-long-arrow-right" aria-hidden="true"></i>
+                </li>
+              </ul>
+            </div>
+
+            <div className="games_details">
+              <ul>
+                <li>
+                  <span className="nm">Game: </span>{' '}
+                  <img src="/assets/media/profile/game1.png" alt="" />
+                </li>
+                <li>
+                  <span className="nm">Roles: </span>{' '}
+                  <span class="task">Assault/Sniper</span>{' '}
+                </li>
+                <li>
+                  <span className="nm">Mic:</span> <span class="task"> On</span>
+                </li>
+                <li>
+                  <span className="nm">Platform:</span>{' '}
+                  <span class="task"> PC</span>
+                </li>
+                <li>
+                  <span className="nm">Language:</span>{' '}
+                  <span class="task"> ENG, RU, HINDI</span>
+                </li>
+                <li>
+                  <span className="nm">Win rate/KDA:</span>{' '}
+                  <span class="task"> 67% / 2.9 </span>
+                </li>
+                <li>
+                  <span className="nm">MMR:</span>{' '}
+                  <span class="task"> 3211 </span>
+                </li>
+                <li>
+                  <span className="nm">Availablilty:</span>{' '}
+                  <span class="task"> 4 hours per day 7 days a week </span>
+                </li>
+              </ul>
+              <div className="chart_box">
+                <img src="/assets/media/profilechart.jpg" alt="" />
+              </div>
+              <button className="game_btn">INVITE TO TEAM</button>
+            </div>
+          </div>
         </div>
         <div className="tab hide" id="squads">
           <div className="squads_box">
@@ -856,7 +1090,6 @@ const TeamProfileData = ({ user, data }) => {
                 <div className="pro_img">
                   {' '}
                   <img src="/assets/media/team/tshirt2.jpg" alt="" />{' '}
-                  <span className="size_option">36d 12h 13m 18s</span>{' '}
                 </div>
                 <div className="pro_bottom">
                   <div className="name_dots">
@@ -895,7 +1128,6 @@ const TeamProfileData = ({ user, data }) => {
                 <div className="pro_img">
                   {' '}
                   <img src="/assets/media/team/tshirt1.jpg" alt="" />{' '}
-                  <span className="size_option">36d 12h 13m 18s</span>
                 </div>
                 <div className="pro_bottom">
                   <div className="name_dots">
@@ -934,7 +1166,6 @@ const TeamProfileData = ({ user, data }) => {
                 <div className="pro_img">
                   {' '}
                   <img src="/assets/media/team/cup.jpg" alt="" />{' '}
-                  <span className="size_option">36d 12h 13m 18s</span>
                 </div>
                 <div className="pro_bottom">
                   <div className="name_dots">
@@ -973,7 +1204,7 @@ const TeamProfileData = ({ user, data }) => {
           </div>
         </div>
 
-        <div className="tab hide" id="streams">
+        <div className="tab hide" id="photos">
           Streams
         </div>
         <div className="tab hide" id="media">
@@ -1160,7 +1391,32 @@ const TeamProfileData = ({ user, data }) => {
           </div>
         </div>
         <div className="tab hide" id="jobs">
-          jobs
+          <div className="team_row arena_team_row">
+            <div className="inner_team">
+              <div className="logo_box">
+                <img
+                  src="/assets/media/discover/lxg.png"
+                  className="thumb_img"
+                  alt=""
+                />
+                <h3>AFK GAMING PVT LTD</h3>
+              </div>
+              <div className="mores">
+                <p>
+                  <b>POSITION:</b> SENIOR DEVELOPER
+                </p>
+                <p>
+                  <b>EXPERIENCE:</b> 10 YEARS
+                </p>
+                <p>
+                  <b> LOCATION:</b> BANGALORE{' '}
+                </p>
+              </div>
+              <a href="#" className="join">
+                APPLY NOW
+              </a>{' '}
+            </div>
+          </div>
         </div>
 
         <TeamAbout data={data} />

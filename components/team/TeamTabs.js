@@ -37,8 +37,8 @@ const TeamTabs = () => {
         </a>
       </li>
       <li>
-        <a href="#!" rel="streams">
-          STREAMS
+        <a href="#!" rel="photos">
+          PHOTOS
         </a>
       </li>
       <li>
