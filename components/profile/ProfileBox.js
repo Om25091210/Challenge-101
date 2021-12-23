@@ -9,7 +9,7 @@ import { toast } from 'react-toastify';
 import cookie from 'js-cookie';
 
 const ProfileBox = ({ user, Userdata }) => {
-  const [profilePic, setProfilePic] = useState(null);
+  const [profilePic, setProfilePic] = useState(user.profilePicUrl);
   const [bio, setBio] = useState(Userdata.profile.bio);
   const [showform, setShowForm] = useState(false);
 
@@ -31,7 +31,7 @@ const ProfileBox = ({ user, Userdata }) => {
 
   const { mutate } = useMutation(addFollow);
 
-  const SrhUser = Userdata.profile.user;
+  const SrhUser = user;
   const profileId = Userdata.profile._id;
   const isLoggedInUser = user._id === SrhUser._id;
 
@@ -101,7 +101,7 @@ const ProfileBox = ({ user, Userdata }) => {
                 className="rounded-full h-full w-full object-cover"
                 src={
                   profilePic
-                    ? URL.createObjectURL(profilePic)
+                    ? profilePic
                     : SrhUser.profilePicUrl
                 }
                 alt={SrhUser.name}
