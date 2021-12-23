@@ -124,6 +124,14 @@ function Customjs() {
         $(this).parent().addClass('active');
       });
 
+      $('.games_btn li a').click(function () {
+        $('.games_data .tab').addClass('hide1');
+        var rel = jQuery(this).attr('rel');
+        $('#' + rel).removeClass('hide1');
+        $('.games_btn li a').parent().removeClass('active');
+        $(this).parent().addClass('active');
+      });
+
       /* ----------- team ---------------- */
 
       $('.fancybox').fancybox();

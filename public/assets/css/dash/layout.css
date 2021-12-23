@@ -723,7 +723,7 @@ ul.top_menu li.profile a{ display: inline-block;}
 .bio_box .games a{ margin-right: 20px;}
 
 
-.bio_box .right_bio{width: 40%; }
+.bio_box .right_bio{width: 45%; border-left: 1px solid #ddd; padding-left: 5%; }
 .game_btn{ background: #7239ea; border:0; width: 100%; font-size: 18px; font-weight: 600; color:#fff; padding: 10px 20px; border-radius: 10px; text-align: center;}
 .bio_box .right_bio ul{ display: flex; justify-content: space-around; margin-top: 20px;}
 .bio_box .right_bio ul li{ display: inline-block; text-align: center;}
@@ -1803,3 +1803,12 @@ main{ float: left; width: 100%; margin-top: 100px;}
     .right_prod_details  h3, .right_prod_details .eUobBU{font-size: 20px !important; font-weight: 700;}
     .right_prod_details .prod_discp p, .right_prod_details .prod_discp h3{ padding: 0!important; margin: 0 !important}
     .right_prod_details .prod_discp .dpuSis td{ padding: 7px 0;}
+
+    .games_btn{ display: flex;}
+    .games_btn li.active{ border: 1px solid #ddd;}
+    .games_btn li{text-align: center; margin:0 5px; display: flex; border: 1px solid #fff;}
+    .games_btn li a{ margin: 0 !important; padding: 5px;}
+    .games_btn li p{ font-size: 12px; color: #000;}
+    .games_btn li span{ text-align: center;}
+    .games_btn li img{ width: 20px;}
+    .games_data .hide1{display: none;} 
