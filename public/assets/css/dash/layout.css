@@ -52,11 +52,11 @@ header .logo{    width: 100px; text-align: center;
 
   header .logo a{ margin-top: 20px; display: block;}
 
-header .searchbox{float:right;width:auto;position:relative;margin-right:15px;}
-header .searchbox input[type="search"]{float:left;width:240px;height:33px;padding:0px 40px 0px 10px;overflow:hidden;box-sizing:border-box;letter-spacing:1px; border:0;border-bottom:1px solid #ddd;border-radius:0px;font-weight:400;}
-header .searchbox input[type="submit"]{border:0;background:url(/assets/media/search-icon.png) 0 7px no-repeat;height:30px;width:20px;position:absolute;right:5px;cursor:pointer;transition:0.3s ease-out;}
-header .searchbox input[type="submit"]:hover{background-position:0 -20px;}
-header .searchbox input[type="submit"]:focus{outline:0;}
+.searchbox{float:right;width:auto;position:relative;margin-right:15px;}
+.searchbox input[type="search"]{float:left;width:240px;height:33px;padding:0px 40px 0px 10px;overflow:hidden;box-sizing:border-box;letter-spacing:1px; border:0;border-bottom:1px solid #ddd;border-radius:0px;font-weight:400;}
+.searchbox input[type="submit"]{border:0;background:url(/assets/media/search-icon.png) 0 7px no-repeat;height:30px;width:20px;position:absolute;right:5px;cursor:pointer;transition:0.3s ease-out;}
+.searchbox input[type="submit"]:hover{background-position:0 -20px;}
+.searchbox input[type="submit"]:focus{outline:0;}
 
 .right_menu{display:flex;justify-content:flex-end;height:100%;align-items:center;padding-right:25px;}
 ul.top_menu{display:flex;align-items:center;}
@@ -1812,3 +1812,134 @@ main{ float: left; width: 100%; margin-top: 100px;}
     .games_btn li span{ text-align: center;}
     .games_btn li img{ width: 20px;}
     .games_data .hide1{display: none;} 
+
+
+    /* ----------------Create Tournament page -------------------- */
+
+  
+    .create_tournament form{ float: left; width: 100%; margin: 50px 0;}
+    .create_tournament form label{ font-size: 15px;text-transform: capitalize;font-weight: 600;padding-bottom: 10px;}
+    .create_tournament form input{ height: 45px;}
+    .create_tournament form .form-group{ margin-bottom: 30px; float: left; width: 100%;}
+
+    .create_tournament form .style_file_upload{ display: inline-block; position: relative;}
+    .create_tournament form .searchbox{ width: 400px; float: none;}
+    .create_tournament form .searchbox input[type="search"]{ width: 400px; height: 45px;  font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #495057;
+      background-color: #fff;
+      background-clip: padding-box;
+      border: 1px solid #ced4da;
+      border-radius: 0.25rem;}
+
+
+
+
+.create_tournament form .searchbox input[type="submit"]{ background-position: 0 13px;}
+
+ul.game_search_result{ float: left; width: 100%; display: flex; margin: 30px 0;}
+ul.game_search_result li{ 
+  width: 80px;
+  height: 120px;
+  border: 1px solid #ddd;
+  text-align: center;
+  align-items: center;
+  align-content: center;
+  vertical-align: middle;
+  display: flex;
+  justify-content: center; margin-right: 10px;
+}
+
+
+.prize_box{ display: flex;}
+.prize_box input{ width: 50%; margin-left: 20px;}
+.btn_selection button{ margin-right: 10px; font-size: 14px; padding: 20px 40px; border-radius: 3px;}
+.date_time{ display: flex;}
+.date_time input{ width: 300px;}
+.date_time .date_box{ display: flex;     flex-direction: column;}
+.date_time .time_box{ display: flex;     flex-direction: column; margin-left: 20px;}
+
+.create_tournament form .form-group .colm{ float: left; width: 48%; margin-bottom: 30px;}
+.create_tournament form .form-group .colm:nth-child(2n){ float: right;}
+
+.create_tourn{ width: 100%;}
+
+.create_tournament form .fa {
+  padding: 13px;
+  font-size: 20px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px; border-radius: 3px;
+}
+
+.create_tournament form .fa:hover {
+    opacity: 0.7;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+.fa-google {
+  background: #dd4b39;
+  color: white;
+}
+
+.fa-linkedin {
+  background: #007bb5;
+  color: white;
+}
+
+
+.style_file_upload .inputfile {
+      width: 0.1px;
+      height: 0.1px;
+      opacity: 0;
+      overflow: hidden;
+      position: absolute;
+      z-index: -1;
+  }
+  
+  .style_file_upload .inputfile + label {
+    width: 150px;
+    font-size: 12px;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    padding: 0.625rem 1.25rem;
+    color: #ddd;
+    border: 2px solid currentColor;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.cover_img.style_file_upload .inputfile + label{ margin-left: 10px; width: 250px;}
+  
+  .no-js .inputfile + label {
+      display: none;
+  }
+
+  .style_file_upload span{ color: #000;}
+  
+  .style_file_upload .inputfile:focus + label,
+  .style_file_upload .inputfile.has-focus + label,
+  .style_file_upload .inputfile.has-focus + label:hover {
+      outline: 1px dotted #ddd;
+      outline: -webkit-focus-ring-color auto 5px;
+      color: #ddd;
+  }
+
+
