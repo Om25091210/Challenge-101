@@ -1819,7 +1819,8 @@ main{ float: left; width: 100%; margin-top: 100px;}
   
     .create_tournament form{ float: left; width: 100%; margin: 50px 0;}
     .create_tournament form label{ font-size: 15px;text-transform: capitalize;font-weight: 600;padding-bottom: 10px;}
-    .create_tournament form input{ height: 45px;}
+    .create_tournament form input,  .create_tournament form select{ height: 45px;}
+    .create_tournament form select{ -webkit-appearance:auto}
     .create_tournament form .form-group{ margin-bottom: 30px; float: left; width: 100%;}
 
     .create_tournament form .style_file_upload{ display: inline-block; position: relative;}
