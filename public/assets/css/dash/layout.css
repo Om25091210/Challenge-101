@@ -1803,3 +1803,6 @@ main{ float: left; width: 100%; margin-top: 100px;}
     .right_prod_details  h3, .right_prod_details .eUobBU{font-size: 20px !important; font-weight: 700;}
     .right_prod_details .prod_discp p, .right_prod_details .prod_discp h3{ padding: 0!important; margin: 0 !important}
     .right_prod_details .prod_discp .dpuSis td{ padding: 7px 0;}
+    .games_data .hide1{
+      display: none;
+    } 

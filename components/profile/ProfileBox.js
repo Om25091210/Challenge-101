@@ -233,40 +233,59 @@ const ProfileBox = ({ user, Userdata }) => {
               <h2>GAMES</h2>
 
               <>
-                {Userdata[0].games.map((item, index) => (
-                  <span key={index}>
-                    <img src={item.imgUrl} alt={item.name} /> {item.name}
-                  </span>
-                ))}
+                <ul className="games_btn">
+                  {Userdata[0].games.map((item, index) => (
+                    <>
+                      <li className="active">
+                        <a href="javascript:void(0);" rel={`item${index}`}>
+                          <span key={index}>
+                            <img src={item.imgUrl} alt={item.name} />{' '}
+                            {item.name}
+                          </span>
+                        </a>
+                      </li>
+                    </>
+                  ))}
+                </ul>
               </>
             </div>
           </div>
 
           <div className="right_bio">
-            <div className="game_btn">CS:GO</div>
-            <ul>
-              <li>
-                <img src="/assets/media/profile/kill.png" alt="" />
-                <span className="name">Kills </span>
-                <span className="num">222</span>
-              </li>
-              <li>
-                <img src="/assets/media/profile/kdr.png" alt="" />
-                <span className="name">KDR </span>
-                <span className="num">222</span>
-              </li>
-              <li>
-                <img src="/assets/media/profile/headshot.png" alt="" />
-                <span className="name"> HEADSHOTS </span>
-                <span className="num">222</span>
-              </li>
-              <li>
-                <img src="/assets/media/profile/ace.png" alt="" />
+            <div class="games_data white_bg">
+              {Userdata[0].games.map((item, index) => (
+                <>
+                  <div class="tab hide1" id={`item${index}`}>
+                    <div key={index} className="game_btn">
+                      {item.name}
+                    </div>
+                    <ul>
+                      <li>
+                        <img src="/assets/media/profile/kill.png" alt="" />
+                        <span className="name">Kills </span>
+                        <span className="num">200</span>
+                      </li>
+                      <li>
+                        <img src="/assets/media/profile/kdr.png" alt="" />
+                        <span className="name">KDR </span>
+                        <span className="num">1.04</span>
+                      </li>
+                      <li>
+                        <img src="/assets/media/profile/headshot.png" alt="" />
+                        <span className="name"> HEADSHOTS </span>
+                        <span className="num">75</span>
+                      </li>
+                      <li>
+                        <img src="/assets/media/profile/ace.png" alt="" />
 
-                <span className="name"> ACE </span>
-                <span className="num">222</span>
-              </li>
-            </ul>
+                        <span className="name"> Won </span>
+                        <span className="num">100</span>
+                      </li>
+                    </ul>
+                  </div>
+                </>
+              ))}
+            </div>
           </div>
         </div>
       </div>
