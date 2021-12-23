@@ -12,7 +12,7 @@ import { useRouter } from 'next/router';
 const Profile = ({ user, Userdata }) => {
   const router = useRouter();
 
-  if (Userdata[0]) {
+  if (Userdata) {
     return (
       <>
         <MetaDash />
@@ -22,7 +22,7 @@ const Profile = ({ user, Userdata }) => {
         <div className="main_middle profile_middle">
           <ProfileBox user={user} Userdata={Userdata} />
           <ProfileTabs />
-          <ProfileData user={Userdata} />
+          <ProfileData user={user} Userdata={Userdata} />
         </div>
 
         <AllScript />
@@ -39,6 +39,7 @@ export const getServerSideProps = async (context) => {
   const response = await fetch(`${baseURL}/api/profile/${username}`);
   const Userdata = await response.json();
 
+  console.log(Userdata);
   return {
     props: { Userdata }
   };

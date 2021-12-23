@@ -10,7 +10,7 @@ import cookie from 'js-cookie';
 
 const ProfileBox = ({ user, Userdata }) => {
   const [profilePic, setProfilePic] = useState(null);
-  const [bio, setBio] = useState(Userdata[0].profile.bio);
+  const [bio, setBio] = useState(Userdata.profile.bio);
   const [showform, setShowForm] = useState(false);
 
   const [follow, setFollow] = useState(false);
@@ -31,11 +31,11 @@ const ProfileBox = ({ user, Userdata }) => {
 
   const { mutate } = useMutation(addFollow);
 
-  const SrhUser = Userdata[0].profile.user;
-  const profileId = Userdata[0].profile._id;
+  const SrhUser = Userdata.profile.user;
+  const profileId = Userdata.profile._id;
   const isLoggedInUser = user._id === SrhUser._id;
 
-  const isFollow = Userdata[0].followers
+  const isFollow = Userdata.followers
     .filter((x) => x.user === user._id)
     .map((x) => x.user);
 
@@ -133,7 +133,7 @@ const ProfileBox = ({ user, Userdata }) => {
                 <span className="game_name"> {SrhUser.username} </span>
                 <span className="name">{SrhUser.name}</span>
                 <span className="follower">
-                  {Userdata[0].followers.length} Followers
+                  {Userdata.followers.length} Followers
                 </span>
               </div>
               <div className="flag">
@@ -173,7 +173,7 @@ const ProfileBox = ({ user, Userdata }) => {
 
               <div className="badges">
                 <h5>BADGES</h5>
-                {Userdata[0].badges.map((bdg) => (
+                {Userdata.badges.map((bdg) => (
                   <img src={bdg.image} alt="" />
                 ))}
               </div>
@@ -201,7 +201,7 @@ const ProfileBox = ({ user, Userdata }) => {
               </div>
             </div>
 
-            {!showform ? <p> {Userdata[0].profile.bio} </p> : null}
+            {!showform ? <p> {Userdata.profile.bio} </p> : null}
 
             {showform ? (
               <form onSubmit={(e) => e.preventDefault()}>
@@ -233,7 +233,7 @@ const ProfileBox = ({ user, Userdata }) => {
               <h2>GAMES</h2>
 
               <>
-                {Userdata[0].games.map((item, index) => (
+                {Userdata.games.map((item, index) => (
                   <span key={index}>
                     <img src={item.imgUrl} alt={item.name} /> {item.name}
                   </span>
