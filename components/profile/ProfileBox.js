@@ -9,7 +9,7 @@ import { toast } from 'react-toastify';
 import cookie from 'js-cookie';
 
 const ProfileBox = ({ user, Userdata }) => {
-  const [profilePic, setProfilePic] = useState(user.profilePicUrl);
+  const [profilePic, setProfilePic] = useState(null);
   const [bio, setBio] = useState(Userdata.profile.bio);
   const [showform, setShowForm] = useState(false);
 
@@ -31,7 +31,7 @@ const ProfileBox = ({ user, Userdata }) => {
 
   const { mutate } = useMutation(addFollow);
 
-  const SrhUser = user;
+  const SrhUser = Userdata.profile.user;
   const profileId = Userdata.profile._id;
   const isLoggedInUser = user._id === SrhUser._id;
 
@@ -101,7 +101,7 @@ const ProfileBox = ({ user, Userdata }) => {
                 className="rounded-full h-full w-full object-cover"
                 src={
                   profilePic
-                    ? profilePic
+                    ? URL.createObjectURL(profilePic)
                     : SrhUser.profilePicUrl
                 }
                 alt={SrhUser.name}
@@ -238,10 +238,11 @@ const ProfileBox = ({ user, Userdata }) => {
                     <>
                       <li
                         className={`${
-                          `item${index}` == 'item0' ? 'active' : ''
+                          `item${item._id}` == 'item0' ? 'active' : ''
                         }`}
-                      key={index}>
-                        <a href="javascript:void(0);" rel={`item${index}`}>
+                        key={index}
+                      >
+                        <a href="javascript:void(0);" rel={`item${item._id}`}>
                           <span key={index}>
                             <img src={item.imgUrl} alt={item.name} />{' '}
                             <p>{item.name}</p>
@@ -257,43 +258,51 @@ const ProfileBox = ({ user, Userdata }) => {
 
           <div className="right_bio">
             <div className="games_data white_bg">
-              {Userdata.games.map((item, index) => (
-                <>
-                  <div
-                    className={`tab ${
-                      `item${index}` == 'item0' ? '' : 'hide1'
-                    }`}
-                    id={`item${index}`} key={index}
-                  >
-                    <div key={index} className="game_btn">
-                      {item.name}
-                    </div>
-                    <ul>
-                      <li>
-                        <img src="/assets/media/profile/kill.png" alt="" />
-                        <span className="name">Kills </span>
-                        <span className="num">200</span>
-                      </li>
-                      <li>
-                        <img src="/assets/media/profile/kdr.png" alt="" />
-                        <span className="name">KDR </span>
-                        <span className="num">1.04</span>
-                      </li>
-                      <li>
-                        <img src="/assets/media/profile/headshot.png" alt="" />
-                        <span className="name"> HEADSHOTS </span>
-                        <span className="num">75</span>
-                      </li>
-                      <li>
-                        <img src="/assets/media/profile/ace.png" alt="" />
+              {Userdata.games.length === 0 ? (
+                <div>No Games for {SrhUser.username}</div>
+              ) : (
+                Userdata.games.map((item, index) => (
+                  <>
+                    <div
+                      className={`tab ${
+                        `item${item._id}` == 'item0' ? '' : 'hide1'
+                      }`}
+                      id={`item${item._id}`}
+                      key={index}
+                    >
+                      <div key={index} className="game_btn">
+                        {item.name}
+                      </div>
+                      <ul>
+                        <li>
+                          <img src="/assets/media/profile/kill.png" alt="" />
+                          <span className="name">Kills </span>
+                          <span className="num">200</span>
+                        </li>
+                        <li>
+                          <img src="/assets/media/profile/kdr.png" alt="" />
+                          <span className="name">KDR </span>
+                          <span className="num">1.04</span>
+                        </li>
+                        <li>
+                          <img
+                            src="/assets/media/profile/headshot.png"
+                            alt=""
+                          />
+                          <span className="name"> HEADSHOTS </span>
+                          <span className="num">75</span>
+                        </li>
+                        <li>
+                          <img src="/assets/media/profile/ace.png" alt="" />
 
-                        <span className="name"> Won </span>
-                        <span className="num">100</span>
-                      </li>
-                    </ul>
-                  </div>
-                </>
-              ))}
+                          <span className="name"> Won </span>
+                          <span className="num">100</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </>
+                ))
+              )}
             </div>
           </div>
         </div>
