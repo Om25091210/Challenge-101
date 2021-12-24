@@ -9,6 +9,7 @@ import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 import CustomPost from './CustomPost';
 import LikePost from '../postLikes/LikePost';
+import ReactTooltip from 'react-tooltip';
 
 const queryClient = new QueryClient();
 
@@ -151,7 +152,7 @@ const SignedMainContent1 = () => {
           <a href="#!" rel="Discover">
             Discover
           </a>
-        </li>      
+        </li>
         <li>
           <a href="#!" rel="for-you">
             For You
@@ -182,7 +183,11 @@ const SignedMainContent1 = () => {
                   </div>
                   <div className="left_details">
                     {' '}
-                    <a href="#">
+                    <a
+                      href="#"
+                      data-toggle="tooltip"
+                      title="Some tooltip text!"
+                    >
                       {' '}
                       <i className="fa fa-heart" aria-hidden="true"></i>{' '}
                       <span>{post.likes.length}</span>{' '}
@@ -272,11 +277,17 @@ const SignedMainContent1 = () => {
                   </div>
                   <div className="left_details">
                     {' '}
-                    <a href="#">
+                    <a
+                      href="#"
+                      data-tip="<p>HTML tooltip</p> <p>HTML tooltip</p>"
+                      data-for="toolTip1"
+                      data-place="top"
+                    >
                       {' '}
                       <i className="fa fa-heart" aria-hidden="true"></i>{' '}
                       <span>{post.likes.length}</span>{' '}
                     </a>{' '}
+                    <ReactTooltip id="toolTip1" html={true} />
                     <a href="#">
                       {' '}
                       <i className="fa fa-eye" aria-hidden="true"></i>{' '}
