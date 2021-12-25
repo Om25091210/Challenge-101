@@ -52,7 +52,7 @@ const SignedHeader = ({
                     </a>
                   </li>
                   <li>
-                    <a href="#">
+                    <a href="/tournament/create">
                       <i className="fa fa-trophy" aria-hidden="true"></i> Create
                       a tournament
                     </a>

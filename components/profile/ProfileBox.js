@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import Head from 'next/head';
 var FormData = require('form-data');
 import axios from 'axios';
-import baseURL from '../../utils/baseURL';
+import baseURL from '@utils/baseURL';
 import { useState, useEffect } from 'react';
 import { useMutation } from 'react-query';
 import { toast } from 'react-toastify';
