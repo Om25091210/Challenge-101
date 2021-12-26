@@ -243,7 +243,7 @@ function Customjs() {
         });
       })(document, window, 0);
     });
-  }, []);
+  }, [2]);
 
   return null;
 }

@@ -1959,3 +1959,175 @@ ul.game_search_result li{
   }
 
 
+
+    /* ------------------ Result -------------------- */
+
+    .results_box h1{ margin-bottom: 30px; font-size: 30px; text-align: center;}
+    .results_box h2{margin-bottom: 30px;}
+    .congratulations{ float: left; width: 100%; margin: 50px 0 0 0; border-bottom: 1px solid #ddd; padding-bottom: 50px;}
+    
+    .winner_box{ display: flex; justify-content: center; align-items: end; margin-top: 50px;}
+    .winner{ margin: 10px;}
+    .winner_cup{background: #ddd;width: 170px;height: 150px;display: flex;text-align: center;align-items: center;justify-content: center;}  
+    .winner_cup.cup1{border-bottom: 5px solid #333;}
+    .winner_cup.cup2{ height: 200px; border-bottom: 5px solid #000;}
+    .winner_cup.cup3{ height: 120px; border-bottom: 5px solid yellow;}
+    .winner .heads{    display: flex; align-items: center;}
+    .winner .heads h4{ padding-left: 10px; font-size: 15px; }
+    .group_stage_box{ float: left; width: 100%; margin: 50px 0;}
+    
+    .group_stage{ display: flex;float: left;width: 100%; margin-bottom: 20px; background: #ddd;padding: 20px;align-items: center;align-content: center; justify-content: normal; align-items: stretch;} 
+    .group_stage .match_date{ display: flex;align-items: center; float: left; width: 20%;  border-right: 1px solid #999;}
+    .group_stage .match_date li{ margin-bottom: 20px;}
+    .group_stage .match_date a{ font-size: 14px; color: #000;}
+    .group_stage .match_date a:hover, .group_stage .match_date a.active{ font-size: 20px; font-weight: 700;}
+    .group_stage .match_date a:hover p, .group_stage .match_date a.active p{ font-size: 14px; color: #000;}
+    
+    
+    .match_list{ margin-left: 2%; width: 80%;}
+    .match_list .team_match_row{ float: left; width:48%;}
+    .match_list .team_match_row:nth-child(2n){ float: right;}
+          
+    .team_match_row{  align-items: center; background: #ddd; padding:10px; margin: 10px 0; border-right: 1px solid #999;}
+    .team_match_row .all_matches{display: flex;justify-content: space-between;}
+    .team_match_row p{ text-align: center;}
+    .team_match_row .first_team, .team_match_row .second_team{ display: flex;  align-items: center;}
+    .team_match_row .first_team img, .team_match_row .second_team img{ width: 50px;}
+    .team_match_row  h3{ font-size: 15px; padding:0 10px;}
+    
+    .team_match_row .second_team{flex-direction: row-reverse;}
+    
+    .team_match_row  .vs{ font-size: 30px; color: #000; font-weight: 700; padding:10px;}
+    
+    .knockout_matches ul{ display: flex;}
+    .knockout_matches ul li{ flex: 0 0 25%;
+      background: #2f3245;
+      padding: 30px 20px;
+      color: #fff;
+      border-right: 1px solid #fff;
+      box-shadow: -1px 0px 0px #000;}
+    .knockout_matches ul li h4{ font-size: 15px;}
+    .knockout_matches ul li p{ font-size: 11px;}
+    .knockout_matches ul li.active{ background: #5938ad;}
+    
+    
+    .matches_postitions{ float: left; width: 100%; background: #ddd;  padding: 50px 50px 50px 20px; display: flex; justify-content: space-between;     align-items: center;} 
+    
+    .section{ flex:0 0 22%;}
+    .section li{ float: left; width: 100%; padding: 10px; height: 60px; background: #3a2d49; margin: 10px 0; border-radius: 3px;     display: flex;
+      justify-content: space-between; align-items: center; position: relative;}
+    
+    .section li .dp {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      border-radius: 5px;
+      overflow: hidden;
+      vertical-align: middle;
+    }
+    
+    .section li  .dp img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .section li  .dp_name {
+      display: inline-block;
+      font-size: 13px;
+      vertical-align: middle; color: #fff;
+    }
+    
+    .section li  .dp_name b {
+      display: block;
+      font-weight: 700;
+    }
+    
+    .section li .points {
+      background: #ddd;
+      padding: 5px;
+      font-size: 13px;
+      color: #000;
+      text-align: center;
+      display: inline-block;
+      height: 27px;
+      width: 30px;
+      font-weight: 700;
+    }
+    
+    
+    .section2, .section3{ display: flex; flex-direction: column;     justify-content: space-around; height:630px;}
+    
+    .section2 ul{ position: relative;}
+    .section2 ul:after{     content: "";
+      width: 25px;
+      height: 100%;
+      position: absolute;
+      border: 1px solid #000;
+      left: -40px;
+      top: 0;
+      border-left: 0;}
+    
+      .section2 ul:before{        content: "";
+        width: 16px;
+        height: 1px;
+        position: absolute;
+        border-bottom: 1px solid #000;
+        left: -16px;
+        top: 50%;
+        border-left: 0;}
+    
+    
+      .section3 ul {
+        position: relative;
+        height: 320px;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+    }
+    .section3 ul:after{     content: "";
+      width: 25px;
+      height: 100%;
+      position: absolute;
+      border: 1px solid #000;
+      left: -40px;
+      top: 0;
+      border-left: 0;}
+    
+      .section3 ul:before{        content: "";
+        width: 16px;
+        height: 1px;
+        position: absolute;
+        border-bottom: 1px solid #000;
+        left: -16px;
+        top: 50%;
+        border-left: 0;}
+    
+      .section4 ul{ position: relative;}
+    
+      .section4 ul:after{     content: "";
+        width: 25px;
+        height: 40px;
+        position: absolute;
+        border-bottom: 1px solid #000;
+        left: -40px;
+        top: 0;
+       }
+      
+    
+    
+    .section4 .final_cup{ position: absolute;
+      right: -30px;
+      background: #2b2237;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      border: 5px solid #00ff5e;
+      color: #fff;
+      align-items: center;
+      display: flex;
+      justify-content: center;}
+      .section4 .final_cup .fa{ font-size: 20px;}
+    
+    
