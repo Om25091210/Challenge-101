@@ -25,6 +25,8 @@ const str = showSecond ? 'HH:mm:ss' : 'HH:mm';
   const [tournament, setTournament] = useState();
 
   const [games, setGames] = useState([]);
+  const [organizers, setOrganizers] = useState([]);
+  const [sponsors, setSponsors] = useState([]);
 
   const [state, setState] = useState({
     name: "",
@@ -54,19 +56,17 @@ const str = showSecond ? 'HH:mm:ss' : 'HH:mm';
   });  
 
   useEffect(() => {
+  	//Games
     axios.get(`${baseURL}/api/all/games`).then((res) => setGames(res.data));
+    
+  	//Organizers
+    axios.get(`${baseURL}/api/all/organizers`).then((res) => setOrganizers(res.data));
+
+  	//Sponsors
+    axios.get(`${baseURL}/api/all/sponsors`).then((res) => setSponsors(res.data));
+
+
   }, []);  
-
-
-  const mutation = useMutation(
-    async (formdata) =>
-      await axios.post(`${baseURL}/api/tournaments/create`, formdata, {
-        headers: {
-          Authorization: cookie.get('token'),
-          'Content-Type': 'multipart/form-data'
-        }
-      })
-  );
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -75,6 +75,7 @@ const str = showSecond ? 'HH:mm:ss' : 'HH:mm';
 
     try {
 
+      console.log(tourdata);	
       const requestOptions = {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -82,6 +83,7 @@ const str = showSecond ? 'HH:mm:ss' : 'HH:mm';
       };
     const dt = fetch(`${baseURL}/api/tournaments/create`, requestOptions)
         .then(data => data.json());
+
       toast.success('Your data has been successfully created');
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
@@ -90,16 +92,27 @@ const str = showSecond ? 'HH:mm:ss' : 'HH:mm';
 
 
 function handleChange(e) {
-    if (e.target.files) {
+
+
+	if (e.target.options) {
+
+    var options = e.target.options;
+    var value = [];
+    for (var i = 0, l = options.length; i < l; i++) {
+      if (options[i].selected) {
+        value.push(options[i].value);
+      }
+    }
+    console.log(e.target.name);
+    console.log(value);
+    setState({ ...state, [e.target.name]: value});
+	} 
+     else if (e.target.files) {
       setState({ ...state, [e.target.name]: e.target.files[0] });
     } else {
       setState({ ...state, [e.target.name]: e.target.value });
     }
   }
-
-function onChange(value) {
-  console.log(value && value.format(str));
-}
 
 
   return (
@@ -154,20 +167,13 @@ function onChange(value) {
                 />
                 <input type="submit" value="" />
               </div>
-              <ul className="game_search_result">
+              <select className="game_search_result" multiple={true} name="game" value={state.game} onChange={handleChange}>
 
                 {games.map((game,idx) => (
-	                <li key={idx}>
-
-	                <button type="button" className="btn btn-secondary btn-lg">
-	                  	 <img src={game.imgUrl} />  {game.name}
-						 <input type="hidden" name="game" onChange={handleChange} value={game._id}/>
-	                </button>	                  
-                   
-	                </li>
-
+	                <option key={idx} value={game._id}> {game.name} </option>
+                  
                 ))}
-              </ul>
+              </select>
             </div>
             <div className="form-group">
               <label for="exampleFormControlInput1">Prizes</label>
@@ -297,12 +303,15 @@ function onChange(value) {
               </div>
               <div className="colm">
                 <label for="exampleFormControlInput1">Organizer</label>
-                <input
-                  type="text"
-                  name="organizer"
-                  className="form-control"
-                  placeholder="Organizer" onChange={handleChange} value={state.organizer}
-                />
+
+              <select className="game_search_result" name="organizer" value={state.organizer} multiple={true} onChange={handleChange}>
+
+                {organizers.map((org,idx) => (
+	                <option key={idx} value={org._id}> {org.name} </option>
+                  
+                ))}
+              </select>
+
               </div>
 
               <div className="colm">
@@ -316,13 +325,15 @@ function onChange(value) {
               </div>
               <div className="colm">
                 <label for="exampleFormControlInput1">Sponsors</label>
-                <input
-                  type="text"
-                  name="sponsor"
-                  className="form-control"
-                  id="exampleFormControlInput1"
-                  placeholder="Sponsors" onChange={handleChange} value={state.sponsor}
-                />
+
+              <select className="game_search_result" name="sponsor" value={state.value} multiple={true} onChange={handleChange}>
+
+                {sponsors.map((spon,idx) => (
+	                <option key={idx} value={spon._id}> {spon.name} </option>
+                  
+                ))}
+              </select>
+
               </div>
               <div className="colm">
                 <label for="exampleFormControlInput1">Description</label>
