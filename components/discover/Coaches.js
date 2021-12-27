@@ -7,8 +7,8 @@ const Coaches = ({ user }) => {
         <div className="team_search">
           <div className="searchbox">
             <h3>Search</h3>
-            <input type="search"  placeholder="Search" />
-            <input type="submit"  />
+            <input type="search" placeholder="Search" />
+            <input type="submit" />
           </div>
           <div className="advance">
             <div className="views">
@@ -85,6 +85,69 @@ const Coaches = ({ user }) => {
             REQUEST TO JOIN
           </a>{' '}
         </div>
+        <div className="overview_box">
+          <h2>Coaches Overview</h2>
+          <div className="team_overview coach_overview">
+            <div className="over_prof">
+              <div className="pics"> </div>
+              <h3>Davikinger90</h3>
+            </div>
+
+            <div className="ranking">
+              <h4>Teams Coached</h4>
+              <div className="past">
+                <img src="/assets/media/discover/icon1.png" alt="" />{' '}
+                <b>The Lone Wolves</b>{' '}
+              </div>
+              <h4>Players Coached</h4>
+              <p>554</p>
+              <h4>Tier Level:</h4>
+              <p>Intermediate-PRO</p>
+            </div>
+            <div className="match">
+              <h4>FEATURED REVIEW</h4>
+              <p>
+                "Nico is very friendly. I was very nervous when we started but
+                it was all good. Just from 2 hours I started seeing League as a
+                different game. He gave me so many good tips and pointed out my
+                mistakes. Best coach you could find"
+              </p>
+
+              <p>
+                {' '}
+                <span>
+                  <i className="fa fa-star" aria-hidden="true"></i>
+                  <i className="fa fa-star" aria-hidden="true"></i>
+                  <i className="fa fa-star" aria-hidden="true"></i>
+                  <i className="fa fa-star" aria-hidden="true"></i>
+                  <i className="fa fa-star-half-o" aria-hidden="true"></i>
+                </span>
+                - JAYSON “ZEUS” MAMOA
+              </p>
+            </div>
+
+            <div className="match">
+              <p>
+                "Nico is very friendly. I was very nervous when we started but
+                it was all good. Just from 2 hours I started seeing League as a
+                different game. He gave me so many good tips and pointed out my
+                mistakes. Best coach you could find"
+              </p>
+
+              <p>
+                {' '}
+                <span>
+                  <i className="fa fa-star" aria-hidden="true"></i>
+                  <i className="fa fa-star" aria-hidden="true"></i>
+                  <i className="fa fa-star" aria-hidden="true"></i>
+                  <i className="fa fa-star" aria-hidden="true"></i>
+                  <i className="fa fa-star-half-o" aria-hidden="true"></i>
+                </span>
+                - WALTER “TITAN” WHITE
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
       <div className="team_row">
         <div className="stars">
@@ -126,107 +189,68 @@ const Coaches = ({ user }) => {
             REQUEST TO JOIN
           </a>{' '}
         </div>
-      </div>
-      <div className="overview_box">
-        <div className="team_row">
-          <div className="stars disable">
-            <i className="fa fa-star" aria-hidden="true"></i>
-          </div>
-          <div className="inner_team">
-            <div className="logo_box">
-              {' '}
-              <img src="/assets/media/discover/team1.png" alt="" />
-              <h3>Kingsmen</h3>
-              <img src="/assets/media/discover/country.png" alt="" />{' '}
+
+        <div className="overview_box">
+          <h2>Coaches Overview</h2>
+          <div className="team_overview coach_overview">
+            <div className="over_prof">
+              <div className="pics"> </div>
+              <h3>Davikinger90</h3>
             </div>
-            <span className="logo">
-              <img src="/assets/media/discover/apex.png" alt="" />
-            </span>{' '}
-            <span className="remarks">
-              <h4>
-                EXPERIENCE: <b>10Year</b>
-              </h4>
-            </span>
-            <div className="mores">
-              <span>
-                <i className="fa fa-star" aria-hidden="true"></i>
-                <i className="fa fa-star" aria-hidden="true"></i>
-                <i className="fa fa-star" aria-hidden="true"></i>
-                <i className="fa fa-star" aria-hidden="true"></i>
-                <i className="fa fa-star-half-o" aria-hidden="true"></i>
-              </span>
-              <span>
-                <img src="/assets/media/discover/desk.png" alt="" />
-              </span>
-              <span>
-                <img src="/assets/media/discover/translator.png" alt="" />{' '}
-                <b>EN, HI</b>
-              </span>
+
+            <div className="ranking">
+              <h4>Teams Coached</h4>
+              <div className="past">
+                <img src="/assets/media/discover/icon1.png" alt="" />{' '}
+                <b>The Lone Wolves</b>{' '}
+              </div>
+              <h4>Players Coached</h4>
+              <p>554</p>
+              <h4>Tier Level:</h4>
+              <p>Intermediate-PRO</p>
             </div>
-            <a href="#" className="join">
-              REQUEST TO JOIN
-            </a>{' '}
-          </div>
-        </div>
-        <h2>Coaches Overview</h2>
-        <div className="team_overview coach_overview">
-          <div className="over_prof">
-            <div className="pics"> </div>
-            <h3>Davikinger90</h3>
-          </div>
+            <div className="match">
+              <h4>FEATURED REVIEW</h4>
+              <p>
+                "Nico is very friendly. I was very nervous when we started but
+                it was all good. Just from 2 hours I started seeing League as a
+                different game. He gave me so many good tips and pointed out my
+                mistakes. Best coach you could find"
+              </p>
 
-          <div className="ranking">
-            <h4>Teams Coached</h4>
-            <div className="past">
-              <img src="/assets/media/discover/icon1.png" alt="" />{' '}
-              <b>The Lone Wolves</b>{' '}
+              <p>
+                {' '}
+                <span>
+                  <i className="fa fa-star" aria-hidden="true"></i>
+                  <i className="fa fa-star" aria-hidden="true"></i>
+                  <i className="fa fa-star" aria-hidden="true"></i>
+                  <i className="fa fa-star" aria-hidden="true"></i>
+                  <i className="fa fa-star-half-o" aria-hidden="true"></i>
+                </span>
+                - JAYSON “ZEUS” MAMOA
+              </p>
             </div>
-            <h4>Players Coached</h4>
-            <p>554</p>
-            <h4>Tier Level:</h4>
-            <p>Intermediate-PRO</p>
-          </div>
-          <div className="match">
-            <h4>FEATURED REVIEW</h4>
-            <p>
-              "Nico is very friendly. I was very nervous when we started but it
-              was all good. Just from 2 hours I started seeing League as a
-              different game. He gave me so many good tips and pointed out my
-              mistakes. Best coach you could find"
-            </p>
 
-            <p>
-              {' '}
-              <span>
-                <i className="fa fa-star" aria-hidden="true"></i>
-                <i className="fa fa-star" aria-hidden="true"></i>
-                <i className="fa fa-star" aria-hidden="true"></i>
-                <i className="fa fa-star" aria-hidden="true"></i>
-                <i className="fa fa-star-half-o" aria-hidden="true"></i>
-              </span>
-              - JAYSON “ZEUS” MAMOA
-            </p>
-          </div>
+            <div className="match">
+              <p>
+                "Nico is very friendly. I was very nervous when we started but
+                it was all good. Just from 2 hours I started seeing League as a
+                different game. He gave me so many good tips and pointed out my
+                mistakes. Best coach you could find"
+              </p>
 
-          <div className="match">
-            <p>
-              "Nico is very friendly. I was very nervous when we started but it
-              was all good. Just from 2 hours I started seeing League as a
-              different game. He gave me so many good tips and pointed out my
-              mistakes. Best coach you could find"
-            </p>
-
-            <p>
-              {' '}
-              <span>
-                <i className="fa fa-star" aria-hidden="true"></i>
-                <i className="fa fa-star" aria-hidden="true"></i>
-                <i className="fa fa-star" aria-hidden="true"></i>
-                <i className="fa fa-star" aria-hidden="true"></i>
-                <i className="fa fa-star-half-o" aria-hidden="true"></i>
-              </span>
-              - WALTER “TITAN” WHITE
-            </p>
+              <p>
+                {' '}
+                <span>
+                  <i className="fa fa-star" aria-hidden="true"></i>
+                  <i className="fa fa-star" aria-hidden="true"></i>
+                  <i className="fa fa-star" aria-hidden="true"></i>
+                  <i className="fa fa-star" aria-hidden="true"></i>
+                  <i className="fa fa-star-half-o" aria-hidden="true"></i>
+                </span>
+                - WALTER “TITAN” WHITE
+              </p>
+            </div>
           </div>
         </div>
       </div>
