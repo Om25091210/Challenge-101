@@ -92,55 +92,21 @@ const Players = ({ user }) => {
           </div>
 
           <div className="overview_box">
-            <div className="team_row">
-              <div className="stars disable">
-                <i className="fa fa-star" aria-hidden="true"></i>
-              </div>
-              <div className="inner_team">
-                <div className="logo_box">
-                  {' '}
-                  <img src="/assets/media/discover/team1.png" alt="" />
-                  <h3>Kingsmen</h3>
-                  <img src="/assets/media/discover/country.png" alt="" />{' '}
-                </div>
-                <span className="logo">
-                  <img src="/assets/media/discover/apex.png" alt="" />
-                </span>{' '}
-                <span className="remarks">
-                  <h4>ROLE</h4>
-                  <p>Support Scout Sniper Driver Fragger Ingame leader</p>
-                </span>
-                <div className="mores">
-                  {' '}
-                  <span>
-                    <img src="/assets/media/discover/desk.png" alt="" />
-                  </span>{' '}
-                  <span>
-                    <img src="/assets/media/discover/mice.png" alt="" />{' '}
-                    <b>On</b>
-                  </span>{' '}
-                  <span>
-                    <img src="/assets/media/discover/translator.png" alt="" />{' '}
-                    <b>EN, HI</b>
-                  </span>{' '}
-                </div>
-                <a href="#" className="join">
-                  REQUEST TO JOIN
-                </a>{' '}
-              </div>
-            </div>
             <h2>Players Overview</h2>
             <div className="team_overview">
               <div className="over_prof">
-                <div className="pics"> </div>
-                <h3>Davikinger90</h3>
+                <div className="pics">
+                  {' '}
+                  <img src="/assets/media/discover/team1.png" alt="" />{' '}
+                </div>
+                <h3>{plyr.players.nickName}</h3>
               </div>
 
               <div className="ranking">
                 <h4>Past Team</h4>
                 <div className="past">
                   <img src="/assets/media/discover/icon1.png" alt="" />{' '}
-                  <b>The Lone Wolves</b>{' '}
+                  <b>{plyr.team.map((tm) => tm.name)}</b>{' '}
                   <img src="/assets/media/discover/country.png" alt="" />{' '}
                 </div>
                 <h4>MMR Rating</h4>
@@ -150,9 +116,9 @@ const Players = ({ user }) => {
               </div>
               <div className="match">
                 <h4>Matches Played</h4>
-                <p>156 Games</p>
+                <p>{plyr.players.total_games_played} Games</p>
                 <h4>Matches Won</h4>
-                <p>131 Victories</p>
+                <p>{plyr.players.won} Victories</p>
                 <h4>Trophies</h4>
                 <p>78</p>
               </div>
