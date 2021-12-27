@@ -3,6 +3,7 @@ import axios from 'axios';
 import baseURL from '../../../utils/baseURL';
 import DeleteReply from './DeleteReply';
 import LikeReply from './LikeReply';
+import ReactTooltip from 'react-tooltip';
 
 const ReplyList = ({ postId, commentId }) => {
   const [replies, setReplies] = useState([]);
@@ -39,6 +40,15 @@ const ReplyList = ({ postId, commentId }) => {
                   </div>
                   <p>{reply.text}</p>
                 </div>
+
+                <a
+                  data-tip="Report this comment"
+                  data-event="click focus"
+                  className="report_poup"
+                >
+                  <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+                </a>
+                <ReactTooltip globalEventOff="click" />
               </div>
               <div className="social_bar d-flex">
                 <LikeReply

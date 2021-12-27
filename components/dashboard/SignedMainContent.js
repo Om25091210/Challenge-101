@@ -130,19 +130,19 @@ const SignedMainContent1 = () => {
             />
           </div>
           <a href="#">
-            <img src="/assets/media/dash/cal-icon.png" alt="" />
+            <i class="fa fa-calendar-plus-o" aria-hidden="true"></i>
           </a>
           <a href="#">
-            <img src="/assets/media/dash/game-icon.png" alt="" />
+            <i class="fa fa-gamepad" aria-hidden="true"></i>
           </a>
           <a href="#">
-            <img src="/assets/media/dash/live-icon.png" alt="" />
+            <i class="fa fa-video-camera" aria-hidden="true"></i>
           </a>
           <a href="#">
-            <img src="/assets/media/dash/twitter-icon.png" alt="" />
+            <i class="fa fa-twitter" aria-hidden="true"></i>
           </a>
         </div>
-        <button type="submit" disabled={mutation.isLoading}>
+        <button className="btn" type="submit" disabled={mutation.isLoading}>
           Submit
         </button>
       </form>
