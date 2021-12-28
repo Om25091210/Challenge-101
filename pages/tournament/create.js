@@ -159,14 +159,6 @@ function handleChange(e) {
             </div>
             <div className="form-group">
               <label for="exampleFormControlInput1">Games</label>
-              <div className="searchbox">
-                <input
-                  type="search"
-                  className="form-control"
-                  placeholder="Search"
-                />
-                <input type="submit" value="" />
-              </div>
               <select className="game_search_result" multiple={true} name="game" value={state.game} onChange={handleChange}>
 
                 {games.map((game,idx) => (

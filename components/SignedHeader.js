@@ -46,7 +46,7 @@ const SignedHeader = ({
               <div className="drop_down_bg">
                 <ul>
                   <li>
-                    <a href="#">
+                    <a href="/team/create">
                       <i className="fa fa-users" aria-hidden="true"></i> Create
                       a team page
                     </a>
