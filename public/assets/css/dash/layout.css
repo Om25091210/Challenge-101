@@ -4477,32 +4477,32 @@ article .social_bar {
 .imagess_box:nth-child(3n) {
 	margin-right: 0;
 }
-.imagess_box li {
+.imagess_box li a {
 	display: none;
 }
 .imagess_box li img {
 	width: 100%;
 	object-fit: cover;
 }
-.imagess_box li:nth-child(1) {
+.imagess_box li a:nth-child(1) {
 	display: block;
 	float: left;
 	width: 100%;
 	margin-bottom:5px;
 }
-.imagess_box li:nth-child(2) {
+.imagess_box li a:nth-child(2) {
 	display: block;
 	float: left;
 	width: 32%;
 	margin-right: 2%;
 }
-.imagess_box li:nth-child(3) {
+.imagess_box li a:nth-child(3) {
 	display: block;
 	float: left;
 	width: 32%;
 	margin-right: 2%;
 }
-.imagess_box li:nth-child(4) {
+.imagess_box li a:nth-child(4) {
 	display: block;
 	float: left;
 	width: 32%;
@@ -4514,15 +4514,15 @@ article .social_bar {
 }
 .imagess .total_images {
 	position: absolute;
-	bottom: 4px;
-	right: 1px;
-	background: rgba(0,0,0,0.5);
-	width: 112px;
-	height: 108px;
-	color: #fff;
-	text-align: center;
-	padding-top: 30px;
-	font-size: 35px;
+    bottom: 4px;
+    right: 1px;
+    background: rgba(0,0,0,0.5);
+    width: 122px;
+    height: 74px;
+    color: #fff;
+    text-align: center;
+    padding-top: 12px;
+    font-size: 35px;
 }
 .imagess_box .bottom_data {
 	display: flex;
@@ -5398,3 +5398,51 @@ ul.game_search_result li {
 .section4 .final_cup .fa {
 	font-size: 20px;
 }
+
+
+
+.report_link{display: flex;
+    height: 90px;
+    align-items: center;
+    margin-left: 10px;}
+.comment_rep_poup{ display: none;}
+.comment_rep_poup.show_report_poup{ display: block;}
+
+.comment_rep_poup{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 500px;
+    height: 400px;
+    z-index: 199;
+}
+
+
+	.comment_rep_poup .report_list{    float: left;
+    width: 100%;
+    padding: 30px;
+    background: #fff;
+    overflow: hidden;
+    border: 10px solid #7239ea;}
+
+.comment_rep_poup .close_rep_box{     position: absolute;
+    right: 15px;
+    top: 10px;
+    color: #000;
+    font-size: 20px;
+    font-weight: 700;
+}
+.comment_rep_poup .report_list h3{font-size: 20px;
+color: #19191d;
+font-weight: 700;
+margin-bottom: 20px;
+text-align: center;
+text-transform: uppercase;
+border-bottom: 1px solid #ddd;
+padding-bottom: 10px}
+
+.comment_rep_poup .report_list li { margin-bottom: 10px;}
+.comment_rep_poup .report_list li a{ font-size: 14px; color: #333;}

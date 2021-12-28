@@ -5,7 +5,7 @@ import SignedHeader from '@components/SignedHeader';
 import LeftNav from '@components/LeftNav';
 
 import MatchTable from '@components/matches/matchtable';
-import MatchBoard from '@components/matches/MatchBoard';
+import MatchBoard from '@components/matches/matchboard';
 import StatsChart from '@components/matches/statschart';
 
 import FooterMain from '@components/FooterMain';
