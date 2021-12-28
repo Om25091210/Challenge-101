@@ -15,7 +15,7 @@ const { readdirSync, readFileSync, lstatSync } = require('fs');
     const originalRenderPage = ctx.renderPage;
 	const { req: request = {} } = ctx;
 	const { cookies = {} } = request || {};
-      const initialProps = await Document.getInitialProps(ctx);
+  const initialProps = await Document.getInitialProps(ctx);
 
 	/* Colors */
     const themeBaseDirPath = path.join(process.cwd(), '/public/assets/css/dash');

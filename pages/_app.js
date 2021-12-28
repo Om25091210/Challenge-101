@@ -174,8 +174,6 @@ MyApp.getInitialProps = async ({ ctx }) => {
       }
     });
 
-      console.log(pageProps);
-
     return {
       pageProps,
       commonData: {

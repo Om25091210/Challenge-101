@@ -16,7 +16,7 @@ const scrollToBottom = (divRef) => {
   divRef.current && divRef.current.scrollIntoView({ behaviour: 'smooth' });
 };
 
-const Dashboard = ({ user }) => {
+const Dashboard = ({ user , posts }) => {
   const [chats, setChats] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -214,7 +214,7 @@ const Dashboard = ({ user }) => {
 
       <LeftNav />
 
-      <SignedMainContent />
+      <SignedMainContent posts={posts}/>
 
       <RightSection user={user} />
 
@@ -222,5 +222,18 @@ const Dashboard = ({ user }) => {
     </>
   );
 };
+
+
+export const getServerSideProps = async (context) => {
+
+  const response = await fetch(`${baseURL}/api/posts`);
+  const data = await response.json();
+  const posts = data.posts;
+
+  return {
+    props: { posts }
+  };
+};
+
 
 export default Dashboard;

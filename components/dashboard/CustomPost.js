@@ -5,19 +5,9 @@ import baseURL from '../../utils/baseURL';
 import { QueryClient, QueryClientProvider, useMutation } from 'react-query'
 import cookie from 'js-cookie'
 import { toast } from 'react-toastify';
-var FormData = require('form-data');
 
 
-const queryClient = new QueryClient()
-
-export default function CustomPost({post}){
-  return(<QueryClientProvider client={queryClient} contextSharing={true}>
-        <Custom_Post post={post}/>
-    </QueryClientProvider>
-  );
-}
-
-const Custom_Post = ({post}) => {
+const CustomPost = ({post}) => {
     const [posts, setPosts] = useState([post])
 
     const [description, setDescription] = useState(posts[0].description);
@@ -140,3 +130,5 @@ const Custom_Post = ({post}) => {
     </>
     )
 }
+
+export default CustomPost;

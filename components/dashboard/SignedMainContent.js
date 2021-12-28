@@ -1,28 +1,17 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import baseURL from '../../utils/baseURL';
-import { QueryClient, QueryClientProvider, useMutation } from 'react-query';
+import {  useMutation } from 'react-query';
 import cookie from 'js-cookie';
 import CommentForm from '../comments/CommentForm';
-var FormData = require('form-data');
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 import CustomPost from './CustomPost';
 import LikePost from '../postLikes/LikePost';
 import ReactTooltip from 'react-tooltip';
 
-const queryClient = new QueryClient();
 
-export default function SignedMainContent() {
-  return (
-    <QueryClientProvider client={queryClient} contextSharing={true}>
-      <SignedMainContent1 />
-    </QueryClientProvider>
-  );
-}
-
-const SignedMainContent1 = () => {
-  const [posts, setPosts] = useState([]);
+const SignedMainContent = ({posts}) => {
   const [description, setDescription] = useState('');
   const [image, setImage] = useState(null);
   const [followingPosts, setFollowingPosts] = useState([]);
@@ -63,18 +52,6 @@ const SignedMainContent1 = () => {
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }
   };
-
-  useEffect(() => {
-    axios
-      .get(`${baseURL}/api/posts`)
-      .then((res) => {
-        // console.log(res)
-        setPosts(res.data.posts);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
 
   useEffect(() => {
     axios
@@ -130,16 +107,16 @@ const SignedMainContent1 = () => {
             />
           </div>
           <a href="#">
-            <i class="fa fa-calendar-plus-o" aria-hidden="true"></i>
+            <i className="fa fa-calendar-plus-o" aria-hidden="true"></i>
           </a>
           <a href="#">
-            <i class="fa fa-gamepad" aria-hidden="true"></i>
+            <i className="fa fa-gamepad" aria-hidden="true"></i>
           </a>
           <a href="#">
-            <i class="fa fa-video-camera" aria-hidden="true"></i>
+            <i className="fa fa-video-camera" aria-hidden="true"></i>
           </a>
           <a href="#">
-            <i class="fa fa-twitter" aria-hidden="true"></i>
+            <i className="fa fa-twitter" aria-hidden="true"></i>
           </a>
         </div>
         <button className="btn" type="submit" disabled={mutation.isLoading}>
@@ -166,7 +143,7 @@ const SignedMainContent1 = () => {
       </ul>
 
       <div className="prfoile_tab_data">
-        <div className="tab " id="for-you">
+        <div className="tab hide" id="for-you">
           <h3>No Posts Under For You</h3>
         </div>
 
@@ -264,7 +241,7 @@ const SignedMainContent1 = () => {
           </div>
         </div>
 
-        <div className="tab hide" id="Discover">
+        <div className="tab" id="Discover">
           <div className="for-you">
             <div className="post">
               {posts.map((post) => (
@@ -363,3 +340,6 @@ const SignedMainContent1 = () => {
     </div>
   );
 };
+
+
+export default SignedMainContent;
