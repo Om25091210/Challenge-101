@@ -3,7 +3,7 @@ import Head from 'next/head';
 import MetaDash from '@components/MetaDash';
 import SignedHeader from '@components/SignedHeader';
 import LeftNav from '@components/LeftNav';
-import TeamProfileBox from '@components/team/TeamProfileBox';
+import TeamProfileBox from '@components/team/teamprofilebox';
 import TeamTabs from '@components/team/TeamTabs';
 import TeamProfileData from '@components/team/TeamProfileData';
 import FooterMain from '@components/FooterMain';

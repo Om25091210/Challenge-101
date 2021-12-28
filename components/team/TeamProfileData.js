@@ -1,4 +1,4 @@
-import PoUp from './Poup';
+import PoUp from './PoUp';
 import TeamAbout from './TeamAbout';
 import TeamSponsors from './TeamSponsors';
 
