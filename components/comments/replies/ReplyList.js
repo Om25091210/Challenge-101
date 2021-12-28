@@ -9,15 +9,18 @@ const ReplyList = ({ postId, commentId }) => {
   const [replies, setReplies] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(`${baseURL}/api/comments/${postId}/${commentId}`)
-      .then((res) => {
-        setReplies(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+    const interval = setInterval(() => {
+      axios
+        .get(`${baseURL}/api/comments/${postId}/${commentId}`)
+        .then((res) => {
+          setReplies(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }, 1000);
+    return () => clearInterval(interval);
+  });
 
   return (
     <>
@@ -35,7 +38,6 @@ const ReplyList = ({ postId, commentId }) => {
                   <div className="member_profile">
                     <a href="#">
                       <h3>{reply.user.name}</h3>{' '}
-                      <span className="pos">Head of Department</span>
                     </a>
                   </div>
                   <p>{reply.text}</p>

@@ -13,7 +13,7 @@ export default function LikeComment({ postId, comment }) {
   );
 }
 
-const Like_Comment = ({ postId, comment }) => {
+const Like_Comment = ({ postId, comment, user }) => {
   const [likecomment, setLikeComment] = useState(false);
 
   const likehandlesubmit = async (e) => {
@@ -22,8 +22,11 @@ const Like_Comment = ({ postId, comment }) => {
     setLikeComment(true);
   };
 
+  const isLiked =
+    user && comment.likes.filter((like) => like.user === user._id).length > 0;
+  console.log(isLiked);
   const addLikeComment = async () => {
-    const res = await fetch(
+    const { data } = await fetch(
       `${baseURL}/api/comments/like/${postId}/${comment._id}`,
       {
         method: 'PUT',
@@ -32,9 +35,18 @@ const Like_Comment = ({ postId, comment }) => {
         }
       }
     );
+    return data;
   };
 
-  const { mutate } = useMutation(addLikeComment);
+  const { mutate } = useMutation(addLikeComment, {
+    onSuccess: (data) => {
+      const old = queryClient.getQueryData(['comments', comment._id]);
+      queryClient.setQueryData(['comments', comment._id], {
+        ...old,
+        likes: data.likes
+      });
+    }
+  });
 
   return (
     <div className="like_btn">

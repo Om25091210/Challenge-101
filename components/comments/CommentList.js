@@ -6,6 +6,7 @@ import DeleteComment from './DeleteComment';
 
 import ReplyComment from './replies/ReplyComment';
 import ReplyList from './replies/ReplyList';
+import { formatDistanceToNowStrict } from 'date-fns';
 
 const CommentList = ({ postList }) => {
   const [comments, setComments] = useState([]);
@@ -41,7 +42,11 @@ const CommentList = ({ postList }) => {
                   <a href="#" className="create">
                     {comment.user.name}
                   </a>{' '}
-                  <span className="days">2 days ago</span>{' '}
+                  <span className="days">
+                    {formatDistanceToNowStrict(new Date(comment.date), {
+                      addSuffix: true
+                    })}
+                  </span>{' '}
                   <a href="#" className="pinned">
                     Pinned by Creator
                   </a>{' '}

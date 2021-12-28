@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import baseURL from '../../utils/baseURL';
-import {  useMutation } from 'react-query';
+import { useMutation } from 'react-query';
 import cookie from 'js-cookie';
 import CommentForm from '../comments/CommentForm';
 import { toast } from 'react-toastify';
@@ -10,8 +10,7 @@ import CustomPost from './CustomPost';
 import LikePost from '../postLikes/LikePost';
 import ReactTooltip from 'react-tooltip';
 
-
-const SignedMainContent = ({posts}) => {
+const SignedMainContent = ({ posts }) => {
   const [description, setDescription] = useState('');
   const [image, setImage] = useState(null);
   const [followingPosts, setFollowingPosts] = useState([]);
@@ -104,6 +103,7 @@ const SignedMainContent = ({posts}) => {
               name="files[]"
               onChange={(e) => setImage(e.target.files[0])}
               accept="image/*"
+              multiple
             />
           </div>
           <a href="#">
@@ -242,7 +242,7 @@ const SignedMainContent = ({posts}) => {
         </div>
 
         <div className="tab" id="Discover">
-          <div className="for-you">
+          <div>
             <div className="post">
               {posts.map((post) => (
                 <div key={post._id}>
@@ -256,14 +256,15 @@ const SignedMainContent = ({posts}) => {
                     {' '}
                     <a
                       href="#"
-                      data-tip="<p>HTML tooltip</p> <p>HTML tooltip</p>"
+                      data-tip={post.likes.map((like) => {
+                        return like.user.username;
+                      })}
                       data-for="toolTip1"
                       data-place="top"
                     >
-                      {' '}
                       <i className="fa fa-heart" aria-hidden="true"></i>{' '}
-                      <span>{post.likes.length}</span>{' '}
-                    </a>{' '}
+                      <span>{post.likes.length}</span>
+                    </a>
                     <ReactTooltip id="toolTip1" html={true} />
                     <a href="#">
                       {' '}
@@ -317,7 +318,7 @@ const SignedMainContent = ({posts}) => {
                           <span>Share</span>{' '}
                         </a>
                         <div className="three_dots">
-                          <a href="#">
+                          <a>
                             {' '}
                             <i
                               className="fa fa-ellipsis-v"
@@ -340,6 +341,5 @@ const SignedMainContent = ({posts}) => {
     </div>
   );
 };
-
 
 export default SignedMainContent;
