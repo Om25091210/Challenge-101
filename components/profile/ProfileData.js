@@ -13,7 +13,7 @@ var FormData = require('form-data');
 import { useMutation } from 'react-query';
 import { toast } from 'react-toastify';
 import cookie from 'js-cookie';
-import {Video} from 'cloudinary-react';
+import { Video } from 'cloudinary-react';
 
 const ProfileData = ({ user, Userdata }) => {
   console.log(Userdata);
@@ -32,9 +32,7 @@ const ProfileData = ({ user, Userdata }) => {
     });
   });
 
-  useEffect(() => {
-  }, [profile]);
-
+  useEffect(() => {}, [profile]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -50,116 +48,101 @@ const ProfileData = ({ user, Userdata }) => {
     }
   };
 
-
-
   return (
     <>
       <div className="prfoile_tab_data">
         <div className="tab" id="feed">
           <div className="profile_left_post">
             <div className="post">
-                <div>
-                  {Userdata.posts.length !== 0 &&
-                    Userdata.posts.map((post, index) => (
-                      <div key={index}>
-                        <div className="heads" key={index}>
-                          <div className="user">
-                            <img src={post.user.profilePicUrl} alt="" />
-                          </div>
-                          <h4>{post.description}</h4>
+              <div>
+                {Userdata.posts.length !== 0 &&
+                  Userdata.posts.map((post, index) => (
+                    <div key={index}>
+                      <div className="heads" key={index}>
+                        <div className="user">
+                          <img src={post.user.profilePicUrl} alt="" />
                         </div>
-                        <div className="left_details">
+                        <h4>{post.description}</h4>
+                      </div>
+                      <div className="left_details">
+                        {' '}
+                        <a href="#">
                           {' '}
-                          <a href="#">
-                            {' '}
-                            <i
-                              className="fa fa-heart"
-                              aria-hidden="true"
-                            ></i>{' '}
-                            <span>{post.likes.length}</span>{' '}
-                          </a>{' '}
-                          <a href="#">
-                            {' '}
-                            <i
-                              className="fa fa-eye"
-                              aria-hidden="true"
-                            ></i>{' '}
-                            <span>{post.views}</span>{' '}
-                          </a>{' '}
-                          <a href="#">
-                            {' '}
-                            <i
-                              className="fa fa-commenting"
-                              aria-hidden="true"
-                            ></i>{' '}
-                            <span>0</span>{' '}
-                          </a>{' '}
+                          <i
+                            className="fa fa-heart"
+                            aria-hidden="true"
+                          ></i>{' '}
+                          <span>{post.likes.length}</span>{' '}
+                        </a>{' '}
+                        <a href="#">
+                          {' '}
+                          <i className="fa fa-eye" aria-hidden="true"></i>{' '}
+                          <span>{post.views}</span>{' '}
+                        </a>{' '}
+                        <a href="#">
+                          {' '}
+                          <i
+                            className="fa fa-commenting"
+                            aria-hidden="true"
+                          ></i>{' '}
+                          <span>0</span>{' '}
+                        </a>{' '}
+                      </div>
+                      <div className="right_details">
+                        <div className="post_data">
+                          <img src={post.images} alt="" />
                         </div>
-                        <div className="right_details">
-                          <div className="post_data">
-                            <img src={post.images} alt="" />
+                        <div className="users_share_box">
+                          <div className="more_user">
+                            {' '}
+                            <a href="#">
+                              <img src="/assets/media/dash/1.jpg" alt="user" />
+                              <span className="online"></span>
+                            </a>{' '}
+                            <a href="#">
+                              <img src="/assets/media/dash/2.jpg" alt="user" />
+                              <span className="online"></span>
+                            </a>{' '}
+                            <a href="#">
+                              <img src="/assets/media/dash/3.jpg" alt="user" />
+                              <span className="offiline"></span>
+                            </a>{' '}
+                            <a href="#" className="more">
+                              +3
+                            </a>{' '}
+                            <span className="others">
+                              Ashwin, George and 5 others have liked your post.
+                            </span>{' '}
                           </div>
-                          <div className="users_share_box">
-                            <div className="more_user">
+                          <div className="shere">
+                            {' '}
+                            <LikePost postId={post._id} />{' '}
+                            <a href="#">
                               {' '}
-                              <a href="#">
-                                <img
-                                  src="/assets/media/dash/1.jpg"
-                                  alt="user"
-                                />
-                                <span className="online"></span>
-                              </a>{' '}
-                              <a href="#">
-                                <img
-                                  src="/assets/media/dash/2.jpg"
-                                  alt="user"
-                                />
-                                <span className="online"></span>
-                              </a>{' '}
-                              <a href="#">
-                                <img
-                                  src="/assets/media/dash/3.jpg"
-                                  alt="user"
-                                />
-                                <span className="offiline"></span>
-                              </a>{' '}
-                              <a href="#" className="more">
-                                +3
-                              </a>{' '}
-                              <span className="others">
-                                Ashwin, George and 5 others have liked your
-                                post.
-                              </span>{' '}
-                            </div>
-                            <div className="shere">
-                              {' '}
-                              <LikePost postId={post._id} />{' '}
+                              <i
+                                className="fa fa-share-alt"
+                                aria-hidden="true"
+                              ></i>{' '}
+                              <span>Share</span>{' '}
+                            </a>
+                            <div className="three_dots">
                               <a href="#">
                                 {' '}
                                 <i
-                                  className="fa fa-share-alt"
+                                  className="fa fa-ellipsis-v"
                                   aria-hidden="true"
-                                ></i>{' '}
-                                <span>Share</span>{' '}
+                                ></i>
                               </a>
-                              <div className="three_dots">
-                                <a href="#">
-                                  {' '}
-                                  <i
-                                    className="fa fa-ellipsis-v"
-                                    aria-hidden="true"
-                                  ></i>
-                                </a>
-                                <CustomPost post={post} />
-                              </div>
+                              <CustomPost post={post} />
                             </div>
                           </div>
-
-                          <CommentForm postId={post} />
                         </div>
+
+                        <CommentForm postId={post} />
                       </div>
-                    ))}
-                </div>
+                    </div>
+                  ))}
+              </div>
             </div>
           </div>
 
@@ -544,565 +527,45 @@ const ProfileData = ({ user, Userdata }) => {
                     >
                       <img src="/assets/media/gallery/1.jpg" alt="" />
                     </a>
-                  </li>
-                  <li>
                     <a
                       className="fancybox"
                       href="/assets/media/gallery/2.jpg"
-                      data-fancybox-group="gallery"
-                      title="Image2"
-                    >
-                      <img src="/assets/media/gallery/2.jpg" alt="" />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="fancybox"
-                      href="/assets/media/gallery/3.jpg"
-                      data-fancybox-group="gallery"
-                      title="Image3"
-                    >
-                      <img src="/assets/media/gallery/3.jpg" alt="" />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="fancybox"
-                      href="/assets/media/gallery/3.jpg"
-                      data-fancybox-group="gallery"
-                      title="Image4"
-                    >
-                      <img src="/assets/media/gallery/3.jpg" alt="" />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="fancybox"
-                      href="/assets/media/gallery/3.jpg"
-                      data-fancybox-group="gallery"
-                      title="Image5"
-                    >
-                      <img src="/assets/media/gallery/3.jpg" alt="" />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="fancybox"
-                      href="/assets/media/gallery/1.jpg"
-                      data-fancybox-group="gallery"
-                      title="Image6"
-                    >
-                      <img src="/assets/media/gallery/3.jpg" alt="" />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="fancybox"
-                      href="/assets/media/gallery/2.jpg"
-                      data-fancybox-group="gallery"
-                      title="Image7"
-                    >
-                      <img src="/assets/media/gallery/3.jpg" alt="" />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="fancybox"
-                      href="/assets/media/gallery/3.jpg"
-                      data-fancybox-group="gallery"
-                      title="Image8"
-                    >
-                      <img src="/assets/media/gallery/3.jpg" alt="" />
-                    </a>
-                  </li>
-                </ul>
-                <span className="total_images">+10</span>{' '}
-              </div>
-              <div className="bottom_data">
-                {' '}
-                <span className="img_icon">
-                  <i className="fa fa-picture-o" aria-hidden="true"></i>
-                </span>
-                <h2>
-                  New Xenowatch Characters{' '}
-                  <span className="update">Updated:March 12th, 2018</span>
-                </h2>
-              </div>
-            </div>
-
-            <div className="imagess_box">
-              <div className="imagess">
-                <ul>
-                  <li>
-                    <a
-                      className="fancybox"
-                      href="/assets/media/gallery/1.jpg"
                       data-fancybox-group="gallery"
                       title="Image1"
                     >
-                      <img src="/assets/media/gallery/1.jpg" alt="" />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="fancybox"
-                      href="/assets/media/gallery/2.jpg"
-                      data-fancybox-group="gallery"
-                      title="Image2"
-                    >
                       <img src="/assets/media/gallery/2.jpg" alt="" />
                     </a>
-                  </li>
-                  <li>
                     <a
                       className="fancybox"
                       href="/assets/media/gallery/3.jpg"
                       data-fancybox-group="gallery"
-                      title="Image3"
-                    >
-                      <img src="/assets/media/gallery/3.jpg" alt="" />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="fancybox"
-                      href="/assets/media/gallery/3.jpg"
-                      data-fancybox-group="gallery"
-                      title="Image4"
-                    >
-                      <img src="/assets/media/gallery/3.jpg" alt="" />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="fancybox"
-                      href="/assets/media/gallery/3.jpg"
-                      data-fancybox-group="gallery"
-                      title="Image5"
-                    >
-                      <img src="/assets/media/gallery/3.jpg" alt="" />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="fancybox"
-                      href="/assets/media/gallery/1.jpg"
-                      data-fancybox-group="gallery"
-                      title="Image6"
-                    >
-                      <img src="/assets/media/gallery/3.jpg" alt="" />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="fancybox"
-                      href="/assets/media/gallery/2.jpg"
-                      data-fancybox-group="gallery"
-                      title="Image7"
-                    >
-                      <img src="/assets/media/gallery/3.jpg" alt="" />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="fancybox"
-                      href="/assets/media/gallery/3.jpg"
-                      data-fancybox-group="gallery"
-                      title="Image8"
-                    >
-                      <img src="/assets/media/gallery/3.jpg" alt="" />
-                    </a>
-                  </li>
-                </ul>
-                <span className="total_images">+10</span>{' '}
-              </div>
-              <div className="bottom_data">
-                {' '}
-                <span className="img_icon">
-                  <i className="fa fa-picture-o" aria-hidden="true"></i>
-                </span>
-                <h2>
-                  New Xenowatch Characters{' '}
-                  <span className="update">Updated:March 12th, 2018</span>
-                </h2>
-              </div>
-            </div>
-
-            <div className="imagess_box">
-              <div className="imagess">
-                <ul>
-                  <li>
-                    <a
-                      className="fancybox"
-                      href="/assets/media/gallery/1.jpg"
-                      data-fancybox-group="gallery2"
                       title="Image1"
                     >
-                      <img src="/assets/media/gallery/1.jpg" alt="" />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="fancybox"
-                      href="/assets/media/gallery/2.jpg"
-                      data-fancybox-group="gallery2"
-                      title="Image2"
-                    >
-                      <img src="/assets/media/gallery/2.jpg" alt="" />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="fancybox"
-                      href="/assets/media/gallery/3.jpg"
-                      data-fancybox-group="gallery2"
-                      title="Image3"
-                    >
                       <img src="/assets/media/gallery/3.jpg" alt="" />
                     </a>
-                  </li>
-                  <li>
                     <a
                       className="fancybox"
-                      href="/assets/media/gallery/3.jpg"
-                      data-fancybox-group="gallery2"
-                      title="Image4"
-                    >
-                      <img src="/assets/media/gallery/3.jpg" alt="" />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="fancybox"
-                      href="/assets/media/gallery/3.jpg"
-                      data-fancybox-group="gallery2"
-                      title="Image5"
-                    >
-                      <img src="/assets/media/gallery/3.jpg" alt="" />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="fancybox"
-                      href="/assets/media/gallery/1.jpg"
-                      data-fancybox-group="gallery2"
-                      title="Image6"
-                    >
-                      <img src="/assets/media/gallery/3.jpg" alt="" />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="fancybox"
-                      href="/assets/media/gallery/2.jpg"
-                      data-fancybox-group="gallery2"
-                      title="Image7"
-                    >
-                      <img src="/assets/media/gallery/3.jpg" alt="" />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="fancybox"
-                      href="/assets/media/gallery/3.jpg"
-                      data-fancybox-group="gallery2"
-                      title="Image8"
-                    >
-                      <img src="/assets/media/gallery/3.jpg" alt="" />
-                    </a>
-                  </li>
-                </ul>
-                <span className="total_images">+10</span>{' '}
-              </div>
-              <div className="bottom_data">
-                {' '}
-                <span className="img_icon">
-                  <i className="fa fa-picture-o" aria-hidden="true"></i>
-                </span>
-                <h2>
-                  New Xenowatch Characters{' '}
-                  <span className="update">Updated:March 12th, 2018</span>
-                </h2>
-              </div>
-            </div>
-
-            <div className="imagess_box">
-              <div className="imagess">
-                <ul>
-                  <li>
-                    <a
-                      className="fancybox"
-                      href="/assets/media/gallery/1.jpg"
-                      data-fancybox-group="gallery3"
+                      href="/assets/media/gallery/4.jpg"
+                      data-fancybox-group="gallery"
                       title="Image1"
                     >
-                      <img src="/assets/media/gallery/1.jpg" alt="" />
+                      <img src="/assets/media/gallery/4.jpg" alt="" />
                     </a>
-                  </li>
-                  <li>
                     <a
                       className="fancybox"
-                      href="/assets/media/gallery/2.jpg"
-                      data-fancybox-group="gallery3"
-                      title="Image2"
-                    >
-                      <img src="/assets/media/gallery/2.jpg" alt="" />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="fancybox"
-                      href="/assets/media/gallery/3.jpg"
-                      data-fancybox-group="gallery3"
-                      title="Image3"
-                    >
-                      <img src="/assets/media/gallery/3.jpg" alt="" />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="fancybox"
-                      href="/assets/media/gallery/3.jpg"
-                      data-fancybox-group="gallery3"
-                      title="Image4"
-                    >
-                      <img src="/assets/media/gallery/3.jpg" alt="" />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="fancybox"
-                      href="/assets/media/gallery/3.jpg"
-                      data-fancybox-group="gallery3"
-                      title="Image5"
-                    >
-                      <img src="/assets/media/gallery/3.jpg" alt="" />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="fancybox"
-                      href="/assets/media/gallery/1.jpg"
-                      data-fancybox-group="gallery3"
-                      title="Image6"
-                    >
-                      <img src="/assets/media/gallery/3.jpg" alt="" />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="fancybox"
-                      href="/assets/media/gallery/2.jpg"
-                      data-fancybox-group="gallery3"
-                      title="Image7"
-                    >
-                      <img src="/assets/media/gallery/3.jpg" alt="" />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="fancybox"
-                      href="/assets/media/gallery/3.jpg"
-                      data-fancybox-group="gallery3"
-                      title="Image8"
-                    >
-                      <img src="/assets/media/gallery/3.jpg" alt="" />
-                    </a>
-                  </li>
-                </ul>
-                <span className="total_images">+10</span>{' '}
-              </div>
-              <div className="bottom_data">
-                {' '}
-                <span className="img_icon">
-                  <i className="fa fa-picture-o" aria-hidden="true"></i>
-                </span>
-                <h2>
-                  New Xenowatch Characters{' '}
-                  <span className="update">Updated:March 12th, 2018</span>
-                </h2>
-              </div>
-            </div>
-
-            <div className="imagess_box">
-              <div className="imagess">
-                <ul>
-                  <li>
-                    <a
-                      className="fancybox"
-                      href="/assets/media/gallery/1.jpg"
-                      data-fancybox-group="gallery4"
+                      href="/assets/media/gallery/5.jpg"
+                      data-fancybox-group="gallery"
                       title="Image1"
                     >
-                      <img src="/assets/media/gallery/1.jpg" alt="" />
+                      <img src="/assets/media/gallery/5.jpg" alt="" />
                     </a>
-                  </li>
-                  <li>
                     <a
                       className="fancybox"
-                      href="/assets/media/gallery/2.jpg"
-                      data-fancybox-group="gallery4"
-                      title="Image2"
-                    >
-                      <img src="/assets/media/gallery/2.jpg" alt="" />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="fancybox"
-                      href="/assets/media/gallery/3.jpg"
-                      data-fancybox-group="gallery4"
-                      title="Image3"
-                    >
-                      <img src="/assets/media/gallery/3.jpg" alt="" />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="fancybox"
-                      href="/assets/media/gallery/3.jpg"
-                      data-fancybox-group="gallery4"
-                      title="Image4"
-                    >
-                      <img src="/assets/media/gallery/3.jpg" alt="" />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="fancybox"
-                      href="/assets/media/gallery/3.jpg"
-                      data-fancybox-group="gallery4"
-                      title="Image5"
-                    >
-                      <img src="/assets/media/gallery/3.jpg" alt="" />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="fancybox"
-                      href="/assets/media/gallery/1.jpg"
-                      data-fancybox-group="gallery4"
-                      title="Image6"
-                    >
-                      <img src="/assets/media/gallery/3.jpg" alt="" />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="fancybox"
-                      href="/assets/media/gallery/2.jpg"
-                      data-fancybox-group="gallery4"
-                      title="Image7"
-                    >
-                      <img src="/assets/media/gallery/3.jpg" alt="" />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="fancybox"
-                      href="/assets/media/gallery/3.jpg"
-                      data-fancybox-group="gallery4"
-                      title="Image8"
-                    >
-                      <img src="/assets/media/gallery/3.jpg" alt="" />
-                    </a>
-                  </li>
-                </ul>
-                <span className="total_images">+10</span>{' '}
-              </div>
-              <div className="bottom_data">
-                {' '}
-                <span className="img_icon">
-                  <i className="fa fa-picture-o" aria-hidden="true"></i>
-                </span>
-                <h2>
-                  New Xenowatch Characters{' '}
-                  <span className="update">Updated:March 12th, 2018</span>
-                </h2>
-              </div>
-            </div>
-
-            <div className="imagess_box">
-              <div className="imagess">
-                <ul>
-                  <li>
-                    <a
-                      className="fancybox"
-                      href="/assets/media/gallery/1.jpg"
-                      data-fancybox-group="gallery5"
+                      href="/assets/media/gallery/6.jpg"
+                      data-fancybox-group="gallery"
                       title="Image1"
                     >
-                      <img src="/assets/media/gallery/1.jpg" alt="" />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="fancybox"
-                      href="/assets/media/gallery/2.jpg"
-                      data-fancybox-group="gallery5"
-                      title="Image2"
-                    >
-                      <img src="/assets/media/gallery/2.jpg" alt="" />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="fancybox"
-                      href="/assets/media/gallery/3.jpg"
-                      data-fancybox-group="gallery5"
-                      title="Image3"
-                    >
-                      <img src="/assets/media/gallery/3.jpg" alt="" />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="fancybox"
-                      href="/assets/media/gallery/3.jpg"
-                      data-fancybox-group="gallery5"
-                      title="Image4"
-                    >
-                      <img src="/assets/media/gallery/3.jpg" alt="" />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="fancybox"
-                      href="/assets/media/gallery/3.jpg"
-                      data-fancybox-group="gallery5"
-                      title="Image5"
-                    >
-                      <img src="/assets/media/gallery/3.jpg" alt="" />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="fancybox"
-                      href="/assets/media/gallery/1.jpg"
-                      data-fancybox-group="gallery5"
-                      title="Image6"
-                    >
-                      <img src="/assets/media/gallery/3.jpg" alt="" />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="fancybox"
-                      href="/assets/media/gallery/2.jpg"
-                      data-fancybox-group="gallery5"
-                      title="Image7"
-                    >
-                      <img src="/assets/media/gallery/3.jpg" alt="" />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="fancybox"
-                      href="/assets/media/gallery/3.jpg"
-                      data-fancybox-group="gallery5"
-                      title="Image8"
-                    >
-                      <img src="/assets/media/gallery/3.jpg" alt="" />
+                      <img src="/assets/media/gallery/6.jpg" alt="" />
                     </a>
                   </li>
                 </ul>
@@ -1123,54 +586,56 @@ const ProfileData = ({ user, Userdata }) => {
         </div>
         <div className="tab hide" id="video">
           <div className="video_box">
-
- <form onSubmit={handleSubmit}>
-  <input type="file" name="uploadedImages"  onChange={(e) => {
-                      setUploadedImages(e.target.files[0]);
-                      handleSubmit(e);
-                    }} multiple/>
-
-</form>
+            <form onSubmit={handleSubmit}>
+              <input
+                type="file"
+                name="uploadedImages"
+                onChange={(e) => {
+                  setUploadedImages(e.target.files[0]);
+                  handleSubmit(e);
+                }}
+                multiple
+              />
+            </form>
 
             <ul>
-Userdata
-
-{Userdata.profile.videosgallery.map((vid, idx) => (
-
-              <li key={idx}>
+              Userdata
+              {Userdata.profile.videosgallery.map((vid, idx) => (
+                <li key={idx}>
                   {' '}
                   <div className="video">
                     {' '}
-                    <Video cloudName="dch502zpg" controls fallback="Cannot display video" publicId={vid.path}>
-                    </Video>
+                    <Video
+                      cloudName="dch502zpg"
+                      controls
+                      fallback="Cannot display video"
+                      publicId={vid.path}
+                    ></Video>
                   </div>
-                <div className="bottom_data">
-                  {' '}
-                  <a href="#">The Team</a>{' '}
-                  <a href="#" className="yellow">
-                    Lq Heroes
-                  </a>
-                  <h2>
-                    {vid.originalname} : Destroy Played the first Mission of the Mercenaries Update
-                    With Kelly And Saki
-                  </h2>
-                  <span className="date">August 27th,2018</span>{' '}
-                  <span className="views">
-                    <i className="fa fa-eye" aria-hidden="true"></i> 2223
-                  </span>{' '}
-                  <span className="likes">
-                    <i className="fa fa-heart" aria-hidden="true"></i>453
-                  </span>{' '}
-                  <span className="comments">
-                    <i className="fa fa-comment" aria-hidden="true"></i>18
-                  </span>{' '}
-                </div>
-              </li>
-
-  )
-
-  )}
-              <li>
+                  <div className="bottom_data">
+                    {' '}
+                    <a href="#">The Team</a>{' '}
+                    <a href="#" className="yellow">
+                      Lq Heroes
+                    </a>
+                    <h2>
+                      {vid.originalname} : Destroy Played the first Mission of
+                      the Mercenaries Update With Kelly And Saki
+                    </h2>
+                    <span className="date">August 27th,2018</span>{' '}
+                    <span className="views">
+                      <i className="fa fa-eye" aria-hidden="true"></i> 2223
+                    </span>{' '}
+                    <span className="likes">
+                      <i className="fa fa-heart" aria-hidden="true"></i>453
+                    </span>{' '}
+                    <span className="comments">
+                      <i className="fa fa-comment" aria-hidden="true"></i>18
+                    </span>{' '}
+                  </div>
+                </li>
+              ))}
+              <li style={{ display: 'none' }}>
                 <div className="video">
                   {' '}
                   <img src="/assets/media/video/thumb1.jpg" alt="" />{' '}
