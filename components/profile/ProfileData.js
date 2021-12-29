@@ -9,7 +9,6 @@ import LikePost from '../postLikes/LikePost';
 import CommentForm from '../comments/CommentForm';
 import ProdPoup from '../profile/prodPoup';
 import Moment from 'moment';
-var FormData = require('form-data');
 import { useMutation } from 'react-query';
 import { toast } from 'react-toastify';
 import cookie from 'js-cookie';

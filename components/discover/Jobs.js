@@ -3,10 +3,12 @@ import { useRouter } from 'next/router';
 import axios from 'axios';
 import baseURL from '@utils/baseURL';
 import Filters from '../common/Filters';
+import FileDropzone from '@components/common/FileDropzone';
 
 const Jobs = () => {
   const [data, setData] = useState(null);
   const [jobs, setJobs] = useState(null);
+  const [files, setFiles] = useState();
 
   var ftype = 'JOBS';
   useEffect(() => {
@@ -94,9 +96,16 @@ const Jobs = () => {
                 <b> LOCATION:</b> {job.location}
               </p>
             </div>
-            <a href="#" className="join">
-              APPLY NOW
-            </a>{' '}
+              
+          <FileDropzone
+            setFiles={setFiles}
+          />
+
+            {files.map((file, idx) => ( <> {file.name}  :  <a href="#" className="logo_box">APPLY NOW  </a></> ))}
+
+
+
+           {' '}
           </div>
         </div>
 

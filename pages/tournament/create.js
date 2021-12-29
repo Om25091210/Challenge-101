@@ -9,7 +9,6 @@ import FooterMain from '@components/FooterMain';
 import AllScript from '../AllScript';
 import baseURL from '@utils/baseURL';
 import axios from 'axios';
-var FormData = require('form-data');
 import moment from 'moment';
 import TimePicker from 'rc-time-picker';
 import 'rc-time-picker/assets/index.css';

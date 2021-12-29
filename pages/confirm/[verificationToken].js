@@ -4,7 +4,6 @@ import Meta from '@components/Meta';
 import FooterMain from '@components/FooterMain';
 import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
-var FormData = require('form-data');
 
 import { onboardUser } from '../../utils/auth';
 import { useRouter } from 'next/router'
