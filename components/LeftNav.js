@@ -1,14 +1,17 @@
 import DarkMode from './theme/dark-mode';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 function LeftNav() {
+  const router = useRouter();
+
   return (
     <div className="left_side">
       <nav>
         <ul>
-          <li>
+          <li className={router.pathname == '/dashboard' ? 'active' : ''}>
             <Link href="/dashboard">
-              <a className="active">
+              <a>
                 <span className="iconbg">
                   <i className="fa fa-home" aria-hidden="true"></i>
                 </span>{' '}
@@ -16,7 +19,7 @@ function LeftNav() {
               </a>
             </Link>{' '}
           </li>
-          <li>
+          <li className={router.pathname == '/ranking' ? 'active' : ''}>
             <Link href="/ranking">
               <a className="">
                 <span className="iconbg">
@@ -26,7 +29,7 @@ function LeftNav() {
               </a>
             </Link>
           </li>
-          <li>
+          <li className={router.pathname == '/tournament' ? 'active' : ''}>
             <Link href="/tournament">
               <a className="">
                 <span className="iconbg">
@@ -36,7 +39,7 @@ function LeftNav() {
               </a>
             </Link>
           </li>
-          <li>
+          <li className={router.pathname == '/games' ? 'active' : ''}>
             <Link href="/games">
               <a className="">
                 <span className="iconbg">
@@ -46,7 +49,7 @@ function LeftNav() {
               </a>
             </Link>{' '}
           </li>
-          <li>
+          <li className={router.pathname == '/discover' ? 'active' : ''}>
             <Link href="/discover">
               <a className="">
                 <span className="iconbg">
@@ -56,7 +59,7 @@ function LeftNav() {
               </a>
             </Link>
           </li>
-          <li>
+          <li className={router.pathname == '/calendar' ? 'active' : ''}>
             <Link href="/calendar">
               <a className="">
                 <span className="iconbg">
