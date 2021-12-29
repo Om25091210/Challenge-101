@@ -13,7 +13,7 @@
     "start": "NODE_ENV=production next start",
     "lint": "next lint",
     "dev:inspect": "NODE_OPTIONS='--inspect' next dev",
-    "start-platformsh": "NODE_ENV=production server.js -p $PORT",
+    "start-platformsh": "NODE_ENV=production server.js",
     "prod": "npm run build && npm run start",
     "validate": "lint-staged"
   },
