@@ -122,7 +122,7 @@ const Filters = ({ ftype }) => {
           </div>
         </div>
 
-       {  selectedMapFilters.length > 0 ? (
+
         <div className="filters">
           {' '}
           <a href="#!" className="close1" onClick={() => {
@@ -154,7 +154,6 @@ const Filters = ({ ftype }) => {
           </div>
         </div>
 
-        )}
 
       </div>
     );
