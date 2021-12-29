@@ -4969,7 +4969,7 @@ main {
 /* ----------------Create Tournament page -------------------- */
 
   
-    .create_tournament form {
+ .create_tournament form {
 	float: left;
 	width: 100%;
 	margin: 50px 0;
@@ -4980,11 +4980,11 @@ main {
 	font-weight: 600;
 	padding-bottom: 10px;
 }
-.create_tournament form input, .create_tournament form select {
-	height: 45px;
+.create_tournament form input {
+	height: 45px; font-size: 1.4rem; width: 100%;
 }
 .create_tournament form select {
-	-webkit-appearance:auto
+	-webkit-appearance:auto; font-size: 1.4rem; width: 100%;
 }
 .create_tournament form .form-group {
 	margin-bottom: 30px;
@@ -5046,18 +5046,18 @@ ul.game_search_result li {
 	border-radius: 5px;
 }
 .date_time {
-	display: flex;
+	display: flex; justify-content: space-between;
 }
 .date_time input {
-	width: 300px;
+	width: 100%;
 }
 .date_time .date_box {
 	display: flex;
-	flex-direction: column;
+	flex-direction: column; width: 48%;
 }
 .date_time .time_box {
 	display: flex;
-	flex-direction: column;
+	flex-direction: column; width: 48%;
 	margin-left: 20px;
 }
 .create_tournament form .form-group .colm {
@@ -5139,6 +5139,8 @@ ul.game_search_result li {
 	outline: -webkit-focus-ring-color auto 5px;
 	color: #ddd;
 }
+
+#currency{ width: 200px;}
 /* ------------------ Result -------------------- */
 
     .results_box h1 {

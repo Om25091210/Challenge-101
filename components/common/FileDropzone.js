@@ -14,7 +14,7 @@ const FileDropzone = ({ setFiles }) => {
     onDrop,
     maxFiles: 5,
     accept: '.pdf, .doc, .docx, .rtf, .ppt',
-    onDropRejected,
+    onDropRejected
   });
 
   return (

@@ -15,7 +15,7 @@ const ImageDropzone = ({ setImages }) => {
     onDrop,
     maxFiles: 5,
     accept: 'image/*',
-    onDropRejected,
+    onDropRejected
   });
 
   return (

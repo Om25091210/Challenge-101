@@ -8,18 +8,6 @@ function Customjs() {
         $(this).next().slideToggle();
       });
 
-      $('.overhight').mCustomScrollbar({
-        autoHideScrollbar: true
-      });
-
-      $('.bellHight').mCustomScrollbar({
-        autoHideScrollbar: true
-      });
-
-      $('.tab_data_scroll').mCustomScrollbar({
-        autoHideScrollbar: true
-      });
-
       $('a.view').click(function () {
         $(this).parent().next().addClass('show');
       });

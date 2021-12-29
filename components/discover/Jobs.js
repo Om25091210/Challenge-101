@@ -95,53 +95,48 @@ const Jobs = () => {
             </div>
           </div>
 
-        <Filters ftype={'JOBS'} />
+          <Filters ftype={'JOBS'} />
         </div>
 
-
-{!jobs || jobs.length === 0 ? (
-
-        <div className="team_row arena_team_row">
-          <div className="inner_team">
-            No active jobs found. Please visit later.
-          </div>
-        </div>
-
-  ) : (
-       jobs.map((job, idx) => ( 
-        <div className="team_row arena_team_row" key={idx}>
-          <div className="inner_team">
-            <div className="logo_box">
-              <img src="/assets/media/discover/lxg.png" alt="" />
-              <h3>{job.job_by.name}</h3>
+        {!jobs || jobs.length === 0 ? (
+          <div className="team_row arena_team_row">
+            <div className="inner_team">
+              No active jobs found. Please visit later.
             </div>
-            <div className="mores">
-              <p>
-                <b>POSITION:</b> {job.position}
-              </p>
-              <p>
-                <b>EXPERIENCE:</b> {job.experience}
-              </p>
-              <p>
-                <b> LOCATION:</b> {job.location}
-              </p>
-            </div>
-              
-          <FileDropzone
-            setFiles={setFiles}
-          />
-
-            {files.map((file, idx) => ( <> {file.name}  :  <a href="#" onClick={onSubmit} className="logo_box">APPLY NOW  </a></> ))}
-
-
-
-           {' '}
           </div>
-        </div>
-
-   ) )) }
-
-
+        ) : (
+          jobs.map((job, idx) => (
+            <div className="team_row arena_team_row" key={idx}>
+              <div className="inner_team">
+                <div className="logo_box">
+                  <img src="/assets/media/discover/lxg.png" alt="" />
+                  <h3>{job.job_by.name}</h3>
+                </div>
+                <div className="mores">
+                  <p>
+                    <b>POSITION:</b> {job.position}
+                  </p>
+                  <p>
+                    <b>EXPERIENCE:</b> {job.experience}
+                  </p>
+                  <p>
+                    <b> LOCATION:</b> {job.location}
+                  </p>
+                </div>
+                <FileDropzone setFiles={setFiles} />
+                {files.map((file, idx) => (
+                  <>
+                    {' '}
+                    {file.name} :{' '}
+                    <a href="#!" onClick={onSubmit} className="logo_box">
+                      APPLY NOW{' '}
+                    </a>
+                  </>
+                ))}{' '}
+              </div>
+            </div>
+          ))
+        )}
       </div>
     );
   } else {
