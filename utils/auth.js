@@ -94,6 +94,7 @@ export const logoutUser = () => {
 };
 
 export const redirectUser = (ctx, location) => {
+  console.log(location)
   if (ctx.req) {
     ctx.res.writeHead(302, { Location: location });
     ctx.res.end();

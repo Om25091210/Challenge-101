@@ -104,16 +104,15 @@ MyApp.getInitialProps = async ({ ctx }) => {
   const { token } = parseCookies(ctx);
   let pageProps = {};
 
+  const protectedRoutes = ['/dashboard','/notifications', '/posts', '/posts/new', '/posts/edit/[id]','/messages',
+        '/discover','/games', '/checkout','/tournament/create', '/tournament/[tournamentid]', '/team/create','/matches','/ranking',
+        '/settings', '/[username]'
+  ];
+
   try {
     const locale = getLocaleFromContext(ctx.router);
 
-  const protectedRoutes =
-    ctx.pathname === '/dashboard' ||
-    ctx.pathname === '/notifications' ||
-    ctx.pathname === '/posts/new' ||
-    ctx.pathname === '/posts/edit/[id]' ||
-    ctx.pathname === '/messages' ||
-    ctx.pathname === '/settings';
+  const isProtected = protectedRoutes.includes(ctx.pathname);
 
   const availableForEveryone =
     ctx.pathname === '/login' ||
@@ -125,9 +124,10 @@ MyApp.getInitialProps = async ({ ctx }) => {
 
   // If user is not logged in
   if (!token) {
+    console.log('Token is expppppppp')
     destroyCookie(ctx, 'token');
     // Redirect to login if user is trying to access protected routes
-    protectedRoutes && redirectUser(ctx, '/login');
+    isProtected && redirectUser(ctx, '/login');
   } else {
     try {
       const res = await axios.get(`${baseURL}/api/auth`, {
