@@ -9,6 +9,7 @@ import { useRouter } from 'next/router';
 import CustomPost from './CustomPost';
 import LikePost from '../postLikes/LikePost';
 import ReactTooltip from 'react-tooltip';
+import Moment from 'moment';
 
 const SignedMainContent = ({ posts }) => {
   const [description, setDescription] = useState('');
@@ -256,7 +257,7 @@ const SignedMainContent = ({ posts }) => {
                     </div>
 
                     <div className="date">
-                      <p>December 27 at 11:30 AM </p>
+                      <p>{Moment(post.date).format('MMMM, DD, YYYY h:m A')}</p>
                     </div>
                   </div>
                   <div className="left_details">
