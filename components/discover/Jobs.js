@@ -1,13 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
-import baseURL from '../../utils/baseURL';
-import { useForm } from 'react-hook-form';
-import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
-import cookie from 'js-cookie';
+import baseURL from '@utils/baseURL';
+import Filters from '../common/Filters';
 
 const Jobs = () => {
   const [data, setData] = useState(null);
+  const [jobs, setJobs] = useState(null);
 
   var ftype = 'JOBS';
   useEffect(() => {
@@ -15,11 +14,13 @@ const Jobs = () => {
       const response = await fetch(`${baseURL}/api/filters/${ftype}`);
       const newData = await response.json();
       setData(newData);
+
+      var res = await fetch(`${baseURL}/api/all/jobs`);
+      var ndata = await res.json();
+      setJobs(ndata);
     };
     fetchData();
   }, []);
-
-  console.log(data);
 
   if (data) {
     return (
@@ -62,89 +63,35 @@ const Jobs = () => {
             </div>
           </div>
 
-          <div className="team_filter job_filter">
-            <div className="drop_downs">
-              {data.filter.metadata.map((filter, index) => (
-                <div key={index} className="button-group">
-                  <span className="drop_name">{filter.key}</span>
-
-                  {filter.value.map((val, idx) => (
-                    <div className="custom-control custom-checkbox" key={idx}>
-                      <input
-                        type="checkbox"
-                        className="custom-control-input"
-                        id={val}
-                      />
-                      <label className="custom-control-label" htmlFor={val}></label>
-                    </div>
-                  ))}
-                </div>
-              ))}
-            </div>
-
-            <div className="filters">
-              {' '}
-              <a href="#" className="close1">
-                X
-              </a>
-              <h3>Filters</h3>
-              <div className="filter_list">
-                {' '}
-                <span className="filter1">
-                  {' '}
-                  Games: Call of Duty{' '}
-                  <a href="#" className="close2">
-                    X
-                  </a>
-                </span>{' '}
-                <span className="filter1">
-                  {' '}
-                  Category: LAN{' '}
-                  <a href="#" className="close2">
-                    X
-                  </a>
-                </span>{' '}
-                <span className="filter1">
-                  {' '}
-                  Type: Pro{' '}
-                  <a href="#" className="close2">
-                    X
-                  </a>
-                </span>{' '}
-                <span className="filter1">
-                  {' '}
-                  Rank: Legend{' '}
-                  <a href="#" className="close2">
-                    X
-                  </a>
-                </span>{' '}
-                <span className="filter1">
-                  {' '}
-                  Platform: Mobile{' '}
-                  <a href="#" className="close2">
-                    X
-                  </a>
-                </span>{' '}
-              </div>
-            </div>
-          </div>
+        <Filters ftype={'JOBS'} />
         </div>
+
+
+{!jobs || jobs.length === 0 ? (
 
         <div className="team_row arena_team_row">
           <div className="inner_team">
+            No active jobs found. Please visit later.
+          </div>
+        </div>
+
+  ) : (
+       jobs.map((job, idx) => ( 
+        <div className="team_row arena_team_row" key={idx}>
+          <div className="inner_team">
             <div className="logo_box">
               <img src="/assets/media/discover/lxg.png" alt="" />
-              <h3>AFK GAMING PVT LTD</h3>
+              <h3>{job.job_by.name}</h3>
             </div>
             <div className="mores">
               <p>
-                <b>POSITION:</b> SENIOR DEVELOPER
+                <b>POSITION:</b> {job.position}
               </p>
               <p>
-                <b>EXPERIENCE:</b> 10 YEARS
+                <b>EXPERIENCE:</b> {job.experience}
               </p>
               <p>
-                <b> LOCATION:</b> BANGALORE{' '}
+                <b> LOCATION:</b> {job.location}
               </p>
             </div>
             <a href="#" className="join">
@@ -152,6 +99,10 @@ const Jobs = () => {
             </a>{' '}
           </div>
         </div>
+
+   ) )) }
+
+
       </div>
     );
   } else {
