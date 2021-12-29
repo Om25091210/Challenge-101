@@ -92,21 +92,6 @@ const Filters = ({ ftype }) => {
 
           <div className="button-group">
             {' '}
-            <span className="drop_name">Microphone</span>
-            <div className="custom-control custom-checkbox">
-              <input
-                type="checkbox"
-                className="custom-control-input"
-                id="Microphone"
-              />
-              <label
-                className="custom-control-label"
-                htmlFor="Microphone"
-              ></label>
-            </div>
-          </div>
-          <div className="button-group">
-            {' '}
             <span className="drop_name">Verified</span>
             <div className="custom-control custom-checkbox">
               <input
@@ -122,7 +107,8 @@ const Filters = ({ ftype }) => {
           </div>
         </div>
 
-
+        {selectedMapFilters.length > 0 &&
+          
         <div className="filters">
           {' '}
           <a href="#!" className="close1" onClick={() => {
@@ -153,7 +139,7 @@ const Filters = ({ ftype }) => {
             ))}
           </div>
         </div>
-
+      }
 
       </div>
     );
