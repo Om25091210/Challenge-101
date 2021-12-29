@@ -1,6 +1,17 @@
 import Filters from '../common/Filters';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import baseURL from '@utils/baseURL';
 
 const Coaches = ({ user }) => {
+  const [coach, setCoach] = useState([]);
+
+  useEffect(() => {
+    axios.get(`${baseURL}/api/all/coaches`).then((res) => setCoach(res.data));
+  }, []);
+
+  console.log(coach);
+
   return (
     <div className="tab hide" id="coaches">
       <div className="white_bg">
@@ -44,89 +55,105 @@ const Coaches = ({ user }) => {
         <Filters ftype={'COACHES'} />
       </div>
 
-      <div className="team_row">
-        <div className="stars">
-          <i className="fa fa-star" aria-hidden="true"></i>
-        </div>
-        <div className="inner_team">
-          <div className="logo_box">
-            {' '}
-            <img src="/assets/media/discover/team1.png" alt="" />
-            <h3>Kingsmen</h3>
-            <img src="/assets/media/discover/country.png" alt="" />{' '}
+      {coach.map((coach) => (
+        <div className="team_row">
+          <div className="stars">
+            <i className="fa fa-star" aria-hidden="true"></i>
           </div>
-          <span className="logo">
-            <img src="/assets/media/discover/apex.png" alt="" />{' '}
-            <img src="/assets/media/discover/icon2.png" alt="" />
-          </span>
-          <span className="remarks">
-            <h4>
-              EXPERIENCE: <b>10Year</b>
-            </h4>
-          </span>
-          <div className="mores">
-            <span>
-              <i className="fa fa-star" aria-hidden="true"></i>
-              <i className="fa fa-star" aria-hidden="true"></i>
-              <i className="fa fa-star" aria-hidden="true"></i>
-              <i className="fa fa-star" aria-hidden="true"></i>
-              <i className="fa fa-star-half-o" aria-hidden="true"></i>
-            </span>
-            <span>
-              <img src="/assets/media/discover/desk.png" alt="" />
-            </span>
-
-            <span>
-              <img src="/assets/media/discover/translator.png" alt="" />{' '}
-              <b>EN, HI</b>
-            </span>
-          </div>
-          <a href="#" className="join">
-            REQUEST TO JOIN
-          </a>{' '}
-        </div>
-        <div className="overview_box">
-          <h2>Coaches Overview</h2>
-          <div className="team_overview coach_overview">
-            <div className="over_prof">
-              <div className="pics"> </div>
-              <h3>Davikinger90</h3>
+          <div className="inner_team">
+            <div className="logo_box">
+              {' '}
+              <img src={coach.coaches.user.profilePicUrl} alt="" />
+              <h3>{coach.coaches.user.name}</h3>
+              <img src="/assets/media/discover/country.png" alt="" />{' '}
             </div>
+            <span className="logo">
+              <img src="/assets/media/discover/apex.png" alt="" />{' '}
+              <img src="/assets/media/discover/icon2.png" alt="" />
+            </span>
+            <span className="remarks">
+              <h4>
+                EXPERIENCE: <b>{coach.coaches.experience} Years</b>
+              </h4>
+            </span>
+            <div className="mores">
+              <span>
+                <i className="fa fa-star" aria-hidden="true"></i>
+                <i className="fa fa-star" aria-hidden="true"></i>
+                <i className="fa fa-star" aria-hidden="true"></i>
+                <i className="fa fa-star" aria-hidden="true"></i>
+                <i className="fa fa-star-half-o" aria-hidden="true"></i>
+              </span>
+              <span>
+                <img src="/assets/media/discover/desk.png" alt="" />
+              </span>
 
-            <div className="ranking">
-              <h4>Teams Coached</h4>
-              <div className="past">
-                <img src="/assets/media/discover/icon1.png" alt="" />{' '}
-                <b>The Lone Wolves</b>{' '}
+              <span>
+                <img src="/assets/media/discover/translator.png" alt="" />{' '}
+                <b>
+                  {coach.coaches.languages[0]}, {coach.coaches.languages[1]}
+                </b>
+              </span>
+            </div>
+            <a href="#" className="join">
+              REQUEST TO JOIN
+            </a>{' '}
+          </div>
+
+          <div className="overview_box">
+            <h2>Coaches Overview</h2>
+            <div className="team_overview coach_overview">
+              <div className="over_prof">
+                <div className="pics">
+                  <img src={coach.coaches.user.profilePicUrl} alt="" />
+                </div>
+                <h3>{coach.coaches.user.username}</h3>
               </div>
-              <h4>Players Coached</h4>
-              <p>554</p>
-              <h4>Tier Level:</h4>
-              <p>Intermediate-PRO</p>
-            </div>
-            <div className="match">
-              <h4>FEATURED REVIEW</h4>
-              <p>
-                "Nico is very friendly. I was very nervous when we started but
+
+              <div className="ranking">
+                <h4>Teams Coached</h4>
+                <div className="past">
+                  <img src="/assets/media/discover/icon1.png" alt="" />{' '}
+                  {coach.teams.map((tem) => (
+                    <>
+                      <b> {tem.name} </b>{' '}
+                    </>
+                  ))}
+                </div>
+                <h4>Players Coached</h4>
+                <p>{coach.coaches.players_coached}</p>
+                <h4>Tier Level:</h4>
+                <p>{coach.coaches.tier_level}</p>
+              </div>
+              <div className="match">
+                <h4>FEATURED REVIEW</h4>
+                {/* <p> */}
+                {/* "Nico is very friendly. I was very nervous when we started but
                 it was all good. Just from 2 hours I started seeing League as a
                 different game. He gave me so many good tips and pointed out my
-                mistakes. Best coach you could find"
-              </p>
+                mistakes. Best coach you could find" */}
+                {/* </p> */}
 
-              <p>
-                {' '}
-                <span>
-                  <i className="fa fa-star" aria-hidden="true"></i>
-                  <i className="fa fa-star" aria-hidden="true"></i>
-                  <i className="fa fa-star" aria-hidden="true"></i>
-                  <i className="fa fa-star" aria-hidden="true"></i>
-                  <i className="fa fa-star-half-o" aria-hidden="true"></i>
-                </span>
-                - JAYSON “ZEUS” MAMOA
-              </p>
-            </div>
+                {coach.reviews.map((rew) => (
+                  <>
+                    {' '}
+                    <p> {rew.review} </p>
+                    <p>
+                      {' '}
+                      <span>
+                        <i className="fa fa-star" aria-hidden="true"></i>
+                        <i className="fa fa-star" aria-hidden="true"></i>
+                        <i className="fa fa-star" aria-hidden="true"></i>
+                        <i className="fa fa-star" aria-hidden="true"></i>
+                        <i className="fa fa-star-half-o" aria-hidden="true"></i>
+                      </span>
+                      - {rew.reviewer.name}
+                    </p>
+                  </>
+                ))}
+              </div>
 
-            <div className="match">
+              {/* <div className="match">
               <p>
                 "Nico is very friendly. I was very nervous when we started but
                 it was all good. Just from 2 hours I started seeing League as a
@@ -145,10 +172,12 @@ const Coaches = ({ user }) => {
                 </span>
                 - WALTER “TITAN” WHITE
               </p>
+            </div> */}
             </div>
           </div>
         </div>
-      </div>
+      ))}
+
       <div className="team_row">
         <div className="stars">
           <i className="fa fa-star" aria-hidden="true"></i>
