@@ -54,16 +54,23 @@ const ProfileData = ({ user, Userdata }) => {
       <div className="prfoile_tab_data">
         <div className="tab" id="feed">
           <div className="profile_left_post">
-            <div className="post">
-              <div>
-                {Userdata.posts.length !== 0 &&
-                  Userdata.posts.map((post, index) => (
+            <div>
+              {Userdata.posts.length !== 0 &&
+                Userdata.posts.map((post, index) => (
+                  <div className="post">
                     <div key={index}>
                       <div className="heads" key={index}>
                         <div className="user">
                           <img src={post.user.profilePicUrl} alt="" />
                         </div>
-                        <h4>{post.description}</h4>
+                        <div className="user_name_disc">
+                          <h4>{post.user.username}</h4>
+                          <p>{post.description}</p>
+                        </div>
+
+                        <div className="date">
+                          <p>December 27 at 11:30 AM </p>
+                        </div>
                       </div>
                       <div className="left_details">
                         {' '}
@@ -142,8 +149,8 @@ const ProfileData = ({ user, Userdata }) => {
                         <CommentForm postId={post} />
                       </div>
                     </div>
-                  ))}
-              </div>
+                  </div>
+                ))}
             </div>
           </div>
 
