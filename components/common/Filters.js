@@ -56,7 +56,10 @@ const Filters = ({ ftype }) => {
       <div className="team_filter">
         <div className="drop_downs">
           {data.filter.metadata.map((filter, index) => (
-            <div key={index} className="button-group">
+
+             filter.value.indexOf(filter.key) < 0 ? 
+
+     (       <div key={index} className="button-group">
               <button
                 type="button"
                 className="btn btn-default btn-sm dropdown-toggle"
@@ -88,27 +91,38 @@ const Filters = ({ ftype }) => {
                 ))}
               </ul>
             </div>
-          ))}
-
+      )      
+            :
+      (      
           <div className="button-group">
             {' '}
-            <span className="drop_name">Verified</span>
+            <span className="drop_name">{filter.key}</span>
             <div className="custom-control custom-checkbox">
               <input
-                type="checkbox"
                 className="custom-control-input"
-                id="Verified"
+                type="checkbox"
+                name={filter.key}
+                checked={selectedFilters.includes(filter.key)}
+                onChange={handleSelectFilter}
+                id={filter.key}
+                value={filter.key}
               />
               <label
                 className="custom-control-label"
-                htmlFor="Verified"
+                htmlFor={filter.key}
               ></label>
             </div>
           </div>
+      )
+
+        
+          ))}
+
+
         </div>
 
         {selectedMapFilters.length > 0 &&
-          
+
         <div className="filters">
           {' '}
           <a href="#!" className="close1" onClick={() => {
