@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
-import baseURL from '../../utils/baseURL';
+import baseURL from '@utils/baseURL';
 import { useForm } from 'react-hook-form';
-import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
-import cookie from 'js-cookie';
+import { useQuery } from 'react-query';
 
 const Filters = ({ ftype }) => {
   const [data, setData] = useState(null);
@@ -33,11 +32,11 @@ const Filters = ({ ftype }) => {
     if (found == undefined ) {
       var arr = [];
       arr.push(filtered);
-      setSelectedMapFilters([{ key: name, values: arr }]);
+      setSelectedMapFilters([...selectedMapFilters, { key: name, values: arr } ]);
     } else {
       var arr = found.values;
       arr.push(filtered);
-      setSelectedMapFilters([{ key: name, values: arr }]);
+      setSelectedMapFilters([...selectedMapFilters, { key: name, values: arr } ]);
     }
   };
 
@@ -123,35 +122,17 @@ const Filters = ({ ftype }) => {
           </div>
         </div>
 
+       {  selectedMapFilters.length > 0 ? (
         <div className="filters">
           {' '}
-          <a href="#" className="close1">
+          <a href="#!" className="close1" onClick={() => {
+                  setSelectedMapFilters([]);
+                }}>
             X
           </a>
           <h3>Filters</h3>
           <div className="filter_list">
             {' '}
-            <span className="filter1">
-              {' '}
-              Games: Call of Duty{' '}
-              <a href="#" className="close2">
-                X
-              </a>
-            </span>{' '}
-            <span className="filter1">
-              {' '}
-              Category: LAN{' '}
-              <a href="#" className="close2">
-                X
-              </a>
-            </span>{' '}
-            <span className="filter1">
-              {' '}
-              Type: Pro{' '}
-              <a href="#" className="close2">
-                X
-              </a>
-            </span>
             {selectedMapFilters.map((filter, idx) => (
               <span className="filter1">
                 {' '}
@@ -172,6 +153,9 @@ const Filters = ({ ftype }) => {
             ))}
           </div>
         </div>
+
+        )}
+
       </div>
     );
   } else {
