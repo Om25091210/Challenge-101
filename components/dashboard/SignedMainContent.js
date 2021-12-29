@@ -243,14 +243,21 @@ const SignedMainContent = ({ posts }) => {
 
         <div className="tab" id="Discover">
           <div>
-            <div className="post">
-              {posts.map((post) => (
-                <div key={post._id}>
+            {posts.map((post) => (
+              <div key={post._id}>
+                <div className="post">
                   <div className="heads">
                     <div className="user">
                       <img src={post.user.profilePicUrl} alt="" />
                     </div>
-                    <h4>{post.description}</h4>
+                    <div className="user_name_disc">
+                      <h4>{post.user.username}</h4>
+                      <p>{post.description}</p>
+                    </div>
+
+                    <div className="date">
+                      <p>December 27 at 11:30 AM </p>
+                    </div>
                   </div>
                   <div className="left_details">
                     {' '}
@@ -333,8 +340,8 @@ const SignedMainContent = ({ posts }) => {
                     <CommentForm postId={post} />
                   </div>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

@@ -3,27 +3,27 @@ import { useEffect, useState } from 'react';
 
 const ReportsComments = () => {
   useEffect(() => {
-    $('a.report_link').click(function () {
-      $(this).next().addClass('show_report_poup');
+    $('a.model_show_btn').click(function () {
+      $(this).next().addClass('show_model');
     });
 
-    $('a.close_rep_box').click(function () {
-      $(this).parent().removeClass('show_report_poup');
+    $('a.model_close').click(function () {
+      $(this).parent().removeClass('show_model');
     });
   }, []);
 
   return (
     <>
-      <a href="javascript:void(0)" className="report_link">
+      <a href="javascript:void(0)" className="report_link model_show_btn">
         <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
       </a>
 
-      <div className="comment_rep_poup">
-        <a href="javascript:void(0)" className="close_rep_box">
+      <div className="common_model_box">
+        <a href="javascript:void(0)" className="model_close">
           X
         </a>
 
-        <div className="report_list">
+        <div className="inner_model_box report_model">
           <h3>Report</h3>
 
           <ul>

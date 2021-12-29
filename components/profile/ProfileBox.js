@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react';
 import { useMutation } from 'react-query';
 import { toast } from 'react-toastify';
 import cookie from 'js-cookie';
+import Badges from './badges';
 
 const ProfileBox = ({ user, Userdata }) => {
   const [profilePic, setProfilePic] = useState(null);
@@ -171,12 +172,7 @@ const ProfileBox = ({ user, Userdata }) => {
                 </div>
               </div>
 
-              <div className="badges">
-                <h5>BADGES</h5>
-                {Userdata.badges.map((bdg) => (
-                  <img src={bdg.image} alt="" />
-                ))}
-              </div>
+              <Badges Userdata={Userdata} />
             </div>
           </div>
         </div>
@@ -238,11 +234,11 @@ const ProfileBox = ({ user, Userdata }) => {
                     <>
                       <li
                         className={`${
-                          `item${item._id}` == 'item0' ? 'active' : ''
+                          `item${index}` == 'item0' ? 'active' : ''
                         }`}
                         key={index}
                       >
-                        <a href="javascript:void(0);" rel={`item${item._id}`}>
+                        <a href="javascript:void(0);" rel={`item${index}`}>
                           <span key={index}>
                             <img src={item.imgUrl} alt={item.name} />{' '}
                             <p>{item.name}</p>
@@ -265,9 +261,9 @@ const ProfileBox = ({ user, Userdata }) => {
                   <>
                     <div
                       className={`tab ${
-                        `item${item._id}` == 'item0' ? '' : 'hide1'
+                        `item${index}` == 'item0' ? '' : 'hide1'
                       }`}
-                      id={`item${item._id}`}
+                      id={`item${index}`}
                       key={index}
                     >
                       <div key={index} className="game_btn">

@@ -6,6 +6,11 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 	font:inherit;
 	vertical-align:baseline;
 }
+
+html{
+	font-size:62.5%; /*default font-size is 10px */
+}
+
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
 	display:block;
 }
@@ -79,19 +84,20 @@ body {
 	display:none;
 }
 h1 {
-	font-size: 25px;
+	font-size: 2.5rem;
 	font-weight: 700;
 }
 h2 {
-	font-size: 18px;
+	font-size: 1.8rem;
 	font-weight: 700;
 }
 .btn {
-	border-radius: 3px;
+	border-radius: 5px;
 	padding: 5px 20px;
 	color: #fff;
 	background: #7239ea;
 	border: 0;
+	font-size: 1.5rem;
 }
 .btn:hover {
 	color: #fff;
@@ -208,7 +214,7 @@ ul.top_menu li a span.pop {
 	color:#fff;
 	align-items:center;
 	justify-content:center;
-	font-size:12px;
+	font-size:1.2rem;
 	position:absolute;
 	top:-15px;
 	right:-17px;
@@ -249,7 +255,7 @@ ul.top_menu .drop_down_bg li {
 	padding:5px 10px !important
 }
 ul.top_menu .drop_down_bg li a {
-	font-size: 14px;
+	font-size: 1.4rem;
 	font-weight: 700;
 	color: #000;
 	display: inline-block;
@@ -257,7 +263,7 @@ ul.top_menu .drop_down_bg li a {
 	text-transform: capitalize;
 }
 ul.top_menu .drop_down_bg li i {
-	font-size:15px;
+	font-size:1.5rem;
 	padding-right:10px;
 }
 ul.top_menu .drop_down_bg li a:hover, .drop_down_bg li a:hover i {
@@ -276,7 +282,7 @@ ul.top_menu .drop_down_bg.bell_drop_down {
 }
 ul.top_menu .drop_down_bg.bell_drop_down li p {
 	display: inline-block;
-	font-size: 12px;
+	font-size: 1.2rem;
 	padding: 0 6px;
 }
 .notif_box {
@@ -311,14 +317,14 @@ ul.top_menu .drop_down_bg.bell_drop_down li p {
 	vertical-align:middle;
 	margin:0 10px;
 	color:#000000;
-	font-size:15px;
+	font-size:1.5rem;
 	font-weight:400;
 	width: calc(100% - 70px);
 }
 .notif_tag .notif_name b {
 	display: block;
 	color: #a3a3a3;
-	font-size: 12px;
+	font-size: 1.2rem;
 	text-transform: uppercase;
 	font-weight: normal;
 	padding-top: 3px;
@@ -326,7 +332,7 @@ ul.top_menu .drop_down_bg.bell_drop_down li p {
 ul.top_menu li.profile {
 	width:45px;
 	height:45px;
-	border-radius:3px;
+	border-radius:5px;
 	margin-left:20px;
 	padding:0 !important;
 }
@@ -340,7 +346,7 @@ ul.top_menu .drop_down_bg.profile_drop_down {
 	padding:5px 10px;
 }
 .profile_drop_down li a {
-	font-size:14px;
+	font-size:1.4rem;
 	font-weight:400;
 	color:#000;
 	float:left;
@@ -349,7 +355,7 @@ ul.top_menu .drop_down_bg.profile_drop_down {
 	padding-bottom:10px;
 }
 .profile_drop_down li i {
-	font-size:15px;
+	font-size:1.5rem;
 	padding-right:10px;
 }
 .profile_drop_down li a:hover {
@@ -389,21 +395,21 @@ ul.top_menu li.profile a {
 	width:45px;
 	height:45px;
 	display:inline-flex;
-	border-radius:3px;
+	border-radius:5px;
 	align-items:center;
 	justify-content:center;
 	text-decoration:none !important; 
 }
 .left_side nav li i {
 	color:#fff;
-	font-size:20px !important;
+	font-size:2rem !important;
 	font-weight:100;
 }
 .left_side nav li .title {
 	position:absolute;
 	left:60px;
 	top:13px;
-	font-size:15px;
+	font-size:1.5rem;
 	color:#fff;
 	font-weight:600;
 	display:none;
@@ -431,7 +437,7 @@ ul.top_menu li.profile a {
 	margin:150px auto 0 auto;
 }
 .write_post {
-	border-radius:3px;
+	border-radius:5px;
 	padding:3px 10px;
 	background:#fff;
 	display:flex;
@@ -448,9 +454,9 @@ ul.top_menu li.profile a {
 }
 .write_post .team_slider li img {
 	width: 40px;
-	height: 40px;
+	height: 41px;
 	object-fit: cover;
-	border-radius: 3px;
+	border-radius: 5px;
 }
 .write_post .team_slider .slick-prev {
 	padding:0 !important;
@@ -460,9 +466,9 @@ ul.top_menu li.profile a {
 	text-indent:-9999px;
 	border:0;
 	background:#f3f6f9;
-	width:17px;
+	width:1.7rem;
 	height:20px;
-	border-radius:3px 10px 0px 0px;
+	border-radius:5px 10px 0px 0px;
 	box-shadow:0 0 10px #eee;
 	cursor:pointer;
 }
@@ -578,12 +584,12 @@ margin-left:10px;
 	display: inline-block;
   font: normal normal normal 14px/1 FontAwesome;
   font-weight: 400;
-  content: "\f03e"; font-size: 25px; color: #7239ea;
+  content: "\f03e"; font-size: 2.5rem; color: #7239ea;
 }
  .right_links input[type=file]::-webkit-file-upload-button {
  visibility: hidden;
 }
-.right_links .fa{  font-size: 25px;}
+.right_links .fa{  font-size: 2.5rem;}
 .right_links .fa-twitter {background:none;color:#55ACEE;}
 .right_links .fa-calendar-plus-o{color:#45bd62;}
 .right_links .fa-gamepad{color:#f1cd7b;}
@@ -601,7 +607,7 @@ margin-left:10px;
 	display:block;
 	color:#202028;
 	padding:10px 0 10px 0;
-	font-size:15px; 
+	font-size:1.5rem; 
 	font-weight:700;
 }
 
@@ -617,33 +623,46 @@ margin-left:10px;
 	position:relative;
 	background:#fff;
 	padding:20px;
-	border-radius:3px;
+	border-radius:5px;
 	margin-bottom:20px;
 }
 .post .heads {
 	display:flex;
 	width:100%;
-	align-items:center;
+	align-items: flex-start; position: relative;
 }
 .post .heads .user {
 	width:67px;
 	height:67px;
-	border-radius:3px;
+	border-radius:5px;
 	overflow:hidden;
+	flex-shrink: 0; background: #000;
 }
 .post .heads .user img {
 	width:100%;
 	height:100%;
 	object-fit:cover;
 }
+
+.post .heads .user_name_disc{	padding-left:30px;}
+.post .heads .date{ position: absolute; right:0px; top:0px} 
+.post .heads .date p{ font-size: 1.2rem;     color: #7239ea;}
+
 .post .heads h4 {
-	font-size:18px;
-	color:#000;
-	letter-spacing:0.075em;
-	font-family:'Rubik', sans-serif;
-	font-weight:400;
-	padding-left:30px;
+	font-size: 1.8rem;
+    color: #061b4e;
+    letter-spacing: 0.010em;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 500;
+    text-transform: capitalize;
+
 }
+
+.post .heads p{font-size: 1.5rem;
+    padding-bottom: 1rem;
+    font-weight: 400;
+    line-height: 2.2rem;}
+
 .post .left_details {
 	float:left;
 	width:70px;
@@ -670,15 +689,18 @@ margin-left:10px;
 .post .right_details .post_data {
 	overflow: hidden;
 	float: left;
-	max-width: 100%;
-	border-radius: 3px;
+	width: 100%;
+	border-radius: 5px;
 	background: #dfdfdf;
 	max-height: 100%;
 	min-width: 300px;
 	min-height: 300px;
+	text-align: center;
+	display: flex;
+	justify-content: center;
 }
 .post .right_details .post_data img {
-	width: 100%;
+	width: auto;
 	max-height: 100%;
 	object-fit: cover;
 	min-height: 300px;
@@ -713,12 +735,12 @@ margin-left:10px;
 	color:#b2b2b2;
 	text-align:center;
 	font-weight:300;
-	font-size:11px;
+	font-size:1.1rem;
 	line-height:26px;
 	border-radius:50%;
 }
 .users_share_box .more_user .others {
-	font-size:15px;
+	font-size:1.5rem;
 	font-weight:700;
 	color:#000;
 	padding-left:20px;
@@ -728,7 +750,7 @@ margin-left:10px;
 }
 .users_share_box .shere a {
 	color:#000;
-	font-size:15px;
+	font-size:1.5rem;
 	font-weight:400;
 	display:inline-flex;
 	align-items:center;
@@ -757,7 +779,7 @@ margin-left:10px;
 	box-shadow:2px 6px 8px rgba(0, 0, 0, 0.02);
 	right:0;
 	top:20px;
-	border-radius:3px;
+	border-radius:5px;
 }
 .users_share_box .shere .three_dots:hover .three_dots_dropdown {
 	display:block;
@@ -868,7 +890,7 @@ margin-left:10px;
 	justify-content:space-between;
 }
 .add_comment_box .add_comments {
-	border-radius:3px;
+	border-radius:5px;
 	padding:3px 10px;
 	background:#f3f6f9;
 	display:flex;
@@ -882,7 +904,7 @@ margin-left:10px;
 	border:0;
 	resize:none;
 	margin:0px 10px;
-	font-size:14px;
+	font-size:1.4rem;
 	font-family:'Rubik', sans-serif;
 	font-weight:400;
 	color:#a4a4a4;
@@ -892,7 +914,7 @@ margin-left:10px;
 .add_comment_box .add_comments .user {
 	width:33px;
 	height:33px;
-	border-radius:3px;
+	border-radius:5px;
 	overflow:hidden;
 }
 .add_comment_box .add_comments .user img {
@@ -905,8 +927,8 @@ margin-left:10px;
 	display:inline-flex;
 	padding:5px 4px;
 	margin:0 5px;
-	border-radius:3px;
-	font-size:15px;
+	border-radius:5px;
+	font-size:1.5rem;
 	font-family:'Rubik', sans-serif;
 	font-weight:400;
 	color:#323232;
@@ -917,8 +939,8 @@ margin-left:10px;
 	background:#e1e1e1;
 	display:inline-flex;
 	padding:5px 10px;
-	border-radius:3px;
-	font-size:15px;
+	border-radius:5px;
+	font-size:1.5rem;
 	font-family:'Rubik', sans-serif;
 	font-weight:400;
 	color:#323232;
@@ -926,14 +948,14 @@ margin-left:10px;
 	letter-spacing:0.075em;
 }
 .add_comment_box button {
-	border-radius:3px;
+	border-radius:5px;
 	padding:17px 20px;
 	background:#f3f6f9;
 	border:0;
 	margin-left:10px;
 }
 .post_comments {
-	border-radius:3px;
+	border-radius:5px;
 	padding:20px 10px 10px 10px;
 	background:#f3f6f9;
 	float:left;
@@ -948,7 +970,7 @@ margin-left:10px;
 	font-weight:700;
 	width:auto;
 	padding:3px 9px;
-	border-radius:3px;
+	border-radius:5px;
 	margin-bottom:20px;
 }
 .post_comments p {
@@ -965,7 +987,7 @@ margin-left:10px;
 .comments_point .user {
 	width:38px;
 	height:38px;
-	border-radius:3px;
+	border-radius:5px;
 	overflow:hidden;
 	margin-right:10px;
 }
@@ -981,28 +1003,28 @@ margin-left:10px;
 	display:block;
 }
 .comments_point .create {
-	font-size:11px;
+	font-size:1.1rem;
 	color:#19191d;
 	font-weight:500;
 	margin-right:10px;
 	background:#e1e1e1;
 	padding:3px 10px;
-	border-radius:3px;
+	border-radius:5px;
 }
 .comments_point .days {
 	color:#858585;
-	font-size:10px;
+	font-size:1rem;
 	font-weight:500;
 	margin-right:10px;
 }
 .comments_point .pinned {
-	font-size:11px;
+	font-size:1.1rem;
 	margin-right:10px;
 	color:#fff;
 	font-weight:500;
 	background:#7239ea;
 	padding:3px 10px;
-	border-radius:3px;
+	border-radius:5px;
 }
 .loadmore {
 	float:left;
@@ -1013,20 +1035,20 @@ margin-left:10px;
 	margin-top:20px;
 }
 .loadmore a {
-	font-size:12px;
+	font-size:1.2rem;
 	color:#000;
 	font-weight:700;
 	text-transform:uppercase;
 }
 .post_comments h3 {
-	font-size:12px;
+	font-size:1.2rem;
 	color:#19191d;
 	font-weight:700;
 	margin-right:10px;
 }
 .reply_like button span, .like_btn button span {
 	display: inline-block;
-	vertical-align: super;
+	vertical-align: text-top;
 }
 .first_reply {
 	float: right;
@@ -1037,8 +1059,12 @@ margin-left:10px;
   padding: 10px;
 	border-bottom: 1px solid #ddd;
 }
-.delete_comment, .reply_comment {
-	display: inline-block;
+.delete_comment, .reply_comment, .delete_btn {
+    display: inline-block;
+    background: #eee;
+    border-radius: 38px;
+    padding: 4px 10px;
+    margin: 0 5px;
 }
 .first_reply form {
 	float: left;
@@ -1047,12 +1073,12 @@ margin-left:10px;
 .first_reply form textarea {
 	float: left;
 	width: 100%;
-	border-radius: 3px;
+	border-radius: 5px;
 	resize: none;
 	height: 70px;
 	border: 1px solid #ddd;
 	padding: 10px;
-	font-size: 12px;
+	font-size: 1.2rem;
 	font-weight: 400;
 	margin: 10px 0;
 }
@@ -1075,8 +1101,8 @@ margin-left:10px;
 
 .reply_comment_item .comments_data {
 	background: #e9e9e9;
-	border-radius: 3px;
-	width: auto;
+	border-radius: 5px;
+	min-width: 30%;
 	padding: 10px;
 	margin-left: 10px;
 }
@@ -1101,11 +1127,11 @@ margin-left:10px;
 	color: #000;
 }
 .comments_data p {
-	font-size: 12px;
+	font-size: 1.2rem;
 	font-weight: 400;
 	color: #999;
 	line-height: 20px;
-	padding-top: 10px;
+	padding-top: 0;
 }
 article .social_bar {
 	margin-left: 45px;
@@ -1117,9 +1143,9 @@ article .social_bar {
 .post_comments button {
 	border:0;
 	background: none;
-	font-size: 14px;
+	font-size: 1.4rem;
 	font-weight: 400;
-	color: #7239ea;
+	color: #000;
 }
 .thx_msg {
 	float: left;
@@ -1155,12 +1181,12 @@ article .social_bar {
 	position:absolute;
 	top:0;
 	right:10px;
-	font-size:12px;
+	font-size:1.2rem;
 	color:#202028;
 	font-weight:600;
 }
 .recent_activity a.hideShow i {
-	font-size:14px;
+	font-size:1.4rem;
 	color:#202028;
 	font-weight:600;
 }
@@ -1177,7 +1203,7 @@ article .social_bar {
 	float:left;
 	width:100%;
 	padding:20px;
-	border-radius:3px;
+	border-radius:5px;
 	background:#fff;
 	margin:0 0 20px 0;
 }
@@ -1193,7 +1219,7 @@ article .social_bar {
 	display:inline-block;
 	width:30px;
 	height:30px;
-	border-radius:3px;
+	border-radius:5px;
 	overflow:hidden;
 	background:#000;
 	vertical-align:middle;
@@ -1209,13 +1235,13 @@ article .social_bar {
 	vertical-align:middle;
 	margin:0 10px;
 	color:#202028;
-	font-size:12px;
+	font-size:1.2rem;
 	font-weight:600;
 }
 .white_box .activity_tag .act_name b {
 	display:block;
 	color:#a3a3a3;
-	font-size:10px;
+	font-size:1rem;
 	text-transform:uppercase;
 }
 .freind_request .activity_tag a {
@@ -1228,28 +1254,28 @@ article .social_bar {
 }
 .freind_request .activity_tag .accept {
 	background:#7239ea;
-	font-size:10px;
+	font-size:1rem;
 	color:#fff;
 	font-weight:700;
 	text-transform:uppercase;
 	padding:2px 5px;
-	border-radius:3px;
+	border-radius:5px;
 }
 .freind_request .activity_tag .close {
 	background:#f3f6f9;
-	font-size:10px;
+	font-size:1rem;
 	color:#777777;
 	font-weight:700;
 	text-transform:uppercase;
 	padding:2px 5px;
-	border-radius:3px;
+	border-radius:5px;
 }
 .suggested_player .all {
 	position:absolute;
 	top:0;
 	right:20px;
 	color:#000;
-	font-size:14px;
+	font-size:1.4rem;
 	font-weight:400;
 }
 .suggested_player li {
@@ -1268,14 +1294,14 @@ article .social_bar {
 	bottom:25px;
 }
 .suggested_player li a .name {
-	font-size:12px;
+	font-size:1.2rem;
 	color:#000;
 	font-weight:700;
 }
 .suggested_player li .img_thumb {
 	width:47px;
 	height:47px;
-	border-radius:3px;
+	border-radius:5px;
 	overflow:hidden;
 }
 .suggested_player li .img_thumb img {
@@ -1303,7 +1329,7 @@ article .social_bar {
 	height:20px;
 	border-radius:50%;
 	color:#000;
-	font-size:15px;
+	font-size:1.5rem;
 	display:block;
 	margin-top:10px;
 }
@@ -1312,7 +1338,7 @@ article .social_bar {
 	top:0;
 	right:20px;
 	color:#000;
-	font-size:14px;
+	font-size:1.4rem;
 	font-weight:400;
 }
 .my_team .team li {
@@ -1320,7 +1346,7 @@ article .social_bar {
 }
 .my_team .team li a {
 	color:#000;
-	font-size:11px;
+	font-size:1.1rem;
 	font-weight:400;
 }
 .my_team .create_team {
@@ -1330,12 +1356,12 @@ article .social_bar {
 	border:0;
 	margin:20px 0;
 	padding:15px 10px;
-	border-radius:3px;
+	border-radius:5px;
 	font-weight:700;
 }
 .my_team p {
 	color:#000;
-	font-size:11px;
+	font-size:1.1rem;
 	font-weight:700;
 	text-align:center;
 }
@@ -1346,11 +1372,11 @@ article .social_bar {
 	border:0;
 	margin:20px 0;
 	padding:15px 10px;
-	border-radius:3px;
+	border-radius:5px;
 	font-weight:700;
 }
 .team_match .match_name {
-	font-size:12px;
+	font-size:1.2rem;
 	color:#202028;
 	font-weight:700;
 }
@@ -1364,7 +1390,7 @@ article .social_bar {
 }
 .team_match .match_time span {
 	color:#000;
-	font-size:11px;
+	font-size:1.1rem;
 	font-weight:700;
 }
 .team_match .team {
@@ -1382,7 +1408,7 @@ article .social_bar {
 }
 .team_match .team li a {
 	color:#000;
-	font-size:12px;
+	font-size:1.2rem;
 	font-weight:700;
 }
 
@@ -1450,7 +1476,7 @@ article .social_bar {
 .tab_box .tabs ul a {
 	color: #fff;
 	text-transform: uppercase;
-	font-size: 14px;
+	font-size: 1.4rem;
 	font-weight: 400;
 }
 .tab_box .tabs ul li.active a, .tab_box .tabs ul li:hover a {
@@ -1476,7 +1502,7 @@ article .social_bar {
 	position: relative;
 	top: 0;
 	z-index: 1;
-	font-size: 14px;
+	font-size: 1.4rem;
 }
 .chatbox .contacts li {
 	padding: 0.4375rem 1rem;
@@ -1554,7 +1580,7 @@ article .social_bar {
 	line-height: 15px;
 }
 .sharp.btn-xs i {
-	font-size: 12px;
+	font-size: 1.2rem;
 	color: #fff;
 }
 .chatbox .chat-list-header {
@@ -1577,7 +1603,7 @@ article .social_bar {
 	color: #393939;
 }
 .chatbox .card-header h6 {
-	font-size: 14px;
+	font-size: 1.4rem;
 }
 .chatbox .img_cont_msg {
 	width: 1.875rem;
@@ -1704,6 +1730,7 @@ article .social_bar {
 	width: 100%;
 	height: 400px;
 	left: 0;
+
 	top:0;
 }
 .profile_box .profile_cover_photo img {
@@ -1724,14 +1751,14 @@ article .social_bar {
 	width: 155px;
 	height: 155px;
 	border:5px solid #202028;
-	border-radius: 3px;
+	border-radius: 5px;
 	margin-right: 25px;
 }
 .profile_dp_box .profile_pic img {
 	object-fit: cover;
 	width: 100%;
 	height: 100%;
-	border-radius: 3px;
+	border-radius: 5px;
 }
 .profile_dp_box .profile_details {
 	float: left;
@@ -1784,7 +1811,7 @@ article .social_bar {
 	font-size: 11px;
 	text-align: center;
 	padding: 5px 20px;
-	border-radius: 3px;
+	border-radius: 5px;
 }
 .profile_dp_box .top_details .button a:hover {
 	background: #000;
@@ -1861,7 +1888,7 @@ article .social_bar {
 	margin-right: 10px;
 }
 .bio_box .left_bio p {
-	font-size: 14px;
+	font-size: 1.4rem;
 	line-height: 20px;
 	font-weight: 400;
 }
@@ -1900,11 +1927,11 @@ article .social_bar {
 	background: #7239ea;
 	border:0;
 	width: 100%;
-	font-size: 18px;
+	font-size: 1.8rem;
 	font-weight: 600;
 	color:#fff;
 	padding: 10px 20px;
-	border-radius: 3px;
+	border-radius: 5px;
 	text-align: center;
 }
 .bio_box .right_bio ul {
@@ -1944,7 +1971,7 @@ article .social_bar {
 .profile_tab_btn li a {
 	color:#000;
 	text-transform: uppercase;
-	font-size: 12px;
+	font-size: 1.2rem;
 	padding-right: 10px;
 }
 .profile_tab_btn li.active:after {
@@ -2025,7 +2052,7 @@ article .social_bar {
 	font-size: 13px;
 }
 .profile_left_post .post_comments p {
-	font-size: 14px;
+	font-size: 1.4rem;
 }
 .profile_match_details {
 	float:right;
@@ -2033,7 +2060,7 @@ article .social_bar {
 }
 .all_stats {
 	background: #fff;
-	border-radius: 3px;
+	border-radius: 5px;
 	padding: 20px;
 }
 .all_stats ul {
@@ -2058,7 +2085,7 @@ article .social_bar {
 	font-weight: 700;
 }
 .all_stats ul li .names {
-	font-size: 12px;
+	font-size: 1.2rem;
 	font-weight: 600;
 	color: #2d2d22;
 	text-transform: uppercase;
@@ -2068,7 +2095,7 @@ article .social_bar {
 }
 .games_details {
 	background: #fff;
-	border-radius: 3px;
+	border-radius: 5px;
 	padding: 20px;
 	margin-top: 50px;
 }
@@ -2091,17 +2118,17 @@ article .social_bar {
 .games_details li .nm {
 	float: left;
 	width: 120px;
-	font-size:14px;
+	font-size:1.4rem;
 	font-weight: 600;
 	color: #2d2d22;
 }
 .games_details li .task {
-	font-size: 14px;
+	font-size: 1.4rem;
 	font-weight: 600;
 	color: #2d2d22;
 }
 .games_details .game_btn {
-	font-size: 12px;
+	font-size: 1.2rem;
 	margin-top: 20px;
 }
 .games_details .chart_box img {
@@ -2146,7 +2173,7 @@ article .social_bar {
 }
 .team_pos li .position {
 	width: 90px;
-	font-size: 12px;
+	font-size: 1.2rem;
 	font-weight: 500;
 	text-transform: uppercase;
 }
@@ -2191,7 +2218,7 @@ article .social_bar {
 	align-items: center;
 	justify-content: space-between;
 	padding: 20px;
-	border-radius: 3px;
+	border-radius: 5px;
 }
 .sponser ul li {
 	flex: 0 0 20%;
@@ -2207,7 +2234,7 @@ article .social_bar {
 	object-fit: cover;
 }
 .bio_box .right_team_bio h5 {
-	font-size: 12px;
+	font-size: 1.2rem;
 	font-weight: 700;
 	padding-bottom: 20px;
 }
@@ -2327,7 +2354,7 @@ article .social_bar {
 	text-transform:uppercase
 }
 .product_box .product-detail-box p {
-	font-size:14px;
+	font-size:1.4rem;
 	padding:0 0 10px;
 }
 .product_box .product-detail-box .price {
@@ -2342,7 +2369,7 @@ article .social_bar {
 	color:#d3d3d3;
 }
 .product_box .product-detail-box .price span.discount {
-	font-size:12px;
+	font-size:1.2rem;
 	color:#ff8121
 }
 .product_box .product-detail-box span.product-id {
@@ -2365,7 +2392,7 @@ article .social_bar {
 }
 .size-option ul li {
 	padding:0 12px;
-	border-radius: 3px;
+	border-radius: 5px;
 	width:47%;
 	display:inline-block;
 	line-height:42px;
@@ -2458,7 +2485,7 @@ article .social_bar {
 .size-chart a.chart-back {
 	padding:5px 0 0;
 	color:#505050;
-	font-size:12px;
+	font-size:1.2rem;
 	text-decoration:underline !important;
 	display:block;
 }
@@ -2478,12 +2505,12 @@ article .social_bar {
 }
 .art, .view, .like {
 	background: #ddd;
-	border-radius: 3px;
+	border-radius: 5px;
 	padding: 10px 20px;
 	margin-right: 5px;
 	display: inline-block;
 	color: #000;
-	font-size: 14px;
+	font-size: 1.4rem;
 	text-transform: capitalize;
 }
 .review {
@@ -2492,7 +2519,7 @@ article .social_bar {
 	margin-top: 20px;
 }
 .review .rev_txt {
-	font-size: 12px;
+	font-size: 1.2rem;
 	color: #000;
 	text-transform: uppercase;
 	padding-left: 20px;
@@ -2515,7 +2542,7 @@ article .social_bar {
 	border:1px solid #7239ea;
 }
 .brief {
-	font-size: 14px;
+	font-size: 1.4rem;
 	line-height: 25px;
 }
 .products li {
@@ -2525,7 +2552,7 @@ article .social_bar {
 	margin-bottom: 20px;
 	background: #fff;
 	padding: 20px 2%;
-	border-radius: 3px;
+	border-radius: 5px;
 }
 .products li:nth-child(4n) {
 	margin-right:0
@@ -2537,7 +2564,7 @@ article .social_bar {
 .products li .pro_img .size_option {
 	position: absolute;
 	color: #fff;
-	font-size: 12px;
+	font-size: 1.2rem;
 	display: block;
 	padding: 5px 10px;
 	top:-20px;
@@ -2550,7 +2577,7 @@ article .social_bar {
 	width: 100%;
 	height: 250px;
 	object-fit: cover;
-	border-radius: 3px;
+	border-radius: 5px;
 }
 .products li .name_dots {
 	display: flex;
@@ -2560,7 +2587,7 @@ article .social_bar {
 }
 .products li .name_dots h4 {
 	text-transform: uppercase;
-	font-size: 12px;
+	font-size: 1.2rem;
 	font-weight: 700;
 }
 .products li .name_dots a {
@@ -2579,13 +2606,13 @@ article .social_bar {
 .products li .stars .price {
 	margin-left: 10px;
 	text-transform: uppercase;
-	font-size: 12px;
+	font-size: 1.2rem;
 	font-weight: 700;
 }
 .products li .likes {
 	float: right;
 	text-transform: uppercase;
-	font-size: 12px;
+	font-size: 1.2rem;
 	font-weight: 700;
 }
 .products li .likes a {
@@ -2601,23 +2628,23 @@ article .social_bar {
 	width: 100%;
 	background: #fff;
 	padding: 20px;
-	border-radius: 3px;
+	border-radius: 5px;
 }
 .discovery_page {
 	float: left;
 	width: 100%;
 	padding: 20px;
-	border-radius: 3px;
+	border-radius: 5px;
 }
 .discovery_page .tit span, .discovery_page .tit i {
 	background: #dfdfdf;
 	display: inline-block;
 	color: #000;
-	font-size: 18px;
+	font-size: 1.8rem;
 	font-weight: 700;
 	letter-spacing: -1px;
 	padding:5px 10px;
-	border-radius: 3px;
+	border-radius: 5px;
 }
 .discovery_page .tit i {
 	padding: 12px 10px;
@@ -2629,7 +2656,7 @@ article .social_bar {
 	background: #561cde;
 	padding: 5px;
 	display:inline-block;
-	border-radius: 3px;
+	border-radius: 5px;
 	margin-right: 10px;
 }
 .calendar_page .tit span {
@@ -2651,7 +2678,7 @@ article .social_bar {
 }
 .discovery_page h3 {
 	text-transform: uppercase;
-	font-size: 14px;
+	font-size: 1.4rem;
 	font-weight: 700;
 	display: inline;
 	margin-right: 20px;
@@ -2665,7 +2692,7 @@ article .social_bar {
 	background: #dfdfdf;
 	width: 19.2%;
 	margin-right: 1%;
-	border-radius:3px;
+	border-radius:5px;
 }
 .profile_tab_btn.discover_tab_btn li:last-child {
 	margin-right: 0;
@@ -2792,7 +2819,7 @@ article .social_bar {
 	position: relative;
 }
 .team_filter .drop_downs .button-group .dropdown-menu li a {
-	font-size: 12px;
+	font-size: 1.2rem;
 	text-transform: uppercase;
 	font-weight: 400;
 	color: #000;
@@ -2818,7 +2845,7 @@ article .social_bar {
 	font-size: 15px;
 	color: #fff;
 	margin-right: 20px;
-	border-radius: 3px;
+	border-radius: 5px;
 	padding: 5px 10px;
 }
 .filter_list {
@@ -2830,7 +2857,7 @@ article .social_bar {
 	font-size: 11px;
 	background: #33333c;
 	padding: 7px 10px;
-	border-radius: 3px;
+	border-radius: 5px;
 	margin-bottom: 5px;
 	display:inline;
 	color: #fff;
@@ -2838,14 +2865,14 @@ article .social_bar {
 }
 .team_filter .filter_list .filter1 .close2 {
 	position: static;
-	font-size: 12px;
+	font-size: 1.2rem;
 	color: #fff;
 }
 .team_row {
 	float: left;
 	width: 100%;
 	padding:70px 30px 70px 80px;
-	border-radius: 3px;
+	border-radius: 5px;
 	background: #dfdfdf;
 	color: #000;
 	position: relative;
@@ -2866,8 +2893,8 @@ article .social_bar {
 	position: absolute;
 	top: 10px;
 	left: 10px;
-	border-radius: 3px;
-	font-size: 25px;
+	border-radius: 5px;
+	font-size: 2.5rem;
 }
 .team_row .stars.disable {
 	background: none;
@@ -2900,7 +2927,7 @@ article .social_bar {
 	font-size: 11px;
 }
 .team_row span.remarks h4 b {
-	font-size: 12px;
+	font-size: 1.2rem;
 	text-transform: uppercase;
 	color: #fff;
 }
@@ -2916,8 +2943,8 @@ article .social_bar {
 	background: #7239ea;
 	color: #fff;
 	padding: 10px 20px;
-	border-radius: 3px;
-	font-size: 12px;
+	border-radius: 5px;
+	font-size: 1.2rem;
 }
 .overview_box {
 	float: left;
@@ -2925,7 +2952,7 @@ article .social_bar {
 	margin-top: 50px;
 	padding: 30px 2%;
 	background: #dfdfdf;
-	border-radius: 3px;
+	border-radius: 5px;
 }
 .overview_box h2 {
 	font-size: 20px;
@@ -2967,7 +2994,7 @@ article .social_bar {
 	width: 95px;
 	height: 95px;
 	background: #000;
-	border-radius: 3px;
+	border-radius: 5px;
 	overflow: hidden;
 }
 .team_overview .pics img {
@@ -2977,12 +3004,12 @@ article .social_bar {
 	margin: 0;
 }
 .team_overview h4 {
-	font-size: 12px;
+	font-size: 1.2rem;
 	text-transform: uppercase;
 	padding-bottom: 10px;
 }
 .team_overview p {
-	font-size: 12px;
+	font-size: 1.2rem;
 	text-transform: uppercase;
 	font-weight: 700;
 	padding-bottom: 20px;
@@ -2991,7 +3018,7 @@ article .social_bar {
 	display: inline-block;
 	margin-right: 10px;
 	margin-bottom: 20px;
-	font-size: 12px;
+	font-size: 1.2rem;
 	text-transform: uppercase;
 	font-weight: 700;
 }
@@ -3037,7 +3064,7 @@ article .social_bar {
 	-webkit-appearance: none;
 	width: 100%;
 	height: 5px;
-	border-radius: 3px;
+	border-radius: 5px;
 	background: #848484;
 	outline: none;
 	opacity: 0.7;
@@ -3063,7 +3090,7 @@ article .social_bar {
  cursor: pointer;
 }
 .range_slider li:first-child {
-	font-size: 12px;
+	font-size: 1.2rem;
 }
 .range_slider li:last-child {
 	margin: 10px 0;
@@ -3073,7 +3100,7 @@ article .social_bar {
 }
 .range_slider li span {
 	border:1px solid #ddd;
-	border-radius: 3px;
+	border-radius: 5px;
 	padding: 5px 5px;
 }
 .coach_overview .match {
@@ -3096,7 +3123,7 @@ article .social_bar {
 }
 .team_row.arena_team_row .mores {
 	flex-direction: column;
-	font-size: 12px;
+	font-size: 1.2rem;
 }
 .team_row.arena_team_row .mores b {
 	color: #3db4ef;
@@ -3107,7 +3134,7 @@ article .social_bar {
 	float: left;
 	width: 100%;
 	background: #fff;
-	border-radius: 3px;
+	border-radius: 5px;
 	padding: 20px;
 	margin-top: 20px;
 }
@@ -3120,7 +3147,7 @@ article .social_bar {
 .heads_row .heads, .row_box .cols {
 	flex:0 0 10%;
 	text-transform: uppercase;
-	font-size: 14px;
+	font-size: 1.4rem;
 	text-align: center;
 	padding: 20px 0;
 }
@@ -3145,7 +3172,7 @@ article .social_bar {
 	width: 250px;
 }
 .more_data .pic .tumb {
-	border-radius: 3px;
+	border-radius: 5px;
 	overflow: hidden;
 	width: 90px;
 	height: 90px;
@@ -3158,10 +3185,10 @@ article .social_bar {
 	height: 100%;
 }
 .more_data .pic h3 {
-	font-size: 14px;
+	font-size: 1.4rem;
 }
 .more_data .total {
-	font-size: 14px;
+	font-size: 1.4rem;
 	text-transform: uppercase;
 	text-align: center;
 }
@@ -3176,10 +3203,10 @@ article .social_bar {
 	padding: 10px 20px;
 	text-align: center;
 	color: #fff;
-	font-size: 14px;
+	font-size: 1.4rem;
 	border:0;
 	width: 100%;
-	border-radius: 3px;
+	border-radius: 5px;
 	margin-bottom: 10px;
 }
 .more_data .ate {
@@ -3189,7 +3216,7 @@ article .social_bar {
 	font-size:9px;
 	border:0;
 	width: 100%;
-	border-radius: 3px;
+	border-radius: 5px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -3214,7 +3241,7 @@ article .social_bar {
 	position: relative;
 	padding: 30px 2%;
 	background: #dfdfdf;
-	border-radius: 3px;
+	border-radius: 5px;
 }
 .game_row .star {
 	color: #000;
@@ -3222,8 +3249,8 @@ article .social_bar {
 	position: absolute;
 	top: 10px;
 	left: 10px;
-	border-radius: 3px;
-	font-size: 25px;
+	border-radius: 5px;
+	font-size: 2.5rem;
 }
 .game_row .star.live {
 	background: #7239ea;
@@ -3252,7 +3279,7 @@ article .social_bar {
 	width: 70%;
 	display: flex;
 	flex-direction: column;
-	font-size: 18px;
+	font-size: 1.8rem;
 }
 .right_game_details .date h3 {
 	display: block;
@@ -3263,10 +3290,10 @@ article .social_bar {
 	padding: 10px 20px;
 	text-align: center;
 	color: #fff;
-	font-size: 18px;
+	font-size: 1.8rem;
 	border:0;
 	width:200px;
-	border-radius: 3px;
+	border-radius: 5px;
 	margin-bottom: 10px;
 }
 .right_game_details button.active {
@@ -3317,7 +3344,7 @@ article .social_bar {
 	margin-top: 20px;
 }
 .arena_bio .internet li {
-	font-size: 14px;
+	font-size: 1.4rem;
 	text-transform: uppercase;
 	margin-top: 20px;
 	border-right: 1px solid #ddd;
@@ -3337,7 +3364,7 @@ article .social_bar {
 	float:left;
 	width: 100%;
 	padding: 20px;
-	border-radius: 3px;
+	border-radius: 5px;
 }
 .match_page h2 {
 	font-size: 20px;
@@ -3352,7 +3379,7 @@ article .social_bar {
 	height: 110px;
 	background: #292931;
 	display: inline-block;
-	border-radius: 3px;
+	border-radius: 5px;
 }
 .match_heads {
 	float: left;
@@ -3490,24 +3517,24 @@ article .social_bar {
 	padding: 20px;
 	width: 100%;
 	display: block;
-	border-radius: 3px;
+	border-radius: 5px;
 }
 .stats_table {
 	margin-top: 50px;
 }
 .stats_table .bdr_clr_green {
 	border-left: 5px solid #00ff5b;
-	font-size: 14px;
+	font-size: 1.4rem;
 	font-weight: 700;
 }
 .stats_table .bdr_clr_blue {
 	border-left: 5px solid #00deff;
-	font-size: 14px;
+	font-size: 1.4rem;
 	font-weight: 700;
 }
 .stats_table .bdr_clr_green {
 	border-left: 5px solid #00ff5b;
-	font-size: 14px;
+	font-size: 1.4rem;
 	font-weight: 700;
 }
 .stats_table .table {
@@ -3516,7 +3543,7 @@ article .social_bar {
 .stats_table .table th {
 	font-style: italic;
 	font-weight: 700;
-	font-size: 14px;
+	font-size: 1.4rem;
 	text-align: center;
 }
 .stats_table .table td {
@@ -3534,7 +3561,7 @@ article .social_bar {
 	display: inline-block;
 	width:30px;
 	height:30px;
-	border-radius: 3px;
+	border-radius: 5px;
 	overflow:hidden;
 	vertical-align: middle;
 }
@@ -3602,7 +3629,7 @@ article .social_bar {
 	line-height: 22px;
 }
 .game_chart h4 {
-	font-size: 14px;
+	font-size: 1.4rem;
 	color: #000;
 	font-style: italic;
 	font-weight: 700;
@@ -3644,7 +3671,7 @@ article .social_bar {
 .match_table {
 	flex:0 0 48%;
 	border:1px solid #ddd;
-	font-size: 12px;
+	font-size: 1.2rem;
 }
 .match_table .head_row {
 	display: flex;
@@ -3719,8 +3746,8 @@ article .social_bar {
 	background: #ddd;
 	padding: 5px 20px;
 	text-transform: capitalize;
-	border-radius: 3px;
-	font-size: 12px;
+	border-radius: 5px;
+	font-size: 1.2rem;
 	font-weight: 700;
 	cursor: pointer;
 }
@@ -3797,7 +3824,7 @@ article .social_bar {
 }
 .squad_btn .cuntry_name {
 	color: #fff;
-	font-size: 18px;
+	font-size: 1.8rem;
 	padding: 25px 0 0 0;
 	text-align: center;
 	width: 50%;
@@ -3808,7 +3835,7 @@ article .social_bar {
 	text-align: center;
 	width: 50%;
 	color: #fff;
-	font-size: 12px;
+	font-size: 1.2rem;
 }
 .selections {
 	display: flex;
@@ -3893,7 +3920,7 @@ article .social_bar {
 }
 .squads_details .table td {
 	text-transform: uppercase;
-	font-size: 14px;
+	font-size: 1.4rem;
 }
 .squads_details .table td h3 {
 	font-size: 22px;
@@ -3908,7 +3935,7 @@ article .social_bar {
 }
 .squads_details .table th {
 	text-transform: uppercase;
-	font-size: 12px;
+	font-size: 1.2rem;
 }
 /* -------------------- Achiments -------------- */
 
@@ -3921,7 +3948,7 @@ article .social_bar {
 .features li {
 	width:200px;
 	background: #ddd;
-	border-radius: 3px;
+	border-radius: 5px;
 	text-align: center;
 	padding: 20px;
 }
@@ -3937,7 +3964,7 @@ article .social_bar {
 }
 .features li .img i {
 	color: #fff;
-	font-size: 25px;
+	font-size: 2.5rem;
 }
 .features li .tit {
 	color: #000;
@@ -3954,7 +3981,7 @@ article .social_bar {
 	font-size: 20px;
 	width: 100%;
 	padding: 20px 0 20px 50px;
-	border-radius: 3px;
+	border-radius: 5px;
 	text-transform: uppercase;
 }
 .trophy_cabinate ul {
@@ -3995,7 +4022,7 @@ article .social_bar {
 	text-transform: uppercase;
 }
 .table .thead-light {
-	border-radius: 3px;
+	border-radius: 5px;
 	background: #ddd;
 }
 .table .thead-light th {
@@ -4014,7 +4041,7 @@ article .social_bar {
 .calendar_box .react-datepicker__day, .calendar_box .react-datepicker__time-name {
 	text-align: right;
 	padding:10px;
-	font-size: 14px;
+	font-size: 1.4rem;
 	border-radius: 0;
 	margin: 0;
 	width:14.3%;
@@ -4062,7 +4089,7 @@ article .social_bar {
 	margin-right: 2%;
 	margin-bottom: 30px;
 	background: #392d49;
-	border-radius: 3px;
+	border-radius: 5px;
 	height: 380px;
 	overflow: hidden;
 }
@@ -4175,7 +4202,7 @@ article .social_bar {
 	vertical-align: middle;
 }
 .group td strong {
-	font-size: 14px;
+	font-size: 1.4rem;
 	font-weight: 400;
 	padding: 0 0 0 10px;
 	text-transform: capitalize;
@@ -4192,7 +4219,7 @@ article .social_bar {
 	font-size: 20px;
 	width: 100%;
 	padding: 20px 0 20px 50px;
-	border-radius: 3px;
+	border-radius: 5px;
 	text-transform: uppercase;
 }
 .matches_box .heads_bg span {
@@ -4202,12 +4229,12 @@ article .social_bar {
 }
 .matches_box .heads_bg span b {
 	background: #00a651;
-	border-radius: 3px;
+	border-radius: 5px;
 	padding: 3px 7px;
 	font-size: 11px;
 }
 .matches_box .match_row {
-	border-radius: 3px;
+	border-radius: 5px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -4223,7 +4250,7 @@ article .social_bar {
 	margin:0 20px;
 }
 .match_row .team_name h3 {
-	font-size: 18px;
+	font-size: 1.8rem;
 	padding-bottom: 10px;
 }
 .match_row .team_b {
@@ -4233,12 +4260,12 @@ article .social_bar {
 	text-align: center;
 }
 .match_row .team_vs p {
-	font-size: 14px;
+	font-size: 1.4rem;
 	text-transform: uppercase;
 }
 .match_row .team_vs a {
 	color: #6931f9;
-	font-size: 14px;
+	font-size: 1.4rem;
 	letter-spacing: 0.030em;
 }
 .match_row .team_vs .vs {
@@ -4249,7 +4276,7 @@ article .social_bar {
 }
 .next_matches {
 	background: #f7f7f7;
-	border-radius: 3px;
+	border-radius: 5px;
 	overflow: hidden;
 }
 .next_matches .bdr_clr_green {
@@ -4293,14 +4320,14 @@ article .social_bar {
 	background: #3b3b3b;
 	padding: 20px;
 	color: #fff;
-	border-radius: 3px;
+	border-radius: 5px;
 	width: 200px;
 	margin-left: 20px;
-	font-size: 14px;
+	font-size: 1.4rem;
 }
 .team_mails a {
 	color: #fff;
-	font-size: 12px;
+	font-size: 1.2rem;
 	;
 }
 .team_member {
@@ -4327,7 +4354,7 @@ article .social_bar {
 	background: #0d0c12;
 	overflow: hidden;
 	margin-bottom: 20px;
-	border-radius: 3px;
+	border-radius: 5px;
 }
 .team_member li .dp img {
 	width: 100%;
@@ -4442,7 +4469,7 @@ article .social_bar {
 	text-transform: uppercase;
 	padding: 4px 10px;
 	display: inline-block;
-	border-radius: 3px;
+	border-radius: 5px;
 }
 .sponsers_box .sponser_data .head_spons_bg {
 	background: #de442b;
@@ -4456,7 +4483,7 @@ article .social_bar {
 .sponsers_box .sponser_data p {
 	text-align: left;
 	margin-top: 20px;
-	font-size: 14px;
+	font-size: 1.4rem;
 	line-height: 30px;
 }
 /* -----------------Gallery ------------ */
@@ -4470,7 +4497,7 @@ article .social_bar {
 	width: 32%;
 	margin-bottom: 20px;
 	background: #ddd;
-	border-radius: 3px;
+	border-radius: 5px;
 	overflow: hidden;
 	margin-right: 2%;
 }
@@ -4603,7 +4630,7 @@ article .social_bar {
 	padding: 10px;
 }
 .inner_header nav ul li a {
-	font-size: 14px;
+	font-size: 1.4rem;
 	color: #000;
 	font-weight: 400;
 	text-transform: uppercase;
@@ -4710,7 +4737,7 @@ main {
 }
 .shop_footer li a {
 	color: #fff;
-	font-size: 12px;
+	font-size: 1.2rem;
 }
 .basket_box {
 	padding: 0;
@@ -4754,14 +4781,14 @@ main {
 .shop_filter_box .filter_input .bWDKpE:first-child h4 button {
 	background: #ddd;
 	padding: 5px 10px;
-	border-radius: 3px;
+	border-radius: 5px;
 	font-size: 13px;
 }
 .shop_filter_box .filter_input h4 {
 	display: flex;
 }
 .shop_filter_box .filter_input h4 .kCkpbc {
-	font-size: 14px;
+	font-size: 1.4rem;
 	color: #000;
 	font-weight: 700;
 }
@@ -4823,7 +4850,7 @@ main {
 	border: 1px solid #ddd;
 }
 .right_products .cEPfRQ ul > li .tag {
-	font-size: 12px;
+	font-size: 1.2rem;
 }
 .right_products .fTBHtd {
 	border: 0;
@@ -4853,18 +4880,18 @@ main {
 	padding: 20px;
 }
 .right_prod_details h1 {
-	font-size: 25px;
+	font-size: 2.5rem;
 	font-weight: 700;
 	text-transform: uppercase;
 	color: #061b4e;
 }
 .right_prod_details .lookwz p {
-	font-size: 14px;
+	font-size: 1.4rem;
 }
 .right_prod_details .tag {
 	background: #7239ea;
 	color: #fff;
-	font-size: 12px;
+	font-size: 1.2rem;
 }
 .right_prod_details .bvgxom {
 	padding: 0;
@@ -4911,7 +4938,7 @@ main {
 	padding: 5px;
 }
 .games_btn li p {
-	font-size: 12px;
+	font-size: 1.2rem;
 	color: #000;
 }
 .games_btn li span {
@@ -4998,9 +5025,9 @@ ul.game_search_result li {
 }
 .btn_selection button {
 	margin-right: 10px;
-	font-size: 14px;
+	font-size: 1.4rem;
 	padding: 20px 40px;
-	border-radius: 3px;
+	border-radius: 5px;
 }
 .date_time {
 	display: flex;
@@ -5035,7 +5062,7 @@ ul.game_search_result li {
 	text-align: center;
 	text-decoration: none;
 	margin: 5px 2px;
-	border-radius: 3px;
+	border-radius: 5px;
 }
 .create_tournament form .fa:hover {
 	opacity: 0.7;
@@ -5066,7 +5093,7 @@ ul.game_search_result li {
 }
 .style_file_upload .inputfile + label {
 	width: 150px;
-	font-size: 12px;
+	font-size: 1.2rem;
 	font-weight: 700;
 	text-overflow: ellipsis;
 	white-space: nowrap;
@@ -5178,7 +5205,7 @@ ul.game_search_result li {
 	margin-bottom: 20px;
 }
 .group_stage .match_date a {
-	font-size: 14px;
+	font-size: 1.4rem;
 	color: #000;
 }
 .group_stage .match_date a:hover, .group_stage .match_date a.active {
@@ -5186,7 +5213,7 @@ ul.game_search_result li {
 	font-weight: 700;
 }
 .group_stage .match_date a:hover p, .group_stage .match_date a.active p {
-	font-size: 14px;
+	font-size: 1.4rem;
 	color: #000;
 }
 .match_list {
@@ -5273,7 +5300,7 @@ ul.game_search_result li {
 	height: 60px;
 	background: #3a2d49;
 	margin: 10px 0;
-	border-radius: 3px;
+	border-radius: 5px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -5283,7 +5310,7 @@ ul.game_search_result li {
 	display: inline-block;
 	width: 30px;
 	height: 30px;
-	border-radius: 3px;
+	border-radius: 5px;
 	overflow: hidden;
 	vertical-align: middle;
 }
@@ -5401,48 +5428,18 @@ ul.game_search_result li {
 
 
 
-.report_link{display: flex;
-    height: 90px;
-    align-items: center;
-    margin-left: 10px;}
-.comment_rep_poup{ display: none;}
-.comment_rep_poup.show_report_poup{ display: block;}
+/* start custom model box */
 
-.comment_rep_poup{
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-    width: 500px;
-    height: 400px;
-    z-index: 199;
-}
+.common_model_box{ display: none;}
+.common_model_box.show_model{ display: block;}
+.common_model_box{position: fixed;top: 0;left: 0;right: 0;bottom: 0;margin: auto;width: 500px;height: 400px;z-index: 199;}
+.common_model_box .inner_model_box{float: left;width: 100%;padding: 30px;background: #fff;overflow: hidden;border: 10px solid #7239ea;}
+.common_model_box .model_close{position: absolute;right: 15px;top: 10px;color: #000;font-size: 20px;font-weight: 700;}
 
+/*  end custom model box */
 
-	.comment_rep_poup .report_list{    float: left;
-    width: 100%;
-    padding: 30px;
-    background: #fff;
-    overflow: hidden;
-    border: 10px solid #7239ea;}
+.report_link{display: flex;align-items: center; margin-left: 10px;}
+.report_model h3{font-size: 20px;color: #19191d;font-weight: 700;margin-bottom: 20px;text-align: center;text-transform: uppercase;border-bottom: 1px solid #ddd;padding-bottom: 10px}
+.report_model li { margin-bottom: 10px;}
+.report_model li a{ font-size: 1.4rem; color: #333;}
 
-.comment_rep_poup .close_rep_box{     position: absolute;
-    right: 15px;
-    top: 10px;
-    color: #000;
-    font-size: 20px;
-    font-weight: 700;
-}
-.comment_rep_poup .report_list h3{font-size: 20px;
-color: #19191d;
-font-weight: 700;
-margin-bottom: 20px;
-text-align: center;
-text-transform: uppercase;
-border-bottom: 1px solid #ddd;
-padding-bottom: 10px}
-
-.comment_rep_poup .report_list li { margin-bottom: 10px;}
-.comment_rep_poup .report_list li a{ font-size: 14px; color: #333;}
