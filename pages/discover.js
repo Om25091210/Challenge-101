@@ -8,11 +8,12 @@ import Coaches from '@components/discover/Coaches';
 import Players from '@components/discover/Players';
 import Arenas from '@components/discover/Arenas';
 import Jobs from '@components/discover/Jobs';
+import baseURL from '@utils/baseURL';
 
 import FooterMain from '@components/FooterMain';
 import AllScript from './AllScript';
 
-const Discover = ({ user }) => {
+const Discover = ({ user, games }) => {
   return (
     <>
       <MetaDash />
@@ -35,12 +36,14 @@ const Discover = ({ user }) => {
                   Browse Games
                 </span>
                 <i className="fa fa-angle-right" aria-hidden="true"></i>
-                <span className="other_logo">
-                  <img src="/assets/media/team1.png" alt="" />
-                </span>
-                <span className="other_logo">
-                  <img src="/assets/media/team1.png" alt="" />
-                </span>
+
+
+                {games.map((game, idx) => (
+                  <span className="other_logo">
+                    <img src={game.imgUrl} alt={game.name} />
+                  </span>
+                ))}             
+
               </a>
             </div>
 
@@ -96,4 +99,16 @@ const Discover = ({ user }) => {
   );
 };
 
+export const getServerSideProps = async (context) => {
+  const response = await fetch(`${baseURL}/api/all/games`);
+  const games = await response.json();
+  console.log(games);
+  return {
+    props: { games }
+  };
+};
+
+
 export default Discover;
+
+
