@@ -10,6 +10,8 @@ import CustomPost from './CustomPost';
 import LikePost from '../postLikes/LikePost';
 import ReactTooltip from 'react-tooltip';
 import Moment from 'moment';
+import React from 'react';
+import Slider from 'react-slick';
 
 const SignedMainContent = ({ posts }) => {
   const [description, setDescription] = useState('');
@@ -69,23 +71,66 @@ const SignedMainContent = ({ posts }) => {
       });
   }, []);
 
+  useEffect(() => {
+    if (window.File && window.FileList && window.FileReader) {
+      $('#files').on('change', function (e) {
+        var files = e.target.files,
+          filesLength = files.length;
+        for (var i = 0; i < filesLength; i++) {
+          var f = files[i];
+          var fileReader = new FileReader();
+          fileReader.onload = function (e) {
+            var file = e.target;
+            $(
+              '<span class="image_box">' +
+                '<img class="imageThumb" src="' +
+                e.target.result +
+                '" title="' +
+                file.name +
+                '"/>' +
+                '<br/><span class="remove">X</span>' +
+                '</span>'
+            ).insertAfter('#files');
+            $('.remove').click(function () {
+              $(this).parent('.image_box').remove();
+            });
+          };
+          fileReader.readAsDataURL(f);
+        }
+      });
+    } else {
+      alert("Your browser doesn't support to File API");
+    }
+  }, []);
+
+  var settings = {
+    infinite: false,
+    vertical: true,
+    verticalSwiping: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: true
+  };
+
   return (
     <div className="main_middle">
       <form className="write_post" onSubmit={handleSubmit}>
         <div className="team_slider">
           <ul className="user_slider">
-            <li>
-              <img src="/assets/media/dash/user.jpg" alt="" />
-            </li>
-            <li>
-              <img src="/assets/media/dash/user.jpg" alt="" />
-            </li>
-            <li>
-              <img src="/assets/media/dash/user.jpg" alt="" />
-            </li>
-            <li>
-              <img src="/assets/media/dash/user.jpg" alt="" />
-            </li>
+            <Slider {...settings}>
+              <li>
+                <img src="/assets/media/dash/user.jpg" alt="" />
+              </li>
+              <li>
+                <img src="/assets/media/dash/user.jpg" alt="" />
+              </li>
+              <li>
+                <img src="/assets/media/dash/user.jpg" alt="" />
+              </li>
+              <li>
+                <img src="/assets/media/dash/user.jpg" alt="" />
+              </li>
+            </Slider>
           </ul>
         </div>
 

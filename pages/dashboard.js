@@ -1,4 +1,5 @@
 import axios from 'axios';
+import React, { Component } from 'react';
 import cookie from 'js-cookie';
 import io from 'socket.io-client';
 import { useState, useRef, useEffect } from 'react';

@@ -48,6 +48,23 @@ const ProfileData = ({ user, Userdata }) => {
     }
   };
 
+  useEffect(() => {
+    $('.fancybox').fancybox();
+    $('.quickpoup').fancybox({
+      wrapCSS: 'quickcss',
+      width: 1200,
+      height: 600,
+      autoSize: false
+    });
+
+    $('.videos').fancybox({
+      wrapCSS: 'videocss',
+      width: 600,
+      height: 400,
+      autoSize: false
+    });
+  }, []);
+
   return (
     <>
       <div className="prfoile_tab_data">
