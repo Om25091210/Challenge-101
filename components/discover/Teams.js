@@ -62,7 +62,9 @@ const Teams = ({ user }) => {
           <div className="inner_team">
             <div className="logo_box">
               {' '}
-              <img src="/assets/media/discover/team1.png" alt="" />
+              <div className="role_pic">
+                <img src="/assets/media/discover/team1.png" alt="" />
+              </div>
               <h3>{team.team.name}</h3>
               <img
                 src="/assets/media/discover/country.png"

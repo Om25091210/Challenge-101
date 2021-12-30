@@ -10,8 +10,6 @@ import CustomPost from './CustomPost';
 import LikePost from '../postLikes/LikePost';
 import ReactTooltip from 'react-tooltip';
 import Moment from 'moment';
-import React from 'react';
-import Slider from 'react-slick';
 
 const SignedMainContent = ({ posts }) => {
   const [description, setDescription] = useState('');
@@ -117,20 +115,18 @@ const SignedMainContent = ({ posts }) => {
       <form className="write_post" onSubmit={handleSubmit}>
         <div className="team_slider">
           <ul className="user_slider">
-            <Slider {...settings}>
-              <li>
-                <img src="/assets/media/dash/user.jpg" alt="" />
-              </li>
-              <li>
-                <img src="/assets/media/dash/user.jpg" alt="" />
-              </li>
-              <li>
-                <img src="/assets/media/dash/user.jpg" alt="" />
-              </li>
-              <li>
-                <img src="/assets/media/dash/user.jpg" alt="" />
-              </li>
-            </Slider>
+            <li>
+              <img src="/assets/media/dash/user.jpg" alt="" />
+            </li>
+            <li>
+              <img src="/assets/media/dash/user.jpg" alt="" />
+            </li>
+            <li>
+              <img src="/assets/media/dash/user.jpg" alt="" />
+            </li>
+            <li>
+              <img src="/assets/media/dash/user.jpg" alt="" />
+            </li>
           </ul>
         </div>
 

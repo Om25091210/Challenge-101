@@ -39,6 +39,13 @@ const MetaDash = () => (
     />
     <link href="/assets/css/dash/layout.css" rel="stylesheet" type="text/css" />
     <link href="/assets/css/dash/screen.css" rel="stylesheet" type="text/css" />
+
+    <link
+      href="/assets/css/dash/jquery.mCustomScrollbar.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+
     <link
       href="/assets/css/dash/jquery.fancybox.css"
       rel="stylesheet"

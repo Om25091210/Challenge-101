@@ -61,9 +61,12 @@ const Coaches = ({ user }) => {
           <div className="inner_team">
             <div className="logo_box">
               {' '}
-              <img src={coach.coaches.user.profilePicUrl} alt="" />
+              <div className="role_pic">
+                {' '}
+                <img src={coach.coaches.user.profilePicUrl} alt="" />
+              </div>
               <h3>{coach.coaches.user.name}</h3>
-              <img src="/assets/media/discover/country.png" alt="" />{' '}
+              <img src="/assets/media/discover/country.png" alt="" />
             </div>
             <span className="logo">
               <img src="/assets/media/discover/apex.png" alt="" />{' '}

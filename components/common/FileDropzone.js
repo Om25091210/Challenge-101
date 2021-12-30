@@ -18,19 +18,16 @@ const FileDropzone = ({ setFiles }) => {
   });
 
   return (
-    <div
-      className="bg-white cursor-pointer shadow-md rounded-xl p-8 w-full text-center"
-      {...getRootProps()}
-    >
-      <div className="border-2 border-dashed divide-x rounded-md p-10 border-pink-100 flex flex-col justify-center items-center">
+    <div className="" {...getRootProps()}>
+      <div className="drop_files">
         <input {...getInputProps()} />
         <i class="fa fa-upload" aria-hidden="true"></i>
-        <p className="text-lg font-semibold mb-1">
-          Drop your files here or <span className="text-pink-100">browse</span>
-        </p>
-        <p className="text-md text-gray-400">
-          Max 5 files. PDF or .doc files are recommended.
-        </p>
+        <div className="drop_file_txt">
+          Drop your files here
+          <span className="or">or</span>
+          <span className="btn">browse</span>
+        </div>
+        <p>Max 5 files. PDF or .doc files are recommended.</p>
       </div>
     </div>
   );

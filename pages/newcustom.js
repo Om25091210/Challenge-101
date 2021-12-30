@@ -2,35 +2,27 @@ import { useEffect } from 'react';
 
 function Customjs() {
   useEffect(() => {
-    // $('.overhight').mCustomScrollbar({
-    //   autoHideScrollbar: true
-    // });
+    $('.overhight').mCustomScrollbar({
+      autoHideScrollbar: true
+    });
 
-    // $('.bellHight').mCustomScrollbar({
-    //   autoHideScrollbar: true
-    // });
+    $('.bellHight').mCustomScrollbar({
+      autoHideScrollbar: true
+    });
 
-    // $('.tab_data_scroll').mCustomScrollbar({
-    //   autoHideScrollbar: true
-    // });
+    $('.tab_data_scroll').mCustomScrollbar({
+      autoHideScrollbar: true
+    });
 
     /* ----------- create post slider ----------------- */
 
-    // $('.user_slider').slick({
-    //   infinite: false,
-    //   vertical: true,
-    //   verticalSwiping: true,
-    //   slidesToShow: 1,
-    //   slidesToScroll: 1
-    // });
-
-    // $('.edit_slider').slick({
-    //   infinite: false,
-    //   vertical: false,
-    //   verticalSwiping: true,
-    //   slidesToShow: 1,
-    //   slidesToScroll: 1
-    // });
+    $('.user_slider').slick({
+      infinite: false,
+      vertical: true,
+      verticalSwiping: true,
+      slidesToShow: 1,
+      slidesToScroll: 1
+    });
 
     $('.fancybox').fancybox();
 

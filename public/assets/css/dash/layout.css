@@ -2910,6 +2910,20 @@ article .social_bar {
 	display: flex;
 	align-items: center;
 }
+
+
+.team_row .logo_box .role_pic{     width: 50px;
+    background: #000;
+    border-radius: 5px;
+    overflow: hidden;
+    height: 50px;}
+
+	.team_row .logo_box .role_pic img{     width: 100%;
+		object-fit: cover;
+		height: 50px;
+		margin: 0;}	
+
+
 .team_row .stars {
 	color: #000;
 	padding: 5px 7px;
@@ -2946,13 +2960,13 @@ article .social_bar {
 	flex-wrap: wrap;
 }
 .team_row span.remarks h4 {
-	color: #3db4ef;
-	font-size: 11px;
+	color: #7239ea;
+	font-size: 1.3rem; font-weight: 600;
 }
 .team_row span.remarks h4 b {
 	font-size: 1.2rem;
 	text-transform: uppercase;
-	color: #fff;
+	color: #000;  font-weight: 400;
 }
 .team_row .mores {
 	display: flex;
@@ -2969,14 +2983,9 @@ article .social_bar {
 	border-radius: 5px;
 	font-size: 1.2rem;
 }
-.overview_box {
-	float: left;
-	width:100%;
-	margin-top: 50px;
-	padding: 30px 2%;
-	background: #dfdfdf;
-	border-radius: 5px;
-}
+
+
+
 .overview_box h2 {
 	font-size: 20px;
 	color: #000;
@@ -3035,7 +3044,7 @@ article .social_bar {
 	font-size: 1.2rem;
 	text-transform: uppercase;
 	font-weight: 700;
-	padding-bottom: 20px;
+	padding-bottom: 10px;
 }
 .team_overview .ranking div {
 	display: inline-block;
@@ -3061,15 +3070,30 @@ article .social_bar {
 	font-size: 20px;
 	margin-right: 10px;
 }
+
+.drop_files{padding: 20px 20px;
+    text-align: center;
+    border: 1px dotted #999;
+    border-radius: 5px;}
+
+.drop_files .fa{ font-size: 20px;}
+
+.drop_file_txt{ display: flex; flex-direction: column; align-items: center;}	
+.drop_file_txt .or{ padding: 10px 0; font-size: 1.5rem;}
+.drop_file_txt .btn{ text-transform: capitalize;}
+.drop_files p{ font-size: 1.4rem; margin-top: 5px;}
+
 .overview_box {
-	display: none;
-	height: 0;
-	transition: 0.3s ease-in;
+	float: left;
+	width:100%;
+	background: #dfdfdf;
+	border-radius: 5px;
+	height: 0; position: relative;
+	transition: 0.3s ease-in; overflow: hidden;
 }
-.team_row:hover .overview_box {
-	display: block;
-	height: auto;
-}
+
+
+.team_row:hover .overview_box {height: 300px; margin-top: 50px;}
 .round {
 	width: 7px;
 	height: 7px;
@@ -3149,7 +3173,7 @@ article .social_bar {
 	font-size: 1.2rem;
 }
 .team_row.arena_team_row .mores b {
-	color: #3db4ef;
+	color: #7239ea; font-weight: 600;
 }
 /* -------------- Ranking page --------------- */
 
