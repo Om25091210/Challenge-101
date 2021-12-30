@@ -70,7 +70,10 @@ const { readdirSync, readFileSync, lstatSync } = require('fs');
 		const themeCss = themeMap ? themeMap[themeFileName] : '';
 		/* eslint-disable react/no-danger, jam3/no-sanitizer-with-danger */
         return  <Html>
-       			<Head />
+       			<Head><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
+                  <script src="/assets/js/dash/jquery.fancybox.js" />
+                  <script src="/assets/js/dash/jquery.fancybox-media.js" />
+            </Head>
 				<body>
 					{themeCss ? (
 						<style

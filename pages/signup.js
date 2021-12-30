@@ -153,8 +153,8 @@ const Signup = () => {
                       type="text"
                       placeholder=""
                       name="firstname"
-                      minlength="4"
-                      maxlength="18"
+                      minLength="4"
+                      maxLength="18"
                       size="10"
                       value={firstname}
                       onChange={handleChange}
@@ -170,8 +170,8 @@ const Signup = () => {
                       type="text"
                       placeholder=""
                       name="firstname"
-                      minlength="4"
-                      maxlength="18"
+                      minLength="4"
+                      maxLength="18"
                       size="10"
                       name="lastname"
                       value={lastname}
@@ -301,8 +301,6 @@ const Signup = () => {
 
           <FooterMain> </FooterMain>
 
-          <script src="/assets/plugins/global/plugins.bundle.js" />
-          <script src="/assets/js/scripts.bundle.js" />
         </div>
       </div>
     </main>

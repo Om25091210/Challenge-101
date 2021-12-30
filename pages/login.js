@@ -92,10 +92,6 @@ return (
 				</div>
 			<FooterMain> </FooterMain>    
 
-
-        <script src="/assets/plugins/global/plugins.bundle.js"/>
-        <script src="/assets/js/scripts.bundle.js"/>
-
 			</div>
 		</div>
 
