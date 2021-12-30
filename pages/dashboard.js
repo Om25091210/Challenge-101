@@ -197,20 +197,6 @@ const Dashboard = ({ user, posts }) => {
     messages.length > 0 && scrollToBottom(divRef);
   }, [messages]);
 
-  useEffect(() => {
-    $('.overhight').mCustomScrollbar({
-      autoHideScrollbar: true
-    });
-
-    $('.bellHight').mCustomScrollbar({
-      autoHideScrollbar: true
-    });
-
-    $('.tab_data_scroll').mCustomScrollbar({
-      autoHideScrollbar: true
-    });
-  }, []);
-
   // ------------------------------------------------------------
 
   return (
