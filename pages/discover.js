@@ -28,7 +28,7 @@ const Discover = ({ user, games }) => {
             <h2>GAME</h2>
 
             <div className="tit">
-              <a href="#">
+              <a href="#more_games" className="common_poup">
                 <span>
                   <b className="icon">
                     <img src="/assets/media/ranking/console.png" alt="" />
@@ -37,14 +37,27 @@ const Discover = ({ user, games }) => {
                 </span>
                 <i className="fa fa-angle-right" aria-hidden="true"></i>
 
-
-                {games.map((game, idx) => (
-                  <span className="other_logo">
-                    <img src={game.imgUrl} alt={game.name} />
-                  </span>
-                ))}             
-
+                <div className="hover_games">
+                  {games.map((game, idx) => (
+                    <div className="other_logo">
+                      <img src={game.imgUrl} alt={game.name} />
+                    </div>
+                  ))}
+                </div>
               </a>
+
+              <div id="more_games" style={{ display: 'none' }}>
+                <ul>
+                  {games.map((game, idx) => (
+                    <li>
+                      <div className="game_pic">
+                        <img src={game.imgUrl} alt={game.name} />
+                      </div>
+                      <p>{game.name}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
 
             <ul className="profile_tab_btn discover_tab_btn">
@@ -108,7 +121,4 @@ export const getServerSideProps = async (context) => {
   };
 };
 
-
 export default Discover;
-
-

@@ -23,7 +23,7 @@ const FileDropzone = ({ setFiles }) => {
         <input {...getInputProps()} />
         <i class="fa fa-upload" aria-hidden="true"></i>
         <div className="drop_file_txt">
-          Drop your files here
+          <p>Drop your files here</p>
           <span className="or">or</span>
           <span className="btn">browse</span>
         </div>

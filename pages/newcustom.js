@@ -33,6 +33,11 @@ function Customjs() {
       autoSize: false
     });
 
+    $('.common_poup').fancybox({
+      wrapCSS: 'common_poup_wrap',
+      autoSize: true
+    });
+
     $('.videos').fancybox({
       wrapCSS: 'videocss',
       width: 600,

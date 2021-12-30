@@ -20,8 +20,8 @@ const Jobs = () => {
       await axios.post(`${baseURL}/api/uploads/uploadfile`, formdata, {
         headers: {
           Authorization: cookie.get('token'),
-          'Content-Type': 'multipart/form-data',
-        },
+          'Content-Type': 'multipart/form-data'
+        }
       })
   );
 
@@ -38,8 +38,6 @@ const Jobs = () => {
       toast.error(err.response?.data?.msg || 'Please recheck your upload');
     }
   };
-
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -128,7 +126,7 @@ const Jobs = () => {
                   <>
                     {' '}
                     {file.name} :{' '}
-                    <a href="#!" onClick={onSubmit} className="logo_box">
+                    <a href="#!" onClick={onSubmit} className="btn">
                       APPLY NOW{' '}
                     </a>
                   </>
