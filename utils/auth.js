@@ -57,7 +57,6 @@ export const loginUser = async (
 
 export const onboardUser = async (
   verificationToken,
-  formdata,
   setLoading,
   toast
 ) => {
@@ -67,7 +66,6 @@ export const onboardUser = async (
   	console.log(verificationToken)
     const res = await axios.post(
       `${baseURL}/api/onboarding/${verificationToken}`,
-      formdata,
       {
         headers: {
           'Content-Type': 'multipart/form-data',

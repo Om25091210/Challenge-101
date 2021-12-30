@@ -5,7 +5,7 @@ import FooterMain from '@components/FooterMain';
 import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 
-import { onboardUser } from '../../utils/auth';
+import { onboardUser } from '@utils/auth';
 import { useRouter } from 'next/router';
 
 export default function Confirm() {
@@ -24,11 +24,10 @@ export default function Confirm() {
     setUser((prevState) => ({ ...prevState, [e.target.name]: e.target.value }));
   };
 
-  const formdata = new FormData();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await onboardUser(verificationToken, formdata, setLoading, toast);
+    await onboardUser(verificationToken, setLoading, toast);
   };
 
   useEffect(() => {
