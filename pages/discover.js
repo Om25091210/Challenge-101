@@ -115,7 +115,7 @@ const Discover = ({ user, games }) => {
 export const getServerSideProps = async (context) => {
   const response = await fetch(`${baseURL}/api/all/games`);
   const games = await response.json();
-  console.log(games);
+
   return {
     props: { games }
   };

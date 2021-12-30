@@ -9,7 +9,7 @@ import baseURL from '@utils/baseURL';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 
-const Profile = ({ user, Userdata }) => {
+const Profile = ({ user, Userdata, games }) => {
   const router = useRouter();
 
   if (Userdata) {
@@ -20,7 +20,7 @@ const Profile = ({ user, Userdata }) => {
         <LeftNav />
 
         <div className="main_middle profile_middle">
-          <ProfileBox user={user} Userdata={Userdata} />
+          <ProfileBox user={user} Userdata={Userdata} games={games}/>
           <ProfileTabs />
           <ProfileData user={user} Userdata={Userdata} />
         </div>
@@ -33,15 +33,18 @@ const Profile = ({ user, Userdata }) => {
   }
 };
 
+
 export const getServerSideProps = async (context) => {
   const { username } = context.params;
 
   const response = await fetch(`${baseURL}/api/profile/${username}`);
   const Userdata = await response.json();
 
-  console.log(Userdata);
+  const res = await fetch(`${baseURL}/api/all/games`);
+  const games = await res.json();
+
   return {
-    props: { Userdata }
+    props: { Userdata, games }
   };
 };
 

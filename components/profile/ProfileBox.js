@@ -8,10 +8,11 @@ import { toast } from 'react-toastify';
 import cookie from 'js-cookie';
 import Badges from './badges';
 
-const ProfileBox = ({ user, Userdata }) => {
+const ProfileBox = ({ user, Userdata, games }) => {
   const [profilePic, setProfilePic] = useState(null);
   const [bio, setBio] = useState(Userdata.profile.bio);
   const [showform, setShowForm] = useState(false);
+  const [showgames, setShowgames] = useState(false);
 
   const [follow, setFollow] = useState(false);
   const followhandlesubmit = async (e) => {
@@ -78,10 +79,27 @@ const ProfileBox = ({ user, Userdata }) => {
     return res.json();
   };
 
+  const toggleShowform = () => {
+    if (showform) {
+      setShowForm(false);
+    } else {
+      setShowForm(true);
+    }
+  };
+
+  const toggleShowgames = () => {
+    if (showgames) {
+      setShowgames(false);
+    } else {
+      setShowgames(true);
+    }
+  };
+
   const handleButtonForm = () => {
     addingBio();
     setBio('');
     setShowForm(false);
+    setShowgames(false);
     window.setTimeout(function () {
       location.reload();
     }, 400);
@@ -216,9 +234,7 @@ const ProfileBox = ({ user, Userdata }) => {
             {isLoggedInUser ? (
               <button
                 className="bio_edit"
-                onClick={() => {
-                  setShowForm(true);
-                }}
+                onClick={toggleShowform}
               >
                 <i className="fa fa-pencil" aria-hidden="true"></i>
               </button>
@@ -226,6 +242,8 @@ const ProfileBox = ({ user, Userdata }) => {
 
             <div className="games">
               <h2>GAMES</h2>
+
+            {!showgames ? 
 
               <>
                 <ul className="games_btn">
@@ -248,6 +266,64 @@ const ProfileBox = ({ user, Userdata }) => {
                   ))}
                 </ul>
               </>
+              : null
+            }
+
+              {showgames ? (
+
+                    <div className="tit">
+                                    <form onSubmit={(e) => e.preventDefault()}>
+
+                      <a href="#more_games" className="common_poup">
+                        <span>
+                          <b className="icon">
+                            <img src="/assets/media/ranking/console.png" alt="" />
+                          </b>{' '}
+                          Browse Games
+                        </span>
+                        <i className="fa fa-angle-right" aria-hidden="true"></i>
+
+                        <div className="hover_games">
+                          {games.map((game, idx) => (
+                            <div className="other_logo">
+                              <img src={game.imgUrl} alt={game.name} />
+                            </div>
+                          ))}
+                        </div>
+                      </a>
+
+                      <div id="more_games" style={{ display: 'none' }}>
+                        <ul>
+                          {games.map((game, idx) => (
+                            <li>
+                              <div className="game_pic">
+                                <img src={game.imgUrl} alt={game.name} />
+                              </div>
+                              <p>{game.name}</p>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <button onClick={handleButtonForm} className="btn">
+                        Update
+                      </button>
+                    </form>
+                    </div>
+
+
+              ) : (
+                ''
+              )}
+
+              {isLoggedInUser ? (
+                <button
+                  className="games_edit"
+                  onClick={toggleShowgames}
+                >
+                  <i className="fa fa-pencil" aria-hidden="true"></i>
+                </button>
+              ) : null}
+
             </div>
           </div>
 
