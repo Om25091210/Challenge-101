@@ -1530,7 +1530,7 @@ article .social_bar {
 	align-items: center;
 }
 .chatbox .user_info span {
-	font-size: 0.9375rem;
+	font-size: 1.3rem;
 	color: #000;
 	display: block;
 	font-weight: 500;
@@ -1543,7 +1543,7 @@ article .social_bar {
 	max-width: 10.625rem;
 }
 .chatbox .user_info p {
-	font-size: 0.8125rem;
+	font-size: 1.2rem;
 	margin-bottom: 0;
 	text-overflow: ellipsis;
 	white-space: nowrap;
@@ -1615,7 +1615,7 @@ article .social_bar {
 }
 .chatbox .card-header p {
 	line-height: 1.2;
-	font-size: 0.75rem;
+	font-size: 1.3rem;
 	color: #393939;
 }
 .chatbox .card-header h6 {
