@@ -12,7 +12,7 @@ const Games = ({ user }) => {
 
       <div>
         <div className="main_middle profile_middle">
-          <div className="profile_box">
+          <div className="profile_box tournament_dp_box">
             <div className="profile_cover_photo">
               {' '}
               <img
@@ -85,7 +85,11 @@ const Games = ({ user }) => {
 
                 <div className="games">
                   <h3>PUBLISHER: </h3>
-                  <img src="/assets/media/logos/icon.png" alt="" /> Multiplayr
+                  <span>
+                    {' '}
+                    <img src="/assets/media/logos/icon.png" alt="" />{' '}
+                    <b>Multiplayr</b>
+                  </span>
                 </div>
 
                 <div className="games">
@@ -108,9 +112,15 @@ const Games = ({ user }) => {
                 </div>
                 <div className="internet">
                   <ul>
-                    <li>LEAgUES/TOURNAMENTS:</li>
-                    <li>COMMUNITIES: </li>
-                    <li>steaming:</li>
+                    <li>
+                      LEAgUES/TOURNAMENTS: <b>+87</b>
+                    </li>
+                    <li>
+                      COMMUNITIES: <b>+506</b>
+                    </li>
+                    <li>
+                      steaming: <b>+744</b>
+                    </li>
                   </ul>
                 </div>
               </div>

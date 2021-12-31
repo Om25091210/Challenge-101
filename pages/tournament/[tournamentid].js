@@ -23,7 +23,7 @@ const TournamentDetail = ({ user, data }) => {
 
         <div>
           <div className="main_middle profile_middle">
-            <div className="profile_box">
+            <div className="profile_box tournament_dp_box">
               <div className="profile_cover_photo">
                 {' '}
                 <img
@@ -40,29 +40,29 @@ const TournamentDetail = ({ user, data }) => {
                   <div className="top_details">
                     <div className="name_box">
                       {' '}
-                      <span className="game_name">
-                        {' '}
-                        {data.tournament.name}{' '}
-                      </span>{' '}
+                      <div className="flag_tick_flow">
+                        <span className="game_name">
+                          {' '}
+                          {data.tournament.name}{' '}
+                        </span>
+                        <div className="flag"></div>
+                        <div className="tick">
+                          <span className="active">
+                            <i className="fa fa-check" aria-hidden="true"></i>
+                          </span>
+                        </div>
+                        <div className="button">
+                          <a href="#" className="btn">
+                            FOLLOW
+                          </a>
+                        </div>
+                      </div>
                       <span className="name">
                         Indoor Stadium, Bangalore Feb 18th - 20th 10 AM IST
                       </span>{' '}
                       <span className="follower">
                         {data.tournament.description}
                       </span>{' '}
-                    </div>
-                    <div className="flag">
-                      <img src="/assets/media/profile/flag.png" alt="flag" />
-                    </div>
-                    <div className="tick">
-                      <span className="active">
-                        <i className="fa fa-check" aria-hidden="true"></i>
-                      </span>
-                    </div>
-                    <div className="button">
-                      <a href="#" className="btn">
-                        FOLLOW
-                      </a>
                     </div>
                   </div>
                   <div className="bottom_details">
@@ -91,9 +91,9 @@ const TournamentDetail = ({ user, data }) => {
                   </>
                 </div>
 
-                <div className="logos">
+                <div className="flex prices">
                   <h5>Price</h5>
-                  <span>
+                  <span className="">
                     <MPNumberFormat
                       value={data.tournament.prizepool}
                       currency={data.tournament.currency}
@@ -138,7 +138,8 @@ const TournamentDetail = ({ user, data }) => {
                     <>
                       {data.organizers.map((item, index) => (
                         <span key={index}>
-                          <img src={item.imgUrl} alt={item.name} /> {item.name}
+                          <img src={item.imgUrl} alt={item.name} />{' '}
+                          <b>{item.name}</b>
                         </span>
                       ))}
                     </>
@@ -164,7 +165,7 @@ const TournamentDetail = ({ user, data }) => {
                     <>
                       {data.games.map((item, index) => (
                         <span key={index}>
-                          <img src={item.imgUrl} alt={item.name} /> {item.name}
+                          <img src={item.imgUrl} alt={item.name} />
                         </span>
                       ))}
                     </>

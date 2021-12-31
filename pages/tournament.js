@@ -70,8 +70,9 @@ const Tournament = ({ user }) => {
         <div className="discovery_page">
           <div className="white_bg">
             <h2>GAME</h2>
+
             <div className="tit">
-              <a href="#">
+              <a href="#more_games" className="common_poup">
                 <span>
                   <b className="icon">
                     <img src="/assets/media/ranking/console.png" alt="" />
@@ -79,14 +80,32 @@ const Tournament = ({ user }) => {
                   Browse Games
                 </span>
                 <i className="fa fa-angle-right" aria-hidden="true"></i>
-                <span className="other_logo">
-                  <img src="/assets/media/team1.png" alt="" />
-                </span>
-                <span className="other_logo">
-                  <img src="/assets/media/team1.png" alt="" />
-                </span>
+
+                <div className="hover_games">
+                  <div className="other_logo">
+                    <img src="/assets/media/team1.png" alt="" />
+                  </div>
+                  <div className="other_logo">
+                    <img src="/assets/media/team1.png" alt="" />
+                  </div>
+                  <div className="other_logo">
+                    <img src="/assets/media/team1.png" alt="" />
+                  </div>
+                </div>
               </a>
+
+              <div id="more_games" style={{ display: 'none' }}>
+                <ul>
+                  <li>
+                    <div className="game_pic">
+                      <img src="/assets/media/team1.png" alt="" />
+                    </div>
+                    <p>Game Name</p>
+                  </li>
+                </ul>
+              </div>
             </div>
+
             <div className="white_bg">
               <div className="team_search">
                 <div className="searchbox">
@@ -126,16 +145,13 @@ const Tournament = ({ user }) => {
                 </div>
               </div>
 
-             <Filters ftype={"TOURNAMENTS"}/>
-             
+              <Filters ftype={'TOURNAMENTS'} />
             </div>
           </div>
 
           <TournamentRows tournaments={data} searchResults={searchResults} />
         </div>
       </div>
-            
-      
 
       <AllScript />
     </>

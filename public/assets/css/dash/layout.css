@@ -86,6 +86,8 @@ body {
 }
 
 
+.flex{ display: flex; align-items: center;}
+
 p{ font-size: 1.3rem; font-weight: 400;}
 
 h1 {
@@ -417,8 +419,8 @@ ul.top_menu li.profile a {
 .left_side nav li .title {
 	position:absolute;
 	left:60px;
-	top:13px;
-	font-size:1.5rem;
+	top:16px;
+	font-size:1.3rem;
 	color:#fff;
 	font-weight:600;
 	display:none;
@@ -1752,10 +1754,15 @@ article .social_bar {
 	position: absolute;
 	width: 100%;
 	height: 400px;
-	left: 0;
+	left: 0; overflow: hidden;
 
-	top:0;
+	top:0; 
 }
+
+.profile_box .profile_cover_photo img{transition: 0.3s ease-in-out;}
+
+.profile_box .profile_cover_photo img:hover{ transform: scale(1.1,1.1);}
+
 .profile_box .profile_cover_photo img {
 	height: 400px;
 	width: 100%;
@@ -1788,7 +1795,7 @@ article .social_bar {
 	width: calc(100% - 160px);
 }
 .profile_dp_box .top_details {
-	display: flex;
+	display: flex; position: relative;
 }
 .profile_dp_box .top_details .name_box {
 	display: flex;
@@ -1935,6 +1942,16 @@ article .social_bar {
 	align-items: center;
 	justify-content: flex-start;
 }
+
+.bio_box .games span{ display: flex;
+    align-items: center;
+    margin-right: 10px;
+    padding: 10px;}
+
+.bio_box .games span b{ margin-left: 5px;}
+	
+.bio_box .games span img{ width: 40px;}
+
 .bio_box .games h2 {
 	margin-right: 20px;
 }
@@ -4676,6 +4693,15 @@ article .social_bar {
 	align-items: center;
 	padding:25px;
 }
+
+.tournament_sponsers .logos span{     width: 80px;
+    height: 80px;
+    border: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-right: 10px;}
+
 .tournament_sponsers .logos h5 {
 	padding-right: 40px;
 	font-weight: 700;
@@ -5040,7 +5066,25 @@ main {
 }
 /* ----------------Create Tournament page -------------------- */
 
-  
+
+.tournament_dp_box .profile_dp_box{ margin-top: 10%;}
+.tournament_dp_box .tournament_sponsers{ margin-top: 5%;}
+.tournament_dp_box .tournament_sponsers .prices{ font-size: 2rem; font-weight: 600;}
+.tournament_dp_box .tournament_sponsers  h5{ text-transform: uppercase; margin-right: 20px; font-size: 1.4rem;}
+.tournament_dp_box .tournament_sponsers span{ text-transform: uppercase;}
+
+.tournament_dp_box .flag_tick_flow{ display: flex;}
+.tournament_dp_box .profile_dp_box .top_details{ width: 45%;}
+
+.profile_box .profile_cover_photo:after{     content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    left: 0;
+    top: 0;}
+
+
  .create_tournament form {
 	float: left;
 	width: 100%;
@@ -5536,28 +5580,39 @@ ul.game_search_result li {
 
 
 
+/* --------------Game page ------------------- */
 
-.thumb-vertical {
-	position: relative;
-	display: block;
-	width: 100px;
-	height: 100px;
-	cursor: pointer;
-	border-radius: inherit;
-	background-color: #7239ea;
-	
- }
+.internet ul{ display: flex; flex-direction: column;}
+.internet ul li{ display: flex; border-right:0 !important}
+.internet ul li b{ margin-left: 5px;}
 
- .overhight ::-webkit-scrollbar, .bell_drop_down ::-webkit-scrollbar{width: 5px;}
- 
- .track-vertical {
-	position: absolute;
-	width: 6px;
-	display: block!important;
-	right: 2px;
-	bottom: 2px;
-	top: 2px;
-	border-radius: 3px;
- }
 
- .track-horizontal{ }
+
+/* ------------- profile page -------------- */
+
+.profile_hover_games{ position: relative;}
+.profile_hover_games form{ display: flex; align-items: center;}
+.profile_hover_games a{ float: left; width: 100%; display: flex; align-items: center;}
+.profile_hover_games a span, .profile_hover_games a .fa{  background: #dfdfdf;
+    display: inline-block;
+    color: #000;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -1px;
+    padding: 14px 10px;
+    border-radius: 5px;}
+
+	.profile_hover_games a span .icon {
+		background: #561cde;
+		padding: 3px;
+		display: inline-block;
+		border-radius: 5px;
+		margin-right: 10px;
+
+	}
+
+	.profile_hover_games a span .icon img{ width: 20px;}
+
+	.profile_hover_games  .other_logo:first-child{ display: none;}
+
+	.profile_hover_games .btn{ margin: 0 10px;}

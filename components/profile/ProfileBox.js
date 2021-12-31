@@ -12,7 +12,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
   const [profilePic, setProfilePic] = useState(null);
   const [bio, setBio] = useState(Userdata.profile.bio);
   const [showform, setShowForm] = useState(false);
-  const [showgames, setShowgames] = useState(false);
+  const [showgames, setShowgames] = useState(true);
 
   const [follow, setFollow] = useState(false);
   const followhandlesubmit = async (e) => {
@@ -104,6 +104,13 @@ const ProfileBox = ({ user, Userdata, games }) => {
       location.reload();
     }, 400);
   };
+
+  useEffect(() => {
+    $('.common_poup').fancybox({
+      wrapCSS: 'common_poup_wrap',
+      autoSize: true
+    });
+  }, []);
 
   return (
     <>
@@ -232,10 +239,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
             )}
 
             {isLoggedInUser ? (
-              <button
-                className="bio_edit"
-                onClick={toggleShowform}
-              >
+              <button className="bio_edit" onClick={toggleShowform}>
                 <i className="fa fa-pencil" aria-hidden="true"></i>
               </button>
             ) : null}
@@ -243,41 +247,41 @@ const ProfileBox = ({ user, Userdata, games }) => {
             <div className="games">
               <h2>GAMES</h2>
 
-            {!showgames ? 
-
-              <>
-                <ul className="games_btn">
-                  {Userdata.games.map((item, index) => (
-                    <>
-                      <li
-                        className={`${
-                          `item${index}` == 'item0' ? 'active' : ''
-                        }`}
-                        key={index}
-                      >
-                        <a href="javascript:void(0);" rel={`item${index}`}>
-                          <span key={index}>
-                            <img src={item.imgUrl} alt={item.name} />{' '}
-                            <p>{item.name}</p>
-                          </span>
-                        </a>
-                      </li>
-                    </>
-                  ))}
-                </ul>
-              </>
-              : null
-            }
+              {!showgames ? (
+                <>
+                  <ul className="games_btn">
+                    {Userdata.games.map((item, index) => (
+                      <>
+                        <li
+                          className={`${
+                            `item${index}` == 'item0' ? 'active' : ''
+                          }`}
+                          key={index}
+                        >
+                          <a href="javascript:void(0);" rel={`item${index}`}>
+                            <span key={index}>
+                              <img src={item.imgUrl} alt={item.name} />{' '}
+                              <p>{item.name}</p>
+                            </span>
+                          </a>
+                        </li>
+                      </>
+                    ))}
+                  </ul>
+                </>
+              ) : null}
 
               {showgames ? (
-
-                    <div className="tit">
-                                    <form onSubmit={(e) => e.preventDefault()}>
-
+                <div className="profile_hover_games">
+                  <div className="tit">
+                    <form onSubmit={(e) => e.preventDefault()}>
                       <a href="#more_games" className="common_poup">
                         <span>
                           <b className="icon">
-                            <img src="/assets/media/ranking/console.png" alt="" />
+                            <img
+                              src="/assets/media/ranking/console.png"
+                              alt=""
+                            />
                           </b>{' '}
                           Browse Games
                         </span>
@@ -304,26 +308,30 @@ const ProfileBox = ({ user, Userdata, games }) => {
                           ))}
                         </ul>
                       </div>
-                      <button onClick={handleButtonForm} className="btn">
+
+                      <button
+                        onClick={handleButtonForm}
+                        className="btn"
+                        style={{ display: 'none' }}
+                      >
                         Update
                       </button>
                     </form>
-                    </div>
-
-
+                  </div>
+                </div>
               ) : (
                 ''
               )}
 
               {isLoggedInUser ? (
                 <button
-                  className="games_edit"
+                  className="btn"
                   onClick={toggleShowgames}
+                  style={{ display: 'none' }}
                 >
                   <i className="fa fa-pencil" aria-hidden="true"></i>
                 </button>
               ) : null}
-
             </div>
           </div>
 
