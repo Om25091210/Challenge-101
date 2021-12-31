@@ -22,7 +22,12 @@ const TournamentRows = ({ tournaments, searchResults }) => {
               <span className="star live">
                 <i className="fa fa-star" aria-hidden="true"></i>
               </span>
-              <div className="game_pos"></div>
+              <div className="game_pos">
+                <div className="game_loc">
+                  {' '}
+                  <img src="/assets/media/category/game_loc.jpg" alt="" />
+                </div>
+              </div>
               <div className="right_game_details">
                 <div className="top_game">
                   <div className="date">

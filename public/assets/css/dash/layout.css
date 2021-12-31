@@ -3346,7 +3346,7 @@ article .social_bar {
 	position: relative;
 	padding: 30px 2%;
 	background: #dfdfdf;
-	border-radius: 5px;
+	border-radius: 5px; overflow: hidden;
 }
 .game_row .star {
 	color: #000;
@@ -3355,7 +3355,7 @@ article .social_bar {
 	top: 10px;
 	left: 10px;
 	border-radius: 5px;
-	font-size: 2.5rem;
+	font-size: 2.5rem; z-index: 3;
 }
 .game_row .star.live {
 	background: #7239ea;
@@ -3377,8 +3377,19 @@ article .social_bar {
 	border-right: 2px solid #000;
 	transform: skewX(-22deg);
 	right: 0px;
-	top: -29px;
+	top: -29px; z-index: 2;
 }
+
+.game_pos .game_loc{        position: absolute;
+    left: -84px;
+    top: -30px;
+    transform: skewX( -22deg);
+    right: 0px;
+    width: 127%;
+    z-index: 1;}
+
+	.game_pos .game_loc img{transform: skewX( 0deg);}	
+
 .right_game_details {
 	float: right;
 	width: 70%;
