@@ -14,10 +14,12 @@ import axios from 'axios';
 import baseURL from '@utils/baseURL';
 import { useRouter } from 'next/router';
 import cookie from 'js-cookie';
-import { useQuery, useMutation } from 'react-query'
-import { searchTournaments, getTeamsRankingTournaments } from '@utils/functionsHelper';
+import { useQuery, useMutation } from 'react-query';
+import {
+  searchTournaments,
+  getTeamsRankingTournaments
+} from '@utils/functionsHelper';
 import Filters from '@components/common/Filters';
-
 
 const Ranking = ({ user }) => {
   const [searchObj, setSearchObj] = useState({
@@ -78,7 +80,7 @@ const Ranking = ({ user }) => {
           <div className="white_bg">
             <h2>GAME</h2>
             <div className="tit">
-              <a href="#">
+              <a href="#more_games" className="common_poup">
                 <span>
                   <b className="icon">
                     <img src="/assets/media/ranking/console.png" alt="" />
@@ -86,13 +88,25 @@ const Ranking = ({ user }) => {
                   Browse Games
                 </span>
                 <i className="fa fa-angle-right" aria-hidden="true"></i>
-                <span className="other_logo">
-                  <img src="/assets/media/team1.png" alt="" />
-                </span>
-                <span className="other_logo">
-                  <img src="/assets/media/team1.png" alt="" />
-                </span>
+                <div className="hover_games">
+                  <div className="other_logo">
+                    <img src="/assets/media/team1.png" alt="" />
+                  </div>
+                  <div className="other_logo">
+                    <img src="/assets/media/team1.png" alt="" />
+                  </div>
+                </div>
               </a>
+              <div id="more_games" style={{ display: 'none' }}>
+                <ul>
+                  <li>
+                    <div className="game_pic">
+                      <img src="/assets/media/team1.png" alt="" />
+                    </div>
+                    <p>ajay</p>
+                  </li>
+                </ul>
+              </div>
             </div>
             <div className="white_bg">
               <div className="team_search">
@@ -117,15 +131,11 @@ const Ranking = ({ user }) => {
                 </div>
               </div>
 
-              <Filters ftype={"RANKING"}/>
-
+              <Filters ftype={'RANKING'} />
             </div>
           </div>
           <RankingTable teamranking={teamsRanks.data} />
         </div>
-
-        
-      
       </div>
 
       <AllScript />

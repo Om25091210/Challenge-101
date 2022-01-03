@@ -10,7 +10,6 @@ import AllScript from './AllScript';
 
 const Calendar = ({ user }) => {
   return (
-
     <>
       <MetaDash />
 
@@ -22,24 +21,34 @@ const Calendar = ({ user }) => {
         <div className="calendar_page discovery_page">
           <div className="white_bg">
             <h2>GAME</h2>
+
             <div className="tit">
-              {' '}
-              <a href="#">
+              <a href="#more_games" className="common_poup">
                 <span>
-                  {' '}
                   <b className="icon">
                     <img src="/assets/media/ranking/console.png" alt="" />
                   </b>{' '}
                   Browse Games
                 </span>
-                <i className="fa fa-angle-right" aria-hidden="true"></i>{' '}
-                <span className="other_logo">
-                  <img src="/assets/media/team1.png" alt="" />
-                </span>{' '}
-                <span className="other_logo">
-                  <img src="/assets/media/team1.png" alt="" />
-                </span>{' '}
-              </a>{' '}
+                <i className="fa fa-angle-right" aria-hidden="true"></i>
+
+                <div className="hover_games">
+                  <div className="other_logo">
+                    <img src="/assets/media/team1.png" alt="" />
+                  </div>
+                </div>
+              </a>
+
+              <div id="more_games" style={{ display: 'none' }}>
+                <ul>
+                  <li>
+                    <div className="game_pic">
+                      <img src="/assets/media/team1.png" alt="" />
+                    </div>
+                    <p>Test</p>
+                  </li>
+                </ul>
+              </div>
             </div>
 
             <DateCal />

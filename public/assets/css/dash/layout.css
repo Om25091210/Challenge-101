@@ -4179,7 +4179,7 @@ article .social_bar {
 	margin: 0;
 }
 .calendar_box .react-datepicker__current-month {
-	padding: 17px 0 23px 0;
+	padding: 17px 0 23px 0; font-size: 1.4rem;
 }
 .calendar_box .react-datepicker__week {
 	border-top: 1px solid #eee;
