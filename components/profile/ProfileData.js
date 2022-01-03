@@ -47,9 +47,7 @@ const ProfileData = ({ user, Userdata, player }) => {
     }
   };
 
-  useEffect(() => {
-
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <>
@@ -71,7 +69,21 @@ const ProfileData = ({ user, Userdata, player }) => {
                         </div>
 
                         <div className="date">
-                          <p>December 27 at 11:30 AM </p>
+                          {post.createdAt === post.updatedAt ? (
+                            <p>
+                              {' '}
+                              {Moment(post.createdAt).format(
+                                'MMMM, DD, YYYY hh:mm A'
+                              )}{' '}
+                            </p>
+                          ) : (
+                            <p>
+                              {' '}
+                              {Moment(post.updatedAt).format(
+                                'MMMM, DD, YYYY hh:mm A'
+                              )}{' '}
+                            </p>
+                          )}
                         </div>
                       </div>
                       <div className="left_details">
@@ -136,7 +148,7 @@ const ProfileData = ({ user, Userdata, player }) => {
                               <span>Share</span>{' '}
                             </a>
                             <div className="three_dots">
-                              <a href="#">
+                              <a>
                                 {' '}
                                 <i
                                   className="fa fa-ellipsis-v"

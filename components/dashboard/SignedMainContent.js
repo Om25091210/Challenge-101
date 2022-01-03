@@ -139,15 +139,23 @@ const SignedMainContent = ({ posts }) => {
 
         <div className="right_links">
           <div className="post_img">
-            <input
-              type="file"
-              id="files"
-              name="files[]"
-              onChange={(e) => setImage(e.target.files[0])}
-              accept="image/*"
-              multiple
-            />
+            <div className="style_file_upload">
+              <input
+                type="file"
+                id="files"
+                name="files[]"
+                onChange={(e) => setImage(e.target.files[0])}
+                accept="image/*"
+                multiple
+              />
+              <label for="files">
+                <span>
+                  <i class="fa fa-picture-o" aria-hidden="true"></i>
+                </span>
+              </label>
+            </div>
           </div>
+
           <a href="#">
             <i className="fa fa-calendar-plus-o" aria-hidden="true"></i>
           </a>
@@ -263,7 +271,7 @@ const SignedMainContent = ({ posts }) => {
                           <span>Share</span>{' '}
                         </a>
                         <div className="three_dots">
-                          <a href="#">
+                          <a href="javascript:void(0)">
                             {' '}
                             <i
                               className="fa fa-ellipsis-v"
@@ -298,13 +306,27 @@ const SignedMainContent = ({ posts }) => {
                     </div>
 
                     <div className="date">
-                      <p>{Moment(post.date).format('MMMM, DD, YYYY h:m A')}</p>
+                      {post.createdAt === post.updatedAt ? (
+                        <p>
+                          {' '}
+                          {Moment(post.createdAt).format(
+                            'MMMM, DD, YYYY hh:mm A'
+                          )}{' '}
+                        </p>
+                      ) : (
+                        <p>
+                          {' '}
+                          {Moment(post.updatedAt).format(
+                            'MMMM, DD, YYYY hh:mm A'
+                          )}{' '}
+                        </p>
+                      )}
                     </div>
                   </div>
                   <div className="left_details">
                     {' '}
                     <a
-                      href="#"
+                      href="javascript:void(0)"
                       data-tip={post.likes.map((like) => {
                         return like.user.username;
                       })}
@@ -367,7 +389,7 @@ const SignedMainContent = ({ posts }) => {
                           <span>Share</span>{' '}
                         </a>
                         <div className="three_dots">
-                          <a>
+                          <a href="javascript:void(0)">
                             {' '}
                             <i
                               className="fa fa-ellipsis-v"

@@ -44,6 +44,9 @@ const Signup = () => {
 
   const [modalOpen, setModalOpen] = useState(false);
 
+  const [open, setOpen] = useState(false);
+  const [passwordShown, setPasswordShown] = useState(false);
+
   const { firstname, lastname, email, password } = user;
 
   const handleChange = (e) => {
@@ -90,6 +93,11 @@ const Signup = () => {
   useEffect(() => {
     username === '' ? setUsernameAvailable(false) : checkUsername();
   }, [username]);
+
+  const togglePassword = () => {
+    setPasswordShown(!passwordShown);
+    setOpen(!open);
+  };
 
   return (
     <main id="kt_body" className="bg-body">
@@ -233,20 +241,25 @@ const Signup = () => {
                     </label>
                     <div className="position-relative mb-3">
                       <input
-                        className="form-control form-control-lg form-control-solid"
-                        type="password"
+                        className="form-control input form-control-lg form-control-solid"
+                        type={passwordShown ? 'text' : 'password'}
                         placeholder=""
                         name="password"
                         value={password}
                         onChange={handleChange}
                         autoComplete="off"
+                        id="password"
+                        aria-label="password"
                       />
                       <span
                         className="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2"
                         data-kt-password-meter-control="visibility"
                       >
-                        <i className="bi bi-eye-slash fs-2"></i>
-                        <i className="bi bi-eye fs-2 d-none"></i>
+                        {/* <i class="bi bi-eye-slash"  id="togglePassword"></i> */}
+                        <i
+                          className={`bi  ${open ? 'bi-eye' : 'bi-eye-slash'}`}
+                          onClick={togglePassword}
+                        ></i>
                       </span>
                     </div>
                     <div
@@ -300,7 +313,6 @@ const Signup = () => {
           </div>
 
           <FooterMain> </FooterMain>
-
         </div>
       </div>
     </main>

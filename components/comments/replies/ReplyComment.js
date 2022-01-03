@@ -43,19 +43,11 @@ const Reply_Comment = ({ postId, commentId }) => {
     return res.json();
   };
 
-  const { mutate, isLoading, isError } = useMutation(addreply, {
+  const { mutate } = useMutation(addreply, {
     onSuccess: (successData) => {
       console.log(successData);
     }
   });
-
-  if (isLoading) {
-    return <p>Loading...</p>;
-  }
-
-  if (isError) {
-    return <p>Something went wrong...</p>;
-  }
 
   return (
     <>

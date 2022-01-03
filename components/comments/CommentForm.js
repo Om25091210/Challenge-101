@@ -49,19 +49,11 @@ const AddComment = ({ postId }) => {
     return res.json();
   };
 
-  const { mutate, isLoading, isError } = useMutation(addingComment, {
+  const { mutate } = useMutation(addingComment, {
     onSuccess: (successData) => {
       console.log(successData);
     }
   });
-
-  if (isLoading) {
-    return <p>Loading...</p>;
-  }
-
-  if (isError) {
-    return <p>Something went wrong...</p>;
-  }
 
   return (
     <div>
