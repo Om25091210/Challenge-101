@@ -15,8 +15,7 @@ import cookie from 'js-cookie';
 import { Video } from 'cloudinary-react';
 import Photos from './photos';
 
-const ProfileData = ({ user, Userdata }) => {
-  console.log(Userdata);
+const ProfileData = ({ user, Userdata, player }) => {
   const [profile, setProfile] = useState(Userdata.profile);
 
   const [uploadedImages, setUploadedImages] = useState(null);
@@ -215,6 +214,15 @@ const ProfileData = ({ user, Userdata }) => {
         <div className="tab hide" id="statistics">
           {' '}
           222222222{' '}
+
+  { player ? 
+     
+     ( <pre>{JSON.stringify(player, null, 4)}</pre> ) : ( <>Loading...</> )
+  }
+
+
+
+
         </div>
         <div className="tab hide" id="achievement">
           {' '}

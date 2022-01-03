@@ -12,7 +12,16 @@ const ProfileBox = ({ user, Userdata, games }) => {
   const [profilePic, setProfilePic] = useState(null);
   const [bio, setBio] = useState(Userdata.profile.bio);
   const [showform, setShowForm] = useState(false);
-  const [showgames, setShowgames] = useState(true);
+  const [showlocation, setShowlocation] = useState(false);
+
+  const [address, setAddress] = useState({
+    line1: '',
+    line2: '',
+    city: '',
+    state: '',
+    country: '',
+    zipcode: ''
+  });
 
   const [follow, setFollow] = useState(false);
   const followhandlesubmit = async (e) => {
@@ -61,6 +70,10 @@ const ProfileBox = ({ user, Userdata, games }) => {
     }
   };
 
+  function handleChange(e) {
+    setAddress({ ...address, [e.target.name]: e.target.value });
+  }
+
   const onChange = (e) => {
     setBio(e.target.value);
   };
@@ -87,11 +100,37 @@ const ProfileBox = ({ user, Userdata, games }) => {
     }
   };
 
-  const toggleShowgames = () => {
-    if (showgames) {
-      setShowgames(false);
+  const toggleShowlocation = () => {
+    if (showlocation) {
+      setShowlocation(false);
     } else {
-      setShowgames(true);
+      setShowlocation(true);
+    }
+  };
+
+  const handleAddress = async (e) => {
+    e.preventDefault();
+    const formdata = new FormData();
+    formdata.append('line1', address.line1);
+    formdata.append('line2', address.line2);
+    formdata.append('city', address.city);
+    formdata.append('state', address.state);
+    formdata.append('country', address.country);
+    formdata.append('zipcode', address.zipcode);
+
+    try {
+
+      await axios.post(`${baseURL}/api/profile/updateaddress`, formdata, {
+        headers: {
+          Authorization: cookie.get('token'),
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+      setShowlocation(false);
+      toast.success('Address successfully have been updated');
+
+    } catch (err) {
+      toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }
   };
 
@@ -194,6 +233,65 @@ const ProfileBox = ({ user, Userdata, games }) => {
                   <span className="ct"> In Game Role</span>
                   <span className="were">Captain - CS GO</span>
                 </div>
+                <div className="game_role">
+                  <span className="ct"> Location</span>
+
+                      {!showlocation && Userdata.profile.address ? <p> <ul><li>{Userdata.profile.address.line1}</li>
+                      <li>{Userdata.profile.address.line2}</li> 
+                      <li>{Userdata.profile.address.city}, {Userdata.profile.address.state}</li>
+                      <li>{Userdata.profile.address.country}, {Userdata.profile.address.zipcode}</li>
+                      </ul>
+                      </p> : null}
+
+                      {showlocation ? (
+                        <form onSubmit={handleAddress} encType="multipart/form-data">
+        
+                    <div className="form-group">
+                      <div className="colm">
+                        <label htmlFor="exampleFormControlInput1">Address Line 1</label>
+                        <input type="text" className="form-control" id="exampleFormControlInput1" placeholder="address line1" name="line1" onChange={handleChange} value={address.line1} />
+                      </div>
+                      <div className="colm">
+                        <label htmlFor="exampleFormControlInput1">Address Line 2</label>
+                        <input type="text" className="form-control" id="exampleFormControlInput1" placeholder="address line2" name="line2" onChange={handleChange} value={address.line2} />
+                      </div>
+                      <div className="colm">
+                        <label htmlFor="exampleFormControlInput1">City</label>
+                        <input type="text" className="form-control" id="exampleFormControlInput1" placeholder="city " name="city" onChange={handleChange} value={address.city} />
+                      </div>
+                      <div className="colm">
+                        <label htmlFor="exampleFormControlInput1">State</label>
+                        <input type="text" className="form-control" id="exampleFormControlInput1" placeholder="state" name="state" onChange={handleChange} value={address.state} />
+                      </div>
+                      <div className="colm">
+                        <label htmlFor="exampleFormControlInput1">Country</label>
+                        <input type="text" className="form-control" id="exampleFormControlInput1" placeholder="country" name="country" onChange={handleChange} value={address.country} />
+                      </div>
+                      <div className="colm">
+                        <label htmlFor="exampleFormControlInput1">Zipcode</label>
+                        <input type="text" className="form-control" id="exampleFormControlInput1" placeholder="zip code" name="zipcode" onChange={handleChange} value={address.zipcode} />
+                      </div>                                            
+                          <button type="submit" className="btn">
+                            Update
+                          </button>
+                       </div>   
+                        </form>
+                      ) : (
+                        ''
+                      )}
+
+                      {isLoggedInUser ? (
+                        <button
+                          className="bio_edit"
+                          onClick={toggleShowlocation}
+                        >
+                          <i className="fa fa-pencil" aria-hidden="true"></i>
+                        </button>
+                      ) : null}
+
+                </div>
+
+
               </div>
 
               <Badges Userdata={Userdata} />
@@ -247,7 +345,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
             <div className="games">
               <h2>GAMES</h2>
 
-              {!showgames ? (
+              
                 <>
                   <ul className="games_btn">
                     {Userdata.games.map((item, index) => (
@@ -269,9 +367,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                     ))}
                   </ul>
                 </>
-              ) : null}
-
-              {showgames ? (
+              
                 <div className="profile_hover_games">
                   <div className="tit">
                     <form onSubmit={(e) => e.preventDefault()}>
@@ -283,7 +379,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                               alt=""
                             />
                           </b>{' '}
-                          Browse Games
+                          Add more Games (+)
                         </span>
                         <i className="fa fa-angle-right" aria-hidden="true"></i>
 
@@ -319,19 +415,6 @@ const ProfileBox = ({ user, Userdata, games }) => {
                     </form>
                   </div>
                 </div>
-              ) : (
-                ''
-              )}
-
-              {isLoggedInUser ? (
-                <button
-                  className="btn"
-                  onClick={toggleShowgames}
-                  style={{ display: 'none' }}
-                >
-                  <i className="fa fa-pencil" aria-hidden="true"></i>
-                </button>
-              ) : null}
             </div>
           </div>
 
