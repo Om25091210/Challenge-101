@@ -3,6 +3,7 @@ import Filters from '../common/Filters';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import baseURL from '@utils/baseURL';
+import TeamRequest from './invites/TeamRequest';
 
 const Teams = ({ user }) => {
   const [team, setTeam] = useState([]);
@@ -91,9 +92,7 @@ const Teams = ({ user }) => {
                 <b>EN, HI</b>
               </span>{' '}
             </div>
-            <a href="#" className="join">
-              REQUEST TO JOIN
-            </a>{' '}
+            <TeamRequest teamId={team.team} user={user} />
           </div>
 
           <div className="overview_box">

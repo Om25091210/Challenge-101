@@ -94,7 +94,7 @@ const Discover = ({ user, games }) => {
           </div>
 
           <div className="prfoile_tab_data ">
-            <Teams />
+            <Teams user={user} />
 
             <Players />
 
