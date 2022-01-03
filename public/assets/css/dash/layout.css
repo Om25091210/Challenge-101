@@ -2737,7 +2737,7 @@ article .social_bar {
 	.tit:hover .other_logo:first-child{ opacity: 1; left: 0;}
 
 
-.common_poup_wrap .fancybox-inner { width:800px !important; height: 500px  !important}
+
 #more_games{ float: left; width: 96%;}
 #more_games ul li{     float: left;
     width: 20.5%;
@@ -5083,6 +5083,9 @@ main {
 /* ----------------Create Tournament page -------------------- */
 
 
+
+
+
 .tournament_dp_box .profile_dp_box{ margin-top: 10%;}
 .tournament_dp_box .tournament_sponsers{ margin-top: 5%;}
 .tournament_dp_box .tournament_sponsers .prices{ font-size: 2rem; font-weight: 600;}
@@ -5578,16 +5581,6 @@ ul.game_search_result li {
 
 
 
-/* start custom model box */
-
-.common_model_box{ display: none;}
-.common_model_box.show_model{ display: block;}
-.common_model_box{position: fixed;top: 0;left: 0;right: 0;bottom: 0;margin: auto;width: 500px;height: 400px;z-index: 199;}
-.common_model_box .inner_model_box{float: left;width: 100%;padding: 30px;background: #fff;overflow: hidden;border: 10px solid #7239ea;}
-.common_model_box .model_close{position: absolute;right: 15px;top: 10px;color: #000;font-size: 20px;font-weight: 700;}
-
-/*  end custom model box */
-
 .report_link{display: flex;align-items: center; margin-left: 10px;}
 .report_model h3{font-size: 20px;color: #19191d;font-weight: 700;margin-bottom: 20px;text-align: center;text-transform: uppercase;border-bottom: 1px solid #ddd;padding-bottom: 10px}
 .report_model li { margin-bottom: 10px;}
@@ -5634,3 +5627,49 @@ ul.game_search_result li {
 	.profile_hover_games .btn{ margin: 0 10px;}
 
 
+
+
+	/* ------------- Common Css ------------------- */
+
+.common_poup_wrap .fancybox-inner { width:800px !important; }
+
+
+
+/* start custom model box */
+
+.common_model_box{ display: none;}
+.common_model_box.show_model{ display: block;}
+.common_model_box{position: fixed;top: 0;left: 0;right: 0;bottom: 0;margin: auto;width: 500px;height: 400px;z-index: 199;}
+.common_model_box .inner_model_box{float: left;width: 100%;padding: 30px;background: #fff;overflow: hidden;border: 10px solid #7239ea;}
+.common_model_box .model_close{position: absolute;right: 15px;top: 10px;color: #000;font-size: 20px;font-weight: 700;}
+
+/*  end custom model box */
+
+.fancybox-skin{ border:5px solid #7239ea !important; background: #f7f7f7 !important; }
+.fancybox-close {
+    background: url(/assets/media/fancy-close.png) 0 -5px no-repeat !important;
+    /* background-size: 46px; */
+    width: 53px !important;
+    height: 49px !important;
+    /* background-size: 40%; */
+    right: -58px !IMPORTANT;
+    top: -5px !important;
+}
+
+.inner_model_box{ padding: 20px !important;}
+.inner_model_box h3{font-size: 20px;color: #19191d;font-weight: 700;margin-bottom: 20px;text-align: center;text-transform: uppercase;border-bottom: 1px solid #ddd;padding-bottom: 10px}
+.inner_model_box li { margin-bottom: 10px;}
+.inner_model_box li a{ font-size: 1.4rem; color: #333;}
+
+form.common_form .colm{ float: left; width: 48%; margin-bottom: 10px;}
+form.common_form .colm:nth-child(2n){ float: right;}
+
+form.common_form label {
+	font-size: 15px;
+	text-transform: capitalize;
+	font-weight: 600;
+	padding-bottom: 10px;
+}
+form.common_form input {
+	height: 45px; font-size: 1.4rem; width: 100%;
+}

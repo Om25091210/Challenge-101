@@ -14,6 +14,13 @@ const Badges = ({ Userdata }) => {
     });
   }, []);
 
+  useEffect(() => {
+    $('.common_poup').fancybox({
+      wrapCSS: 'common_poup_wrap',
+      autoSize: true
+    });
+  }, []);
+
   return (
     <>
       <div className="badges">
@@ -21,16 +28,17 @@ const Badges = ({ Userdata }) => {
         {Userdata.badges.map((bdg) => (
           <img src={bdg.image} alt="" />
         ))}
-        <a href="javascript:void(0)" className="model_show_btn" style={more}>
+
+        <a href="#more_badges" className="common_poup">
           More...
         </a>
 
-        <div className="common_model_box">
-          <a href="javascript:void(0)" className="model_close">
-            X
-          </a>
-
-          <div className="inner_model_box report_model">
+        <div
+          id="more_badges"
+          className="after_load_scroll"
+          style={{ display: 'none' }}
+        >
+          <div className="inner_model_box">
             <h3>BADGES</h3>
 
             <ul>
@@ -42,8 +50,6 @@ const Badges = ({ Userdata }) => {
               ))}
             </ul>
           </div>
-
-          <div className="overlay"></div>
         </div>
       </div>
     </>

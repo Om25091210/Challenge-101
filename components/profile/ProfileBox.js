@@ -119,7 +119,6 @@ const ProfileBox = ({ user, Userdata, games }) => {
     formdata.append('zipcode', address.zipcode);
 
     try {
-
       await axios.post(`${baseURL}/api/profile/updateaddress`, formdata, {
         headers: {
           Authorization: cookie.get('token'),
@@ -128,7 +127,6 @@ const ProfileBox = ({ user, Userdata, games }) => {
       });
       setShowlocation(false);
       toast.success('Address successfully have been updated');
-
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }
@@ -147,9 +145,21 @@ const ProfileBox = ({ user, Userdata, games }) => {
   useEffect(() => {
     $('.common_poup').fancybox({
       wrapCSS: 'common_poup_wrap',
-      autoSize: true
+
+      minHeight: 450,
+      fitToView: true,
+      autoSize: true,
+      autoScale: true
     });
   }, []);
+
+  const mscroll = () => {
+    setTimeout(() => {
+      $('.fancybox-inner').mCustomScrollbar({
+        autoHideScrollbar: true
+      });
+    }, 200);
+  };
 
   return (
     <>
@@ -236,62 +246,150 @@ const ProfileBox = ({ user, Userdata, games }) => {
                 <div className="game_role">
                   <span className="ct"> Location</span>
 
-                      {!showlocation && Userdata.profile.address ? <p> <ul><li>{Userdata.profile.address.line1}</li>
-                      <li>{Userdata.profile.address.line2}</li> 
-                      <li>{Userdata.profile.address.city}, {Userdata.profile.address.state}</li>
-                      <li>{Userdata.profile.address.country}, {Userdata.profile.address.zipcode}</li>
+                  {!showlocation && Userdata.profile.address ? (
+                    <p>
+                      {' '}
+                      <ul>
+                        <li>{Userdata.profile.address.line1}</li>
+                        <li>{Userdata.profile.address.line2}</li>
+                        <li>
+                          {Userdata.profile.address.city},{' '}
+                          {Userdata.profile.address.state}
+                        </li>
+                        <li>
+                          {Userdata.profile.address.country},{' '}
+                          {Userdata.profile.address.zipcode}
+                        </li>
                       </ul>
-                      </p> : null}
+                    </p>
+                  ) : null}
 
-                      {showlocation ? (
-                        <form onSubmit={handleAddress} encType="multipart/form-data">
-        
-                    <div className="form-group">
-                      <div className="colm">
-                        <label htmlFor="exampleFormControlInput1">Address Line 1</label>
-                        <input type="text" className="form-control" id="exampleFormControlInput1" placeholder="address line1" name="line1" onChange={handleChange} value={address.line1} />
-                      </div>
-                      <div className="colm">
-                        <label htmlFor="exampleFormControlInput1">Address Line 2</label>
-                        <input type="text" className="form-control" id="exampleFormControlInput1" placeholder="address line2" name="line2" onChange={handleChange} value={address.line2} />
-                      </div>
-                      <div className="colm">
-                        <label htmlFor="exampleFormControlInput1">City</label>
-                        <input type="text" className="form-control" id="exampleFormControlInput1" placeholder="city " name="city" onChange={handleChange} value={address.city} />
-                      </div>
-                      <div className="colm">
-                        <label htmlFor="exampleFormControlInput1">State</label>
-                        <input type="text" className="form-control" id="exampleFormControlInput1" placeholder="state" name="state" onChange={handleChange} value={address.state} />
-                      </div>
-                      <div className="colm">
-                        <label htmlFor="exampleFormControlInput1">Country</label>
-                        <input type="text" className="form-control" id="exampleFormControlInput1" placeholder="country" name="country" onChange={handleChange} value={address.country} />
-                      </div>
-                      <div className="colm">
-                        <label htmlFor="exampleFormControlInput1">Zipcode</label>
-                        <input type="text" className="form-control" id="exampleFormControlInput1" placeholder="zip code" name="zipcode" onChange={handleChange} value={address.zipcode} />
-                      </div>                                            
-                          <button type="submit" className="btn">
-                            Update
-                          </button>
-                       </div>   
-                        </form>
-                      ) : (
-                        ''
-                      )}
+                  {isLoggedInUser ? (
+                    // <button
+                    //   className="bio_edit"
+                    //   onClick={toggleShowlocation}
+                    // >
+                    //   <i className="fa fa-pencil" aria-hidden="true"></i>
+                    // </button>
 
-                      {isLoggedInUser ? (
-                        <button
-                          className="bio_edit"
-                          onClick={toggleShowlocation}
-                        >
-                          <i className="fa fa-pencil" aria-hidden="true"></i>
-                        </button>
-                      ) : null}
+                    <>
+                      <a
+                        href="#locations"
+                        className="common_poup"
+                        onClick={mscroll}
+                      >
+                        {' '}
+                        <i className="fa fa-pencil" aria-hidden="true"></i>
+                      </a>
 
+                      <div
+                        id="locations"
+                        className="after_load_scroll"
+                        style={{ display: 'none' }}
+                      >
+                        <div className="inner_model_box">
+                          <h3>Locations</h3>
+
+                          <form
+                            onSubmit={handleAddress}
+                            encType="multipart/form-data"
+                            className="common_form"
+                          >
+                            <div className="form-group">
+                              <div className="colm">
+                                <label htmlFor="exampleFormControlInput1">
+                                  Address Line 1
+                                </label>
+                                <input
+                                  type="text"
+                                  className="form-control"
+                                  id="exampleFormControlInput1"
+                                  placeholder="address line1"
+                                  name="line1"
+                                  onChange={handleChange}
+                                  value={address.line1}
+                                />
+                              </div>
+                              <div className="colm">
+                                <label htmlFor="exampleFormControlInput1">
+                                  Address Line 2
+                                </label>
+                                <input
+                                  type="text"
+                                  className="form-control"
+                                  id="exampleFormControlInput1"
+                                  placeholder="address line2"
+                                  name="line2"
+                                  onChange={handleChange}
+                                  value={address.line2}
+                                />
+                              </div>
+                              <div className="colm">
+                                <label htmlFor="exampleFormControlInput1">
+                                  City
+                                </label>
+                                <input
+                                  type="text"
+                                  className="form-control"
+                                  id="exampleFormControlInput1"
+                                  placeholder="city "
+                                  name="city"
+                                  onChange={handleChange}
+                                  value={address.city}
+                                />
+                              </div>
+                              <div className="colm">
+                                <label htmlFor="exampleFormControlInput1">
+                                  State
+                                </label>
+                                <input
+                                  type="text"
+                                  className="form-control"
+                                  id="exampleFormControlInput1"
+                                  placeholder="state"
+                                  name="state"
+                                  onChange={handleChange}
+                                  value={address.state}
+                                />
+                              </div>
+                              <div className="colm">
+                                <label htmlFor="exampleFormControlInput1">
+                                  Country
+                                </label>
+                                <input
+                                  type="text"
+                                  className="form-control"
+                                  id="exampleFormControlInput1"
+                                  placeholder="country"
+                                  name="country"
+                                  onChange={handleChange}
+                                  value={address.country}
+                                />
+                              </div>
+                              <div className="colm">
+                                <label htmlFor="exampleFormControlInput1">
+                                  Zipcode
+                                </label>
+                                <input
+                                  type="text"
+                                  className="form-control"
+                                  id="exampleFormControlInput1"
+                                  placeholder="zip code"
+                                  name="zipcode"
+                                  onChange={handleChange}
+                                  value={address.zipcode}
+                                />
+                              </div>
+                              <button type="submit" className="btn">
+                                Update
+                              </button>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </>
+                  ) : null}
                 </div>
-
-
               </div>
 
               <Badges Userdata={Userdata} />
@@ -345,54 +443,60 @@ const ProfileBox = ({ user, Userdata, games }) => {
             <div className="games">
               <h2>GAMES</h2>
 
-              
-                <>
-                  <ul className="games_btn">
-                    {Userdata.games.map((item, index) => (
-                      <>
-                        <li
-                          className={`${
-                            `item${index}` == 'item0' ? 'active' : ''
-                          }`}
-                          key={index}
-                        >
-                          <a href="javascript:void(0);" rel={`item${index}`}>
-                            <span key={index}>
-                              <img src={item.imgUrl} alt={item.name} />{' '}
-                              <p>{item.name}</p>
-                            </span>
-                          </a>
-                        </li>
-                      </>
-                    ))}
-                  </ul>
-                </>
-              
-                <div className="profile_hover_games">
-                  <div className="tit">
-                    <form onSubmit={(e) => e.preventDefault()}>
-                      <a href="#more_games" className="common_poup">
-                        <span>
-                          <b className="icon">
-                            <img
-                              src="/assets/media/ranking/console.png"
-                              alt=""
-                            />
-                          </b>{' '}
-                          Add more Games (+)
-                        </span>
-                        <i className="fa fa-angle-right" aria-hidden="true"></i>
+              <>
+                <ul className="games_btn">
+                  {Userdata.games.map((item, index) => (
+                    <>
+                      <li
+                        className={`${
+                          `item${index}` == 'item0' ? 'active' : ''
+                        }`}
+                        key={index}
+                      >
+                        <a href="javascript:void(0);" rel={`item${index}`}>
+                          <span key={index}>
+                            <img src={item.imgUrl} alt={item.name} />{' '}
+                            <p>{item.name}</p>
+                          </span>
+                        </a>
+                      </li>
+                    </>
+                  ))}
+                </ul>
+              </>
 
-                        <div className="hover_games">
-                          {games.map((game, idx) => (
-                            <div className="other_logo">
-                              <img src={game.imgUrl} alt={game.name} />
-                            </div>
-                          ))}
-                        </div>
-                      </a>
+              <div className="profile_hover_games">
+                <div className="tit">
+                  <form onSubmit={(e) => e.preventDefault()}>
+                    <a
+                      href="#more_games"
+                      className="common_poup"
+                      onClick={mscroll}
+                    >
+                      <span>
+                        <b className="icon">
+                          <img src="/assets/media/ranking/console.png" alt="" />
+                        </b>{' '}
+                        Add more Games (+)
+                      </span>
+                      <i className="fa fa-angle-right" aria-hidden="true"></i>
 
-                      <div id="more_games" style={{ display: 'none' }}>
+                      <div className="hover_games">
+                        {games.map((game, idx) => (
+                          <div className="other_logo">
+                            <img src={game.imgUrl} alt={game.name} />
+                          </div>
+                        ))}
+                      </div>
+                    </a>
+
+                    <div
+                      id="more_games"
+                      className="after_load_scroll"
+                      style={{ display: 'none' }}
+                    >
+                      <div className="inner_model_box">
+                        <h3>More Games</h3>
                         <ul>
                           {games.map((game, idx) => (
                             <li>
@@ -404,17 +508,18 @@ const ProfileBox = ({ user, Userdata, games }) => {
                           ))}
                         </ul>
                       </div>
+                    </div>
 
-                      <button
-                        onClick={handleButtonForm}
-                        className="btn"
-                        style={{ display: 'none' }}
-                      >
-                        Update
-                      </button>
-                    </form>
-                  </div>
+                    <button
+                      onClick={handleButtonForm}
+                      className="btn"
+                      style={{ display: 'none' }}
+                    >
+                      Update
+                    </button>
+                  </form>
                 </div>
+              </div>
             </div>
           </div>
 

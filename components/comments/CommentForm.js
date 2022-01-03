@@ -67,6 +67,7 @@ const AddComment = ({ postId }) => {
             name="text"
             value={comment}
             onChange={onChange}
+            required
           ></textarea>
           <a href="#" className="gif">
             GIF
