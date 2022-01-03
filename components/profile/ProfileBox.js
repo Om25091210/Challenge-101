@@ -445,23 +445,25 @@ const ProfileBox = ({ user, Userdata, games }) => {
 
               <>
                 <ul className="games_btn">
-                  {Userdata.games.map((item, index) => (
-                    <>
-                      <li
-                        className={`${
-                          `item${index}` == 'item0' ? 'active' : ''
-                        }`}
-                        key={index}
-                      >
-                        <a href="javascript:void(0);" rel={`item${index}`}>
-                          <span key={index}>
-                            <img src={item.imgUrl} alt={item.name} />{' '}
-                            <p>{item.name}</p>
-                          </span>
-                        </a>
-                      </li>
-                    </>
-                  ))}
+                  {Userdata.profile.player.playerdata[0].games.map(
+                    (item, index) => (
+                      <>
+                        <li
+                          className={`${
+                            `item${index}` == 'item0' ? 'active' : ''
+                          }`}
+                          key={index}
+                        >
+                          <a href="javascript:void(0);" rel={`item${index}`}>
+                            <span key={index}>
+                              <img src={item.imgUrl} alt={item.name} />{' '}
+                              <p>{item.name}</p>
+                            </span>
+                          </a>
+                        </li>
+                      </>
+                    )
+                  )}
                 </ul>
               </>
 
@@ -525,50 +527,52 @@ const ProfileBox = ({ user, Userdata, games }) => {
 
           <div className="right_bio">
             <div className="games_data white_bg">
-              {Userdata.games.length === 0 ? (
+              {Userdata.profile.player.playerdata[0].games.length === 0 ? (
                 <div>No Games for {SrhUser.username}</div>
               ) : (
-                Userdata.games.map((item, index) => (
-                  <>
-                    <div
-                      className={`tab ${
-                        `item${index}` == 'item0' ? '' : 'hide1'
-                      }`}
-                      id={`item${index}`}
-                      key={index}
-                    >
-                      <div key={index} className="game_btn">
-                        {item.name}
-                      </div>
-                      <ul>
-                        <li>
-                          <img src="/assets/media/profile/kill.png" alt="" />
-                          <span className="name">Kills </span>
-                          <span className="num">200</span>
-                        </li>
-                        <li>
-                          <img src="/assets/media/profile/kdr.png" alt="" />
-                          <span className="name">KDR </span>
-                          <span className="num">1.04</span>
-                        </li>
-                        <li>
-                          <img
-                            src="/assets/media/profile/headshot.png"
-                            alt=""
-                          />
-                          <span className="name"> HEADSHOTS </span>
-                          <span className="num">75</span>
-                        </li>
-                        <li>
-                          <img src="/assets/media/profile/ace.png" alt="" />
+                Userdata.profile.player.playerdata[0].games.map(
+                  (item, index) => (
+                    <>
+                      <div
+                        className={`tab ${
+                          `item${index}` == 'item0' ? '' : 'hide1'
+                        }`}
+                        id={`item${index}`}
+                        key={index}
+                      >
+                        <div key={index} className="game_btn">
+                          {item.name}
+                        </div>
+                        <ul>
+                          <li>
+                            <img src="/assets/media/profile/kill.png" alt="" />
+                            <span className="name">Kills </span>
+                            <span className="num">200</span>
+                          </li>
+                          <li>
+                            <img src="/assets/media/profile/kdr.png" alt="" />
+                            <span className="name">KDR </span>
+                            <span className="num">1.04</span>
+                          </li>
+                          <li>
+                            <img
+                              src="/assets/media/profile/headshot.png"
+                              alt=""
+                            />
+                            <span className="name"> HEADSHOTS </span>
+                            <span className="num">75</span>
+                          </li>
+                          <li>
+                            <img src="/assets/media/profile/ace.png" alt="" />
 
-                          <span className="name"> Won </span>
-                          <span className="num">100</span>
-                        </li>
-                      </ul>
-                    </div>
-                  </>
-                ))
+                            <span className="name"> Won </span>
+                            <span className="num">100</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </>
+                  )
+                )
               )}
             </div>
           </div>
