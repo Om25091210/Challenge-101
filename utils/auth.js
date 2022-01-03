@@ -10,7 +10,7 @@ export const registerUser = async (
   setError,
   setLoading,
   toast,
-  setStatus,
+  setStatus
 ) => {
   setLoading(true);
   try {
@@ -19,7 +19,7 @@ export const registerUser = async (
       name,
       username,
       email,
-      password,
+      password
     });
     toast.info(res.data.msg);
     setStatus('verify');
@@ -27,7 +27,7 @@ export const registerUser = async (
   } catch (error) {
     const errorMsg = catchErrors(error);
     setError(errorMsg);
-    toast.error(errorMsg);
+    // toast.error(errorMsg);
   }
   setLoading(false);
 };
@@ -42,7 +42,7 @@ export const loginUser = async (
   try {
     const res = await axios.post(`${baseURL}/api/auth`, {
       email,
-      password,
+      password
     });
     console.log(res.data.token);
     setToken(res.data.token);
@@ -50,26 +50,21 @@ export const loginUser = async (
   } catch (error) {
     const errorMsg = catchErrors(error);
     setError(errorMsg);
-    toast.error(errorMsg);
+    //toast.error(errorMsg);
   }
   setLoading(false);
 };
 
-export const onboardUser = async (
-  verificationToken,
-  setLoading,
-  toast
-) => {
+export const onboardUser = async (verificationToken, setLoading, toast) => {
   setLoading(true);
   try {
-
-  	console.log(verificationToken)
+    console.log(verificationToken);
     const res = await axios.post(
       `${baseURL}/api/onboarding/${verificationToken}`,
       {
         headers: {
-          'Content-Type': 'multipart/form-data',
-        },
+          'Content-Type': 'multipart/form-data'
+        }
       }
     );
     setToken(res.data.token);
@@ -92,7 +87,7 @@ export const logoutUser = () => {
 };
 
 export const redirectUser = (ctx, location) => {
-  console.log(location)
+  console.log(location);
   if (ctx.req) {
     ctx.res.writeHead(302, { Location: location });
     ctx.res.end();

@@ -443,6 +443,9 @@ ul.top_menu li.profile a {
 	height: 44px !important; overflow: hidden;
 
 }
+
+.team_slider ul{ overflow: hidden  !important; height: 40px;}
+
 .main_middle {
 	width:800px;
 	margin:150px auto 0 auto;
@@ -527,18 +530,19 @@ ul.top_menu li.profile a {
 	width:calc(100% - 270px);
 	border:0;
 	resize:none;
-	margin:0px 10px;
-	font-size:18px;
+	margin:0px 30px 0 10px;
+	font-size:1.4rem;
 	font-weight:600;
 	color:#909090;
 	letter-spacing:0.075em;
 	padding-top:20px;
+	height: 50px;
 }
 .write_post .right_links {
-	width:395px;
+	width:395px; vertical-align: middle;
 }
 .write_post .right_links a, .write_post .right_links .post_img {
-	width:auto;
+	width:46px;
 	padding:0 10px;
 	display:inline-block;
   vertical-align: inherit;
@@ -548,7 +552,7 @@ padding:13px 20px;
 margin-left:10px;
 }
 .right_links .post_img {
-	position: relative;
+	position: relative; height: 70px;
 }
 .right_links .image_box {
 	position: absolute;
@@ -556,7 +560,7 @@ margin-left:10px;
 	border: 1px solid #ddd;
 	width: 70px;
 	height: 59px;
-	top: -10px;
+	top: 7px; z-index: 9;
 }
 .right_links .image_box img {
 	object-fit: cover;
@@ -590,9 +594,10 @@ margin-left:10px;
 	width: 32px;
 	height:28px;
 	overflow: hidden;
+	-moz-appearance:initial; height: 0; opacity: 0;
 }
 .right_links input[type=file]:before {
-	display: inline-block;
+  display: inline-block;
   font: normal normal normal 14px/1 FontAwesome;
   font-weight: 400;
   content: "\f03e"; font-size: 2.5rem; color: #7239ea; position: relative; top:0; transition: 0.3s ease-in-out;
@@ -1095,7 +1100,7 @@ margin-left:10px;
 	height: 70px;
 	border: 1px solid #ddd;
 	padding: 10px;
-	font-size: 1.2rem;
+	font-size: 1.4rem;
 	font-weight: 400;
 	margin: 10px 0;
 }
