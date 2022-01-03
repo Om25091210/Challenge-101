@@ -306,7 +306,21 @@ const SignedMainContent = ({ posts }) => {
                     </div>
 
                     <div className="date">
-                      <p>{Moment(post.date).format('MMMM, DD, YYYY h:m A')}</p>
+                      {post.createdAt === post.updatedAt ? (
+                        <p>
+                          {' '}
+                          {Moment(post.createdAt).format(
+                            'MMMM, DD, YYYY hh:mm A'
+                          )}{' '}
+                        </p>
+                      ) : (
+                        <p>
+                          {' '}
+                          {Moment(post.updatedAt).format(
+                            'MMMM, DD, YYYY hh:mm A'
+                          )}{' '}
+                        </p>
+                      )}
                     </div>
                   </div>
                   <div className="left_details">
