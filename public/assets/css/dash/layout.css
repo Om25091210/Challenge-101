@@ -444,7 +444,6 @@ ul.top_menu li.profile a {
 
 }
 
-.team_slider ul{ overflow: hidden  !important; height: 40px;}
 
 .main_middle {
 	width:800px;
@@ -4087,7 +4086,7 @@ article .social_bar {
 }
 .features li .tit {
 	color: #000;
-	font-size: 15px;
+	font-size: 15px; display: block;
 }
 .features li p {
 	font-size: 11px;
@@ -5082,13 +5081,13 @@ main {
 
 
 
+.games_page .tournament_sponsers{ margin-top:85px;}
 
-
-.tournament_dp_box .profile_dp_box{ margin-top: 10%; align-items: center; justify-content: flex-start; padding-left: 10%;}
-.tournament_dp_box .profile_dp_box .profile_pic{ border: 0; width: 100px;}
+.tournament_dp_box .profile_dp_box{ margin-top: 10%; align-items: center; justify-content: flex-start; flex-wrap: wrap; padding-left: 10%;}
+.tournament_dp_box .profile_dp_box .profile_pic{ display: flex; align-items: center; height: auto; border: 0; width: 100px;}
 .tournament_dp_box .profile_dp_box .profile_pic img{ width: 100px; object-fit: contain;}
 .tournament_dp_box .top_details .name_box{ margin-right: 10px;}
-.tournament_dp_box .tournament_sponsers{ margin-top:85px;}
+.tournament_dp_box .tournament_sponsers{ margin-top:45px;}
 .tournament_dp_box .tournament_sponsers ul{ display: flex;}
 .tournament_dp_box .tournament_sponsers ul li{ margin-right: 10px;}
 .tournament_dp_box .tournament_sponsers .prices{ font-size: 20px; font-weight: 600;}
@@ -5097,6 +5096,8 @@ main {
 
 .tournament_dp_box .flag_tick_flow{ display: flex;}
 .tournament_dp_box .profile_dp_box .top_details{ width: 45%;}
+
+.games_page .tournament_sponsers{ margin-top:85px;}
 
 .profile_box .profile_cover_photo:after{     content: "";
     position: absolute;

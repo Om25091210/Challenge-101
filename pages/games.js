@@ -12,7 +12,7 @@ const Games = ({ user }) => {
 
       <div>
         <div className="main_middle profile_middle">
-          <div className="profile_box tournament_dp_box">
+          <div className="profile_box tournament_dp_box games_page">
             <div className="profile_cover_photo">
               {' '}
               <img

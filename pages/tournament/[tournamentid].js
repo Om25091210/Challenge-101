@@ -65,15 +65,16 @@ const TournamentDetail = ({ user, data }) => {
                       </span>{' '}
                     </div>
                   </div>
-                  <div className="bottom_details">
-                    <div className="two_btns">
-                      <a href="#" className="btn">
-                        REGISTER
-                      </a>{' '}
-                      <a href="#" className="btn">
-                        BOOK TICKETS
-                      </a>
-                    </div>
+                </div>
+
+                <div className="bottom_details">
+                  <div className="two_btns">
+                    <a href="#" className="btn">
+                      REGISTER
+                    </a>{' '}
+                    <a href="#" className="btn">
+                      BOOK TICKETS
+                    </a>
                   </div>
                 </div>
               </div>

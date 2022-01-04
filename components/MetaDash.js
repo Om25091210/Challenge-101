@@ -57,6 +57,8 @@ const MetaDash = () => (
       type="text/css"
     />
 
+    <link href="/assets/css/dash/slick.css" rel="stylesheet" type="text/css" />
+
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"

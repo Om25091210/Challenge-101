@@ -226,15 +226,11 @@ const ProfileData = ({ user, Userdata, player }) => {
         <div className="tab hide" id="statistics">
           {' '}
           222222222{' '}
-
-  { player ? 
-     
-     ( <pre>{JSON.stringify(player, null, 4)}</pre> ) : ( <>Loading...</> )
-  }
-
-
-
-
+          {player ? (
+            <pre>{JSON.stringify(player, null, 4)}</pre>
+          ) : (
+            <>Loading...</>
+          )}
         </div>
         <div className="tab hide" id="achievement">
           {' '}
@@ -420,7 +416,6 @@ const ProfileData = ({ user, Userdata, player }) => {
                   <a href="#">
                     <img src="/assets/media/team/tshirt2.jpg" alt="" />{' '}
                   </a>
-                  <span className="size_option">36d 12h 13m 18s</span>{' '}
                 </div>
                 <div className="pro_bottom">
                   <div className="name_dots">
@@ -461,7 +456,6 @@ const ProfileData = ({ user, Userdata, player }) => {
                   <a href="#">
                     <img src="/assets/media/team/tshirt1.jpg" alt="" />{' '}
                   </a>{' '}
-                  <span className="size_option">36d 12h 13m 18s</span>
                 </div>
                 <div className="pro_bottom">
                   <div className="name_dots">
@@ -502,7 +496,6 @@ const ProfileData = ({ user, Userdata, player }) => {
                   <a href="#">
                     <img src="/assets/media/team/cup.jpg" alt="" />{' '}
                   </a>{' '}
-                  <span className="size_option">36d 12h 13m 18s</span>
                 </div>
                 <div className="pro_bottom">
                   <div className="name_dots">

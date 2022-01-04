@@ -24,6 +24,13 @@ function Customjs() {
       slidesToScroll: 1
     });
 
+    $('.slider-for').slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      arrows: true,
+      fade: true
+    });
+
     $('.fancybox').fancybox();
 
     $('.quickpoup').fancybox({
