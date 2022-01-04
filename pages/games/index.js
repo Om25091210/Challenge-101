@@ -11,22 +11,35 @@ const Games = ({ user, games }) => {
       <SignedHeader user={user} />
       <LeftNav />
 
-      <div style={{ marginLeft: '250px', marginTop: '80px' }}>
-        {games.map((games) => (
+      <div className="main_middle profile_middle">
+        <div className="white_bg">
+          <h1>All Games</h1>
+
           <>
-            <div>
-              <ul>
+            <ul className="game_list_page">
+              {games.map((games) => (
                 <li key={games._id}>
                   <a href={`/games/${games._id}`}>
-                    <img src={games.imgUrl} alt={games.name} />
-                    <h3>{games.name}</h3>
-                    <p>{games.description}</p>
+                    <div className="imgs">
+                      {' '}
+                      <img src={games.imgUrl} alt={games.name} />
+                    </div>
+                    <div className="bottom_data">
+                      <h3>{games.name}</h3>
+                      <p>{games.description}</p>
+                      <span>
+                        <i
+                          class="fa fa-long-arrow-right"
+                          aria-hidden="true"
+                        ></i>
+                      </span>
+                    </div>
                   </a>
                 </li>
-              </ul>
-            </div>
+              ))}
+            </ul>
           </>
-        ))}
+        </div>
       </div>
 
       <AllScript />
