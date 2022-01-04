@@ -445,28 +445,26 @@ const ProfileBox = ({ user, Userdata, games }) => {
 
               <>
                 <ul className="games_btn">
-                  {Userdata.profile.player.playerdata[0].games.map(
-                    (item, index) => (
-                      <>
-                        <li
-                          className={`${
-                            `item${index}` == 'item0' ? 'active' : ''
-                          }`}
-                          key={index}
-                        >
-                          <a href="javascript:void(0);" rel={`item${index}`}>
-                            <span key={index}>
-                              <img
-                                src={item.gameId.imgUrl}
-                                alt={item.gameId.name}
-                              />{' '}
-                              <p>{item.gameId.name}</p>
-                            </span>
-                          </a>
-                        </li>
-                      </>
-                    )
-                  )}
+                  {Userdata.profile.player.games.map((item, index) => (
+                    <>
+                      <li
+                        className={`${
+                          `item${index}` == 'item0' ? 'active' : ''
+                        }`}
+                        key={index}
+                      >
+                        <a href="javascript:void(0);" rel={`item${index}`}>
+                          <span key={index}>
+                            <img
+                              src={item.gameId.imgUrl}
+                              alt={item.gameId.name}
+                            />{' '}
+                            <p>{item.gameId.name}</p>
+                          </span>
+                        </a>
+                      </li>
+                    </>
+                  ))}
                 </ul>
               </>
 
@@ -530,52 +528,50 @@ const ProfileBox = ({ user, Userdata, games }) => {
 
           <div className="right_bio">
             <div className="games_data white_bg">
-              {Userdata.profile.player.playerdata[0].games.length === 0 ? (
+              {Userdata.profile.player.games.length === 0 ? (
                 <div>No Games for {SrhUser.username}</div>
               ) : (
-                Userdata.profile.player.playerdata[0].games.map(
-                  (item, index) => (
-                    <>
-                      <div
-                        className={`tab ${
-                          `item${index}` == 'item0' ? '' : 'hide1'
-                        }`}
-                        id={`item${index}`}
-                        key={index}
-                      >
-                        <div key={index} className="game_btn">
-                          {item.gameId.name}
-                        </div>
-                        <ul>
-                          <li>
-                            <img src="/assets/media/profile/kill.png" alt="" />
-                            <span className="name">Kills </span>
-                            <span className="num">200</span>
-                          </li>
-                          <li>
-                            <img src="/assets/media/profile/kdr.png" alt="" />
-                            <span className="name">KDR </span>
-                            <span className="num">1.04</span>
-                          </li>
-                          <li>
-                            <img
-                              src="/assets/media/profile/headshot.png"
-                              alt=""
-                            />
-                            <span className="name"> HEADSHOTS </span>
-                            <span className="num">75</span>
-                          </li>
-                          <li>
-                            <img src="/assets/media/profile/ace.png" alt="" />
-
-                            <span className="name"> Won </span>
-                            <span className="num">100</span>
-                          </li>
-                        </ul>
+                Userdata.profile.player.games.map((item, index) => (
+                  <>
+                    <div
+                      className={`tab ${
+                        `item${index}` == 'item0' ? '' : 'hide1'
+                      }`}
+                      id={`item${index}`}
+                      key={index}
+                    >
+                      <div key={index} className="game_btn">
+                        {item.gameId.name}
                       </div>
-                    </>
-                  )
-                )
+                      <ul>
+                        <li>
+                          <img src="/assets/media/profile/kill.png" alt="" />
+                          <span className="name">Kills </span>
+                          <span className="num">200</span>
+                        </li>
+                        <li>
+                          <img src="/assets/media/profile/kdr.png" alt="" />
+                          <span className="name">KDR </span>
+                          <span className="num">1.04</span>
+                        </li>
+                        <li>
+                          <img
+                            src="/assets/media/profile/headshot.png"
+                            alt=""
+                          />
+                          <span className="name"> HEADSHOTS </span>
+                          <span className="num">75</span>
+                        </li>
+                        <li>
+                          <img src="/assets/media/profile/ace.png" alt="" />
+
+                          <span className="name"> Won </span>
+                          <span className="num">100</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </>
+                ))
               )}
             </div>
           </div>

@@ -2,7 +2,7 @@ import FriendRequests from '@components/dashboard/friendRequests';
 import Link from 'next/link';
 
 const RightSection = ({ user, profile, suggestedplayers }) => {
-  const teamData = profile.player.playerdata;
+  const teamData = profile.player;
   return (
     <div className="right_side overhight">
       <div className="recent_activity">
@@ -74,21 +74,20 @@ const RightSection = ({ user, profile, suggestedplayers }) => {
           Manage
         </a>
         <div className="white_box">
-          {teamData.map((team) => (
-            <ul className="team">
-              {team.team.map((tm) => (
-                <li>
-                  <a href="#">
-                    <img src={tm.teamId.imgUrl} alt={tm.teamId.name} />
-                    <p> {tm.teamId.name}</p>
-                  </a>
-                </li>
-              ))}
+          <ul className="team">
+            {teamData.team.map((tm) => (
               <li>
-                <a href="/discover">+</a>
+                <a href="#">
+                  <img src={tm.teamId.imgUrl} alt={tm.teamId.name} />
+                  <p> {tm.teamId.name}</p>
+                </a>
               </li>
-            </ul>
-          ))}
+            ))}
+            <li>
+              <a href="/discover">+</a>
+            </li>
+          </ul>
+
           <a href={`/team/create`} className="create_team">
             + Create a team
           </a>
