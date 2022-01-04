@@ -24,7 +24,6 @@ const Like_Comment = ({ postId, comment, user }) => {
 
   const isLiked =
     user && comment.likes.filter((like) => like.user === user._id).length > 0;
-  console.log(isLiked);
   const addLikeComment = async () => {
     const { data } = await fetch(
       `${baseURL}/api/comments/like/${postId}/${comment._id}`,
