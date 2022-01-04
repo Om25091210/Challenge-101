@@ -22,8 +22,7 @@ import * as gtag from '../lib/gtag';
 import { parseCookies, destroyCookie } from 'nookies';
 import { redirectUser } from '@utils/auth';
 import Script from 'next/script';
-import {getCookieValue, setCookieValue} from '@utils/helpers';
-
+import { getCookieValue, setCookieValue } from '@utils/helpers';
 
 function MyApp({ Component, pageProps, commonData }) {
   const { mainNavigation, locale } = commonData;
@@ -48,11 +47,11 @@ function MyApp({ Component, pageProps, commonData }) {
     // }
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     if (!getCookieValue('g-theme')) {
       setCookieValue('g-theme', 'LIGHT', 2147483647, '/');
     }
-  },[])
+  }, []);
 
   useEffect(() => {
     const handleRouteChange = (url) => {
@@ -66,7 +65,6 @@ function MyApp({ Component, pageProps, commonData }) {
 
   return (
     <>
-
       <Script
         strategy="afterInteractive"
         src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
@@ -81,19 +79,18 @@ function MyApp({ Component, pageProps, commonData }) {
             gtag('config', '${gtag.GA_TRACKING_ID}', {
               page_path: window.location.pathname,
             });
-          `,
+          `
         }}
       />
-      
 
       <DefaultSeo {...SEOSettings} />
       <QueryClientProvider client={queryClient}>
         <SettingsProvider mainNavigation={mainNavigation}>
-            <BasketProvider locale={locale}>
-              <ToastContainer />
-              <ReactQueryDevtools />
-              <Component {...pageProps} />
-            </BasketProvider>
+          <BasketProvider locale={locale}>
+            <ToastContainer />
+            <ReactQueryDevtools />
+            <Component {...pageProps} />
+          </BasketProvider>
         </SettingsProvider>
       </QueryClientProvider>
     </>
@@ -104,44 +101,58 @@ MyApp.getInitialProps = async ({ ctx }) => {
   const { token } = parseCookies(ctx);
   let pageProps = {};
 
-  const protectedRoutes = ['/dashboard','/notifications', '/posts', '/posts/new', '/posts/edit/[id]','/messages',
-        '/discover','/games', '/checkout','/tournament/create', '/tournament/[tournamentid]', '/team/create','/matches','/ranking',
-        '/settings', '/[username]'
+  const protectedRoutes = [
+    '/dashboard',
+    '/notifications',
+    '/posts',
+    '/posts/new',
+    '/posts/edit/[id]',
+    '/messages',
+    '/discover',
+    '/games',
+    '/checkout',
+    '/tournament/create',
+    '/tournament/[tournamentid]',
+    '/team/create',
+    '/matches',
+    '/ranking',
+    '/settings',
+    '/[username]'
   ];
 
   try {
     const locale = getLocaleFromContext(ctx.router);
 
-  const isProtected = protectedRoutes.includes(ctx.pathname);
+    const isProtected = protectedRoutes.includes(ctx.pathname);
 
-  const availableForEveryone =
-    ctx.pathname === '/login' ||
-    ctx.pathname === '/confirm' ||
-    ctx.pathname === '/legal/terms' ||
-    ctx.pathname === '/legal/privacy' ||
-    ctx.pathname === '/search' ||
-    ctx.pathname === '/announcements';
+    const availableForEveryone =
+      ctx.pathname === '/login' ||
+      ctx.pathname === '/confirm' ||
+      ctx.pathname === '/legal/terms' ||
+      ctx.pathname === '/legal/privacy' ||
+      ctx.pathname === '/search' ||
+      ctx.pathname === '/announcements';
 
-  // If user is not logged in
-  if (!token) {
-    console.log('Token is expppppppp')
-    destroyCookie(ctx, 'token');
-    // Redirect to login if user is trying to access protected routes
-    isProtected && redirectUser(ctx, '/login');
-  } else {
-    try {
-      const res = await axios.get(`${baseURL}/api/auth`, {
-        headers: { Authorization: token },
-      });
-      const { user } = res.data;
-      pageProps.user = user;
-
-    } catch (err) {
-      console.log('Error in Protected routes.....')
+    // If user is not logged in
+    if (!token) {
+      console.log('Token is expppppppp');
       destroyCookie(ctx, 'token');
-    }
-  }
+      // Redirect to login if user is trying to access protected routes
+      isProtected && redirectUser(ctx, '/login');
+    } else {
+      try {
+        const res = await axios.get(`${baseURL}/api/auth`, {
+          headers: { Authorization: token }
+        });
 
+        const { user, profile } = res.data;
+        pageProps.user = user;
+        pageProps.profile = profile;
+      } catch (err) {
+        console.log('Error in Protected routes.....');
+        destroyCookie(ctx, 'token');
+      }
+    }
 
     /**
      * Get shared data for all pages

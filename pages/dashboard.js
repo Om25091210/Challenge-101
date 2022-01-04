@@ -18,7 +18,7 @@ const scrollToBottom = (divRef) => {
   divRef.current && divRef.current.scrollIntoView({ behaviour: 'smooth' });
 };
 
-const Dashboard = ({ user, posts, suggplayers }) => {
+const Dashboard = ({ user, profile, posts, suggplayers }) => {
   const [chats, setChats] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -220,7 +220,11 @@ const Dashboard = ({ user, posts, suggplayers }) => {
 
       <SignedMainContent posts={posts} />
 
-      <RightSection user={user} suggestedplayers={suggplayers} />
+      <RightSection
+        user={user}
+        suggestedplayers={suggplayers}
+        profile={profile}
+      />
 
       <AllScript />
     </>
@@ -241,7 +245,7 @@ export const getServerSideProps = async (context) => {
     }
   });
   const suggplayers = await res.json();
-  console.log(suggplayers);
+
   return {
     props: { posts, suggplayers }
   };

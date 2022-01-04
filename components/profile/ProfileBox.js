@@ -456,8 +456,11 @@ const ProfileBox = ({ user, Userdata, games }) => {
                         >
                           <a href="javascript:void(0);" rel={`item${index}`}>
                             <span key={index}>
-                              <img src={item.imgUrl} alt={item.name} />{' '}
-                              <p>{item.name}</p>
+                              <img
+                                src={item.gameId.imgUrl}
+                                alt={item.gameId.name}
+                              />{' '}
+                              <p>{item.gameId.name}</p>
                             </span>
                           </a>
                         </li>
@@ -541,7 +544,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                         key={index}
                       >
                         <div key={index} className="game_btn">
-                          {item.name}
+                          {item.gameId.name}
                         </div>
                         <ul>
                           <li>
