@@ -80,7 +80,7 @@ const RightSection = ({ user, profile, suggestedplayers }) => {
                 <li>
                   <a href="#">
                     <img src={tm.teamId.imgUrl} alt={tm.teamId.name} />
-                    {tm.teamId.name}
+                    <p> {tm.teamId.name}</p>
                   </a>
                 </li>
               ))}
@@ -89,9 +89,9 @@ const RightSection = ({ user, profile, suggestedplayers }) => {
               </li>
             </ul>
           ))}
-          <Link href={`/team/create`} className="create_team">
+          <a href={`/team/create`} className="create_team">
             + Create a team
-          </Link>
+          </a>
           <p>Or use the Team Finder to find a team.</p>
           <div className="grey_bg">
             <img src="/assets/media/dash/user1.png" alt="" />
