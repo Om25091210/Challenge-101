@@ -245,7 +245,6 @@ export const getServerSideProps = async (context) => {
     }
   });
   const suggplayers = await res.json();
-
   return {
     props: { posts, suggplayers }
   };

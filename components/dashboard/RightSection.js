@@ -2,6 +2,7 @@ import FriendRequests from '@components/dashboard/friendRequests';
 import Link from 'next/link';
 
 const RightSection = ({ user, profile, suggestedplayers }) => {
+
   const teamData = profile.player;
   return (
     <div className="right_side overhight">
@@ -54,17 +55,26 @@ const RightSection = ({ user, profile, suggestedplayers }) => {
                 your profile parameters.
               </li>
             ) : (
-              <p> </p>
-            )}
 
-            <li className="disable">
-              <a href="#">
-                <div className="img_thumb">
-                  <img src="/assets/media/dash/user.jpg" alt="" />
-                </div>
-                <span className="name">Name1</span>
-              </a>
-            </li>
+              suggestedplayers.map((item, index) => (
+
+              item.player.map((plyr, index) => (
+
+                <li className="disable">
+                  <a href="#">
+                    <div className="img_thumb"> 
+                      <img src={ plyr.imgUrl ? plyr.imgUrl : '/assets/media/dash/user.jpg'} alt="" />
+                    
+                    </div>
+                    <span className="name">{ plyr.nickName ? plyr.nickName : 'SECRET' }</span>
+                  </a>
+                </li>
+
+              ))
+
+              ))
+
+            )}
           </ul>
         </div>
       </div>
