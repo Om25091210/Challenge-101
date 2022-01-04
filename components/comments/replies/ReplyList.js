@@ -20,7 +20,7 @@ const ReplyList = ({ postId, commentId }) => {
         });
     }, 1000);
     return () => clearInterval(interval);
-  });
+  },[]);
 
   return (
     <>

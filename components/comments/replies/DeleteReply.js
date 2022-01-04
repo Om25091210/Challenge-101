@@ -1,18 +1,10 @@
 import baseURL from '../../../utils/baseURL';
-import { QueryClient, QueryClientProvider, useMutation } from 'react-query';
+import { useMutation } from 'react-query';
 import cookie from 'js-cookie';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 
-const queryClient = new QueryClient();
 
-export default function DeleteReply({ postId, commentId, replyId }) {
-  return (
-    <QueryClientProvider client={queryClient} contextSharing={true}>
-      <Delete_Reply postId={postId} commentId={commentId} replyId={replyId} />
-    </QueryClientProvider>
-  );
-}
 
 const Delete_Reply = ({ postId, commentId, replyId }) => {
   const deletereply = async () => {
@@ -45,3 +37,5 @@ const Delete_Reply = ({ postId, commentId, replyId }) => {
     </div>
   );
 };
+
+export default Delete_Reply;

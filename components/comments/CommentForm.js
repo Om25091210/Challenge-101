@@ -1,27 +1,15 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
-import baseURL from '../../utils/baseURL';
+import baseURL from '@utils/baseURL';
 import {
-  QueryClient,
-  QueryClientProvider,
-  useQuery,
   useMutation
 } from 'react-query';
 import cookie from 'js-cookie';
 import CommentList from '../comments/CommentList';
 
-const queryClient = new QueryClient();
 
-export default function CommentForm({ postId }) {
-  return (
-    <QueryClientProvider client={queryClient} contextSharing={true}>
-      <AddComment postId={postId} />
-    </QueryClientProvider>
-  );
-}
-
-const AddComment = ({ postId }) => {
+const CommentForm = ({ post }) => {
   const [comment, setComment] = useState([]);
 
   const onChange = (e) => {
@@ -36,7 +24,7 @@ const AddComment = ({ postId }) => {
   //console.log(postId)
 
   const addingComment = async () => {
-    const res = await fetch(`${baseURL}/api/comments/${postId._id}`, {
+    const res = await fetch(`${baseURL}/api/comments/${post._id}`, {
       method: 'POST',
       body: JSON.stringify({
         comment
@@ -54,6 +42,8 @@ const AddComment = ({ postId }) => {
       console.log(successData);
     }
   });
+
+  if (post) { 
 
   return (
     <div>
@@ -80,7 +70,18 @@ const AddComment = ({ postId }) => {
           <img src="/assets/media/dash/send.png" alt="" />
         </button>
       </form>
-      <CommentList postList={postId} />
+      <CommentList post={post} />
     </div>
   );
-};
+
+  } else {
+  return null
+}
+
+}
+
+
+
+export default CommentForm;
+
+

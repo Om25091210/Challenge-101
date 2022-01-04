@@ -1,19 +1,10 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import baseURL from '../../../utils/baseURL';
-import { QueryClient, QueryClientProvider, useMutation } from 'react-query';
+import { useMutation } from 'react-query';
 import cookie from 'js-cookie';
 import { toast } from 'react-toastify';
 
-const queryClient = new QueryClient();
-
-export default function ReplyComment({ postId, commentId }) {
-  return (
-    <QueryClientProvider client={queryClient} contextSharing={true}>
-      <Reply_Comment postId={postId} commentId={commentId} />
-    </QueryClientProvider>
-  );
-}
 
 const Reply_Comment = ({ postId, commentId }) => {
   const [reply, setReply] = useState('');
@@ -72,3 +63,5 @@ const Reply_Comment = ({ postId, commentId }) => {
     </>
   );
 };
+
+export default Reply_Comment;

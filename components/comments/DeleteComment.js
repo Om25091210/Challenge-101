@@ -1,18 +1,9 @@
 import baseURL from '../../utils/baseURL';
-import { QueryClient, QueryClientProvider, useMutation } from 'react-query';
+import { useMutation } from 'react-query';
 import cookie from 'js-cookie';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 
-const queryClient = new QueryClient();
-
-export default function DeleteComment({ postId, comment }) {
-  return (
-    <QueryClientProvider client={queryClient} contextSharing={true}>
-      <Delete_Comment postId={postId} comment={comment} />
-    </QueryClientProvider>
-  );
-}
 
 function refreshPage() {
   setTimeout(function () {
@@ -20,7 +11,8 @@ function refreshPage() {
   }, 5000);
 }
 
-const Delete_Comment = ({ postId, comment }) => {
+const Delete_Comment = ({ postId, commentId }) => {
+
   const DeleteComment = async () => {
     await axios.delete(`${baseURL}/api/comments/${postId}/${comment._id}`, {
       headers: {
@@ -50,3 +42,5 @@ const Delete_Comment = ({ postId, comment }) => {
     </div>
   );
 };
+
+export default Delete_Comment;

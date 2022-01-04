@@ -1,17 +1,8 @@
 import { useState } from 'react';
 import baseURL from '../../../utils/baseURL';
-import { QueryClient, QueryClientProvider, useMutation } from 'react-query';
+import { useMutation } from 'react-query';
 import cookie from 'js-cookie';
 
-const queryClient = new QueryClient();
-
-export default function LikeReply({ postId, commentId, reply }) {
-  return (
-    <QueryClientProvider client={queryClient} contextSharing={true}>
-      <Like_Reply postId={postId} commentId={commentId} reply={reply} />
-    </QueryClientProvider>
-  );
-}
 
 const Like_Reply = ({ postId, commentId, reply }) => {
   const [likereplies, setLikeReplies] = useState(false);
@@ -44,3 +35,5 @@ const Like_Reply = ({ postId, commentId, reply }) => {
     </div>
   );
 };
+
+export default Like_Reply;
