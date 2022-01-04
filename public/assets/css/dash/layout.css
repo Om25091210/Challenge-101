@@ -8,7 +8,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 }
 
 html{
-	font-size:62.5%; /*default font-size is 10px */
+	font-size:100%; /*default font-size is 10px */
 }
 
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
@@ -78,7 +78,7 @@ body {
 	font-weight:400;
 	color:#000000;
 	line-height:1.2;
-	font-size: 1.4rem;
+	font-size: 14px;
 	background:#f3f6f9;
 }
 .top_click {
@@ -88,14 +88,14 @@ body {
 
 .flex{ display: flex; align-items: center;}
 
-p{ font-size: 1.3rem; font-weight: 400;}
+p{ font-size: 13px; font-weight: 400;}
 
 h1 {
-	font-size: 2.5rem;
+	font-size: 25px;
 	font-weight: 700;
 }
 h2 {
-	font-size: 1.8rem;
+	font-size: 18px;
 	font-weight: 700;
 }
 .btn {
@@ -104,7 +104,7 @@ h2 {
 	color: #fff;
 	background: #7239ea;
 	border: 0;
-	font-size: 1.5rem;
+	font-size: 15px;
 }
 .btn:hover {
 	color: #fff;
@@ -177,7 +177,7 @@ header .logo a {
 	border-bottom:1px solid #ddd;
 	border-radius:0px;
 	font-weight:400;
-	font-size: 1.4rem;
+	font-size: 14px;
 }
 .searchbox input[type="submit"] {
 	border:0;
@@ -222,7 +222,7 @@ ul.top_menu li a span.pop {
 	color:#fff;
 	align-items:center;
 	justify-content:center;
-	font-size:1.2rem;
+	font-size:12px;
 	position:absolute;
 	top:-15px;
 	right:-17px; transition: 0.3s ease-in-out;
@@ -266,7 +266,7 @@ ul.top_menu .drop_down_bg li {
 	padding:5px 10px !important
 }
 ul.top_menu .drop_down_bg li a {
-	font-size: 1.4rem;
+	font-size: 14px;
 	font-weight: 700;
 	color: #000;
 	display: inline-block;
@@ -274,7 +274,7 @@ ul.top_menu .drop_down_bg li a {
 	text-transform: capitalize;
 }
 ul.top_menu .drop_down_bg li i {
-	font-size:1.5rem;
+	font-size:15px;
 	padding-right:10px;
 }
 ul.top_menu .drop_down_bg li a:hover, .drop_down_bg li a:hover i {
@@ -293,7 +293,7 @@ ul.top_menu .drop_down_bg.bell_drop_down {
 }
 ul.top_menu .drop_down_bg.bell_drop_down li p {
 	display: inline-block;
-	font-size: 1.2rem;
+	font-size:12px;
 	padding: 0 6px;
 }
 .notif_box {
@@ -328,14 +328,14 @@ ul.top_menu .drop_down_bg.bell_drop_down li p {
 	vertical-align:middle;
 	margin:0 10px;
 	color:#000000;
-	font-size:1.5rem;
+	font-size:15px;
 	font-weight:400;
 	width: calc(100% - 70px);
 }
 .notif_tag .notif_name b {
 	display: block;
 	color: #a3a3a3;
-	font-size: 1.2rem;
+	font-size:12px;
 	text-transform: uppercase;
 	font-weight: normal;
 	padding-top: 3px;
@@ -357,7 +357,7 @@ ul.top_menu .drop_down_bg.profile_drop_down {
 	padding:5px 10px;
 }
 .profile_drop_down li a {
-	font-size:1.4rem;
+	font-size:14px;
 	font-weight:400;
 	color:#000;
 	float:left;
@@ -366,7 +366,7 @@ ul.top_menu .drop_down_bg.profile_drop_down {
 	padding-bottom:10px;
 }
 .profile_drop_down li i {
-	font-size:1.5rem;
+	font-size:15px;
 	padding-right:10px;
 }
 .profile_drop_down li a:hover {
@@ -413,14 +413,14 @@ ul.top_menu li.profile a {
 }
 .left_side nav li i {
 	color:#fff;
-	font-size:2rem !important;
+	font-size:20px !important;
 	font-weight:100;
 }
 .left_side nav li .title {
 	position:absolute;
 	left:60px;
 	top:16px;
-	font-size:1.3rem;
+	font-size:13px;
 	color:#fff;
 	font-weight:600;
 	display:none;
@@ -480,7 +480,7 @@ ul.top_menu li.profile a {
 	text-indent:-9999px;
 	border:0;
 	background:#f3f6f9;
-	width:1.7rem;
+	width:17px;
 	height:20px;
 	border-radius:5px 10px 0px 0px;
 	box-shadow:0 0 10px #eee;
@@ -531,7 +531,7 @@ ul.top_menu li.profile a {
 	border:0;
 	resize:none;
 	margin:0px 30px 0 10px;
-	font-size:1.4rem;
+	font-size:14px;
 	font-weight:600;
 	color:#909090;
 	letter-spacing:0.075em;
@@ -600,7 +600,7 @@ margin-left:10px;
   display: inline-block;
   font: normal normal normal 14px/1 FontAwesome;
   font-weight: 400;
-  content: "\f03e"; font-size: 2.5rem; color: #7239ea; position: relative; top:0; transition: 0.3s ease-in-out;
+  content: "\f03e"; font-size: 25px; color: #7239ea; position: relative; top:0; transition: 0.3s ease-in-out;
 }
 
 .right_links input[type=file]:hover::before{ top:-5px}
@@ -608,7 +608,7 @@ margin-left:10px;
  .right_links input[type=file]::-webkit-file-upload-button {
  visibility: hidden;
 }
-.right_links .fa{  font-size: 2.5rem; position: relative; top:0; transition: 0.3s ease-in-out; }
+.right_links .fa{  font-size: 25px; position: relative; top:0; transition: 0.3s ease-in-out; }
 
 .right_links .fa:hover{top: -5px;}
 
@@ -629,7 +629,7 @@ margin-left:10px;
 	display:block;
 	color:#202028;
 	padding:10px 0 10px 0;
-	font-size:1.5rem; 
+	font-size:15px; 
 	font-weight:700;
 }
 
@@ -668,10 +668,10 @@ margin-left:10px;
 
 .post .heads .user_name_disc{	padding-left:30px;}
 .post .heads .date{ position: absolute; right:0px; top:0px} 
-.post .heads .date p{ font-size: 1.2rem;     color: #7239ea;}
+.post .heads .date p{ font-size:12px;     color: #7239ea;}
 
 .post .heads h4 {
-	font-size: 1.8rem;
+	font-size: 18px;
     color: #061b4e;
     letter-spacing: 0.010em;
     font-family: 'Rubik', sans-serif;
@@ -680,10 +680,10 @@ margin-left:10px;
 
 }
 
-.post .heads p{font-size: 1.5rem;
-    padding-bottom: 1rem;
+.post .heads p{font-size: 15px;
+    padding-bottom: 10px;
     font-weight: 400;
-    line-height: 2.2rem;}
+    line-height: 22px;}
 
 .post .left_details {
 	float:left;
@@ -757,12 +757,12 @@ margin-left:10px;
 	color:#b2b2b2;
 	text-align:center;
 	font-weight:300;
-	font-size:1.1rem;
+	font-size:11px;
 	line-height:26px;
 	border-radius:50%;
 }
 .users_share_box .more_user .others {
-	font-size:1.5rem;
+	font-size:15px;
 	font-weight:700;
 	color:#000;
 	padding-left:20px;
@@ -772,7 +772,7 @@ margin-left:10px;
 }
 .users_share_box .shere a {
 	color:#000;
-	font-size:1.5rem;
+	font-size:15px;
 	font-weight:400;
 	display:inline-flex;
 	align-items:center;
@@ -926,7 +926,7 @@ margin-left:10px;
 	border:0;
 	resize:none;
 	margin:0px 10px;
-	font-size:1.4rem;
+	font-size:14px;
 	font-family:'Rubik', sans-serif;
 	font-weight:400;
 	color:#a4a4a4;
@@ -950,7 +950,7 @@ margin-left:10px;
 	padding:5px 4px;
 	margin:0 5px;
 	border-radius:5px;
-	font-size:1.5rem;
+	font-size:15px;
 	font-family:'Rubik', sans-serif;
 	font-weight:400;
 	color:#323232;
@@ -962,7 +962,7 @@ margin-left:10px;
 	display:inline-flex;
 	padding:5px 10px;
 	border-radius:5px;
-	font-size:1.5rem;
+	font-size:15px;
 	font-family:'Rubik', sans-serif;
 	font-weight:400;
 	color:#323232;
@@ -1025,7 +1025,7 @@ margin-left:10px;
 	display:block;
 }
 .comments_point .create {
-	font-size:1.1rem;
+	font-size:11px;
 	color:#19191d;
 	font-weight:500;
 	margin-right:10px;
@@ -1035,12 +1035,12 @@ margin-left:10px;
 }
 .comments_point .days {
 	color:#858585;
-	font-size:1rem;
+	font-size:10px;
 	font-weight:500;
 	margin-right:10px;
 }
 .comments_point .pinned {
-	font-size:1.1rem;
+	font-size:11px;
 	margin-right:10px;
 	color:#fff;
 	font-weight:500;
@@ -1057,13 +1057,13 @@ margin-left:10px;
 	margin-top:20px;
 }
 .loadmore a {
-	font-size:1.2rem;
+	font-size:12px;
 	color:#000;
 	font-weight:700;
 	text-transform:uppercase;
 }
 .post_comments h3 {
-	font-size:1.2rem;
+	font-size:12px;
 	color:#19191d;
 	font-weight:700;
 	margin-right:10px;
@@ -1100,7 +1100,7 @@ margin-left:10px;
 	height: 70px;
 	border: 1px solid #ddd;
 	padding: 10px;
-	font-size: 1.4rem;
+	font-size: 14px;
 	font-weight: 400;
 	margin: 10px 0;
 }
@@ -1149,7 +1149,7 @@ margin-left:10px;
 	color: #000;
 }
 .comments_data p {
-	font-size: 1.2rem;
+	font-size:12px;
 	font-weight: 400;
 	color: #999;
 	line-height: 20px;
@@ -1165,7 +1165,7 @@ article .social_bar {
 .post_comments button {
 	border:0;
 	background: none;
-	font-size: 1.4rem;
+	font-size: 14px;
 	font-weight: 400;
 	color: #000;
 }
@@ -1204,12 +1204,12 @@ article .social_bar {
 	position:absolute;
 	top:0;
 	right:10px;
-	font-size:1.2rem;
+	font-size:12px;
 	color:#202028;
 	font-weight:600;
 }
 .recent_activity a.hideShow i {
-	font-size:1.4rem;
+	font-size:14px;
 	color:#202028;
 	font-weight:600;
 }
@@ -1258,13 +1258,13 @@ article .social_bar {
 	vertical-align:middle;
 	margin:0 10px;
 	color:#202028;
-	font-size:1.2rem;
+	font-size:12px;
 	font-weight:600;
 }
 .white_box .activity_tag .act_name b {
 	display:block;
 	color:#a3a3a3;
-	font-size:1rem;
+	font-size:10px;
 	text-transform:uppercase;
 }
 .freind_request .activity_tag a {
@@ -1277,7 +1277,7 @@ article .social_bar {
 }
 .freind_request .activity_tag .accept {
 	background:#7239ea;
-	font-size:1rem;
+	font-size:10px;
 	color:#fff;
 	font-weight:700;
 	text-transform:uppercase;
@@ -1286,7 +1286,7 @@ article .social_bar {
 }
 .freind_request .activity_tag .close {
 	background:#f3f6f9;
-	font-size:1rem;
+	font-size:10px;
 	color:#777777;
 	font-weight:700;
 	text-transform:uppercase;
@@ -1298,7 +1298,7 @@ article .social_bar {
 	top:0;
 	right:20px;
 	color:#000;
-	font-size:1.4rem;
+	font-size:14px;
 	font-weight:400;
 }
 .suggested_player li {
@@ -1319,7 +1319,7 @@ article .social_bar {
 	bottom:25px;
 }
 .suggested_player li a .name {
-	font-size:1.2rem;
+	font-size:12px;
 	color:#000;
 	font-weight:700;
 }
@@ -1354,7 +1354,7 @@ article .social_bar {
 	height:20px;
 	border-radius:50%;
 	color:#000;
-	font-size:1.5rem;
+	font-size:15px;
 	display:block;
 	margin-top:10px;
 }
@@ -1363,7 +1363,7 @@ article .social_bar {
 	top:0;
 	right:20px;
 	color:#000;
-	font-size:1.4rem;
+	font-size:14px;
 	font-weight:400;
 }
 .my_team .team li {
@@ -1371,7 +1371,7 @@ article .social_bar {
 }
 .my_team .team li a {
 	color:#000;
-	font-size:1.1rem;
+	font-size:11px;
 	font-weight:400;
 }
 .my_team .create_team {
@@ -1386,7 +1386,7 @@ article .social_bar {
 }
 .my_team p {
 	color:#000;
-	font-size:1.1rem;
+	font-size:11px;
 	font-weight:700;
 	text-align:center;
 }
@@ -1401,7 +1401,7 @@ article .social_bar {
 	font-weight:700;
 }
 .team_match .match_name {
-	font-size:1.2rem;
+	font-size:12px;
 	color:#202028;
 	font-weight:700;
 }
@@ -1415,7 +1415,7 @@ article .social_bar {
 }
 .team_match .match_time span {
 	color:#000;
-	font-size:1.1rem;
+	font-size:11px;
 	font-weight:700;
 }
 .team_match .team {
@@ -1433,7 +1433,7 @@ article .social_bar {
 }
 .team_match .team li a {
 	color:#000;
-	font-size:1.2rem;
+	font-size:12px;
 	font-weight:700;
 }
 
@@ -1501,7 +1501,7 @@ article .social_bar {
 .tab_box .tabs ul a {
 	color: #fff;
 	text-transform: uppercase;
-	font-size: 1.4rem;
+	font-size: 14px;
 	font-weight: 400;
 }
 .tab_box .tabs ul li.active a, .tab_box .tabs ul li:hover a {
@@ -1527,7 +1527,7 @@ article .social_bar {
 	position: relative;
 	top: 0;
 	z-index: 1;
-	font-size: 1.4rem;
+	font-size: 14px;
 }
 .chatbox .contacts li {
 	padding: 0.4375rem 1rem;
@@ -1539,7 +1539,7 @@ article .social_bar {
 	align-items: center;
 }
 .chatbox .user_info span {
-	font-size: 1.3rem;
+	font-size: 13px;
 	color: #000;
 	display: block;
 	font-weight: 500;
@@ -1552,7 +1552,7 @@ article .social_bar {
 	max-width: 10.625rem;
 }
 .chatbox .user_info p {
-	font-size: 1.2rem;
+	font-size:12px;
 	margin-bottom: 0;
 	text-overflow: ellipsis;
 	white-space: nowrap;
@@ -1605,7 +1605,7 @@ article .social_bar {
 	line-height: 15px;
 }
 .sharp.btn-xs i {
-	font-size: 1.2rem;
+	font-size:12px;
 	color: #fff;
 }
 .chatbox .chat-list-header {
@@ -1624,11 +1624,11 @@ article .social_bar {
 }
 .chatbox .card-header p {
 	line-height: 1.2;
-	font-size: 1.3rem;
+	font-size: 13px;
 	color: #393939;
 }
 .chatbox .card-header h6 {
-	font-size: 1.4rem;
+	font-size: 14px;
 }
 .chatbox .img_cont_msg {
 	width: 1.875rem;
@@ -1708,10 +1708,11 @@ article .social_bar {
 
 .chatbox .type_msg .form-control {
 	padding:10px;
+
 	height: 45px;
 	border: 0;
 	resize: none;
-	font-size: 1.5rem;
+	font-size: 15px;
 }
 .chatbox .chatbox-close {
 	position: absolute;
@@ -1923,7 +1924,7 @@ article .social_bar {
 	margin-right: 10px;
 }
 .bio_box .left_bio p {
-	font-size: 1.4rem;
+	font-size: 14px;
 	line-height: 20px;
 	font-weight: 400;
 }
@@ -1972,7 +1973,7 @@ article .social_bar {
 	background: #7239ea;
 	border:0;
 	width: 100%;
-	font-size: 1.8rem;
+	font-size: 18px;
 	font-weight: 600;
 	color:#fff;
 	padding: 10px 20px;
@@ -2016,7 +2017,7 @@ article .social_bar {
 .profile_tab_btn li a {
 	color:#000;
 	text-transform: uppercase;
-	font-size: 1.2rem;
+	font-size:12px;
 	padding-right: 10px;
 }
 .profile_tab_btn li.active:after {
@@ -2097,7 +2098,7 @@ article .social_bar {
 	font-size: 13px;
 }
 .profile_left_post .post_comments p {
-	font-size: 1.4rem;
+	font-size: 14px;
 }
 .profile_match_details {
 	float:right;
@@ -2130,7 +2131,7 @@ article .social_bar {
 	font-weight: 700;
 }
 .all_stats ul li .names {
-	font-size: 1.2rem;
+	font-size:12px;
 	font-weight: 600;
 	color: #2d2d22;
 	text-transform: uppercase;
@@ -2163,17 +2164,17 @@ article .social_bar {
 .games_details li .nm {
 	float: left;
 	width: 120px;
-	font-size:1.4rem;
+	font-size:14px;
 	font-weight: 600;
 	color: #2d2d22;
 }
 .games_details li .task {
-	font-size: 1.4rem;
+	font-size: 14px;
 	font-weight: 600;
 	color: #2d2d22;
 }
 .games_details .game_btn {
-	font-size: 1.2rem;
+	font-size:12px;
 	margin-top: 20px;
 }
 .games_details .chart_box img {
@@ -2218,7 +2219,7 @@ article .social_bar {
 }
 .team_pos li .position {
 	width: 90px;
-	font-size: 1.2rem;
+	font-size:12px;
 	font-weight: 500;
 	text-transform: uppercase;
 }
@@ -2279,7 +2280,7 @@ article .social_bar {
 	object-fit: cover;
 }
 .bio_box .right_team_bio h5 {
-	font-size: 1.2rem;
+	font-size:12px;
 	font-weight: 700;
 	padding-bottom: 20px;
 }
@@ -2399,7 +2400,7 @@ article .social_bar {
 	text-transform:uppercase
 }
 .product_box .product-detail-box p {
-	font-size:1.4rem;
+	font-size:14px;
 	padding:0 0 10px;
 }
 .product_box .product-detail-box .price {
@@ -2414,7 +2415,7 @@ article .social_bar {
 	color:#d3d3d3;
 }
 .product_box .product-detail-box .price span.discount {
-	font-size:1.2rem;
+	font-size:12px;
 	color:#ff8121
 }
 .product_box .product-detail-box span.product-id {
@@ -2530,7 +2531,7 @@ article .social_bar {
 .size-chart a.chart-back {
 	padding:5px 0 0;
 	color:#505050;
-	font-size:1.2rem;
+	font-size:12px;
 	text-decoration:underline !important;
 	display:block;
 }
@@ -2555,7 +2556,7 @@ article .social_bar {
 	margin-right: 5px;
 	display: inline-block;
 	color: #000;
-	font-size: 1.4rem;
+	font-size: 14px;
 	text-transform: capitalize;
 }
 .review {
@@ -2564,7 +2565,7 @@ article .social_bar {
 	margin-top: 20px;
 }
 .review .rev_txt {
-	font-size: 1.2rem;
+	font-size:12px;
 	color: #000;
 	text-transform: uppercase;
 	padding-left: 20px;
@@ -2587,7 +2588,7 @@ article .social_bar {
 	border:1px solid #7239ea;
 }
 .brief {
-	font-size: 1.4rem;
+	font-size: 14px;
 	line-height: 25px;
 }
 .products li {
@@ -2609,7 +2610,7 @@ article .social_bar {
 .products li .pro_img .size_option {
 	position: absolute;
 	color: #fff;
-	font-size: 1.2rem;
+	font-size:12px;
 	display: block;
 	padding: 5px 10px;
 	top:-20px;
@@ -2632,7 +2633,7 @@ article .social_bar {
 }
 .products li .name_dots h4 {
 	text-transform: uppercase;
-	font-size: 1.2rem;
+	font-size:12px;
 	font-weight: 700;
 }
 .products li .name_dots a {
@@ -2651,13 +2652,13 @@ article .social_bar {
 .products li .stars .price {
 	margin-left: 10px;
 	text-transform: uppercase;
-	font-size: 1.2rem;
+	font-size:12px;
 	font-weight: 700;
 }
 .products li .likes {
 	float: right;
 	text-transform: uppercase;
-	font-size: 1.2rem;
+	font-size:12px;
 	font-weight: 700;
 }
 .products li .likes a {
@@ -2688,7 +2689,7 @@ article .social_bar {
 	background: #dfdfdf;
 	display: inline-block;
 	color: #000;
-	font-size: 1.8rem;
+	font-size: 18px;
 	font-weight: 700;
 	letter-spacing: -1px;
 	padding:5px 10px;
@@ -2754,7 +2755,7 @@ article .social_bar {
 #more_games ul li img{     width: 100%;
     object-fit: contain;
     height: 130px;}
-#more_games ul li p{ font-size: 1.5rem;
+#more_games ul li p{ font-size: 15px;
     padding: 10px;
     background: #fff;
     color: #000;
@@ -2763,7 +2764,7 @@ article .social_bar {
 
 .discovery_page h3 {
 	text-transform: uppercase;
-	font-size: 1.4rem;
+	font-size: 14px;
 	font-weight: 700;
 	display: inline;
 	margin-right: 20px;
@@ -2905,7 +2906,7 @@ article .social_bar {
 	position: relative;
 }
 .team_filter .drop_downs .button-group .dropdown-menu li a {
-	font-size: 1.2rem;
+	font-size:12px;
 	text-transform: uppercase;
 	font-weight: 400;
 	color: #000;
@@ -2951,7 +2952,7 @@ article .social_bar {
 }
 .team_filter .filter_list .filter1 .close2 {
 	position: static;
-	font-size: 1.2rem;
+	font-size:12px;
 	color: #fff;
 }
 .team_row {
@@ -2994,7 +2995,7 @@ article .social_bar {
 	top: 10px;
 	left: 10px;
 	border-radius: 5px;
-	font-size: 2.5rem;
+	font-size: 25px;
 }
 .team_row .stars.disable {
 	background: none;
@@ -3024,10 +3025,10 @@ article .social_bar {
 }
 .team_row span.remarks h4 {
 	color: #7239ea;
-	font-size: 1.3rem; font-weight: 600;
+	font-size: 13px; font-weight: 600;
 }
 .team_row span.remarks h4 b {
-	font-size: 1.2rem;
+	font-size:12px;
 	text-transform: uppercase;
 	color: #000;  font-weight: 400;
 }
@@ -3044,7 +3045,7 @@ article .social_bar {
 	color: #fff;
 	padding: 10px 20px;
 	border-radius: 5px;
-	font-size: 1.2rem;
+	font-size:12px;
 }
 
 
@@ -3099,12 +3100,12 @@ article .social_bar {
 	margin: 0;
 }
 .team_overview h4 {
-	font-size: 1.2rem;
+	font-size:12px;
 	text-transform: uppercase;
 	padding-bottom: 10px;
 }
 .team_overview p {
-	font-size: 1.2rem;
+	font-size:12px;
 	text-transform: uppercase;
 	font-weight: 700;
 	padding-bottom: 10px;
@@ -3113,7 +3114,7 @@ article .social_bar {
 	display: inline-block;
 	margin-right: 10px;
 	margin-bottom: 20px;
-	font-size: 1.2rem;
+	font-size:12px;
 	text-transform: uppercase;
 	font-weight: 700;
 }
@@ -3142,9 +3143,9 @@ article .social_bar {
 .drop_files .fa{ font-size: 20px;}
 
 .drop_file_txt{ display: flex; flex-direction: column; align-items: center;}	
-.drop_file_txt .or{ padding: 10px 0; font-size: 1.5rem;}
+.drop_file_txt .or{ padding: 10px 0; font-size: 15px;}
 .drop_file_txt .btn{ text-transform: capitalize;}
-.drop_files p{ font-size: 1.4rem; margin-top: 10px;}
+.drop_files p{ font-size: 14px; margin-top: 10px;}
 
 .overview_box {
 	float: left;
@@ -3200,7 +3201,7 @@ article .social_bar {
  cursor: pointer;
 }
 .range_slider li:first-child {
-	font-size: 1.2rem;
+	font-size:12px;
 }
 .range_slider li:last-child {
 	margin: 10px 0;
@@ -3233,7 +3234,7 @@ article .social_bar {
 }
 .team_row.arena_team_row .mores {
 	flex-direction: column;
-	font-size: 1.2rem;
+	font-size:12px;
 }
 .team_row.arena_team_row .mores b {
 	color: #7239ea; font-weight: 600;
@@ -3257,7 +3258,7 @@ article .social_bar {
 .heads_row .heads, .row_box .cols {
 	flex:0 0 10%;
 	text-transform: uppercase;
-	font-size: 1.4rem;
+	font-size: 14px;
 	text-align: center;
 	padding: 20px 0;
 }
@@ -3295,10 +3296,10 @@ article .social_bar {
 	height: 100%;
 }
 .more_data .pic h3 {
-	font-size: 1.4rem;
+	font-size: 14px;
 }
 .more_data .total {
-	font-size: 1.4rem;
+	font-size: 14px;
 	text-transform: uppercase;
 	text-align: center;
 }
@@ -3313,7 +3314,7 @@ article .social_bar {
 	padding: 10px 20px;
 	text-align: center;
 	color: #fff;
-	font-size: 1.4rem;
+	font-size: 14px;
 	border:0;
 	width: 100%;
 	border-radius: 5px;
@@ -3349,7 +3350,6 @@ article .social_bar {
 	width:100%;
 	margin-top: 50px;
 	position: relative;
-	padding: 30px 2%;
 	background: #dfdfdf;
 	border-radius: 5px; overflow: hidden;
 }
@@ -3360,7 +3360,7 @@ article .social_bar {
 	top: 10px;
 	left: 10px;
 	border-radius: 5px;
-	font-size: 2.5rem; z-index: 3;
+	font-size: 25px; z-index: 3;
 }
 .game_row .star.live {
 	background: #7239ea;
@@ -3372,35 +3372,33 @@ article .social_bar {
 .game_pos {
 	float: left;
 	width: 27%;
-	position: relative;
-}
-.game_pos::after {
-	content: "";
-	position: absolute;
-	width: 10px;
-	height: 264px;
-	border-right: 2px solid #000;
-	transform: skewX(-22deg);
-	right: 0px;
-	top: -29px; z-index: 2;
+	position: relative;  height: 264px;	border-right: 2px solid #fff;
 }
 
-.game_pos .game_loc{        position: absolute;
-    left: -84px;
-    top: -30px;
-    transform: skewX( -22deg);
+.game_pos .tour_logo {
+    position: absolute;
+    z-index: 99;
+    top: 40%;
+    left: 0px;
+    margin: auto;
+    right: 0;
+    text-align: center;
+}
+
+.game_pos .tour_logo img{ width: 60px;}
+
+.game_pos .game_loc{position: absolute; left: 0; width: 100%; height: 100%;
     right: 0px;
-    width: 127%;
     z-index: 1;}
-
-	.game_pos .game_loc img{transform: skewX( 0deg);}	
+.game_pos .game_loc img{ height: 100%;}
+	
 
 .right_game_details {
 	float: right;
 	width: 70%;
 	display: flex;
 	flex-direction: column;
-	font-size: 1.8rem;
+	font-size: 18px; padding: 20px;
 }
 .right_game_details .date h3 {
 	display: block;
@@ -3411,7 +3409,7 @@ article .social_bar {
 	padding: 10px 20px;
 	text-align: center;
 	color: #fff;
-	font-size: 1.8rem;
+	font-size: 18px;
 	border:0;
 	width:200px;
 	border-radius: 5px;
@@ -3465,7 +3463,7 @@ article .social_bar {
 	margin-top: 20px;
 }
 .arena_bio .internet li {
-	font-size: 1.4rem;
+	font-size: 14px;
 	text-transform: uppercase;
 	margin-top: 20px;
 	border-right: 1px solid #ddd;
@@ -3645,17 +3643,17 @@ article .social_bar {
 }
 .stats_table .bdr_clr_green {
 	border-left: 5px solid #00ff5b;
-	font-size: 1.4rem;
+	font-size: 14px;
 	font-weight: 700;
 }
 .stats_table .bdr_clr_blue {
 	border-left: 5px solid #00deff;
-	font-size: 1.4rem;
+	font-size: 14px;
 	font-weight: 700;
 }
 .stats_table .bdr_clr_green {
 	border-left: 5px solid #00ff5b;
-	font-size: 1.4rem;
+	font-size: 14px;
 	font-weight: 700;
 }
 .stats_table .table {
@@ -3664,7 +3662,7 @@ article .social_bar {
 .stats_table .table th {
 	font-style: italic;
 	font-weight: 700;
-	font-size: 1.4rem;
+	font-size: 14px;
 	text-align: center;
 }
 .stats_table .table td {
@@ -3750,7 +3748,7 @@ article .social_bar {
 	line-height: 22px;
 }
 .game_chart h4 {
-	font-size: 1.4rem;
+	font-size: 14px;
 	color: #000;
 	font-style: italic;
 	font-weight: 700;
@@ -3792,7 +3790,7 @@ article .social_bar {
 .match_table {
 	flex:0 0 48%;
 	border:1px solid #ddd;
-	font-size: 1.2rem;
+	font-size:12px;
 }
 .match_table .head_row {
 	display: flex;
@@ -3868,7 +3866,7 @@ article .social_bar {
 	padding: 5px 20px;
 	text-transform: capitalize;
 	border-radius: 5px;
-	font-size: 1.2rem;
+	font-size:12px;
 	font-weight: 700;
 	cursor: pointer;
 }
@@ -3945,7 +3943,7 @@ article .social_bar {
 }
 .squad_btn .cuntry_name {
 	color: #fff;
-	font-size: 1.8rem;
+	font-size: 18px;
 	padding: 25px 0 0 0;
 	text-align: center;
 	width: 50%;
@@ -3956,7 +3954,7 @@ article .social_bar {
 	text-align: center;
 	width: 50%;
 	color: #fff;
-	font-size: 1.2rem;
+	font-size:12px;
 }
 .selections {
 	display: flex;
@@ -4041,7 +4039,7 @@ article .social_bar {
 }
 .squads_details .table td {
 	text-transform: uppercase;
-	font-size: 1.4rem;
+	font-size: 14px;
 }
 .squads_details .table td h3 {
 	font-size: 22px;
@@ -4056,7 +4054,7 @@ article .social_bar {
 }
 .squads_details .table th {
 	text-transform: uppercase;
-	font-size: 1.2rem;
+	font-size:12px;
 }
 /* -------------------- Achiments -------------- */
 
@@ -4085,7 +4083,7 @@ article .social_bar {
 }
 .features li .img i {
 	color: #fff;
-	font-size: 2.5rem;
+	font-size: 25px;
 }
 .features li .tit {
 	color: #000;
@@ -4162,7 +4160,7 @@ article .social_bar {
 .calendar_box .react-datepicker__day, .calendar_box .react-datepicker__time-name {
 	text-align: right;
 	padding:10px;
-	font-size: 1.4rem;
+	font-size: 14px;
 	border-radius: 0;
 	margin: 0;
 	width:14.3%;
@@ -4184,7 +4182,7 @@ article .social_bar {
 	margin: 0;
 }
 .calendar_box .react-datepicker__current-month {
-	padding: 17px 0 23px 0; font-size: 1.4rem;
+	padding: 17px 0 23px 0; font-size: 14px;
 }
 .calendar_box .react-datepicker__week {
 	border-top: 1px solid #eee;
@@ -4323,7 +4321,7 @@ article .social_bar {
 	vertical-align: middle;
 }
 .group td strong {
-	font-size: 1.4rem;
+	font-size: 14px;
 	font-weight: 400;
 	padding: 0 0 0 10px;
 	text-transform: capitalize;
@@ -4371,7 +4369,7 @@ article .social_bar {
 	margin:0 20px;
 }
 .match_row .team_name h3 {
-	font-size: 1.8rem;
+	font-size: 18px;
 	padding-bottom: 10px;
 }
 .match_row .team_b {
@@ -4381,12 +4379,12 @@ article .social_bar {
 	text-align: center;
 }
 .match_row .team_vs p {
-	font-size: 1.4rem;
+	font-size: 14px;
 	text-transform: uppercase;
 }
 .match_row .team_vs a {
 	color: #6931f9;
-	font-size: 1.4rem;
+	font-size: 14px;
 	letter-spacing: 0.030em;
 }
 .match_row .team_vs .vs {
@@ -4444,11 +4442,11 @@ article .social_bar {
 	border-radius: 5px;
 	width: 200px;
 	margin-left: 20px;
-	font-size: 1.4rem;
+	font-size: 14px;
 }
 .team_mails a {
 	color: #fff;
-	font-size: 1.2rem;
+	font-size:12px;
 	;
 }
 .team_member {
@@ -4604,7 +4602,7 @@ article .social_bar {
 .sponsers_box .sponser_data p {
 	text-align: left;
 	margin-top: 20px;
-	font-size: 1.4rem;
+	font-size: 14px;
 	line-height: 30px;
 }
 /* -----------------Gallery ------------ */
@@ -4760,7 +4758,7 @@ article .social_bar {
 	padding: 10px;
 }
 .inner_header nav ul li a {
-	font-size: 1.4rem;
+	font-size: 14px;
 	color: #000;
 	font-weight: 400;
 	text-transform: uppercase;
@@ -4867,7 +4865,7 @@ main {
 }
 .shop_footer li a {
 	color: #fff;
-	font-size: 1.2rem;
+	font-size:12px;
 }
 .basket_box {
 	padding: 0;
@@ -4918,7 +4916,7 @@ main {
 	display: flex;
 }
 .shop_filter_box .filter_input h4 .kCkpbc {
-	font-size: 1.4rem;
+	font-size: 14px;
 	color: #000;
 	font-weight: 700;
 }
@@ -4980,7 +4978,7 @@ main {
 	border: 1px solid #ddd;
 }
 .right_products .cEPfRQ ul > li .tag {
-	font-size: 1.2rem;
+	font-size:12px;
 }
 .right_products .fTBHtd {
 	border: 0;
@@ -5010,18 +5008,18 @@ main {
 	padding: 20px;
 }
 .right_prod_details h1 {
-	font-size: 2.5rem;
+	font-size: 25px;
 	font-weight: 700;
 	text-transform: uppercase;
 	color: #061b4e;
 }
 .right_prod_details .lookwz p {
-	font-size: 1.4rem;
+	font-size: 14px;
 }
 .right_prod_details .tag {
 	background: #7239ea;
 	color: #fff;
-	font-size: 1.2rem;
+	font-size:12px;
 }
 .right_prod_details .bvgxom {
 	padding: 0;
@@ -5068,7 +5066,7 @@ main {
 	padding: 5px;
 }
 .games_btn li p {
-	font-size: 1.2rem;
+	font-size:12px;
 	color: #000;
 }
 .games_btn li span {
@@ -5086,10 +5084,15 @@ main {
 
 
 
-.tournament_dp_box .profile_dp_box{ margin-top: 10%;}
-.tournament_dp_box .tournament_sponsers{ margin-top: 5%;}
-.tournament_dp_box .tournament_sponsers .prices{ font-size: 2rem; font-weight: 600;}
-.tournament_dp_box .tournament_sponsers  h5{ text-transform: uppercase; margin-right: 20px; font-size: 1.4rem;}
+.tournament_dp_box .profile_dp_box{ margin-top: 10%; align-items: center; justify-content: flex-start; padding-left: 10%;}
+.tournament_dp_box .profile_dp_box .profile_pic{ border: 0; width: 100px;}
+.tournament_dp_box .profile_dp_box .profile_pic img{ width: 100px; object-fit: contain;}
+.tournament_dp_box .top_details .name_box{ margin-right: 10px;}
+.tournament_dp_box .tournament_sponsers{ margin-top:85px;}
+.tournament_dp_box .tournament_sponsers ul{ display: flex;}
+.tournament_dp_box .tournament_sponsers ul li{ margin-right: 10px;}
+.tournament_dp_box .tournament_sponsers .prices{ font-size: 20px; font-weight: 600;}
+.tournament_dp_box .tournament_sponsers  h5{ text-transform: uppercase; margin-right: 20px; font-size: 16px;}
 .tournament_dp_box .tournament_sponsers span{ text-transform: uppercase;}
 
 .tournament_dp_box .flag_tick_flow{ display: flex;}
@@ -5103,12 +5106,21 @@ main {
     left: 0;
     top: 0;}
 
+/* -------------- Create team form --------------------- */
+
+.create_main_middle{width: 80%;margin: 150px 0 0 0;float: right;}
+.left_create_form{ float: left; width: 30%;}
+.create_tournament{ float: right; width: 68%; padding: 20px; background: #f7f7f7;}
 
  .create_tournament form {
 	float: left;
 	width: 100%;
-	margin: 50px 0;
+	margin: 50px 0; border-bottom: 1px solid #ddd; padding-bottom: 20px;
 }
+
+.create_tournament h2{ text-transform: uppercase; padding: 20px 0; color: #7239ea;}
+.create_tournament .rgtside{ float: right;}
+
 .create_tournament form label {
 	font-size: 15px;
 	text-transform: capitalize;
@@ -5116,10 +5128,10 @@ main {
 	padding-bottom: 10px;
 }
 .create_tournament form input {
-	height: 45px; font-size: 1.4rem; width: 100%;
+	height: 45px; font-size: 14px; width: 100%; border: 1px solid #ced4da;
 }
 .create_tournament form select {
-	-webkit-appearance:auto; font-size: 1.4rem; width: 100%;
+	-webkit-appearance:auto; font-size: 14px; width: 100%; border: 1px solid #ced4da; font-weight: 400;
 }
 .create_tournament form .form-group {
 	margin-bottom: 30px;
@@ -5137,7 +5149,7 @@ main {
 .create_tournament form .searchbox input[type="search"] {
 	width: 400px;
 	height: 45px;
-	font-size: 1rem;
+	font-size: 10px;
 	font-weight: 400;
 	line-height: 1.5;
 	color: #495057;
@@ -5168,15 +5180,18 @@ ul.game_search_result li {
 	margin-right: 10px;
 }
 .prize_box {
-	display: flex;
+	display: flex;     align-items: center;
 }
+
+.prize_box a{ display: inline-block; border: 1px solid #ddd; margin-right: 10px; padding: 5px;}
+
 .prize_box input {
 	width: 50%;
 	margin-left: 20px;
 }
 .btn_selection button {
 	margin-right: 10px;
-	font-size: 1.4rem;
+	font-size: 14px;
 	padding: 20px 40px;
 	border-radius: 5px;
 }
@@ -5244,7 +5259,7 @@ ul.game_search_result li {
 }
 .style_file_upload .inputfile + label {
 	width: 150px;
-	font-size: 1.2rem;
+	font-size:12px;
 	font-weight: 700;
 	text-overflow: ellipsis;
 	white-space: nowrap;
@@ -5253,7 +5268,7 @@ ul.game_search_result li {
 	overflow: hidden;
 	padding: 0.625rem 1.25rem;
 	color: #ddd;
-	border: 2px solid currentColor;
+	border: 2px solid #ced4da;
 	height: 100px;
 	display: flex;
 	align-items: center;
@@ -5270,12 +5285,12 @@ ul.game_search_result li {
 	color: #000;
 }
 .style_file_upload .inputfile:focus + label,  .style_file_upload .inputfile.has-focus + label,  .style_file_upload .inputfile.has-focus + label:hover {
-	outline: 1px dotted #ddd;
+	outline: 1px dotted #ced4da;
 	outline: -webkit-focus-ring-color auto 5px;
-	color: #ddd;
+	color: #ced4da;
 }
 
-#currency{ width: 200px;}
+#currency{ width: 200px; height: 45px;}
 /* ------------------ Result -------------------- */
 
     .results_box h1 {
@@ -5358,7 +5373,7 @@ ul.game_search_result li {
 	margin-bottom: 20px;
 }
 .group_stage .match_date a {
-	font-size: 1.4rem;
+	font-size: 14px;
 	color: #000;
 }
 .group_stage .match_date a:hover, .group_stage .match_date a.active {
@@ -5366,7 +5381,7 @@ ul.game_search_result li {
 	font-weight: 700;
 }
 .group_stage .match_date a:hover p, .group_stage .match_date a.active p {
-	font-size: 1.4rem;
+	font-size: 14px;
 	color: #000;
 }
 .match_list {
@@ -5584,7 +5599,7 @@ ul.game_search_result li {
 .report_link{display: flex;align-items: center; margin-left: 10px;}
 .report_model h3{font-size: 20px;color: #19191d;font-weight: 700;margin-bottom: 20px;text-align: center;text-transform: uppercase;border-bottom: 1px solid #ddd;padding-bottom: 10px}
 .report_model li { margin-bottom: 10px;}
-.report_model li a{ font-size: 1.4rem; color: #333;}
+.report_model li a{ font-size: 14px; color: #333;}
 
 
 
@@ -5605,7 +5620,7 @@ ul.game_search_result li {
 .profile_hover_games a span, .profile_hover_games a .fa{  background: #dfdfdf;
     display: inline-block;
     color: #000;
-    font-size: 1.5rem;
+    font-size: 15px;
     font-weight: 700;
     letter-spacing: -1px;
     padding: 14px 10px;
@@ -5659,7 +5674,7 @@ ul.game_search_result li {
 .inner_model_box{ padding: 20px !important;}
 .inner_model_box h3{font-size: 20px;color: #19191d;font-weight: 700;margin-bottom: 20px;text-align: center;text-transform: uppercase;border-bottom: 1px solid #ddd;padding-bottom: 10px}
 .inner_model_box li { margin-bottom: 10px;}
-.inner_model_box li a{ font-size: 1.4rem; color: #333;}
+.inner_model_box li a{ font-size: 14px; color: #333;}
 
 form.common_form .colm{ float: left; width: 48%; margin-bottom: 10px;}
 form.common_form .colm:nth-child(2n){ float: right;}
@@ -5671,5 +5686,5 @@ form.common_form label {
 	padding-bottom: 10px;
 }
 form.common_form input {
-	height: 45px; font-size: 1.4rem; width: 100%;
+	height: 45px; font-size: 14px; width: 100%;
 }

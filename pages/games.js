@@ -31,9 +31,7 @@ const Games = ({ user }) => {
                     {' '}
                     <span className="game_name">Dota 2 </span>{' '}
                   </div>
-                  <div className="flag">
-                    <img src="/assets/media/profile/flag.png" alt="flag" />
-                  </div>
+
                   <div className="tick">
                     <span className="active">
                       <i className="fa fa-check" aria-hidden="true"></i>
@@ -51,9 +49,17 @@ const Games = ({ user }) => {
             <div className="tournament_sponsers">
               <div className="logos">
                 <h5>OFFICIAL TOURNAMENTS</h5>
-                <img src="/assets/media/games/tournament1.png" alt="" />
-                <img src="/assets/media/games/tournament2.png" alt="" />
-                <img src="/assets/media/games/tournament3.png" alt="" />
+                <ul>
+                  <li>
+                    <img src="/assets/media/games/tournament1.png" alt="" />
+                  </li>
+                  <li>
+                    <img src="/assets/media/games/tournament2.png" alt="" />
+                  </li>
+                  <li>
+                    <img src="/assets/media/games/tournament3.png" alt="" />
+                  </li>
+                </ul>
               </div>
             </div>
             <div className="bio_box team_bio arena_bio">

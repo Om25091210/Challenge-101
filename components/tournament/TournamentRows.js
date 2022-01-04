@@ -27,6 +27,11 @@ const TournamentRows = ({ tournaments, searchResults }) => {
                   {' '}
                   <img src="/assets/media/category/game_loc.jpg" alt="" />
                 </div>
+
+                <span className="tour_logo">
+                  {' '}
+                  <img src={result.tournament.imgUrl} alt="" />
+                </span>
               </div>
               <div className="right_game_details">
                 <div className="top_game">

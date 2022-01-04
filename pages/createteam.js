@@ -14,7 +14,7 @@ const CreateTeam = ({ user }) => {
       <MetaDash />
       <SignedHeader user={user} />
       <LeftNav />
-      <div className="main_middle">
+      <div className="main_middle create_main_middle">
         <div className="white_bg create_tournament">
           <h1>Create Team</h1>
           <form>

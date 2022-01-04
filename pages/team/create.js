@@ -25,6 +25,8 @@ const CreateTeam = ({ user }) => {
   const [games, setGames] = useState([]);
   const [arenas, setArenas] = useState([]);
   const [sponsors, setSponsors] = useState([]);
+  const [step1, setStep1] = useState(true);
+  const [showbtn, setShowbtn] = useState(true);
 
   const [state, setState] = useState({
     name: '',
@@ -103,257 +105,302 @@ const CreateTeam = ({ user }) => {
     }
   }
 
+  const showstep2 = () => {
+    setStep1(false);
+    setShowbtn(false);
+  };
+
+  const showstep1 = () => {
+    setStep1(true);
+    setShowbtn(true);
+  };
+
   return (
     <>
       <MetaDash />
       <SignedHeader user={user} />
       <LeftNav />
-      <div className="main_middle">
-        <div className="white_bg create_tournament">
-          <h1>Create Team</h1>
-          <form onSubmit={handleSubmit} encType="multipart/form-data">
-            <div className="form-group">
-              <label htmlFor="exampleFormControlInput1">Team Name</label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Team name"
-                name="name"
-                onChange={handleChange}
-                value={state.name}
-              />
-            </div>
-            <div className="form-group">
-              <div className="style_file_upload">
-                <input
-                  type="file"
-                  name="imgUrl"
-                  id="imgUrl"
-                  className="inputfile"
-                  onChange={handleChange}
-                />
-                <label for="imgUrl">
-                  <span>Upload Logo</span>
-                </label>
-              </div>
-              <div className="style_file_upload cover_img">
-                <input
-                  type="file"
-                  name="coverPhoto"
-                  id="coverPhoto"
-                  className="inputfile"
-                  onChange={handleChange}
-                />
-                <label for="coverPhoto">
-                  <span>Upload Cover Photo</span>
-                </label>
-              </div>
-            </div>
+      <div className="main_middle create_main_middle">
+        <div className="white_bg">
+          <div className="left_create_form">
+            <h1>Left create team</h1>
+          </div>
+          <div className="create_tournament">
+            <h1>Create Team</h1>
+            <form onSubmit={handleSubmit} encType="multipart/form-data">
+              {step1 ? (
+                <>
+                  <h2>Step1</h2>
+                  <div className="form-group">
+                    <label htmlFor="exampleFormControlInput1">Team Name</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Team name"
+                      name="name"
+                      onChange={handleChange}
+                      value={state.name}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <div className="style_file_upload">
+                      <input
+                        type="file"
+                        name="imgUrl"
+                        id="imgUrl"
+                        className="inputfile"
+                        onChange={handleChange}
+                      />
+                      <label for="imgUrl">
+                        <span>Upload Logo</span>
+                      </label>
+                    </div>
+                    <div className="style_file_upload cover_img">
+                      <input
+                        type="file"
+                        name="coverPhoto"
+                        id="coverPhoto"
+                        className="inputfile"
+                        onChange={handleChange}
+                      />
+                      <label for="coverPhoto">
+                        <span>Upload Cover Photo</span>
+                      </label>
+                    </div>
+                  </div>
 
-            <div className="form-group">
-              <label htmlFor="exampleFormControlInput1">Year Founded</label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Year founded"
-                name="founded"
-                onChange={handleChange}
-                value={state.founded}
-              />
-            </div>
+                  <div className="form-group">
+                    <label htmlFor="exampleFormControlInput1">
+                      Year Founded
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Year founded"
+                      name="founded"
+                      onChange={handleChange}
+                      value={state.founded}
+                    />
+                  </div>
 
-            <div className="form-group">
-              <label htmlFor="exampleFormControlInput1">Games</label>
+                  <div className="form-group">
+                    <label htmlFor="exampleFormControlInput1">Games</label>
 
-              <select
-                className="form-control game_search_result"
-                multiple={true}
-                name="game"
-                value={state.game}
-                onChange={handleChange}
-              >
-                {games.map((game, idx) => (
-                  <option key={idx} value={game._id}>
-                    {' '}
-                    {game.name}{' '}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div className="form-group">
-              <label for="exampleFormControlInput1">Prizes</label>
-              <div className="prize_box">
-                {' '}
-                <a href="#">
-                  <img src="/assets/media/games/tournament1.png" />
-                </a>
-                <select
-                  name="currency"
-                  id="currency"
-                  onChange={handleChange}
-                  value={state.currency}
-                >
-                  <option value="USD">USD($)- Dollars</option>
-                  <option value="INR">INR (Rs) - Rupees</option>
-                </select>
-                <input
-                  type="number"
-                  className="form-control"
-                  placeholder=""
-                  name="prizepool"
-                  onChange={handleChange}
-                  value={state.prizepool}
-                />
-              </div>
-            </div>
+                    <select
+                      className="form-control game_search_result"
+                      multiple={true}
+                      name="game"
+                      value={state.game}
+                      onChange={handleChange}
+                    >
+                      {games.map((game, idx) => (
+                        <option key={idx} value={game._id}>
+                          {' '}
+                          {game.name}{' '}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <h2>Step2</h2>
 
-            <div className="form-group">
-              <label htmlFor="exampleFormControlTextarea1">Country</label>
-              <input
-                type="text"
-                className="form-control"
-                id=""
-                placeholder="Country"
-                name="country"
-                onChange={handleChange}
-                value={state.country}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="exampleFormControlTextarea1">Website</label>
-              <input
-                type="text"
-                className="form-control"
-                id=""
-                placeholder="Website"
-                name="website"
-                onChange={handleChange}
-                value={state.website}
-              />
-            </div>
-
-            <div className="form-group">
-              <div className="colm">
-                <label htmlFor="exampleFormControlInput1">Description</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="exampleFormControlInput1"
-                  placeholder="Description"
-                  name="description"
-                  onChange={handleChange}
-                  value={state.description}
-                />
-              </div>
-              <div className="colm">
-                <label htmlFor="exampleFormControlInput1">Achievements</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="exampleFormControlInput1"
-                  placeholder="Achievements"
-                  name="achievements"
-                  onChange={handleChange}
-                  value={state.achievements}
-                />
-              </div>
-
-              <div className="colm">
-                <label htmlFor="exampleFormControlInput1">Rigs</label>
-                <select
-                  className="form-control"
-                  multiple={true}
-                  name="rigs"
-                  value={state.rigs}
-                  onChange={handleChange}
-                >
-                  <option> Keyboard</option>
-                  <option>Mouse</option>
-                  <option>Headphone</option>
-                  <option>Monitor</option>
-                  <option>Ghaphics Card</option>
-                  <option>Processor</option>
-                </select>
-              </div>
-              <div className="colm">
-                <label htmlFor="exampleFormControlInput1">Sponsors</label>
-                <select
-                  className="form-control"
-                  name="sponsor"
-                  value={state.value}
-                  multiple={true}
-                  onChange={handleChange}
-                >
-                  {sponsors.map((spon, idx) => (
-                    <option key={idx} value={spon._id}>
+                  <div className="form-group">
+                    <label for="exampleFormControlInput1">Prizes</label>
+                    <div className="prize_box">
                       {' '}
-                      {spon.name}{' '}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div className="colm">
-                <label htmlFor="exampleFormControlInput1">Arena</label>
-                <select
-                  className="form-control"
-                  name="arena"
-                  value={state.value}
-                  multiple={true}
-                  onChange={handleChange}
-                >
-                  {arenas.map((arn, idx) => (
-                    <option key={idx} value={arn._id}>
-                      {' '}
-                      {arn.name}{' '}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div className="colm">
-                <label htmlFor="exampleFormControlInput1">Team</label>
-                <select
-                  className="form-control"
-                  name="role"
-                  value={state.value}
-                  multiple={true}
-                  onChange={handleChange}
-                >
-                  <option> Manager</option>
-                  <option>Coach</option>
-                  <option>CEO</option>
-                </select>
-              </div>
+                      <a href="#">
+                        <img src="/assets/media/games/tournament1.png" />
+                      </a>
+                      <select
+                        name="currency"
+                        id="currency"
+                        onChange={handleChange}
+                        value={state.currency}
+                      >
+                        <option value="USD">USD($)- Dollars</option>
+                        <option value="INR">INR (Rs) - Rupees</option>
+                      </select>
+                      <input
+                        type="number"
+                        className="form-control"
+                        placeholder=""
+                        name="prizepool"
+                        onChange={handleChange}
+                        value={state.prizepool}
+                      />
+                    </div>
+                  </div>
 
-              <div className="colm">
-                <label htmlFor="exampleFormControlInput1">Social Links</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Game"
-                  name="sociallink"
-                  onChange={handleChange}
-                  value={state.sociallink}
-                />
-              </div>
-              <div className="colm">
-                <label htmlFor="exampleFormControlInput1">
-                  Let your fans know{' '}
-                </label>
-                <div className="socail">
-                  {' '}
-                  <a href="#" className="fa fa-facebook"></a>
-                  <a href="#" className="fa fa-twitter"></a>
-                  <a href="#" className="fa fa-google"></a>
-                  <a href="#" className="fa fa-linkedin"></a>{' '}
-                </div>
-              </div>
-            </div>
-            <input
-              type="submit"
-              className="btn create_tourn"
-              value="Create Team"
-            />
-          </form>
+                  <div className="form-group">
+                    <label htmlFor="exampleFormControlTextarea1">Country</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id=""
+                      placeholder="Country"
+                      name="country"
+                      onChange={handleChange}
+                      value={state.country}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="exampleFormControlTextarea1">Website</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id=""
+                      placeholder="Website"
+                      name="website"
+                      onChange={handleChange}
+                      value={state.website}
+                    />
+                  </div>
+
+                  <div className="form-group">
+                    <div className="colm">
+                      <label htmlFor="exampleFormControlInput1">
+                        Description
+                      </label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="exampleFormControlInput1"
+                        placeholder="Description"
+                        name="description"
+                        onChange={handleChange}
+                        value={state.description}
+                      />
+                    </div>
+                    <div className="colm">
+                      <label htmlFor="exampleFormControlInput1">
+                        Achievements
+                      </label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="exampleFormControlInput1"
+                        placeholder="Achievements"
+                        name="achievements"
+                        onChange={handleChange}
+                        value={state.achievements}
+                      />
+                    </div>
+
+                    <div className="colm">
+                      <label htmlFor="exampleFormControlInput1">Rigs</label>
+                      <select
+                        className="form-control"
+                        multiple={true}
+                        name="rigs"
+                        value={state.rigs}
+                        onChange={handleChange}
+                      >
+                        <option> Keyboard</option>
+                        <option>Mouse</option>
+                        <option>Headphone</option>
+                        <option>Monitor</option>
+                        <option>Ghaphics Card</option>
+                        <option>Processor</option>
+                      </select>
+                    </div>
+                    <div className="colm">
+                      <label htmlFor="exampleFormControlInput1">Sponsors</label>
+                      <select
+                        className="form-control"
+                        name="sponsor"
+                        value={state.value}
+                        multiple={true}
+                        onChange={handleChange}
+                      >
+                        {sponsors.map((spon, idx) => (
+                          <option key={idx} value={spon._id}>
+                            {' '}
+                            {spon.name}{' '}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                    <div className="colm">
+                      <label htmlFor="exampleFormControlInput1">Arena</label>
+                      <select
+                        className="form-control"
+                        name="arena"
+                        value={state.value}
+                        multiple={true}
+                        onChange={handleChange}
+                      >
+                        {arenas.map((arn, idx) => (
+                          <option key={idx} value={arn._id}>
+                            {' '}
+                            {arn.name}{' '}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                    <div className="colm">
+                      <label htmlFor="exampleFormControlInput1">Team</label>
+                      <select
+                        className="form-control"
+                        name="role"
+                        value={state.value}
+                        multiple={true}
+                        onChange={handleChange}
+                      >
+                        <option> Manager</option>
+                        <option>Coach</option>
+                        <option>CEO</option>
+                      </select>
+                    </div>
+
+                    <div className="colm">
+                      <label htmlFor="exampleFormControlInput1">
+                        Social Links
+                      </label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Game"
+                        name="sociallink"
+                        onChange={handleChange}
+                        value={state.sociallink}
+                      />
+                    </div>
+                    <div className="colm">
+                      <label htmlFor="exampleFormControlInput1">
+                        Let your fans know{' '}
+                      </label>
+                      <div className="socail">
+                        {' '}
+                        <a href="#" className="fa fa-facebook"></a>
+                        <a href="#" className="fa fa-twitter"></a>
+                        <a href="#" className="fa fa-google"></a>
+                        <a href="#" className="fa fa-linkedin"></a>{' '}
+                      </div>
+                    </div>
+                  </div>
+                  <input
+                    type="submit"
+                    className="btn create_tourn"
+                    value="Create Team"
+                  />
+                </>
+              )}
+            </form>
+            <button
+              onClick={showstep1}
+              className={`btn rgtside ${showbtn ? 'd-none' : ''}`}
+            >
+              Back
+            </button>{' '}
+            <button
+              className={`btn rgtside ${showbtn ? '' : 'd-none'}`}
+              onClick={showstep2}
+            >
+              Continues
+            </button>
+          </div>
         </div>
       </div>
       <AllScript />
