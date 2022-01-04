@@ -220,7 +220,7 @@ const Dashboard = ({ user, posts, suggplayers }) => {
 
       <SignedMainContent posts={posts} />
 
-      <RightSection user={user} suggestedplayers={suggplayers}/>
+      <RightSection user={user} suggestedplayers={suggplayers} />
 
       <AllScript />
     </>
@@ -231,10 +231,8 @@ export const getServerSideProps = async (context) => {
   const response = await fetch(`${baseURL}/api/posts`);
   const data = await response.json();
   const posts = data.posts;
-  console.log('dddddddd');
 
   const { token } = parseCookies(context);
-  console.log({ token })
 
   const res = await fetch(`${baseURL}/api/profile/suggested/players`, {
     method: 'post',
@@ -245,7 +243,7 @@ export const getServerSideProps = async (context) => {
   const suggplayers = await res.json();
   console.log(suggplayers);
   return {
-    props: { posts , suggplayers }
+    props: { posts, suggplayers }
   };
 };
 

@@ -8,21 +8,21 @@ import ReplyComment from './replies/ReplyComment';
 import ReplyList from './replies/ReplyList';
 import { formatDistanceToNowStrict } from 'date-fns';
 
-const CommentList = ({ postList }) => {
+const CommentList = ({ post }) => {
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
     axios
-      .get(`${baseURL}/api/comments/${postList._id}`)
+      .get(`${baseURL}/api/comments/${post._id}`)
       .then((res) => {
         setComments(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [post._id]);
 
-  const postId = postList._id;
+  const postId = post._id;
 
   return (
     <div>
