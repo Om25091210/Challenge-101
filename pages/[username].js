@@ -43,11 +43,10 @@ export const getServerSideProps = async (context) => {
   const res = await fetch(`${baseURL}/api/all/games`);
   const games = await res.json();
 
-  const plyres = await fetch(`${baseURL}/api/pubg/player/WackyJacky101A`);
-  console.log(plyres)
-  const player = await plyres.json();
-  
-
+  //const plyres = await fetch(`${baseURL}/api/pubg/player/WackyJacky101A`);
+  //console.log(plyres)
+  //const player = await plyres.json();
+  const player = [];
   return {
     props: { Userdata, games, player }
   };

@@ -10,18 +10,20 @@ import MetaDash from '@components/MetaDash';
 import SignedHeader from '@components/SignedHeader';
 import LeftNav from '@components/LeftNav';
 import SignedMainContent from '@components/dashboard/SignedMainContent';
-import RightSection from '@components/RightSection';
+import RightSection from '@components/dashboard/RightSection';
 import AllScript from './AllScript';
+import { parseCookies } from 'nookies';
 
 const scrollToBottom = (divRef) => {
   divRef.current && divRef.current.scrollIntoView({ behaviour: 'smooth' });
 };
 
-const Dashboard = ({ user, posts }) => {
+const Dashboard = ({ user, posts, suggplayers }) => {
   const [chats, setChats] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    console.log(cookie.get('token'));
     axios
       .get(`${baseURL}/api/chats`, {
         headers: {
@@ -218,7 +220,7 @@ const Dashboard = ({ user, posts }) => {
 
       <SignedMainContent posts={posts} />
 
-      <RightSection user={user} />
+      <RightSection user={user} suggestedplayers={suggplayers}/>
 
       <AllScript />
     </>
@@ -229,9 +231,21 @@ export const getServerSideProps = async (context) => {
   const response = await fetch(`${baseURL}/api/posts`);
   const data = await response.json();
   const posts = data.posts;
+  console.log('dddddddd');
 
+  const { token } = parseCookies(context);
+  console.log({ token })
+
+  const res = await fetch(`${baseURL}/api/profile/suggested/players`, {
+    method: 'post',
+    headers: {
+      Authorization: token
+    }
+  });
+  const suggplayers = await res.json();
+  console.log(suggplayers);
   return {
-    props: { posts }
+    props: { posts , suggplayers }
   };
 };
 

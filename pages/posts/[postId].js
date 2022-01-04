@@ -2,7 +2,7 @@ import MetaDash from '@components/MetaDash';
 import SignedHeader from '@components/SignedHeader';
 import LeftNav from '@components/LeftNav';
 import AllScript from '../AllScript';
-import RightSection from '@components/RightSection';
+import RightSection from '@components/dashboard/RightSection';
 import baseURL from '@utils/baseURL';
 import ReactTooltip from 'react-tooltip';
 import LikePost from '@components/postLikes/LikePost';
