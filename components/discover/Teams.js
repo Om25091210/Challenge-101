@@ -5,9 +5,8 @@ import { useState, useEffect } from 'react';
 import baseURL from '@utils/baseURL';
 import TeamRequest from './invites/TeamRequest';
 
-const Teams = ({ user }) => {
+const Teams = ({ user, profile }) => {
   const [team, setTeam] = useState([]);
-
   useEffect(() => {
     axios.get(`${baseURL}/api/teams`).then((res) => setTeam(res.data));
   }, []);
@@ -92,7 +91,7 @@ const Teams = ({ user }) => {
                 <b>EN, HI</b>
               </span>{' '}
             </div>
-            <TeamRequest teamId={team.team} user={user} />
+            <TeamRequest team={team.team} user={user} profile={profile} />
           </div>
 
           <div className="overview_box">

@@ -5,21 +5,20 @@ import { toast } from 'react-toastify';
 
 const queryClient = new QueryClient();
 
-export default function TeamRequest({ user, teamId }) {
+export default function TeamRequest({ user, profile, team }) {
   return (
     <QueryClientProvider client={queryClient} contextSharing={true}>
-      <Team_Req user={user} teamId={teamId} />
+      <Team_Req user={user} team={team} profile={profile} />
     </QueryClientProvider>
   );
 }
 
-const Team_Req = ({ user, teamId }) => {
+const Team_Req = ({ user, profile, team }) => {
   const [request, setRequest] = useState(false);
-
-  const playerId = user.profile.player._id;
+  const playerId = profile.player._id;
 
   const isReqSent =
-    teamId.request.filter((reque) => reque.playerId === playerId).length > 0;
+    team.request.filter((reque) => reque.playerId === playerId).length > 0;
 
   const reqhandlesubmit = async (e) => {
     e.preventDefault();
@@ -34,7 +33,7 @@ const Team_Req = ({ user, teamId }) => {
 
   const sendRequest = async () => {
     const { data } = await fetch(
-      `${baseURL}/api/teams/${teamId._id}/${playerId}`,
+      `${baseURL}/api/teams/${team._id}/${playerId}`,
       {
         method: 'PUT'
       }
@@ -49,8 +48,16 @@ const Team_Req = ({ user, teamId }) => {
   });
 
   return (
-    <button onClick={reqhandlesubmit} className="join">
-      {isReqSent ? 'Request Sent' : 'REQUEST TO JOIN'}
-    </button>
+    <>
+      {isReqSent ? (
+        <button className="join" disabled>
+          REQUEST SENT
+        </button>
+      ) : (
+        <button onClick={reqhandlesubmit} className="join">
+          REQUEST TO JOIN
+        </button>
+      )}
+    </>
   );
 };

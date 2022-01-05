@@ -7,12 +7,11 @@ import TeamProfileBox from '@components/team/teamprofilebox';
 import TeamTabs from '@components/team/TeamTabs';
 import TeamProfileData from '@components/team/TeamProfileData';
 import FooterMain from '@components/FooterMain';
-import AllScript from './AllScript';
+import AllScript from 'pages/AllScript';
 import baseURL from '@utils/baseURL';
 
 const Team = ({ user, data }) => {
   console.log(data);
-
   if (data) {
     return (
       <>
@@ -38,12 +37,11 @@ const Team = ({ user, data }) => {
   }
 };
 
-export const getServerSideProps = async () => {
+export const getServerSideProps = async (context) => {
+  const { teamId } = context.params;
   try {
-    const teamId = '6191520fd802397e7abf218d';
     const response = await fetch(`${baseURL}/api/teams/${teamId}`);
     const data = await response.json();
-
     return {
       props: { data }
     };

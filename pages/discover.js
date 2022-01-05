@@ -13,7 +13,7 @@ import baseURL from '@utils/baseURL';
 import FooterMain from '@components/FooterMain';
 import AllScript from './AllScript';
 
-const Discover = ({ user, games }) => {
+const Discover = ({ user, profile, games }) => {
   return (
     <>
       <MetaDash />
@@ -94,7 +94,7 @@ const Discover = ({ user, games }) => {
           </div>
 
           <div className="prfoile_tab_data ">
-            <Teams user={user} />
+            <Teams user={user} profile={profile} />
 
             <Players />
 

@@ -13,10 +13,10 @@ const TeamAbout = ({ data }) => {
         <div className="about_team">
           <div className="about">
             <h2>OUR TEAM</h2>
-            <p>{data.team.about.description}</p>
+            <p>{data.about.description}</p>
           </div>
 
-          {data.team.about.contacts.map((itm, index) => (
+          {data.about.contacts.map((itm, index) => (
             <div className="team_mails" key={index}>
               <h3>
                 <i className="fa fa-life-ring" aria-hidden="true"></i>{' '}
