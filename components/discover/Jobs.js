@@ -126,7 +126,7 @@ const Jobs = () => {
                   <>
                     {' '}
                     {file.name} :{' '}
-                    <a href="#!" onClick={onSubmit} className="btn">
+                    <a href="#!" onClick={onSubmit} className="btn btn_width">
                       APPLY NOW{' '}
                     </a>
                   </>

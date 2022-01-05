@@ -90,7 +90,7 @@ const Filters = ({ ftype }) => {
                           id={val}
                           value={val}
                         />
-                        {val}
+                        <span>{val}</span>
                       </a>
                     </li>
                   ))}

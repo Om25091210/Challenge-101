@@ -2924,10 +2924,10 @@ article .social_bar {
 	position: relative;
 }
 .team_filter .drop_downs .button-group .dropdown-menu li a {
-	font-size:12px;
+	font-size:11px;
 	text-transform: uppercase;
 	font-weight: 400;
-	color: #000;
+	color: #000;     display: flex; align-items: center; padding: 4px 0;
 }
 .team_filter .drop_downs .button-group .dropdown-menu li input {
 	position:absolute;
@@ -2988,6 +2988,9 @@ article .social_bar {
 	justify-content: space-between;
 	align-items: center;
 }
+
+
+
 .team_row span, .team_row .logo_box {
 	display: flex;
 	align-items: center;
@@ -3152,6 +3155,9 @@ article .social_bar {
 	font-size: 20px;
 	margin-right: 10px;
 }
+
+
+.jobs_browse{ margin: 0 10px;}
 
 .drop_files{padding: 20px 20px;
     text-align: center;
@@ -3395,7 +3401,7 @@ article .social_bar {
 
 .game_pos .tour_logo {
     position: absolute;
-    z-index: 99;
+    z-index:5;
     top: 40%;
     left: 0px;
     margin: auto;
@@ -5715,6 +5721,10 @@ ul.game_search_result li {
 
 
 	/* ------------- Common Css ------------------- */
+
+
+	.btn_width{ width: 150px;}
+
 
 .common_poup_wrap .fancybox-inner { width:800px !important; }
 

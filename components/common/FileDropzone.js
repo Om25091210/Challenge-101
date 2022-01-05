@@ -18,7 +18,7 @@ const FileDropzone = ({ setFiles }) => {
   });
 
   return (
-    <div className="" {...getRootProps()}>
+    <div className="jobs_browse" {...getRootProps()}>
       <div className="drop_files">
         <input {...getInputProps()} />
         <i class="fa fa-upload" aria-hidden="true"></i>
@@ -27,7 +27,9 @@ const FileDropzone = ({ setFiles }) => {
           <span className="or">or</span>
           <span className="btn">browse</span>
         </div>
-        <p>Max 5 files. PDF or .doc files are recommended.</p>
+        <p>
+          Max 5 files. PDF or .doc <br /> files are recommended.
+        </p>
       </div>
     </div>
   );
