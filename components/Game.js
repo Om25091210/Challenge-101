@@ -99,13 +99,20 @@ const Game = ({ user }) => {
                 <h3>PUBLISHER: </h3>
                 <span>
                   {' '}
-                  <img src="/assets/media/logos/icon.png" alt="" />{' '}
-                  <b>Multiplayr</b>{' '}
-                </span>{' '}
+                  {!game.publisher || game.publisher.length === 0 ? (
+                    <p>No publisher...</p>
+                  ) : (
+                    <>
+                      <img src={game.publisher.imgUrl} />{' '}
+                      <b>{game.publisher.name}</b>
+                    </>
+                  )}
+                </span>
               </div>
+
               <div className="games">
                 <h3>PLATFORM: </h3>
-                pc, xbox{' '}
+                <p>{game.platform}</p>{' '}
               </div>
             </div>
             <div className="right_team_bio">
