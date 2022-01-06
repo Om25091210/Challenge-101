@@ -1783,6 +1783,18 @@ article .social_bar {
 	top:0; 
 }
 
+.profile_box .edit_cover_photo {
+    position: absolute;
+    top: 350px;
+    right: 10px;
+    color: #000;
+    background: #ddd;
+    border-radius: 5px;
+    padding: 9px 16px; z-index: 9;
+}
+
+.profile_box .edit_cover_photo .style_file_upload .inputfile + label{ height: auto;border: 0;width: auto;padding: 0;} 
+
 .profile_box .profile_cover_photo img{transition: 0.3s ease-in-out;}
 
 .profile_box .profile_cover_photo img:hover{ transform: scale(1.1,1.1);}

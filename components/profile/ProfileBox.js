@@ -14,6 +14,8 @@ const ProfileBox = ({ user, Userdata, games }) => {
   const [showform, setShowForm] = useState(false);
   const [showlocation, setShowlocation] = useState(false);
 
+  const [CoverPic, setCoverPic] = useState(null);
+
   const [address, setAddress] = useState({
     line1: '',
     line2: '',
@@ -59,6 +61,18 @@ const ProfileBox = ({ user, Userdata, games }) => {
   });
 
   const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formdata = new FormData();
+    formdata.append('CoverPic', CoverPic);
+    try {
+      await mutation.mutateAsync(formdata);
+      toast.success('User settings have been updated');
+    } catch (err) {
+      toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+    }
+  };
+
+  const handleCoverSubmit = async (e) => {
     e.preventDefault();
     const formdata = new FormData();
     formdata.append('profilePic', profilePic);
@@ -165,7 +179,41 @@ const ProfileBox = ({ user, Userdata, games }) => {
     <>
       <div className="profile_box">
         <div className="profile_cover_photo">
-          <img src="/assets/media/profile/cover_bg.jpg" alt="cover image" />
+          <form onSubmit={handleCoverSubmit}>
+            {/* <img src="/assets/media/profile/cover_bg.jpg" alt="cover image" /> */}
+
+            <img
+              className="rounded-full h-full w-full object-cover"
+              src={
+                CoverPic ? URL.createObjectURL(CoverPic) : SrhUser.coverPicUrl
+              }
+              alt={SrhUser.name}
+            />
+
+            {isLoggedInUser ? (
+              <span className="edit_cover_photo ">
+                <div class="style_file_upload">
+                  <input
+                    type="file"
+                    name="coverPhoto"
+                    id="coverPhoto"
+                    class="inputfile"
+                    onChange={(e) => {
+                      setCoverPic(e.target.files[0]);
+                      handleCoverSubmit(e);
+                    }}
+                  />
+                  <label for="coverPhoto">
+                    <span>
+                      {' '}
+                      <i class="fa fa-camera" aria-hidden="true"></i> Upload
+                      Cover Photo
+                    </span>
+                  </label>
+                </div>
+              </span>
+            ) : null}
+          </form>
         </div>
 
         <div className="profile_dp_box">
