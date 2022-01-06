@@ -1,8 +1,18 @@
 import baseURL from '../../utils/baseURL';
-import { useMutation } from 'react-query';
+import { QueryClient, QueryClientProvider, useMutation } from 'react-query';
 import cookie from 'js-cookie';
 import { toast } from 'react-toastify';
 import axios from 'axios';
+
+const queryClient = new QueryClient();
+
+export default function DeleteComment({ post, comment, user }) {
+  return (
+    <QueryClientProvider client={queryClient} contextSharing={true}>
+      <Delete_Comment post={post} comment={comment} user={user} />
+    </QueryClientProvider>
+  );
+}
 
 function refreshPage() {
   setTimeout(function () {
@@ -10,9 +20,9 @@ function refreshPage() {
   }, 5000);
 }
 
-const Delete_Comment = ({ postId, commentId }) => {
+const Delete_Comment = ({ post, comment, user }) => {
   const DeleteComment = async () => {
-    await axios.delete(`${baseURL}/api/comments/${postId}/${comment._id}`, {
+    await axios.delete(`${baseURL}/api/comments/${post._id}/${comment._id}`, {
       headers: {
         Authorization: cookie.get('token')
       }
@@ -36,9 +46,11 @@ const Delete_Comment = ({ postId, commentId }) => {
 
   return (
     <div className="delete_comment">
-      <button onClick={deletehandlesubmit}>Delete</button>
+      {comment.user._id === user._id ? (
+        <button onClick={deletehandlesubmit}>Delete</button>
+      ) : (
+        []
+      )}
     </div>
   );
 };
-
-export default Delete_Comment;

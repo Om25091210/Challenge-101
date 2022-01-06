@@ -5,12 +5,12 @@ import DeleteReply from './DeleteReply';
 import LikeReply from './LikeReply';
 import ReportsComments from '../report';
 
-const ReplyList = ({ postId, commentId }) => {
+const ReplyList = ({ post, comment, user }) => {
   const [replies, setReplies] = useState([]);
 
   useEffect(() => {
     axios
-      .get(`${baseURL}/api/comments/${postId}/${commentId}`)
+      .get(`${baseURL}/api/comments/${post._id}/${comment._id}`)
       .then((res) => {
         setReplies(res.data);
       })
@@ -44,14 +44,15 @@ const ReplyList = ({ postId, commentId }) => {
               </div>
               <div className="social_bar d-flex">
                 <LikeReply
-                  postId={postId}
-                  commentId={commentId}
+                  postId={post._id}
+                  commentId={comment._id}
                   reply={reply}
                 />
                 <DeleteReply
-                  postId={postId}
-                  commentId={commentId}
+                  post={post}
+                  comment={comment}
                   replyId={reply._id}
+                  user={user}
                 />
               </div>
             </article>

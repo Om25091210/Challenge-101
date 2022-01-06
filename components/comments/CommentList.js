@@ -8,7 +8,7 @@ import ReplyComment from './replies/ReplyComment';
 import ReplyList from './replies/ReplyList';
 import { formatDistanceToNowStrict } from 'date-fns';
 
-const CommentList = ({ post }) => {
+const CommentList = ({ post, user }) => {
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const CommentList = ({ post }) => {
       .catch((err) => {
         console.log(err);
       });
-  }, [post._id]);
+  }, []);
 
   const postId = post._id;
 
@@ -53,11 +53,11 @@ const CommentList = ({ post }) => {
                 </div>
                 <h3>{comment.text}</h3>
                 <div className="first_reply">
-                  <DeleteComment postId={postId} comment={comment} />
-                  <ReplyComment postId={postId} commentId={comment._id} />
+                  <DeleteComment post={post} comment={comment} user={user} />
+                  <ReplyComment post={post} comment={comment} />
                 </div>
 
-                <ReplyList postId={postId} commentId={comment._id} />
+                <ReplyList post={post} comment={comment} user={user} />
               </div>
             ))}
           </div>

@@ -5,7 +5,7 @@ import { useMutation } from 'react-query';
 import cookie from 'js-cookie';
 import { toast } from 'react-toastify';
 
-const Reply_Comment = ({ postId, commentId }) => {
+const Reply_Comment = ({ post, comment }) => {
   const [reply, setReply] = useState('');
   const [replyModal, setReplyModal] = useState(false);
 
@@ -20,16 +20,19 @@ const Reply_Comment = ({ postId, commentId }) => {
   };
 
   const addreply = async () => {
-    const res = await fetch(`${baseURL}/api/comments/${postId}/${commentId}`, {
-      method: 'POST',
-      body: JSON.stringify({
-        reply
-      }),
-      headers: {
-        'Content-type': 'application/json',
-        Authorization: cookie.get('token')
+    const res = await fetch(
+      `${baseURL}/api/comments/${post._id}/${comment._id}`,
+      {
+        method: 'POST',
+        body: JSON.stringify({
+          reply
+        }),
+        headers: {
+          'Content-type': 'application/json',
+          Authorization: cookie.get('token')
+        }
       }
-    });
+    );
     return res.json();
   };
 

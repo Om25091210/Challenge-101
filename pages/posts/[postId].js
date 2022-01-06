@@ -107,7 +107,7 @@ const PostId = ({ user, profile, post }) => {
                       </div>
                     </div>
 
-                    <CommentForm post={post} />
+                    <CommentForm post={post} user={user} />
                   </div>
                 </div>
               </div>

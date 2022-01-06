@@ -11,7 +11,7 @@ import LikePost from '../postLikes/LikePost';
 import ReactTooltip from 'react-tooltip';
 import Moment from 'moment';
 
-const SignedMainContent = ({ posts }) => {
+const SignedMainContent = ({ posts, user }) => {
   const [description, setDescription] = useState('');
   const [image, setImage] = useState(null);
   const [followingPosts, setFollowingPosts] = useState([]);
@@ -274,7 +274,7 @@ const SignedMainContent = ({ posts }) => {
                       </div>
                     </div>
 
-                    <CommentForm post={post} />
+                    <CommentForm post={post} user={user} />
                   </div>
                 </div>
               ))}
@@ -392,7 +392,7 @@ const SignedMainContent = ({ posts }) => {
                       </div>
                     </div>
 
-                    <CommentForm post={post} />
+                    <CommentForm post={post} user={user} />
                   </div>
                 </div>
               </div>

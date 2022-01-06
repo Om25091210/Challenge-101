@@ -1,12 +1,10 @@
 import { useState } from 'react';
-import { useRouter } from 'next/router';
-import axios from 'axios';
 import baseURL from '@utils/baseURL';
 import { useMutation } from 'react-query';
 import cookie from 'js-cookie';
 import CommentList from '../comments/CommentList';
 
-const CommentForm = ({ post }) => {
+const CommentForm = ({ post, user }) => {
   const [comment, setComment] = useState([]);
 
   const onChange = (e) => {
@@ -17,8 +15,6 @@ const CommentForm = ({ post }) => {
     mutate({ comment });
     setComment('');
   };
-
-  //console.log(postId)
 
   const addingComment = async () => {
     const res = await fetch(`${baseURL}/api/comments/${post._id}`, {
@@ -66,7 +62,7 @@ const CommentForm = ({ post }) => {
             <img src="/assets/media/dash/send.png" alt="" />
           </button>
         </form>
-        <CommentList post={post} />
+        <CommentList post={post} user={user} />
       </div>
     );
   } else {
