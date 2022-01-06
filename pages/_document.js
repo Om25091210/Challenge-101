@@ -76,6 +76,7 @@ export default class MyDocument extends Document {
           <script src="/assets/js/dash/slick.js" />
           <script src="/assets/js/dash/jquery.fancybox.js" />
           <script src="/assets/js/dash/jquery.fancybox-media.js" />
+          <script src="/assets/js/dash/pixelarity-faceless.js" />
         </Head>
         <body>
           {themeCss ? (

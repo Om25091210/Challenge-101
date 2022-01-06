@@ -167,6 +167,8 @@ const ProfileBox = ({ user, Userdata, games }) => {
     });
   }, []);
 
+  useEffect(() => {}, []);
+
   const mscroll = () => {
     setTimeout(() => {
       $('.fancybox-inner').mCustomScrollbar({
@@ -184,6 +186,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
 
             <img
               className="rounded-full h-full w-full object-cover"
+              id="result"
               src={
                 CoverPic ? URL.createObjectURL(CoverPic) : SrhUser.coverPicUrl
               }
