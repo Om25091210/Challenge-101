@@ -9,17 +9,14 @@ const ReplyList = ({ postId, commentId }) => {
   const [replies, setReplies] = useState([]);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      axios
-        .get(`${baseURL}/api/comments/${postId}/${commentId}`)
-        .then((res) => {
-          setReplies(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }, 1000);
-    return () => clearInterval(interval);
+    axios
+      .get(`${baseURL}/api/comments/${postId}/${commentId}`)
+      .then((res) => {
+        setReplies(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   return (
