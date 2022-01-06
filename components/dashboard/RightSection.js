@@ -56,13 +56,14 @@ const RightSection = ({ user, profile, suggestedplayers }) => {
             ) : (
               suggestedplayers.map((item, index) =>
                 item.player.map((plyr, index) => (
-                  <li className="disable">
-                    <a href="#">
+                  <li className="">
+                  <Link href={`/user/${item.user.username}`}>
+                    <a>
                       <div className="img_thumb">
                         <img
                           src={
-                            plyr.imgUrl
-                              ? plyr.imgUrl
+                            item.user.profilePicUrl
+                              ? item.user.profilePicUrl
                               : '/assets/media/dash/user.jpg'
                           }
                           alt=""
@@ -72,6 +73,7 @@ const RightSection = ({ user, profile, suggestedplayers }) => {
                         {plyr.nickName ? plyr.nickName : 'SECRET'}
                       </span>
                     </a>
+                    </Link>
                   </li>
                 ))
               )

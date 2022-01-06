@@ -504,7 +504,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                         }`}
                         key={index}
                       >
-                        <a href="javascript:void(0);" rel={`item${index}`}>
+                        <a href="#!" rel={`item${index}`}>
                           <span key={index}>
                             <img
                               src={item.gameId.imgUrl}

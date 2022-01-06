@@ -54,7 +54,7 @@ const ProfileData = ({ user, Userdata, player }) => {
       <div className="prfoile_tab_data">
         <div className="tab" id="feed">
           <div className="profile_left_post">
-            <div>
+            <div className="">
               {Userdata.posts.length !== 0 &&
                 Userdata.posts.map((post, index) => (
                   <div className="post">

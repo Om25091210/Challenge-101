@@ -159,7 +159,7 @@ const SignedHeader = ({
               <div className="drop_down_bg profile_drop_down">
                 <ul>
                   <li>
-                    <Link href={`/${user.username}`}>
+                    <Link href={`/user/${user.username}`}>
                       <a>
                         <i className="fa fa-user" aria-hidden="true"></i>{' '}
                         Profile

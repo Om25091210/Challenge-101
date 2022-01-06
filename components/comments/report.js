@@ -15,7 +15,7 @@ const ReportsComments = () => {
   return (
     <>
       <a href="javascript:void(0)" className="report_link model_show_btn">
-        <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+        <i className="fa fa-ellipsis-h" aria-hidden="true"></i>
       </a>
 
       <div className="common_model_box">

@@ -918,6 +918,9 @@ const Game = ({ user }) => {
             <h2>video</h2>
           </div>
           <div className="tab hide" id="teams">
+
+
+          
             <ul className="communities teams">
               <li>
                 <div className="imgs">
