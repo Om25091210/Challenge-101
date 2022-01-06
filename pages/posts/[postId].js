@@ -9,7 +9,7 @@ import LikePost from '@components/postLikes/LikePost';
 import CustomPost from '@components/dashboard/CustomPost';
 import CommentForm from '@components/comments/CommentForm';
 
-const PostId = ({ user , post }) => {
+const PostId = ({ user, profile, post }) => {
   return (
     <>
       <MetaDash />
@@ -17,11 +17,10 @@ const PostId = ({ user , post }) => {
       <LeftNav />
 
       <div>
- <div className="main_middle">
-        <div className="tab" id="Discover">
-          <div className="for-you">
-            <div className="post">
-              
+        <div className="main_middle">
+          <div className="tab" id="Discover">
+            <div className="for-you">
+              <div className="post">
                 <div key={post._id}>
                   <div className="heads">
                     <div className="user">
@@ -106,26 +105,21 @@ const PostId = ({ user , post }) => {
                       </div>
                     </div>
 
-                    <CommentForm postId={post} />
+                    <CommentForm post={post} />
                   </div>
                 </div>
-              
+              </div>
             </div>
           </div>
         </div>
-
-        </div>
-
       </div>
 
-      <RightSection user={user} />
-
+      <RightSection user={user} profile={profile} />
 
       <AllScript />
     </>
   );
 };
-
 
 export const getServerSideProps = async (context) => {
   const { postId } = context.params;
@@ -137,6 +131,5 @@ export const getServerSideProps = async (context) => {
     props: { post }
   };
 };
-
 
 export default PostId;

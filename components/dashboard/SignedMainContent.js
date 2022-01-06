@@ -392,7 +392,7 @@ const SignedMainContent = ({ posts }) => {
                       </div>
                     </div>
 
-                    <CommentForm postId={post} />
+                    <CommentForm post={post} />
                   </div>
                 </div>
               </div>
