@@ -469,7 +469,7 @@ ul.top_menu li.profile a {
 }
 .write_post .team_slider {
 	width:70px;
-	margin-right:30px; position: relative;
+	margin-right:0; position: relative;
 }
 .write_post .team_slider li img {
 	width: 40px;
@@ -1332,7 +1332,7 @@ article .social_bar {
 	width:47px;
 	height:47px;
 	border-radius:5px;
-	overflow:hidden;
+	overflow:hidden; display: inline-block;
 }
 .suggested_player li .img_thumb img {
 	width:100%;

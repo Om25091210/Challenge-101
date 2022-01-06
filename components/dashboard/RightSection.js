@@ -49,10 +49,10 @@ const RightSection = ({ user, profile, suggestedplayers }) => {
         <div className="white_box">
           <ul>
             {!suggestedplayers || suggestedplayers.length === 0 ? (
-              <li>
+              <p>
                 No suggested players identified by our system. Please update
                 your profile parameters.
-              </li>
+              </p>
             ) : (
               suggestedplayers.map((item, index) =>
                 item.player.map((plyr, index) => (

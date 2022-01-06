@@ -26,7 +26,9 @@ const PostId = ({ user, profile, post }) => {
                     <div className="user">
                       <img src={post.user.profilePicUrl} alt="" />
                     </div>
-                    <h4>{post.description}</h4>
+                    <div className="user_name_disc">
+                      <h4>{post.description}</h4>
+                    </div>
                   </div>
                   <div className="left_details">
                     {' '}
