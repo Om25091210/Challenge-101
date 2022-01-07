@@ -1790,8 +1790,14 @@ article .social_bar {
     color: #000;
     background: #ddd;
     border-radius: 5px;
-    padding: 9px 16px; z-index: 9;
+   z-index: 9;
 }
+
+.profile_box .edit_cover_photo .custom-file-input{ width: 0; height: 0;}
+
+.profile_box .edit_cover_photo span{  padding: 8px 16px;
+    display: block;
+    cursor: pointer;}
 
 .profile_box .edit_cover_photo .style_file_upload .inputfile + label{ height: auto;border: 0;width: auto;padding: 0;} 
 

@@ -3,10 +3,10 @@
 	position: fixed;
 	height: 100%;
 	width: 100%;
-	background-color: #2d2d3e;
+	background-color: rgba(0,0,0,0.7);
 	top:0px;
 	left: 0px;
-	z-index: 11;
+	z-index: 15;
 	opacity: 0;
 	-webkit-user-select: none;
 	-khtml-user-select: none;
@@ -20,14 +20,14 @@
 	width: 70px;
 	position: absolute;
 	border-radius: 20px;
-	background-color:#2ecc71;
+	background-color:#7239ea;
 	left: 50%;
-	margin-left: -75px;	
-	bottom: 33px;
+	top:33px;
+	margin-left: -70px;
 	cursor: pointer;
 	text-align: center;
 	line-height: 37px;
-	color: rgba(10,10,10,0.55);
+	color: #fff;
 	font-family: helvetica neue, segoe ui, roboto, sans-serif;
 	font-weight: 700;
 	text-transform: uppercase;
@@ -35,9 +35,11 @@
 }
 
 .pixelarity-img-edit-cancel{
-	margin-left: 16px;
 	background-color: #ee5155;
+	margin-left: 16px;
 }
+
+
 
 .pixelarity-img-edit-can{
 	position: fixed;
@@ -56,21 +58,22 @@
 .pixelarity-img-edit-select{
 	position: fixed;
 	background-color: rgba(10,10,10,0.4);
-	box-shadow: inset 0px 0px 0px 2px rgba(255, 255, 255, 1);
+	 border:2px dashed #7239ea;
+	/* box-shadow: inset 0px 0px 0px 2px rgba(255, 255, 255, 1); */
 }
 
 .pixelarity-img-edit-select-resize{
 	position: absolute;
 	height: 17px;
 	width: 17px;
-	background-color: rgba(255,255,255,1);
+	background-color: #7239ea;
 	right: 2px;
 	bottom: 2px;
 	cursor: nwse-resize;
 }
 
 #pixelarity-side-opt-holder, #pixelarity-draw-opt-color-cont, #pixelarity-filter-opt-cont{
-	height: 210px;
+	height: 138px;
 	width: 70px;
 	color: #fff;
 	position: absolute;
@@ -80,7 +83,7 @@
 	margin: auto;
 	border-top-left-radius: 6px;
 	border-bottom-left-radius: 6px;
-	background-color: rgba(10,10,10,0.15);
+	background-color: rgba(10,10,10,1);
 	color: #dadada;
 }
 
@@ -203,3 +206,8 @@
 
 .pixelarity-active-filter-opt{
 	background-color: rgba(10,10,10,0.32);
+
+}
+
+
+#pixelarity-side-opt-draw{ display: none;}

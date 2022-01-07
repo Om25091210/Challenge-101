@@ -73,14 +73,20 @@ const ProfileBox = ({ user, Userdata, games }) => {
   };
 
   const handleCoverSubmit = async (e) => {
-    e.preventDefault();
-    const formdata = new FormData();
-    formdata.append('profilePic', profilePic);
-    try {
-      await mutation.mutateAsync(formdata);
-      toast.success('User settings have been updated');
-    } catch (err) {
-      toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+    var img = e.target.files[0];
+
+    if (
+      !pixelarity.open(
+        img,
+        false,
+        function (res) {
+          $('#result').attr('src', res);
+        },
+        'jpg',
+        1
+      )
+    ) {
+      alert('Whoops! That is not an image!');
     }
   };
 
@@ -200,7 +206,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                     type="file"
                     name="coverPhoto"
                     id="coverPhoto"
-                    class="inputfile"
+                    class="custom-file-input"
                     onChange={(e) => {
                       setCoverPic(e.target.files[0]);
                       handleCoverSubmit(e);
