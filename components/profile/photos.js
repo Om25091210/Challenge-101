@@ -64,7 +64,7 @@ const Photos = () => {
         </div>
         <div className="bottom_data">
           <span className="img_icon">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
+            <i className="fa fa-picture-o" aria-hidden="true"></i>
           </span>
           <h2>
             New Xenowatch Characters

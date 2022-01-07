@@ -139,7 +139,7 @@ const SignedMainContent = ({ posts, user }) => {
                 accept="image/*"
                 multiple
               />
-              <label for="files">
+              <label htmlFor="files">
                 <span>
                   <i className="fa fa-picture-o" aria-hidden="true"></i>
                 </span>
@@ -262,7 +262,7 @@ const SignedMainContent = ({ posts, user }) => {
                           <span>Share</span>{' '}
                         </a>
                         <div className="three_dots">
-                          <a href="javascript:void(0)">
+                          <a href="#!">
                             {' '}
                             <i
                               className="fa fa-ellipsis-v"
@@ -317,7 +317,7 @@ const SignedMainContent = ({ posts, user }) => {
                   <div className="left_details">
                     {' '}
                     <a
-                      href="javascript:void(0)"
+                      href="#!"
                       data-tip={post.likes.map((like) => {
                         return like.user.username;
                       })}
@@ -380,7 +380,7 @@ const SignedMainContent = ({ posts, user }) => {
                           <span>Share</span>{' '}
                         </a>
                         <div className="three_dots">
-                          <a href="javascript:void(0)">
+                          <a href="#!">
                             {' '}
                             <i
                               className="fa fa-ellipsis-v"
