@@ -1,13 +1,83 @@
-import PropTypes from 'prop-types';
-import Head from 'next/head';
-import { useEffect, useState } from 'react';
 
-const Photos = () => {
+import { useEffect, useState } from 'react';
+import { useMutation } from 'react-query';
+import { toast } from 'react-toastify';
+import cookie from 'js-cookie';
+import axios from 'axios';
+import baseURL from '@utils/baseURL';
+import ImageDropzone from '@components/common/ImageDropzone';
+
+const Photos = ({ Userdata }) => {
+
+  const [images, setImages] = useState([]);
+
+  const photomutation = useMutation(async (formdata) => {
+    await axios.put(`${baseURL}/api/uploads/uploadImages`, formdata, {
+      headers: {
+        Authorization: cookie.get('token'),
+        'Content-Type': 'multipart/form-data'
+      }
+    });
+  });
+
+  const handlePhotosSubmit = async (e) => {
+    e.preventDefault();
+    const formdata = new FormData();
+    for (const key of Object.keys(images)) {
+      formdata.append('images', images[key]);
+    }
+
+    try {
+      await photomutation.mutateAsync(formdata);
+
+      toast.success('User images have been updated');
+    } catch (err) {
+      toast.error(err.response?.data?.msg || 'Please upload your images again');
+    }
+  };
+
+
+
   return (
     <div className="gallery_box">
+
+    <form onSubmit={handlePhotosSubmit}>
+
+      <ImageDropzone setImages={setImages} />
+
       <div className="imagess_box">
         <div className="imagess">
+
+        {images.length > 0 ? (
+
+        <a href="#!" onClick={handlePhotosSubmit} className="btn btn_width">
+          UPLOAD NOW{' '}
+        </a>
+         ) : ''  }
+
           <ul>
+
+           <li>
+              {Userdata.profile.imagesgallery.map((imgg, idx) => (
+
+               
+                  <a
+                    className="fancybox"
+                    href={imgg.path}
+                    data-fancybox-group="gallery"
+                    title="<p> test </p>"
+                  >
+                    <img src={imgg.path} alt={imgg.originalname} />
+                  </a>
+
+               
+                ))
+
+              }
+
+               </li>
+
+
             <li>
               <a
                 className="fancybox"
@@ -59,6 +129,7 @@ const Photos = () => {
                 <img src="/assets/media/gallery/6.jpg" alt="" />
               </a>
             </li>
+
           </ul>
           <span className="total_images">+10</span>
         </div>
@@ -72,6 +143,9 @@ const Photos = () => {
           </h2>
         </div>
       </div>
+
+    </form>
+
     </div>
   );
 };

@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types';
-import Head from 'next/head';
 import GameDetails from './gamedetails';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -13,39 +11,15 @@ import { useMutation } from 'react-query';
 import { toast } from 'react-toastify';
 import cookie from 'js-cookie';
 import { Video } from 'cloudinary-react';
-import Photos from './photos';
+import Photos from './Photos';
+import Videos from './Videos';
 
 const ProfileData = ({ user, Userdata, player }) => {
   const [profile, setProfile] = useState(Userdata.profile);
 
-  const [uploadedImages, setUploadedImages] = useState(null);
-
-  const [profilePic, setProfilePic] = useState(null);
-
-  const mutation = useMutation(async (formdata) => {
-    await axios.put(`${baseURL}/api/uploads/uploadVideos`, formdata, {
-      headers: {
-        Authorization: cookie.get('token'),
-        'Content-Type': 'multipart/form-data'
-      }
-    });
-  });
 
   useEffect(() => {}, [profile]);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const formdata = new FormData();
-    formdata.append('uploadedImages', uploadedImages);
-
-    try {
-      await mutation.mutateAsync(formdata);
-
-      toast.success('User videos have been updated');
-    } catch (err) {
-      toast.error(err.response?.data?.msg || 'Please upload your videos again');
-    }
-  };
 
   useEffect(() => {}, []);
 
@@ -538,88 +512,10 @@ const ProfileData = ({ user, Userdata, player }) => {
           steams steams steams steams{' '}
         </div>
         <div className="tab hide" id="photos">
-          <Photos />
+          <Photos Userdata={Userdata}/>
         </div>
         <div className="tab hide" id="video">
-          <div className="video_box">
-            <form onSubmit={handleSubmit}>
-              <input
-                type="file"
-                name="uploadedImages"
-                onChange={(e) => {
-                  setUploadedImages(e.target.files[0]);
-                  handleSubmit(e);
-                }}
-                multiple
-              />
-            </form>
-
-            <ul>
-              Userdata
-              {Userdata.profile.videosgallery.map((vid, idx) => (
-                <li key={idx}>
-                  {' '}
-                  <div className="video">
-                    {' '}
-                    <Video
-                      cloudName="dch502zpg"
-                      controls
-                      fallback="Cannot display video"
-                      publicId={vid.path}
-                    ></Video>
-                  </div>
-                  <div className="bottom_data">
-                    {' '}
-                    <a href="#">The Team</a>{' '}
-                    <a href="#" className="yellow">
-                      Lq Heroes
-                    </a>
-                    <h2>
-                      {vid.originalname} : Destroy Played the first Mission of
-                      the Mercenaries Update With Kelly And Saki
-                    </h2>
-                    <span className="date">August 27th,2018</span>{' '}
-                    <span className="views">
-                      <i className="fa fa-eye" aria-hidden="true"></i> 2223
-                    </span>{' '}
-                    <span className="likes">
-                      <i className="fa fa-heart" aria-hidden="true"></i>453
-                    </span>{' '}
-                    <span className="comments">
-                      <i className="fa fa-comment" aria-hidden="true"></i>18
-                    </span>{' '}
-                  </div>
-                </li>
-              ))}
-              <li style={{ display: 'none' }}>
-                <div className="video">
-                  {' '}
-                  <img src="/assets/media/video/thumb1.jpg" alt="" />{' '}
-                </div>
-                <div className="bottom_data">
-                  {' '}
-                  <a href="#">The Team</a>{' '}
-                  <a href="#" className="yellow">
-                    Lq Heroes
-                  </a>
-                  <h2>
-                    Destroy Played the first Mission of the Mercenaries Update
-                    With Kelly And Saki
-                  </h2>
-                  <span className="date">August 27th,2018</span>{' '}
-                  <span className="views">
-                    <i className="fa fa-eye" aria-hidden="true"></i> 2223
-                  </span>{' '}
-                  <span className="likes">
-                    <i className="fa fa-heart" aria-hidden="true"></i>453
-                  </span>{' '}
-                  <span className="comments">
-                    <i className="fa fa-comment" aria-hidden="true"></i>18
-                  </span>{' '}
-                </div>
-              </li>
-            </ul>
-          </div>
+          <Videos Userdata={Userdata}/>
         </div>
         <div className="tab hide" id="sponsors">
           <div className="sponsers_box">
