@@ -10,7 +10,6 @@ import Moment from 'moment';
 import { useMutation } from 'react-query';
 import { toast } from 'react-toastify';
 import cookie from 'js-cookie';
-import { Video } from 'cloudinary-react';
 import Photos from './Photos';
 import Videos from './Videos';
 
