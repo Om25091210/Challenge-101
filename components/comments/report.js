@@ -14,12 +14,12 @@ const ReportsComments = () => {
 
   return (
     <>
-      <a href="javascript:void(0)" className="report_link model_show_btn">
+      <a href="#!" className="report_link model_show_btn">
         <i className="fa fa-ellipsis-h" aria-hidden="true"></i>
       </a>
 
       <div className="common_model_box">
-        <a href="javascript:void(0)" className="model_close">
+        <a href="#!" className="model_close">
           X
         </a>
 

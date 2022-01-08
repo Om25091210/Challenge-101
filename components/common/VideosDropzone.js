@@ -1,19 +1,19 @@
 import { useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 
-const ImageDropzone = ({ setImages }) => {
+const VideosDropzone = ({ setVideos }) => {
   const onDrop = useCallback((acceptedFiles) => {
-    setImages(acceptedFiles);
+    setVideos(acceptedFiles);
   }, []);
 
   const onDropRejected = () => {
-    alert('Please drop upto 5 image files only!');
+    alert('Please drop upto 3 video files only!');
   };
 
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,
-    maxFiles: 5,
-    accept: 'image/*',
+    maxFiles: 3,
+    accept: '.mp4,.mkv,.avi, .m4v',
     onDropRejected
   });
 
@@ -29,7 +29,7 @@ const ImageDropzone = ({ setImages }) => {
           <span className="btn">browse</span>
         </div>
         <p>
-          Max 5 images. 16:9 aspect ratio recommended.
+          Max 3 videos. 16:9 aspect ratio recommended.
         </p>
       </div>
     </div>
@@ -37,4 +37,4 @@ const ImageDropzone = ({ setImages }) => {
   );
 };
 
-export default ImageDropzone;
+export default VideosDropzone;

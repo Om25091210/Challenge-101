@@ -55,8 +55,8 @@ const RightSection = ({ user, profile, suggestedplayers }) => {
               </p>
             ) : (
               suggestedplayers.map((item, index) =>
-                item.player.map((plyr, index) => (
-                  <li className="">
+                item.player.map((plyr, idx) => (
+                  <li className="" key={idx}>
                   <Link href={`/user/${item.user.username}`}>
                     <a>
                       <div className="img_thumb">
@@ -88,8 +88,10 @@ const RightSection = ({ user, profile, suggestedplayers }) => {
         </a>
         <div className="white_box">
           <ul className="team">
-            {teamData.team.map((tm) => (
-              <li>
+
+            { teamData ?           
+             teamData.team.map((tm,idx) => (
+              <li key={idx}>
                 <Link href={`/team/${tm.teamId._id}`}>
                   <div>
                     <img src={tm.teamId.imgUrl} alt={tm.teamId.name} />
@@ -97,7 +99,9 @@ const RightSection = ({ user, profile, suggestedplayers }) => {
                   </div>
                 </Link>
               </li>
-            ))}
+            )) : (<p> No teams defined</p>)
+
+          }
             <li>
               <a href="/discover">+</a>
             </li>

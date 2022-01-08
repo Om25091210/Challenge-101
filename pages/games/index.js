@@ -29,7 +29,7 @@ const Games = ({ user, games }) => {
                       <p>{games.description}</p>
                       <span>
                         <i
-                          class="fa fa-long-arrow-right"
+                          className="fa fa-long-arrow-right"
                           aria-hidden="true"
                         ></i>
                       </span>

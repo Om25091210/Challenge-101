@@ -211,30 +211,30 @@ const TeamProfileData = ({ user, data }) => {
                 </li>
                 <li>
                   <span className="nm">Roles: </span>{' '}
-                  <span class="task">Assault/Sniper</span>{' '}
+                  <span className="task">Assault/Sniper</span>{' '}
                 </li>
                 <li>
-                  <span className="nm">Mic:</span> <span class="task"> On</span>
+                  <span className="nm">Mic:</span> <span className="task"> On</span>
                 </li>
                 <li>
                   <span className="nm">Platform:</span>{' '}
-                  <span class="task"> PC</span>
+                  <span className="task"> PC</span>
                 </li>
                 <li>
                   <span className="nm">Language:</span>{' '}
-                  <span class="task"> ENG, RU, HINDI</span>
+                  <span className="task"> ENG, RU, HINDI</span>
                 </li>
                 <li>
                   <span className="nm">Win rate/KDA:</span>{' '}
-                  <span class="task"> 67% / 2.9 </span>
+                  <span className="task"> 67% / 2.9 </span>
                 </li>
                 <li>
                   <span className="nm">MMR:</span>{' '}
-                  <span class="task"> 3211 </span>
+                  <span className="task"> 3211 </span>
                 </li>
                 <li>
                   <span className="nm">Availablilty:</span>{' '}
-                  <span class="task"> 4 hours per day 7 days a week </span>
+                  <span className="task"> 4 hours per day 7 days a week </span>
                 </li>
               </ul>
               <div className="chart_box">
