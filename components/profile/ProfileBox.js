@@ -14,7 +14,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
   const [showform, setShowForm] = useState(false);
   const [showlocation, setShowlocation] = useState(false);
 
-  const [CoverPic, setCoverPic] = useState(null);
+  const [coverPic, setCoverPic] = useState(null);
 
   const [address, setAddress] = useState({
     line1: '',
@@ -51,8 +51,10 @@ const ProfileBox = ({ user, Userdata, games }) => {
     .filter((x) => x.user === user._id)
     .map((x) => x.user);
 
+  console.log(cookie.get('token'));
+
   const mutation = useMutation(async (formdata) => {
-    await axios.put(`${baseURL}/api/auth`, formdata, {
+    await axios.put(`${baseURL}/api/auth/profilePic`, formdata, {
       headers: {
         Authorization: cookie.get('token'),
         'Content-Type': 'multipart/form-data'
@@ -63,7 +65,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formdata = new FormData();
-    formdata.append('CoverPic', CoverPic);
+    formdata.append('profilePic', profilePic);
     try {
       await mutation.mutateAsync(formdata);
       toast.success('User settings have been updated');
@@ -87,6 +89,22 @@ const ProfileBox = ({ user, Userdata, games }) => {
       )
     ) {
       alert('Whoops! That is not an image!');
+    }
+
+    e.preventDefault();
+    const formdata = new FormData();
+    formdata.append('coverPic', coverPic);
+    try {
+      await axios.put(`${baseURL}/api/auth/coverPic`, formdata, {
+        headers: {
+          Authorization: cookie.get('token'),
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+
+      toast.success('User settings have been updated');
+    } catch (err) {
+      toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }
   };
 
@@ -194,28 +212,28 @@ const ProfileBox = ({ user, Userdata, games }) => {
               className="rounded-full h-full w-full object-cover"
               id="result"
               src={
-                CoverPic ? URL.createObjectURL(CoverPic) : SrhUser.coverPicUrl
+                coverPic ? URL.createObjectURL(coverPic) : SrhUser.coverPicUrl
               }
               alt={SrhUser.name}
             />
 
             {isLoggedInUser ? (
               <span className="edit_cover_photo ">
-                <div class="style_file_upload">
+                <div className="style_file_upload">
                   <input
                     type="file"
                     name="coverPhoto"
                     id="coverPhoto"
-                    class="custom-file-input"
+                    className="custom-file-input"
                     onChange={(e) => {
                       setCoverPic(e.target.files[0]);
                       handleCoverSubmit(e);
                     }}
                   />
-                  <label for="coverPhoto">
+                  <label htmlFor="coverPhoto">
                     <span>
                       {' '}
-                      <i class="fa fa-camera" aria-hidden="true"></i> Upload
+                      <i className="fa fa-camera" aria-hidden="true"></i> Upload
                       Cover Photo
                     </span>
                   </label>
@@ -543,7 +561,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
 
                       <div className="hover_games">
                         {games.map((game, idx) => (
-                          <div className="other_logo">
+                          <div className="other_logo" key={idx}>
                             <img src={game.imgUrl} alt={game.name} />
                           </div>
                         ))}
@@ -559,7 +577,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                         <h3>More Games</h3>
                         <ul>
                           {games.map((game, idx) => (
-                            <li>
+                            <li key={idx}>
                               <div className="game_pic">
                                 <img src={game.imgUrl} alt={game.name} />
                               </div>
