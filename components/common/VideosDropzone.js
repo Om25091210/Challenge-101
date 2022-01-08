@@ -18,8 +18,8 @@ const VideosDropzone = ({ setVideos }) => {
   });
 
   return (
-
     <div className="jobs_browse" {...getRootProps()}>
+      <h2>+ Upload Video</h2>
       <div className="drop_files">
         <input {...getInputProps()} />
         <i className="fa fa-upload" aria-hidden="true"></i>
@@ -28,12 +28,9 @@ const VideosDropzone = ({ setVideos }) => {
           <span className="or">or</span>
           <span className="btn">browse</span>
         </div>
-        <p>
-          Max 3 videos. 16:9 aspect ratio recommended.
-        </p>
+        <p>Max 3 videos. 16:9 aspect ratio recommended.</p>
       </div>
     </div>
-
   );
 };
 
