@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import { useMutation } from 'react-query';
 import { toast } from 'react-toastify';
@@ -8,7 +7,6 @@ import baseURL from '@utils/baseURL';
 import ImageDropzone from '@components/common/ImageDropzone';
 
 const Photos = ({ Userdata }) => {
-
   const [images, setImages] = useState([]);
 
   const photomutation = useMutation(async (formdata) => {
@@ -29,81 +27,70 @@ const Photos = ({ Userdata }) => {
 
     try {
       await photomutation.mutateAsync(formdata);
-
       toast.success('User images have been updated');
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Please upload your images again');
     }
   };
 
-
-
   return (
     <div className="gallery_box">
+      <form onSubmit={handlePhotosSubmit}>
+        <ImageDropzone setImages={setImages} />
 
-    <form onSubmit={handlePhotosSubmit}>
-
-      <ImageDropzone setImages={setImages} />
-
-      <p></p>
+        <p></p>
 
         {images.length > 0 ? (
+          <div className="upload_btn">
+            <a
+              href="javascript:void(0)"
+              onClick={handlePhotosSubmit}
+              className="btn"
+            >
+              UPLOAD NOW{' '}
+            </a>
+          </div>
+        ) : (
+          ''
+        )}
 
-        <a href="#!" onClick={handlePhotosSubmit} className="btn btn_width">
-          UPLOAD NOW{' '}
-        </a>
-         ) : ''  }
+        <p></p>
 
-            <p></p>
-   
-
-  {Userdata.profile.imagesgallery.map((imgg, idx) => (
-
-      <div className="imagess_box" key={idx}>
-
-        <div className="imagess">
-
-          <ul>
-           
+        {Userdata.profile.imagesgallery.map((imgg, idx) => (
+          <div className="imagess_box" key={idx}>
+            <div className="imagess">
+              <ul>
                 <li>
-                
-                {imgg.images.map((imag, idex) => (
+                  {imgg.images.map((imag, idex) => (
+                    <a
+                      className="fancybox"
+                      href={imag.path}
+                      data-fancybox-group="gallery"
+                      title={imag.originalname}
+                      key={idex}
+                    >
+                      <img src={imag.path} alt={imag.originalname} />{' '}
+                      <span className="total_images">
+                        +{imgg.images.length}
+                      </span>
+                    </a>
+                  ))}
+                </li>
+              </ul>
+            </div>
+            <div className="bottom_data">
+              <span className="img_icon">
+                <i className="fa fa-picture-o" aria-hidden="true"></i>
+              </span>
 
-                  <a
-                    className="fancybox"
-                    href={imag.path}
-                    data-fancybox-group="gallery"
-                    title={imag.originalname}
-                  key={idex}>
-                    <img src={imag.path} alt={imag.originalname} />
-                  </a>
-
-                )) }
-                  
-                </li>            
-
-          </ul>
-          <span className="total_images">+{imgg.images.length}</span>
-        </div>
-        <div className="bottom_data">
-          <span className="img_icon">
-            <i className="fa fa-picture-o" aria-hidden="true"></i>
-          </span>
-          <h2>
-            
-            <span className="update">Updated:{imgg.createdAt}</span>
-          </h2>
-        </div>
-
-      </div>
-
-                ))
-
-              }
-
-
-    </form>
-
+              <h2>
+                Album Name
+                <span className="update">Updated:{imgg.createdAt}</span>
+              </h2>
+            </div>
+          </div>
+        ))}
+      </form>
     </div>
   );
 };
