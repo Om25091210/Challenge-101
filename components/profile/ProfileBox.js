@@ -51,7 +51,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
     .filter((x) => x.user === user._id)
     .map((x) => x.user);
 
-  console.log(cookie.get('token'));
+    console.log(cookie.get('token'));
 
   const mutation = useMutation(async (formdata) => {
     await axios.put(`${baseURL}/api/auth/profilePic`, formdata, {
@@ -95,17 +95,19 @@ const ProfileBox = ({ user, Userdata, games }) => {
     const formdata = new FormData();
     formdata.append('coverPic', coverPic);
     try {
-      await axios.put(`${baseURL}/api/auth/coverPic`, formdata, {
-        headers: {
-          Authorization: cookie.get('token'),
-          'Content-Type': 'multipart/form-data'
-        }
-      });
+
+    await axios.put(`${baseURL}/api/auth/coverPic`, formdata, {
+      headers: {
+        Authorization: cookie.get('token'),
+        'Content-Type': 'multipart/form-data'
+      }
+    });
 
       toast.success('User settings have been updated');
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }
+
   };
 
   function handleChange(e) {
@@ -652,6 +654,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
           </div>
         </div>
       </div>
+      
     </>
   );
 };
