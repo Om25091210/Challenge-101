@@ -45,8 +45,7 @@ const Photos = ({ Userdata }) => {
 
       <ImageDropzone setImages={setImages} />
 
-      <div className="imagess_box">
-        <div className="imagess">
+      <p></p>
 
         {images.length > 0 ? (
 
@@ -55,94 +54,53 @@ const Photos = ({ Userdata }) => {
         </a>
          ) : ''  }
 
+            <p></p>
+   
+
+  {Userdata.profile.imagesgallery.map((imgg, idx) => (
+
+      <div className="imagess_box" key={idx}>
+
+        <div className="imagess">
+
           <ul>
+           
+                <li>
+                
+                {imgg.images.map((imag, idex) => (
 
-           <li>
-              {Userdata.profile.imagesgallery.map((imgg, idx) => (
-
-               
                   <a
                     className="fancybox"
-                    href={imgg.path}
+                    href={imag.path}
                     data-fancybox-group="gallery"
-                    title="<p> test </p>"
-                  >
-                    <img src={imgg.path} alt={imgg.originalname} />
+                    title={imag.originalname}
+                  key={idex}>
+                    <img src={imag.path} alt={imag.originalname} />
                   </a>
 
-               
-                ))
-
-              }
-
-               </li>
-
-
-            <li>
-              <a
-                className="fancybox"
-                href="/assets/media/gallery/1.jpg"
-                data-fancybox-group="gallery"
-                title="<p> test </p>"
-              >
-                <img src="/assets/media/gallery/1.jpg" alt="" />
-              </a>
-              <a
-                className="fancybox"
-                href="/assets/media/gallery/2.jpg"
-                data-fancybox-group="gallery"
-                title="2nd image"
-              >
-                <img src="/assets/media/gallery/2.jpg" alt="" />
-              </a>
-
-              <a
-                className="fancybox"
-                href="/assets/media/gallery/3.jpg"
-                data-fancybox-group="gallery"
-                title="3rd image"
-              >
-                <img src="/assets/media/gallery/3.jpg" alt="" />
-              </a>
-              <a
-                className="fancybox"
-                href="/assets/media/gallery/4.jpg"
-                data-fancybox-group="gallery"
-                title="4rt image"
-              >
-                <img src="/assets/media/gallery/4.jpg" alt="" />
-              </a>
-              <a
-                className="fancybox"
-                href="/assets/media/gallery/5.jpg"
-                data-fancybox-group="gallery"
-                title="fifth image"
-              >
-                <img src="/assets/media/gallery/5.jpg" alt="" />
-              </a>
-              <a
-                className="fancybox"
-                href="/assets/media/gallery/6.jpg"
-                data-fancybox-group="gallery"
-                title="Sixth image"
-              >
-                <img src="/assets/media/gallery/6.jpg" alt="" />
-              </a>
-            </li>
+                )) }
+                  
+                </li>            
 
           </ul>
-          <span className="total_images">+10</span>
+          <span className="total_images">+{imgg.images.length}</span>
         </div>
         <div className="bottom_data">
           <span className="img_icon">
             <i className="fa fa-picture-o" aria-hidden="true"></i>
           </span>
           <h2>
-            New Xenowatch Characters
-            <span className="update">Updated:March 12th, 2018</span>
+            
+            <span className="update">Updated:{imgg.createdAt}</span>
           </h2>
         </div>
+
       </div>
+
+                ))
+
+              }
+
 
     </form>
 
