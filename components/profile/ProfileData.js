@@ -16,10 +16,8 @@ import Videos from './Videos';
 const ProfileData = ({ user, Userdata, player }) => {
   const [profile, setProfile] = useState(Userdata.profile);
 
-
   useEffect(() => {}, [profile]);
   useEffect(() => {}, [Userdata]);
-
 
   useEffect(() => {}, []);
 
@@ -134,7 +132,7 @@ const ProfileData = ({ user, Userdata, player }) => {
                           </div>
                         </div>
 
-                        <CommentForm postId={post} />
+                        <CommentForm post={post} user={user} />
                       </div>
                     </div>
                   </div>
@@ -512,10 +510,10 @@ const ProfileData = ({ user, Userdata, player }) => {
           steams steams steams steams{' '}
         </div>
         <div className="tab hide" id="photos">
-          <Photos Userdata={Userdata}/>
+          <Photos Userdata={Userdata} />
         </div>
         <div className="tab hide" id="video">
-          <Videos Userdata={Userdata}/>
+          <Videos Userdata={Userdata} />
         </div>
         <div className="tab hide" id="sponsors">
           <div className="sponsers_box">

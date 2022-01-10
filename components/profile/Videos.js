@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import { useMutation } from 'react-query';
 import { toast } from 'react-toastify';
@@ -9,7 +8,6 @@ import VideoDropzone from '@components/common/VideosDropzone';
 import { Video } from 'cloudinary-react';
 
 const Videos = ({ Userdata }) => {
-
   const [videos, setVideos] = useState([]);
 
   const mutation = useMutation(async (formdata) => {
@@ -37,69 +35,64 @@ const Videos = ({ Userdata }) => {
     }
   };
 
-
-
-
   return (
-
     <div className="video_box">
-    <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
+        <VideoDropzone setVideos={setVideos} />
 
-      <VideoDropzone setVideos={setVideos} />
-
-      <p></p>
+        <p></p>
 
         {videos.length > 0 ? (
+          <div className="upload_btn">
+            <a href="#!" onClick={handleSubmit} className="btn">
+              UPLOAD NOW{' '}
+            </a>
+          </div>
+        ) : (
+          ''
+        )}
 
-        <a href="#!" onClick={handleSubmit} className="btn btn_width">
-          UPLOAD NOW{' '}
-        </a>
-         ) : ''  }
+        <p></p>
 
-            <p></p>
-
-              {Userdata.profile.videosgallery.map((vid, idx) => (
-
-            <ul key={idx}>
-
+        {Userdata.profile.videosgallery.map((vid, idx) => (
+          <ul key={idx}>
             {vid.videos.map((vide, idex) => (
-
-                <li key={idex}>
+              <li key={idex}>
+                {' '}
+                <div className="video">
                   {' '}
-                  <div className="video">
-                    {' '}
-                    <Video
-                      cloudName="dch502zpg"
-                      controls
-                      fallback="Cannot display video"
-                      publicId={vide.path}
-                    ></Video>
-                  </div>
-                  <div className="bottom_data">
-                    {' '}
-                    <a href="#">The Team</a>{' '}
-                    <a href="#" className="yellow">
-                      Lq Heroes
-                    </a>
-                    <h2>
-                      {vide.originalname} : Destroy Played the first Mission of
-                      the Mercenaries Update With Kelly And Saki
-                    </h2>
-                    <span className="date">{vide.createdAt}</span>{' '}
-                    <span className="views">
-                      <i className="fa fa-eye" aria-hidden="true"></i> 2223
-                    </span>{' '}
-                    <span className="likes">
-                      <i className="fa fa-heart" aria-hidden="true"></i>453
-                    </span>{' '}
-                    <span className="comments">
-                      <i className="fa fa-comment" aria-hidden="true"></i>18
-                    </span>{' '}
-                  </div>
-                </li>
-    		))}
+                  <Video
+                    cloudName="dch502zpg"
+                    controls
+                    fallback="Cannot display video"
+                    publicId={vide.path}
+                  ></Video>
+                </div>
+                <div className="bottom_data">
+                  {' '}
+                  <a href="#">The Team</a>{' '}
+                  <a href="#" className="yellow">
+                    Lq Heroes
+                  </a>
+                  <h2>
+                    {vide.originalname} : Destroy Played the first Mission of
+                    the Mercenaries Update With Kelly And Saki
+                  </h2>
+                  <span className="date">{vide.createdAt}</span>{' '}
+                  <span className="views">
+                    <i className="fa fa-eye" aria-hidden="true"></i> 2223
+                  </span>{' '}
+                  <span className="likes">
+                    <i className="fa fa-heart" aria-hidden="true"></i>453
+                  </span>{' '}
+                  <span className="comments">
+                    <i className="fa fa-comment" aria-hidden="true"></i>18
+                  </span>{' '}
+                </div>
+              </li>
+            ))}
 
-              <li style={{ display: 'none' }}>
+            {/* <li style={{ display: 'none' }}>
                 <div className="video">
                   {' '}
                   <img src="/assets/media/video/thumb1.jpg" alt="" />{' '}
@@ -125,14 +118,11 @@ const Videos = ({ Userdata }) => {
                     <i className="fa fa-comment" aria-hidden="true"></i>18
                   </span>{' '}
                 </div>
-              </li>
-            </ul>
-          ))}
-
-    </form>    
-   </div>
-
-
+              </li> */}
+          </ul>
+        ))}
+      </form>
+    </div>
   );
 };
 

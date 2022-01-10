@@ -654,6 +654,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
           </div>
         </div>
       </div>
+      
     </>
   );
 };

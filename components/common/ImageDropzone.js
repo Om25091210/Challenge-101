@@ -18,8 +18,9 @@ const ImageDropzone = ({ setImages }) => {
   });
 
   return (
-
     <div className="jobs_browse" {...getRootProps()}>
+      <h2>+ Create album</h2>
+
       <div className="drop_files">
         <input {...getInputProps()} />
         <i className="fa fa-upload" aria-hidden="true"></i>
@@ -28,12 +29,9 @@ const ImageDropzone = ({ setImages }) => {
           <span className="or">or</span>
           <span className="btn">browse</span>
         </div>
-        <p>
-          Max 5 images. 16:9 aspect ratio recommended.
-        </p>
+        <p>Max 5 images. 16:9 aspect ratio recommended.</p>
       </div>
     </div>
-
   );
 };
 
