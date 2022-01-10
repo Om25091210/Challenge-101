@@ -18,6 +18,7 @@ const ProfileData = ({ user, Userdata, player }) => {
 
 
   useEffect(() => {}, [profile]);
+  useEffect(() => {}, [Userdata]);
 
 
   useEffect(() => {}, []);
