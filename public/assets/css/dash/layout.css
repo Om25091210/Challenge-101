@@ -56,6 +56,12 @@ a {
 textarea, select, input[type="search"], input[type="text"], input[type="button"], input[type="submit"] {
 	-webkit-appearance:none;
 }
+
+input[type="text"], textarea{    height: 45px;
+    font-size: 14px;
+    width: 100%;
+    border: 1px solid #ced4da;}
+
 .verticalCenter {
 	display:table;
 	width:100%;
@@ -4293,8 +4299,9 @@ article .social_bar {
 	padding:10px 0;
 	 color: #000;
 }
+.video_box li .bottom_data h2 span{ font-size: 13px;}
 .video_box li .bottom_data span {
-	font-size: 11px;
+	font-size: 15px;
 	margin-right: 10px;
 	color:#000;
 }
@@ -4779,15 +4786,31 @@ article .social_bar {
     left: 0;
     text-align: center;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: center; padding-top: 100px;
 	z-index: 9;
+	flex-direction: column;
+}
+
+.gallery_box .upload_btn input {
+    width: 200px;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.video_box .upload_btn textarea {
+    width: 285px;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    height: 60px;
+    resize: none;
 }
 
 
 /* -------------- Tournament page -------------------- */
    
-    .tournament_sponsers {
+.tournament_sponsers {
 	display: flex;
 	justify-content: space-between;
 }
