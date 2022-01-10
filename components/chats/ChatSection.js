@@ -78,8 +78,8 @@ const ChatSection = ({
 
         <ChatEngine
           projectID={process.env.NEXT_PUBLIC_CHAT_ENGINEIO_PUBLIC_KEY}
-          userName={'ravi@anthive.tech'}
-          userSecret={'Ravi1234$'}
+          userName={user.email}
+          userSecret={user.email}
           renderNewMessageForm={() => <MessageFormSocial />}
         />
 
