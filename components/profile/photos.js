@@ -8,6 +8,7 @@ import ImageDropzone from '@components/common/ImageDropzone';
 
 const Photos = ({ Userdata }) => {
   const [images, setImages] = useState([]);
+  const [title, setTitle] = useState();
 
   const photomutation = useMutation(async (formdata) => {
     await axios.put(`${baseURL}/api/uploads/uploadImages`, formdata, {
@@ -17,6 +18,13 @@ const Photos = ({ Userdata }) => {
       }
     });
   });
+
+  function refreshPage() {
+    setTimeout(function () {
+      window.location.reload(false);
+    }, 5000);
+  }
+
   // console.log(images)
   const handlePhotosSubmit = async (e) => {
     e.preventDefault();
@@ -25,12 +33,15 @@ const Photos = ({ Userdata }) => {
       formdata.append('images', images[key]);
     }
 
+    formdata.append('title', title);
+
     try {
       await photomutation.mutateAsync(formdata);
       toast.success('User images have been updated');
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Please upload your images again');
     }
+    refreshPage();
   };
 
   return (
@@ -42,6 +53,14 @@ const Photos = ({ Userdata }) => {
 
         {images.length > 0 ? (
           <div className="upload_btn">
+            <input
+              type="text"
+              placeholder="Add a Title"
+              id="title"
+              name="title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
             <a
               href="javascript:void(0)"
               onClick={handlePhotosSubmit}
@@ -65,7 +84,7 @@ const Photos = ({ Userdata }) => {
                     <a
                       className="fancybox"
                       href={imag.path}
-                      data-fancybox-group="gallery"
+                      data-fancybox-group="idex"
                       title={imag.originalname}
                       key={idex}
                     >
@@ -84,7 +103,7 @@ const Photos = ({ Userdata }) => {
               </span>
 
               <h2>
-                Album Name
+                {imgg.title}
                 <span className="update">Updated:{imgg.createdAt}</span>
               </h2>
             </div>

@@ -101,9 +101,22 @@
   .team_search, .team_filter{flex-wrap: wrap;}
   .team_search .searchbox{ margin-bottom: 20px;}
   .team_filter .drop_downs{ width: 100%; border: 0;}
-  .filters{ width: 100%;}
+  .filters {width: 100%;margin: 20px 0 0 0;border-top: 1px solid #ddd; padding: 20px 0;}
   .inner_team{flex-wrap: wrap;}
   .team_overview{flex-wrap: wrap;}
+  .team_filter .drop_downs .button-group {flex: 0 0 31%;}
+  
+  /* ----------------Games ------------------ */
+
+  .game_list_page li{ width: 32%;}
+  .game_list_page li:nth-child(4n){ margin-right: 2%;}
+  .game_list_page li:nth-child(3n){ margin-right: 0;}
+
+  /* ---------- ranking ----------------- */
+
+  .heads_row .heads, .row_box .cols{ font-size: 12px;}
+
+  .common_poup_wrap{ width: 90% !important;}
 
 
 }

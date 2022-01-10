@@ -9,6 +9,7 @@ import { Video } from 'cloudinary-react';
 
 const Videos = ({ Userdata }) => {
   const [videos, setVideos] = useState([]);
+  const [videodisc, setVideodisc] = useState();
 
   const mutation = useMutation(async (formdata) => {
     await axios.put(`${baseURL}/api/uploads/uploadVideos`, formdata, {
@@ -19,12 +20,20 @@ const Videos = ({ Userdata }) => {
     });
   });
 
+  function refreshPage() {
+    setTimeout(function () {
+      window.location.reload(false);
+    }, 5000);
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formdata = new FormData();
     for (const key of Object.keys(videos)) {
       formdata.append('videos', videos[key]);
     }
+
+    formdata.append('videodisc', videodisc);
 
     try {
       await mutation.mutateAsync(formdata);
@@ -33,6 +42,7 @@ const Videos = ({ Userdata }) => {
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Please upload your videos again');
     }
+    refreshPage();
   };
 
   return (
@@ -44,6 +54,15 @@ const Videos = ({ Userdata }) => {
 
         {videos.length > 0 ? (
           <div className="upload_btn">
+            <textarea
+              type="text"
+              placeholder="Add a description"
+              id="videodisc"
+              name="videodisc"
+              value={videodisc}
+              onChange={(e) => setVideodisc(e.target.value)}
+            ></textarea>
+
             <a href="#!" onClick={handleSubmit} className="btn">
               UPLOAD NOW{' '}
             </a>
@@ -75,8 +94,7 @@ const Videos = ({ Userdata }) => {
                     Lq Heroes
                   </a>
                   <h2>
-                    {vide.originalname} : Destroy Played the first Mission of
-                    the Mercenaries Update With Kelly And Saki
+                    {vide.originalname} : <span>{vid.videodisc}</span>
                   </h2>
                   <span className="date">{vide.createdAt}</span>{' '}
                   <span className="views">
