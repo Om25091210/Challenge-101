@@ -17,7 +17,7 @@ const Photos = ({ Userdata }) => {
       }
     });
   });
-
+  // console.log(images)
   const handlePhotosSubmit = async (e) => {
     e.preventDefault();
     const formdata = new FormData();
