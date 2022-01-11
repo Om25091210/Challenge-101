@@ -5,7 +5,6 @@ import cookie from 'js-cookie';
 import axios from 'axios';
 import baseURL from '@utils/baseURL';
 import ImageDropzone from '@components/common/ImageDropzone';
-import Moment from 'moment';
 
 const Photos = ({ Userdata }) => {
   const [images, setImages] = useState([]);
@@ -105,10 +104,7 @@ const Photos = ({ Userdata }) => {
 
               <h2>
                 {imgg.title}
-                <span className="update">
-                  Updated:{' '}
-                  {Moment(imgg.createdAt).format('MMMM, DD, YYYY hh:mm A')}
-                </span>
+                <span className="update">Updated:{imgg.createdAt}</span>
               </h2>
             </div>
           </div>
