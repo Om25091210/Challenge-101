@@ -6,15 +6,7 @@ import NotificationItem from './NotificationItem';
 import ChatSection from './chats/ChatSection';
 import Link from 'next/link';
 
-const SignedHeader = ({
-  user,
-  chats,
-  setChats,
-  sendMessage,
-  messages,
-  messagesWith,
-  isOnline
-}) => {
+const SignedHeader = ({ user }) => {
   if (user) {
     return (
       <header>
@@ -116,15 +108,7 @@ const SignedHeader = ({
                 <span className="pop">2</span>
               </a>
 
-              <ChatSection
-                user={user}
-                messagesWith={messagesWith}
-                chats={chats}
-                setChats={setChats}
-                sendMessage={sendMessage}
-                messages={messages}
-                isOnline={isOnline}
-              />
+              <ChatSection user={user} />
             </li>
 
             <li>
