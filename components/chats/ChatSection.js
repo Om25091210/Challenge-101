@@ -7,6 +7,24 @@ import axios from 'axios';
 import baseURL from '@utils/baseURL';
 import dynamic from 'next/dynamic';
 
+import {
+  ChatList,
+  ChatCard,
+  NewChatForm,
+  ChatFeed,
+  ChatHeader,
+  IceBreaker,
+  MessageBubble,
+  IsTyping,
+  ConnectionBar,
+  NewMessageForm,
+  ChatSettings,
+  ChatSettingsTop,
+  PeopleSettings,
+  PhotosSettings,
+  OptionsSettings
+} from 'react-chat-engine';
+
 const ChatEngine = dynamic(() =>
   import('react-chat-engine').then((module) => module.ChatEngine)
 );
@@ -64,10 +82,14 @@ const ChatSection = ({ user, messagesWith }) => {
                 <div />
               ) : (
                 <ChatEngine
+                  height="calc(100vh - 50px)"
                   projectID={process.env.NEXT_PUBLIC_CHAT_ENGINEIO_PUBLIC_KEY}
                   userName={user.email}
                   userSecret={user.email}
                   renderNewMessageForm={() => <MessageFormSocial />}
+                  // Customize UI
+
+                  renderNewMessageForm={(creds, chatID) => <NewMessageForm />} // for text editor
                 />
               )}
             </div>

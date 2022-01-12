@@ -16,7 +16,7 @@ const Arenas = ({ user }) => {
         <div className="team_search">
           <div className="searchbox">
             <h3>Search</h3>
-            <input type="search"  placeholder="Search" />
+            <input type="search" placeholder="Search" />
             <input type="submit" />
           </div>
           <div className="advance">
@@ -57,7 +57,7 @@ const Arenas = ({ user }) => {
         <div className="team_row arena_team_row" key={idx}>
           <div className="inner_team">
             <div className="logo_box">
-              <img src="/assets/media/discover/lxg.png" alt="" />
+              <img src={ara.logoUrl} alt="" />
               <h3>
                 {' '}
                 {ara.name}{' '}

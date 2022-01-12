@@ -10,9 +10,9 @@ function Customjs() {
       autoHideScrollbar: true
     });
 
-    $('.tab_data_scroll').mCustomScrollbar({
-      autoHideScrollbar: true
-    });
+    // $('.tab_data_scroll').mCustomScrollbar({
+    //   autoHideScrollbar: true
+    // });
 
     /* ----------- create post slider ----------------- */
 

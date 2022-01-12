@@ -4,10 +4,11 @@ import cookie from 'js-cookie';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 
-const Delete_Reply = ({ post, comment, replyId, user }) => {
+const Delete_Reply = ({ post, comment, reply, user }) => {
+  const isDelete = reply.user._id === user._id;
   const deletereply = async () => {
     await axios.delete(
-      `${baseURL}/api/comments/${post._id}/${comment._id}/${replyId}`,
+      `${baseURL}/api/comments/${post._id}/${comment._id}/${reply._id}`,
       {
         headers: {
           Authorization: cookie.get('token')
@@ -22,7 +23,6 @@ const Delete_Reply = ({ post, comment, replyId, user }) => {
     e.preventDefault();
     try {
       await mutateAsync(comment._id);
-      queryClient.invalidateQueries();
       toast.success('Your comment has been successfully deleted');
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
@@ -31,11 +31,7 @@ const Delete_Reply = ({ post, comment, replyId, user }) => {
 
   return (
     <div className="delete_btn">
-      {comment.replies.map((x) => x.user._id) === user._id ? (
-        <button onClick={deletehandlesubmit}>Delete</button>
-      ) : (
-        []
-      )}
+      {isDelete && <button onClick={deletehandlesubmit}>Delete</button>}
     </div>
   );
 };

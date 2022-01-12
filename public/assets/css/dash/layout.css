@@ -944,7 +944,11 @@ margin-left:10px;
 	color:#a4a4a4;
 	letter-spacing:0.075em;
 	padding-top:20px;
+	height: 100%;
 }
+
+
+
 .add_comment_box .add_comments .user {
 	width:33px;
 	height:33px;
@@ -986,8 +990,13 @@ margin-left:10px;
 	padding:17px 20px;
 	background:#f3f6f9;
 	border:0;
-	margin-left:10px;
+	margin-left:10px; transition: 0.3s ease-in-out;
 }
+
+.add_comment_box button:hover{ background: #7239ea;}
+.add_comment_box button:hover img{-webkit-filter: invert(100%); /* Safari/Chrome */
+    filter: invert(100%);}
+
 .post_comments {
 	border-radius:5px;
 	padding:20px 10px 10px 10px;
@@ -1097,9 +1106,11 @@ margin-left:10px;
     display: inline-block;
     background: #eee;
     border-radius: 38px;
-    padding: 4px 10px;
     margin: 0 5px;
 }
+
+.delete_comment button, .reply_comment button, .delete_btn  button{    padding: 4px 10px;}
+
 .first_reply form {
 	float: left;
 	width: 100%;
@@ -1501,14 +1512,14 @@ article .social_bar {
 }
 .chatbox {
 	position: fixed;
-	width: 300px;
+	width: 900px;
 	background: #fff;
 	z-index: 99;
 	display: block;
 	height: 100%;
 	top: 0;
 	box-shadow: 0 0 10px #ddd;
-	right: -300px;
+	right: -900px;
 	transition: all 0.8s;
 }
 .tab_box {
@@ -4208,7 +4219,7 @@ article .social_bar {
 	width: 100%;
 }
 .calendar_box .react-datepicker__day, .calendar_box .react-datepicker__time-name {
-	text-align: right;
+	text-align: center;
 	padding:10px;
 	font-size: 14px;
 	border-radius: 0;
@@ -4216,6 +4227,10 @@ article .social_bar {
 	width:14.3%;
 	height: 80px;
 	border-right: 1px solid #eee;
+	align-items: center;
+    align-content: center;
+    justify-content: center;
+	display: inline-flex;
 }
 .calendar_box .react-datepicker__day-names {
 	border-top: 1px solid #eee;
@@ -4223,6 +4238,7 @@ article .social_bar {
 .calendar_box .react-datepicker__day-name {
 	width:14.3%;
 	height: 30px;
+	margin: 10px 0;
 }
 .calendar_box .react-datepicker__header {
 	background: none;
@@ -5758,15 +5774,10 @@ ul.game_search_result li {
 .communities li .imgs img{ width: 100%; height: 100%; object-fit:cover; transition: 0.3s ease-in-out;}
 
 .communities li .imgs img:hover{ transform: scale(1.1,1.1);}
-
 .communities li .bottom_data{ padding: 20px; color: #000; text-align: center; position: relative;}
 .communities li p{ line-height: 20px;}
 .communities li h3{ font-weight: 700; }
-.communities li h3 span{    }
-
-	.communities li a:hover span{ right:5px; color: #000;}
-
-
+.communities li a:hover span{ right:5px; color: #000;}
 .internet ul{ display: flex; flex-direction: column;}
 .internet ul li{ display: flex; border-right:0 !important}
 .internet ul li b{ margin-left: 5px;}
@@ -5856,3 +5867,67 @@ form.common_form label {
 form.common_form input {
 	height: 45px; font-size: 14px; width: 100%;
 }
+
+
+.pixelarity-img-edit{ display: none;}
+
+
+/* --------------- New Chat section css --------------------- */
+
+#ce-add-username-input{ font-family: 'Titillium Web', sans-serif !important}
+
+.ce-wrapper{ font-weight: 400; font-size: 14px;     font-family: 'Titillium Web', sans-serif !important}
+.ce-wrapper .ce-chat-list-column{ height: 94vh; width: 30% !important;flex: 0 0 30%!important;max-width: 30%!important;}
+.ce-wrapper .ce-chat-feed-column{width: 40%!important;flex: 0 0 40%!important;max-width: 40%!important;}
+.ce-wrapper .ce-settings-column{width: 30%!important;flex: 0 0 30%!important;max-width: 30%!important;}
+.ce-chat-list {overflow-y: auto !important;padding: 5px 10px;  font-family: 'Titillium Web', sans-serif !important}
+#ce-feed-container{overflow-y: auto !important;  font-family: 'Titillium Web', sans-serif !important}
+.ce-settings{overflow-y: auto !important;  font-family: 'Titillium Web', sans-serif !important}
+
+/* chat user search result */
+.ce-autocomplete-options{position: relative; padding: 10px !important;     border-radius: 5px !important;}
+.ce-autocomplete-options .ce-autocomplete-close{ position: absolute; top:0; right:4px;}
+
+.ce-autocomplete-option > div{ padding: 0 !important;}
+.ce-autocomplete-option > div div:first-child{ width: 35px !important;height: 35px !important; position: relative;}
+.ce-autocomplete-option > div div:nth-child(2){font-size: 12px !important;}
+
+.ce-autocomplete-option .ce-avatar-status{padding: 0 !important; position: absolute; top:0;}
+
+/* -------- People ------------------ */
+
+.ce-person-container{}
+.ce-avatar{ width: 35px !important; height: 35px !important;}
+.ce-avatar-text {
+    padding-top: 11px !important;
+    font-size: 12px !important;
+}
+.ce-person-container .ce-person-text {
+    top: 5px !important;
+    padding-left: 42px !important;
+    font-size: 12px !important;
+}
+
+.ce-delete-chat{}
+.ce-primary-button.ce-danger-button{height: 29px !important;font-size: 14px; padding: 3px 7px 17px 7px !important}
+
+.ce-chat-engine ::-webkit-scrollbar {
+    width: 0; /* Remove scrollbar space */
+    background: transparent; /* Optional: just make scrollbar invisible */
+}
+
+#new-chat-plus-button{ background: #000 !important;}
+.ce-chat-form-container{background: #7239ea !important; color: #fff; margin-bottom: 20px;  border-radius: 5px;}
+.ce-chat-card.ce-active-chat-card{    padding: 10px !important;
+    cursor: pointer !important;
+    background-color: #f7f7f7 !important;
+    border: 1px solid #ddd !important;
+    border-radius: 5px !important;}
+
+	.ce-chat-title{background: rgba(255, 255, 255, 0.9)  !important;border-bottom: 1px solid #ddd !important;}
+	.anticon{vertical-align: 0 !important}
+	.ce-chat-feed .ce-chat-title-text{color: #7239ea !important}
+	.ce-chat-feed .ce-chat-subtitle-text{color: #7239ea !important;}
+
+	#ce-delete-chat-button{display: flex;align-items: center;justify-content: center;align-content: center; padding: 0 !important;}
+	#ce-delete-chat-button .anticon { margin-right: 10px;}
