@@ -5774,15 +5774,10 @@ ul.game_search_result li {
 .communities li .imgs img{ width: 100%; height: 100%; object-fit:cover; transition: 0.3s ease-in-out;}
 
 .communities li .imgs img:hover{ transform: scale(1.1,1.1);}
-
 .communities li .bottom_data{ padding: 20px; color: #000; text-align: center; position: relative;}
 .communities li p{ line-height: 20px;}
 .communities li h3{ font-weight: 700; }
-.communities li h3 span{    }
-
-	.communities li a:hover span{ right:5px; color: #000;}
-
-
+.communities li a:hover span{ right:5px; color: #000;}
 .internet ul{ display: flex; flex-direction: column;}
 .internet ul li{ display: flex; border-right:0 !important}
 .internet ul li b{ margin-left: 5px;}
