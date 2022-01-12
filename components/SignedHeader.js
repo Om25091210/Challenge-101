@@ -62,7 +62,7 @@ const SignedHeader = ({ user }) => {
                     </a>
                   </li>
                   <li>
-                    <a href="#">
+                    <a href="/arena/create">
                       <i className="fa fa-sign-out" aria-hidden="true"></i>{' '}
                       Create an Arena page
                     </a>
