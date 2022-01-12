@@ -944,7 +944,11 @@ margin-left:10px;
 	color:#a4a4a4;
 	letter-spacing:0.075em;
 	padding-top:20px;
+	height: 100%;
 }
+
+
+
 .add_comment_box .add_comments .user {
 	width:33px;
 	height:33px;
@@ -986,8 +990,13 @@ margin-left:10px;
 	padding:17px 20px;
 	background:#f3f6f9;
 	border:0;
-	margin-left:10px;
+	margin-left:10px; transition: 0.3s ease-in-out;
 }
+
+.add_comment_box button:hover{ background: #7239ea;}
+.add_comment_box button:hover img{-webkit-filter: invert(100%); /* Safari/Chrome */
+    filter: invert(100%);}
+
 .post_comments {
 	border-radius:5px;
 	padding:20px 10px 10px 10px;
@@ -5905,7 +5914,7 @@ form.common_form input {
 }
 
 .ce-delete-chat{}
-.ce-primary-button.ce-danger-button{height: 29px !important;font-size: 14px; padding: 1px 7px 17px 7px !important}
+.ce-primary-button.ce-danger-button{height: 29px !important;font-size: 14px; padding: 3px 7px 17px 7px !important}
 
 .ce-chat-engine ::-webkit-scrollbar {
     width: 0; /* Remove scrollbar space */
@@ -5924,3 +5933,6 @@ form.common_form input {
 	.anticon{vertical-align: 0 !important}
 	.ce-chat-feed .ce-chat-title-text{color: #7239ea !important}
 	.ce-chat-feed .ce-chat-subtitle-text{color: #7239ea !important;}
+
+	#ce-delete-chat-button{display: flex;align-items: center;justify-content: center;align-content: center; padding: 0 !important;}
+	#ce-delete-chat-button .anticon { margin-right: 10px;}
