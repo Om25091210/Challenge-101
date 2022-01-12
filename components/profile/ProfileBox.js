@@ -13,17 +13,11 @@ const ProfileBox = ({ user, Userdata, games }) => {
   const [bio, setBio] = useState(Userdata.profile.bio);
   const [showform, setShowForm] = useState(false);
   const [showlocation, setShowlocation] = useState(false);
+  const [showLocModal, setShowLocModal] = useState(false);
 
   const [coverPic, setCoverPic] = useState(null);
 
-  const [address, setAddress] = useState({
-    line1: '',
-    line2: '',
-    city: '',
-    state: '',
-    country: '',
-    zipcode: ''
-  });
+  const [address, setAddress] = useState(Userdata.profile.address);
 
   const [follow, setFollow] = useState(false);
   const followhandlesubmit = async (e) => {
@@ -51,7 +45,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
     .filter((x) => x.user === user._id)
     .map((x) => x.user);
 
-    console.log(cookie.get('token'));
+  console.log(cookie.get('token'));
 
   const mutation = useMutation(async (formdata) => {
     await axios.put(`${baseURL}/api/auth/profilePic`, formdata, {
@@ -95,19 +89,17 @@ const ProfileBox = ({ user, Userdata, games }) => {
     const formdata = new FormData();
     formdata.append('coverPic', coverPic);
     try {
-
-    await axios.put(`${baseURL}/api/auth/coverPic`, formdata, {
-      headers: {
-        Authorization: cookie.get('token'),
-        'Content-Type': 'multipart/form-data'
-      }
-    });
+      await axios.put(`${baseURL}/api/auth/coverPic`, formdata, {
+        headers: {
+          Authorization: cookie.get('token'),
+          'Content-Type': 'multipart/form-data'
+        }
+      });
 
       toast.success('User settings have been updated');
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }
-
   };
 
   function handleChange(e) {
@@ -148,38 +140,39 @@ const ProfileBox = ({ user, Userdata, games }) => {
     }
   };
 
-  const handleAddress = async (e) => {
+  console.log(address);
+  const handleAddressForm = async (e) => {
     e.preventDefault();
-    const formdata = new FormData();
-    formdata.append('line1', address.line1);
-    formdata.append('line2', address.line2);
-    formdata.append('city', address.city);
-    formdata.append('state', address.state);
-    formdata.append('country', address.country);
-    formdata.append('zipcode', address.zipcode);
 
     try {
-      await axios.post(`${baseURL}/api/profile/updateaddress`, formdata, {
-        headers: {
-          Authorization: cookie.get('token'),
-          'Content-Type': 'multipart/form-data'
+      await axios.put(
+        `${baseURL}/api/profile/updateaddress/${Userdata.profile._id}`,
+        address,
+        {
+          headers: {
+            Authorization: cookie.get('token'),
+            'Content-Type': 'application/json'
+          }
         }
-      });
+      );
       setShowlocation(false);
       toast.success('Address successfully have been updated');
     } catch (err) {
+      console.log(err);
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }
+    window.setTimeout(function () {
+      location.reload();
+    }, 800);
   };
 
   const handleButtonForm = () => {
     addingBio();
     setBio('');
     setShowForm(false);
-    setShowgames(false);
     window.setTimeout(function () {
       location.reload();
-    }, 400);
+    }, 800);
   };
 
   useEffect(() => {
@@ -350,28 +343,21 @@ const ProfileBox = ({ user, Userdata, games }) => {
                     // </button>
 
                     <>
-                      <a
-                        href="#locations"
-                        className="common_poup"
-                        onClick={mscroll}
-                      >
-                        {' '}
+                      <button onClick={() => setShowLocModal(true)}>
                         <i className="fa fa-pencil" aria-hidden="true"></i>
-                      </a>
+                      </button>
 
-                      <div
-                        id="locations"
-                        className="after_load_scroll"
-                        style={{ display: 'none' }}
-                      >
+                      {showLocModal && (
                         <div className="inner_model_box">
                           <h3>Locations</h3>
 
                           <form
-                            onSubmit={handleAddress}
-                            encType="multipart/form-data"
+                            onSubmit={handleAddressForm}
                             className="common_form"
                           >
+                            <button onClick={() => setShowLocModal(false)}>
+                              X
+                            </button>
                             <div className="form-group">
                               <div className="colm">
                                 <label htmlFor="exampleFormControlInput1">
@@ -384,7 +370,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                                   placeholder="address line1"
                                   name="line1"
                                   onChange={handleChange}
-                                  value={address.line1}
+                                  value={address?.line1}
                                 />
                               </div>
                               <div className="colm">
@@ -398,7 +384,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                                   placeholder="address line2"
                                   name="line2"
                                   onChange={handleChange}
-                                  value={address.line2}
+                                  value={address?.line2}
                                 />
                               </div>
                               <div className="colm">
@@ -412,7 +398,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                                   placeholder="city "
                                   name="city"
                                   onChange={handleChange}
-                                  value={address.city}
+                                  value={address?.city}
                                 />
                               </div>
                               <div className="colm">
@@ -426,7 +412,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                                   placeholder="state"
                                   name="state"
                                   onChange={handleChange}
-                                  value={address.state}
+                                  value={address?.state}
                                 />
                               </div>
                               <div className="colm">
@@ -440,7 +426,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                                   placeholder="country"
                                   name="country"
                                   onChange={handleChange}
-                                  value={address.country}
+                                  value={address?.country}
                                 />
                               </div>
                               <div className="colm">
@@ -454,16 +440,14 @@ const ProfileBox = ({ user, Userdata, games }) => {
                                   placeholder="zip code"
                                   name="zipcode"
                                   onChange={handleChange}
-                                  value={address.zipcode}
+                                  value={address?.zipcode}
                                 />
                               </div>
-                              <button type="submit" className="btn">
-                                Update
-                              </button>
+                              <button className="btn">Update</button>
                             </div>
                           </form>
                         </div>
-                      </div>
+                      )}
                     </>
                   ) : null}
                 </div>
@@ -654,7 +638,6 @@ const ProfileBox = ({ user, Userdata, games }) => {
           </div>
         </div>
       </div>
-      
     </>
   );
 };

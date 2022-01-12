@@ -51,7 +51,7 @@ const ReplyList = ({ post, comment, user }) => {
                 <DeleteReply
                   post={post}
                   comment={comment}
-                  replyId={reply._id}
+                  reply={reply}
                   user={user}
                 />
               </div>
