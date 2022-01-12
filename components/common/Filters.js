@@ -3,7 +3,9 @@ import { useRouter } from 'next/router';
 import axios from 'axios';
 import baseURL from '@utils/baseURL';
 import { useForm } from 'react-hook-form';
-import { useQuery } from 'react-query';
+import { useQuery,useMutation } from 'react-query';
+import { toast } from 'react-toastify';
+import cookie from 'js-cookie';
 
 const Filters = ({ ftype }) => {
   const [data, setData] = useState(null);
@@ -38,11 +40,17 @@ const Filters = ({ ftype }) => {
       ]);
     } else {
       var arr = found.values;
-      arr.push(filtered);
-      setSelectedMapFilters([
-        ...selectedMapFilters,
-        { key: name, values: arr }
-      ]);
+      console.log(arr);
+      if(!arr.includes(filtered)) {
+        console.log('indssssss');
+        arr.push(filtered);
+        setSelectedMapFilters([
+          ...selectedMapFilters,
+          { key: name, values: arr }
+        ]);
+
+      }
+
     }
   };
 
@@ -56,6 +64,50 @@ const Filters = ({ ftype }) => {
   }, []);
 
   console.log(selectedMapFilters);
+
+  const handleClearFilter = async (e, key, val) => {
+    e.preventDefault(); 
+    console.log(val);
+    var sf = selectedFilters.filter(selfil => selfil != val);
+    setSelectedFilters(sf);
+
+    var found = selectedMapFilters.find((element) =>
+      element.key.includes(name)
+    );
+
+    var smarr = found.values;
+    var smf = smarr.filter(sma => sma != val);
+
+      setSelectedMapFilters([
+        { key: key, values: smf }
+      ]);   
+  };
+
+
+
+  const mutation = useMutation(async (params) => {
+    await axios.post(`${baseURL}/api/discover/teams`, params, {
+      headers: {
+        Authorization: cookie.get('token'),
+        'Content-Type': 'application/json',
+      },
+    });
+  });
+
+  const handleApplyFilters = async (e) => {
+    e.preventDefault();
+
+    const params = JSON.stringify({
+    "mapFilters": selectedMapFilters,
+    });
+
+    try {
+      await mutation.mutateAsync(params);
+      toast.success('User settings have been updated');
+    } catch (err) {
+      toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+    }
+  };
 
   if (data) {
     return (
@@ -142,7 +194,7 @@ const Filters = ({ ftype }) => {
                   {filter.values.map((filval, idxv) => (
                     <>
                       {filval}{' '}
-                      <a href="#" className="close2">
+                      <a href="#!" className="close2" onClick={(e) => handleClearFilter(e, filter.key, filval)}>
                         X
                       </a>{' '}
                     </>
@@ -150,6 +202,8 @@ const Filters = ({ ftype }) => {
                 </span>
               ))}
             </div>
+            <button className="join" onClick={handleApplyFilters}>APPLY FILTER</button>
+
           </div>
         )}
       </div>
