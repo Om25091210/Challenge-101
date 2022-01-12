@@ -5868,6 +5868,8 @@ form.common_form input {
 .pixelarity-img-edit{ display: none;}
 
 
+#ce-add-username-input{ font-family: 'Titillium Web', sans-serif !important}
+
 .ce-wrapper{ font-weight: 400; font-size: 14px;     font-family: 'Titillium Web', sans-serif !important}
 .ce-wrapper .ce-chat-list-column{ height: 94vh; width: 30% !important;flex: 0 0 30%!important;max-width: 30%!important;}
 .ce-wrapper .ce-chat-feed-column{width: 40%!important;flex: 0 0 40%!important;max-width: 40%!important;}
@@ -5875,3 +5877,48 @@ form.common_form input {
 .ce-chat-list {overflow-y: auto !important;padding: 5px 10px;  font-family: 'Titillium Web', sans-serif !important}
 #ce-feed-container{overflow-y: auto !important;  font-family: 'Titillium Web', sans-serif !important}
 .ce-settings{overflow-y: auto !important;  font-family: 'Titillium Web', sans-serif !important}
+
+/* chat user search result */
+.ce-autocomplete-options{position: relative; padding: 10px !important;     border-radius: 5px !important;}
+.ce-autocomplete-options .ce-autocomplete-close{ position: absolute; top:0; right:4px;}
+
+.ce-autocomplete-option > div{ padding: 0 !important;}
+.ce-autocomplete-option > div div:first-child{ width: 35px !important;height: 35px !important; position: relative;}
+.ce-autocomplete-option > div div:nth-child(2){font-size: 12px !important;}
+
+.ce-autocomplete-option .ce-avatar-status{padding: 0 !important; position: absolute; top:0;}
+
+/* -------- People ------------------ */
+
+.ce-person-container{}
+.ce-avatar{ width: 35px !important; height: 35px !important;}
+.ce-avatar-text {
+    padding-top: 11px !important;
+    font-size: 12px !important;
+}
+.ce-person-container .ce-person-text {
+    top: 5px !important;
+    padding-left: 42px !important;
+    font-size: 12px !important;
+}
+
+.ce-delete-chat{}
+.ce-primary-button.ce-danger-button{height: 29px !important;font-size: 14px; padding: 1px 7px 17px 7px !important}
+
+.ce-chat-engine ::-webkit-scrollbar {
+    width: 0; /* Remove scrollbar space */
+    background: transparent; /* Optional: just make scrollbar invisible */
+}
+
+#new-chat-plus-button{ background: #000 !important;}
+.ce-chat-form-container{background: #7239ea !important; color: #fff; margin-bottom: 20px;  border-radius: 5px;}
+.ce-chat-card.ce-active-chat-card{    padding: 10px !important;
+    cursor: pointer !important;
+    background-color: #f7f7f7 !important;
+    border: 1px solid #ddd !important;
+    border-radius: 5px !important;}
+
+	.ce-chat-title{background: rgba(255, 255, 255, 0.9)  !important;border-bottom: 1px solid #ddd !important;}
+	.anticon{vertical-align: 0 !important}
+	.ce-chat-feed .ce-chat-title-text{color: #7239ea !important}
+	.ce-chat-feed .ce-chat-subtitle-text{color: #7239ea !important;}
