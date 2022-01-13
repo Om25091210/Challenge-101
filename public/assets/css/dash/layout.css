@@ -2235,6 +2235,15 @@ article .social_bar {
 .games_details .chart_box img {
 	width: 100%;
 }
+
+.loc_box i{ font-size: 12px; color: #7239ea;}
+.user_add{ float: left; width: 100%; margin-top: 10px; text-align: center;}
+.user_add li {
+    font-size: 13px;
+    font-weight: 700;
+    padding-bottom: 5px;
+}
+
 /* -------------- Team Page ------------------ */
 
 .profile_dp_box .bottom_details.team_details {
@@ -5835,7 +5844,16 @@ ul.game_search_result li {
 .common_model_box.show_model{ display: block;}
 .common_model_box{position: fixed;top: 0;left: 0;right: 0;bottom: 0;margin: auto;width: 500px;height: 400px;z-index: 199;}
 .common_model_box .inner_model_box{float: left;width: 100%;padding: 30px;background: #fff;overflow: hidden;border: 10px solid #7239ea;}
-.common_model_box .model_close{position: absolute;right: 15px;top: 10px;color: #000;font-size: 20px;font-weight: 700;}
+.common_model_box .model_close {
+    position: absolute;
+    right: -33px;
+    top: 0px;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+    background: #7239ea;
+    padding: 5px 10px 5px 10px;
+}
 
 /*  end custom model box */
 

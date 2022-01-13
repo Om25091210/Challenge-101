@@ -13,7 +13,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
   const [bio, setBio] = useState(Userdata.profile.bio);
   const [showform, setShowForm] = useState(false);
   const [showlocation, setShowlocation] = useState(false);
-  const [showLocModal, setShowLocModal] = useState(false);
+  const [showLocModal, setShowLocModal] = useState(true);
 
   const [coverPic, setCoverPic] = useState(null);
 
@@ -175,14 +175,24 @@ const ProfileBox = ({ user, Userdata, games }) => {
     }, 800);
   };
 
-  useEffect(() => {
-    $('.common_poup').fancybox({
-      wrapCSS: 'common_poup_wrap',
+  // useEffect(() => {
+  //   $('.common_poup').fancybox({
+  //     wrapCSS: 'common_poup_wrap',
 
-      minHeight: 450,
-      fitToView: true,
-      autoSize: true,
-      autoScale: true
+  //     minHeight: 450,
+  //     fitToView: true,
+  //     autoSize: true,
+  //     autoScale: true
+  //   });
+  // }, []);
+
+  useEffect(() => {
+    $('a.model_show_btn').click(function () {
+      $(this).next().addClass('show_model');
+    });
+
+    $('a.model_close').click(function () {
+      $(this).parent().removeClass('show_model');
     });
   }, []);
 
@@ -314,24 +324,130 @@ const ProfileBox = ({ user, Userdata, games }) => {
                   <span className="were">Captain - CS GO</span>
                 </div>
                 <div className="game_role">
-                  <span className="ct"> Location</span>
+                  <div className="loc_box">
+                    {' '}
+                    <span className="ct"> Location</span>{' '}
+                    <a href="javascript:void(0)" className="model_show_btn">
+                      <i className="fa fa-pencil" aria-hidden="true"></i>
+                    </a>
+                    <div className="common_model_box">
+                      <a href="javascript:void(0)" className="model_close">
+                        X
+                      </a>
+
+                      <div className="inner_model_box">
+                        <h3>Locations</h3>
+
+                        <form
+                          onSubmit={handleAddressForm}
+                          className="common_form"
+                        >
+                          <div className="form-group">
+                            <div className="colm">
+                              <label htmlFor="exampleFormControlInput1">
+                                Address Line 1
+                              </label>
+                              <input
+                                type="text"
+                                className="form-control"
+                                id="exampleFormControlInput1"
+                                placeholder="address line1"
+                                name="line1"
+                                onChange={handleChange}
+                                value={address?.line1}
+                              />
+                            </div>
+                            <div className="colm">
+                              <label htmlFor="exampleFormControlInput1">
+                                Address Line 2
+                              </label>
+                              <input
+                                type="text"
+                                className="form-control"
+                                id="exampleFormControlInput1"
+                                placeholder="address line2"
+                                name="line2"
+                                onChange={handleChange}
+                                value={address?.line2}
+                              />
+                            </div>
+                            <div className="colm">
+                              <label htmlFor="exampleFormControlInput1">
+                                City
+                              </label>
+                              <input
+                                type="text"
+                                className="form-control"
+                                id="exampleFormControlInput1"
+                                placeholder="city "
+                                name="city"
+                                onChange={handleChange}
+                                value={address?.city}
+                              />
+                            </div>
+                            <div className="colm">
+                              <label htmlFor="exampleFormControlInput1">
+                                State
+                              </label>
+                              <input
+                                type="text"
+                                className="form-control"
+                                id="exampleFormControlInput1"
+                                placeholder="state"
+                                name="state"
+                                onChange={handleChange}
+                                value={address?.state}
+                              />
+                            </div>
+                            <div className="colm">
+                              <label htmlFor="exampleFormControlInput1">
+                                Country
+                              </label>
+                              <input
+                                type="text"
+                                className="form-control"
+                                id="exampleFormControlInput1"
+                                placeholder="country"
+                                name="country"
+                                onChange={handleChange}
+                                value={address?.country}
+                              />
+                            </div>
+                            <div className="colm">
+                              <label htmlFor="exampleFormControlInput1">
+                                Zipcode
+                              </label>
+                              <input
+                                type="text"
+                                className="form-control"
+                                id="exampleFormControlInput1"
+                                placeholder="zip code"
+                                name="zipcode"
+                                onChange={handleChange}
+                                value={address?.zipcode}
+                              />
+                            </div>
+                            <button className="btn">Update</button>
+                          </div>
+                        </form>
+                      </div>
+                      <div className="overlay"></div>
+                    </div>
+                  </div>
 
                   {!showlocation && Userdata.profile.address ? (
-                    <p>
-                      {' '}
-                      <ul>
-                        <li>{Userdata.profile.address.line1}</li>
-                        <li>{Userdata.profile.address.line2}</li>
-                        <li>
-                          {Userdata.profile.address.city},{' '}
-                          {Userdata.profile.address.state}
-                        </li>
-                        <li>
-                          {Userdata.profile.address.country},{' '}
-                          {Userdata.profile.address.zipcode}
-                        </li>
-                      </ul>
-                    </p>
+                    <ul className="user_add">
+                      <li>{Userdata.profile.address.line1}</li>
+                      <li>{Userdata.profile.address.line2}</li>
+                      <li>
+                        {Userdata.profile.address.city},{' '}
+                        {Userdata.profile.address.state}
+                      </li>
+                      <li>
+                        {Userdata.profile.address.country},{' '}
+                        {Userdata.profile.address.zipcode}
+                      </li>
+                    </ul>
                   ) : null}
 
                   {isLoggedInUser ? (
@@ -343,111 +459,11 @@ const ProfileBox = ({ user, Userdata, games }) => {
                     // </button>
 
                     <>
-                      <button onClick={() => setShowLocModal(true)}>
+                      {/* <button onClick={() => setShowLocModal(true)}>
                         <i className="fa fa-pencil" aria-hidden="true"></i>
-                      </button>
-
-                      {showLocModal && (
-                        <div className="inner_model_box">
-                          <h3>Locations</h3>
-
-                          <form
-                            onSubmit={handleAddressForm}
-                            className="common_form"
-                          >
-                            <button onClick={() => setShowLocModal(false)}>
-                              X
-                            </button>
-                            <div className="form-group">
-                              <div className="colm">
-                                <label htmlFor="exampleFormControlInput1">
-                                  Address Line 1
-                                </label>
-                                <input
-                                  type="text"
-                                  className="form-control"
-                                  id="exampleFormControlInput1"
-                                  placeholder="address line1"
-                                  name="line1"
-                                  onChange={handleChange}
-                                  value={address?.line1}
-                                />
-                              </div>
-                              <div className="colm">
-                                <label htmlFor="exampleFormControlInput1">
-                                  Address Line 2
-                                </label>
-                                <input
-                                  type="text"
-                                  className="form-control"
-                                  id="exampleFormControlInput1"
-                                  placeholder="address line2"
-                                  name="line2"
-                                  onChange={handleChange}
-                                  value={address?.line2}
-                                />
-                              </div>
-                              <div className="colm">
-                                <label htmlFor="exampleFormControlInput1">
-                                  City
-                                </label>
-                                <input
-                                  type="text"
-                                  className="form-control"
-                                  id="exampleFormControlInput1"
-                                  placeholder="city "
-                                  name="city"
-                                  onChange={handleChange}
-                                  value={address?.city}
-                                />
-                              </div>
-                              <div className="colm">
-                                <label htmlFor="exampleFormControlInput1">
-                                  State
-                                </label>
-                                <input
-                                  type="text"
-                                  className="form-control"
-                                  id="exampleFormControlInput1"
-                                  placeholder="state"
-                                  name="state"
-                                  onChange={handleChange}
-                                  value={address?.state}
-                                />
-                              </div>
-                              <div className="colm">
-                                <label htmlFor="exampleFormControlInput1">
-                                  Country
-                                </label>
-                                <input
-                                  type="text"
-                                  className="form-control"
-                                  id="exampleFormControlInput1"
-                                  placeholder="country"
-                                  name="country"
-                                  onChange={handleChange}
-                                  value={address?.country}
-                                />
-                              </div>
-                              <div className="colm">
-                                <label htmlFor="exampleFormControlInput1">
-                                  Zipcode
-                                </label>
-                                <input
-                                  type="text"
-                                  className="form-control"
-                                  id="exampleFormControlInput1"
-                                  placeholder="zip code"
-                                  name="zipcode"
-                                  onChange={handleChange}
-                                  value={address?.zipcode}
-                                />
-                              </div>
-                              <button className="btn">Update</button>
-                            </div>
-                          </form>
-                        </div>
-                      )}
+                      </button> 
+                      
+                      */}
                     </>
                   ) : null}
                 </div>
