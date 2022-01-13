@@ -5,19 +5,25 @@ import { useState, useEffect } from 'react';
 import baseURL from '@utils/baseURL';
 import TeamRequest from './invites/TeamRequest';
 
-const Teams = ({ user, profile }) => {
+const Teams = ({ user, profile , myState}) => {
   const [team, setTeam] = useState([]);
-  const [filteredResults, setFilteredResults] = useState([]);
 
+     
   useEffect(() => {
 
-    if (filteredResults.length > 0 ){
-      setTeam(filteredResults);
-     } else { 
-       axios.get(`${baseURL}/api/teams`).then((res) => setTeam(res.data));
-     }
 
-  }, []);
+  console.log(myState.filteredResults);
+
+  if (myState.filteredResults.length > 0 ){
+    setTeam(myState.filteredResults);
+   } else { 
+     axios.get(`${baseURL}/api/teams`).then((res) => setTeam(res.data));
+   }
+
+   console.log(team);
+
+
+  }, [myState]);
 
   return (
     <div className="tab" id="teams">
@@ -59,7 +65,7 @@ const Teams = ({ user, profile }) => {
           </div>
         </div>
 
-        <Filters ftype={'TEAMS'} filteredResults={filteredResults}/>
+        <Filters ftype={'TEAMS'} myState={myState}/>
       </div>
 
       {team.map((team, idx) => (
@@ -73,7 +79,7 @@ const Teams = ({ user, profile }) => {
               <div className="role_pic">
                 <img src="/assets/media/discover/team1.png" alt="" />
               </div>
-              <h3>{team.team.name}</h3>
+              <h3>{team.team._id} : {team.team.name}</h3>
               <img
                 src="/assets/media/discover/country.png"
                 alt={team.team.name}

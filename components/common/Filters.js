@@ -7,7 +7,7 @@ import { useQuery,useMutation } from 'react-query';
 import { toast } from 'react-toastify';
 import cookie from 'js-cookie';
 
-const Filters = ({ ftype, filteredResults }) => {
+const Filters = ({ ftype , myState }) => {
   const [data, setData] = useState(null);
   const [selectedFilters, setSelectedFilters] = useState([]);
   const [selectedMapFilters, setSelectedMapFilters] = useState([]);
@@ -63,7 +63,7 @@ const Filters = ({ ftype, filteredResults }) => {
       setData(newData);
     };
     fetchData();
-  }, []);
+  }, [myState]);
 
   console.log(selectedMapFilters);
 
@@ -122,10 +122,16 @@ const Filters = ({ ftype, filteredResults }) => {
     console.log(params);
 
     try {
-      const resp = await mutation.mutateAsync(params);
-      filteredResults = resp;
-      console.log(filteredResults);
-      toast.success('User settings have been updated');
+     // const res = await mutation.mutateAsync(params);
+      
+axios.post(`${baseURL}/api/discover/teams`, params, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }).then( (res) =>    myState.setFilteredResults(res.data));
+
+      console.log(myState.filteredResults);
+
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }
@@ -202,6 +208,7 @@ const Filters = ({ ftype, filteredResults }) => {
               className="close1"
               onClick={() => {
                 setSelectedMapFilters([]);
+                myState.setFilteredResults([]);
               }}
             >
               X
@@ -211,16 +218,11 @@ const Filters = ({ ftype, filteredResults }) => {
               {' '}
               {selectedMapFilters.map((filter, idx) => (
 
-              
-
                 <span className="filter1">
                   {' '}
                   {filter.key}:
                   
-
-
                   {
-
 
                     Array.from(filter.values).map((filval, idxv) => (
                     <>
@@ -230,7 +232,6 @@ const Filters = ({ ftype, filteredResults }) => {
                       </a>{' '}
                     </>
                   ))}
-
 
                 </span>
               ))}

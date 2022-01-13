@@ -13,7 +13,15 @@ import baseURL from '@utils/baseURL';
 import FooterMain from '@components/FooterMain';
 import AllScript from './AllScript';
 
+
 const Discover = ({ user, profile, games }) => {
+let myState = {};
+
+  const [filteredResults, setFilteredResults] = useState([]);
+
+  myState.filteredResults = filteredResults;
+  myState.setFilteredResults = setFilteredResults;
+
   return (
     <>
       <MetaDash />
@@ -94,7 +102,7 @@ const Discover = ({ user, profile, games }) => {
           </div>
 
           <div className="prfoile_tab_data ">
-            <Teams user={user} profile={profile} />
+            <Teams user={user} profile={profile} myState={myState}/>
 
             <Players />
 
