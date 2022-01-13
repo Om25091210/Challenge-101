@@ -57,7 +57,10 @@ const Arenas = ({ user }) => {
         <div className="team_row arena_team_row" key={idx}>
           <div className="inner_team">
             <div className="logo_box">
-              <img src={ara.logoUrl} alt="" />
+              <div className="role_pic">
+                {' '}
+                <img src={ara.logoUrl} alt="" />
+              </div>
               <h3>
                 {' '}
                 {ara.name}{' '}
