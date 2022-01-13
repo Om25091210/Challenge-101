@@ -3049,8 +3049,8 @@ article .social_bar {
     overflow: hidden;
     height: 50px;}
 
-	.team_row .logo_box .role_pic img{     width: 100%;
-		object-fit: cover;
+	.team_row .logo_box .role_pic img{ width: 100%;
+		object-fit:contain;
 		height: 50px;
 		margin: 0;}	
 
