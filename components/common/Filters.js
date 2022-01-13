@@ -7,9 +7,8 @@ import { useQuery,useMutation } from 'react-query';
 import { toast } from 'react-toastify';
 import cookie from 'js-cookie';
 
-const Filters = ({ ftype }) => {
+const Filters = ({ ftype, filteredResults }) => {
   const [data, setData] = useState(null);
-
   const [selectedFilters, setSelectedFilters] = useState([]);
   const [selectedMapFilters, setSelectedMapFilters] = useState([]);
 
@@ -111,12 +110,21 @@ const Filters = ({ ftype }) => {
   const handleApplyFilters = async (e) => {
     e.preventDefault();
 
-    const params = JSON.stringify({
-    "mapFilters": selectedMapFilters,
+    const uniqueTags = [];
+    selectedMapFilters.map((item) => {
+      uniqueTags.push({key:item.key, values: Array.from(item.values)});
     });
 
+    const params = JSON.stringify({
+    "mapFilters": uniqueTags,
+    });
+
+    console.log(params);
+
     try {
-      await mutation.mutateAsync(params);
+      const resp = await mutation.mutateAsync(params);
+      filteredResults = resp;
+      console.log(filteredResults);
       toast.success('User settings have been updated');
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');

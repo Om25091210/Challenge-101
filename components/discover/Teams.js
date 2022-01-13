@@ -7,8 +7,16 @@ import TeamRequest from './invites/TeamRequest';
 
 const Teams = ({ user, profile }) => {
   const [team, setTeam] = useState([]);
+  const [filteredResults, setFilteredResults] = useState([]);
+
   useEffect(() => {
-    axios.get(`${baseURL}/api/teams`).then((res) => setTeam(res.data));
+
+    if (filteredResults.length > 0 ){
+      setTeam(filteredResults);
+     } else { 
+       axios.get(`${baseURL}/api/teams`).then((res) => setTeam(res.data));
+     }
+
   }, []);
 
   return (
@@ -51,7 +59,7 @@ const Teams = ({ user, profile }) => {
           </div>
         </div>
 
-        <Filters ftype={'TEAMS'} />
+        <Filters ftype={'TEAMS'} filteredResults={filteredResults}/>
       </div>
 
       {team.map((team, idx) => (
