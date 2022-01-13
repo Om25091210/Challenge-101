@@ -30,28 +30,31 @@ const Filters = ({ ftype }) => {
     var found = selectedMapFilters.find((element) =>
       element.key.includes(name)
     );
-    console.log(found);
+
     if (found == undefined) {
-      var arr = [];
-      arr.push(filtered);
-      setSelectedMapFilters([
-        ...selectedMapFilters,
-        { key: name, values: arr }
-      ]);
+      var arr = new Set();
+      arr.add(filtered);
+
+      selectedMapFilters.push({key: name, values:arr});
     } else {
       var arr = found.values;
-      console.log(arr);
-      if(!arr.includes(filtered)) {
-        console.log('indssssss');
-        arr.push(filtered);
-        setSelectedMapFilters([
-          ...selectedMapFilters,
-          { key: name, values: arr }
-        ]);
+      if(!arr.has(filtered)) {
+        arr.add(filtered);
+
+      selectedMapFilters.push({key: name, values:arr});
 
       }
 
     }
+
+    const uniqueTags = [];
+    selectedMapFilters.map((item) => {
+      var findItem = uniqueTags.find((x) => x.key === item.key);
+      if (!findItem) uniqueTags.push(item);
+    });
+
+    setSelectedMapFilters(uniqueTags);
+
   };
 
   useEffect(() => {
@@ -67,20 +70,31 @@ const Filters = ({ ftype }) => {
 
   const handleClearFilter = async (e, key, val) => {
     e.preventDefault(); 
-    console.log(val);
     var sf = selectedFilters.filter(selfil => selfil != val);
     setSelectedFilters(sf);
 
-    var found = selectedMapFilters.find((element) =>
-      element.key.includes(name)
-    );
+    var found = selectedMapFilters.find((element) =>element.key.includes(name));
 
     var smarr = found.values;
-    var smf = smarr.filter(sma => sma != val);
+    smarr.delete(val);
 
-      setSelectedMapFilters([
-        { key: key, values: smf }
-      ]);   
+    const uniqueTags = [];
+    selectedMapFilters.map((item) => {
+
+      if(item.key === key) {
+        var findItem = selectedMapFilters.find((element) =>element.key.includes(key));
+        var smarr = findItem.values;
+        smarr.delete(val);
+
+        if (smarr.size > 0) {
+          uniqueTags.push({key:key, values: smarr});
+        }
+      } else {
+        uniqueTags.push(item);
+      }
+
+    });
+    setSelectedMapFilters(uniqueTags);
   };
 
 
@@ -188,10 +202,19 @@ const Filters = ({ ftype }) => {
             <div className="filter_list">
               {' '}
               {selectedMapFilters.map((filter, idx) => (
+
+              
+
                 <span className="filter1">
                   {' '}
                   {filter.key}:
-                  {filter.values.map((filval, idxv) => (
+                  
+
+
+                  {
+
+
+                    Array.from(filter.values).map((filval, idxv) => (
                     <>
                       {filval}{' '}
                       <a href="#!" className="close2" onClick={(e) => handleClearFilter(e, filter.key, filval)}>
@@ -199,6 +222,8 @@ const Filters = ({ ftype }) => {
                       </a>{' '}
                     </>
                   ))}
+
+
                 </span>
               ))}
             </div>
