@@ -217,7 +217,7 @@
 
 .profile_dp_box{flex-wrap: wrap; margin-top: 85px;}
 
-.profile_dp_box .profile_details{ width: 100%;}
+.profile_dp_box .profile_details{ width: 100%; margin-top: 60px;}
 .profile_dp_box .bottom_details .were{ font-size: 13px;}
 .all_stats ul li{ flex: 1 1 45%;}
 .profile_dp_box .top_details .name_box{ color: #000;}
@@ -227,6 +227,18 @@
 
 .bio_box{    flex-direction: column;}
 .bio_box .left_bio, .bio_box .right_bio{ width: 100%; margin-bottom: 20px;}
+
+.profile_box .profile_cover_photo{ height: auto;}
+
+.profile_dp_box .bottom_details .current_status{ flex-wrap: wrap;}
+.profile_dp_box .bottom_details .current_team{ width: 48%;}
+.user_add{display: flex;flex-wrap: wrap;}
+.user_add li{flex: 0 0 45%;}
+.bio_box .games{ flex-wrap: wrap;}
+.profile_hover_games{ margin: 10px 0;}
+
+.trophy_cabinate ul li .num{ font-size: 30px;}
+.trophy_cabinate h3{ font-size: 15px; padding: 20px;}
 
 
 /* ------------ team ----------------- */
@@ -326,6 +338,10 @@
         .games_details li .nm{ width: 110px;}
          
         .product_box .product-detail-box .price{ margin: 0; padding: 10px 0;}
+        .post{padding: 40px 20px 20px 20px;}
+        .post .heads{ flex-wrap: wrap;}
+        .post .heads .user_name_disc{ width: 80%;}
+        .post .heads .date{ top:-30px}
 
         /* ------- team -------------- */
 

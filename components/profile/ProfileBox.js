@@ -323,7 +323,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                   <span className="ct"> In Game Role</span>
                   <span className="were">Captain - CS GO</span>
                 </div>
-                <div className="game_role">
+                <div className="game_role profile_address">
                   <div className="loc_box">
                     {' '}
                     <span className="ct"> Location</span>{' '}
