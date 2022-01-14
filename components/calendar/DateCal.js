@@ -4,13 +4,27 @@ import axios from 'axios';
 import baseURL from '@utils/baseURL';
 import { QueryClient, QueryClientProvider, useMutation } from 'react-query';
 
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
+// import DatePicker from 'react-datepicker';
+// import 'react-datepicker/dist/react-datepicker.css';
+import { addDays } from 'date-fns';
+import { DateRangePicker } from 'react-date-range';
+import 'react-date-range/dist/styles.css'; // main css file
+import 'react-date-range/dist/theme/default.css'; // theme css file
 
- const DateCal = () => {
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(null);
+const DateCal = () => {
+  // const [startDate, setStartDate] = useState(new Date());
+  // const [endDate, setEndDate] = useState(null);
   const [tournaments, setTournaments] = useState([]);
+
+  const [state, setState] = useState([
+    {
+      startDate: new Date(),
+      endDate: addDays(new Date(), 7),
+      key: 'selection'
+    }
+  ]);
+
+  console.log(state);
 
   const onChange = (dates) => {
     const [start, end] = dates;
@@ -18,38 +32,33 @@ import 'react-datepicker/dist/react-datepicker.css';
     setStartDate(start);
     setEndDate(end);
 
-        if (startDate) {
-          if (endDate) {
-
-          getTours(startDate,endDate)
-            .then(items => {
-                setTournaments(items)
-            })
-          } 
-        }
-
+    if (startDate) {
+      if (endDate) {
+        getTours(startDate, endDate).then((items) => {
+          setTournaments(items);
+        });
+      }
+    }
   };
 
-  const [tournament, SetTournament] = useState([]);
-
-
-    function getTours(startDate,endDate) {
-      const requestOptions = {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ startDate: startDate, endDate : endDate })
-      };
-    return fetch(`${baseURL}/api/tournaments/tournamentsbydate`, requestOptions)
-        .then(data => data.json())
-
-    }  
+  function getTours(startDate, endDate) {
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ startDate: startDate, endDate: endDate })
+    };
+    return fetch(
+      `${baseURL}/api/tournaments/tournamentsbydate`,
+      requestOptions
+    ).then((data) => data.json());
+  }
 
   console.log(tournaments);
 
   return (
     <>
       <div className="calendar_box">
-        <DatePicker
+        {/* <DatePicker
           selected={startDate}
           onChange={onChange}
           startDate={startDate}
@@ -58,6 +67,15 @@ import 'react-datepicker/dist/react-datepicker.css';
           selectsRange
           inline
           dateFormat="MMMM d, yyyy"
+        /> */}
+
+        <DateRangePicker
+          onChange={(item) => setState([item.selection])}
+          showSelectionPreview={true}
+          moveRangeOnFirstSelection={false}
+          months={2}
+          ranges={state}
+          direction="horizontal"
         />
       </div>
 
@@ -65,7 +83,10 @@ import 'react-datepicker/dist/react-datepicker.css';
         <h2>Xenowatch league-week6</h2>
 
         {tournaments.length === 0 ? (
-          <p>No Tournaments are scheduled between selected dates. Please change the dates and check again! </p>
+          <p>
+            No Tournaments are scheduled between selected dates. Please change
+            the dates and check again!{' '}
+          </p>
         ) : (
           <div className="match_box">
             {tournaments.map((tour) => (
@@ -93,7 +114,9 @@ import 'react-datepicker/dist/react-datepicker.css';
                       <span className="dp">
                         <img src={tour.tournament.imgUrl} alt="" />
                       </span>{' '}
-                      <span className="dp_name">{tour.tournament.description}</span>{' '}
+                      <span className="dp_name">
+                        {tour.tournament.description}
+                      </span>{' '}
                     </div>
                     <div className="num">3</div>
                   </div>

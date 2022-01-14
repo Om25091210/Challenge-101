@@ -4271,6 +4271,12 @@ article .social_bar {
 .calendar_box .react-datepicker__day:hover,  .calendar_box .react-datepicker__month-text:hover,  .calendar_box .react-datepicker__quarter-text:hover,  .calendar_box .react-datepicker__year-text:hover {
 	border-radius: 0;
 }
+
+
+.rdrDateRangePickerWrapper{ border:1px solid #ddd}
+.rdrDateRangePickerWrapper, .rdrCalendarWrapper { width: 100%;}
+.rdrMonth, .rdrMonth{ width: 100% !important}
+
 /* ------------------ Video section -------------------- */
 
  .video_box {

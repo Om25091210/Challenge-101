@@ -82,6 +82,16 @@
     .profile_dp_box .top_details .button a{ padding: 5px 10px;}
     .profile_dp_box .bottom_details{flex-wrap: wrap;}
 
+    .bio_box{ flex-direction: column;}
+    .bio_box .left_bio{ width: 100%;}
+    .bio_box .right_bio {
+        width: 100%;
+        border-left: 0;
+        padding-left: 0;
+        border-top: 1px solid #ddd;
+        margin-top: 20px;
+    }
+
     /* --------- team ---------------- */
 
     .product_box .product-detail-box{margin: 0 0 0 10px; width: 45%;}
@@ -185,14 +195,8 @@
 
     .left_side.show_left_menu{  opacity: 1; left:0;}
 
-    .main_middle,  .right_side, .main_middle.profile_middle {
-        float: right;
-        width: 96%;
-        margin: 120px 2% 20px 2%;
-    }
-
+    .main_middle,  .right_side, .main_middle.profile_middle {float: right;width: 96%; margin: 120px 2% 20px 2%;}
     .right_side{ margin-top: 0px;}
- 
     .post .heads .user, .profile_left_post .post .heads .user{ width: 50px; height: 50px;}
     .post .left_details, .profile_left_post .post .left_details{ width: 100%; height: auto;     flex-direction: inherit; justify-content: space-between;}
     .post .right_details, .profile_left_post .post .right_details{ float: left; width: 100%;}
@@ -306,6 +310,8 @@
     .comments_point .pinned{ margin-top: 10px;}
     .users_share_box .more_user {align-items: center;flex-wrap: wrap;}
     .users_share_box .more_user .others{ margin-left: 0; padding: 10px 0;}
+
+    .profile_tab_btn.three_nav li a{ font-size: 12px; text-align: center;}
 
  /* ------- profile ---------- */
 
