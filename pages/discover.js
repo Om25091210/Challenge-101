@@ -18,9 +18,26 @@ const Discover = ({ user, profile, games }) => {
 let myState = {};
 
   const [filteredResults, setFilteredResults] = useState([]);
+  const [filterType, setFilterType] = useState('TEAMS');
 
   myState.filteredResults = filteredResults;
   myState.setFilteredResults = setFilteredResults;
+
+    useEffect(() => {
+        console.log(filterType);
+        setFilterType(filterType);
+    }, [filterType]);
+
+
+  const handleFType = async (val) => {
+    console.log(val);
+    if (typeof val !== "undefined") {
+          console.log('setting filter type.......');
+
+      setFilterType(val);
+    }
+  }
+
 
   return (
     <>
@@ -69,31 +86,31 @@ let myState = {};
             </div>
 
             <ul className="profile_tab_btn discover_tab_btn">
-              <li className="active">
-                <a href="#!" rel="teams">
+              <li className={filterType == 'TEAMS' ? "active" : ""}>
+                <a href="#!"  onClick={() => handleFType('TEAMS')}>
                   TEAMS{' '}
                 </a>
               </li>
-              <li>
-                <a href="#!" rel="players">
+              <li className={filterType == 'PLAYERS' ? "active" : ""}>
+                <a href="#!" onClick={() => handleFType('PLAYERS')}>
                   {' '}
                   PLAYERS
                 </a>
               </li>
-              <li>
-                <a href="#!" rel="coaches">
+              <li className={filterType == 'COACHES' ? "active" : ""}>
+                <a href="#!"  onClick={() => handleFType('COACHES')}>
                   {' '}
                   COACHES{' '}
                 </a>
               </li>
-              <li>
-                <a href="#!" rel="arenas">
+              <li className={filterType == 'ARENAS' ? "active" : ""}>
+                <a href="#!" onClick={() => handleFType('ARENAS')}>
                   {' '}
                   ARENAS
                 </a>
               </li>
-              <li>
-                <a href="#!" rel="jobs">
+              <li className={filterType == 'JOBS' ? "active" : ""}>
+                <a href="#!" onClick={() => handleFType('JOBS')}>
                   {' '}
                   JOBS{' '}
                 </a>
@@ -102,15 +119,31 @@ let myState = {};
           </div>
 
           <div className="prfoile_tab_data ">
-            <Teams user={user} profile={profile} myState={myState}/>
 
-            <Players />
+            { filterType == 'TEAMS' ? 
+              <Teams user={user} profile={profile} myState={myState}/> : '' 
+            }
 
-            <Coaches />
+            { filterType == 'PLAYERS' ? 
 
-            <Arenas />
+              <Players user={user} profile={profile} myState={myState}/> : '' 
+            }
 
-            <Jobs />
+            { filterType == 'COACHES' ? 
+
+              <Coaches user={user} profile={profile} myState={myState}/> : ''
+            }
+
+            { filterType == 'ARENAS' ? 
+
+              <Arenas user={user} profile={profile} myState={myState}/> : ''
+            }
+
+            { filterType == 'JOBS' ? 
+
+              <Jobs user={user} profile={profile} myState={myState}/> : ''
+            }
+
           </div>
         </div>
       </div>

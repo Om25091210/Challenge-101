@@ -8,9 +8,9 @@ import cookie from 'js-cookie';
 import { useMutation } from 'react-query';
 import { toast } from 'react-toastify';
 
-const Jobs = () => {
-  const [data, setData] = useState(null);
-  const [jobs, setJobs] = useState(null);
+const Jobs = ({ user, profile, myState }) => {
+
+  const [jobs, setJobs] = useState([]);
   const [files, setFiles] = useState([]);
 
   var ftype = 'JOBS';
@@ -40,21 +40,21 @@ const Jobs = () => {
   };
 
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch(`${baseURL}/api/filters/${ftype}`);
-      const newData = await response.json();
-      setData(newData);
+  console.log(myState.filteredResults);
+  if (myState.filteredResults.length > 0 ){
+    setJobs(myState.filteredResults);
+   } else { 
+      axios.get(`${baseURL}/api/all/jobs`).then((res) => setJobs(res.data));
+   }
 
-      var res = await fetch(`${baseURL}/api/all/jobs`);
-      var ndata = await res.json();
-      setJobs(ndata);
-    };
-    fetchData();
-  }, []);
+  console.log(jobs);
+  
+  }, [myState, jobs]);
 
-  if (data) {
+
+  if (jobs) {
     return (
-      <div className="tab hide" id="jobs">
+      <div className="tab" id="jobs">
         <div className="white_bg">
           <div className="team_search">
             <div className="searchbox">
@@ -93,7 +93,7 @@ const Jobs = () => {
             </div>
           </div>
 
-          <Filters ftype={'JOBS'} />
+          <Filters filterType={'JOBS'} myState={myState} />
         </div>
 
         {!jobs || jobs.length === 0 ? (

@@ -4,15 +4,23 @@ import axios from 'axios';
 import baseURL from '@utils/baseURL';
 import cookie from 'js-cookie';
 
-const Players = ({ user }) => {
+const Players = ({ user, profile , myState}) => {
   const [playerData, setPlayerData] = useState([]);
 
-  useEffect(() => {
-    axios.get(`${baseURL}/api/player`).then((res) => setPlayerData(res.data));
-  }, []);
+    useEffect(() => {
+    console.log(myState.filteredResults);
+    if (myState.filteredResults.length > 0 ){
+      setPlayerData(myState.filteredResults);
+     } else { 
+      axios.get(`${baseURL}/api/player`).then((res) => setPlayerData(res.data));
+     }
+
+    console.log(playerData);
+    }, [myState, playerData]);
 
   return (
-    <div className="tab hide" id="players">
+
+    <div className="tab" id="players">
       <div className="white_bg">
         <div className="team_search">
           <div className="searchbox">
@@ -51,7 +59,7 @@ const Players = ({ user }) => {
           </div>
         </div>
 
-        <Filters ftype={'PLAYERS'} />
+        <Filters filterType={'PLAYERS'} myState={myState}/>
       </div>
 
       {playerData.map((plyr) => (
@@ -63,7 +71,7 @@ const Players = ({ user }) => {
             <div className="logo_box">
               {' '}
               <img src="/assets/media/discover/team1.png" alt="" />
-              <h3>{plyr.players.nickName}</h3>
+              <h3>{plyr.players ? plyr.players.nickName : 'No nickname'}</h3>
               <img src="/assets/media/discover/country.png" alt="" />{' '}
             </div>
             <span className="logo">
@@ -99,14 +107,14 @@ const Players = ({ user }) => {
                   {' '}
                   <img src="/assets/media/discover/team1.png" alt="" />{' '}
                 </div>
-                <h3>{plyr.players.nickName}</h3>
+                <h3>{plyr.players ? plyr.players.nickName : 'no nickname'}</h3>
               </div>
 
               <div className="ranking">
                 <h4>Past Team</h4>
                 <div className="past">
                   <img src="/assets/media/discover/icon1.png" alt="" />{' '}
-                  <b>{plyr.team.map((tm) => tm.name)}</b>{' '}
+                  <b>{plyr.team ? plyr.team.map((tm) => tm.name) : 'NO TEAM'}</b>{' '}
                   <img src="/assets/media/discover/country.png" alt="" />{' '}
                 </div>
                 <h4>MMR Rating</h4>
@@ -116,9 +124,9 @@ const Players = ({ user }) => {
               </div>
               <div className="match">
                 <h4>Matches Played</h4>
-                <p>{plyr.players.total_games_played} Games</p>
+                <p>{plyr.players ? plyr.players.total_games_played : '0'} Games</p>
                 <h4>Matches Won</h4>
-                <p>{plyr.players.won} Victories</p>
+                <p>{plyr.players ? plyr.players.won : '0'} Victories</p>
                 <h4>Trophies</h4>
                 <p>78</p>
               </div>

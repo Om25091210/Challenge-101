@@ -3,15 +3,23 @@ import baseURL from '@utils/baseURL';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 
-const Arenas = ({ user }) => {
+const Arenas = ({ user, profile, myState }) => {
   const [arenas, setArenas] = useState([]);
 
   useEffect(() => {
-    axios.get(`${baseURL}/api/arenas`).then((res) => setArenas(res.data));
-  }, []);
+  console.log(myState.filteredResults);
+  if (myState.filteredResults.length > 0 ){
+    setArenas(myState.filteredResults);
+   } else { 
+      axios.get(`${baseURL}/api/arenas`).then((res) => setArenas(res.data));
+   }
+
+  console.log(arenas);
+  
+  }, [myState, arenas]);
 
   return (
-    <div className="tab hide" id="arenas">
+    <div className="tab" id="arenas">
       <div className="white_bg">
         <div className="team_search">
           <div className="searchbox">
@@ -50,7 +58,7 @@ const Arenas = ({ user }) => {
           </div>
         </div>
 
-        <Filters ftype={'ARENAS'} />
+        <Filters filterType={'ARENAS'} myState={myState} />
       </div>
 
       {arenas.map((ara, idx) => (

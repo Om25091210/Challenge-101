@@ -3,15 +3,22 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import baseURL from '@utils/baseURL';
 
-const Coaches = ({ user }) => {
+const Coaches = ({ user, profile, myState }) => {
   const [coach, setCoach] = useState([]);
 
-  useEffect(() => {
-    axios.get(`${baseURL}/api/all/coaches`).then((res) => setCoach(res.data));
-  }, []);
+    useEffect(() => {
+    console.log(myState.filteredResults);
+    if (myState.filteredResults.length > 0 ){
+      setCoach(myState.filteredResults);
+     } else { 
+        axios.get(`${baseURL}/api/all/coaches`).then((res) => setCoach(res.data));
+     }
+
+    console.log(coach);
+    }, [myState, coach]);
 
   return (
-    <div className="tab hide" id="coaches">
+    <div className="tab" id="coaches">
       <div className="white_bg">
         <div className="team_search">
           <div className="searchbox">
@@ -50,7 +57,7 @@ const Coaches = ({ user }) => {
           </div>
         </div>
 
-        <Filters ftype={'COACHES'} />
+        <Filters filterType={'COACHES'} myState={myState} />
       </div>
 
       {coach.map((coach) => (

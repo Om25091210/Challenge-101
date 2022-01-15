@@ -8,23 +8,25 @@ import TeamRequest from './invites/TeamRequest';
 const Teams = ({ user, profile , myState}) => {
   const [team, setTeam] = useState([]);
 
-     
-  useEffect(() => {
+      useEffect(() => {
+
+      console.log(myState.filteredResults);
+
+      if (myState.filteredResults.length > 0 ){
+        setTeam(myState.filteredResults);
+       } else { 
+        console.log('else teams get all........')
+
+         axios.get(`${baseURL}/api/teams`).then((res) => setTeam(res.data));
+       }
+
+       console.log(team);
 
 
-  console.log(myState.filteredResults);
-
-  if (myState.filteredResults.length > 0 ){
-    setTeam(myState.filteredResults);
-   } else { 
-     axios.get(`${baseURL}/api/teams`).then((res) => setTeam(res.data));
-   }
-
-   console.log(team);
-
-
-  }, [myState]);
-
+      }, [myState, team]);
+    
+  
+  
   return (
     <div className="tab" id="teams">
       <div className="white_bg">
@@ -65,7 +67,7 @@ const Teams = ({ user, profile , myState}) => {
           </div>
         </div>
 
-        <Filters ftype={'TEAMS'} myState={myState}/>
+        <Filters filterType={'TEAMS'} myState={myState}/>
       </div>
 
       {team.map((team, idx) => (

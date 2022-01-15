@@ -7,7 +7,7 @@ import { useQuery,useMutation } from 'react-query';
 import { toast } from 'react-toastify';
 import cookie from 'js-cookie';
 
-const Filters = ({ ftype , myState }) => {
+const Filters = ({ filterType , myState }) => {
   const [data, setData] = useState(null);
   const [selectedFilters, setSelectedFilters] = useState([]);
   const [selectedMapFilters, setSelectedMapFilters] = useState([]);
@@ -58,7 +58,7 @@ const Filters = ({ ftype , myState }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(`${baseURL}/api/filters/${ftype}`);
+      const response = await fetch(`${baseURL}/api/filters/${filterType}`);
       const newData = await response.json();
       setData(newData);
     };
@@ -97,19 +97,9 @@ const Filters = ({ ftype , myState }) => {
   };
 
 
-
-  const mutation = useMutation(async (params) => {
-    await axios.post(`${baseURL}/api/discover/teams`, params, {
-      headers: {
-        Authorization: cookie.get('token'),
-        'Content-Type': 'application/json',
-      },
-    });
-  });
-
   const handleApplyFilters = async (e) => {
     e.preventDefault();
-
+    myState.setFilteredResults([]);
     const uniqueTags = [];
     selectedMapFilters.map((item) => {
       uniqueTags.push({key:item.key, values: Array.from(item.values)});
@@ -122,9 +112,20 @@ const Filters = ({ ftype , myState }) => {
     console.log(params);
 
     try {
-     // const res = await mutation.mutateAsync(params);
       
-axios.post(`${baseURL}/api/discover/teams`, params, {
+    let apiurl = `${baseURL}/api/discover/teams`; 
+    if (filterType == 'PLAYERS') {
+      apiurl = `${baseURL}/api/discover/players`; 
+    } else if (filterType == 'COACHES') {
+      apiurl = `${baseURL}/api/discover/coaches`; 
+    } else if (filterType == 'ARENAS') {
+      apiurl = `${baseURL}/api/discover/arenas`; 
+    } else if (filterType == 'JOBS') {
+      apiurl = `${baseURL}/api/discover/jobs`; 
+    }
+    
+    
+    axios.post( apiurl, params, {
       headers: {
         'Content-Type': 'application/json',
       },
@@ -137,7 +138,7 @@ axios.post(`${baseURL}/api/discover/teams`, params, {
     }
   };
 
-  if (data) {
+  if (data && data.filter) {
     return (
       <div className="team_filter">
         <div className="drop_downs">
