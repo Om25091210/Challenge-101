@@ -19,6 +19,7 @@ let myState = {};
 
   const [filteredResults, setFilteredResults] = useState([]);
   const [filterType, setFilterType] = useState('TEAMS');
+  const [selectGame, setSelectGame] = useState();
 
   myState.filteredResults = filteredResults;
   myState.setFilteredResults = setFilteredResults;
@@ -38,6 +39,11 @@ let myState = {};
     }
   }
 
+  const handleSelectGame = async (obj) => {
+    console.log('caling select game')
+    console.log(obj);
+    setSelectGame(obj);
+  }
 
   return (
     <>
@@ -63,20 +69,18 @@ let myState = {};
                 <i className="fa fa-angle-right" aria-hidden="true"></i>
 
                 <div className="hover_games">
-                  {games.map((game, idx) => (
                     <div className="other_logo">
-                      <img src={game.imgUrl} alt={game.name} />
+                      <img src={selectGame ? selectGame.imgUrl : ''} alt={selectGame ? selectGame.name : ''} />
                     </div>
-                  ))}
                 </div>
               </a>
 
               <div id="more_games" style={{ display: 'none' }}>
                 <ul>
                   {games.map((game, idx) => (
-                    <li>
+                    <li key={idx}>
                       <div className="game_pic">
-                        <img src={game.imgUrl} alt={game.name} />
+                       <a href="#!" onClick={() => handleSelectGame(game)}> <img src={game.imgUrl} alt={game.name} /> </a>
                       </div>
                       <p>{game.name}</p>
                     </li>

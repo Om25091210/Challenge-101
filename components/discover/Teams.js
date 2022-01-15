@@ -7,6 +7,7 @@ import TeamRequest from './invites/TeamRequest';
 
 const Teams = ({ user, profile , myState}) => {
   const [team, setTeam] = useState([]);
+  const [sessionTeam, setSessionTeam] = useState([]);
 
       useEffect(() => {
 
@@ -16,16 +17,18 @@ const Teams = ({ user, profile , myState}) => {
         setTeam(myState.filteredResults);
        } else { 
         console.log('else teams get all........')
+         if (sessionTeam.length == 0) {
+            axios.get(`${baseURL}/api/teams`).then((res) => setTeam(res.data));
+            setSessionTeam(team);          
+            console.log(team);
+         } else {
+          setTeam(sessionTeam);
+         }
 
-         axios.get(`${baseURL}/api/teams`).then((res) => setTeam(res.data));
        }
 
-       console.log(team);
-
-
       }, [myState, team]);
-    
-  
+      
   
   return (
     <div className="tab" id="teams">
