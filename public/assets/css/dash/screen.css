@@ -58,12 +58,24 @@
     .team_row{ padding: 70px 20px 70px 20px;}
     .team_row span.remarks{ width: 125px;}
     .team_row span.remarks p{ font-size: 12px;}
+
+
+    /* ----------- Tournament page--------------- */
+
+    .top_game, .bottom_game{ margin-top: 10px;}
+    .top_game .reg{ margin-top: 10px;}
+    .right_game_details .date h3{ font-size: 13px;}
+    .top_game, .bottom_game .games h3{ font-size: 14px;}
     
 
 }
 
 @media screen and (max-width:1300px){
 .top_game, .bottom_game{ flex-wrap: wrap;}
+
+.communities li{ width: 21%;}
+.communities li:nth-child(5n){ margin-right: 5%;}
+.communities li:nth-child(4n){ margin-right: 0;}
 
 }
 
@@ -74,6 +86,8 @@
     .my_team .team {justify-content: flex-start;}
     .my_team .team li{ margin-right: 10px;}
     .my_team .team li a img{ display: block;}
+    .chatbox{ width: 80%; right: -80%;}
+    .ce-chat-form-container div{ font-size: 14px  !important}
 
     /* ------- profile ------------------ */
 
@@ -82,7 +96,8 @@
     .profile_dp_box .top_details .button a{ padding: 5px 10px;}
     .profile_dp_box .bottom_details{flex-wrap: wrap;}
 
-    .bio_box{ flex-direction: column;}
+    .profile_bio{ flex-direction: column;}
+ 
     .bio_box .left_bio{ width: 100%;}
     .bio_box .right_bio {
         width: 100%;
@@ -115,12 +130,14 @@
   .inner_team{flex-wrap: wrap;}
   .team_overview{flex-wrap: wrap;}
   .team_filter .drop_downs .button-group {flex: 0 0 31%;}
+  .team_row{ padding: 20px;}
   
   /* ----------------Games ------------------ */
 
   .game_list_page li{ width: 32%;}
   .game_list_page li:nth-child(4n){ margin-right: 2%;}
   .game_list_page li:nth-child(3n){ margin-right: 0;}
+  .matches_box .match_row{ padding: 15px;}
 
   /* ---------- ranking ----------------- */
 
@@ -139,6 +156,38 @@
     .right_game_details{ float: left; width: 100%;}
     .row_box:hover .more_data{ flex-wrap: wrap;}
     .row_box:hover .more_data .chart{ margin: 10px 0;}
+    .game_pos{ border: 0; border-bottom: 1px solid #fff;}
+    .game_pos .game_loc img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .profile_dp_box{ margin-top: 200px;}
+    .profile_box .profile_cover_photo{ height: 320px;}
+    .games_page .tournament_sponsers{ margin-top: 0;}
+    .tournament_dp_box .profile_dp_box{ height: 320px;}
+
+
+    /* ---------------- Game -------------- */
+
+    .match_row .team_a, .match_row .team_b {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+    }
+
+.communities li{ width: 30%;}
+.communities li:nth-child(5n){ margin-right: 5%;}
+.communities li:nth-child(4n){ margin-right: 5%;}
+.communities li:nth-child(3n){ margin-right:5%;}
+
+.team_row .join{ margin-top: 10px;}
+.jobs_browse{ width:45%; margin-top: 20px;}
+
+.common_poup_wrap .fancybox-inner{ width:100% !important;}
+    
 
 }
 
@@ -192,6 +241,7 @@
     .left_side{ opacity: 0; left:-100px; transition: 0.3s ease-in-out;}
     .left_side:hover, header .logo.bigwidth{ width: 100px;}
     .left_side nav li .title{ display: block;}
+    .left_side nav li:hover .title, .left_side nav li.active .title{ color: #fff;}
 
     .left_side.show_left_menu{  opacity: 1; left:0;}
 
@@ -212,34 +262,35 @@
 /* --------- profile -------------- */
 
 .profile_box .profile_cover_photo img{ height: 230px;}
-
-
-
+.tournament_dp_box .profile_dp_box{ height: 230px;}
 .profile_dp_box{flex-wrap: wrap; margin-top: 85px;}
-
-.profile_dp_box .profile_details{ width: 100%; margin-top: 60px;}
+.profile_dp_box .pro_detail_box{ width: 100%; margin-top: 60px;}
 .profile_dp_box .bottom_details .were{ font-size: 13px;}
 .all_stats ul li{ flex: 1 1 45%;}
 .profile_dp_box .top_details .name_box{ color: #000;}
+.profile_box.games_page .top_details .name_box{ color: #fff;}
 .profile_dp_box .top_details .name_box .game_name{ font-size: 18px;}
 
 
-
-.bio_box{    flex-direction: column;}
 .bio_box .left_bio, .bio_box .right_bio{ width: 100%; margin-bottom: 20px;}
 
 .profile_box .profile_cover_photo{ height: auto;}
 
-.profile_dp_box .bottom_details .current_status{ flex-wrap: wrap;}
-.profile_dp_box .bottom_details .current_team{ width: 48%;}
-.user_add{display: flex;flex-wrap: wrap;}
-.user_add li{flex: 0 0 45%;}
+
+
 .bio_box .games{ flex-wrap: wrap;}
 .profile_hover_games{ margin: 10px 0;}
 
 .trophy_cabinate ul li .num{ font-size: 30px;}
 .trophy_cabinate h3{ font-size: 15px; padding: 20px;}
+.trophy_cabinate ul li h5{ font-size: 12px;}
 
+.gallery_box .jobs_browse, .video_box .jobs_browse{ width: 48%;}
+.video_box li, .imagess_box{ width: 48%;}
+.rigs li{ width: 48%;}
+.rigs li:nth-child(3n){ margin-right: 2%;}
+.rigs li:nth-child(2n){ margin-right: 0;}
+.fancybox-skin{ margin: 20px !important}
 
 /* ------------ team ----------------- */
 
@@ -266,7 +317,28 @@
   .profile_tab_btn.discover_tab_btn li{ width: 32%;}
   .discover_tab_btn.profile_tab_btn li a{ padding: 10px 0;}
   .team_search .advance{ flex-wrap:wrap; justify-content: flex-start;}
-  .inner_team{ height: 150px;}
+
+
+  .ranking_table{ overflow-x: auto;}
+  .ranking_table .table{ width: 700px;}
+
+  /* ------Games ------------- */
+
+  .game_list_page li{ width: 48%; height: 330px;}
+  .game_list_page li:nth-child(3n){ margin-right: 2%;}
+  .game_list_page li:nth-child(2n){ margin-right:0;}
+
+  .match_row .team_name{ margin: 10px 0;}
+  .match_row .team_vs a{ display: block;}
+  .matches_box .heads_bg{font-size: 15px; padding: 15px;}
+
+  .communities li{ width:47%;}
+  .communities li:nth-child(5n){ margin-right: 5%;}
+  .communities li:nth-child(4n){ margin-right: 5%;}
+  .communities li:nth-child(3n){ margin-right:5%;}
+  .communities li:nth-child(2n){ margin-right:0;}
+
+  .game_bio{ flex-direction: column;}
 
 
     /* ------------------------------------------- mobile menu css ---------------------------------------- */
@@ -327,7 +399,8 @@
 
  /* ------- profile ---------- */
 
-        
+        .profile_box .profile_cover_photo img{ height: 150px;}
+        .tournament_dp_box .profile_dp_box{ height: 150px;}
         .profile_dp_box { padding: 10px;}
         .product_box { padding: 0;}
         .main_middle, .right_side, .main_middle.profile_middle{ margin:90px 2% 20px 2%;}
@@ -342,12 +415,34 @@
         .post .heads{ flex-wrap: wrap;}
         .post .heads .user_name_disc{ width: 80%;}
         .post .heads .date{ top:-30px}
+        .profile_dp_box .bottom_details .current_status{ flex-wrap: wrap;}
+        .profile_dp_box .bottom_details .current_team{ width: 48%;}
+        .user_add{display: flex;flex-wrap: wrap;}
+        .user_add li{flex: 0 0 45%;}
+
+        .tournament_table .table td, .tournament_table .table th{ font-size: 12px;}
+        .gallery_box .jobs_browse, .video_box .jobs_browse, .video_box li, .imagess_box{ width: 100%; margin: 10px 0;}
+        .rigs li{ width: 100%; margin: 10px 0;}
 
         /* ------- team -------------- */
 
         .size-option .size-chart{ width: 300px;}
         .bottom_details.team_details h5{ font-size: 17px;}
-        .profile_dp_box .top_details {flex-wrap: wrap;justify-content: left;align-content: flex-start; align-items: center;}
+        .profile_dp_box .top_details {
+            flex-wrap: wrap;
+            justify-content: left;
+            align-content: flex-start;
+            align-items: center;
+            position: absolute;
+            top: 84px;
+            right: 0;
+        }
+
+        .tournament_dp_box .profile_dp_box .top_details {
+            width: 100%;
+            position: static;
+            flex-wrap: inherit;
+        }
         .profile_dp_box .top_details .button a{ margin: 10px 0;}
         .sponser ul li img{ width: 70%;}
         .profile_dp_box .top_details .tick{ margin-right: 5px;}
@@ -361,6 +456,9 @@
 
         /* ------------- discovery page ------------------------ */
 
+        .discovery_page{ padding: 0;}
+        .team_search .searchbox input[type="search"]{ width: 200px;}
+
         .team_search, .team_filter {
             flex-wrap: wrap;
             flex-direction: column;
@@ -368,10 +466,28 @@
 
         .discovery_page .tit span, .discovery_page .tit i{ font-size: 20px;}
         .discovery_page .tit i{ padding: 7px 10px;}
-        .inner_team {height: 291px;justify-content: center;}
         .team_overview {flex-direction: column;}
 
         .team_overview{ display: block;}
         .coach_overview .match{ width: 100%;}
+
+        .bottom_game .game_logo{ font-size: 13px; flex-wrap: wrap;}
+        .bottom_game .prize{ margin-top: 10px;}
+
+
+        /* ----------- Games -------------- */
+
+        .tournament_dp_box .profile_dp_box .profile_pic{ width: 70px;}
+        .game_list_page li{ width:100%; height:auto; margin: 10px 0;}
+        .game_list_page li:nth-child(3n){ margin-right:0;}
+        .game_list_page li:nth-child(2n){ margin-right:0;}
+        .tournament_dp_box .tournament_sponsers h5{ font-size: 12px;}
+        .tournament_dp_box .tournament_sponsers .logos img{ width: 30px;}
+   
+
+        .communities li{ width:100%; margin:10px 0;}
+        .team_filter .drop_downs .button-group {flex: 0 0 46%;}
+
+        #more_games ul li{ width: 100%; margin: 10px 0;}
 
 }

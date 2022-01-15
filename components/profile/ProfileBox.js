@@ -281,7 +281,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
             </form>
           </div>
 
-          <div className="profile_details">
+          <div className="profile_details pro_detail_box">
             <div className="top_details">
               <div className="name_box">
                 <span className="game_name"> {SrhUser.username} </span>
@@ -474,7 +474,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
           </div>
         </div>
 
-        <div className="bio_box">
+        <div className="bio_box profile_bio">
           <div className="left_bio">
             <div className="top_bio">
               <h3>BIO</h3>

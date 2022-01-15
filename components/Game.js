@@ -64,7 +64,7 @@ const Game = ({ user }) => {
               <img src="/assets/media/games/tournament3.png" alt="" />{' '}
             </div>
           </div>
-          <div className="bio_box team_bio arena_bio">
+          <div className="bio_box  game_bio">
             <div className="left_bio">
               <div className="top_bio">
                 <h3>ABOUT THE GAME</h3>
@@ -462,7 +462,10 @@ const Game = ({ user }) => {
                     </li>
                     <li>
                       <span className="nm">Availablilty:</span>{' '}
-                      <span className="task"> 4 hours per day 7 days a week </span>
+                      <span className="task">
+                        {' '}
+                        4 hours per day 7 days a week{' '}
+                      </span>
                     </li>
                   </ul>
                   <div className="chart_box">
@@ -918,9 +921,6 @@ const Game = ({ user }) => {
             <h2>video</h2>
           </div>
           <div className="tab hide" id="teams">
-
-
-          
             <ul className="communities teams">
               <li>
                 <div className="imgs">
