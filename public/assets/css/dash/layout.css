@@ -135,6 +135,14 @@ h3 {
 .overlay.show {
 	display: block;
 }
+
+
+.poup_width_800{ width: 800px !important}
+
+.ReactQueryDevtools{ display: none;}
+.theme_btn{ position: fixed; bottom: 10px; left:10px; text-transform: capitalize; background: #1a191d; color: #fff; padding: 10px; border-radius: 5px; font-size: 12px;}
+.light_thmeme{ background: #1a191d; color: #fff;}
+
 /* ------- Header css -------------- */
 
 .without_login_header {
@@ -2803,7 +2811,9 @@ article .social_bar {
 
 
 
-#more_games{ float: left; width: 96%;}
+#more_games{ float: left; width:800px;}
+#more_games h3{ text-align: center;}
+#more_games ul{ float: left; width: 100%; padding: 20px 0;}
 #more_games ul li{     float: left;
     width: 20.5%;
     margin-right: 6%;
@@ -5845,8 +5855,8 @@ ul.game_search_result li {
 
 .common_model_box{ display: none;}
 .common_model_box.show_model{ display: block;}
-.common_model_box{position: fixed;top: 0;left: 0;right: 0;bottom: 0;margin: auto;width: 500px;height: 400px;z-index: 199;}
-.common_model_box .inner_model_box{float: left;width: 100%;padding: 30px;background: #fff;overflow: hidden;border: 10px solid #7239ea;}
+.common_model_box{position: fixed;top: 0;left: 0;right: 0;bottom: 0;margin: auto;width: 500px;height: 500px;z-index: 199;}
+.common_model_box .inner_model_box{float: left;width: 100%;padding: 30px;background: #fff;overflow-y:auto;border: 10px solid #7239ea; height: 500px;}
 .common_model_box .model_close {
     position: absolute;
     right: -33px;
@@ -5872,7 +5882,7 @@ ul.game_search_result li {
 }
 
 .inner_model_box{ padding: 20px !important;}
-.inner_model_box h3{font-size: 20px;color: #19191d;font-weight: 700;margin-bottom: 20px;text-align: center;text-transform: uppercase;border-bottom: 1px solid #ddd;padding-bottom: 10px}
+.inner_model_box h3{font-size: 20px;color: #19191d; display: block; font-weight: 700;margin-bottom: 20px;text-align: center;text-transform: uppercase;border-bottom: 1px solid #ddd;padding-bottom: 10px}
 .inner_model_box li { margin-bottom: 10px;}
 .inner_model_box li a{ font-size: 14px; color: #333;}
 
@@ -5952,3 +5962,14 @@ form.common_form input {
 
 	#ce-delete-chat-button{display: flex;align-items: center;justify-content: center;align-content: center; padding: 0 !important;}
 	#ce-delete-chat-button .anticon { margin-right: 10px;}
+
+
+
+	/* ---------------------- Dark Themes----------------------------- */
+
+	body.DarkPage{ color: #fff; background: #0d0c12;}
+	body.DarkPage header{background:#202128;}
+	body.DarkPage .top_menu img, body.DarkPage .top_menu svg{-webkit-filter: invert(100%); filter: invert(100%);color: #fff;}
+	body.DarkPage ul.top_menu li.profile img{-webkit-filter: invert(0); filter: invert(0);}
+	body.DarkPage .left_side, body.DarkPage header .logo{ background: #202128;}
+	body.DarkPage .write_post{ background: #202028;}

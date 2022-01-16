@@ -5,31 +5,27 @@ import { useState, useEffect } from 'react';
 import baseURL from '@utils/baseURL';
 import TeamRequest from './invites/TeamRequest';
 
-const Teams = ({ user, profile , myState}) => {
+const Teams = ({ user, profile, myState }) => {
   const [team, setTeam] = useState([]);
   const [sessionTeam, setSessionTeam] = useState([]);
 
-      useEffect(() => {
+  useEffect(() => {
+    console.log(myState.filteredResults);
 
-      console.log(myState.filteredResults);
+    if (myState.filteredResults.length > 0) {
+      setTeam(myState.filteredResults);
+    } else {
+      console.log('else teams get all........');
+      if (sessionTeam.length == 0) {
+        axios.get(`${baseURL}/api/teams`).then((res) => setTeam(res.data));
+        setSessionTeam(team);
+        //console.log(team);
+      } else {
+        setTeam(sessionTeam);
+      }
+    }
+  }, [myState, team]);
 
-      if (myState.filteredResults.length > 0 ){
-        setTeam(myState.filteredResults);
-       } else { 
-        console.log('else teams get all........')
-         if (sessionTeam.length == 0) {
-            axios.get(`${baseURL}/api/teams`).then((res) => setTeam(res.data));
-            setSessionTeam(team);          
-            console.log(team);
-         } else {
-          setTeam(sessionTeam);
-         }
-
-       }
-
-      }, [myState, team]);
-      
-  
   return (
     <div className="tab" id="teams">
       <div className="white_bg">
@@ -70,7 +66,7 @@ const Teams = ({ user, profile , myState}) => {
           </div>
         </div>
 
-        <Filters filterType={'TEAMS'} myState={myState}/>
+        <Filters filterType={'TEAMS'} myState={myState} />
       </div>
 
       {team.map((team, idx) => (
@@ -84,7 +80,9 @@ const Teams = ({ user, profile , myState}) => {
               <div className="role_pic">
                 <img src="/assets/media/discover/team1.png" alt="" />
               </div>
-              <h3>{team.team._id} : {team.team.name}</h3>
+              <h3>
+                {team.team._id} : {team.team.name}
+              </h3>
               <img
                 src="/assets/media/discover/country.png"
                 alt={team.team.name}

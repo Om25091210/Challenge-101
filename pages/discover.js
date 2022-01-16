@@ -13,37 +13,47 @@ import baseURL from '@utils/baseURL';
 import FooterMain from '@components/FooterMain';
 import AllScript from './AllScript';
 
-
 const Discover = ({ user, profile, games }) => {
-let myState = {};
+  let myState = {};
 
   const [filteredResults, setFilteredResults] = useState([]);
   const [filterType, setFilterType] = useState('TEAMS');
-  const [selectGame, setSelectGame] = useState();
+  const [selectGame, setSelectGame] = useState({});
 
   myState.filteredResults = filteredResults;
   myState.setFilteredResults = setFilteredResults;
 
-    useEffect(() => {
-        console.log(filterType);
-        setFilterType(filterType);
-    }, [filterType]);
-
+  useEffect(() => {
+    console.log(filterType);
+    setFilterType(filterType);
+  }, [filterType]);
 
   const handleFType = async (val) => {
     console.log(val);
-    if (typeof val !== "undefined") {
-          console.log('setting filter type.......');
+    if (typeof val !== 'undefined') {
+      console.log('setting filter type.......');
 
       setFilterType(val);
     }
-  }
+  };
 
   const handleSelectGame = async (obj) => {
-    console.log('caling select game')
+    console.log('caling select game');
     console.log(obj);
     setSelectGame(obj);
-  }
+  };
+
+  console.log(selectGame);
+
+  useEffect(() => {
+    $('a.model_show_btn').click(function () {
+      $(this).next().addClass('show_model');
+    });
+
+    $('a.model_close').click(function () {
+      $(this).parent().removeClass('show_model');
+    });
+  }, []);
 
   return (
     <>
@@ -59,7 +69,7 @@ let myState = {};
             <h2>GAME</h2>
 
             <div className="tit">
-              <a href="#more_games" className="common_poup">
+              <a href="javascript:void(0)" className="model_show_btn">
                 <span>
                   <b className="icon">
                     <img src="/assets/media/ranking/console.png" alt="" />
@@ -69,51 +79,64 @@ let myState = {};
                 <i className="fa fa-angle-right" aria-hidden="true"></i>
 
                 <div className="hover_games">
-                    <div className="other_logo">
-                      <img src={selectGame ? selectGame.imgUrl : ''} alt={selectGame ? selectGame.name : ''} />
-                    </div>
+                  <div className="other_logo">
+                    <img
+                      src={selectGame ? selectGame.imgUrl : ''}
+                      alt={selectGame ? selectGame.name : ''}
+                    />
+                  </div>
                 </div>
               </a>
 
-              <div id="more_games" style={{ display: 'none' }}>
-                <ul>
-                  {games.map((game, idx) => (
-                    <li key={idx}>
-                      <div className="game_pic">
-                       <a href="#!" onClick={() => handleSelectGame(game)}> <img src={game.imgUrl} alt={game.name} /> </a>
-                      </div>
-                      <p>{game.name}</p>
-                    </li>
-                  ))}
-                </ul>
+              <div className="common_model_box" id="more_games">
+                <a href="javascript:void(0)" className="model_close">
+                  X
+                </a>
+                <div className="inner_model_box">
+                  <h3>Games</h3>
+                  <ul>
+                    {games.map((game, idx) => (
+                      <li key={idx}>
+                        <div className="game_pic">
+                          <a href="#!" onClick={() => handleSelectGame(game)}>
+                            {' '}
+                            <img src={game.imgUrl} alt={game.name} />{' '}
+                          </a>
+                        </div>
+                        <p>{game.name}</p>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="overlay"></div>
               </div>
             </div>
 
             <ul className="profile_tab_btn discover_tab_btn">
-              <li className={filterType == 'TEAMS' ? "active" : ""}>
-                <a href="#!"  onClick={() => handleFType('TEAMS')}>
+              <li className={filterType == 'TEAMS' ? 'active' : ''}>
+                <a href="#!" onClick={() => handleFType('TEAMS')}>
                   TEAMS{' '}
                 </a>
               </li>
-              <li className={filterType == 'PLAYERS' ? "active" : ""}>
+              <li className={filterType == 'PLAYERS' ? 'active' : ''}>
                 <a href="#!" onClick={() => handleFType('PLAYERS')}>
                   {' '}
                   PLAYERS
                 </a>
               </li>
-              <li className={filterType == 'COACHES' ? "active" : ""}>
-                <a href="#!"  onClick={() => handleFType('COACHES')}>
+              <li className={filterType == 'COACHES' ? 'active' : ''}>
+                <a href="#!" onClick={() => handleFType('COACHES')}>
                   {' '}
                   COACHES{' '}
                 </a>
               </li>
-              <li className={filterType == 'ARENAS' ? "active" : ""}>
+              <li className={filterType == 'ARENAS' ? 'active' : ''}>
                 <a href="#!" onClick={() => handleFType('ARENAS')}>
                   {' '}
                   ARENAS
                 </a>
               </li>
-              <li className={filterType == 'JOBS' ? "active" : ""}>
+              <li className={filterType == 'JOBS' ? 'active' : ''}>
                 <a href="#!" onClick={() => handleFType('JOBS')}>
                   {' '}
                   JOBS{' '}
@@ -123,31 +146,35 @@ let myState = {};
           </div>
 
           <div className="prfoile_tab_data ">
+            {filterType == 'TEAMS' ? (
+              <Teams user={user} profile={profile} myState={myState} />
+            ) : (
+              ''
+            )}
 
-            { filterType == 'TEAMS' ? 
-              <Teams user={user} profile={profile} myState={myState}/> : '' 
-            }
+            {filterType == 'PLAYERS' ? (
+              <Players user={user} profile={profile} myState={myState} />
+            ) : (
+              ''
+            )}
 
-            { filterType == 'PLAYERS' ? 
+            {filterType == 'COACHES' ? (
+              <Coaches user={user} profile={profile} myState={myState} />
+            ) : (
+              ''
+            )}
 
-              <Players user={user} profile={profile} myState={myState}/> : '' 
-            }
+            {filterType == 'ARENAS' ? (
+              <Arenas user={user} profile={profile} myState={myState} />
+            ) : (
+              ''
+            )}
 
-            { filterType == 'COACHES' ? 
-
-              <Coaches user={user} profile={profile} myState={myState}/> : ''
-            }
-
-            { filterType == 'ARENAS' ? 
-
-              <Arenas user={user} profile={profile} myState={myState}/> : ''
-            }
-
-            { filterType == 'JOBS' ? 
-
-              <Jobs user={user} profile={profile} myState={myState}/> : ''
-            }
-
+            {filterType == 'JOBS' ? (
+              <Jobs user={user} profile={profile} myState={myState} />
+            ) : (
+              ''
+            )}
           </div>
         </div>
       </div>
