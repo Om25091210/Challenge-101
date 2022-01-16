@@ -24,26 +24,21 @@ const Discover = ({ user, profile, games }) => {
   myState.setFilteredResults = setFilteredResults;
 
   useEffect(() => {
-    console.log(filterType);
     setFilterType(filterType);
   }, [filterType]);
 
   const handleFType = async (val) => {
-    console.log(val);
     if (typeof val !== 'undefined') {
       console.log('setting filter type.......');
-
       setFilterType(val);
     }
   };
 
   const handleSelectGame = async (obj) => {
-    console.log('caling select game');
-    console.log(obj);
     setSelectGame(obj);
+    $('a.model_close').parent().removeClass('show_model');
+     
   };
-
-  console.log(selectGame);
 
   useEffect(() => {
     $('a.model_show_btn').click(function () {

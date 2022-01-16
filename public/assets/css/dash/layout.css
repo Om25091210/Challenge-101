@@ -2802,7 +2802,7 @@ article .social_bar {
     width: 52px;
     height: 42px;
     left: -30px;
-    opacity: 0;
+    opacity: 1;
     transition: 0.3s ease-in-out;
     top: -23px;}
 
