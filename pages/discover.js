@@ -94,19 +94,22 @@ const Discover = ({ user, profile, games }) => {
                 </a>
                 <div className="inner_model_box">
                   <h3>Games</h3>
-                  <ul>
-                    {games.map((game, idx) => (
-                      <li key={idx}>
-                        <div className="game_pic">
-                          <a href="#!" onClick={() => handleSelectGame(game)}>
-                            {' '}
-                            <img src={game.imgUrl} alt={game.name} />{' '}
-                          </a>
-                        </div>
-                        <p>{game.name}</p>
-                      </li>
-                    ))}
-                  </ul>
+
+                  <div className="poup_height msScroll_all">
+                    <ul className="">
+                      {games.map((game, idx) => (
+                        <li key={idx}>
+                          <div className="game_pic">
+                            <a href="#!" onClick={() => handleSelectGame(game)}>
+                              {' '}
+                              <img src={game.imgUrl} alt={game.name} />{' '}
+                            </a>
+                          </div>
+                          <p>{game.name}</p>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
                 <div className="overlay"></div>
               </div>
