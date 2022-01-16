@@ -2811,29 +2811,6 @@ article .social_bar {
 
 
 
-#more_games{ float: left; width:800px;}
-#more_games h3{ text-align: center;}
-#more_games ul{ float: left; width: 100%; padding: 20px 0;}
-#more_games ul li{     float: left;
-    width: 20.5%;
-    margin-right: 6%;
-    margin-bottom: 20px;
-    background: #ddd;
-    border: 1px solid #999;
-    padding: 0;
-    box-shadow: 2px 4px 10px #eee; border-radius: 5px; overflow: hidden;}
-#more_games ul li:nth-child(4n){ margin-right: 0;}
-#more_games ul li .game_pic{ width: 100%;
-    height: 130px;
-    margin-bottom: 10px;}
-#more_games ul li img{     width: 100%;
-    object-fit: contain;
-    height: 130px;}
-#more_games ul li p{ font-size: 15px;
-    padding: 10px;
-    background: #fff;
-    color: #000;
-    font-weight: 700;}
 
 
 .discovery_page h3 {
@@ -5855,8 +5832,8 @@ ul.game_search_result li {
 
 .common_model_box{ display: none;}
 .common_model_box.show_model{ display: block;}
-.common_model_box{position: fixed;top: 0;left: 0;right: 0;bottom: 0;margin: auto;width: 500px;height: 500px;z-index: 199;}
-.common_model_box .inner_model_box{float: left;width: 100%;padding: 30px;background: #fff;overflow-y:auto;border: 10px solid #7239ea; height: 500px;}
+.common_model_box{position: fixed;top: 0;left: 0;right: 0;bottom: 0;margin: auto;width: 500px; height: 500px; z-index: 199;}
+.common_model_box .inner_model_box{float: left;width: 100%;padding: 30px;background: #fff;overflow:hidden;border: 10px solid #7239ea;}
 .common_model_box .model_close {
     position: absolute;
     right: -33px;
@@ -5867,6 +5844,32 @@ ul.game_search_result li {
     background: #7239ea;
     padding: 5px 10px 5px 10px;
 }
+
+.poup_height{float: left; width: 100%; padding: 20px 0; height: 450px;}
+.profile_address .common_model_box{ height: 400px;}
+
+#more_games{ float: left; width:800px;}
+#more_games h3{ text-align: center;}
+#more_games ul li{     float: left;
+    width: 20.5%;
+    margin-right: 6%;
+    margin-bottom: 20px;
+    background: #ddd;
+    border: 1px solid #999;
+    padding: 0;
+    box-shadow: 2px 4px 10px #eee; border-radius: 5px; overflow: hidden;}
+#more_games ul li:nth-child(4n){ margin-right: 0;}
+#more_games ul li .game_pic{ width: 100%;
+    height: 130px;
+    margin-bottom: 10px;}
+#more_games ul li img{     width: 100%;
+    object-fit: contain;
+    height: 130px;}
+#more_games ul li p{ font-size: 15px;
+    padding: 10px;
+    background: #fff;
+    color: #000;
+    font-weight: 700;}
 
 /*  end custom model box */
 
