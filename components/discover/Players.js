@@ -4,19 +4,42 @@ import axios from 'axios';
 import baseURL from '@utils/baseURL';
 import cookie from 'js-cookie';
 
-const Players = ({ user, profile , myState}) => {
+const Players = ({ user, profile , myState, selectedGame}) => {
   const [playerData, setPlayerData] = useState([]);
+  const [sessionTeam, setSessionTeam] = useState({key:null, value:null});
 
     useEffect(() => {
-    console.log(myState.filteredResults);
-    if (myState.filteredResults.length > 0 ){
-      setPlayerData(myState.filteredResults);
-     } else { 
-      axios.get(`${baseURL}/api/player`).then((res) => setPlayerData(res.data));
-     }
 
-    console.log(playerData);
-    }, [myState, playerData]);
+    var sg = undefined;
+    if (selectedGame != null) { sg = selectedGame._id;}
+          
+    if (myState.selectedFilters.length > 0) {
+      setPlayerData(myState.filteredResults);
+    } else {
+      
+      if (sessionTeam.key === null) {
+          axios.get(`${baseURL}/api/player/playersbygame/${sg}`).then((res) => {
+            setPlayerData(res.data);
+            setSessionTeam({key:sg, value: res.data}); 
+          });
+          
+      } else {
+        if ( sessionTeam.key != sg) {
+          axios.get(`${baseURL}/api/player/playersbygame/${sg}`).then((res) => {
+            setPlayerData(res.data);
+            setSessionTeam({key:sg, value: res.data});
+          });
+                  
+        } else {
+          //setPlayerData (sessionTeam.get(sg));
+        } 
+      }
+
+      //myState.setFilteredResults(team);
+      //console.log(team);
+    }
+  }, [myState, playerData]);
+
 
   return (
 
@@ -59,10 +82,12 @@ const Players = ({ user, profile , myState}) => {
           </div>
         </div>
 
-        <Filters filterType={'PLAYERS'} myState={myState}/>
+        <Filters filterType={'PLAYERS'} myState={myState} selectedGame={selectedGame}/>
       </div>
 
-      {playerData.map((plyr) => (
+      { playerData.length == 0 ? ( <div className="team_row"> <p>No results for the selected criteria. Please refine.</p></div> ) : (
+
+      playerData.map((plyr) => (
         <div className="team_row">
           <div className="stars">
             <i className="fa fa-star" aria-hidden="true"></i>
@@ -141,7 +166,8 @@ const Players = ({ user, profile , myState}) => {
             </div>
           </div>
         </div>
-      ))}
+      ))
+    )}
     </div>
   );
 };
