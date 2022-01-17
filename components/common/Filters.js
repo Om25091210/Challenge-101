@@ -3,11 +3,11 @@ import { useRouter } from 'next/router';
 import axios from 'axios';
 import baseURL from '@utils/baseURL';
 import { useForm } from 'react-hook-form';
-import { useQuery,useMutation } from 'react-query';
+import { useQuery, useMutation } from 'react-query';
 import { toast } from 'react-toastify';
 import cookie from 'js-cookie';
 
-const Filters = ({ filterType , myState }) => {
+const Filters = ({ filterType, myState }) => {
   const [data, setData] = useState(null);
   const [selectedFilters, setSelectedFilters] = useState([]);
   const [selectedMapFilters, setSelectedMapFilters] = useState([]);
@@ -34,16 +34,14 @@ const Filters = ({ filterType , myState }) => {
       var arr = new Set();
       arr.add(filtered);
 
-      selectedMapFilters.push({key: name, values:arr});
+      selectedMapFilters.push({ key: name, values: arr });
     } else {
       var arr = found.values;
-      if(!arr.has(filtered)) {
+      if (!arr.has(filtered)) {
         arr.add(filtered);
 
-      selectedMapFilters.push({key: name, values:arr});
-
+        selectedMapFilters.push({ key: name, values: arr });
       }
-
     }
 
     const uniqueTags = [];
@@ -53,7 +51,6 @@ const Filters = ({ filterType , myState }) => {
     });
 
     setSelectedMapFilters(uniqueTags);
-
   };
 
   useEffect(() => {
@@ -68,71 +65,71 @@ const Filters = ({ filterType , myState }) => {
   console.log(selectedMapFilters);
 
   const handleClearFilter = async (e, key, val) => {
-    e.preventDefault(); 
-    var sf = selectedFilters.filter(selfil => selfil != val);
+    e.preventDefault();
+    var sf = selectedFilters.filter((selfil) => selfil != val);
     setSelectedFilters(sf);
 
-    var found = selectedMapFilters.find((element) =>element.key.includes(name));
+    var found = selectedMapFilters.find((element) =>
+      element.key.includes(name)
+    );
 
     var smarr = found.values;
     smarr.delete(val);
 
     const uniqueTags = [];
     selectedMapFilters.map((item) => {
-
-      if(item.key === key) {
-        var findItem = selectedMapFilters.find((element) =>element.key.includes(key));
+      if (item.key === key) {
+        var findItem = selectedMapFilters.find((element) =>
+          element.key.includes(key)
+        );
         var smarr = findItem.values;
         smarr.delete(val);
 
         if (smarr.size > 0) {
-          uniqueTags.push({key:key, values: smarr});
+          uniqueTags.push({ key: key, values: smarr });
         }
       } else {
         uniqueTags.push(item);
       }
-
     });
     setSelectedMapFilters(uniqueTags);
   };
-
 
   const handleApplyFilters = async (e) => {
     e.preventDefault();
     myState.setFilteredResults([]);
     const uniqueTags = [];
     selectedMapFilters.map((item) => {
-      uniqueTags.push({key:item.key, values: Array.from(item.values)});
+      uniqueTags.push({ key: item.key, values: Array.from(item.values) });
     });
 
     const params = JSON.stringify({
-    "mapFilters": uniqueTags,
+      mapFilters: uniqueTags
     });
 
     console.log(params);
 
     try {
-      
-    let apiurl = `${baseURL}/api/discover/teams`; 
-    if (filterType == 'PLAYERS') {
-      apiurl = `${baseURL}/api/discover/players`; 
-    } else if (filterType == 'COACHES') {
-      apiurl = `${baseURL}/api/discover/coaches`; 
-    } else if (filterType == 'ARENAS') {
-      apiurl = `${baseURL}/api/discover/arenas`; 
-    } else if (filterType == 'JOBS') {
-      apiurl = `${baseURL}/api/discover/jobs`; 
-    }
-    
-    
-    axios.post( apiurl, params, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    }).then( (res) =>    myState.setFilteredResults(res.data));
+      let apiurl = `${baseURL}/api/discover/teams`;
+      if (filterType == 'PLAYERS') {
+        apiurl = `${baseURL}/api/discover/players`;
+      } else if (filterType == 'COACHES') {
+        apiurl = `${baseURL}/api/discover/coaches`;
+      } else if (filterType == 'ARENAS') {
+        apiurl = `${baseURL}/api/discover/arenas`;
+      } else if (filterType == 'JOBS') {
+        apiurl = `${baseURL}/api/discover/jobs`;
+      }
+
+      axios
+        .post(apiurl, params, {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        .then((res) => myState.setFilteredResults(res.data));
 
       console.log(myState.filteredResults);
-
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }
@@ -218,27 +215,29 @@ const Filters = ({ filterType , myState }) => {
             <div className="filter_list">
               {' '}
               {selectedMapFilters.map((filter, idx) => (
-
                 <span className="filter1">
                   {' '}
                   {filter.key}:
-                  
-                  {
-
-                    Array.from(filter.values).map((filval, idxv) => (
+                  {Array.from(filter.values).map((filval, idxv) => (
                     <>
                       {filval}{' '}
-                      <a href="#!" className="close2" onClick={(e) => handleClearFilter(e, filter.key, filval)}>
+                      <a
+                        href="#!"
+                        className="close2"
+                        onClick={(e) =>
+                          handleClearFilter(e, filter.key, filval)
+                        }
+                      >
                         X
                       </a>{' '}
                     </>
                   ))}
-
                 </span>
               ))}
             </div>
-            <button className="join" onClick={handleApplyFilters}>APPLY FILTER</button>
-
+            <button className="apply" onClick={handleApplyFilters}>
+              APPLY FILTER
+            </button>
           </div>
         )}
       </div>
