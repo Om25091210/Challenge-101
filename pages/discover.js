@@ -15,13 +15,18 @@ import AllScript from './AllScript';
 
 const Discover = ({ user, profile, games }) => {
   let myState = {};
-
+  
+  const [selectedFilters, setSelectedFilters] = useState([]);
   const [filteredResults, setFilteredResults] = useState([]);
   const [filterType, setFilterType] = useState('TEAMS');
-  const [selectGame, setSelectGame] = useState({});
+  const [selectedGame, setSelectedGame] = useState(null);
+
+  myState.selectedFilters = selectedFilters;
+  myState.setSelectedFilters = setSelectedFilters;
 
   myState.filteredResults = filteredResults;
   myState.setFilteredResults = setFilteredResults;
+
 
   useEffect(() => {
     setFilterType(filterType);
@@ -35,7 +40,8 @@ const Discover = ({ user, profile, games }) => {
   };
 
   const handleSelectGame = async (obj) => {
-    setSelectGame(obj);
+    setSelectedGame(obj);
+    //myState.setFilteredResults([]);
     $('a.model_close').parent().removeClass('show_model');
      
   };
@@ -76,8 +82,8 @@ const Discover = ({ user, profile, games }) => {
                 <div className="hover_games">
                   <div className="other_logo">
                     <img
-                      src={selectGame ? selectGame.imgUrl : ''}
-                      alt={selectGame ? selectGame.name : ''}
+                      src={selectedGame ? selectedGame.imgUrl : ''}
+                      alt={selectedGame ? selectedGame.name : ''}
                     />
                   </div>
                 </div>
@@ -145,31 +151,31 @@ const Discover = ({ user, profile, games }) => {
 
           <div className="prfoile_tab_data ">
             {filterType == 'TEAMS' ? (
-              <Teams user={user} profile={profile} myState={myState} />
+              <Teams user={user} profile={profile} myState={myState} selectedGame={selectedGame} />
             ) : (
               ''
             )}
 
             {filterType == 'PLAYERS' ? (
-              <Players user={user} profile={profile} myState={myState} />
+              <Players user={user} profile={profile} myState={myState} selectedGame={selectedGame}/>
             ) : (
               ''
             )}
 
             {filterType == 'COACHES' ? (
-              <Coaches user={user} profile={profile} myState={myState} />
+              <Coaches user={user} profile={profile} myState={myState} selectedGame={selectedGame} />
             ) : (
               ''
             )}
 
             {filterType == 'ARENAS' ? (
-              <Arenas user={user} profile={profile} myState={myState} />
+              <Arenas user={user} profile={profile} myState={myState} selectedGame={selectedGame} />
             ) : (
               ''
             )}
 
             {filterType == 'JOBS' ? (
-              <Jobs user={user} profile={profile} myState={myState} />
+              <Jobs user={user} profile={profile} myState={myState} selectedGame={selectedGame} />
             ) : (
               ''
             )}

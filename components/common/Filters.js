@@ -7,7 +7,7 @@ import { useQuery,useMutation } from 'react-query';
 import { toast } from 'react-toastify';
 import cookie from 'js-cookie';
 
-const Filters = ({ filterType , myState }) => {
+const Filters = ({ filterType , myState, selectedGame}) => {
   const [data, setData] = useState(null);
   const [selectedFilters, setSelectedFilters] = useState([]);
   const [selectedMapFilters, setSelectedMapFilters] = useState([]);
@@ -100,13 +100,22 @@ const Filters = ({ filterType , myState }) => {
   const handleApplyFilters = async (e) => {
     e.preventDefault();
     myState.setFilteredResults([]);
+    myState.setSelectedFilters([]);
     const uniqueTags = [];
     selectedMapFilters.map((item) => {
       uniqueTags.push({key:item.key, values: Array.from(item.values)});
     });
 
+    //Always set the Selected Game as Filter.
+    var ssg = undefined;
+    if (selectedGame != null) { 
+      ssg = selectedGame._id;
+
+    }
+
     const params = JSON.stringify({
     "mapFilters": uniqueTags,
+    "selectedGame" : ssg
     });
 
     console.log(params);
@@ -129,7 +138,10 @@ const Filters = ({ filterType , myState }) => {
       headers: {
         'Content-Type': 'application/json',
       },
-    }).then( (res) =>    myState.setFilteredResults(res.data));
+    }).then( (res) =>  {  
+        myState.setFilteredResults(res.data);
+        myState.setSelectedFilters(selectedMapFilters);
+      });
 
       console.log(myState.filteredResults);
 
@@ -210,6 +222,7 @@ const Filters = ({ filterType , myState }) => {
               onClick={() => {
                 setSelectedMapFilters([]);
                 myState.setFilteredResults([]);
+                myState.setSelectedFilters([]);
               }}
             >
               X

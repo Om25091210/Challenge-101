@@ -5,24 +5,39 @@ import { useState, useEffect } from 'react';
 import baseURL from '@utils/baseURL';
 import TeamRequest from './invites/TeamRequest';
 
-const Teams = ({ user, profile, myState }) => {
+const Teams = ({ user, profile, myState, selectedGame }) => {
   const [team, setTeam] = useState([]);
-  const [sessionTeam, setSessionTeam] = useState([]);
+  const [sessionTeam, setSessionTeam] = useState({key:null, value:null});
 
   useEffect(() => {
-    console.log(myState.filteredResults);
 
-    if (myState.filteredResults.length > 0) {
+    var sg = undefined;
+    if (selectedGame != null) { sg = selectedGame._id;}
+          
+    if (myState.selectedFilters.length > 0) {
       setTeam(myState.filteredResults);
     } else {
-      console.log('else teams get all........');
-      if (sessionTeam.length == 0) {
-        axios.get(`${baseURL}/api/teams`).then((res) => setTeam(res.data));
-        setSessionTeam(team);
-        //console.log(team);
+      
+      if (sessionTeam.key === null) {
+          axios.get(`${baseURL}/api/teams/teamsbygame/${sg}`).then((res) => {
+            setTeam(res.data);
+            setSessionTeam({key:sg, value: team}); 
+          });
+          
       } else {
-        setTeam(sessionTeam);
+        if ( sessionTeam.key != sg) {
+          axios.get(`${baseURL}/api/teams/teamsbygame/${sg}`).then((res) => {
+            setTeam(res.data);
+            setSessionTeam({key:sg, value: team});
+          });
+                  
+        } else {
+          //setTeam (sessionTeam.get(sg));
+        } 
       }
+
+      //myState.setFilteredResults(team);
+      //console.log(team);
     }
   }, [myState, team]);
 
@@ -66,10 +81,16 @@ const Teams = ({ user, profile, myState }) => {
           </div>
         </div>
 
-        <Filters filterType={'TEAMS'} myState={myState} />
+        <Filters filterType={'TEAMS'} myState={myState} selectedGame={selectedGame}/>
       </div>
 
-      {team.map((team, idx) => (
+
+
+      { team.length == 0 ? ( <div className="team_row"> <p>No results for the selected criteria. Please refine.</p></div> ) : (
+
+
+
+        team.map((team, idx) => (
         <div className="team_row" key={idx}>
           <div className="stars">
             <i className="fa fa-star" aria-hidden="true"></i>
@@ -178,7 +199,9 @@ const Teams = ({ user, profile, myState }) => {
             </div>
           </div>
         </div>
-      ))}
+      )) 
+      ) 
+    }
     </div>
   );
 };
