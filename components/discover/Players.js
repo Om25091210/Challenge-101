@@ -6,7 +6,7 @@ import cookie from 'js-cookie';
 
 const Players = ({ user, profile , myState, selectedGame}) => {
   const [playerData, setPlayerData] = useState([]);
-  const [sessionTeam, setSessionTeam] = useState({key:null, value:null});
+  const [sessionPlayer, setSessionPlayer] = useState({key:null, value:null});
 
     useEffect(() => {
 
@@ -17,21 +17,21 @@ const Players = ({ user, profile , myState, selectedGame}) => {
       setPlayerData(myState.filteredResults);
     } else {
       
-      if (sessionTeam.key === null) {
+      if (sessionPlayer.key === null) {
           axios.get(`${baseURL}/api/player/playersbygame/${sg}`).then((res) => {
             setPlayerData(res.data);
-            setSessionTeam({key:sg, value: res.data}); 
+            setSessionPlayer({key:sg, value: res.data}); 
           });
           
       } else {
-        if ( sessionTeam.key != sg) {
+        if ( sessionPlayer.key != sg) {
           axios.get(`${baseURL}/api/player/playersbygame/${sg}`).then((res) => {
             setPlayerData(res.data);
-            setSessionTeam({key:sg, value: res.data});
+            setSessionPlayer({key:sg, value: res.data});
           });
                   
         } else {
-          //setPlayerData (sessionTeam.get(sg));
+          //setPlayerData (sessionPlayer.get(sg));
         } 
       }
 
@@ -87,8 +87,8 @@ const Players = ({ user, profile , myState, selectedGame}) => {
 
       { playerData.length == 0 ? ( <div className="team_row"> <p>No results for the selected criteria. Please refine.</p></div> ) : (
 
-      playerData.map((plyr) => (
-        <div className="team_row">
+      playerData.map((plyr, idx) => (
+        <div className="team_row" key={idx}>
           <div className="stars">
             <i className="fa fa-star" aria-hidden="true"></i>
           </div>

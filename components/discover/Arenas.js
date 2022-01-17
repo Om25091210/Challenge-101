@@ -5,17 +5,22 @@ import { useState, useEffect } from 'react';
 
 const Arenas = ({ user, profile, myState }) => {
   const [arenas, setArenas] = useState([]);
+  const [sessionArena, setSessionArena] = useState({key:null, value:null});
 
   useEffect(() => {
-  console.log(myState.filteredResults);
-  if (myState.filteredResults.length > 0 ){
-    setArenas(myState.filteredResults);
+
+    if (myState.selectedFilters.length > 0) {
+      setArenas(myState.filteredResults);
    } else { 
-      axios.get(`${baseURL}/api/arenas`).then((res) => setArenas(res.data));
+
+        if (sessionArena.key === null) {
+            axios.get(`${baseURL}/api/arenas`).then((res) => {
+              setArenas(res.data);
+              setSessionArena({key:'ARENASET', value: res.data}); 
+            });
+        }    
    }
 
-  console.log(arenas);
-  
   }, [myState, arenas]);
 
   return (

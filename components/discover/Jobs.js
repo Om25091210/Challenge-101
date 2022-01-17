@@ -49,7 +49,7 @@ const Jobs = ({ user, profile, myState }) => {
 
   console.log(jobs);
   
-  }, [myState, jobs]);
+  }, [myState]);
 
 
   if (jobs) {

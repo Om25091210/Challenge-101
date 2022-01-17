@@ -5,16 +5,21 @@ import baseURL from '@utils/baseURL';
 
 const Coaches = ({ user, profile, myState }) => {
   const [coach, setCoach] = useState([]);
+  const [sessionCoach, setSessionCoach] = useState({key:null, value:null});
 
     useEffect(() => {
-    console.log(myState.filteredResults);
-    if (myState.filteredResults.length > 0 ){
+
+    if (myState.selectedFilters.length > 0) {
       setCoach(myState.filteredResults);
-     } else { 
-        axios.get(`${baseURL}/api/all/coaches`).then((res) => setCoach(res.data));
+    } else { 
+          if (sessionCoach.key === null) {
+              axios.get(`${baseURL}/api/all/coaches`).then((res) => {
+                setCoach(res.data);
+                setSessionCoach({key:'COACHSET', value: res.data}); 
+              });
+          }
      }
 
-    console.log(coach);
     }, [myState, coach]);
 
   return (
