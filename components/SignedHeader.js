@@ -56,7 +56,7 @@ const SignedHeader = ({ user }) => {
                     </a>
                   </li>
                   <li>
-                    <a href="#">
+                    <a href="/brand/create">
                       <i className="fa fa-file" aria-hidden="true"></i> Create a
                       brand page
                     </a>
@@ -68,7 +68,7 @@ const SignedHeader = ({ user }) => {
                     </a>
                   </li>
                   <li>
-                    <a href="#">
+                    <a href="/company/create">
                       <i className="fa fa-building" aria-hidden="true"></i>
                       Create a company page
                     </a>
