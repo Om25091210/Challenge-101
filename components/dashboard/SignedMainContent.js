@@ -118,6 +118,15 @@ const SignedMainContent = ({ posts, user }) => {
             <li>
               <img src="/assets/media/dash/user.jpg" alt="" />
             </li>
+            <li>
+              <img src="/assets/media/dash/user.jpg" alt="" />
+            </li>
+            <li>
+              <img src="/assets/media/dash/user.jpg" alt="" />
+            </li>
+            <li>
+              <img src="/assets/media/dash/user.jpg" alt="" />
+            </li>
           </ul>
         </div>
 

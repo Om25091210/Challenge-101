@@ -484,7 +484,7 @@ ul.top_menu li.profile a {
 }
 .write_post .team_slider {
 	width:70px;
-	margin-right:0; position: relative;
+	margin-right:20px; position: relative;
 }
 .write_post .team_slider li img {
 	width: 40px;
@@ -1107,8 +1107,9 @@ margin-left:10px;
 	margin: 0 0 10px 0;
 	text-align: right;
 	/* background: #ddd; */
-  padding: 10px;
+  padding: 10px 10px 0 10px;
 	border-bottom: 1px solid #ddd;
+	position: relative;
 }
 .delete_comment, .reply_comment, .delete_btn {
     display: inline-block;
@@ -1116,6 +1117,10 @@ margin-left:10px;
     border-radius: 38px;
     margin: 0 5px;
 }
+
+.reply_comment{    position: absolute;
+    right: 0;
+    top: -20px;}
 
 .delete_comment button, .reply_comment button, .delete_btn  button{    padding: 4px 10px;}
 
