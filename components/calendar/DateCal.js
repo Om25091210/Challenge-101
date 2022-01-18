@@ -12,8 +12,8 @@ import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 
 const DateCal = () => {
-  // const [startDate, setStartDate] = useState(new Date());
-  // const [endDate, setEndDate] = useState(null);
+  const [startDate1, setStartDate] = useState(new Date());
+  const [endDate1, setEndDate] = useState(null);
   const [tournaments, setTournaments] = useState([]);
 
   const [state, setState] = useState([
@@ -24,23 +24,24 @@ const DateCal = () => {
     }
   ]);
 
-  console.log(state);
+  const onChange = (item) => {
+    setState([item.selection]);
 
-  const onChange = (dates) => {
-    const [start, end] = dates;
+    if (item.selection.endDate !== item.selection.startDate) {
+      console.log(item.selection.startDate);
 
-    setStartDate(start);
-    setEndDate(end);
+      setStartDate(item.selection.startDate);
+      setEndDate(item.selection.endDate);
 
-    if (startDate) {
-      if (endDate) {
-        getTours(startDate, endDate).then((items) => {
-          setTournaments(items);
-        });
+      if (startDate1) {
+        if (endDate1) {
+          getTours(startDate1, endDate1).then((items) => {
+            setTournaments(items);
+          });
+        }
       }
     }
   };
-
   function getTours(startDate, endDate) {
     const requestOptions = {
       method: 'POST',
@@ -70,12 +71,13 @@ const DateCal = () => {
         /> */}
 
         <DateRangePicker
-          onChange={(item) => setState([item.selection])}
+          onChange={onChange}
           showSelectionPreview={true}
           moveRangeOnFirstSelection={false}
-          months={2}
+          months={1}
           ranges={state}
           direction="horizontal"
+          showNeighboringMonth={true}
         />
       </div>
 
