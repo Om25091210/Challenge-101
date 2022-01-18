@@ -208,7 +208,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
 
   return (
     <>
-      <div className="profile_box">
+      <div className="profile_box for_profile">
         <div className="profile_cover_photo">
           <form onSubmit={handleCoverSubmit}>
             {/* <img src="/assets/media/profile/cover_bg.jpg" alt="cover image" /> */}

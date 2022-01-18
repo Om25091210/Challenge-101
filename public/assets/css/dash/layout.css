@@ -1843,20 +1843,19 @@ article .social_bar {
 	object-fit: cover;
 }
 .profile_dp_box {
-	display: flex;
-	;
-	padding: 25px;
+	display: flex;;
+	padding:0;
 	justify-content: space-between;
 	position: relative;
-	margin-top: 285px;
+	margin-top:320px;
 }
 .profile_dp_box .profile_pic {
-	position: relative;
+	position: absolute;
 	width: 155px;
 	height: 155px;
 	border:5px solid #202028;
 	border-radius: 5px;
-	margin-right: 25px;
+	left: 25px;
 }
 .profile_dp_box .profile_pic img {
 	object-fit: cover;
@@ -1866,10 +1865,11 @@ article .social_bar {
 }
 .profile_dp_box .profile_details {
 	float: left;
-	width: calc(100% - 160px);
+	width:100%; 
 }
 .profile_dp_box .top_details {
-	display: flex; position: relative;
+	display: flex; position: relative; 
+    padding-left: 220px
 }
 .profile_dp_box .top_details .name_box {
 	display: flex;
@@ -1923,7 +1923,7 @@ article .social_bar {
 .profile_dp_box .bottom_details {
 	display: flex;
 	justify-content: space-between;
-	width: 100%;
+	width: 100%; padding: 0 20px 0 186px;
 }
 .profile_dp_box .bottom_details .current_status {
 	display: flex;
@@ -5217,11 +5217,13 @@ main {
 /* ----------------Create Tournament page -------------------- */
 
 
-.tournament_dp_box .profile_dp_box{ margin-top:0; height: 400px; align-items: center; justify-content: flex-start; flex-wrap: wrap; padding-left: 10%;}
-.tournament_dp_box .profile_dp_box .profile_pic{ display: flex; align-items: center; height: auto; border: 0; width: 100px;}
+.tournament_dp_box .profile_dp_box{ margin-top:0; height: 400px; position: relative; align-items: center;     align-content: center; justify-content: flex-start; flex-wrap: wrap; padding-left: 10%;}
+.tournament_dp_box .profile_dp_box .profile_pic{ position: relative; display: flex; align-items: center; height: auto; border: 0; width: 100px;}
+.tournament_dp_box .profile_dp_box .profile_details{ width: calc(100% - 180px);}
+.tournament_dp_box  .profile_dp_box .bottom_details{ position: absolute; bottom: 20px; right: 20px;}
 .tournament_dp_box .profile_dp_box .profile_pic img{ width: 100px; object-fit: contain;}
 .tournament_dp_box .top_details .name_box{ margin-right: 10px;}
-.tournament_dp_box .tournament_sponsers{ margin-top:45px;}
+.tournament_dp_box .tournament_sponsers{ margin-top:45px; padding: 0 20px 0 0;}
 .tournament_dp_box .tournament_sponsers ul{ display: flex;}
 .tournament_dp_box .tournament_sponsers ul li{ margin-right: 10px;}
 .tournament_dp_box .tournament_sponsers .prices{ font-size: 20px; font-weight: 600;}
@@ -5229,9 +5231,9 @@ main {
 .tournament_dp_box .tournament_sponsers span{ text-transform: uppercase;}
 
 .tournament_dp_box .flag_tick_flow{ display: flex;}
-.tournament_dp_box .profile_dp_box .top_details{ width: 45%;}
+.tournament_dp_box .profile_dp_box .top_details{ width: 45%; padding-left:50px;}
 
-.games_page .tournament_sponsers{ margin-top:85px;}
+.games_page .tournament_sponsers{ margin-top:0;}
 
 .profile_box .profile_cover_photo:after{     content: "";
     position: absolute;
@@ -6019,13 +6021,16 @@ form.common_form input {
 	body.DarkPage .game_list_page li{    border: 1px solid #36363c;}
 	body.DarkPage .game_list_page li .imgs{border-bottom: 1px solid #36363c;}
 	body.DarkPage .game_list_page li .bottom_data{ color: #fff;}
-	body.DarkPage .bio_box{background: #4a4a53; border-top: 1px solid #36363c;}
+	body.DarkPage .bio_box{background: #202028; border-top: 1px solid #36363c; margin-top: 0;}
 	body.DarkPage .bio_box .right_team_bio{border-left: 1px solid #36363c;}
     body.DarkPage .all_stats, body.DarkPage .games_details{background: #4a4a53;}
 	body.DarkPage .all_stats ul li .names, body.DarkPage .games_details li .nm, body.DarkPage .games_details li .task{ color: #fff;}
 
 	body.DarkPage .profile_tab_btn.discover_tab_btn li{ background: #27272f;}
 	body.DarkPage .discover_tab_btn.profile_tab_btn li.active, body.DarkPage .discover_tab_btn.profile_tab_btn li:hover {background: #7239ea;color: #fff;}
+	body.DarkPage .for_profile .profile_dp_box .bottom_details{ background: #202028;}
+	body.DarkPage .games_page .tournament_sponsers{background: #202028;}
+	body.DarkPage .tournament_dp_box .tournament_sponsers{background: #202028;}
 
 	body.DarkPage .discover_tab_btn.profile_tab_btn li a{ color: #fff;}
 	body.DarkPage .team_filter .btn{ color: #fff;}
@@ -6044,11 +6049,11 @@ form.common_form input {
 	body.DarkPage .bio_box .right_bio ul li .name{ color: #fff;}
 	body.DarkPage .profile_tab_btn li a{ color: #fff;}
 	body.DarkPage .profile_tab_btn li.active a {color: #7239ea;}
-	body.DarkPage .prfoile_tab_data{background: #202028;}
+	body.DarkPage .prfoile_tab_data{}
 	body.DarkPage .bio_box .left_bio .top_bio .socail a{ color: #fff;}
 	body.DarkPage .next_matches{ background: #392d49;}
 	body.DarkPage .next_matches .bdr_clr_green{ background: #403351;}
-	body.DarkPage .rigs li{ background: #0c0c11;}
+	body.DarkPage .rigs li{ background: #202028;}
 	body.DarkPage .video_box li{ background: #392d49;}
 	body.DarkPage .gallery_box .jobs_browse, body.DarkPage .video_box .jobs_browse{ background: none;}
 	body.DarkPage .video_box li .bottom_data span, body.DarkPage .video_box li .bottom_data h2{ color: #fff;}
@@ -6058,3 +6063,11 @@ form.common_form input {
 	body.DarkPage .post_comments p{ color: #fff;}
 	body.DarkPage .features li{ background: #1c1f24;}
 	body.DarkPage .create_tournament{ background: #2b2b35;}
+	body.DarkPage .communities li .bottom_data{ color: #fff;}
+	body.DarkPage .communities li .imgs{ border:2px solid #fff}
+	body.DarkPage .communities li p.member{ color: #94999f;}
+	body.DarkPage .matches_box .heads_bg{ background: #202028;}
+	body.DarkPage .matches_box .match_row{ background: #202028;}
+	body.DarkPage .match_row .team_vs .vs{ color: #fff;}
+	body.DarkPage .create_tournament form input, body.DarkPage .create_tournament form select{background: #202028; color: #fff;}
+	body.DarkPage .form-control{ color: #fff;}
