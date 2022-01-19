@@ -25,7 +25,7 @@ const ProfileTabs = (props) => (
       </a>
     </li>
     <li>
-      <a href="#!" rel="merchandise">
+      <a href="#!" rel="store">
         merchandise
       </a>
     </li>

@@ -8,8 +8,9 @@ import AllScript from '../AllScript';
 import baseURL from '@utils/baseURL';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import { getData } from '@utils/fetchData'
 
-const Profile = ({ user, Userdata, games, player }) => {
+const Profile = ({ user, Userdata, games, player, products}) => {
   const router = useRouter();
 
   if (Userdata) {
@@ -22,7 +23,7 @@ const Profile = ({ user, Userdata, games, player }) => {
         <div className="main_middle profile_middle">
           <ProfileBox user={user} Userdata={Userdata} games={games} player={player}/>
           <ProfileTabs />
-          <ProfileData user={user} Userdata={Userdata} />
+          <ProfileData user={user} Userdata={Userdata} products={products}/>
         </div>
 
         <AllScript />
@@ -34,9 +35,14 @@ const Profile = ({ user, Userdata, games, player }) => {
 };
 
 
-export const getServerSideProps = async (context) => {
+export const getServerSideProps = async (context, query) => {
   const { username } = context.params;
+  const page = query ? (query.page || 1) : 1
+  const category = query ? (query.category || 'all' ) : 'all'
+  const sort = query ? (query.sort || '' ) : ''
+  const search = query ? (query.search || 'all') : 'all'
 
+  try {
   const response = await fetch(`${baseURL}/api/profile/${username}`);
   const Userdata = await response.json();
 
@@ -47,9 +53,20 @@ export const getServerSideProps = async (context) => {
   //console.log(plyres)
   //const player = await plyres.json();
   const player = [];
+
+  const resprod = await getData(
+      `product?limit=${page * 6}&category=${category}&sort=${sort}&title=${search}`
+    )
+
   return {
-    props: { Userdata, games, player }
+    props: { Userdata, games, player, products: resprod.products, result: resprod.result}
   };
+  } catch {
+    return {
+      props: {}
+    };
+  }  
 };
+
 
 export default Profile;

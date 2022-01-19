@@ -3,14 +3,9 @@ import { DefaultSeo } from 'next-seo';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { appWithTranslation } from 'next-i18next';
 
-import { AuthProvider } from '@components/auth';
 import { SettingsProvider } from '@components/settings-context';
-import { BasketProvider } from '@components/basket';
-import { simplyFetchFromGraph } from '@lib/graph';
-import { getLocaleFromContext, defaultLocale } from '@lib/app-config';
 import axios from 'axios';
 import baseURL from '@utils/baseURL';
-import nextI18NextConfig from '../next-i18next.config.js';
 
 import { Hydrate } from 'react-query/hydration';
 import { ReactQueryDevtools } from 'react-query/devtools';
@@ -23,9 +18,10 @@ import { parseCookies, destroyCookie } from 'nookies';
 import { redirectUser } from '@utils/auth';
 import Script from 'next/script';
 import { getCookieValue, setCookieValue } from '@utils/helpers';
+import { DataProvider } from '@store/GlobalState'
 
-function MyApp({ Component, pageProps, commonData }) {
-  const { mainNavigation, locale } = commonData;
+function MyApp({ Component, pageProps }) {
+
   const router = useRouter();
   const [queryClient] = useState(() => new QueryClient());
 
@@ -84,15 +80,19 @@ function MyApp({ Component, pageProps, commonData }) {
       />
 
       <DefaultSeo {...SEOSettings} />
+
       <QueryClientProvider client={queryClient}>
-        <SettingsProvider mainNavigation={mainNavigation}>
-          <BasketProvider locale={locale}>
-            <ToastContainer />
-            <ReactQueryDevtools />
-            <Component {...pageProps} />
-          </BasketProvider>
-        </SettingsProvider>
+        <Hydrate state={pageProps.dehydratedState}>
+
+          <DataProvider>
+                <ToastContainer />
+              <Component {...pageProps} />
+          </DataProvider>
+
+          <ReactQueryDevtools />
+        </Hydrate>
       </QueryClientProvider>
+
     </>
   );
 }
@@ -121,7 +121,6 @@ MyApp.getInitialProps = async ({ ctx }) => {
   ];
 
   try {
-    const locale = getLocaleFromContext(ctx.router);
 
     const isProtected = protectedRoutes.includes(ctx.pathname);
 
@@ -154,44 +153,8 @@ MyApp.getInitialProps = async ({ ctx }) => {
       }
     }
 
-    /**
-     * Get shared data for all pages
-     * - Tenant settings
-     * - Main navigation
-     */
-    const {
-      data: {
-        tenant,
-        mainNavigation: { children: mainNavigation }
-      }
-    } = await simplyFetchFromGraph({
-      query: `
-        query COMMON_DATA($language: String!) {
-          mainNavigation: catalogue(language: $language, path: "/") {
-            children {
-              type
-              name
-              path
-            }
-          }
-
-          tenant(language: $language) {
-            name
-          }
-        }
-      `,
-      variables: {
-        language: locale.crystallizeCatalogueLanguage
-      }
-    });
-
     return {
-      pageProps,
-      commonData: {
-        locale,
-        tenant,
-        mainNavigation: mainNavigation?.filter((i) => !i.name.startsWith('_'))
-      }
+      pageProps
     };
   } catch (error) {
     console.error(error);
@@ -199,14 +162,9 @@ MyApp.getInitialProps = async ({ ctx }) => {
 
     // Fallback values
     return {
-      pageProps,
-      commonData: {
-        mainNavigation: [],
-        locale: defaultLocale,
-        tenant: {}
-      }
+      pageProps
     };
   }
 };
 
-export default appWithTranslation(MyApp, nextI18NextConfig);
+export default appWithTranslation(MyApp);

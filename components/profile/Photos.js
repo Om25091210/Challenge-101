@@ -63,7 +63,7 @@ const Photos = ({ Userdata }) => {
               onChange={(e) => setTitle(e.target.value)}
             />
             <a
-              href="javascript:void(0)"
+              href="#!"
               onClick={handlePhotosSubmit}
               className="btn"
             >

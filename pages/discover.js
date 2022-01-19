@@ -15,7 +15,7 @@ import AllScript from './AllScript';
 
 const Discover = ({ user, profile, games }) => {
   let myState = {};
-  
+
   const [selectedFilters, setSelectedFilters] = useState([]);
   const [filteredResults, setFilteredResults] = useState([]);
   const [filterType, setFilterType] = useState('TEAMS');
@@ -34,7 +34,6 @@ const Discover = ({ user, profile, games }) => {
 
   const handleFType = async (val) => {
     if (typeof val !== 'undefined') {
-      console.log('setting filter type.......');
       setFilterType(val);
     }
   };
@@ -70,7 +69,7 @@ const Discover = ({ user, profile, games }) => {
             <h2>GAME</h2>
 
             <div className="tit">
-              <a href="javascript:void(0)" className="model_show_btn">
+              <a href="#!" className="model_show_btn">
                 <span>
                   <b className="icon">
                     <img src="/assets/media/ranking/console.png" alt="" />
@@ -90,7 +89,7 @@ const Discover = ({ user, profile, games }) => {
               </a>
 
               <div className="common_model_box" id="more_games">
-                <a href="javascript:void(0)" className="model_close">
+                <a href="#!" className="model_close">
                   X
                 </a>
                 <div className="inner_model_box">

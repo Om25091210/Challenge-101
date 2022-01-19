@@ -1,12 +1,19 @@
 import Head from 'next/head';
-import { useState } from 'react';
+import React, { useContext, useState } from 'react'
 
 import { logoutUser } from '@utils/auth';
 import NotificationItem from './NotificationItem';
 import ChatSection from './chats/ChatSection';
 import Link from 'next/link';
+import {useRouter} from 'next/router'
+import {DataContext} from '@store/GlobalState'
 
 const SignedHeader = ({ user }) => {
+
+    const router = useRouter()
+    const {state, dispatch} = useContext(DataContext)
+    const { auth, cart } = state
+
   if (user) {
     return (
       <header>
@@ -113,6 +120,27 @@ const SignedHeader = ({ user }) => {
 
             <li>
               <NotificationItem />
+            </li>
+
+            <li>
+              <Link href="/cart">
+                  <a >
+                      <i className="fa fa-shopping-cart" aria-hidden="true">
+                          <span className="position-absolute"
+                              style={ {
+                                  padding: '3px 6px',
+                                  background: '#ed143dc2',
+                                  borderRadius: '50%',
+                                  top: '-10px',
+                                  right: '-10px',
+                                  color: 'white',
+                                  fontSize: '14px'
+                              } }>
+                              { cart.length }
+                          </span>
+                      </i> 
+              </a>
+              </Link>
             </li>
 
             <li>

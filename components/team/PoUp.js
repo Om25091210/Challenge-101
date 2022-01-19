@@ -1,32 +1,100 @@
+import Link from 'next/link'
+import { useContext, useState } from 'react'
+import { DataContext } from '@store/GlobalState'
+import { addToCart } from '@store/Actions'
 
-const PoUp = ()=>{
+const PoUp = ({product})=>{
 
+    const { state, dispatch } = useContext(DataContext)
+    const { cart, auth } = state
+    const [ clicked, setClicked ] = useState( false )
+
+    const userLink = () => {
+        return(
+            <>
+                <Link href={`product/${product._id}`}>
+                    <a className="btn slide text-info"
+                        data-hover="View"
+                        style={ { marginRight: '5px', flex: 1, background: '#f582ae' } }>
+                         <div>
+                            <i className="fas fa-eye pl-2"></i>
+                        </div>
+                    </a>
+                 
+                </Link>
+
+                              
+                <button className="cart-btn btn btn-info"
+                   
+                    style={ { marginLeft: '5px', flex: 1 } }
+                    disabled={ product.inStock === 0 ? true : false }
+                    onClick={ () => { dispatch( addToCart( product, cart ) ); setClicked( true ); } } >
+                   
+                    { clicked ? "Item in Cart" : "Add to Cart" }
+                        <i className="fas fa-cart-plus pl-2"></i>
+                  
+                </button>
+            </>
+        )
+    }
+
+    const adminLink = () => {
+        return(
+            <>
+                <Link href={`create/${product._id}`}>
+                    <a className="btn bg-dark text-light slide"
+                    data-hover="Edit"
+                        style={ { marginRight: '5px', flex: 1 } }>
+                    <div><i className="fas fa-edit"></i></div>
+                 
+                 </a>
+                </Link>
+                 <Link href={`product/${product._id}`}>
+                    <a className="btn slide text-info"
+                        data-hover="View"
+                        style={ { marginRight: '5px', flex: 1, background: '#8bd3dd' } }>
+                         <div>
+                            <i className="fas fa-eye pl-2"></i>
+                        </div>
+                    </a>
+                 
+                </Link>
+                <button className="btn slide text-danger"
+                data-hover="Delete"
+                style={{marginLeft: '5px', flex: 1, background: '#f582ae'}}
+                data-toggle="modal" data-target="#exampleModal"
+                onClick={() => dispatch({
+                    type: 'ADD_MODAL',
+                    payload: [{ 
+                        data: '', id: product._id, 
+                        title: product.title, type: 'DELETE_PRODUCT' 
+                    }]
+                } ) } >
+                    <div><i className="fas fa-trash-alt"></i></div>
+                  
+                </button>
+            </>
+        )
+    }
 
 return(
 <>
 
-<div id="prod1" className="quick_view" style={{display:'none'}}>
+<div id="prodQuickview" className="quick_view" style={{display:'none'}}>
   <div className="product_box">
     <div className="product-img-box">
       <div className="prod_big_thumb">
         <div className="slider-for">
+
           <div>
-            <div className="slide-box"> <img  src="/assets/media/team/product1.jpg"  alt=""/> </div>
+            <div className="slide-box"> <img  src={ product.images[ 0 ].url } alt={ product.images[ 0 ].url }/> </div>
           </div>
-          <div>
-            <div className="slide-box"> <img   src="/assets/media/team/product1.jpg"  alt=""/> </div>
-          </div>
-          <div>
-            <div className="slide-box"> <img   src="/assets/media/team/product1.jpg"  alt=""/> </div>
-          </div>
-          <div>
-            <div className="slide-box"> <img   src="/assets/media/team/product1.jpg"  alt=""/> </div>
-          </div>
+
         </div>
       </div>
     </div>
     <div className="product-detail-box">
-      <h1>Red Oceacon</h1>
+      <h1>{product.title}</h1>
       <div className="row">
         <div className="col-lg-12">
           <div className="like_view"> <a href="#" className="art"><i className="fa fa-picture-o" aria-hidden="true"></i> Art</a> <a href="#" className="view"><i className="fa fa-eye" aria-hidden="true"></i> 250</a> <a href="#" className="like"><i className="fa fa-heart" aria-hidden="true"></i> 18</a> </div>
@@ -35,8 +103,8 @@ return(
       </div>
       <div className="row">
         <div className="col-lg-12">
-          <div className="price"> $48.00 <del style={{display: 'none'}}>£299.00</del> <span className="discount" style={{display: 'none'}}>(10% Discount)</span> </div>
-          <p className="brief">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tristique purus vitae venenatis ultrices. Suspendisse tristique  tortor ante, </p>
+          <div className="price"> ${product.price} <del style={{display: 'none'}}>£299.00</del> <span className="discount" style={{display: 'none'}}>(10% Discount)</span> </div>
+          <p className="brief">{product.description}</p>
         </div>
       </div>
       <div className="row size-option">
@@ -67,7 +135,12 @@ return(
         </div>
       </div>
       <div className="row cart-row">
-        <div className="col-lg-12 col-md-12 col-xs-12"> <a href="#!" className="btn btn-primary"><i className="fa fa-shopping-basket"></i> Add To Bag </a> <a href="#!" className="btn btn-primary"><i className="fa fa-heart-o" aria-hidden="true"></i> Add To wishlist </a> </div>
+        <div className="col-lg-12 col-md-12 col-xs-12"> 
+
+        {!auth.user || auth.user.role !== "admin"  ? userLink() : adminLink()}
+
+
+        </div>
       </div>
     </div>
   </div>

@@ -12,8 +12,10 @@ import { toast } from 'react-toastify';
 import cookie from 'js-cookie';
 import Photos from './Photos';
 import Videos from './Videos';
+import ProductList from '@components/common/ProductList';
 
-const ProfileData = ({ user, Userdata, player }) => {
+
+const ProfileData = ({ user, Userdata, player, products }) => {
   const [profile, setProfile] = useState(Userdata.profile);
 
   useEffect(() => {}, [profile]);
@@ -338,172 +340,9 @@ const ProfileData = ({ user, Userdata, player }) => {
             </div>
           </div>{' '}
         </div>
-        <div className="tab hide" id="merchandise">
-          <div className="products">
-            <ul>
-              <li>
-                <div className="pro_img">
-                  <a href="#prod1" className="quickpoup">
-                    <img src="/assets/media/team/tshirt1.jpg" alt="" />
-                  </a>
 
-                  <span className="size_option">36d 12h 13m 18s</span>
-                </div>
-                <div className="pro_bottom">
-                  <div className="name_dots">
-                    <h4>ALCHEMISTS MEN-SHIRT</h4>
-                    <a href="#">
-                      <i className="fa fa-ellipsis-h" aria-hidden="true"></i>
-                    </a>{' '}
-                  </div>
-                  <div className="stars">
-                    <a href="#">
-                      <i className="fa fa-star" aria-hidden="true"></i>
-                    </a>
-                    <a href="#">
-                      <i className="fa fa-star" aria-hidden="true"></i>
-                    </a>
-                    <a href="#">
-                      <i className="fa fa-star" aria-hidden="true"></i>
-                    </a>
-                    <a href="#">
-                      <i className="fa fa-star" aria-hidden="true"></i>
-                    </a>
-                    <a href="#">
-                      <i className="fa fa-star" aria-hidden="true"></i>
-                    </a>
-                    <div className="price"> $19.00</div>
-                  </div>
-                </div>
-                <div className="likes">
-                  <a href="#">
-                    <i className="fa fa-heart" aria-hidden="true"></i> 80{' '}
-                  </a>
-                </div>
-              </li>
+        <ProductList user={user} productList={products}/>
 
-              <li>
-                <div className="pro_img">
-                  {' '}
-                  <a href="#">
-                    <img src="/assets/media/team/tshirt2.jpg" alt="" />{' '}
-                  </a>
-                </div>
-                <div className="pro_bottom">
-                  <div className="name_dots">
-                    <h4>ALCHEMISTS MEN-SHIRT</h4>
-                    <a href="#">
-                      <i className="fa fa-ellipsis-h" aria-hidden="true"></i>
-                    </a>{' '}
-                  </div>
-                  <div className="stars">
-                    <a href="#">
-                      <i className="fa fa-star" aria-hidden="true"></i>
-                    </a>
-                    <a href="#">
-                      <i className="fa fa-star" aria-hidden="true"></i>
-                    </a>
-                    <a href="#">
-                      <i className="fa fa-star" aria-hidden="true"></i>
-                    </a>
-                    <a href="#">
-                      <i className="fa fa-star" aria-hidden="true"></i>
-                    </a>
-                    <a href="#">
-                      <i className="fa fa-star" aria-hidden="true"></i>
-                    </a>
-                    <div className="price"> $19.00</div>
-                  </div>
-                </div>
-                <div className="likes">
-                  <a href="#">
-                    <i className="fa fa-heart" aria-hidden="true"></i> 80{' '}
-                  </a>
-                </div>
-              </li>
-
-              <li>
-                <div className="pro_img">
-                  {' '}
-                  <a href="#">
-                    <img src="/assets/media/team/tshirt1.jpg" alt="" />{' '}
-                  </a>{' '}
-                </div>
-                <div className="pro_bottom">
-                  <div className="name_dots">
-                    <h4>ALCHEMISTS MEN-SHIRT</h4>
-                    <a href="#">
-                      <i className="fa fa-ellipsis-h" aria-hidden="true"></i>
-                    </a>{' '}
-                  </div>
-                  <div className="stars">
-                    <a href="#">
-                      <i className="fa fa-star" aria-hidden="true"></i>
-                    </a>
-                    <a href="#">
-                      <i className="fa fa-star" aria-hidden="true"></i>
-                    </a>
-                    <a href="#">
-                      <i className="fa fa-star" aria-hidden="true"></i>
-                    </a>
-                    <a href="#">
-                      <i className="fa fa-star" aria-hidden="true"></i>
-                    </a>
-                    <a href="#">
-                      <i className="fa fa-star" aria-hidden="true"></i>
-                    </a>
-                    <div className="price"> $19.00</div>
-                  </div>
-                </div>
-                <div className="likes">
-                  <a href="#">
-                    <i className="fa fa-heart" aria-hidden="true"></i> 80{' '}
-                  </a>
-                </div>
-              </li>
-
-              <li>
-                <div className="pro_img">
-                  {' '}
-                  <a href="#">
-                    <img src="/assets/media/team/cup.jpg" alt="" />{' '}
-                  </a>{' '}
-                </div>
-                <div className="pro_bottom">
-                  <div className="name_dots">
-                    <h4>ALCHEMISTS MEN-SHIRT</h4>
-                    <a href="#">
-                      <i className="fa fa-ellipsis-h" aria-hidden="true"></i>
-                    </a>{' '}
-                  </div>
-                  <div className="stars">
-                    <a href="#">
-                      <i className="fa fa-star" aria-hidden="true"></i>
-                    </a>
-                    <a href="#">
-                      <i className="fa fa-star" aria-hidden="true"></i>
-                    </a>
-                    <a href="#">
-                      <i className="fa fa-star" aria-hidden="true"></i>
-                    </a>
-                    <a href="#">
-                      <i className="fa fa-star" aria-hidden="true"></i>
-                    </a>
-                    <a href="#">
-                      <i className="fa fa-star" aria-hidden="true"></i>
-                    </a>
-                    <div className="price"> $19.00</div>
-                  </div>
-                </div>
-                <div className="likes">
-                  <a href="#">
-                    <i className="fa fa-heart" aria-hidden="true"></i> 80{' '}
-                  </a>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
 
         <div className="tab hide" id="steams">
           {' '}

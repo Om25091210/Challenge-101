@@ -1,13 +1,17 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import Meta from '@components/Meta';
 import FooterMain from '@components/FooterMain';
-import { useState, useEffect } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { toast } from 'react-toastify';
 
 import { useRouter } from 'next/router'
 import { useForm } from "react-hook-form";
 import { loginUser } from '@utils/auth';
+
+import Link from 'next/link'
+import {DataContext} from '@store/GlobalState'
+import {postData} from '@utils/fetchData'
+import Cookie from 'js-cookie'
 
 
 const SignIn = () => {
@@ -15,6 +19,9 @@ const SignIn = () => {
     email: '',
     password: '',
   });
+
+  const {state, dispatch} = useContext(DataContext)
+  const { auth } = state
 
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState(null);
@@ -25,11 +32,15 @@ const SignIn = () => {
 
   const handleChange = (e) => {
     setUser((prevState) => ({ ...prevState, [e.target.name]: e.target.value }));
+    dispatch({ type: 'NOTIFY', payload: {} })    
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     loginUser({ email, password }, setError, setFormLoading, toast);
+
+    localStorage.setItem('firstLogin', true)
+
   };
 
   useEffect(() => {
