@@ -4397,7 +4397,7 @@ article .social_bar {
 }
 .group td img {
 	display: inline-block;
-	vertical-align: middle;
+	vertical-align: middle; width: 40px;
 }
 .group td strong {
 	font-size: 14px;
@@ -4408,8 +4408,11 @@ article .social_bar {
 .group tr {
 	background-color: rgba(0,0,0,.05);
 	border-top: 5px solid #fff;
-	border-bottom: 5px solid #fff;
+	border-bottom: 5px solid #fff; height: 50px;
 }
+
+.group tr td{vertical-align: middle;}
+.group tr td:last-child, .group tr th:last-child { text-align: right;}
 /* ------------------ matches section -------------------- */
 
 .matches_box .heads_bg {
@@ -5223,7 +5226,7 @@ main {
 .tournament_dp_box  .profile_dp_box .bottom_details{ position: absolute; bottom: 20px; right: 20px;}
 .tournament_dp_box .profile_dp_box .profile_pic img{ width: 100px; object-fit: contain;}
 .tournament_dp_box .top_details .name_box{ margin-right: 10px;}
-.tournament_dp_box .tournament_sponsers{ margin-top:45px; padding: 0 20px 0 0;}
+.tournament_dp_box .tournament_sponsers{ margin-top:0; padding: 0 20px 0 0;}
 .tournament_dp_box .tournament_sponsers ul{ display: flex;}
 .tournament_dp_box .tournament_sponsers ul li{ margin-right: 10px;}
 .tournament_dp_box .tournament_sponsers .prices{ font-size: 20px; font-weight: 600;}
@@ -5574,7 +5577,6 @@ ul.game_search_result li {
 	background: #2f3245;
 	padding: 30px 20px;
 	color: #fff;
-	border-right: 1px solid #fff;
 	box-shadow: -1px 0px 0px #000;
 }
 .knockout_matches ul li h4 {
@@ -5659,7 +5661,7 @@ ul.game_search_result li {
 	width: 25px;
 	height: 100%;
 	position: absolute;
-	border: 1px solid #000;
+	border: 1px solid #3a2d49;
 	left: -40px;
 	top: 0;
 	border-left: 0;
@@ -5669,7 +5671,7 @@ ul.game_search_result li {
 	width: 16px;
 	height: 1px;
 	position: absolute;
-	border-bottom: 1px solid #000;
+	border-bottom: 1px solid #3a2d49;
 	left: -16px;
 	top: 50%;
 	border-left: 0;
@@ -5687,7 +5689,7 @@ ul.game_search_result li {
 	width: 25px;
 	height: 100%;
 	position: absolute;
-	border: 1px solid #000;
+	border: 1px solid #3a2d49;
 	left: -40px;
 	top: 0;
 	border-left: 0;
@@ -5697,7 +5699,7 @@ ul.game_search_result li {
 	width: 16px;
 	height: 1px;
 	position: absolute;
-	border-bottom: 1px solid #000;
+	border-bottom: 1px solid #3a2d49;
 	left: -16px;
 	top: 50%;
 	border-left: 0;
@@ -5710,7 +5712,7 @@ ul.game_search_result li {
 	width: 25px;
 	height: 40px;
 	position: absolute;
-	border-bottom: 1px solid #000;
+	border-bottom: 1px solid #3a2d49;
 	left: -40px;
 	top: 0;
 }
@@ -5790,6 +5792,9 @@ ul.game_search_result li {
 .internet ul li b{ margin-left: 5px;}
 
 
+.tournament_dp_box .internet ul{ flex-direction:inherit;}
+.tournament_dp_box .internet ul li{ flex:0 0 25%; display: block;}
+.tournament_dp_box .internet ul li b{ display: block; margin-left: 0;}
 
 
 
@@ -6000,7 +6005,7 @@ form.common_form input {
 	body.DarkPage .loadmore a, body.DarkPage .post_comments h3{ color: #fff;}
 	body.DarkPage .profile_tab_btn.three_nav li a{ color: #fff;}
 	body.DarkPage .post .heads .date p{ color: #3aa5dd;}
-	body.DarkPage .post .right_details .post_data{ background: #000;}
+	body.DarkPage .post .right_details .post_data{ background: #2b2b35;}
 	body.DarkPage .recent_activity h2, 	body.DarkPage .my_team p, body.DarkPage .team_match .match_time span, body.DarkPage .team_match .team li a{ color: #fff;}
 	body.DarkPage .my_team .grey_bg{ background: #2b2b35;}
 
@@ -6049,6 +6054,7 @@ form.common_form input {
 	body.DarkPage .bio_box .right_bio ul li .name{ color: #fff;}
 	body.DarkPage .profile_tab_btn li a{ color: #fff;}
 	body.DarkPage .profile_tab_btn li.active a {color: #7239ea;}
+	body.DarkPage .profile_tab_btn.discover_tab_btn li.active a {color: #fff;}
 	body.DarkPage .prfoile_tab_data{}
 	body.DarkPage .bio_box .left_bio .top_bio .socail a{ color: #fff;}
 	body.DarkPage .next_matches{ background: #392d49;}
@@ -6071,3 +6077,21 @@ form.common_form input {
 	body.DarkPage .match_row .team_vs .vs{ color: #fff;}
 	body.DarkPage .create_tournament form input, body.DarkPage .create_tournament form select{background: #202028; color: #fff;}
 	body.DarkPage .form-control{ color: #fff;}
+	body.DarkPage .game_list_page li a:hover span{ color: #fff;}
+	body.DarkPage .add_comment_box button{ background: #2b2b35;}
+	body.DarkPage .add_comment_box button img{filter: invert(100);}
+	body.DarkPage .my_team .create_team{background: #2b2b35; color: #fff;}
+	body.DarkPage .users_share_box .shere .three_dots_dropdown{ background: #000; color: #fff;}
+	body.DarkPage .users_share_box .shere .three_dots_dropdown button{ color: #fff;}
+	body.DarkPage ul.top_menu .drop_down_bg{background: #000; color: #fff;}
+	body.DarkPage ul.top_menu .drop_down_bg:after{    border-bottom: 16px solid #000;}
+	body.DarkPage .notif_tag .notif_name, body.DarkPage ul.top_menu .drop_down_bg li a, body.DarkPage ul.top_menu li i{ color: #fff;}
+	body.DarkPage .group tr{ background: #202028;     border-top: 5px solid #000;border-bottom: 5px solid #000; margin-bottom: 10px;}
+	body.DarkPage .results_box.white_bg{ background: none;}
+	body.DarkPage .congratulations{ background: #2f3245;}
+	body.DarkPage .group_stage{ background: none;}
+	body.DarkPage .group_stage .team_match_row{ background: none;}
+	body.DarkPage .group_stage .match_date a{ color: #fff;}
+	body.DarkPage .group_stage .match_date a:hover p, body.DarkPage .group_stage .match_date a.active p{color: #fff;}
+	body.DarkPage .matches_postitions{ background: none;}
+
