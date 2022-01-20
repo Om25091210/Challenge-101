@@ -53,7 +53,7 @@ const Dashboard = ({ user, profile, posts, suggplayers }) => {
 
       <LeftNav />
 
-      <SignedMainContent posts={posts} user={user} />
+      <SignedMainContent posts={posts} user={user} profile={profile} />
 
       <RightSection
         user={user}
