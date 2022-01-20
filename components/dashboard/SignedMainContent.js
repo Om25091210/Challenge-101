@@ -136,6 +136,18 @@ const SignedMainContent = ({ posts, user, profile }) => {
     arrows: true
   };
 
+  useEffect(() => {
+    setTimeout(() => {
+      $('.user_slider').slick({
+        infinite: false,
+        vertical: true,
+        verticalSwiping: true,
+        slidesToShow: 1,
+        slidesToScroll: 1
+      });
+    }, 1000);
+  }, []);
+
   return (
     <div className="main_middle">
       <form className="write_post" onSubmit={handleSubmit}>
