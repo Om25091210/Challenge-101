@@ -1,8 +1,19 @@
 import PoUp from './PoUp';
 import TeamAbout from './TeamAbout';
 import TeamSponsors from './TeamSponsors';
+import { useState, useEffect } from 'react';
 
 const TeamProfileData = ({ user, data }) => {
+  useEffect(() => {
+    $('a.model_show_btn').click(function () {
+      $(this).next().addClass('show_model');
+    });
+
+    $('a.model_close').click(function () {
+      $(this).parent().removeClass('show_model');
+    });
+  }, []);
+
   return (
     <>
       <div className="prfoile_tab_data white_bg">
@@ -214,7 +225,8 @@ const TeamProfileData = ({ user, data }) => {
                   <span className="task">Assault/Sniper</span>{' '}
                 </li>
                 <li>
-                  <span className="nm">Mic:</span> <span className="task"> On</span>
+                  <span className="nm">Mic:</span>{' '}
+                  <span className="task"> On</span>
                 </li>
                 <li>
                   <span className="nm">Platform:</span>{' '}
@@ -1048,124 +1060,11 @@ const TeamProfileData = ({ user, data }) => {
               <li>
                 <div className="pro_img">
                   {' '}
-                  <a href="#prod1" className="quickpoup">
+                  <a href="javascript:void(0)" className="model_show_btn">
                     <img src="/assets/media/team/tshirt1.jpg" alt="" />
                   </a>{' '}
+                  <PoUp />
                   <span className="size_option">36d 12h 13m 18s</span>{' '}
-                </div>
-                <div className="pro_bottom">
-                  <div className="name_dots">
-                    <h4>ALCHEMISTS MEN-SHIRT</h4>
-                    <a href="#">
-                      <i className="fa fa-ellipsis-h" aria-hidden="true"></i>
-                    </a>{' '}
-                  </div>
-                  <div className="stars">
-                    {' '}
-                    <a href="#">
-                      <i className="fa fa-star" aria-hidden="true"></i>
-                    </a>{' '}
-                    <a href="#">
-                      <i className="fa fa-star" aria-hidden="true"></i>
-                    </a>{' '}
-                    <a href="#">
-                      <i className="fa fa-star" aria-hidden="true"></i>
-                    </a>{' '}
-                    <a href="#">
-                      <i className="fa fa-star" aria-hidden="true"></i>
-                    </a>{' '}
-                    <a href="#">
-                      <i className="fa fa-star" aria-hidden="true"></i>
-                    </a>
-                    <div className="price"> $19.00</div>
-                  </div>
-                </div>
-                <div className="likes">
-                  <a href="#">
-                    <i className="fa fa-heart" aria-hidden="true"></i> 80{' '}
-                  </a>
-                </div>
-              </li>
-              <li>
-                <div className="pro_img">
-                  {' '}
-                  <img src="/assets/media/team/tshirt2.jpg" alt="" />{' '}
-                </div>
-                <div className="pro_bottom">
-                  <div className="name_dots">
-                    <h4>ALCHEMISTS MEN-SHIRT</h4>
-                    <a href="#">
-                      <i className="fa fa-ellipsis-h" aria-hidden="true"></i>
-                    </a>{' '}
-                  </div>
-                  <div className="stars">
-                    {' '}
-                    <a href="#">
-                      <i className="fa fa-star" aria-hidden="true"></i>
-                    </a>{' '}
-                    <a href="#">
-                      <i className="fa fa-star" aria-hidden="true"></i>
-                    </a>{' '}
-                    <a href="#">
-                      <i className="fa fa-star" aria-hidden="true"></i>
-                    </a>{' '}
-                    <a href="#">
-                      <i className="fa fa-star" aria-hidden="true"></i>
-                    </a>{' '}
-                    <a href="#">
-                      <i className="fa fa-star" aria-hidden="true"></i>
-                    </a>
-                    <div className="price"> $19.00</div>
-                  </div>
-                </div>
-                <div className="likes">
-                  <a href="#">
-                    <i className="fa fa-heart" aria-hidden="true"></i> 80{' '}
-                  </a>
-                </div>
-              </li>
-              <li>
-                <div className="pro_img">
-                  {' '}
-                  <img src="/assets/media/team/tshirt1.jpg" alt="" />{' '}
-                </div>
-                <div className="pro_bottom">
-                  <div className="name_dots">
-                    <h4>ALCHEMISTS MEN-SHIRT</h4>
-                    <a href="#">
-                      <i className="fa fa-ellipsis-h" aria-hidden="true"></i>
-                    </a>{' '}
-                  </div>
-                  <div className="stars">
-                    {' '}
-                    <a href="#">
-                      <i className="fa fa-star" aria-hidden="true"></i>
-                    </a>{' '}
-                    <a href="#">
-                      <i className="fa fa-star" aria-hidden="true"></i>
-                    </a>{' '}
-                    <a href="#">
-                      <i className="fa fa-star" aria-hidden="true"></i>
-                    </a>{' '}
-                    <a href="#">
-                      <i className="fa fa-star" aria-hidden="true"></i>
-                    </a>{' '}
-                    <a href="#">
-                      <i className="fa fa-star" aria-hidden="true"></i>
-                    </a>
-                    <div className="price"> $19.00</div>
-                  </div>
-                </div>
-                <div className="likes">
-                  <a href="#">
-                    <i className="fa fa-heart" aria-hidden="true"></i> 80{' '}
-                  </a>
-                </div>
-              </li>
-              <li>
-                <div className="pro_img">
-                  {' '}
-                  <img src="/assets/media/team/cup.jpg" alt="" />{' '}
                 </div>
                 <div className="pro_bottom">
                   <div className="name_dots">
@@ -1593,8 +1492,6 @@ const TeamProfileData = ({ user, data }) => {
           </div>
         </div>
       </div>
-
-      <PoUp />
     </>
   );
 };
