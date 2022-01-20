@@ -7,6 +7,8 @@ import ProductItem from '@components/product/ProductItem'
 import filterSearch from '@utils/filterSearch'
 import {useRouter} from 'next/router'
 import Filter from '@components/Filter'
+import Meta from '@components/Meta';
+import FooterMain from '@components/FooterMain';
 
 const Home = (props) => {
   const [products, setProducts] = useState(props.products)
@@ -61,6 +63,11 @@ const Home = (props) => {
   }
 
   return(
+
+    <main id="kt_body" className="bg-body">
+      <Meta />
+
+
     <div className="home_page">
       <Head>
         <title>Home Page</title>
@@ -102,6 +109,10 @@ const Home = (props) => {
       }
     
     </div>
+
+    <FooterMain> </FooterMain>
+
+    </main>    
   )
 }
 

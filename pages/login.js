@@ -3,15 +3,15 @@ import Meta from '@components/Meta';
 import FooterMain from '@components/FooterMain';
 import { useState, useContext, useEffect } from 'react';
 import { toast } from 'react-toastify';
-
-import { useRouter } from 'next/router'
+import axios from 'axios';
 import { useForm } from "react-hook-form";
-import { loginUser } from '@utils/auth';
-
 import Link from 'next/link'
 import {DataContext} from '@store/GlobalState'
 import {postData} from '@utils/fetchData'
 import Cookie from 'js-cookie'
+import baseURL from '@utils/baseURL';
+import cookie from 'js-cookie';
+import { useRouter } from 'next/router';
 
 
 const SignIn = () => {
@@ -22,6 +22,7 @@ const SignIn = () => {
 
   const {state, dispatch} = useContext(DataContext)
   const { auth } = state
+  const router = useRouter()
 
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState(null);
@@ -37,11 +38,36 @@ const SignIn = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    loginUser({ email, password }, setError, setFormLoading, toast);
 
-    localStorage.setItem('firstLogin', true)
+    try {
+
+		    const respa = await axios.post(`${baseURL}/api/auth`, user);
+		    const res = respa.data;
+
+		    if(res.err) return dispatch({ type: 'NOTIFY', payload: {error: res.err} })
+		  	
+		    dispatch({ type: 'NOTIFY', payload: {success: res.msg} })
+
+		    dispatch({ type: 'AUTH', payload: {
+		      token: res.access_token,
+		      user: res.user
+		    }})
+
+				cookie.set('refreshtoken', res.refresh_token, {path: 'api/auth/accessToken',expires: 7});
+
+		    localStorage.setItem('firstLogin', true)
+		    setToken(res.token);
+		    toast.info('Welcome back...' + user.name);
+  	}
+  	catch (error) {
+    	toast.info('Sorry! Please verify your login credentials and try again.');
+  	}
 
   };
+
+	const setToken = (token) => {
+	  cookie.set('token', token, { expires: 730 });
+	};
 
   useEffect(() => {
     const isUser = Object.values({ email, password }).every((item) =>
@@ -49,6 +75,11 @@ const SignIn = () => {
     );
     isUser ? setSubmitDisabled(false) : setSubmitDisabled(true);
   }, [user]);
+
+  useEffect(() => {
+    if(Object.keys(auth).length !== 0) router.push("/dashboard")
+  }, [auth])
+
 
 return (
 

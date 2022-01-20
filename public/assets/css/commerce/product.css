@@ -1,15 +1,31 @@
-p.product-title {
-    min-height: 7ch;
+.products{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    justify-content: center;
+    margin: 20px 0;
+}
+.products .card{
+    margin: 10px auto;
+}
+.products .card-img-top{
+    height: 250px;
+    width: 100%;
+}
+.products .card-title{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.products .card-text{
+    height: 70px;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
 }
 
-@media screen and (max-width: 430px) {
-    p.product-title {
-        min-height: auto;
-    }
 
-    img.product-image {
-        aspect-ratio: 1.5;
-        object-fit: cover;
-    }
-
+/* --------- Detail Product ----------- */
+.detail_page .img-thumbnail.active{
+    border-color: orangered;
+    padding: 2px;
 }

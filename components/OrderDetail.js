@@ -9,6 +9,8 @@ const OrderDetail = ( { orderDetail, state, dispatch } ) =>
 
     const {auth, orders} = state
 
+    console.log(state);
+
     const handleDelivered = (order) => {
         dispatch({type: 'NOTIFY', payload: {loading: true}})
 

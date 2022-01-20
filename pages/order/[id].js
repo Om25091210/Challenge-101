@@ -1,12 +1,16 @@
 import Head from 'next/head'
 import { useState, useContext, useEffect } from 'react'
-import { DataContext } from '../../store/GlobalState'
+import { DataContext } from '@store/GlobalState'
 import { useRouter } from 'next/router'
+import MetaDash from '@components/MetaDash';
+import SignedHeader from '@components/SignedHeader';
+import LeftNav from '@components/LeftNav';
+import AllScript from '../AllScript';
 
-import OrderDetail from '../../components/OrderDetail'
+import OrderDetail from '@components/OrderDetail'
 
 
-const DetailOrder = () => {
+const DetailOrder = ({user}) => {
     const {state, dispatch} = useContext(DataContext)
     const {orders, auth} = state
 
@@ -20,21 +24,41 @@ const DetailOrder = () => {
     },[orders])
             
     if(!auth.user) return null;
+    
     return(
-        <div className="my-3">
-            <Head>
-                <title>Order Details</title>
-            </Head>
 
-            <div>
-                <button className="btn btn-info" onClick={() => router.back()}>
-                    <i className="fas fa-long-arrow-alt-left"  aria-hidden="true"></i> Go Back
-                </button>
-            </div>
+    <>
+      <MetaDash />
+
+      <SignedHeader user={user} />
+
+      <LeftNav />
+
+      <div className="main_middle profile_middle">
+
+            <div className="my-3">
+                <Head>
+                    <title>Order Details</title>
+                </Head>
+
+                <div>
+                    <button className="btn btn-info" onClick={() => router.back()}>
+                        <i className="fas fa-long-arrow-alt-left"  aria-hidden="true"></i> Go Back
+                    </button>
+                </div>
+                
+                <OrderDetail orderDetail={orderDetail} state={state} dispatch={dispatch} />
             
-            <OrderDetail orderDetail={orderDetail} state={state} dispatch={dispatch} />
-        
-        </div>
+            </div>
+
+
+      </div>
+
+      <AllScript />
+    </>
+  
+
+
     )
 }
 

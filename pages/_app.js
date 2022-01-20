@@ -134,7 +134,6 @@ MyApp.getInitialProps = async ({ ctx }) => {
 
     // If user is not logged in
     if (!token) {
-      console.log('Token is expppppppp');
       destroyCookie(ctx, 'token');
       // Redirect to login if user is trying to access protected routes
       isProtected && redirectUser(ctx, '/login');
@@ -148,6 +147,7 @@ MyApp.getInitialProps = async ({ ctx }) => {
         pageProps.user = user;
         pageProps.profile = profile;
       } catch (err) {
+        console.log(err);
         console.log('Error in Protected routes.....');
         destroyCookie(ctx, 'token');
       }

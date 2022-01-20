@@ -16,6 +16,7 @@ export const DataProvider = ({children}) => {
 
     useEffect(() => {
         const firstLogin = localStorage.getItem("firstLogin");
+        console.log(firstLogin);
         if(firstLogin){
             getData('auth/accessToken').then(res => {
                 if(res.err) return localStorage.removeItem("firstLogin")
@@ -27,6 +28,8 @@ export const DataProvider = ({children}) => {
                     }
                 })
             })
+        } else {
+            console.log('First login is null and auth is not set.. check')
         }
 
         getData('categories').then(res => {
@@ -51,6 +54,9 @@ export const DataProvider = ({children}) => {
     }, [cart])
 
     useEffect(() => {
+        console.log('******** AUTH in GlobalState *************** ')
+        console.log(auth)
+
         if(auth.token){
             getData('order', auth.token)
             .then(res => {

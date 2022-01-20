@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { useContext, useState, useEffect } from 'react'
-import { DataContext } from '../store/GlobalState'
-import CartItem from '../components/CartItem'
+import { DataContext } from '@store/GlobalState'
+import CartItem from '@components/CartItem'
 import Link from 'next/link'
 import { getData, postData } from '@utils/fetchData'
 import { useRouter } from 'next/router'
@@ -9,11 +9,11 @@ import MetaDash from '@components/MetaDash';
 import SignedHeader from '@components/SignedHeader';
 import LeftNav from '@components/LeftNav';
 import FooterMain from '@components/FooterMain';
-import AllScript from 'pages/AllScript';
+import AllScript from '@pages/AllScript';
 import baseURL from '@utils/baseURL';
 
 
-const Cart = ({ user}) => {
+const Cart = ({ user }) => {
   const { state, dispatch } = useContext(DataContext)
   const { cart, auth, orders } = state
 
@@ -113,15 +113,18 @@ const Cart = ({ user}) => {
 
         <div className="main_middle profile_middle">
 
-  if( cart.length === 0 ) 
-    return <>
+  { cart.length === 0 ? (
+     <>
       <div className="col-md-5 p-lg-4 mx-auto my-1">
         <p className="lead fw-normal">Your Shopping Cart Is Empty, Add Your Favorite Products and Continue Shopping!</p>
       </div>
     
-      <img className="img-fluid w-50 mt-5" src="/empty_cart.svg" alt="empty cart" /></>
+      <img className="img-fluid w-50 mt-5" src="/empty_cart.svg" alt="empty cart" />
+      </>
 
-    return(
+      ) : ( 
+
+      (
       <div className="mx-auto">
         <Head>
           <title>Cart Page</title>
@@ -171,15 +174,16 @@ const Cart = ({ user}) => {
           <h4>Total: <span className="text-danger">${total}</span></h4>
 
             
-            <Link href={auth.user ? '#!' : '/signin'}>
-              <a className="slide btn d-block my-3 px-5" style={ { background: '#8bd3dd' } } data-hover='Proceed with Payment' onClick={handlePayment}><div><i className="far fa-credit-card"></i></div></a>
+            <Link href={auth.user ? '#!' : '/login'}>
+              <a className="slide btn d-block my-3 px-5" style={ { background: '#8bd3dd' } } data-hover='Proceed with Payment' onClick={handlePayment}><div><i className="fa fa-credit-card"></i></div></a>
             </Link>
             
         </div>
         </div>
         </div>
     )
-
+  )
+}
         </div>
 
         <AllScript />

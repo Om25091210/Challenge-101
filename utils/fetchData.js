@@ -1,6 +1,7 @@
 import baseUrl from './baseURL';
 
 export const getData = async (url, token) => {
+    console.log(url + '    :::: ' + token);
     const res = await fetch(`${baseUrl}/api/${url}`, {
         method: 'GET',
         headers: {

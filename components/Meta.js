@@ -41,7 +41,14 @@ const Meta = () => (
       rel="stylesheet"
       type="text/css"
     />
+
     <link href="/assets/css/dash/login.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/commerce/globals.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/commerce/loading.css" type="text/css"/>
+    <link rel="stylesheet" href="/assets/css/commerce/product.css" type="text/css"/>
+    <link rel="stylesheet" href="/assets/css/commerce/profile.css" type="text/css"/>
+    <link rel="stylesheet" href="/assets/css/commerce/products_manager.css" type="text/css"/>
+
   </Head>
 );
 

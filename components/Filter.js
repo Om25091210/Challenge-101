@@ -32,10 +32,10 @@ const Filter = ({state}) => {
     <div className="col-md-5 p-lg-4 mx-auto my-1">
     <h1 className="display-5 fw-normal">Welcome to <div className="p-3 mx-auto text-center"><span style={{
   'fontSize': '50px','display': 'inline-block','lineHeight': '0.1em', 'borderBottom': '0.3em solid pink',
-    } }>juniStore</span></div></h1>
+    } }>Multiplayr esports Merchandise Home Store...</span></div></h1>
       <p className="lead fw-normal">Customers can find favorite products sold by our partner merchandises. Sellers can <span style={{
   'fontSize': '20px','display': 'inline-block','lineHeight': '0.1em', 'borderBottom': '0.3em solid pink',
-    } }><a href="#footer">contact Juni </a></span> for showing products here!</p>
+    } }><a href="#footer">contact Multiplayr </a></span> for showing products here!</p>
     </div>
     
         <div className="input-group" style={{marginTop: '2rem', marginBottom: '2rem'}}>
