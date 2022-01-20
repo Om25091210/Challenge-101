@@ -11,10 +11,13 @@ import LikePost from '../postLikes/LikePost';
 import ReactTooltip from 'react-tooltip';
 import Moment from 'moment';
 
-const SignedMainContent = ({ posts, user }) => {
+const SignedMainContent = ({ posts, user, profile }) => {
   const [description, setDescription] = useState('');
   const [image, setImage] = useState(null);
   const [followingPosts, setFollowingPosts] = useState([]);
+  const [profilepic, setProfilePic] = useState('');
+  const [username, setUsername] = useState('');
+  const [personas, setPersonas] = useState({});
   const router = useRouter();
 
   const mutation = useMutation(
@@ -37,6 +40,8 @@ const SignedMainContent = ({ posts, user }) => {
 
     formdata.append('description', description);
     formdata.append('image', image);
+    formdata.append('profilepic', profilepic);
+    formdata.append('username', username);
 
     //    for (const key of Object.keys(images)) {
     //      formdata.append('images', images[key]);
@@ -101,6 +106,27 @@ const SignedMainContent = ({ posts, user }) => {
     }
   }, []);
 
+  useEffect(() => {
+    axios
+      .get(`${baseURL}/api/all/personas`, {
+        headers: {
+          Authorization: cookie.get('token')
+        }
+      })
+      .then((res) => {
+        setPersonas(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  console.log(personas);
+
+  const personaHandle = (username, profilepic) => {
+    setUsername(username);
+    setProfilePic(profilepic);
+  };
   var settings = {
     infinite: false,
     vertical: true,
@@ -110,6 +136,18 @@ const SignedMainContent = ({ posts, user }) => {
     arrows: true
   };
 
+  useEffect(() => {
+    setTimeout(() => {
+      $('.user_slider').slick({
+        infinite: false,
+        vertical: true,
+        verticalSwiping: true,
+        slidesToShow: 1,
+        slidesToScroll: 1
+      });
+    }, 1000);
+  }, []);
+
   return (
     <div className="main_middle">
       <form className="write_post" onSubmit={handleSubmit}>
@@ -118,15 +156,65 @@ const SignedMainContent = ({ posts, user }) => {
             <li>
               <img src="/assets/media/dash/user.jpg" alt="" />
             </li>
-            <li>
-              <img src="/assets/media/dash/user.jpg" alt="" />
-            </li>
-            <li>
-              <img src="/assets/media/dash/user.jpg" alt="" />
-            </li>
-            <li>
-              <img src="/assets/media/dash/user.jpg" alt="" />
-            </li>
+            {personas.personas?.map((persona) => (
+              <li>
+                {persona.type === 'team' ? (
+                  <img
+                    src={persona.teamId.imgUrl}
+                    alt=""
+                    onClick={() =>
+                      personaHandle(persona.teamId.name, persona.teamId.imgUrl)
+                    }
+                  />
+                ) : persona.type === 'tournament' ? (
+                  <img
+                    src={persona.tournamentId.imgUrl}
+                    alt=""
+                    onClick={() =>
+                      personaHandle(
+                        persona.tournamentId.name,
+                        persona.tournamentId.imgUrl
+                      )
+                    }
+                  />
+                ) : persona.type === 'brand' ? (
+                  <img
+                    src={persona.brandId.logoUrl}
+                    alt=""
+                    onClick={() =>
+                      personaHandle(
+                        persona.brandId.name,
+                        persona.brandId.logoUrl
+                      )
+                    }
+                  />
+                ) : persona.type === 'company' ? (
+                  <img
+                    src={persona.companyId.logoUrl}
+                    alt=""
+                    onClick={() =>
+                      personaHandle(
+                        persona.companyId.name,
+                        persona.companyId.logoUrl
+                      )
+                    }
+                  />
+                ) : persona.type === 'community' ? (
+                  <img
+                    src={persona.communityId.logoUrl}
+                    alt=""
+                    onClick={() =>
+                      personaHandle(
+                        persona.communityId.name,
+                        persona.communityId.logoUrl
+                      )
+                    }
+                  />
+                ) : (
+                  'works'
+                )}
+              </li>
+            ))}
           </ul>
         </div>
 
@@ -298,10 +386,10 @@ const SignedMainContent = ({ posts, user }) => {
                 <div className="post">
                   <div className="heads">
                     <div className="user">
-                      <img src={post.user.profilePicUrl} alt="" />
+                      <img src={post.profilepic} alt="" />
                     </div>
                     <div className="user_name_disc">
-                      <h4>{post.user.username}</h4>
+                      <h4>{post.username}</h4>
                       <p>{post.description}</p>
                     </div>
 

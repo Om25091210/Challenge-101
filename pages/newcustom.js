@@ -20,14 +20,6 @@ function Customjs() {
 
     /* ----------- create post slider ----------------- */
 
-    $('.user_slider').slick({
-      infinite: false,
-      vertical: true,
-      verticalSwiping: true,
-      slidesToShow: 1,
-      slidesToScroll: 1
-    });
-
     $('.slider-for').slick({
       slidesToShow: 1,
       slidesToScroll: 1,
