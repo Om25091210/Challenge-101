@@ -1,14 +1,10 @@
 import TeamAbout from './TeamAbout';
 import TeamSponsors from './TeamSponsors';
-<<<<<<< HEAD
+import { useState, useEffect } from 'react';
+
 import ProductList from '@components/common/ProductList';
 
 const TeamProfileData = ({ user, data, products }) => {
-
-=======
-import { useState, useEffect } from 'react';
-
-const TeamProfileData = ({ user, data }) => {
   useEffect(() => {
     $('a.model_show_btn').click(function () {
       $(this).next().addClass('show_model');
@@ -19,7 +15,6 @@ const TeamProfileData = ({ user, data }) => {
     });
   }, []);
 
->>>>>>> fdcfdb4309000820ce036ecb5a5cb27186255dec
   return (
     <>
       <div className="prfoile_tab_data white_bg">
@@ -1060,59 +1055,8 @@ const TeamProfileData = ({ user, data }) => {
             </div>
           </div>
         </div>
-<<<<<<< HEAD
 
-        <ProductList user={user} productList={products}/>
-=======
-        <div className="tab hide" id="store">
-          <div className="products">
-            <ul>
-              <li>
-                <div className="pro_img">
-                  {' '}
-                  <a href="javascript:void(0)" className="model_show_btn">
-                    <img src="/assets/media/team/tshirt1.jpg" alt="" />
-                  </a>{' '}
-                  <PoUp />
-                  <span className="size_option">36d 12h 13m 18s</span>{' '}
-                </div>
-                <div className="pro_bottom">
-                  <div className="name_dots">
-                    <h4>ALCHEMISTS MEN-SHIRT</h4>
-                    <a href="#">
-                      <i className="fa fa-ellipsis-h" aria-hidden="true"></i>
-                    </a>{' '}
-                  </div>
-                  <div className="stars">
-                    {' '}
-                    <a href="#">
-                      <i className="fa fa-star" aria-hidden="true"></i>
-                    </a>{' '}
-                    <a href="#">
-                      <i className="fa fa-star" aria-hidden="true"></i>
-                    </a>{' '}
-                    <a href="#">
-                      <i className="fa fa-star" aria-hidden="true"></i>
-                    </a>{' '}
-                    <a href="#">
-                      <i className="fa fa-star" aria-hidden="true"></i>
-                    </a>{' '}
-                    <a href="#">
-                      <i className="fa fa-star" aria-hidden="true"></i>
-                    </a>
-                    <div className="price"> $19.00</div>
-                  </div>
-                </div>
-                <div className="likes">
-                  <a href="#">
-                    <i className="fa fa-heart" aria-hidden="true"></i> 80{' '}
-                  </a>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
->>>>>>> fdcfdb4309000820ce036ecb5a5cb27186255dec
+        <ProductList user={user} productList={products} />
 
         <div className="tab hide" id="photos">
           Streams
@@ -1390,123 +1334,6 @@ const TeamProfileData = ({ user, data }) => {
           </div>
         </div>
       </div>
-
-      {/* ------------- start poup data ------------- */}
-      <div id="prod2" className="quick_view" style={{ display: 'none' }}>
-        <div className="product_box">
-          <div className="product-img-box">
-            <div className="prod_big_thumb">
-              <div className="slider-for">
-                <div>
-                  <div className="slide-box">
-                    {' '}
-                    <img src="/assets/media/rigs/headphone1.jpg" alt="" />{' '}
-                  </div>
-                </div>
-                <div>
-                  <div className="slide-box">
-                    {' '}
-                    <img src="/assets/media/rigs/headphone1.jpg" alt="" />{' '}
-                  </div>
-                </div>
-                <div>
-                  <div className="slide-box">
-                    {' '}
-                    <img src="/assets/media/rigs/headphone1.jpg" alt="" />{' '}
-                  </div>
-                </div>
-                <div>
-                  <div className="slide-box">
-                    {' '}
-                    <img src="/assets/media/rigs/headphone1.jpg" alt="" />{' '}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="product-detail-box">
-            <h1>Mouse</h1>
-            <div className="row">
-              <div className="col-lg-12">
-                <div className="like_view">
-                  {' '}
-                  <a href="#" className="art">
-                    <i className="fa fa-picture-o" aria-hidden="true"></i> Art
-                  </a>{' '}
-                  <a href="#" className="view">
-                    <i className="fa fa-eye" aria-hidden="true"></i> 250
-                  </a>{' '}
-                  <a href="#" className="like">
-                    <i className="fa fa-heart" aria-hidden="true"></i> 18
-                  </a>{' '}
-                </div>
-                <div className="review">
-                  {' '}
-                  <i className="fa fa-star" aria-hidden="true"></i>{' '}
-                  <i className="fa fa-star" aria-hidden="true"></i>{' '}
-                  <i className="fa fa-star" aria-hidden="true"></i>{' '}
-                  <i className="fa fa-star" aria-hidden="true"></i>{' '}
-                  <i className="fa fa-star" aria-hidden="true"></i>{' '}
-                  <span className="rev_txt">
-                    Based on <b>2 reviews</b>
-                  </span>{' '}
-                </div>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-lg-12">
-                <div className="price">
-                  {' '}
-                  $48.00 <del style={{ display: 'none' }}>£299.00</del>{' '}
-                  <span className="discount" style={{ display: 'none' }}>
-                    (10% Discount)
-                  </span>{' '}
-                </div>
-                <p className="brief">
-                  jjjjjjjjjjjjjjjjjjjjjj ipsum dolor sit amet, consectetur adipiscing elit.
-                  Aliquam tristique purus vitae venenatis ultrices. Suspendisse
-                  tristique tortor ante,{' '}
-                </p>
-              </div>
-            </div>
-            <div className="row size-option">
-              <div className="col-lg-12">
-                <ul>
-                  <li>
-                    {' '}
-                    <a href="#!">Qty</a>
-                    <div className="content size-chart qty mCustomScrollbar">
-                      <ul>
-                        <li>1</li>
-                        <li>2</li>
-                        <li className="selected">3</li>
-                        <li>4</li>
-                        <li>5</li>
-                      </ul>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div className="row cart-row">
-              <div className="col-lg-12 col-md-12 col-xs-12">
-                {' '}
-                <a href="#!" className="btn btn-primary">
-                  <i className="fa fa-shopping-basket"></i> Add To Bag{' '}
-                </a>{' '}
-                <a href="#!" className="btn btn-primary">
-                  <i className="fa fa-heart-o" aria-hidden="true"></i> Add To
-                  wishlist{' '}
-                </a>{' '}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-<<<<<<< HEAD
-
-=======
->>>>>>> fdcfdb4309000820ce036ecb5a5cb27186255dec
     </>
   );
 };
