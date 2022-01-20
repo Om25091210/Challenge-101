@@ -2658,7 +2658,7 @@ article .social_bar {
 	border-radius: 30px;
 	border:1px solid #1bd75e;
 	padding: 10px 10px;
-	width: 220px;
+	width: 180px;
 }
 .cart-row a:last-child {
 	background: #7239ea;
@@ -5883,6 +5883,9 @@ ul.game_search_result li {
     background: #fff;
     color: #000;
     font-weight: 700;}
+
+	#product_details{ float: left; width: 1100px;}
+
 
 /*  end custom model box */
 

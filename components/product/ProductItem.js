@@ -54,6 +54,17 @@ const ProductItem = ({product, handleCheck}) => {
                   </a>
                 </div>
 
+                <button className="cart-btn btn btn-info"
+                   
+                    style={ { marginLeft: '5px', flex: 1 } }
+                    disabled={ product.inStock === 0 ? true : false }
+                    onClick={ () => { dispatch( addToCart( product, cart ) ); setClicked( true ); } } >
+                   
+                    { clicked ? "Item in Cart" : "Add to Cart" }
+                        <i className="fa fa-cart-plus pl-2"></i>
+                  
+                </button>
+
                 <PoUp product={product}/>
 
 

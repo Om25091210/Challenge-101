@@ -1,9 +1,25 @@
 import TeamAbout from './TeamAbout';
 import TeamSponsors from './TeamSponsors';
+<<<<<<< HEAD
 import ProductList from '@components/common/ProductList';
 
 const TeamProfileData = ({ user, data, products }) => {
 
+=======
+import { useState, useEffect } from 'react';
+
+const TeamProfileData = ({ user, data }) => {
+  useEffect(() => {
+    $('a.model_show_btn').click(function () {
+      $(this).next().addClass('show_model');
+    });
+
+    $('a.model_close').click(function () {
+      $(this).parent().removeClass('show_model');
+    });
+  }, []);
+
+>>>>>>> fdcfdb4309000820ce036ecb5a5cb27186255dec
   return (
     <>
       <div className="prfoile_tab_data white_bg">
@@ -215,7 +231,8 @@ const TeamProfileData = ({ user, data, products }) => {
                   <span className="task">Assault/Sniper</span>{' '}
                 </li>
                 <li>
-                  <span className="nm">Mic:</span> <span className="task"> On</span>
+                  <span className="nm">Mic:</span>{' '}
+                  <span className="task"> On</span>
                 </li>
                 <li>
                   <span className="nm">Platform:</span>{' '}
@@ -1043,8 +1060,59 @@ const TeamProfileData = ({ user, data, products }) => {
             </div>
           </div>
         </div>
+<<<<<<< HEAD
 
         <ProductList user={user} productList={products}/>
+=======
+        <div className="tab hide" id="store">
+          <div className="products">
+            <ul>
+              <li>
+                <div className="pro_img">
+                  {' '}
+                  <a href="javascript:void(0)" className="model_show_btn">
+                    <img src="/assets/media/team/tshirt1.jpg" alt="" />
+                  </a>{' '}
+                  <PoUp />
+                  <span className="size_option">36d 12h 13m 18s</span>{' '}
+                </div>
+                <div className="pro_bottom">
+                  <div className="name_dots">
+                    <h4>ALCHEMISTS MEN-SHIRT</h4>
+                    <a href="#">
+                      <i className="fa fa-ellipsis-h" aria-hidden="true"></i>
+                    </a>{' '}
+                  </div>
+                  <div className="stars">
+                    {' '}
+                    <a href="#">
+                      <i className="fa fa-star" aria-hidden="true"></i>
+                    </a>{' '}
+                    <a href="#">
+                      <i className="fa fa-star" aria-hidden="true"></i>
+                    </a>{' '}
+                    <a href="#">
+                      <i className="fa fa-star" aria-hidden="true"></i>
+                    </a>{' '}
+                    <a href="#">
+                      <i className="fa fa-star" aria-hidden="true"></i>
+                    </a>{' '}
+                    <a href="#">
+                      <i className="fa fa-star" aria-hidden="true"></i>
+                    </a>
+                    <div className="price"> $19.00</div>
+                  </div>
+                </div>
+                <div className="likes">
+                  <a href="#">
+                    <i className="fa fa-heart" aria-hidden="true"></i> 80{' '}
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+>>>>>>> fdcfdb4309000820ce036ecb5a5cb27186255dec
 
         <div className="tab hide" id="photos">
           Streams
@@ -1435,7 +1503,10 @@ const TeamProfileData = ({ user, data, products }) => {
           </div>
         </div>
       </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> fdcfdb4309000820ce036ecb5a5cb27186255dec
     </>
   );
 };

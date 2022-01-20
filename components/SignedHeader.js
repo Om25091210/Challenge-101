@@ -126,16 +126,7 @@ const SignedHeader = ({ user }) => {
               <Link href="/cart">
                   <a >
                       <i className="fa fa-shopping-cart" aria-hidden="true">
-                          <span className="position-absolute"
-                              style={ {
-                                  padding: '3px 6px',
-                                  background: '#ed143dc2',
-                                  borderRadius: '50%',
-                                  top: '-10px',
-                                  right: '-10px',
-                                  color: 'white',
-                                  fontSize: '14px'
-                              } }>
+                          <span className="pop">
                               { cart.length }
                           </span>
                       </i> 
