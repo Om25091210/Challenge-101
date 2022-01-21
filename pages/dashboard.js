@@ -21,7 +21,6 @@ const Dashboard = ({ user, profile, posts, suggplayers }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    console.log(cookie.get('token'));
     axios
       .get(`${baseURL}/api/chats`, {
         headers: {
