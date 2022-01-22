@@ -16,7 +16,7 @@ const scrollToBottom = (divRef) => {
   divRef.current && divRef.current.scrollIntoView({ behaviour: 'smooth' });
 };
 
-const Dashboard = ({ user, profile, posts, suggplayers, matches }) => {
+const Dashboard = ({ user, profile, posts, suggplayers }) => {
   const [chats, setChats] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -58,7 +58,6 @@ const Dashboard = ({ user, profile, posts, suggplayers, matches }) => {
         user={user}
         suggestedplayers={suggplayers}
         profile={profile}
-        matches={matches}
       />
 
       <AllScript />
@@ -81,14 +80,8 @@ export const getServerSideProps = async (context) => {
   });
   const suggplayers = await res.json();
 
-  const resma = await fetch(`${baseURL}/api/matches/topmatches`, { method: 'get'});
-  const matches = await resma.json();
-  console.log('in dashboard server props');
-
-  console.log(matches);
-
   return {
-    props: { posts, suggplayers, matches }
+    props: { posts, suggplayers }
   };
 };
 

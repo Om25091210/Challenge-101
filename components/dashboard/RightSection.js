@@ -3,10 +3,26 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import baseURL from '@utils/baseURL';
+import Moment from 'moment';
 
-const RightSection = ({ user, profile, suggestedplayers, matches }) => {
+const RightSection = ({ user, profile, suggestedplayers }) => {
 
   const teamData = profile.player;
+  const [matches, setMatches] = useState([]);
+
+  useEffect(() => {
+    console.log(baseURL)
+    axios.get(`${baseURL}/api/matches/top/matches`, {
+      })
+      .then((res) => {
+        console.log(res)
+        setMatches(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
 
   return (
     <div className="right_side overhight">
@@ -134,13 +150,17 @@ const RightSection = ({ user, profile, suggestedplayers, matches }) => {
               <div className="white_box">
                 <div className="match_name">
                   {match.name}{' '}
-                  <i className="fa fa-long-arrow-right" aria-hidden="true"></i>
+                  <i className="fa fa-long-arrow-right" aria-hidden="true"></i> <br/>
+                  <span>{Moment(match.scheduledAt).format('MMMM, DD, YYYY hh:mm A')}</span> 
                 </div>
                 <div className="match_time">
-                  <b>status: {match.status}</b> <span>{match.scheduledAt}</span> <br/>
-                  <span><a href={match.officialStreamUrl}>{match.officialStreamUrl}</a></span>
+                  <b>status: {match.status}</b> 
                 </div>
-                <ul className="team">
+                <div className="match_time">
+                  <span><a href={match.officialStreamUrl} target="_blank">{match.officialStreamUrl}</a></span>
+                </div>    
+
+            { /*    <ul className="team">
                   <li>
                     <a href="#">
                       <img src="/assets/media/dash/team1.png" alt="" />
@@ -154,6 +174,8 @@ const RightSection = ({ user, profile, suggestedplayers, matches }) => {
                     </a>
                   </li>
                 </ul>
+
+            */}   
               </div>
 
           )) : (<p> No New Matches</p>)
