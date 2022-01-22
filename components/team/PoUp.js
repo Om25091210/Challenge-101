@@ -12,20 +12,15 @@ const PoUp = ({ product }) => {
     return (
       <>
         <Link href={`product/${product._id}`}>
-          <a
-            className="btn slide text-info"
-            data-hover="View"
-            style={{ marginRight: '5px', flex: 1, background: '#f582ae' }}
-          >
+          <a className="btn btn-primary" data-hover="View">
             <div>
-              <i className="fas fa-eye pl-2"></i>
+              <i className="fa fa-eye pl-2"></i>
             </div>
           </a>
         </Link>
 
-        <button
-          className="cart-btn btn btn-info"
-          style={{ marginLeft: '5px', flex: 1 }}
+        <a
+          className="btn btn-primary"
           disabled={product.inStock === 0 ? true : false}
           onClick={() => {
             dispatch(addToCart(product, cart));
@@ -33,8 +28,8 @@ const PoUp = ({ product }) => {
           }}
         >
           {clicked ? 'Item in Cart' : 'Add to Cart'}
-          <i className="fas fa-cart-plus pl-2"></i>
-        </button>
+          <i className="fa fa-cart-plus pl-2"></i>
+        </a>
       </>
     );
   };

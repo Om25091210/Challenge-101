@@ -470,6 +470,8 @@ ul.top_menu li.profile a {
 	width:800px;
 	margin:150px auto 0 auto;
 }
+
+
 .write_post {
 	border-radius:5px;
 	padding:3px 10px;
@@ -1798,7 +1800,7 @@ article .social_bar {
 }
 /* -------------Profile css --------------------- */
 
-  .main_middle.profile_middle {
+.main_middle.profile_middle {
 	width: 1200px;
 }
 .profile_box {
@@ -2584,6 +2586,7 @@ article .social_bar {
 	line-height:25px;
 	width:auto;
 	margin:0px !important;
+	float: none;
 }
 .size-chart ul li:last-child {
 	border-bottom:0px;
@@ -2662,7 +2665,7 @@ article .social_bar {
 }
 .cart-row a:last-child {
 	background: #7239ea;
-	border:1px solid #7239ea;
+	border:1px solid #7239ea; margin-left: 10px;
 }
 .brief {
 	font-size: 14px;
@@ -5086,6 +5089,9 @@ main {
 	float: left;
 	width: 100%;
 	position: relative;
+	display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .product_box .left_filter {
 	float: left;
@@ -5919,6 +5925,58 @@ form.common_form input {
 }
 
 
+.checkout_strip{ display: flex; justify-content: space-between; background: #fff; padding: 20px; border-radius: 5px; align-items: center;}
+.checkout_strip h1{ text-transform: uppercase; margin-bottom: 0;}
+
+.cart_table{ float: left; width: 100%; margin: 20px 0; border:1px solid #ddd; background: #fff;}
+.cart_table .fa-trash{ color: red;}
+.cart_table .btn{ padding: 0px 10px;}
+.cart_table th{ font-size: 15px; font-weight: 600; color: #000; background: #ddd;  border-right: 1px solid #fff;}
+.cart_table h3{ text-transform: capitalize;}
+.cart_table td{  padding: 10px; font-size: 14px; font-weight: 400; border-right: 1px solid #ddd; vertical-align: middle;}
+.cart_table tr td:nth-child(1), .cart_table tr th:nth-child(1){text-align: center;}
+.cart_table tr td:nth-child(2), .cart_table tr th:nth-child(2){text-align: center;}
+.cart_table tr td:nth-child(3), .cart_table tr th:nth-child(3){text-align: left;}
+.cart_table tr td:nth-child(4), .cart_table tr th:nth-child(4){text-align: center;}
+.cart_table tr td:nth-child(5), .cart_table tr th:nth-child(5){text-align: center;}
+.cart_table tr td:nth-child(6), .cart_table tr th:nth-child(6){text-align: center;}
+.cart_table tr td:nth-child(7), .cart_table tr th:nth-child(7){ text-align: center;}
+
+.cart_table .prod_img{ width: 100px;}
+
+.address_order_box{ float: left; width: 100%; display: flex; justify-content: space-between;}
+.address_order_box h3{ font-size: 20px; padding: 10px 0;}
+.address_order_box .user_add{ float: left; width: 40%; text-align: left;}
+.address_order_box .user_add label{ font-size: 14px; padding-bottom: 10px;}
+.address_order_box .user_add input{ height: 100px;}
+.address_order_box .user_add  #mobile{ height: 45px;}
+.address_order_box .user_add h3{}
+ .checkout_total{}
+ .checkout_total h3{}
+ .checkout_total h6{}
+.checkout_total h4{}
+.checkout_total .amount {
+    background: #ddd;
+    float: left;
+    width: 400px;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+
+.checkout_total .amount .amt_row{ float: left; width: 100%; display: flex; justify-content: space-between;}
+.checkout_total .amount .amt_row span {
+    flex: 0 0 50%;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    text-transform: uppercase;
+    color: #000;
+    font-size: 13px;
+}
+.checkout_total .amount .amt_row span:last-child{ text-align: right;}
+
+.checkout_total .amount .btn{ margin-top: 20px; width: 100%;}
+
 .pixelarity-img-edit{ display: none;}
 
 
@@ -5981,6 +6039,7 @@ form.common_form input {
 
 	#ce-delete-chat-button{display: flex;align-items: center;justify-content: center;align-content: center; padding: 0 !important;}
 	#ce-delete-chat-button .anticon { margin-right: 10px;}
+
 
 
 
