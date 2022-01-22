@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import baseURL from '../../utils/baseURL';
+import baseURL from '@utils/baseURL';
 import { useMutation } from 'react-query';
 import cookie from 'js-cookie';
 import CommentForm from '../comments/CommentForm';
@@ -156,8 +156,8 @@ const SignedMainContent = ({ posts, user, profile }) => {
             <li>
               <img src="/assets/media/dash/user.jpg" alt="" />
             </li>
-            {personas.personas?.map((persona) => (
-              <li>
+            {personas.personas?.map((persona, index) => (
+              <li key={index}>
                 {persona.type === 'team' ? (
                   <img
                     src={persona.teamId.imgUrl}
@@ -288,7 +288,7 @@ const SignedMainContent = ({ posts, user, profile }) => {
         <div className="tab hide" id="Following">
           <div>
             <div className="post">
-              {followingPosts.map((post) => (
+              {followingPosts.map((post, idx) => (
                 <div key={post._id}>
                   <div className="heads">
                     <div className="user">

@@ -41,6 +41,8 @@ const SignIn = () => {
 
     try {
 
+		    dispatch({ type: 'NOTIFY', payload: {loading: true} })
+
 		    const respa = await axios.post(`${baseURL}/api/auth`, user);
 		    const res = respa.data;
 
@@ -53,11 +55,11 @@ const SignIn = () => {
 		      user: res.user
 		    }})
 
-				cookie.set('refreshtoken', res.refresh_token, {path: 'api/auth/accessToken',expires: 7});
+				cookie.set('refreshtoken', res.refresh_token, {path: 'api/auth/accessToken'});
 
 		    localStorage.setItem('firstLogin', true)
 		    setToken(res.token);
-		    toast.info('Welcome back...' + user.name);
+		    toast.info('Welcome back...' + res.user.name);
   	}
   	catch (error) {
     	toast.info('Sorry! Please verify your login credentials and try again.');
@@ -66,7 +68,7 @@ const SignIn = () => {
   };
 
 	const setToken = (token) => {
-	  cookie.set('token', token, { expires: 730 });
+	  cookie.set('token', token);
 	};
 
   useEffect(() => {

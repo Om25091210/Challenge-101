@@ -1,8 +1,13 @@
 import FriendRequests from '@components/dashboard/friendRequests';
 import Link from 'next/link';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import baseURL from '@utils/baseURL';
 
-const RightSection = ({ user, profile, suggestedplayers }) => {
+const RightSection = ({ user, profile, suggestedplayers, matches }) => {
+
   const teamData = profile.player;
+
   return (
     <div className="right_side overhight">
       <div className="recent_activity">
@@ -122,29 +127,41 @@ const RightSection = ({ user, profile, suggestedplayers }) => {
       </div>
       <div className="recent_activity team_match">
         <h2>UPCOMING MATCHES </h2>
-        <div className="white_box">
-          <div className="match_name">
-            GON Championship{' '}
-            <i className="fa fa-long-arrow-right" aria-hidden="true"></i>
-          </div>
-          <div className="match_time">
-            <b>CS:GO</b> <span>9/12/21 09:30 PM IST</span>
-          </div>
-          <ul className="team">
-            <li>
-              <a href="#">
-                <img src="/assets/media/dash/team1.png" alt="" />
-                Fnatic
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <img src="/assets/media/dash/team2.png" alt="" />
-                Cloud9
-              </a>
-            </li>
-          </ul>
-        </div>
+        
+          { matches && matches.length > 0 ?           
+           matches.map((match,idx) => (
+
+              <div className="white_box">
+                <div className="match_name">
+                  {match.name}{' '}
+                  <i className="fa fa-long-arrow-right" aria-hidden="true"></i>
+                </div>
+                <div className="match_time">
+                  <b>status: {match.status}</b> <span>{match.scheduledAt}</span> <br/>
+                  <span><a href={match.officialStreamUrl}>{match.officialStreamUrl}</a></span>
+                </div>
+                <ul className="team">
+                  <li>
+                    <a href="#">
+                      <img src="/assets/media/dash/team1.png" alt="" />
+                      Fnatic
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <img src="/assets/media/dash/team2.png" alt="" />
+                      Cloud9
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+          )) : (<p> No New Matches</p>)
+
+        }        
+
+
+
       </div>
     </div>
   );

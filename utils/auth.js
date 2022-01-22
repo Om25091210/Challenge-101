@@ -78,7 +78,7 @@ export const onboardUser = async (verificationToken, setLoading, toast) => {
 };
 
 const setToken = (token) => {
-  cookie.set('token', token, { expires: 730 });
+  cookie.set('token', token);
 };
 
 export const logoutUser = () => {

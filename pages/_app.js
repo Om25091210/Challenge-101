@@ -150,6 +150,7 @@ MyApp.getInitialProps = async ({ ctx }) => {
         console.log(err);
         console.log('Error in Protected routes.....');
         destroyCookie(ctx, 'token');
+        redirectUser(ctx, '/login');
       }
     }
 
