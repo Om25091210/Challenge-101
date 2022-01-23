@@ -2,7 +2,6 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import baseURL from '@utils/baseURL';
-import { QueryClient, QueryClientProvider, useMutation } from 'react-query';
 
 // import DatePicker from 'react-datepicker';
 // import 'react-datepicker/dist/react-datepicker.css';
@@ -11,7 +10,7 @@ import { DateRangePicker } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 
-const DateCal = () => {
+const DateCal = ({gameId}) => {
   const [startDate1, setStartDate] = useState(new Date());
   const [endDate1, setEndDate] = useState(null);
   const [tournaments, setTournaments] = useState([]);
@@ -46,7 +45,7 @@ const DateCal = () => {
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ startDate: startDate, endDate: endDate })
+      body: JSON.stringify({ startDate: startDate, endDate: endDate , gameId: gameId})
     };
     return fetch(
       `${baseURL}/api/tournaments/tournamentsbydate`,
