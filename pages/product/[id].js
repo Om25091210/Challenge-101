@@ -1,16 +1,24 @@
 import Head from 'next/head'
-import { useState, useContext } from 'react'
-import { getData } from '../../utils/fetchData'
-import { DataContext } from '../../store/GlobalState'
-import { addToCart } from '../../store/Actions'
+import { useState, useContext, useEffect } from 'react'
+import { getData } from '@utils/fetchData'
+import { DataContext } from '@store/GlobalState'
+import { addToCart } from '@store/Actions'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 
-const DetailProduct = ( props ) =>
+import MetaDash from '@components/MetaDash';
+import SignedHeader from '@components/SignedHeader';
+import LeftNav from '@components/LeftNav';
+
+import FooterMain from '@components/FooterMain';
+import AllScript from '../AllScript';
+
+
+const DetailProduct = ( {user, productItem} ) =>
 {
     
     const router = useRouter()
-    const [product] = useState(props.product)
+    const [product] = useState(productItem)
     const [ tab, setTab ] = useState( 0 )
     const [ clicked, setClicked ] = useState( false )
 
@@ -24,6 +32,16 @@ const DetailProduct = ( props ) =>
     }
 
     return(
+
+    <>
+      <MetaDash />
+
+      <SignedHeader user={user} />
+
+      <LeftNav />
+
+      <div className="main_middle profile_middle">
+
         <div className="row detail_page mt-4">
             <Head>
                 <title>Product Details</title>
@@ -57,7 +75,7 @@ const DetailProduct = ( props ) =>
             <div className="col-md-6 mt-3">
                     <h2 className="text-uppercase">{ product.title }</h2>
                     
-                    <span class="badge rounded-pill bg-info text-light text-capitalize mb-4 p-2">Seller: { product.seller }</span>
+                    <span className="badge rounded-pill bg-info text-light text-capitalize mb-4 p-2">Seller: { product.seller }</span>
                     <h5 className="text-danger">${product.price}</h5>
 
                 <div className="row mx-0 d-flex justify-content-between">
@@ -79,13 +97,13 @@ const DetailProduct = ( props ) =>
                             onClick={ () => { dispatch( addToCart( product, cart ) ); setClicked( true ); } } >
                             
                             { clicked ? "Item in Cart" : "Add to Cart" }
-                             <i className="fas fa-cart-plus pl-2"></i>
+                             <i className="fa fa-cart-plus pl-2"></i>
                         </button>
                          <Link href="/cart">
                             <button data-hover='View Cart' type="button" className="slide btn d-block my-3 px-5"  
                                 style={ { background: '#f582ae'} }>
                           
-                            <div> <i className="fas fa-shopping-cart"></i></div>
+                            <div> <i className="fa fa-shopping-cart"></i></div>
                             </button>
                                 
                         </Link>
@@ -95,16 +113,29 @@ const DetailProduct = ( props ) =>
                 </div>
                 </div>
         </div>
+
+
+      </div>
+
+      <AllScript />
+    </>
+
+
+
     )
 }
 
 export async function getServerSideProps({params: {id}}) {
 
     const res = await getData(`product/${id}`)
+    const productItem = res.product;
     // server side rendering
-    return {
-      props: { product: res.product }, // will be passed to the page component as props
-    }
+
+  return {
+    props: { productItem }
+  };
+
+
 }
 
 
