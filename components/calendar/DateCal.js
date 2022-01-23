@@ -80,17 +80,21 @@ const DateCal = ({gameId}) => {
         />
       </div>
 
-      <div className="all_matches">
-        <h2>Xenowatch league-week6</h2>
+
 
         {tournaments.length === 0 ? (
+        <div className="all_matches">
           <p>
             No Tournaments are scheduled between selected dates. Please change
             the dates and check again!{' '}
           </p>
+        </div>  
         ) : (
-          <div className="match_box">
-            {tournaments.map((tour) => (
+          
+            tournaments.map((tour) => (
+              <div className="all_matches">
+              <h2>{tour.name}</h2>
+              <div className="match_box">
               <div className="match_table" key={tour._id}>
                 <div className="head_row">
                   <div className="tm">11:00PCT</div>
@@ -133,10 +137,16 @@ const DateCal = ({gameId}) => {
                   </a>{' '}
                 </div>
               </div>
-            ))}
-          </div>
+            
+              </div>
+             </div> 
+            
+            )
+
+            )
+          
         )}
-      </div>
+     
     </>
   );
 };
