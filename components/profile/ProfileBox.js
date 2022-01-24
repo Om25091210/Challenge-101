@@ -533,10 +533,10 @@ const ProfileBox = ({ user, Userdata, games }) => {
                         <a href="#!" rel={`item${index}`}>
                           <span key={index}>
                             <img
-                              src={item.gameId.imgUrl}
-                              alt={item.gameId.name}
+                              src={item.gameId ? item.gameId.imgUrl : ""}
+                              alt={item.gameId ? item.gameId.name : ""}
                             />{' '}
-                            <p>{item.gameId.name}</p>
+                            <p>{item.gameID ? item.gameId.name : "Not Defined"}</p>
                           </span>
                         </a>
                       </li>
@@ -618,7 +618,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                       key={index}
                     >
                       <div key={index} className="game_btn">
-                        {item.gameId.name}
+                        {item.gameId ? item.gameId.name : 'Not Defined'}
                       </div>
                       <ul>
                         <li>

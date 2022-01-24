@@ -7,9 +7,11 @@ import baseURL from '@utils/baseURL';
 import ImageDropzone from '@components/common/ImageDropzone';
 import Moment from 'moment';
 
-const Photos = ({ Userdata }) => {
+const TeamPhotos = ({ user, team }) => {
   const [images, setImages] = useState([]);
   const [title, setTitle] = useState();
+
+console.log(team);
 
   const photomutation = useMutation(async (formdata) => {
     await axios.put(`${baseURL}/api/uploads/uploadImages`, formdata, {
@@ -35,14 +37,13 @@ const Photos = ({ Userdata }) => {
     }
 
     formdata.append('title', title);
-    formdata.append('model', 'PROFILE');
-    formdata.append('id', Userdata.profile.user._id);
-
+    formdata.append('model', 'TEAM');
+    formdata.append('id', team._id);
     try {
       await photomutation.mutateAsync(formdata);
-      toast.success('User images have been updated');
+      toast.success('Team images have been updated');
     } catch (err) {
-      toast.error(err.response?.data?.msg || 'Please upload your images again');
+      toast.error(err.response?.data?.msg || 'Please upload your team images again');
     }
     refreshPage();
   };
@@ -78,7 +79,7 @@ const Photos = ({ Userdata }) => {
 
         <p></p>
 
-        {Userdata.profile.imagesgallery.map((imgg, idx) => (
+        {team.imagesgallery && team.imagesgallery.map((imgg, idx) => (
           <div className="imagess_box" key={idx}>
             <div className="imagess">
               <ul>
@@ -120,4 +121,4 @@ const Photos = ({ Userdata }) => {
   );
 };
 
-export default Photos;
+export default TeamPhotos;
