@@ -2642,7 +2642,7 @@ article .social_bar {
 .review {
 	float: left;
 	width: 100%;
-	margin-top: 20px;
+	margin: 15px 0;
 }
 .review .rev_txt {
 	font-size:12px;
@@ -2656,14 +2656,14 @@ article .social_bar {
 .cart-row {
 	margin-top: 30px;
 }
-.cart-row a {
+.cart-row a, .cart-row button {
 	background: #1bd75e;
 	border-radius: 30px;
 	border:1px solid #1bd75e;
 	padding: 10px 10px;
 	width: 180px;
 }
-.cart-row a:last-child {
+.cart-row a:last-child, .cart-row button:last-child {
 	background: #7239ea;
 	border:1px solid #7239ea; margin-left: 10px;
 }
@@ -6040,6 +6040,20 @@ form.common_form input {
 	#ce-delete-chat-button{display: flex;align-items: center;justify-content: center;align-content: center; padding: 0 !important;}
 	#ce-delete-chat-button .anticon { margin-right: 10px;}
 
+
+	/* ----------------- New Product detail page ------------------ */
+
+	.prodcut_detail_page{ float: left; width: 100%; padding: 50px 0; align-items: flex-start;}
+	.prodcut_detail_page .product-img-box .prod_big_thumb{ padding: 35px;}
+	.prodcut_detail_page .small_thumb{ float: left; width: 120px; margin-top: 10px;}
+	.prodcut_detail_page .small_thumb img{ width: 100%;}
+
+
+	.prodcut_detail_page .naming{padding:10px 0; margin: 0;border-top: 1px solid #ededed; font-size: 16px;color: #7239ea;text-transform: capitalize; }
+
+	.stocks {align-items: center; border-bottom: 1px solid #ededed;}
+
+	.prodcut_detail_page .labels{ font-size: 16px; font-weight: 700; color: #000; text-transform: uppercase;}
 
 
 
