@@ -2,23 +2,15 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Meta from '@components/Meta';
 import FooterMain from '@components/FooterMain';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import baseURL from '@utils/baseURL';
-import {
-  LockClosedIcon,
-  MailIcon,
-  DotsCircleHorizontalIcon,
-  UserCircleIcon,
-  EyeIcon,
-  EyeOffIcon,
-  CheckIcon,
-  XIcon
-} from '@heroicons/react/outline';
-
-import { registerUser } from '@utils/auth';
+import valid from '@utils/valid'
+import Router from 'next/router';
+import {DataContext} from '../store/GlobalState'
+import {postData} from '../utils/fetchData'
 
 const usernameRegex = /^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{0,29}$/;
 let cancel;
@@ -37,15 +29,17 @@ const Signup = () => {
   const [submitDisabled, setSubmitDisabled] = useState(true);
 
   const [username, setUsername] = useState('');
-  const [status, setStatus] = useState('confirm');
 
   const [usernameLoading, setUsernameLoading] = useState(false);
   const [usernameAvailable, setUsernameAvailable] = useState(false);
 
-  const [modalOpen, setModalOpen] = useState(false);
-
   const [open, setOpen] = useState(false);
   const [passwordShown, setPasswordShown] = useState(false);
+
+
+  const {state, dispatch} = useContext(DataContext)
+  const { auth } = state
+
 
   const { firstname, lastname, email, password } = user;
 
@@ -55,7 +49,40 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await registerUser(user, setError, setFormLoading, toast, setStatus);
+    //await registerUser(user, setError, setFormLoading, toast, setStatus);
+
+    const errMsg = valid(firstname, lastname, email, password);
+    console.log(errMsg);
+
+    if(errMsg){ 
+      toast.info(errMsg);     
+      return dispatch({ type: 'NOTIFY', payload: {error: errMsg} })
+    }
+
+    dispatch({ type: 'NOTIFY', payload: {loading: true} })
+
+    setFormLoading(true);
+        console.log('calling handle post ....');
+
+    try {
+      var name = firstname + ' ' + lastname;
+      console.log(name);
+      const res = await axios.post(`${baseURL}/api/signup`, {
+        name,
+        username,
+        email,
+        password
+      });
+      console.log(res);
+
+      dispatch({ type: 'NOTIFY', payload: {success: res.msg} });
+      toast.info(res.data.msg);
+      Router.push(`/verify`);
+    } catch (error) {
+      toast.error('Oops! Sorry we cannot register at this time. Please try later.');
+    }
+    setFormLoading(false);
+
   };
 
   const checkUsername = async () => {
