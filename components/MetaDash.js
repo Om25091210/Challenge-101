@@ -58,11 +58,6 @@ const MetaDash = () => (
     />
 
     <link href="/assets/css/dash/slick.css" rel="stylesheet" type="text/css" />
-    <link
-      href="/assets/css/dash/pixelarity.css"
-      rel="stylesheet"
-      type="text/css"
-    />
 
     <link
       rel="stylesheet"
