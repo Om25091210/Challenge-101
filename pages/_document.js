@@ -77,7 +77,16 @@ export default class MyDocument extends Document {
           <script src="/assets/js/dash/jquery.fancybox.js" />
           <script src="/assets/js/dash/jquery.fancybox-media.js" />
           <script src="/assets/js/dash/pixelarity-faceless.js" />
-          <script src={ `https://www.paypal.com/sdk/js?client-id=${ process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID }` }></script>
+          <script
+            src={`https://www.paypal.com/sdk/js?client-id=${process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID}`}
+          ></script>
+          <link
+            href="/assets/css/dash/pixelarity.css"
+            rel="stylesheet"
+            type="text/css"
+          />
+
+          <style></style>
         </Head>
         <body>
           {themeCss ? (
