@@ -3,10 +3,14 @@ import TeamSponsors from './TeamSponsors';
 import { useState, useEffect } from 'react';
 import TeamPhotos from './TeamPhotos';
 import TeamVideos from './TeamVideos';
+import axios from 'axios';
+import baseURL from '@utils/baseURL';
 
 import ProductList from '@components/common/ProductList';
 
 const TeamProfileData = ({ user, data, products }) => {
+  const [jobs, setJobs] = useState([]);
+
   useEffect(() => {
     $('a.model_show_btn').click(function () {
       $(this).next().addClass('show_model');
@@ -16,6 +20,14 @@ const TeamProfileData = ({ user, data, products }) => {
       $(this).parent().removeClass('show_model');
     });
   }, []);
+
+
+  useEffect(() => {
+    //Jobs
+    axios.get(`${baseURL}/api/teams/jobs/${data._id}`).then((res) => setJobs(res.data));
+
+  }, []);
+
 
   return (
     <>
@@ -1069,32 +1081,42 @@ const TeamProfileData = ({ user, data, products }) => {
         </div>
        
         <div className="tab hide" id="jobs">
-          <div className="team_row arena_team_row">
-            <div className="inner_team">
-              <div className="logo_box">
-                <img
-                  src="/assets/media/discover/lxg.png"
-                  className="thumb_img"
-                  alt=""
-                />
-                <h3>AFK GAMING PVT LTD</h3>
+
+          { jobs.length === 0 ? (
+            <p>No Jobs defined...</p>
+          ) : (
+            jobs.map((job, index) => (
+              <div className="team_row arena_team_row" key={index}>
+                <div className="inner_team">
+                  <div className="logo_box">
+                    <img
+                      src={data.imgUrl != "" ? data.imgUrl : '/assets/media/discover/lxg.png'}
+                      className="thumb_img"
+                      alt=""
+                    />
+                    <h3>{data.name}</h3>
+                  </div>
+                  <div className="mores">
+                    <p>
+                      <b>POSITION:</b> {job.position}
+                    </p>
+                    <p>
+                      <b>EXPERIENCE:</b> {job.experience}
+                    </p>
+                    <p>
+                      <b> LOCATION:</b> 
+
+                          {job.location}
+                    </p>
+                  </div>
+                  <a href="#" className="join">
+                    APPLY NOW
+                  </a>{' '}
+                </div>
               </div>
-              <div className="mores">
-                <p>
-                  <b>POSITION:</b> SENIOR DEVELOPER
-                </p>
-                <p>
-                  <b>EXPERIENCE:</b> 10 YEARS
-                </p>
-                <p>
-                  <b> LOCATION:</b> BANGALORE{' '}
-                </p>
-              </div>
-              <a href="#" className="join">
-                APPLY NOW
-              </a>{' '}
-            </div>
-          </div>
+            ))
+          )}
+
         </div>
 
         <TeamAbout data={data} />
