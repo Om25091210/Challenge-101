@@ -3,7 +3,8 @@ import { MPNumberFormat } from '../../utils/helpers';
 import { format } from 'date-fns';
 import Link from 'next/link';
 
-const TournamentRows = ({ tournaments, searchResults }) => {
+const TournamentRows = ({ tournaments, searchResults}) => {
+
   if (searchResults.length > 0) {
     tournaments = searchResults;
   }
