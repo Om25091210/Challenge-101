@@ -61,17 +61,14 @@ const TournamentRows = ({ tournaments, searchResults}) => {
                   </div>
                   <div className="games">
                     <h3>Games:</h3>
-                    <div className="game_logo">
-                      <img src="/assets/media/category/game1.png" alt="" /> COD
-                      4,
-                    </div>
-                    <div className="game_logo">
-                      <img src="/assets/media/category/game2.png" alt="" /> DOTA
-                      2,
-                    </div>
-                    <div className="game_logo">
-                      <img src="/assets/media/category/game3.png" alt="" /> CSGO
-                    </div>
+
+                    {result.games && result.games.map((gam, idxg) => ( 
+
+                      <div className="game_logo" key={idxg}>
+                        <img src={gam.imgUrl} alt={gam.name} /> {gam.name}
+                      </div> 
+                    ))}
+
                   </div>
                   <div className="prize">
                     <h3>PRIZE POOL:</h3>
