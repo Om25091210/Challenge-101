@@ -8,7 +8,13 @@ import filterSearch from '@utils/filterSearch'
 import {useRouter} from 'next/router'
 import Filter from '@components/Filter'
 import Meta from '@components/Meta';
+
+import MetaDash from '@components/MetaDash';
+import SignedHeader from '@components/SignedHeader';
+import LeftNav from '@components/LeftNav';
 import FooterMain from '@components/FooterMain';
+import AllScript from './AllScript';
+
 
 const Home = (props) => {
   const [products, setProducts] = useState(props.products)
@@ -64,55 +70,63 @@ const Home = (props) => {
 
   return(
 
-    <main id="kt_body" className="bg-body">
-      <Meta />
 
+    <>
+      <MetaDash />
 
-    <div className="home_page">
-      <Head>
-        <title>Home Page</title>
-      </Head>
+      <SignedHeader user={props.user} />
 
-      <Filter state={state} />
+      <LeftNav />
 
-      {
-        auth.user && auth.user.role === 'admin' &&
-        <div className="delete_all btn btn-info mt-2" style={{marginBottom: '-10px'}}>
-          <input type="checkbox" checked={isCheck} onChange={handleCheckALL}
-          style={{width: '25px', height: '25px', transform: 'translateY(8px)'}} />
+      <div className="main_middle profile_middle">
 
-          <button className="btn ml-2" style={{ background: '#f582ae'}}
-          data-toggle="modal" data-target="#exampleModal"
-          onClick={handleDeleteAll}>
-            CLICK TO DELETE
-          </button>
+        <div className="home_page">
+          <Head>
+            <title>Home Page</title>
+          </Head>
+
+          <Filter state={state} />
+
+          {
+            auth.user && auth.user.role === 'admin' &&
+            <div className="delete_all btn btn-info mt-2" style={{marginBottom: '-10px'}}>
+              <input type="checkbox" checked={isCheck} onChange={handleCheckALL}
+              style={{width: '25px', height: '25px', transform: 'translateY(8px)'}} />
+
+              <button className="btn ml-2" style={{ background: '#f582ae'}}
+              data-toggle="modal" data-target="#exampleModal"
+              onClick={handleDeleteAll}>
+                CLICK TO DELETE
+              </button>
+            </div>
+          }
+
+          <div className="products">
+            {
+              products.length === 0 
+              ? <h2>No Products</h2>
+
+              : products.map(product => (
+                <ProductItem key={product._id} product={product} handleCheck={handleCheck} />
+              ))
+            }
+          </div>
+          
+          {
+            props.result < page * 6 ? ""
+            : <button className="btn btn-outline-info d-block mx-auto mb-4"
+            onClick={handleLoadmore}>
+              Load more
+            </button>
+          }
+        
         </div>
-      }
 
-      <div className="products">
-        {
-          products.length === 0 
-          ? <h2>No Products</h2>
-
-          : products.map(product => (
-            <ProductItem key={product._id} product={product} handleCheck={handleCheck} />
-          ))
-        }
       </div>
-      
-      {
-        props.result < page * 6 ? ""
-        : <button className="btn btn-outline-info d-block mx-auto mb-4"
-        onClick={handleLoadmore}>
-          Load more
-        </button>
-      }
-    
-    </div>
 
-    <FooterMain> </FooterMain>
-
-    </main>    
+      <AllScript />
+    </>
+  
   )
 }
 
