@@ -1,10 +1,16 @@
 import TeamAbout from './TeamAbout';
 import TeamSponsors from './TeamSponsors';
 import { useState, useEffect } from 'react';
+import TeamPhotos from './TeamPhotos';
+import TeamVideos from './TeamVideos';
+import axios from 'axios';
+import baseURL from '@utils/baseURL';
 
 import ProductList from '@components/common/ProductList';
 
 const TeamProfileData = ({ user, data, products }) => {
+  const [jobs, setJobs] = useState([]);
+
   useEffect(() => {
     $('a.model_show_btn').click(function () {
       $(this).next().addClass('show_model');
@@ -13,6 +19,13 @@ const TeamProfileData = ({ user, data, products }) => {
     $('a.model_close').click(function () {
       $(this).parent().removeClass('show_model');
     });
+  }, []);
+
+  useEffect(() => {
+    //Jobs
+    axios
+      .get(`${baseURL}/api/teams/jobs/${data._id}`)
+      .then((res) => setJobs(res.data));
   }, []);
 
   return (
@@ -1059,218 +1072,52 @@ const TeamProfileData = ({ user, data, products }) => {
         <ProductList user={user} productList={products} />
 
         <div className="tab hide" id="photos">
-          Streams
+          <TeamPhotos user={user} team={data} />
         </div>
-        <div className="tab hide" id="media">
-          <div className="video_box">
-            <ul>
-              <li>
-                <a href="#video_1" className="videos">
-                  {' '}
-                  <div className="video">
-                    {' '}
-                    <img src="/assets/media/video/thumb1.jpg" alt="" />{' '}
-                  </div>
-                </a>
-                <div className="bottom_data">
-                  {' '}
-                  <a href="#">The Team</a>{' '}
-                  <a href="#" className="yellow">
-                    Lq Heroes
-                  </a>
-                  <h2>
-                    Destroy Played the first Mission of the Mercenaries Update
-                    With Kelly And Saki
-                  </h2>
-                  <span className="date">August 27th,2018</span>{' '}
-                  <span className="views">
-                    <i className="fa fa-eye" aria-hidden="true"></i> 2223
-                  </span>{' '}
-                  <span className="likes">
-                    <i className="fa fa-heart" aria-hidden="true"></i>453
-                  </span>{' '}
-                  <span className="comments">
-                    <i className="fa fa-comment" aria-hidden="true"></i>18
-                  </span>{' '}
-                </div>
-              </li>
-              <li>
-                <div className="video">
-                  {' '}
-                  <img src="/assets/media/video/thumb1.jpg" alt="" />{' '}
-                </div>
-                <div className="bottom_data">
-                  {' '}
-                  <a href="#">The Team</a>{' '}
-                  <a href="#" className="red">
-                    Lq Heroes
-                  </a>
-                  <h2>
-                    Destroy Played the first Mission of the Mercenaries Update
-                    With Kelly And Saki
-                  </h2>
-                  <span className="date">August 27th,2018</span>{' '}
-                  <span className="views">
-                    <i className="fa fa-eye" aria-hidden="true"></i> 2223
-                  </span>{' '}
-                  <span className="likes">
-                    <i className="fa fa-heart" aria-hidden="true"></i>453
-                  </span>{' '}
-                  <span className="comments">
-                    <i className="fa fa-comment" aria-hidden="true"></i>18
-                  </span>{' '}
-                </div>
-              </li>
-              <li>
-                <div className="video">
-                  {' '}
-                  <img src="/assets/media/video/thumb1.jpg" alt="" />{' '}
-                </div>
-                <div className="bottom_data">
-                  {' '}
-                  <a href="#">The Team</a>{' '}
-                  <a href="#" className="yellow">
-                    Lq Heroes
-                  </a>
-                  <h2>
-                    Destroy Played the first Mission of the Mercenaries Update
-                    With Kelly And Saki
-                  </h2>
-                  <span className="date">August 27th,2018</span>{' '}
-                  <span className="views">
-                    <i className="fa fa-eye" aria-hidden="true"></i> 2223
-                  </span>{' '}
-                  <span className="likes">
-                    <i className="fa fa-heart" aria-hidden="true"></i>453
-                  </span>{' '}
-                  <span className="comments">
-                    <i className="fa fa-comment" aria-hidden="true"></i>18
-                  </span>{' '}
-                </div>
-              </li>
-              <li>
-                <div className="video">
-                  {' '}
-                  <img src="/assets/media/video/thumb1.jpg" alt="" />{' '}
-                </div>
-                <div className="bottom_data">
-                  {' '}
-                  <a href="#">The Team</a>{' '}
-                  <a href="#" className="yellow">
-                    Lq Heroes
-                  </a>
-                  <h2>
-                    Destroy Played the first Mission of the Mercenaries Update
-                    With Kelly And Saki
-                  </h2>
-                  <span className="date">August 27th,2018</span>{' '}
-                  <span className="views">
-                    <i className="fa fa-eye" aria-hidden="true"></i> 2223
-                  </span>{' '}
-                  <span className="likes">
-                    <i className="fa fa-heart" aria-hidden="true"></i>453
-                  </span>{' '}
-                  <span className="comments">
-                    <i className="fa fa-comment" aria-hidden="true"></i>18
-                  </span>{' '}
-                </div>
-              </li>
-              <li>
-                <div className="video">
-                  {' '}
-                  <img src="/assets/media/video/thumb1.jpg" alt="" />{' '}
-                </div>
-                <div className="bottom_data">
-                  {' '}
-                  <a href="#">The Team</a>{' '}
-                  <a href="#" className="yellow">
-                    Lq Heroes
-                  </a>
-                  <h2>
-                    Destroy Played the first Mission of the Mercenaries Update
-                    With Kelly And Saki
-                  </h2>
-                  <span className="date">August 27th,2018</span>{' '}
-                  <span className="views">
-                    <i className="fa fa-eye" aria-hidden="true"></i> 2223
-                  </span>{' '}
-                  <span className="likes">
-                    <i className="fa fa-heart" aria-hidden="true"></i>453
-                  </span>{' '}
-                  <span className="comments">
-                    <i className="fa fa-comment" aria-hidden="true"></i>18
-                  </span>{' '}
-                </div>
-              </li>
-              <li>
-                <div className="video">
-                  {' '}
-                  <img src="/assets/media/video/thumb1.jpg" alt="" />{' '}
-                </div>
-                <div className="bottom_data">
-                  {' '}
-                  <a href="#">The Team</a>{' '}
-                  <a href="#" className="yellow">
-                    Lq Heroes
-                  </a>
-                  <h2>
-                    Destroy Played the first Mission of the Mercenaries Update
-                    With Kelly And Saki
-                  </h2>
-                  <span className="date">August 27th,2018</span>{' '}
-                  <span className="views">
-                    <i className="fa fa-eye" aria-hidden="true"></i> 2223
-                  </span>{' '}
-                  <span className="likes">
-                    <i className="fa fa-heart" aria-hidden="true"></i>453
-                  </span>{' '}
-                  <span className="comments">
-                    <i className="fa fa-comment" aria-hidden="true"></i>18
-                  </span>{' '}
-                </div>
-              </li>
-            </ul>
 
-            <div id="video_1" style={{ display: 'none' }}>
-              <iframe
-                width="100%"
-                height="100%"
-                src="https://www.youtube.com/embed/9e9FQCA01dI"
-                title="YouTube video player"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </div>
-          </div>
+        <div className="tab hide" id="media">
+          <TeamVideos user={user} team={data} />
         </div>
+
         <div className="tab hide" id="jobs">
-          <div className="team_row arena_team_row">
-            <div className="inner_team">
-              <div className="logo_box">
-                <img
-                  src="/assets/media/discover/lxg.png"
-                  className="thumb_img"
-                  alt=""
-                />
-                <h3>AFK GAMING PVT LTD</h3>
+          {jobs.length === 0 ? (
+            <p>No Jobs defined...</p>
+          ) : (
+            jobs.map((job, index) => (
+              <div className="team_row arena_team_row" key={index}>
+                <div className="inner_team">
+                  <div className="logo_box">
+                    <img
+                      src={
+                        data.imgUrl != ''
+                          ? data.imgUrl
+                          : '/assets/media/discover/lxg.png'
+                      }
+                      className="thumb_img"
+                      alt=""
+                    />
+                    <h3>{data.name}</h3>
+                  </div>
+                  <div className="mores">
+                    <p>
+                      <b>POSITION:</b> {job.position}
+                    </p>
+                    <p>
+                      <b>EXPERIENCE:</b> {job.experience}
+                    </p>
+                    <p>
+                      <b> LOCATION:</b>
+
+                      {job.location}
+                    </p>
+                  </div>
+                  <a href="#" className="join">
+                    APPLY NOW
+                  </a>{' '}
+                </div>
               </div>
-              <div className="mores">
-                <p>
-                  <b>POSITION:</b> SENIOR DEVELOPER
-                </p>
-                <p>
-                  <b>EXPERIENCE:</b> 10 YEARS
-                </p>
-                <p>
-                  <b> LOCATION:</b> BANGALORE{' '}
-                </p>
-              </div>
-              <a href="#" className="join">
-                APPLY NOW
-              </a>{' '}
-            </div>
-          </div>
+            ))
+          )}
         </div>
 
         <TeamAbout data={data} />

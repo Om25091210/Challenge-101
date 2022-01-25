@@ -7,7 +7,7 @@ import baseURL from '@utils/baseURL';
 import VideoDropzone from '@components/common/VideosDropzone';
 import { Video } from 'cloudinary-react';
 
-const Videos = ({ Userdata }) => {
+const TeamVideos = ({ user, team }) => {
   const [videos, setVideos] = useState([]);
   const [videodisc, setVideodisc] = useState();
 
@@ -34,8 +34,8 @@ const Videos = ({ Userdata }) => {
     }
 
     formdata.append('videodisc', videodisc);
-    formdata.append('model', 'PROFILE');
-    formdata.append('id', Userdata.profile.user._id);
+    formdata.append('model', 'TEAM');
+    formdata.append('id', team._id);
 
     try {
       await mutation.mutateAsync(formdata);
@@ -75,7 +75,7 @@ const Videos = ({ Userdata }) => {
 
         <p></p>
 
-        {Userdata.profile.videosgallery.map((vid, idx) => (
+        {team.videosgallery.map((vid, idx) => (
           <ul key={idx}>
             {vid.videos.map((vide, idex) => (
               <li key={idex}>
@@ -146,4 +146,4 @@ const Videos = ({ Userdata }) => {
   );
 };
 
-export default Videos;
+export default TeamVideos;
