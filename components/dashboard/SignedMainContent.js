@@ -160,7 +160,7 @@ const SignedMainContent = ({ posts, user, profile }) => {
               <li key={index}>
                 {persona.type === 'team' ? (
                   <img
-                    src={persona.teamId.imgUrl}
+                    src={persona.teamId != null ? persona.teamId.imgUrl : '/assets/media/dash/user.jpg'}
                     alt=""
                     onClick={() =>
                       personaHandle(persona.teamId.name, persona.teamId.imgUrl)

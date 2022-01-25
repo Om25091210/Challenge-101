@@ -1,8 +1,9 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import baseURL from '@utils/baseURL';
-
 import { useRouter } from 'next/router';
+
+import GameVideos from './GameVideos';
 
 const Game = ({ user }) => {
   const [game, setGame] = useState([]);
@@ -918,7 +919,7 @@ const Game = ({ user }) => {
             </div>
           </div>
           <div className="tab hide" id="video">
-            <h2>video</h2>
+              <GameVideos user={user} game={game} />
           </div>
           <div className="tab hide" id="teams">
             <ul className="communities teams">

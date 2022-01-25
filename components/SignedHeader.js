@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import React, { useContext, useState } from 'react'
-
 import { logoutUser } from '@utils/auth';
 import NotificationItem from './NotificationItem';
 import ChatSection from './chats/ChatSection';
@@ -14,7 +13,9 @@ const SignedHeader = ({ user }) => {
     const {state, dispatch} = useContext(DataContext)
     const { auth, cart } = state
 
-  if (user) {
+  if (user == undefined) {
+    router.push('/login');
+  }
     return (
       <header>
         <div className="logo">
@@ -187,9 +188,7 @@ const SignedHeader = ({ user }) => {
         </div>
       </header>
     );
-  } else {
-    return null;
-  }
+
 };
 
 export default SignedHeader;

@@ -26,7 +26,7 @@ const Games = ({ user, games }) => {
                     </div>
                     <div className="bottom_data">
                       <h3>{games.name}</h3>
-                      <p>{games.description}</p>
+                      <br/>{games.description}<br/>
                       <span>
                         <i
                           className="fa fa-long-arrow-right"
