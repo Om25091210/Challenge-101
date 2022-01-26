@@ -9,7 +9,7 @@ import { useRouter } from 'next/router';
 import Filter from '@components/Filter';
 
 const ProductList = ({ user, productList }) => {
-  console.log(productList);
+
   const [products, setProducts] = useState(productList);
 
   const [isCheck, setIsCheck] = useState(false);

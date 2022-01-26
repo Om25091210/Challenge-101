@@ -13,8 +13,10 @@ import { useState, useEffect } from 'react';
 import { MPNumberFormat } from '@utils/helpers';
 import { format } from 'date-fns';
 
-const TournamentDetail = ({ user, data }) => {
+const TournamentDetail = ({ user, data}) => {
+
   console.log(data);
+
   if (data) {
     return (
       <>
@@ -44,7 +46,7 @@ const TournamentDetail = ({ user, data }) => {
                       <div className="flag_tick_flow">
                         <span className="game_name">
                           {' '}
-                          {data.tournament.name}{' '}
+                          {data.name}{' '}
                         </span>
                         <div className="flag"></div>
                         <div className="tick">
@@ -62,7 +64,7 @@ const TournamentDetail = ({ user, data }) => {
                         Indoor Stadium, Bangalore Feb 18th - 20th 10 AM IST
                       </span>{' '}
                       <span className="follower">
-                        {data.tournament.description}
+                        {data.description}
                       </span>{' '}
                     </div>
                   </div>
@@ -85,11 +87,11 @@ const TournamentDetail = ({ user, data }) => {
                   <h5>SPONSORS</h5>
 
                   <>
-                    {data.sponsors.map((item, index) => (
+                    {data.sponsors && data.sponsors.map((item, index) => (
                       <span key={index}>
                         <img src={item.imgUrl} alt={item.sponsorId} />
                       </span>
-                    ))}
+                    ))}data.sponsors && 
                   </>
                 </div>
 
@@ -97,8 +99,8 @@ const TournamentDetail = ({ user, data }) => {
                   <h5>Price</h5>
                   <span className="">
                     <MPNumberFormat
-                      value={data.tournament.prizepool}
-                      currency={data.tournament.currency}
+                      value={data.prizepool}
+                      currency={data.currency}
                     />
                   </span>
                 </div>
@@ -129,16 +131,16 @@ const TournamentDetail = ({ user, data }) => {
                     </div>
                   </div>
                   <p>
-                    {data.tournament.detaildescription
-                      ? data.tournament.detaildescription
-                      : data.tournament.description}
+                    {data.detaildescription
+                      ? data.detaildescription
+                      : data.description}
                   </p>
 
                   <div className="games">
                     <h3>organizer:</h3>
 
                     <>
-                      {data.organizers.map((item, index) => (
+                      {data.organizers && data.organizers.map((item, index) => (
                         <span key={index}>
                           <img src={item.imgUrl} alt={item.name} />{' '}
                           <b>{item.name}</b>
@@ -165,7 +167,7 @@ const TournamentDetail = ({ user, data }) => {
                     <h2>GAMES</h2>
 
                     <>
-                      {data.games.map((item, index) => (
+                      {data.games && data.games.map((item, index) => (
                         <span key={index}>
                           <img src={item.imgUrl} alt={item.name} />
                         </span>
@@ -955,37 +957,24 @@ const TournamentDetail = ({ user, data }) => {
       </>
     );
   } else {
-    return <h6>WORKS</h6>;
+    return null;
   }
 };
 
 export const getServerSideProps = async (context) => {
+  
   const { tournamentid } = context.params;
-  let username = 'multiplayr';
-  let password = 'Multiplyr123$';
+  console.log(tournamentid)
+  const response = await fetch(`${baseEsportsAPIURL}/esport/tournaments/${tournamentid}`, {method:'GET', 
+  headers: {'Authorization': 'Basic ' + Buffer.from('multiplyr' + ":" + 'Multiplyr123$').toString('base64')}});
 
-  // let headers = new Headers()
-  try {
-    // headers.append('Authorization', 'Basic ' + base64.encode(username + ":" + password))
-    const response = await axios.get(
-      `${baseEsportsAPIURL}/esport/tournaments/${tournamentid}`,
-      {
-        auth: {
-          username: username,
-          password: password
-        }
-      }
-    );
-    const data = await response.json();
+  const dat = await response.json();
+  const data = dat.data;
 
-    return {
-      props: { data }
-    };
-  } catch {
-    return {
-      props: {}
-    };
-  }
+  return {
+    props: { data }
+  };
 };
+
 
 export default TournamentDetail;
