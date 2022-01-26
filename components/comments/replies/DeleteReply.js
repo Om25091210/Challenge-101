@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 
 const Delete_Reply = ({ post, comment, reply, user }) => {
-  const isDelete = reply.user._id === user._id;
+  const isDelete = reply.user != null ? ( reply.user._id === user._id ) : false;
   const deletereply = async () => {
     await axios.delete(
       `${baseURL}/api/comments/${post._id}/${comment._id}/${reply._id}`,

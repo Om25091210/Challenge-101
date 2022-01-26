@@ -40,7 +40,7 @@ const CommentList = ({ post, user }) => {
                     <img src="/assets/media/dash/user.jpg" alt="" />
                   </div>
                   <a href="#" className="create">
-                    {comment.user.name}
+                    {comment.user != null ? comment.user.name : 'NOT DEFINED'}
                   </a>{' '}
                   <span className="days">
                     {formatDistanceToNowStrict(new Date(comment.date), {

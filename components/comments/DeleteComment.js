@@ -46,11 +46,15 @@ const Delete_Comment = ({ post, comment, user }) => {
 
   return (
     <div className="delete_comment">
-      {comment.user._id === user._id ? (
+      {comment.user != null ? ( comment.user._id === user._id ? (
         <button onClick={deletehandlesubmit}>Delete</button>
       ) : (
         []
-      )}
+      )
+
+      ) : ''
+
+    }
     </div>
   );
 };

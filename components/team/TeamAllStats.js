@@ -18,10 +18,8 @@ const TeamAllStats = ({ teamId }) => {
 
     axios
       .get(`${baseEsportsAPIURL}/esport/matches/statistics/${teamId}`, {auth})
-      .then((res) => setStat(res.data));
+      .then((res) => setStat(res.data.data));
   }, []);
-
-  console.log(stat);
 
   return (
 
