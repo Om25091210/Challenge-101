@@ -143,9 +143,10 @@ MyApp.getInitialProps = async ({ ctx }) => {
           headers: { Authorization: token }
         });
 
-        const { user, profile } = res.data;
+        const { user, profile, teams } = res.data;
         pageProps.user = user;
         pageProps.profile = profile;
+        pageProps.teams = teams;
       } catch (err) {
         console.log(err);
         console.log('Error in Protected routes.....');

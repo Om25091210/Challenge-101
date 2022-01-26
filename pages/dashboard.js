@@ -16,7 +16,7 @@ const scrollToBottom = (divRef) => {
   divRef.current && divRef.current.scrollIntoView({ behaviour: 'smooth' });
 };
 
-const Dashboard = ({ user, profile, posts, suggplayers }) => {
+const Dashboard = ({ user, profile, teams, posts, suggplayers }) => {
   const [chats, setChats] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -52,12 +52,13 @@ const Dashboard = ({ user, profile, posts, suggplayers }) => {
 
       <LeftNav />
 
-      <SignedMainContent posts={posts} user={user} profile={profile} />
+      <SignedMainContent posts={posts} user={user} profile={profile}/>
 
       <RightSection
         user={user}
         suggestedplayers={suggplayers}
         profile={profile}
+        teams={teams}
       />
 
       <AllScript />

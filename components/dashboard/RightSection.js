@@ -5,9 +5,8 @@ import axios from 'axios';
 import baseURL from '@utils/baseURL';
 import Moment from 'moment';
 
-const RightSection = ({ user, profile, suggestedplayers }) => {
+const RightSection = ({ user, profile, suggestedplayers, teams }) => {
 
-  const teamData = profile.player;
   const [matches, setMatches] = useState([]);
 
   useEffect(() => {
@@ -110,13 +109,13 @@ const RightSection = ({ user, profile, suggestedplayers }) => {
         <div className="white_box">
           <ul className="team">
 
-            { teamData ?           
-             teamData.team.map((tm,idx) => (
+            { teams.length > 0 ?           
+             teams.map((tm,idx) => (
               <li key={idx}>
-                <Link href={`/team/${tm.teamId._id}`}>
+                <Link href={`/team/${tm._id}`}>
                   <div>
-                    <img src={tm.teamId.imgUrl} alt={tm.teamId.name} />
-                    <p> {tm.teamId.name}</p>
+                    <img src={tm.imgUrl} alt={tm.name} />
+                    <p> {tm.name}</p>
                   </div>
                 </Link>
               </li>
@@ -135,7 +134,7 @@ const RightSection = ({ user, profile, suggestedplayers }) => {
           <div className="grey_bg">
             <img src="/assets/media/dash/user1.png" alt="" />
             <p>
-              You have been invited to join The Werewolves.{' '}
+              You have been invited to join The Team.{' '}
               <a href="#">Click Here</a>
             </p>
           </div>
