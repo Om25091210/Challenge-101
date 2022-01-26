@@ -11,8 +11,6 @@ const TeamPhotos = ({ user, team }) => {
   const [images, setImages] = useState([]);
   const [title, setTitle] = useState();
 
-  console.log(team);
-
   const photomutation = useMutation(async (formdata) => {
     await axios.put(`${baseURL}/api/uploads/uploadImages`, formdata, {
       headers: {

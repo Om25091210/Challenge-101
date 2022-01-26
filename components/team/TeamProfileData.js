@@ -3,6 +3,7 @@ import TeamSponsors from './TeamSponsors';
 import { useState, useEffect } from 'react';
 import TeamPhotos from './TeamPhotos';
 import TeamVideos from './TeamVideos';
+import TeamAllStats from './TeamAllStats';
 import axios from 'axios';
 import baseURL from '@utils/baseURL';
 
@@ -178,55 +179,9 @@ const TeamProfileData = ({ user, data, products }) => {
             </div>
           </div>
           <div className="profile_match_details">
-            <div className="all_stats">
-              <ul>
-                <li>
-                  <img src="/assets/media/profile/fire1.png" alt="" />
-                  <div className="two_value">
-                    <span className="num">108</span>
-                    <span className="names">MATCHES PLAYED</span>
-                  </div>
-                </li>
-                <li>
-                  <img src="/assets/media/profile/won.png" alt="" />
 
-                  <div className="two_value">
-                    <span className="num">71</span>
-                    <span className="names">MATCHES WON</span>
-                  </div>
-                </li>
-                <li>
-                  <img src="/assets/media/profile/cup.png" alt="" />
 
-                  <div className="two_value">
-                    <span className="num">12</span>
-                    <span className="names">TROPHIES</span>
-                  </div>
-                </li>
-                <li>
-                  <img src="/assets/media/profile/money.png" alt="" />
-                  <div className="two_value">
-                    <span className="num">$40K</span>
-                    <span className="names">EARNINGS</span>
-                  </div>
-                </li>
-                <li>
-                  <img src="/assets/media/profile/streak.png" alt="" />
-                  <div className="two_value">
-                    <span className="num">26</span>
-                    <span className="names">WINNING STREAK</span>
-                  </div>
-                </li>
-                <li>
-                  <div className="two_value">
-                    <a href="#" className="names">
-                      All Stat
-                    </a>
-                  </div>{' '}
-                  <i className="fa fa-long-arrow-right" aria-hidden="true"></i>
-                </li>
-              </ul>
-            </div>
+            <TeamAllStats teamId={data._id}/>
 
             <div className="games_details">
               <ul>
