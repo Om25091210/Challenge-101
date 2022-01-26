@@ -108,7 +108,7 @@ const Jobs = ({ user, profile, myState }) => {
               <div className="inner_team">
                 <div className="logo_box">
                   <img src="/assets/media/discover/lxg.png" alt="" />
-                  <h3>{job.job_by.name}</h3>
+                  <h3>{job.job_by ? job.job_by.name : 'Not Defined'}</h3>
                 </div>
                 <div className="mores">
                   <p>

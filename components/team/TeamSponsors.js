@@ -7,7 +7,7 @@ const TeamSponsors = ({ user, data }) => {
       <div className="sponsers_box">
         <h1>sponser</h1>
         <ul>
-          {data.sponsors.map((item, index) => (
+          {data.sponsors && data.sponsors.map((item, index) => (
             <li key={index}>
               <div className="sponser_name">
                 <img src={item.imgUrl} alt={item.sponsorId} />

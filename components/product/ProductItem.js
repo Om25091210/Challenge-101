@@ -13,7 +13,7 @@ const ProductItem = ({ product, handleCheck }) => {
     <>
       <div className="pro_img">
         {' '}
-        <a href="javascript:void(0)" className="model_show_btn">
+        <a href="#!" className="model_show_btn">
           <img src={product.images[0].url} alt={product.images[0].url} />
         </a>{' '}
         <PoUp product={product} />

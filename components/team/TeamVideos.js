@@ -75,7 +75,7 @@ const TeamVideos = ({ user, team }) => {
 
         <p></p>
 
-        {team.videosgallery.map((vid, idx) => (
+        {team.videosgallery && team.videosgallery.map((vid, idx) => (
           <ul key={idx}>
             {vid.videos.map((vide, idex) => (
               <li key={idex}>

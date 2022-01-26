@@ -1,4 +1,5 @@
 import Filters from '../common/Filters';
+import Link from 'next/link';
 
 import axios from 'axios';
 import { useState, useEffect } from 'react';
@@ -101,9 +102,11 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
               <div className="role_pic">
                 <img src="/assets/media/discover/team1.png" alt="" />
               </div>
-              <h3>
-                {team.team._id} : {team.team.name}
-              </h3>
+               <a href={`/team/${team.team._id}`}>
+                <h3>
+                  {team.team._id} : {team.team.name}
+                </h3>
+              </a>
               <img
                 src="/assets/media/discover/country.png"
                 alt={team.team.name}

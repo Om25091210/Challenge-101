@@ -96,7 +96,9 @@ const Players = ({ user, profile , myState, selectedGame}) => {
             <div className="logo_box">
               {' '}
               <img src="/assets/media/discover/team1.png" alt="" />
-              <h3>{plyr.players ? plyr.players.nickName : 'No nickname'}</h3>
+              <a href='#!'>
+              <h3>{plyr.players ? plyr.players.name : 'No nickname'}</h3>
+              </a>
               <img src="/assets/media/discover/country.png" alt="" />{' '}
             </div>
             <span className="logo">
