@@ -8,12 +8,13 @@ import cookie from 'js-cookie';
 import { useQuery, useMutation } from 'react-query';
 import { getTournament } from '@utils/functionsHelper';
 import axios from 'axios';
-import baseURL from '@utils/baseURL';
+import baseEsportsAPIURL from '@utils/baseEsportsAPIURL';
 import { useState, useEffect } from 'react';
 import { MPNumberFormat } from '@utils/helpers';
 import { format } from 'date-fns';
 
 const TournamentDetail = ({ user, data }) => {
+  console.log(data);
   if (data) {
     return (
       <>
@@ -954,14 +955,26 @@ const TournamentDetail = ({ user, data }) => {
       </>
     );
   } else {
-    return null;
+    return <h6>WORKS</h6>;
   }
 };
 
-export const getServerSideProps = async ({ query }) => {
+export const getServerSideProps = async (context) => {
+  const { tournamentid } = context.params;
+  let username = 'multiplayr';
+  let password = 'Multiplyr123$';
+
+  // let headers = new Headers()
   try {
-    const response = await fetch(
-      `${baseURL}/api/tournaments/${query.tournamentid}`
+    // headers.append('Authorization', 'Basic ' + base64.encode(username + ":" + password))
+    const response = await axios.get(
+      `${baseEsportsAPIURL}/esport/tournaments/${tournamentid}`,
+      {
+        auth: {
+          username: username,
+          password: password
+        }
+      }
     );
     const data = await response.json();
 
