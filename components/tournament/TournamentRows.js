@@ -3,8 +3,7 @@ import { MPNumberFormat } from '../../utils/helpers';
 import { format } from 'date-fns';
 import Link from 'next/link';
 
-const TournamentRows = ({ tournaments, searchResults}) => {
-
+const TournamentRows = ({ tournaments, searchResults }) => {
   if (searchResults.length > 0) {
     tournaments = searchResults;
   }
@@ -51,7 +50,9 @@ const TournamentRows = ({ tournaments, searchResults}) => {
                   </div>
                   <div className="reg">
                     <button className="active">
-                      {result.tournament.status}
+                      {result.tournament.status
+                        ? result.tournament.status
+                        : 'REGISTERED'}
                     </button>
                   </div>
                 </div>
@@ -62,13 +63,12 @@ const TournamentRows = ({ tournaments, searchResults}) => {
                   <div className="games">
                     <h3>Games:</h3>
 
-                    {result.games && result.games.map((gam, idxg) => ( 
-
-                      <div className="game_logo" key={idxg}>
-                        <img src={gam.imgUrl} alt={gam.name} /> {gam.name}
-                      </div> 
-                    ))}
-
+                    {result.games &&
+                      result.games.map((gam, idxg) => (
+                        <div className="game_logo" key={idxg}>
+                          <img src={gam.imgUrl} alt={gam.name} /> {gam.name}
+                        </div>
+                      ))}
                   </div>
                   <div className="prize">
                     <h3>PRIZE POOL:</h3>

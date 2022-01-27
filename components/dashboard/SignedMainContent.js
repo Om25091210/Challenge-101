@@ -18,6 +18,7 @@ const SignedMainContent = ({ posts, user, profile }) => {
   const [profilepic, setProfilePic] = useState('');
   const [username, setUsername] = useState('');
   const [personas, setPersonas] = useState({});
+  const [postType, setPostType] = useState('');
   const router = useRouter();
 
   const mutation = useMutation(
@@ -42,6 +43,7 @@ const SignedMainContent = ({ posts, user, profile }) => {
     formdata.append('image', image);
     formdata.append('profilepic', profilepic);
     formdata.append('username', username);
+    formdata.append('postType', postType);
 
     //    for (const key of Object.keys(images)) {
     //      formdata.append('images', images[key]);
@@ -121,12 +123,12 @@ const SignedMainContent = ({ posts, user, profile }) => {
       });
   }, []);
 
-  console.log(personas);
-
-  const personaHandle = (username, profilepic) => {
+  const personaHandle = (username, profilepic, postType) => {
     setUsername(username);
     setProfilePic(profilepic);
+    setPostType(postType);
   };
+
   var settings = {
     infinite: false,
     vertical: true,
@@ -145,7 +147,7 @@ const SignedMainContent = ({ posts, user, profile }) => {
         slidesToShow: 1,
         slidesToScroll: 1
       });
-    }, 1000);
+    }, 4000);
   }, []);
 
   return (
@@ -154,65 +156,81 @@ const SignedMainContent = ({ posts, user, profile }) => {
         <div className="team_slider">
           <ul className="user_slider">
             <li>
-              <img src="/assets/media/dash/user.jpg" alt="" />
+              <img
+                src={user.profilePicUrl}
+                alt=""
+                onClick={() =>
+                  personaHandle(user.name, user.profilePicUrl, 'User')
+                }
+              />
             </li>
             {personas.personas?.map((persona, index) => (
               <li key={index}>
                 {persona.type === 'team' ? (
                   <img
-                    src={persona.teamId != null ? persona.teamId.imgUrl : '/assets/media/dash/user.jpg'}
+                    src={
+                      persona.teamId != null
+                        ? persona.teamId.imgUrl
+                        : '/assets/media/dash/user.jpg'
+                    }
                     alt=""
                     onClick={() =>
-                      personaHandle(persona.teamId.name, persona.teamId.imgUrl)
+                      personaHandle(
+                        persona.teamId.name,
+                        persona.teamId.imgUrl,
+                        'Team'
+                      )
                     }
                   />
                 ) : persona.type === 'tournament' ? (
                   <img
-                    src={persona.tournamentId.imgUrl}
+                    src={persona.tournamentId?.imgUrl}
                     alt=""
                     onClick={() =>
                       personaHandle(
                         persona.tournamentId.name,
-                        persona.tournamentId.imgUrl
+                        persona.tournamentId.imgUrl,
+                        'Tournament'
                       )
                     }
                   />
                 ) : persona.type === 'brand' ? (
                   <img
-                    src={persona.brandId.logoUrl}
+                    src={persona.brandId?.logoUrl}
                     alt=""
                     onClick={() =>
                       personaHandle(
                         persona.brandId.name,
-                        persona.brandId.logoUrl
+                        persona.brandId.logoUrl,
+                        'Brand'
                       )
                     }
                   />
                 ) : persona.type === 'company' ? (
                   <img
-                    src={persona.companyId.logoUrl}
+                    src={persona.companyId?.logoUrl}
                     alt=""
                     onClick={() =>
                       personaHandle(
                         persona.companyId.name,
-                        persona.companyId.logoUrl
+                        persona.companyId.logoUrl,
+                        'Company'
                       )
                     }
                   />
                 ) : persona.type === 'community' ? (
                   <img
-                    src={persona.communityId.logoUrl}
+                    src={persona.communityId?.logoUrl}
                     alt=""
                     onClick={() =>
                       personaHandle(
                         persona.communityId.name,
-                        persona.communityId.logoUrl
+                        persona.communityId.logoUrl,
+                        'Community'
                       )
                     }
                   />
-                ) : (
-                  'works'
-                )}
+                ) : null}
               </li>
             ))}
           </ul>

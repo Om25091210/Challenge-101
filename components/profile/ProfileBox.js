@@ -522,7 +522,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
 
               <>
                 <ul className="games_btn">
-                  {Userdata.profile.player.games.map((item, index) => (
+                  {Userdata.profile.player?.games.map((item, index) => (
                     <>
                       <li
                         className={`${
@@ -607,10 +607,10 @@ const ProfileBox = ({ user, Userdata, games }) => {
 
           <div className="right_bio">
             <div className="games_data white_bg">
-              {Userdata.profile.player.games.length === 0 ? (
+              {Userdata.profile.player?.games.length === 0 ? (
                 <div>No Games for {SrhUser.username}</div>
               ) : (
-                Userdata.profile.player.games.map((item, index) => (
+                Userdata.profile.player?.games.map((item, index) => (
                   <>
                     <div
                       className={`tab ${

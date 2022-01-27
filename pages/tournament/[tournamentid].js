@@ -13,8 +13,10 @@ import { useState, useEffect } from 'react';
 import { MPNumberFormat } from '@utils/helpers';
 import { format } from 'date-fns';
 
-const TournamentDetail = ({ user, data}) => {
+import baseURL from '@utils/baseURL';
+import TournamentMatches from '@components/tournament/TournamentMatches';
 
+const TournamentDetail = ({ user, data }) => {
   console.log(data);
 
   if (data) {
@@ -46,7 +48,7 @@ const TournamentDetail = ({ user, data}) => {
                       <div className="flag_tick_flow">
                         <span className="game_name">
                           {' '}
-                          {data.name}{' '}
+                          {data.tournament.name}{' '}
                         </span>
                         <div className="flag"></div>
                         <div className="tick">
@@ -64,7 +66,7 @@ const TournamentDetail = ({ user, data}) => {
                         Indoor Stadium, Bangalore Feb 18th - 20th 10 AM IST
                       </span>{' '}
                       <span className="follower">
-                        {data.description}
+                        {data.tournament.description}
                       </span>{' '}
                     </div>
                   </div>
@@ -87,11 +89,12 @@ const TournamentDetail = ({ user, data}) => {
                   <h5>SPONSORS</h5>
 
                   <>
-                    {data.sponsors && data.sponsors.map((item, index) => (
-                      <span key={index}>
-                        <img src={item.imgUrl} alt={item.sponsorId} />
-                      </span>
-                    ))}data.sponsors && 
+                    {data.sponsors &&
+                      data.sponsors.map((item, index) => (
+                        <span key={index}>
+                          <img src={item.imgUrl} alt={item.sponsorId} />
+                        </span>
+                      ))}
                   </>
                 </div>
 
@@ -99,7 +102,11 @@ const TournamentDetail = ({ user, data}) => {
                   <h5>Price</h5>
                   <span className="">
                     <MPNumberFormat
-                      value={data.prizepool}
+                      value={
+                        data.tournament.prizepool
+                          ? data.tournament.prizepool
+                          : null
+                      }
                       currency={data.currency}
                     />
                   </span>
@@ -133,19 +140,20 @@ const TournamentDetail = ({ user, data}) => {
                   <p>
                     {data.detaildescription
                       ? data.detaildescription
-                      : data.description}
+                      : data.tournament.description}
                   </p>
 
                   <div className="games">
                     <h3>organizer:</h3>
 
                     <>
-                      {data.organizers && data.organizers.map((item, index) => (
-                        <span key={index}>
-                          <img src={item.imgUrl} alt={item.name} />{' '}
-                          <b>{item.name}</b>
-                        </span>
-                      ))}
+                      {data.organizers &&
+                        data.organizers.map((item, index) => (
+                          <span key={index}>
+                            <img src={item.imgUrl} alt={item.name} />{' '}
+                            <b>{item.name}</b>
+                          </span>
+                        ))}
                     </>
                   </div>
 
@@ -167,11 +175,12 @@ const TournamentDetail = ({ user, data}) => {
                     <h2>GAMES</h2>
 
                     <>
-                      {data.games && data.games.map((item, index) => (
-                        <span key={index}>
-                          <img src={item.imgUrl} alt={item.name} />
-                        </span>
-                      ))}
+                      {data.games &&
+                        data.games.map((item, index) => (
+                          <span key={index}>
+                            <img src={item.imgUrl} alt={item.name} />
+                          </span>
+                        ))}
                     </>
                   </div>
                   <div className="internet">
@@ -477,9 +486,7 @@ const TournamentDetail = ({ user, data}) => {
                   </div>
                 </div>
               </div>
-              <div className="tab hide" id="matches">
-                <h2>matches</h2>
-              </div>
+              <TournamentMatches data={data} />
               <div className="tab hide" id="result">
                 <div className="results_box white_bg">
                   <div className="congratulations">
@@ -944,7 +951,30 @@ const TournamentDetail = ({ user, data}) => {
                 <h2>About</h2>
               </div>
               <div className="tab hide" id="sponsors">
-                <h2>Sponsors</h2>
+                <div className="sponsers_box">
+                  <ul>
+                    {data.sponsors.length === 0 ? (
+                      <div>No Sponsors</div>
+                    ) : (
+                      data.sponsors.map((spons, index) => {
+                        return (
+                          <li key={index}>
+                            <div className="sponser_name">
+                              <img src={spons.imgUrl} alt={spons.sponsorId} />
+                            </div>
+                            <div className="sponser_data">
+                              {' '}
+                              <span className="head_spons_bg">
+                                {spons.name}
+                              </span>
+                              <p>{spons.description}</p>
+                            </div>
+                          </li>
+                        );
+                      })
+                    )}
+                  </ul>
+                </div>
               </div>
               <div className="tab hide" id="rigs">
                 <h2>Rigs</h2>
@@ -962,19 +992,17 @@ const TournamentDetail = ({ user, data}) => {
 };
 
 export const getServerSideProps = async (context) => {
-  
   const { tournamentid } = context.params;
-  console.log(tournamentid)
-  const response = await fetch(`${baseEsportsAPIURL}/esport/tournaments/${tournamentid}`, {method:'GET', 
-  headers: {'Authorization': 'Basic ' + Buffer.from('multiplyr' + ":" + 'Multiplyr123$').toString('base64')}});
-
-  const dat = await response.json();
-  const data = dat.data;
+  console.log(tournamentid);
+  // const response = await fetch(`${baseEsportsAPIURL}/esport/tournaments/${tournamentid}`, {method:'GET',
+  // headers: {'Authorization': 'Basic ' + Buffer.from('multiplyr' + ":" + 'Multiplyr123$').toString('base64')}});
+  const response = await fetch(`${baseURL}/api/tournaments/${tournamentid}`);
+  const data = await response.json();
+  // const data = dat.data;
 
   return {
     props: { data }
   };
 };
-
 
 export default TournamentDetail;

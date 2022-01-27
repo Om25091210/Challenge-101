@@ -6,11 +6,16 @@ import TeamVideos from './TeamVideos';
 import TeamAllStats from './TeamAllStats';
 import axios from 'axios';
 import baseURL from '@utils/baseURL';
+import LikePost from '@components/postLikes/LikePost';
+import CustomPost from '@components/dashboard/CustomPost';
+import CommentForm from '@components/comments/CommentForm';
+import Moment from 'moment';
 
 import ProductList from '@components/common/ProductList';
 
 const TeamProfileData = ({ user, data, products }) => {
   const [jobs, setJobs] = useState([]);
+  const [teamposts, setTeamPosts] = useState([]);
 
   useEffect(() => {
     $('a.model_show_btn').click(function () {
@@ -27,7 +32,15 @@ const TeamProfileData = ({ user, data, products }) => {
     axios
       .get(`${baseURL}/api/teams/jobs/${data._id}`)
       .then((res) => setJobs(res.data));
+
+    //Posts
+    axios
+      .get(`${baseURL}/api/posts/`)
+      .then((res) => setTeamPosts(res.data.posts));
   }, []);
+  let Filteredteamposts = teamposts.filter((teampost) => {
+    return teampost.post_type === 'Team' && teampost.username === data.name;
+  });
 
   return (
     <>
@@ -35,153 +48,120 @@ const TeamProfileData = ({ user, data, products }) => {
         <div className="tab" id="overview">
           {' '}
           <div className="profile_left_post">
-            <div className="post">
-              <div className="heads">
-                <div className="user">
-                  <img src="/assets/media/user.jpg" alt="" />
-                </div>
-                <h4>TheMadTitan</h4>
-              </div>
-              <div className="left_details">
-                {' '}
-                <a href="#">
-                  {' '}
-                  <i className="fa fa-heart" aria-hidden="true"></i>{' '}
-                  <span>1.7k</span>{' '}
-                </a>{' '}
-                <a href="#">
-                  {' '}
-                  <i className="fa fa-eye" aria-hidden="true"></i>{' '}
-                  <span>239k</span>{' '}
-                </a>{' '}
-                <a href="#">
-                  {' '}
-                  <i className="fa fa-commenting" aria-hidden="true"></i>{' '}
-                  <span>232k</span>{' '}
-                </a>{' '}
-              </div>
-              <div className="right_details">
-                <div className="post_data"></div>
-                <div className="users_share_box">
-                  <div className="more_user">
-                    {' '}
-                    <a href="#">
-                      <img src="/assets/media/1.jpg" alt="user" />
-                      <span className="online"></span>
-                    </a>{' '}
-                    <a href="#">
-                      <img src="/assets/media/2.jpg" alt="user" />
-                      <span className="online"></span>
-                    </a>{' '}
-                    <a href="#">
-                      <img src="/assets/media/3.jpg" alt="user" />
-                      <span className="offiline"></span>
-                    </a>{' '}
-                    <a href="#" className="more">
-                      +3
-                    </a>{' '}
-                    <span className="others">
-                      Ashwin, George and 5 others have liked your post.
-                    </span>{' '}
-                  </div>
-                  <div className="shere">
-                    {' '}
-                    <a href="#">
-                      {' '}
-                      <i className="fa fa-heart" aria-hidden="true"></i>{' '}
-                      <span>Like</span>{' '}
-                    </a>{' '}
-                    <a href="#">
-                      {' '}
-                      <i
-                        className="fa fa-share-alt"
-                        aria-hidden="true"
-                      ></i>{' '}
-                      <span>Share</span>{' '}
-                    </a>
-                    <div className="three_dots">
-                      <a href="#">
-                        {' '}
-                        <i className="fa fa-ellipsis-v" aria-hidden="true"></i>
-                      </a>
-                      <div className="three_dots_dropdown">
-                        <ul>
-                          <li>
-                            <a href="#">Edit</a>
-                          </li>
-                          <li>
-                            <a href="#">Share to</a>
-                          </li>
-                          <li>
-                            <a href="#">Copy Link</a>
-                          </li>
-                          <li>
-                            <a href="#">Delet</a>
-                          </li>
-                        </ul>
+            {Filteredteamposts.length === 0 ? (
+              <h6>No Posts Under This Team</h6>
+            ) : (
+              Filteredteamposts.length !== 0 &&
+              Filteredteamposts.map((post, index) => (
+                <div className="post">
+                  <div key={index}>
+                    <div className="heads" key={index}>
+                      <div className="user">
+                        <img src={post.profilepic} alt="" />
+                      </div>
+                      <div className="user_name_disc">
+                        <h4>{post.username}</h4>
+                        <p>{post.description}</p>
+                      </div>
+
+                      <div className="date">
+                        {post.createdAt === post.updatedAt ? (
+                          <p>
+                            {' '}
+                            {Moment(post.createdAt).format(
+                              'MMMM, DD, YYYY hh:mm A'
+                            )}{' '}
+                          </p>
+                        ) : (
+                          <p>
+                            {' '}
+                            {Moment(post.updatedAt).format(
+                              'MMMM, DD, YYYY hh:mm A'
+                            )}{' '}
+                          </p>
+                        )}
                       </div>
                     </div>
+                    <div className="left_details">
+                      {' '}
+                      <a href="#">
+                        {' '}
+                        <i className="fa fa-heart" aria-hidden="true"></i>{' '}
+                        <span>{post.likes.length}</span>{' '}
+                      </a>{' '}
+                      <a href="#">
+                        {' '}
+                        <i className="fa fa-eye" aria-hidden="true"></i>{' '}
+                        <span>{post.views}</span>{' '}
+                      </a>{' '}
+                      <a href="#">
+                        {' '}
+                        <i
+                          className="fa fa-commenting"
+                          aria-hidden="true"
+                        ></i>{' '}
+                        <span>0</span>{' '}
+                      </a>{' '}
+                    </div>
+                    <div className="right_details">
+                      <div className="post_data">
+                        <img src={post.images} alt="" />
+                      </div>
+                      <div className="users_share_box">
+                        <div className="more_user">
+                          {' '}
+                          <a href="#">
+                            <img src="/assets/media/dash/1.jpg" alt="user" />
+                            <span className="online"></span>
+                          </a>{' '}
+                          <a href="#">
+                            <img src="/assets/media/dash/2.jpg" alt="user" />
+                            <span className="online"></span>
+                          </a>{' '}
+                          <a href="#">
+                            <img src="/assets/media/dash/3.jpg" alt="user" />
+                            <span className="offiline"></span>
+                          </a>{' '}
+                          <a href="#" className="more">
+                            +3
+                          </a>{' '}
+                          <span className="others">
+                            Ashwin, George and 5 others have liked your post.
+                          </span>{' '}
+                        </div>
+                        <div className="shere">
+                          {' '}
+                          <LikePost postId={post._id} />{' '}
+                          <a href="#">
+                            {' '}
+                            <i
+                              className="fa fa-share-alt"
+                              aria-hidden="true"
+                            ></i>{' '}
+                            <span>Share</span>{' '}
+                          </a>
+                          <div className="three_dots">
+                            <a>
+                              {' '}
+                              <i
+                                className="fa fa-ellipsis-v"
+                                aria-hidden="true"
+                              ></i>
+                            </a>
+                            <CustomPost post={post} />
+                          </div>
+                        </div>
+                      </div>
+
+                      <CommentForm post={post} user={user} />
+                    </div>
                   </div>
                 </div>
-
-                {/* <!--Start Add comments--> */}
-
-                <div className="add_comment_box">
-                  <div className="add_comments">
-                    <div className="user">
-                      <img src="/assets/media/user.jpg" alt="" />
-                    </div>
-                    <textarea placeholder="Add a comment"></textarea>
-                    <a href="#" className="gif">
-                      GIF
-                    </a>{' '}
-                    <a href="#" className="smile">
-                      <img src="/assets/media/smile.png" alt="" />
-                    </a>{' '}
-                  </div>
-                  <button>
-                    <img src="/assets/media/send.png" alt="" />
-                  </button>
-                </div>
-
-                {/* <!--Start Add comments--> */}
-
-                <div className="post_comments">
-                  <div className="pop_comment">Popular Comments</div>
-                  <div className="comments_point">
-                    <div className="fire">
-                      <img src="/assets/media/fire.png" alt="" />{' '}
-                      <span>45</span>
-                    </div>
-                    <div className="user">
-                      <img src="/assets/media/user.jpg" alt="" />
-                    </div>
-                    <h3>TheMadTitan</h3>
-                    <a href="#" className="create">
-                      Creator
-                    </a>{' '}
-                    <span className="days">2 days ago</span>{' '}
-                    <a href="#" className="pinned">
-                      Pinned by Creator
-                    </a>{' '}
-                  </div>
-                  <p>Thank you everyone for all of your support.</p>
-                  <div className="loadmore">
-                    <a href="#">
-                      Load comments{' '}
-                      <i className="fa fa-angle-down" aria-hidden="true"></i>
-                    </a>
-                  </div>
-                </div>
-
-                {/* <!--End Add comments-->  */}
-              </div>
-            </div>
+              ))
+            )}
           </div>
           <div className="profile_match_details">
-
-
-            <TeamAllStats teamId={data._id}/>
+            <TeamAllStats teamId={data._id} />
 
             <div className="games_details">
               <ul>
