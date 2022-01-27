@@ -6,6 +6,8 @@ import { useRouter } from 'next/router';
 import GameVideos from './GameVideos';
 import GameTournaments from './GameTournaments';
 import GameLeagues from './GameLeagues';
+import GameTeams from './GameTeams';
+import GamePlayers from './GamePlayers';
 
 const Game = ({ user }) => {
   const [game, setGame] = useState([]);
@@ -493,7 +495,7 @@ const Game = ({ user }) => {
 
             {/* /* ---- start game row --- */}
 
-            <GameLeagues user={user}/>
+            <GameLeagues user={user} game={game}/>
 
             {/* /* ---- end game row --- */}
           </div>
@@ -825,112 +827,10 @@ const Game = ({ user }) => {
               <GameVideos user={user} game={game} />
           </div>
           <div className="tab hide" id="teams">
-            <ul className="communities teams">
-              <li>
-                <div className="imgs">
-                  {' '}
-                  <img src="/assets/media/user.jpg" alt="comm" />{' '}
-                </div>
-                <div className="bottom_data">
-                  <h3>Team City </h3>
-                </div>
-              </li>
-              <li>
-                <div className="imgs">
-                  {' '}
-                  <img src="/assets/media/user.jpg" alt="comm" />{' '}
-                </div>
-                <div className="bottom_data">
-                  <h3>Bandle team</h3>
-                </div>
-              </li>
-              <li>
-                <div className="imgs">
-                  {' '}
-                  <img src="/assets/media/user.jpg" alt="comm" />{' '}
-                </div>
-                <div className="bottom_data">
-                  <h3>Pubg team</h3>
-                </div>
-              </li>
-              <li>
-                <div className="imgs">
-                  {' '}
-                  <img src="/assets/media/user.jpg" alt="comm" />{' '}
-                </div>
-                <div className="bottom_data">
-                  <h3>
-                    Bandle City{' '}
-                    <span>
-                      <i className="fa fa-check-circle" aria-hidden="true"></i>
-                    </span>
-                  </h3>
-                </div>
-              </li>
-              <li>
-                <div className="imgs">
-                  {' '}
-                  <img src="/assets/media/user.jpg" alt="comm" />{' '}
-                </div>
-                <div className="bottom_data">
-                  <h3>Bandle City</h3>
-                </div>
-              </li>
-            </ul>
+            <GameTeams user={user} game={game} />
           </div>
           <div className="tab hide" id="players">
-            <ul className="communities players">
-              <li>
-                <div className="imgs">
-                  {' '}
-                  <img src="/assets/media/user.jpg" alt="comm" />{' '}
-                </div>
-                <div className="bottom_data">
-                  <h3>Bandle City </h3>
-                </div>
-              </li>
-              <li>
-                <div className="imgs">
-                  {' '}
-                  <img src="/assets/media/user.jpg" alt="comm" />{' '}
-                </div>
-                <div className="bottom_data">
-                  <h3>Bandle City</h3>
-                </div>
-              </li>
-              <li>
-                <div className="imgs">
-                  {' '}
-                  <img src="/assets/media/user.jpg" alt="comm" />{' '}
-                </div>
-                <div className="bottom_data">
-                  <h3>Bandle City</h3>
-                </div>
-              </li>
-              <li>
-                <div className="imgs">
-                  {' '}
-                  <img src="/assets/media/user.jpg" alt="comm" />{' '}
-                </div>
-                <div className="bottom_data">
-                  <h3>
-                    Bandle City{' '}
-                    <span>
-                      <i className="fa fa-check-circle" aria-hidden="true"></i>
-                    </span>
-                  </h3>
-                </div>
-              </li>
-              <li>
-                <div className="imgs">
-                  {' '}
-                  <img src="/assets/media/user.jpg" alt="comm" />{' '}
-                </div>
-                <div className="bottom_data">
-                  <h3>Bandle City</h3>
-                </div>
-              </li>
-            </ul>
+            <GamePlayers user={user} game={game} />
           </div>
           <div className="tab hide" id="communities">
             <ul className="communities">

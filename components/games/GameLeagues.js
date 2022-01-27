@@ -7,7 +7,7 @@ import axios from 'axios';
 import baseURL from '@utils/baseURL';
 
 
-const GameLeagues = ({ user }) => {
+const GameLeagues = ({ user, game }) => {
 
   const router = useRouter();
 
@@ -46,7 +46,7 @@ const GameLeagues = ({ user }) => {
               <div className="game_pos">
                 <div className="game_loc">
                   {' '}
-                  <img src="/assets/media/category/game_loc.jpg" alt="" />{' '}
+                  <img src={result.imgUrl} alt="" />{' '}
                 </div>
                 <span className="tour_logo">
                   {' '}
@@ -60,7 +60,7 @@ const GameLeagues = ({ user }) => {
                     09.OCT.2021
                   </div>
                   <div className="reg">
-                    <button className="active">LIVE</button>
+                    {result.status ? (<button className="active">result.status</button>) : ''}
                   </div>
                 </div>
                 <div className="bottom_game">
@@ -70,15 +70,7 @@ const GameLeagues = ({ user }) => {
                   <div className="games">
                     <h3>Games:</h3>
                     <div className="game_logo">
-                      <img src="/assets/media/category/game1.png" alt="" /> COD
-                      4,
-                    </div>
-                    <div className="game_logo">
-                      <img src="/assets/media/category/game2.png" alt="" /> DOTA
-                      2,
-                    </div>
-                    <div className="game_logo">
-                      <img src="/assets/media/category/game3.png" alt="" /> CSGO
+                      <img src={game.name} alt={game.name} /> {game.name}
                     </div>
                   </div>
                   <div className="prize">
