@@ -1,9 +1,11 @@
-import FriendRequests from '@components/dashboard/friendRequests';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import baseURL from '@utils/baseURL';
 import Moment from 'moment';
+
+import RecentActivity from '@components/dashboard/RecentActivity';
+import FriendRequests from '@components/dashboard/friendRequests';
 
 const RightSection = ({ user, profile, suggestedplayers, teams }) => {
 
@@ -14,7 +16,6 @@ const RightSection = ({ user, profile, suggestedplayers, teams }) => {
     axios.get(`${baseURL}/api/matches/top/matches`, {
       })
       .then((res) => {
-        console.log(res)
         setMatches(res.data);
       })
       .catch((err) => {
@@ -25,39 +26,8 @@ const RightSection = ({ user, profile, suggestedplayers, teams }) => {
 
   return (
     <div className="right_side overhight">
-      <div className="recent_activity">
-        <h2>RECENT ACTIVITY</h2>
-        <a href="#!" className="hideShow">
-          Hide <i className="fa fa-angle-down" aria-hidden="true"></i>{' '}
-          <i className="fa fa-angle-up" aria-hidden="true"></i>
-        </a>
-        <div className="white_box">
-          <div className="activity_tag">
-            {' '}
-            <a href="#">
-              {' '}
-              <span className="act_img">
-                <img src="/assets/media/dash/user1.png" alt="" />
-              </span>{' '}
-              <span className="act_name">
-                You have been invited to join TWW - The Werewolves.{' '}
-              </span>{' '}
-            </a>{' '}
-          </div>
-          <div className="activity_tag">
-            {' '}
-            <a href="#">
-              {' '}
-              <span className="act_img">
-                <img src="/assets/media/dash/user.jpg" alt="" />
-              </span>{' '}
-              <span className="act_name">
-                Jonah has sent you a friend request.{' '}
-              </span>{' '}
-            </a>{' '}
-          </div>
-        </div>
-      </div>
+
+     <RecentActivity user={user}/>
 
       <FriendRequests user={user} />
 

@@ -17,27 +17,8 @@ const scrollToBottom = (divRef) => {
 };
 
 const Dashboard = ({ user, profile, teams, posts, suggplayers }) => {
-  const [chats, setChats] = useState([]);
-  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    axios
-      .get(`${baseURL}/api/chats`, {
-        headers: {
-          Authorization: cookie.get('token')
-        }
-      })
-      .then((res) => {
-        console.log(res.data);
-        setChats(res.data);
-      })
-      .finally(() => {
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+  const [loading, setLoading] = useState(true);
 
   const router = useRouter();
   const { chat } = router.query;
