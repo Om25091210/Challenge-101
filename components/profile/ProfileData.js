@@ -1,4 +1,3 @@
-import GameDetails from './gamedetails';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import baseURL from '@utils/baseURL';
@@ -13,7 +12,10 @@ import cookie from 'js-cookie';
 import Photos from './Photos';
 import Videos from './Videos';
 import ProductList from '@components/common/ProductList';
+import ProductRigs from '@components/common/ProductRigs';
 import ProfileMatches from './ProfileMatches';
+import TeamAllStats from '@components/team/TeamAllStats';
+import GamesDetails from './GamesDetails';
 
 
 const ProfileData = ({ user, Userdata, player, products }) => {
@@ -144,69 +146,21 @@ const ProfileData = ({ user, Userdata, player, products }) => {
           </div>
 
           <div className="profile_match_details">
-            <div className="all_stats">
-              <ul>
-                <li>
-                  <img src="/assets/media/profile/fire1.png" alt="" />
-                  <div className="two_value">
-                    <span className="num">108</span>
-                    <span className="names">MATCHES PLAYED</span>
-                  </div>
-                </li>
-                <li>
-                  <img src="/assets/media/profile/won.png" alt="" />
 
-                  <div className="two_value">
-                    <span className="num">71</span>
-                    <span className="names">MATCHES WON</span>
-                  </div>
-                </li>
-                <li>
-                  <img src="/assets/media/profile/cup.png" alt="" />
+            {Userdata.teamMatchesList.map((result, index) => (
+                  <TeamAllStats teamId={result.team._id} />
+              ))}
 
-                  <div className="two_value">
-                    <span className="num">12</span>
-                    <span className="names">TROPHIES</span>
-                  </div>
-                </li>
-                <li>
-                  <img src="/assets/media/profile/money.png" alt="" />
-                  <div className="two_value">
-                    <span className="num">$40K</span>
-                    <span className="names">EARNINGS</span>
-                  </div>
-                </li>
-                <li>
-                  <img src="/assets/media/profile/streak.png" alt="" />
-                  <div className="two_value">
-                    <span className="num">26</span>
-                    <span className="names">WINNING STREAK</span>
-                  </div>
-                </li>
-                <li>
-                  <div className="two_value">
-                    <a href="#" className="names">
-                      All Stat
-                    </a>
-                  </div>{' '}
-                  <i className="fa fa-long-arrow-right" aria-hidden="true"></i>
-                </li>
-              </ul>
-            </div>
+            <GamesDetails />
 
-            <GameDetails />
           </div>
         </div>
 
+{/* 
         <div className="tab hide" id="statistics">
-          {' '}
-          222222222{' '}
-          {player ? (
-            <pre>{JSON.stringify(player, null, 4)}</pre>
-          ) : (
-            <>Loading...</>
-          )}
+
         </div>
+*/}        
         <div className="tab hide" id="achievement">
           {' '}
           <div className="achivement_box">
@@ -329,177 +283,12 @@ const ProfileData = ({ user, Userdata, player, products }) => {
             </ul>
           </div>
         </div>
-        <div className="tab hide" id="rigs">
-          <div className="rigs">
-            <ul>
-              <li>
-                <div className="lft_prod_det">
-                  {' '}
-                  <span className="new"> New</span>
-                  <div className="prod_brand"> Logitech H9189</div>
-                  <p className="prod_name">Mouse</p>
-                  <a href="#prod2" className="quickpoup">
-                    Buy Now
-                  </a>{' '}
-                </div>
-                <div className="prod_img">
-                  <img src="/assets/media/rigs/headphone1.jpg" alt="" />
-                </div>
-              </li>
-              <li>
-                <div className="lft_prod_det">
-                  {' '}
-                  <span className="new"> New</span>
-                  <div className="prod_brand"> Logitech H9189</div>
-                  <p className="prod_name">Mouse</p>
-                  <a href="#">Buy Now</a>{' '}
-                </div>
-                <div className="prod_img">
-                  <img src="/assets/media/rigs/headphone1.jpg" alt="" />
-                </div>
-              </li>
-              <li>
-                <div className="lft_prod_det">
-                  {' '}
-                  <span className="new"> New</span>
-                  <div className="prod_brand"> Logitech H9189</div>
-                  <p className="prod_name">Mouse</p>
-                  <a href="#">Buy Now</a>{' '}
-                </div>
-                <div className="prod_img">
-                  <img src="/assets/media/rigs/headphone2.jpg" alt="" />
-                </div>
-              </li>
-              <li>
-                <div className="lft_prod_det">
-                  {' '}
-                  <span className="new"> New</span>
-                  <div className="prod_brand"> Logitech H9189</div>
-                  <p className="prod_name">Mouse</p>
-                  <a href="#">Buy Now</a>{' '}
-                </div>
-                <div className="prod_img">
-                  <img src="/assets/media/rigs/headphone1.jpg" alt="" />
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
+
+        <ProductRigs user={user} productList={products}/>
+
       </div>
 
       {/* ------------- start poup data ------------- */}
-
-      <div id="prod2" className="quick_view" style={{ display: 'none' }}>
-        <div className="product_box">
-          <div className="product-img-box">
-            <div className="prod_big_thumb">
-              <div className="slider-for">
-                <div>
-                  <div className="slide-box">
-                    {' '}
-                    <img src="/assets/media/rigs/headphone1.jpg" alt="" />{' '}
-                  </div>
-                </div>
-                <div>
-                  <div className="slide-box">
-                    {' '}
-                    <img src="/assets/media/rigs/headphone1.jpg" alt="" />{' '}
-                  </div>
-                </div>
-                <div>
-                  <div className="slide-box">
-                    {' '}
-                    <img src="/assets/media/rigs/headphone1.jpg" alt="" />{' '}
-                  </div>
-                </div>
-                <div>
-                  <div className="slide-box">
-                    {' '}
-                    <img src="/assets/media/rigs/headphone1.jpg" alt="" />{' '}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="product-detail-box">
-            <h1>Mouse</h1>
-            <div className="row">
-              <div className="col-lg-12">
-                <div className="like_view">
-                  {' '}
-                  <a href="#" className="art">
-                    <i className="fa fa-picture-o" aria-hidden="true"></i> Art
-                  </a>{' '}
-                  <a href="#" className="view">
-                    <i className="fa fa-eye" aria-hidden="true"></i> 250
-                  </a>{' '}
-                  <a href="#" className="like">
-                    <i className="fa fa-heart" aria-hidden="true"></i> 18
-                  </a>{' '}
-                </div>
-                <div className="review">
-                  {' '}
-                  <i className="fa fa-star" aria-hidden="true"></i>{' '}
-                  <i className="fa fa-star" aria-hidden="true"></i>{' '}
-                  <i className="fa fa-star" aria-hidden="true"></i>{' '}
-                  <i className="fa fa-star" aria-hidden="true"></i>{' '}
-                  <i className="fa fa-star" aria-hidden="true"></i>{' '}
-                  <span className="rev_txt">
-                    Based on <b>2 reviews</b>
-                  </span>{' '}
-                </div>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-lg-12">
-                <div className="price">
-                  {' '}
-                  $48.00 <del style={{ display: 'none' }}>£299.00</del>{' '}
-                  <span className="discount" style={{ display: 'none' }}>
-                    (10% Discount)
-                  </span>{' '}
-                </div>
-                <p className="brief">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Aliquam tristique purus vitae venenatis ultrices. Suspendisse
-                  tristique tortor ante,{' '}
-                </p>
-              </div>
-            </div>
-            <div className="row size-option">
-              <div className="col-lg-12">
-                <ul>
-                  <li>
-                    {' '}
-                    <a href="#!">Qty</a>
-                    <div className="content size-chart qty mCustomScrollbar">
-                      <ul>
-                        <li>1</li>
-                        <li>2</li>
-                        <li className="selected">3</li>
-                        <li>4</li>
-                        <li>5</li>
-                      </ul>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div className="row cart-row">
-              <div className="col-lg-12 col-md-12 col-xs-12">
-                {' '}
-                <a href="#!" className="btn btn-primary">
-                  <i className="fa fa-shopping-basket"></i> Add To Bag{' '}
-                </a>{' '}
-                <a href="#!" className="btn btn-primary">
-                  <i className="fa fa-heart-o" aria-hidden="true"></i> Add To
-                  wishlist{' '}
-                </a>{' '}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
       <ProdPoup />
     </>

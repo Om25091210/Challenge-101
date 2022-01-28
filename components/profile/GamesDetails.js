@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import Head from 'next/head'
 
-const GameDetails = (props) => (
+const GamesDetails = (props) => (
 
 
         <div className="games_details">
@@ -29,4 +29,4 @@ const GameDetails = (props) => (
 
 );
 
-export default GameDetails;
+export default GamesDetails;

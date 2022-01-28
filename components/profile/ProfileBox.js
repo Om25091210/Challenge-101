@@ -26,6 +26,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
     setFollow(true);
   };
 
+  console.log(Userdata);
   const addFollow = async () => {
     const res = await fetch(`${baseURL}/api/profile/follow/${SrhUser._id}`, {
       method: 'POST',
@@ -314,14 +315,20 @@ const ProfileBox = ({ user, Userdata, games }) => {
               <div className="current_status">
                 <div className="current_team">
                   <span className="ct"> Current Team</span>
-                  <span className="were">
-                    The Werewolves{' '}
-                    <i className="fa fa-arrow-right" aria-hidden="true"></i>
+                  
+                  {Userdata.teamMatchesList.map((result, index) => (
+                  <a href={`/team/${result.team._id}`}>
+                    <span className="were">{result.team.name} {' '}<i className="fa fa-arrow-right" aria-hidden="true"></i>
                   </span>
+                  </a>
+                    ))}
+
                 </div>
                 <div className="game_role">
+                {/*
                   <span className="ct"> In Game Role</span>
                   <span className="were">Captain - CS GO</span>
+                */ }  
                 </div>
                 <div className="game_role profile_address">
                   <div className="loc_box">
@@ -607,10 +614,15 @@ const ProfileBox = ({ user, Userdata, games }) => {
 
           <div className="right_bio">
             <div className="games_data white_bg">
-              {Userdata.profile.player?.games.length === 0 ? (
+
+
+              {Userdata.teamMatchesList.length === 0 ? (
                 <div>No Games for {SrhUser.username}</div>
               ) : (
-                Userdata.profile.player?.games.map((item, index) => (
+
+
+              Userdata.teamMatchesList.map((item, index) => (
+
                   <>
                     <div
                       className={`tab ${
@@ -620,7 +632,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                       key={index}
                     >
                       <div key={index} className="game_btn">
-                        {item.gameId ? item.gameId.name : 'Not Defined'}
+                        {item.team.games[0].gameId ? item.team.games[0].gameId.name : 'Not Defined'}
                       </div>
                       <ul>
                         <li>
@@ -650,8 +662,13 @@ const ProfileBox = ({ user, Userdata, games }) => {
                       </ul>
                     </div>
                   </>
+
+
                 ))
+
+
               )}
+
             </div>
           </div>
         </div>

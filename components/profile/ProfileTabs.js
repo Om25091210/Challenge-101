@@ -9,11 +9,6 @@ const ProfileTabs = (props) => (
       </a>
     </li>
     <li>
-      <a href="#!" rel="statistics">
-        STATISTICS
-      </a>
-    </li>
-    <li>
       <a href="#!" rel="achievement">
         {' '}
         ACHIEVEMENTS
