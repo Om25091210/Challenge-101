@@ -8,6 +8,8 @@ import GameTournaments from './GameTournaments';
 import GameLeagues from './GameLeagues';
 import GameTeams from './GameTeams';
 import GamePlayers from './GamePlayers';
+import GameCommunities from './GameCommunities';
+
 
 const Game = ({ user }) => {
   const [game, setGame] = useState([]);
@@ -157,13 +159,6 @@ const Game = ({ user }) => {
         </div>
         <ul className="profile_tab_btn">
           <li className="active">
-            {' '}
-            <a href="#!" rel="overview">
-              {' '}
-              OVERVIEW{' '}
-            </a>{' '}
-          </li>
-          <li>
             {' '}
             <a href="#!" rel="tournament">
               {' '}
@@ -833,68 +828,7 @@ const Game = ({ user }) => {
             <GamePlayers user={user} game={game} />
           </div>
           <div className="tab hide" id="communities">
-            <ul className="communities">
-              <li>
-                <div className="imgs">
-                  {' '}
-                  <img src="/assets/media/user.jpg" alt="comm" />{' '}
-                </div>
-                <div className="bottom_data">
-                  <h3>
-                    Bandle City{' '}
-                    <span>
-                      <i className="fa fa-check-circle" aria-hidden="true"></i>
-                    </span>
-                  </h3>
-                  <p className="member">853K members</p>
-                </div>
-              </li>
-              <li>
-                <div className="imgs">
-                  {' '}
-                  <img src="/assets/media/user.jpg" alt="comm" />{' '}
-                </div>
-                <div className="bottom_data">
-                  <h3>Bandle City</h3>
-                  <p className="member">37K members</p>
-                </div>
-              </li>
-              <li>
-                <div className="imgs">
-                  {' '}
-                  <img src="/assets/media/user.jpg" alt="comm" />{' '}
-                </div>
-                <div className="bottom_data">
-                  <h3>Bandle City</h3>
-                  <p className="member">83K members</p>
-                </div>
-              </li>
-              <li>
-                <div className="imgs">
-                  {' '}
-                  <img src="/assets/media/user.jpg" alt="comm" />{' '}
-                </div>
-                <div className="bottom_data">
-                  <h3>
-                    Bandle City{' '}
-                    <span>
-                      <i className="fa fa-check-circle" aria-hidden="true"></i>
-                    </span>
-                  </h3>
-                  <p className="member">53K members</p>
-                </div>
-              </li>
-              <li>
-                <div className="imgs">
-                  {' '}
-                  <img src="/assets/media/user.jpg" alt="comm" />{' '}
-                </div>
-                <div className="bottom_data">
-                  <h3>Bandle City</h3>
-                  <p className="member">853K members</p>
-                </div>
-              </li>
-            </ul>
+              <GameCommunities user={user} game={game} />
           </div>
         </div>
       </div>
