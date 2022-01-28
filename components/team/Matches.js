@@ -39,7 +39,7 @@ const Matches = ({ teamMatches }) => {
             <div className="team_vs">
               <p>
                 {Moment(tm.startDate).format('MMMM, DD, YYYY hh:mm A')}
-                <a href="#">
+                <a href={tm.streamsList[0]?.embed_url} target="_blank">
                   View Match <i className="fa fa-play" aria-hidden="true"></i>
                 </a>
               </p>

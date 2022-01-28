@@ -9,16 +9,10 @@ import GameLeagues from './GameLeagues';
 import GameTeams from './GameTeams';
 import GamePlayers from './GamePlayers';
 import GameCommunities from './GameCommunities';
+import Matches from '@components/team/Matches';
 
-
-const Game = ({ user }) => {
-  const [game, setGame] = useState([]);
-  const router = useRouter();
-  const { id } = router.query;
-
-  useEffect(() => {
-    axios.get(`${baseURL}/api/games/${id}`).then((res) => setGame(res.data));
-  }, []);
+const Game = ({ user, data }) => {
+  const [game, setGame] = useState(data.games);
 
   return (
     <div>
@@ -480,7 +474,7 @@ const Game = ({ user }) => {
             <h2>Tournament</h2>
 
             {/* /* ---- start game row --- */}
-            <GameTournaments user={user}/>
+            <GameTournaments user={user} />
 
             {/* /* ---- end game row --- */}
           </div>
@@ -490,7 +484,7 @@ const Game = ({ user }) => {
 
             {/* /* ---- start game row --- */}
 
-            <GameLeagues user={user} game={game}/>
+            <GameLeagues user={user} game={game} />
 
             {/* /* ---- end game row --- */}
           </div>
@@ -553,273 +547,10 @@ const Game = ({ user }) => {
             {/* /* ---- end game row --- */}
           </div>
           <div className="tab hide" id="matches">
-            <div className="matches_box">
-              <div className="heads_bg">Upcoming Matches </div>
-              <div className="match_row">
-                <div className="team_a">
-                  {' '}
-                  <img src="/assets/media/teams/team1.png" alt="" />
-                  <div className="team_name">
-                    <h3>Fnatic eSports</h3>
-                    <a href="#">
-                      <img src="/assets/media/teams/user1.png" alt="" />
-                    </a>{' '}
-                    <a href="#">
-                      <img src="/assets/media/teams/user2.png" alt="" />
-                    </a>{' '}
-                    <a href="#">
-                      <img src="/assets/media/teams/user3.png" alt="" />
-                    </a>{' '}
-                    <a href="#">
-                      <img src="/assets/media/teams/user4.png" alt="" />
-                    </a>{' '}
-                  </div>
-                </div>
-                <div className="team_vs">
-                  <p>
-                    03 OCT 2018 05:38PM{' '}
-                    <a href="#">
-                      View Match{' '}
-                      <i className="fa fa-play" aria-hidden="true"></i>
-                    </a>
-                  </p>
-                  <div className="vs">VS</div>
-                  <p>Call of Duty WW2</p>
-                </div>
-                <div className="team_b">
-                  {' '}
-                  <img src="/assets/media/teams/team2.png" alt="" />
-                  <div className="team_name">
-                    <h3>WingsGaming</h3>
-                    <a href="#">
-                      <img src="/assets/media/teams/user1.png" alt="" />
-                    </a>{' '}
-                    <a href="#">
-                      <img src="/assets/media/teams/user2.png" alt="" />
-                    </a>{' '}
-                    <a href="#">
-                      <img src="/assets/media/teams/user3.png" alt="" />
-                    </a>{' '}
-                    <a href="#">
-                      <img src="/assets/media/teams/user4.png" alt="" />
-                    </a>{' '}
-                  </div>
-                </div>
-              </div>
-              <div className="match_row">
-                <div className="team_a">
-                  {' '}
-                  <img src="/assets/media/teams/team1.png" alt="" />
-                  <div className="team_name">
-                    <h3>Fnatic eSports</h3>
-                    <a href="#">
-                      <img src="/assets/media/teams/user1.png" alt="" />
-                    </a>{' '}
-                    <a href="#">
-                      <img src="/assets/media/teams/user2.png" alt="" />
-                    </a>{' '}
-                    <a href="#">
-                      <img src="/assets/media/teams/user3.png" alt="" />
-                    </a>{' '}
-                    <a href="#">
-                      <img src="/assets/media/teams/user4.png" alt="" />
-                    </a>{' '}
-                  </div>
-                </div>
-                <div className="team_vs">
-                  <p>
-                    03 OCT 2018 05:38PM{' '}
-                    <a href="#">
-                      View Match{' '}
-                      <i className="fa fa-play" aria-hidden="true"></i>
-                    </a>
-                  </p>
-                  <div className="vs">VS</div>
-                  <p>Call of Duty WW2</p>
-                </div>
-                <div className="team_b">
-                  {' '}
-                  <img src="/assets/media/teams/team2.png" alt="" />
-                  <div className="team_name">
-                    <h3>WingsGaming</h3>
-                    <a href="#">
-                      <img src="/assets/media/teams/user1.png" alt="" />
-                    </a>{' '}
-                    <a href="#">
-                      <img src="/assets/media/teams/user2.png" alt="" />
-                    </a>{' '}
-                    <a href="#">
-                      <img src="/assets/media/teams/user3.png" alt="" />
-                    </a>{' '}
-                    <a href="#">
-                      <img src="/assets/media/teams/user4.png" alt="" />
-                    </a>{' '}
-                  </div>
-                </div>
-              </div>
-              <div className="match_row">
-                <div className="team_a">
-                  {' '}
-                  <img src="/assets/media/teams/team1.png" alt="" />
-                  <div className="team_name">
-                    <h3>Fnatic eSports</h3>
-                    <a href="#">
-                      <img src="/assets/media/teams/user1.png" alt="" />
-                    </a>{' '}
-                    <a href="#">
-                      <img src="/assets/media/teams/user2.png" alt="" />
-                    </a>{' '}
-                    <a href="#">
-                      <img src="/assets/media/teams/user3.png" alt="" />
-                    </a>{' '}
-                    <a href="#">
-                      <img src="/assets/media/teams/user4.png" alt="" />
-                    </a>{' '}
-                  </div>
-                </div>
-                <div className="team_vs">
-                  <p>
-                    03 OCT 2018 05:38PM{' '}
-                    <a href="#">
-                      View Match{' '}
-                      <i className="fa fa-play" aria-hidden="true"></i>
-                    </a>
-                  </p>
-                  <div className="vs">VS</div>
-                  <p>Call of Duty WW2</p>
-                </div>
-                <div className="team_b">
-                  {' '}
-                  <img src="/assets/media/teams/team2.png" alt="" />
-                  <div className="team_name">
-                    <h3>WingsGaming</h3>
-                    <a href="#">
-                      <img src="/assets/media/teams/user1.png" alt="" />
-                    </a>{' '}
-                    <a href="#">
-                      <img src="/assets/media/teams/user2.png" alt="" />
-                    </a>{' '}
-                    <a href="#">
-                      <img src="/assets/media/teams/user3.png" alt="" />
-                    </a>{' '}
-                    <a href="#">
-                      <img src="/assets/media/teams/user4.png" alt="" />
-                    </a>{' '}
-                  </div>
-                </div>
-              </div>
-              <div className="heads_bg">
-                LATEST RESULTS{' '}
-                <span>
-                  SPOILERS <b>On</b>
-                </span>
-              </div>
-              <div className="match_row">
-                <div className="team_a">
-                  {' '}
-                  <img src="/assets/media/teams/team3.png" alt="" />
-                  <div className="team_name">
-                    <h3>Fnatic eSports</h3>
-                    <a href="#">
-                      <img src="/assets/media/teams/user1.png" alt="" />
-                    </a>{' '}
-                    <a href="#">
-                      <img src="/assets/media/teams/user2.png" alt="" />
-                    </a>{' '}
-                    <a href="#">
-                      <img src="/assets/media/teams/user3.png" alt="" />
-                    </a>{' '}
-                    <a href="#">
-                      <img src="/assets/media/teams/user4.png" alt="" />
-                    </a>{' '}
-                  </div>
-                </div>
-                <div className="team_vs">
-                  <p>
-                    03 OCT 2018 05:38PM{' '}
-                    <a href="#">
-                      View Match{' '}
-                      <i className="fa fa-play" aria-hidden="true"></i>
-                    </a>
-                  </p>
-                  <div className="vs">3:2</div>
-                  <p>Call of Duty WW2</p>
-                </div>
-                <div className="team_b">
-                  {' '}
-                  <img src="/assets/media/teams/team4.png" alt="" />
-                  <div className="team_name">
-                    <h3>WingsGaming</h3>
-                    <a href="#">
-                      <img src="/assets/media/teams/user1.png" alt="" />
-                    </a>{' '}
-                    <a href="#">
-                      <img src="/assets/media/teams/user2.png" alt="" />
-                    </a>{' '}
-                    <a href="#">
-                      <img src="/assets/media/teams/user3.png" alt="" />
-                    </a>{' '}
-                    <a href="#">
-                      <img src="/assets/media/teams/user4.png" alt="" />
-                    </a>{' '}
-                  </div>
-                </div>
-              </div>
-              <div className="match_row">
-                <div className="team_a">
-                  {' '}
-                  <img src="/assets/media/teams/team5.png" alt="" />
-                  <div className="team_name">
-                    <h3>Fnatic eSports</h3>
-                    <a href="#">
-                      <img src="/assets/media/teams/user1.png" alt="" />
-                    </a>{' '}
-                    <a href="#">
-                      <img src="/assets/media/teams/user2.png" alt="" />
-                    </a>{' '}
-                    <a href="#">
-                      <img src="/assets/media/teams/user3.png" alt="" />
-                    </a>{' '}
-                    <a href="#">
-                      <img src="/assets/media/teams/user4.png" alt="" />
-                    </a>{' '}
-                  </div>
-                </div>
-                <div className="team_vs">
-                  <p>
-                    03 OCT 2018 05:38PM{' '}
-                    <a href="#">
-                      View Match{' '}
-                      <i className="fa fa-play" aria-hidden="true"></i>
-                    </a>
-                  </p>
-                  <div className="vs">1:2</div>
-                  <p>Fortnite</p>
-                </div>
-                <div className="team_b">
-                  {' '}
-                  <img src="/assets/media/teams/team6.png" alt="" />
-                  <div className="team_name">
-                    <h3>WingsGaming</h3>
-                    <a href="#">
-                      <img src="/assets/media/teams/user1.png" alt="" />
-                    </a>{' '}
-                    <a href="#">
-                      <img src="/assets/media/teams/user2.png" alt="" />
-                    </a>{' '}
-                    <a href="#">
-                      <img src="/assets/media/teams/user3.png" alt="" />
-                    </a>{' '}
-                    <a href="#">
-                      <img src="/assets/media/teams/user4.png" alt="" />
-                    </a>{' '}
-                  </div>
-                </div>
-              </div>
-            </div>
+            <Matches teamMatches={data.gameArray} />
           </div>
           <div className="tab hide" id="video">
-              <GameVideos user={user} game={game} />
+            <GameVideos user={user} game={game} />
           </div>
           <div className="tab hide" id="teams">
             <GameTeams user={user} game={game} />
@@ -828,7 +559,7 @@ const Game = ({ user }) => {
             <GamePlayers user={user} game={game} />
           </div>
           <div className="tab hide" id="communities">
-              <GameCommunities user={user} game={game} />
+            <GameCommunities user={user} game={game} />
           </div>
         </div>
       </div>
