@@ -12,12 +12,14 @@ import baseEsportsAPIURL from '@utils/baseEsportsAPIURL';
 import { useState, useEffect } from 'react';
 import { MPNumberFormat } from '@utils/helpers';
 import { format } from 'date-fns';
+import { getData } from '@utils/fetchData'
 
 import baseURL from '@utils/baseURL';
 import TournamentMatches from '@components/tournament/TournamentMatches';
+import TournamentVideos from '@components/tournament/TournamentVideos';
+import ProductList from '@components/common/ProductList';
 
-const TournamentDetail = ({ user, data }) => {
-  console.log(data);
+const TournamentDetail = ({ user, data, products }) => {
 
   if (data) {
     return (
@@ -937,9 +939,11 @@ const TournamentDetail = ({ user, data }) => {
                   </div>
                 </div>
               </div>
-              <div className="tab hide" id="store"></div>
+
+              <ProductList user={user} productList={products}/>
+
               <div className="tab hide" id="video">
-                <h2>streams</h2>
+                    <TournamentVideos user={user} tournament={data} />
               </div>
               <div className="tab hide" id="media">
                 <h2>Media</h2>
@@ -991,17 +995,25 @@ const TournamentDetail = ({ user, data }) => {
   }
 };
 
-export const getServerSideProps = async (context) => {
+export const getServerSideProps = async (context, query) => {
   const { tournamentid } = context.params;
   console.log(tournamentid);
+  const page = query ? (query.page || 1) : 1
+  const category = query ? (query.category || 'all' ) : 'all'
+  const sort = query ? (query.sort || '' ) : ''
+  const search = query ? (query.search || 'all') : 'all'  
   // const response = await fetch(`${baseEsportsAPIURL}/esport/tournaments/${tournamentid}`, {method:'GET',
   // headers: {'Authorization': 'Basic ' + Buffer.from('multiplyr' + ":" + 'Multiplyr123$').toString('base64')}});
   const response = await fetch(`${baseURL}/api/tournaments/${tournamentid}`);
   const data = await response.json();
   // const data = dat.data;
 
+  const resprod = await getData(
+      `product?limit=${page * 6}&category=${category}&sort=${sort}&title=${search}`
+    )  
+
   return {
-    props: { data }
+    props: { data,products: resprod.products }
   };
 };
 

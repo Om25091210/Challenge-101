@@ -51,7 +51,7 @@ const TournamentMatches = ({ data }) => {
                       {match.results[0]?.score}-{match.results[1]?.score}
                     </td>
                     <td>
-                      <a href={match.streamsList[0].embed_url}>View Match</a>
+                      <a href={match.streamsList[0] ? match.streamsList[0].embed_url : '-'}>View Match</a>
                     </td>
                     <td>
                       <a href="#">Buy Match Tickets</a>
