@@ -18,6 +18,8 @@ import baseURL from '@utils/baseURL';
 import TournamentMatches from '@components/tournament/TournamentMatches';
 import TournamentVideos from '@components/tournament/TournamentVideos';
 import TournamentPhotos from '@components/tournament/TournamentPhotos';
+import TournamentSeries from '@components/tournament/TournamentSeries';
+
 import ProductList from '@components/common/ProductList';
 
 const TournamentDetail = ({ user, data, products }) => {
@@ -271,7 +273,9 @@ const TournamentDetail = ({ user, data, products }) => {
                 Overview
               </div>
               <div className="tab hide" id="series">
-                <h2>squads</h2>
+
+              <TournamentSeries user={user} tournament={data.tournament}/>
+
               </div>
               <div className="tab hide" id="participants">
                 <div className="participants">
