@@ -17,6 +17,7 @@ import { getData } from '@utils/fetchData'
 import baseURL from '@utils/baseURL';
 import TournamentMatches from '@components/tournament/TournamentMatches';
 import TournamentVideos from '@components/tournament/TournamentVideos';
+import TournamentPhotos from '@components/tournament/TournamentPhotos';
 import ProductList from '@components/common/ProductList';
 
 const TournamentDetail = ({ user, data, products }) => {
@@ -247,11 +248,6 @@ const TournamentDetail = ({ user, data, products }) => {
               <li>
                 <a href="#!" rel="media">
                   MEDIA
-                </a>
-              </li>
-              <li>
-                <a href="#!" rel="jobs">
-                  Jobs
                 </a>
               </li>
               <li>
@@ -946,10 +942,7 @@ const TournamentDetail = ({ user, data, products }) => {
                     <TournamentVideos user={user} tournament={data} />
               </div>
               <div className="tab hide" id="media">
-                <h2>Media</h2>
-              </div>
-              <div className="tab hide" id="jobs">
-                <h2>Jobs</h2>
+                <TournamentPhotos user={user} tournament={data} />
               </div>
               <div className="tab hide" id="about">
                 <h2>About</h2>
