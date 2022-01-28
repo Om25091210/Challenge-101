@@ -136,23 +136,18 @@ const SignedHeader = ({ user }) => {
             </li>
 
             <li className="profile">
-              <a href="#">
+              <a href="#!">
                 <img src={user.profilePicUrl} alt={user.name} />
               </a>
               <div className="drop_down_bg profile_drop_down">
                 <ul>
                   <li>
-                    <Link href={`/user/${user.username}`}>
+                    <Link href={`/user/${user._id}`}>
                       <a>
                         <i className="fa fa-user" aria-hidden="true"></i>{' '}
                         Profile
                       </a>
                     </Link>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i className="fa fa-inbox" aria-hidden="true"></i> Inbox
-                    </a>
                   </li>
                   <li>
                     <a href="#!" onClick={logoutUser}>

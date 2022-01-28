@@ -35,31 +35,6 @@ return (
 			    ) : (
 			       recent.data.map((result, idx) => (
 			                      
-			              <>     
-
-			              { idx == 0 ? (
-
-				          <div className="activity_tag">
-				            {' '}
-				            <a href="#">
-				              {' '}
-				              <span className="act_img">
-				                <img src="/assets/media/dash/user1.png" alt="" />
-				              </span>{' '}
-				              <span className="act_name">
-				              {result.people.map((person, pdx) => (
-				              	pdx == 0 ? 
-				              	(person.person.username) + ' is recently connected.'
-				              	 : ''
-				              ))}
-				                
-				              </span>{' '}
-				            </a>{' '}
-				          </div> 
-
-				          ) : ( '')
-			          	}
-
 				          <div className="activity_tag">
 				            {' '}
 				            <a href="#">
@@ -72,7 +47,7 @@ return (
 				              </span>{' '}
 				            </a>{' '}
 				          </div>    
-				          </>    
+				           
 			      ))
 			    )}
 

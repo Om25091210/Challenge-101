@@ -13,6 +13,7 @@ import cookie from 'js-cookie';
 import Photos from './Photos';
 import Videos from './Videos';
 import ProductList from '@components/common/ProductList';
+import ProfileMatches from './ProfileMatches';
 
 
 const ProfileData = ({ user, Userdata, player, products }) => {
@@ -288,58 +289,8 @@ const ProfileData = ({ user, Userdata, player, products }) => {
             </div>
           </div>{' '}
         </div>
-        <div className="tab hide" id="matches">
-          {' '}
-          <div className="next_matches">
-            <div className="bdr_clr_green">THE WEREWOLVES [TWW]</div>
-            <div className="stats_table">
-              <table className="table">
-                <thead>
-                  <tr>
-                    <th>Date</th>
-                    <th>Versus</th>
-                    <th>Competition</th>
-                    <th>Instance</th>
-                    <th>Time</th>
-                    <th>Score</th>
-                    <th>Watch</th>
-                    <th>Tickets</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {Userdata.matches.map((match, index) => {
-                    return (
-                      <>
-                        <tr key={index}>
-                          <td>
-                            {Moment(match.startDate).format('DD-MM-YYYY')}
-                          </td>
-                          <td>
-                            <span className="dp">
-                              <img src="/assets/media/teams/team1.png" alt="" />
-                            </span>{' '}
-                            <span className="dp_name">
-                              <b>{match.teams[1].teamName}</b>
-                              {match.region}
-                            </span>
-                          </td>
-                          <td>{match.name}</td>
-                          <td>Semi-Finals</td>
-                          <td>{Moment(match.startDate).format('h:m')}</td>
-                          <td>3-2 Win</td>
-                          <td>View Match</td>
-                          <td>
-                            <a href="#">Buy Match Tickets</a>
-                          </td>
-                        </tr>
-                      </>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
-          </div>{' '}
-        </div>
+
+        <ProfileMatches user={user} Userdata={Userdata} />
 
         <ProductList user={user} productList={products}/>
 

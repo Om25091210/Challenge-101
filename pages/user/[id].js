@@ -36,22 +36,19 @@ const Profile = ({ user, Userdata, games, player, products}) => {
 
 
 export const getServerSideProps = async (context, query) => {
-  const { username } = context.params;
+  const { id } = context.params;
   const page = query ? (query.page || 1) : 1
   const category = query ? (query.category || 'all' ) : 'all'
   const sort = query ? (query.sort || '' ) : ''
   const search = query ? (query.search || 'all') : 'all'
 
   try {
-  const response = await fetch(`${baseURL}/api/profile/${username}`);
+  const response = await fetch(`${baseURL}/api/profile/${id}`);
   const Userdata = await response.json();
 
   const res = await fetch(`${baseURL}/api/all/games`);
   const games = await res.json();
 
-  //const plyres = await fetch(`${baseURL}/api/pubg/player/WackyJacky101A`);
-  //console.log(plyres)
-  //const player = await plyres.json();
   const player = [];
 
   const resprod = await getData(

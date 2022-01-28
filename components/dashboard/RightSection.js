@@ -29,7 +29,11 @@ const RightSection = ({ user, profile, suggestedplayers, teams }) => {
 
      <RecentActivity user={user}/>
 
+{ /*
       <FriendRequests user={user} />
+
+  */
+}      
 
       <div className="recent_activity suggested_player">
         <h2>Suggested Players</h2>
