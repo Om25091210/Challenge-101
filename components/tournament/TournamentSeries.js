@@ -4,9 +4,6 @@ import Moment from 'moment';
 
 const TournamentSeries = ({ user, tournament }) => {
 
-
-  console.log(tournament);
-
   return (
 <div className="groupds_box">
 	<div className="group">

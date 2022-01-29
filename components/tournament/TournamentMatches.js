@@ -20,16 +20,16 @@ const TournamentMatches = ({ data }) => {
             </tr>
           </thead>
           <tbody>
-            {data.matches.map((match, index) => {
+            {data.tournament.matches.map((match, index) => {
               return (
                 <>
                   <tr key={index}>
-                    <td>{Moment(match.begin_at).format('DD-MM-YYYY')}</td>
+                    <td>{Moment(match.matchId.startDate).format('DD-MM-YYYY')}</td>
                     <td>
-                      {match.opponents.length === 0 ? (
+                      {match.matchId.opponents.length === 0 ? (
                         <h6>---</h6>
                       ) : (
-                        match.opponents.map((opp) => {
+                        match.matchId.opponents.map((opp) => {
                           return (
                             <>
                               <span className="dp">
@@ -46,12 +46,12 @@ const TournamentMatches = ({ data }) => {
                     </td>
                     <td>{match.name}</td>
                     <td>Semi-Finals</td>
-                    <td>{Moment(match.begin_at).format('h:m')}</td>
+                    <td>{Moment(match.matchId.startDate).format('h:m')}</td>
                     <td>
-                      {match.results[0]?.score}-{match.results[1]?.score}
+                      {match.matchId.results[0]?.score}-{match.matchId.results[1]?.score}
                     </td>
                     <td>
-                      <a href={match.streamsList[0] ? match.streamsList[0].embed_url : '-'}>View Match</a>
+                      <a href={match.matchId.streamsList[0] ? match.matchId.streamsList[0].embed_url : '-'}>View Match</a>
                     </td>
                     <td>
                       <a href="#">Buy Match Tickets</a>
