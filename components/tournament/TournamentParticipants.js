@@ -28,7 +28,7 @@ const TournamentParticipants = ({ user, tournament }) => {
 
             {tournament.games.map((game, index) => (
 
-                    <div className="button-group">
+                    <div className="button-group" key={index}>
                      
                       <span className="drop_name">{game.gameId.name}</span>
                       <div className="custom-control custom-checkbox">
@@ -49,7 +49,7 @@ const TournamentParticipants = ({ user, tournament }) => {
                   
 
                     {tournament.games.map((game, index) => (
-                  <div className="banner">
+                  <div className="banner" key={index}>
                     {' '}
 
                     <img src={game.gameId.imgUrl} alt="" />
@@ -78,7 +78,7 @@ const TournamentParticipants = ({ user, tournament }) => {
   							{tournament.matches.map((match, index) => (
 
 
-                          <tr>
+                          <tr key={index}>
 
   					{ match.matchId.opponents.map((result, idx) => (
 

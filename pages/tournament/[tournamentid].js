@@ -54,7 +54,7 @@ const TournamentDetail = ({ user, data, products }) => {
                       <div className="flag_tick_flow">
                         <span className="game_name">
                           {' '}
-                          {data.tournament.name}{' '}
+                          {data.tournament ? data.tournament.name : 'Not Defined'}{' '}
                         </span>
                         <div className="flag"></div>
                         <div className="tick">

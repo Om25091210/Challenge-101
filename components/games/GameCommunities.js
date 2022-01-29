@@ -12,7 +12,6 @@ const GameCommunities = ({ user, game }) => {
   return (
 
   	 <ul className="communities">
-    { 0 == 0 ? (
     	 <li>
       <div className="activity_tag">
         <span className="act_name">Communities | Coming soon ...</span>
@@ -21,8 +20,9 @@ const GameCommunities = ({ user, game }) => {
        <p> Our team is burning more midnight oil to add interesting features for our esports enthusiasts. Appreciate your patience and support. </p>
 
       </li>
-    ) : (
-                      
+
+
+{/*}
               <li>
                 <div className="imgs">
                   {' '}
@@ -38,9 +38,7 @@ const GameCommunities = ({ user, game }) => {
                   <p className="member">853K members</p>
                 </div>
               </li>
-
-      
-    )}
+  */}            
 
     </ul>
 
