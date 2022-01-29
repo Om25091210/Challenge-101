@@ -40,7 +40,7 @@ function LeftNav() {
             </Link>
           </li>
           <li className={router.pathname == '/games' ? 'active' : ''}>
-            <Link href="/games">
+            <Link href="/games/list">
               <a className="">
                 <span className="iconbg">
                   <i className="fa fa-gamepad" aria-hidden="true"></i>
