@@ -20,10 +20,10 @@ const Games = ({ user, data }) => {
 };
 
 export const getServerSideProps = async (context) => {
-  const { gameId } = context.params;
+  const { id } = context.params;
 
   try {
-    const response = await fetch(`${baseURL}/api/games/${gameId}`);
+    const response = await fetch(`${baseURL}/api/games/${id}`);
     const data = await response.json();
 
     return {
