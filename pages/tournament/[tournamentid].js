@@ -276,7 +276,9 @@ const TournamentDetail = ({ user, data, products }) => {
               <div className="tab hide" id="participants">
                 <TournamentParticipants user={user} tournament={data.tournament}/>
               </div>
-              <TournamentMatches data={data} />
+              
+              <TournamentMatches user={user} tournament={data.tournament} />
+
               <div className="tab hide" id="result">
                 <div className="results_box white_bg">
                   <div className="congratulations">

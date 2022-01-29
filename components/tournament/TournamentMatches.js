@@ -1,7 +1,7 @@
 import React from 'react';
 import Moment from 'moment';
 
-const TournamentMatches = ({ data }) => {
+const TournamentMatches = ({ user, tournament }) => {
   return (
     <div className="tab hide" id="matches">
       <h2>matches</h2>
@@ -20,9 +20,8 @@ const TournamentMatches = ({ data }) => {
             </tr>
           </thead>
           <tbody>
-            {data.tournament.matches.map((match, index) => {
+            {tournament.matches && tournament.matches.map((match, index) => {
               return (
-                <>
                   <tr key={index}>
                     <td>{Moment(match.matchId.startDate).format('DD-MM-YYYY')}</td>
                     <td>
@@ -57,7 +56,7 @@ const TournamentMatches = ({ data }) => {
                       <a href="#">Buy Match Tickets</a>
                     </td>
                   </tr>
-                </>
+                
               );
             })}
           </tbody>
