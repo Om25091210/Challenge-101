@@ -11,6 +11,8 @@ import Moment from 'moment';
 
 const ProfileMatches = ({ user, Userdata }) => {
 
+  console.log(Userdata);
+
   return (
 
         <div className="tab hide" id="matches">
@@ -22,7 +24,16 @@ const ProfileMatches = ({ user, Userdata }) => {
 
             <div className="bdr_clr_green">{result.team.name} {' '} 
               <img src={result.team.imgUrl} style={{width:'10%'}} alt="" />
+
+             <b>PLAYERS :</b> 
+            {result.team.players.map((player, index) => (
+           <> <span>{player.playerId.name}</span>    <img src={player.playerId.imgUrl} style={{width: '5%'}} alt="" /></>
+                
+            )) }
+
             </div>
+
+
             <div className="stats_table">
               <table className="table">
                 <thead>

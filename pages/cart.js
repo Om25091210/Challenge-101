@@ -120,7 +120,7 @@ const Cart = ({ user }) => {
 
       <SignedHeader user={user} />
 
-      <LeftNav />
+      <LeftNav user={user} />
 
       <div className="main_middle profile_middle">
         {cart.length === 0 ? (

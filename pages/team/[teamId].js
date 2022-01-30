@@ -19,7 +19,7 @@ const Team = ({ user, data, products }) => {
 
         <SignedHeader user={user} />
 
-        <LeftNav />
+        <LeftNav user={user} />
 
         <div className="main_middle profile_middle">
           <TeamProfileBox user={user} data={data.team} />

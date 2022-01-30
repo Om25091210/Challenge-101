@@ -10,7 +10,7 @@ const Games = ({ user, data }) => {
     <>
       <MetaDash />
       <SignedHeader user={user} />
-      <LeftNav />
+      <LeftNav user={user} />
 
       <Game user={user} data={data} />
 

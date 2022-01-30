@@ -10,7 +10,7 @@ import Badges from './badges';
 
 const ProfileBox = ({ user, Userdata, games }) => {
   const [profilePic, setProfilePic] = useState(null);
-  const [bio, setBio] = useState(Userdata.profile.bio);
+  const [bio, setBio] = useState(Userdata.profile ? Userdata.profile.bio : null);
   const [showform, setShowForm] = useState(false);
   const [showlocation, setShowlocation] = useState(false);
   const [showLocModal, setShowLocModal] = useState(true);
@@ -501,7 +501,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
               </div>
             </div>
 
-            {!showform ? <p> {Userdata.profile.bio} </p> : null}
+            {!showform ? <p> {Userdata.profile ? Userdata.profile.bio : ''} </p> : null}
 
             {showform ? (
               <form onSubmit={(e) => e.preventDefault()}>

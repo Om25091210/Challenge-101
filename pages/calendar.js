@@ -36,7 +36,7 @@ const Calendar = ({ user, profile, games }) => {
 
       <SignedHeader user={user} />
 
-      <LeftNav />
+      <LeftNav user={user} />
 
       <div className="main_middle profile_middle">
         <div className="calendar_page discovery_page">

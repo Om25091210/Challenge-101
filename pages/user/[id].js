@@ -18,7 +18,7 @@ const Profile = ({ user, Userdata, games, player, products}) => {
       <>
         <MetaDash />
         <SignedHeader user={user} />
-        <LeftNav />
+        <LeftNav user={user} />
 
         <div className="main_middle profile_middle">
           <ProfileBox user={user} Userdata={Userdata} games={games} player={player}/>

@@ -1,11 +1,17 @@
 import Head from 'next/head'
-import {useContext, useState} from 'react'
+import {useContext, useState, useEffect} from 'react'
 import {DataContext} from '@store/GlobalState'
 import {updateItem} from '@store/Actions'
 import { postData, putData } from "../utils/fetchData";
 import { useRouter } from 'next/router'
 
-const Categories = () =>
+import MetaDash from '@components/MetaDash';
+import SignedHeader from '@components/SignedHeader';
+import LeftNav from '@components/LeftNav';
+
+import AllScript from './AllScript';
+
+const Categories = ({user}) =>
 {
     
     const router = useRouter()
@@ -47,6 +53,17 @@ const Categories = () =>
     }
 
     return(
+
+    <>
+      <MetaDash />
+
+      <SignedHeader user={user} />
+
+      <LeftNav user={user} />
+
+      <div className="main_middle profile_middle">
+
+
         <div className="col-md-6 mx-auto my-3 mt-4">
             <Head>
                 <title>Categories</title>
@@ -54,7 +71,7 @@ const Categories = () =>
 
              <div>
                 <button className="btn btn-info" onClick={() => router.back()}>
-                    <i className="fas fa-long-arrow-alt-left" aria-hidden="true"></i> Go Back
+                    <i className="fa fa-long-arrow-alt-left" aria-hidden="true"></i> Go Back
                 </button>
             </div>
 
@@ -76,10 +93,10 @@ const Categories = () =>
                             { category.name }
                          
                             <div style={{cursor: 'pointer'}}>
-                                <i className="fas fa-edit mr-2 text-info"
+                                <i className="fa fa-edit mr-2 text-info"
                                 onClick={() => handleEditCategory(category)}></i>
 
-                                <i className="fas fa-trash-alt text-danger"
+                                <i className="fa fa-trash-alt text-danger"
                                 data-toggle="modal" data-target="#exampleModal"
                                 onClick={() => dispatch({
                                     type: 'ADD_MODAL',
@@ -96,6 +113,12 @@ const Categories = () =>
             }
            
         </div>
+
+      </div>
+
+      <AllScript />
+    </>
+
     )
 }
 

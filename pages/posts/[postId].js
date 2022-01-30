@@ -14,7 +14,7 @@ const PostId = ({ user, profile, post }) => {
     <>
       <MetaDash />
       <SignedHeader user={user} />
-      <LeftNav />
+      <LeftNav user={user} />
 
       <div>
         <div className="main_middle">

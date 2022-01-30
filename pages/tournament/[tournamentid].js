@@ -30,7 +30,7 @@ const TournamentDetail = ({ user, data, products }) => {
       <>
         <MetaDash />
         <SignedHeader user={user} />
-        <LeftNav />
+        <LeftNav user={user} />
 
         <div>
           <div className="main_middle profile_middle">

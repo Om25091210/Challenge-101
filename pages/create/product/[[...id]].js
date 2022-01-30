@@ -1,11 +1,21 @@
 import Head from 'next/head'
 import {useState, useContext, useEffect} from 'react'
-import {DataContext} from '../../store/GlobalState'
-import {imageUpload} from '../../utils/imageUpload'
-import {postData, getData, putData} from '../../utils/fetchData'
+import {DataContext} from '@store/GlobalState'
+import {imageUpload} from '@utils/imageUpload'
+import {postData, getData, putData} from '@utils/fetchData'
 import {useRouter} from 'next/router'
+import { useMutation } from 'react-query';
+import cookie from 'js-cookie';
+import axios from 'axios';
+import baseURL from '@utils/baseURL';
 
-const ProductsManager = () => {
+import MetaDash from '@components/MetaDash';
+import SignedHeader from '@components/SignedHeader';
+import LeftNav from '@components/LeftNav';
+import AllScript from '../../AllScript';
+
+
+const ProductsManager = ({user}) => {
     const initialState = {
         title: '',
         seller: '',
@@ -28,6 +38,16 @@ const ProductsManager = () => {
     const {id} = router.query
     const [ onEdit, setOnEdit ] = useState( false )
     
+  const photomutation = useMutation(async (formdata) => {
+    await axios.put(`${baseURL}/api/uploads/products/uploadImages`, formdata, {
+      headers: {
+        Authorization: cookie.get('token'),
+        'Content-Type': 'multipart/form-data'
+      }
+    });
+  });
+
+  console.log('AAAAAAA : ' + auth.token)
     // Whenever the product state changes, run the useEffect function
 	useEffect(() => {
 		// The Object.values() method returns an array of values of the object passed in
@@ -96,7 +116,7 @@ const ProductsManager = () => {
 
     const handleSubmit = async(e) => {
         e.preventDefault()
-        if(auth.user.role !== 'admin') 
+        if(user.role !== 'admin') 
         return dispatch({type: 'NOTIFY', payload: {error: 'Authentication is not valid.'}})
 
         if(!title || !seller || !price || !inStock || !description || images.length === 0)
@@ -108,14 +128,29 @@ const ProductsManager = () => {
         const imgNewURL = images.filter(img => !img.url)
         const imgOldURL = images.filter(img => img.url)
 
-        if(imgNewURL.length > 0) media = await imageUpload(imgNewURL)
+        const formdata = new FormData();
+        for (const key of Object.keys(images)) {
+          formdata.append('images', images[key]);
+        }
+
+
+        if(imgNewURL.length > 0) {
+
+            try {
+              media = await photomutation.mutateAsync(formdata);
+            } catch (err) { }
+
+        }
 
         let res;
         if(onEdit){
-            res = await putData(`product/${id}`, {...product, images: [...imgOldURL, ...media]}, auth.token)
+                        console.log('On edit is true  product')
+
+            res = await putData(`product/${id}`, {...product, images: [...imgOldURL, ...media]}, cookie.get('token'))
             if(res.err) return dispatch({type: 'NOTIFY', payload: {error: res.err}})
         }else{
-            res = await postData('product', {...product, images: [...imgOldURL, ...media]}, auth.token)
+            console.log('else post data product')
+            res = await postData('product', {...product, images: [...imgOldURL, ...media]}, cookie.get('token'))
             if(res.err) return dispatch({type: 'NOTIFY', payload: {error: res.err}})
         }
 
@@ -124,6 +159,16 @@ const ProductsManager = () => {
     }
 
     return(
+
+    <>
+      <MetaDash />
+
+      <SignedHeader user={user} />
+
+      <LeftNav user={user} />
+
+      <div className="main_middle profile_middle">
+
         <div className="products_manager mt-4">
             <Head>
                 <title>Products Manager</title>
@@ -231,6 +276,13 @@ const ProductsManager = () => {
 
             
         </div>
+
+      </div>
+
+      <AllScript />
+    </>
+
+
     )
 }
 

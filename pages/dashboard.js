@@ -31,7 +31,7 @@ const Dashboard = ({ user, profile, teams, posts, suggplayers }) => {
 
       <SignedHeader user={user} />
 
-      <LeftNav />
+      <LeftNav user={user} />
 
       <SignedMainContent posts={posts} user={user} profile={profile}/>
 

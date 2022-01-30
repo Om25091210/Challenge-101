@@ -127,7 +127,7 @@ const CreateTournament = ({ user }) => {
     <>
       <MetaDash />
       <SignedHeader user={user} />
-      <LeftNav />
+      <LeftNav user={user} />
       <div className="main_middle create_main_middle">
         <div className="white_bg ">
           <div className="left_create_form">

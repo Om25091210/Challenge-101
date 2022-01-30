@@ -2,7 +2,7 @@ import DarkMode from './theme/dark-mode';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-function LeftNav() {
+function LeftNav({user}) {
   const router = useRouter();
 
   return (
@@ -79,6 +79,21 @@ function LeftNav() {
               </a>
             </Link>{' '}
           </li>
+
+          {user.role === 'admin' ? (
+            <li>
+              <Link href="/settings">
+                <a className="">
+                  <span className="iconbg">
+                    <i className="fa fa-cog" aria-hidden="true"></i>
+                  </span>{' '}
+                  <span className="title">SETTINGS</span>
+                </a>
+              </Link>{' '}
+            </li>
+            ) : ''
+          }
+
         </ul>
       </nav>
 

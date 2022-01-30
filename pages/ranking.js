@@ -95,7 +95,7 @@ const Ranking = ({ user, games }) => {
 
       <SignedHeader user={user} />
 
-      <LeftNav />
+      <LeftNav user={user} />
 
       <div className="main_middle profile_middle">
         <div className="discovery_page">
