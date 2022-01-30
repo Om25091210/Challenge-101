@@ -15,8 +15,8 @@ const Matches = ({ teamMatches }) => {
                 {' '}
                 <img
                   src={tm.opponents[0].opponent.image_url}
-                  style={{ width: '30%' }}
                   alt=""
+                  className="team_logo"
                 />
                 <div className="team_name">
                   <h3>{tm.opponents[0].opponent.name}</h3>
@@ -52,8 +52,8 @@ const Matches = ({ teamMatches }) => {
                 {' '}
                 <img
                   src={tm.opponents[1].opponent.image_url}
-                  style={{ width: '30%' }}
                   alt=""
+                  className="team_logo"
                 />
                 <div className="team_name">
                   <h3>{tm.opponents[1].opponent.name}</h3>

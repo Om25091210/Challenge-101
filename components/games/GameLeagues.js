@@ -33,12 +33,11 @@ const GameLeagues = ({ user, game }) => {
             </span>
             <div className="game_pos">
               <div className="game_loc">
-                {' '}
-                <img src={result.imgUrl} alt="" />{' '}
+                <img src="/assets/media/category/game_loc.jpg" alt="" />
               </div>
               <span className="tour_logo">
                 {' '}
-                <img src="/assets/media/category/game1.png" alt="" />{' '}
+                <img src={result.imgUrl} alt="" />{' '}
               </span>{' '}
             </div>
             <div className="right_game_details">
