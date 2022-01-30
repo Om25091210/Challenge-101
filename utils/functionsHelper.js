@@ -48,8 +48,8 @@ export const getTournaments = async () => {
 
 //Get Teams, Ranking, Tournaments
 export const getTeamsRankingTournaments = async (filters) => {
-
-    const  teamIds  = await axios.get(`${baseURL}/api/teams/teamsbygame/`, {
+    const gameId = 'undefined'
+    const  teamIds  = await axios.get(`${baseURL}/api/teams/teamsbygame/${gameId}`, {
     });
 
   return teamIds.data;

@@ -8,8 +8,8 @@ const Matches = ({ teamMatches }) => {
       {teamMatches.length === 0 ? (
         <h5>NO team Matches</h5>
       ) : (
-        teamMatches.map((tm) => (
-          <div className="match_row">
+        teamMatches.map((tm, idx) => (
+          <div className="match_row" key={idx}>
             {tm.opponents[0] ? (
               <div className="team_a">
                 {' '}

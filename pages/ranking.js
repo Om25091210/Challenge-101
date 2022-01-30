@@ -21,7 +21,7 @@ import {
 } from '@utils/functionsHelper';
 import Filters from '@components/common/Filters';
 
-const Ranking = ({ user }) => {
+const Ranking = ({ user, games }) => {
   const [searchObj, setSearchObj] = useState({
     search: '',
     filters: ''
@@ -31,7 +31,7 @@ const Ranking = ({ user }) => {
   const [status, setStatus] = useState('confirm');
   const [searchResults, setSearchResults] = useState([]);
   const [data, setData] = useState([]);
-
+  const [teamsRanks, setTeamsRanks] = useState([]);
   const router = useRouter();
 
   let cancel;
@@ -41,6 +41,7 @@ const Ranking = ({ user }) => {
   const [error, setError] = useState(null);
   const [formLoading, setFormLoading] = useState(false);
   const [submitDisabled, setSubmitDisabled] = useState(true);
+  const [selectedGame, setSelectedGame] = useState(undefined);
 
   const { search, filters } = searchObj;
 
@@ -63,9 +64,30 @@ const Ranking = ({ user }) => {
     setSearchResults(sdata);
   };
 
-  const teamsRanks = useQuery([], () => getTeamsRankingTournaments());
+  const handleSelectGame = async (obj) => {
+    setSelectedGame(obj);
+    //myState.setFilteredResults([]);
+    $('a.model_close').parent().removeClass('show_model');
+     
+  };
 
-  console.log(teamsRanks);
+  useEffect(() => {
+    $('a.model_show_btn').click(function () {
+      $(this).next().addClass('show_model');
+    });
+
+    $('a.model_close').click(function () {
+      $(this).parent().removeClass('show_model');
+    });
+  }, []);
+
+
+  useEffect(() => {
+
+     axios.get(`${baseURL}/api/teams/teamsbygame/${selectedGame._id}`)
+            .then((res) => setTeamsRanks(res.data));
+
+  }, []);
 
   return (
     <>
@@ -79,8 +101,9 @@ const Ranking = ({ user }) => {
         <div className="discovery_page">
           <div className="white_bg">
             <h2>GAME</h2>
+
             <div className="tit">
-              <a href="#more_games" className="common_poup">
+              <a href="#!" className="model_show_btn">
                 <span>
                   <b className="icon">
                     <img src="/assets/media/ranking/console.png" alt="" />
@@ -88,26 +111,45 @@ const Ranking = ({ user }) => {
                   Browse Games
                 </span>
                 <i className="fa fa-angle-right" aria-hidden="true"></i>
+
                 <div className="hover_games">
                   <div className="other_logo">
-                    <img src="/assets/media/team1.png" alt="" />
-                  </div>
-                  <div className="other_logo">
-                    <img src="/assets/media/team1.png" alt="" />
+                    <img
+                      src={selectedGame ? selectedGame.imgUrl : ''}
+                      alt={selectedGame ? selectedGame.name : ''}
+                    />
                   </div>
                 </div>
               </a>
-              <div id="more_games" style={{ display: 'none' }}>
-                <ul>
-                  <li>
-                    <div className="game_pic">
-                      <img src="/assets/media/team1.png" alt="" />
-                    </div>
-                    <p>ajay</p>
-                  </li>
-                </ul>
+
+              <div className="common_model_box" id="more_games">
+                <a href="#!" className="model_close">
+                  X
+                </a>
+                <div className="inner_model_box">
+                  <h3>Games</h3>
+
+                  <div className="poup_height msScroll_all">
+                    <ul className="">
+                      {games.map((game, idx) => (
+                        <li key={idx}>
+                          <div className="game_pic">
+                            <a href="#!" onClick={() => handleSelectGame(game)}>
+                              {' '}
+                              <img src={game.imgUrl} alt={game.name} />{' '}
+                            </a>
+                          </div>
+                          <p>{game.name}</p>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+                <div className="overlay"></div>
               </div>
             </div>
+
+
             <div className="white_bg">
               <div className="team_search">
                 <div className="searchbox">
@@ -134,13 +176,23 @@ const Ranking = ({ user }) => {
               <Filters ftype={'RANKING'} />
             </div>
           </div>
-          <RankingTable teamranking={teamsRanks.data} />
+          <RankingTable teamranking={teamsRanks} />
         </div>
       </div>
 
       <AllScript />
     </>
   );
+};
+
+
+export const getServerSideProps = async (context) => {
+  const response = await fetch(`${baseURL}/api/all/games`);
+  const games = await response.json();
+
+  return {
+    props: { games }
+  };
 };
 
 export default Ranking;

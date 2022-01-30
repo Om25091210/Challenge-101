@@ -124,15 +124,11 @@ const SignedHeader = ({ user }) => {
             </li>
 
             <li>
-              <Link href="/cart">
-                  <a >
+                  <a href="/cart">{' '}
                       <i className="fa fa-shopping-cart" aria-hidden="true">
-                          <span className="pop">
-                              { cart.length }
-                          </span>
-                      </i> 
-              </a>
-              </Link>
+                      </i> {' '}
+                      <span className="pop">{cart.length}</span>
+                  </a>
             </li>
 
             <li className="profile">
