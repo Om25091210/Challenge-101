@@ -38,16 +38,6 @@ const ProductsManager = ({user}) => {
     const {id} = router.query
     const [ onEdit, setOnEdit ] = useState( false )
     
-  const photomutation = useMutation(async (formdata) => {
-    await axios.put(`${baseURL}/api/uploads/products/uploadImages`, formdata, {
-      headers: {
-        Authorization: cookie.get('token'),
-        'Content-Type': 'multipart/form-data'
-      }
-    });
-  });
-
-  console.log('AAAAAAA : ' + auth.token)
     // Whenever the product state changes, run the useEffect function
 	useEffect(() => {
 		// The Object.values() method returns an array of values of the object passed in
@@ -116,11 +106,16 @@ const ProductsManager = ({user}) => {
 
     const handleSubmit = async(e) => {
         e.preventDefault()
-        if(user.role !== 'admin') 
-        return dispatch({type: 'NOTIFY', payload: {error: 'Authentication is not valid.'}})
+        if(user.role !== 'admin') {
+            return dispatch({type: 'NOTIFY', payload: {error: 'Authentication is not valid.'}});
+            toast.error('Authentication is not valid.');
 
-        if(!title || !seller || !price || !inStock || !description || images.length === 0)
-        return dispatch({type: 'NOTIFY', payload: {error: 'Please add all the fields.'}})
+        }
+
+        if(!title || !seller || !price || !inStock || !description || images.length === 0) {
+            return dispatch({type: 'NOTIFY', payload: {error: 'Please add all the fields.'}});
+            toast.error('Please add all the fields.');
+        }
 
     
         dispatch({type: 'NOTIFY', payload: {loading: true}})
@@ -138,24 +133,38 @@ const ProductsManager = ({user}) => {
 
             try {
               media = await photomutation.mutateAsync(formdata);
+            
+                await axios.put(`${baseURL}/api/uploads/products/uploadImages`, formdata, {
+                  headers: {
+                    Authorization: cookie.get('token'),
+                    'Content-Type': 'multipart/form-data'
+                  }
+                }).then((res) => media = res.data);
+
             } catch (err) { }
 
         }
 
         let res;
         if(onEdit){
-                        console.log('On edit is true  product')
 
             res = await putData(`product/${id}`, {...product, images: [...imgOldURL, ...media]}, cookie.get('token'))
-            if(res.err) return dispatch({type: 'NOTIFY', payload: {error: res.err}})
+            if(res.err) { 
+                return dispatch({type: 'NOTIFY', payload: {error: res.err}});
+                toast.error(res.err);
+            }
+                
+
         }else{
-            console.log('else post data product')
             res = await postData('product', {...product, images: [...imgOldURL, ...media]}, cookie.get('token'))
-            if(res.err) return dispatch({type: 'NOTIFY', payload: {error: res.err}})
+            if(res.err)  {
+                return dispatch({type: 'NOTIFY', payload: {error: res.err}});
+                toast.error(res.err);
+            }
         }
 
         return dispatch({type: 'NOTIFY', payload: {success: res.msg}})
-        
+        toast.success(res.msg);
     }
 
     return(
