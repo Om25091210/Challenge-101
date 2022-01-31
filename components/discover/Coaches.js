@@ -2,25 +2,24 @@ import Filters from '../common/Filters';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import baseURL from '@utils/baseURL';
+import Rating from './Rating';
 
 const Coaches = ({ user, profile, myState }) => {
   const [coach, setCoach] = useState([]);
-  const [sessionCoach, setSessionCoach] = useState({key:null, value:null});
+  const [sessionCoach, setSessionCoach] = useState({ key: null, value: null });
 
-    useEffect(() => {
-
+  useEffect(() => {
     if (myState.selectedFilters.length > 0) {
       setCoach(myState.filteredResults);
-    } else { 
-          if (sessionCoach.key === null) {
-              axios.get(`${baseURL}/api/all/coaches`).then((res) => {
-                setCoach(res.data);
-                setSessionCoach({key:'COACHSET', value: res.data}); 
-              });
-          }
-     }
-
-    }, [myState, coach]);
+    } else {
+      if (sessionCoach.key === null) {
+        axios.get(`${baseURL}/api/all/coaches`).then((res) => {
+          setCoach(res.data);
+          setSessionCoach({ key: 'COACHSET', value: res.data });
+        });
+      }
+    }
+  }, [myState, coach]);
 
   return (
     <div className="tab" id="coaches">
@@ -90,25 +89,33 @@ const Coaches = ({ user, profile, myState }) => {
               </h4>
             </span>
             <div className="mores">
+              <Rating value={coach.coaches.coach_rating} />
               <span>
-                <i className="fa fa-star" aria-hidden="true"></i>
-                <i className="fa fa-star" aria-hidden="true"></i>
-                <i className="fa fa-star" aria-hidden="true"></i>
-                <i className="fa fa-star" aria-hidden="true"></i>
-                <i className="fa fa-star-half-o" aria-hidden="true"></i>
+                {coach.coaches.platform === 'PC' ? (
+                  <img src="/assets/media/discover/desk.png" alt="" />
+                ) : coach.coaches.platform === 'Console' ? (
+                  <img src="/assets/media/discover/console.png" alt="" />
+                ) : coach.coaches.platform === 'Mobile' ? (
+                  <img src="/assets/media/discover/mobile_game.png" alt="" />
+                ) : (
+                  <p>No Platform mentioned</p>
+                )}
               </span>
               <span>
-                <img src="/assets/media/discover/desk.png" alt="" />
-              </span>
-              <span>
-                <img src="/assets/media/discover/translator.png" alt="" />{' '}
-                <b>
-                  {coach.coaches.languages[0]}, {coach.coaches.languages[1]}
-                </b>
+                <img src="/assets/media/discover/translator.png" alt="" />
+                {coach.coaches.languages.length > 0 ? (
+                  <>
+                    {coach.coaches.languages.map((lan) => (
+                      <b>{lan}</b>
+                    ))}
+                  </>
+                ) : (
+                  <p>No Language Available</p>
+                )}
               </span>
             </div>
             <a href="#" className="join">
-              REQUEST TO JOIN
+              SCHEDULE SESSION
             </a>{' '}
           </div>
 
@@ -145,15 +152,7 @@ const Coaches = ({ user, profile, myState }) => {
                     {' '}
                     <p> {rew.review} </p>
                     <p>
-                      {' '}
-                      <span>
-                        <i className="fa fa-star" aria-hidden="true"></i>
-                        <i className="fa fa-star" aria-hidden="true"></i>
-                        <i className="fa fa-star" aria-hidden="true"></i>
-                        <i className="fa fa-star" aria-hidden="true"></i>
-                        <i className="fa fa-star-half-o" aria-hidden="true"></i>
-                      </span>
-                      - {rew.reviewer.name}
+                      <Rating value={rew.rating} />- {rew.reviewer.name}
                     </p>
                   </>
                 ))}

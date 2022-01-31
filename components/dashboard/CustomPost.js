@@ -31,7 +31,6 @@ const CustomPost = ({ post }) => {
     e.preventDefault();
     try {
       await mutateAsync(post);
-      queryClient.invalidateQueries();
       toast.success('Your post has been successfully deleted');
       window.setTimeout(function () {
         location.reload();
