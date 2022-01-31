@@ -7,6 +7,7 @@ import {useRouter} from 'next/router'
 import { useMutation } from 'react-query';
 import cookie from 'js-cookie';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 import baseURL from '@utils/baseURL';
 
 import MetaDash from '@components/MetaDash';
@@ -107,14 +108,13 @@ const ProductsManager = ({user}) => {
     const handleSubmit = async(e) => {
         e.preventDefault()
         if(user.role !== 'admin') {
-            return dispatch({type: 'NOTIFY', payload: {error: 'Authentication is not valid.'}});
             toast.error('Authentication is not valid.');
-
+            return dispatch({type: 'NOTIFY', payload: {error: 'Authentication is not valid.'}});
         }
 
         if(!title || !seller || !price || !inStock || !description || images.length === 0) {
-            return dispatch({type: 'NOTIFY', payload: {error: 'Please add all the fields.'}});
             toast.error('Please add all the fields.');
+            return dispatch({type: 'NOTIFY', payload: {error: 'Please add all the fields.'}});
         }
 
     
@@ -128,12 +128,9 @@ const ProductsManager = ({user}) => {
           formdata.append('images', images[key]);
         }
 
-
         if(imgNewURL.length > 0) {
 
-            try {
-              media = await photomutation.mutateAsync(formdata);
-            
+            try {            
                 await axios.put(`${baseURL}/api/uploads/products/uploadImages`, formdata, {
                   headers: {
                     Authorization: cookie.get('token'),
@@ -150,21 +147,21 @@ const ProductsManager = ({user}) => {
 
             res = await putData(`product/${id}`, {...product, images: [...imgOldURL, ...media]}, cookie.get('token'))
             if(res.err) { 
-                return dispatch({type: 'NOTIFY', payload: {error: res.err}});
                 toast.error(res.err);
+                return dispatch({type: 'NOTIFY', payload: {error: res.err}});
             }
                 
 
         }else{
+
             res = await postData('product', {...product, images: [...imgOldURL, ...media]}, cookie.get('token'))
             if(res.err)  {
-                return dispatch({type: 'NOTIFY', payload: {error: res.err}});
                 toast.error(res.err);
+                return dispatch({type: 'NOTIFY', payload: {error: res.err}});
             }
         }
-
-        return dispatch({type: 'NOTIFY', payload: {success: res.msg}})
         toast.success(res.msg);
+        return dispatch({type: 'NOTIFY', payload: {success: res.msg}})
     }
 
     return(
