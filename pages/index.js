@@ -73,7 +73,7 @@ const Home = (props) => {
 
       <SignedHeader user={props.user} />
 
-      <LeftNav user={user} />
+      <LeftNav user={props.user} />
 
       <div className="main_middle profile_middle">
         <div className="home_page">

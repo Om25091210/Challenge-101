@@ -35,7 +35,7 @@ return (
 			    ) : (
 			       recent.data.map((result, idx) => (
 			                      
-				          <div className="activity_tag">
+				          <div className="activity_tag" key={idx}>
 				            {' '}
 				            <a href="#">
 				              {' '}
