@@ -25,11 +25,6 @@ const ProfileTabs = (props) => (
       </a>
     </li>
     <li>
-      <a href="#!" rel="steams">
-        STREAMS
-      </a>
-    </li>
-    <li>
       <a href="#!" rel="photos">
         Photos
       </a>

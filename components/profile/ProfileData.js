@@ -249,16 +249,14 @@ const ProfileData = ({ user, Userdata, player, products }) => {
         <ProductList user={user} productList={products}/>
 
 
-        <div className="tab hide" id="steams">
-          {' '}
-          steams steams steams steams{' '}
-        </div>
         <div className="tab hide" id="photos">
           <Photos Userdata={Userdata} />
         </div>
+
         <div className="tab hide" id="video">
           <Videos Userdata={Userdata} />
         </div>
+
         <div className="tab hide" id="sponsors">
           <div className="sponsers_box">
             <ul>

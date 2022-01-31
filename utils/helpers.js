@@ -1,6 +1,30 @@
 import NumberFormat from 'react-number-format';
 
 function MPNumberFormat({ value, currency }) {
+
+  if (typeof value === 'string' || value instanceof String) {
+      const vArr = value.split(" ");
+      if (vArr.includes('States') || vArr.includes('states')) {
+        currency = '$';
+        value = vArr[0];
+      } else if (vArr.includes('Euro') || vArr.includes('euro')) {
+        currency = '€';
+        value = vArr[0];
+      } else if (vArr.includes('Korean') || vArr.includes('won')) {
+        currency = '₩';
+        value = vArr[0];
+      } else if (vArr.includes('Yen') || vArr.includes('yen')) {
+        currency = '¥ Yen';
+        value = vArr[0];
+      } else if (vArr.includes('Yuan') || vArr.includes('yuan')) {
+        currency = '¥ Yuan';
+        value = vArr[0];
+      } else if (vArr.includes('Rupees') || vArr.includes('Rs') || vArr.includes('INR')) {
+        currency = 'Rs';
+        value = vArr[0];
+      }
+  }
+
   return (
     <NumberFormat
       value={value}

@@ -17,7 +17,15 @@ const ProfileMatches = ({ user, Userdata }) => {
           {' '}
 
 
-{Userdata.teamMatchesList.map((result, index) => (
+{ Userdata.teamMatchesList.length == 0 ? ( <p> Player info is not attached to the profile. Please ensure that player is assigned to this profile. </p>) :
+
+
+
+
+
+
+
+  Userdata.teamMatchesList.map((result, index) => (
             <div className="next_matches" key={index}>
 
             <div className="bdr_clr_green">{result.team.name} {' '} 
