@@ -11,7 +11,9 @@ import ProfileGameStat from './ProfileGameStat';
 
 const ProfileBox = ({ user, Userdata, games }) => {
   const [profilePic, setProfilePic] = useState(null);
-  const [bio, setBio] = useState(Userdata.profile ? Userdata.profile.bio : null);
+  const [bio, setBio] = useState(
+    Userdata.profile ? Userdata.profile.bio : null
+  );
   const [showform, setShowForm] = useState(false);
   const [showlocation, setShowlocation] = useState(false);
   const [showLocModal, setShowLocModal] = useState(true);
@@ -145,26 +147,37 @@ const ProfileBox = ({ user, Userdata, games }) => {
   const handleAddressForm = async (e) => {
     e.preventDefault();
 
-    try {
-      await axios.put(
-        `${baseURL}/api/profile/updateaddress/${Userdata.profile._id}`,
-        address,
-        {
-          headers: {
-            Authorization: cookie.get('token'),
-            'Content-Type': 'application/json'
+    if (
+      address.city === '' ||
+      address.state === '' ||
+      address.zipcode === '' ||
+      address.country === '' ||
+      address.line1 === '' ||
+      address.line2 === ''
+    ) {
+      toast.warning('Please enter all fields or check your inputs');
+    } else {
+      try {
+        await axios.put(
+          `${baseURL}/api/profile/updateaddress/${Userdata.profile._id}`,
+          address,
+          {
+            headers: {
+              Authorization: cookie.get('token'),
+              'Content-Type': 'application/json'
+            }
           }
-        }
-      );
-      setShowlocation(false);
-      toast.success('Address successfully have been updated');
-    } catch (err) {
-      console.log(err);
-      toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+        );
+        setShowlocation(false);
+        toast.success('Address successfully have been updated');
+      } catch (err) {
+        console.log(err);
+        toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+      }
+      window.setTimeout(function () {
+        location.reload();
+      }, 800);
     }
-    window.setTimeout(function () {
-      location.reload();
-    }, 800);
   };
 
   const handleButtonForm = () => {
@@ -315,20 +328,21 @@ const ProfileBox = ({ user, Userdata, games }) => {
               <div className="current_status">
                 <div className="current_team">
                   <span className="ct"> Current Team</span>
-                  
-                  {Userdata.teamMatchesList.map((result, index) => (
-                  <a href={`/team/${result.team._id}`}>
-                    <span className="were">{result.team.name} {' '}<i className="fa fa-arrow-right" aria-hidden="true"></i>
-                  </span>
-                  </a>
-                    ))}
 
+                  {Userdata.teamMatchesList.map((result, index) => (
+                    <a href={`/team/${result.team._id}`}>
+                      <span className="were">
+                        {result.team.name}{' '}
+                        <i className="fa fa-arrow-right" aria-hidden="true"></i>
+                      </span>
+                    </a>
+                  ))}
                 </div>
                 <div className="game_role">
-                {/*
+                  {/*
                   <span className="ct"> In Game Role</span>
                   <span className="were">Captain - CS GO</span>
-                */ }  
+                */}
                 </div>
                 <div className="game_role profile_address">
                   <div className="loc_box">
@@ -363,6 +377,12 @@ const ProfileBox = ({ user, Userdata, games }) => {
                                 onChange={handleChange}
                                 value={address?.line1}
                               />
+                              {address.line1.length >= 21 && (
+                                <h6>
+                                  Address Line 1 cannot be more then 20
+                                  characters
+                                </h6>
+                              )}
                             </div>
                             <div className="colm">
                               <label htmlFor="exampleFormControlInput1">
@@ -377,6 +397,12 @@ const ProfileBox = ({ user, Userdata, games }) => {
                                 onChange={handleChange}
                                 value={address?.line2}
                               />
+                              {address.line2.length >= 21 && (
+                                <h6>
+                                  Address Line 2 cannot be more then 20
+                                  characters
+                                </h6>
+                              )}
                             </div>
                             <div className="colm">
                               <label htmlFor="exampleFormControlInput1">
@@ -391,6 +417,11 @@ const ProfileBox = ({ user, Userdata, games }) => {
                                 onChange={handleChange}
                                 value={address?.city}
                               />
+                              {address.city.length >= 21 && (
+                                <h6>
+                                  City Name cannot be more then 20 characters
+                                </h6>
+                              )}
                             </div>
                             <div className="colm">
                               <label htmlFor="exampleFormControlInput1">
@@ -405,6 +436,11 @@ const ProfileBox = ({ user, Userdata, games }) => {
                                 onChange={handleChange}
                                 value={address?.state}
                               />
+                              {address.state.length >= 31 && (
+                                <h6>
+                                  State name cannot be more then 30 characters
+                                </h6>
+                              )}
                             </div>
                             <div className="colm">
                               <label htmlFor="exampleFormControlInput1">
@@ -419,6 +455,11 @@ const ProfileBox = ({ user, Userdata, games }) => {
                                 onChange={handleChange}
                                 value={address?.country}
                               />
+                              {address.country.length >= 57 && (
+                                <h6>
+                                  Country name cannot be more then 56 characters
+                                </h6>
+                              )}
                             </div>
                             <div className="colm">
                               <label htmlFor="exampleFormControlInput1">
@@ -433,6 +474,9 @@ const ProfileBox = ({ user, Userdata, games }) => {
                                 onChange={handleChange}
                                 value={address?.zipcode}
                               />
+                              {address.zipcode.length >= 7 && (
+                                <h6>Zipcode must be 6 digits.</h6>
+                              )}
                             </div>
                             <button className="btn">Update</button>
                           </div>
@@ -501,7 +545,9 @@ const ProfileBox = ({ user, Userdata, games }) => {
               </div>
             </div>
 
-            {!showform ? <p> {Userdata.profile ? Userdata.profile.bio : ''} </p> : null}
+            {!showform ? (
+              <p> {Userdata.profile ? Userdata.profile.bio : ''} </p>
+            ) : null}
 
             {showform ? (
               <form onSubmit={(e) => e.preventDefault()}>
@@ -544,7 +590,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                               alt={item.gameId ? item.gameId.name : ''}
                             />{' '}
                             <p>
-                              {item.gameID ? item.gameId.name : 'Not Defined'}
+                              {item.gameId ? item.gameId.name : 'Not Defined'}
                             </p>
                           </span>
                         </a>
@@ -612,7 +658,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
             </div>
           </div>
 
-        <ProfileGameStat user={user} Userdata={Userdata}/>
+          <ProfileGameStat user={user} Userdata={Userdata} />
         </div>
       </div>
     </>

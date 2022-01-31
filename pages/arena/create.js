@@ -32,19 +32,28 @@ const CreateTeam = ({ user }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let formdata = new FormData();
-    formdata.append('name', state.name);
-    formdata.append('description', state.description);
-    formdata.append('address', state.address);
-    formdata.append('location', state.location);
-    formdata.append('logoUrl', image);
+    if (
+      state.name === '' ||
+      state.description === '' ||
+      state.address === '' ||
+      state.location === ''
+    ) {
+      toast.warning('Please enter all fields or check your inputs');
+    } else {
+      let formdata = new FormData();
+      formdata.append('name', state.name);
+      formdata.append('description', state.description);
+      formdata.append('address', state.address);
+      formdata.append('location', state.location);
+      formdata.append('logoUrl', image);
 
-    try {
-      await mutation.mutateAsync(formdata);
-      toast.success('Your Arena has been successfully created');
-    } catch (err) {
-      console.log(err);
-      toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+      try {
+        await mutation.mutateAsync(formdata);
+        toast.success('Your Arena has been successfully created');
+      } catch (err) {
+        console.log(err);
+        toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+      }
     }
   };
 
@@ -76,6 +85,9 @@ const CreateTeam = ({ user }) => {
                     onChange={handleChange}
                     value={state.name}
                   />
+                  {state.name.length >= 41 && (
+                    <h6>Arena name cannot be more then 40 characters</h6>
+                  )}
                 </div>
                 <div className="form-group">
                   <div className="style_file_upload">
@@ -101,6 +113,9 @@ const CreateTeam = ({ user }) => {
                     onChange={handleChange}
                     value={state.description}
                   />
+                  {state.description.length >= 201 && (
+                    <h6>Description cannot be more then 200 characters</h6>
+                  )}
                 </div>
                 <div className="form-group">
                   <label htmlFor="exampleFormControlInput1">Address</label>
@@ -112,6 +127,9 @@ const CreateTeam = ({ user }) => {
                     onChange={handleChange}
                     value={state.address}
                   />
+                  {state.address.length >= 61 && (
+                    <h6>Address cannot be more then 60 characters</h6>
+                  )}
                 </div>
                 <div className="form-group">
                   <label htmlFor="exampleFormControlInput1">Location</label>
@@ -123,6 +141,9 @@ const CreateTeam = ({ user }) => {
                     onChange={handleChange}
                     value={state.location}
                   />
+                  {state.location.length >= 71 && (
+                    <h6>Location cannot be more then 70 characters</h6>
+                  )}
                 </div>
               </>
               <button className={`btn rgtside`}>Continue</button>

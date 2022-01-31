@@ -73,24 +73,41 @@ const CreateTournament = ({ user }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (
+      state.name === '' ||
+      state.game === '' ||
+      state.category === '' ||
+      state.participants === '' ||
+      state.entranceFee === '' ||
+      state.startDate === '' ||
+      state.startTime === '' ||
+      state.endDate === '' ||
+      state.endTime === '' ||
+      state.location === '' ||
+      state.organizer === '' ||
+      state.description === '' ||
+      state.sociallink === ''
+    ) {
+      toast.warning('Please enter all fields or check your inputs');
+    } else {
+      let tourdata = state;
 
-    let tourdata = state;
+      try {
+        console.log(tourdata);
+        const requestOptions = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(tourdata)
+        };
+        const dt = fetch(
+          `${baseURL}/api/tournaments/create`,
+          requestOptions
+        ).then((data) => data.json());
 
-    try {
-      console.log(tourdata);
-      const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(tourdata)
-      };
-      const dt = fetch(
-        `${baseURL}/api/tournaments/create`,
-        requestOptions
-      ).then((data) => data.json());
-
-      toast.success('Your data has been successfully created');
-    } catch (err) {
-      toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+        toast.success('Your data has been successfully created');
+      } catch (err) {
+        toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+      }
     }
   };
 
@@ -153,6 +170,9 @@ const CreateTournament = ({ user }) => {
                       onChange={handleChange}
                       value={state.name}
                     />
+                    {state.name.length >= 41 && (
+                      <h6>Tournament Name cannot be more then 40 characters</h6>
+                    )}
                   </div>
                   <div className="form-group">
                     <div className="style_file_upload">
@@ -337,6 +357,9 @@ const CreateTournament = ({ user }) => {
                       value={state.participants}
                       placeholder=""
                     />
+                    {state.participants.length >= 101 && (
+                      <h6>Participants cannot be more then 100 members</h6>
+                    )}
                   </div>
                   <div className="form-group">
                     <label for="exampleFormControlTextarea1">
@@ -456,6 +479,9 @@ const CreateTournament = ({ user }) => {
                         onChange={handleChange}
                         value={state.location}
                       />
+                      {state.location.length >= 31 && (
+                        <h6>Location cannot be more then 30 characters</h6>
+                      )}
                     </div>
 
                     <div className="colm">
@@ -480,6 +506,9 @@ const CreateTournament = ({ user }) => {
                         onChange={handleChange}
                         value={state.description}
                       />
+                      {state.description.length >= 301 && (
+                        <h6>Description cannot be more then 300 characters</h6>
+                      )}
                     </div>
                     <div className="colm">
                       <label for="exampleFormControlInput1">Tickets</label>
@@ -545,7 +574,7 @@ const CreateTournament = ({ user }) => {
               className={`btn rgtside ${showbtn ? '' : 'd-none'}`}
               onClick={showstep2}
             >
-              Continues
+              Continue
             </button>
           </div>
         </div>

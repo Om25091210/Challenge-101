@@ -32,19 +32,28 @@ const CreateBrand = ({ user }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let formdata = new FormData();
-    formdata.append('name', state.name);
-    formdata.append('description', state.description);
-    formdata.append('location', state.location);
-    formdata.append('founded', state.founded);
-    formdata.append('logoUrl', image);
+    if (
+      state.name === '' ||
+      state.description === '' ||
+      state.location === '' ||
+      state.founded === ''
+    ) {
+      toast.warning('Please enter all fields or check your inputs');
+    } else {
+      let formdata = new FormData();
+      formdata.append('name', state.name);
+      formdata.append('description', state.description);
+      formdata.append('location', state.location);
+      formdata.append('founded', state.founded);
+      formdata.append('logoUrl', image);
 
-    try {
-      await mutation.mutateAsync(formdata);
-      toast.success('Your Company has been successfully created');
-    } catch (err) {
-      console.log(err);
-      toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+      try {
+        await mutation.mutateAsync(formdata);
+        toast.success('Your Company has been successfully created');
+      } catch (err) {
+        console.log(err);
+        toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+      }
     }
   };
 
@@ -76,6 +85,9 @@ const CreateBrand = ({ user }) => {
                     onChange={handleChange}
                     value={state.name}
                   />
+                  {state.name.length >= 51 && (
+                    <h6>Company name cannot be more then 50 characters</h6>
+                  )}
                 </div>
                 <div className="form-group">
                   <div className="style_file_upload">
@@ -101,6 +113,9 @@ const CreateBrand = ({ user }) => {
                     onChange={handleChange}
                     value={state.description}
                   />
+                  {state.description.length >= 201 && (
+                    <h6>Descrtption cannot be more then 200 characters</h6>
+                  )}
                 </div>
                 <div className="form-group">
                   <label htmlFor="exampleFormControlInput1">Location</label>
@@ -112,6 +127,9 @@ const CreateBrand = ({ user }) => {
                     onChange={handleChange}
                     value={state.location}
                   />
+                  {state.location.length >= 61 && (
+                    <h6>Location cannot be more then 60 characters</h6>
+                  )}
                 </div>
                 <div className="form-group">
                   <label htmlFor="exampleFormControlInput1">Founded</label>
@@ -123,6 +141,7 @@ const CreateBrand = ({ user }) => {
                     onChange={handleChange}
                     value={state.founded}
                   />
+                  {state.founded.length >= 5 && <h6>Year is invalid.</h6>}
                 </div>
               </>
               <button className={`btn rgtside`}>Continue</button>

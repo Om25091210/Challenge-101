@@ -31,18 +31,26 @@ const CreateBrand = ({ user }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let formdata = new FormData();
-    formdata.append('name', state.name);
-    formdata.append('description', state.description);
-    formdata.append('socialLinks', state.socialLinks);
-    formdata.append('logoUrl', image);
+    if (
+      state.name === '' ||
+      state.description === '' ||
+      state.socialLinks === ''
+    ) {
+      toast.warning('Please enter all fields or check your inputs');
+    } else {
+      let formdata = new FormData();
+      formdata.append('name', state.name);
+      formdata.append('description', state.description);
+      formdata.append('socialLinks', state.socialLinks);
+      formdata.append('logoUrl', image);
 
-    try {
-      await mutation.mutateAsync(formdata);
-      toast.success('Your Brand has been successfully created');
-    } catch (err) {
-      console.log(err);
-      toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+      try {
+        await mutation.mutateAsync(formdata);
+        toast.success('Your Brand has been successfully created');
+      } catch (err) {
+        console.log(err);
+        toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+      }
     }
   };
 
@@ -74,6 +82,9 @@ const CreateBrand = ({ user }) => {
                     onChange={handleChange}
                     value={state.name}
                   />
+                  {state.name.length >= 41 && (
+                    <h6>Brand name cannot be more then 40 characters</h6>
+                  )}
                 </div>
                 <div className="form-group">
                   <div className="style_file_upload">
@@ -99,6 +110,9 @@ const CreateBrand = ({ user }) => {
                     onChange={handleChange}
                     value={state.description}
                   />
+                  {state.description.length >= 201 && (
+                    <h6>Description cannot be more then 200 characters</h6>
+                  )}
                 </div>
                 <div className="form-group">
                   <label htmlFor="exampleFormControlInput1">SocialLinks</label>

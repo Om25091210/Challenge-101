@@ -8,33 +8,31 @@ import TeamRequest from './invites/TeamRequest';
 
 const Teams = ({ user, profile, myState, selectedGame }) => {
   const [team, setTeam] = useState([]);
-  const [sessionTeam, setSessionTeam] = useState({key:null, value:null});
+  const [sessionTeam, setSessionTeam] = useState({ key: null, value: null });
 
   useEffect(() => {
-
     var sg = undefined;
-    if (selectedGame != null) { sg = selectedGame._id;}
-          
+    if (selectedGame != null) {
+      sg = selectedGame._id;
+    }
+
     if (myState.selectedFilters.length > 0) {
       setTeam(myState.filteredResults);
     } else {
-      
       if (sessionTeam.key === null) {
-          axios.get(`${baseURL}/api/teams/teamsbygame/${sg}`).then((res) => {
-            setTeam(res.data);
-            setSessionTeam({key:sg, value: team}); 
-          });
-          
+        axios.get(`${baseURL}/api/teams/teamsbygame/${sg}`).then((res) => {
+          setTeam(res.data);
+          setSessionTeam({ key: sg, value: team });
+        });
       } else {
-        if ( sessionTeam.key != sg) {
+        if (sessionTeam.key != sg) {
           axios.get(`${baseURL}/api/teams/teamsbygame/${sg}`).then((res) => {
             setTeam(res.data);
-            setSessionTeam({key:sg, value: team});
+            setSessionTeam({ key: sg, value: team });
           });
-                  
         } else {
           //setTeam (sessionTeam.get(sg));
-        } 
+        }
       }
 
       //myState.setFilteredResults(team);
@@ -82,129 +80,161 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
           </div>
         </div>
 
-        <Filters filterType={'TEAMS'} myState={myState} selectedGame={selectedGame}/>
+        <Filters
+          filterType={'TEAMS'}
+          myState={myState}
+          selectedGame={selectedGame}
+        />
       </div>
 
-
-
-      { team.length == 0 ? ( <div className="team_row"> <p>No results for the selected criteria. Please refine.</p></div> ) : (
-
-
-
-        team.map((team, idx) => (
-        <div className="team_row" key={idx}>
-          <div className="stars">
-            <i className="fa fa-star" aria-hidden="true"></i>
-          </div>
-          <div className="inner_team">
-            <div className="logo_box">
-              {' '}
-              <div className="role_pic">
-                <img src="/assets/media/discover/team1.png" alt="" />
-              </div>
-               <a href={`/team/${team.team._id}`}>
-                <h3>
-                  {team.team._id} : {team.team.name}
-                </h3>
-              </a>
-              <img
-                src="/assets/media/discover/country.png"
-                alt={team.team.name}
-              />{' '}
-            </div>
-            <span className="logo">
-              <img src="/assets/media/discover/apex.png" alt="" />
-            </span>{' '}
-            <span className="remarks">
-              <h4>ROLE</h4>
-              <p>Support Scout Sniper Driver Fragger Ingame leader</p>
-            </span>
-            <div className="mores">
-              {' '}
-              <span>
-                <img src="/assets/media/discover/desk.png" alt="" />
-              </span>{' '}
-              <span>
-                <img src="/assets/media/discover/mice.png" alt="" /> <b>On</b>
-              </span>{' '}
-              <span>
-                <img src="/assets/media/discover/translator.png" alt="" />{' '}
-                <b>EN, HI</b>
-              </span>{' '}
-            </div>
-            <TeamRequest team={team.team} user={user} profile={profile} />
-          </div>
-
-          <div className="overview_box">
-            <h2>Team Overview</h2>
-            <div className="team_overview">
-              <div className="over_prof">
-                <div className="pics">
-                  {' '}
-                  <img src="/assets/media/discover/team1.png" alt="" />{' '}
-                </div>
-                <h3>{team.team.name}</h3>
-              </div>
-
-              <div className="ranking">
-                <h4>Ranking</h4>
-
-                {!team.team.ranks || team.team.ranks.length === 0 ? (
-                  <p>No ranks defined..</p>
-                ) : (
-                  team.team.ranks.map((item, index) => (
-                    <div key={index} className="current_team">
-                      <span className="ct">
-                        {' '}
-                        <i
-                          className="fa fa-sort-asc"
-                          aria-hidden="true"
-                        ></i>{' '}
-                        {item.rank}
-                      </span>
-                      <span className="were">{item.rankType} </span>
-                    </div>
-                  ))
-                )}
-
-                <h4>country</h4>
-                <p>
-                  <img src="/assets/media/discover/country.png" alt="" />{' '}
-                  {team.team.region}
-                </p>
-                <h4>Established</h4>
-                <p>{team.team.founded}</p>
-              </div>
-              <div className="match">
-                <h4>Matches Played</h4>
-                <p>156 Games</p>
-                <h4>Matches Won</h4>
-                <p>131 Victories</p>
-                <h4>Manager</h4>
-                <p>Sonu "TheMadTitan" Singh</p>
-              </div>
-              <div className="other">
-                <h4>From</h4>
-                <p>
-                  <span className="red round"></span>{' '}
-                  <span className="green round"></span>{' '}
-                  <span className="red round"></span>{' '}
-                </p>
-                <h4>Trophies</h4>
-                <p>4</p>
-                <h4>Prize Earned</h4>
-                <p>USD 912.804</p>
-              </div>
-              <div className="percentage">
-                {' '}
-                <img src="/assets/media/discover/percentage.png" alt="" />{' '}
-              </div>
-            </div>
-          </div>
+      {team.length == 0 ? (
+        <div className="team_row">
+          {' '}
+          <p>No results for the selected criteria. Please refine.</p>
         </div>
-      )) 
-      ) 
-    }
+      ) : (
+        team.map((team, idx) => (
+          <div className="team_row" key={idx}>
+            <div className="stars">
+              <i className="fa fa-star" aria-hidden="true"></i>
+            </div>
+            <div className="inner_team">
+              <div className="logo_box">
+                {' '}
+                <div className="role_pic">
+                  <img src="/assets/media/discover/team1.png" alt="" />
+                </div>
+                <a href={`/team/${team.team._id}`}>
+                  <h3>
+                    {team.team._id} : {team.team.name}
+                  </h3>
+                </a>
+                <img
+                  src="/assets/media/discover/country.png"
+                  alt={team.team.name}
+                />{' '}
+              </div>
+              {team.team.games.length <= 0 ? (
+                <p>No Game for this team</p>
+              ) : (
+                <>
+                  {team.team.games.map((im) => (
+                    <>
+                      <span className="logo">
+                        <img src={im.gameId?.imgUrl} alt="" />
+                      </span>{' '}
+                    </>
+                  ))}
+                </>
+              )}
+              <span className="remarks">
+                <h4>ROLE</h4>
+                <p>Support Scout Sniper Driver Fragger Ingame leader</p>
+              </span>
+              <div className="mores">
+                {' '}
+                <span>
+                  {team.team.platform === 'PC' ? (
+                    <img src="/assets/media/discover/desk.png" alt="" />
+                  ) : team.team.platform === 'Console' ? (
+                    <img src="/assets/media/discover/console.png" alt="" />
+                  ) : team.team.platform === 'Mobile' ? (
+                    <img src="/assets/media/discover/mobile_game.png" alt="" />
+                  ) : (
+                    <p>No Platform mentioned</p>
+                  )}
+                </span>{' '}
+                <span>
+                  <img src="/assets/media/discover/mice.png" alt="" /> <b>On</b>
+                </span>{' '}
+                <span>
+                  <img src="/assets/media/discover/translator.png" alt="" />{' '}
+                  {team.team.language.length > 0 ? (
+                    <>
+                      {team.team.language?.map((tem) => (
+                        <b>{tem}</b>
+                      ))}
+                    </>
+                  ) : (
+                    <p>No Language Available</p>
+                  )}
+                </span>{' '}
+              </div>
+              <TeamRequest team={team.team} user={user} profile={profile} />
+            </div>
+
+            <div className="overview_box">
+              <h2>Team Overview</h2>
+              <div className="team_overview">
+                <div className="over_prof">
+                  <div className="pics">
+                    {' '}
+                    <img src="/assets/media/discover/team1.png" alt="" />{' '}
+                  </div>
+                  <h3>{team.team.name}</h3>
+                </div>
+
+                <div className="ranking">
+                  <h4>Ranking</h4>
+
+                  {!team.team.ranks || team.team.ranks.length === 0 ? (
+                    <p>No ranks defined..</p>
+                  ) : (
+                    team.team.ranks.map((item, index) => (
+                      <div key={index} className="current_team">
+                        <span className="ct">
+                          {' '}
+                          <i
+                            className="fa fa-sort-asc"
+                            aria-hidden="true"
+                          ></i>{' '}
+                          {item.rank}
+                        </span>
+                        <span className="were">{item.rankType} </span>
+                      </div>
+                    ))
+                  )}
+
+                  <h4>country</h4>
+                  <p>
+                    <img src="/assets/media/discover/country.png" alt="" />{' '}
+                    {team.team.region}
+                  </p>
+                  <h4>Established</h4>
+                  <p>{team.team.founded}</p>
+                </div>
+                <div className="match">
+                  <h4>Matches Played</h4>
+                  <p>156 Games</p>
+                  <h4>Matches Won</h4>
+                  <p>131 Victories</p>
+                  <h4>Manager</h4>
+                  <p>Sonu "TheMadTitan" Singh</p>
+                </div>
+                <div className="other">
+                  <h4>From</h4>
+                  <p>
+                    <span className="red round"></span>{' '}
+                    <span className="green round"></span>{' '}
+                    <span className="red round"></span>{' '}
+                  </p>
+                  <h4>Trophies</h4>
+                  <p>4</p>
+                  <h4>Prize Earned</h4>
+                  <p>USD 912.804</p>
+                </div>
+                <div className="percentage">
+                  {' '}
+                  <img
+                    src="/assets/media/discover/percentage.png"
+                    alt=""
+                  />{' '}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))
+      )}
     </div>
   );
 };
