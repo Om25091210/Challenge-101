@@ -11,8 +11,6 @@ import Moment from 'moment';
 
 const ProfileMatches = ({ user, Userdata }) => {
 
-  console.log(Userdata);
-
   return (
 
         <div className="tab hide" id="matches">

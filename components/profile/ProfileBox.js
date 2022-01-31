@@ -26,7 +26,6 @@ const ProfileBox = ({ user, Userdata, games }) => {
     setFollow(true);
   };
 
-  console.log(Userdata);
   const addFollow = async () => {
     const res = await fetch(`${baseURL}/api/profile/follow/${SrhUser._id}`, {
       method: 'POST',
