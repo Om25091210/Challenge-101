@@ -20,10 +20,12 @@ const ProfileBox = ({ user, Userdata, games }) => {
   const [selectedGame, setSelectedGame] = useState(null);
 
   const [coverPic, setCoverPic] = useState(null);
+  const [userIgn, setUserIgn] = useState(null);
 
   const [address, setAddress] = useState(Userdata.profile?.address);
 
   const [follow, setFollow] = useState(false);
+
   const followhandlesubmit = async (e) => {
     e.preventDefault();
     mutate({ follow });
@@ -106,8 +108,8 @@ const ProfileBox = ({ user, Userdata, games }) => {
     }
   };
 
-  function handleChange(e) {
-    setAddress({ ...address, [e.target.name]: e.target.value });
+  function handleUserIgnChange(e) {
+    setUserIgn(e.target.value);
   }
 
   const onChange = (e) => {
@@ -201,6 +203,17 @@ const ProfileBox = ({ user, Userdata, games }) => {
   //   });
   // }, []);
 
+  const handleSelectGame = async (obj) => {
+    setSelectedGame(obj);
+    //myState.setFilteredResults([]);
+    $('a.model_close').parent().removeClass('show_model');
+     
+  };
+
+  function handleChange(e) {
+    setState({ ...state, [e.target.name]: e.target.value });
+  }
+
   useEffect(() => {
     $('a.model_show_btn').click(function () {
       $(this).next().addClass('show_model');
@@ -234,7 +247,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
               src={
                 coverPic ? URL.createObjectURL(coverPic) : SrhUser?.coverPicUrl
               }
-              alt={SrhUser.name}
+              alt={SrhUser?.name}
             />
 
             {isLoggedInUser ? (
@@ -602,7 +615,17 @@ const ProfileBox = ({ user, Userdata, games }) => {
                 </a>
                 <div className="inner_model_box">
                   <h3>Games</h3>
-
+                    <div className="form-group">
+                      <label htmlFor="exampleFormControlInput1">Please enter your in game name (IGN) and select the game:</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="User IGN"
+                        name="userIgn"
+                        onChange={handleUserIgnChange}
+                        value={userIgn}
+                      />
+                    </div>
                   <div className="poup_height msScroll_all">
                     <ul className="">
                       {games && games.map((game, idx) => (
