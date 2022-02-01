@@ -17,10 +17,11 @@ const ProfileBox = ({ user, Userdata, games }) => {
   const [showform, setShowForm] = useState(false);
   const [showlocation, setShowlocation] = useState(false);
   const [showLocModal, setShowLocModal] = useState(true);
+  const [selectedGame, setSelectedGame] = useState(null);
 
   const [coverPic, setCoverPic] = useState(null);
 
-  const [address, setAddress] = useState(Userdata.profile.address);
+  const [address, setAddress] = useState(Userdata.profile?.address);
 
   const [follow, setFollow] = useState(false);
   const followhandlesubmit = async (e) => {
@@ -40,12 +41,12 @@ const ProfileBox = ({ user, Userdata, games }) => {
 
   const { mutate } = useMutation(addFollow);
 
-  const SrhUser = Userdata.profile.user;
-  const profileId = Userdata.profile._id;
-  const isLoggedInUser = user._id === SrhUser._id;
+  const SrhUser = Userdata.profile?.user;
+  const profileId = Userdata.profile?._id;
+  const isLoggedInUser = user._id === SrhUser?._id;
 
   const isFollow = Userdata.followers
-    .filter((x) => x.user === user._id)
+    ?.filter((x) => x.user === user._id)
     .map((x) => x.user);
 
   console.log(cookie.get('token'));
@@ -231,7 +232,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
               className="rounded-full h-full w-full object-cover"
               id="result"
               src={
-                coverPic ? URL.createObjectURL(coverPic) : SrhUser.coverPicUrl
+                coverPic ? URL.createObjectURL(coverPic) : SrhUser?.coverPicUrl
               }
               alt={SrhUser.name}
             />
@@ -570,92 +571,62 @@ const ProfileBox = ({ user, Userdata, games }) => {
               </button>
             ) : null}
 
-            <div className="games">
+                  <div className="discovery_page">
+  
+          <div className="white_bg">
               <h2>GAMES</h2>
 
-              <>
-                <ul className="games_btn">
-                  {Userdata.profile.player?.games.map((item, index) => (
-                    <>
-                      <li
-                        className={`${
-                          `item${index}` == 'item0' ? 'active' : ''
-                        }`}
-                        key={index}
-                      >
-                        <a href="#!" rel={`item${index}`}>
-                          <span key={index}>
-                            <img
-                              src={item.gameId ? item.gameId.imgUrl : ''}
-                              alt={item.gameId ? item.gameId.name : ''}
-                            />{' '}
-                            <p>
-                              {item.gameId ? item.gameId.name : 'Not Defined'}
-                            </p>
-                          </span>
-                        </a>
-                      </li>
-                    </>
-                  ))}
-                </ul>
-              </>
+            <div className="tit">
+              <a href="#!" className="model_show_btn">
+                <span>
+                  <b className="icon">
+                    <img src="/assets/media/ranking/console.png" alt="" />
+                  </b>{' '}
+                  Browse Games
+                </span>
+                <i className="fa fa-angle-right" aria-hidden="true"></i>
 
-              <div className="profile_hover_games">
-                <div className="tit">
-                  <form onSubmit={(e) => e.preventDefault()}>
-                    <a
-                      href="#more_games"
-                      className="common_poup"
-                      onClick={mscroll}
-                    >
-                      <span>
-                        <b className="icon">
-                          <img src="/assets/media/ranking/console.png" alt="" />
-                        </b>{' '}
-                        Add more Games (+)
-                      </span>
-                      <i className="fa fa-angle-right" aria-hidden="true"></i>
-
-                      <div className="hover_games">
-                        {games.map((game, idx) => (
-                          <div className="other_logo" key={idx}>
-                            <img src={game.imgUrl} alt={game.name} />
-                          </div>
-                        ))}
-                      </div>
-                    </a>
-
-                    <div
-                      id="more_games"
-                      className="after_load_scroll"
-                      style={{ display: 'none' }}
-                    >
-                      <div className="inner_model_box">
-                        <h3>More Games</h3>
-                        <ul>
-                          {games.map((game, idx) => (
-                            <li key={idx}>
-                              <div className="game_pic">
-                                <img src={game.imgUrl} alt={game.name} />
-                              </div>
-                              <p>{game.name}</p>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-
-                    <button
-                      onClick={handleButtonForm}
-                      className="btn"
-                      style={{ display: 'none' }}
-                    >
-                      Update
-                    </button>
-                  </form>
+                <div className="hover_games">
+                  <div className="other_logo">
+                    <img
+                      src={selectedGame ? selectedGame.imgUrl : ''}
+                      alt={selectedGame ? selectedGame.name : ''}
+                    />
+                  </div>
                 </div>
+              </a>
+
+              <div className="common_model_box" id="more_games">
+                <a href="#!" className="model_close">
+                  X
+                </a>
+                <div className="inner_model_box">
+                  <h3>Games</h3>
+
+                  <div className="poup_height msScroll_all">
+                    <ul className="">
+                      {games && games.map((game, idx) => (
+                        <li key={idx}>
+                          <div className="game_pic">
+                            <a href="#!" onClick={() => handleSelectGame(game)}>
+                              {' '}
+                              <img src={game.imgUrl} alt={game.name} />{' '}
+                            </a>
+                          </div>
+                          <p>{game.name}</p>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+                <div className="overlay"></div>
               </div>
             </div>
+
+
+
+            </div>
+          </div>
           </div>
 
           <ProfileGameStat user={user} Userdata={Userdata} />

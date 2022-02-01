@@ -5,6 +5,7 @@ import { DataContext } from '@store/GlobalState';
 import { addToCart } from '@store/Actions';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { toast } from 'react-toastify';
 
 import MetaDash from '@components/MetaDash';
 import SignedHeader from '@components/SignedHeader';
