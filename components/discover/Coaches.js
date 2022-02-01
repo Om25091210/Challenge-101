@@ -88,7 +88,7 @@ const Coaches = ({ user, profile, myState }) => {
                 EXPERIENCE: <b>{coach.coaches.experience} Year</b>{' '}
               </h4>
             </span>
-            <div className="mores">
+            <div className="mores plateform">
               <Rating value={coach.coaches.coach_rating} />
               <span>
                 {coach.coaches.platform === 'PC' ? (

@@ -106,7 +106,7 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
                 </div>
                 <a href={`/team/${team.team._id}`}>
                   <h3>
-                    {team.team._id} : {team.team.name}
+                    {team.team._id} : <br /> {team.team.name}
                   </h3>
                 </a>
                 <img
@@ -131,7 +131,7 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
                 <h4>ROLE</h4>
                 <p>Support Scout Sniper Driver Fragger Ingame leader</p>
               </span>
-              <div className="mores">
+              <div className="mores plateform">
                 {' '}
                 <span>
                   {team.team.platform === 'PC' ? (

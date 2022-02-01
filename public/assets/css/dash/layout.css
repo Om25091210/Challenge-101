@@ -2888,7 +2888,7 @@ article .social_bar {
 .other_logo {
 	background: #ddd;
 	display: inline-block;
-	padding: 4px 9px 1px 10px;
+	padding: 0 9px 0 10px;
 	border-radius: 5px;
 	text-align: center;
 	vertical-align: top;
@@ -2896,7 +2896,7 @@ article .social_bar {
 	display: none;
 }
 .other_logo:first-child {
-	display: block;
+	display: flex;
 	position: absolute;
 	width: 52px;
 	height: 42px;
@@ -2904,6 +2904,7 @@ article .social_bar {
 	opacity: 1;
 	transition: 0.3s ease-in-out;
 	top: -23px;
+	align-items: center;
 }
 .tit:hover .other_logo:first-child {
 	opacity: 1;
@@ -3166,7 +3167,7 @@ article .social_bar {
 	font-size: 11px;
 }
 .team_row .logo_box h3 {
-	margin:0 20px;
+	margin:0 20px; display: block;
 }
 .team_row .logo_box .thumb_img {
 	width: 50px;
@@ -3190,9 +3191,12 @@ article .social_bar {
 }
 .team_row .mores {
 	display: flex;
-	width: 220px;
+	width: auto;
 	justify-content: space-between;
 }
+
+.team_row .mores.plateform p{ width: 80px; word-break: break-all; text-align: center;}
+
 .team_row .mores .fa {
 	margin-right: 2px;
 }
@@ -3613,7 +3617,7 @@ article .social_bar {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin-top: 50px;
+	margin-top: 50px; 
 }
 .top_game, .bottom_game .games {
 	display: flex;
@@ -3629,9 +3633,10 @@ article .social_bar {
 	align-items: center;
 	margin-right: 10px;
 }
-.top_game, .bottom_game .game_logo img {
-	margin-right: 10px;
+.bottom_game .game_logo img {
+	margin-right: 10px; width: 25px;
 }
+.top_game{margin-right: 10px;}
 .prize h3 {
 	display: block;
 	font-size: 19px;
