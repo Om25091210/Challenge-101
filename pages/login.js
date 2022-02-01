@@ -59,7 +59,7 @@ const SignIn = () => {
 
 		    localStorage.setItem('firstLogin', true)
 		    setToken(res.token);
-		    toast.info('Welcome back...' + res.user.name);
+		    //toast.info('Welcome back...' + res.user.name);
   	}
   	catch (error) {
     	toast.info('Sorry! Please verify your login credentials and try again.');

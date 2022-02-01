@@ -377,7 +377,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                                 onChange={handleChange}
                                 value={address?.line1}
                               />
-                              {address.line1.length >= 21 && (
+                              {address?.line1.length >= 21 && (
                                 <h6>
                                   Address Line 1 cannot be more then 20
                                   characters
@@ -397,7 +397,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                                 onChange={handleChange}
                                 value={address?.line2}
                               />
-                              {address.line2.length >= 21 && (
+                              {address?.line2.length >= 21 && (
                                 <h6>
                                   Address Line 2 cannot be more then 20
                                   characters
@@ -417,7 +417,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                                 onChange={handleChange}
                                 value={address?.city}
                               />
-                              {address.city.length >= 21 && (
+                              {address?.city.length >= 21 && (
                                 <h6>
                                   City Name cannot be more then 20 characters
                                 </h6>
@@ -436,7 +436,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                                 onChange={handleChange}
                                 value={address?.state}
                               />
-                              {address.state.length >= 31 && (
+                              {address?.state.length >= 31 && (
                                 <h6>
                                   State name cannot be more then 30 characters
                                 </h6>
@@ -455,7 +455,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                                 onChange={handleChange}
                                 value={address?.country}
                               />
-                              {address.country.length >= 57 && (
+                              {address?.country.length >= 57 && (
                                 <h6>
                                   Country name cannot be more then 56 characters
                                 </h6>
@@ -474,7 +474,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                                 onChange={handleChange}
                                 value={address?.zipcode}
                               />
-                              {address.zipcode.length >= 7 && (
+                              {address?.zipcode.length >= 7 && (
                                 <h6>Zipcode must be 6 digits.</h6>
                               )}
                             </div>
