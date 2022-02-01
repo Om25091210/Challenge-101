@@ -118,13 +118,13 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
                 <p>No Game for this team</p>
               ) : (
                 <>
-                  {team.team.games.map((im) => (
-                    <>
-                      <span className="logo">
+                  <span className="logo">
+                    {team.team.games.map((im) => (
+                      <>
                         <img src={im.gameId?.imgUrl} alt="" />
-                      </span>{' '}
-                    </>
-                  ))}
+                      </>
+                    ))}
+                  </span>
                 </>
               )}
               <span className="remarks">
