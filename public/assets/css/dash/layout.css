@@ -379,8 +379,11 @@ ul.top_menu li.profile {
 	height:45px;
 	border-radius:5px;
 	margin-left:20px;
-	padding:0 !important;
+	padding:0 !important; 
 }
+
+
+ul.top_menu li.profile img{ height: 46px;}
 ul.top_menu .drop_down_bg.profile_drop_down {
 	width:150px;
 	top:48px
@@ -406,8 +409,8 @@ ul.top_menu .drop_down_bg.profile_drop_down {
 .profile_drop_down li a:hover {
 	color:#7239ea;
 }
-ul.top_menu li.profile a {
-	display: inline-block;
+ul.top_menu li.profile > a {
+	display: inline-block; background: #000; border-radius: 50%;     overflow: hidden; width: 45px; height: 45px;
 }
 /* ------- start left side -------------- */
 
@@ -711,10 +714,12 @@ ul.top_menu li.profile a {
 	margin-bottom:20px;
 }
 .post .heads {
-	display:flex;
-	width:100%;
-	align-items: flex-start;
-	position: relative;
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+    position: relative;
+    flex-wrap: wrap;
+    justify-content: space-between; align-items: center;
 }
 .post .heads .user {
 	width:67px;
@@ -722,7 +727,7 @@ ul.top_menu li.profile a {
 	border-radius:5px;
 	overflow:hidden;
 	flex-shrink: 0;
-	background: #000;
+	background: #000; 
 }
 .post .heads .user img {
 	width:100%;
@@ -730,16 +735,23 @@ ul.top_menu li.profile a {
 	object-fit:cover;
 }
 .post .heads .user_name_disc {
-	padding-left:30px;
+	display: flex;
+    justify-content: space-between;
+    width: calc(100% - 100px);
+    flex-wrap: wrap;
 }
 .post .heads .date {
-	position: absolute;
-	right:0px;
-	top:0px
+	
 }
-.post .heads .date p {
-	font-size:12px;
-	color: #7239ea;
+.post .heads .post_discp {
+		font-size: 15px;
+		padding-bottom: 10px;
+		font-weight: 400;
+		line-height: 22px;
+		float: right;
+		width: calc(100% - 100px);
+		margin-left: 100px;
+	
 }
 .post .heads h4 {
 	font-size: 18px;
@@ -1341,7 +1353,7 @@ article .social_bar {
 	margin:0 10px;
 	color:#202028;
 	font-size:12px;
-	font-weight:600;
+	font-weight:600; word-break: break-all;
 }
 .white_box .activity_tag .act_name b {
 	display:block;

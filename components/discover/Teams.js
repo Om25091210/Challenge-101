@@ -160,7 +160,7 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
                   )}
                 </span>{' '}
               </div>
-              <TeamRequest team={team.team} user={user} profile={profile} />
+              {/* <TeamRequest team={team.team} user={user} profile={profile} /> */}
             </div>
 
             <div className="overview_box">

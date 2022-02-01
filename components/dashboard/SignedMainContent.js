@@ -408,25 +408,27 @@ const SignedMainContent = ({ posts, user, profile }) => {
                     </div>
                     <div className="user_name_disc">
                       <h4>{post.username}</h4>
-                      <p>{post.description}</p>
+                      <div className="date">
+                        {post.createdAt === post.updatedAt ? (
+                          <p>
+                            {' '}
+                            {Moment(post.createdAt).format(
+                              'MMMM, DD, YYYY hh:mm A'
+                            )}{' '}
+                          </p>
+                        ) : (
+                          <p>
+                            {' '}
+                            {Moment(post.updatedAt).format(
+                              'MMMM, DD, YYYY hh:mm A'
+                            )}{' '}
+                          </p>
+                        )}
+                      </div>
                     </div>
 
-                    <div className="date">
-                      {post.createdAt === post.updatedAt ? (
-                        <p>
-                          {' '}
-                          {Moment(post.createdAt).format(
-                            'MMMM, DD, YYYY hh:mm A'
-                          )}{' '}
-                        </p>
-                      ) : (
-                        <p>
-                          {' '}
-                          {Moment(post.updatedAt).format(
-                            'MMMM, DD, YYYY hh:mm A'
-                          )}{' '}
-                        </p>
-                      )}
+                    <div className="post_discp">
+                      <p>{post.description}</p>
                     </div>
                   </div>
                   <div className="left_details">
