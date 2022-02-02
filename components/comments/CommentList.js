@@ -7,15 +7,16 @@ import DeleteComment from './DeleteComment';
 import ReplyComment from './replies/ReplyComment';
 import ReplyList from './replies/ReplyList';
 import { formatDistanceToNowStrict } from 'date-fns';
+import PinnedComments from './PinnedComments';
 
 const CommentList = ({ post, user }) => {
-  const [comments, setComments] = useState([]);
+  const [commentsData, setCommentsData] = useState([]);
 
   useEffect(() => {
     axios
       .get(`${baseURL}/api/comments/${post._id}`)
       .then((res) => {
-        setComments(res.data);
+        setCommentsData(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -27,12 +28,24 @@ const CommentList = ({ post, user }) => {
   return (
     <div>
       <div className="post_comments">
-        <div className="pop_comment">Popular Comments</div>
-        {comments.length === 0 ? (
+        <div className="pop_comment">
+          <select
+            name="comments"
+            id="comm"
+            style={{ background: 'transparent', border: 'none' }}
+          >
+            <option value="popular_comments" rel="popC">
+              Popular Comments
+            </option>
+            <option value="newest_comments">Newest Comments</option>
+            <option value="pinned_essages">Pinned Messages</option>
+          </select>
+        </div>
+        {commentsData.comments?.length === 0 ? (
           <p>There are no comments for this post.</p>
         ) : (
           <div>
-            {comments.map((comment) => (
+            {commentsData.comments?.map((comment) => (
               <div key={comment._id}>
                 <div className="comments_point">
                   <LikeComment postId={postId} comment={comment} />
@@ -46,10 +59,12 @@ const CommentList = ({ post, user }) => {
                     {formatDistanceToNowStrict(new Date(comment.date), {
                       addSuffix: true
                     })}
-                  </span>{' '}
-                  <a href="#" className="pinned">
-                    Pinned by Creator
-                  </a>{' '}
+                  </span>
+                  <PinnedComments
+                    user={user}
+                    comment={comment}
+                    postId={postId}
+                  />
                 </div>
                 <h3>{comment.text}</h3>
                 <div className="first_reply">
