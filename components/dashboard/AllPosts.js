@@ -38,13 +38,15 @@ const AllPosts = ({ post, user }) => {
             <img src={post.profilepic} alt="" />
           </div>
           <div className="user_name_disc">
-            <h4>{post.username}</h4>
-            <button
-              className="btn"
-              onClick={() => followhandlesubmit(post.user._id)}
-            >
-              {isFollow === true ? ' UnFollow' : 'Follow'}
-            </button>
+            <div className="title_follow">
+              <h4>{post.username}</h4>
+              <button
+                className="btn"
+                onClick={() => followhandlesubmit(post.user._id)}
+              >
+                {isFollow === true ? ' UnFollow' : 'Follow'}
+              </button>
+            </div>
             <div className="date">
               {post.createdAt === post.updatedAt ? (
                 <p>
@@ -60,19 +62,15 @@ const AllPosts = ({ post, user }) => {
             </div>
           </div>
 
-          <div className="post_discp">
-            {post.images.length === 0 ? (
-              <p
-                style={{
-                  padding: '2rem',
-                  marginLeft: '4rem',
-                  background: '#F3F6F9'
-                }}
-              >
-                {post.description}
-              </p>
-            ) : null}
-          </div>
+          {post.images.length === 0 ? (
+            <div className="post_discp disc_without_img">
+              <p>{post.description}</p>
+            </div>
+          ) : (
+            <div className="post_discp ">
+              <p>{post.description}</p>
+            </div>
+          )}
         </div>
         <div className="left_details">
           {' '}

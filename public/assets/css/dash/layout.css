@@ -753,6 +753,12 @@ ul.top_menu li.profile > a {
 		margin-left: 100px;
 	
 }
+
+.post .heads .post_discp.disc_without_img{ background: #ddd; min-height: 200px; text-align: center; display: flex; justify-content: center; align-items: center;}
+
+.post .title_follow{ display: flex; align-items: center;}
+.post .title_follow button{ margin-left: 10px;}
+
 .post .heads h4 {
 	font-size: 18px;
 	color: #061b4e;
@@ -1078,7 +1084,7 @@ ul.top_menu li.profile > a {
 }
 .post_comments .pop_comment {
 	display:inline-block;
-	background:#e1e1e1;
+
 	font-size:16px;
 	font-weight:700;
 	width:auto;
@@ -1086,6 +1092,13 @@ ul.top_menu li.profile > a {
 	border-radius:5px;
 	margin-bottom:20px;
 }
+
+.post_comments .pop_comment select{ padding: 0;
+    appearance: auto;
+    font-size: 13px;
+    color: #000; background: #e1e1e1;
+    font-weight: 600;}
+
 .post_comments p {
 	color:#19191d;
 	font-size:18px;

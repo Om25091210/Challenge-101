@@ -32,7 +32,7 @@ const CommentList = ({ post, user }) => {
           <select
             name="comments"
             id="comm"
-            style={{ background: 'transparent', border: 'none' }}
+            className="custom-select text-capitalize"
           >
             <option value="popular_comments" rel="popC">
               Popular Comments
