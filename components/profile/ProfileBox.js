@@ -23,6 +23,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
   const [userIgn, setUserIgn] = useState(null);
 
   const [address, setAddress] = useState(Userdata.profile?.address);
+  const [attr, setAttr] = useState(Userdata.profile?.player.attributes);
 
   const [follow, setFollow] = useState(false);
 
@@ -146,7 +147,6 @@ const ProfileBox = ({ user, Userdata, games }) => {
     }
   };
 
-  console.log(address);
   const handleAddressForm = async (e) => {
     e.preventDefault();
 
@@ -183,6 +183,44 @@ const ProfileBox = ({ user, Userdata, games }) => {
     }
   };
 
+  const handleAttrForm = async (e) => {
+    e.preventDefault();
+
+    if (
+      attr.roles === '' ||
+      attr.regions === '' ||
+      attr.playertype === '' ||
+      attr.platform === '' ||
+      attr.elo === '' ||
+      attr.language === '' ||
+      attr.gender === '' ||
+      attr.paid === ''
+    ) {
+      toast.warning('Please enter all fields or check your inputs');
+    } else {
+      try {
+        await axios.put(
+          `${baseURL}/api/all/attribute/${Userdata.profile.player._id}`,
+          attr,
+          {
+            headers: {
+              Authorization: cookie.get('token'),
+              'Content-Type': 'application/json'
+            }
+          }
+        );
+        setShowlocation(false);
+        toast.success("Detail's successfully have been updated");
+      } catch (err) {
+        console.log(err);
+        toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+      }
+      window.setTimeout(function () {
+        location.reload();
+      }, 800);
+    }
+  };
+
   const handleButtonForm = () => {
     addingBio();
     setBio('');
@@ -207,11 +245,14 @@ const ProfileBox = ({ user, Userdata, games }) => {
     setSelectedGame(obj);
     //myState.setFilteredResults([]);
     $('a.model_close').parent().removeClass('show_model');
-     
   };
 
   function handleChange(e) {
-    setState({ ...state, [e.target.name]: e.target.value });
+    setAddress({ ...address, [e.target.name]: e.target.value });
+  }
+
+  function handleChangeAttr(e) {
+    setAttr({ ...attr, [e.target.name]: e.target.value });
   }
 
   useEffect(() => {
@@ -276,6 +317,142 @@ const ProfileBox = ({ user, Userdata, games }) => {
           </form>
         </div>
 
+        {isLoggedInUser ? (
+          <span
+            className="edit_cover_photo "
+            style={{
+              marginRight: '180px',
+              marginTop: '1px',
+              padding: '0.5rem 0.5rem'
+            }}
+          >
+            <div className="loc_box">
+              {' '}
+              {/* <span className="ct" >Detail's</span>{' '} */}
+              <a href="#!" className="model_show_btn">
+                <i className="fa fa-pencil" aria-hidden="true"></i>
+              </a>
+              <div className="common_model_box">
+                <a href="#!" className="model_close">
+                  X
+                </a>
+
+                <div className="inner_model_box">
+                  <h3>Personal Detail's</h3>
+
+                  <form onSubmit={handleAttrForm} className="common_form">
+                    <div className="form-group">
+                      <div className="colm">
+                        <label htmlFor="exampleFormControlInput1">Role</label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="exampleFormControlInput1"
+                          placeholder="Roles"
+                          name="roles"
+                          onChange={handleChangeAttr}
+                          value={attr?.roles}
+                        />
+                      </div>
+                      <div className="colm">
+                        <label htmlFor="exampleFormControlInput1">Region</label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="exampleFormControlInput1"
+                          placeholder="Region"
+                          name="regions"
+                          onChange={handleChangeAttr}
+                          value={attr?.regions}
+                        />
+                      </div>
+                      <div className="colm">
+                        <label htmlFor="exampleFormControlInput1">
+                          Player Type
+                        </label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="exampleFormControlInput1"
+                          placeholder="Player Type"
+                          name="playertype"
+                          onChange={handleChangeAttr}
+                          value={attr?.playertype}
+                        />
+                      </div>
+                      <div className="colm">
+                        <label htmlFor="exampleFormControlInput1">
+                          Platform
+                        </label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="exampleFormControlInput1"
+                          placeholder="PC, PS4|5 XBOX Series X|S"
+                          name="platform"
+                          onChange={handleChangeAttr}
+                          value={attr?.platform}
+                        />
+                      </div>
+                      <div className="colm">
+                        <label htmlFor="exampleFormControlInput1">ELO</label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="exampleFormControlInput1"
+                          placeholder="ELO"
+                          name="elo"
+                          onChange={handleChangeAttr}
+                          value={attr?.elo}
+                        />
+                      </div>
+                      <div className="colm">
+                        <label htmlFor="exampleFormControlInput1">
+                          Language
+                        </label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="exampleFormControlInput1"
+                          placeholder="Language"
+                          name="language"
+                          onChange={handleChangeAttr}
+                          value={attr?.language}
+                        />
+                      </div>
+                      <div className="colm">
+                        <label htmlFor="exampleFormControlInput1">Gender</label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="exampleFormControlInput1"
+                          placeholder="Gender"
+                          name="gender"
+                          onChange={handleChangeAttr}
+                          value={attr?.gender}
+                        />
+                      </div>
+                      <div className="colm">
+                        <label htmlFor="exampleFormControlInput1">Paid</label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="exampleFormControlInput1"
+                          placeholder="Paid"
+                          name="paid"
+                          onChange={handleChangeAttr}
+                          value={attr?.paid}
+                        />
+                      </div>
+                      <button className="btn">Update</button>
+                    </div>
+                  </form>
+                </div>
+                <div className="overlay"></div>
+              </div>
+            </div>
+          </span>
+        ) : null}
         <div className="profile_dp_box">
           <div className="profile_pic">
             <form onSubmit={handleSubmit}>
@@ -391,12 +568,6 @@ const ProfileBox = ({ user, Userdata, games }) => {
                                 onChange={handleChange}
                                 value={address?.line1}
                               />
-                              {address?.line1.length >= 21 && (
-                                <h6>
-                                  Address Line 1 cannot be more then 20
-                                  characters
-                                </h6>
-                              )}
                             </div>
                             <div className="colm">
                               <label htmlFor="exampleFormControlInput1">
@@ -411,12 +582,6 @@ const ProfileBox = ({ user, Userdata, games }) => {
                                 onChange={handleChange}
                                 value={address?.line2}
                               />
-                              {address?.line2.length >= 21 && (
-                                <h6>
-                                  Address Line 2 cannot be more then 20
-                                  characters
-                                </h6>
-                              )}
                             </div>
                             <div className="colm">
                               <label htmlFor="exampleFormControlInput1">
@@ -431,11 +596,6 @@ const ProfileBox = ({ user, Userdata, games }) => {
                                 onChange={handleChange}
                                 value={address?.city}
                               />
-                              {address?.city.length >= 21 && (
-                                <h6>
-                                  City Name cannot be more then 20 characters
-                                </h6>
-                              )}
                             </div>
                             <div className="colm">
                               <label htmlFor="exampleFormControlInput1">
@@ -450,11 +610,6 @@ const ProfileBox = ({ user, Userdata, games }) => {
                                 onChange={handleChange}
                                 value={address?.state}
                               />
-                              {address?.state.length >= 31 && (
-                                <h6>
-                                  State name cannot be more then 30 characters
-                                </h6>
-                              )}
                             </div>
                             <div className="colm">
                               <label htmlFor="exampleFormControlInput1">
@@ -469,11 +624,6 @@ const ProfileBox = ({ user, Userdata, games }) => {
                                 onChange={handleChange}
                                 value={address?.country}
                               />
-                              {address?.country.length >= 57 && (
-                                <h6>
-                                  Country name cannot be more then 56 characters
-                                </h6>
-                              )}
                             </div>
                             <div className="colm">
                               <label htmlFor="exampleFormControlInput1">
@@ -488,9 +638,6 @@ const ProfileBox = ({ user, Userdata, games }) => {
                                 onChange={handleChange}
                                 value={address?.zipcode}
                               />
-                              {address?.zipcode.length >= 7 && (
-                                <h6>Zipcode must be 6 digits.</h6>
-                              )}
                             </div>
                             <button className="btn">Update</button>
                           </div>
@@ -584,72 +731,78 @@ const ProfileBox = ({ user, Userdata, games }) => {
               </button>
             ) : null}
 
-                  <div className="discovery_page">
-  
-          <div className="white_bg">
-              <h2>GAMES</h2>
+            <div className="discovery_page">
+              <div className="white_bg">
+                <h2>GAMES</h2>
 
-            <div className="tit">
-              <a href="#!" className="model_show_btn">
-                <span>
-                  <b className="icon">
-                    <img src="/assets/media/ranking/console.png" alt="" />
-                  </b>{' '}
-                  Browse Games
-                </span>
-                <i className="fa fa-angle-right" aria-hidden="true"></i>
+                <div className="tit">
+                  <a href="#!" className="model_show_btn">
+                    <span>
+                      <b className="icon">
+                        <img src="/assets/media/ranking/console.png" alt="" />
+                      </b>{' '}
+                      Browse Games
+                    </span>
+                    <i className="fa fa-angle-right" aria-hidden="true"></i>
 
-                <div className="hover_games">
-                  <div className="other_logo">
-                    <img
-                      src={selectedGame ? selectedGame.imgUrl : ''}
-                      alt={selectedGame ? selectedGame.name : ''}
-                    />
-                  </div>
-                </div>
-              </a>
-
-              <div className="common_model_box" id="more_games">
-                <a href="#!" className="model_close">
-                  X
-                </a>
-                <div className="inner_model_box">
-                  <h3>Games</h3>
-                    <div className="form-group">
-                      <label htmlFor="exampleFormControlInput1">Please enter your in game name (IGN) and select the game:</label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="User IGN"
-                        name="userIgn"
-                        onChange={handleUserIgnChange}
-                        value={userIgn}
-                      />
+                    <div className="hover_games">
+                      <div className="other_logo">
+                        <img
+                          src={selectedGame ? selectedGame.imgUrl : ''}
+                          alt={selectedGame ? selectedGame.name : ''}
+                        />
+                      </div>
                     </div>
-                  <div className="poup_height msScroll_all">
-                    <ul className="">
-                      {games && games.map((game, idx) => (
-                        <li key={idx}>
-                          <div className="game_pic">
-                            <a href="#!" onClick={() => handleSelectGame(game)}>
-                              {' '}
-                              <img src={game.imgUrl} alt={game.name} />{' '}
-                            </a>
-                          </div>
-                          <p>{game.name}</p>
-                        </li>
-                      ))}
-                    </ul>
+                  </a>
+
+                  <div className="common_model_box" id="more_games">
+                    <a href="#!" className="model_close">
+                      X
+                    </a>
+                    <div className="inner_model_box">
+                      <h3>Games</h3>
+                      <div className="form-group">
+                        <label htmlFor="exampleFormControlInput1">
+                          Please enter your in game name (IGN) and select the
+                          game:
+                        </label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="User IGN"
+                          name="userIgn"
+                          onChange={handleUserIgnChange}
+                          value={userIgn}
+                        />
+                      </div>
+                      <div className="poup_height msScroll_all">
+                        <ul className="">
+                          {games &&
+                            games.map((game, idx) => (
+                              <li key={idx}>
+                                <div className="game_pic">
+                                  <a
+                                    href="#!"
+                                    onClick={() => handleSelectGame(game)}
+                                  >
+                                    {' '}
+                                    <img
+                                      src={game.imgUrl}
+                                      alt={game.name}
+                                    />{' '}
+                                  </a>
+                                </div>
+                                <p>{game.name}</p>
+                              </li>
+                            ))}
+                        </ul>
+                      </div>
+                    </div>
+                    <div className="overlay"></div>
                   </div>
                 </div>
-                <div className="overlay"></div>
               </div>
             </div>
-
-
-
-            </div>
-          </div>
           </div>
 
           <ProfileGameStat user={user} Userdata={Userdata} />

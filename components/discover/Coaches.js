@@ -91,11 +91,11 @@ const Coaches = ({ user, profile, myState }) => {
             <div className="mores plateform">
               <Rating value={coach.coaches.coach_rating} />
               <span>
-                {coach.coaches.platform === 'PC' ? (
+                {coach.coaches.attributes.platform === 'PC' ? (
                   <img src="/assets/media/discover/desk.png" alt="" />
-                ) : coach.coaches.platform === 'Console' ? (
+                ) : coach.coaches.attributes.platform === 'Console' ? (
                   <img src="/assets/media/discover/console.png" alt="" />
-                ) : coach.coaches.platform === 'Mobile' ? (
+                ) : coach.coaches.attributes.platform === 'Mobile' ? (
                   <img src="/assets/media/discover/mobile_game.png" alt="" />
                 ) : (
                   <p>No Platform mentioned</p>
@@ -103,9 +103,9 @@ const Coaches = ({ user, profile, myState }) => {
               </span>
               <span>
                 <img src="/assets/media/discover/translator.png" alt="" />
-                {coach.coaches.languages.length > 0 ? (
+                {coach.coaches.attributes.language.length > 0 ? (
                   <>
-                    {coach.coaches.languages.map((lan) => (
+                    {coach.coaches.attributes.language.map((lan) => (
                       <b>{lan}</b>
                     ))}
                   </>

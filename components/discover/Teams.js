@@ -134,11 +134,11 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
               <div className="mores plateform">
                 {' '}
                 <span>
-                  {team.team.platform === 'PC' ? (
+                  {team.team.attributes?.platform === 'PC' ? (
                     <img src="/assets/media/discover/desk.png" alt="" />
-                  ) : team.team.platform === 'Console' ? (
+                  ) : team.team.attributes?.platform === 'Console' ? (
                     <img src="/assets/media/discover/console.png" alt="" />
-                  ) : team.team.platform === 'Mobile' ? (
+                  ) : team.team.attributes?.platform === 'Mobile' ? (
                     <img src="/assets/media/discover/mobile_game.png" alt="" />
                   ) : (
                     <p>No Platform mentioned</p>
@@ -149,9 +149,9 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
                 </span>{' '}
                 <span>
                   <img src="/assets/media/discover/translator.png" alt="" />{' '}
-                  {team.team.language.length > 0 ? (
+                  {team.team.attributes?.language.length > 0 ? (
                     <>
-                      {team.team.language?.map((tem) => (
+                      {team.team.attributes?.language.map((tem) => (
                         <b>{tem}</b>
                       ))}
                     </>
@@ -160,7 +160,7 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
                   )}
                 </span>{' '}
               </div>
-              {/* <TeamRequest team={team.team} user={user} profile={profile} /> */}
+              <TeamRequest team={team.team} user={user} profile={profile} />
             </div>
 
             <div className="overview_box">

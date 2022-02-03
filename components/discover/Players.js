@@ -136,11 +136,11 @@ const Players = ({ user, profile, myState, selectedGame }) => {
               <div className="mores">
                 {' '}
                 <span>
-                  {plyr.players.platform === 'PC' ? (
+                  {plyr.players.attributes?.platform === 'PC' ? (
                     <img src="/assets/media/discover/desk.png" alt="" />
-                  ) : plyr.players.platform === 'Console' ? (
+                  ) : plyr.players.attributes?.platform === 'Console' ? (
                     <img src="/assets/media/discover/console.png" alt="" />
-                  ) : plyr.players.platform === 'Mobile' ? (
+                  ) : plyr.players.attributes?.platform === 'Mobile' ? (
                     <img src="/assets/media/discover/mobile_game.png" alt="" />
                   ) : (
                     <p>No Platform mentioned</p>
@@ -151,10 +151,10 @@ const Players = ({ user, profile, myState, selectedGame }) => {
                 </span>{' '}
                 <span>
                   <img src="/assets/media/discover/translator.png" alt="" />{' '}
-                  {plyr.players.language.length > 0 ? (
+                  {plyr.players.attributes?.language.length > 0 ? (
                     <>
-                      {plyr.players.language.map((lan) => (
-                        <b>{lan}</b>
+                      {plyr.players.attributes?.language.map((tem) => (
+                        <b>{tem}</b>
                       ))}
                     </>
                   ) : (
