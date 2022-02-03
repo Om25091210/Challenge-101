@@ -18,6 +18,11 @@ const ProfileBox = ({ user, Userdata, games }) => {
   const [showlocation, setShowlocation] = useState(false);
   const [showLocModal, setShowLocModal] = useState(true);
   const [selectedGame, setSelectedGame] = useState(null);
+  const [showIgn, setShowIgn] = useState('none');
+
+  const [search, setSearch] = useState('');
+  const [players, setPlayers] = useState([]);
+
 
   const [coverPic, setCoverPic] = useState(null);
   const [userIgn, setUserIgn] = useState(null);
@@ -111,6 +116,10 @@ const ProfileBox = ({ user, Userdata, games }) => {
 
   function handleUserIgnChange(e) {
     setUserIgn(e.target.value);
+  }
+
+  function handleSearchChange(e) {
+    setSearch(e.target.value);
   }
 
   const onChange = (e) => {
@@ -243,8 +252,14 @@ const ProfileBox = ({ user, Userdata, games }) => {
 
   const handleSelectGame = async (obj) => {
     setSelectedGame(obj);
-    //myState.setFilteredResults([]);
-    $('a.model_close').parent().removeClass('show_model');
+    setShowIgn('');
+    if (userIgn && userIgn.length > 4) {
+      //myState.setFilteredResults([]);
+      $('a.model_close').parent().removeClass('show_model');
+    } else {
+      toast.error('Please enter your valid User In Game Name (IGN)');
+    }
+
   };
 
   function handleChange(e) {
@@ -257,6 +272,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
 
   useEffect(() => {
     $('a.model_show_btn').click(function () {
+      setShowIgn('none');
       $(this).next().addClass('show_model');
     });
 
@@ -264,6 +280,24 @@ const ProfileBox = ({ user, Userdata, games }) => {
       $(this).parent().removeClass('show_model');
     });
   }, []);
+
+
+  const handleSearchSubmit = async (e) => {
+    e.preventDefault();
+    console.log(search);
+    if (search === '' ) {
+      toast.warning('Please enter all fields or check your inputs');
+    } else {
+      try {
+        await axios.get(
+          `${baseURL}/api/player/getplayers/${search}`).then((res) => setPlayers(res.data));;
+      } catch (err) {
+        console.log(err);
+        toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+      }
+    }
+  };
+
 
   useEffect(() => {}, []);
 
@@ -461,7 +495,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                 src={
                   profilePic
                     ? URL.createObjectURL(profilePic)
-                    : SrhUser.profilePicUrl
+                    : SrhUser?.profilePicUrl
                 }
                 alt={SrhUser.name}
               />
@@ -761,10 +795,55 @@ const ProfileBox = ({ user, Userdata, games }) => {
                     </a>
                     <div className="inner_model_box">
                       <h3>Games</h3>
-                      <div className="form-group">
+
+              <div className="team_search">
+                <div className="searchbox">
+                  <h3>Search </h3>
+
+                  <form
+                    className="form w-100"
+                    noValidate="novalidate"
+                    onSubmit={handleSearchSubmit}
+                  >
+                    <input
+                      id="search"
+                      name="search"
+                      className=""
+                      placeholder="Search your player name or user IGN..."
+                      type="search"
+                      value={search}
+                      onChange={handleSearchChange}
+                      autoComplete="off"
+                    />
+                    <input type="submit" value="" />
+                  </form>
+                </div>
+              </div>
+
+                <ul className="" >
+                  {players &&
+                    players.map((player, idx) => (
+                      <li key={idx}>
+                        <div className="game_pic">
+                          <a
+                            href="#!"
+                            onClick={() => handleSelectGame(game)}>
+                            {' '}
+                            <img
+                              src={player.imgUrl}
+                              alt={player.name}
+                            />{' '}
+                          </a>
+                        </div>
+                        <p>{player.name}</p>
+                      </li>
+                    ))}
+                </ul>
+
+
+                    <div className="form-group" style={{display:showIgn}}>
                         <label htmlFor="exampleFormControlInput1">
-                          Please enter your in game name (IGN) and select the
-                          game:
+                          Please enter your in game name (IGN)
                         </label>
                         <input
                           type="text"
@@ -776,15 +855,14 @@ const ProfileBox = ({ user, Userdata, games }) => {
                         />
                       </div>
                       <div className="poup_height msScroll_all">
-                        <ul className="">
+                        <ul className="" >
                           {games &&
                             games.map((game, idx) => (
                               <li key={idx}>
                                 <div className="game_pic">
                                   <a
                                     href="#!"
-                                    onClick={() => handleSelectGame(game)}
-                                  >
+                                    onClick={() => handleSelectGame(game)}>
                                     {' '}
                                     <img
                                       src={game.imgUrl}
@@ -805,7 +883,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
             </div>
           </div>
 
-          <ProfileGameStat user={user} Userdata={Userdata} />
+    {/*      <ProfileGameStat user={user} Userdata={Userdata} /> */}
         </div>
       </div>
     </>
