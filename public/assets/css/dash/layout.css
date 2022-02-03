@@ -2782,7 +2782,7 @@ article .social_bar {
 }
 .products li .pro_img {
 	width: 100%;
-	position: relative;
+	position: relative;     border: 1px solid #ddd;
 }
 .products li .pro_img .size_option {
 	position: absolute;
@@ -2806,19 +2806,18 @@ article .social_bar {
 	display: flex;
 	justify-content: space-between;
 	margin-top: 10px;
-	align-items: center;
+	align-items: flex-start;; height: 42px; overflow: hidden;
 }
 .products li .name_dots h4 {
-	text-transform: uppercase;
+	text-transform: capitalize;
 	font-size:12px;
-	font-weight: 700;
+	font-weight: 700; 
 }
 .products li .name_dots a {
 	color:#000;
 }
 .products li .stars {
-	display: flex;
-	justify-content: flex-start;
+	display: flex; text-align: center;
 	margin-top:10px;
 	align-items: center;
 }
@@ -2832,8 +2831,7 @@ article .social_bar {
 	font-size:12px;
 	font-weight: 700;
 }
-.products li .likes {
-	float: right;
+.products li .likes_price { display: flex; justify-content: space-between; padding: 10px 0;
 	text-transform: uppercase;
 	font-size:12px;
 	font-weight: 700;
@@ -2841,6 +2839,9 @@ article .social_bar {
 .products li .likes a {
 	color:#000;
 }
+
+.products li .btn{ width: 100%;}
+
 .quick_view {
 	overflow-x: hidden;
 }
