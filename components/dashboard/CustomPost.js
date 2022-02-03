@@ -134,9 +134,9 @@ const CustomPost = ({ post }) => {
                   accept="image/*"
                 />
               </div>
-              <a href="#">
+              {/* <a href="#">
                 <i className="fa fa-calendar-plus-o" aria-hidden="true"></i>
-              </a>
+              </a> */}
               <a href="#">
                 <i className="fa fa-gamepad" aria-hidden="true"></i>
               </a>

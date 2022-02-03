@@ -468,8 +468,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
               {isLoggedInUser ? (
                 <div className="edit_photo">
                   <label htmlFor="user-photo" className="edit_label">
-                    {' '}
-                    Update photo
+                    <i class="fa fa-picture-o" aria-hidden="true"></i>
                   </label>
                   <input
                     id="user-photo"
@@ -484,6 +483,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                 </div>
               ) : null}
             </form>
+            <span className="online_icon"></span>
           </div>
 
           <div className="profile_details pro_detail_box">
