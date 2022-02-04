@@ -182,7 +182,7 @@ const Signup = () => {
         <div className="right_form">
           <div className="d-flex flex-center flex-column flex-column-fluid">
             <h2>Create an Account</h2>
-            <div className="">
+            <div className="form_box">
               <form
                 className="form w-100"
                 noValidate="novalidate"

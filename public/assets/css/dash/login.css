@@ -75,10 +75,18 @@ display: flex; align-items: center; justify-content: center; position: relative;
     left: 17%;
 }
 
-.right_form{ float: right; width: 500px; height: 100vh; background: #0f0e13; overflow-y: auto;}
+.right_form{ float: right; width: 500px; height: 100vh; background: #0f0e13; overflow-y: auto; display: flex;}
+.form_box{ width: 80%;}
 .right_form h2{ font-size: 25px; color: #fff; padding: 20px 0;}
 .right_form label{ color: #fff;}
-.right_form  .btn{ background: #fff; width: 100%; color: #000; opacity: 1;}
+.right_form .btn {
+    background: #fff;
+    width: 100%;
+    color: #000;
+    opacity: 1;
+    height: 40px;
+    line-height: 18px;
+}
 .right_form input{ min-height: 35px; height: 35px; border-radius: 3px; border:1px solid #2f2e32  !important}
 .right_form .form-control-solid{ background: #0f0e13;}
 .right_form  .form-check-input[type=checkbox]{min-height: 20px; height: 20px;}
