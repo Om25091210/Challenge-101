@@ -42,13 +42,37 @@ const Meta = () => (
       type="text/css"
     />
 
-    <link href="/assets/css/dash/login.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="/assets/css/commerce/globals.css" type="text/css" />
-    <link rel="stylesheet" href="/assets/css/commerce/loading.css" type="text/css"/>
-    <link rel="stylesheet" href="/assets/css/commerce/product.css" type="text/css"/>
-    <link rel="stylesheet" href="/assets/css/commerce/profile.css" type="text/css"/>
-    <link rel="stylesheet" href="/assets/css/commerce/products_manager.css" type="text/css"/>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
 
+    <link rel="stylesheet" href="/assets/css/dash/login.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="/assets/css/commerce/globals.css"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="/assets/css/commerce/loading.css"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="/assets/css/commerce/product.css"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="/assets/css/commerce/profile.css"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="/assets/css/commerce/products_manager.css"
+      type="text/css"
+    />
   </Head>
 );
 

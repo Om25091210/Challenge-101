@@ -127,7 +127,7 @@ h3 {
 	height: 100%;
 	left: 0;
 	top:0;
-	background: rgba(0,0,0,0.2);
+	background: rgba(0,0,0,0.6);
 	z-index: -1;
 	display: block;
 }
@@ -6230,7 +6230,7 @@ ul.game_search_result li {
 	padding: 30px;
 	background: #fff;
 	overflow:hidden;
-	border: 10px solid #7239ea;
+	box-shadow: 2px 0px 10px #b9b2b2;
 }
 .common_model_box .model_close {
 	position: absolute;

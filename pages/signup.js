@@ -7,10 +7,10 @@ import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import baseURL from '@utils/baseURL';
-import valid from '@utils/valid'
+import valid from '@utils/valid';
 import Router from 'next/router';
-import {DataContext} from '../store/GlobalState'
-import {postData} from '../utils/fetchData'
+import { DataContext } from '../store/GlobalState';
+import { postData } from '../utils/fetchData';
 
 const usernameRegex = /^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{0,29}$/;
 let cancel;
@@ -36,10 +36,8 @@ const Signup = () => {
   const [open, setOpen] = useState(false);
   const [passwordShown, setPasswordShown] = useState(false);
 
-
-  const {state, dispatch} = useContext(DataContext)
-  const { auth } = state
-
+  const { state, dispatch } = useContext(DataContext);
+  const { auth } = state;
 
   const { firstname, lastname, email, password } = user;
 
@@ -54,15 +52,15 @@ const Signup = () => {
     const errMsg = valid(firstname, lastname, email, password);
     console.log(errMsg);
 
-    if(errMsg){ 
-      toast.info(errMsg);     
-      return dispatch({ type: 'NOTIFY', payload: {error: errMsg} })
+    if (errMsg) {
+      toast.info(errMsg);
+      return dispatch({ type: 'NOTIFY', payload: { error: errMsg } });
     }
 
-    dispatch({ type: 'NOTIFY', payload: {loading: true} })
+    dispatch({ type: 'NOTIFY', payload: { loading: true } });
 
     setFormLoading(true);
-        console.log('calling handle post ....');
+    console.log('calling handle post ....');
 
     try {
       var name = firstname + ' ' + lastname;
@@ -75,14 +73,15 @@ const Signup = () => {
       });
       console.log(res);
 
-      dispatch({ type: 'NOTIFY', payload: {success: res.msg} });
+      dispatch({ type: 'NOTIFY', payload: { success: res.msg } });
       toast.info(res.data.msg);
       Router.push(`/verify`);
     } catch (error) {
-      toast.error('Oops! Sorry we cannot register at this time. Please try later.');
+      toast.error(
+        'Oops! Sorry we cannot register at this time. Please try later.'
+      );
     }
     setFormLoading(false);
-
   };
 
   const checkUsername = async () => {
@@ -129,22 +128,61 @@ const Signup = () => {
   return (
     <main id="kt_body" className="bg-body">
       <Meta />
+      <div className="singup_page_box">
+        <div className="left_banner">
+          <span className="logo">
+            {' '}
+            <img src="/assets/media/login/logo.png" alt="" />
+          </span>
 
-      <div className="d-flex flex-column flex-root">
-        <div
-          className="d-flex flex-column flex-column-fluid bgi-position-y-bottom position-x-center bgi-no-repeat bgi-size-contain bgi-attachment-fixed"
-          style={{ backgroundImage: 'url(/assets/media/illustrations/14.png)' }}
-        >
-          <div className="d-flex flex-center flex-column flex-column-fluid p-10 pb-lg-20">
-            <a href="#" className="mb-12">
-              <img
-                alt="Logo"
-                src="/assets/media/logos/logo.png"
-                className="h-40px"
-              />
-            </a>
+          <h1>
+            A true Esports <br />
+            platform that brings <br />
+            all of Esports ecosystem <br />
+            in one place.
+          </h1>
 
-            <div className="w-lg-600px bg-body rounded shadow-sm p-10 p-lg-15 mx-auto">
+          <span className="props1 props">
+            {' '}
+            <img src="/assets/media/login/1.png" alt="" />
+          </span>
+          <span className="props2 props">
+            {' '}
+            <img src="/assets/media/login/2.png" alt="" />
+          </span>
+          <span className="props3 props">
+            {' '}
+            <img src="/assets/media/login/3.png" alt="" />
+          </span>
+          <span className="props4 props">
+            {' '}
+            <img src="/assets/media/login/4.png" alt="" />
+          </span>
+          <span className="props5 props">
+            {' '}
+            <img src="/assets/media/login/5.png" alt="" />
+          </span>
+          <span className="props6 props">
+            {' '}
+            <img src="/assets/media/login/6.png" alt="" />
+          </span>
+          <span className="props7 props">
+            {' '}
+            <img src="/assets/media/login/7.png" alt="" />
+          </span>
+          <span className="props8 props">
+            {' '}
+            <img src="/assets/media/login/8.png" alt="" />
+          </span>
+          <span className="props9 props">
+            {' '}
+            <img src="/assets/media/login/9.png" alt="" />
+          </span>
+        </div>
+        <div className="right_form">
+          <div className="d-flex flex-center flex-column flex-column-fluid">
+            <h2>Create an Account</h2>
+            <div className="">
               <form
                 className="form w-100"
                 noValidate="novalidate"
@@ -152,37 +190,21 @@ const Signup = () => {
                 onSubmit={handleSubmit}
               >
                 <input type="hidden" name="remember" value="true" />
-
-                <div className="mb-10 text-center">
-                  <h1 className="text-dark mb-3">Create an Account</h1>
-                  <div className="text-gray-400 fw-bold fs-4">
-                    Already have an account?
-                    <a className="link-primary fw-bolder" href="/login">
-                      Sign in here
-                    </a>
-                  </div>
-                </div>
-                <button
-                  type="button"
-                  className="btn btn-light-primary fw-bolder w-100 mb-10"
-                >
-                  <img
-                    alt="Logo"
-                    src="/assets/media/svg/brand-logos/google-icon.svg"
-                    className="h-20px me-3"
+                <div className="fv-row mb-7">
+                  <label className="form-label"> Email </label>
+                  <input
+                    className="form-control form-control-lg form-control-solid"
+                    type="email"
+                    placeholder=""
+                    name="email"
+                    value={email}
+                    onChange={handleChange}
+                    autoComplete="off"
                   />
-                  Sign in with Google
-                </button>
-                <div className="d-flex align-items-center mb-10">
-                  <div className="border-bottom border-gray-300 mw-50 w-100"></div>
-                  <span className="fw-bold text-gray-400 fs-7 mx-2">OR</span>
-                  <div className="border-bottom border-gray-300 mw-50 w-100"></div>
                 </div>
                 <div className="row fv-row mb-7">
                   <div className="col-xl-6">
-                    <label className="form-label fw-bolder text-dark fs-6">
-                      First Name
-                    </label>
+                    <label className="form-label"> First Name </label>
                     <input
                       className="form-control form-control-lg form-control-solid"
                       type="text"
@@ -197,9 +219,7 @@ const Signup = () => {
                     />
                   </div>
                   <div className="col-xl-6">
-                    <label className="form-label fw-bolder text-dark fs-6">
-                      Last Name
-                    </label>
+                    <label className="form-label">Last Name </label>
                     <input
                       className="form-control form-control-lg form-control-solid"
                       type="text"
@@ -216,10 +236,18 @@ const Signup = () => {
                   </div>
                 </div>
                 <div className="fv-row mb-7">
-                  <label className="form-label fw-bolder text-dark fs-6">
-                    Username
-                  </label>
-
+                  <label className="form-label"> Phone Number </label>
+                  <input
+                    className="form-control form-control-lg form-control-solid"
+                    type="tel"
+                    placeholder=""
+                    name="tel"
+                    onChange={handleChange}
+                    autoComplete="off"
+                  />
+                </div>
+                <div className="fv-row mb-7">
+                  <label className="form-label"> Username </label>
                   <input
                     className="form-control form-control-lg form-control-solid ${
                     username !== '' && !usernameAvailable ? 'bg-red-100' : ''
@@ -238,34 +266,18 @@ const Signup = () => {
                     }}
                     autoComplete="off"
                   />
-
                   {username !== '' &&
                     !usernameLoading &&
                     !usernameAvailable && (
                       <small className="text-xs text-red-600">
-                        This username is invalid or not available
+                        {' '}
+                        This username is invalid or not available{' '}
                       </small>
-                    )}
-                </div>
-                <div className="fv-row mb-7">
-                  <label className="form-label fw-bolder text-dark fs-6">
-                    Email
-                  </label>
-                  <input
-                    className="form-control form-control-lg form-control-solid"
-                    type="email"
-                    placeholder=""
-                    name="email"
-                    value={email}
-                    onChange={handleChange}
-                    autoComplete="off"
-                  />
+                    )}{' '}
                 </div>
                 <div className="mb-10 fv-row" data-kt-password-meter="true">
                   <div className="mb-1">
-                    <label className="form-label fw-bolder text-dark fs-6">
-                      Password
-                    </label>
+                    <label className="form-label">Password </label>
                     <div className="position-relative mb-3">
                       <input
                         className="form-control input form-control-lg form-control-solid"
@@ -282,12 +294,13 @@ const Signup = () => {
                         className="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2"
                         data-kt-password-meter-control="visibility"
                       >
-                        {/* <i class="bi bi-eye-slash"  id="togglePassword"></i> */}
+                        {' '}
+                        {/* <i class="bi bi-eye-slash"  id="togglePassword"></i> */}{' '}
                         <i
                           className={`bi  ${open ? 'bi-eye' : 'bi-eye-slash'}`}
                           onClick={togglePassword}
-                        ></i>
-                      </span>
+                        ></i>{' '}
+                      </span>{' '}
                     </div>
                     <div
                       className="d-flex align-items-center mb-3"
@@ -300,8 +313,9 @@ const Signup = () => {
                     </div>
                   </div>
                   <div className="text-muted">
+                    {' '}
                     Use 8 or more characters with a mix of letters, numbers
-                    &amp; symbols.
+                    &amp; symbols.{' '}
                   </div>
                 </div>
                 <div className="fv-row mb-10">
@@ -312,34 +326,73 @@ const Signup = () => {
                       name="toc"
                       value="1"
                     />
-                    <span className="form-check-label fw-bold text-gray-700 fs-6">
-                      I Agree
-                      <a href="#" className="ms-1 link-primary">
-                        Terms and conditions
-                      </a>
-                      .
-                    </span>
+                    <span className="form-check-label terms">
+                      {' '}
+                      By creating an account, you agree to exports Charts
+                      <a href="#">Terms of use</a> &{' '}
+                      <a href="#">Privacy Policy.</a>{' '}
+                    </span>{' '}
                   </label>
                 </div>
                 <div className="text-center">
                   <button
                     type="submit"
                     id="kt_sign_up_submit"
-                    className="btn btn-lg btn-primary"
+                    className="btn"
                     disabled={submitDisabled || !usernameAvailable}
                   >
-                    <span className="indicator-label">Submit</span>
+                    {' '}
+                    <span className="indicator-label">Create Account</span>{' '}
                     <span className="indicator-progress">
-                      Please wait...
-                      <span className="spinner-border spinner-border-sm align-middle ms-2"></span>
-                    </span>
+                      {' '}
+                      Please wait...{' '}
+                      <span className="spinner-border spinner-border-sm align-middle ms-2"></span>{' '}
+                    </span>{' '}
                   </button>
+                </div>
+                <div className="d-flex align-items-center mt-5 mb-5">
+                  <div className="border-bottom border-gray-300 mw-50 w-100"></div>
+                  <span className="fw-bold text-gray-400 fs-7 mx-2">OR</span>
+                  <div className="border-bottom border-gray-300 mw-50 w-100"></div>
+                </div>
+
+                <h4>Sign up with</h4>
+
+                <div className="singup_icons">
+                  <a href="#">
+                    {' '}
+                    <i class="fa fa-google" aria-hidden="true"></i>
+                  </a>
+                  <a href="#">
+                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                  </a>
+                  <a href="#">
+                    {' '}
+                    <i class="fa fa-twitch" aria-hidden="true"></i>
+                  </a>
+                  <a href="#">
+                    {' '}
+                    <i class="fa fa-steam" aria-hidden="true"></i>
+                  </a>
+                  <a href="#">
+                    {' '}
+                    <i class="fa fa-steam" aria-hidden="true"></i>
+                  </a>
+                </div>
+
+                <div className="mb-10 text-center">
+                  <div className="text-gray-400 already">
+                    {' '}
+                    Already have an account?{' '}
+                    <a className="link-primary fw-bolder" href="/login">
+                      {' '}
+                      Sign in{' '}
+                    </a>{' '}
+                  </div>
                 </div>
               </form>
             </div>
           </div>
-
-          <FooterMain> </FooterMain>
         </div>
       </div>
     </main>
