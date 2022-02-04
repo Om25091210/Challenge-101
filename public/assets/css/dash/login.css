@@ -1,1 +1,103 @@
 #kt_sign_up_form .bi{ font-size: 1.5rem;}
+
+body {
+	margin:0;
+	padding:0;
+	font-family:'Titillium Web', sans-serif;
+	font-weight:400;
+	color:#000000;
+	line-height:1.2;
+	font-size: 14px;
+	background:#f3f6f9;
+}
+
+.singup_page_box{ float: left; width: 100%; position: relative; overflow: hidden;}
+
+.left_banner{ float: left; width:calc(100% - 500px); height: 100vh; 
+background: #232741; 
+background: -moz-linear-gradient(-45deg,  #232741 0%, #2e1d49 26%, #47085a 100%);
+background: -webkit-linear-gradient(-45deg,  #232741 0%,#2e1d49 26%,#47085a 100%);
+background: linear-gradient(135deg,  #232741 0%,#2e1d49 26%,#47085a 100%); 
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#232741', endColorstr='#47085a',GradientType=1 ); 
+display: flex; align-items: center; justify-content: center; position: relative;
+
+    }
+
+.left_banner h1{ text-align: left; color: #fff; font-size: 58px;}
+
+.left_banner .props{ position: absolute;}
+
+.left_banner .logo {
+    top: 17%;
+    left: 23%;
+    position: absolute;
+}
+
+.left_banner .logo img{ width: 150px;}
+
+.left_banner .props1 {
+    top: 0;
+    left: 6%;
+}
+.left_banner .props2 {
+    top: 25%;
+    left: 7%;
+}
+.left_banner .props3 {
+    left: 2%;
+    bottom: 26%;
+}
+.left_banner .props4 {
+    bottom: 14%;
+    left: 11%;
+}
+.left_banner .props5 {
+    bottom: 10%;
+    left: 15%;
+}
+.left_banner .props6 {
+    right: 20%;
+    bottom: 15%;
+}
+.left_banner .props7 {
+    right: -24px;
+    top: 10%;
+}
+
+
+.left_banner .props8 {
+    top: 29%;
+    right: 41%;
+}
+
+.left_banner .props9 {
+    bottom: 20%;
+    left: 17%;
+}
+
+.right_form{ float: right; width: 500px; height: 100vh; background: #0f0e13; overflow-y: auto;}
+.right_form h2{ font-size: 25px; color: #fff; padding: 20px 0;}
+.right_form label{ color: #fff;}
+.right_form  .btn{ background: #fff; width: 100%; color: #000; opacity: 1;}
+.right_form input{ min-height: 35px; height: 35px; border-radius: 3px; border:1px solid #2f2e32  !important}
+.right_form .form-control-solid{ background: #0f0e13;}
+.right_form  .form-check-input[type=checkbox]{min-height: 20px; height: 20px;}
+.terms{ font-size: 11px !important;}
+.already{ font-size: 14px;}
+
+.right_form .mb-7, .right_form .mb-10{ margin-bottom: 10px !important}
+.right_form h4{ color: #fff; font-size: 13px; text-align:center;}
+
+.dropdown.show>.form-control.form-control-solid, .form-control.form-control-solid.active, 
+.form-control.form-control-solid.focus, 
+.form-control.form-control-solid:active, 
+.form-control.form-control-solid:focus{ background-color: #000;}
+
+.singup_icons{ display: flex; justify-content: space-between; margin:20px 0;}
+.singup_icons a {
+    border: 1px solid #2f2e32 !important;
+    padding: 10px;
+    width: 18%;
+    text-align: center;
+}
+.singup_icons .fa{ color: #fff; font-size: 15px;}
