@@ -3,7 +3,7 @@ import baseURL from '../../utils/baseURL';
 import { useMutation } from 'react-query';
 import cookie from 'js-cookie';
 
-const PinnedComments = ({ postId, comment, user }) => {
+const PinnedComments = ({ post, comment, user }) => {
   const [pinnedcomment, setPinnedComment] = useState(false);
 
   const pincommenthandlesubmit = async (e) => {
@@ -16,9 +16,11 @@ const PinnedComments = ({ postId, comment, user }) => {
     comment.pinned_comments.filter((pin) => pin.commentId === comment._id)
       .length > 0;
 
+  const isAuthorized = post.user._id === user._id;
+
   const addPinComment = async () => {
     const { data } = await fetch(
-      `${baseURL}/api/comments/pin/${postId}/${comment._id}`,
+      `${baseURL}/api/comments/pin/${post._id}/${comment._id}`,
       {
         method: 'PUT',
         headers: {
@@ -40,13 +42,17 @@ const PinnedComments = ({ postId, comment, user }) => {
 
   return (
     <>
-      <button className="pinned" onClick={pincommenthandlesubmit}>
-        {isPinned ? (
+      {isPinned ? (
+        <button className="pinned" onClick={pincommenthandlesubmit}>
           <span>Pinned By Creator</span>
-        ) : (
-          <i class="fa fa-thumb-tack" aria-hidden="true"></i>
-        )}
-      </button>
+        </button>
+      ) : (
+        isAuthorized && (
+          <button className="pinned" onClick={pincommenthandlesubmit}>
+            <i class="fa fa-thumb-tack" aria-hidden="true"></i>
+          </button>
+        )
+      )}
     </>
   );
 };
