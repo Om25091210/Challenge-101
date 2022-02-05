@@ -14,6 +14,7 @@ body {
 }
 
 .singup_page_box{ float: left; width: 100%; position: relative; overflow: hidden;}
+.singup_page_box .text-red-600{ color:red;}
 .singup_page_box .btn {
     background: #fff;
     width: 100%;
@@ -167,7 +168,10 @@ display: flex; align-items: center; justify-content: center; position: relative;
 
 .pick_game ul li:hover .hovers{ opacity: 1; z-index: 1;}
 
-.btn2{ width: 200px; background: #1da1f3; float: right;}
-select{    -webkit-appearance: auto;
+
+.game_sect select{    -webkit-appearance: auto;
     -moz-appearance: auto;
     appearance: auto;}
+
+    .two_btn{ display: flex; justify-content: space-between;}
+    .game_sect button{ width: 200px  !important; background: #1da1f3 !important; display:inline-block;}
