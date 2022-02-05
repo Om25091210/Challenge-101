@@ -10,23 +10,21 @@ import { useState } from 'react';
 
 const queryClient = new QueryClient();
 
-export default function LikePost({ postId }) {
+export default function LikePost({ postId, isLiked }) {
   return (
     <QueryClientProvider client={queryClient} contextSharing={true}>
-      <AddLike postId={postId} />
+      <AddLike postId={postId} isLiked={isLiked} />
     </QueryClientProvider>
   );
 }
 
-const AddLike = ({ postId }) => {
+const AddLike = ({ postId, isLiked }) => {
   const [like, setLike] = useState(false);
-  const [isActive, setActive] = useState(false);
 
   const handleLike = (e) => {
     e.preventDefault();
     mutate({ like });
     setLike(true);
-    setActive(!isActive);
   };
 
   const addingLike = async () => {
@@ -39,10 +37,23 @@ const AddLike = ({ postId }) => {
   };
 
   const { mutate } = useMutation(addingLike);
+
   return (
-    <a onClick={handleLike} className={isActive ? 'active' : null}>
-      {' '}
-      <i className="fa fa-heart" aria-hidden="true"></i> <span>Like</span>{' '}
+    <a onClick={handleLike}>
+      {isLiked === true ? (
+        <>
+          <i
+            className="fa fa-heart"
+            style={{ color: 'red' }}
+            aria-hidden="true"
+          ></i>{' '}
+          <span>Like</span>
+        </>
+      ) : (
+        <>
+          <i className="fa fa-heart" aria-hidden="true"></i> <span>Like</span>
+        </>
+      )}
     </a>
   );
 };

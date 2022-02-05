@@ -20,7 +20,8 @@ const Signup = () => {
     firstname: '',
     lastname: '',
     email: '',
-    password: ''
+    password: '',
+    phone_number: ''
   });
 
   const [showPassword, setShowPassword] = useState(false);
@@ -39,7 +40,7 @@ const Signup = () => {
   const { state, dispatch } = useContext(DataContext);
   const { auth } = state;
 
-  const { firstname, lastname, email, password } = user;
+  const { firstname, lastname, email, password, phone_number } = user;
 
   const handleChange = (e) => {
     setUser((prevState) => ({ ...prevState, [e.target.name]: e.target.value }));
@@ -69,7 +70,8 @@ const Signup = () => {
         name,
         username,
         email,
-        password
+        password,
+        phone_number
       });
       console.log(res);
 
@@ -111,7 +113,8 @@ const Signup = () => {
       firstname,
       lastname,
       email,
-      password
+      password,
+      phone_number
     }).every((item) => Boolean(item));
     isUser ? setSubmitDisabled(false) : setSubmitDisabled(true);
   }, [user]);
@@ -253,9 +256,10 @@ const Signup = () => {
                       <label className="form-label"> Phone Number </label>
                       <input
                         className="form-control form-control-lg form-control-solid"
-                        type="tel"
+                        type="text"
                         placeholder=""
-                        name="tel"
+                        name="text"
+                        value={phone_number}
                         onChange={handleChange}
                         autoComplete="off"
                       />

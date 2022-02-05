@@ -50,7 +50,7 @@ const CommentList = ({ post, user }) => {
                 <div className="comments_point">
                   <LikeComment postId={postId} comment={comment} />
                   <div className="user">
-                    <img src="/assets/media/dash/user.jpg" alt="" />
+                    <img src={comment.user.profilePicUrl} alt="" />
                   </div>
                   <a href="#" className="create">
                     {comment.user != null ? comment.user.name : 'NOT DEFINED'}
@@ -60,11 +60,7 @@ const CommentList = ({ post, user }) => {
                       addSuffix: true
                     })}
                   </span>
-                  <PinnedComments
-                    user={user}
-                    comment={comment}
-                    postId={postId}
-                  />
+                  <PinnedComments user={user} comment={comment} post={post} />
                 </div>
                 <h3>{comment.text}</h3>
                 <div className="first_reply">

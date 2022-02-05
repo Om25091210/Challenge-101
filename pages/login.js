@@ -228,7 +228,7 @@ const SignIn = () => {
                     <div className="text-gray-400 already">
                       {' '}
                       Don't have an account?
-                      <a className="link-primary fw-bolder" href="/login">
+                      <a className="link-primary fw-bolder" href="/signup">
                         {' '}
                         Sign Up{' '}
                       </a>{' '}

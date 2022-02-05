@@ -539,9 +539,11 @@ const ProfileBox = ({ user, Userdata, games }) => {
                   <div className="loc_box">
                     {' '}
                     <span className="ct"> Location</span>{' '}
-                    <a href="#!" className="model_show_btn">
-                      <i className="fa fa-pencil" aria-hidden="true"></i>
-                    </a>
+                    {isLoggedInUser ? (
+                      <a href="#!" className="model_show_btn">
+                        <i className="fa fa-pencil" aria-hidden="true"></i>
+                      </a>
+                    ) : null}
                     <div className="common_model_box">
                       <a href="#!" className="model_close">
                         X

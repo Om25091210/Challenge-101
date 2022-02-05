@@ -30,6 +30,13 @@ const AllPosts = ({ post, user }) => {
       ?.filter((x) => x.user === post.user?._id)
       .map((x) => x.user).length > 0;
 
+  const isLoggedInUser = post.user !== '' && post.user._id === user._id;
+
+  const isLiked =
+    post.likes.map((like) => {
+      return (like.user = user._id);
+    }).length > 0;
+
   return (
     <div key={post._id}>
       <div className="post">
@@ -40,12 +47,14 @@ const AllPosts = ({ post, user }) => {
           <div className="user_name_disc">
             <div className="title_follow">
               <h4>{post.username}</h4>
-              <button
-                className="btn"
-                onClick={() => followhandlesubmit(post.user._id)}
-              >
-                {isFollow === true ? ' UnFollow' : 'Follow'}
-              </button>
+              {isLoggedInUser === false ? (
+                <button
+                  className="btn"
+                  onClick={() => followhandlesubmit(post.user._id)}
+                >
+                  {isFollow === true ? ' UnFollow' : 'Follow'}
+                </button>
+              ) : null}
             </div>
             <div className="date">
               {post.createdAt === post.updatedAt ? (
@@ -127,7 +136,7 @@ const AllPosts = ({ post, user }) => {
             </div>
             <div className="shere">
               {' '}
-              <LikePost postId={post._id} />{' '}
+              <LikePost postId={post._id} isLiked={isLiked} />{' '}
               <a href="#">
                 {' '}
                 <i className="fa fa-share-alt" aria-hidden="true"></i>{' '}
