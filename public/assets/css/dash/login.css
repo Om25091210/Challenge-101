@@ -1,5 +1,7 @@
 #kt_sign_up_form .bi{ font-size: 1.5rem;}
 
+ ul, li{ list-style: none; margin: 0; padding: 0;}
+
 body {
 	margin:0;
 	padding:0;
@@ -12,6 +14,14 @@ body {
 }
 
 .singup_page_box{ float: left; width: 100%; position: relative; overflow: hidden;}
+.singup_page_box .btn {
+    background: #fff;
+    width: 100%;
+    color: #000;
+    opacity: 1;
+    height: 40px;
+    line-height: 18px;
+}
 
 .left_banner{ float: left; width:calc(100% - 500px); height: 100vh; 
 background: #232741; 
@@ -79,14 +89,7 @@ display: flex; align-items: center; justify-content: center; position: relative;
 .form_box{ width: 80%;}
 .right_form h2{ font-size: 25px; color: #fff; padding: 20px 0;}
 .right_form label{ color: #fff;}
-.right_form .btn {
-    background: #fff;
-    width: 100%;
-    color: #000;
-    opacity: 1;
-    height: 40px;
-    line-height: 18px;
-}
+
 .right_form input{ min-height: 35px; height: 35px; border-radius: 3px; border:1px solid #2f2e32  !important}
 .right_form .form-control-solid{ background: #0f0e13;}
 .right_form  .form-check-input[type=checkbox]{min-height: 20px; height: 20px;}
@@ -109,3 +112,62 @@ display: flex; align-items: center; justify-content: center; position: relative;
     text-align: center;
 }
 .singup_icons .fa{ color: #fff; font-size: 15px;}
+
+
+
+.game_sect{ float: left; width: 100%; position: relative;}
+.left_game{ float: left; width: 40%; height: 100vh;}
+.left_game img{ width: 100%; object-fit: cover; height: 100%;}
+
+.right_game_form {
+    float: right;
+    width: 60%;
+    background: #15202b;
+    padding: 0 5%;
+    height: 100vh;
+    display: flex;
+    color: #fff;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.right_game_form h2{ color: #fff; text-align: left; }
+.right_game_form h4{ color: #15629c; text-align: left;}
+
+.gamer_photo{ display: flex; width: 100%; align-items: center;}
+
+.gamer_photo .gamer_dp{ width: 260px; height: 130px; background: #ddd; border-radius: 5px;}
+.gamer_photo .gamer_dp img{ width: 100%;}
+
+.gamer_photo ul{ display: flex; flex-wrap: wrap; margin-left: 20px;}
+.gamer_photo ul li{ flex:0 0 9%; margin: 10px; border-radius: 5px; overflow: hidden;}
+.gamer_photo ul li img{ width: 100%;}
+
+.pick_game{ margin: 20px 0;}
+.pick_game ul{ display: flex; flex-wrap: wrap;}
+.pick_game ul li{ flex:0 0 20%; margin: 10px; position: relative;}
+.pick_game ul li .hovers {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 50px;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    opacity: 0;
+    z-index: -1; transition: 0.3s ease-in-out;
+}
+
+.pick_game ul li .hovers span{ display: block;}
+
+.pick_game ul li:hover .hovers{ opacity: 1; z-index: 1;}
+
+.btn2{ width: 200px; background: #1da1f3; float: right;}
+select{    -webkit-appearance: auto;
+    -moz-appearance: auto;
+    appearance: auto;}

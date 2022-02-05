@@ -395,6 +395,116 @@ const Signup = () => {
           </div>
         </div>
       </div>
+
+      <div className="game_sect">
+        <div className="left_game">
+          <img src="/assets/media/login/left_game.jpg" alt="" />
+        </div>
+
+        <div className="right_game_form">
+          <h2>Put your game face on</h2>
+          <h4>Upload a picture or choose on avatar</h4>
+
+          <div className="gamer_photo">
+            <div className="gamer_dp">
+              <img src="/assets/media/login/user.png" alt="" />
+            </div>
+            <ul>
+              <li>
+                <input type="file" value="" />
+              </li>
+              <li>
+                <img src="/assets/media/login/game1.jpg" alt="" />
+              </li>
+              <li>
+                <img src="/assets/media/login/game1.jpg" alt="" />
+              </li>
+              <li>
+                <img src="/assets/media/login/game1.jpg" alt="" />
+              </li>
+              <li>
+                <img src="/assets/media/login/game1.jpg" alt="" />
+              </li>
+              <li>
+                <img src="/assets/media/login/game1.jpg" alt="" />
+              </li>
+              <li>
+                <img src="/assets/media/login/game1.jpg" alt="" />
+              </li>
+              <li>
+                <img src="/assets/media/login/game1.jpg" alt="" />
+              </li>
+              <li>
+                <img src="/assets/media/login/game1.jpg" alt="" />
+              </li>
+              <li>
+                <img src="/assets/media/login/game1.jpg" alt="" />
+              </li>
+              <li>
+                <img src="/assets/media/login/game1.jpg" alt="" />
+              </li>
+              <li>
+                <img src="/assets/media/login/game1.jpg" alt="" />
+              </li>
+              <li>
+                <img src="/assets/media/login/game1.jpg" alt="" />
+              </li>
+              <li>
+                <img src="/assets/media/login/game1.jpg" alt="" />
+              </li>
+              <li>
+                <img src="/assets/media/login/game1.jpg" alt="" />
+              </li>
+              <li>
+                <img src="/assets/media/login/game1.jpg" alt="" />
+              </li>
+            </ul>
+          </div>
+
+          <div className="pick_game">
+            <h2>Games</h2>
+            <ul>
+              <li>
+                <img src="/assets/media/login/pick1.jpg" alt="" />
+
+                <div className="hovers">
+                  <span>
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                  </span>
+                  <input type="text" value="" />
+                </div>
+              </li>
+              <li>
+                <img src="/assets/media/login/pick2.jpg" alt="" />
+              </li>
+              <li>
+                <img src="/assets/media/login/pick3.jpg" alt="" />
+              </li>
+              <li>
+                <img src="/assets/media/login/pick1.jpg" alt="" />
+              </li>
+            </ul>
+          </div>
+
+          <div className="fv-row mb-7">
+            <select class="form-control">
+              <option value="Afghanistan">Afghanistan</option>
+              <option value="Albania">Albania</option>
+              <option value="Algeria">Algeria</option>
+              <option value="American Samoa">American Samoa</option>
+              <option value="Andorra">Andorra</option>
+              <option value="Angola">Angola</option>
+              <option value="Anguilla">Anguilla</option>
+              <option value="Antartica">Antarctica</option>
+              <option value="Antigua and Barbuda">Antigua and Barbuda</option>
+            </select>
+          </div>
+
+          <button type="submit" id="kt_sign_up_submit" className="btn btn2">
+            <span className="indicator-label">Finish</span>{' '}
+          </button>
+        </div>
+      </div>
     </main>
   );
 };
