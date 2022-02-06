@@ -30,7 +30,7 @@ const AllPosts = ({ post, user }) => {
       ?.filter((x) => x.user === post.user?._id)
       .map((x) => x.user).length > 0;
 
-  const isLoggedInUser = post.user !== '' && post.user._id === user._id;
+  const isLoggedInUser = post.user !== '' && post.user?._id === user._id;
 
   const isLiked =
     post.likes.map((like) => {
