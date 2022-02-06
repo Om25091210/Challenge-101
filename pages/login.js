@@ -165,12 +165,6 @@ const SignIn = () => {
                 <div className="fv-row mb-10">
                   <div className="d-flex flex-stack mb-2">
                     <label className="form-label">Password</label>
-                    <a
-                      href="/user/forgotpassword"
-                      className="link-primary fs-6 fw-bolder"
-                    >
-                      Forgot Password ?
-                    </a>
                   </div>
                   <input
                     className="form-control form-control-lg form-control-solid"
@@ -181,6 +175,23 @@ const SignIn = () => {
                     autoComplete="off"
                   />
                 </div>
+
+                <div className="fv-row mb-10 remeberme">
+                  <label className="form-check form-check-custom form-check-solid form-check-inline">
+                    <input
+                      className="form-check-input"
+                      type="checkbox"
+                      name="toc"
+                      value="1"
+                    />
+                    <span className="form-check-label terms"> Remember Me</span>{' '}
+                  </label>
+
+                  <a href="/user/forgotpassword" className="link-primary fs-6 ">
+                    Forgot Password ?
+                  </a>
+                </div>
+
                 <div className="text-center">
                   <button
                     type="submit"
@@ -205,18 +216,18 @@ const SignIn = () => {
                   <div className="singup_icons">
                     <a href="#">
                       {' '}
-                      <i class="fa fa-google" aria-hidden="true"></i>
+                      <img src="/assets/media/login/google.png" alt="" />
                     </a>
                     <a href="#">
-                      <i class="fa fa-facebook" aria-hidden="true"></i>
-                    </a>
-                    <a href="#">
-                      {' '}
-                      <i class="fa fa-twitch" aria-hidden="true"></i>
+                      <img src="/assets/media/login/facebook.png" alt="" />
                     </a>
                     <a href="#">
                       {' '}
-                      <i class="fa fa-steam" aria-hidden="true"></i>
+                      <img src="/assets/media/login/twitch.png" alt="" />
+                    </a>
+                    <a href="#">
+                      {' '}
+                      <img src="/assets/media/login/steam.png" alt="" />
                     </a>
                     <a href="#">
                       {' '}
