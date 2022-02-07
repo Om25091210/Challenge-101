@@ -30,6 +30,7 @@ const Signup = () => {
   const [submitDisabled, setSubmitDisabled] = useState(true);
 
   const [username, setUsername] = useState('');
+  const [avatars, setAvatars] = useState([]);
 
   const [usernameLoading, setUsernameLoading] = useState(false);
   const [usernameAvailable, setUsernameAvailable] = useState(false);
@@ -85,6 +86,10 @@ const Signup = () => {
     }
     setFormLoading(false);
   };
+
+  useEffect(() => {
+    axios.get(`${baseURL}/api/avatar`).then((res) => setAvatars(res.data));
+  }, []);
 
   const checkUsername = async () => {
     setUsernameLoading(true);
@@ -464,51 +469,11 @@ const Signup = () => {
                         </label>
                       </div>
                     </li>
-                    <li>
-                      <img src="/assets/media/login/game1.jpg" alt="" />
-                    </li>
-                    <li>
-                      <img src="/assets/media/login/game1.jpg" alt="" />
-                    </li>
-                    <li>
-                      <img src="/assets/media/login/game1.jpg" alt="" />
-                    </li>
-                    <li>
-                      <img src="/assets/media/login/game1.jpg" alt="" />
-                    </li>
-                    <li>
-                      <img src="/assets/media/login/game1.jpg" alt="" />
-                    </li>
-                    <li>
-                      <img src="/assets/media/login/game1.jpg" alt="" />
-                    </li>
-                    <li>
-                      <img src="/assets/media/login/game1.jpg" alt="" />
-                    </li>
-                    <li>
-                      <img src="/assets/media/login/game1.jpg" alt="" />
-                    </li>
-                    <li>
-                      <img src="/assets/media/login/game1.jpg" alt="" />
-                    </li>
-                    <li>
-                      <img src="/assets/media/login/game1.jpg" alt="" />
-                    </li>
-                    <li>
-                      <img src="/assets/media/login/game1.jpg" alt="" />
-                    </li>
-                    <li>
-                      <img src="/assets/media/login/game1.jpg" alt="" />
-                    </li>
-                    <li>
-                      <img src="/assets/media/login/game1.jpg" alt="" />
-                    </li>
-                    <li>
-                      <img src="/assets/media/login/game1.jpg" alt="" />
-                    </li>
-                    <li>
-                      <img src="/assets/media/login/game1.jpg" alt="" />
-                    </li>
+                    {avatars.map((avatar) => (
+                      <li>
+                        <img src={avatar.image} alt={avatar.title} />
+                      </li>
+                    ))}
                   </ul>
                 </div>
 
