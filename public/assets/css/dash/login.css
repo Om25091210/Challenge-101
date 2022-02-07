@@ -5,7 +5,7 @@
 body {
 	margin:0;
 	padding:0;
-	font-family:'Titillium Web', sans-serif;
+	font-family: 'Rubik', sans-serif !important;
 	font-weight:400;
 	color:#000000;
 	line-height:1.2;
@@ -17,12 +17,20 @@ body {
 
 .singup_page_box{ float: left; width: 100%; position: relative; overflow: hidden;}
 .singup_page_box .text-red-600{ color:red;}
-.singup_page_box .btn {background: #fff;width: 100%;color: #000;opacity: 1;height: 40px; line-height: 18px;}
+.singup_page_box .btn {background: #1990ea;width: 100%;color: #fff;opacity: 1;height: 40px; line-height: 18px;}
 .singup_page_box .btn.btn-icon{ background: none;}
 
 .singup_page_box .singup_icons{ display: flex; justify-content: space-between; margin:20px 0;}
 .singup_page_box .singup_icons a {border: 1px solid #2f2e32 !important;padding: 10px;width: 18%; text-align: center;}
 .singup_page_box .singup_icons .fa{ color: #fff; font-size: 15px;}
+
+.singup_page_box .singup_icons  img{ width: 20px;}
+
+.singup_page_box .singup_icons .fa-google{}
+.singup_page_box .singup_icons .fa-facebook{ color: #174ac0;}
+.singup_page_box .singup_icons .fa-twitch{ color: #7d007b;}
+.singup_page_box .singup_icons .fa-steam{ color: #fff;}
+.singup_page_box .singup_icons .google{}
 
 .left_banner{ float: left; width:calc(100% - 500px); height: 100vh; 
 background: #232741; 
@@ -46,17 +54,19 @@ display: flex; align-items: center; justify-content: center; position: relative;
 .left_banner .props8 {top: 29%;right: 41%;}
 .left_banner .props9 {bottom: 20%; left: 17%;}
 
-.right_form{ float: right; width: 500px; height: 100vh; background: #0f0e13; overflow-y: auto; display: flex;}
+.right_form{ float: right; width: 500px; height: 100vh; background: #16202a; overflow-y: auto; display: flex;}
 .right_form .form_box{ width: 80%;}
 .right_form h2{ font-size: 25px; color: #fff; padding: 20px 0;}
-.right_form label{ color: #fff;}
-.right_form input{ min-height: 35px; height: 35px; border-radius: 3px; border:1px solid #2f2e32  !important}
+.right_form label{ color: #fff !important}
+.right_form input, .form-control{ min-height: 35px; background: none; color: #fff; padding: 0 10px; height: 35px; border-radius: 3px; border:1px solid #2f2e32  !important}
 .right_form .form-control-solid{ background: #0f0e13;}
 .right_form  .form-check-input[type=checkbox]{min-height: 20px; height: 20px;}
 .right_form .terms{ font-size: 11px !important;}
 .right_form .already{ font-size: 14px;}
 .right_form .mb-7, .right_form .mb-10{ margin-bottom: 10px !important}
 .right_form h4{ color: #fff; font-size: 13px; text-align:center;}
+.right_form  .remeberme{ display: flex; justify-content: space-between;}
+.right_form a{ color: #1990ea;}
 
 /* ------   signup step2 -------------- */
 
@@ -71,17 +81,73 @@ display: flex; align-items: center; justify-content: center; position: relative;
 .right_game_form {float: right;width: 60%;background: #15202b;padding: 0 5%;height: 100vh;display: flex;color: #fff;flex-direction: column;justify-content: center;}
 .right_game_form h2{ color: #fff; text-align: left; }
 .right_game_form h4{ color: #15629c; text-align: left;}
+.right_game_form label{ color: #fff !important}
 .right_game_form .gamer_photo{ display: flex; width: 100%; align-items: center;}
 .right_game_form .gamer_photo .gamer_dp{ width: 260px; height: 130px; background: #ddd; border-radius: 5px;}
 .right_game_form .gamer_photo .gamer_dp img{ width: 100%;}
 .right_game_form .gamer_photo ul{ display: flex; flex-wrap: wrap; margin-left: 20px;}
 .right_game_form .gamer_photo ul li{ flex:0 0 9%; margin: 10px; border-radius: 5px; overflow: hidden;}
+.right_game_form .gamer_photo ul li.uploads {
+    background: #ddd;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
 .right_game_form .gamer_photo ul li img{ width: 100%;}
 .right_game_form .pick_game{ margin: 20px 0;}
-.right_game_form .pick_game ul{ display: flex; flex-wrap: wrap;}
-.right_game_form .pick_game ul li{ flex:0 0 20%; margin: 10px; position: relative;}
+.right_game_form .pick_game ul{ display: flex; flex-wrap: wrap; margin-top: 20px;}
+
+.right_game_form .pick_game ul li{ flex:0 0 20%; margin-right: 20px; margin-bottom: 10px; position: relative; height: 200px;}
 .right_game_form .pick_game ul li .hovers {position: absolute;top: 50%;transform: translateY(-50%);height: 50px;text-align: center;width: 100%;height: 100%;background: rgba(0,0,0,0.5);display: flex;justify-content: center;align-items: center;flex-flow: column;opacity: 0;z-index: -1; transition: 0.3s ease-in-out;}
 .right_game_form .pick_game ul li .hovers span{ display: block;}
-.right_game_form .pick_game ul li:hover .hovers{ opacity: 1; z-index: 1;}
+.right_game_form .pick_game ul li img { height: 180px; width: 100%; object-fit: contain; transition: 0.3s ease-in-out; border-radius: 5px;}
+.right_game_form .pick_game ul li:hover img{ margin-top: -10px; height: 200px; }
+.right_game_form .pick_game ul li:hover .hovers{ margin-top: -10px;opacity: 1; z-index: 1;}
 
+
+.style_file_upload .inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+.style_file_upload .inputfile + label {
+	width: 150px;
+	font-size:12px;
+	font-weight: 700;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	cursor: pointer;
+	display: inline-block;
+	overflow: hidden;
+	padding: 0.625rem 1.25rem;
+	color: #ddd;
+	border: 2px solid #ced4da;
+	height: 100px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+}
+.cover_img.style_file_upload .inputfile + label {
+	margin-left: 10px;
+	width: 250px;
+}
+.no-js .inputfile + label {
+	display: none;
+}
+.style_file_upload span {
+	color: #000;
+}
+.style_file_upload .inputfile:focus + label, .style_file_upload .inputfile.has-focus + label, .style_file_upload .inputfile.has-focus + label:hover {
+	outline: 1px dotted #ced4da;
+	outline: -webkit-focus-ring-color auto 5px;
+	color: #ced4da;
+}
+
+.custom-file-input {
+	width: 0;
+	height: 0;
+}
 

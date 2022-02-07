@@ -50,7 +50,7 @@ const CommentList = ({ post, user }) => {
                 <div className="comments_point">
                   <LikeComment postId={postId} comment={comment} />
                   <div className="user">
-                    <img src={comment.user.profilePicUrl} alt="" />
+                    {/* <img src={comment.user.profilePicUrl} alt="" /> */}
                   </div>
                   <a href="#" className="create">
                     {comment.user != null ? comment.user.name : 'NOT DEFINED'}

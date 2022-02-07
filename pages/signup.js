@@ -440,8 +440,29 @@ const Signup = () => {
                     <img src="/assets/media/login/user.png" alt="" />
                   </div>
                   <ul>
-                    <li>
-                      <input type="file" value="" />
+                    <li className="uploads">
+                      <div className="style_file_upload">
+                        <input
+                          type="file"
+                          name="coverPhoto"
+                          id="coverPhoto"
+                          className="custom-file-input"
+                          onChange={(e) => {
+                            setCoverPic(e.target.files[0]);
+                            handleCoverSubmit(e);
+                          }}
+                        />
+                        <label htmlFor="coverPhoto">
+                          <span>
+                            {' '}
+                            <i
+                              className="fa fa-camera"
+                              aria-hidden="true"
+                            ></i>{' '}
+                            Upload
+                          </span>
+                        </label>
+                      </div>
                     </li>
                     <li>
                       <img src="/assets/media/login/game1.jpg" alt="" />
@@ -517,6 +538,7 @@ const Signup = () => {
                 </div>
 
                 <div className="fv-row mb-7">
+                  <label className="form-label"> Select Country </label>
                   <select class="form-control">
                     <option value="Afghanistan">Afghanistan</option>
                     <option value="Albania">Albania</option>
