@@ -9,13 +9,14 @@ import axios from 'axios';
 import baseURL from '@utils/baseURL';
 import valid from '@utils/valid';
 import Router from 'next/router';
-import { DataContext } from '../store/GlobalState';
-import { postData } from '../utils/fetchData';
+import { DataContext } from '@store/GlobalState';
+import { postData } from '@utils/fetchData';
+import { getCountryList } from '@utils/helpers';
 
 const usernameRegex = /^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{0,29}$/;
 let cancel;
 
-const Signup = () => {
+const Signup = ({games, avatars}) => {
   const [user, setUser] = useState({
     firstname: '',
     lastname: '',
@@ -28,9 +29,10 @@ const Signup = () => {
   const [error, setError] = useState(null);
   const [formLoading, setFormLoading] = useState(false);
   const [submitDisabled, setSubmitDisabled] = useState(true);
+  const [showIgn, setShowIgn] = useState('none');
 
   const [username, setUsername] = useState('');
-  const [avatars, setAvatars] = useState([]);
+  const [avatar, setAvatar] = useState();
 
   const [usernameLoading, setUsernameLoading] = useState(false);
   const [usernameAvailable, setUsernameAvailable] = useState(false);
@@ -47,17 +49,30 @@ const Signup = () => {
     setUser((prevState) => ({ ...prevState, [e.target.name]: e.target.value }));
   };
 
+  const handleSelectAvatar = (avatar) => {
+    setAvatar(avatar);
+  };
+
+  const [countries, setCountries] = useState(getCountryList());
+
+  const [selectedGame, setSelectedGame] = useState();
+  const [userign, setUserign] = useState('');
+
+  const handleSelectGame = (game) => {
+
+    setSelectedGame(game);
+    setShowIgn('');    
+    console.log(game);
+  };
+  
+  console.log(selectedGame);
+
+  const handleUserign = (e) => {
+    setUserign(e.target.value);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    //await registerUser(user, setError, setFormLoading, toast, setStatus);
-
-    const errMsg = valid(firstname, lastname, email, password);
-    console.log(errMsg);
-
-    if (errMsg) {
-      toast.info(errMsg);
-      return dispatch({ type: 'NOTIFY', payload: { error: errMsg } });
-    }
 
     dispatch({ type: 'NOTIFY', payload: { loading: true } });
 
@@ -67,18 +82,34 @@ const Signup = () => {
     try {
       var name = firstname + ' ' + lastname;
       console.log(name);
+
+
+        try {
+
+      var avatarImage = avatar.image;   
+      var gameId = selectedGame._id; 
       const res = await axios.post(`${baseURL}/api/signup`, {
         name,
         username,
         email,
         password,
-        phone_number
+        phone_number,
+        avatarImage,
+        gameId,
+        userign
       });
-      console.log(res);
 
-      dispatch({ type: 'NOTIFY', payload: { success: res.msg } });
-      toast.info(res.data.msg);
-      Router.push(`/verify`);
+          console.log(res);
+
+          dispatch({ type: 'NOTIFY', payload: { success: res.msg } });
+          toast.info(res.data.msg);
+            Router.push(`/verify`);
+
+        } catch (err) {
+          console.log(err);
+          toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+        }      
+
     } catch (error) {
       toast.error(
         'Oops! Sorry we cannot register at this time. Please try later.'
@@ -86,10 +117,6 @@ const Signup = () => {
     }
     setFormLoading(false);
   };
-
-  useEffect(() => {
-    axios.get(`${baseURL}/api/avatar`).then((res) => setAvatars(res.data));
-  }, []);
 
   const checkUsername = async () => {
     setUsernameLoading(true);
@@ -135,9 +162,23 @@ const Signup = () => {
 
   const [step1, setStep1] = useState(true);
   const [showbtn, setShowbtn] = useState(true);
-  const showstep2 = () => {
+
+
+  const showstep2 = async (e) => {
+
+    //Validate the sign up form
+    e.preventDefault();
+
+    const errMsg = valid(firstname, lastname, email, password, phone_number);
+
+    if (errMsg) {
+      toast.info(errMsg);
+      return dispatch({ type: 'NOTIFY', payload: { error: errMsg } });
+    }
+
     setStep1(false);
     setShowbtn(false);
+
   };
 
   const showstep1 = () => {
@@ -145,10 +186,20 @@ const Signup = () => {
     setShowbtn(true);
   };
 
+
+
   return (
     <main id="kt_body" className="bg-body">
       <Meta />
       <div className="singup_page_box">
+
+        <form
+          className="form w-100"
+          noValidate="novalidate"
+          id="kt_sign_up_form"
+          onSubmit={handleSubmit}
+        >
+
         {step1 ? (
           <>
             <div className="left_banner">
@@ -201,16 +252,13 @@ const Signup = () => {
                 <img src="/assets/media/login/9.png" alt="" />
               </span>
             </div>
+
+
             <div className="right_form">
               <div className="d-flex flex-center flex-column flex-column-fluid">
                 <h2>Create an Account</h2>
                 <div className="form_box">
-                  <form
-                    className="form w-100"
-                    noValidate="novalidate"
-                    id="kt_sign_up_form"
-                    onSubmit={handleSubmit}
-                  >
+
                     <input type="hidden" name="remember" value="true" />
                     <div className="fv-row mb-7">
                       <label className="form-label"> Email </label>
@@ -246,11 +294,10 @@ const Signup = () => {
                           className="form-control form-control-lg form-control-solid"
                           type="text"
                           placeholder=""
-                          name="firstname"
+                          name="lastname"
                           minLength="4"
                           maxLength="18"
                           size="10"
-                          name="lastname"
                           value={lastname}
                           onChange={handleChange}
                           autoComplete="off"
@@ -263,7 +310,7 @@ const Signup = () => {
                         className="form-control form-control-lg form-control-solid"
                         type="text"
                         placeholder=""
-                        name="text"
+                        name="phone_number"
                         value={phone_number}
                         onChange={handleChange}
                         autoComplete="off"
@@ -353,31 +400,16 @@ const Signup = () => {
                         />
                         <span className="form-check-label terms">
                           {' '}
-                          By creating an account, you agree to exports Charts
-                          <a href="#">Terms of use</a> &{' '}
-                          <a href="#">Privacy Policy.</a>{' '}
+                          By creating an account, you agree to our
+                          <a href="#"> Terms of use</a> &{' '}
+                          <a href="#"> Privacy Policy.</a>{' '}
                         </span>{' '}
                       </label>
                     </div>
                     <div className="text-center">
-                      {/* <button
-                    type="submit"
-                    id="kt_sign_up_submit"
-                    className="btn"
-                    disabled={submitDisabled || !usernameAvailable}
-                  >
-                    {' '}
-                    <span className="indicator-label">Create Account</span>{' '}
-                    <span className="indicator-progress">
-                      {' '}
-                      Please wait...{' '}
-                      <span className="spinner-border spinner-border-sm align-middle ms-2"></span>{' '}
-                    </span>{' '}
-                  </button> */}
-
                       <button
                         className={`btn rgtside ${showbtn ? '' : 'd-none'}`}
-                        onClick={showstep2}
+                        onClick={showstep2} disabled={submitDisabled || !usernameAvailable}
                       >
                         Continue
                       </button>
@@ -424,7 +456,6 @@ const Signup = () => {
                         </a>{' '}
                       </div>
                     </div>
-                  </form>
                 </div>
               </div>
             </div>
@@ -469,53 +500,51 @@ const Signup = () => {
                         </label>
                       </div>
                     </li>
-                    {avatars.map((avatar) => (
+
+                    {avatars && avatars.map((avatar) => (
                       <li>
-                        <img src={avatar.image} alt={avatar.title} />
+
+                        <div className="form-group">
+                          <a href="#!" onClick={() => handleSelectAvatar(avatar)}>
+                          <img src={avatar.image} alt={avatar.title} />
+                          </a>
+                        </div>
+
                       </li>
                     ))}
+
                   </ul>
                 </div>
 
                 <div className="pick_game">
                   <h2>Games</h2>
                   <ul>
-                    <li>
-                      <img src="/assets/media/login/pick1.jpg" alt="" />
 
-                      <div className="hovers">
-                        <span>
-                          <i class="fa fa-check" aria-hidden="true"></i>
-                        </span>
-                        <input type="text" value="" />
-                      </div>
-                    </li>
-                    <li>
-                      <img src="/assets/media/login/pick2.jpg" alt="" />
-                    </li>
-                    <li>
-                      <img src="/assets/media/login/pick3.jpg" alt="" />
-                    </li>
-                    <li>
-                      <img src="/assets/media/login/pick1.jpg" alt="" />
-                    </li>
+                    {games && games.map((game) => (
+                      <li>
+                      <a href="#!" onClick={() => handleSelectGame(game)}>
+                        <img src={game.imgUrl} alt={game.name} />
+                        </a>
+                        <div className="hovers" style={{display:showIgn}}>
+                          <span>
+                            <i class="fa fa-check" aria-hidden="true"></i>
+                          </span>
+                          <input type="text" name="userign" onChange={handleUserign} value={userign} />
+                        </div>
+
+                      </li>
+                    ))}                    
                   </ul>
                 </div>
 
                 <div className="fv-row mb-7">
                   <label className="form-label"> Select Country </label>
                   <select class="form-control">
-                    <option value="Afghanistan">Afghanistan</option>
-                    <option value="Albania">Albania</option>
-                    <option value="Algeria">Algeria</option>
-                    <option value="American Samoa">American Samoa</option>
-                    <option value="Andorra">Andorra</option>
-                    <option value="Angola">Angola</option>
-                    <option value="Anguilla">Anguilla</option>
-                    <option value="Antartica">Antarctica</option>
-                    <option value="Antigua and Barbuda">
-                      Antigua and Barbuda
-                    </option>
+
+                    {countries.map((option) => (
+                      <option value={option.value}>{option.label}</option>
+                    ))}
+                  
                   </select>
                 </div>
 
@@ -530,7 +559,6 @@ const Signup = () => {
                     type="submit"
                     id="kt_sign_up_submit"
                     className="btn"
-                    disabled={submitDisabled || !usernameAvailable}
                   >
                     {' '}
                     <span className="indicator-label">Finish</span>{' '}
@@ -544,10 +572,28 @@ const Signup = () => {
               </div>
             </div>
           </>
+
         )}
+          </form>
+
       </div>
     </main>
   );
 };
+
+export const getServerSideProps = async (context) => {
+
+  const response = await fetch(`${baseURL}/api/all/games`);
+  const games = await response.json();
+
+  const resp = await fetch(`${baseURL}/api/all/avatars`);
+  const avatars = await resp.json();
+
+  return {
+    props: { games, avatars }
+  };
+
+};
+
 
 export default Signup;

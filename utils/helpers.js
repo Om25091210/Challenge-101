@@ -1,4 +1,14 @@
 import NumberFormat from 'react-number-format';
+import countryList from 'react-select-country-list';
+import  { useMemo } from 'react'
+
+
+function getCountryList() {
+
+    const options = useMemo(() => countryList().getData(), []);
+    return options;
+}
+
 
 function MPNumberFormat({ value, currency }) {
 
@@ -82,4 +92,4 @@ function setCookieValue(key, value, seconds, path, encode = false) {
   )};expires=${now.toGMTString()};path=${path};`;
 }
 
-export { setCookieValue, getCookieValue, deleteCookie, MPNumberFormat };
+export { setCookieValue, getCookieValue, deleteCookie, MPNumberFormat, getCountryList};
