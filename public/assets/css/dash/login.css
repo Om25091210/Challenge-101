@@ -44,15 +44,7 @@ display: flex; align-items: center; justify-content: center; position: relative;
 .left_banner .props{ position: absolute;}
 .left_banner .logo {top: 17%;left: 23%;position: absolute;}
 .left_banner .logo img{ width: 150px;}
-.left_banner .props1 {top: 0;left: 6%;}
-.left_banner .props2 {top: 25%;left: 7%;}
-.left_banner .props3 {left: 2%;bottom: 26%;}
-.left_banner .props4 {bottom: 14%;left: 11%;}
-.left_banner .props5 {bottom: 10%;left: 15%;}
-.left_banner .props6 {right: 20%;bottom: 15%;}
-.left_banner .props7 {right: -24px;top: 10%;}
-.left_banner .props8 {top: 29%;right: 41%;}
-.left_banner .props9 {bottom: 20%; left: 17%;}
+
 
 .right_form{ float: right; width: 500px; height: 100vh; background: #16202a; overflow-y: auto; display: flex;}
 .right_form .form_box{ width: 80%;}
@@ -83,8 +75,8 @@ display: flex; align-items: center; justify-content: center; position: relative;
 .right_game_form h4{ color: #15629c; text-align: left;}
 .right_game_form label{ color: #fff !important}
 .right_game_form .gamer_photo{ display: flex; width: 100%; align-items: center;}
-.right_game_form .gamer_photo .gamer_dp{ width: 260px; height: 130px; background: #ddd; border-radius: 5px;}
-.right_game_form .gamer_photo .gamer_dp img{ width: 100%;}
+.right_game_form .gamer_photo .gamer_dp{ width:140px; height: 140px; background: #ddd; border-radius: 5px; flex-shrink: 0; overflow: hidden;}
+.right_game_form .gamer_photo .gamer_dp img{ width: 100%; height: 100%; object-fit: cover;}
 .right_game_form .gamer_photo ul{ display: flex; flex-wrap: wrap; margin-left: 20px;}
 .right_game_form .gamer_photo ul li{ flex:0 0 9%; margin: 10px; border-radius: 5px; overflow: hidden;}
 .right_game_form .gamer_photo ul li.uploads {
@@ -93,7 +85,7 @@ display: flex; align-items: center; justify-content: center; position: relative;
     display: flex;
     align-items: center;
 }
-.right_game_form .gamer_photo ul li img{ width: 100%;}
+.right_game_form .gamer_photo ul li img{ width: 100%; height: 100%; object-fit: cover;}
 .right_game_form .pick_game{ margin: 20px 0;}
 .right_game_form .pick_game ul{ display: flex; flex-wrap: wrap; margin-top: 20px;}
 
@@ -151,3 +143,71 @@ display: flex; align-items: center; justify-content: center; position: relative;
 	height: 0;
 }
 
+
+
+/* --------------Animation ------------ */
+
+.left_banner .props1 {top: 0;left: 6%; }
+.left_banner .props2 {top: 25%;left: 7%;}
+.left_banner .props3 {left: 2%;bottom: 26%;}
+.left_banner .props4 {bottom: 14%;left: 11%;}
+.left_banner .props5 {bottom: 10%;left: 15%;}
+.left_banner .props6 {right: 20%;bottom: 15%;}
+.left_banner .props7 {right: -24px;top: 10%;}
+.left_banner .props8 {top: 29%;right: 41%;}
+.left_banner .props9 {bottom: 20%; left: 17%;}
+
+.props1{ animation-name: props1; animation-duration: 0.5s; animation-delay:0.5s; animation-fill-mode: both; }
+.props2{ animation-name: props2; animation-duration: 0.5s; animation-delay:0.9s; animation-fill-mode: both; }
+.props3{ animation-name: props3; animation-duration: 0.5s; animation-delay:1.2s; animation-fill-mode: both; }
+.props4{ animation-name: props4; animation-duration: 0.5s; animation-delay:1.5s; animation-fill-mode: both; }
+.props5{ animation-name: props5; animation-duration: 0.5s; animation-delay:1.8s; animation-fill-mode: both; }
+.props6{ animation-name: props6; animation-duration: 0.5s; animation-delay:2.1s; animation-fill-mode: both; }
+.props7{ animation-name: props7; animation-duration: 0.5s; animation-delay:2.3s; animation-fill-mode: both; }
+.props8{ animation-name: props8; animation-duration: 0.5s; animation-delay:2.6s; animation-fill-mode: both; }
+.props9{ animation-name: props9; animation-duration: 0.5s; animation-delay:2.9s; animation-fill-mode: both; }
+
+@keyframes props1 { 
+	0% {opacity: 0; left: 0;}
+	100% { opacity: 1; left: 6%;}
+}
+
+@keyframes props2 { 
+	0% {opacity: 0;  top:0;left:0;}
+	100% { opacity: 1; top: 25%;left: 7%;}
+}
+
+@keyframes props3 { 
+	0% {opacity: 0; left:0;bottom: 0;}
+	100% { opacity: 1; left: 2%;bottom: 26%;}
+}
+
+@keyframes props4 { 
+	0% {opacity: 0; bottom: 0;left: 0;}
+	100% { opacity: 1;bottom: 14%;left: 11%;}
+}
+
+@keyframes props5 { 
+	0% {opacity: 0;bottom:0;left: 0;}
+	100% { opacity: 1; bottom: 10%;left: 15%;}
+}
+
+@keyframes props6 { 
+	0% {opacity: 0;right:0;bottom:0;}
+	100% { opacity: 1;right: 20%;bottom: 15%;}
+}
+
+@keyframes props7 { 
+	0% {opacity: 0; right:0;top:0;}
+	100% { opacity: 1; right: -24px;top: 10%;}
+}
+
+@keyframes props8 { 
+	0% {opacity: 0; top:0;right:0;}
+	100% { opacity: 1;top: 29%;right: 41%;}
+}
+
+@keyframes props9 { 
+	0% {opacity: 0; bottom:0; left: 0;}
+	100% { opacity: 1; bottom: 20%; left: 17%;}
+}
