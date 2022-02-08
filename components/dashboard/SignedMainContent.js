@@ -308,7 +308,7 @@ const SignedMainContent = ({ posts, user, profile }) => {
           <div>
             <div className="post">
               {followingPosts.map((post) => (
-                <AllPosts user={user} post={post} />
+                <AllPosts user={user} post={post} profile={profile} />
               ))}
             </div>
           </div>
@@ -317,7 +317,7 @@ const SignedMainContent = ({ posts, user, profile }) => {
         <div className="tab" id="Discover">
           <div>
             {posts.map((post) => (
-              <AllPosts user={user} post={post} />
+              <AllPosts user={user} post={post} profile={profile}/>
             ))}
           </div>
         </div>

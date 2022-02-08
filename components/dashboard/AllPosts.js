@@ -8,14 +8,8 @@ import axios from 'axios';
 import baseURL from '@utils/baseURL';
 import cookie from 'js-cookie';
 
-const AllPosts = ({ post, user }) => {
-  const [profiledata, setProfileData] = useState([]);
+const AllPosts = ({ post, user, profile }) => {
 
-  useEffect(() => {
-    axios
-      .get(`${baseURL}/api/profile/${user._id}`)
-      .then((res) => setProfileData(res.data));
-  }, []);
   const followhandlesubmit = async (x) => {
     const res = await fetch(`${baseURL}/api/profile/follow/${x}`, {
       method: 'POST',
@@ -26,7 +20,7 @@ const AllPosts = ({ post, user }) => {
   };
 
   const isFollow =
-    profiledata.following
+    profile.following
       ?.filter((x) => x.user === post.user?._id)
       .map((x) => x.user).length > 0;
 
