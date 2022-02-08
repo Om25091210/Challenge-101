@@ -12,7 +12,7 @@ import ReactTooltip from 'react-tooltip';
 import Moment from 'moment';
 import AllPosts from './AllPosts';
 
-const SignedMainContent = ({ posts, user, profile }) => {
+const SignedMainContent = ({ posts, user }) => {
   const [description, setDescription] = useState('');
   const [image, setImage] = useState(null);
   const [followingPosts, setFollowingPosts] = useState([]);
@@ -21,6 +21,13 @@ const SignedMainContent = ({ posts, user, profile }) => {
   const [personas, setPersonas] = useState({});
   const [postType, setPostType] = useState('');
   const router = useRouter();
+  const [profiledata, setProfileData] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`${baseURL}/api/profile/${user._id}`)
+      .then((res) => setProfileData(res.data));
+  }, []);
 
   const mutation = useMutation(
     async (formdata) =>
@@ -308,7 +315,7 @@ const SignedMainContent = ({ posts, user, profile }) => {
           <div>
             <div className="post">
               {followingPosts.map((post) => (
-                <AllPosts user={user} post={post} profile={profile} />
+                <AllPosts user={user} post={post} profiledata={profiledata} />
               ))}
             </div>
           </div>
@@ -317,7 +324,7 @@ const SignedMainContent = ({ posts, user, profile }) => {
         <div className="tab" id="Discover">
           <div>
             {posts.map((post) => (
-              <AllPosts user={user} post={post} profile={profile}/>
+              <AllPosts user={user} post={post} profiledata={profiledata} />
             ))}
           </div>
         </div>

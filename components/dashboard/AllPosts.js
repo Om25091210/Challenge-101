@@ -4,14 +4,12 @@ import CustomPost from './CustomPost';
 import ReactTooltip from 'react-tooltip';
 import Moment from 'moment';
 import CommentForm from '@components/comments/CommentForm';
-import axios from 'axios';
 import baseURL from '@utils/baseURL';
 import cookie from 'js-cookie';
 
-const AllPosts = ({ post, user, profile }) => {
-
-  const followhandlesubmit = async (x) => {
-    const res = await fetch(`${baseURL}/api/profile/follow/${x}`, {
+const AllPosts = ({ post, user, profiledata }) => {
+  const followhandlesubmit = async (Uid) => {
+    const res = await fetch(`${baseURL}/api/profile/follow/${Uid}`, {
       method: 'POST',
       headers: {
         Authorization: cookie.get('token')
@@ -20,9 +18,10 @@ const AllPosts = ({ post, user, profile }) => {
   };
 
   const isFollow =
-    profile.following
-      ?.filter((x) => x.user === post.user?._id)
-      .map((x) => x.user).length > 0;
+    profiledata.length !== 0 &&
+    profiledata.following
+      ?.filter((profile) => profile.user === post.user?._id)
+      .map((profile) => profile.user).length > 0;
 
   const isLoggedInUser = post.user !== '' && post.user?._id === user._id;
 
