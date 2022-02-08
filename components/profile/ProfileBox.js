@@ -28,8 +28,11 @@ const ProfileBox = ({ user, Userdata, games }) => {
   const [userIgn, setUserIgn] = useState(null);
 
   const [address, setAddress] = useState(Userdata.profile?.address);
-  const [attr, setAttr] = useState(Userdata.profile?.player.attributes);
+  const [attr, setAttr] = useState(Userdata.profile.playergames[0].player?.attributes);
 
+
+  console.log(Userdata.profile.playergames[0]);
+  
   const [follow, setFollow] = useState(false);
 
   const followhandlesubmit = async (e) => {
