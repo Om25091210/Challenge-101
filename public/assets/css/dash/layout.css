@@ -78,7 +78,8 @@ a:hover {
 body {
 	margin:0;
 	padding:0;
-	font-family:'Titillium Web', sans-serif;
+	/* font-family:'Titillium Web', sans-serif; */
+	font-family: 'Rubik', sans-serif;
 	font-weight:400;
 	color:#000000;
 	line-height:1.2;
@@ -6681,6 +6682,82 @@ form.common_form input {
 	border-top-right-radius: 5px;
 	border-bottom-right-radius: 5px;
 }
+
+
+
+
+
+
+
+  .payment_methods {
+    grid-column: 1;
+    grid-row: 1/3; text-align: left;
+  }
+
+
+  .wallet_box {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 32.3% 33% 33%;
+    background-color: #fff;
+    color: #000; text-align: center;
+  }
+
+
+  .balance {
+    grid-column: 2/4;
+    grid-row: 1;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: baseline;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+  .money_withdrawn {
+    grid-column: 2 ;
+    grid-row: 2 ; 
+  }
+  .money_earned {
+    grid-column: 3;
+    grid-row: 2; 
+  }
+
+  .box {background:#ddd;color: #000;border-radius: 5px;padding: 20px;}
+  .box h4{ font-size: 18px; font-weight: 600; padding-bottom: 10px;}
+  .box h3{ font-size: 24px; font-weight: 600;}
+  .box .icons {background: #333;width: 61px;height: 61px;overflow: hidden;border-radius: 50%;display: inline-flex;align-items: center;justify-content: center;}
+  .box p{ padding: 10px 0;}
+  .box a{ color: #7239ea; font-size: 11px; text-decoration: underline;}
+
+ 
+  .payment_card{ float: left; width: 100%; margin: 20px 0;}
+
+  .bal{display: flex;justify-content: flex-start;}
+  .amt_bal .amt{ text-align: left; font-size: 36px;}
+  .amt_bal .amt img{ width: 40px;}
+  .amt{ font-size: 26px; font-weight: 600;     margin-left: 20px;}
+  .amt img{ display: inline-block; vertical-align: baseline; width: 30px;   -webkit-filter: invert(100%); filter: invert(100%);}
+  .two_btn{ width: 100%;}
+  .two_btn button{ width: 49%; padding:10px 0;}
+  .two_btn button:last-child{ background: #a7a8bc;}
+
+  .money_earned h3, .money_withdrawn  h3{ padding: 10px 0;}
+
+.bottom_box{ display: flex; justify-content: space-between; margin-bottom: 50px;}
+.bottom_box .box{ flex:0 0 49.5%; margin: 10px 0; position: relative;}
+.bottom_box select{ position: absolute; right:10px; width: 100px; top:10px; border-radius: 5px; font-size: 13px; }
+.bottom_box .box .cart{ float: left; width: 100%; margin: 20px 0;}
+.bottom_box .box .cart img{ width: 100%;}
+.bottom_box .trans_list ul{ display: flex; flex-direction: column; margin-top: 20px;}
+.bottom_box .trans_list li{ display: flex; justify-content: space-between; align-items: center; font-size: 14px; flex-shrink: 0; border-bottom: 1px solid #636363; margin-bottom: 10px; padding-bottom: 10px;}
+.bottom_box .trans_list li .list_name{ width: 220px;}
+.bottom_box .trans_list li .list .date{}
+.bottom_box .trans_list li .amt{ font-size: 18px;}
+.bottom_box .trans_list li .amt img{ width: 20px;}
+.bottom_box .trans_list a{ float: left; width: 100%; text-align: center; text-decoration: none; font-size: 14px;}
+
+  
 /* ---------------------- Dark Themes----------------------------- */
 
 	body.DarkPage {
