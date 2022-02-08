@@ -143,7 +143,7 @@ const SignedHeader = ({ user }) => {
                 </p>
               </span>
               <span className="drop">
-                <i class="fa fa-sort-desc" aria-hidden="true"></i>
+                <i className="fa fa-sort-desc" aria-hidden="true"></i>
               </span>
             </a>
             <div className="drop_down_bg profile_drop_down">

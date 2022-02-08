@@ -502,7 +502,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
               {isLoggedInUser ? (
                 <div className="edit_photo">
                   <label htmlFor="user-photo" className="edit_label">
-                    <i class="fa fa-picture-o" aria-hidden="true"></i>
+                    <i className="fa fa-picture-o" aria-hidden="true"></i>
                   </label>
                   <input
                     id="user-photo"

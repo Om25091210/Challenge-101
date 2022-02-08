@@ -231,7 +231,7 @@ const SignIn = () => {
                     </a>
                     <a href="#">
                       {' '}
-                      <i class="fa fa-steam" aria-hidden="true"></i>
+                      <i className="fa fa-steam" aria-hidden="true"></i>
                     </a>
                   </div>
 

@@ -143,13 +143,13 @@ const Cart = ({ user }) => {
             <div className="checkout_strip">
               <h1>Shopping Cart</h1>
               <button className="btn" onClick={() => router.back()}>
-                <i class="fa fa-long-arrow-left" aria-hidden="true"></i> Go Back
+                <i className="fa fa-long-arrow-left" aria-hidden="true"></i> Go Back
               </button>
             </div>
 
             <div className="row">
               <div className="col-md-12 text-secondary table-responsive my-3">
-                <table class="table cart_table">
+                <table className="table cart_table">
                   <thead>
                     <tr>
                       <th scope="col">#</th>

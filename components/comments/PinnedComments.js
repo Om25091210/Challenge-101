@@ -49,7 +49,7 @@ const PinnedComments = ({ post, comment, user }) => {
       ) : (
         isAuthorized && (
           <button className="pinned" onClick={pincommenthandlesubmit}>
-            <i class="fa fa-thumb-tack" aria-hidden="true"></i>
+            <i className="fa fa-thumb-tack" aria-hidden="true"></i>
           </button>
         )
       )}

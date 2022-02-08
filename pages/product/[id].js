@@ -130,41 +130,41 @@ const DetailProduct = ({ user, productItem }) => {
             </div>
           </div>
 
-          <div class="product-detail-box">
+          <div className="product-detail-box">
             <h1>{product.title}</h1>
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="like_view">
-                  <a href="#" class="art">
-                    <i class="fa fa-picture-o" aria-hidden="true"></i> Art
+            <div className="row">
+              <div className="col-lg-12">
+                <div className="like_view">
+                  <a href="#" className="art">
+                    <i className="fa fa-picture-o" aria-hidden="true"></i> Art
                   </a>
-                  <a href="#" class="view">
-                    <i class="fa fa-eye" aria-hidden="true"></i> 250
+                  <a href="#" className="view">
+                    <i className="fa fa-eye" aria-hidden="true"></i> 250
                   </a>
-                  <a href="#" class="like">
-                    <i class="fa fa-heart" aria-hidden="true"></i> 18
+                  <a href="#" className="like">
+                    <i className="fa fa-heart" aria-hidden="true"></i> 18
                   </a>
                 </div>
 
-                <div class="review">
-                  <i class="fa fa-star" aria-hidden="true"></i>{' '}
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>{' '}
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>{' '}
-                  <span class="rev_txt">
+                <div className="review">
+                  <i className="fa fa-star" aria-hidden="true"></i>{' '}
+                  <i className="fa fa-star" aria-hidden="true"></i>
+                  <i className="fa fa-star" aria-hidden="true"></i>{' '}
+                  <i className="fa fa-star" aria-hidden="true"></i>
+                  <i className="fa fa-star" aria-hidden="true"></i>{' '}
+                  <span className="rev_txt">
                     Based on ( <b>2 reviews</b> )
                   </span>{' '}
                 </div>
               </div>
             </div>
-            <div class="row">
-              <div class="col-lg-12 prduct_data">
-                <div class="naming">
+            <div className="row">
+              <div className="col-lg-12 prduct_data">
+                <div className="naming">
                   {' '}
                   <span className="labels">Seller:</span> {product.seller}
                 </div>
-                <div class="naming">
+                <div className="naming">
                   <span className="labels">Price:</span> ${product.price}
                 </div>
 
@@ -183,11 +183,11 @@ const DetailProduct = ({ user, productItem }) => {
                   </div>
                 </div>
 
-                <p class="brief">{product.description} </p>
+                <p className="brief">{product.description} </p>
               </div>
             </div>
 
-            <div class="row cart-row">
+            <div className="row cart-row">
               {auth.user && auth.user.role === 'admin' ? (
                 ''
               ) : (

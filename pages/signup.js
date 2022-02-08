@@ -365,7 +365,7 @@ const Signup = ({games, avatars}) => {
                             data-kt-password-meter-control="visibility"
                           >
                             {' '}
-                            {/* <i class="bi bi-eye-slash"  id="togglePassword"></i> */}{' '}
+                            {/* <i className="bi bi-eye-slash"  id="togglePassword"></i> */}{' '}
                             <i
                               className={`bi  ${
                                 open ? 'bi-eye' : 'bi-eye-slash'
@@ -427,22 +427,22 @@ const Signup = ({games, avatars}) => {
                     <div className="singup_icons">
                       <a href="#">
                         {' '}
-                        <i class="fa fa-google" aria-hidden="true"></i>
+                        <i className="fa fa-google" aria-hidden="true"></i>
                       </a>
                       <a href="#">
-                        <i class="fa fa-facebook" aria-hidden="true"></i>
-                      </a>
-                      <a href="#">
-                        {' '}
-                        <i class="fa fa-twitch" aria-hidden="true"></i>
+                        <i className="fa fa-facebook" aria-hidden="true"></i>
                       </a>
                       <a href="#">
                         {' '}
-                        <i class="fa fa-steam" aria-hidden="true"></i>
+                        <i className="fa fa-twitch" aria-hidden="true"></i>
                       </a>
                       <a href="#">
                         {' '}
-                        <i class="fa fa-steam" aria-hidden="true"></i>
+                        <i className="fa fa-steam" aria-hidden="true"></i>
+                      </a>
+                      <a href="#">
+                        {' '}
+                        <i className="fa fa-steam" aria-hidden="true"></i>
                       </a>
                     </div>
 
@@ -527,7 +527,7 @@ const Signup = ({games, avatars}) => {
                         </a>
                         <div className="hovers" style={{display:showIgn}}>
                           <span>
-                            <i class="fa fa-check" aria-hidden="true"></i>
+                            <i className="fa fa-check" aria-hidden="true"></i>
                           </span>
                           <input type="text" name="userign" onChange={handleUserign} value={userign} />
                         </div>
@@ -539,7 +539,7 @@ const Signup = ({games, avatars}) => {
 
                 <div className="fv-row mb-7">
                   <label className="form-label"> Select Country </label>
-                  <select class="form-control">
+                  <select className="form-control">
 
                     {countries.map((option) => (
                       <option value={option.value}>{option.label}</option>

@@ -99,7 +99,7 @@ const Dashboard = ({ user }) => {
                     <img src="/assets/media/login/m.png" alt="" /> 10,000.00{' '}
                   </div>
                   <span>
-                    <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                    <i className="fa fa-ellipsis-v" aria-hidden="true"></i>
                   </span>
                 </li>
 
@@ -110,7 +110,7 @@ const Dashboard = ({ user }) => {
                     <img src="/assets/media/login/m.png" alt="" /> 10,000.00{' '}
                   </div>
                   <span>
-                    <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                    <i className="fa fa-ellipsis-v" aria-hidden="true"></i>
                   </span>
                 </li>
               </ul>
