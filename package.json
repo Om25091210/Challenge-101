@@ -4,7 +4,7 @@
   "license": "Multiplayr",
   "description": "Multiplayr headless platform using next.js",
   "engines": {
-    "node": ">=12.10"
+    "node": ">=v16.13.2"
   },
   "private": true,
   "scripts": {

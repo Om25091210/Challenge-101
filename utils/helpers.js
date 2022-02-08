@@ -1,11 +1,10 @@
 import NumberFormat from 'react-number-format';
 import countryList from 'react-select-country-list';
-import  { useMemo } from 'react'
 
 
 function getCountryList() {
 
-    const options = useMemo(() => countryList().getData(), []);
+    const options = countryList().getData();
     return options;
 }
 
