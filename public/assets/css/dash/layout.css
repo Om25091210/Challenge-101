@@ -2123,7 +2123,7 @@ article .social_bar {
 	margin-right: 10px;
 }
 .bio_box .left_bio p {
-	font-size: 14px;
+	font-size: 13px;
 	line-height: 20px;
 	font-weight: 400;
 }
@@ -2381,6 +2381,14 @@ article .social_bar {
 .games_details .chart_box img {
 	width: 100%;
 }
+
+.loc_box{position: absolute;
+    right: 194px;
+    background: #ddd;
+    padding: 8px 14px;
+    border-radius: 5px;
+    font-size: 15px;}
+
 .loc_box i {
 	font-size: 12px;
 	color: #7239ea;
@@ -2392,8 +2400,8 @@ article .social_bar {
 	text-align: center;
 }
 .user_add li {
-	font-size: 13px;
-	font-weight: 700;
+	font-size: 11px;
+	font-weight: 400;
 	padding-bottom: 5px;
 }
 /* -------------- Team Page ------------------ */
@@ -2851,8 +2859,8 @@ article .social_bar {
 }
 .products li .name_dots h4 {
 	text-transform: capitalize;
-	font-size:12px;
-	font-weight: 700; 
+	font-size:11px;
+	font-weight: 400; 
 }
 .products li .name_dots a {
 	color:#000;
