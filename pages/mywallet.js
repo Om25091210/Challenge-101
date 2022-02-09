@@ -13,7 +13,7 @@ import AllScript from './AllScript';
 
 const MyWallet = ({ user }) => {
 
-    const  publicKey = user.publicKey;
+    const  publicKey = user.public_key;
     const username  = user.username;
     const [coin, setCoin] = useState();
     const [USD, setUSD] = useState();
@@ -71,8 +71,9 @@ const MyWallet = ({ user }) => {
             API.getUsername(data.toAddress)
               .then(result => {
                 //Fix the crash we had during the demo
-                if(!result.data.message) result.data.message = "User not Found";
-                data.toAddress = result.data.message;
+                if(result.data === null) {data.toAddress = "User not Found" } else {
+                  data.toAddress = result.data.name;
+                }
               });
           };
           if (data.toAddress === publicKey) {
@@ -81,8 +82,9 @@ const MyWallet = ({ user }) => {
             if (data.fromAddress) {
               API.getUsername(data.fromAddress)
                 .then(result => {
-                  if(!result.data.message) result.data.message = "User not Found";
-                  data.fromAddress = result.data.message;
+                  if(result.data === null) {data.fromAddress = "User not Found"} else {
+                    data.fromAddress = result.data.name;
+                  }
                 })
             } else {
               data.fromAddress = "System";
@@ -221,17 +223,6 @@ const MyWallet = ({ user }) => {
                       </li>        
                 ))
               )}
-
-                <li>
-                  <span className="list_name">Money withdrawn </span>
-                  <span className="date">10 June 2021</span>
-                  <div className="amt">
-                    <img src="/assets/media/login/m.png" alt="" /> 10,000.00{' '}
-                  </div>
-                  <span>
-                    <i className="fa fa-ellipsis-v" aria-hidden="true"></i>
-                  </span>
-                </li>
               </ul>
 
               <a href="#">View all transactions</a>

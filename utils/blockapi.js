@@ -25,7 +25,7 @@ export default {
         return axios.get(`${baseUrl}/api/blockchain/latest/transactions/` + data)
     },    
     getUsername: function (data) {
-        return axios.get(`${baseUrl}/api/username/` + data)
+        return axios.get(`${baseUrl}/api/profile/user/username/` + data)
     },
     sendTransaction: function (data) {
         return axios.post(`${baseUrl}/api/blockchain/transactions`, data)
