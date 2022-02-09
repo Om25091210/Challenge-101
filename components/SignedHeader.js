@@ -155,13 +155,13 @@ const SignedHeader = ({ user }) => {
                 </li>
 
                 <li>
-                  <Link href="#">Dashboard</Link>
+                  <Link href="/dashboard">Dashboard</Link>
                 </li>
                 <li>
                   <Link href="#">Settings and Privacy</Link>
                 </li>
                 <li>
-                  <Link href="#">Payment</Link>
+                  <Link href="/mywallet">Payment</Link>
                 </li>
                 <li>
                   <Link href="#">Support</Link>

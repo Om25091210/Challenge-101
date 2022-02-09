@@ -29,9 +29,6 @@ const ProfileBox = ({ user, Userdata, games }) => {
 
   const [address, setAddress] = useState(Userdata.profile?.address);
   const [attr, setAttr] = useState(Userdata.profile.playergames[0].player?.attributes);
-
-
-  console.log(Userdata.profile.playergames[0]);
   
   const [follow, setFollow] = useState(false);
 
