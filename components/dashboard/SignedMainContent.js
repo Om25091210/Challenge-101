@@ -160,6 +160,46 @@ const SignedMainContent = ({ posts, user }) => {
 
   return (
     <div className="main_middle">
+      <div className="create_menu">
+        <ul>
+          <li>
+            <i class="fa fa-users" aria-hidden="true"></i>
+            <p>create a Team page</p>
+          </li>
+          <li>
+            <i class="fa fa-trophy" aria-hidden="true"></i>
+            <p> create a Tournament</p>
+          </li>
+          <li>
+            <i class="fa fa-comments" aria-hidden="true"></i>
+            <p> create a Community page</p>
+          </li>
+          <li>
+            <i class="fa fa-briefcase" aria-hidden="true"></i>
+            <p> create a Brand page</p>
+          </li>
+          <li>
+            <i class="fa fa-gamepad" aria-hidden="true"></i>
+            <p> create an Arena page</p>
+          </li>
+          <li>
+            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            <p> create a Company page</p>
+          </li>
+        </ul>
+        <div className="message">
+          <h3>The power of Esports tools are in your hands</h3>
+          <p>
+            Make use of the Help section to learn more to make a better use of
+            the plateform
+          </p>
+        </div>
+
+        <a href="#" className="close">
+          X
+        </a>
+      </div>
+
       <form className="write_post" onSubmit={handleSubmit}>
         <div className="team_slider">
           <ul className="user_slider">

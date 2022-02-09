@@ -17,7 +17,6 @@ const scrollToBottom = (divRef) => {
 };
 
 const Dashboard = ({ user, profile, teams, posts, suggplayers }) => {
-
   const [loading, setLoading] = useState(true);
 
   const router = useRouter();
@@ -33,7 +32,7 @@ const Dashboard = ({ user, profile, teams, posts, suggplayers }) => {
 
       <LeftNav user={user} />
 
-      <SignedMainContent posts={posts} user={user} profile={profile}/>
+      <SignedMainContent posts={posts} user={user} profile={profile} />
 
       <RightSection
         user={user}
