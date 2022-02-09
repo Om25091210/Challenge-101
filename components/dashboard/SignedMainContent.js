@@ -160,36 +160,44 @@ const SignedMainContent = ({ posts, user }) => {
 
   return (
     <div className="main_middle">
-      <div className="dashboard_menu d-flex">
+      <div className="create_menu">
         <ul>
           <li>
-            <img src="https://img.icons8.com/external-sbts2018-outline-sbts2018/58/000000/external-team-work-from-home-sbts2018-outline-sbts2018.png" />
-            create a Team page
+            <i class="fa fa-users" aria-hidden="true"></i>
+            <p>create a Team page</p>
           </li>
           <li>
-            <img src="https://img.icons8.com/external-victoruler-outline-victoruler/64/000000/external-winner-chess-victoruler-outline-victoruler.png" />
-            create a Tournament
+            <i class="fa fa-trophy" aria-hidden="true"></i>
+            <p> create a Tournament</p>
           </li>
           <li>
-            <img src="https://img.icons8.com/external-wanicon-lineal-wanicon/64/000000/external-community-communication-wanicon-lineal-wanicon.png" />
-            create a Community page
+            <i class="fa fa-comments" aria-hidden="true"></i>
+            <p> create a Community page</p>
           </li>
           <li>
-            <img src="https://img.icons8.com/external-outline-geotatah/64/000000/external-brand-product-management-outline-geotatah.png" />
-            create a Brand page
+            <i class="fa fa-briefcase" aria-hidden="true"></i>
+            <p> create a Brand page</p>
           </li>
           <li>
-            <img src="https://img.icons8.com/external-xnimrodx-lineal-color-xnimrodx/64/000000/external-stadium-esport-xnimrodx-lineal-color-xnimrodx.png" />
-            create an Arena page
+            <i class="fa fa-gamepad" aria-hidden="true"></i>
+            <p> create an Arena page</p>
           </li>
           <li>
-            <img src="https://img.icons8.com/external-icongeek26-outline-icongeek26/64/000000/external-company-crowdfunding-icongeek26-outline-icongeek26.png" />
-            create a Company page
+            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            <p> create a Company page</p>
           </li>
         </ul>
         <div className="message">
-          The power of Esports tools are in your hands
+          <h3>The power of Esports tools are in your hands</h3>
+          <p>
+            Make use of the Help section to learn more to make a better use of
+            the plateform
+          </p>
         </div>
+
+        <a href="#" className="close">
+          X
+        </a>
       </div>
 
       <form className="write_post" onSubmit={handleSubmit}>

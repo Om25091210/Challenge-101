@@ -691,6 +691,40 @@ ul.top_menu li.wallet li{     float: left;
 .profile_tab_btn.three_nav li a:hover {
 	color: #7239ea;
 }
+
+
+.create_menu{ position: relative; display: flex;  justify-content: space-between; margin-bottom: 50px; float: left; width: 100%; background: #fff; border-radius: 5px; border:1px solid #ddd; padding: 20px;} 
+.create_menu .close{position: absolute;
+    right: 25px;
+    top: 25px;
+    font-size: 20px;}
+.create_menu ul{ display: flex; flex-wrap: wrap; justify-content: space-between; float: left; width: 50%;}
+.create_menu ul li {
+    flex: 0 0 30%;
+    text-align: center;
+    background: #f3f7fa;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #ddd;
+}
+
+.create_menu ul li .fa{ font-size: 20px;}
+.create_menu .message{ text-align: left; width:45%;
+    background: #f3f7fa;
+    margin-bottom: 10px;
+    padding: 10px;
+	padding-right:40px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #ddd;}
+
+	.create_menu .message h3{ padding: 10px 0;}
+	.create_menu .message p {
+		font-size: 14px;
+		padding: 15px 0;
+		
+	}
+
 .for-you {
 	float:left;
 	width:100%;
