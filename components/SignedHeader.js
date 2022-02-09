@@ -181,7 +181,7 @@ const SignedHeader = ({ user }) => {
           </li>
 
           <li className="wallet">
-            <a href="#!">
+            <a href="/mywallet">
               <span className="dps">
                 {' '}
                 <img src="/assets/media/login/wallet.png" alt="" />
