@@ -10,9 +10,10 @@ const ProfileGameStat = ({ user, Userdata }) => {
 
   useEffect(() => {
     //Get Team Stats
-    var gameId = 4;
-    var userign = 178138659;
+    var gameId = Userdata.profile.playergames[0].game._id;
+    var userign = Userdata.profile.playergames[0].userign;
     var qstat = 'totals';
+    
     axios.get(`${baseURL}/api/extapi/player/stats/${gameId}/${userign}/${qstat}`).then( res => {
       setStat(res.data);
     });
@@ -73,9 +74,7 @@ const ProfileGameStat = ({ user, Userdata }) => {
                     </div>
                   </>
 
-
                 ))
-
 
               )}
 
