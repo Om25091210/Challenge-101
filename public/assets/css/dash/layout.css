@@ -279,7 +279,7 @@ ul.top_menu .drop_down_bg {
 	right:0px;
 	top:35px;
 	box-shadow:0 2px 22px rgb(0 0 0 / 4%);
-	padding:10px;
+	padding:10px 0;
 	z-index:9;
 	display:none;
 }
@@ -299,11 +299,11 @@ ul.top_menu .drop_down_bg:after {
 ul.top_menu .drop_down_bg li {
 	float:left;
 	width:100%;
-	padding:5px 10px !important
+	padding:5px 20px !important
 }
 ul.top_menu .drop_down_bg li a {
 	font-size: 14px;
-	font-weight: 700;
+	font-weight: 400;
 	color: #000;
 	display: inline-block;
 	border-bottom:0;
@@ -389,8 +389,12 @@ ul.top_menu li.profile {
 ul.top_menu li.profile img{ height: 46px;}
 ul.top_menu .drop_down_bg.profile_drop_down {
 	width:275px;
-	top:67px; border-top-right-radius: 0;
+	top:67px; border-top-right-radius: 0; padding: 10px 0;
 }
+
+ul.top_menu .drop_down_bg.profile_drop_down li:nth-child(6){border-top: 1px solid #ddd;border-bottom: 1px solid #ddd;padding-top: 15px !important;}
+ul.top_menu .drop_down_bg.profile_drop_down li:last-child{ padding-top:20px !important  ;}
+
 .profile_drop_down li {
 	float:left;
 	width:100%;
@@ -793,7 +797,7 @@ ul.top_menu li.wallet li{     float: left;
 	text-transform: capitalize;
 }
 .post .heads p {
-	font-size: 15px;
+	font-size: 12px;
 	padding-bottom: 10px;
 	font-weight: 400;
 	line-height: 22px;
@@ -875,8 +879,8 @@ ul.top_menu li.wallet li{     float: left;
 	border-radius:50%;
 }
 .users_share_box .more_user .others {
-	font-size:15px;
-	font-weight:700;
+	font-size:13px;
+	font-weight:400;
 	color:#000;
 	padding-left:20px;
 }
@@ -1126,8 +1130,8 @@ ul.top_menu li.wallet li{     float: left;
 
 .post_comments p {
 	color:#19191d;
-	font-size:18px;
-	font-weight:700;
+	font-size:14px;
+	font-weight:600;
 }
 .comments_point {
 	display:flex;
@@ -1272,8 +1276,8 @@ ul.top_menu li.wallet li{     float: left;
 	color: #7239ea;
 }
 .comments_data .member_profile h3 {
-	font-size: 15px;
-	font-weight: 700;
+	font-size: 13px;
+	font-weight: 400;
 	color: #000;
 }
 .comments_data .member_profile span.pos {
