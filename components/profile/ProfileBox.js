@@ -209,7 +209,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
     } else {
       try {
         await axios.put(
-          `${baseURL}/api/all/attribute/${Userdata.profile.player._id}`,
+          `${baseURL}/api/all/attribute/${Userdata.profile.playergames[0].player._id}`,
           attr,
           {
             headers: {
@@ -885,7 +885,8 @@ const ProfileBox = ({ user, Userdata, games }) => {
             </div>
           </div>
 
-    {/*      <ProfileGameStat user={user} Userdata={Userdata} /> */}
+         <ProfileGameStat user={user} Userdata={Userdata} /> 
+         
         </div>
       </div>
     </>

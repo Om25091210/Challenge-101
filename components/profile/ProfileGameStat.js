@@ -6,28 +6,32 @@ import cookie from 'js-cookie';
 
 const ProfileGameStat = ({ user, Userdata }) => {
 
-  const [stat, setStat] = useState({});
+  const [stat, setStat] = useState();
 
   useEffect(() => {
     //Get Team Stats
-    var gameId = 26;
-    var playerId = 26563;
-    axios.get(`${baseURL}/api/extp/player/stats/${gameId}/${playerId}`).then((res) => setStat(res.data));
+    var gameId = 4;
+    var userign = 178138659;
+    var qstat = 'totals';
+    axios.get(`${baseURL}/api/extapi/player/stats/${gameId}/${userign}/${qstat}`).then( res => {
+      setStat(res.data);
+    });
   }, []);
 
    console.log(stat);
+
     return(
     
   		<div className="right_bio">
             <div className="games_data white_bg">
 
 
-              {Userdata.teamMatchesList.length === 0 ? (
-                <div>No Games for {user.username}</div>
+              {Userdata.profile.playergames.length === 0 ? (
+                <div>No Games for {user.name}</div>
               ) : (
 
 
-              Userdata.teamMatchesList.map((item, index) => (
+              Userdata.profile.playergames.map((item, index) => (
 
                   <>
                     <div
@@ -38,32 +42,32 @@ const ProfileGameStat = ({ user, Userdata }) => {
                       key={index}
                     >
                       <div key={index} className="game_btn">
-                        {item.team.games[0].gameId ? item.team.games[0].gameId.name : 'Not Defined'}
+                        {item.game._id ? item.game.name : 'Not Defined'}
                       </div>
                       <ul>
                         <li>
                           <img src="/assets/media/profile/kill.png" alt="" />
-                          <span className="name">Kills </span>
-                          <span className="num">200</span>
+                          <span className="name">KILLS </span>
+                          <span className="num">{stat?.kills}</span>
                         </li>
                         <li>
                           <img src="/assets/media/profile/kdr.png" alt="" />
-                          <span className="name">KDR </span>
-                          <span className="num">1.04</span>
+                          <span className="name">DEATHS </span>
+                          <span className="num">{stat?.deaths}</span>
                         </li>
                         <li>
                           <img
                             src="/assets/media/profile/headshot.png"
                             alt=""
                           />
-                          <span className="name"> HEADSHOTS </span>
-                          <span className="num">75</span>
+                          <span className="name"> KDA </span>
+                          <span className="num">{stat?.kda}</span>
                         </li>
                         <li>
                           <img src="/assets/media/profile/ace.png" alt="" />
 
-                          <span className="name"> Won </span>
-                          <span className="num">100</span>
+                          <span className="name"> Loss </span>
+                          <span className="num">{stat?.loss}</span>
                         </li>
                       </ul>
                     </div>
