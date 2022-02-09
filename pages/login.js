@@ -231,7 +231,7 @@ const SignIn = () => {
                     </a>
                     <a href="#">
                       {' '}
-                      <i className="fa fa-steam" aria-hidden="true"></i>
+                      <img src="https://img.icons8.com/fluency/48/000000/discord.png" />
                     </a>
                   </div>
 

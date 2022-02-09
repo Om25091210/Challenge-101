@@ -160,6 +160,38 @@ const SignedMainContent = ({ posts, user }) => {
 
   return (
     <div className="main_middle">
+      <div className="dashboard_menu d-flex">
+        <ul>
+          <li>
+            <img src="https://img.icons8.com/external-sbts2018-outline-sbts2018/58/000000/external-team-work-from-home-sbts2018-outline-sbts2018.png" />
+            create a Team page
+          </li>
+          <li>
+            <img src="https://img.icons8.com/external-victoruler-outline-victoruler/64/000000/external-winner-chess-victoruler-outline-victoruler.png" />
+            create a Tournament
+          </li>
+          <li>
+            <img src="https://img.icons8.com/external-wanicon-lineal-wanicon/64/000000/external-community-communication-wanicon-lineal-wanicon.png" />
+            create a Community page
+          </li>
+          <li>
+            <img src="https://img.icons8.com/external-outline-geotatah/64/000000/external-brand-product-management-outline-geotatah.png" />
+            create a Brand page
+          </li>
+          <li>
+            <img src="https://img.icons8.com/external-xnimrodx-lineal-color-xnimrodx/64/000000/external-stadium-esport-xnimrodx-lineal-color-xnimrodx.png" />
+            create an Arena page
+          </li>
+          <li>
+            <img src="https://img.icons8.com/external-icongeek26-outline-icongeek26/64/000000/external-company-crowdfunding-icongeek26-outline-icongeek26.png" />
+            create a Company page
+          </li>
+        </ul>
+        <div className="message">
+          The power of Esports tools are in your hands
+        </div>
+      </div>
+
       <form className="write_post" onSubmit={handleSubmit}>
         <div className="team_slider">
           <ul className="user_slider">

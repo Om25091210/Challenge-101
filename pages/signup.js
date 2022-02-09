@@ -16,7 +16,7 @@ import { getCountryList } from '@utils/helpers';
 const usernameRegex = /^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{0,29}$/;
 let cancel;
 
-const Signup = ({games, avatars}) => {
+const Signup = ({ games, avatars }) => {
   const [user, setUser] = useState({
     firstname: '',
     lastname: '',
@@ -59,12 +59,11 @@ const Signup = ({games, avatars}) => {
   const [userign, setUserign] = useState('');
 
   const handleSelectGame = (game) => {
-
     setSelectedGame(game);
-    setShowIgn('');    
+    setShowIgn('');
     console.log(game);
   };
-  
+
   console.log(selectedGame);
 
   const handleUserign = (e) => {
@@ -83,33 +82,29 @@ const Signup = ({games, avatars}) => {
       var name = firstname + ' ' + lastname;
       console.log(name);
 
+      try {
+        var avatarImage = avatar.image;
+        var gameId = selectedGame._id;
+        const res = await axios.post(`${baseURL}/api/signup`, {
+          name,
+          username,
+          email,
+          password,
+          phone_number,
+          avatarImage,
+          gameId,
+          userign
+        });
 
-        try {
+        console.log(res);
 
-      var avatarImage = avatar.image;   
-      var gameId = selectedGame._id; 
-      const res = await axios.post(`${baseURL}/api/signup`, {
-        name,
-        username,
-        email,
-        password,
-        phone_number,
-        avatarImage,
-        gameId,
-        userign
-      });
-
-          console.log(res);
-
-          dispatch({ type: 'NOTIFY', payload: { success: res.msg } });
-          toast.info(res.data.msg);
-            Router.push(`/verify`);
-
-        } catch (err) {
-          console.log(err);
-          toast.error(err.response?.data?.msg || 'Please recheck your inputs');
-        }      
-
+        dispatch({ type: 'NOTIFY', payload: { success: res.msg } });
+        toast.info(res.data.msg);
+        Router.push(`/verify`);
+      } catch (err) {
+        console.log(err);
+        toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+      }
     } catch (error) {
       toast.error(
         'Oops! Sorry we cannot register at this time. Please try later.'
@@ -163,9 +158,7 @@ const Signup = ({games, avatars}) => {
   const [step1, setStep1] = useState(true);
   const [showbtn, setShowbtn] = useState(true);
 
-
   const showstep2 = async (e) => {
-
     //Validate the sign up form
     e.preventDefault();
 
@@ -178,7 +171,6 @@ const Signup = ({games, avatars}) => {
 
     setStep1(false);
     setShowbtn(false);
-
   };
 
   const showstep1 = () => {
@@ -186,79 +178,73 @@ const Signup = ({games, avatars}) => {
     setShowbtn(true);
   };
 
-
-
   return (
     <main id="kt_body" className="bg-body">
       <Meta />
       <div className="singup_page_box">
-
         <form
           className="form w-100"
           noValidate="novalidate"
           id="kt_sign_up_form"
           onSubmit={handleSubmit}
         >
+          {step1 ? (
+            <>
+              <div className="left_banner">
+                <span className="logo">
+                  {' '}
+                  <img src="/assets/media/login/logo.png" alt="" />
+                </span>
 
-        {step1 ? (
-          <>
-            <div className="left_banner">
-              <span className="logo">
-                {' '}
-                <img src="/assets/media/login/logo.png" alt="" />
-              </span>
+                <h1>
+                  A true Esports <br />
+                  platform that brings <br />
+                  all of Esports ecosystem <br />
+                  in one place.
+                </h1>
 
-              <h1>
-                A true Esports <br />
-                platform that brings <br />
-                all of Esports ecosystem <br />
-                in one place.
-              </h1>
+                <span className="props1 props">
+                  {' '}
+                  <img src="/assets/media/login/1.png" alt="" />
+                </span>
+                <span className="props2 props">
+                  {' '}
+                  <img src="/assets/media/login/2.png" alt="" />
+                </span>
+                <span className="props3 props">
+                  {' '}
+                  <img src="/assets/media/login/3.png" alt="" />
+                </span>
+                <span className="props4 props">
+                  {' '}
+                  <img src="/assets/media/login/4.png" alt="" />
+                </span>
+                <span className="props5 props">
+                  {' '}
+                  <img src="/assets/media/login/5.png" alt="" />
+                </span>
+                <span className="props6 props">
+                  {' '}
+                  <img src="/assets/media/login/6.png" alt="" />
+                </span>
+                <span className="props7 props">
+                  {' '}
+                  <img src="/assets/media/login/7.png" alt="" />
+                </span>
+                <span className="props8 props">
+                  {' '}
+                  <img src="/assets/media/login/8.png" alt="" />
+                </span>
+                <span className="props9 props">
+                  {' '}
+                  <img src="/assets/media/login/9.png" alt="" />
+                </span>
+              </div>
 
-              <span className="props1 props">
-                {' '}
-                <img src="/assets/media/login/1.png" alt="" />
-              </span>
-              <span className="props2 props">
-                {' '}
-                <img src="/assets/media/login/2.png" alt="" />
-              </span>
-              <span className="props3 props">
-                {' '}
-                <img src="/assets/media/login/3.png" alt="" />
-              </span>
-              <span className="props4 props">
-                {' '}
-                <img src="/assets/media/login/4.png" alt="" />
-              </span>
-              <span className="props5 props">
-                {' '}
-                <img src="/assets/media/login/5.png" alt="" />
-              </span>
-              <span className="props6 props">
-                {' '}
-                <img src="/assets/media/login/6.png" alt="" />
-              </span>
-              <span className="props7 props">
-                {' '}
-                <img src="/assets/media/login/7.png" alt="" />
-              </span>
-              <span className="props8 props">
-                {' '}
-                <img src="/assets/media/login/8.png" alt="" />
-              </span>
-              <span className="props9 props">
-                {' '}
-                <img src="/assets/media/login/9.png" alt="" />
-              </span>
-            </div>
-
-
-            <div className="right_form">
-              <div className="d-flex flex-center flex-column flex-column-fluid">
-                <h2>Create an Account</h2>
-                <div className="form_box">
-
+              <div className="right_form">
+                <div className="d-flex flex-center flex-column flex-column-fluid">
+                  <h2>Create an Account</h2>
+                  <div className="form_box">
                     <input type="hidden" name="remember" value="true" />
                     <div className="fv-row mb-7">
                       <label className="form-label"> Email </label>
@@ -409,7 +395,8 @@ const Signup = ({games, avatars}) => {
                     <div className="text-center">
                       <button
                         className={`btn rgtside ${showbtn ? '' : 'd-none'}`}
-                        onClick={showstep2} disabled={submitDisabled || !usernameAvailable}
+                        onClick={showstep2}
+                        disabled={submitDisabled || !usernameAvailable}
                       >
                         Continue
                       </button>
@@ -442,7 +429,7 @@ const Signup = ({games, avatars}) => {
                       </a>
                       <a href="#">
                         {' '}
-                        <i className="fa fa-steam" aria-hidden="true"></i>
+                        <img src="https://img.icons8.com/fluency/48/000000/discord.png" />
                       </a>
                     </div>
 
@@ -456,133 +443,139 @@ const Signup = ({games, avatars}) => {
                         </a>{' '}
                       </div>
                     </div>
-                </div>
-              </div>
-            </div>
-          </>
-        ) : (
-          <>
-            <div className="game_sect">
-              <div className="left_game">
-                <img src="/assets/media/login/left_game.jpg" alt="" />
-              </div>
-
-              <div className="right_game_form">
-                <h2>Put your game face on</h2>
-                <h4>Upload a picture or choose on avatar</h4>
-
-                <div className="gamer_photo">
-                  <div className="gamer_dp">
-                    <img src="/assets/media/login/user.png" alt="" />
                   </div>
-                  <ul>
-                    <li className="uploads">
-                      <div className="style_file_upload">
-                        <input
-                          type="file"
-                          name="coverPhoto"
-                          id="coverPhoto"
-                          className="custom-file-input"
-                          onChange={(e) => {
-                            setCoverPic(e.target.files[0]);
-                            handleCoverSubmit(e);
-                          }}
-                        />
-                        <label htmlFor="coverPhoto">
-                          <span>
-                            {' '}
-                            <i
-                              className="fa fa-camera"
-                              aria-hidden="true"
-                            ></i>{' '}
-                            Upload
-                          </span>
-                        </label>
-                      </div>
-                    </li>
-
-                    {avatars && avatars.map((avatar) => (
-                      <li>
-
-                        <div className="form-group">
-                          <a href="#!" onClick={() => handleSelectAvatar(avatar)}>
-                          <img src={avatar.image} alt={avatar.title} />
-                          </a>
-                        </div>
-
-                      </li>
-                    ))}
-
-                  </ul>
-                </div>
-
-                <div className="pick_game">
-                  <h2>Games</h2>
-                  <ul>
-
-                    {games && games.map((game) => (
-                      <li>
-                      <a href="#!" onClick={() => handleSelectGame(game)}>
-                        <img src={game.imgUrl} alt={game.name} />
-                        </a>
-                        <div className="hovers" style={{display:showIgn}}>
-                          <span>
-                            <i className="fa fa-check" aria-hidden="true"></i>
-                          </span>
-                          <input type="text" name="userign" onChange={handleUserign} value={userign} />
-                        </div>
-
-                      </li>
-                    ))}                    
-                  </ul>
-                </div>
-
-                <div className="fv-row mb-7">
-                  <label className="form-label"> Select Country </label>
-                  <select className="form-control">
-
-                    {countries.map((option) => (
-                      <option value={option.value}>{option.label}</option>
-                    ))}
-                  
-                  </select>
-                </div>
-
-                <div className="two_btn">
-                  <button
-                    onClick={showstep1}
-                    className={`btn3 btn rgtside ${showbtn ? 'd-none' : ''}`}
-                  >
-                    Back
-                  </button>{' '}
-                  <button
-                    type="submit"
-                    id="kt_sign_up_submit"
-                    className="btn"
-                  >
-                    {' '}
-                    <span className="indicator-label">Finish</span>{' '}
-                    <span className="indicator-progress">
-                      {' '}
-                      Please wait...{' '}
-                      <span className="spinner-border spinner-border-sm align-middle ms-2"></span>{' '}
-                    </span>{' '}
-                  </button>
                 </div>
               </div>
-            </div>
-          </>
+            </>
+          ) : (
+            <>
+              <div className="game_sect">
+                <div className="left_game">
+                  <img src="/assets/media/login/left_game.jpg" alt="" />
+                </div>
 
-        )}
-          </form>
+                <div className="right_game_form">
+                  <h2>Put your game face on</h2>
+                  <h4>Upload a picture or choose on avatar</h4>
 
+                  <div className="gamer_photo">
+                    <div className="gamer_dp">
+                      <img src="/assets/media/login/user.png" alt="" />
+                    </div>
+                    <ul>
+                      <li className="uploads">
+                        <div className="style_file_upload">
+                          <input
+                            type="file"
+                            name="coverPhoto"
+                            id="coverPhoto"
+                            className="custom-file-input"
+                            onChange={(e) => {
+                              setCoverPic(e.target.files[0]);
+                              handleCoverSubmit(e);
+                            }}
+                          />
+                          <label htmlFor="coverPhoto">
+                            <span>
+                              {' '}
+                              <i
+                                className="fa fa-camera"
+                                aria-hidden="true"
+                              ></i>{' '}
+                              Upload
+                            </span>
+                          </label>
+                        </div>
+                      </li>
+
+                      {avatars &&
+                        avatars.map((avatar) => (
+                          <li>
+                            <div className="form-group">
+                              <a
+                                href="#!"
+                                onClick={() => handleSelectAvatar(avatar)}
+                              >
+                                <img src={avatar.image} alt={avatar.title} />
+                              </a>
+                            </div>
+                          </li>
+                        ))}
+                    </ul>
+                  </div>
+
+                  <div className="pick_game">
+                    <h2>Games</h2>
+                    <ul>
+                      {games &&
+                        games.map((game) => (
+                          <li>
+                            <a href="#!" onClick={() => handleSelectGame(game)}>
+                              <img src={game.imgUrl} alt={game.name} />
+                            </a>
+                            <div
+                              className="hovers"
+                              style={{ display: showIgn }}
+                            >
+                              <span>
+                                <i
+                                  className="fa fa-check"
+                                  aria-hidden="true"
+                                ></i>
+                              </span>
+                              <input
+                                type="text"
+                                name="userign"
+                                onChange={handleUserign}
+                                value={userign}
+                              />
+                            </div>
+                          </li>
+                        ))}
+                    </ul>
+                  </div>
+
+                  <div className="fv-row mb-7">
+                    <label className="form-label"> Select Country </label>
+                    <select className="form-control">
+                      {countries.map((option) => (
+                        <option value={option.value}>{option.label}</option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div className="two_btn">
+                    <button
+                      onClick={showstep1}
+                      className={`btn3 btn rgtside ${showbtn ? 'd-none' : ''}`}
+                    >
+                      Back
+                    </button>{' '}
+                    <button
+                      type="submit"
+                      id="kt_sign_up_submit"
+                      className="btn"
+                    >
+                      {' '}
+                      <span className="indicator-label">Finish</span>{' '}
+                      <span className="indicator-progress">
+                        {' '}
+                        Please wait...{' '}
+                        <span className="spinner-border spinner-border-sm align-middle ms-2"></span>{' '}
+                      </span>{' '}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
+        </form>
       </div>
     </main>
   );
 };
 
 export const getServerSideProps = async (context) => {
-
   const response = await fetch(`${baseURL}/api/all/games`);
   const games = await response.json();
 
@@ -592,8 +585,6 @@ export const getServerSideProps = async (context) => {
   return {
     props: { games, avatars }
   };
-
 };
-
 
 export default Signup;
