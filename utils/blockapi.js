@@ -21,6 +21,9 @@ export default {
     getUserTransactions: function (data) {
         return axios.get(`${baseUrl}/api/blockchain/transactions/` + data)
     },
+    getLatestUserTransactions: function (data) {
+        return axios.get(`${baseUrl}/api/blockchain/latest/transactions/` + data)
+    },    
     getUsername: function (data) {
         return axios.get(`${baseUrl}/api/username/` + data)
     },

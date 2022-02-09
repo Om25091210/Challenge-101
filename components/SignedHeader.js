@@ -1,11 +1,13 @@
 import Head from 'next/head';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { logoutUser } from '@utils/auth';
 import NotificationItem from './NotificationItem';
 import ChatSection from './chats/ChatSection';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { DataContext } from '@store/GlobalState';
+import API from "@utils/blockapi";
+import { MPNumberFormat } from '@utils/helpers';
 
 const SignedHeader = ({ user }) => {
   const router = useRouter();
@@ -15,6 +17,29 @@ const SignedHeader = ({ user }) => {
   if (user == undefined) {
     router.push('/login');
   }
+
+    const [coin, setCoin] = useState();
+    const [USD, setUSD] = useState();
+
+    useEffect(() => {
+        getUserBalance();
+    })
+
+    const getUserBalance = () => {
+        API.getAddressBalance(user.publicKey)
+            .then(res => {
+                setCoin(res.data)
+                getUSD();
+            })
+    }
+    const getUSD = () => {
+        API.getUSD()
+            .then(res => {
+                const value = res.data * coin;
+                setUSD(value.toFixed(2));
+            })
+    }
+
   return (
     <header>
       <div className="logo">
@@ -186,17 +211,15 @@ const SignedHeader = ({ user }) => {
                 {' '}
                 <img src="/assets/media/login/wallet.png" alt="" />
               </span>
-              <span>5,456</span>
+              <span><MPNumberFormat value={coin} /></span>
             </a>
             <div className="drop_down_bg wallet_drop_down">
               <h2>Wallet</h2>
 
               <ul>
-                <li className="balance">
-                  <img src="/assets/media/login/wallet.png" alt="" />{' '}
-                  <span>M</span> <span>5,201.50</span> <span>Balance</span>
+                <li className="balance">              
+                  <span className="amt"><img src="/assets/media/login/m.png" alt="M" /> <MPNumberFormat value={coin} /> {' '}USD: ${USD} Balance</span>
                 </li>
-
                 <li>
                   <p>
                     Recently Withdrawn: <span className="money"> R3258.70</span>
