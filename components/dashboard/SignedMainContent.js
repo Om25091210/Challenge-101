@@ -11,6 +11,7 @@ import LikePost from '../postLikes/LikePost';
 import ReactTooltip from 'react-tooltip';
 import Moment from 'moment';
 import AllPosts from './AllPosts';
+import { TwitterShareButton } from 'react-share';
 
 const SignedMainContent = ({ posts, user }) => {
   const [description, setDescription] = useState('');
@@ -23,6 +24,7 @@ const SignedMainContent = ({ posts, user }) => {
   const router = useRouter();
   const [profiledata, setProfileData] = useState([]);
 
+  const shareUrl = 'http://localhost:3000/dashboard';
   useEffect(() => {
     axios
       .get(`${baseURL}/api/profile/${user._id}`)
@@ -319,9 +321,14 @@ const SignedMainContent = ({ posts, user }) => {
           <a href="#">
             <i className="fa fa-video-camera" aria-hidden="true"></i>
           </a>
-          <a href="#">
+          <TwitterShareButton
+            url={shareUrl}
+            title={'Multiplayer - Home of Esports'}
+            via={'Multiplayrdotgg'}
+            hashtags={['GG #Multiplayr']}
+          >
             <i className="fa fa-twitter" aria-hidden="true"></i>
-          </a>
+          </TwitterShareButton>
         </div>
         <button className="btn" type="submit" disabled={mutation.isLoading}>
           Submit

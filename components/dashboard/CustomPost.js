@@ -5,6 +5,7 @@ import baseURL from '../../utils/baseURL';
 import { QueryClient, QueryClientProvider, useMutation } from 'react-query';
 import cookie from 'js-cookie';
 import { toast } from 'react-toastify';
+import { TwitterShareButton, TwitterIcon } from 'react-share';
 
 const CustomPost = ({ post }) => {
   const [posts, setPosts] = useState([post]);
@@ -16,6 +17,8 @@ const CustomPost = ({ post }) => {
   const [editModal, setEditModal] = useState(false);
   const [isOriginalImages, setIsOriginalImages] = useState(true);
 
+  const [shareToModal, setShareToModal] = useState(false);
+  const shareUrl = 'http://localhost:3000/posts';
   // Delete a post
   const del = async (post) => {
     await axios.delete(`${baseURL}/api/posts/${post._id}`, {
@@ -92,7 +95,7 @@ const CustomPost = ({ post }) => {
             <button onClick={() => setDeleteModal(true)}>Delete</button>
           </li>
           <li>
-            <a href="#">Share to</a>
+            <button onClick={() => setShareToModal(true)}>Share to</button>
           </li>
           <li>
             <a href="#">Copy Link</a>
@@ -169,6 +172,27 @@ const CustomPost = ({ post }) => {
               </button>
               <button type="submit" className="btn">
                 Confirm
+              </button>
+            </div>
+          </form>
+          <div className="overlay"></div>
+        </div>
+      )}
+      {shareToModal && (
+        <div className="delete_post">
+          <form>
+            <div className="delete_post_div">
+              <TwitterShareButton
+                url={`${shareUrl}/${post._id}`}
+                title={'Multiplayer - Home of Esports'}
+                via={'Multiplayrdotgg'}
+                hashtags={['GG #Multiplayr']}
+              >
+                <TwitterIcon size={40} round={true} />
+              </TwitterShareButton>
+              <button onClick={() => setShareToModal(false)} className="close">
+                {' '}
+                X{' '}
               </button>
             </div>
           </form>
