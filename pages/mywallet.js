@@ -11,6 +11,8 @@ import API from "@utils/blockapi";
 import CoinGraph from "@components/crypto/CoinGraph";
 import AllScript from './AllScript';
 import CoinBuyForm from "@components/crypto/CoinBuyForm";
+import SendForm from "@components/crypto/SendForm";
+
 import { Elements } from "@stripe/react-stripe-js";
 import {loadStripe} from '@stripe/stripe-js';
 
@@ -23,6 +25,7 @@ const MyWallet = ({ user }) => {
     const [coin, setCoin] = useState();
     const [USD, setUSD] = useState();
     const [showBuy, setShowBuy] = useState('none');
+    const [showSend, setShowSend] = useState('none');
 
     useEffect(() => {
         getUserBalance();
@@ -48,10 +51,17 @@ const MyWallet = ({ user }) => {
     }
 
   const handleShowBuy = () => {
-    if (showBuy === 'none') {setShowBuy('')}
+    if (showBuy === 'none') {setShowBuy('');
+          setShowSend('none');}
     else {setShowBuy('none')} 
-    
+  };
 
+  const handleShowSend = () => {
+    if (showSend === 'none') {
+      setShowSend('');
+      setShowBuy('none')
+    }
+    else {setShowSend('none')} 
   };
 
   const [transactions, setTransactions] = useState([]);
@@ -147,6 +157,7 @@ const MyWallet = ({ user }) => {
               {' '}
               <button className="btn" onClick={() => handleShowBuy()}>Deposit</button>{' '}
               <button className="btn">Withdraw</button>
+              <button className="btn" onClick={() => handleShowSend()}>Send</button>
             </div>
           </div>
           <div className="money_withdrawn box">
@@ -176,6 +187,10 @@ const MyWallet = ({ user }) => {
           <Elements stripe={stripePromise}>
             <CoinBuyForm user={user}/>
           </Elements>
+        </div>
+        
+        <div style={{ overflow: "hidden",display: showSend}}>
+        <SendForm user={user}/>
         </div>
 
         <div className="bottom_box">

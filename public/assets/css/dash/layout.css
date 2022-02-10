@@ -6785,7 +6785,7 @@ form.common_form input {
   .amt{ font-size: 26px; font-weight: 600;     margin-left: 20px;}
   .amt img{ display: inline-block; vertical-align: baseline; width: 30px;   -webkit-filter: invert(100%); filter: invert(100%);}
   .two_btn{ width: 100%;}
-  .two_btn button{ width: 49%; padding:10px 0;}
+  .two_btn button{ width: 32%; padding:10px 0;margin-right: 10px}
   .two_btn button:last-child{ background: #a7a8bc;}
 
   .money_earned h3, .money_withdrawn  h3{ padding: 10px 0;}
