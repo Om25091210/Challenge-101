@@ -13,7 +13,7 @@ import {
 
 const PayInfo = ({data, user}) => {
 
-    const { publicKey } = user.public_key;
+    const { publicKey } = user.phone_number;
     const stripe = useStripe();
     const elements = useElements();
 

@@ -18,7 +18,7 @@ const stripePromise = loadStripe(process.env.NEXT_STRIPE_TEST_SECRET_KEY);
 
 const MyWallet = ({ user }) => {
 
-    const  publicKey = user.public_key;
+    const  publicKey = user.phone_number;
     const username  = user.username;
     const [coin, setCoin] = useState();
     const [USD, setUSD] = useState();
@@ -182,9 +182,7 @@ const MyWallet = ({ user }) => {
           <div className="earning box">
             <h4>Earning</h4>
             <select className="custom-select ">
-              <option>Weakly</option>
-              <option>Weakly</option>
-              <option>Weakly</option>
+              <option>Weekly</option>
             </select>
             <div className="cart">
 

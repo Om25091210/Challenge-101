@@ -26,7 +26,7 @@ const SignedHeader = ({ user }) => {
     })
 
     const getUserBalance = () => {
-        API.getAddressBalance(user.public_key)
+        API.getAddressBalance(user.phone_number)
             .then(res => {
                 setCoin(res.data)
                 getUSD();
