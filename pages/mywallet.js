@@ -8,8 +8,13 @@ import MetaDash from '@components/MetaDash';
 import SignedHeader from '@components/SignedHeader';
 import LeftNav from '@components/LeftNav';
 import API from "@utils/blockapi";
-
+import CoinGraph from "@components/crypto/CoinGraph";
 import AllScript from './AllScript';
+import CoinBuyForm from "@components/crypto/CoinBuyForm";
+import { Elements } from "@stripe/react-stripe-js";
+import {loadStripe} from '@stripe/stripe-js';
+
+const stripePromise = loadStripe(process.env.NEXT_STRIPE_TEST_SECRET_KEY);
 
 const MyWallet = ({ user }) => {
 
@@ -17,6 +22,7 @@ const MyWallet = ({ user }) => {
     const username  = user.username;
     const [coin, setCoin] = useState();
     const [USD, setUSD] = useState();
+    const [showBuy, setShowBuy] = useState('none');
 
     useEffect(() => {
         getUserBalance();
@@ -41,6 +47,12 @@ const MyWallet = ({ user }) => {
         navigator.clipboard.writeText(publicKey);
     }
 
+  const handleShowBuy = () => {
+    if (showBuy === 'none') {setShowBuy('')}
+    else {setShowBuy('none')} 
+    
+
+  };
 
   const [transactions, setTransactions] = useState([]);
   const headerSortingStyle = { backgroundColor: '#353535', color: 'white' };
@@ -133,7 +145,7 @@ const MyWallet = ({ user }) => {
             </div>
             <div className="two_btn">
               {' '}
-              <button className="btn">Deposit</button>{' '}
+              <button className="btn" onClick={() => handleShowBuy()}>Deposit</button>{' '}
               <button className="btn">Withdraw</button>
             </div>
           </div>
@@ -159,6 +171,13 @@ const MyWallet = ({ user }) => {
             </div>
           </div>
         </div>
+
+        <div style={{ overflow: "hidden",display: showBuy}}>
+          <Elements stripe={stripePromise}>
+            <CoinBuyForm user={user}/>
+          </Elements>
+        </div>
+
         <div className="bottom_box">
           <div className="earning box">
             <h4>Earning</h4>
@@ -168,7 +187,9 @@ const MyWallet = ({ user }) => {
               <option>Weakly</option>
             </select>
             <div className="cart">
-              <img src="/assets/media/login/earning.png" alt="" />
+
+              <CoinGraph/>
+
             </div>
           </div>
           <div className="transaction box">

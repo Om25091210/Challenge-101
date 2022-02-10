@@ -234,7 +234,7 @@ const SignedHeader = ({ user }) => {
 
                 <li>
                   {' '}
-                  <a href="">View all transactions</a>
+                  <a href="/mywallet">View all transactions</a>
                 </li>
               </ul>
             </div>
