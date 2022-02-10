@@ -12,7 +12,7 @@ import CommentForm from '@components/comments/CommentForm';
 import Moment from 'moment';
 
 import ProductList from '@components/common/ProductList';
-import Matches from './Matches';
+import TeamMatches from '@components/tournament/TeamMatches';
 
 const TeamProfileData = ({ user, data, products }) => {
   const [jobs, setJobs] = useState([]);
@@ -630,9 +630,7 @@ const TeamProfileData = ({ user, data, products }) => {
             </div>
           </div>
         </div>
-        <div className="tab hide" id="matches">
-          <Matches teamMatches={data.teamMatches} />
-        </div>
+        <TeamMatches tournament={data.teamMatches} />
         <div className="tab hide" id="stats">
           <div className="all_stat">
             <div className="tournament_table">

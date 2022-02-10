@@ -15,20 +15,20 @@ const TeamProfileBox = ({ user, data }) => {
 
       <div className="profile_dp_box">
         <div className="profile_pic">
-          <img src={data.imgUrl} alt="" />
+          <img src={data.team.imgUrl} alt="" />
         </div>
 
         <div className="profile_details">
           <div className="top_details">
             <div className="name_box">
-              <span className="game_name"> {data.name} </span>
+              <span className="game_name"> {data.team.name} </span>
               <span className="name">Founded May 2011</span>
-              <span className="follower">2 M followers</span>
+              <span className="follower">{data.players.length} followers</span>
             </div>
-            <div className="flag">{data.region}</div>
+            <div className="flag">{data.team.region}</div>
             <div className="tick">
               <span className="active">
-                {data.isVerified ? (
+                {data.team.isVerified ? (
                   <i className="fa fa-check" aria-hidden="true"></i>
                 ) : (
                   <i className="fa fa-question-circle" aria-hidden="true"></i>
@@ -56,10 +56,10 @@ const TeamProfileBox = ({ user, data }) => {
             <div className="current_status">
               <h5>RANKING</h5>
 
-              {!data.ranks || data.ranks.length === 0 ? (
+              {!data.team.ranks || data.team.ranks.length === 0 ? (
                 <p>No ranks defined..</p>
               ) : (
-                data.ranks.map((item, index) => (
+                data.team.ranks.map((item, index) => (
                   <div key={index} className="current_team">
                     <span className="ct">
                       {' '}
@@ -95,10 +95,10 @@ const TeamProfileBox = ({ user, data }) => {
             </div>
           </div>
 
-          <p>{data.description} </p>
+          <p>{data.team.description} </p>
 
           <p className="team_pos">
-            <span className="position">REGION:</span> {data.region}{' '}
+            <span className="position">REGION:</span> {data.team.region}{' '}
           </p>
 
           <div className="team_pos">
@@ -130,10 +130,10 @@ const TeamProfileBox = ({ user, data }) => {
           <div className="team_pos">
             <ul>
               <h5 className="position">ARENAS:</h5>
-              {!data.arenas || data.arenas.length === 0 ? (
+              {!data.team.arenas || data.team.arenas.length === 0 ? (
                 <p>No arenas defined...</p>
               ) : (
-                data.arenas.map((item, index) => (
+                data.team.arenas.map((item, index) => (
                   <li key={index}>
                     <span className="pos_name">
                       <img src={item.arenaId.logoUrl} alt="" />{' '}

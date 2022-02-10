@@ -12,19 +12,18 @@ import baseEsportsAPIURL from '@utils/baseEsportsAPIURL';
 import { useState, useEffect } from 'react';
 import { MPNumberFormat } from '@utils/helpers';
 import { format } from 'date-fns';
-import { getData } from '@utils/fetchData'
+import { getData } from '@utils/fetchData';
 
 import baseURL from '@utils/baseURL';
-import TournamentMatches from '@components/tournament/TournamentMatches';
 import TournamentVideos from '@components/tournament/TournamentVideos';
 import TournamentPhotos from '@components/tournament/TournamentPhotos';
 import TournamentSeries from '@components/tournament/TournamentSeries';
 import TournamentParticipants from '@components/tournament/TournamentParticipants';
 
 import ProductList from '@components/common/ProductList';
+import Matches from '@components/team/Matches';
 
 const TournamentDetail = ({ user, data, products }) => {
-
   if (data) {
     return (
       <>
@@ -54,7 +53,9 @@ const TournamentDetail = ({ user, data, products }) => {
                       <div className="flag_tick_flow">
                         <span className="game_name">
                           {' '}
-                          {data.tournament ? data.tournament.name : 'Not Defined'}{' '}
+                          {data.tournament
+                            ? data.tournament.name
+                            : 'Not Defined'}{' '}
                         </span>
                         <div className="flag"></div>
                         <div className="tick">
@@ -269,16 +270,17 @@ const TournamentDetail = ({ user, data, products }) => {
                 Overview
               </div>
               <div className="tab hide" id="series">
-
-              <TournamentSeries user={user} tournament={data.tournament}/>
-
+                <TournamentSeries user={user} tournament={data.tournament} />
               </div>
               <div className="tab hide" id="participants">
-                <TournamentParticipants user={user} tournament={data.tournament}/>
+                <TournamentParticipants
+                  user={user}
+                  tournament={data.tournament}
+                />
               </div>
-              
-              <TournamentMatches user={user} tournament={data.tournament} />
-
+              <div className="tab hide" id="matches">
+                <Matches teamMatches={data.tournamentMatches} />
+              </div>
               <div className="tab hide" id="result">
                 <div className="results_box white_bg">
                   <div className="congratulations">
@@ -730,10 +732,10 @@ const TournamentDetail = ({ user, data, products }) => {
                 </div>
               </div>
 
-              <ProductList user={user} productList={products}/>
+              <ProductList user={user} productList={products} />
 
               <div className="tab hide" id="video">
-                    <TournamentVideos user={user} tournament={data} />
+                <TournamentVideos user={user} tournament={data} />
               </div>
               <div className="tab hide" id="media">
                 <TournamentPhotos user={user} tournament={data} />
@@ -782,10 +784,10 @@ const TournamentDetail = ({ user, data, products }) => {
 export const getServerSideProps = async (context, query) => {
   const { tournamentid } = context.params;
   console.log(tournamentid);
-  const page = query ? (query.page || 1) : 1
-  const category = query ? (query.category || 'all' ) : 'all'
-  const sort = query ? (query.sort || '' ) : ''
-  const search = query ? (query.search || 'all') : 'all'  
+  const page = query ? query.page || 1 : 1;
+  const category = query ? query.category || 'all' : 'all';
+  const sort = query ? query.sort || '' : '';
+  const search = query ? query.search || 'all' : 'all';
   // const response = await fetch(`${baseEsportsAPIURL}/esport/tournaments/${tournamentid}`, {method:'GET',
   // headers: {'Authorization': 'Basic ' + Buffer.from('multiplyr' + ":" + 'Multiplyr123$').toString('base64')}});
   const response = await fetch(`${baseURL}/api/tournaments/${tournamentid}`);
@@ -793,11 +795,13 @@ export const getServerSideProps = async (context, query) => {
   // const data = dat.data;
 
   const resprod = await getData(
-      `product?limit=${page * 6}&category=${category}&sort=${sort}&title=${search}`
-    )  
+    `product?limit=${
+      page * 6
+    }&category=${category}&sort=${sort}&title=${search}`
+  );
 
   return {
-    props: { data,products: resprod.products }
+    props: { data, products: resprod.products }
   };
 };
 

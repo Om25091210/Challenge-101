@@ -1,7 +1,7 @@
 import React from 'react';
 import Moment from 'moment';
 
-const TournamentMatches = ({ user, tournament }) => {
+const TeamMatches = ({ user, tournament }) => {
   return (
     <div className="tab hide" id="matches">
       <h2>matches</h2>
@@ -20,15 +20,16 @@ const TournamentMatches = ({ user, tournament }) => {
             </tr>
           </thead>
           <tbody>
-            {tournament.matches && tournament.matches.map((match, index) => {
-              return (
+            {tournament &&
+              tournament.map((match, index) => {
+                return (
                   <tr key={index}>
-                    <td>{Moment(match.matchId.startDate).format('DD-MM-YYYY')}</td>
+                    <td>{Moment(match.startDate).format('DD-MM-YYYY')}</td>
                     <td>
-                      {match.matchId.opponents.length === 0 ? (
+                      {match.opponents.length === 0 ? (
                         <h6>---</h6>
                       ) : (
-                        match.matchId.opponents.map((opp) => {
+                        match.opponents.map((opp) => {
                           return (
                             <>
                               <span className="dp">
@@ -45,20 +46,27 @@ const TournamentMatches = ({ user, tournament }) => {
                     </td>
                     <td>{match.name}</td>
                     <td>Semi-Finals</td>
-                    <td>{Moment(match.matchId.startDate).format('h:m')}</td>
+                    <td>{Moment(match.startDate).format('h:m')}</td>
                     <td>
-                      {match.matchId.results[0]?.score}-{match.matchId.results[1]?.score}
+                      {match.results[0]?.score}-{match.results[1]?.score}
                     </td>
                     <td>
-                      <a href={match.matchId.streamsList[0] ? match.matchId.streamsList[0].embed_url : '-'}>View Match</a>
+                      <a
+                        href={
+                          match.streamsList[0]
+                            ? match.streamsList[0].embed_url
+                            : '-'
+                        }
+                      >
+                        View Match
+                      </a>
                     </td>
                     <td>
                       <a href="#">Buy Match Tickets</a>
                     </td>
                   </tr>
-                
-              );
-            })}
+                );
+              })}
           </tbody>
         </table>
       </div>
@@ -66,4 +74,4 @@ const TournamentMatches = ({ user, tournament }) => {
   );
 };
 
-export default TournamentMatches;
+export default TeamMatches;

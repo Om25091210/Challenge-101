@@ -22,7 +22,7 @@ const Team = ({ user, data, products }) => {
         <LeftNav user={user} />
 
         <div className="main_middle profile_middle">
-          <TeamProfileBox user={user} data={data.team} />
+          <TeamProfileBox user={user} data={data} />
 
           <TeamTabs user={user} data={data} />
 
