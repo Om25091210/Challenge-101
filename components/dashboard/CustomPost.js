@@ -5,7 +5,16 @@ import baseURL from '../../utils/baseURL';
 import { QueryClient, QueryClientProvider, useMutation } from 'react-query';
 import cookie from 'js-cookie';
 import { toast } from 'react-toastify';
-import { TwitterShareButton, TwitterIcon } from 'react-share';
+import {
+  TwitterShareButton,
+  TwitterIcon,
+  FacebookShareButton,
+  FacebookIcon,
+  TelegramShareButton,
+  TelegramIcon,
+  WhatsappShareButton,
+  WhatsappIcon
+} from 'react-share';
 
 const CustomPost = ({ post }) => {
   const [posts, setPosts] = useState([post]);
@@ -18,7 +27,7 @@ const CustomPost = ({ post }) => {
   const [isOriginalImages, setIsOriginalImages] = useState(true);
 
   const [shareToModal, setShareToModal] = useState(false);
-  const shareUrl = 'http://localhost:3000/posts';
+  const shareUrl = 'https://dev.multiplayr.gg/posts';
   // Delete a post
   const del = async (post) => {
     await axios.delete(`${baseURL}/api/posts/${post._id}`, {
@@ -190,6 +199,28 @@ const CustomPost = ({ post }) => {
               >
                 <TwitterIcon size={40} round={true} />
               </TwitterShareButton>
+              <FacebookShareButton
+                url={`${shareUrl}/${post._id}`}
+                quote={'Multiplayer - Home of Esports'}
+                via={'Multiplayrdotgg'}
+                hashtags={['GG #Multiplayr']}
+              >
+                <FacebookIcon size={40} round={true} />
+              </FacebookShareButton>
+
+              <TelegramShareButton
+                url={`${shareUrl}/${post._id}`}
+                title={'Multiplayer - Home of Esports'}
+              >
+                <TelegramIcon size={40} round={true} />
+              </TelegramShareButton>
+
+              <WhatsappShareButton
+                url={`${shareUrl}/${post._id}`}
+                title={'Multiplayer - Home of Esports'}
+              >
+                <WhatsappIcon size={40} round={true} />
+              </WhatsappShareButton>
               <button onClick={() => setShareToModal(false)} className="close">
                 {' '}
                 X{' '}

@@ -4,7 +4,7 @@ import { useMutation } from 'react-query';
 import cookie from 'js-cookie';
 import CommentList from '../comments/CommentList';
 
-const CommentForm = ({ post, user }) => {
+const CommentForm = ({ post, user, commentsData }) => {
   const [comment, setComment] = useState([]);
 
   const onChange = (e) => {
@@ -62,7 +62,7 @@ const CommentForm = ({ post, user }) => {
             <img src="/assets/media/dash/send.png" alt="" />
           </button>
         </form>
-        <CommentList post={post} user={user} />
+        <CommentList post={post} user={user} commentsData={commentsData} />
       </div>
     );
   } else {

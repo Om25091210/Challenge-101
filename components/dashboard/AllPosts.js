@@ -6,10 +6,24 @@ import Moment from 'moment';
 import CommentForm from '@components/comments/CommentForm';
 import baseURL from '@utils/baseURL';
 import cookie from 'js-cookie';
+import axios from 'axios';
 
 const AllPosts = ({ post, user, profiledata }) => {
+  const [commentsData, setCommentsData] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`${baseURL}/api/comments/${post._id}`)
+      .then((res) => {
+        setCommentsData(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   const followhandlesubmit = async (Uid) => {
-    const res = await fetch(`${baseURL}/api/profile/follow/${Uid}`, {
+    await fetch(`${baseURL}/api/profile/follow/${Uid}`, {
       method: 'POST',
       headers: {
         Authorization: cookie.get('token')
@@ -18,7 +32,7 @@ const AllPosts = ({ post, user, profiledata }) => {
   };
 
   const isFollow =
-    profiledata.length !== 0 &&
+    profiledata &&
     profiledata.following
       ?.filter((profile) => profile.user === post.user?._id)
       .map((profile) => profile.user).length > 0;
@@ -96,7 +110,7 @@ const AllPosts = ({ post, user, profiledata }) => {
           <a href="#">
             {' '}
             <i className="fa fa-commenting" aria-hidden="true"></i>{' '}
-            <span>0</span>{' '}
+            <span>{commentsData.comments?.length}</span>{' '}
           </a>{' '}
         </div>
         <div className="right_details">
@@ -145,7 +159,7 @@ const AllPosts = ({ post, user, profiledata }) => {
             </div>
           </div>
 
-          <CommentForm post={post} user={user} />
+          <CommentForm post={post} user={user} commentsData={commentsData} />
         </div>
       </div>
     </div>
