@@ -34,7 +34,7 @@ const Game = ({ user, data }) => {
               <div className="top_details">
                 <div className="name_box">
                   {' '}
-                  <span className="game_name">{game.name}</span>{' '}
+                  <span className="game_name">{game?.name}</span>{' '}
                 </div>
                 <div className="flag">
                   {' '}
