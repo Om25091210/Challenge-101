@@ -9,20 +9,7 @@ import ReplyList from './replies/ReplyList';
 import { formatDistanceToNowStrict } from 'date-fns';
 import PinnedComments from './PinnedComments';
 
-const CommentList = ({ post, user }) => {
-  const [commentsData, setCommentsData] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get(`${baseURL}/api/comments/${post._id}`)
-      .then((res) => {
-        setCommentsData(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-
+const CommentList = ({ post, user, commentsData }) => {
   const postId = post._id;
 
   return (
