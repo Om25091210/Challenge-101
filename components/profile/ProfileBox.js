@@ -352,10 +352,10 @@ const ProfileBox = ({ user, Userdata, games }) => {
 
         {isLoggedInUser ? (
           <span className="edit_cover_photo ">
-            <div className="loc_box">
+            <div className="personal_box">
               {' '}
               {/* <span className="ct" >Detail's</span>{' '} */}
-              <a href="#!" className="model_show_btn">
+              <a href="#!" className="model_show_btn" alt="personal details">
                 <i className="fa fa-pencil" aria-hidden="true"></i>
               </a>
               <div className="common_model_box">
