@@ -26,7 +26,7 @@ const SignedHeader = ({ user }) => {
     })
 
     const getUserBalance = () => {
-        API.getAddressBalance(user.public_key)
+        API.getAddressBalance(user.phone_number)
             .then(res => {
                 setCoin(res.data)
                 getUSD();
@@ -234,7 +234,7 @@ const SignedHeader = ({ user }) => {
 
                 <li>
                   {' '}
-                  <a href="">View all transactions</a>
+                  <a href="/mywallet">View all transactions</a>
                 </li>
               </ul>
             </div>

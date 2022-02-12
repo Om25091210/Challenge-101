@@ -84,7 +84,7 @@ const Ranking = ({ user, games }) => {
 
   useEffect(() => {
 
-     axios.get(`${baseURL}/api/teams/teamsbygame/${selectedGame._id}`)
+     axios.get(`${baseURL}/api/teams/teamsbygame/${selectedGame?._id}`)
             .then((res) => setTeamsRanks(res.data));
 
   }, []);

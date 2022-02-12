@@ -8,15 +8,24 @@ import MetaDash from '@components/MetaDash';
 import SignedHeader from '@components/SignedHeader';
 import LeftNav from '@components/LeftNav';
 import API from "@utils/blockapi";
-
+import CoinGraph from "@components/crypto/CoinGraph";
 import AllScript from './AllScript';
+import CoinBuyForm from "@components/crypto/CoinBuyForm";
+import SendForm from "@components/crypto/SendForm";
+
+import { Elements } from "@stripe/react-stripe-js";
+import {loadStripe} from '@stripe/stripe-js';
+
+const stripePromise = loadStripe(process.env.NEXT_STRIPE_TEST_SECRET_KEY);
 
 const MyWallet = ({ user }) => {
 
-    const  publicKey = user.public_key;
+    const  publicKey = user.phone_number;
     const username  = user.username;
     const [coin, setCoin] = useState();
     const [USD, setUSD] = useState();
+    const [showBuy, setShowBuy] = useState('none');
+    const [showSend, setShowSend] = useState('none');
 
     useEffect(() => {
         getUserBalance();
@@ -41,6 +50,19 @@ const MyWallet = ({ user }) => {
         navigator.clipboard.writeText(publicKey);
     }
 
+  const handleShowBuy = () => {
+    if (showBuy === 'none') {setShowBuy('');
+          setShowSend('none');}
+    else {setShowBuy('none')} 
+  };
+
+  const handleShowSend = () => {
+    if (showSend === 'none') {
+      setShowSend('');
+      setShowBuy('none')
+    }
+    else {setShowSend('none')} 
+  };
 
   const [transactions, setTransactions] = useState([]);
   const headerSortingStyle = { backgroundColor: '#353535', color: 'white' };
@@ -133,8 +155,9 @@ const MyWallet = ({ user }) => {
             </div>
             <div className="two_btn">
               {' '}
-              <button className="btn">Deposit</button>{' '}
+              <button className="btn" onClick={() => handleShowBuy()}>Deposit</button>{' '}
               <button className="btn">Withdraw</button>
+              <button className="btn" onClick={() => handleShowSend()}>Send</button>
             </div>
           </div>
           <div className="money_withdrawn box">
@@ -159,16 +182,27 @@ const MyWallet = ({ user }) => {
             </div>
           </div>
         </div>
+
+        <div style={{ overflow: "hidden",display: showBuy}}>
+          <Elements stripe={stripePromise}>
+            <CoinBuyForm user={user}/>
+          </Elements>
+        </div>
+        
+        <div style={{ overflow: "hidden",display: showSend}}>
+        <SendForm user={user}/>
+        </div>
+
         <div className="bottom_box">
           <div className="earning box">
             <h4>Earning</h4>
             <select className="custom-select ">
-              <option>Weakly</option>
-              <option>Weakly</option>
-              <option>Weakly</option>
+              <option>Weekly</option>
             </select>
             <div className="cart">
-              <img src="/assets/media/login/earning.png" alt="" />
+
+              <CoinGraph/>
+
             </div>
           </div>
           <div className="transaction box">

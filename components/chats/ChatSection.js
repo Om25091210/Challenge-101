@@ -78,7 +78,7 @@ const ChatSection = ({ user, messagesWith }) => {
 
           <div className="tab_data tab_data_scroll">
             <div className="chat tab" id="tab1">
-{ /* 
+
               {!showChat ? (
                 <div />
               ) : (
@@ -94,7 +94,7 @@ const ChatSection = ({ user, messagesWith }) => {
                 />
               )}
 
-      */}        
+             
             </div>
           </div>
         </div>
