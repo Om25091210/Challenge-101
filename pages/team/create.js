@@ -15,6 +15,7 @@ import 'rc-time-picker/assets/index.css';
 import { toast } from 'react-toastify';
 import { useMutation } from 'react-query';
 import cookie from 'js-cookie';
+import { teamformvalidate } from '@utils/valid';
 
 const CreateTeam = ({ user }) => {
   const showSecond = true;
@@ -25,8 +26,9 @@ const CreateTeam = ({ user }) => {
   const [games, setGames] = useState([]);
   const [arenas, setArenas] = useState([]);
   const [sponsors, setSponsors] = useState([]);
-  const [step1, setStep1] = useState(true);
+  const [step1, setStep1] = useState(false);
   const [showbtn, setShowbtn] = useState(true);
+  const [formErrors, setFormErrors] = useState({});
 
   const [state, setState] = useState({
     name: '',
@@ -35,7 +37,7 @@ const CreateTeam = ({ user }) => {
     founded: '',
     game: '',
     currency: '$',
-    prizepool: 0,
+    prizepool: null,
     country: '',
     website: '',
     description: '',
@@ -72,18 +74,7 @@ const CreateTeam = ({ user }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (
-      state.name === '' ||
-      state.founded === '' ||
-      state.game === '' ||
-      state.country === '' ||
-      state.currency === '' ||
-      state.description === '' ||
-      state.achievements === '' ||
-      state.sociallink === ''
-    ) {
-      toast.warning('Please enter all fields or check your inputs');
-    } else {
+    if (Object.keys(formErrors).length === 0) {
       let formdata = new FormData();
 
       Object.entries(state).map(([key, value]) => {
@@ -118,12 +109,14 @@ const CreateTeam = ({ user }) => {
   }
 
   const showstep2 = () => {
-    setStep1(false);
-    setShowbtn(false);
+    if (!(state.name === '' || state.founded === '' || state.game === '')) {
+      setStep1(true);
+      setShowbtn(false);
+    }
   };
 
   const showstep1 = () => {
-    setStep1(true);
+    setStep1(false);
     setShowbtn(true);
   };
 
@@ -140,7 +133,7 @@ const CreateTeam = ({ user }) => {
           <div className="create_tournament">
             <h1>Create Team</h1>
             <form onSubmit={handleSubmit} encType="multipart/form-data">
-              {step1 ? (
+              {!step1 ? (
                 <>
                   <h2>Step1</h2>
                   <div className="form-group">
@@ -153,9 +146,7 @@ const CreateTeam = ({ user }) => {
                       onChange={handleChange}
                       value={state.name}
                     />
-                    {state.name.length >= 20 && (
-                      <h6>Name cannot be more then 20 characters</h6>
-                    )}
+                    <p>{formErrors.name}</p>
                   </div>
                   <div className="form-group">
                     <div className="style_file_upload">
@@ -196,7 +187,7 @@ const CreateTeam = ({ user }) => {
                       onChange={handleChange}
                       value={state.founded}
                     />
-                    {state.founded.length >= 5 && <h6>Invalid Year</h6>}
+                    <p>{formErrors.founded}</p>
                   </div>
 
                   <div className="form-group">
@@ -216,6 +207,7 @@ const CreateTeam = ({ user }) => {
                         </option>
                       ))}
                     </select>
+                    <p>{formErrors.game}</p>
                   </div>
                 </>
               ) : (
@@ -247,6 +239,7 @@ const CreateTeam = ({ user }) => {
                         value={state.prizepool}
                       />
                     </div>
+                    <p>{formErrors.prizepool}</p>
                   </div>
 
                   <div className="form-group">
@@ -260,9 +253,7 @@ const CreateTeam = ({ user }) => {
                       onChange={handleChange}
                       value={state.country}
                     />
-                    {state.country.length >= 57 && (
-                      <h6>Country cannot be more then 56 characters</h6>
-                    )}
+                    <p>{formErrors.country}</p>
                   </div>
                   <div className="form-group">
                     <label htmlFor="exampleFormControlTextarea1">Website</label>
@@ -275,8 +266,8 @@ const CreateTeam = ({ user }) => {
                       onChange={handleChange}
                       value={state.website}
                     />
+                    <p>{formErrors.website}</p>
                   </div>
-
                   <div className="form-group">
                     <div className="colm">
                       <label htmlFor="exampleFormControlInput1">
@@ -291,9 +282,7 @@ const CreateTeam = ({ user }) => {
                         onChange={handleChange}
                         value={state.description}
                       />
-                      {state.description.length >= 251 && (
-                        <h6>Description cannot be more then 200 characters</h6>
-                      )}
+                      <p>{formErrors.description}</p>
                     </div>
                     <div className="colm">
                       <label htmlFor="exampleFormControlInput1">
@@ -308,8 +297,8 @@ const CreateTeam = ({ user }) => {
                         onChange={handleChange}
                         value={state.achievements}
                       />
+                      <p>{formErrors.achievements}</p>
                     </div>
-
                     <div className="colm">
                       <label htmlFor="exampleFormControlInput1">Rigs</label>
                       <select
@@ -326,6 +315,7 @@ const CreateTeam = ({ user }) => {
                         <option>Ghaphics Card</option>
                         <option>Processor</option>
                       </select>
+                      <p>{formErrors.rigs}</p>
                     </div>
                     <div className="colm">
                       <label htmlFor="exampleFormControlInput1">Sponsors</label>
@@ -343,6 +333,7 @@ const CreateTeam = ({ user }) => {
                           </option>
                         ))}
                       </select>
+                      <p>{formErrors.sponsor}</p>
                     </div>
                     <div className="colm">
                       <label htmlFor="exampleFormControlInput1">Arena</label>
@@ -360,6 +351,7 @@ const CreateTeam = ({ user }) => {
                           </option>
                         ))}
                       </select>
+                      <p>{formErrors.arena}</p>
                     </div>
                     <div className="colm">
                       <label htmlFor="exampleFormControlInput1">Team</label>
@@ -374,8 +366,8 @@ const CreateTeam = ({ user }) => {
                         <option>Coach</option>
                         <option>CEO</option>
                       </select>
+                      <p>{formErrors.role}</p>
                     </div>
-
                     <div className="colm">
                       <label htmlFor="exampleFormControlInput1">
                         Social Links
@@ -388,6 +380,7 @@ const CreateTeam = ({ user }) => {
                         onChange={handleChange}
                         value={state.sociallink}
                       />
+                      <p>{formErrors.sociallink}</p>
                     </div>
                     <div className="colm">
                       <label htmlFor="exampleFormControlInput1">
@@ -406,6 +399,7 @@ const CreateTeam = ({ user }) => {
                     type="submit"
                     className="btn create_tourn"
                     value="Create Team"
+                    onClick={() => setFormErrors(teamformvalidate(state))}
                   />
                 </>
               )}

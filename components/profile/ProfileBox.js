@@ -7,6 +7,7 @@ import { useMutation } from 'react-query';
 import { toast } from 'react-toastify';
 import cookie from 'js-cookie';
 import Badges from './badges';
+import { locationformvalidate } from '@utils/valid';
 import ProfileGameStat from './ProfileGameStat';
 
 const ProfileBox = ({ user, Userdata, games }) => {
@@ -33,6 +34,8 @@ const ProfileBox = ({ user, Userdata, games }) => {
 
   const [follow, setFollow] = useState(false);
 
+  const [formErrors, setFormErrors] = useState({});
+
   const followhandlesubmit = async (e) => {
     e.preventDefault();
     mutate({ follow });
@@ -57,8 +60,6 @@ const ProfileBox = ({ user, Userdata, games }) => {
   const isFollow = Userdata.followers
     ?.filter((x) => x.user === user._id)
     .map((x) => x.user);
-
-  console.log(cookie.get('token'));
 
   const mutation = useMutation(async (formdata) => {
     await axios.put(`${baseURL}/api/auth/profilePic`, formdata, {
@@ -159,17 +160,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
 
   const handleAddressForm = async (e) => {
     e.preventDefault();
-
-    if (
-      address.city === '' ||
-      address.state === '' ||
-      address.zipcode === '' ||
-      address.country === '' ||
-      address.line1 === '' ||
-      address.line2 === ''
-    ) {
-      toast.warning('Please enter all fields or check your inputs');
-    } else {
+    if (Object.keys(formErrors).length === 0) {
       try {
         await axios.put(
           `${baseURL}/api/profile/updateaddress/${Userdata.profile._id}`,
@@ -283,7 +274,6 @@ const ProfileBox = ({ user, Userdata, games }) => {
 
   const handleSearchSubmit = async (e) => {
     e.preventDefault();
-    console.log(search);
     if (search === '') {
       toast.warning('Please enter all fields or check your inputs');
     } else {
@@ -597,6 +587,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                                 value={address?.line1}
                               />
                             </div>
+                            <p>{formErrors.line1}</p>
                             <div className="colm">
                               <label htmlFor="exampleFormControlInput1">
                                 Address Line 2
@@ -611,6 +602,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                                 value={address?.line2}
                               />
                             </div>
+                            <p>{formErrors.line2}</p>
                             <div className="colm">
                               <label htmlFor="exampleFormControlInput1">
                                 City
@@ -625,6 +617,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                                 value={address?.city}
                               />
                             </div>
+                            <p>{formErrors.city}</p>
                             <div className="colm">
                               <label htmlFor="exampleFormControlInput1">
                                 State
@@ -639,6 +632,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                                 value={address?.state}
                               />
                             </div>
+                            <p>{formErrors.state}</p>
                             <div className="colm">
                               <label htmlFor="exampleFormControlInput1">
                                 Country
@@ -653,6 +647,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                                 value={address?.country}
                               />
                             </div>
+                            <p>{formErrors.country}</p>
                             <div className="colm">
                               <label htmlFor="exampleFormControlInput1">
                                 Zipcode
@@ -667,7 +662,15 @@ const ProfileBox = ({ user, Userdata, games }) => {
                                 value={address?.zipcode}
                               />
                             </div>
-                            <button className="btn">Update</button>
+                            <p>{formErrors.zipcode}</p>
+                            <button
+                              className="btn"
+                              onClick={() =>
+                                setFormErrors(locationformvalidate(address))
+                              }
+                            >
+                              Update
+                            </button>
                           </div>
                         </form>
                       </div>

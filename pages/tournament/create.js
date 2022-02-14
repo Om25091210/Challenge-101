@@ -16,6 +16,7 @@ import 'rc-time-picker/assets/index.css';
 import { toast } from 'react-toastify';
 import { useMutation } from 'react-query';
 import cookie from 'js-cookie';
+import { tournamentformvalidate } from '@utils/valid';
 
 const CreateTournament = ({ user }) => {
   const showSecond = true;
@@ -26,8 +27,9 @@ const CreateTournament = ({ user }) => {
   const [games, setGames] = useState([]);
   const [organizers, setOrganizers] = useState([]);
   const [sponsors, setSponsors] = useState([]);
-  const [step1, setStep1] = useState(true);
+  const [step1, setStep1] = useState(false);
   const [showbtn, setShowbtn] = useState(true);
+  const [formErrors, setFormErrors] = useState({});
 
   const [state, setState] = useState({
     name: '',
@@ -35,12 +37,12 @@ const CreateTournament = ({ user }) => {
     coverPhoto: '/assets/media/profile/cover_bg.jpg',
     game: '',
     currency: '$',
-    prizepool: 0,
+    prizepool: null,
     category: '',
     tournamentType: '',
     format: '',
-    participants: 0,
-    entranceFee: 0,
+    participants: null,
+    entranceFee: null,
     startDate: '',
     startTime: '',
     endDate: '',
@@ -73,23 +75,7 @@ const CreateTournament = ({ user }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (
-      state.name === '' ||
-      state.game === '' ||
-      state.category === '' ||
-      state.participants === '' ||
-      state.entranceFee === '' ||
-      state.startDate === '' ||
-      state.startTime === '' ||
-      state.endDate === '' ||
-      state.endTime === '' ||
-      state.location === '' ||
-      state.organizer === '' ||
-      state.description === '' ||
-      state.sociallink === ''
-    ) {
-      toast.warning('Please enter all fields or check your inputs');
-    } else {
+    if (Object.keys(formErrors).length === 0) {
       let tourdata = state;
 
       try {
@@ -120,8 +106,6 @@ const CreateTournament = ({ user }) => {
           value.push(options[i].value);
         }
       }
-      console.log(e.target.name);
-      console.log(value);
       setState({ ...state, [e.target.name]: value });
     } else if (e.target.files) {
       setState({ ...state, [e.target.name]: e.target.files[0] });
@@ -131,12 +115,14 @@ const CreateTournament = ({ user }) => {
   }
 
   const showstep2 = () => {
-    setStep1(false);
-    setShowbtn(false);
+    if (!(state.name === '' || state.game === '' || state.prizepool === null)) {
+      setStep1(true);
+      setShowbtn(false);
+    }
   };
 
   const showstep1 = () => {
-    setStep1(true);
+    setStep1(false);
     setShowbtn(true);
   };
 
@@ -154,7 +140,7 @@ const CreateTournament = ({ user }) => {
           <div className="create_tournament">
             <h1>Create Tournament</h1>
             <form onSubmit={handleSubmit}>
-              {step1 ? (
+              {!step1 ? (
                 <>
                   <h2>Step1</h2>
 
@@ -170,9 +156,7 @@ const CreateTournament = ({ user }) => {
                       onChange={handleChange}
                       value={state.name}
                     />
-                    {state.name.length >= 41 && (
-                      <h6>Tournament Name cannot be more then 40 characters</h6>
-                    )}
+                    <p>{formErrors.name}</p>
                   </div>
                   <div className="form-group">
                     <div className="style_file_upload">
@@ -216,6 +200,7 @@ const CreateTournament = ({ user }) => {
                         </option>
                       ))}
                     </select>
+                    <p>{formErrors.game}</p>
                   </div>
                   <div className="form-group">
                     <label for="exampleFormControlInput1">Prizes</label>
@@ -242,6 +227,7 @@ const CreateTournament = ({ user }) => {
                         value={state.prizepool}
                       />
                     </div>
+                    <p>{formErrors.prizepool}</p>
                   </div>
 
                   <div className="form-group">
@@ -357,9 +343,7 @@ const CreateTournament = ({ user }) => {
                       value={state.participants}
                       placeholder=""
                     />
-                    {state.participants.length >= 101 && (
-                      <h6>Participants cannot be more then 100 members</h6>
-                    )}
+                    <p>{formErrors.participants}</p>
                   </div>
                   <div className="form-group">
                     <label for="exampleFormControlTextarea1">
@@ -373,6 +357,7 @@ const CreateTournament = ({ user }) => {
                       value={state.entranceFee}
                       placeholder="$"
                     />
+                    <p>{formErrors.entranceFee}</p>
                   </div>
                   <div className="form-group">
                     <div className="date_time">
@@ -386,6 +371,7 @@ const CreateTournament = ({ user }) => {
                           onChange={handleChange}
                           value={state.startDate}
                         />
+                        <p>{formErrors.startDate}</p>
                       </div>
                       <div className="time_box">
                         <label for="exampleFormControlTextarea1">
@@ -399,6 +385,7 @@ const CreateTournament = ({ user }) => {
                           onChange={handleChange}
                           value={state.startTime}
                         />
+                        <p>{formErrors.startTime}</p>
                       </div>
                     </div>
                   </div>
@@ -414,6 +401,7 @@ const CreateTournament = ({ user }) => {
                           onChange={handleChange}
                           value={state.endDate}
                         />
+                        <p>{formErrors.endDate}</p>
                       </div>
                       <div className="time_box">
                         <label for="exampleFormControlTextarea1">
@@ -427,6 +415,7 @@ const CreateTournament = ({ user }) => {
                           onChange={handleChange}
                           value={state.endTime}
                         />
+                        <p>{formErrors.endTime}</p>
                       </div>
                     </div>
                   </div>
@@ -448,6 +437,7 @@ const CreateTournament = ({ user }) => {
                           </option>
                         ))}
                       </select>
+                      <p>{formErrors.sponsor}</p>
                     </div>
 
                     <div className="colm">
@@ -467,6 +457,7 @@ const CreateTournament = ({ user }) => {
                           </option>
                         ))}
                       </select>
+                      <p>{formErrors.organizer}</p>
                     </div>
 
                     <div className="colm">
@@ -479,9 +470,7 @@ const CreateTournament = ({ user }) => {
                         onChange={handleChange}
                         value={state.location}
                       />
-                      {state.location.length >= 31 && (
-                        <h6>Location cannot be more then 30 characters</h6>
-                      )}
+                      <p>{formErrors.location}</p>
                     </div>
 
                     <div className="colm">
@@ -506,9 +495,7 @@ const CreateTournament = ({ user }) => {
                         onChange={handleChange}
                         value={state.description}
                       />
-                      {state.description.length >= 301 && (
-                        <h6>Description cannot be more then 300 characters</h6>
-                      )}
+                      <p>{formErrors.description}</p>
                     </div>
                     <div className="colm">
                       <label for="exampleFormControlInput1">Tickets</label>
@@ -531,6 +518,7 @@ const CreateTournament = ({ user }) => {
                         onChange={handleChange}
                         value={state.website}
                       />
+                      <p>{formErrors.website}</p>
                     </div>
                     <div className="colm">
                       <label for="exampleFormControlInput1">Social Links</label>
@@ -542,6 +530,7 @@ const CreateTournament = ({ user }) => {
                         onChange={handleChange}
                         value={state.sociallink}
                       />
+                      <p>{formErrors.sociallink}</p>
                     </div>
                     <div className="colm">
                       <label for="exampleFormControlInput1">
@@ -560,6 +549,7 @@ const CreateTournament = ({ user }) => {
                     type="submit"
                     className="btn"
                     value="Create Tournament"
+                    onClick={() => setFormErrors(tournamentformvalidate(state))}
                   />
                 </>
               )}
