@@ -247,6 +247,11 @@ ul.top_menu li {
 ul.top_menu li a {
 	position:relative;
 }
+
+ul.top_menu li.pluse > a, ul.top_menu li.noti > a { padding: 20px 0; display: flex; }
+
+ul.top_menu li.noti a span.pop{ top:5px}
+
 ul.top_menu li a span.pop {
 	background:#7239ea;
 	width:25px;
@@ -262,9 +267,14 @@ ul.top_menu li a span.pop {
 	right:-17px;
 	transition: 0.3s ease-in-out;
 }
+ul.top_menu li.noti a:hover span.pop {
+	top:3px
+}
+
 ul.top_menu li a:hover span.pop {
 	top:-17px
 }
+
 ul.top_menu li i {
 	color:#000;
 	font-size:20px;
@@ -277,7 +287,7 @@ ul.top_menu .drop_down_bg {
 	background-color:#f7f7f7;
 	position:absolute;
 	right:0px;
-	top:35px;
+	top:62px;
 	box-shadow:0 2px 22px rgb(0 0 0 / 4%);
 	padding:10px 0;
 	z-index:9;
@@ -299,7 +309,7 @@ ul.top_menu .drop_down_bg:after {
 ul.top_menu .drop_down_bg li {
 	float:left;
 	width:100%;
-	padding:5px 20px !important
+	padding:5px 20px 5px 35px !important
 }
 ul.top_menu .drop_down_bg li a {
 	font-size: 14px;
@@ -310,7 +320,7 @@ ul.top_menu .drop_down_bg li a {
 	text-transform: capitalize;
 }
 
-ul.top_menu .drop_down_bg.profile_drop_down li a img{ width: 25px; display: inline-block; vertical-align: middle; margin-right: 10px; height: auto; 	-webkit-filter: invert(100%); /* Safari/Chrome */
+ul.top_menu .drop_down_bg.profile_drop_down li:last-child a img{ width: 25px; display: inline-block; vertical-align: middle; margin-right: 10px; height: auto; 	-webkit-filter: invert(100%); /* Safari/Chrome */
 	filter: invert(100%);}
 
 ul.top_menu .drop_down_bg li i {
@@ -392,8 +402,17 @@ ul.top_menu .drop_down_bg.profile_drop_down {
 	top:67px; border-top-right-radius: 0; padding: 10px 0;
 }
 
-ul.top_menu .drop_down_bg.profile_drop_down li:nth-child(6){border-top: 1px solid #ddd;border-bottom: 1px solid #ddd;padding-top: 15px !important;}
-ul.top_menu .drop_down_bg.profile_drop_down li:last-child{ padding-top:20px !important  ;}
+ul.top_menu .drop_down_bg.profile_drop_down li:nth-child(6) {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding-top: 18px !important;
+    padding-bottom: 4px !important;
+}
+
+ul.top_menu .drop_down_bg.profile_drop_down li:nth-child(7){ padding: 0 !important; border: 0 !important;}
+ul.top_menu .drop_down_bg.profile_drop_down li:nth-child(7) img{ width: 100%; height: 100%;}
+
+ul.top_menu .drop_down_bg.profile_drop_down li:last-child{ padding-top:10px !important  ; padding-left: 50px !important;}
 
 .profile_drop_down li {
 	float:left;
@@ -418,14 +437,16 @@ ul.top_menu .drop_down_bg.profile_drop_down li:last-child{ padding-top:20px !imp
 }
 ul.top_menu li.profile > a {
     display: flex;
-    align-items: center; background: #f7f7f7; padding: 10px 10px;
+    align-items: center; background: #f7f7f7; padding: 12px 10px;
 }
 
 ul.top_menu li.profile > a .dps{ width: 45px; height: 45px; overflow: hidden; border-radius: 50%; background: #000;}
 
-ul.top_menu li.profile > a span{ margin: 0 7px;}
+ul.top_menu li.profile > a span{ margin: 0 7px; text-transform: capitalize; color: #7239ea;}
 ul.top_menu li.profile > a span p{ color: #00a651; position: relative;}
-ul.top_menu li.profile > a span p .online{ position: static;}
+ul.top_menu li.profile > a span p .online{ position: static; width: 10px; height: 10px;}
+
+ul.top_menu li.profile > a span.drop{ margin-top: -24px;}
 
 
 
@@ -434,9 +455,11 @@ ul.top_menu .drop_down_bg.wallet_drop_down {
 	top:60px; border-top-right-radius: 0;
 }
 
+ul.top_menu .drop_down_bg.wallet_drop_down h2{ padding: 10px;}
+
 ul.top_menu li.wallet > a {
     display: flex;
-    align-items: center; background: #fff; padding: 10px 10px;
+    align-items: center; background: #fff; padding: 12px 10px;
 }
 
 ul.top_menu li.wallet > a .dps{  overflow: hidden; }
@@ -451,10 +474,12 @@ ul.top_menu li.wallet li{     float: left;
     justify-content: flex-start;}
 
 
-	ul.top_menu li.wallet li span{ padding:0 10px;}
-	ul.top_menu li.wallet li.balance span:nth-child(2){font-size: 25px;}
-	ul.top_menu li.wallet li.balance span:nth-child(3){ font-size: 25px;}
-	ul.top_menu li.wallet li.balance span:nth-child(4){ font-size: 15px;}
+	ul.top_menu li.wallet li span{ padding:0;}
+	ul.top_menu li.wallet li span.amt1 img{display: inline-block; vertical-align: baseline; width: 30px;   -webkit-filter: invert(100%); filter: invert(100%);}
+	
+	ul.top_menu li.wallet li.balance1 span:nth-child(2){font-size: 25px;}
+	ul.top_menu li.wallet li.balance1 span:nth-child(3){ font-size: 15px;}
+	ul.top_menu li.wallet li.balance1 span:nth-child(4){ font-size: 15px;}
 
 	ul.top_menu li.wallet li button:first-child{ background: #10baa8;}
 	ul.top_menu li.wallet li button:first-child{ background: #262831;}
@@ -6785,7 +6810,7 @@ form.common_form input {
   .amt{ font-size: 26px; font-weight: 600;     margin-left: 20px;}
   .amt img{ display: inline-block; vertical-align: baseline; width: 30px;   -webkit-filter: invert(100%); filter: invert(100%);}
   .two_btn{ width: 100%;}
-  .two_btn button{ width: 32%; padding:10px 0;margin-right: 10px}
+  .two_btn button{ width:48%; padding:10px 0;margin-right: 10px}
   .two_btn button:last-child{ background: #a7a8bc;}
 
   .money_earned h3, .money_withdrawn  h3{ padding: 10px 0;}
@@ -7110,7 +7135,7 @@ body.DarkPage .users_share_box .shere .three_dots_dropdown button {
 	color: #fff;
 }
 body.DarkPage ul.top_menu .drop_down_bg {
-	background: #000;
+	background: #202028;
 	color: #fff;
 }
 body.DarkPage ul.top_menu .drop_down_bg:after {
@@ -7146,3 +7171,14 @@ body.DarkPage .group_stage .match_date a:hover p, body.DarkPage .group_stage .ma
 body.DarkPage .matches_postitions {
 	background: none;
 }
+
+
+body.DarkPage ul.top_menu li.profile > a{ background: #383844; color: #fff;}
+body.DarkPage ul.top_menu li.wallet > a{ background: none; color: #fff;}
+body.DarkPage ul.top_menu li.profile > a span{ color: #fff;}
+
+body.DarkPage .create_menu{ background: #202028; border: 1px solid #36363c;}
+body.DarkPage .create_menu ul li, body.DarkPage .create_menu .message{ background: #2b2b35;  box-shadow: none;}
+body.DarkPage .create_menu .close{ color: #fff;}
+body.DarkPage ul.top_menu li.wallet li span.amt1 img {-webkit-filter: invert(0);filter: invert(0);}
+body.DarkPage ul.top_menu .drop_down_bg.profile_drop_down li:last-child a img {-webkit-filter: invert(0);filter: invert(0);}

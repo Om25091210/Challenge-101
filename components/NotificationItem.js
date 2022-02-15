@@ -33,7 +33,7 @@ export const NotificationItem = () => {
   };
 
   return (
-    <div>
+    <>
       <a href="#">
         {' '}
         <svg
@@ -207,7 +207,7 @@ export const NotificationItem = () => {
           </div>
         </ul>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -6,7 +6,7 @@ import ChatSection from './chats/ChatSection';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { DataContext } from '@store/GlobalState';
-import API from "@utils/blockapi";
+import API from '@utils/blockapi';
 import { MPNumberFormat } from '@utils/helpers';
 
 const SignedHeader = ({ user }) => {
@@ -18,27 +18,25 @@ const SignedHeader = ({ user }) => {
     router.push('/login');
   }
 
-    const [coin, setCoin] = useState();
-    const [USD, setUSD] = useState();
+  const [coin, setCoin] = useState();
+  const [USD, setUSD] = useState();
 
-    useEffect(() => {
-        getUserBalance();
-    })
+  useEffect(() => {
+    getUserBalance();
+  });
 
-    const getUserBalance = () => {
-        API.getAddressBalance(user.phone_number)
-            .then(res => {
-                setCoin(res.data)
-                getUSD();
-            })
-    }
-    const getUSD = () => {
-        API.getUSD()
-            .then(res => {
-                const value = res.data * coin;
-                setUSD(value.toFixed(2));
-            })
-    }
+  const getUserBalance = () => {
+    API.getAddressBalance(user.phone_number).then((res) => {
+      setCoin(res.data);
+      getUSD();
+    });
+  };
+  const getUSD = () => {
+    API.getUSD().then((res) => {
+      const value = res.data * coin;
+      setUSD(value.toFixed(2));
+    });
+  };
 
   return (
     <header>
@@ -63,7 +61,7 @@ const SignedHeader = ({ user }) => {
           <input type="submit" value="" />
         </div>
         <ul className="top_menu">
-          <li>
+          <li className="pluse">
             <a href="#">
               <img src="/assets/media/dash/plus.png" alt="" />
             </a>
@@ -143,7 +141,7 @@ const SignedHeader = ({ user }) => {
             <ChatSection user={user} />
           </li>
 
-          <li>
+          <li className="noti">
             <NotificationItem />
           </li>
 
@@ -196,6 +194,13 @@ const SignedHeader = ({ user }) => {
                 </li>
 
                 <li>
+                  <a href="#!">
+                    {' '}
+                    <img src="/assets/media/login/go.png" alt="" />
+                  </a>
+                </li>
+
+                <li>
                   <a href="#!" onClick={logoutUser}>
                     <img src="/assets/media/login/logout.png" alt="" />
                     Logout
@@ -211,14 +216,23 @@ const SignedHeader = ({ user }) => {
                 {' '}
                 <img src="/assets/media/login/wallet.png" alt="" />
               </span>
-              <span><MPNumberFormat value={coin} /></span>
+              <span>
+                <MPNumberFormat value={coin} />
+              </span>
             </a>
             <div className="drop_down_bg wallet_drop_down">
               <h2>Wallet</h2>
 
               <ul>
-                <li className="balance">              
-                  <span className="amt"><img src="/assets/media/login/m.png" alt="M" /> <MPNumberFormat value={coin} /> {' '}USD: ${USD} Balance</span>
+                <li className="balance1">
+                  <span className="amt1">
+                    <img src="/assets/media/login/m.png" alt="M" />{' '}
+                  </span>
+                  <span>
+                    {' '}
+                    <MPNumberFormat value={coin} />
+                  </span>
+                  <span>USD: ${USD} Balance</span>
                 </li>
                 <li>
                   <p>
