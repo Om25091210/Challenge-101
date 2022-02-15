@@ -79,20 +79,7 @@ const ChatSection = ({ user, messagesWith }) => {
           <div className="tab_data tab_data_scroll">
             <div className="chat tab" id="tab1">
 
-              {!showChat ? (
-                <div />
-              ) : (
-                <ChatEngine
-                  height="calc(100vh - 50px)"
-                  projectID={process.env.NEXT_PUBLIC_CHAT_ENGINEIO_PUBLIC_KEY}
-                  userName={user.email}
-                  userSecret={user.email}
-                  renderNewMessageForm={() => <MessageFormSocial />}
-                  // Customize UI
 
-                  renderNewMessageForm={(creds, chatID) => <NewMessageForm />} // for text editor
-                />
-              )}
 
              
             </div>

@@ -148,7 +148,6 @@ MyApp.getInitialProps = async ({ ctx }) => {
         pageProps.profile = profile;
         pageProps.teams = teams;
       } catch (err) {
-        console.log(err);
         console.log('Error in Protected routes.....');
         destroyCookie(ctx, 'token');
         redirectUser(ctx, '/login');
@@ -159,7 +158,6 @@ MyApp.getInitialProps = async ({ ctx }) => {
       pageProps
     };
   } catch (error) {
-    console.error(error);
     console.warn('Could not fetch common page data');
 
     // Fallback values
