@@ -22,6 +22,7 @@ import TournamentParticipants from '@components/tournament/TournamentParticipant
 
 import ProductList from '@components/common/ProductList';
 import Matches from '@components/team/Matches';
+import TournamentSponsor from '@components/tournament/TournamentSponsor';
 
 const TournamentDetail = ({ user, data, products }) => {
   if (data) {
@@ -740,32 +741,7 @@ const TournamentDetail = ({ user, data, products }) => {
               <div className="tab hide" id="media">
                 <TournamentPhotos user={user} tournament={data} />
               </div>
-              <div className="tab hide" id="sponsors">
-                <div className="sponsers_box">
-                  <ul>
-                    {data.sponsors.length === 0 ? (
-                      <div>No Sponsors</div>
-                    ) : (
-                      data.sponsors.map((spons, index) => {
-                        return (
-                          <li key={index}>
-                            <div className="sponser_name">
-                              <img src={spons.imgUrl} alt={spons.sponsorId} />
-                            </div>
-                            <div className="sponser_data">
-                              {' '}
-                              <span className="head_spons_bg">
-                                {spons.name}
-                              </span>
-                              <p>{spons.description}</p>
-                            </div>
-                          </li>
-                        );
-                      })
-                    )}
-                  </ul>
-                </div>
-              </div>
+              <TournamentSponsor user={user} data={data} />
               <div className="tab hide" id="rigs">
                 <h2>Rigs</h2>
               </div>

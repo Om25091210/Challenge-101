@@ -1,13 +1,21 @@
 import { useState, useEffect } from 'react';
-import baseURL from '@utils/baseURL';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import baseURL from '@utils/baseURL';
 
-const TeamSponsors = ({ user, data }) => {
-  const isLoggedInUser = data.team.user?._id === user._id;
+const TournamentSponsor = ({ user, data }) => {
+  useEffect(() => {
+    $('a.model_show_btn').click(function () {
+      $(this).next().addClass('show_model');
+    });
 
+    $('a.model_close').click(function () {
+      $(this).parent().removeClass('show_model');
+    });
+  }, []);
+
+  const isLoggedInUser = data.tournament.user?._id === user._id;
   const [sponsors, setSponsors] = useState([]);
-
   const [state, setState] = useState({
     sponsor: ''
   });
@@ -21,14 +29,16 @@ const TeamSponsors = ({ user, data }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await fetch(`${baseURL}/api/teams/sponsors/${data.team._id}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(state)
-      });
-
+      await fetch(
+        `${baseURL}/api/tournaments/sponsors/${data.tournament._id}`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(state)
+        }
+      );
       toast.success('Your Sponsor has been set successfully! ');
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
@@ -56,23 +66,21 @@ const TeamSponsors = ({ user, data }) => {
   return (
     <div className="tab hide" id="sponsors">
       <div className="sponsers_box">
-        <h1>sponser</h1>
         <ul>
           {data.sponsors &&
-            data.sponsors.map((item, index) => (
+            data.sponsors.map((spons, index) => (
               <li key={index}>
                 <div className="sponser_name">
-                  <img src={item.imgUrl} alt={item.sponsorId} />
+                  <img src={spons.imgUrl} alt={spons.sponsorId} />
                 </div>
                 <div className="sponser_data">
                   {' '}
-                  <span className="head_spons_bg">{item.sponsorId}</span>
-                  <p>{item.description}</p>
+                  <span className="head_spons_bg">{spons.name}</span>
+                  <p>{spons.description}</p>
                 </div>
               </li>
             ))}
         </ul>
-
         {isLoggedInUser ? (
           <span>
             <div className="loc_box">
@@ -88,24 +96,22 @@ const TeamSponsors = ({ user, data }) => {
                 <a href="#!" className="model_close">
                   X
                 </a>
-
                 <div className="inner_model_box">
                   <h3>Sponsor's</h3>
-
                   <form className="common_form" onSubmit={handleSubmit}>
                     <div className="form-group">
                       <div className="colm">
                         <select
                           className="form-control"
+                          multiple={true}
                           name="sponsor"
                           value={state.value}
-                          multiple={true}
                           onChange={handleChange}
                         >
-                          {sponsors.map((spon, idx) => (
-                            <option key={idx} value={spon._id}>
+                          {sponsors.map((sponser, idx) => (
+                            <option key={idx} value={sponser._id}>
                               {' '}
-                              {spon.name}{' '}
+                              {sponser.name}{' '}
                             </option>
                           ))}
                         </select>
@@ -124,4 +130,4 @@ const TeamSponsors = ({ user, data }) => {
   );
 };
 
-export default TeamSponsors;
+export default TournamentSponsor;
