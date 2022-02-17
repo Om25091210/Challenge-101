@@ -4,9 +4,10 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useMutation } from 'react-query';
 import { teamformvalidate } from '@utils/valid';
+import cookie from 'js-cookie';
 
 const TeamSponsors = ({ user, data }) => {
-  const isLoggedInUser = data.team.user._id === user._id;
+  const isLoggedInUser = data.team.user?._id === user._id;
 
   const [sponsors, setSponsors] = useState([]);
   const [formErrors, setFormErrors] = useState({});
@@ -21,34 +22,23 @@ const TeamSponsors = ({ user, data }) => {
       .then((res) => setSponsors(res.data));
   }, []);
 
-  console.log(state);
-
-  const mutation = useMutation(
-    async (formdata) =>
-      await axios.put(`${baseURL}/api/teams/${data.team._id}`, formdata, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      })
-  );
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (Object.keys(formErrors).length === 0) {
-      let formdata = new FormData();
-
-      Object.entries(state).map(([key, value]) => {
-        formdata.append(key, value);
-      });
-
       try {
-        await mutation.mutateAsync(formdata);
+
+        await fetch(`${baseURL}/api/teams/sponsors/${data.team._id}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(state)
+            });
+
         toast.success('Your Sponsor has been set successfully! ');
       } catch (err) {
         toast.error(err.response?.data?.msg || 'Please recheck your inputs');
       }
     }
-  };
 
   function handleChange(e) {
     if (e.target.options) {
@@ -60,9 +50,6 @@ const TeamSponsors = ({ user, data }) => {
         }
       }
       setState({ ...state, [e.target.name]: value });
-    } else if (e.target.files) {
-      console.log(e.target.files[0]);
-      setState({ ...state, [e.target.name]: e.target.files[0] });
     } else {
       setState({ ...state, [e.target.name]: e.target.value });
     }
@@ -113,24 +100,21 @@ const TeamSponsors = ({ user, data }) => {
                   <form className="common_form" onSubmit={handleSubmit}>
                     <div className="form-group">
                       <div className="colm">
-                        {/* <label htmlFor="exampleFormControlInput1">
-                          
-                        </label> */}
+                      <select
+                        className="form-control"
+                        name="sponsor"
+                        value={state.value}
+                        multiple={true}
+                        onChange={handleChange}
+                      >
+                        {sponsors.map((spon, idx) => (
+                          <option key={idx} value={spon._id}>
+                            {' '}
+                            {spon.name}{' '}
+                          </option>
+                        ))}
+                      </select>
 
-                        <select
-                          className="form-control"
-                          name="sponsor"
-                          value={state.sponsor}
-                          multiple={true}
-                          onChange={handleChange}
-                        >
-                          {sponsors.map((spon, idx) => (
-                            <option key={idx} value={spon._id}>
-                              {' '}
-                              {spon.name}{' '}
-                            </option>
-                          ))}
-                        </select>
                       </div>
                       <button className="btn">Update</button>
                     </div>

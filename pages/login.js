@@ -160,6 +160,7 @@ const SignIn = () => {
                     value={email}
                     onChange={handleChange}
                     autoComplete="off"
+                    placeholder="Email / PhoneNumber / Username"
                   />
                 </div>
                 <div className="fv-row mb-10">

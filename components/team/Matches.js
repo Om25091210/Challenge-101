@@ -44,7 +44,7 @@ const Matches = ({ teamMatches }) => {
                 </a>
               </p>
               <div className="vs">VS</div>
-              <p>{tm.game.name}</p>
+              <p>{tm?.game?.name}</p>
             </div>
 
             {tm.opponents[1] ? (
