@@ -797,7 +797,7 @@ const TeamProfileData = ({ user, data, products }) => {
 
         <TeamAbout data={data.team} />
 
-        <TeamSponsors data={data.team} />
+        <TeamSponsors data={data} user={user} />
 
         <div className="tab hide" id="rigs">
           <div className="rigs">

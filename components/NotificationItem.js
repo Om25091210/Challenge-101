@@ -70,7 +70,7 @@ export const NotificationItem = () => {
                         </span>{' '}
                         <span className="notif_name">
                           <a
-                            href={`/${notification.user.username}`}
+                            href={`/user/${notification.user._id}`}
                             onClick={handleClick}
                           >
                             {notification.user.username}
@@ -80,10 +80,18 @@ export const NotificationItem = () => {
                             href={`/posts/${notification.post._id}`}
                             onClick={handleClick}
                           >
-                            {notification.post.description}
+                            {notification.post.description.length > 15
+                              ? notification.post.description
+                                  .substring(0, 15)
+                                  .concat('...')
+                              : notification.post.description}
                           </a>
                           {/* don't have data in text */}
-                          <p>{notification.text}</p>
+                          <p>
+                            {notification.text.length > 15
+                              ? notification.text.substring(0, 15).concat('...')
+                              : notification.text}
+                          </p>
                           <p>
                             {formatDistanceToNowStrict(
                               new Date(notification.date),
@@ -101,7 +109,7 @@ export const NotificationItem = () => {
                         </span>{' '}
                         <span className="notif_name">
                           <a
-                            href={`/${notification.user.username}`}
+                            href={`/user/${notification.user._id}`}
                             onClick={handleClick}
                           >
                             {notification.user.username}
@@ -111,10 +119,18 @@ export const NotificationItem = () => {
                             href={`/posts/${notification.post._id}`}
                             onClick={handleClick}
                           >
-                            {notification.post.description}
+                            {notification.post.description.length > 15
+                              ? notification.post.description
+                                  .substring(0, 15)
+                                  .concat('...')
+                              : notification.post.description}
                           </a>
                           {/* replies is not available */}
-                          <p>{notification.text}</p>
+                          <p>
+                            {notification.text.length > 15
+                              ? notification.text.substring(0, 15).concat('...')
+                              : notification.text}
+                          </p>
                           <p>
                             {formatDistanceToNowStrict(
                               new Date(notification.date),
@@ -132,7 +148,7 @@ export const NotificationItem = () => {
                         </span>{' '}
                         <span className="notif_name">
                           <a
-                            href={`/${notification.user.username}`}
+                            href={`/user/${notification.user._id}`}
                             onClick={handleClick}
                           >
                             {notification.user.username}
@@ -155,7 +171,7 @@ export const NotificationItem = () => {
                         </span>{' '}
                         <span className="notif_name">
                           <Link
-                            href={`/${notification.user.username}`}
+                            href={`/user/${notification.user._id}`}
                             onClick={handleClick}
                           >
                             <a>{notification.user.username}</a>
@@ -165,7 +181,11 @@ export const NotificationItem = () => {
                             href={`/posts/${notification.post._id}`}
                             onClick={handleClick}
                           >
-                            {notification.post.description}
+                            {notification.post.description.length > 15
+                              ? notification.post.description
+                                  .substring(0, 15)
+                                  .concat('...')
+                              : notification.post.description}
                           </a>
                           <p>
                             {formatDistanceToNowStrict(
