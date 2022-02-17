@@ -145,18 +145,33 @@ h3 {
 	position: fixed;
 	bottom: 10px;
 	left:10px;
-	border: 0;
+	border: 2px solid #fff;
 	text-transform: capitalize;
-	background: #1a191d;
-	color: #fff;
-	padding: 10px;
-	border-radius: 5px;
+	background: #7239ea;
+	color: #000;
+	padding: 0 0 0 5px;
+	border-radius: 20px;
 	font-size: 12px;
 }
 .light_thmeme {
 	background: #1a191d;
-	color: #fff;
+	color: #000;
+	padding: 0 5px 0 0;
+	border: 2px solid #adadc3;
 }
+
+
+.theme_btn span {
+    background: #fff;
+    border-radius: 20px;
+    margin-left: 10px;
+    padding: 5px 0;
+    width: 50px;
+    display: block;
+}
+
+.light_thmeme span{ margin-left: 0; margin-right: 10px;  background: #adadc3;}
+
 /* ------- Header css -------------- */
 
 .without_login_header {

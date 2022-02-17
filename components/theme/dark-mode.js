@@ -54,14 +54,14 @@ const DarkMode = () => {
   return (
     <>
       {!darktheme ? (
-        <button onClick={LightTheme} className="theme_btn">
-          {' '}
-          Dark Theme{' '}
-        </button>
+        <>
+          <button onClick={LightTheme} className="theme_btn">
+            <span> Dark</span>
+          </button>
+        </>
       ) : (
-        <button onClick={Darktheme} className="theme_btn">
-          {' '}
-          Light Theme{' '}
+        <button onClick={Darktheme} className="theme_btn light_thmeme">
+          <span> Light</span>
         </button>
       )}
     </>
