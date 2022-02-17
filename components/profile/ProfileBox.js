@@ -261,6 +261,21 @@ const ProfileBox = ({ user, Userdata, games }) => {
     setAttr({ ...attr, [e.target.name]: e.target.value });
   }
 
+  function handleChange(e) {
+    if (e.target.options) {
+      var options = e.target.options;
+      var value = [];
+      for (var i = 0, l = options.length; i < l; i++) {
+        if (options[i].selected) {
+          value.push(options[i].value);
+        }
+      }
+      setAttr({ ...attr, [e.target.name]: value });
+    } else {
+      setAttr({ ...attr, [e.target.name]: e.target.value });
+    }
+  }
+
   useEffect(() => {
     $('a.model_show_btn').click(function () {
       setShowIgn('none');
@@ -360,55 +375,71 @@ const ProfileBox = ({ user, Userdata, games }) => {
                     <div className="form-group">
                       <div className="colm">
                         <label htmlFor="exampleFormControlInput1">Role</label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="exampleFormControlInput1"
-                          placeholder="Roles"
+                        <select
+                          id="roles"
                           name="roles"
                           onChange={handleChangeAttr}
                           value={attr?.roles}
-                        />
+                          className="form-control"
+                        >
+                          <option value="Player">Player</option>
+                          <option value="Front">Front</option>
+                          <option value="Back">Back</option>
+                          <option value="Gunman">Gunman</option>
+                          <option value="Strategy">Strategy</option>
+                        </select>
                       </div>
                       <div className="colm">
                         <label htmlFor="exampleFormControlInput1">Region</label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="exampleFormControlInput1"
-                          placeholder="Region"
+                        <select
+                          id="regions"
                           name="regions"
                           onChange={handleChangeAttr}
                           value={attr?.regions}
-                        />
+                          className="form-control"
+                        >
+                          <option value="India">India</option>
+                          <option value="USA">USA</option>
+                          <option value="Asia">Asia</option>
+                          <option value="China">China</option>
+                          <option value="Japan">Japan</option>
+                          <option value="Europe">Europe</option>
+                        </select>
                       </div>
                       <div className="colm">
                         <label htmlFor="exampleFormControlInput1">
                           Player Type
                         </label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="exampleFormControlInput1"
-                          placeholder="Player Type"
+                        <select
+                          id="playertype"
                           name="playertype"
                           onChange={handleChangeAttr}
                           value={attr?.playertype}
-                        />
+                          className="form-control"
+                        >
+                          <option value="Casual">Casual</option>
+                          <option value="SemiPro">SemiPro</option>
+                          <option value="Pro">Pro</option>
+                          <option value="Gunman">Gunman</option>
+                          <option value="Local Lan">Local Lan</option>
+                        </select>
                       </div>
                       <div className="colm">
                         <label htmlFor="exampleFormControlInput1">
                           Platform
                         </label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="exampleFormControlInput1"
-                          placeholder="PC, PS4|5 XBOX Series X|S"
+                        <select
+                          id="platform"
                           name="platform"
                           onChange={handleChangeAttr}
                           value={attr?.platform}
-                        />
+                          className="form-control"
+                        >
+                          <option value="PC">PC</option>
+                          <option value="Front">Front</option>
+                          <option value="Console">Console</option>
+                          <option value="Mobile">Mobile</option>
+                        </select>
                       </div>
                       <div className="colm">
                         <label htmlFor="exampleFormControlInput1">ELO</label>
@@ -426,39 +457,45 @@ const ProfileBox = ({ user, Userdata, games }) => {
                         <label htmlFor="exampleFormControlInput1">
                           Language
                         </label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="exampleFormControlInput1"
-                          placeholder="Language"
+                        <select
+                          id="language"
                           name="language"
-                          onChange={handleChangeAttr}
+                          onChange={handleChange}
                           value={attr?.language}
-                        />
+                          className="form-control"
+                          multiple={true}
+                        >
+                          <option value="English">English</option>
+                          <option value="Hindi">Hindi</option>
+                          <option value="Telagu">Telagu</option>
+                          <option value="Tamil">Tamil</option>
+                        </select>
                       </div>
                       <div className="colm">
                         <label htmlFor="exampleFormControlInput1">Gender</label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="exampleFormControlInput1"
-                          placeholder="Gender"
+                        <select
+                          id="gender"
                           name="gender"
                           onChange={handleChangeAttr}
                           value={attr?.gender}
-                        />
+                          className="form-control"
+                        >
+                          <option value="Male">Male</option>
+                          <option value="Female">Female</option>
+                        </select>
                       </div>
                       <div className="colm">
                         <label htmlFor="exampleFormControlInput1">Paid</label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="exampleFormControlInput1"
-                          placeholder="Paid"
+                        <select
+                          id="paid"
                           name="paid"
                           onChange={handleChangeAttr}
                           value={attr?.paid}
-                        />
+                          className="form-control"
+                        >
+                          <option value="Paid">Paid</option>
+                          <option value="Unpaid">Unpaid</option>
+                        </select>
                       </div>
                       <button className="btn">Update</button>
                     </div>
