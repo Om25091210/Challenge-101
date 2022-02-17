@@ -39,7 +39,6 @@ const TeamSponsors = ({ user, data }) => {
         toast.error(err.response?.data?.msg || 'Please recheck your inputs');
       }
     }
-  };
 
   function handleChange(e) {
     if (e.target.options) {
