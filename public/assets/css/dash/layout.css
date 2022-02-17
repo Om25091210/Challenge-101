@@ -99,16 +99,16 @@ p {
 }
 h1 {
 	font-size: 25px;
-	font-weight: 700;
+	font-weight: 600;
 	margin-bottom: 20px;
 }
 h2 {
 	font-size: 18px;
-	font-weight: 700;
+	font-weight:600;
 }
 h3 {
-	font-size: 15px;
-	font-weight: 700;
+	font-size: 14px;
+	font-weight: 500;
 }
 .btn, .apply {
 	border-radius: 5px;
@@ -145,18 +145,33 @@ h3 {
 	position: fixed;
 	bottom: 10px;
 	left:10px;
-	border: 0;
+	border: 2px solid #fff;
 	text-transform: capitalize;
-	background: #1a191d;
-	color: #fff;
-	padding: 10px;
-	border-radius: 5px;
+	background: #7239ea;
+	color: #000;
+	padding: 0 0 0 5px;
+	border-radius: 20px;
 	font-size: 12px;
 }
 .light_thmeme {
 	background: #1a191d;
-	color: #fff;
+	color: #000;
+	padding: 0 5px 0 0;
+	border: 2px solid #adadc3;
 }
+
+
+.theme_btn span {
+    background: #fff;
+    border-radius: 20px;
+    margin-left: 10px;
+    padding: 5px 0;
+    width: 50px;
+    display: block;
+}
+
+.light_thmeme span{ margin-left: 0; margin-right: 10px;  background: #adadc3;}
+
 /* ------- Header css -------------- */
 
 .without_login_header {
@@ -636,7 +651,7 @@ ul.top_menu li.wallet li{     float: left;
 	top: -14px;
 	right: -5px;
 	font-size: 8px;
-	font-weight: 700;
+	font-weight: 600;
 	background: #ddd;
 	border-radius: 50%;
 	/* padding: 5px; */
@@ -715,7 +730,7 @@ ul.top_menu li.wallet li{     float: left;
 	color:#202028;
 	padding:10px 0 10px 0;
 	font-size:15px;
-	font-weight:700;
+	font-weight: 600;
 }
 .profile_tab_btn.three_nav li a:hover {
 	color: #7239ea;
@@ -1004,7 +1019,7 @@ ul.top_menu li.wallet li{     float: left;
 	right:0;
 	top: 0px;
 	font-size: 20px !important;
-	font-weight: 700;
+	font-weight: 600;
 	z-index: 40;
 	background: #7239ea;
 	padding: 7px;
@@ -1140,7 +1155,7 @@ ul.top_menu li.wallet li{     float: left;
 	display:inline-block;
 
 	font-size:16px;
-	font-weight:700;
+	font-weight: 600;
 	width:auto;
 	padding:3px 9px;
 	border-radius:5px;
@@ -1217,13 +1232,13 @@ ul.top_menu li.wallet li{     float: left;
 .loadmore a {
 	font-size:12px;
 	color:#000;
-	font-weight:700;
+	font-weight: 600;
 	text-transform:uppercase;
 }
 .post_comments h3 {
 	font-size:12px;
 	color:#19191d;
-	font-weight:700;
+	font-weight: 600;
 	margin-right:10px;
 }
 .reply_like button span, .like_btn button span {
@@ -1440,7 +1455,7 @@ article .social_bar {
 	background:#7239ea;
 	font-size:10px;
 	color:#fff;
-	font-weight:700;
+	font-weight: 600;
 	text-transform:uppercase;
 	padding:2px 5px;
 	border-radius:5px;
@@ -1449,7 +1464,7 @@ article .social_bar {
 	background:#f3f6f9;
 	font-size:10px;
 	color:#777777;
-	font-weight:700;
+	font-weight: 600;
 	text-transform:uppercase;
 	padding:2px 5px;
 	border-radius:5px;
@@ -1483,7 +1498,7 @@ article .social_bar {
 .suggested_player li a .name {
 	font-size:12px;
 	color:#000;
-	font-weight:700;
+	font-weight: 600;
 	display: block;
 }
 .suggested_player li .img_thumb {
@@ -1560,7 +1575,7 @@ article .social_bar {
 	margin:20px 0;
 	padding:15px 10px;
 	border-radius:5px;
-	font-weight:700;
+	font-weight: 600;
 	text-align: center;
 	color: #000;
 	transition: 0.3s ease-in-out;
@@ -1572,7 +1587,7 @@ article .social_bar {
 .my_team p {
 	color:#000;
 	font-size:11px;
-	font-weight:700;
+	font-weight: 600;
 	text-align:center;
 }
 .my_team .grey_bg {
@@ -1583,12 +1598,12 @@ article .social_bar {
 	margin:20px 0;
 	padding:15px 10px;
 	border-radius:5px;
-	font-weight:700;
+	font-weight: 600;
 }
 .team_match .match_name {
 	font-size:12px;
 	color:#202028;
-	font-weight:700;
+	font-weight: 600;
 }
 .team_match .match_time {
 	display:flex;
@@ -1596,12 +1611,12 @@ article .social_bar {
 	margin:20px 0;
 }
 .team_match .match_time b {
-	font-weight:700;
+	font-weight: 600;
 }
 .team_match .match_time span {
 	color:#000;
 	font-size:11px;
-	font-weight:700;
+	font-weight: 600;
 }
 .team_match .team {
 	display:flex;
@@ -1619,7 +1634,7 @@ article .social_bar {
 .team_match .team li a {
 	color:#000;
 	font-size:12px;
-	font-weight:700;
+	font-weight: 600;
 }
 /* ----------- Chating css ---------------------- */
 
@@ -1706,7 +1721,7 @@ article .social_bar {
 }
 .chatbox .contacts .name-first-letter {
 	background: #F8F8F8;
-	font-weight: 700;
+	font-weight: 600;
 	color: #000;
 	position: relative;
 	top: 0;
@@ -2032,7 +2047,7 @@ article .social_bar {
 }
 .profile_dp_box .top_details .name_box .game_name {
 	font-size: 27px;
-	font-weight: 700;
+	font-weight: 600;
 }
 .profile_dp_box .top_details .name_box .name {
 	font-size: 17px;
@@ -2099,7 +2114,7 @@ article .social_bar {
 }
 .profile_dp_box .bottom_details .were {
 	font-size: 17px;
-	font-weight: 700;
+	font-weight: 600;
 	padding-top: 10px;
 }
 .profile_dp_box .bottom_details .were i {
@@ -2139,7 +2154,7 @@ article .social_bar {
 	align-items: center;
 }
 .bio_box .left_bio .top_bio h3 {
-	font-weight: 700;
+	font-weight: 600;
 	margin-right: 10px;
 	font-size: 17px;
 }
@@ -2354,7 +2369,7 @@ article .social_bar {
 .all_stats ul li .num {
 	display: block;
 	font-size: 24px;
-	font-weight: 700;
+	font-weight: 600;
 }
 .all_stats ul li .names {
 	font-size:12px;
@@ -2436,7 +2451,7 @@ article .social_bar {
 }
 .bottom_details.team_details h5 {
 	font-size: 17px;
-	font-weight: 700;
+	font-weight: 600;
 	text-transform: uppercase;
 	margin-right: 20px;
 }
@@ -2445,7 +2460,7 @@ article .social_bar {
 }
 .bottom_details.team_details .ct {
 	font-size: 17px;
-	font-weight: 700;
+	font-weight: 600;
 	display: flex;
 }
 .bottom_details.team_details .ct i {
@@ -2530,7 +2545,7 @@ article .social_bar {
 }
 .bio_box .right_team_bio h5 {
 	font-size:12px;
-	font-weight: 700;
+	font-weight: 600;
 	padding-bottom: 20px;
 }
 .product_box {
@@ -2903,12 +2918,12 @@ article .social_bar {
 	margin-left: 10px;
 	text-transform: uppercase;
 	font-size:12px;
-	font-weight: 700;
+	font-weight: 600;
 }
 .products li .likes_price { display: flex; justify-content: space-between; padding: 10px 0;
 	text-transform: uppercase;
 	font-size:12px;
-	font-weight: 700;
+	font-weight: 600;
 }
 .products li .likes a {
 	color:#000;
@@ -2942,7 +2957,7 @@ article .social_bar {
 	display: inline-block;
 	color: #000;
 	font-size: 18px;
-	font-weight: 700;
+	font-weight: 600;
 	letter-spacing: -1px;
 	padding:5px 10px;
 	border-radius: 5px;
@@ -3001,7 +3016,7 @@ article .social_bar {
 .discovery_page h3 {
 	text-transform: uppercase;
 	font-size: 14px;
-	font-weight: 700;
+	font-weight: 600;
 	display: inline;
 	margin-right: 20px;
 }
@@ -3299,7 +3314,7 @@ article .social_bar {
 .overview_box h2 {
 	font-size: 20px;
 	color: #000;
-	font-weight: 700;
+	font-weight: 600;
 	text-transform: uppercase;
 	border-bottom: 2px solid #1d1d25;
 	margin-bottom: 20px;
@@ -3353,7 +3368,7 @@ article .social_bar {
 .team_overview p {
 	font-size:12px;
 	text-transform: uppercase;
-	font-weight: 700;
+	font-weight: 600;
 	padding-bottom: 10px;
 }
 .team_overview .ranking div {
@@ -3362,7 +3377,7 @@ article .social_bar {
 	margin-bottom: 20px;
 	font-size:12px;
 	text-transform: uppercase;
-	font-weight: 700;
+	font-weight: 600;
 }
 .team_overview .ranking div span {
 	display: flex;
@@ -3728,7 +3743,7 @@ article .social_bar {
 .prize h3 {
 	display: block;
 	font-size: 19px;
-	font-weight: 700;
+	font-weight: 600;
 }
 /* ---------- arena ------------------- */
 
@@ -3757,7 +3772,7 @@ article .social_bar {
 	border:0
 }
 .game_bio .internet li b {
-	font-weight: 700;
+	font-weight: 600;
 	display: block;
 }
 /* ------------ Match page ------------------- */
@@ -3806,7 +3821,7 @@ article .social_bar {
 .match_heads ul li h3 {
 	font-size: 17px;
 	text-transform: uppercase;
-	font-weight: 700;
+	font-weight: 600;
 }
 .match_board {
 	display: flex;
@@ -3823,7 +3838,7 @@ article .social_bar {
 .participate_team .team_photo .team_name {
 	font-size: 20px;
 	text-transform: uppercase;
-	font-weight: 700;
+	font-weight: 600;
 	position: absolute;
 	right: -70px;
 	top:40px
@@ -3831,7 +3846,7 @@ article .social_bar {
 .participate_team .team_photo .count {
 	font-size: 60px;
 	text-transform: uppercase;
-	font-weight: 700;
+	font-weight: 600;
 	position: absolute;
 	right: -170px;
 	top:20px
@@ -3873,7 +3888,7 @@ article .social_bar {
 .participate_details .date, .participate_details .time, .participate_details .map {
 	font-size: 17px;
 	text-transform: uppercase;
-	font-weight: 700;
+	font-weight: 600;
 }
 .participate_details .head_to_head {
 	font-size: 20px;
@@ -3928,24 +3943,24 @@ article .social_bar {
 .stats_table .bdr_clr_green {
 	border-left: 5px solid #00ff5b;
 	font-size: 14px;
-	font-weight: 700;
+	font-weight: 600;
 }
 .stats_table .bdr_clr_blue {
 	border-left: 5px solid #00deff;
 	font-size: 14px;
-	font-weight: 700;
+	font-weight: 600;
 }
 .stats_table .bdr_clr_green {
 	border-left: 5px solid #00ff5b;
 	font-size: 14px;
-	font-weight: 700;
+	font-weight: 600;
 }
 .stats_table .table {
 	border:1px solid #ddd
 }
 .stats_table .table th {
 	font-style: italic;
-	font-weight: 700;
+	font-weight: 600;
 	font-size: 14px;
 	text-align: center;
 }
@@ -3980,7 +3995,7 @@ article .social_bar {
 }
 .stats_table .dp_name b {
 	display: block;
-	font-weight: 700;
+	font-weight: 600;
 }
 .stats_table .star {
 	width: 20px;
@@ -4009,7 +4024,7 @@ article .social_bar {
 .stat_chart h3 {
 	text-transform: uppercase;
 	font-size: 15px;
-	font-weight: 700;
+	font-weight: 600;
 	padding: 10px;
 	border-bottom: 1px solid #ddd;
 	margin-bottom: 10px;
@@ -4035,7 +4050,7 @@ article .social_bar {
 	font-size: 14px;
 	color: #000;
 	font-style: italic;
-	font-weight: 700;
+	font-weight: 600;
 }
 .game_chart p {
 	font-size: 11px;
@@ -4051,7 +4066,7 @@ article .social_bar {
 .all_matches h2 {
 	font-size: 20px;
 	color: #000;
-	font-weight: 700;
+	font-weight: 600;
 	text-transform: uppercase;
 	border-bottom: 2px solid #ddd;
 	margin-bottom: 20px;
@@ -4157,7 +4172,7 @@ article .social_bar {
     text-transform: capitalize;
     border-radius: 5px;
     font-size: 30px;
-    font-weight: 700;
+    font-weight: 600;
     cursor: pointer;
 }
 /* ------------------ Squads ----------------------- */
@@ -4333,7 +4348,7 @@ article .social_bar {
 }
 .squads_details .table td h3 {
 	font-size: 22px;
-	font-weight: 700;
+	font-weight: 600;
 }
 .squads_details .table td h3 img {
 	display: inline-block;
@@ -4408,7 +4423,7 @@ article .social_bar {
 }
 .trophy_cabinate ul li .num {
 	font-size: 51px;
-	font-weight: 700;
+	font-weight: 600;
 }
 .trophy_cabinate ul li h4 {
 	font-size: 20px;
@@ -4540,7 +4555,7 @@ article .social_bar {
 	padding: 4px 8px;
 	font-size: 11px;
 	text-transform: uppercase;
-	font-weight: 700;
+	font-weight: 600;
 }
 .video_box li .bottom_data a.red {
 	background: #f92552;
@@ -4714,7 +4729,7 @@ article .social_bar {
 .match_row .team_vs .vs {
 	font-size: 40px;
 	color: #000;
-	font-weight: 700;
+	font-weight: 600;
 	padding: 20px 0;
 }
 .next_matches {
@@ -4837,7 +4852,7 @@ article .social_bar {
 }
 .team_member li h4 {
 	font-size: 16px;
-	font-weight: 700;
+	font-weight: 600;
 }
 /*-------------- Rigs ----------------- */
 
@@ -4873,7 +4888,7 @@ article .social_bar {
 }
 .rigs li .lft_prod_det .prod_brand {
 	font-size: 17px;
-	font-weight: 700;
+	font-weight: 600;
 	padding: 5px 0 0 0;
 	text-transform: uppercase;
 }
@@ -4883,7 +4898,7 @@ article .social_bar {
 .rigs li .lft_prod_det a {
 	background: #6931f9;
 	text-transform: uppercase;
-	font-weight: 700;
+	font-weight: 600;
 	padding: 15px 40px;
 	position: absolute;
 	left: 0;
@@ -5117,7 +5132,7 @@ article .social_bar {
 }
 .tournament_sponsers .logos h5 {
 	padding-right: 40px;
-	font-weight: 700;
+	font-weight: 600;
 }
 .two_btns {
 	display: flex;
@@ -5317,7 +5332,7 @@ main {
 .shop_filter_box .filter_input h4 .kCkpbc {
 	font-size: 14px;
 	color: #000;
-	font-weight: 700;
+	font-weight: 600;
 }
 .lXQop > *:not(:first-child):not(:last-child) {
 	padding-top:10px !important;
@@ -5411,7 +5426,7 @@ main {
 }
 .right_prod_details h1 {
 	font-size: 25px;
-	font-weight: 700;
+	font-weight: 600;
 	text-transform: uppercase;
 	color: #061b4e;
 }
@@ -5442,7 +5457,7 @@ main {
 }
 .right_prod_details h3, .right_prod_details .eUobBU {
 	font-size: 20px !important;
-	font-weight: 700;
+	font-weight: 600;
 }
 .right_prod_details .prod_discp p, .right_prod_details .prod_discp h3 {
 	padding: 0!important;
@@ -5742,7 +5757,7 @@ ul.game_search_result li {
 .style_file_upload .inputfile + label {
 	width: 150px;
 	font-size:12px;
-	font-weight: 700;
+	font-weight: 600;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	cursor: pointer;
@@ -5862,7 +5877,7 @@ ul.game_search_result li {
 }
 .group_stage .match_date a:hover, .group_stage .match_date a.active {
 	font-size: 20px;
-	font-weight: 700;
+	font-weight: 600;
 }
 .group_stage .match_date a:hover p, .group_stage .match_date a.active p {
 	font-size: 14px;
@@ -5910,7 +5925,7 @@ ul.game_search_result li {
 .team_match_row .vs {
 	font-size: 30px;
 	color: #000;
-	font-weight: 700;
+	font-weight: 600;
 	padding:10px;
 }
 .knockout_matches ul {
@@ -5978,7 +5993,7 @@ ul.game_search_result li {
 }
 .section li .dp_name b {
 	display: block;
-	font-weight: 700;
+	font-weight: 600;
 }
 .section li .points {
 	background: #ddd;
@@ -5989,7 +6004,7 @@ ul.game_search_result li {
 	display: inline-block;
 	height: 27px;
 	width: 30px;
-	font-weight: 700;
+	font-weight: 600;
 }
 .section2, .section3 {
 	display: flex;
@@ -6084,7 +6099,7 @@ ul.game_search_result li {
 .report_model h3 {
 	font-size: 20px;
 	color: #19191d;
-	font-weight: 700;
+	font-weight: 600;
 	margin-bottom: 20px;
 	text-align: center;
 	text-transform: uppercase;
@@ -6135,7 +6150,7 @@ ul.game_search_result li {
 	line-height: 20px;
 }
 .game_list_page li h3 {
-	font-weight: 700;
+	font-weight: 600;
 }
 .game_list_page li .bottom_data span {
 	position: absolute;
@@ -6187,7 +6202,7 @@ ul.game_search_result li {
 	line-height: 20px;
 }
 .communities li h3 {
-	font-weight: 700;
+	font-weight: 600;
 }
 .communities li a:hover span {
 	right:5px;
@@ -6235,7 +6250,7 @@ ul.game_search_result li {
 	display: inline-block;
 	color: #000;
 	font-size: 15px;
-	font-weight: 700;
+	font-weight: 600;
 	letter-spacing: -1px;
 	padding: 14px 10px;
 	border-radius: 5px;
@@ -6298,7 +6313,7 @@ ul.game_search_result li {
 	top: 0px;
 	color: #fff;
 	font-size: 20px;
-	font-weight: 700;
+	font-weight: 600;
 	background: #7239ea;
 	padding: 5px 10px 5px 10px;
 }
@@ -6353,7 +6368,7 @@ ul.game_search_result li {
 	padding: 10px;
 	background: #fff;
 	color: #000;
-	font-weight: 700;
+	font-weight: 600;
 }
 .width_1100, #product_details {
 	float: left;
@@ -6381,7 +6396,7 @@ ul.game_search_result li {
 	font-size: 20px;
 	color: #19191d;
 	display: block;
-	font-weight: 700;
+	font-weight: 600;
 	margin-bottom: 20px;
 	text-align: center;
 	text-transform: uppercase;
@@ -6709,7 +6724,7 @@ form.common_form input {
 }
 .prodcut_detail_page .labels {
 	font-size: 16px;
-	font-weight: 700;
+	font-weight: 600;
 	color: #000;
 	text-transform: uppercase;
 }

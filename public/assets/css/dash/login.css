@@ -218,3 +218,10 @@ display: flex; align-items: center; justify-content: center; position: relative;
 	0% {opacity: 0; bottom:0; left: 0;}
 	100% { opacity: 1; bottom: 20%; left: 17%;}
 }
+
+
+
+@media screen and (max-width:1500px){
+
+	.left_banner h1{ font-size: 42px;}
+}
