@@ -37,7 +37,11 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
 const DarkMode = () => {
-  const [darktheme, setDarktheme] = useState(false);
+  const [darktheme, setDarktheme] = useState(true);
+
+  useEffect(() => {
+    $('body').addClass('DarkPage');
+  }, [1]);
 
   const LightTheme = (e) => {
     e.preventDefault();
