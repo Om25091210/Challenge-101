@@ -253,7 +253,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
     }
   };
 
-  function handleChange(e) {
+  function handleChangeaddress(e) {
     setAddress({ ...address, [e.target.name]: e.target.value });
   }
 
@@ -620,7 +620,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                                 id="exampleFormControlInput1"
                                 placeholder="address line1"
                                 name="line1"
-                                onChange={handleChange}
+                                onChange={handleChangeaddress}
                                 value={address?.line1}
                               />
                             </div>
@@ -635,7 +635,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                                 id="exampleFormControlInput1"
                                 placeholder="address line2"
                                 name="line2"
-                                onChange={handleChange}
+                                onChange={handleChangeaddress}
                                 value={address?.line2}
                               />
                             </div>
@@ -650,7 +650,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                                 id="exampleFormControlInput1"
                                 placeholder="city "
                                 name="city"
-                                onChange={handleChange}
+                                onChange={handleChangeaddress}
                                 value={address?.city}
                               />
                             </div>
@@ -665,7 +665,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                                 id="exampleFormControlInput1"
                                 placeholder="state"
                                 name="state"
-                                onChange={handleChange}
+                                onChange={handleChangeaddress}
                                 value={address?.state}
                               />
                             </div>
@@ -680,7 +680,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                                 id="exampleFormControlInput1"
                                 placeholder="country"
                                 name="country"
-                                onChange={handleChange}
+                                onChange={handleChangeaddress}
                                 value={address?.country}
                               />
                             </div>
@@ -695,7 +695,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                                 id="exampleFormControlInput1"
                                 placeholder="zip code"
                                 name="zipcode"
-                                onChange={handleChange}
+                                onChange={handleChangeaddress}
                                 value={address?.zipcode}
                               />
                             </div>
