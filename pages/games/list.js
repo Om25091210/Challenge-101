@@ -26,7 +26,9 @@ const Games = ({ user, games }) => {
                     </div>
                     <div className="bottom_data">
                       <h3>{games.name}</h3>
-                      <br/>{games.description}<br/>
+                      {games.description?.length > 160
+                        ? games?.description.substring(0, 160).concat('...')
+                        : games?.description}
                       <span>
                         <i
                           className="fa fa-long-arrow-right"

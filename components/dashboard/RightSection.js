@@ -8,13 +8,11 @@ import RecentActivity from '@components/dashboard/RecentActivity';
 import FriendRequests from '@components/dashboard/friendRequests';
 
 const RightSection = ({ user, profile, suggestedplayers, teams }) => {
-
   const [matches, setMatches] = useState([]);
 
   useEffect(() => {
-
-    axios.get(`${baseURL}/api/matches/top/matches`, {
-      })
+    axios
+      .get(`${baseURL}/api/matches/top/matches`, {})
       .then((res) => {
         setMatches(res.data);
       })
@@ -23,17 +21,14 @@ const RightSection = ({ user, profile, suggestedplayers, teams }) => {
       });
   }, []);
 
-
   return (
     <div className="right_side overhight">
+      <RecentActivity user={user} />
 
-     <RecentActivity user={user}/>
-
-{ /*
+      {/*
       <FriendRequests user={user} />
 
-  */
-}      
+  */}
 
       <div className="recent_activity suggested_player">
         <h2>Suggested Players</h2>
@@ -51,22 +46,22 @@ const RightSection = ({ user, profile, suggestedplayers, teams }) => {
               suggestedplayers.map((item, index) =>
                 item.player.map((plyr, idx) => (
                   <li className="" key={idx}>
-                  <Link href={`/user/${item.user.username}`}>
-                    <a>
-                      <div className="img_thumb">
-                        <img
-                          src={
-                            item.user.profilePicUrl
-                              ? item.user.profilePicUrl
-                              : '/assets/media/dash/user.jpg'
-                          }
-                          alt=""
-                        />
-                      </div>
-                      <span className="name">
-                        {plyr.nickName ? plyr.nickName : 'SECRET'}
-                      </span>
-                    </a>
+                    <Link href={`/user/${item.user.username}`}>
+                      <a>
+                        <div className="img_thumb">
+                          <img
+                            src={
+                              item.user.profilePicUrl
+                                ? item.user.profilePicUrl
+                                : '/assets/media/dash/user.jpg'
+                            }
+                            alt=""
+                          />
+                        </div>
+                        <span className="name">
+                          {plyr.nickName ? plyr.nickName : 'SECRET'}
+                        </span>
+                      </a>
                     </Link>
                   </li>
                 ))
@@ -82,20 +77,20 @@ const RightSection = ({ user, profile, suggestedplayers, teams }) => {
         </a>
         <div className="white_box">
           <ul className="team">
-
-            { teams.length > 0 ?           
-             teams.map((tm,idx) => (
-              <li key={idx}>
-                <Link href={`/team/${tm._id}`}>
-                  <div>
-                    <img src={tm.imgUrl} alt={tm.name} />
-                    <p> {tm.name}</p>
-                  </div>
-                </Link>
-              </li>
-            )) : (<p> No teams defined</p>)
-
-          }
+            {teams.length > 0 ? (
+              teams.map((tm, idx) => (
+                <li key={idx}>
+                  <Link href={`/team/${tm._id}`}>
+                    <div>
+                      <img src={tm.image_url} alt={tm.name} />
+                      <p> {tm.name}</p>
+                    </div>
+                  </Link>
+                </li>
+              ))
+            ) : (
+              <p> No teams defined</p>
+            )}
             <li>
               <a href="/discover">+</a>
             </li>
@@ -108,32 +103,37 @@ const RightSection = ({ user, profile, suggestedplayers, teams }) => {
           <div className="grey_bg">
             <img src="/assets/media/dash/user1.png" alt="" />
             <p>
-              You have been invited to join The Team.{' '}
-              <a href="#">Click Here</a>
+              You have been invited to join The Team. <a href="#">Click Here</a>
             </p>
           </div>
         </div>
       </div>
       <div className="recent_activity team_match">
         <h2>UPCOMING MATCHES </h2>
-        
-          { matches && matches.length > 0 ?           
-           matches.map((match,idx) => (
 
-              <div className="white_box">
-                <div className="match_name">
-                  {match.name}{' '}
-                  <i className="fa fa-long-arrow-right" aria-hidden="true"></i> <br/>
-                  <span>{Moment(match.scheduledAt).format('MMMM, DD, YYYY hh:mm A')}</span> 
-                </div>
-                <div className="match_time">
-                  <b>status: {match.status}</b> 
-                </div>
-                <div className="match_time">
-                  <span><a href={match.officialStreamUrl} target="_blank">{match.officialStreamUrl}</a></span>
-                </div>    
+        {matches && matches.length > 0 ? (
+          matches.map((match, idx) => (
+            <div className="white_box">
+              <div className="match_name">
+                {match.name}{' '}
+                <i className="fa fa-long-arrow-right" aria-hidden="true"></i>{' '}
+                <br />
+                <span>
+                  {Moment(match.scheduledAt).format('MMMM, DD, YYYY hh:mm A')}
+                </span>
+              </div>
+              <div className="match_time">
+                <b>status: {match.status}</b>
+              </div>
+              <div className="match_time">
+                <span>
+                  <a href={match.officialStreamUrl} target="_blank">
+                    {match.officialStreamUrl}
+                  </a>
+                </span>
+              </div>
 
-            { /*    <ul className="team">
+              {/*    <ul className="team">
                   <li>
                     <a href="#">
                       <img src="/assets/media/dash/team1.png" alt="" />
@@ -148,15 +148,12 @@ const RightSection = ({ user, profile, suggestedplayers, teams }) => {
                   </li>
                 </ul>
 
-            */}   
-              </div>
-
-          )) : (<p> No New Matches</p>)
-
-        }        
-
-
-
+            */}
+            </div>
+          ))
+        ) : (
+          <p> No New Matches</p>
+        )}
       </div>
     </div>
   );
