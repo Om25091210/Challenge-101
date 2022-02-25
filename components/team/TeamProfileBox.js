@@ -5,8 +5,65 @@ import baseURL from '@utils/baseURL';
 import { useForm } from 'react-hook-form';
 import { useQuery } from 'react-query';
 import cookie from 'js-cookie';
+import { toast } from 'react-toastify';
 
 const TeamProfileBox = ({ user, data }) => {
+  const [attr, setAttr] = useState(data.team.attributes);
+  const isLoggedInUser = data.team.user?._id === user?._id;
+
+  function handleChangeAttr(e) {
+    setAttr({ ...attr, [e.target.name]: e.target.value });
+  }
+
+  const handleAttrForm = async (e) => {
+    e.preventDefault();
+    if (
+      attr.roles === '' ||
+      attr.regions === '' ||
+      attr.teamtype === '' ||
+      attr.platform === '' ||
+      attr.language === '' ||
+      attr.paid === ''
+    ) {
+      toast.warning('Please enter all fields or check your inputs');
+    } else {
+      try {
+        await axios.put(
+          `${baseURL}/api/all/teamattribute/${data.team._id}`,
+          attr,
+          {
+            headers: {
+              Authorization: cookie.get('token'),
+              'Content-Type': 'application/json'
+            }
+          }
+        );
+        toast.success("Detail's successfully have been updated");
+      } catch (err) {
+        console.log(err);
+        toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+      }
+      window.setTimeout(function () {
+        location.reload();
+      }, 800);
+    }
+  };
+
+  function handleChange(e) {
+    if (e.target.options) {
+      var options = e.target.options;
+      var value = [];
+      for (var i = 0, l = options.length; i < l; i++) {
+        if (options[i].selected) {
+          value.push(options[i].value);
+        }
+      }
+      setAttr({ ...attr, [e.target.name]: value });
+    } else {
+      setAttr({ ...attr, [e.target.name]: e.target.value });
+    }
+  }
+
   return (
     <div className="profile_box">
       <div className="profile_cover_photo">
@@ -43,8 +100,151 @@ const TeamProfileBox = ({ user, data }) => {
                 ASK TO JOIN
               </a>
             </div>
-          </div>
 
+            {isLoggedInUser ? (
+              <span
+                // className="edit_cover_photo "
+                style={{
+                  marginLeft: '550px',
+                  marginTop: '30px',
+                  padding: '0.5rem 0.5rem'
+                }}
+              >
+                <div className="loc_box">
+                  {' '}
+                  <a href="#!" className="model_show_btn">
+                    <i
+                      className="fa fa-pencil"
+                      aria-hidden="true"
+                      style={{ color: 'white' }}
+                    ></i>
+                  </a>
+                  <div className="common_model_box">
+                    <a href="#!" className="model_close">
+                      X
+                    </a>
+
+                    <div className="inner_model_box">
+                      <h3>Personal Detail's</h3>
+
+                      <form onSubmit={handleAttrForm} className="common_form">
+                        <div className="form-group">
+                          <div className="colm">
+                            <label htmlFor="exampleFormControlInput1">
+                              Role
+                            </label>
+                            <select
+                              id="roles"
+                              name="roles"
+                              onChange={handleChangeAttr}
+                              value={attr?.roles}
+                              className="form-control"
+                            >
+                              <option value="Player">Player</option>
+                              <option value="Front">Front</option>
+                              <option value="Back">Back</option>
+                              <option value="Gunman">Gunman</option>
+                              <option value="Strategy">Strategy</option>
+                            </select>
+                          </div>
+                          <div className="colm">
+                            <label htmlFor="exampleFormControlInput1">
+                              Region
+                            </label>
+                            <select
+                              id="regions"
+                              name="regions"
+                              onChange={handleChangeAttr}
+                              value={attr?.regions}
+                              className="form-control"
+                            >
+                              <option value="India">India</option>
+                              <option value="USA">USA</option>
+                              <option value="Asia">Asia</option>
+                              <option value="China">China</option>
+                              <option value="Japan">Japan</option>
+                              <option value="Europe">Europe</option>
+                            </select>
+                          </div>
+                          <div className="colm">
+                            <label htmlFor="exampleFormControlInput1">
+                              Player Type
+                            </label>
+                            <select
+                              id="playertype"
+                              name="playertype"
+                              onChange={handleChangeAttr}
+                              value={attr?.playertype}
+                              className="form-control"
+                            >
+                              <option value="Casual">Casual</option>
+                              <option value="SemiPro">SemiPro</option>
+                              <option value="Pro">Pro</option>
+                              <option value="Gunman">Gunman</option>
+                              <option value="Local Lan">Local Lan</option>
+                            </select>
+                          </div>
+                          <div className="colm">
+                            <label htmlFor="exampleFormControlInput1">
+                              Platform
+                            </label>
+                            <select
+                              id="platform"
+                              name="platform"
+                              onChange={handleChangeAttr}
+                              value={attr?.platform}
+                              className="form-control"
+                            >
+                              <option value="PC">PC</option>
+                              <option value="Front">Front</option>
+                              <option value="Console">Console</option>
+                              <option value="Mobile">Mobile</option>
+                            </select>
+                          </div>
+
+                          <div className="colm">
+                            <label htmlFor="exampleFormControlInput1">
+                              Language
+                            </label>
+                            <select
+                              id="language"
+                              name="language"
+                              onChange={handleChange}
+                              value={attr?.language}
+                              className="form-control"
+                              multiple={true}
+                            >
+                              <option value="English">English</option>
+                              <option value="Hindi">Hindi</option>
+                              <option value="Telagu">Telagu</option>
+                              <option value="Tamil">Tamil</option>
+                            </select>
+                          </div>
+                          <div className="colm">
+                            <label htmlFor="exampleFormControlInput1">
+                              Paid Choose
+                            </label>
+                            <select
+                              id="paid"
+                              name="paid"
+                              onChange={handleChangeAttr}
+                              value={attr?.paid}
+                              className="form-control"
+                            >
+                              <option value="Paid">Paid</option>
+                              <option value="Unpaid">Unpaid</option>
+                            </select>
+                          </div>
+                          <button className="btn">Update</button>
+                        </div>
+                      </form>
+                    </div>
+                    <div className="overlay"></div>
+                  </div>
+                </div>
+              </span>
+            ) : null}
+          </div>
           <div className="bottom_details team_details">
             <div className="badges">
               <h5>MAJOR TITLES</h5>

@@ -59,7 +59,7 @@ const AllPosts = ({ post, user, profiledata }) => {
                   className="btn"
                   onClick={() => followhandlesubmit(post.user._id)}
                 >
-                  {isFollow === true ? ' UnFollow' : 'Follow'}
+                  {isFollow === true ? 'Followed' : 'Follow'}
                 </button>
               ) : null}
             </div>
@@ -138,7 +138,7 @@ const AllPosts = ({ post, user, profiledata }) => {
                 +3
               </a>{' '}
               <span className="others">
-                Ashwin, George and 5 others have liked your post.
+                Ashwin, George and 5 others have shared your post.
               </span>{' '}
             </div>
             <div className="shere">

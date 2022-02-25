@@ -192,9 +192,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
       attr.regions === '' ||
       attr.playertype === '' ||
       attr.platform === '' ||
-      attr.elo === '' ||
       attr.language === '' ||
-      attr.gender === '' ||
       attr.paid === ''
     ) {
       toast.warning('Please enter all fields or check your inputs');
@@ -210,7 +208,6 @@ const ProfileBox = ({ user, Userdata, games }) => {
             }
           }
         );
-        setShowlocation(false);
         toast.success("Detail's successfully have been updated");
       } catch (err) {
         console.log(err);
@@ -441,18 +438,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                           <option value="Mobile">Mobile</option>
                         </select>
                       </div>
-                      <div className="colm">
-                        <label htmlFor="exampleFormControlInput1">ELO</label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="exampleFormControlInput1"
-                          placeholder="ELO"
-                          name="elo"
-                          onChange={handleChangeAttr}
-                          value={attr?.elo}
-                        />
-                      </div>
+
                       <div className="colm">
                         <label htmlFor="exampleFormControlInput1">
                           Language
@@ -471,19 +457,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                           <option value="Tamil">Tamil</option>
                         </select>
                       </div>
-                      <div className="colm">
-                        <label htmlFor="exampleFormControlInput1">Gender</label>
-                        <select
-                          id="gender"
-                          name="gender"
-                          onChange={handleChangeAttr}
-                          value={attr?.gender}
-                          className="form-control"
-                        >
-                          <option value="Male">Male</option>
-                          <option value="Female">Female</option>
-                        </select>
-                      </div>
+
                       <div className="colm">
                         <label htmlFor="exampleFormControlInput1">Paid</label>
                         <select
