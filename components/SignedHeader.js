@@ -63,7 +63,7 @@ const SignedHeader = ({ user }) => {
         <ul className="top_menu">
           <li className="pluse">
             <a href="#">
-              <img src="/assets/media/dash/plus.png" alt="" />
+              <i class="fa fa-plus-circle" aria-hidden="true"></i>
             </a>
             <div className="drop_down_bg">
               <ul>

@@ -46,12 +46,14 @@ const DarkMode = () => {
   const LightTheme = (e) => {
     e.preventDefault();
     $('body').addClass('DarkPage');
+    $('.logo').removeClass('bigwidth');
     setDarktheme(true);
   };
 
   const Darktheme = (e) => {
     e.preventDefault();
     $('body').removeClass('DarkPage');
+    $('.logo').removeClass('bigwidth');
     setDarktheme(false);
   };
 

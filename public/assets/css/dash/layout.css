@@ -263,7 +263,9 @@ ul.top_menu li a {
 	position:relative;
 }
 
-ul.top_menu li.pluse > a, ul.top_menu li.noti > a { padding: 20px 0; display: flex; }
+
+
+ul.top_menu li.pluse > a, ul.top_menu li.noti > a { padding: 22px 0; display: flex; }
 
 ul.top_menu li.noti a span.pop{ top:5px}
 
@@ -302,7 +304,7 @@ ul.top_menu .drop_down_bg {
 	background-color:#f7f7f7;
 	position:absolute;
 	right:0px;
-	top:62px;
+	top:67px;
 	box-shadow:0 2px 22px rgb(0 0 0 / 4%);
 	padding:10px 0;
 	z-index:9;
@@ -346,7 +348,7 @@ ul.top_menu .drop_down_bg li a:hover, .drop_down_bg li a:hover i {
 	color:#7239ea;
 }
 ul.top_menu li:hover .drop_down_bg {
-	display:block;
+	display:block; border:1px solid #000;
 }
 .bellHight {
 	height:300px;
@@ -500,6 +502,9 @@ ul.top_menu li.wallet li{     float: left;
 	ul.top_menu li.wallet li button:first-child{ background: #262831;}
 	ul.top_menu li.wallet li.two_btn{ display: flex; justify-content: space-between;}
 	ul.top_menu li.wallet li:last-child a{ width: 100%; border-top: 1px solid #ddd; text-align: center; font-size: 14px; color: #000; padding: 10px 0;}
+
+	ul.top_menu li.pluse .fa-plus-circle{ font-size: 27px;}
+	ul.top_menu li.pluse .drop_down_bg li a{ padding: 10px 0;}
 
 /* ------- start left side -------------- */
 
@@ -7160,6 +7165,9 @@ body.DarkPage ul.top_menu .drop_down_bg:after {
 body.DarkPage .notif_tag .notif_name, body.DarkPage ul.top_menu .drop_down_bg li a, body.DarkPage ul.top_menu li i {
 	color: #fff;
 }
+
+body.DarkPage ul.top_menu li a:hover{ color: #7239ea;}
+
 body.DarkPage .group tr {
 	background: #202028;
 	border-top: 5px solid #000;

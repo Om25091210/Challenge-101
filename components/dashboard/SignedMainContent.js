@@ -23,6 +23,7 @@ const SignedMainContent = ({ posts, user }) => {
   const [postType, setPostType] = useState('');
   const router = useRouter();
   const [profiledata, setProfileData] = useState([]);
+  const [topmenu, setTopmenu] = useState(true);
 
   const shareUrl = 'http://localhost:3000/dashboard';
   useEffect(() => {
@@ -40,6 +41,11 @@ const SignedMainContent = ({ posts, user }) => {
         }
       })
   );
+
+  const menu_close = (e) => {
+    e.preventDefault();
+    setTopmenu(false);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -162,45 +168,49 @@ const SignedMainContent = ({ posts, user }) => {
 
   return (
     <div className="main_middle">
-      <div className="create_menu">
-        <ul>
-          <li>
-            <i class="fa fa-users" aria-hidden="true"></i>
-            <p>create a Team page</p>
-          </li>
-          <li>
-            <i class="fa fa-trophy" aria-hidden="true"></i>
-            <p> create a Tournament</p>
-          </li>
-          <li>
-            <i class="fa fa-comments" aria-hidden="true"></i>
-            <p> create a Community page</p>
-          </li>
-          <li>
-            <i class="fa fa-briefcase" aria-hidden="true"></i>
-            <p> create a Brand page</p>
-          </li>
-          <li>
-            <i class="fa fa-gamepad" aria-hidden="true"></i>
-            <p> create an Arena page</p>
-          </li>
-          <li>
-            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-            <p> create a Company page</p>
-          </li>
-        </ul>
-        <div className="message">
-          <h3>The power of Esports tools are in your hands</h3>
-          <p>
-            Make use of the Help section to learn more to make a better use of
-            the plateform
-          </p>
-        </div>
+      {topmenu ? (
+        <div className="create_menu">
+          <ul>
+            <li>
+              <i class="fa fa-users" aria-hidden="true"></i>
+              <p>create a Team page</p>
+            </li>
+            <li>
+              <i class="fa fa-trophy" aria-hidden="true"></i>
+              <p> create a Tournament</p>
+            </li>
+            <li>
+              <i class="fa fa-comments" aria-hidden="true"></i>
+              <p> create a Community page</p>
+            </li>
+            <li>
+              <i class="fa fa-briefcase" aria-hidden="true"></i>
+              <p> create a Brand page</p>
+            </li>
+            <li>
+              <i class="fa fa-gamepad" aria-hidden="true"></i>
+              <p> create an Arena page</p>
+            </li>
+            <li>
+              <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+              <p> create a Company page</p>
+            </li>
+          </ul>
+          <div className="message">
+            <h3>The power of Esports tools are in your hands</h3>
+            <p>
+              Make use of the Help section to learn more to make a better use of
+              the plateform
+            </p>
+          </div>
 
-        <a href="#" className="close">
-          X
-        </a>
-      </div>
+          <a href="#" onClick={menu_close} className="close">
+            X
+          </a>
+        </div>
+      ) : (
+        ''
+      )}
 
       <form className="write_post" onSubmit={handleSubmit}>
         <div className="team_slider">
