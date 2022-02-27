@@ -9,9 +9,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 html {
 	font-size:100%; /*default font-size is 10px */
 }
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
-	display:block;
-}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {display:block;}
 blockquote, q {
 	quotes:none;
 }
@@ -224,7 +222,7 @@ header .logo a {
 	letter-spacing:1px;
 	border:0;
 	border-bottom:1px solid #ddd;
-	border-radius:0px;
+	border-radius:5px;
 	font-weight:400;
 	font-size: 14px;
 }
@@ -329,7 +327,7 @@ ul.top_menu .drop_down_bg li {
 	padding:5px 20px 5px 35px !important
 }
 ul.top_menu .drop_down_bg li a {
-	font-size: 14px;
+	font-size: 15px;
 	font-weight: 400;
 	color: #000;
 	display: inline-block;
@@ -480,7 +478,7 @@ ul.top_menu li.wallet > a {
 }
 
 ul.top_menu li.wallet > a .dps{  overflow: hidden; }
-ul.top_menu li.wallet > a .dps img{ width: 30px;}
+ul.top_menu li.wallet > a .dps img{ width: 30px; -webkit-filter: invert(0); filter: invert(0);}
 ul.top_menu li.wallet > a span{ margin: 0 7px;}
 
 ul.top_menu li.wallet li{     float: left;
@@ -907,12 +905,12 @@ ul.top_menu li.wallet li{     float: left;
 	display:inline-block;
 	margin-right:5px;
 	position:relative;
+	border-radius: 5px; overflow: hidden;
 }
 .users_share_box .more_user a img {
 	object-fit:cover;
 	width:30px;
 	height:30px;
-	border-radius:50%;
 }
 .users_share_box .more_user a.more {
 	border:1px solid #b2b2b2;
@@ -921,13 +919,13 @@ ul.top_menu li.wallet li{     float: left;
 	font-weight:300;
 	font-size:11px;
 	line-height:26px;
-	border-radius:50%;
+	border-radius:5px;
 }
 .users_share_box .more_user .others {
 	font-size:13px;
 	font-weight:400;
 	color:#000;
-	padding-left:20px;
+	padding-left:10px;
 }
 .users_share_box .shere {
 	width: 240px;
@@ -3746,9 +3744,8 @@ article .social_bar {
 }
 .top_game{margin-right: 10px;}
 .prize h3 {
-	display: block;
-	font-size: 19px;
-	font-weight: 600;
+	font-size: 14px;
+	font-weight:400;
 }
 /* ---------- arena ------------------- */
 
@@ -6125,35 +6122,46 @@ ul.game_search_result li {
 	width: 23.5%;
 	margin-right: 2%;
 	border: 1px solid #ddd;
-	margin-bottom: 30px;
+	margin-bottom: 30px; position: relative;
+	border-radius: 10px;
+    overflow: hidden;
 }
 .game_list_page li:nth-child(4n) {
 	margin-right: 0;
 }
 .game_list_page li .imgs {
-	width: 100%;
-	height: 250px;
-	display:flex;
-	align-items: center;
-	justify-content: center;
-	border-bottom: 1px solid #ddd;
-	overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: 40px;
+    right: 0;
+    margin: auto;
+    bottom: 0;
+    width: 70px;
+    height: 70px;
+    background: #fff;
+    border-radius: 5px;
+    border: 2px solid #000;
+    display: block; overflow:hidden;
 }
+
+.game_list_page .game_bg_img{ width: 100%; height: 175px; object-fit: cover;}
+
 .game_list_page li .imgs img {
-	object-fit: contain;
-	transition: 0.3s ease-in-out;
-	 width: 120px;
+    object-fit: contain;
+    transition: 0.3s ease-in-out;
+    width: 100%;
+    height: 100%;
 }
 .game_list_page li .imgs img:hover {
 	transform: scale(1.1, 1.1);
 }
 .game_list_page li .bottom_data {
-	padding: 20px;
+	padding: 20px 5px;
 	color: #000;
-	position: relative;
+	position: relative; text-align: center;
 }
 .game_list_page li p {
-	line-height: 20px;
+	line-height: 20px; font-size: 11px;
 }
 .game_list_page li h3 {
 	font-weight: 600;
@@ -6776,11 +6784,6 @@ form.common_form input {
 }
 
 
-
-
-
-
-
   .payment_methods {
     grid-column: 1;
     grid-row: 1/3; text-align: left;
@@ -6817,7 +6820,7 @@ form.common_form input {
 
   .box {background:#ddd;color: #000;border-radius: 5px;padding: 20px;}
   .box h4{ font-size: 18px; font-weight: 600; padding-bottom: 10px;}
-  .box h3{ font-size: 24px; font-weight: 600;}
+  .box h3{ font-size: 20px; font-weight: 600;}
   .box .icons {background: #333;width: 61px;height: 61px;overflow: hidden;border-radius: 50%;display: inline-flex;align-items: center;justify-content: center;}
   .box p{ padding: 10px 0;}
   .box a{ color: #7239ea; font-size: 11px; text-decoration: underline;}
@@ -6826,12 +6829,14 @@ form.common_form input {
   .payment_card{ float: left; width: 100%; margin: 20px 0;}
 
   .bal{display: flex;justify-content: flex-start;}
-  .amt_bal .amt{ text-align: left; font-size: 36px;}
+  .amt_bal{text-align: left; margin-left: 20px;}
+  .amt_bal h3{ font-size: 22px; color: #ababab; font-weight: 400;}
+  .amt_bal .amt{ text-align: left; font-size: 36px; margin-left: 0; vertical-align: middle;}
   .amt_bal .amt img{ width: 40px;}
   .amt{ font-size: 26px; font-weight: 600;     margin-left: 20px;}
   .amt img{ display: inline-block; vertical-align: baseline; width: 30px;   -webkit-filter: invert(100%); filter: invert(100%);}
-  .two_btn{ width: 100%;}
-  .two_btn button{ width:48%; padding:10px 0;margin-right: 10px}
+  .two_btn{ width: 100%; display: flex;}
+  .two_btn button{   flex-grow: 1; padding:10px 0;margin-right: 10px}
   .two_btn button:last-child{ background: #a7a8bc;}
 
   .money_earned h3, .money_withdrawn  h3{ padding: 10px 0;}
@@ -6843,11 +6848,13 @@ form.common_form input {
 .bottom_box .box .cart img{ width: 100%;}
 .bottom_box .trans_list ul{ display: flex; flex-direction: column; margin-top: 20px;}
 .bottom_box .trans_list li{ display: flex; justify-content: space-between; align-items: center; font-size: 14px; flex-shrink: 0; border-bottom: 1px solid #636363; margin-bottom: 10px; padding-bottom: 10px;}
-.bottom_box .trans_list li .list_name{ width: 220px;}
+.bottom_box .trans_list li .list_name{ }
 .bottom_box .trans_list li .list .date{}
 .bottom_box .trans_list li .amt{ font-size: 18px;}
 .bottom_box .trans_list li .amt img{ width: 20px;}
 .bottom_box .trans_list a{ float: left; width: 100%; text-align: center; text-decoration: none; font-size: 14px;}
+
+.bottom_box .trans_list .no_transcation{ display: block;}
 
   
 /* ---------------------- Dark Themes----------------------------- */
@@ -7212,3 +7219,8 @@ body.DarkPage .suggested_player .all, body.DarkPage .my_team .mng{ color: #fff;}
 
 
 body.DarkPage ul.top_menu li.wallet li button:first-child{background: #10baa8;}
+
+body.DarkPage .wallet_box{ background: none;}
+body.DarkPage .box{ background: #1e1e27; color: #fff;}
+body.DarkPage .amt_bal .amt img, body.DarkPage .amt img{-webkit-filter: invert(0);filter: invert(0);}
+body.DarkPage .game_list_page li p{ color: #ababab;}

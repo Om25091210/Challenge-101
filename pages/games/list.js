@@ -20,6 +20,12 @@ const Games = ({ user, games }) => {
               {games.map((games) => (
                 <li key={games._id}>
                   <a href={`/games/${games._id}`}>
+                    <img
+                      src="/assets/media/games/1.jpg"
+                      className="game_bg_img"
+                      alt=""
+                    />
+
                     <div className="imgs">
                       {' '}
                       <img src={games.imgUrl} alt={games.name} />
@@ -29,12 +35,8 @@ const Games = ({ user, games }) => {
                       {games.description?.length > 160
                         ? games?.description.substring(0, 160).concat('...')
                         : games?.description}
-                      <span>
-                        <i
-                          className="fa fa-long-arrow-right"
-                          aria-hidden="true"
-                        ></i>
-                      </span>
+
+                      <p>110k players|91 tournaments|168 communities</p>
                     </div>
                   </a>
                 </li>

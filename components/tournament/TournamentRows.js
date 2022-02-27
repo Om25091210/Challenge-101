@@ -71,11 +71,17 @@ const TournamentRows = ({ tournaments, searchResults }) => {
                       ))}
                   </div>
                   <div className="prize">
-                    <h3>PRIZE POOL:</h3>
-                    <MPNumberFormat
-                      value={result.tournament.prizepool}
-                      currency={result.tournament.currency}
-                    />
+                    <div>
+                      <h3>ENTRY FEE:</h3>
+                      <span>Free </span>
+                    </div>
+                    <div>
+                      <h3>PRIZE POOL:</h3>
+                      <MPNumberFormat
+                        value={result.tournament.prizepool}
+                        currency={result.tournament.currency}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
