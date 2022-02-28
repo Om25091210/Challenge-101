@@ -60,11 +60,12 @@ export const locationformvalidate = (values) => {
 export const teamformvalidate = (values) => {
   const errors = {};
   const regex = /^((https?|ftp|smtp):\/\/)?(www.)?[a-z0-9]+\.[a-z]+(\/[a-zA-Z0-9#]+\/?)*$/;
+  const year_regex = /^\d{4}$/;
   if (!values.name) {
     errors.name = 'Team Name is requried';
   }
-  if (!values.founded) {
-    errors.founded = 'Year cannot be empty';
+  if (!year_regex.test(values.founded)) {
+    errors.founded = 'Invalid Year Format';
   }
   if (!values.game) {
     errors.game = 'Select Atleast one game';
@@ -82,7 +83,7 @@ export const teamformvalidate = (values) => {
     errors.description = 'Description is required';
   } else if (values.description.length < 15) {
     errors.description = 'Description should be minimum of 15 characters.';
-  } else if (values.description.length > 60) {
+  } else if (values.description.length > 250) {
     errors.description = 'Description Cannot exceed more 60 characters.';
   }
   if (!values.achievements) {

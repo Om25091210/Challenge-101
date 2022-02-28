@@ -69,6 +69,7 @@
     "react-number-format": "^4.8.0",
     "react-query": "^3.32.1",
     "react-redux": "^7.2.4",
+    "react-select": "^5.2.2",
     "react-select-country-list": "^2.2.3",
     "react-share": "^4.4.0",
     "react-stripe-checkout": "^2.6.3",

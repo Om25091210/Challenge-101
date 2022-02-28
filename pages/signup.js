@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Meta from '@components/Meta';
 import FooterMain from '@components/FooterMain';
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext, useMemo } from 'react';
 import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
@@ -11,7 +11,8 @@ import valid from '@utils/valid';
 import Router from 'next/router';
 import { DataContext } from '@store/GlobalState';
 import { postData } from '@utils/fetchData';
-import { getCountryList } from '@utils/helpers';
+import Select from 'react-select';
+import countryList from 'react-select-country-list';
 
 const usernameRegex = /^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{0,29}$/;
 let cancel;
@@ -53,8 +54,12 @@ const Signup = ({ games, avatars }) => {
     setAvatar(avatar);
   };
 
-  const [countries, setCountries] = useState(getCountryList());
+  const [country, setCountry] = useState('');
+  const options = useMemo(() => countryList().getData(), []);
 
+  const changeHandler = (country) => {
+    setCountry(country);
+  };
   const [selectedGame, setSelectedGame] = useState();
   const [userign, setUserign] = useState('');
 
@@ -63,8 +68,6 @@ const Signup = ({ games, avatars }) => {
     setShowIgn('');
     console.log(game);
   };
-
-  console.log(selectedGame);
 
   const handleUserign = (e) => {
     setUserign(e.target.value);
@@ -93,7 +96,8 @@ const Signup = ({ games, avatars }) => {
           phone_number,
           avatarImage,
           gameId,
-          userign
+          userign,
+          country: country.label
         });
 
         console.log(res);
@@ -537,11 +541,11 @@ const Signup = ({ games, avatars }) => {
 
                   <div className="fv-row mb-7">
                     <label className="form-label"> Select Country </label>
-                    <select className="form-control">
-                      {countries.map((option) => (
-                        <option value={option.value}>{option.label}</option>
-                      ))}
-                    </select>
+                    <Select
+                      options={options}
+                      value={country}
+                      onChange={changeHandler}
+                    />
                   </div>
 
                   <div className="two_btn">

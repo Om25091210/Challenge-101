@@ -5,9 +5,9 @@ import { useState, useEffect } from 'react';
 import cookie from 'js-cookie';
 
 const ProfileGameStat = ({ user, Userdata, selectedGame }) => {
-  const [stat, setStat] = useState();
-  var gameId = Userdata.profile.playergames[0].game;
-  var userign = Userdata.profile.playergames[0].userign;
+  const [stat, setStat] = useState(null);
+  var gameId = selectedGame?.game?._id;
+  var userign = selectedGame?.userign;
 
   useEffect(() => {
     //Get Team Stats
@@ -18,11 +18,11 @@ const ProfileGameStat = ({ user, Userdata, selectedGame }) => {
       .then((res) => {
         setStat(res.data);
       });
-  }, []);
+  }, [gameId, userign]);
 
   return (
     <div className="right_bio">
-      {selectedGame?.slug === stat?.slug ? (
+      {selectedGame?.game?.slug === stat?.slug ? (
         <div className="games_data white_bg">
           {Userdata.profile.playergames.length === 0 ? (
             <div>No Games for {user.name}</div>

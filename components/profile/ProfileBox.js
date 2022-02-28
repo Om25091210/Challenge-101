@@ -18,7 +18,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
   const [showform, setShowForm] = useState(false);
   const [showlocation, setShowlocation] = useState(false);
   const [showLocModal, setShowLocModal] = useState(true);
-  const [selectedGame, setSelectedGame] = useState(null);
+  const [selectedGame, setSelectedGame] = useState({});
   const [showIgn, setShowIgn] = useState('none');
 
   const [search, setSearch] = useState('');
@@ -240,7 +240,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
   // }, []);
 
   const handleSelectGame = async (obj) => {
-    setSelectedGame(obj);
+    setSelectedGame({ game: obj, userign: userIgn });
     setShowIgn('');
     if (userIgn && userIgn.length > 4) {
       //myState.setFilteredResults([]);
@@ -823,6 +823,14 @@ const ProfileBox = ({ user, Userdata, games }) => {
                               onChange={handleSearchChange}
                               autoComplete="off"
                             />
+                            <input
+                              type="text"
+                              className="form-control"
+                              placeholder="User IGN"
+                              name="userIgn"
+                              onChange={handleUserIgnChange}
+                              value={userIgn}
+                            />
                             <input type="submit" value="" />
                           </form>
                         </div>
@@ -853,14 +861,6 @@ const ProfileBox = ({ user, Userdata, games }) => {
                         <label htmlFor="exampleFormControlInput1">
                           Please enter your in game name (IGN)
                         </label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          placeholder="User IGN"
-                          name="userIgn"
-                          onChange={handleUserIgnChange}
-                          value={userIgn}
-                        />
                       </div>
                       <div className="poup_height msScroll_all">
                         <ul className="">
