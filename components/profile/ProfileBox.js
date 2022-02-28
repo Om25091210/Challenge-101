@@ -892,7 +892,11 @@ const ProfileBox = ({ user, Userdata, games }) => {
             </div>
           </div>
 
-          {/* <ProfileGameStat user={user} Userdata={Userdata} />  */}
+          <ProfileGameStat
+            user={user}
+            Userdata={Userdata}
+            selectedGame={selectedGame}
+          />
         </div>
       </div>
     </>
