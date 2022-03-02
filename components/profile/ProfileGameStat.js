@@ -34,7 +34,7 @@ const ProfileGameStat = ({ user, Userdata, selectedGame }) => {
                   id={`item${index}`}
                   key={index}
                 >
-                  <div key={index} className="game_btn">
+                  <div className="game_btn">
                     {stat ? stat.slug : 'Not Defined'}
                   </div>
                   <ul>
