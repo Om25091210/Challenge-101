@@ -12,6 +12,7 @@ import GameCommunities from './GameCommunities';
 import Matches from '@components/team/Matches';
 
 const Game = ({ user, data }) => {
+
   const [game, setGame] = useState(data.games);
 
   return (
@@ -95,17 +96,17 @@ const Game = ({ user, data }) => {
                   </a>{' '}
                 </div>
               </div>
-              <p>{game.description} </p>
+              <p>{game?.description} </p>
               <div className="games">
                 <h3>PUBLISHER: </h3>
                 <span>
                   {' '}
-                  {!game.publisher || game.publisher.length === 0 ? (
+                  {!game?.publisher || game?.publisher.length === 0 ? (
                     <p>No publisher...</p>
                   ) : (
                     <>
-                      <img src={game.publisher.imgUrl} />{' '}
-                      <b>{game.publisher.name}</b>
+                      <img src={game?.publisher.imgUrl} />{' '}
+                      <b>{game?.publisher.name}</b>
                     </>
                   )}
                 </span>

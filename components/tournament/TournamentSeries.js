@@ -7,7 +7,7 @@ const TournamentSeries = ({ user, tournament }) => {
   return (
 <div className="groupds_box">
 	<div className="group">
-	 <div className="title_bg">SERIES: {tournament.seriesId.fullName}</div>
+	 <div className="title_bg">SERIES: {tournament?.seriesId.fullName}</div>
 	      <table className="table">
 	        <thead>
 	          <tr>
@@ -23,7 +23,7 @@ const TournamentSeries = ({ user, tournament }) => {
 	              Start Date
 	            </td>
 	            <td>
-	              <strong>{tournament.seriesId.startDate}</strong>
+	              <strong>{tournament?.seriesId.startDate}</strong>
 	            </td>
 	          </tr>
 	          <tr>
@@ -31,25 +31,25 @@ const TournamentSeries = ({ user, tournament }) => {
 	              Start Date
 	            </td>
 	            <td>
-	              <strong>{tournament.seriesId.endDate}</strong>
+	              <strong>{tournament?.seriesId.endDate}</strong>
 	            </td>
 	          </tr>
 	          <tr>
 	            <td>Season </td>
 	            <td>
-	              <strong>{tournament.seriesId.season}</strong>
+	              <strong>{tournament?.seriesId.season}</strong>
 	            </td>
 	          </tr>
 	          <tr>
 	            <td>Tier </td>
 	            <td>
-	              <strong>{tournament.seriesId.tier}</strong>
+	              <strong>{tournament?.seriesId.tier}</strong>
 	            </td>
 	          </tr>
 	          <tr>
 	            <td>Slug </td>
 	            <td>
-	              <strong>{tournament.seriesId.slug}</strong>
+	              <strong>{tournament?.seriesId.slug}</strong>
 	            </td>
 	          </tr>          
 
@@ -58,7 +58,7 @@ const TournamentSeries = ({ user, tournament }) => {
 	    </div>      
 
 
-	{ tournament.leagues.map((result, idx) => (
+	{ tournament?.leagues.map((result, idx) => (
 	<div className="group" key={idx}>
 	 <p> <img src={result.leagueId.imgUrl} style={{width: '40%'}}/> </p>
 	 <div className="title_bg">LEAGUE: {result.leagueId.name}</div>

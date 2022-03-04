@@ -14,7 +14,7 @@ const TournamentSponsor = ({ user, data }) => {
     });
   }, []);
 
-  const isLoggedInUser = data.tournament.user?._id === user._id;
+  const isLoggedInUser = data.tournament?.user?._id === user._id;
   const [sponsors, setSponsors] = useState([]);
   const [state, setState] = useState({
     sponsor: ''

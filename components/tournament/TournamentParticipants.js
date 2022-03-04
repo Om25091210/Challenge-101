@@ -26,7 +26,7 @@ const TournamentParticipants = ({ user, tournament }) => {
               </div>
             </div>                  
 
-            {tournament.games.map((game, index) => (
+            {tournament?.games.map((game, index) => (
 
                     <div className="button-group" key={index}>
                      
@@ -48,7 +48,7 @@ const TournamentParticipants = ({ user, tournament }) => {
             </div>
                   
 
-                    {tournament.games.map((game, index) => (
+                    {tournament?.games.map((game, index) => (
                   <div className="banner" key={index}>
                     {' '}
 
@@ -75,7 +75,7 @@ const TournamentParticipants = ({ user, tournament }) => {
 
                         <tbody>
 
-  							{tournament.matches.map((match, index) => (
+  							{tournament?.matches.map((match, index) => (
 
 
                           <tr key={index}>

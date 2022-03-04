@@ -5,10 +5,10 @@ const Matches = ({ teamMatches }) => {
   return (
     <div className="matches_box">
       <div className="heads_bg">Upcoming Matches </div>
-      {teamMatches.length === 0 ? (
+      {teamMatches?.length === 0 ? (
         <h5>NO team Matches</h5>
       ) : (
-        teamMatches.map((tm, idx) => (
+        teamMatches?.map((tm, idx) => (
           <div className="match_row" key={idx}>
             {tm.opponents[0] ? (
               <div className="team_a">

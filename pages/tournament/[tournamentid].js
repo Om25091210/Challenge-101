@@ -74,7 +74,7 @@ const TournamentDetail = ({ user, data, products }) => {
                         Indoor Stadium, Bangalore Feb 18th - 20th 10 AM IST
                       </span>{' '}
                       <span className="follower">
-                        {data.tournament.description}
+                        {data.tournament?.description}
                       </span>{' '}
                     </div>
                   </div>
@@ -111,8 +111,8 @@ const TournamentDetail = ({ user, data, products }) => {
                   <span className="">
                     <MPNumberFormat
                       value={
-                        data.tournament.prizepool
-                          ? data.tournament.prizepool
+                        data.tournament?.prizepool
+                          ? data.tournament?.prizepool
                           : null
                       }
                       currency={data.currency}
@@ -148,7 +148,7 @@ const TournamentDetail = ({ user, data, products }) => {
                   <p>
                     {data.detaildescription
                       ? data.detaildescription
-                      : data.tournament.description}
+                      : data.tournament?.description}
                   </p>
 
                   <div className="games">

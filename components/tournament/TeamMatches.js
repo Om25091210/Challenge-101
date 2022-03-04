@@ -29,9 +29,9 @@ const TeamMatches = ({ user, tournament }) => {
                       {match.opponents.length === 0 ? (
                         <h6>---</h6>
                       ) : (
-                        match.opponents.map((opp) => {
+                        match.opponents.map((opp,idx) => {
                           return (
-                            <>
+                            <div key={idx}>
                               <span className="dp">
                                 <img src={opp.opponent.image_url} alt="" />
                               </span>{' '}
@@ -39,7 +39,7 @@ const TeamMatches = ({ user, tournament }) => {
                                 <b>{opp.opponent.name}</b>
                                 {/* {match.region} */}
                               </span>
-                            </>
+                            </div>
                           );
                         })
                       )}
@@ -62,7 +62,7 @@ const TeamMatches = ({ user, tournament }) => {
                       </a>
                     </td>
                     <td>
-                      <a href="#">Buy Match Tickets</a>
+                      <a href="#">Tickets</a>
                     </td>
                   </tr>
                 );
