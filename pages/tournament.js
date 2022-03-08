@@ -26,7 +26,6 @@ const Tournament = ({ user, games, tournaments }) => {
 
   const [selectedFilters, setSelectedFilters] = useState([]);
   const [filteredResults, setFilteredResults] = useState([]);
-  const [filterType, setFilterType] = useState('TEAMS');
   const [selectedGame, setSelectedGame] = useState(null);
 
   myState.selectedFilters = selectedFilters;

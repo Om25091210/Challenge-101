@@ -27,7 +27,7 @@ const CustomPost = ({ post }) => {
   const [isOriginalImages, setIsOriginalImages] = useState(true);
 
   const [shareToModal, setShareToModal] = useState(false);
-  const shareUrl = 'https://dev.multiplayr.gg/posts';
+  const shareUrl = process.env.NEXT_PUBLIC_ESPORTS_API_BASE_URL+'/posts';
   // Delete a post
   const del = async (post) => {
     await axios.delete(`${baseURL}/api/posts/${post._id}`, {

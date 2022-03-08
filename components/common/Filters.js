@@ -130,6 +130,8 @@ const Filters = ({ filterType , myState, selectedGame}) => {
       apiurl = `${baseURL}/api/discover/arenas`; 
     } else if (filterType == 'JOBS') {
       apiurl = `${baseURL}/api/discover/jobs`; 
+    } else if (filterType == 'TOURNAMENTS') {
+      apiurl = `${baseURL}/api/discover/tournaments`; 
     }
     
     
@@ -153,7 +155,7 @@ const Filters = ({ filterType , myState, selectedGame}) => {
       <div className="team_filter">
         <div className="drop_downs">
           {data.filter.metadata.map((filter, index) =>
-            filter.value.indexOf(filter.key) < 0 ? (
+            filter.value?.indexOf(filter.key) < 0 ? (
               <div key={index} className="button-group">
                 <button
                   type="button"

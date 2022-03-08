@@ -113,7 +113,7 @@ const Home = (props) => {
 
           <div className="products">
             <ul>
-              {products.length === 0 ? (
+              {products?.length === 0 ? (
                 <h2>No Products</h2>
               ) : (
                 products.map((product) => (

@@ -65,7 +65,7 @@ const ProductList = ({ user, productList }) => {
     <div className="tab hide" id="store">
       <div className="products">
         <ul>
-          {products.length === 0 ? (
+          {products?.length === 0 ? (
             <li>
               <h2>No Products</h2>
             </li>
