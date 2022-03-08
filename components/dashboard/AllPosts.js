@@ -114,7 +114,7 @@ const AllPosts = ({ post, user, profiledata }) => {
           </a>{' '}
         </div>
         <div className="right_details">
-          {post.images.length === 0 ? null : (
+          {post?.images.length === 0 ? null : (
             <div className="post_data">
               <img src={post.images} alt="" />
             </div>
