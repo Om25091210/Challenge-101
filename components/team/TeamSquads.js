@@ -34,7 +34,7 @@ const TeamSquads = ({ squads }) => {
 
                      { squad.players.map((player, idpx) => (
 
-	                    <a href="#">
+	                    <a href="#" key={idpx}>
 	                      <img src={player.playerId?.user?.profilePicUrl} alt="" />
 	                    </a> 
 
@@ -79,7 +79,7 @@ const TeamSquads = ({ squads }) => {
 
                      { squad.players.map((player, idpx) => (
 
-                      <tr>
+                      <tr key={idpx}>
                         <td>
                           <span className="user">
                             <img src={player.playerId?.user?.profilePicUrl} alt="" />
