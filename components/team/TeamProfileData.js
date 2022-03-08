@@ -5,7 +5,7 @@ import TeamPhotos from './TeamPhotos';
 import TeamVideos from './TeamVideos';
 import TeamAllStats from './TeamAllStats';
 import TeamSquads from './TeamSquads';
-
+import TeamStatistics from './teamstats/TeamStatistics';
 import axios from 'axios';
 import baseURL from '@utils/baseURL';
 import LikePost from '@components/postLikes/LikePost';
@@ -15,11 +15,13 @@ import Moment from 'moment';
 
 import ProductList from '@components/common/ProductList';
 import TeamMatches from '@components/tournament/TeamMatches';
+import TeamJobs from './TeamJobs';
 
 const TeamProfileData = ({ user, data, products }) => {
   const [jobs, setJobs] = useState([]);
   const [teamposts, setTeamPosts] = useState([]);
-
+  const [tournamentStatData, setTournamentStatData] = useState([]);
+  console.log(data);
   useEffect(() => {
     $('a.model_show_btn').click(function () {
       $(this).next().addClass('show_model');
@@ -40,6 +42,11 @@ const TeamProfileData = ({ user, data, products }) => {
     axios
       .get(`${baseURL}/api/posts/`)
       .then((res) => setTeamPosts(res.data.posts));
+
+    // Tournament Stats
+    axios
+      .get(`${baseURL}/api/tournamentstat/`)
+      .then((res) => setTournamentStatData(res.data));
   }, []);
   let Filteredteamposts = teamposts.filter((teampost) => {
     return teampost.post_type === 'Team' && teampost.username === data.name;
@@ -209,7 +216,7 @@ const TeamProfileData = ({ user, data, products }) => {
           </div>
         </div>
         <div className="tab hide" id="squads">
-        <TeamSquads squads={data.squads}/>
+          <TeamSquads squads={data.squads} />
         </div>
         <div className="tab hide" id="achievement">
           <div className="achivement_box">
@@ -294,116 +301,7 @@ const TeamProfileData = ({ user, data, products }) => {
         </div>
         <TeamMatches tournament={data.teamMatches} />
         <div className="tab hide" id="stats">
-          <div className="all_stat">
-            <div className="tournament_table">
-              <h2>all time stats</h2>
-              <table className="table">
-                <thead className="thead-light">
-                  <tr>
-                    <th scope="col">tournaments </th>
-                    <th scope="col">place</th>
-                    <th scope="col">mp </th>
-                    <th scope="col">wins</th>
-                    <th scope="col">loss</th>
-                    <th scope="col">win%</th>
-                    <th scope="col">w strk</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>115 </td>
-                    <td>16th</td>
-                    <td>767</td>
-                    <td>545</td>
-                    <td>323</td>
-                    <td>68%</td>
-                    <td>21</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div className="tournament_table">
-              <h2>2021 stats</h2>
-              <table className="table">
-                <thead className="thead-light">
-                  <tr>
-                    <th scope="col">tournaments </th>
-                    <th scope="col">place</th>
-                    <th scope="col">mp </th>
-                    <th scope="col">wins</th>
-                    <th scope="col">loss</th>
-                    <th scope="col">win%</th>
-                    <th scope="col">w strk</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>115 </td>
-                    <td>16th</td>
-                    <td>767</td>
-                    <td>545</td>
-                    <td>323</td>
-                    <td>68%</td>
-                    <td>21</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div className="tournament_table">
-              <h2>league </h2>
-              <table className="table">
-                <thead className="thead-light">
-                  <tr>
-                    <th scope="col">Season </th>
-                    <th scope="col">place</th>
-                    <th scope="col">mp </th>
-                    <th scope="col">wins</th>
-                    <th scope="col">loss</th>
-                    <th scope="col">win%</th>
-                    <th scope="col">w strk</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>gon fall 2021 </td>
-                    <td>16th</td>
-                    <td>767</td>
-                    <td>545</td>
-                    <td>323</td>
-                    <td>68%</td>
-                    <td>21</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div className="tournament_table">
-              <h2>upcoming and recent matches </h2>
-              <table className="table">
-                <thead className="thead-light">
-                  <tr>
-                    <th scope="col">date </th>
-                    <th scope="col">time</th>
-                    <th scope="col">game </th>
-                    <th scope="col">opponent</th>
-                    <th scope="col">result</th>
-                    <th scope="col">STARTED</th>
-                    <th scope="col">match details</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td> 24th nov 17 </td>
-                    <td>6:15 pm ist</td>
-                    <td> cod4</td>
-                    <td> vega esports</td>
-                    <td> win</td>
-                    <td> HOME</td>
-                    <td> view match </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
+          <TeamStatistics tournamentStatData={tournamentStatData} />
         </div>
 
         <ProductList user={user} productList={products} />
@@ -417,44 +315,7 @@ const TeamProfileData = ({ user, data, products }) => {
         </div>
 
         <div className="tab hide" id="jobs">
-          {jobs.length === 0 ? (
-            <p>No Jobs defined...</p>
-          ) : (
-            jobs.map((job, index) => (
-              <div className="team_row arena_team_row" key={index}>
-                <div className="inner_team">
-                  <div className="logo_box">
-                    <img
-                      src={
-                        data.imgUrl != ''
-                          ? data.imgUrl
-                          : '/assets/media/discover/lxg.png'
-                      }
-                      className="thumb_img"
-                      alt=""
-                    />
-                    <h3>{data.name}</h3>
-                  </div>
-                  <div className="mores">
-                    <p>
-                      <b>POSITION:</b> {job.position}
-                    </p>
-                    <p>
-                      <b>EXPERIENCE:</b> {job.experience}
-                    </p>
-                    <p>
-                      <b> LOCATION:</b>
-
-                      {job.location}
-                    </p>
-                  </div>
-                  <a href="#" className="join">
-                    APPLY NOW
-                  </a>{' '}
-                </div>
-              </div>
-            ))
-          )}
+          <TeamJobs jobs={jobs} team={data.team} />
         </div>
 
         <TeamAbout data={data.team} />
