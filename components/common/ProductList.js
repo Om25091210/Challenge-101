@@ -70,7 +70,7 @@ const ProductList = ({ user, productList }) => {
               <h2>No Products</h2>
             </li>
           ) : (
-            products.map((product, index) => (
+            products?.map((product, index) => (
               <li key={index}>
                 <ProductItem
                   key={product._id}

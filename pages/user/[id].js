@@ -54,6 +54,10 @@ export const getServerSideProps = async (context, query) => {
   const resprod = await getData(
       `product?limit=${page * 6}&category=${category}&sort=${sort}&title=${search}`
     )
+  
+  console.log('PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP');
+  
+  console.log(resprod.products);
 
   return {
     props: { Userdata, games, player, products: resprod.products, result: resprod.result}
