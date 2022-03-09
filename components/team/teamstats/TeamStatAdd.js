@@ -4,11 +4,9 @@ import cookie from 'js-cookie';
 import axios from 'axios';
 import baseURL from '@utils/baseURL';
 import { toast } from 'react-toastify';
-import { useMutation } from 'react-query';
 
 const TeamStatAdd = ({ showform }) => {
-  console.log(showform);
-  const [editFormData, setEditFormData] = useState({
+  const [formData, setFormData] = useState({
     tournamentId: '',
     place: '',
     mp: '',
@@ -17,14 +15,14 @@ const TeamStatAdd = ({ showform }) => {
     w_streak: ''
   });
   const onChange = (e) => {
-    setEditFormData({ ...editFormData, [e.target.name]: e.target.value });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleEditStat = async (e) => {
     e.preventDefault();
 
     try {
-      await axios.post(`${baseURL}/api/tournamentstat/`, editFormData, {
+      await axios.post(`${baseURL}/api/tournamentstat/`, formData, {
         headers: {
           Authorization: cookie.get('token'),
           'Content-Type': 'application/json'
@@ -49,7 +47,7 @@ const TeamStatAdd = ({ showform }) => {
               type="text"
               placeholder="Enter Tournament Id"
               name="tournamentId"
-              value={editFormData?.tournamentId}
+              value={formData?.tournamentId}
               onChange={onChange}
             ></input>
           </td>
@@ -58,7 +56,7 @@ const TeamStatAdd = ({ showform }) => {
               type="text"
               placeholder="Enter place"
               name="place"
-              value={editFormData?.place}
+              value={formData?.place}
               onChange={onChange}
             ></input>
           </td>
@@ -67,7 +65,7 @@ const TeamStatAdd = ({ showform }) => {
               type="text"
               placeholder="Enter the MP"
               name="mp"
-              value={editFormData?.mp}
+              value={formData?.mp}
               onChange={onChange}
             ></input>
           </td>
@@ -76,7 +74,7 @@ const TeamStatAdd = ({ showform }) => {
               type="text"
               placeholder="Enter the Wins"
               name="wins"
-              value={editFormData?.wins}
+              value={formData?.wins}
               onChange={onChange}
             ></input>
           </td>
@@ -85,17 +83,17 @@ const TeamStatAdd = ({ showform }) => {
               type="text"
               placeholder="Enter the Losses"
               name="loss"
-              value={editFormData?.loss}
+              value={formData?.loss}
               onChange={onChange}
             ></input>
           </td>
-          <td>69%</td>
+          <td>---</td>
           <td>
             <input
               type="text"
               placeholder="Enter the Win Streak"
               name="w_streak"
-              value={editFormData?.w_streak}
+              value={formData?.w_streak}
               onChange={onChange}
             ></input>
           </td>
