@@ -109,26 +109,20 @@ const Players = ({ user, profile, myState, selectedGame }) => {
                     style={{ width: '150px' }}
                   />
                 ) : (
-                  <img src="/assets/media/discover/team1.png" alt="" />
+                  ''
                 )}
                 <a href="#!">
                   <h3>{plyr.players ? plyr.players.name : 'No nickname'}</h3>
                 </a>
                 <img src="/assets/media/discover/country.png" alt="" />{' '}
               </div>
-              {plyr.games.length <= 0 ? (
-                <p>No Game Available. </p>
-              ) : (
+
                 <>
-                  {plyr.games?.map((gm) => (
-                    <>
-                      <span className="logo">
-                        <img src={gm.imgUrl} alt="" />
-                      </span>{' '}
-                    </>
-                  ))}
+                  <span className="logo">
+                    <img src={plyr.players.current_videogame?.imgUrl} alt="NO GAME" />
+                  </span>{' '}
                 </>
-              )}
+
               <span className="remarks">
                 <h4>ROLE</h4>
                 <p>Support Scout Sniper Driver Fragger Ingame leader</p>
@@ -173,7 +167,9 @@ const Players = ({ user, profile, myState, selectedGame }) => {
                 <div className="over_prof">
                   <div className="pics">
                     {' '}
-                    <img src="/assets/media/discover/team1.png" alt="" />{' '}
+                    {plyr.players.current_team ? <img src={plyr.players.current_team.image_url} alt="" /> : <img src="/assets/media/discover/team1.png" alt="" />}
+
+                    {' '}
                   </div>
                   <h3>
                     {plyr.players ? plyr.players.nickName : 'no nickname'}
@@ -181,11 +177,11 @@ const Players = ({ user, profile, myState, selectedGame }) => {
                 </div>
 
                 <div className="ranking">
-                  <h4>Past Team</h4>
+                  <h4>Current Team</h4>
                   <div className="past">
                     <img src="/assets/media/discover/icon1.png" alt="" />{' '}
                     <b>
-                      {plyr.team ? plyr.team.map((tm) => tm.name) : 'NO TEAM'}
+                      {plyr.players.current_team ? plyr.players.current_team.name : 'NO TEAM'}
                     </b>{' '}
                     <img src="/assets/media/discover/country.png" alt="" />{' '}
                   </div>

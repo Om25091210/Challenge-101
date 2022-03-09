@@ -776,10 +776,6 @@ export const getServerSideProps = async (context, query) => {
     }&category=${category}&sort=${sort}&title=${search}`
   );
 
-  console.log('TTTTTTTTTT OOOOOOOO PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP');
-  
-  console.log(resprod.products);
-
   return {
     props: { data, products: resprod.products }
   };
