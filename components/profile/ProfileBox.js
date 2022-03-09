@@ -28,8 +28,9 @@ const ProfileBox = ({ user, Userdata, games }) => {
   const [userIgn, setUserIgn] = useState(null);
 
   const [address, setAddress] = useState(Userdata.profile?.address);
+
   const [attr, setAttr] = useState(
-    Userdata.profile.playergames[0].player?.attributes
+    Userdata.profile.playergames[0]?.player?.attributes
   );
 
   const [follow, setFollow] = useState(false);
@@ -41,6 +42,8 @@ const ProfileBox = ({ user, Userdata, games }) => {
     mutate({ follow });
     setFollow(true);
   };
+
+
 
   const addFollow = async () => {
     const res = await fetch(`${baseURL}/api/profile/follow/${SrhUser._id}`, {
@@ -199,7 +202,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
     } else {
       try {
         await axios.put(
-          `${baseURL}/api/all/attribute/${Userdata.profile.playergames[0].player._id}`,
+          `${baseURL}/api/all/attribute/${Userdata.profile.playergames[0]?.player._id}`,
           attr,
           {
             headers: {

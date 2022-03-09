@@ -24,10 +24,10 @@ const ProfileGameStat = ({ user, Userdata, selectedGame }) => {
     <div className="right_bio">
       {selectedGame?.game?.slug === stat?.slug ? (
         <div className="games_data white_bg">
-          {Userdata.profile.playergames.length === 0 ? (
+          {Userdata.profile.playergames?.length === 0 ? (
             <div>No Games for {user.name}</div>
           ) : (
-            Userdata.profile.playergames.map((item, index) => (
+            Userdata.profile.playergames?.map((item, index) => (
               <>
                 <div
                   className={`tab ${`item${index}` == 'item0' ? '' : 'hide1'}`}
