@@ -43,8 +43,6 @@ const ProfileBox = ({ user, Userdata, games }) => {
     setFollow(true);
   };
 
-
-
   const addFollow = async () => {
     const res = await fetch(`${baseURL}/api/profile/follow/${SrhUser._id}`, {
       method: 'POST',
@@ -371,7 +369,10 @@ const ProfileBox = ({ user, Userdata, games }) => {
                 <div className="inner_model_box">
                   <h3>Personal Detail's</h3>
 
-                  <form onSubmit={handleAttrForm} className="common_form">
+                  <form
+                    onSubmit={handleAttrForm}
+                    className="common_form personal_form"
+                  >
                     <div className="form-group">
                       <div className="colm">
                         <label htmlFor="exampleFormControlInput1">Role</label>
@@ -380,7 +381,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                           name="roles"
                           onChange={handleChangeAttr}
                           value={attr?.roles}
-                          className="form-control"
+                          className="custom-select text-capitalize"
                         >
                           <option value="Player">Player</option>
                           <option value="Front">Front</option>
@@ -396,7 +397,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                           name="regions"
                           onChange={handleChangeAttr}
                           value={attr?.regions}
-                          className="form-control"
+                          className="custom-select text-capitalize"
                         >
                           <option value="India">India</option>
                           <option value="USA">USA</option>
@@ -415,7 +416,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                           name="playertype"
                           onChange={handleChangeAttr}
                           value={attr?.playertype}
-                          className="form-control"
+                          className="custom-select text-capitalize"
                         >
                           <option value="Casual">Casual</option>
                           <option value="SemiPro">SemiPro</option>
@@ -433,7 +434,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                           name="platform"
                           onChange={handleChangeAttr}
                           value={attr?.platform}
-                          className="form-control"
+                          className="custom-select text-capitalize"
                         >
                           <option value="PC">PC</option>
                           <option value="Front">Front</option>
@@ -451,7 +452,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                           name="language"
                           onChange={handleChange}
                           value={attr?.language}
-                          className="form-control"
+                          className="custom-select text-capitalize"
                           multiple={true}
                         >
                           <option value="English">English</option>
@@ -468,13 +469,16 @@ const ProfileBox = ({ user, Userdata, games }) => {
                           name="paid"
                           onChange={handleChangeAttr}
                           value={attr?.paid}
-                          className="form-control"
+                          className="custom-select text-capitalize"
                         >
                           <option value="Paid">Paid</option>
                           <option value="Unpaid">Unpaid</option>
                         </select>
                       </div>
-                      <button className="btn">Update</button>
+                      <div className="colm">
+                        {' '}
+                        <button className="btn">Update</button>
+                      </div>
                     </div>
                   </form>
                 </div>

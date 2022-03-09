@@ -755,6 +755,7 @@ ul.top_menu li.wallet li{     float: left;
     border-radius: 5px;
     box-shadow: 0 0 10px #ddd;
 }
+.create_menu ul li a{ color: #fff;}
 
 .create_menu ul li .fa{ font-size: 20px;}
 .create_menu .message{ text-align: left; width:45%;
@@ -6132,10 +6133,9 @@ ul.game_search_result li {
 .game_list_page li .imgs {
     position: absolute;
     left: 0;
-    top: 40px;
+    top: 125px;
     right: 0;
     margin: auto;
-    bottom: 0;
     width: 70px;
     height: 70px;
     background: #fff;
@@ -6166,6 +6166,8 @@ ul.game_search_result li {
 .game_list_page li h3 {
 	font-weight: 600;
 }
+
+.game_list_page li h5{ font-size: 12px;}
 .game_list_page li .bottom_data span {
 	position: absolute;
 	right: 10px;
@@ -6388,6 +6390,11 @@ ul.game_search_result li {
 	float: left;
 	width: 1100px;
 }
+
+#language{ height: 80px;}
+.personal_form .colm:last-child{ float: right;}
+.personal_form .colm:last-child .btn{ width: 100%;}
+
 /*  end custom model box */
 
 .fancybox-skin {
@@ -7224,3 +7231,8 @@ body.DarkPage .wallet_box{ background: none;}
 body.DarkPage .box{ background: #1e1e27; color: #fff;}
 body.DarkPage .amt_bal .amt img, body.DarkPage .amt img{-webkit-filter: invert(0);filter: invert(0);}
 body.DarkPage .game_list_page li p{ color: #ababab;}
+body.DarkPage .products li{ background: #26292e;}
+body.DarkPage .products li .pro_img{border: 1px solid #26292e;}
+body.DarkPage .team_match_row .vs{ color: #fff;}
+
+body.DarkPage .bio_box .left_bio .bio_edit .fa, body.DarkPage .loc_box i{ color: #fff;}

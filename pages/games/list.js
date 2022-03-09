@@ -32,9 +32,12 @@ const Games = ({ user, games }) => {
                     </div>
                     <div className="bottom_data">
                       <h3>{games.name}</h3>
-                      {games.description?.length > 160
-                        ? games?.description.substring(0, 160).concat('...')
-                        : games?.description}
+                      <h5>
+                        {' '}
+                        {games.description?.length > 160
+                          ? games?.description.substring(0, 160).concat('...')
+                          : games?.description}
+                      </h5>
 
                       <p>110k players|91 tournaments|168 communities</p>
                     </div>
