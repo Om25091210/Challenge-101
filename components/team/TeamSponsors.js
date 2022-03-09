@@ -4,8 +4,6 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 
 const TeamSponsors = ({ user, data }) => {
-  const isLoggedInUser = data.team.user?._id === user._id;
-
   const [sponsors, setSponsors] = useState([]);
 
   const [state, setState] = useState({
@@ -73,52 +71,53 @@ const TeamSponsors = ({ user, data }) => {
             ))}
         </ul>
 
-        {isLoggedInUser ? (
-          <span>
-            <div className="loc_box">
-              {' '}
-              <a href="#!" className="model_show_btn">
-                <i
-                  className="fa fa-pencil"
-                  aria-hidden="true"
-                  style={{ color: 'red' }}
-                ></i>
+        <span>
+          <div className="loc_box">
+            {' '}
+            <a href="#!" className="model_show_btn">
+              <i
+                className="fa fa-pencil"
+                aria-hidden="true"
+                style={{ color: 'grey' }}
+              >
+                {' '}
+                Edit Sponsor
+              </i>
+            </a>
+            <div className="common_model_box" style={{ height: '12rem' }}>
+              <a href="#!" className="model_close">
+                X
               </a>
-              <div className="common_model_box" style={{ height: '12rem' }}>
-                <a href="#!" className="model_close">
-                  X
-                </a>
 
-                <div className="inner_model_box">
-                  <h3>Sponsor's</h3>
+              <div className="inner_model_box">
+                <h3>Sponsor's</h3>
 
-                  <form className="common_form" onSubmit={handleSubmit}>
-                    <div className="form-group">
-                      <div className="colm">
-                        <select
-                          className="form-control"
-                          name="sponsor"
-                          value={state.value}
-                          multiple={true}
-                          onChange={handleChange}
-                        >
-                          {sponsors.map((spon, idx) => (
-                            <option key={idx} value={spon._id}>
-                              {' '}
-                              {spon.name}{' '}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
-                      <button className="btn">Update</button>
+                <form className="common_form" onSubmit={handleSubmit}>
+                  <div className="form-group">
+                    <div className="colm">
+                      <select
+                        className="form-control"
+                        name="sponsor"
+                        value={state.value}
+                        multiple={true}
+                        onChange={handleChange}
+                      >
+                        {sponsors.map((spon, idx) => (
+                          <option key={idx} value={spon._id}>
+                            {' '}
+                            {spon.name}{' '}
+                          </option>
+                        ))}
+                      </select>
                     </div>
-                  </form>
-                </div>
-                <div className="overlay"></div>
+                    <button className="btn">Update</button>
+                  </div>
+                </form>
               </div>
+              <div className="overlay"></div>
             </div>
-          </span>
-        ) : null}
+          </div>
+        </span>
       </div>
     </div>
   );

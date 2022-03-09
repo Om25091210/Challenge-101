@@ -172,28 +172,40 @@ const SignedMainContent = ({ posts, user }) => {
         <div className="create_menu">
           <ul>
             <li>
-              <i class="fa fa-users" aria-hidden="true"></i>
-              <p>create a Team page</p>
+              <a href="/team/create">
+                <i class="fa fa-users" aria-hidden="true"></i>
+                <p>create a Team page</p>
+              </a>
             </li>
             <li>
-              <i class="fa fa-trophy" aria-hidden="true"></i>
-              <p> create a Tournament</p>
+              <a href="/tournament/create">
+                <i class="fa fa-trophy" aria-hidden="true"></i>
+                <p> create a Tournament</p>
+              </a>
             </li>
             <li>
-              <i class="fa fa-comments" aria-hidden="true"></i>
-              <p> create a Community page</p>
+              <a href="#">
+                <i class="fa fa-comments" aria-hidden="true"></i>
+                <p> create a Community page</p>
+              </a>
             </li>
             <li>
-              <i class="fa fa-briefcase" aria-hidden="true"></i>
-              <p> create a Brand page</p>
+              <a href="/brand/create">
+                <i class="fa fa-briefcase" aria-hidden="true"></i>
+                <p> create a Brand page</p>
+              </a>
             </li>
             <li>
-              <i class="fa fa-gamepad" aria-hidden="true"></i>
-              <p> create an Arena page</p>
+              <a href="/arena/create">
+                <i class="fa fa-gamepad" aria-hidden="true"></i>
+                <p> create an Arena page</p>
+              </a>
             </li>
             <li>
-              <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-              <p> create a Company page</p>
+              <a href="/company/create">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                <p> create a Company page</p>
+              </a>
             </li>
           </ul>
           <div className="message">
