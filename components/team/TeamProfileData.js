@@ -321,7 +321,7 @@ const TeamProfileData = ({ user, data, products }) => {
           <TeamJobs jobs={jobs} team={data.team} />
         </div>
 
-        <TeamAbout data={data.team} />
+        <TeamAbout tmdata={data.team} />
 
         <TeamSponsors data={data} user={user} />
 
