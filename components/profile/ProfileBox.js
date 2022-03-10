@@ -29,6 +29,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
   const [userIgn, setUserIgn] = useState(null);
 
   const [address, setAddress] = useState(Userdata.profile?.address);
+  const [phno, setPhno] = useState(user?.phone_number);
 
   const [attr, setAttr] = useState(
     Userdata.profile.playergames[0]?.player?.attributes
@@ -48,6 +49,30 @@ const ProfileBox = ({ user, Userdata, games }) => {
     mutate({ follow });
     setFollow(true);
   };
+
+  const handleSubmitphno = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await fetch(`${baseURL}/api/profile/phone/${user._id}`, {
+        method: 'PATCH',
+        body: JSON.stringify({
+          phno
+        }),
+        headers: {
+          'Content-type': 'application/json'
+        }
+      });
+      toast.success('Your Phone Number has been Updated successfully! ');
+    } catch (err) {
+      toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+    }
+    $('a.model_close').parent().removeClass('show_model');
+    refreshData();
+  };
+
+  function handleChangephno(e) {
+    setPhno(e.target.value);
+  }
 
   const addFollow = async () => {
     const res = await fetch(`${baseURL}/api/profile/follow/${SrhUser._id}`, {
@@ -84,6 +109,20 @@ const ProfileBox = ({ user, Userdata, games }) => {
     try {
       await mutation.mutateAsync(formdata);
       toast.success('User settings have been updated');
+    } catch (err) {
+      toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+    }
+    try {
+      const res = await fetch(`${baseURL}/api/profile/phone/${user._id}`, {
+        method: 'PATCH',
+        body: JSON.stringify({
+          phno
+        }),
+        headers: {
+          'Content-type': 'application/json'
+        }
+      });
+      toast.success('Your Phone Number has been Updated successfully! ');
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }
@@ -354,7 +393,47 @@ const ProfileBox = ({ user, Userdata, games }) => {
             ) : null}
           </form>
         </div>
-
+        )
+        <span className="edit_cover_photo ">
+          <div className="personal_box">
+            {' '}
+            <a href="#!" className="model_show_btn" alt="personal details">
+              <button className="btn" style={{ marginRight: '30px' }}>
+                <i className="fa fa-pencil" aria-hidden="true">
+                  Ph_No
+                </i>
+              </button>
+            </a>
+            <div className="common_model_box">
+              <a href="#!" className="model_close">
+                X
+              </a>
+              <div className="inner_model_box">
+                <h3>Ph No</h3>
+                <form onSubmit={handleSubmitphno} className="common_form">
+                  <div className="form-group">
+                    <div className="colm">
+                      <label htmlFor="exampleFormControlInput1">
+                        Phone Number
+                      </label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="exampleFormControlInput1"
+                        placeholder="phone_number"
+                        name="phno"
+                        onChange={handleChangephno}
+                        value={phno}
+                      />
+                    </div>
+                    <button className="btn">Update</button>
+                  </div>
+                </form>
+              </div>
+              <div className="overlay"></div>
+            </div>
+          </div>
+        </span>
         {isLoggedInUser ? (
           <span className="edit_cover_photo ">
             <div className="personal_box">
@@ -478,9 +557,20 @@ const ProfileBox = ({ user, Userdata, games }) => {
                         </select>
                       </div>
                       <div className="colm">
-                        {' '}
-                        <button className="btn">Update</button>
+                        <label htmlFor="exampleFormControlInput1">
+                          Phone Number
+                        </label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="exampleFormControlInput1"
+                          placeholder="phone_number"
+                          name="phno"
+                          onChange={handleChangephno}
+                          value={phno}
+                        />
                       </div>
+                      <button className="btn">Update</button>
                     </div>
                   </form>
                 </div>
@@ -736,7 +826,6 @@ const ProfileBox = ({ user, Userdata, games }) => {
             </div>
           </div>
         </div>
-
         <div className="bio_box profile_bio">
           <div className="left_bio">
             <div className="top_bio">
