@@ -14,10 +14,6 @@ const SignedHeader = ({ user }) => {
   const { state, dispatch } = useContext(DataContext);
   const { auth, cart } = state;
 
-  if (user == undefined) {
-    router.push('/login');
-  }
-
   const [coin, setCoin] = useState();
   const [USD, setUSD] = useState();
 
@@ -156,7 +152,7 @@ const SignedHeader = ({ user }) => {
           <li className="profile">
             <a href="#!">
               <span className="dps">
-                <img src={user.profilePicUrl} alt={user.name} />
+                <img src={user?.profilePicUrl} alt={user.name} />
               </span>
               <span>
                 {user.name}{' '}

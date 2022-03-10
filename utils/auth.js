@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useRouter } from 'next/router';
+import Router from 'next/router';
 import cookie from 'js-cookie';
 
 import baseURL from './baseURL';
@@ -13,7 +13,6 @@ export const registerUser = async (
   setStatus
 ) => {
 
-  const router = useRouter();  
   setLoading(true);
   try {
     var name = firstname + ' ' + lastname;
@@ -25,7 +24,7 @@ export const registerUser = async (
     });
     toast.info(res.data.msg);
     setStatus('verify');
-    router.push('/verify');
+    Router.push('/verify');
   } catch (error) {
     const errorMsg = catchErrors(error);
     setError(errorMsg);
@@ -41,7 +40,6 @@ export const loginUser = async (
   toast
 ) => {
 
-  const router = useRouter();    
   setLoading(true);
   try {
     const res = await axios.post(`${baseURL}/api/auth`, {
@@ -50,7 +48,7 @@ export const loginUser = async (
     });
     console.log(res.data.token);
     setToken(res.data.token);
-    router.push('/dashboard');
+    Router.push('/dashboard');
   } catch (error) {
     const errorMsg = catchErrors(error);
     setError(errorMsg);
@@ -61,7 +59,6 @@ export const loginUser = async (
 
 export const onboardUser = async (verificationToken, setLoading, toast) => {
   setLoading(true);
-  const router = useRouter();  
   try {
     console.log(verificationToken);
     const res = await axios.post(
@@ -74,7 +71,7 @@ export const onboardUser = async (verificationToken, setLoading, toast) => {
     );
     setToken(res.data.token);
     toast.success(res.data.msg);
-    router.push('/dashboard');
+    Router.push('/dashboard');
   } catch (error) {
     const errorMsg = catchErrors(error);
     toast.error(errorMsg);
@@ -87,18 +84,15 @@ const setToken = (token) => {
 };
 
 export const logoutUser = () => {
-  const router = useRouter();    
   cookie.remove('token');
-  router.push('/login');
+  Router.push('/login');
 };
 
 export const redirectUser = (ctx, location) => {
-  console.log(location);
-  const router = useRouter();    
   if (ctx.req) {
     ctx.res.writeHead(302, { Location: location });
     ctx.res.end();
   } else {
-    router.push(location);
+    Router.push(location);
   }
 };
