@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import TeamPhotos from './TeamPhotos';
 import TeamVideos from './TeamVideos';
 import TeamAllStats from './TeamAllStats';
-import TeamSquads from './TeamSquads';
+import TeamSquads from './teamsquads/TeamSquads';
 import TeamStatistics from './teamstats/TeamStatistics';
 import axios from 'axios';
 import baseURL from '@utils/baseURL';
@@ -21,7 +21,6 @@ const TeamProfileData = ({ user, data, products }) => {
   const [jobs, setJobs] = useState([]);
   const [teamposts, setTeamPosts] = useState([]);
   const [tournamentStatData, setTournamentStatData] = useState([]);
-  console.log(data);
   useEffect(() => {
     $('a.model_show_btn').click(function () {
       $(this).next().addClass('show_model');
@@ -216,7 +215,11 @@ const TeamProfileData = ({ user, data, products }) => {
           </div>
         </div>
         <div className="tab hide" id="squads">
-          <TeamSquads squads={data.squads} />
+          <TeamSquads
+            squads={data.squads}
+            teamplayers={data.players}
+            team={data.team}
+          />
         </div>
         <div className="tab hide" id="achievement">
           <div className="achivement_box">

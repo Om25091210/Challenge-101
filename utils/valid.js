@@ -161,3 +161,17 @@ export const tournamentformvalidate = (values) => {
   }
   return errors;
 };
+
+export const teamsquadformvalidate = (values) => {
+  const errors = {};
+  if (!values.name) {
+    errors.name = 'Tournament Name is requried';
+  }
+  if (!values.location) {
+    errors.location = 'Location is required';
+  }
+  if (!values.players) {
+    errors.players = 'Atleast One player is required';
+  }
+  return errors;
+};
