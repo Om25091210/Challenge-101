@@ -152,10 +152,10 @@ const SignedHeader = ({ user }) => {
           <li className="profile">
             <a href="#!">
               <span className="dps">
-                <img src={user?.profilePicUrl} alt={user.name} />
+                <img src={user?.profilePicUrl} alt={user?.name} />
               </span>
               <span>
-                {user.name}{' '}
+                {user?.name}{' '}
                 <p className="">
                   {' '}
                   <span className="online"></span> Online
@@ -168,7 +168,7 @@ const SignedHeader = ({ user }) => {
             <div className="drop_down_bg profile_drop_down">
               <ul>
                 <li>
-                  <Link href={`/user/${user._id}`}>
+                  <Link href={`/user/${user?._id}`}>
                     <a>My Profile</a>
                   </Link>
                 </li>
@@ -229,11 +229,6 @@ const SignedHeader = ({ user }) => {
                     <MPNumberFormat value={coin} />
                   </span>
                   <span>USD: ${USD} Balance</span>
-                </li>
-                <li>
-                  <p>
-                    Recently Withdrawn: <span className="money"> R3258.70</span>
-                  </p>
                 </li>
 
                 <li className="two_btn">
