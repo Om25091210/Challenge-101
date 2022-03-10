@@ -1,11 +1,9 @@
 import axios from 'axios';
-import Router from 'next/router';
+import { useRouter } from 'next/router';
 import cookie from 'js-cookie';
 
 import baseURL from './baseURL';
 import catchErrors from './catchErrors';
-
-
 
 export const searchTournaments = async (
   { search, filters },
@@ -35,8 +33,9 @@ export const searchTournaments = async (
 
 
 export const logoutUser = () => {
+  const router = useRouter();
   cookie.remove('token');
-  Router.push('/login');
+  router.push('/login');
 };
 
 

@@ -75,7 +75,7 @@ const GameVideos = ({ user, game }) => {
 
         <p></p>
 
-        {game.videosgallery && game.videosgallery.map((vid, idx) => (
+        {game?.videosgallery && game?.videosgallery?.map((vid, idx) => (
           <ul key={idx}>
             {vid.videos.map((vide, idex) => (
               <li key={idex}>

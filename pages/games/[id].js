@@ -21,21 +21,28 @@ const Games = ({ user, data }) => {
 
 export const getServerSideProps = async (context) => {
   const { id } = context.params;
+  
+  if(!isNaN(id)){ 
+    try {
+      const response = await fetch(`${baseURL}/api/games/${id}`);
+      const data = await response.json();
 
-  try {
-    const response = await fetch(`${baseURL}/api/games/${id}`);
-    const data = await response.json();
-
-    return {
-      props: {
-        data
-      }
-    };
-  } catch {
-    return {
-      props: {}
-    };
+      return {
+        props: {
+          data
+        }
+      };
+    } catch {
+      return {
+        props: {}
+      };
+    }  
+  } else {
+      return {
+        props: {}
+      };  
   }
+  
 };
 
 export default Games;

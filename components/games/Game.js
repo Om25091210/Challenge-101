@@ -13,7 +13,7 @@ import Matches from '@components/team/Matches';
 
 const Game = ({ user, data }) => {
 
-  const [game, setGame] = useState(data.games);
+  const [game, setGame] = useState(data?.games);
 
   return (
     <div>
@@ -114,7 +114,7 @@ const Game = ({ user, data }) => {
 
               <div className="games">
                 <h3>PLATFORM: </h3>
-                <p>{game.platform}</p>{' '}
+                <p>{game?.platform}</p>{' '}
               </div>
             </div>
             <div className="right_team_bio">
@@ -290,7 +290,7 @@ const Game = ({ user, data }) => {
             {/* /* ---- end game row --- */}
           </div>
           <div className="tab hide" id="matches">
-            <Matches teamMatches={data.gameArray} />
+            <Matches teamMatches={data?.matchArray} />
           </div>
           <div className="tab hide" id="video">
             <GameVideos user={user} game={game} />

@@ -8,7 +8,7 @@ import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import baseURL from '@utils/baseURL';
 import valid from '@utils/valid';
-import Router from 'next/router';
+import { useRouter } from 'next/router';
 import { DataContext } from '@store/GlobalState';
 import { postData } from '@utils/fetchData';
 import Select from 'react-select';
@@ -18,6 +18,9 @@ const usernameRegex = /^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{0,29}$/;
 let cancel;
 
 const Signup = ({ games, avatars }) => {
+
+  const router = useRouter();
+
   const [user, setUser] = useState({
     firstname: '',
     lastname: '',
@@ -104,7 +107,7 @@ const Signup = ({ games, avatars }) => {
 
         dispatch({ type: 'NOTIFY', payload: { success: res.msg } });
         toast.info(res.data.msg);
-        Router.push(`/verify`);
+        router.push('/verify');
       } catch (err) {
         console.log(err);
         toast.error(err.response?.data?.msg || 'Please recheck your inputs');

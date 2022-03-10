@@ -19,7 +19,7 @@ import { loadStripe } from '@stripe/stripe-js';
 const stripePromise = loadStripe(process.env.NEXT_STRIPE_TEST_SECRET_KEY);
 
 const MyWallet = ({ user }) => {
-  const publicKey = user.phone_number;
+  const publicKey = user?.phone_number;
   const username = user.username;
   const [coin, setCoin] = useState();
   const [USD, setUSD] = useState();
