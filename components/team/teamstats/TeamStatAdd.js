@@ -4,6 +4,7 @@ import cookie from 'js-cookie';
 import axios from 'axios';
 import baseURL from '@utils/baseURL';
 import { toast } from 'react-toastify';
+import { useRouter } from 'next/router';
 
 const TeamStatAdd = ({ showform }) => {
   const [formData, setFormData] = useState({
@@ -14,6 +15,13 @@ const TeamStatAdd = ({ showform }) => {
     loss: '',
     w_streak: ''
   });
+
+  const router = useRouter();
+
+  const refreshData = () => {
+    router.replace(router.asPath);
+  };
+
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -29,13 +37,11 @@ const TeamStatAdd = ({ showform }) => {
         }
       });
       toast.success('Tournament Stats has added.');
-      window.setTimeout(function () {
-        location.reload();
-      }, 4000);
     } catch (err) {
       console.log(err);
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }
+    refreshData();
   };
 
   return (

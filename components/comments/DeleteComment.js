@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider, useMutation } from 'react-query';
 import cookie from 'js-cookie';
 import { toast } from 'react-toastify';
 import axios from 'axios';
+import { useRouter } from 'next/router';
 
 const queryClient = new QueryClient();
 
@@ -14,12 +15,6 @@ export default function DeleteComment({ post, comment, user }) {
   );
 }
 
-function refreshPage() {
-  setTimeout(function () {
-    window.location.reload(false);
-  }, 5000);
-}
-
 const Delete_Comment = ({ post, comment, user }) => {
   const DeleteComment = async () => {
     await axios.delete(`${baseURL}/api/comments/${post._id}/${comment._id}`, {
@@ -27,6 +22,11 @@ const Delete_Comment = ({ post, comment, user }) => {
         Authorization: cookie.get('token')
       }
     });
+  };
+
+  const router = useRouter();
+  const refreshData = () => {
+    router.replace(router.asPath);
   };
 
   const { mutateAsync } = useMutation(DeleteComment);
@@ -40,21 +40,20 @@ const Delete_Comment = ({ post, comment, user }) => {
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }
-
-    refreshPage();
+    refreshData();
   };
 
   return (
     <div className="delete_comment">
-      {comment.user != null ? ( comment.user._id === user._id ? (
-        <button onClick={deletehandlesubmit}>Delete</button>
+      {comment.user != null ? (
+        comment.user._id === user._id ? (
+          <button onClick={deletehandlesubmit}>Delete</button>
+        ) : (
+          []
+        )
       ) : (
-        []
-      )
-
-      ) : ''
-
-    }
+        ''
+      )}
     </div>
   );
 };

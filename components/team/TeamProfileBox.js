@@ -1,15 +1,21 @@
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useState } from 'react';
 import axios from 'axios';
 import baseURL from '@utils/baseURL';
-import { useForm } from 'react-hook-form';
-import { useQuery } from 'react-query';
 import cookie from 'js-cookie';
 import { toast } from 'react-toastify';
+import { useRouter } from 'next/router';
 
 const TeamProfileBox = ({ user, data }) => {
   const [attr, setAttr] = useState(data.team.attributes);
-  const isLoggedInUser = data.team.user?._id === user?._id;
+  const router = useRouter();
+  const refreshData = () => {
+    router.replace(router.asPath);
+  };
+
+  const isTeamPlayer =
+    data.players.filter((ply) => {
+      return ply?.user === user?._id;
+    }).length > 0;
 
   function handleChangeAttr(e) {
     setAttr({ ...attr, [e.target.name]: e.target.value });
@@ -43,9 +49,7 @@ const TeamProfileBox = ({ user, data }) => {
         console.log(err);
         toast.error(err.response?.data?.msg || 'Please recheck your inputs');
       }
-      window.setTimeout(function () {
-        location.reload();
-      }, 800);
+      refreshData();
     }
   };
 
@@ -101,7 +105,7 @@ const TeamProfileBox = ({ user, data }) => {
               </a>
             </div>
 
-            {isLoggedInUser ? (
+            {isTeamPlayer ? (
               <span
                 // className="edit_cover_photo "
                 style={{

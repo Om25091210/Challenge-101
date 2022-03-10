@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import cookie from 'js-cookie';
 import { toast } from 'react-toastify';
 import { teamsquadformvalidate } from '@utils/valid';
+import { useRouter } from 'next/router';
 
 const TeamSquadEdit = ({ teamplayers, squad }) => {
   const [editSquadData, setEditSquadData] = useState({
@@ -13,6 +14,11 @@ const TeamSquadEdit = ({ teamplayers, squad }) => {
     imgUrl: '/assets/media/default/tournament.jpg'
   });
   const [formErrors, setFormErrors] = useState({});
+  const router = useRouter();
+
+  const refreshData = () => {
+    router.replace(router.asPath);
+  };
 
   useEffect(() => {
     $('a.model_show_btn').click(function () {
@@ -57,13 +63,12 @@ const TeamSquadEdit = ({ teamplayers, squad }) => {
           }
         });
         toast.success('The Record has been Updated.');
-        window.setTimeout(function () {
-          location.reload();
-        }, 4000);
       } catch (err) {
         console.log(err);
         toast.error(err.response?.data?.msg || 'Please recheck your inputs');
       }
+      $('a.model_close').parent().removeClass('show_model');
+      refreshData();
     } else {
       toast.error('All fields are required.');
     }

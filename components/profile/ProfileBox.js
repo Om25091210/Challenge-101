@@ -9,6 +9,7 @@ import cookie from 'js-cookie';
 import Badges from './badges';
 import { locationformvalidate } from '@utils/valid';
 import ProfileGameStat from './ProfileGameStat';
+import { useRouter } from 'next/router';
 
 const ProfileBox = ({ user, Userdata, games }) => {
   const [profilePic, setProfilePic] = useState(null);
@@ -36,6 +37,11 @@ const ProfileBox = ({ user, Userdata, games }) => {
   const [follow, setFollow] = useState(false);
 
   const [formErrors, setFormErrors] = useState({});
+  const router = useRouter();
+
+  const refreshData = () => {
+    router.replace(router.asPath);
+  };
 
   const followhandlesubmit = async (e) => {
     e.preventDefault();
@@ -179,9 +185,8 @@ const ProfileBox = ({ user, Userdata, games }) => {
         console.log(err);
         toast.error(err.response?.data?.msg || 'Please recheck your inputs');
       }
-      window.setTimeout(function () {
-        location.reload();
-      }, 800);
+      $('a.model_close').parent().removeClass('show_model');
+      refreshData();
     }
   };
 
@@ -214,9 +219,8 @@ const ProfileBox = ({ user, Userdata, games }) => {
         console.log(err);
         toast.error(err.response?.data?.msg || 'Please recheck your inputs');
       }
-      window.setTimeout(function () {
-        location.reload();
-      }, 800);
+      $('a.model_close').parent().removeClass('show_model');
+      refreshData();
     }
   };
 
@@ -224,9 +228,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
     addingBio();
     setBio('');
     setShowForm(false);
-    window.setTimeout(function () {
-      location.reload();
-    }, 800);
+    refreshData();
   };
 
   // useEffect(() => {

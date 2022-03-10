@@ -15,10 +15,10 @@ import {
   WhatsappShareButton,
   WhatsappIcon
 } from 'react-share';
+import { useRouter } from 'next/router';
 
 const CustomPost = ({ post }) => {
   const [posts, setPosts] = useState([post]);
-
   const [description, setDescription] = useState(posts[0].description);
   const [image, setImage] = useState(posts[0].images);
 
@@ -27,7 +27,9 @@ const CustomPost = ({ post }) => {
   const [isOriginalImages, setIsOriginalImages] = useState(true);
 
   const [shareToModal, setShareToModal] = useState(false);
-  const shareUrl = process.env.NEXT_PUBLIC_ESPORTS_API_BASE_URL+'/posts';
+  const router = useRouter();
+
+  const shareUrl = process.env.NEXT_PUBLIC_ESPORTS_API_BASE_URL + '/posts';
   // Delete a post
   const del = async (post) => {
     await axios.delete(`${baseURL}/api/posts/${post._id}`, {
@@ -66,7 +68,9 @@ const CustomPost = ({ post }) => {
         }
       })
   );
-
+  const refreshData = () => {
+    router.replace(router.asPath);
+  };
   const edithandleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -85,9 +89,7 @@ const CustomPost = ({ post }) => {
       await mutation.mutateAsync(formData);
       toast.success('Successs');
       setEditModal(false);
-      window.setTimeout(function () {
-        location.reload();
-      }, 4000);
+      refreshData();
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }

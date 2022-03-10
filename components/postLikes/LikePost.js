@@ -7,6 +7,7 @@ import {
 } from 'react-query';
 import cookie from 'js-cookie';
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 
 const queryClient = new QueryClient();
 
@@ -20,11 +21,17 @@ export default function LikePost({ postId, isLiked }) {
 
 const AddLike = ({ postId, isLiked }) => {
   const [like, setLike] = useState(false);
+  const router = useRouter();
+
+  const refreshData = () => {
+    router.replace(router.asPath);
+  };
 
   const handleLike = (e) => {
     e.preventDefault();
     mutate({ like });
     setLike(true);
+    refreshData();
   };
 
   const addingLike = async () => {

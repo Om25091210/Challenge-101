@@ -1,15 +1,21 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import baseURL from '../../utils/baseURL';
 import { useMutation } from 'react-query';
 import cookie from 'js-cookie';
+import { useRouter } from 'next/router';
 
 const Like_Comment = ({ postId, comment, user }) => {
   const [likecomment, setLikeComment] = useState(false);
+  const router = useRouter();
+  const refreshData = () => {
+    router.replace(router.asPath);
+  };
 
   const likehandlesubmit = async (e) => {
     e.preventDefault();
     mutate({ likecomment });
     setLikeComment(true);
+    refreshData();
   };
 
   const isLiked =

@@ -11,6 +11,7 @@ import AllPosts from '@components/dashboard/AllPosts';
 import axios from 'axios';
 import baseURL from '@utils/baseURL';
 import { toast } from 'react-toastify';
+import { useRouter } from 'next/router';
 
 const ProfileData = ({ user, Userdata, player, products }) => {
   const [profile, setProfile] = useState(Userdata.profile);
@@ -18,6 +19,12 @@ const ProfileData = ({ user, Userdata, player, products }) => {
   const [state, setState] = useState({
     sponsor: ''
   });
+  const router = useRouter();
+
+  const refreshData = () => {
+    router.replace(router.asPath);
+  };
+
   useEffect(() => {}, [profile]);
   useEffect(() => {}, [Userdata]);
 
@@ -44,9 +51,7 @@ const ProfileData = ({ user, Userdata, player, products }) => {
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }
-    window.setTimeout(function () {
-      location.reload();
-    }, 800);
+    refreshData();
   };
 
   function handleChange(e) {

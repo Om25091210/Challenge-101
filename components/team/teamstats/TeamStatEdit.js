@@ -1,10 +1,10 @@
 import baseURL from '@utils/baseURL';
 import React from 'react';
 import cookie from 'js-cookie';
-import { useMutation } from 'react-query';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import axios from 'axios';
+import { useRouter } from 'next/router';
 
 const TeamStatEdit = ({ statData }) => {
   const [editFormData, setEditFormData] = useState({
@@ -15,6 +15,11 @@ const TeamStatEdit = ({ statData }) => {
     loss: statData ? statData.loss : '',
     w_streak: statData ? statData.w_streak : ''
   });
+
+  const router = useRouter();
+  const refreshData = () => {
+    router.replace(router.asPath);
+  };
 
   const onChange = (e) => {
     setEditFormData({ ...editFormData, [e.target.name]: e.target.value });
@@ -34,14 +39,12 @@ const TeamStatEdit = ({ statData }) => {
         }
       );
       toast.success('The Record has been Updated.');
-      window.setTimeout(function () {
-        location.reload();
-      }, 4000);
     } catch (err) {
       console.log(err);
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }
     setEditFormData('');
+    refreshData();
   };
   return (
     <tr>

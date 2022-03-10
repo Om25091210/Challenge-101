@@ -2,7 +2,6 @@ import TeamSquadAdd from './TeamSquadAdd';
 import TeamSquadEdit from './TeamSquadEdit';
 
 const TeamSquads = ({ squads, teamplayers, team }) => {
-  console.log(squads);
   return (
     <>
       <TeamSquadAdd teamplayers={teamplayers} team={team} />

@@ -4,6 +4,7 @@ import React from 'react';
 import { useState } from 'react';
 import cookie from 'js-cookie';
 import { toast } from 'react-toastify';
+import { useRouter } from 'next/router';
 
 const TeamJobs = ({ jobs, team }) => {
   const [showform, setShowForm] = useState(false);
@@ -14,6 +15,12 @@ const TeamJobs = ({ jobs, team }) => {
     languages: '',
     job_role: ''
   });
+
+  const router = useRouter();
+  const refreshData = () => {
+    router.replace(router.asPath);
+  };
+
   const onChange = (e) => {
     setJobData({ ...jobdata, [e.target.name]: e.target.value });
   };
@@ -36,13 +43,11 @@ const TeamJobs = ({ jobs, team }) => {
         }
       });
       toast.success('Tournament Stats has added.');
-      window.setTimeout(function () {
-        location.reload();
-      }, 4000);
     } catch (err) {
       console.log(err);
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }
+    refreshData();
   };
   return (
     <>

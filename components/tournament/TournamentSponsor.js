@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import baseURL from '@utils/baseURL';
+import { useRouter } from 'next/router';
 
 const TournamentSponsor = ({ user, data }) => {
   useEffect(() => {
@@ -19,6 +20,10 @@ const TournamentSponsor = ({ user, data }) => {
   const [state, setState] = useState({
     sponsor: ''
   });
+  const router = useRouter();
+  const refreshData = () => {
+    router.replace(router.asPath);
+  };
 
   useEffect(() => {
     axios
@@ -43,9 +48,7 @@ const TournamentSponsor = ({ user, data }) => {
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }
-    window.setTimeout(function () {
-      location.reload();
-    }, 800);
+    refreshData();
   };
 
   function handleChange(e) {

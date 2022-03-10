@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import cookie from 'js-cookie';
 import { toast } from 'react-toastify';
 import { teamsquadformvalidate } from '@utils/valid';
+import { useRouter } from 'next/router';
 
 const TeamSquadAdd = ({ teamplayers, team }) => {
   const [squadData, setSquadData] = useState({
@@ -15,7 +16,12 @@ const TeamSquadAdd = ({ teamplayers, team }) => {
     teamId: team._id
   });
   const [formErrors, setFormErrors] = useState({});
-  console.log(Object.entries(formErrors).length);
+  const router = useRouter();
+
+  const refreshData = () => {
+    router.replace(router.asPath);
+  };
+
   const handleEditStat = async (e) => {
     e.preventDefault();
     if (Object.keys(formErrors).length === 0) {
@@ -27,13 +33,12 @@ const TeamSquadAdd = ({ teamplayers, team }) => {
           }
         });
         toast.success('Team Squad has being added.');
-        window.setTimeout(function () {
-          location.reload();
-        }, 4000);
       } catch (err) {
         console.log(err);
         toast.error(err.response?.data?.msg || 'Please recheck your inputs');
       }
+      $('a.model_close').parent().removeClass('show_model');
+      refreshData();
     } else {
       toast.error('All fields are required.');
     }
