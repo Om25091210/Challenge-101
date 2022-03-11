@@ -89,14 +89,9 @@ const TournamentSponsor = ({ user, data }) => {
           <div className="loc_box">
             {' '}
             <a href="#!" className="model_show_btn">
-              <i
-                className="fa fa-pencil"
-                aria-hidden="true"
-                style={{ color: 'grey' }}
-              >
-                {' '}
-                Edit Sponsor
-              </i>
+              <button className="btn">
+                <i aria-hidden="true"> Edit Sponsor</i>
+              </button>
             </a>
             <div className="common_model_box" style={{ height: '12rem' }}>
               <a href="#!" className="model_close">

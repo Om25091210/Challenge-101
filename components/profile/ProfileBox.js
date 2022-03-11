@@ -112,20 +112,6 @@ const ProfileBox = ({ user, Userdata, games }) => {
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }
-    try {
-      const res = await fetch(`${baseURL}/api/profile/phone/${user._id}`, {
-        method: 'PATCH',
-        body: JSON.stringify({
-          phno
-        }),
-        headers: {
-          'Content-type': 'application/json'
-        }
-      });
-      toast.success('Your Phone Number has been Updated successfully! ');
-    } catch (err) {
-      toast.error(err.response?.data?.msg || 'Please recheck your inputs');
-    }
   };
 
   const handleCoverSubmit = async (e) => {
@@ -556,20 +542,6 @@ const ProfileBox = ({ user, Userdata, games }) => {
                           <option value="Unpaid">Unpaid</option>
                         </select>
                       </div>
-                      <div className="colm">
-                        <label htmlFor="exampleFormControlInput1">
-                          Phone Number
-                        </label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="exampleFormControlInput1"
-                          placeholder="phone_number"
-                          name="phno"
-                          onChange={handleChangephno}
-                          value={phno}
-                        />
-                      </div>
                       <button className="btn">Update</button>
                     </div>
                   </form>
@@ -831,17 +803,21 @@ const ProfileBox = ({ user, Userdata, games }) => {
             <div className="top_bio">
               <h3>BIO</h3>
               <div className="socail">
-                <a href="#">
+                <a href="https://www.facebook.com/" target="_blank">
                   <i className="fa fa-facebook-official" aria-hidden="true"></i>
                 </a>
-                <a href="#">
+                <a href="https://www.instagram.com/" target="_blank">
                   <i className="fa fa-instagram" aria-hidden="true"></i>
                 </a>
-                <a href="#">
-                  <i className="fa fa-facebook-official" aria-hidden="true"></i>
+                <a href="https://www.twitch.tv/" target="_blank">
+                  <i className="fa fa-twitch" aria-hidden="true"></i>
                 </a>
-                <a href="#">
-                  <i className="fa fa-facebook-official" aria-hidden="true"></i>
+                <a href="https://discord.com/" target="_blank">
+                  <img
+                    src="/assets/media/social/discord.png"
+                    height="20px"
+                    width="20px"
+                  />
                 </a>
               </div>
             </div>
