@@ -80,7 +80,7 @@ function LeftNav({user}) {
             </Link>{' '}
           </li>
 
-          {user.role === 'admin' ? (
+          {user?.role === 'admin' ? (
             <li>
               <Link href="/settings">
                 <a className="">
