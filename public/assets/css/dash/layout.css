@@ -1242,8 +1242,9 @@ ul.top_menu li.wallet li{     float: left;
 .post_comments h3 {
 	font-size:12px;
 	color:#19191d;
-	font-weight: 600;
-	margin-right:10px;
+	font-weight: 400;
+	margin-right:10px; line-height: 20px;
+	 float: left; width: 90%;
 }
 .reply_like button span, .like_btn button span {
 	display: inline-block;
@@ -1987,6 +1988,27 @@ article .social_bar {
 	border-radius: 5px;
 	z-index: 9;
 }
+
+.profile_box .edit_phone {
+	position: absolute;
+	top: 350px;
+	right: 200px;
+	color: #000;
+	background: #ddd;
+	border-radius: 5px;
+	z-index: 9;
+}
+
+.profile_box .edit_add {
+	position: absolute;
+	top: 350px;
+	right: 260px;
+	color: #000;
+	background: #ddd;
+	border-radius: 5px;
+	z-index: 9;
+}
+
 .profile_box .edit_cover_photo .custom-file-input {
 	width: 0;
 	height: 0;
@@ -3078,7 +3100,7 @@ article .social_bar {
 	letter-spacing:1px;
 	border:0;
 	border-bottom:1px solid #ddd;
-	border-radius:0px;
+	border-radius:5px;
 	font-weight:400;
 }
 .team_search .searchbox input[type="submit"] {
@@ -6391,9 +6413,6 @@ ul.game_search_result li {
 	width: 1100px;
 }
 
-#language{ height: 80px;}
-.personal_form .colm:last-child{ float: right;}
-.personal_form .colm:last-child .btn{ width: 100%;}
 
 /*  end custom model box */
 
@@ -6434,22 +6453,34 @@ ul.game_search_result li {
 form.common_form .colm {
 	float: left;
 	width: 48%;
-	margin-bottom: 10px;
+	margin-bottom: 20px; position: relative;
 }
+
+form.common_form .colm p{ position: absolute; left: 0; color: red; font-size: 11px; bottom: -15px;}
+
+form.common_form .colm select{ font-size: 13px;}
+
 form.common_form .colm:nth-child(2n) {
 	float: right;
 }
 form.common_form label {
-	font-size: 15px;
+	font-size: 14px;
 	text-transform: capitalize;
-	font-weight: 600;
-	padding-bottom: 10px;
+	font-weight: 400;
+	padding-bottom: 5px; color: #000;
 }
 form.common_form input {
 	height: 45px;
 	font-size: 14px;
 	width: 100%;
 }
+
+
+#language{ height: 122px;}
+form.common_form .pphone{float: right;}
+form.common_form .btn{ width: 100%; margin-top: 20px;}
+
+
 .checkout_strip {
 	display: flex;
 	justify-content: space-between;
@@ -7236,3 +7267,11 @@ body.DarkPage .products li .pro_img{border: 1px solid #26292e;}
 body.DarkPage .team_match_row .vs{ color: #fff;}
 
 body.DarkPage .bio_box .left_bio .bio_edit .fa, body.DarkPage .loc_box i{ color: #fff;}
+
+body.DarkPage .features li .tit{ color: #fff;}
+
+body.DarkPage .table th, body.DarkPage .table td{  border-top: 1px solid #636363;}
+body.DarkPage .table thead th{border-bottom: 2px solid #636363;}
+body.DarkPage .rigs li .lft_prod_det .prod_name{ color: #62626e;}
+
+body.DarkPage .team_search .searchbox input[type="search"] { background: #18171d; border-bottom: 1px solid #18171d; border-radius:5px;}

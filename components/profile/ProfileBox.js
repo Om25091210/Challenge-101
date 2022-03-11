@@ -394,14 +394,12 @@ const ProfileBox = ({ user, Userdata, games }) => {
           </form>
         </div>
         )
-        <span className="edit_cover_photo ">
-          <div className="personal_box">
+        <div className="edit_phone ">
+          <div className="">
             {' '}
             <a href="#!" className="model_show_btn" alt="personal details">
-              <button className="btn" style={{ marginRight: '30px' }}>
-                <i className="fa fa-pencil" aria-hidden="true">
-                  Ph_No
-                </i>
+              <button className="btn">
+                <i class="fa fa-phone" aria-hidden="true"></i>
               </button>
             </a>
             <div className="common_model_box">
@@ -409,10 +407,10 @@ const ProfileBox = ({ user, Userdata, games }) => {
                 X
               </a>
               <div className="inner_model_box">
-                <h3>Ph No</h3>
+                <h3>Phone Number</h3>
                 <form onSubmit={handleSubmitphno} className="common_form">
                   <div className="form-group">
-                    <div className="colm">
+                    <div className="">
                       <label htmlFor="exampleFormControlInput1">
                         Phone Number
                       </label>
@@ -433,14 +431,16 @@ const ProfileBox = ({ user, Userdata, games }) => {
               <div className="overlay"></div>
             </div>
           </div>
-        </span>
+        </div>
         {isLoggedInUser ? (
-          <span className="edit_cover_photo ">
-            <div className="personal_box">
+          <div className="edit_add ">
+            <div className="">
               {' '}
               {/* <span className="ct" >Detail's</span>{' '} */}
               <a href="#!" className="model_show_btn" alt="personal details">
-                <i className="fa fa-pencil" aria-hidden="true"></i>
+                <button className="btn">
+                  <i class="fa fa-address-book-o" aria-hidden="true"></i>
+                </button>
               </a>
               <div className="common_model_box">
                 <a href="#!" className="model_close">
@@ -556,13 +556,13 @@ const ProfileBox = ({ user, Userdata, games }) => {
                           <option value="Unpaid">Unpaid</option>
                         </select>
                       </div>
-                      <div className="colm">
+                      <div className="colm pphone">
                         <label htmlFor="exampleFormControlInput1">
                           Phone Number
                         </label>
                         <input
                           type="text"
-                          className="form-control"
+                          className="custom-select text-capitalize"
                           id="exampleFormControlInput1"
                           placeholder="phone_number"
                           name="phno"
@@ -577,7 +577,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                 <div className="overlay"></div>
               </div>
             </div>
-          </span>
+          </div>
         ) : null}
         <div className="profile_dp_box">
           <div className="profile_pic">
@@ -689,90 +689,96 @@ const ProfileBox = ({ user, Userdata, games }) => {
                               </label>
                               <input
                                 type="text"
-                                className="form-control"
+                                className="custom-select text-capitalize"
                                 id="exampleFormControlInput1"
                                 placeholder="address line1"
                                 name="line1"
                                 onChange={handleChangeaddress}
                                 value={address?.line1}
                               />
+                              <p>{formErrors.line1}</p>
                             </div>
-                            <p>{formErrors.line1}</p>
+
                             <div className="colm">
                               <label htmlFor="exampleFormControlInput1">
                                 Address Line 2
                               </label>
                               <input
                                 type="text"
-                                className="form-control"
+                                className="custom-select text-capitalize"
                                 id="exampleFormControlInput1"
                                 placeholder="address line2"
                                 name="line2"
                                 onChange={handleChangeaddress}
                                 value={address?.line2}
                               />
+                              <p>{formErrors.line2}</p>
                             </div>
-                            <p>{formErrors.line2}</p>
+
                             <div className="colm">
                               <label htmlFor="exampleFormControlInput1">
                                 City
                               </label>
                               <input
                                 type="text"
-                                className="form-control"
+                                className="custom-select text-capitalize"
                                 id="exampleFormControlInput1"
                                 placeholder="city "
                                 name="city"
                                 onChange={handleChangeaddress}
                                 value={address?.city}
                               />
+                              <p>{formErrors.city}</p>
                             </div>
-                            <p>{formErrors.city}</p>
+
                             <div className="colm">
                               <label htmlFor="exampleFormControlInput1">
                                 State
                               </label>
                               <input
                                 type="text"
-                                className="form-control"
+                                className="custom-select text-capitalize"
                                 id="exampleFormControlInput1"
                                 placeholder="state"
                                 name="state"
                                 onChange={handleChangeaddress}
                                 value={address?.state}
                               />
+                              <p>{formErrors.state}</p>
                             </div>
-                            <p>{formErrors.state}</p>
+
                             <div className="colm">
                               <label htmlFor="exampleFormControlInput1">
                                 Country
                               </label>
                               <input
                                 type="text"
-                                className="form-control"
+                                className="custom-select text-capitalize"
                                 id="exampleFormControlInput1"
                                 placeholder="country"
                                 name="country"
                                 onChange={handleChangeaddress}
                                 value={address?.country}
                               />
+                              <p>{formErrors.country}</p>
                             </div>
-                            <p>{formErrors.country}</p>
+
                             <div className="colm">
                               <label htmlFor="exampleFormControlInput1">
                                 Zipcode
                               </label>
                               <input
                                 type="text"
-                                className="form-control"
+                                className="custom-select text-capitalize"
                                 id="exampleFormControlInput1"
                                 placeholder="zip code"
                                 name="zipcode"
                                 onChange={handleChangeaddress}
                                 value={address?.zipcode}
                               />
+                              <p>{formErrors.zipcode}</p>
                             </div>
-                            <p>{formErrors.zipcode}</p>
+
                             <button
                               className="btn"
                               onClick={() =>
