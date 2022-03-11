@@ -2186,7 +2186,7 @@ article .social_bar {
 }
 .bio_box .left_bio .top_bio .socail a {
 	color: #000;
-	margin-right: 10px;
+	margin-right: 10px; vertical-align: middle;
 }
 .bio_box .left_bio p {
 	font-size: 13px;

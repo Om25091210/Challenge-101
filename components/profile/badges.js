@@ -25,14 +25,19 @@ const Badges = ({ Userdata }) => {
     <>
       <div className="badges">
         <h5>BADGES</h5>
-        {Userdata.badges.map((bdg) => (
-          <img src={bdg.image} alt="" />
-        ))}
+        {Userdata.badges.length === 0 ? (
+          <p> :NO Badges</p>
+        ) : (
+          <>
+            {Userdata.badges.map((bdg) => (
+              <img src={bdg.image} alt="" />
+            ))}
 
-        <a href="#more_badges" className="common_poup">
-          More...
-        </a>
-
+            <a href="#more_badges" className="common_poup">
+              More...
+            </a>
+          </>
+        )}
         <div
           id="more_badges"
           className="after_load_scroll"
