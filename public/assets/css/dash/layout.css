@@ -7275,3 +7275,4 @@ body.DarkPage .table thead th{border-bottom: 2px solid #636363;}
 body.DarkPage .rigs li .lft_prod_det .prod_name{ color: #62626e;}
 
 body.DarkPage .team_search .searchbox input[type="search"] { background: #18171d; border-bottom: 1px solid #18171d; border-radius:5px;}
+body.DarkPage .searchbox input[type="search"]{background: #18171d; border-bottom: 1px solid #18171d;}
