@@ -42,8 +42,19 @@ const TeamAbout = ({ tmdata }) => {
   };
 
   const handleSubmitAbout = async (e) => {
-    e.preventDefault;
+    e.preventDefault();
     axios.post(`${baseURL}/api/teams/upd/about/${tmdata._id}`, results);
+    window.setTimeout(function () {
+      location.reload();
+    }, 400);
+    refreshData();
+  };
+
+  const handleDelete = async (e) => {
+    axios.post(`${baseURL}/api/teams/del/about/${tmdata._id}`, { tId: e });
+    window.setTimeout(function () {
+      location.reload();
+    }, 400);
     refreshData();
   };
 
@@ -191,6 +202,9 @@ const TeamAbout = ({ tmdata }) => {
                   </div>
                   <h3>{emp.role.toUpperCase()}</h3>
                   <h4>{emp.employeeId.name} </h4>
+                  <button className="btn" onClick={() => handleDelete(emp._id)}>
+                    Delete Member
+                  </button>
                 </li>
               ))
             )}
