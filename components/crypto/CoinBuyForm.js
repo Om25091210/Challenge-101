@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-import PayInfo from './PayInfo';
 import { Form, Col, Row, Button, Card } from 'react-bootstrap';
 import API from "@utils/blockapi";
+import useRazorpay from "react-razorpay";
+import { useCallback } from "react";
 
 function CoinBuyForm({user}) {
     const cost = useRef(0);
@@ -17,6 +18,8 @@ function CoinBuyForm({user}) {
     const [invalid, setInvalid] = useState({});
     const [invalid2, setInvalid2] = useState({});
     const [hideButton, setHide] = useState(false);
+
+    const Razorpay = useRazorpay();
 
     useEffect(() => {
         API.getUSD()
@@ -84,6 +87,36 @@ function CoinBuyForm({user}) {
         setShow(true);
     }
 
+  const handlePayment = useCallback(() => {
+
+    console.log(process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID);
+    const options = {
+      key: "rzp_test_TGb47fS6VcBpqY",
+      amount: "3000",
+      currency: "INR",
+      name: "Multiplayr esports",
+      description: "Test Transaction",
+      image: "https://example.com/your_logo",
+      handler: (res) => {
+        console.log(res);
+      },
+      prefill: {
+        name: user.name,
+        email: user.email,
+        contact: '9880773498' //user.phone_number,
+      },
+      notes: {
+        address: "Multiplayr Coin Corporate Office",
+      },
+      theme: {
+        color: "#7238E9",
+      },
+    };
+
+    const rzpay = new Razorpay(options);
+    rzpay.open();
+  }, [Razorpay]);
+
     return (
         <>
             <Card style={{
@@ -142,12 +175,12 @@ function CoinBuyForm({user}) {
                     </Form.Group>
                     <Form.Group style={{ marginTop: 5 }} as={Row}>
                         <Col style={{ marginTop: 5 }} md={{ span: 10, offset: 5 }}>
-                            {hideButton ? null : <Button type="submit" onClick={() => setShow(true)}>Continue</Button>}
+                            {hideButton ? null : <Button type="submit" onClick={() => handlePayment()}>Continue</Button>}
                         </Col>
                     </Form.Group>
                 </Form>
             </Card>
-            <PayInfo data={data} user={user}/>
+
         </>
 
     )

@@ -3,6 +3,7 @@ import { Form, Button, Modal, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 import API from "@utils/blockapi";
 
+
 import {
     useStripe,
     useElements,
@@ -40,7 +41,6 @@ const PayInfo = ({data, user}) => {
             setShow(true);
         }
     }, [data.show]);
-
 
     const handleSubmit = async (event) => {
         event.preventDefault();
