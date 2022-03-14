@@ -10,8 +10,8 @@ function SendForm({user}) {
     const [coinVal, setCoinVal] = useState(0);
     const [coinAmount, setCoinAmount] = useState(0);
     const [toggle, setToggle] = useState(false);
-    const [usdVal, setUSDVal] = useState(0);
-    const [usdAmount, setUSDAmount] = useState(0);
+    const [inrVal, setINRVal] = useState(0);
+    const [inrAmount, setINRAmount] = useState(0);
     const [fees, setFees] = useState(0);
     const [total, setTotal] = useState(0);
     const [showAlert, setShowAlert] = useState(false);
@@ -19,11 +19,11 @@ function SendForm({user}) {
     const [showAlertVariant, setShowAlertVariant] = useState("danger");
 
     useEffect(() => {
-        API.getUSD()
+        API.getINR()
             .then(res => {
                 setCoinVal(res.data);
                 const div = 1 / res.data;
-                setUSDVal(div);
+                setINRVal(div);
             })
     })
 
@@ -45,15 +45,15 @@ function SendForm({user}) {
         const value = amount * coinVal;
         const fee = amount / 100;
 
-        setUSDAmount(value.toFixed(2));
+        setINRAmount(value.toFixed(2));
         setFees(fee);
         const total = amount + fee;
         setTotal(total);
     }
 
-    //Input is USD
-    const getUSD = (usd) => {
-        const value = usd * usdVal;
+    //Input is INR
+    const getINR = (inr) => {
+        const value = inr * inrVal;
         setCoinAmount(value);
         const fee = value / 100;
         setFees(fee);
@@ -67,7 +67,7 @@ function SendForm({user}) {
             getValue(val);
         } else {
             setToggle(false)
-            getUSD(val);
+            getINR(val);
         }
     }
 
@@ -125,12 +125,12 @@ function SendForm({user}) {
 
                     <Form.Group as={Row} controlId="cost">
                         <Form.Label style={{ marginTop: 5 }} column md={4}>
-                            Amount USD:
+                            Amount INR:
                         </Form.Label>
                         <Col style={{ marginTop: 5 }} md={{ span: 4, offset: 4 }}>
                             {toggle
-                                ? <Form.Control className="inputBox" type="text" onFocus={(e) => toggleListener(false, e.target.value)} value={usdAmount} />
-                                : <Form.Control className="inputBox" type="text" onChange={(e) => getUSD(e.target.value)} />
+                                ? <Form.Control className="inputBox" type="text" onFocus={(e) => toggleListener(false, e.target.value)} value={inrAmount} />
+                                : <Form.Control className="inputBox" type="text" onChange={(e) => getINR(e.target.value)} />
                             }
                         </Col>
                     </Form.Group>

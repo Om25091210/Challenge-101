@@ -13,16 +13,11 @@ import AllScript from './AllScript';
 import CoinBuyForm from '@components/crypto/CoinBuyForm';
 import SendForm from '@components/crypto/SendForm';
 
-import { Elements } from '@stripe/react-stripe-js';
-import { loadStripe } from '@stripe/stripe-js';
-
-const stripePromise = loadStripe(process.env.NEXT_STRIPE_TEST_SECRET_KEY);
-
 const MyWallet = ({ user }) => {
   const publicKey = user?.phone_number;
   const username = user.username;
   const [coin, setCoin] = useState();
-  const [USD, setUSD] = useState();
+  const [INR, setINR] = useState();
   const [showBuy, setShowBuy] = useState('none');
   const [showSend, setShowSend] = useState('none');
 
@@ -33,13 +28,13 @@ const MyWallet = ({ user }) => {
   const getUserBalance = () => {
     API.getAddressBalance(publicKey).then((res) => {
       setCoin(res.data);
-      getUSD();
+      getINR();
     });
   };
-  const getUSD = () => {
-    API.getUSD().then((res) => {
+  const getINR = () => {
+    API.getINR().then((res) => {
       const value = res.data * coin;
-      setUSD(value.toFixed(2));
+      setINR(value.toFixed(2));
     });
   };
 
@@ -157,7 +152,7 @@ const MyWallet = ({ user }) => {
                 <span className="amt">
                   <img src="/assets/media/login/m.png" alt="" /> {coin}
                 </span>{' '}
-                USD: ${USD}
+                INR: Rs {INR}
               </div>
             </div>
             <div className="two_btn">
@@ -195,9 +190,7 @@ const MyWallet = ({ user }) => {
         </div>
 
         <div style={{ overflow: 'hidden', display: showBuy }}>
-          <Elements stripe={stripePromise}>
             <CoinBuyForm user={user} />
-          </Elements>
         </div>
 
         <div style={{ overflow: 'hidden', display: showSend }}>

@@ -15,7 +15,7 @@ const SignedHeader = ({ user }) => {
   const { auth, cart } = state;
 
   const [coin, setCoin] = useState();
-  const [USD, setUSD] = useState();
+  const [INR, setINR] = useState();
 
   useEffect(() => {
     getUserBalance();
@@ -24,13 +24,13 @@ const SignedHeader = ({ user }) => {
   const getUserBalance = () => {
     API.getAddressBalance(user.phone_number).then((res) => {
       setCoin(res.data);
-      getUSD();
+      getINR();
     });
   };
-  const getUSD = () => {
-    API.getUSD().then((res) => {
+  const getINR = () => {
+    API.getINR().then((res) => {
       const value = res.data * coin;
-      setUSD(value.toFixed(2));
+      setINR(value.toFixed(2));
     });
   };
 
@@ -228,7 +228,7 @@ const SignedHeader = ({ user }) => {
                     {' '}
                     <MPNumberFormat value={coin} />
                   </span>
-                  <span>USD: ${USD} Balance</span>
+                  <span>INR: Rs {INR} Balance</span>
                 </li>
 
                 <li className="two_btn">

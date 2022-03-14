@@ -11,8 +11,8 @@ function CoinBuyForm({user}) {
     const [coinVal, setCoinVal] = useState(0);
     const [coinAmount, setCoinAmount] = useState(0);
     const [toggle, setToggle] = useState(false);
-    const [usdVal, setUSDVal] = useState(0);
-    const [usdAmount, setUSDAmount] = useState(0);
+    const [inrVal, setINRVal] = useState(0);
+    const [inrAmount, setINRAmount] = useState(0);
     const [fees, setFees] = useState(0);
     const [total, setTotal] = useState(0);
     const [invalid, setInvalid] = useState({});
@@ -22,11 +22,11 @@ function CoinBuyForm({user}) {
     const Razorpay = useRazorpay();
 
     useEffect(() => {
-        API.getUSD()
+        API.getINR()
             .then(res => {
                 setCoinVal(res.data);
                 const div = 1 / res.data;
-                setUSDVal(div);
+                setINRVal(div);
             })
     })
     //Input is coins
@@ -38,7 +38,7 @@ function CoinBuyForm({user}) {
             setHide(false);
             const value = amount * coinVal;
 
-            setUSDAmount(value.toFixed(2));
+            setINRAmount(value.toFixed(2));
 
 
             const fee = value / 100;
@@ -48,22 +48,23 @@ function CoinBuyForm({user}) {
         }
     }
 
-    //Input is USD
-    const getUSD = (usd) => {
+    //Input is INR
+    const getINR = (inr) => {
 
-        if (isNaN(usd)) {
+        if (isNaN(inr)) {
             setInvalid({ isInvalid: "isInvalid" })
             setHide(true);
         } else {
             setHide(false);
             setInvalid({})
-            const value = usd * usdVal;
+            const value = inr * inrVal;
             setCoinAmount(value);
 
-            const fee = usd / 100;
+            const fee = inr / 100;
             setFees(fee.toFixed(2));
-            const total = parseFloat(usd) + parseFloat(fee);
+            const total = parseFloat(inr) + parseFloat(fee);
             setTotal(total.toFixed(2));
+            console.log(total);
         }
 
 
@@ -76,7 +77,7 @@ function CoinBuyForm({user}) {
             getValue(val);
         } else {
             setToggle(false)
-            getUSD(val);
+            getINR(val);
         }
     }
 
@@ -87,15 +88,15 @@ function CoinBuyForm({user}) {
         setShow(true);
     }
 
-  const handlePayment = useCallback(() => {
+  const handlePayment = async (tot) => {
 
-    console.log(process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID);
+    console.log(tot);
     const options = {
       key: "rzp_test_TGb47fS6VcBpqY",
-      amount: "3000",
+      amount: tot*100,
       currency: "INR",
       name: "Multiplayr esports",
-      description: "Test Transaction",
+      description: "Buying MP Coin",
       image: "https://example.com/your_logo",
       handler: (res) => {
         console.log(res);
@@ -114,8 +115,19 @@ function CoinBuyForm({user}) {
     };
 
     const rzpay = new Razorpay(options);
+
+  rzpay.on("payment.failed", function (response) {
+    alert(response.error.code);
+    alert(response.error.description);
+    alert(response.error.source);
+    alert(response.error.step);
+    alert(response.error.reason);
+    alert(response.error.metadata.order_id);
+    alert(response.error.metadata.payment_id);
+  });
+      
     rzpay.open();
-  }, [Razorpay]);
+  };
 
     return (
         <>
@@ -144,13 +156,13 @@ function CoinBuyForm({user}) {
                     </Form.Group>
                     <Form.Group as={Row} controlId="formPlaintextCost">
                         <Form.Label style={{ marginTop: 5 }} column md={4}>
-                            Cost USD:
+                            Cost INR:
                     </Form.Label>
 
                         <Col style={{ marginTop: 5 }} md={{ span: 4, offset: 4 }}>
                             {toggle
-                                ? <Form.Control type="text" onFocus={(e) => toggleListener(false, e.target.value)} value={usdAmount} />
-                                : <Form.Control type="text" onChange={(e) => getUSD(e.target.value)} {...invalid} />
+                                ? <Form.Control type="text" onFocus={(e) => toggleListener(false, e.target.value)} value={inrAmount} />
+                                : <Form.Control type="text" onChange={(e) => getINR(e.target.value)} {...invalid} />
                             }
                         </Col>
                         <Form.Control.Feedback type="invalid">
@@ -159,7 +171,7 @@ function CoinBuyForm({user}) {
                     </Form.Group>
                     <Form.Group as={Row} controlId="formPlaintextTransFees">
                         <Form.Label style={{ marginTop: 5 }} column md={4}>
-                            Trans Fees (1% USD):
+                            Trans Fees (1% INR):
                         </Form.Label>
                         <Col style={{ marginTop: 5 }} md={{ span: 4, offset: 4 }}>
                             <Form.Control readOnly value={fees} />
@@ -167,7 +179,7 @@ function CoinBuyForm({user}) {
                     </Form.Group>
                     <Form.Group as={Row} controlId="formPlaintextTotal">
                         <Form.Label style={{ marginTop: 5 }} column md={4}>
-                            Total (USD):
+                            Total (INR):
                         </Form.Label>
                         <Col style={{ marginTop: 5 }} md={{ span: 4, offset: 4 }}>
                             <Form.Control type="number" readOnly value={(total)} />
@@ -175,7 +187,7 @@ function CoinBuyForm({user}) {
                     </Form.Group>
                     <Form.Group style={{ marginTop: 5 }} as={Row}>
                         <Col style={{ marginTop: 5 }} md={{ span: 10, offset: 5 }}>
-                            {hideButton ? null : <Button type="submit" onClick={() => handlePayment()}>Continue</Button>}
+                            {hideButton ? null : <Button type="submit" onClick={() => handlePayment(total)}>Continue</Button>}
                         </Col>
                     </Form.Group>
                 </Form>

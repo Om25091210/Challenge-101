@@ -36,7 +36,7 @@ export default {
     checkPrivateKeyMatch: function (data) {
         return axios.delete(`${baseUrl}/api/delete/` + data)
     },
-    getUSD: function (data) {
+    getINR: function (data) {
         return axios.get(`${baseUrl}/api/blockchain/coinValue`)
     },
     startMining: function () {

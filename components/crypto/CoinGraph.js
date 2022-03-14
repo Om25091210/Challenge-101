@@ -31,7 +31,7 @@ function CoinGraph() {
         labels: xAxis,
         datasets: [
             {
-                label: 'USD $',
+                label: 'INR (Rs)',
                 data: yAxis,
                 fill: true,
                 backgroundColor: 'rgba(60, 110, 113, 1)',
