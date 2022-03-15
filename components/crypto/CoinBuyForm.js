@@ -3,6 +3,7 @@ import { Form, Col, Row, Button, Card } from 'react-bootstrap';
 import API from "@utils/blockapi";
 import useRazorpay from "react-razorpay";
 import { useCallback } from "react";
+import { toast } from 'react-toastify';
 
 function CoinBuyForm({user}) {
     const cost = useRef(0);
@@ -18,6 +19,7 @@ function CoinBuyForm({user}) {
     const [invalid, setInvalid] = useState({});
     const [invalid2, setInvalid2] = useState({});
     const [hideButton, setHide] = useState(false);
+    const { publicKey } = user.phone_number;
 
     const Razorpay = useRazorpay();
 
@@ -81,25 +83,59 @@ function CoinBuyForm({user}) {
         }
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmitPay = (e) => {
         e.preventDefault();
         e.stopPropagation();
         setData({ total: e.target[3].value, coins: e.target[0].value, show: true })
         setShow(true);
     }
 
-  const handlePayment = async (tot) => {
-
-    console.log(tot);
+  const handleSubmit = async (e) => {
+    console.log(e);
+    e.preventDefault();
+    e.stopPropagation();
+    setData({ total: e.target[3].value, coins: e.target[0].value, show: true })
+    setShow(true);
+    console.log(e.target[3].value);
     const options = {
       key: "rzp_test_TGb47fS6VcBpqY",
-      amount: tot*100,
+      amount: e.target[3].value*100,
       currency: "INR",
       name: "Multiplayr esports",
-      description: "Buying MP Coin",
+      description: "Bought MP Coin for: Rs" + e.target[3].value,
       image: "https://example.com/your_logo",
-      handler: (res) => {
-        console.log(res);
+      handler: (respon) => {
+        //Save the transaction details
+
+            const trans = {
+                public_key:user.phone_number,
+                from: "9999999999",
+                private: user.phone_number,
+                to: user.phone_number,
+                label: "Bought for: Rs" + e.target[3].value,
+                amount: e.target[3].value,
+                external_payment_id:respon.razorpay_payment_id,
+                email: user.email,
+                currency: "INR",
+                status:"SUCCESS",
+                payment_mode:respon.razorpay_payment_id,
+                trans_details:options              
+            }
+            API.addTransaction(trans)
+                .then(res => {
+                    API.sendTransaction(trans)
+                        .then(res => {
+                            toast.success('Payment transaction is successful.');
+                        }).catch(err => {
+                            console.log(err);
+                            toast.error('Payment transaction failed.Please try again later.');
+                        });
+                }).catch(err => {
+                    console.log(err);
+                    toast.error('Payment transaction failed.Please try again later.');
+                });        
+
+        console.log(respon);
       },
       prefill: {
         name: user.name,
@@ -117,6 +153,7 @@ function CoinBuyForm({user}) {
     const rzpay = new Razorpay(options);
 
   rzpay.on("payment.failed", function (response) {
+    toast.error('Payment transaction failed.Please try again later.');
     alert(response.error.code);
     alert(response.error.description);
     alert(response.error.source);
@@ -125,7 +162,7 @@ function CoinBuyForm({user}) {
     alert(response.error.metadata.order_id);
     alert(response.error.metadata.payment_id);
   });
-      
+
     rzpay.open();
   };
 
@@ -187,7 +224,7 @@ function CoinBuyForm({user}) {
                     </Form.Group>
                     <Form.Group style={{ marginTop: 5 }} as={Row}>
                         <Col style={{ marginTop: 5 }} md={{ span: 10, offset: 5 }}>
-                            {hideButton ? null : <Button type="submit" onClick={() => handlePayment(total)}>Continue</Button>}
+                            {hideButton ? null : <Button type="submit">Continue</Button>}
                         </Col>
                     </Form.Group>
                 </Form>

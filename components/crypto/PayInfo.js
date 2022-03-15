@@ -54,8 +54,8 @@ const PayInfo = ({data, user}) => {
                 await axios.post("/api/stripe/charge", { id, amount: data.total * 100 })
                     .then((_) => {
                         const trans = {
-                            from: "046dde2f0162157620e0b6a2347cb5522148f35809c871bad9cfa3843b4f40f48c4fe043ea8fee6b3e07234a044138afcfc240a0854e5eeb2d587686dc4a239bcb",
-                            private: "8b13559111bb98f7e34d6ffa55784336c829d6ae969680ee6a49b3e6408f96c0",
+                            from: "9999999999",
+                            private: "9008001199",
                             to: publicKey,
                             label: "Bought for: $" + data.total,
                             amount: data.coins
