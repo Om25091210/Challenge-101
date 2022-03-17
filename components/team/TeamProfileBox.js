@@ -284,17 +284,21 @@ const TeamProfileBox = ({ user, data }) => {
           <div className="top_bio">
             <h3>ABOUT THE TEAM</h3>
             <div className="socail">
-              <a href="#">
+              <a href="https://www.facebook.com/" target="_blank">
                 <i className="fa fa-facebook-official" aria-hidden="true"></i>
               </a>
-              <a href="#">
+              <a href="https://www.instagram.com/" target="_blank">
                 <i className="fa fa-instagram" aria-hidden="true"></i>
               </a>
-              <a href="#">
-                <i className="fa fa-facebook-official" aria-hidden="true"></i>
+              <a href="https://www.twitch.tv/" target="_blank">
+                <i className="fa fa-twitch" aria-hidden="true"></i>
               </a>
-              <a href="#">
-                <i className="fa fa-facebook-official" aria-hidden="true"></i>
+              <a href="https://discord.com/" target="_blank">
+                <img
+                  src="/assets/media/social/discord.png"
+                  height="20px"
+                  width="20px"
+                />
               </a>
             </div>
           </div>

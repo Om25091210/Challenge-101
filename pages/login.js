@@ -199,7 +199,7 @@ const SignIn = () => {
                     id="kt_sign_in_submit"
                     className="btn mt-5 btn-lg btn-primary w-100 mb-5"
                   >
-                    <span className="indicator-label">Log In</span>
+                    <span className="indicator-label">Log In and Play</span>
                     <span className="indicator-progress">
                       Please wait...
                       <span className="spinner-border spinner-border-sm align-middle ms-2"></span>
