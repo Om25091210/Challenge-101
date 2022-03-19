@@ -265,7 +265,7 @@ ul.top_menu li a {
 
 ul.top_menu li.pluse > a, ul.top_menu li.noti > a { padding: 22px 0; display: flex; }
 
-ul.top_menu li.noti a span.pop{ top:5px}
+ul.top_menu li.noti a span.pop{ top: 10px; right: -13px;}
 
 ul.top_menu li a span.pop {
 	background:#7239ea;
@@ -854,6 +854,8 @@ ul.top_menu li.wallet li{     float: left;
 	justify-content:center;
 	align-items:center;
 	flex-direction:column;
+	position: absolute;
+    top: 10%;
 }
 .post .left_details a {
 	display:flex;
@@ -2677,7 +2679,7 @@ article .social_bar {
 	margin:-11px 0 0px;
 	padding: 0px 0 0;
 	color: #061b4e;
-	font-size: 30px;
+	font-size: 14px;
 	line-height: normal;
 	word-break: break-all;
 	text-transform:uppercase;
@@ -2692,6 +2694,7 @@ article .social_bar {
 .product_box .product-detail-box p {
 	font-size:14px;
 	padding:0 0 10px;
+	 color: #000;
 }
 .product_box .product-detail-box .price {
 	padding:18px 0;
@@ -5651,7 +5654,7 @@ main {
 .create_tournament form .form-group {
 	margin-bottom: 30px;
 	float: left;
-	width: 100%;
+	width: 100%; position: relative;
 }
 .create_tournament form .style_file_upload {
 	display: inline-block;
@@ -5676,6 +5679,9 @@ main {
 .create_tournament form .searchbox input[type="submit"] {
 	background-position: 0 13px;
 }
+
+.create_tournament form .form-group p{position: absolute; left: 0; color: red; font-size: 11px; bottom: -15px;}
+
 ul.game_search_result {
 	float: left;
 	width: 100%;
@@ -5735,7 +5741,7 @@ ul.game_search_result li {
 .create_tournament form .form-group .colm {
 	float: left;
 	width: 48%;
-	margin-bottom: 30px;
+	margin-bottom: 30px; position: relative;
 }
 .create_tournament form .form-group .colm:nth-child(2n) {
 	float: right;
@@ -6235,6 +6241,8 @@ ul.game_search_result li {
 	color: #000;
 	text-align: center;
 	position: relative;
+	height: 55px;
+    overflow: hidden;
 }
 .communities li p {
 	line-height: 20px;
@@ -6457,6 +6465,7 @@ form.common_form .colm {
 }
 
 form.common_form .colm p{ position: absolute; left: 0; color: red; font-size: 11px; bottom: -15px;}
+
 
 form.common_form .colm select{ font-size: 13px;}
 
@@ -6968,9 +6977,12 @@ body.DarkPage .profile_tab_btn.three_nav li a {
 body.DarkPage .post .heads .date p {
 	color: #3aa5dd;
 }
-body.DarkPage .post .right_details .post_data {
+body.DarkPage .post .right_details .post_data, body.DarkPage .post .heads .post_discp.disc_without_img {
 	background: #2b2b35;
 }
+
+
+
 body.DarkPage .recent_activity h2, body.DarkPage .my_team p, body.DarkPage .team_match .match_time span, body.DarkPage .team_match .team li a {
 	color: #fff;
 }
