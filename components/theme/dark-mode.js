@@ -40,33 +40,50 @@ const DarkMode = () => {
   const [darktheme, setDarktheme] = useState(true);
 
   useEffect(() => {
-    $('body').addClass('DarkPage');
-  }, [1]);
+    const root = window.document.documentElement;
+
+    root.classList.remove(colorTheme);
+    root.classList.add(theme);
+
+    if (typeof window !== "undefined") {
+      localStorage.setItem("theme", theme);
+    }
+  }, [theme]);
+
+
+ const [theme, setTheme] = useState(
+    typeof window !== "undefined" ? localStorage.theme : "DarkPage"
+  );
+
+  const colorTheme = theme === "DarkPage" ? "light" : "DarkPage";
+
 
   const LightTheme = (e) => {
+    const root = window.document.documentElement;    
     e.preventDefault();
-    $('body').addClass('DarkPage');
-    $('.logo').removeClass('bigwidth');
-    setDarktheme(true);
-  };
-
-  const Darktheme = (e) => {
-    e.preventDefault();
-    $('body').removeClass('DarkPage');
+    $('body').removeClass(colorTheme);
     $('.logo').removeClass('bigwidth');
     setDarktheme(false);
   };
 
+  const Darktheme = (e) => {
+    const root = window.document.documentElement;        
+    e.preventDefault();
+    $('body').addClass(colorTheme);
+    $('.logo').removeClass('bigwidth');
+    setDarktheme(true);
+  };
+
   return (
     <>
-      {!darktheme ? (
+      { !darktheme ? (
         <>
-          <button onClick={LightTheme} className="theme_btn">
+          <button onClick={Darktheme} className="theme_btn">
             <span> Dark</span>
           </button>
         </>
       ) : (
-        <button onClick={Darktheme} className="theme_btn light_thmeme">
+        <button onClick={LightTheme} className="theme_btn light_thmeme">
           <span> Light</span>
         </button>
       )}

@@ -1,9 +1,9 @@
+import "../styles/globals.css";
+
 import App from 'next/app';
 import { DefaultSeo } from 'next-seo';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { appWithTranslation } from 'next-i18next';
 
-import { SettingsProvider } from '@components/settings-context';
 import axios from 'axios';
 import baseURL from '@utils/baseURL';
 
@@ -18,12 +18,32 @@ import { parseCookies, destroyCookie } from 'nookies';
 import { redirectUser } from '@utils/auth';
 import Script from 'next/script';
 import { getCookieValue, setCookieValue } from '@utils/helpers';
-import { DataProvider } from '@store/GlobalState'
+import { DataProvider } from '@store/GlobalState';
+
+import { SpinnerProvider } from "@components/common/SpinnerContext";
+import { Navbar } from "@components/navbar";
+import Layout from "@components/layout";
+import { BlockchainProvider } from "../context/BlockchainContext";
 
 function MyApp({ Component, pageProps }) {
 
   const router = useRouter();
   const [queryClient] = useState(() => new QueryClient());
+  const supportedChainIds = [1, 3, 4, 42, 80001]
+
+  const connectors = {
+    injected: {},
+    // magic: {
+    //   apiKey: 'pk_...', // Your magic api key
+    //   chainId: 1, // The chain ID you want to allow on magic
+    // },
+    // walletconnect: {},
+    // walletlink: {
+    //   appName: 'web3-auth',
+    //   url: 'http://localhost:3000',
+    //   darkMode: false,
+    // },
+  }
 
   /**
    * Customise these values to match your site
@@ -86,7 +106,15 @@ function MyApp({ Component, pageProps }) {
 
           <DataProvider>
                 <ToastContainer />
-              <Component {...pageProps} />
+
+              <BlockchainProvider>
+                <SpinnerProvider>
+                  <Layout>
+                    <Component {...pageProps} />
+                  </Layout>
+                </SpinnerProvider>
+              </BlockchainProvider>
+
           </DataProvider>
 
           <ReactQueryDevtools />
@@ -167,4 +195,4 @@ MyApp.getInitialProps = async ({ ctx }) => {
   }
 };
 
-export default appWithTranslation(MyApp);
+export default MyApp;

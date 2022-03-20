@@ -1,5 +1,6 @@
 import Head from 'next/head';
-import React, { useContext, useState, useEffect } from 'react';
+import React, { Fragment, useContext, useState, useEffect } from 'react';
+
 import { logoutUser } from '@utils/auth';
 import NotificationItem from './NotificationItem';
 import ChatSection from './chats/ChatSection';
@@ -8,11 +9,20 @@ import { useRouter } from 'next/router';
 import { DataContext } from '@store/GlobalState';
 import API from '@utils/blockapi';
 import { MPNumberFormat } from '@utils/helpers';
+import { Disclosure, Menu, Transition } from "@headlessui/react";
+import { MenuIcon, XIcon } from "@heroicons/react/outline";
+import { ethers } from "ethers";
+import { getEllipsisTxt } from "../utils";
+import WalletSvg from "./svg/WalletSvg";
+import { BlockchainContext } from "../context/BlockchainContext";
+
 
 const SignedHeader = ({ user }) => {
   const router = useRouter();
   const { state, dispatch } = useContext(DataContext);
   const { auth, cart } = state;
+
+  const { connectedAccount, connectWallet, disconnect } = useContext(BlockchainContext);
 
   const [coin, setCoin] = useState();
   const [INR, setINR] = useState();
@@ -180,6 +190,9 @@ const SignedHeader = ({ user }) => {
                   <Link href="#">Settings and Privacy</Link>
                 </li>
                 <li>
+                  <Link href="/myNFTs">My NFTs</Link>
+                </li>
+                <li>
                   <Link href="/mywallet">Payment</Link>
                 </li>
                 <li>
@@ -206,6 +219,52 @@ const SignedHeader = ({ user }) => {
             </div>
           </li>
 
+          <li className="wallet">
+
+                {connectedAccount ? (
+                  <Menu as="div" className="relative ml-3">
+                    <div>
+                      <Menu.Button className="flex items-center max-w-xs px-4 py-2 text-white transition rounded-full bg-gradient-to-tl from-indigo-500 via-purple-500 to-pink-500 hover:bg-gray-700 shadow-homogen font-poppins">
+                        <span className="sr-only">Open user menu</span>
+
+                        <div className="pr-2">
+                          <WalletSvg className="w-5 h-5 text-white" />
+                        </div>
+
+                        <div className="font-sm">{getEllipsisTxt(connectedAccount)}</div>
+                      </Menu.Button>
+                    </div>
+                    <Transition
+                      as={Fragment}
+                      enter="transition ease-out duration-100"
+                      enterFrom="transform opacity-0 scale-95"
+                      enterTo="transform opacity-100 scale-100"
+                      leave="transition ease-in duration-75"
+                      leaveFrom="transform opacity-100 scale-100"
+                      leaveTo="transform opacity-0 scale-95"
+                    >
+                      <Menu.Items className="absolute right-0 py-1 mt-2 origin-top-right bg-gray-800 rounded-md shadow-lg w-36 ring-1 ring-black ring-opacity-5 focus:outline-none">
+                        <Menu.Item>
+                          <div className="m-2 rounded-md hover:bg-gray-700">
+                            <button onClick={() => disconnect()} className="block p-2 text-white ">
+                              Disconnect
+                            </button>
+                          </div>
+                        </Menu.Item>
+                      </Menu.Items>
+                    </Transition>
+                  </Menu>
+                ) : (
+                  <button
+                    onClick={() => connectWallet(true)}
+                    className="px-4 py-2 font-semibold transition border-2 rounded-full shadow-lg hover:border-primary hover:text-primary hover:shadow-primary/30 border-primary/80 text-primary/90 shadow-primary/10"
+                  >
+                    Connect Wallet
+                  </button>
+                )}
+
+
+          </li>
           <li className="wallet">
             <a href="/mywallet">
               <span className="dps">
