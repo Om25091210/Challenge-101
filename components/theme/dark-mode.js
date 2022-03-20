@@ -39,29 +39,11 @@ import React, { useCallback, useEffect, useState } from 'react';
 const DarkMode = () => {
   const [darktheme, setDarktheme] = useState(true);
 
-  useEffect(() => {
-    const root = window.document.documentElement;
-
-    root.classList.remove(colorTheme);
-    root.classList.add(theme);
-
-    if (typeof window !== "undefined") {
-      localStorage.setItem("theme", theme);
-    }
-  }, [theme]);
-
-
- const [theme, setTheme] = useState(
-    typeof window !== "undefined" ? localStorage.theme : "DarkPage"
-  );
-
-  const colorTheme = theme === "DarkPage" ? "light" : "DarkPage";
-
-
   const LightTheme = (e) => {
     const root = window.document.documentElement;    
     e.preventDefault();
-    $('body').removeClass(colorTheme);
+    $('body').removeClass('DarkPage');   
+    $('body').addClass('light');
     $('.logo').removeClass('bigwidth');
     setDarktheme(false);
   };
@@ -69,7 +51,8 @@ const DarkMode = () => {
   const Darktheme = (e) => {
     const root = window.document.documentElement;        
     e.preventDefault();
-    $('body').addClass(colorTheme);
+    $('body').removeClass('light');   
+    $('body').addClass('DarkPage');
     $('.logo').removeClass('bigwidth');
     setDarktheme(true);
   };
