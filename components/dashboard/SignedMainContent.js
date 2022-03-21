@@ -103,13 +103,13 @@ const SignedMainContent = ({ posts, user }) => {
           fileReader.onload = function (e) {
             var file = e.target;
             $(
-              '<span class="image_box">' +
-                '<img class="imageThumb" src="' +
+              '<span className="image_box">' +
+                '<img className="imageThumb" src="' +
                 e.target.result +
                 '" title="' +
                 file.name +
                 '"/>' +
-                '<br/><span class="remove">X</span>' +
+                '<br/><span className="remove">X</span>' +
                 '</span>'
             ).insertAfter('#files');
             $('.remove').click(function () {
@@ -173,37 +173,37 @@ const SignedMainContent = ({ posts, user }) => {
           <ul>
             <li>
               <a href="/team/create">
-                <i class="fa fa-users" aria-hidden="true"></i>
+                <i className="fa fa-users" aria-hidden="true"></i>
                 <p>create a Team page</p>
               </a>
             </li>
             <li>
               <a href="/tournament/create">
-                <i class="fa fa-trophy" aria-hidden="true"></i>
+                <i className="fa fa-trophy" aria-hidden="true"></i>
                 <p> create a Tournament</p>
               </a>
             </li>
             <li>
               <a href="#">
-                <i class="fa fa-comments" aria-hidden="true"></i>
+                <i className="fa fa-comments" aria-hidden="true"></i>
                 <p> create a Community page</p>
               </a>
             </li>
             <li>
               <a href="/brand/create">
-                <i class="fa fa-briefcase" aria-hidden="true"></i>
+                <i className="fa fa-briefcase" aria-hidden="true"></i>
                 <p> create a Brand page</p>
               </a>
             </li>
             <li>
               <a href="/arena/create">
-                <i class="fa fa-gamepad" aria-hidden="true"></i>
+                <i className="fa fa-gamepad" aria-hidden="true"></i>
                 <p> create an Arena page</p>
               </a>
             </li>
             <li>
               <a href="/company/create">
-                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                <i className="fa fa-shopping-cart" aria-hidden="true"></i>
                 <p> create a Company page</p>
               </a>
             </li>

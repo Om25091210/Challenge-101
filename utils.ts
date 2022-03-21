@@ -3,7 +3,7 @@ import axios from "axios";
 import { create } from "ipfs-http-client";
 import { MarketItemStructOutput } from "../hardhat/typechain-types/Marketplace";
 import { getTokenContract } from "./pages/api/blockchainService";
-import { MarketItem } from "./pages";
+import { MarketItem } from "../pages/nftindex";
 
 /** Uses `URL.createObjectURL` free returned ObjectURL with `URL.RevokeObjectURL` when done with it.
  *

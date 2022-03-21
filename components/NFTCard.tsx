@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import { MarketItem } from "../pages";
+import { MarketItem } from "../pages/nftindex";
 import { ethers } from "ethers";
 import Button from "./common/Button";
 import { SellDialog } from "./SellDialog";

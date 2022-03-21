@@ -4,7 +4,7 @@ import { create } from "ipfs-http-client";
 
 import { useSpinner } from "@components/common/SpinnerContext";
 
-import { MarketItem } from "../pages";
+import { MarketItem } from "../pages/nftindex";
 import { Loader } from "@components/common/Loader";
 import { BigNumber, ethers } from "ethers";
 import { getMarketContract, getTokenContract } from "./api/blockchainService";

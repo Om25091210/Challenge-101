@@ -399,7 +399,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
             {' '}
             <a href="#!" className="model_show_btn" alt="personal details">
               <button className="btn">
-                <i class="fa fa-phone" aria-hidden="true"></i>
+                <i className="fa fa-phone" aria-hidden="true"></i>
               </button>
             </a>
             <div className="common_model_box">
@@ -439,7 +439,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
               {/* <span className="ct" >Detail's</span>{' '} */}
               <a href="#!" className="model_show_btn" alt="personal details">
                 <button className="btn">
-                  <i class="fa fa-address-book-o" aria-hidden="true"></i>
+                  <i className="fa fa-address-book-o" aria-hidden="true"></i>
                 </button>
               </a>
               <div className="common_model_box">

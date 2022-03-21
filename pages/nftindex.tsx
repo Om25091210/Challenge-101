@@ -4,11 +4,11 @@ import { useEffect, useRef, useState } from "react";
 import Lottie from "lottie-react";
 import * as animationData from "../animations/wings.json";
 import axios from "axios";
-import NFTCard from "../components/NFTCard";
+import NFTCard from "@components/NFTCard";
 import { getMarketContract, getTokenContract } from "./api/blockchainService";
-import { GlowButton } from "../components/common/GlowButton";
-import NFTBuyCard from "../components/NFTBuyCard";
-import { useSpinner } from "../components/common/SpinnerContext";
+import { GlowButton } from "@components/common/GlowButton";
+import NFTBuyCard from "@components/NFTBuyCard";
+import { useSpinner } from "@components/common/SpinnerContext";
 
 
 import MetaDash from '@components/MetaDash';

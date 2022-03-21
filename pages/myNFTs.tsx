@@ -1,14 +1,20 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useSpinner } from "../components/common/SpinnerContext";
+import { useSpinner } from "@components/common/SpinnerContext";
 import { getMarketContract } from "./api/blockchainService";
 import { convertMarketItemStructs2MarketItems } from "../utils";
 import { MarketItem } from ".";
-import NFTCard from "../components/NFTCard";
+import NFTCard from "@components/NFTCard";
 import { BlockchainContext } from "../context/BlockchainContext";
 
-interface Props {}
+import MetaDash from '@components/MetaDash';
+import SignedHeader from '@components/SignedHeader';
+import NFTNavHeader from '@components/NFTNavHeader';
+import LeftNav from '@components/LeftNav';
 
-function MyNFTs(props: Props) {
+import FooterMain from '@components/FooterMain';
+import AllScript from './AllScript';
+
+function MyNFTs({user}) {
   const { getProvider } = useContext(BlockchainContext);
 
   const { showSpinner, hideSpinner } = useSpinner();
@@ -35,6 +41,19 @@ function MyNFTs(props: Props) {
   }
 
   return (
+
+    <>
+
+      <MetaDash />
+
+      <SignedHeader user={user} />
+
+      <LeftNav user={user} />
+
+      <div className="main_middle profile_middle">
+
+      <NFTNavHeader />
+
     <div className="container mx-auto mt-28">
       <h1 className="text-4xl font-semibold text-center ">
         My <span className="text-primary">NTFs</span>
@@ -47,6 +66,17 @@ function MyNFTs(props: Props) {
         )}
       </div>
     </div>
+
+
+
+      </div>
+
+      <AllScript />
+
+    </>
+
+
+
   );
 }
 
