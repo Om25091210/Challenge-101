@@ -13,8 +13,8 @@ interface Props {}
 
 export const Loader = (props: Props) => {
 
-  const { View } = useLottie(defaultOptions, style);
+  const { View } = useLottie(defaultOptions);
 
   return View;
-  
+
 };
