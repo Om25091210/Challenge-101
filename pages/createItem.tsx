@@ -2,20 +2,28 @@ import React, { useCallback, useContext, useEffect, useState } from "react";
 
 import { create } from "ipfs-http-client";
 
-import { useSpinner } from "../components/common/SpinnerContext";
+import { useSpinner } from "@components/common/SpinnerContext";
 
 import { MarketItem } from "../pages";
-import { Loader } from "../components/common/Loader";
+import { Loader } from "@components/common/Loader";
 import { BigNumber, ethers } from "ethers";
 import { getMarketContract, getTokenContract } from "./api/blockchainService";
 import { useRouter } from "next/router";
 import { BlockchainContext } from "../context/BlockchainContext";
+import MetaDash from '@components/MetaDash';
+import SignedHeader from '@components/SignedHeader';
+import NFTNavHeader from '@components/NFTNavHeader';
+import LeftNav from '@components/LeftNav';
+
+import FooterMain from '@components/FooterMain';
+import AllScript from './AllScript';
+
 
 interface Props {}
 
 const client = create({ url: "https://ipfs.infura.io:5001/api/v0" });
 
-function CreateItem(props: Props) {
+function CreateItem({user}) {
   const router = useRouter();
 
   const { getProvider } = useContext(BlockchainContext);
@@ -132,7 +140,21 @@ function CreateItem(props: Props) {
   }
 
   return (
-    <div className="w-full md:w-1/2 mt-28">
+
+    <>
+
+      <MetaDash />
+
+      <SignedHeader user={user} />
+
+      <LeftNav user={user} />
+
+      <div className="main_middle profile_middle">
+
+      <NFTNavHeader />
+
+
+   <div className="w-full md:w-1/2 mt-28">
       <h1 className="text-2xl font-medium text-white">Create an NFT</h1>
       <form onSubmit={handleSubmit} className="mt-8">
         <div className="space-y-6">
@@ -269,6 +291,16 @@ function CreateItem(props: Props) {
         </div>
       </form>
     </div>
+
+      </div>
+
+      <AllScript />
+
+    </>
+
+
+
+ 
   );
 }
 

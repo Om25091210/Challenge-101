@@ -79,7 +79,16 @@ function LeftNav({user}) {
               </a>
             </Link>{' '}
           </li>
-
+          <li>
+            <Link href="/nftindex">
+              <a className="">
+                <span className="iconbg">
+                  <i className="fa fa-connectdevelop" aria-hidden="true"></i>
+                </span>{' '}
+                <span className="title">SHOP NFTs</span>
+              </a>
+            </Link>{' '}
+          </li>
           {user?.role === 'admin' ? (
             <li>
               <Link href="/settings">

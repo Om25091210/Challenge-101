@@ -10,6 +10,15 @@ import { GlowButton } from "../components/common/GlowButton";
 import NFTBuyCard from "../components/NFTBuyCard";
 import { useSpinner } from "../components/common/SpinnerContext";
 
+
+import MetaDash from '@components/MetaDash';
+import SignedHeader from '@components/SignedHeader';
+import NFTNavHeader from '@components/NFTNavHeader';
+import LeftNav from '@components/LeftNav';
+
+import FooterMain from '@components/FooterMain';
+import AllScript from './AllScript';
+
 const defaultOptions = {
   loop: true,
   autoplay: true,
@@ -31,7 +40,7 @@ export type MarketItem = {
   tokenId: number;
   itemId: number;
 };
-const Home: NextPage = () => {
+const Home: NextPage = ({ user }) => {
   const [NFTs, setNFTs] = useState<MarketItem[] | undefined>([]);
   const { showSpinner, hideSpinner } = useSpinner();
 
@@ -70,6 +79,17 @@ const Home: NextPage = () => {
 
   return (
     <>
+
+      <MetaDash />
+
+      <SignedHeader user={user} />
+
+      <LeftNav user={user} />
+
+      <div className="main_middle profile_middle">
+
+      <NFTNavHeader />
+
       <div className="flex flex-col items-center justify-center w-full h-screen sm:flex-row sm:justify-evenly">
         <div className="order-2 sm:order-1">
           <h1 className="max-w-xl text-4xl font-semibold leading-tight text-white md:text-5xl">
@@ -99,6 +119,11 @@ const Home: NextPage = () => {
           )}
         </div>
       </section>
+
+      </div>
+
+      <AllScript />
+
     </>
   );
 };

@@ -23,7 +23,7 @@ module.exports = {
         orange: colors.orange,
         cyan: colors.cyan,
         primary: colors.pink[600],
-        background: "#ffffff",
+        background: "#181A22",
       },
       boxShadow: {
         homogen: "0 0 10px 3px rgba(0,0,0,0.5)",
