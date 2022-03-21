@@ -22,6 +22,11 @@ export const BlockchainProvider = ({ children }: Props) => {
   const connectWallet = async (firstTime: boolean = false) => {
     try {
       console.log("Connecting metamask...");
+
+      if (typeof window.ethereum == 'undefined') {
+        toast.error('No Metamask detected...Please install MetaMask as browser add-on and connect wallet');
+      }
+
       const web3Modal = new Web3Modal({ cacheProvider: true });
       const connection = await web3Modal.connect();
       const provider = new ethers.providers.Web3Provider(connection);
@@ -35,7 +40,6 @@ export const BlockchainProvider = ({ children }: Props) => {
       }
     } catch (error) {
       console.log("Error ", error);
-      toast.error('Error connecting your wallet...Please try later');
     }
   };
 
