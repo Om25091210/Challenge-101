@@ -109,9 +109,7 @@ function MyApp({ Component, pageProps }) {
 
               <BlockchainProvider>
                 <SpinnerProvider>
-                  <Layout>
                     <Component {...pageProps} />
-                  </Layout>
                 </SpinnerProvider>
               </BlockchainProvider>
 
