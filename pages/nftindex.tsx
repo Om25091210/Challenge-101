@@ -88,7 +88,7 @@ const Home: NextPage = ({ user }) => {
 
       <div className="main_middle profile_middle">
 
-      <NFTNavHeader />
+      <NFTNavHeader user={user} />
 
       <div className="flex flex-col items-center justify-center w-full h-screen sm:flex-row sm:justify-evenly">
         <div className="order-2 sm:order-1">
