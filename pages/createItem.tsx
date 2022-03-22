@@ -12,7 +12,8 @@ import { useRouter } from "next/router";
 import { BlockchainContext } from "../context/BlockchainContext";
 import MetaDash from '@components/MetaDash';
 import SignedHeader from '@components/SignedHeader';
-import NFTNavHeader from '@components/NFTNavHeader';
+import { NFTNavHeader } from '@components/NFTNavHeader';
+
 import LeftNav from '@components/LeftNav';
 
 import FooterMain from '@components/FooterMain';
