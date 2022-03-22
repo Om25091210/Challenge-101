@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { useSpinner } from "../../components/common/SpinnerContext";
-import { MarketItem } from "..";
+import { useSpinner } from "@components/common/SpinnerContext";
+import { MarketItem } from "../nftindex";
+
 import { ethers } from "ethers";
 
 import axios from "axios";
 import { getMarketContract, getTokenContract } from "../api/blockchainService";
 import { getEllipsisTxt } from "../../utils";
-import { BuyDialog } from "../../components/BuyDialog";
-import { GlowButton } from "../../components/common/GlowButton";
+import { BuyDialog } from "@components/BuyDialog";
+import { GlowButton } from "@components/common/GlowButton";
 
 type Props = {};
 

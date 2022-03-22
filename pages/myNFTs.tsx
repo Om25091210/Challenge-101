@@ -2,7 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { useSpinner } from "@components/common/SpinnerContext";
 import { getMarketContract } from "./api/blockchainService";
 import { convertMarketItemStructs2MarketItems } from "../utils";
-import { MarketItem } from ".";
+import { MarketItem } from "./nftindex";
+
 import NFTCard from "@components/NFTCard";
 import { BlockchainContext } from "../context/BlockchainContext";
 
