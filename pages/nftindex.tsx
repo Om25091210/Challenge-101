@@ -40,7 +40,7 @@ export type MarketItem = {
   tokenId: number;
   itemId: number;
 };
-const Home: NextPage = ({ user }) => {
+const Home: NextPage = ({ { user }: {user: ReactNode} }) => {
   const [NFTs, setNFTs] = useState<MarketItem[] | undefined>([]);
   const { showSpinner, hideSpinner } = useSpinner();
 
