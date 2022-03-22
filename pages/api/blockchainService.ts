@@ -14,7 +14,7 @@ export function getMarketContract(signer?: any) {
   if (signer) {
     provider = signer;
   }
-  return new ethers.Contract(marketAddress, Market.abi, provider) as Marketplace;
+  return new ethers.Contract(marketAddress, Market.abi, provider) as unknown as Marketplace;
 }
 
 export function getTokenContract(signer?: any) {
@@ -22,5 +22,5 @@ export function getTokenContract(signer?: any) {
   if (signer) {
     provider = signer;
   }
-  return new ethers.Contract(nftAddress, NFT.abi, provider) as HeraCollection;
+  return new ethers.Contract(nftAddress, NFT.abi, provider) as unknown as HeraCollection;
 }
