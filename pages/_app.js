@@ -21,7 +21,6 @@ import { getCookieValue, setCookieValue } from '@utils/helpers';
 import { DataProvider } from '@store/GlobalState';
 
 import { SpinnerProvider } from "@components/common/SpinnerContext";
-import { Navbar } from "@components/navbar";
 import Layout from "@components/layout";
 import { BlockchainProvider } from "../context/BlockchainContext";
 
