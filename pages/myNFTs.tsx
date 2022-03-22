@@ -11,7 +11,6 @@ import MetaDash from '@components/MetaDash';
 import SignedHeader from '@components/SignedHeader';
 import NFTNavHeader from '@components/NFTNavHeader';
 import LeftNav from '@components/LeftNav';
-import NFTNavHeader from '@components/NFTNavHeader';
 
 import FooterMain from '@components/FooterMain';
 import AllScript from './AllScript';
