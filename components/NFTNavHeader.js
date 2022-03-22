@@ -3,7 +3,7 @@ import React, { Fragment, useContext, useState, useEffect } from 'react';
 import Link from 'next/link';
 
 
-const NFTNavHeader = ({ user }) => {
+const NFTNavHeader = ({user}) => {
 
   return (
 

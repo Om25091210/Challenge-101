@@ -12,7 +12,7 @@ import { useRouter } from "next/router";
 import { BlockchainContext } from "../context/BlockchainContext";
 import MetaDash from '@components/MetaDash';
 import SignedHeader from '@components/SignedHeader';
-import { NFTNavHeader } from '@components/NFTNavHeader';
+import  NFTNavHeader from '@components/NFTNavHeader';
 
 import LeftNav from '@components/LeftNav';
 
@@ -152,7 +152,7 @@ function CreateItem({user}) {
 
       <div className="main_middle profile_middle">
 
-      <NFTNavHeader />
+      <NFTNavHeader user={user} />
 
 
    <div className="w-full md:w-1/2 mt-28">
