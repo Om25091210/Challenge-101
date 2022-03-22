@@ -11,9 +11,14 @@ import { getEllipsisTxt } from "../../utils";
 import { BuyDialog } from "@components/BuyDialog";
 import { GlowButton } from "@components/common/GlowButton";
 
-type Props = {};
+import MetaDash from '@components/MetaDash';
+import SignedHeader from '@components/SignedHeader';
+import LeftNav from '@components/LeftNav';
+import FooterMain from '@components/FooterMain';
+import AllScript from 'pages/AllScript';
+import  NFTNavHeader from '@components/NFTNavHeader';
 
-const ItemDetail = ({}: Props) => {
+const ItemDetail = ({user}) => {
   const { showSpinner, hideSpinner } = useSpinner();
   const [nft, setNFT] = useState<MarketItem>();
   const [owner, setOwner] = useState<string | undefined>();
@@ -133,7 +138,27 @@ const ItemDetail = ({}: Props) => {
     );
   }
 
-  return <div>{nft && renderNFT(nft)}</div>;
+  return ( 
+
+      <>
+        <MetaDash />
+
+        <SignedHeader user={user} />
+
+        <LeftNav user={user} />
+
+        <div className="main_middle profile_middle">
+
+            <NFTNavHeader user={user} />
+
+             <div>{nft && renderNFT(nft)}</div> 
+
+        </div>
+
+        <AllScript />
+      </>
+
+    );
 };
 
 export default ItemDetail;
