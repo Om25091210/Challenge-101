@@ -10,7 +10,6 @@ import WalletSvg from "./svg/WalletSvg";
 import { AppContextProps, BlockchainContext } from "../context/BlockchainContext";
 import { ContextType } from "react";
 
-interface Props {}
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -18,7 +17,7 @@ const navigation = [
   { name: "Create NFT", href: "/createItem" },
 ];
 
-export const Navbarn = (props: Props) => {
+export const Navbarn = ({}) => {
   const [scrolled, setScrolled] = useState(false);
 
   const { connectedAccount, connectWallet, disconnect } = useContext(BlockchainContext);
