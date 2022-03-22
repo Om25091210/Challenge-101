@@ -11,6 +11,7 @@ import MetaDash from '@components/MetaDash';
 import SignedHeader from '@components/SignedHeader';
 import NFTNavHeader from '@components/NFTNavHeader';
 import LeftNav from '@components/LeftNav';
+import NFTNavHeader from '@components/NFTNavHeader';
 
 import FooterMain from '@components/FooterMain';
 import AllScript from './AllScript';
@@ -53,7 +54,7 @@ function MyNFTs({user}) {
 
       <div className="main_middle profile_middle">
 
-      <NFTNavHeader />
+      <NFTNavHeader user={user}/>
 
     <div className="container mx-auto mt-28">
       <h1 className="text-4xl font-semibold text-center ">
