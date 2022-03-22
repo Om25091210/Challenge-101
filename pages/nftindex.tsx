@@ -1,4 +1,3 @@
-import type { NextPage } from "next";
 import { BigNumber, ethers } from "ethers";
 import { useEffect, useRef, useState } from "react";
 import Lottie from "lottie-react";
@@ -40,7 +39,8 @@ export type MarketItem = {
   tokenId: number;
   itemId: number;
 };
-const Home: NextPage = ( { user }: {user: ReactNode} ) => {
+
+const NFTHome = ({ user }) => {
   const [NFTs, setNFTs] = useState<MarketItem[] | undefined>([]);
   const { showSpinner, hideSpinner } = useSpinner();
 
@@ -128,4 +128,4 @@ const Home: NextPage = ( { user }: {user: ReactNode} ) => {
   );
 };
 
-export default Home;
+export default NFTHome;
