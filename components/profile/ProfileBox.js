@@ -112,20 +112,6 @@ const ProfileBox = ({ user, Userdata, games }) => {
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }
-    try {
-      const res = await fetch(`${baseURL}/api/profile/phone/${user._id}`, {
-        method: 'PATCH',
-        body: JSON.stringify({
-          phno
-        }),
-        headers: {
-          'Content-type': 'application/json'
-        }
-      });
-      toast.success('Your Phone Number has been Updated successfully! ');
-    } catch (err) {
-      toast.error(err.response?.data?.msg || 'Please recheck your inputs');
-    }
   };
 
   const handleCoverSubmit = async (e) => {
@@ -555,20 +541,6 @@ const ProfileBox = ({ user, Userdata, games }) => {
                           <option value="Paid">Paid</option>
                           <option value="Unpaid">Unpaid</option>
                         </select>
-                      </div>
-                      <div className="colm pphone">
-                        <label htmlFor="exampleFormControlInput1">
-                          Phone Number
-                        </label>
-                        <input
-                          type="text"
-                          className="custom-select text-capitalize"
-                          id="exampleFormControlInput1"
-                          placeholder="phone_number"
-                          name="phno"
-                          onChange={handleChangephno}
-                          value={phno}
-                        />
                       </div>
                       <button className="btn">Update</button>
                     </div>

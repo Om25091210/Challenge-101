@@ -12,8 +12,17 @@ import GameCommunities from './GameCommunities';
 import Matches from '@components/team/Matches';
 
 const Game = ({ user, data }) => {
-
   const [game, setGame] = useState(data?.games);
+  const [players, setPlayers] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`${baseURL}/api/player/playersbyteamsbygame/${game._id}`)
+      .then((res) => {
+        setPlayers(res.data);
+      });
+  }, []);
+  const newPlyr = players.slice(1, 4);
 
   return (
     <div>
@@ -120,18 +129,23 @@ const Game = ({ user, data }) => {
             <div className="right_team_bio">
               <div className="games">
                 <h2>PLAYERS: </h2>
-                <a href="#">
+                <a href="#" target="_blank">
                   {' '}
-                  <img src="/assets/media/profile/game1.png" alt="" />{' '}
+                  <img src={newPlyr[0]?.current_team?.image_url} alt="" />{' '}
                 </a>{' '}
                 <a href="#">
                   {' '}
-                  <img src="/assets/media/profile/game2.png" alt="" />{' '}
+                  <img src={newPlyr[1]?.current_team?.image_url} alt="" />{' '}
                 </a>{' '}
-                <a href="#">
+                <a href="#" target="_blank">
                   {' '}
-                  <img src="/assets/media/profile/game3.png" alt="" />{' '}
+                  <img src={newPlyr[2]?.current_team?.image_url} alt="" />{' '}
                 </a>{' '}
+                {players.length === 0 ? (
+                  <p>No Players for This Game.</p>
+                ) : (
+                  <p> + {players.length - 3} </p>
+                )}
               </div>
               <div className="internet">
                 <ul>
@@ -212,7 +226,6 @@ const Game = ({ user, data }) => {
           </li>
         </ul>
         <div className="prfoile_tab_data">
-
           <div className="tab" id="tournament">
             <h2>Tournament</h2>
 
