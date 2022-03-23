@@ -5,9 +5,8 @@
 html {
   @apply scroll-smooth;
 }
-
 body {
-  font-family:  "Poppins", sans-serif;
+  font-family:  "Rubik", sans-serif;
   @apply text-white bg-background;
 }
 

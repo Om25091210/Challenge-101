@@ -110,7 +110,7 @@ function CreateItem({user}) {
     await createMarketSale(added.path);
 
     hideSpinner();
-    router.push("/");
+    router.push("/nftindex");
   };
 
   async function createMarketSale(tokenURI: string) {

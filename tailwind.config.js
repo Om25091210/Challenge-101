@@ -6,6 +6,7 @@ module.exports = {
   theme: {
     fontFamily: {
       sans: ['"Epilogue"', "sans-serif"],
+      rubik: ['"Rubik"', "sans-serif"],
       poppins: ['"Poppins"', "sans-serif"],
       inter: ['"Inter-Roman"', "sans-serif"],
     },

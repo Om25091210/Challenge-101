@@ -6,7 +6,7 @@ function LeftNav({user}) {
   const router = useRouter();
 
   return (
-    <div className="left_side">
+    <div className="left_side bg-gradient-to-tl from-indigo-500 via-purple-500 to-pink-500">
       <nav>
         <ul>
           <li className={router.pathname == '/dashboard' ? 'active' : ''}>
