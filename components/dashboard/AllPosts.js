@@ -92,7 +92,7 @@ const AllPosts = ({ post, user, profiledata }) => {
           {' '}
           <a
             href="#!"
-            data-tip={post.likes.map((like) => {
+            data-tip={post.likes.map((like,iidx) => {
               return like.user.username;
             })}
             data-for="toolTip1"

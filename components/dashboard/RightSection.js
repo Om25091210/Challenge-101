@@ -25,11 +25,6 @@ const RightSection = ({ user, profile, suggestedplayers, teams }) => {
     <div className="right_side overhight">
       <RecentActivity user={user} />
 
-      {/*
-      <FriendRequests user={user} />
-
-  */}
-
       <div className="recent_activity suggested_player">
         <h2>Suggested Players</h2>
         <a href="#!" className="all">
@@ -113,7 +108,7 @@ const RightSection = ({ user, profile, suggestedplayers, teams }) => {
 
         {matches && matches.length > 0 ? (
           matches.map((match, idx) => (
-            <div className="white_box">
+            <div className="white_box" key={idx}>
               <div className="match_name">
                 {match.name}{' '}
                 <i className="fa fa-long-arrow-right" aria-hidden="true"></i>{' '}

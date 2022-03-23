@@ -755,7 +755,6 @@ ul.top_menu li.wallet li{     float: left;
     border-radius: 5px;
     box-shadow: 0 0 10px #ddd;
 }
-.create_menu ul li a{ color: #fff;}
 
 .create_menu ul li .fa{ font-size: 20px;}
 .create_menu .message{ text-align: left; width:45%;
