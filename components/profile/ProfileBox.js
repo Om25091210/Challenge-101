@@ -450,6 +450,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                           value={attr?.roles}
                           className="custom-select text-capitalize"
                         >
+                          <option value="--">--</option>
                           <option value="Player">Player</option>
                           <option value="Front">Front</option>
                           <option value="Back">Back</option>
@@ -466,6 +467,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                           value={attr?.regions}
                           className="custom-select text-capitalize"
                         >
+                          <option value="--">--</option>
                           <option value="India">India</option>
                           <option value="USA">USA</option>
                           <option value="Asia">Asia</option>
@@ -485,6 +487,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                           value={attr?.playertype}
                           className="custom-select text-capitalize"
                         >
+                          <option value="--">--</option>
                           <option value="Casual">Casual</option>
                           <option value="SemiPro">SemiPro</option>
                           <option value="Pro">Pro</option>
@@ -503,6 +506,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                           value={attr?.platform}
                           className="custom-select text-capitalize"
                         >
+                          <option value="--">--</option>
                           <option value="PC">PC</option>
                           <option value="Front">Front</option>
                           <option value="Console">Console</option>
@@ -538,6 +542,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                           value={attr?.paid}
                           className="custom-select text-capitalize"
                         >
+                          <option value="--">--</option>
                           <option value="Paid">Paid</option>
                           <option value="Unpaid">Unpaid</option>
                         </select>
@@ -830,6 +835,21 @@ const ProfileBox = ({ user, Userdata, games }) => {
             {!showform ? (
               <p> {Userdata.profile ? Userdata.profile.bio : ''} </p>
             ) : null}
+
+            {showform ? (
+              <form onSubmit={(e) => e.preventDefault()}>
+                <textarea
+                  name="text"
+                  value={bio}
+                  onChange={onChange}
+                ></textarea>
+                <button onClick={handleButtonForm} className="btn">
+                  Update
+                </button>
+              </form>
+            ) : (
+              ''
+            )}
 
             {isLoggedInUser ? (
               <button className="bio_edit" onClick={toggleShowform}>

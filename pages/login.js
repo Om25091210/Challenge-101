@@ -27,6 +27,8 @@ const SignIn = () => {
   const [error, setError] = useState(null);
   const [formLoading, setFormLoading] = useState(false);
   const [submitDisabled, setSubmitDisabled] = useState(true);
+  const [passwordShown, setPasswordShown] = useState(false);
+  const [open, setOpen] = useState(false);
 
   const { email, password } = user;
 
@@ -83,6 +85,11 @@ const SignIn = () => {
   useEffect(() => {
     if (Object.keys(auth).length !== 0) router.push('/dashboard');
   }, [auth]);
+
+  const togglePassword = () => {
+    setPasswordShown(!passwordShown);
+    setOpen(!open);
+  };
 
   return (
     <main id="kt_body" className="bg-body">
@@ -167,14 +174,27 @@ const SignIn = () => {
                   <div className="d-flex flex-stack mb-2">
                     <label className="form-label">Password</label>
                   </div>
-                  <input
-                    className="form-control form-control-lg form-control-solid"
-                    type="password"
-                    name="password"
-                    value={password}
-                    onChange={handleChange}
-                    autoComplete="off"
-                  />
+                  <div className="position-relative mb-3">
+                    <input
+                      className="form-control form-control-lg form-control-solid"
+                      type={passwordShown ? 'text' : 'password'}
+                      name="password"
+                      value={password}
+                      onChange={handleChange}
+                      autoComplete="off"
+                    />
+                    <span
+                      className="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2"
+                      data-kt-password-meter-control="visibility"
+                    >
+                      {' '}
+                      {/* <i className="bi bi-eye-slash"  id="togglePassword"></i> */}{' '}
+                      <i
+                        className={`bi  ${open ? 'bi-eye' : 'bi-eye-slash'}`}
+                        onClick={togglePassword}
+                      ></i>{' '}
+                    </span>{' '}
+                  </div>
                 </div>
 
                 <div className="fv-row mb-10 remeberme">
