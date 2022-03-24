@@ -38,7 +38,9 @@ const CustomPost = ({ post }) => {
       }
     });
   };
-
+  const refreshData = () => {
+    router.replace(router.asPath);
+  };
   const { mutateAsync } = useMutation(del);
 
   const deletehandleSubmit = async (e) => {
@@ -46,9 +48,7 @@ const CustomPost = ({ post }) => {
     try {
       await mutateAsync(post);
       toast.success('Your post has been successfully deleted');
-      window.setTimeout(function () {
-        location.reload();
-      }, 4000);
+      refreshData();
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }
@@ -68,9 +68,6 @@ const CustomPost = ({ post }) => {
         }
       })
   );
-  const refreshData = () => {
-    router.replace(router.asPath);
-  };
   const edithandleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();

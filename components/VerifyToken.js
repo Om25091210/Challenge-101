@@ -1,47 +1,60 @@
-import Head from 'next/head';
-import Image from 'next/image';
-import Meta from '@components/Meta';
-import FooterMain from '@components/FooterMain';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { onboardUser } from '@utils/auth';
 import { toast } from 'react-toastify';
 
-import { onboardUser } from '@utils/auth';
-import { useRouter } from 'next/router';
-
-export default function Confirm() {
-  const router = useRouter();
-
-  const [loading, setLoading] = useState(false);
-
+const VerifyToken = ({ verificationToken, finishsubmit }) => {
+  console.log(finishsubmit);
   const [user, setUser] = useState({
     code: ''
   });
-  const { verificationToken } = router.query;
-
-  console.log(verificationToken);
-
+  const [loading, setLoading] = useState(false);
+  const [show, setShow] = useState(false);
   const handleChange = (e) => {
     setUser((prevState) => ({ ...prevState, [e.target.name]: e.target.value }));
   };
 
-
-  const handleSubmit = async (e) => {
+  const handleSubmitToken = async (e) => {
     e.preventDefault();
-    await onboardUser(verificationToken, setLoading, toast);
+    if (verificationToken === user.code) {
+      await onboardUser(verificationToken, setLoading, toast);
+    } else {
+      toast.error('Invalid Code!');
+    }
   };
 
   useEffect(() => {
-    const isUser = Object.values({ verificationToken }).every((item) =>
-      Boolean(item)
-    );
-  }, [user]);
+    $('button.model_show_btn').click(function () {
+      $(this).next().addClass('show_model');
+    });
+
+    $('a.model_close').click(function () {
+      $(this).parent().removeClass('show_model');
+    });
+  }, []);
 
   return (
-    <main id="kt_body" className="bg-body">
-      <Meta />
+    <>
+      <button
+        type="submit"
+        id="kt_sign_up_submit"
+        className="model_show_btn"
+        disabled={finishsubmit}
+      >
+        {' '}
+        <span className="indicator-label">Finish</span>{' '}
+        <span className="indicator-progress">
+          {' '}
+          Please wait...{' '}
+          <span className="spinner-border spinner-border-sm align-middle ms-2"></span>{' '}
+        </span>{' '}
+      </button>
 
-      <div className="d-flex flex-column flex-root">
-        <div className="d-flex flex-column flex-column-fluid">
+      <div className="common_model_box">
+        <a href="#!" className="model_close">
+          X
+        </a>
+
+        <div className="inner_model_box">
           <div className="d-flex flex-column flex-column-fluid text-center p-10 py-lg-15">
             <a href="#" className="mb-12">
               <img
@@ -61,20 +74,20 @@ export default function Confirm() {
               <div className="w-lg-500px bg-body rounded shadow-sm p-10 p-lg-15 mx-auto">
                 <form
                   className="form w-100"
-                  noValidate="noValidate"
                   id="kt_sign_in_form"
-                  onSubmit={handleSubmit}
+                  onSubmit={(e) => e.preventDefault()}
                 >
                   <div className="fv-row mb-10">
                     <label className="form-label fs-6 fw-bolder text-dark">
-                      Verification Code
+                      Enter the Verification Code
                     </label>
                     <input
                       className="form-control form-control-lg form-control-solid"
                       type="text"
-                      name="verificationToken"
-                      value={verificationToken}
+                      name="code"
+                      value={user.code}
                       onChange={handleChange}
+                      placeholder="Enter your code"
                       autoComplete="off"
                     />
                   </div>
@@ -82,7 +95,7 @@ export default function Confirm() {
                   <div className="text-center mb-10">
                     <button
                       type="submit"
-                      id="kt_sign_in_submit"
+                      onClick={handleSubmitToken}
                       className="btn btn-lg btn-primary w-100 mb-5"
                     >
                       <span className="indicator-label">Confirm</span>
@@ -110,13 +123,11 @@ export default function Confirm() {
               }}
             ></div>
           </div>
-
-          <FooterMain> </FooterMain>
-
-          <script src="/assets/plugins/global/plugins.bundle.js" />
-          <script src="/assets/js/scripts.bundle.js" />
+          <div className="overlay"></div>
         </div>
       </div>
-    </main>
+    </>
   );
-}
+};
+
+export default VerifyToken;

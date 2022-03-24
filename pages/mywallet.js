@@ -12,6 +12,7 @@ import CoinGraph from '@components/crypto/CoinGraph';
 import AllScript from './AllScript';
 import CoinBuyForm from '@components/crypto/CoinBuyForm';
 import SendForm from '@components/crypto/SendForm';
+import Moment from 'moment';
 
 const MyWallet = ({ user }) => {
   const publicKey = user?.phone_number;
@@ -119,11 +120,20 @@ const MyWallet = ({ user }) => {
         // Add a promise so we won't try to load the table before the data is ready
         // Still add a small timeout because of nested getUsername API call
         setTimeout(() => {
-          setTransactions(finalRes);
+          // setTransactions(finalRes);
         }, 1000);
       });
   }, [publicKey, username]);
-
+  useEffect(() => {
+    axios
+      .get(`${baseURL}/api/transactions/${user.email}`)
+      .then((res) => {
+        setTransactions(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   return (
     <>
       <MetaDash />
@@ -190,7 +200,7 @@ const MyWallet = ({ user }) => {
         </div>
 
         <div style={{ overflow: 'hidden', display: showBuy }}>
-            <CoinBuyForm user={user} />
+          <CoinBuyForm user={user} />
         </div>
 
         <div style={{ overflow: 'hidden', display: showSend }}>
@@ -243,9 +253,15 @@ const MyWallet = ({ user }) => {
                 ) : (
                   transactions.map((result, idx) => (
                     <li key={idx}>
-                      <span className="list_name">{result.toAddress}</span>
-                      <span className="list_name">{result.label}</span>
-                      <span className="date">{result.timestamp}</span>
+                      <span className="list_name">
+                        {result.trans_details?.name}
+                      </span>
+                      <span className="list_name">
+                        {result.trans_details?.description}
+                      </span>
+                      <span className="date">
+                        {Moment(result.date).format('MMMM, DD hh:mm A')}
+                      </span>
                       <div className="amt">
                         <img src="/assets/media/login/m.png" alt="" />{' '}
                         {result.amount}{' '}

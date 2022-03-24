@@ -227,3 +227,41 @@ display: flex; align-items: center; justify-content: center; position: relative;
 
 	.left_banner h1{ font-size: 42px;}
 }
+
+
+/* start custom model box */
+.common_model_box {
+	display: none;
+}
+.common_model_box.show_model {
+	display: block;
+}
+.common_model_box {
+	position: fixed;
+	top: -30%;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	width: 900px;
+	height: 400px;
+	z-index: 199;
+}
+.common_model_box .inner_model_box {
+	float: left;
+	width: 100%;
+	padding: 30px;
+	background: #fff;
+	overflow:hidden;
+	box-shadow: 2px 0px 10px #b9b2b2;
+}
+.common_model_box .model_close {
+	position: absolute;
+	right: -33px;
+	top: 0px;
+	color: #fff;
+	font-size: 20px;
+	font-weight: 600;
+	background: #7239ea;
+	padding: 5px 10px 5px 10px;
+}
