@@ -49,36 +49,29 @@ const VerifyToken = ({ verificationToken, finishsubmit }) => {
         </span>{' '}
       </button>
 
-      <div className="common_model_box">
+      <div className="common_model_box" id="verifycode">
         <a href="#!" className="model_close">
           X
         </a>
 
         <div className="inner_model_box">
-          <div className="d-flex flex-column flex-column-fluid text-center p-10 py-lg-15">
-            <a href="#" className="mb-12">
-              <img
-                alt="Logo"
-                src="/assets/media/logos/logo.png"
-                className="h-40px"
-              />
+          <div className="verify_box">
+            <a href="#" className="logos">
+              <img alt="Logo" src="/assets/media/logos/logo.png" />
             </a>
             <div className="pt-lg-10 mb-10">
-              <h1 className="fw-bolder fs-2qx text-gray-800 mb-7">
-                Verify Your Email
-              </h1>
-              <div className="fs-3 fw-bold text-muted mb-10">
-                We have sent a code to your email.
-              </div>
+              <h1>Verify Your Email</h1>
 
-              <div className="w-lg-500px bg-body rounded shadow-sm p-10 p-lg-15 mx-auto">
+              <p> We have sent a code to your email.</p>
+
+              <div className="verify_form">
                 <form
                   className="form w-100"
                   id="kt_sign_in_form"
                   onSubmit={(e) => e.preventDefault()}
                 >
                   <div className="fv-row mb-10">
-                    <label className="form-label fs-6 fw-bolder text-dark">
+                    <label className="form-label">
                       Enter the Verification Code
                     </label>
                     <input
@@ -117,7 +110,7 @@ const VerifyToken = ({ verificationToken, finishsubmit }) => {
               </div>
             </div>
             <div
-              className="d-flex flex-row-auto bgi-no-repeat bgi-position-x-center bgi-size-contain bgi-position-y-bottom min-h-100px min-h-lg-350px"
+              className="bg_logo"
               style={{
                 backgroundImage: 'url(/assets/media/illustrations/17.png'
               }}
