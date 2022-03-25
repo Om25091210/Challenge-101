@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import Script from 'next/script';
 import Head from 'next/head';
 import MetaDash from '@components/MetaDash';
@@ -16,6 +16,7 @@ import { toast } from 'react-toastify';
 import { useMutation } from 'react-query';
 import cookie from 'js-cookie';
 import { teamformvalidate } from '@utils/valid';
+import countryList from 'react-select-country-list';
 
 const CreateTeam = ({ user }) => {
   const showSecond = true;
@@ -29,6 +30,7 @@ const CreateTeam = ({ user }) => {
   const [step1, setStep1] = useState(false);
   const [showbtn, setShowbtn] = useState(true);
   const [formErrors, setFormErrors] = useState({});
+  const options = useMemo(() => countryList().getData(), []);
 
   const [state, setState] = useState({
     name: '',
@@ -38,7 +40,7 @@ const CreateTeam = ({ user }) => {
     game: '',
     currency: '$',
     prizepool: null,
-    country: '',
+    region: '',
     website: '',
     description: '',
     achievements: '',
@@ -83,7 +85,7 @@ const CreateTeam = ({ user }) => {
 
       try {
         await mutation.mutateAsync(formdata);
-        toast.success('Your data has been successfully created');
+        toast.success('Your Team has been successfully created! ');
       } catch (err) {
         toast.error(err.response?.data?.msg || 'Please recheck your inputs');
       }
@@ -244,16 +246,14 @@ const CreateTeam = ({ user }) => {
 
                   <div className="form-group">
                     <label htmlFor="exampleFormControlTextarea1">Country</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id=""
-                      placeholder="Country"
-                      name="country"
-                      onChange={handleChange}
-                      value={state.country}
-                    />
-                    <p>{formErrors.country}</p>
+                    <select name="region" id="" onChange={handleChange}>
+                      {options.map((opt) => (
+                        <>
+                          <option value={opt.value}>{opt.label}</option>
+                        </>
+                      ))}
+                    </select>
+                    <p>{formErrors.region}</p>
                   </div>
                   <div className="form-group">
                     <label htmlFor="exampleFormControlTextarea1">Website</label>

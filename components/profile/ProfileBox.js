@@ -10,6 +10,7 @@ import Badges from './badges';
 import { locationformvalidate } from '@utils/valid';
 import ProfileGameStat from './ProfileGameStat';
 import { useRouter } from 'next/router';
+import ReactCountryFlag from 'react-country-flag';
 
 const ProfileBox = ({ user, Userdata, games }) => {
   const [profilePic, setProfilePic] = useState(null);
@@ -599,7 +600,14 @@ const ProfileBox = ({ user, Userdata, games }) => {
                 </span>
               </div>
               <div className="flag">
-                <img src="/assets/media/profile/flag.png" alt="flag" />
+                <ReactCountryFlag
+                  countryCode={user.country}
+                  svg
+                  style={{
+                    width: '2em',
+                    height: '2em'
+                  }}
+                />
               </div>
               <div className="tick">
                 <span className="active">

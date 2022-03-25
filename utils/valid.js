@@ -73,8 +73,8 @@ export const teamformvalidate = (values) => {
   if (!values.prizepool) {
     errors.prizepool = 'Prize cannot be empty';
   }
-  if (!values.country) {
-    errors.country = 'Country is required';
+  if (!values.region) {
+    errors.region = 'Region is required';
   }
   if (!regex.test(values.website)) {
     errors.website = 'Invalid Website Link';

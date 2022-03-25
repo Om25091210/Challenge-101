@@ -103,7 +103,7 @@ const Signup = ({ games, avatars }) => {
           avatarImage,
           gameId,
           userign,
-          country: country.label
+          country: country.value
         });
 
         console.log(res);
