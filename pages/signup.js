@@ -189,8 +189,8 @@ const Signup = ({ games, avatars }) => {
       return dispatch({ type: 'NOTIFY', payload: { error: errMsg } });
     }
 
-    setStep1(false);
-    setShowbtn(false);
+    setStep1(true);
+    setShowbtn(true);
   };
 
   const showstep1 = () => {

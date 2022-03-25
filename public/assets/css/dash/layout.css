@@ -424,7 +424,7 @@ ul.top_menu .drop_down_bg.profile_drop_down li:nth-child(6) {
     padding-bottom: 4px !important;
 }
 
-ul.top_menu .drop_down_bg.profile_drop_down li:nth-child(7){ padding: 0 !important; border: 0 !important;}
+ul.top_menu .drop_down_bg.profile_drop_down li:nth-child(7){  border: 0 !important;}
 ul.top_menu .drop_down_bg.profile_drop_down li:nth-child(7) img{ width: 100%; height: 100%;}
 
 ul.top_menu .drop_down_bg.profile_drop_down li:last-child{ padding-top:10px !important  ; padding-left: 50px !important;}
@@ -6902,6 +6902,14 @@ form.common_form .btn{ width: 100%; margin-top: 20px;}
 
 .bottom_box .trans_list .no_transcation{ display: block;}
 
+
+.add_money.box{ margin: 10px 0;}
+#sendForm .row{ float: left; width: 100%;}
+#sendForm .row:nth-child(1){ float: left; width: 33%;}
+#sendForm .row:nth-child(2){float: left; width: 33%; margin-left: 2%;}
+#sendForm .row:nth-child(3){float: left; width: 33%; margin-left: 1%;}
+
+.add_money .btn{ width: 200px;}
   
 /* ---------------------- Dark Themes----------------------------- */
 
@@ -7287,3 +7295,6 @@ body.DarkPage .rigs li .lft_prod_det .prod_name{ color: #62626e;}
 
 body.DarkPage .team_search .searchbox input[type="search"] { background: #18171d; border-bottom: 1px solid #18171d; border-radius:5px;}
 body.DarkPage .searchbox input[type="search"]{background: #18171d; border-bottom: 1px solid #18171d;}
+
+body.DarkPage .add_money input{background: #18171d; }
+body.DarkPage .add_money .btn{background: #7239ea !important; }
