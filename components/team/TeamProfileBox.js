@@ -4,6 +4,7 @@ import baseURL from '@utils/baseURL';
 import cookie from 'js-cookie';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
+import ReactCountryFlag from 'react-country-flag';
 
 const TeamProfileBox = ({ user, data }) => {
   const [attr, setAttr] = useState(data.team.attributes);
@@ -86,7 +87,17 @@ const TeamProfileBox = ({ user, data }) => {
               <span className="name">Founded May 2011</span>
               <span className="follower">{data.players.length} followers</span>
             </div>
-            <div className="flag">{data.team.region}</div>
+
+            <div className="flag">
+              <ReactCountryFlag
+                countryCode={data.team.region}
+                svg
+                style={{
+                  width: '2em',
+                  height: '2em'
+                }}
+              />
+            </div>
             <div className="tick">
               <span className="active">
                 {data.team.isVerified ? (
