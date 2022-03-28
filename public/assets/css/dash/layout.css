@@ -2185,6 +2185,9 @@ article .social_bar {
 	margin-right: 10px;
 	font-size: 17px;
 }
+
+.bio_box .left_bio .top_bio .socail{ display: flex;}
+
 .bio_box .left_bio .top_bio .socail a {
 	color: #000;
 	margin-right: 10px; vertical-align: middle;
@@ -2987,7 +2990,7 @@ article .social_bar {
 	font-size: 18px;
 	font-weight: 600;
 	letter-spacing: -1px;
-	padding:5px 10px;
+	padding:7px 10px;
 	border-radius: 5px;
 }
 .discovery_page .tit i {
@@ -3002,6 +3005,7 @@ article .social_bar {
 	display:inline-block;
 	border-radius: 5px;
 	margin-right: 10px;
+	vertical-align: bottom;
 }
 .calendar_page .tit span {
 	padding: 7px 10px;
@@ -4733,6 +4737,9 @@ article .social_bar {
 .match_row .team_name {
 	margin:0 20px;
 }
+
+.match_row .team_name a{ display: inline-block;}
+
 .match_row .team_name h3 {
 	font-size: 18px;
 	padding-bottom: 10px;
@@ -5616,6 +5623,9 @@ main {
 	padding: 20px;
 	background: #f7f7f7;
 }
+
+.create_tournament .btn{    background: #7239ea !important;}
+
 .create_tournament form {
 	float: left;
 	width: 100%;
@@ -7298,3 +7308,15 @@ body.DarkPage .searchbox input[type="search"]{background: #18171d; border-bottom
 
 body.DarkPage .add_money input{background: #18171d; }
 body.DarkPage .add_money .btn{background: #7239ea !important; }
+
+
+
+body.DarkPage .ign_search{ background: #fff;}
+body.DarkPage .ign_search h3{ margin-bottom: 0; border: 0; padding-bottom: 0;}
+
+body.DarkPage .ign_search .searchbox input[type="search"]{height: 36px;
+    width: 500px;
+    background: #fff;
+    border: 0;
+    border-bottom: 1px solid #000;
+    border-radius: 0;}
