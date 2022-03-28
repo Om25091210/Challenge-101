@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import TeamStatAdd from './TeamStatAdd';
+import TeamStatDelete from './TeamStatDelete';
 import TeamStatEdit from './TeamStatEdit';
 
 const TeamStatistics = ({ tournamentStatData }) => {
@@ -64,6 +65,7 @@ const TeamStatistics = ({ tournamentStatData }) => {
                         >
                           Edit
                         </button>
+                        <TeamStatDelete statData={tsd} />
                       </td>
                     </tr>
                   )}
