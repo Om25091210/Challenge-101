@@ -10,6 +10,7 @@ import Badges from './badges';
 import { locationformvalidate } from '@utils/valid';
 import ProfileGameStat from './ProfileGameStat';
 import { useRouter } from 'next/router';
+import ReactCountryFlag from 'react-country-flag';
 
 const ProfileBox = ({ user, Userdata, games }) => {
   const [profilePic, setProfilePic] = useState(null);
@@ -599,7 +600,14 @@ const ProfileBox = ({ user, Userdata, games }) => {
                 </span>
               </div>
               <div className="flag">
-                <img src="/assets/media/profile/flag.png" alt="flag" />
+                <ReactCountryFlag
+                  countryCode={user.country}
+                  svg
+                  style={{
+                    width: '2em',
+                    height: '2em'
+                  }}
+                />
               </div>
               <div className="tick">
                 <span className="active">
@@ -888,12 +896,12 @@ const ProfileBox = ({ user, Userdata, games }) => {
                     <div className="inner_model_box">
                       <h3>Games</h3>
 
-                      <div className="team_search">
+                      <div className="team_search ign_search">
                         <div className="searchbox">
                           <h3>Search </h3>
 
                           <form
-                            className="form w-100"
+                            className=""
                             noValidate="novalidate"
                             onSubmit={handleSearchSubmit}
                           >
@@ -907,14 +915,14 @@ const ProfileBox = ({ user, Userdata, games }) => {
                               onChange={handleSearchChange}
                               autoComplete="off"
                             />
-                            <input
+                            {/* <input
                               type="text"
                               className="form-control"
                               placeholder="User IGN"
                               name="userIgn"
                               onChange={handleUserIgnChange}
                               value={userIgn}
-                            />
+                            /> */}
                             <input type="submit" value="" />
                           </form>
                         </div>

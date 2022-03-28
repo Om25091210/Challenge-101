@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import baseURL from '@utils/baseURL';
 import cookie from 'js-cookie';
+import ReactCountryFlag from 'react-country-flag';
 
 const Players = ({ user, profile, myState, selectedGame }) => {
   const [playerData, setPlayerData] = useState([]);
@@ -114,15 +115,23 @@ const Players = ({ user, profile, myState, selectedGame }) => {
                 <a href="#!">
                   <h3>{plyr.players ? plyr.players.name : 'No nickname'}</h3>
                 </a>
-                <img src="/assets/media/discover/country.png" alt="" />{' '}
+                <ReactCountryFlag
+                  countryCode={plyr.players?.nationality}
+                  svg
+                  style={{
+                    width: '2em',
+                    height: '2em'
+                  }}
+                />
               </div>
-
-                <>
-                  <span className="logo">
-                    <img src={plyr.players.current_videogame?.imgUrl} alt="NO GAME" />
-                  </span>{' '}
-                </>
-
+              <>
+                <span className="logo">
+                  <img
+                    src={plyr.players.current_videogame?.imgUrl}
+                    alt="NO GAME"
+                  />
+                </span>{' '}
+              </>
               <span className="remarks">
                 <h4>ROLE</h4>
                 <p>Support Scout Sniper Driver Fragger Ingame leader</p>
@@ -167,9 +176,11 @@ const Players = ({ user, profile, myState, selectedGame }) => {
                 <div className="over_prof">
                   <div className="pics">
                     {' '}
-                    {plyr.players.current_team ? <img src={plyr.players.current_team.image_url} alt="" /> : <img src="/assets/media/discover/team1.png" alt="" />}
-
-                    {' '}
+                    {plyr.players.current_team ? (
+                      <img src={plyr.players.current_team.image_url} alt="" />
+                    ) : (
+                      <img src="/assets/media/discover/team1.png" alt="" />
+                    )}{' '}
                   </div>
                   <h3>
                     {plyr.players ? plyr.players.nickName : 'no nickname'}
@@ -181,9 +192,18 @@ const Players = ({ user, profile, myState, selectedGame }) => {
                   <div className="past">
                     <img src="/assets/media/discover/icon1.png" alt="" />{' '}
                     <b>
-                      {plyr.players.current_team ? plyr.players.current_team.name : 'NO TEAM'}
+                      {plyr.players.current_team
+                        ? plyr.players.current_team.name
+                        : 'NO TEAM'}
                     </b>{' '}
-                    <img src="/assets/media/discover/country.png" alt="" />{' '}
+                    <ReactCountryFlag
+                      countryCode={plyr.players?.nationality}
+                      svg
+                      style={{
+                        width: '2em',
+                        height: '2em'
+                      }}
+                    />
                   </div>
                   <h4>MMR Rating</h4>
                   <p>4790</p>

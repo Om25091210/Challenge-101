@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import baseURL from '@utils/baseURL';
 import TeamRequest from './invites/TeamRequest';
+import ReactCountryFlag from 'react-country-flag';
 
 const Teams = ({ user, profile, myState, selectedGame }) => {
   const [team, setTeam] = useState([]);
@@ -109,10 +110,14 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
                     {team.team._id} : <br /> {team.team.name}
                   </h3>
                 </a>
-                <img
-                  src="/assets/media/discover/country.png"
-                  alt={team.team.name}
-                />{' '}
+                <ReactCountryFlag
+                  countryCode={team.team.region}
+                  svg
+                  style={{
+                    width: '2em',
+                    height: '2em'
+                  }}
+                />
               </div>
               {team.team.games.length <= 0 ? (
                 <p>No Game for this team</p>
@@ -197,8 +202,14 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
 
                   <h4>country</h4>
                   <p>
-                    <img src="/assets/media/discover/country.png" alt="" />{' '}
-                    {team.team.region}
+                    <ReactCountryFlag
+                      countryCode={team.team.region}
+                      svg
+                      style={{
+                        width: '2em',
+                        height: '2em'
+                      }}
+                    />
                   </p>
                   <h4>Established</h4>
                   <p>{team.team.founded}</p>

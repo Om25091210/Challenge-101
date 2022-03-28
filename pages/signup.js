@@ -58,6 +58,11 @@ const Signup = ({ games, avatars }) => {
 
   const handleSelectAvatar = (avatar) => {
     setAvatar(avatar);
+
+    $('.gamer_photo li').click(function () {
+      $('.gamer_photo li').removeClass('active');
+      $(this).addClass('active');
+    });
   };
 
   const [country, setCountry] = useState('');
@@ -103,7 +108,7 @@ const Signup = ({ games, avatars }) => {
           avatarImage,
           gameId,
           userign,
-          country: country.label
+          country: country.value
         });
 
         console.log(res);
@@ -487,7 +492,7 @@ const Signup = ({ games, avatars }) => {
                         <img src="/assets/media/login/user.png" alt="" />
                       </div>
                       <ul>
-                        <li className="uploads">
+                        <li className="uploads active">
                           <div className="style_file_upload">
                             <input
                               type="file"
@@ -514,7 +519,7 @@ const Signup = ({ games, avatars }) => {
 
                         {avatars &&
                           avatars.map((avatar) => (
-                            <li>
+                            <li className="">
                               <div className="form-group">
                                 <a
                                   href="#!"

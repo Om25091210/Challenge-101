@@ -1,4 +1,5 @@
 import TeamSquadAdd from './TeamSquadAdd';
+import TeamSquadDelete from './TeamSquadDelete';
 import TeamSquadEdit from './TeamSquadEdit';
 
 const TeamSquads = ({ squads, teamplayers, team }) => {
@@ -75,7 +76,7 @@ const TeamSquads = ({ squads, teamplayers, team }) => {
                             </span>
                           </td>
                           <td>
-                            <h3>{player.playerId.slug}</h3>
+                            <h3>{player.playerId?.slug}</h3>
                             <p>{player.playerId?.user?.name}</p>
                             <a href="#">player profile </a>
                           </td>
@@ -90,6 +91,7 @@ const TeamSquads = ({ squads, teamplayers, team }) => {
                   </table>
                 </div>
                 <TeamSquadEdit teamplayers={teamplayers} squad={squad} />
+                <TeamSquadDelete squad={squad} />
               </li>
             ))
           )}

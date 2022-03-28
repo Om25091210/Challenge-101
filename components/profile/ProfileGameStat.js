@@ -41,23 +41,39 @@ const ProfileGameStat = ({ user, Userdata, selectedGame }) => {
                     <li>
                       <img src="/assets/media/profile/kill.png" alt="" />
                       <span className="name">KILLS </span>
-                      <span className="num">{stat?.kills}</span>
+                      {stat?.kills ? (
+                        <span className="num">{stat?.kills}</span>
+                      ) : (
+                        <span className="num">--</span>
+                      )}
                     </li>
                     <li>
                       <img src="/assets/media/profile/kdr.png" alt="" />
                       <span className="name">DEATHS </span>
-                      <span className="num">{stat?.deaths}</span>
+                      {stat?.deaths ? (
+                        <span className="num">{stat?.deaths}</span>
+                      ) : (
+                        <span className="num">--</span>
+                      )}
                     </li>
                     <li>
                       <img src="/assets/media/profile/headshot.png" alt="" />
                       <span className="name"> KDA </span>
-                      <span className="num">{stat?.kda}</span>
+                      {stat?.kda ? (
+                        <span className="num">{stat?.kda}</span>
+                      ) : (
+                        <span className="num">--</span>
+                      )}
                     </li>
                     <li>
                       <img src="/assets/media/profile/ace.png" alt="" />
 
                       <span className="name"> Loss </span>
-                      <span className="num">{stat?.loss}</span>
+                      {stat?.loss ? (
+                        <span className="num">{stat?.loss}</span>
+                      ) : (
+                        <span className="num">--</span>
+                      )}
                     </li>
                   </ul>
                 </div>
