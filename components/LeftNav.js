@@ -89,6 +89,18 @@ function LeftNav({user}) {
               </a>
             </Link>{' '}
           </li>
+
+          <li>
+            <Link href="/nftgames">
+              <a className="">
+                <span className="iconbg">
+                  <i className="fa fa-fast-forward" aria-hidden="true"></i>
+                </span>{' '}
+                <span className="title">Play NFT Games</span>
+              </a>
+            </Link>{' '}
+          </li>
+
           {user?.role === 'admin' ? (
             <li>
               <Link href="/settings">

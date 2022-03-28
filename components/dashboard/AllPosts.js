@@ -35,12 +35,12 @@ const AllPosts = ({ post, user, profiledata }) => {
     profiledata &&
     profiledata.following
       ?.filter((profile) => profile.user === post.user?._id)
-      .map((profile) => profile.user).length > 0;
+      .map((profile, ind) => profile.user).length > 0;
 
   const isLoggedInUser = post.user !== '' && post.user?._id === user._id;
 
   const isLiked =
-    post.likes.map((like) => {
+    post.likes.map((like, idx) => {
       return (like.user = user._id);
     }).length > 0;
 

@@ -23,7 +23,7 @@ function CoinGraph() {
                 }
                 setxAxis(label);
                 setYAxis(dataTemp);
-                setTotalCoins(result.data[result.data.length - 1].total_coins)
+                setTotalCoins(result.data[result.data.length - 1]?.total_coins)
             });
     }, []);
 
