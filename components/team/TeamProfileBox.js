@@ -5,12 +5,46 @@ import cookie from 'js-cookie';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 import ReactCountryFlag from 'react-country-flag';
+import Moment from 'moment';
 
 const TeamProfileBox = ({ user, data }) => {
   const [attr, setAttr] = useState(data.team.attributes);
   const router = useRouter();
   const refreshData = () => {
     router.replace(router.asPath);
+  };
+
+  const [showform, setShowForm] = useState(false);
+  const [desc, setDesc] = useState(data.team ? data.team.description : null);
+
+  const toggleShowform = () => {
+    if (showform) {
+      setShowForm(false);
+    } else {
+      setShowForm(true);
+    }
+  };
+
+  const onChange = (e) => {
+    setDesc(e.target.value);
+  };
+
+  const addingDesc = async () => {
+    const res = await fetch(`${baseURL}/api/teams/${data.team._id}`, {
+      method: 'PUT',
+      body: JSON.stringify({
+        desc
+      }),
+      headers: {
+        'Content-type': 'application/json'
+      }
+    });
+    return res.json();
+  };
+  const handleButtonForm = (e) => {
+    addingDesc();
+    setShowForm(false);
+    refreshData();
   };
 
   const isTeamPlayer =
@@ -84,7 +118,9 @@ const TeamProfileBox = ({ user, data }) => {
           <div className="top_details">
             <div className="name_box">
               <span className="game_name"> {data.team.name} </span>
-              <span className="name">Founded May 2011</span>
+              <span className="name">
+                Founded {Moment(data.team.createdAt).format('MMM YYYY')}
+              </span>
               <span className="follower">{data.players.length} followers</span>
             </div>
 
@@ -314,8 +350,22 @@ const TeamProfileBox = ({ user, data }) => {
             </div>
           </div>
 
-          <p>{data.team.description} </p>
+          <button className="bio_edit" onClick={toggleShowform}>
+            <i className="fa fa-pencil" aria-hidden="true"></i>
+          </button>
 
+          {!showform ? <p> {data.team ? data.team.description : ''} </p> : null}
+
+          {showform ? (
+            <form onSubmit={(e) => e.preventDefault()}>
+              <textarea name="text" value={desc} onChange={onChange}></textarea>
+              <button onClick={handleButtonForm} className="btn">
+                Update
+              </button>
+            </form>
+          ) : (
+            ''
+          )}
           <p className="team_pos">
             <span className="position">REGION:</span> {data.team.region}{' '}
           </p>

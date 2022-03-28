@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import baseURL from '@utils/baseURL';
 import Rating from './Rating';
+import ReactCountryFlag from 'react-country-flag';
 
 const Coaches = ({ user, profile, myState }) => {
   const [coach, setCoach] = useState([]);
@@ -77,7 +78,14 @@ const Coaches = ({ user, profile, myState }) => {
                 <img src={coach.coaches.user.profilePicUrl} alt="" />
               </div>
               <h3>{coach.coaches.user.name}</h3>
-              <img src="/assets/media/discover/country.png" alt="" />
+              <ReactCountryFlag
+                countryCode={coach.coaches.region}
+                svg
+                style={{
+                  width: '2em',
+                  height: '2em'
+                }}
+              />
             </div>
             <span className="logo">
               <img src="/assets/media/discover/apex.png" alt="" />{' '}
