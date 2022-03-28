@@ -4548,6 +4548,9 @@ article .social_bar {
 .rdrMonth, .rdrMonth {
 	width: 100% !important
 }
+
+
+
 /* ------------------ Video section -------------------- */
 
  .video_box {
@@ -7320,3 +7323,15 @@ body.DarkPage .ign_search .searchbox input[type="search"]{height: 36px;
     border: 0;
     border-bottom: 1px solid #000;
     border-radius: 0;}
+
+
+	body.DarkPage .rdrInputRanges, body.DarkPage .rdrStaticRanges, 
+	body.DarkPage .rdrStaticRange, body.DarkPage .rdrMonth, body.DarkPage .rdrMonthAndYearWrapper, 
+	body.DarkPage .rdrDateInput, body.DarkPage .rdrDefinedRangesWrapper{ background: #2b2b35 !important}
+	body.DarkPage .rdrDateDisplayWrapper {
+    background-color: #202028 !important;
+}
+body.DarkPage .rdrDayNumber span{ color: #fff !important}
+body.DarkPage .rdrMonthPicker{ background: #000 !important;}
+body.DarkPage .rdrMonthAndYearPickers select{ color: #fff !important;}
+body.DarkPage .rdrMonthAndYearWrapper{border-bottom: 1px solid #69696a;}
