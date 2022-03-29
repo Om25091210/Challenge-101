@@ -116,6 +116,9 @@ export const tournamentformvalidate = (values) => {
   if (!values.game) {
     errors.game = 'Select Atleast one game';
   }
+  if (!values.series) {
+    errors.series = 'Select Atleast one series';
+  }
   if (!values.prizepool) {
     errors.prizepool = 'Prize cannot be empty';
   }
@@ -128,15 +131,15 @@ export const tournamentformvalidate = (values) => {
   if (!values.startDate) {
     errors.startDate = 'Start Date is Required.';
   }
-  if (!values.startTime) {
-    errors.startTime = 'Start Time is Required.';
-  }
+  // if (!values.startTime) {
+  //   errors.startTime = 'Start Time is Required.';
+  // }
   if (!values.endDate) {
     errors.endDate = 'End Date is Required.';
   }
-  if (!values.endTime) {
-    errors.endTime = 'End Time is Required.';
-  }
+  // if (!values.endTime) {
+  //   errors.endTime = 'End Time is Required.';
+  // }
   if (!values.location) {
     errors.location = 'Location is Required.';
   }

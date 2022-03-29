@@ -27,11 +27,13 @@ const CreateTournament = ({ user }) => {
   const [games, setGames] = useState([]);
   const [organizers, setOrganizers] = useState([]);
   const [sponsors, setSponsors] = useState([]);
+  const [series, setSeries] = useState([]);
   const [step1, setStep1] = useState(false);
   const [showbtn, setShowbtn] = useState(true);
   const [formErrors, setFormErrors] = useState({});
 
   const [state, setState] = useState({
+    user: user._id,
     name: '',
     imgUrl: '/assets/media/default/tournament.jpg',
     coverPhoto: '/assets/media/profile/cover_bg.jpg',
@@ -55,7 +57,8 @@ const CreateTournament = ({ user }) => {
     tickets: '',
     website: '',
     sociallink: '',
-    file: null
+    file: null,
+    series: null
   });
 
   useEffect(() => {
@@ -71,6 +74,9 @@ const CreateTournament = ({ user }) => {
     axios
       .get(`${baseURL}/api/all/sponsors`)
       .then((res) => setSponsors(res.data));
+
+    //Series
+    axios.get(`${baseURL}/api/all/series`).then((res) => setSeries(res.data));
   }, []);
 
   const handleSubmit = async (e) => {
@@ -90,7 +96,7 @@ const CreateTournament = ({ user }) => {
           requestOptions
         ).then((data) => data.json());
 
-        toast.success('Your data has been successfully created');
+        toast.success('Your Tournament has been successfully created!! ');
       } catch (err) {
         toast.error(err.response?.data?.msg || 'Please recheck your inputs');
       }
@@ -201,6 +207,23 @@ const CreateTournament = ({ user }) => {
                       ))}
                     </select>
                     <p>{formErrors.game}</p>
+                  </div>
+                  <div className="form-group">
+                    <label for="exampleFormControlInput1">Series</label>
+                    <select
+                      className="game_search_result mscrollbar"
+                      name="series"
+                      value={state.series}
+                      onChange={handleChange}
+                    >
+                      {series.map((ser, idx) => (
+                        <option key={idx} value={ser._id}>
+                          {' '}
+                          {ser.name}{' '}
+                        </option>
+                      ))}
+                    </select>
+                    <p>{formErrors.series}</p>
                   </div>
                   <div className="form-group">
                     <label for="exampleFormControlInput1">Prizes</label>
@@ -385,7 +408,7 @@ const CreateTournament = ({ user }) => {
                           onChange={handleChange}
                           value={state.startTime}
                         />
-                        <p>{formErrors.startTime}</p>
+                        {/* <p>{formErrors.startTime}</p> */}
                       </div>
                     </div>
                   </div>
@@ -415,7 +438,7 @@ const CreateTournament = ({ user }) => {
                           onChange={handleChange}
                           value={state.endTime}
                         />
-                        <p>{formErrors.endTime}</p>
+                        {/* <p>{formErrors.endTime}</p> */}
                       </div>
                     </div>
                   </div>
