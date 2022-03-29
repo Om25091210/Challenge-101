@@ -26,6 +26,48 @@ import TournamentSponsor from '@components/tournament/TournamentSponsor';
 
 const TournamentDetail = ({ user, data, products }) => {
   if (data) {
+    const [showform, setShowForm] = useState(false);
+    const [desc, setDesc] = useState(
+      data.tournament ? data.tournament.description : null
+    );
+    const router = useRouter();
+
+    const toggleShowform = () => {
+      if (showform) {
+        setShowForm(false);
+      } else {
+        setShowForm(true);
+      }
+    };
+
+    const refreshData = () => {
+      router.replace(router.asPath);
+    };
+
+    const onChange = (e) => {
+      setDesc(e.target.value);
+    };
+
+    const addingDesc = async () => {
+      const res = await fetch(
+        `${baseURL}/api/tournaments/${data.tournament._id}`,
+        {
+          method: 'PUT',
+          body: JSON.stringify({
+            desc
+          }),
+          headers: {
+            'Content-type': 'application/json'
+          }
+        }
+      );
+      return res.json();
+    };
+    const handleButtonForm = (e) => {
+      addingDesc();
+      setShowForm(false);
+      refreshData();
+    };
     return (
       <>
         <MetaDash />
@@ -145,11 +187,37 @@ const TournamentDetail = ({ user, data, products }) => {
                       </a>
                     </div>
                   </div>
-                  <p>
+                  {/* <p>
                     {data.detaildescription
                       ? data.detaildescription
                       : data.tournament?.description}
-                  </p>
+                  </p> */}
+
+                  <button className="bio_edit" onClick={toggleShowform}>
+                    <i className="fa fa-pencil" aria-hidden="true"></i>
+                  </button>
+
+                  {!showform ? (
+                    <p>
+                      {' '}
+                      {data.tournament ? data.tournament.description : ''}{' '}
+                    </p>
+                  ) : null}
+
+                  {showform ? (
+                    <form onSubmit={(e) => e.preventDefault()}>
+                      <textarea
+                        name="text"
+                        value={desc}
+                        onChange={onChange}
+                      ></textarea>
+                      <button onClick={handleButtonForm} className="btn">
+                        Update
+                      </button>
+                    </form>
+                  ) : (
+                    ''
+                  )}
 
                   <div className="games">
                     <h3>organizer:</h3>
