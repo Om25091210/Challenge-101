@@ -6,7 +6,7 @@ import NFT from "../../../hardhat/artifacts/contracts/HeraCollection.sol/HeraCol
 import Market from "../../../hardhat/artifacts/contracts/Marketplace.sol/Marketplace.json";
 
 export const rpcProvider = new ethers.providers.JsonRpcProvider(
-  process.env.NEXT_PUBLIC_ROPSTEN_URL
+  process.env.NEXT_PUBLIC_ALCHEMY_URL
 );
 
 export function getMarketContract(signer?: any) {
