@@ -103,7 +103,7 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
               <div className="logo_box">
                 {' '}
                 <div className="role_pic">
-                  <img src="/assets/media/discover/team1.png" alt="" />
+                  <img src={team.team.imgUrl} alt="" />
                 </div>
                 <a href={`/team/${team.team._id}`}>
                   <h3>
@@ -174,7 +174,7 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
                 <div className="over_prof">
                   <div className="pics">
                     {' '}
-                    <img src="/assets/media/discover/team1.png" alt="" />{' '}
+                    <img src={team.team.imgUrl} alt="" />{' '}
                   </div>
                   <h3>{team.team.name}</h3>
                 </div>
