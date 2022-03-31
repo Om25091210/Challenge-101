@@ -77,7 +77,7 @@ const RightSection = ({ user, profile, suggestedplayers, teams }) => {
                 <li key={idx}>
                   <Link href={`/team/${tm._id}`}>
                     <div>
-                      <img src={tm.image_url} alt={tm.name} />
+                      <img src={tm.imgUrl} alt={tm.name} />
                       <p> {tm.name}</p>
                     </div>
                   </Link>

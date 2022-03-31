@@ -166,6 +166,13 @@ const TeamProfileBox = ({ user, data }) => {
     }
   };
 
+  const empManager = data.team.employees
+    .map((x) => x)
+    .filter((x) => x.role === 'manager');
+  const empCoach = data.team.employees
+    .map((x) => x)
+    .filter((x) => x.role === 'coach');
+
   return (
     <div className="profile_box">
       <div className="profile_cover_photo">
@@ -497,22 +504,38 @@ const TeamProfileBox = ({ user, data }) => {
             <ul>
               <li>
                 <span className="position">MANAGER:</span>{' '}
-                <span className="pos_name">
-                  <span className="imgs">
-                    <img src="/assets/media/user.jpg" alt="" />
-                  </span>
-                  Alison “Eleven” James
-                </span>
+                {empManager.length > 0 ? (
+                  <>
+                    {empManager.map((emply) => (
+                      <span className="pos_name">
+                        <span className="imgs">
+                          <img src={emply.employeeId.profilePicUrl} alt="" />
+                        </span>
+                        {emply.employeeId.name}
+                      </span>
+                    ))}
+                  </>
+                ) : (
+                  'This Team Currently has no Manager.'
+                )}
               </li>
 
               <li>
                 <span className="position">Coach:</span>{' '}
-                <span className="pos_name">
-                  <span className="imgs">
-                    <img src="/assets/media/user.jpg" alt="" />
-                  </span>
-                  Alison “Eleven” James
-                </span>
+                {empCoach.length > 0 ? (
+                  <>
+                    {empCoach.map((emply) => (
+                      <span className="pos_name">
+                        <span className="imgs">
+                          <img src={emply.employeeId.profilePicUrl} alt="" />
+                        </span>
+                        {emply.employeeId.name}
+                      </span>
+                    ))}
+                  </>
+                ) : (
+                  'This Team Currently has no Coach'
+                )}
               </li>
             </ul>
           </div>
