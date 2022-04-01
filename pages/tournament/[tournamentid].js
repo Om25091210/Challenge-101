@@ -23,6 +23,7 @@ import TournamentParticipants from '@components/tournament/TournamentParticipant
 import ProductList from '@components/common/ProductList';
 import Matches from '@components/team/Matches';
 import TournamentSponsor from '@components/tournament/TournamentSponsor';
+import Moment from 'moment';
 
 const TournamentDetail = ({ user, data, products }) => {
   if (data) {
@@ -113,7 +114,10 @@ const TournamentDetail = ({ user, data, products }) => {
                         </div>
                       </div>
                       <span className="name">
-                        Indoor Stadium, Bangalore Feb 18th - 20th 10 AM IST
+                        Indoor Stadium, {data.tournament.location}
+                        {Moment(data.tournament.startDate).format('MMM DD')} -
+                        {Moment(data.tournament.endDate).format('MMM DD')}{' '}
+                        {Moment(data.tournament.startDate).format('hh:mm A')}{' '}
                       </span>{' '}
                       <span className="follower">
                         {data.tournament?.description}
@@ -149,7 +153,8 @@ const TournamentDetail = ({ user, data, products }) => {
                 </div>
 
                 <div className="flex prices">
-                  <h5>Price</h5>
+                  <h5>Prize</h5>
+                  {data.tournament.currency}
                   <span className="">
                     <MPNumberFormat
                       value={
@@ -262,17 +267,26 @@ const TournamentDetail = ({ user, data, products }) => {
                   <div className="internet">
                     <ul>
                       <li>
-                        <b>CATEGORY</b>LAN{' '}
+                        <b>CATEGORY</b>
+                        {data.tournament.category ? (
+                          <>{data.tournament.category} </>
+                        ) : (
+                          'No Category selected'
+                        )}
                       </li>
                       <li>
-                        <b>REGISTRATION </b> FREE
+                        <b>REGISTRATION </b>
+                        {data.tournament.entranceFee !== 0
+                          ? data.tournament.entranceFee
+                          : 'Free'}
                       </li>
                       <li>
                         {' '}
                         <b>PLAYOUT </b> ROUND ROBIN{' '}
                       </li>
                       <li>
-                        <b>ELIMINATION </b> dOUBLE
+                        <b>ELIMINATION </b>
+                        {data.tournament.tournamentType}
                       </li>
                     </ul>
                   </div>

@@ -77,10 +77,14 @@ const TournamentRows = ({ tournaments, searchResults }) => {
                     </div>
                     <div>
                       <h3>PRIZE POOL:</h3>
-                      <MPNumberFormat
-                        value={result.tournament.prizepool}
-                        currency={result.tournament.currency}
-                      />
+                      {result.tournament.prizepool ? (
+                        <MPNumberFormat
+                          value={result.tournament.prizepool}
+                          currency={result.tournament.currency}
+                        />
+                      ) : (
+                        'Not Available'
+                      )}
                     </div>
                   </div>
                 </div>

@@ -915,14 +915,14 @@ const ProfileBox = ({ user, Userdata, games }) => {
                               onChange={handleSearchChange}
                               autoComplete="off"
                             />
-                            {/* <input
+                            <input
                               type="text"
                               className="form-control"
                               placeholder="User IGN"
                               name="userIgn"
                               onChange={handleUserIgnChange}
                               value={userIgn}
-                            /> */}
+                            />
                             <input type="submit" value="" />
                           </form>
                         </div>

@@ -41,7 +41,7 @@ const CreateTournament = ({ user }) => {
     currency: '$',
     prizepool: null,
     category: '',
-    tournamentType: '',
+    tournamentType: '--',
     format: '',
     participants: null,
     entranceFee: null,
