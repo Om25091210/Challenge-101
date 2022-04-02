@@ -16,23 +16,30 @@ const NFTGamesList = ({ user }) => {
       <LeftNav user={user} />
 
       <div className="main_middle profile_middle">
+        <div className="play_game_list">
+          <h1>Play Game</h1>
 
-      		<a href="/nft/carslane">
-             <div>
-                <button className="btn btn-info mb-4" >
-                    <i className="fa fa-long-arrow-alt-left" aria-hidden="true"></i> Cars Lane
+          <ul className="play_games">
+            <li>
+              <a href="/nft/carslane">
+                <button className="">
+                  <img src="/assets/media/play/cars.jpg" alt="" />
                 </button>
-            </div>
-            </a>
+                <h2> Cars Lane</h2>
+              </a>
+            </li>
 
-      		<a href="#/dodgerocks">
-             <div>
-                <button className="btn btn-info mb-4" >
-                    <i className="fa fa-long-arrow-alt-left" aria-hidden="true"></i> Dodge Rocks
+            <li>
+              <a href="#/dodgerocks">
+                <button className="">
+                  <img src="/assets/media/play/rocks.jpg" alt="" />
+
+                  <h2>Dodge Rocks</h2>
                 </button>
-            </div>
-            </a> 		          
-
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
 
       <AllScript />
