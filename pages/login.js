@@ -12,6 +12,7 @@ import Cookie from 'js-cookie';
 import baseURL from '@utils/baseURL';
 import cookie from 'js-cookie';
 import { useRouter } from 'next/router';
+import TempCode from '../components/TempCode';
 
 const SignIn = () => {
   const [user, setUser] = useState({
@@ -82,9 +83,9 @@ const SignIn = () => {
     isUser ? setSubmitDisabled(false) : setSubmitDisabled(true);
   }, [user]);
 
-  useEffect(() => {
-    if (Object.keys(auth).length !== 0) router.push('/dashboard');
-  }, [auth]);
+  // useEffect(() => {
+  //   if (Object.keys(auth).length !== 0) router.push('/temp');
+  // }, [auth]);
 
   const togglePassword = () => {
     setPasswordShown(!passwordShown);
@@ -214,17 +215,7 @@ const SignIn = () => {
                 </div>
 
                 <div className="text-center">
-                  <button
-                    type="submit"
-                    id="kt_sign_in_submit"
-                    className="btn mt-5 btn-lg btn-primary w-100 mb-5"
-                  >
-                    <span className="indicator-label">Log In and Play</span>
-                    <span className="indicator-progress">
-                      Please wait...
-                      <span className="spinner-border spinner-border-sm align-middle ms-2"></span>
-                    </span>
-                  </button>
+                  <TempCode />
 
                   <div className="d-flex align-items-center mt-5 mb-5">
                     <div className="border-bottom border-gray-300 mw-50 w-100"></div>
