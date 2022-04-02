@@ -38,6 +38,28 @@ const NFTGamesList = ({ user }) => {
                 </button>
               </a>
             </li>
+
+            <li>
+              <a href="#/dodgerocks">
+                <button className="">
+                  <img src="/assets/media/play/dharm.png" alt="" />
+                  <span className="grey">Coming Soon</span>
+                  <h2>Dharmyuddha</h2>
+                </button>
+              </a>
+            </li>
+
+            <li>
+              <a href="#/dodgerocks">
+                <button className="">
+                  <img src="/assets/media/play/line.png" alt="" />
+
+                  <span className="grey">Coming Soon</span>
+
+                  <h2>Line of control</h2>
+                </button>
+              </a>
+            </li>
           </ul>
         </div>
       </div>
