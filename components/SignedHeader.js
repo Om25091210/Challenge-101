@@ -284,10 +284,13 @@ const SignedHeader = ({ user }) => {
               </span>
             </a>
             <div className="drop_down_bg wallet_drop_down">
-              <h2>Wallet</h2>
-
+              <h2>Wallet</h2>{' '}
+              <i class="fa fa-info-circle" aria-hidden="true"></i>
               <ul>
                 <li className="balance1">
+                  <span className="amt1">
+                    <img src="/assets/media/login/wallet.png" alt="M" />{' '}
+                  </span>
                   <span className="amt1">
                     <img src="/assets/media/login/m.png" alt="M" />{' '}
                   </span>
