@@ -158,17 +158,6 @@ const VerifyToken = ({ verificationToken, finishsubmit, show1 }) => {
                           </span>
                         </button>
                       </div>
-                      <div className="fs-5">
-                        <span className="fw-bold text-gray-700">
-                          Did’t receive an email?
-                        </span>
-                        <a
-                          href="signup.html"
-                          className="link-primary fw-bolder"
-                        >
-                          Resend
-                        </a>
-                      </div>
                     </>
                   )}
                 </form>

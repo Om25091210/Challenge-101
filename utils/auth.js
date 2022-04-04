@@ -12,7 +12,6 @@ export const registerUser = async (
   toast,
   setStatus
 ) => {
-
   setLoading(true);
   try {
     var name = firstname + ' ' + lastname;
@@ -39,7 +38,6 @@ export const loginUser = async (
   setLoading,
   toast
 ) => {
-
   setLoading(true);
   try {
     const res = await axios.post(`${baseURL}/api/auth`, {
@@ -71,7 +69,6 @@ export const onboardUser = async (verificationToken, setLoading, toast) => {
     );
     setToken(res.data.token);
     toast.success(res.data.msg);
-    Router.push('/dashboard');
   } catch (error) {
     const errorMsg = catchErrors(error);
     toast.error(errorMsg);

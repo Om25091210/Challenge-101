@@ -12,7 +12,7 @@ import Cookie from 'js-cookie';
 import baseURL from '@utils/baseURL';
 import cookie from 'js-cookie';
 import { useRouter } from 'next/router';
-import TempCode from '../components/TempCode';
+import InviteCode from '../components/InviteCode';
 
 const SignIn = () => {
   const [user, setUser] = useState({
@@ -215,7 +215,7 @@ const SignIn = () => {
                 </div>
 
                 <div className="text-center">
-                  <TempCode />
+                  <InviteCode />
 
                   <div className="d-flex align-items-center mt-5 mb-5">
                     <div className="border-bottom border-gray-300 mw-50 w-100"></div>

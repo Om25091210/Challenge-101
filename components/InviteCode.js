@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
 
-const TempCode = () => {
+const InviteCode = () => {
   const inviteCodes = ['APQ447', 'HM007C', '883POL', 'DL12WD'];
 
   const [inviteCode, setInviteCode] = useState('');
@@ -29,9 +29,13 @@ const TempCode = () => {
   }, []);
   return (
     <>
-      <button type="submit" id="kt_sign_up_submit" className="model_show_btn">
+      <button
+        type="submit"
+        id="kt_sign_up_submit"
+        className="model_show_btn btn"
+      >
         {' '}
-        <span className="indicator-label">Finish</span>{' '}
+        <span className="indicator-label">Log In and Play</span>{' '}
         <span className="indicator-progress">
           {' '}
           Please wait...{' '}
@@ -49,9 +53,7 @@ const TempCode = () => {
               <img alt="Logo" src="/assets/media/logos/logo.png" />
             </a>
             <div className="pt-lg-10 mb-10">
-              <h1>Verify Your Email</h1>
-
-              <p> We have sent a code to your email.</p>
+              <h1>Only for the Invites.</h1>
 
               <div className="verify_form">
                 <form
@@ -85,14 +87,6 @@ const TempCode = () => {
                       </span>
                     </button>
                   </div>
-                  <div className="fs-5">
-                    <span className="fw-bold text-gray-700">
-                      Did’t receive an email?
-                    </span>
-                    <a href="signup.html" className="link-primary fw-bolder">
-                      Resend
-                    </a>
-                  </div>
                 </form>
               </div>
             </div>
@@ -110,4 +104,4 @@ const TempCode = () => {
   );
 };
 
-export default TempCode;
+export default InviteCode;
