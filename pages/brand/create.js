@@ -126,7 +126,7 @@ const CreateBrand = ({ user }) => {
                   />
                 </div>
               </>
-              <button className={`btn rgtside`}>Continue</button>
+              <button className={`btn rgtside`}>Create</button>
             </form>
           </div>
         </div>

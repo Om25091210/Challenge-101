@@ -24,6 +24,7 @@ import ProductList from '@components/common/ProductList';
 import Matches from '@components/team/Matches';
 import TournamentSponsor from '@components/tournament/TournamentSponsor';
 import Moment from 'moment';
+import { toast } from 'react-toastify';
 
 const TournamentDetail = ({ user, data, products }) => {
   if (data) {
@@ -31,6 +32,7 @@ const TournamentDetail = ({ user, data, products }) => {
     const [desc, setDesc] = useState(
       data.tournament ? data.tournament.description : null
     );
+    const [tour, setTour] = useState(data.tournament);
     const router = useRouter();
 
     const toggleShowform = () => {
@@ -69,6 +71,36 @@ const TournamentDetail = ({ user, data, products }) => {
       setShowForm(false);
       refreshData();
     };
+
+    const handleSubmitphno = async (e) => {
+      e.preventDefault();
+      try {
+        const res = await fetch(
+          `${baseURL}/api/tournaments/tourdetails/${data.tournament._id}`,
+          {
+            method: 'PATCH',
+            body: JSON.stringify({
+              tour
+            }),
+            headers: {
+              'Content-type': 'application/json'
+            }
+          }
+        );
+        toast.success(
+          'Your Tournament Details has been Updated successfully! '
+        );
+      } catch (err) {
+        toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+      }
+      $('a.model_close').parent().removeClass('show_model');
+      refreshData();
+    };
+
+    function handleChangeTour(e) {
+      setTour({ ...tour, [e.target.name]: e.target.value });
+    }
+
     return (
       <>
         <MetaDash />
@@ -289,6 +321,118 @@ const TournamentDetail = ({ user, data, products }) => {
                         {data.tournament.tournamentType}
                       </li>
                     </ul>
+
+                    <span>
+                      <div>
+                        {' '}
+                        <a
+                          href="#!"
+                          className="model_show_btn"
+                          alt="personal details"
+                        >
+                          <button className="btn">
+                            {/* <i className="fa fa-pencil" aria-hidden="true">
+                </i> */}
+                            Tournament Edit
+                          </button>
+                        </a>
+                        <div className="common_model_box">
+                          <a href="#!" className="model_close">
+                            X
+                          </a>
+                          <div className="inner_model_box">
+                            <h3>Tournament Detail's</h3>
+                            <form
+                              onSubmit={handleSubmitphno}
+                              className="common_form"
+                            >
+                              <div className="form-group">
+                                <div className="colm">
+                                  <label htmlFor="exampleFormControlInput1">
+                                    Category
+                                  </label>
+                                  <select
+                                    name="category"
+                                    id="category"
+                                    className="form-control"
+                                    value={tour?.category}
+                                    onChange={handleChangeTour}
+                                  >
+                                    <option value="--">--</option>
+                                    <option value="Death Match">
+                                      Death Match
+                                    </option>
+                                    <option value="Survival">Survival</option>
+                                    <option value="Online">Online</option>
+                                    <option value="Lan">LAN</option>
+                                  </select>
+                                </div>
+                                <div className="colm">
+                                  <label htmlFor="exampleFormControlInput1">
+                                    Registration
+                                  </label>
+                                  <input
+                                    type="number"
+                                    className="form-control"
+                                    placeholder=""
+                                    name="entranceFee"
+                                    onChange={handleChangeTour}
+                                    value={tour?.entranceFee}
+                                  />
+                                </div>
+                                <div className="colm">
+                                  <label htmlFor="exampleFormControlInput1">
+                                    PlayOut
+                                  </label>
+                                  <select
+                                    name="playout"
+                                    id="playout"
+                                    className="form-control"
+                                    value={tour?.playout}
+                                    onChange={handleChangeTour}
+                                  >
+                                    <option value="--">--</option>
+                                    <option value="RoundRobin">
+                                      Round Robin
+                                    </option>
+                                    <option value="Single Elimination">
+                                      Single Elimination
+                                    </option>
+                                    <option value="Double Elimination">
+                                      Double Elimination
+                                    </option>
+                                  </select>
+                                </div>
+                                <div className="colm">
+                                  <label htmlFor="exampleFormControlInput1">
+                                    Elimination
+                                  </label>
+                                  <select
+                                    name="tournamentType"
+                                    className="form-control"
+                                    value={tour?.tournamentType}
+                                    onChange={handleChangeTour}
+                                  >
+                                    <option value="--">--</option>
+                                    <option value="Single Elimination">
+                                      Single Elimination
+                                    </option>
+                                    <option value="Double Elimination">
+                                      Double Elimination
+                                    </option>
+                                    <option value="Leaderboard">
+                                      Leaderboard
+                                    </option>
+                                  </select>
+                                </div>
+                                <button className="btn">Update</button>
+                              </div>
+                            </form>
+                          </div>
+                          <div className="overlay"></div>
+                        </div>
+                      </div>
+                    </span>
                   </div>
                 </div>
               </div>

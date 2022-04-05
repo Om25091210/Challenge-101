@@ -144,7 +144,7 @@ const CreateBrand = ({ user }) => {
                   {state.founded.length >= 5 && <h6>Year is invalid.</h6>}
                 </div>
               </>
-              <button className={`btn rgtside`}>Continue</button>
+              <button className={`btn rgtside`}>Create</button>
             </form>
           </div>
         </div>
