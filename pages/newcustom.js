@@ -89,9 +89,11 @@ function Customjs() {
 
     jQuery('.open_chat_box').on('click', function () {
       jQuery('.chatbox').addClass('active');
+      jQuery('body').css('overflow', 'hidden');
     });
     jQuery('.chatbox-close').on('click', function () {
       jQuery('.chatbox').removeClass('active');
+      jQuery('body').css('overflow', 'auto');
     });
 
     /* -------  Profile ------------*/

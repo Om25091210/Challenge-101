@@ -106,7 +106,7 @@ const CustomPost = ({ post }) => {
             <button onClick={() => setShareToModal(true)}>Share to</button>
           </li>
           <li>
-            <a href="#">Copy Link</a>
+            <button>Copy Link</button>
           </li>
         </ul>
       </div>

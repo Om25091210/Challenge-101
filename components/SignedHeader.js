@@ -72,41 +72,72 @@ const SignedHeader = ({ user }) => {
             <a href="#">
               <i className="fa fa-plus-circle" aria-hidden="true"></i>
             </a>
-            <div className="drop_down_bg">
-              <ul>
+            <div className="drop_down_bg create_pages">
+              <ul className="bellHight">
                 <li>
                   <a href="/team/create">
-                    <i className="fa fa-users" aria-hidden="true"></i> Create a
-                    team page
-                    <p>Create a team, compete and rank yourself globally.</p>
+                    <span>
+                      <i className="fa fa-users" aria-hidden="true"></i>{' '}
+                    </span>
+                    <span>
+                      {' '}
+                      <b>Create a team page</b>
+                      <p>Create a team, compete and rank yourself globally.</p>
+                    </span>
                   </a>
                 </li>
                 <li>
                   <a href="/tournament/create">
-                    <i className="fa fa-trophy" aria-hidden="true"></i> Create a
-                    tournament
-                    <p>Create a tournament and invite participants.</p>
+                    <span>
+                      {' '}
+                      <i className="fa fa-trophy" aria-hidden="true"></i>{' '}
+                    </span>
+
+                    <span>
+                      {' '}
+                      <b> Create a tournament</b>
+                      <p>Create a tournament and invite participants.</p>
+                    </span>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <i className="fa fa-handshake-o" aria-hidden="true"></i>{' '}
-                    Create a community
-                    <p>Create a community and connect with people.</p>
+                    <span>
+                      {' '}
+                      <i
+                        className="fa fa-handshake-o"
+                        aria-hidden="true"
+                      ></i>{' '}
+                    </span>
+                    <span>
+                      {' '}
+                      <b>Create a community</b>
+                      <p>Create a community and connect with people.</p>
+                    </span>
                   </a>
                 </li>
                 <li>
                   <a href="/brand/create">
-                    <i className="fa fa-file" aria-hidden="true"></i> Create a
-                    Brand/Company page
-                    <p>Start selling your products and services.</p>
+                    <span>
+                      {' '}
+                      <i className="fa fa-file" aria-hidden="true"></i>{' '}
+                    </span>
+                    <span>
+                      {' '}
+                      <b>Create a Brand/Company page</b>
+                      <p>Start selling your products and services.</p>
+                    </span>
                   </a>
                 </li>
                 <li>
                   <a href="/arena/create">
-                    <i className="fa fa-sign-out" aria-hidden="true"></i> Create
-                    an Arena page
-                    <p>Create arena, invite gamers and increase walk-ins.</p>
+                    <span>
+                      <i className="fa fa-sign-out" aria-hidden="true"></i>{' '}
+                    </span>
+                    <span>
+                      <b> Create an Arena page</b>
+                      <p>Create arena, invite gamers and increase walk-ins.</p>
+                    </span>
                   </a>
                 </li>
                 {/* <li>
@@ -118,7 +149,7 @@ const SignedHeader = ({ user }) => {
               </ul>
             </div>
           </li>
-          <li>
+          <li className="chat_box">
             <a href="#" className="open_chat_box">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

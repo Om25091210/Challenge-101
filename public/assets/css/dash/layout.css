@@ -348,6 +348,9 @@ ul.top_menu .drop_down_bg li a:hover, .drop_down_bg li a:hover i {
 ul.top_menu li:hover .drop_down_bg {
 	display:block; border:1px solid #000;
 }
+
+
+
 .bellHight {
 	height:300px;
 }
@@ -508,12 +511,17 @@ ul.top_menu li.wallet li{     float: left;
 	ul.top_menu li.pluse .fa-plus-circle{ font-size: 27px;}
 	ul.top_menu li.pluse .drop_down_bg li a{ padding: 10px 0;}
 
+	ul.top_menu .drop_down_bg.create_pages{ width: 340px;}
+	ul.top_menu .drop_down_bg.create_pages a{ display: flex;     align-items: center;}
+	ul.top_menu .drop_down_bg.create_pages a span:first-child{ margin-right: 10px;}
+	ul.top_menu .drop_down_bg.create_pages a .fa{ font-size: 25px;}
+
 /* ------- start left side -------------- */
 
 .left_side{position:fixed;left:0;top:80px;width:100px;height:100%;background:#7239ea;z-index:11; transition: 0.3s ease-in-out;}
 .left_side:hover{ width:210px;}
 .left_side nav{margin-top:30px; margin-left: 25px;}
-.left_side nav li{float:left;width:100%;text-align:left;margin:10px 0;position:relative;}
+.left_side nav li{float:left;width:100%;text-align:left;margin:6px 0;position:relative;}
 .left_side nav li .iconbg{transition:0.3s ease-in-out;width:45px;height:45px;display:inline-flex;border-radius:10px;align-items:center;justify-content:center;text-decoration:none !important;}
 .left_side nav li i{color:#fff;font-size:20px !important;font-weight:100;}
 .left_side nav li .title{position:absolute;left:60px;top:13px;font-size:15px;color:#fff;font-weight:600;display:none;transition:0.5s ease-in-out;}
@@ -524,7 +532,8 @@ ul.top_menu li.wallet li{     float: left;
 
 .team_slider .slick-list {
 	height: 44px !important;
-	overflow: hidden;
+	overflow: hidden !important;
+
 }
 .main_middle {
 	width:800px;
@@ -548,7 +557,7 @@ ul.top_menu li.wallet li{     float: left;
 	position: relative;
 }
 
-
+.write_post .user_slider{ width: 70px; height: 44px; overflow: hidden;}
 
 .write_post .team_slider li img {
 	width: 40px;
@@ -559,7 +568,7 @@ ul.top_menu li.wallet li{     float: left;
 .write_post .team_slider .slick-prev {
 	padding:0 !important;
 	position:absolute;
-	right:-22px;
+	right:0px;
 	top:1px;
 	text-indent:-9999px;
 	border:0;
@@ -568,7 +577,7 @@ ul.top_menu li.wallet li{     float: left;
 	height:20px;
 	border-radius:5px 10px 0px 0px;
 	box-shadow:0 0 10px #eee;
-	cursor:pointer;
+	cursor:pointer; z-index: 10;
 }
 .write_post .team_slider .slick-prev:before {
 	content:"";
@@ -585,7 +594,7 @@ ul.top_menu li.wallet li{     float: left;
 .write_post .team_slider .slick-next {
 	padding:0 !important;
 	position:absolute;
-	right:-22px;
+	right:0px;
 	bottom:0px;
 	text-indent:-9999px;
 	border:0;
@@ -595,7 +604,7 @@ ul.top_menu li.wallet li{     float: left;
 	height:20px;
 	border-radius:0 0 10px 10px;
 	box-shadow:0 0 10px #eee;
-	cursor:pointer;
+	cursor:pointer; z-index: 10;
 }
 .write_post .team_slider .slick-next:before {
 	content:"";
@@ -939,7 +948,7 @@ ul.top_menu li.wallet li{     float: left;
 .users_share_box .shere {
 	width: 240px;
 }
-.users_share_box .shere a {
+.users_share_box .shere > a {
 	color:#000;
 	font-size:15px;
 	font-weight:400;
@@ -1012,7 +1021,7 @@ ul.top_menu li.wallet li{     float: left;
 	border: 10px solid #7239ea;
 }
 .edit_post .user_slider {
-	width: 30px;
+	width: 30px; 
 }
 .edit_post h4 {
 	margin-bottom: 20px;
@@ -1117,7 +1126,7 @@ ul.top_menu li.wallet li{     float: left;
 .add_comment_box .add_comments .gif {
 	background:#e1e1e1;
 	display:inline-flex;
-	padding:5px 4px;
+	padding:2px 4px;
 	margin:0 5px;
 	border-radius:5px;
 	font-size:15px;
@@ -1141,7 +1150,7 @@ ul.top_menu li.wallet li{     float: left;
 }
 .add_comment_box button {
 	border-radius:5px;
-	padding:17px 20px;
+	padding:30px 20px;
 	background:#f3f6f9;
 	border:0;
 	margin-left:10px;
@@ -1276,8 +1285,8 @@ ul.top_menu li.wallet li{     float: left;
 }
 .reply_comment {
 	position: absolute;
-	right: 0;
-	top: -20px;
+	right: 80px;
+	top: 10px;
 }
 .delete_comment button, .reply_comment button, .delete_btn button {
 	padding: 4px 10px;
@@ -1286,6 +1295,9 @@ ul.top_menu li.wallet li{     float: left;
 	float: left;
 	width: 100%;
 }
+
+
+
 .first_reply form textarea {
 	float: left;
 	width: 100%;
@@ -3706,7 +3718,7 @@ article .social_bar {
 	position: absolute;
 	z-index:5;
 	top: 40%;
-	left: 0px;
+	left: 40%;
 	margin: auto;
 	right: 0;
 	text-align: center;
@@ -6213,13 +6225,14 @@ ul.game_search_result li {
 	position: relative; text-align: center;
 }
 .game_list_page li p {
-	line-height: 20px; font-size: 11px;
+	line-height: 20px; font-size: 11px; height: 20px;
 }
 .game_list_page li h3 {
 	font-weight: 600;
+	height: 30px;
 }
 
-.game_list_page li h5{ font-size: 12px;}
+.game_list_page li h5{ font-size: 12px; height: 80px;}
 .game_list_page li .bottom_data span {
 	position: absolute;
 	right: 10px;
@@ -6434,11 +6447,12 @@ ul.game_search_result li {
 	height: 45px;
 }
 #more_games ul li p {
-	font-size: 15px;
+	font-size: 14px;
 	padding: 10px;
 	background: #fff;
 	color: #000;
-	font-weight: 600;
+	font-weight: 400;
+	 height: 45px;
 }
 .width_1100, #product_details {
 	float: left;
@@ -7370,3 +7384,8 @@ body.DarkPage .rdrDayNumber span{ color: #fff !important}
 body.DarkPage .rdrMonthPicker{ background: #000 !important;}
 body.DarkPage .rdrMonthAndYearPickers select{ color: #fff !important;}
 body.DarkPage .rdrMonthAndYearWrapper{border-bottom: 1px solid #69696a;}
+
+@media screen and ( max-height: 768px ){
+    .left_side nav li{margin: 3px 0;}
+	.left_side nav li .iconbg{ height: 40px;}
+}
