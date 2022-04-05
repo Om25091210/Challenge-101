@@ -12,27 +12,23 @@ const AllPosts = ({ post, user, profiledata }) => {
   const [commentsData, setCommentsData] = useState([]);
 
   useEffect(() => {
-    if (post) {
-      axios
-        .get(`${baseURL}/api/comments/${post._id}`)
-        .then((res) => {
-          setCommentsData(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
+    axios
+      .get(`${baseURL}/api/comments/${post._id}`)
+      .then((res) => {
+        setCommentsData(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   const followhandlesubmit = async (Uid) => {
-    if (Uid) {
-      await fetch(`${baseURL}/api/profile/follow/${Uid}`, {
-        method: 'POST',
-        headers: {
-          Authorization: cookie.get('token')
-        }
-      });
-    }
+    await fetch(`${baseURL}/api/profile/follow/${Uid}`, {
+      method: 'POST',
+      headers: {
+        Authorization: cookie.get('token')
+      }
+    });
   };
 
   const isFollow =

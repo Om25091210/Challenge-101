@@ -6,13 +6,11 @@ const RecentActivity = ({ user }) => {
   const [recent, setRecent] = useState([]);
 
   useEffect(() => {
-    if (user) {
-      axios
-        .get(`${baseURL}/api/chats/user/chats/latestactivity/${user.email}`)
-        .then((res) => {
-          setRecent(res.data);
-        });
-    }
+    axios
+      .get(`${baseURL}/api/chats/user/chats/latestactivity/${user.email}`)
+      .then((res) => {
+        setRecent(res.data);
+      });
   }, []);
 
   return (

@@ -9,16 +9,14 @@ const ReplyList = ({ post, comment, user }) => {
   const [replies, setReplies] = useState([]);
 
   useEffect(() => {
-    if (comment && post) {
-      axios
-        .get(`${baseURL}/api/comments/${post._id}/${comment._id}`)
-        .then((res) => {
-          setReplies(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
+    axios
+      .get(`${baseURL}/api/comments/${post._id}/${comment._id}`)
+      .then((res) => {
+        setReplies(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   return (
