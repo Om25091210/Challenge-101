@@ -9,14 +9,16 @@ const ReplyList = ({ post, comment, user }) => {
   const [replies, setReplies] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(`${baseURL}/api/comments/${post._id}/${comment._id}`)
-      .then((res) => {
-        setReplies(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    if (comment && post) {
+      axios
+        .get(`${baseURL}/api/comments/${post._id}/${comment._id}`)
+        .then((res) => {
+          setReplies(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   }, []);
 
   return (
@@ -28,13 +30,21 @@ const ReplyList = ({ post, comment, user }) => {
               <div className="reply_comment_item d-flex">
                 <a href="#">
                   <span className="avtar">
-                    <img src={reply.user != null ? reply.user.profilePicUrl : 'Not Defined'} />
+                    <img
+                      src={
+                        reply.user != null
+                          ? reply.user.profilePicUrl
+                          : 'Not Defined'
+                      }
+                    />
                   </span>
                 </a>
                 <div className="comments_data">
                   <div className="member_profile">
                     <a href="#">
-                      <h3>{reply.user != null ? reply.user.name  : 'Not Defined'}</h3>{' '}
+                      <h3>
+                        {reply.user != null ? reply.user.name : 'Not Defined'}
+                      </h3>{' '}
                     </a>
                   </div>
                   <p>{reply.text}</p>

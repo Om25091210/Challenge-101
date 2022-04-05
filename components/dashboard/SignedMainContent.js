@@ -27,9 +27,11 @@ const SignedMainContent = ({ posts, user }) => {
 
   const shareUrl = 'http://localhost:3000/dashboard';
   useEffect(() => {
-    axios
-      .get(`${baseURL}/api/profile/${user._id}`)
-      .then((res) => setProfileData(res.data));
+    if (user) {
+      axios
+        .get(`${baseURL}/api/profile/${user._id}`)
+        .then((res) => setProfileData(res.data));
+    }
   }, []);
 
   const mutation = useMutation(

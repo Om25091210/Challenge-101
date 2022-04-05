@@ -49,7 +49,6 @@ const CommentForm = ({ post, user, commentsData }) => {
               name="text"
               value={comment}
               onChange={onChange}
-              required
             ></textarea>
             <a href="#" className="gif">
               GIF

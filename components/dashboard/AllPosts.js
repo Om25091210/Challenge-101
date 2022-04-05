@@ -12,23 +12,27 @@ const AllPosts = ({ post, user, profiledata }) => {
   const [commentsData, setCommentsData] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(`${baseURL}/api/comments/${post._id}`)
-      .then((res) => {
-        setCommentsData(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    if (post) {
+      axios
+        .get(`${baseURL}/api/comments/${post._id}`)
+        .then((res) => {
+          setCommentsData(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   }, []);
 
   const followhandlesubmit = async (Uid) => {
-    await fetch(`${baseURL}/api/profile/follow/${Uid}`, {
-      method: 'POST',
-      headers: {
-        Authorization: cookie.get('token')
-      }
-    });
+    if (Uid) {
+      await fetch(`${baseURL}/api/profile/follow/${Uid}`, {
+        method: 'POST',
+        headers: {
+          Authorization: cookie.get('token')
+        }
+      });
+    }
   };
 
   const isFollow =
@@ -92,7 +96,7 @@ const AllPosts = ({ post, user, profiledata }) => {
           {' '}
           <a
             href="#!"
-            data-tip={post.likes.map((like,iidx) => {
+            data-tip={post.likes.map((like, iidx) => {
               return like.user.username;
             })}
             data-for="toolTip1"
