@@ -116,17 +116,20 @@ const DetailProduct = ({ user, productItem }) => {
                 className=""
               />
 
-              {product.images.map((img, index) => (
-                <span className="small_thumb">
-                  <img
-                    key={index}
-                    src={img.url}
-                    alt={img.url}
-                    className={`img-thumbnail rounded ${isActive(index)}`}
-                    onClick={() => setTab(index)}
-                  />
-                </span>
-              ))}
+              <ul className="prod_thumb_box">
+                {product.images.map((img, index) => (
+                  <li>
+                    <span className={`small_thumb ${isActive(index)}`} c>
+                      <img
+                        key={index}
+                        src={img.url}
+                        alt={img.url}
+                        onClick={() => setTab(index)}
+                      />
+                    </span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
 
