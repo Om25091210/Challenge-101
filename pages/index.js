@@ -132,11 +132,8 @@ const Home = (props) => {
           {props.result < page * 6 ? (
             ''
           ) : (
-            <button
-              className="btn btn-outline-info d-block mx-auto mb-4"
-              onClick={handleLoadmore}
-            >
-              Load more
+            <button className="btn" onClick={handleLoadmore}>
+              Load more...
             </button>
           )}
         </div>

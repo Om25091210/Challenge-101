@@ -6843,19 +6843,23 @@ form.common_form .btn{ width: 100%; margin-top: 20px;}
 .product_filter .welcome {
 	text-align: center;
 	margin-bottom: 40px;
+	font-size: 16px;
 }
 .product_filter .bg-info {
 	background: #ddd !important;
 }
 .pro_filter_box {
 	display: flex;
-	background: #fff;
+	background: #202028;
 	padding: 20px;
 	justify-content: space-between;
 }
 .pro_filter_box .box1 {
 	width: 15%;
 }
+
+.pro_filter_box .box1  select, .pro_filter_box .box3  select, .pro_filter_box .box2 input{ background: #2b2b35 !important; color: #fff;}
+
 .pro_filter_box .box2 {
 	width: 60%;
 }
