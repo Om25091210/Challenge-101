@@ -108,11 +108,24 @@ display: flex; align-items: center; justify-content: center; position: relative;
 
 
 #react-select-3-listbox{ color: #000;}
-#verifycode{ float: left; width: 800px; height: 400px;}
-.verify_box{ text-align: center;}
+#verifycode{ float: left; width: 500px; height: 400px;}
+.verify_box {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.inn_verify{     width: 400px;
+    display: inline-block;
+    border: 1px solid #ddd;
+    padding: 30px; margin-top: 40px;}
+
+	.inn_verify h2{ color: #000;}
 
 #verifycode label{ color: #000 !important; width: 100%;}
-#verifycode input[type="text"]{ width: 300px; display: inline-block;}
+/* #verifycode input[type="text"]{ width: 300px; display: inline-block;} */
 
 .logos{ display: inline-block; text-align: center;}
 

@@ -52,8 +52,8 @@ const InviteCode = () => {
             <a href="#" className="logos">
               <img alt="Logo" src="/assets/media/logos/logo.png" />
             </a>
-            <div className="pt-lg-10 mb-10">
-              <h1>Only for the Invites.</h1>
+            <div className="inn_verify">
+              <h2>Only for the Invites.</h2>
 
               <div className="verify_form">
                 <form
@@ -74,11 +74,11 @@ const InviteCode = () => {
                     />
                   </div>
 
-                  <div className="text-center mb-10">
+                  <div className="text-center">
                     <button
                       type="submit"
                       onClick={handleSubmitCode}
-                      className="btn btn-lg btn-primary w-100 mb-5"
+                      className="btn"
                     >
                       <span className="indicator-label">Confirm</span>
                       <span className="indicator-progress">
