@@ -12,7 +12,7 @@ const RightSection = ({ user, profile, suggestedplayers, teams }) => {
 
   useEffect(() => {
     axios
-      .get(`${baseURL}/api/matches/top/matches`, {})
+      .get(`${baseURL}/api/matches/top/matchs`, {})
       .then((res) => {
         setMatches(res.data);
       })
