@@ -150,7 +150,18 @@ const Players = ({ user, profile, myState, selectedGame }) => {
                   )}
                 </span>{' '}
                 <span>
-                  <img src="/assets/media/discover/mice.png" alt="" /> <b>On</b>
+                  {plyr.players.attributes.mic ? (
+                    <>
+                      <img src="/assets/media/discover/mice.png" alt="" />{' '}
+                      <b>On</b>
+                    </>
+                  ) : (
+                    <>
+                      {' '}
+                      <img src="/assets/media/discover/mice.png" alt="" />
+                      <b>Off</b>{' '}
+                    </>
+                  )}
                 </span>{' '}
                 <span>
                   <img src="/assets/media/discover/translator.png" alt="" />{' '}

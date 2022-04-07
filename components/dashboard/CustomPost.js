@@ -16,6 +16,7 @@ import {
   WhatsappIcon
 } from 'react-share';
 import { useRouter } from 'next/router';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 const CustomPost = ({ post }) => {
   const [posts, setPosts] = useState([post]);
@@ -28,6 +29,7 @@ const CustomPost = ({ post }) => {
 
   const [shareToModal, setShareToModal] = useState(false);
   const router = useRouter();
+  const [copied, setCopied] = useState(false);
 
   const shareUrl = process.env.NEXT_PUBLIC_ESPORTS_API_BASE_URL + '/posts';
   // Delete a post
@@ -92,6 +94,11 @@ const CustomPost = ({ post }) => {
     }
   };
 
+  function onCopy() {
+    toast.success('Copied to Clipboard!');
+    setCopied(true);
+  }
+
   return (
     <>
       <div className="three_dots_dropdown">
@@ -106,7 +113,9 @@ const CustomPost = ({ post }) => {
             <button onClick={() => setShareToModal(true)}>Share to</button>
           </li>
           <li>
-            <button>Copy Link</button>
+            <CopyToClipboard onCopy={onCopy} text={`${shareUrl}/${post._id}`}>
+              <button>Copy Link</button>
+            </CopyToClipboard>
           </li>
         </ul>
       </div>

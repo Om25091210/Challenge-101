@@ -67,7 +67,8 @@ const TeamProfileBox = ({ user, data }) => {
       attr.teamtype === '' ||
       attr.platform === '' ||
       attr.language === '' ||
-      attr.paid === ''
+      attr.paid === '' ||
+      attr.mic === ''
     ) {
       toast.warning('Please enter all fields or check your inputs');
     } else {
@@ -401,9 +402,7 @@ const TeamProfileBox = ({ user, data }) => {
                           </select>
                         </div>
                         <div className="colm">
-                          <label htmlFor="exampleFormControlInput1">
-                            Paid Choose
-                          </label>
+                          <label htmlFor="exampleFormControlInput1">Paid</label>
                           <select
                             id="paid"
                             name="paid"
@@ -414,6 +413,20 @@ const TeamProfileBox = ({ user, data }) => {
                             <option value="--">--</option>
                             <option value="Paid">Paid</option>
                             <option value="Unpaid">Unpaid</option>
+                          </select>
+                        </div>
+                        <div className="colm">
+                          <label htmlFor="exampleFormControlInput1">Mic</label>
+                          <select
+                            id="mic"
+                            name="mic"
+                            onChange={handleChangeAttr}
+                            value={attr?.mic}
+                            className="form-control"
+                          >
+                            <option value="--">--</option>
+                            <option value={true}>On</option>
+                            <option value={false}>Off</option>
                           </select>
                         </div>
                         <button className="btn">Update</button>
