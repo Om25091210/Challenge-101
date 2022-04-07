@@ -63,6 +63,7 @@
     "react-bootstrap": "^1.6.0",
     "react-chartjs-2": "^3.0.3",
     "react-chat-engine": "^1.11.22",
+    "react-copy-to-clipboard": "^5.0.4",
     "react-country-flag": "^3.0.2",
     "react-date-range": "^1.4.0",
     "react-datepicker": "^4.4.0",

@@ -103,13 +103,13 @@ const SignedMainContent = ({ posts, user }) => {
           fileReader.onload = function (e) {
             var file = e.target;
             $(
-              '<span className="image_box">' +
-                '<img className="imageThumb" src="' +
+              '<span class="image_box">' +
+                '<img class="imageThumb" src="' +
                 e.target.result +
                 '" title="' +
                 file.name +
                 '"/>' +
-                '<br/><span className="remove">X</span>' +
+                '<br/><span class="remove">X</span>' +
                 '</span>'
             ).insertAfter('#files');
             $('.remove').click(function () {
@@ -317,21 +317,19 @@ const SignedMainContent = ({ posts, user }) => {
 
         <div className="right_links">
           <div className="post_img">
-            <div className="style_file_upload">
-              <input
-                type="file"
-                id="files"
-                name="files[]"
-                onChange={(e) => setImage(e.target.files[0])}
-                accept="image/*"
-                multiple
-              />
-              <label htmlFor="files">
-                <span>
-                  <i className="fa fa-picture-o" aria-hidden="true"></i>
-                </span>
-              </label>
-            </div>
+            <input
+              type="file"
+              id="files"
+              name="files[]"
+              onChange={(e) => setImage(e.target.files[0])}
+              accept="image/*"
+              multiple
+            />
+            <label htmlFor="files">
+              <span>
+                <i className="fa fa-picture-o" aria-hidden="true"></i>
+              </span>
+            </label>
           </div>
 
           {/* <a href="#">

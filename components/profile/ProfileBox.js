@@ -225,7 +225,8 @@ const ProfileBox = ({ user, Userdata, games }) => {
       attr.playertype === '' ||
       attr.platform === '' ||
       attr.language === '' ||
-      attr.paid === ''
+      attr.paid === '' ||
+      attr.mic === ''
     ) {
       toast.warning('Please enter all fields or check your inputs');
     } else {
@@ -546,6 +547,20 @@ const ProfileBox = ({ user, Userdata, games }) => {
                           <option value="--">--</option>
                           <option value="Paid">Paid</option>
                           <option value="Unpaid">Unpaid</option>
+                        </select>
+                      </div>
+                      <div className="colm">
+                        <label htmlFor="exampleFormControlInput1">Mic</label>
+                        <select
+                          id="mic"
+                          name="mic"
+                          onChange={handleChangeAttr}
+                          value={attr?.mic}
+                          className="form-control"
+                        >
+                          <option value="--">--</option>
+                          <option value={true}>On</option>
+                          <option value={false}>Off</option>
                         </select>
                       </div>
                       <button className="btn">Update</button>
