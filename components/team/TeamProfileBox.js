@@ -313,16 +313,21 @@ const TeamProfileBox = ({ user, data }) => {
                           <select
                             id="roles"
                             name="roles"
-                            onChange={handleChangeAttr}
+                            onChange={handleChange}
                             value={attr?.roles}
                             className="form-control"
+                            multiple={true}
                           >
-                            <option value="--">--</option>
-                            <option value="Player">Player</option>
-                            <option value="Front">Front</option>
-                            <option value="Back">Back</option>
-                            <option value="Gunman">Gunman</option>
-                            <option value="Strategy">Strategy</option>
+                            <option value="Support">Support</option>
+                            <option value="Scout">Scout</option>
+                            <option value="Sniper">Sniper</option>
+                            <option value="Driver">Driver</option>
+                            <option value="Fragger">Fragger</option>
+                            <option value="In Game Leader">
+                              In Game Leader
+                            </option>
+                            <option value="Assualt">Assualt</option>
+                            <option value="Medic">Medic</option>
                           </select>
                         </div>
                         <div className="colm">

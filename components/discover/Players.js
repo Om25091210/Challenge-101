@@ -134,7 +134,15 @@ const Players = ({ user, profile, myState, selectedGame }) => {
               </>
               <span className="remarks">
                 <h4>ROLE</h4>
-                <p>Support Scout Sniper Driver Fragger Ingame leader</p>
+                {plyr.players.attributes.roles.length > 0 ? (
+                  <>
+                    {plyr.players.attributes.roles.map((rol) => (
+                      <p>{rol} </p>
+                    ))}
+                  </>
+                ) : (
+                  'No Role Specified'
+                )}
               </span>
               <div className="mores">
                 {' '}

@@ -134,7 +134,11 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
               )}
               <span className="remarks">
                 <h4>ROLE</h4>
-                <p>Support Scout Sniper Driver Fragger Ingame leader</p>
+                {team.team.attributes.roles.length > 0 ? (
+                  <p>{team.team.attributes.roles}</p>
+                ) : (
+                  'No Role Specified'
+                )}
               </span>
               <div className="mores plateform">
                 {' '}
