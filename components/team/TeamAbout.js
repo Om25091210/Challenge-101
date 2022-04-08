@@ -1,15 +1,17 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import baseURL from '../../utils/baseURL';
 import { useQuery } from 'react-query';
 import { useRouter } from 'next/router';
+import TeamAboutEdit from './TeamAboutEdit';
 
-const TeamAbout = ({ tmdata }) => {
+const TeamAbout = ({ tmdata, isTeamPlayer }) => {
   const [searchText, setSearchText] = useState('');
   const [results, setResults] = useState({
     employee: '',
     role: ''
   });
+  const [teamroles, setTeamRoles] = useState([]);
 
   const { data, isLoading, isSuccess } = useQuery(
     ['search', searchText],
@@ -43,21 +45,20 @@ const TeamAbout = ({ tmdata }) => {
 
   const handleSubmitAbout = async (e) => {
     e.preventDefault();
-    axios.post(`${baseURL}/api/teams/upd/about/${tmdata._id}`, results);
-    window.setTimeout(function () {
-      location.reload();
-    }, 400);
+    axios.post(`${baseURL}/api/teams/ins/about/${tmdata._id}`, results);
     refreshData();
   };
 
   const handleDelete = async (e) => {
     axios.post(`${baseURL}/api/teams/del/about/${tmdata._id}`, { tId: e });
-    window.setTimeout(function () {
-      location.reload();
-    }, 400);
     refreshData();
   };
 
+  useEffect(() => {
+    axios
+      .get(`${baseURL}/api/all/teamroles`)
+      .then((res) => setTeamRoles(res.data));
+  }, []);
   return (
     <div className="tab hide" id="about">
       <div className="our_team">
@@ -71,14 +72,16 @@ const TeamAbout = ({ tmdata }) => {
             <div className="loc_box">
               {' '}
               <a href="#!" className="model_show_btn">
-                <button className="btn">
-                  <i
-                    aria-hidden="true"
-                    style={{ color: 'white', fontSize: '25px' }}
-                  >
-                    Add Members
-                  </i>
-                </button>
+                {isTeamPlayer ? (
+                  <button className="btn">
+                    <i
+                      aria-hidden="true"
+                      style={{ color: 'white', fontSize: '25px' }}
+                    >
+                      Add Members
+                    </i>
+                  </button>
+                ) : null}
               </a>
               <div className="common_model_box" style={{ height: '12rem' }}>
                 <a href="#!" className="model_close">
@@ -148,26 +151,16 @@ const TeamAbout = ({ tmdata }) => {
                           className="form-control"
                           onChange={handleChangeAbt}
                         >
-                          <option value="">--</option>
-                          <option value="manager">Manager</option>
-                          <option value="ceo">CEO</option>
-                          <option value="coach">Coach</option>
-                          <option value="editor">Editor</option>
-                          <option value="movie maker">Movie Maker</option>
-                          <option value="web designer">Web Designer</option>
-                          <option value="nutritionist">Nutritionist</option>
-                          <option value="staff">Staff</option>
-                          <option value="shoutcaster">Shoutcaster</option>
-                          <option value="psychologist">Psychologist</option>
-                          <option value="cxo">CXO</option>
-                          <option value="developer">Developer</option>
-                          <option value="other">Other</option>
-                          <option value="senior developer">
-                            Senior Developer
-                          </option>
+                          {teamroles.map((tr) =>
+                            tr.role.map((rol, idx) => (
+                              <option key={idx} value={rol}>
+                                {rol}
+                              </option>
+                            ))
+                          )}
                         </select>
                       </div>
-                      <button className="btn">Update</button>
+                      <button className="btn">Add</button>
                     </div>
                   </form>
                 </div>
@@ -202,9 +195,19 @@ const TeamAbout = ({ tmdata }) => {
                   </div>
                   <h3>{emp.role.toUpperCase()}</h3>
                   <h4>{emp.employeeId.name} </h4>
-                  <button className="btn" onClick={() => handleDelete(emp._id)}>
-                    Delete Member
-                  </button>
+                  {isTeamPlayer ? (
+                    <button
+                      className="btn"
+                      onClick={() => handleDelete(emp._id)}
+                    >
+                      Delete
+                    </button>
+                  ) : null}
+                  <TeamAboutEdit
+                    employeeData={emp}
+                    team={tmdata}
+                    isTeamPlayer={isTeamPlayer}
+                  />
                 </li>
               ))
             )}

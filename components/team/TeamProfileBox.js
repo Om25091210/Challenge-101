@@ -8,7 +8,7 @@ import ReactCountryFlag from 'react-country-flag';
 import Moment from 'moment';
 import { useMutation } from 'react-query';
 
-const TeamProfileBox = ({ user, data }) => {
+const TeamProfileBox = ({ user, data, isTeamPlayer }) => {
   const [attr, setAttr] = useState(data.team.attributes);
   const router = useRouter();
   const refreshData = () => {
@@ -49,11 +49,6 @@ const TeamProfileBox = ({ user, data }) => {
     setShowForm(false);
     refreshData();
   };
-
-  const isTeamPlayer =
-    data.players.filter((ply) => {
-      return ply?.user === user?._id;
-    }).length > 0;
 
   function handleChangeAttr(e) {
     setAttr({ ...attr, [e.target.name]: e.target.value });
@@ -199,13 +194,14 @@ const TeamProfileBox = ({ user, data }) => {
                   handleCoverSubmit(e);
                 }}
               />
-              <label htmlFor="coverPhoto">
-                <span>
-                  {' '}
-                  <i className="fa fa-camera" aria-hidden="true"></i> Upload
-                  Cover Photo
-                </span>
-              </label>
+              {isTeamPlayer ? (
+                <label htmlFor="coverPhoto">
+                  <span>
+                    <i className="fa fa-camera" aria-hidden="true"></i> Upload
+                    Cover Photo
+                  </span>
+                </label>
+              ) : null}
             </div>
           </span>
         </form>
@@ -221,23 +217,23 @@ const TeamProfileBox = ({ user, data }) => {
               src={data.team.imgUrl}
               alt=""
             />
-            {/* {isLoggedInUser ? ( */}
-            <div className="edit_photo">
-              <label htmlFor="user-photo" className="edit_label">
-                <i className="fa fa-picture-o" aria-hidden="true"></i>
-              </label>
-              <input
-                id="user-photo"
-                name="user-photo"
-                type="file"
-                className="custom-file-input"
-                onChange={(e) => {
-                  setProfilePic(e.target.files[0]);
-                  handleSubmit(e);
-                }}
-              />
-            </div>
-            {/* ) : null} */}
+            {isTeamPlayer ? (
+              <div className="edit_photo">
+                <label htmlFor="user-photo" className="edit_label">
+                  <i className="fa fa-picture-o" aria-hidden="true"></i>
+                </label>
+                <input
+                  id="user-photo"
+                  name="user-photo"
+                  type="file"
+                  className="custom-file-input"
+                  onChange={(e) => {
+                    setProfilePic(e.target.files[0]);
+                    handleSubmit(e);
+                  }}
+                />
+              </div>
+            ) : null}
           </form>
         </div>
 
@@ -270,34 +266,30 @@ const TeamProfileBox = ({ user, data }) => {
                 )}
               </span>
             </div>
-            <div className="button">
-              <a href="#" className="btn">
-                FOLLOW
-              </a>{' '}
-              <a href="#" className="btn">
-                ASK TO JOIN
-              </a>
-            </div>
-
-            {/* {isTeamPlayer ? ( */}
-            <span
-              style={{
-                marginLeft: '550px',
-                marginTop: '30px',
-                padding: '0.5rem 0.5rem'
-              }}
-            >
+            {isTeamPlayer ? null : (
+              <div className="button">
+                <a href="#" className="btn">
+                  FOLLOW
+                </a>{' '}
+                <a href="#" className="btn">
+                  ASK TO JOIN
+                </a>
+              </div>
+            )}
+            <span>
               <div className="loc_box">
                 {' '}
-                <a href="#!" className="model_show_btn">
-                  <button className="btn">
-                    <i
-                      className="fa fa-pencil"
-                      aria-hidden="true"
-                      style={{ color: 'white' }}
-                    ></i>
-                  </button>
-                </a>
+                {isTeamPlayer ? (
+                  <a href="#!" className="model_show_btn">
+                    <button className="btn">
+                      <i
+                        className="fa fa-pencil"
+                        aria-hidden="true"
+                        style={{ color: 'white' }}
+                      ></i>
+                    </button>
+                  </a>
+                ) : null}
                 <div className="common_model_box">
                   <a href="#!" className="model_close">
                     X
@@ -442,7 +434,6 @@ const TeamProfileBox = ({ user, data }) => {
                 </div>
               </div>
             </span>
-            {/* ) : null} */}
           </div>
           <div className="bottom_details team_details">
             <div className="badges">
@@ -498,9 +489,11 @@ const TeamProfileBox = ({ user, data }) => {
             </div>
           </div>
 
-          <button className="bio_edit" onClick={toggleShowform}>
-            <i className="fa fa-pencil" aria-hidden="true"></i>
-          </button>
+          {isTeamPlayer ? (
+            <button className="bio_edit" onClick={toggleShowform}>
+              <i className="fa fa-pencil" aria-hidden="true"></i>
+            </button>
+          ) : null}
 
           {!showform ? <p> {data.team ? data.team.description : ''} </p> : null}
 

@@ -7,7 +7,7 @@ import baseURL from '@utils/baseURL';
 import VideoDropzone from '@components/common/VideosDropzone';
 import { Video } from 'cloudinary-react';
 
-const TeamVideos = ({ user, team }) => {
+const TeamVideos = ({ user, team, isTeamPlayer }) => {
   const [videos, setVideos] = useState([]);
   const [videodisc, setVideodisc] = useState();
 
@@ -50,7 +50,7 @@ const TeamVideos = ({ user, team }) => {
   return (
     <div className="video_box">
       <form onSubmit={handleSubmit}>
-        <VideoDropzone setVideos={setVideos} />
+        {isTeamPlayer ? <VideoDropzone setVideos={setVideos} /> : null}
 
         <p></p>
 
@@ -75,44 +75,45 @@ const TeamVideos = ({ user, team }) => {
 
         <p></p>
 
-        {team.videosgallery && team.videosgallery.map((vid, idx) => (
-          <ul key={idx}>
-            {vid.videos.map((vide, idex) => (
-              <li key={idex}>
-                {' '}
-                <div className="video">
+        {team.videosgallery &&
+          team.videosgallery.map((vid, idx) => (
+            <ul key={idx}>
+              {vid.videos.map((vide, idex) => (
+                <li key={idex}>
                   {' '}
-                  <Video
-                    cloudName="dch502zpg"
-                    controls
-                    fallback="Cannot display video"
-                    publicId={vide.path}
-                  ></Video>
-                </div>
-                <div className="bottom_data">
-                  {' '}
-                  <a href="#">The Team</a>{' '}
-                  <a href="#" className="yellow">
-                    Lq Heroes
-                  </a>
-                  <h2>
-                    {vide.originalname} : <span>{vid.videodisc}</span>
-                  </h2>
-                  <span className="date">{vide.createdAt}</span>{' '}
-                  <span className="views">
-                    <i className="fa fa-eye" aria-hidden="true"></i> 2223
-                  </span>{' '}
-                  <span className="likes">
-                    <i className="fa fa-heart" aria-hidden="true"></i>453
-                  </span>{' '}
-                  <span className="comments">
-                    <i className="fa fa-comment" aria-hidden="true"></i>18
-                  </span>{' '}
-                </div>
-              </li>
-            ))}
+                  <div className="video">
+                    {' '}
+                    <Video
+                      cloudName="dch502zpg"
+                      controls
+                      fallback="Cannot display video"
+                      publicId={vide.path}
+                    ></Video>
+                  </div>
+                  <div className="bottom_data">
+                    {' '}
+                    <a href="#">The Team</a>{' '}
+                    <a href="#" className="yellow">
+                      Lq Heroes
+                    </a>
+                    <h2>
+                      {vide.originalname} : <span>{vid.videodisc}</span>
+                    </h2>
+                    <span className="date">{vide.createdAt}</span>{' '}
+                    <span className="views">
+                      <i className="fa fa-eye" aria-hidden="true"></i> 2223
+                    </span>{' '}
+                    <span className="likes">
+                      <i className="fa fa-heart" aria-hidden="true"></i>453
+                    </span>{' '}
+                    <span className="comments">
+                      <i className="fa fa-comment" aria-hidden="true"></i>18
+                    </span>{' '}
+                  </div>
+                </li>
+              ))}
 
-            {/* <li style={{ display: 'none' }}>
+              {/* <li style={{ display: 'none' }}>
                 <div className="video">
                   {' '}
                   <img src="/assets/media/video/thumb1.jpg" alt="" />{' '}
@@ -139,8 +140,8 @@ const TeamVideos = ({ user, team }) => {
                   </span>{' '}
                 </div>
               </li> */}
-          </ul>
-        ))}
+            </ul>
+          ))}
       </form>
     </div>
   );

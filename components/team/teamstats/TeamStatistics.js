@@ -4,7 +4,7 @@ import TeamStatAdd from './TeamStatAdd';
 import TeamStatDelete from './TeamStatDelete';
 import TeamStatEdit from './TeamStatEdit';
 
-const TeamStatistics = ({ tournamentStatData }) => {
+const TeamStatistics = ({ tournamentStatData, isTeamPlayer }) => {
   const [showform, setShowForm] = useState(false);
   const [editContactId, setEditContactId] = useState(null);
 
@@ -25,9 +25,11 @@ const TeamStatistics = ({ tournamentStatData }) => {
     <div className="all_stat">
       <div className="tournament_table">
         <h2>all time stats</h2>
-        <button onClick={toggleShowform} className="btn">
-          Add Data
-        </button>
+        {isTeamPlayer ? (
+          <button onClick={toggleShowform} className="btn">
+            Add Data
+          </button>
+        ) : null}
         <form onSubmit={(e) => e.preventDefault()}>
           <table className="table">
             <thead className="thead-light">
@@ -39,7 +41,7 @@ const TeamStatistics = ({ tournamentStatData }) => {
                 <th scope="col">loss</th>
                 <th scope="col">win%</th>
                 <th scope="col">w strk</th>
-                <th>Actions</th>
+                {isTeamPlayer ? <th>Actions</th> : null}
               </tr>
             </thead>
 
@@ -59,13 +61,18 @@ const TeamStatistics = ({ tournamentStatData }) => {
                       <td>{(tsd.wins / tsd.mp).toFixed(2)}</td>
                       <td>{tsd.w_streak}</td>
                       <td>
-                        <button
-                          onClick={(e) => handleEdit(e, tsd)}
-                          className="btn"
-                        >
-                          Edit
-                        </button>
-                        <TeamStatDelete statData={tsd} />
+                        {isTeamPlayer ? (
+                          <button
+                            onClick={(e) => handleEdit(e, tsd)}
+                            className="btn"
+                          >
+                            Edit
+                          </button>
+                        ) : null}
+                        <TeamStatDelete
+                          statData={tsd}
+                          isTeamPlayer={isTeamPlayer}
+                        />
                       </td>
                     </tr>
                   )}

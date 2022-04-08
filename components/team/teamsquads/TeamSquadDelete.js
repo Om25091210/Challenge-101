@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 
-const TeamSquadDelete = ({ squad }) => {
+const TeamSquadDelete = ({ squad, isTeamPlayer }) => {
   const router = useRouter();
   const deletehandleSubmit = async (e) => {
     e.preventDefault();
@@ -27,9 +27,11 @@ const TeamSquadDelete = ({ squad }) => {
   };
   return (
     <>
-      <button onClick={deletehandleSubmit} className="btn">
-        <i class="fa fa-trash-o" aria-hidden="true"></i>
-      </button>
+      {isTeamPlayer ? (
+        <button onClick={deletehandleSubmit} className="btn">
+          <i class="fa fa-trash-o" aria-hidden="true"></i>
+        </button>
+      ) : null}
     </>
   );
 };

@@ -17,7 +17,7 @@ import ProductList from '@components/common/ProductList';
 import TeamMatches from '@components/tournament/TeamMatches';
 import TeamJobs from './TeamJobs';
 
-const TeamProfileData = ({ user, data, products }) => {
+const TeamProfileData = ({ user, data, products, isTeamPlayer }) => {
   const [jobs, setJobs] = useState([]);
   const [teamposts, setTeamPosts] = useState([]);
   const [tournamentStatData, setTournamentStatData] = useState([]);
@@ -170,7 +170,7 @@ const TeamProfileData = ({ user, data, products }) => {
             )}
           </div>
           <div className="profile_match_details">
-            <TeamAllStats teamId={data.team._id} />
+            {/* <TeamAllStats teamId={data.team._id} /> */}
 
             <div className="games_details">
               <ul>
@@ -219,6 +219,7 @@ const TeamProfileData = ({ user, data, products }) => {
             squads={data.squads}
             teamplayers={data.players}
             team={data.team}
+            isTeamPlayer={isTeamPlayer}
           />
         </div>
         <div className="tab hide" id="achievement">
@@ -304,26 +305,37 @@ const TeamProfileData = ({ user, data, products }) => {
         </div>
         <TeamMatches tournament={data.teamMatches} />
         <div className="tab hide" id="stats">
-          <TeamStatistics tournamentStatData={tournamentStatData} />
+          <TeamStatistics
+            tournamentStatData={tournamentStatData}
+            isTeamPlayer={isTeamPlayer}
+          />
         </div>
 
         <ProductList user={user} productList={products} />
 
         <div className="tab hide" id="photos">
-          <TeamPhotos user={user} team={data.team} />
+          <TeamPhotos
+            user={user}
+            team={data.team}
+            isTeamPlayer={isTeamPlayer}
+          />
         </div>
 
         <div className="tab hide" id="media">
-          <TeamVideos user={user} team={data.team} />
+          <TeamVideos
+            user={user}
+            team={data.team}
+            isTeamPlayer={isTeamPlayer}
+          />
         </div>
 
         <div className="tab hide" id="jobs">
-          <TeamJobs jobs={jobs} team={data.team} />
+          <TeamJobs jobs={jobs} team={data.team} isTeamPlayer={isTeamPlayer} />
         </div>
 
-        <TeamAbout tmdata={data.team} />
+        <TeamAbout tmdata={data.team} isTeamPlayer={isTeamPlayer} />
 
-        <TeamSponsors data={data} user={user} />
+        <TeamSponsors data={data} user={user} isTeamPlayer={isTeamPlayer} />
 
         <div className="tab hide" id="rigs">
           <div className="rigs">

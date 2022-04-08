@@ -6,7 +6,7 @@ import cookie from 'js-cookie';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 
-const TeamJobs = ({ jobs, team }) => {
+const TeamJobs = ({ jobs, team, isTeamPlayer }) => {
   const [showform, setShowForm] = useState(false);
   const [jobdata, setJobData] = useState({
     position: '',
@@ -51,9 +51,11 @@ const TeamJobs = ({ jobs, team }) => {
   };
   return (
     <>
-      <button onClick={toggleShowform} className="btn">
-        Add Job
-      </button>
+      {isTeamPlayer ? (
+        <button onClick={toggleShowform} className="btn">
+          Add Job
+        </button>
+      ) : null}
       {showform ? (
         <>
           <form>

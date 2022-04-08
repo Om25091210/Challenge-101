@@ -2,10 +2,14 @@ import TeamSquadAdd from './TeamSquadAdd';
 import TeamSquadDelete from './TeamSquadDelete';
 import TeamSquadEdit from './TeamSquadEdit';
 
-const TeamSquads = ({ squads, teamplayers, team }) => {
+const TeamSquads = ({ squads, teamplayers, team, isTeamPlayer }) => {
   return (
     <>
-      <TeamSquadAdd teamplayers={teamplayers} team={team} />
+      <TeamSquadAdd
+        teamplayers={teamplayers}
+        team={team}
+        isTeamPlayer={isTeamPlayer}
+      />
       <div className="squads_box">
         <ul>
           {!squads || squads.length === 0 ? (
@@ -90,8 +94,12 @@ const TeamSquads = ({ squads, teamplayers, team }) => {
                     </tbody>
                   </table>
                 </div>
-                <TeamSquadEdit teamplayers={teamplayers} squad={squad} />
-                <TeamSquadDelete squad={squad} />
+                <TeamSquadEdit
+                  teamplayers={teamplayers}
+                  squad={squad}
+                  isTeamPlayer={isTeamPlayer}
+                />
+                <TeamSquadDelete squad={squad} isTeamPlayer={isTeamPlayer} />
               </li>
             ))
           )}

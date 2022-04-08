@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import { teamsquadformvalidate } from '@utils/valid';
 import { useRouter } from 'next/router';
 
-const TeamSquadEdit = ({ teamplayers, squad }) => {
+const TeamSquadEdit = ({ teamplayers, squad, isTeamPlayer }) => {
   const [editSquadData, setEditSquadData] = useState({
     name: squad.name,
     location: squad.location,
@@ -75,9 +75,11 @@ const TeamSquadEdit = ({ teamplayers, squad }) => {
   };
   return (
     <div>
-      <a href="#!" className="model_show_btn btn">
-        <i className="fa fa-pencil" aria-hidden="true"></i>
-      </a>
+      {isTeamPlayer ? (
+        <a href="#!" className="model_show_btn btn">
+          <i className="fa fa-pencil" aria-hidden="true"></i>
+        </a>
+      ) : null}
       <div className="common_model_box">
         <a href="#!" className="model_close">
           X

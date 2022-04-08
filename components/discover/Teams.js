@@ -106,9 +106,7 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
                   <img src={team.team.imgUrl} alt="" />
                 </div>
                 <a href={`/team/${team.team._id}`}>
-                  <h3>
-                    {team.team._id} : <br /> {team.team.name}
-                  </h3>
+                  <h3>{team.team.name}</h3>
                 </a>
                 <ReactCountryFlag
                   countryCode={team.team.region}
@@ -235,7 +233,16 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
                   <h4>Matches Won</h4>
                   <p>131 Victories</p>
                   <h4>Manager</h4>
-                  <p>Sonu "TheMadTitan" Singh</p>
+                  {team.team.employees.length !== 0 ? (
+                    team.team.employees.map(
+                      (role) =>
+                        role.role === 'manager' && (
+                          <p>{role.employeeId.username}</p>
+                        )
+                    )
+                  ) : (
+                    <p>Not Available</p>
+                  )}
                 </div>
                 <div className="other">
                   <h4>From</h4>

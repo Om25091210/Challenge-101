@@ -7,7 +7,7 @@ import baseURL from '@utils/baseURL';
 import ImageDropzone from '@components/common/ImageDropzone';
 import Moment from 'moment';
 
-const TeamPhotos = ({ user, team }) => {
+const TeamPhotos = ({ user, team, isTeamPlayer }) => {
   const [images, setImages] = useState([]);
   const [title, setTitle] = useState();
 
@@ -51,7 +51,7 @@ const TeamPhotos = ({ user, team }) => {
   return (
     <div className="gallery_box">
       <form onSubmit={handlePhotosSubmit}>
-        <ImageDropzone setImages={setImages} />
+        {isTeamPlayer ? <ImageDropzone setImages={setImages} /> : null}
 
         <p></p>
 

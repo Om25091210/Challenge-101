@@ -11,7 +11,16 @@ import AllScript from 'pages/AllScript';
 import baseURL from '@utils/baseURL';
 import { getData } from '@utils/fetchData';
 
-const Team = ({ user, data, products }) => {
+const Team = ({ user, data, products, profile }) => {
+  let profileId = [];
+  profile.playergames.map((plyr) => {
+    return (profileId = plyr.player._id);
+  });
+  const isTeamPlayer =
+    data.players.filter((tem) => {
+      return tem._id === profileId;
+    }).length > 0;
+
   if (data) {
     return (
       <>
@@ -22,11 +31,16 @@ const Team = ({ user, data, products }) => {
         <LeftNav user={user} />
 
         <div className="main_middle profile_middle">
-          <TeamProfileBox user={user} data={data} />
+          <TeamProfileBox user={user} data={data} isTeamPlayer={isTeamPlayer} />
 
           <TeamTabs user={user} data={data} />
 
-          <TeamProfileData user={user} data={data} products={products} />
+          <TeamProfileData
+            user={user}
+            data={data}
+            products={products}
+            isTeamPlayer={isTeamPlayer}
+          />
         </div>
 
         <AllScript />
