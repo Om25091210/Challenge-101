@@ -1,9 +1,9 @@
-
 /*----------------------
     404 page
 -----------------------*/
 
-.body-404, .body-500 {
+.body-404,
+.body-500 {
     background: #0d0c12;
     color: #fff;
 }
@@ -40,7 +40,7 @@
     margin-bottom: 20px;
 }
 
-.error-wrapper .icon-404{
+.error-wrapper .icon-404 {
     background: url("/assets/media/404.png") no-repeat;
     width: 337px;
     height: 218px;
@@ -55,7 +55,7 @@
     padding: 20px;
     border-radius: 4px;
     text-transform: capitalize;
-    color:#fff;
+    color: #fff;
 }
 
 .error-wrapper .green-bg {
@@ -67,12 +67,15 @@
     color: #000;
 }
 
-.error-wrapper p, .error-wrapper a {
-    font-size: 18px; color: #7239ea;
+.error-wrapper p,
+.error-wrapper a {
+    font-size: 18px;
+    color: #7239ea;
 }
 
-.error-wrapper p   {
-    color: #a978d1; padding: 10px 0;
+.error-wrapper p {
+    color: #a978d1;
+    padding: 10px 0;
 }
 
 .error-wrapper a.back-btn {

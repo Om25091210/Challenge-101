@@ -170,7 +170,7 @@ const TeamProfileData = ({ user, data, products, isTeamPlayer }) => {
             )}
           </div>
           <div className="profile_match_details">
-            {/* <TeamAllStats teamId={data.team._id} /> */}
+            <TeamAllStats teamId={data.team._id} />
 
             <div className="games_details">
               <ul>
