@@ -4,13 +4,40 @@
 -----------------------*/
 
 .body-404, .body-500 {
-    background: #2b2b2d;
+    background: #0d0c12;
     color: #fff;
 }
 
 .error-wrapper {
     text-align: center;
     margin-top: 5%;
+    width: 60%;
+    margin: 0 auto;
+    background: #ddd;
+    position: fixed;
+    left: 0;
+    top: 10%;
+    height: 80%;
+    right: 0;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.error_icon {
+    width: 250px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    height: 250px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
 .error-wrapper .icon-404{
@@ -24,7 +51,6 @@
 .error-wrapper h2 {
     font-size: 20px;
     font-weight: normal;
-    margin: 5px 0 30px -70px;
     display: inline-block;
     padding: 20px;
     border-radius: 4px;
@@ -38,15 +64,15 @@
 
 
 .error-wrapper a.back-btn:hover {
-    color: #5bc690;
+    color: #000;
 }
 
 .error-wrapper p, .error-wrapper a {
-    font-size: 18px;
+    font-size: 18px; color: #7239ea;
 }
 
 .error-wrapper p   {
-    color: #a978d1;
+    color: #a978d1; padding: 10px 0;
 }
 
 .error-wrapper a.back-btn {
@@ -68,21 +94,21 @@
 }
 
 .body-500 .error-wrapper p a {
-    color: #a978d1;
+    color: #000;
 }
 
 .body-500 .error-wrapper p {
-    color: #63c18d;
+    color: #000;
 }
 
-.error-wrapper .icon-500{
-    background: url("/assets/media/50x.png") no-repeat;
-    width: 331px;
-    height: 219px;
+.error-wrapper .icon-500 {
+    background: url(/assets/media/50x.png) no-repeat;
+    width: 60%;
+    height: 50%;
     display: inline-block;
+    background-size: 100%;
 }
 
 .body-500 .error-wrapper h2 {
-    margin: -5px 0 30px -50px;
     width: 300px;
 }
