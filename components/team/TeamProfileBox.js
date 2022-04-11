@@ -162,6 +162,17 @@ const TeamProfileBox = ({ user, data, isTeamPlayer }) => {
     }
   };
 
+  const handleDeleteSubmit = async (e) => {
+    e.preventDefault();
+    axios.delete(`${baseURL}/api/teams/${data.team._id}`, {
+      headers: {
+        Authorization: cookie.get('token')
+      }
+    });
+    toast.success('Deleted Successfully');
+    router.push('/dashboard');
+  };
+
   const empManager = data.team.employees
     .map((x) => x)
     .filter((x) => x.role === 'manager');
@@ -429,6 +440,37 @@ const TeamProfileBox = ({ user, data, isTeamPlayer }) => {
                         <button className="btn">Update</button>
                       </div>
                     </form>
+                  </div>
+                  <div className="overlay"></div>
+                </div>
+              </div>
+            </span>
+            <span>
+              <div className="loc_box">
+                {' '}
+                {isTeamPlayer ? (
+                  <a href="#!" className="model_show_btn">
+                    <button className="btn">
+                      <i
+                        className="fa fa-trash"
+                        aria-hidden="true"
+                        style={{ color: 'white' }}
+                      ></i>
+                    </button>
+                  </a>
+                ) : null}
+                <div className="common_model_box">
+                  <a href="#!" className="model_close">
+                    X
+                  </a>
+
+                  <div className="inner_model_box">
+                    <h3>Are You Sure?</h3>
+
+                    <button className="btn">No</button>
+                    <button className="btn" onClick={handleDeleteSubmit}>
+                      Yes
+                    </button>
                   </div>
                   <div className="overlay"></div>
                 </div>

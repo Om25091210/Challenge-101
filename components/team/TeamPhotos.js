@@ -70,7 +70,7 @@ const TeamPhotos = ({ user, team, isTeamPlayer }) => {
             </a>
           </div>
         ) : (
-          ''
+          'No Album Available'
         )}
 
         <p></p>

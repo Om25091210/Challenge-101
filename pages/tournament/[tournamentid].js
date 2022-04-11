@@ -33,6 +33,7 @@ const TournamentDetail = ({ user, data, products }) => {
       data.tournament ? data.tournament.description : null
     );
     const [tour, setTour] = useState(data.tournament);
+    const isUser = data.tournament?.user?._id === user._id;
     const router = useRouter();
 
     const toggleShowform = () => {
@@ -101,6 +102,17 @@ const TournamentDetail = ({ user, data, products }) => {
       setTour({ ...tour, [e.target.name]: e.target.value });
     }
 
+    const handleDeleteSubmit = async (e) => {
+      e.preventDefault();
+      axios.delete(`${baseURL}/api/tournaments/${data.tournament._id}`, {
+        headers: {
+          Authorization: cookie.get('token')
+        }
+      });
+      toast.success('Deleted Successfully');
+      router.push('/dashboard');
+    };
+
     return (
       <>
         <MetaDash />
@@ -139,11 +151,47 @@ const TournamentDetail = ({ user, data, products }) => {
                             <i className="fa fa-check" aria-hidden="true"></i>
                           </span>
                         </div>
-                        <div className="button">
-                          <a href="#" className="btn">
-                            FOLLOW
-                          </a>
-                        </div>
+                        {isUser ? null : (
+                          <div className="button">
+                            <a href="#" className="btn">
+                              FOLLOW
+                            </a>
+                          </div>
+                        )}
+                        {isUser ? (
+                          <span>
+                            <div className="loc_box">
+                              {' '}
+                              <a href="#!" className="model_show_btn">
+                                <button className="btn">
+                                  <i
+                                    className="fa fa-trash"
+                                    aria-hidden="true"
+                                    style={{ color: 'white' }}
+                                  ></i>
+                                </button>
+                              </a>
+                              <div className="common_model_box">
+                                <a href="#!" className="model_close">
+                                  X
+                                </a>
+
+                                <div className="inner_model_box">
+                                  <h3>Are You Sure?</h3>
+
+                                  <button className="btn">No</button>
+                                  <button
+                                    className="btn"
+                                    onClick={handleDeleteSubmit}
+                                  >
+                                    Yes
+                                  </button>
+                                </div>
+                                <div className="overlay"></div>
+                              </div>
+                            </div>
+                          </span>
+                        ) : null}
                       </div>
                       <span className="name">
                         Indoor Stadium, {data.tournament.location}
@@ -224,15 +272,11 @@ const TournamentDetail = ({ user, data, products }) => {
                       </a>
                     </div>
                   </div>
-                  {/* <p>
-                    {data.detaildescription
-                      ? data.detaildescription
-                      : data.tournament?.description}
-                  </p> */}
-
-                  <button className="bio_edit" onClick={toggleShowform}>
-                    <i className="fa fa-pencil" aria-hidden="true"></i>
-                  </button>
+                  {isUser ? (
+                    <button className="bio_edit" onClick={toggleShowform}>
+                      <i className="fa fa-pencil" aria-hidden="true"></i>
+                    </button>
+                  ) : null}
 
                   {!showform ? (
                     <p>
@@ -330,11 +374,9 @@ const TournamentDetail = ({ user, data, products }) => {
                           className="model_show_btn"
                           alt="personal details"
                         >
-                          <button className="btn">
-                            {/* <i className="fa fa-pencil" aria-hidden="true">
-                </i> */}
-                            Tournament Edit
-                          </button>
+                          {isUser ? (
+                            <button className="btn">Tournament Edit</button>
+                          ) : null}
                         </a>
                         <div className="common_model_box">
                           <a href="#!" className="model_close">
@@ -962,12 +1004,20 @@ const TournamentDetail = ({ user, data, products }) => {
               <ProductList user={user} productList={products} />
 
               <div className="tab hide" id="video">
-                <TournamentVideos user={user} tournament={data} />
+                <TournamentVideos
+                  user={user}
+                  tournament={data}
+                  isUser={isUser}
+                />
               </div>
               <div className="tab hide" id="media">
-                <TournamentPhotos user={user} tournament={data} />
+                <TournamentPhotos
+                  user={user}
+                  tournament={data}
+                  isUser={isUser}
+                />
               </div>
-              <TournamentSponsor user={user} data={data} />
+              <TournamentSponsor user={user} data={data} isUser={isUser} />
               <div className="tab hide" id="rigs">
                 <h2>Rigs</h2>
               </div>

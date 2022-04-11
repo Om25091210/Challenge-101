@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import { useMutation } from 'react-query';
 import { toast } from 'react-toastify';
@@ -8,7 +7,7 @@ import baseURL from '@utils/baseURL';
 import VideoDropzone from '@components/common/VideosDropzone';
 import { Video } from 'cloudinary-react';
 
-const TournamentVideos = ({ user, tournament }) => {
+const TournamentVideos = ({ user, tournament, isUser }) => {
   const [videos, setVideos] = useState([]);
   const [videodisc, setVideodisc] = useState();
 
@@ -43,7 +42,9 @@ const TournamentVideos = ({ user, tournament }) => {
 
       toast.success('Tournament videos have been updated');
     } catch (err) {
-      toast.error(err.response?.data?.msg || 'Please upload your tournament videos again');
+      toast.error(
+        err.response?.data?.msg || 'Please upload your tournament videos again'
+      );
     }
     refreshPage();
   };
@@ -51,7 +52,7 @@ const TournamentVideos = ({ user, tournament }) => {
   return (
     <div className="video_box">
       <form onSubmit={handleSubmit}>
-        <VideoDropzone setVideos={setVideos} />
+        {isUser ? <VideoDropzone setVideos={setVideos} /> : null}
 
         <p></p>
 
@@ -71,49 +72,50 @@ const TournamentVideos = ({ user, tournament }) => {
             </a>
           </div>
         ) : (
-          ''
+          'No Clip Available'
         )}
 
         <p></p>
 
-        {tournament.videosgallery && tournament.videosgallery.map((vid, idx) => (
-          <ul key={idx}>
-            {vid.videos.map((vide, idex) => (
-              <li key={idex}>
-                {' '}
-                <div className="video">
+        {tournament.videosgallery &&
+          tournament.videosgallery.map((vid, idx) => (
+            <ul key={idx}>
+              {vid.videos.map((vide, idex) => (
+                <li key={idex}>
                   {' '}
-                  <Video
-                    cloudName="dch502zpg"
-                    controls
-                    fallback="Cannot display video"
-                    publicId={vide.path}
-                  ></Video>
-                </div>
-                <div className="bottom_data">
-                  {' '}
-                  <a href="#">The Team</a>{' '}
-                  <a href="#" className="yellow">
-                    Lq Heroes
-                  </a>
-                  <h2>
-                    {vide.originalname} : <span>{vid.videodisc}</span>
-                  </h2>
-                  <span className="date">{vide.createdAt}</span>{' '}
-                  <span className="views">
-                    <i className="fa fa-eye" aria-hidden="true"></i> 2223
-                  </span>{' '}
-                  <span className="likes">
-                    <i className="fa fa-heart" aria-hidden="true"></i>453
-                  </span>{' '}
-                  <span className="comments">
-                    <i className="fa fa-comment" aria-hidden="true"></i>18
-                  </span>{' '}
-                </div>
-              </li>
-            ))}
+                  <div className="video">
+                    {' '}
+                    <Video
+                      cloudName="dch502zpg"
+                      controls
+                      fallback="Cannot display video"
+                      publicId={vide.path}
+                    ></Video>
+                  </div>
+                  <div className="bottom_data">
+                    {' '}
+                    <a href="#">The Team</a>{' '}
+                    <a href="#" className="yellow">
+                      Lq Heroes
+                    </a>
+                    <h2>
+                      {vide.originalname} : <span>{vid.videodisc}</span>
+                    </h2>
+                    <span className="date">{vide.createdAt}</span>{' '}
+                    <span className="views">
+                      <i className="fa fa-eye" aria-hidden="true"></i> 2223
+                    </span>{' '}
+                    <span className="likes">
+                      <i className="fa fa-heart" aria-hidden="true"></i>453
+                    </span>{' '}
+                    <span className="comments">
+                      <i className="fa fa-comment" aria-hidden="true"></i>18
+                    </span>{' '}
+                  </div>
+                </li>
+              ))}
 
-            {/* <li style={{ display: 'none' }}>
+              {/* <li style={{ display: 'none' }}>
                 <div className="video">
                   {' '}
                   <img src="/assets/media/video/thumb1.jpg" alt="" />{' '}
@@ -140,8 +142,8 @@ const TournamentVideos = ({ user, tournament }) => {
                   </span>{' '}
                 </div>
               </li> */}
-          </ul>
-        ))}
+            </ul>
+          ))}
       </form>
     </div>
   );

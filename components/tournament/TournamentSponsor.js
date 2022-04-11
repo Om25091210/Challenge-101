@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import baseURL from '@utils/baseURL';
 import { useRouter } from 'next/router';
 
-const TournamentSponsor = ({ user, data }) => {
+const TournamentSponsor = ({ user, data, isUser }) => {
   useEffect(() => {
     $('a.model_show_btn').click(function () {
       $(this).next().addClass('show_model');
@@ -89,9 +89,11 @@ const TournamentSponsor = ({ user, data }) => {
           <div className="loc_box">
             {' '}
             <a href="#!" className="model_show_btn">
-              <button className="btn">
-                <i aria-hidden="true"> Edit Sponsor</i>
-              </button>
+              {isUser ? (
+                <button className="btn">
+                  <i aria-hidden="true"> Edit Sponsor</i>
+                </button>
+              ) : null}
             </a>
             <div className="common_model_box" style={{ height: '12rem' }}>
               <a href="#!" className="model_close">

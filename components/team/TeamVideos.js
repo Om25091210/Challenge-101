@@ -70,7 +70,7 @@ const TeamVideos = ({ user, team, isTeamPlayer }) => {
             </a>
           </div>
         ) : (
-          ''
+          'No Clip Available'
         )}
 
         <p></p>

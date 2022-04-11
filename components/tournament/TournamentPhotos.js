@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import { useMutation } from 'react-query';
 import { toast } from 'react-toastify';
@@ -8,7 +7,7 @@ import baseURL from '@utils/baseURL';
 import ImageDropzone from '@components/common/ImageDropzone';
 import Moment from 'moment';
 
-const TournamentPhotos = ({ user, tournament }) => {
+const TournamentPhotos = ({ user, tournament, isUser }) => {
   const [images, setImages] = useState([]);
   const [title, setTitle] = useState();
 
@@ -52,7 +51,7 @@ const TournamentPhotos = ({ user, tournament }) => {
   return (
     <div className="gallery_box">
       <form onSubmit={handlePhotosSubmit}>
-        <ImageDropzone setImages={setImages} />
+        {isUser ? <ImageDropzone setImages={setImages} /> : null}
 
         <p></p>
 
@@ -71,7 +70,7 @@ const TournamentPhotos = ({ user, tournament }) => {
             </a>
           </div>
         ) : (
-          ''
+          'No Album Available'
         )}
 
         <p></p>
