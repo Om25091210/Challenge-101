@@ -88,7 +88,7 @@ export default class MyDocument extends Document {
 
           <style></style>
         </Head>
-        <body>
+        <body className="DarkPage">
           {themeCss ? (
             <style
               dangerouslySetInnerHTML={{

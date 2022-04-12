@@ -40,18 +40,18 @@ const DarkMode = () => {
   const [darktheme, setDarktheme] = useState(true);
 
   const LightTheme = (e) => {
-    const root = window.document.documentElement;    
+    const root = window.document.documentElement;
     e.preventDefault();
-    $('body').removeClass('DarkPage');   
+    $('body').removeClass('DarkPage');
     $('body').addClass('lig');
     $('.logo').removeClass('bigwidth');
     setDarktheme(false);
   };
 
   const Darktheme = (e) => {
-    const root = window.document.documentElement;        
+    const root = window.document.documentElement;
     e.preventDefault();
-    $('body').removeClass('lig');   
+    $('body').removeClass('lig');
     $('body').addClass('DarkPage');
     $('.logo').removeClass('bigwidth');
     setDarktheme(true);
@@ -59,14 +59,17 @@ const DarkMode = () => {
 
   return (
     <>
-      { !darktheme ? (
+      {!darktheme ? (
         <>
-          <button onClick={Darktheme} className="theme_btn">
+          <button onClick={(e) => Darktheme(e)} className="theme_btn">
             <span> Dark</span>
           </button>
         </>
       ) : (
-        <button onClick={LightTheme} className="theme_btn light_thmeme">
+        <button
+          onClick={(e) => LightTheme(e)}
+          className="theme_btn light_thmeme"
+        >
           <span> Light</span>
         </button>
       )}

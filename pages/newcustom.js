@@ -2,8 +2,6 @@ import { useEffect } from 'react';
 
 function Customjs() {
   useEffect(() => {
-    $('body').addClass('DarkPage');
-
     $('.overhight').mCustomScrollbar({
       autoHideScrollbar: true
     });
