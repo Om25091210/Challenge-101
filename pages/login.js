@@ -1,14 +1,10 @@
-import Head from 'next/head';
 import Meta from '@components/Meta';
-import FooterMain from '@components/FooterMain';
 import { useState, useContext, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
-import Link from 'next/link';
 import { DataContext } from '@store/GlobalState';
 import { postData } from '@utils/fetchData';
-import Cookie from 'js-cookie';
 import baseURL from '@utils/baseURL';
 import cookie from 'js-cookie';
 import { useRouter } from 'next/router';
@@ -23,13 +19,11 @@ const SignIn = () => {
   const { state, dispatch } = useContext(DataContext);
   const { auth } = state;
   const router = useRouter();
-
-  const [showPassword, setShowPassword] = useState(false);
-  const [error, setError] = useState(null);
-  const [formLoading, setFormLoading] = useState(false);
   const [submitDisabled, setSubmitDisabled] = useState(true);
   const [passwordShown, setPasswordShown] = useState(false);
   const [open, setOpen] = useState(false);
+  const [isWaiting, setIsWaiting] = useState(false);
+  const [waitingMail, setWaitingMail] = useState('');
 
   const { email, password } = user;
 
@@ -90,6 +84,22 @@ const SignIn = () => {
   const togglePassword = () => {
     setPasswordShown(!passwordShown);
     setOpen(!open);
+  };
+
+  const handleWaitSubmit = (e) => {
+    e.preventDefault();
+    try {
+      axios
+        .post(`${baseURL}/api/all/waitinglist`, {
+          waitingMail
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      toast.success('Thank You for the support!');
+    } catch (error) {
+      toast.info('Sorry Please Enter valid Email.');
+    }
   };
 
   return (
@@ -259,6 +269,80 @@ const SignIn = () => {
                   </div>
                 </div>
               </form>
+              <div
+                style={{
+                  position: 'absolute',
+                  bottom: '12%',
+                  left: '10%',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  width: '370px'
+                }}
+              >
+                <div>
+                  <button
+                    style={{
+                      width: 'max-content',
+                      height: 'max-content',
+                      background: '#fc5203',
+                      padding: '0.5rem 1rem',
+                      marginTop: '4.5rem',
+                      borderRadius: '5px',
+                      marginLeft: '0.5rem',
+                      fontSize: '1.1rem',
+                      letterSpacing: '1px',
+                      color: 'whitesmoke'
+                    }}
+                    onClick={() => setIsWaiting(!isWaiting)}
+                  >
+                    {' '}
+                    Join The Revolution{' '}
+                  </button>
+                </div>
+                {isWaiting && (
+                  <form onSubmit={handleWaitSubmit}>
+                    <div
+                      style={{
+                        position: 'absolute',
+                        width: '230px',
+                        top: '4.5rem'
+                      }}
+                    >
+                      <input
+                        style={{
+                          width: '100%',
+                          background: 'whitesmoke',
+                          color: 'black',
+                          letterSpacing: '2px'
+                        }}
+                        type="text"
+                        name="email"
+                        value={waitingMail}
+                        onChange={(e) => setWaitingMail(e.target.value)}
+                        autoComplete="off"
+                        placeholder="Email"
+                      />
+                      <button
+                        style={{
+                          width: 'max-content',
+                          height: 'max-content',
+                          margin: '10px 0',
+                          background: '#fc5203',
+                          padding: '0.3rem 1rem',
+                          borderRadius: '5px',
+                          marginLeft: '11.5rem',
+                          fontSize: '1.1rem',
+                          letterSpacing: '1px',
+                          color: 'whitesmoke'
+                        }}
+                        type="submit"
+                      >
+                        submit
+                      </button>
+                    </div>
+                  </form>
+                )}
+              </div>
             </div>
           </div>
         </div>
