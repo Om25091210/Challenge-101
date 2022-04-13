@@ -6,6 +6,7 @@ import axios from 'axios';
 import baseURL from '@utils/baseURL';
 import ImageDropzone from '@components/common/ImageDropzone';
 import Moment from 'moment';
+import PhotosDelete from './PhotosDelete';
 
 const TeamPhotos = ({ user, team, isTeamPlayer }) => {
   const [images, setImages] = useState([]);
@@ -110,6 +111,7 @@ const TeamPhotos = ({ user, team, isTeamPlayer }) => {
                     {Moment(imgg.createdAt).format('MMMM, DD, YYYY hh:mm A')}
                   </span>
                 </h2>
+                <PhotosDelete collectionId={imgg._id} team={team} />
               </div>
             </div>
           ))}

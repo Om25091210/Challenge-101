@@ -6,6 +6,7 @@ import axios from 'axios';
 import baseURL from '@utils/baseURL';
 import VideoDropzone from '@components/common/VideosDropzone';
 import { Video } from 'cloudinary-react';
+import VideosDelete from './VideosDelete';
 
 const TeamVideos = ({ user, team, isTeamPlayer }) => {
   const [videos, setVideos] = useState([]);
@@ -69,13 +70,14 @@ const TeamVideos = ({ user, team, isTeamPlayer }) => {
               UPLOAD NOW{' '}
             </a>
           </div>
-        ) : (
-          'No Clip Available'
-        )}
+        ) : null}
 
         <p></p>
 
-        {team.videosgallery &&
+        {team.videosgallery.length === 0 ? (
+          <p>No Media Available</p>
+        ) : (
+          team.videosgallery &&
           team.videosgallery.map((vid, idx) => (
             <ul key={idx}>
               {vid.videos.map((vide, idex) => (
@@ -110,6 +112,7 @@ const TeamVideos = ({ user, team, isTeamPlayer }) => {
                       <i className="fa fa-comment" aria-hidden="true"></i>18
                     </span>{' '}
                   </div>
+                  <VideosDelete collectionId={vid._id} team={team} />
                 </li>
               ))}
 
@@ -141,7 +144,8 @@ const TeamVideos = ({ user, team, isTeamPlayer }) => {
                 </div>
               </li> */}
             </ul>
-          ))}
+          ))
+        )}
       </form>
     </div>
   );

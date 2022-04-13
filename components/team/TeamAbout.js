@@ -5,6 +5,7 @@ import { useQuery } from 'react-query';
 import { useRouter } from 'next/router';
 import TeamAboutEdit from './TeamAboutEdit';
 import { toast } from 'react-toastify';
+import cookie from 'js-cookie';
 
 const TeamAbout = ({ tmdata, isTeamPlayer }) => {
   const [searchText, setSearchText] = useState('');
@@ -46,15 +47,32 @@ const TeamAbout = ({ tmdata, isTeamPlayer }) => {
 
   const handleSubmitAbout = async (e) => {
     e.preventDefault();
-    axios.post(`${baseURL}/api/teams/ins/about/${tmdata._id}`, results);
-    toast.success('Member Added Successfully');
-    refreshData();
+    try {
+      axios.post(`${baseURL}/api/teams/ins/about/${tmdata._id}`, results);
+      toast.success('Member Added Successfully');
+      refreshData();
+    } catch (error) {
+      console.log(err);
+      toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+    }
   };
 
-  const handleDelete = async (e) => {
-    axios.post(`${baseURL}/api/teams/del/about/${tmdata._id}`, { tId: e });
-    toast.success('Member Deleted Successfully');
-    refreshData();
+  const handleDelete = async (employeeId) => {
+    try {
+      axios.delete(
+        `${baseURL}/api/teams/del/about/${tmdata._id}/${employeeId}`,
+        {
+          headers: {
+            Authorization: cookie.get('token')
+          }
+        }
+      );
+      toast.success('The member has been removed.');
+      refreshData();
+    } catch (err) {
+      console.log(err);
+      toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+    }
   };
 
   useEffect(() => {
