@@ -107,6 +107,9 @@ const TournamentDetail = ({ user, data, products }) => {
       axios.delete(`${baseURL}/api/tournaments/${data.tournament._id}`, {
         headers: {
           Authorization: cookie.get('token')
+        },
+        data: {
+          user: user._id
         }
       });
       toast.success('Deleted Successfully');

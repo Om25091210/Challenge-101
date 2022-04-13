@@ -4,6 +4,7 @@ import baseURL from '../../utils/baseURL';
 import { useQuery } from 'react-query';
 import { useRouter } from 'next/router';
 import TeamAboutEdit from './TeamAboutEdit';
+import { toast } from 'react-toastify';
 
 const TeamAbout = ({ tmdata, isTeamPlayer }) => {
   const [searchText, setSearchText] = useState('');
@@ -46,11 +47,13 @@ const TeamAbout = ({ tmdata, isTeamPlayer }) => {
   const handleSubmitAbout = async (e) => {
     e.preventDefault();
     axios.post(`${baseURL}/api/teams/ins/about/${tmdata._id}`, results);
+    toast.success('Member Added Successfully');
     refreshData();
   };
 
   const handleDelete = async (e) => {
     axios.post(`${baseURL}/api/teams/del/about/${tmdata._id}`, { tId: e });
+    toast.success('Member Deleted Successfully');
     refreshData();
   };
 
