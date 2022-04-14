@@ -175,17 +175,15 @@ const TeamProfileBox = ({ user, data, isTeamPlayer }) => {
 
   const empManager = data.team.employees
     .map((x) => x)
-    .filter((x) => x.role === 'manager');
+    .filter((x) => x.role === 'Manager');
   const empCoach = data.team.employees
     .map((x) => x)
-    .filter((x) => x.role === 'coach');
+    .filter((x) => x.role === 'Coach');
 
   return (
     <div className="profile_box">
       <div className="profile_cover_photo">
         <form onSubmit={handleCoverSubmit}>
-          {/* <img src="/assets/media/profile/cover_bg.jpg" alt="cover image" /> */}
-
           <img
             className="rounded-full h-full w-full object-cover"
             id="result"

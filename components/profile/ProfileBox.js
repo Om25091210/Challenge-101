@@ -38,6 +38,8 @@ const ProfileBox = ({ user, Userdata, games }) => {
 
   const [follow, setFollow] = useState(false);
 
+  const [deleteModal, setDeleteModal] = useState(false);
+
   const [formErrors, setFormErrors] = useState({});
   const router = useRouter();
 
@@ -340,13 +342,22 @@ const ProfileBox = ({ user, Userdata, games }) => {
     }, 200);
   };
 
+  const deletehandleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      axios.delete(`${baseURL}/api/profile/${user._id}`);
+      toast.success('Your Account has been successfully deleted');
+      router.push('/login');
+    } catch (err) {
+      toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+    }
+  };
+
   return (
     <>
       <div className="profile_box for_profile">
         <div className="profile_cover_photo">
           <form onSubmit={handleCoverSubmit}>
-            {/* <img src="/assets/media/profile/cover_bg.jpg" alt="cover image" /> */}
-
             <img
               className="rounded-full h-full w-full object-cover"
               id="result"
@@ -384,47 +395,79 @@ const ProfileBox = ({ user, Userdata, games }) => {
         )
         <div className="edit_phone ">
           <div className="">
-            {' '}
-            <a href="#!" className="model_show_btn" alt="personal details">
-              <button className="btn">
-                <i className="fa fa-phone" aria-hidden="true"></i>
-              </button>
-            </a>
-            <div className="common_model_box">
-              <a href="#!" className="model_close">
-                X
-              </a>
-              <div className="inner_model_box">
-                <h3>Phone Number</h3>
-                <form onSubmit={handleSubmitphno} className="common_form">
-                  <div className="form-group">
-                    <div className="">
-                      <label htmlFor="exampleFormControlInput1">
-                        Phone Number
-                      </label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="exampleFormControlInput1"
-                        placeholder="phone_number"
-                        name="phno"
-                        onChange={handleChangephno}
-                        value={phno}
-                      />
-                    </div>
-                    <button className="btn">Update</button>
+            {isLoggedInUser ? (
+              <>
+                <button
+                  onClick={() => setDeleteModal(true)}
+                  className="btn"
+                  style={{ marginRight: '4rem' }}
+                >
+                  <i className="fa fa-trash"></i>
+                </button>{' '}
+                <a href="#!" className="model_show_btn" alt="personal details">
+                  <button className="btn">
+                    <i className="fa fa-phone" aria-hidden="true"></i>
+                  </button>
+                </a>
+                <div className="common_model_box">
+                  <a href="#!" className="model_close">
+                    X
+                  </a>
+                  <div className="inner_model_box">
+                    <h3>Phone Number</h3>
+                    <form onSubmit={handleSubmitphno} className="common_form">
+                      <div className="form-group">
+                        <div className="">
+                          <label htmlFor="exampleFormControlInput1">
+                            Phone Number
+                          </label>
+                          <input
+                            type="text"
+                            className="form-control"
+                            id="exampleFormControlInput1"
+                            placeholder="phone_number"
+                            name="phno"
+                            onChange={handleChangephno}
+                            value={phno}
+                          />
+                        </div>
+                        <button className="btn">Update</button>
+                      </div>
+                    </form>
                   </div>
-                </form>
-              </div>
-              <div className="overlay"></div>
-            </div>
+                  <div className="overlay"></div>
+                </div>
+              </>
+            ) : null}
           </div>
         </div>
+        {isLoggedInUser ? (
+          <>
+            {deleteModal && (
+              <div className="delete_post">
+                <form onSubmit={deletehandleSubmit}>
+                  <div className="delete_post_div">
+                    <p>Confirm on Deleting the Account?</p>
+                    <button
+                      onClick={() => setDeleteModal(false)}
+                      className="btn"
+                    >
+                      Cancel
+                    </button>
+                    <button type="submit" className="btn">
+                      Confirm
+                    </button>
+                  </div>
+                </form>
+                <div className="overlay"></div>
+              </div>
+            )}
+          </>
+        ) : null}
         {isLoggedInUser ? (
           <div className="edit_add ">
             <div className="">
               {' '}
-              {/* <span className="ct" >Detail's</span>{' '} */}
               <a href="#!" className="model_show_btn" alt="personal details">
                 <button className="btn">
                   <i className="fa fa-address-book-o" aria-hidden="true"></i>
