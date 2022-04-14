@@ -269,30 +269,10 @@ const SignIn = () => {
                   </div>
                 </div>
               </form>
-              <div
-                style={{
-                  position: 'absolute',
-                  bottom: '12%',
-                  left: '10%',
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  width: '370px'
-                }}
-              >
+              <div className="join_box">
                 <div>
                   <button
-                    style={{
-                      width: 'max-content',
-                      height: 'max-content',
-                      background: '#fc5203',
-                      padding: '0.5rem 1rem',
-                      marginTop: '4.5rem',
-                      borderRadius: '5px',
-                      marginLeft: '0.5rem',
-                      fontSize: '1.1rem',
-                      letterSpacing: '1px',
-                      color: 'whitesmoke'
-                    }}
+                    className="join_btn btn"
                     onClick={() => setIsWaiting(!isWaiting)}
                   >
                     {' '}
@@ -301,20 +281,8 @@ const SignIn = () => {
                 </div>
                 {isWaiting && (
                   <form onSubmit={handleWaitSubmit}>
-                    <div
-                      style={{
-                        position: 'absolute',
-                        width: '230px',
-                        top: '4.5rem'
-                      }}
-                    >
+                    <div className="join_revolution">
                       <input
-                        style={{
-                          width: '100%',
-                          background: 'whitesmoke',
-                          color: 'black',
-                          letterSpacing: '2px'
-                        }}
                         type="text"
                         name="email"
                         value={waitingMail}
@@ -322,21 +290,7 @@ const SignIn = () => {
                         autoComplete="off"
                         placeholder="Email"
                       />
-                      <button
-                        style={{
-                          width: 'max-content',
-                          height: 'max-content',
-                          margin: '10px 0',
-                          background: '#fc5203',
-                          padding: '0.3rem 1rem',
-                          borderRadius: '5px',
-                          marginLeft: '11.5rem',
-                          fontSize: '1.1rem',
-                          letterSpacing: '1px',
-                          color: 'whitesmoke'
-                        }}
-                        type="submit"
-                      >
+                      <button className="btn" type="submit">
                         submit
                       </button>
                     </div>

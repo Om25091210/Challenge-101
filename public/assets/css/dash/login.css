@@ -40,7 +40,7 @@ background: linear-gradient(135deg,  #232741 0%,#2e1d49 26%,#47085a 100%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#232741', endColorstr='#47085a',GradientType=1 ); 
 display: flex; align-items: center; justify-content: center; position: relative;}
 
-.left_banner h1{ text-align: left; color: #fff; font-size: 58px;}
+.left_banner h1{ text-align: left; color: #fff; font-size: 54px;}
 .left_banner .props{ position: absolute;}
 .left_banner .logo {top: 17%;left: 23%;position: absolute;}
 .left_banner .logo img{ width: 150px;}
@@ -191,6 +191,29 @@ display: flex; align-items: center; justify-content: center; position: relative;
 }
 
 
+.join_box {
+    position: absolute;
+    bottom: 10%;
+    left: 11%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.join_revolution{    display: flex;
+   
+    width: 400px;
+    margin-left: 20px;}
+
+	.join_revolution input {
+		width: 270px;
+		background: #fff;
+		height: 40px;
+		margin-right: 20px; color: #000; font-size: 14px; 
+	}
+	.join_revolution .btn{ width: 100px; background: #fc5203;}
+
+	.join_btn.btn{ width: 200px; background: #fc5203;}
+
 
 /* --------------Animation ------------ */
 
@@ -202,7 +225,8 @@ display: flex; align-items: center; justify-content: center; position: relative;
 .left_banner .props6 {right: 20%;bottom: 15%;}
 .left_banner .props7 {right: -24px;top: 10%;}
 .left_banner .props8 {top: 29%;right: 41%;}
-.left_banner .props9 {bottom: 20%; left: 17%;}
+.left_banner .props9 {bottom: 17%; left: 17%;}
+.left_banner .props9 img{ width: 150px;}
 
 .props1{ animation-name: props1; animation-duration: 0.5s; animation-delay:0.5s; animation-fill-mode: both; }
 .props2{ animation-name: props2; animation-duration: 0.5s; animation-delay:0.9s; animation-fill-mode: both; }
@@ -238,7 +262,7 @@ display: flex; align-items: center; justify-content: center; position: relative;
 
 @keyframes props5 { 
 	0% {opacity: 0;bottom:0;left: 0;}
-	100% { opacity: 1; bottom: 10%;left: 15%;}
+	100% { opacity: 1; bottom: 7%;left: 15%;}
 }
 
 @keyframes props6 { 

@@ -41,7 +41,7 @@ const DarkMode = () => {
 
   const LightTheme = (e) => {
     const root = window.document.documentElement;
-    e.preventDefault();
+    e.persist();
     $('body').removeClass('DarkPage');
     $('body').addClass('lig');
     $('.logo').removeClass('bigwidth');
@@ -50,7 +50,7 @@ const DarkMode = () => {
 
   const Darktheme = (e) => {
     const root = window.document.documentElement;
-    e.preventDefault();
+    e.persist();
     $('body').removeClass('lig');
     $('body').addClass('DarkPage');
     $('.logo').removeClass('bigwidth');
