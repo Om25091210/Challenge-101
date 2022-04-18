@@ -377,6 +377,11 @@ ul.top_menu .drop_down_bg.bell_drop_down li p {
 	border-bottom:1px solid #ddd;
 	padding-bottom:10px;
 }
+
+.no_noti{text-align: center;
+    font-size: 20px;
+    color: red;}
+
 .notif_tag .notif_img {
 	display:inline-block;
 	width:40px;
@@ -475,6 +480,12 @@ ul.top_menu .drop_down_bg.wallet_drop_down {
 	width:350px;
 	top:60px; border-top-right-radius: 0;
 }
+
+ul.top_menu li.wallet .connect_wallet{text-align: center;
+    width: 100%;
+    display: inline-block;}
+
+	ul.top_menu li.wallet .connect_wallet .btn{ background: #7239ea  !important}
 
 ul.top_menu .drop_down_bg.wallet_drop_down h2{ padding: 10px;}
 ul.top_menu .drop_down_bg.wallet_drop_down .fa-info-circle{ position: absolute; top:24px; right:10px;}
@@ -2019,7 +2030,6 @@ article .social_bar {
 	top: 350px;
 	right: 200px;
 	color: #000;
-	background: #ddd;
 	border-radius: 5px;
 	z-index: 9;
 }
@@ -3057,19 +3067,12 @@ article .social_bar {
 	display: none;
 }
 .other_logo:first-child {
-	display: flex;
-	position: absolute;
-	width: 52px;
-	height: 42px;
-	left: -30px;
-	opacity: 1;
-	transition: 0.3s ease-in-out;
-	top: -23px;
-	align-items: center;
-}
-.tit:hover .other_logo:first-child {
-	opacity: 1;
-	left: 0;
+    display: flex;
+    width: 52px;
+    height: 42px;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: -3px;
 }
 .discovery_page h3 {
 	text-transform: uppercase;
@@ -7014,6 +7017,11 @@ body.DarkPage .top_menu img, body.DarkPage .top_menu svg {
 	filter: invert(100%);
 	color: #fff;
 }
+
+
+body.DarkPage .notif_tag .notif_img img{-webkit-filter: invert(0) !important;
+	filter: invert(0) !important;}
+
 body.DarkPage ul.top_menu li.profile img {
 	-webkit-filter: invert(0);
 	filter: invert(0);
@@ -7285,9 +7293,7 @@ body.DarkPage .create_tournament form input, body.DarkPage .create_tournament fo
 	background: #202028;
 	color: #fff;
 }
-body.DarkPage .form-control {
-	color: #fff;
-}
+
 body.DarkPage .game_list_page li a:hover span {
 	color: #fff;
 }

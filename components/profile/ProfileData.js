@@ -227,9 +227,9 @@ const ProfileData = ({ user, Userdata, player, products }) => {
 
                     <form className="common_form" onSubmit={handleSubmit}>
                       <div className="form-group">
-                        <div className="colm">
+                        <div className="">
                           <select
-                            className="form-control"
+                            className="form-control custom-select text-capitalize"
                             name="sponsor"
                             value={state.value}
                             multiple={true}

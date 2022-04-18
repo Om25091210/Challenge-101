@@ -2,7 +2,7 @@ import DarkMode from './theme/dark-mode';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-function LeftNav({user}) {
+function LeftNav({ user }) {
   const router = useRouter();
 
   return (
@@ -96,7 +96,7 @@ function LeftNav({user}) {
                 <span className="iconbg">
                   <i className="fa fa-fast-forward" aria-hidden="true"></i>
                 </span>{' '}
-                <span className="title">Play NFT Games</span>
+                <span className="title">Play</span>
               </a>
             </Link>{' '}
           </li>
@@ -112,9 +112,9 @@ function LeftNav({user}) {
                 </a>
               </Link>{' '}
             </li>
-            ) : ''
-          }
-
+          ) : (
+            ''
+          )}
         </ul>
       </nav>
 

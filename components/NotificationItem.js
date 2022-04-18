@@ -57,7 +57,7 @@ export const NotificationItem = () => {
         <ul className="notif_box bellHight">
           <div>
             {!notify || notify.length === 0 ? (
-              <h3>No Notifications...</h3>
+              <h3 className="no_noti">No Notifications...</h3>
             ) : (
               <div>
                 {' '}
