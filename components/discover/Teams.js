@@ -6,10 +6,14 @@ import { useState, useEffect } from 'react';
 import baseURL from '@utils/baseURL';
 import TeamRequest from './invites/TeamRequest';
 import ReactCountryFlag from 'react-country-flag';
+import FavTeam from '../team/FavTeam';
+import Cookies from 'js-cookie';
 
 const Teams = ({ user, profile, myState, selectedGame }) => {
   const [team, setTeam] = useState([]);
   const [sessionTeam, setSessionTeam] = useState({ key: null, value: null });
+  const [favouriteTeams, setfavouriteTeams] = useState([]);
+  const [showfavs, setShowFavs] = useState(false);
 
   useEffect(() => {
     var sg = undefined;
@@ -40,6 +44,21 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
       //console.log(team);
     }
   }, [myState, team]);
+
+  useEffect(() => {
+    axios
+      .get(`${baseURL}/api/teams/favourites/team`, {
+        headers: {
+          Authorization: Cookies.get('token')
+        }
+      })
+      .then((res) => {
+        setfavouriteTeams(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <div className="tab" id="teams">
@@ -72,6 +91,7 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
                 type="checkbox"
                 className="custom-control-input"
                 id="customSwitch1"
+                onClick={() => setShowFavs(!showfavs)}
               />
               <label
                 className="custom-control-label"
@@ -93,12 +113,182 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
           {' '}
           <p>No results for the selected criteria. Please refine.</p>
         </div>
+      ) : showfavs === true ? (
+        favouriteTeams.map((team, idx) => (
+          <div className="team_row" key={idx}>
+            <FavTeam team={team} profile={profile} />
+            <div className="inner_team">
+              <div className="logo_box">
+                {' '}
+                <div className="role_pic">
+                  <img src={team.imgUrl} alt="" />
+                </div>
+                <a href={`/team/${team._id}`}>
+                  <h3>{team.name}</h3>
+                </a>
+                <ReactCountryFlag
+                  countryCode={team.region}
+                  svg
+                  style={{
+                    width: '2em',
+                    height: '2em'
+                  }}
+                />
+              </div>
+              {team.games.length <= 0 ? (
+                <p>No Game for this team</p>
+              ) : (
+                <>
+                  <span className="logo">
+                    {team.games.map((im) => (
+                      <>
+                        <img src={im.gameId?.imgUrl} alt="" />
+                      </>
+                    ))}
+                  </span>
+                </>
+              )}
+              <span className="remarks">
+                <h4>ROLE:</h4>
+                {team.attributes.roles.length > 0 ? (
+                  <p>{team.attributes.roles}</p>
+                ) : (
+                  'No Role Specified'
+                )}
+              </span>
+              <div className="mores plateform">
+                {' '}
+                <span>
+                  {team.attributes?.platform === 'PC' ? (
+                    <img src="/assets/media/discover/desk.png" alt="" />
+                  ) : team.attributes?.platform === 'Console' ? (
+                    <img src="/assets/media/discover/console.png" alt="" />
+                  ) : team.attributes?.platform === 'Mobile' ? (
+                    <img src="/assets/media/discover/mobile_game.png" alt="" />
+                  ) : (
+                    <p>No Platform mentioned</p>
+                  )}
+                </span>{' '}
+                <span>
+                  {team.attributes.mic ? (
+                    <>
+                      <img src="/assets/media/discover/mice.png" alt="" />{' '}
+                      <b>On</b>
+                    </>
+                  ) : (
+                    <>
+                      {' '}
+                      <img src="/assets/media/discover/mice.png" alt="" />
+                      <b>Off</b>{' '}
+                    </>
+                  )}
+                </span>{' '}
+                <span>
+                  <img src="/assets/media/discover/translator.png" alt="" />{' '}
+                  {team.attributes?.language.length > 0 ? (
+                    <>
+                      {team.attributes?.language.map((tem) => (
+                        <b>{tem}</b>
+                      ))}
+                    </>
+                  ) : (
+                    <p>No Language Available</p>
+                  )}
+                </span>{' '}
+              </div>
+              <TeamRequest team={team} user={user} profile={profile} />
+            </div>
+
+            <div className="overview_box">
+              <h2>Team Overview</h2>
+              <div className="team_overview">
+                <div className="over_prof">
+                  <div className="pics">
+                    {' '}
+                    <img src={team.imgUrl} alt="" />{' '}
+                  </div>
+                  <h3>{team.name}</h3>
+                </div>
+
+                <div className="ranking">
+                  <h4>Ranking</h4>
+
+                  {!team.ranks || team.ranks.length === 0 ? (
+                    <p>No ranks defined..</p>
+                  ) : (
+                    team.ranks.map((item, index) => (
+                      <div key={index} className="current_team">
+                        <span className="ct">
+                          {' '}
+                          <i
+                            className="fa fa-sort-asc"
+                            aria-hidden="true"
+                          ></i>{' '}
+                          {item.rank}
+                        </span>
+                        <span className="were">{item.rankType} </span>
+                      </div>
+                    ))
+                  )}
+
+                  <h4>country</h4>
+                  <p>
+                    <ReactCountryFlag
+                      countryCode={team.region}
+                      svg
+                      style={{
+                        width: '2em',
+                        height: '2em'
+                      }}
+                    />
+                  </p>
+                  <h4>Established</h4>
+                  <p>{team.founded}</p>
+                </div>
+                <div className="match">
+                  <h4>Matches Played</h4>
+                  <p>156 Games</p>
+                  <h4>Matches Won</h4>
+                  <p>131 Victories</p>
+                  <h4>Manager</h4>
+                  {team.employees.length !== 0 ? (
+                    team.employees.map(
+                      (role) =>
+                        role.role === 'manager' && (
+                          <p>{role.employeeId.username}</p>
+                        )
+                    )
+                  ) : (
+                    <p>Not Available</p>
+                  )}
+                </div>
+                <div className="other">
+                  <h4>From</h4>
+                  <p>
+                    <span className="red round"></span>{' '}
+                    <span className="green round"></span>{' '}
+                    <span className="red round"></span>{' '}
+                  </p>
+                  <h4>Trophies</h4>
+                  <p>4</p>
+                  <h4>Prize Earned</h4>
+                  <p>USD 912.804</p>
+                </div>
+                <div className="percentage">
+                  {' '}
+                  <img
+                    src="/assets/media/discover/percentage.png"
+                    alt=""
+                  />{' '}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))
       ) : (
         team.map((team, idx) => (
           <div className="team_row" key={idx}>
-            <div className="stars">
-              <i className="fa fa-star" aria-hidden="true"></i>
-            </div>
+            <FavTeam team={team.team} profile={profile} />
             <div className="inner_team">
               <div className="logo_box">
                 {' '}
@@ -131,7 +321,7 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
                 </>
               )}
               <span className="remarks">
-                <h4>ROLE</h4>
+                <h4>ROLE:</h4>
                 {team.team.attributes.roles.length > 0 ? (
                   <p>{team.team.attributes.roles}</p>
                 ) : (
