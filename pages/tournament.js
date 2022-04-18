@@ -38,6 +38,9 @@ const Tournament = ({ user, games, tournaments }) => {
   const [status, setStatus] = useState('confirm');
   const [searchResults, setSearchResults] = useState([]);
 
+  const [favouriteTournaments, setfavouriteTournaments] = useState([]);
+  const [showfavs, setShowFavs] = useState(false);
+
   const router = useRouter();
 
   let cancel;
@@ -72,7 +75,6 @@ const Tournament = ({ user, games, tournaments }) => {
     setSelectedGame(obj);
     //myState.setFilteredResults([]);
     $('a.model_close').parent().removeClass('show_model');
-     
   };
 
   useEffect(() => {
@@ -85,34 +87,35 @@ const Tournament = ({ user, games, tournaments }) => {
     });
   }, []);
 
-
-  const [sessionTeam, setSessionTeam] = useState({key:null, value:null});
+  const [sessionTeam, setSessionTeam] = useState({ key: null, value: null });
 
   useEffect(() => {
-
     var sg = undefined;
-    if (selectedGame != null) { sg = selectedGame._id;}
-          
+    if (selectedGame != null) {
+      sg = selectedGame._id;
+    }
+
     if (myState.selectedFilters.length > 0) {
       setSearchResults(myState.filteredResults);
     } else {
-      
       if (sessionTeam.key === null) {
-          axios.get(`${baseURL}/api/tournaments/tournamentsbygame/${sg}`).then((res) => {
+        axios
+          .get(`${baseURL}/api/tournaments/tournamentsbygame/${sg}`)
+          .then((res) => {
             setSearchResults(res.data);
-            setSessionTeam({key:sg, value: searchResults}); 
+            setSessionTeam({ key: sg, value: searchResults });
           });
-          
       } else {
-        if ( sessionTeam.key != sg) {
-          axios.get(`${baseURL}/api/tournaments/tournamentsbygame/${sg}`).then((res) => {
-            setSearchResults(res.data);
-            setSessionTeam({key:sg, value: searchResults});
-          });
-                  
+        if (sessionTeam.key != sg) {
+          axios
+            .get(`${baseURL}/api/tournaments/tournamentsbygame/${sg}`)
+            .then((res) => {
+              setSearchResults(res.data);
+              setSessionTeam({ key: sg, value: searchResults });
+            });
         } else {
           //setTeam (sessionTeam.get(sg));
-        } 
+        }
       }
 
       //myState.setFilteredResults(team);
@@ -120,6 +123,20 @@ const Tournament = ({ user, games, tournaments }) => {
     }
   }, [myState, searchResults]);
 
+  useEffect(() => {
+    axios
+      .get(`${baseURL}/api/tournaments/favourites/tournament`, {
+        headers: {
+          Authorization: cookie.get('token')
+        }
+      })
+      .then((res) => {
+        setfavouriteTournaments(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <>
@@ -163,24 +180,27 @@ const Tournament = ({ user, games, tournaments }) => {
 
                   <div className="poup_height msScroll_all">
                     <ul className="">
-                      {games && games.map((game, idx) => (
-                        <li key={idx}>
-                          <div className="game_pic">
-                            <a href="#!" onClick={() => handleSelectGame(game)}>
-                              {' '}
-                              <img src={game.imgUrl} alt={game.name} />{' '}
-                            </a>
-                          </div>
-                          <p>{game.name}</p>
-                        </li>
-                      ))}
+                      {games &&
+                        games.map((game, idx) => (
+                          <li key={idx}>
+                            <div className="game_pic">
+                              <a
+                                href="#!"
+                                onClick={() => handleSelectGame(game)}
+                              >
+                                {' '}
+                                <img src={game.imgUrl} alt={game.name} />{' '}
+                              </a>
+                            </div>
+                            <p>{game.name}</p>
+                          </li>
+                        ))}
                     </ul>
                   </div>
                 </div>
                 <div className="overlay"></div>
               </div>
             </div>
-
 
             <div className="white_bgg">
               <div className="team_search">
@@ -212,6 +232,7 @@ const Tournament = ({ user, games, tournaments }) => {
                       type="checkbox"
                       className="custom-control-input"
                       id="customSwitch1"
+                      onClick={() => setShowFavs(!showfavs)}
                     />
                     <label
                       className="custom-control-label"
@@ -221,11 +242,21 @@ const Tournament = ({ user, games, tournaments }) => {
                 </div>
               </div>
 
-              <Filters filterType={'TOURNAMENTS'} myState={myState} selectedGame={selectedGame}/>
+              <Filters
+                filterType={'TOURNAMENTS'}
+                myState={myState}
+                selectedGame={selectedGame}
+              />
             </div>
           </div>
 
-          <TournamentRows tournaments={tournaments} searchResults={searchResults} />
+          <TournamentRows
+            tournaments={tournaments}
+            searchResults={searchResults}
+            user={user}
+            favouriteTournaments={favouriteTournaments}
+            showfavs={showfavs}
+          />
         </div>
       </div>
 
@@ -234,9 +265,7 @@ const Tournament = ({ user, games, tournaments }) => {
   );
 };
 
-
 export const getServerSideProps = async (context) => {
-
   const response = await fetch(`${baseURL}/api/all/games`);
   const games = await response.json();
 
@@ -246,8 +275,6 @@ export const getServerSideProps = async (context) => {
   return {
     props: { games, tournaments }
   };
-
 };
-
 
 export default Tournament;
