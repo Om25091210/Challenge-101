@@ -58,8 +58,15 @@ const Reply_Comment = ({ post, comment }) => {
             onChange={onChange}
             required
           ></textarea>
-          <button onClick={() => setReplyModal(false)}>Cancel</button>
-          <button onClick={replyhandle}>Submit</button>
+          <button
+            onClick={() => setReplyModal(false)}
+            className="reply_cancel btn"
+          >
+            Cancel
+          </button>
+          <button onClick={replyhandle} className="reply_cancel btn">
+            Submit
+          </button>
         </form>
       )}
     </>

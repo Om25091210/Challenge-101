@@ -73,7 +73,9 @@ const SignedHeader = ({ user }) => {
               <i className="fa fa-plus-circle" aria-hidden="true"></i>
             </a>
             <div className="drop_down_bg create_pages">
-              <ul className="bellHight">
+              <h3>Create</h3>
+
+              <ul className="">
                 <li>
                   <a href="/team/create">
                     <span>
@@ -81,7 +83,7 @@ const SignedHeader = ({ user }) => {
                     </span>
                     <span>
                       {' '}
-                      <b>Create a team page</b>
+                      <b>Team</b>
                       <p>Create a team, compete and rank yourself globally.</p>
                     </span>
                   </a>
@@ -95,7 +97,7 @@ const SignedHeader = ({ user }) => {
 
                     <span>
                       {' '}
-                      <b> Create a tournament</b>
+                      <b> Tournament</b>
                       <p>Create a tournament and invite participants.</p>
                     </span>
                   </a>
@@ -111,7 +113,7 @@ const SignedHeader = ({ user }) => {
                     </span>
                     <span>
                       {' '}
-                      <b>Create a community</b>
+                      <b>Community</b>
                       <p>Create a community and connect with people.</p>
                     </span>
                   </a>
@@ -124,7 +126,7 @@ const SignedHeader = ({ user }) => {
                     </span>
                     <span>
                       {' '}
-                      <b>Create a Brand/Company page</b>
+                      <b>Brand/Company</b>
                       <p>Start selling your products and services.</p>
                     </span>
                   </a>
@@ -135,7 +137,7 @@ const SignedHeader = ({ user }) => {
                       <i className="fa fa-sign-out" aria-hidden="true"></i>{' '}
                     </span>
                     <span>
-                      <b> Create an Arena page</b>
+                      <b> Arena</b>
                       <p>Create arena, invite gamers and increase walk-ins.</p>
                     </span>
                   </a>
@@ -146,6 +148,50 @@ const SignedHeader = ({ user }) => {
                     Create a company page
                   </a>
                 </li> */}
+              </ul>
+
+              <h3>Listing</h3>
+
+              <ul className="">
+                <li>
+                  <a href="/team/create">
+                    <span>
+                      <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                    </span>
+                    <span>
+                      {' '}
+                      <b>Marketplace</b>
+                      <p>Make a listing of your services and products.</p>
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="/tournament/create">
+                    <span>
+                      {' '}
+                      <i class="fa fa-briefcase" aria-hidden="true"></i>
+                    </span>
+
+                    <span>
+                      {' '}
+                      <b> Jobs</b>
+                      <p>Make a job listing.</p>
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span>
+                      {' '}
+                      <i class="fa fa-university" aria-hidden="true"></i>
+                    </span>
+                    <span>
+                      {' '}
+                      <b>Masterclass</b>
+                      <p>List your masterclass and earn.</p>
+                    </span>
+                  </a>
+                </li>
               </ul>
             </div>
           </li>

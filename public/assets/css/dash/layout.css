@@ -112,7 +112,7 @@ h3 {
 	border-radius: 5px;
 	padding: 5px 20px;
 	color: #fff;
-	background: #7239ea;
+	background: #7239ea ;
 	border: 0;
 	font-size: 15px;
 }
@@ -282,6 +282,9 @@ ul.top_menu li a span.pop {
 	right:-17px;
 	transition: 0.3s ease-in-out;
 }
+
+ul.top_menu li.chat_box a span.pop{right:-35px;}
+
 ul.top_menu li.noti a:hover span.pop {
 	top:3px
 }
@@ -520,12 +523,28 @@ ul.top_menu li.wallet li{     float: left;
 	ul.top_menu li.wallet li:last-child a{ width: 100%; border-top: 1px solid #ddd; text-align: center; font-size: 14px; color: #000; padding: 10px 0;}
 
 	ul.top_menu li.pluse .fa-plus-circle{ font-size: 27px;}
-	ul.top_menu li.pluse .drop_down_bg li a{ padding: 10px 0;}
+	ul.top_menu li.pluse .drop_down_bg li a{ padding: 5px 0;}
 
-	ul.top_menu .drop_down_bg.create_pages{ width: 340px;}
+	ul.top_menu .drop_down_bg.create_pages{ width: 415px;left: 0;}
+	ul.top_menu .drop_down_bg.create_pages h3 {
+		font-size: 17px;
+		padding-left: 20px;
+	}
 	ul.top_menu .drop_down_bg.create_pages a{ display: flex;     align-items: center;}
-	ul.top_menu .drop_down_bg.create_pages a span:first-child{ margin-right: 10px;}
-	ul.top_menu .drop_down_bg.create_pages a .fa{ font-size: 25px;}
+	ul.top_menu .drop_down_bg.create_pages a span:first-child{ /* background: #393945;*/
+
+		background: #f3f7fa;
+		margin-right: 10px;
+		padding: 10px;
+		text-align: center;
+		display: flex;
+		width: 45px;
+		height: 45px;
+		justify-content: center;
+		align-items: center; border-radius: 5px;}
+	ul.top_menu .drop_down_bg.create_pages a .fa{ font-size: 20px; padding-right: 0;}
+
+	ul.top_menu .drop_down_bg.create_pages p{ font-size: 12px; font-weight: 300;}
 
 /* ------- start left side -------------- */
 
@@ -656,7 +675,7 @@ ul.top_menu li.wallet li{     float: left;
 }
 .write_post button {
 	padding:13px 20px;
-	margin-left:10px;
+	margin-left:10px; background: #7239ea;
 }
 .right_links .post_img {
 	position: relative;
@@ -1284,7 +1303,7 @@ ul.top_menu li.wallet li{     float: left;
 	margin: 0 0 10px 0;
 	text-align: right;
 	/* background: #ddd; */
-  padding: 10px 10px 0 10px;
+  padding: 10px 10px 10px 10px;
 	border-bottom: 1px solid #ddd;
 	position: relative;
 }
@@ -1382,6 +1401,9 @@ article .social_bar {
 	font-weight: 400;
 	color: #000;
 }
+
+.post_comments  .reply_cancel{	background: #7239ea; margin-left: 10px; color: #fff;}
+
 .thx_msg {
 	float: left;
 	width: 100%;
@@ -5190,7 +5212,7 @@ article .social_bar {
 .tournament_sponsers .logos span {
 	width: 80px;
 	height: 80px;
-	border: 1px solid #ddd;
+	
 	display: flex;
 	align-items: center;
 	padding: 10px;
@@ -7122,7 +7144,11 @@ body.DarkPage .delete_comment, body.DarkPage .reply_comment, body.DarkPage .dele
 }
 body.DarkPage .post_comments button {
 	color: #fff;
+
 }
+
+body.DarkPage  .reply_cancel{	background: #7239ea; margin-left: 10px;}
+
 body.DarkPage .ranking_table, body.DarkPage .team_search {
 	background: #202028;
 }
@@ -7428,6 +7454,11 @@ body.DarkPage .checkout_total .amount .amt_row span{ color: #fff;}
 body.DarkPage .address_order_box .user_add input{ background: #202028;}
 
 body.DarkPage .product_box .product-detail-box h1, body.DarkPage .prodcut_detail_page .labels, body.DarkPage .product_box .product-detail-box p{ color: #fff;}
+body.DarkPage ul.top_menu .drop_down_bg.create_pages a span:first-child{ background: #393945;}
+
+body.DarkPage .left_side nav li .iconbg{ background: #2d343e;}
+body.DarkPage .left_side nav li.active .iconbg, body.DarkPage .left_side nav li a:hover .iconbg{ background: #7239ea;}
+body.DarkPage .left_side nav li.active i, body.DarkPage .left_side nav li a:hover i{ color: #fff;}
 
 @media screen and ( max-height: 768px ){
     .left_side nav li{margin: 3px 0;}
