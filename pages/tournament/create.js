@@ -139,456 +139,482 @@ const CreateTournament = ({ user }) => {
       <LeftNav user={user} />
       <div className="main_middle create_main_middle">
         <div className="white_bg ">
-          <div className="left_create_form">
-            <h1>Left create Tournament</h1>
-          </div>
+          <div className="create_form_box">
+            <div className="left_create_form">
+              <img src="/assets/media/create_left_img.jpg" />
 
-          <div className="create_tournament">
-            <h1>Create Tournament</h1>
-            <form onSubmit={handleSubmit}>
-              {!step1 ? (
-                <>
-                  <h2>Step1</h2>
+              <div className="create_heads">
+                <h1>Create Tournament</h1>
+                <p>
+                  Create tournament page and invite hundrends of gamers to
+                  participate. Boost to increase the reach.
+                </p>
+              </div>
+            </div>
 
-                  <div className="form-group">
-                    <label for="exampleFormControlInput1">
-                      Tournament Name
-                    </label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="name"
-                      name="name"
-                      onChange={handleChange}
-                      value={state.name}
-                    />
-                    <p>{formErrors.name}</p>
-                  </div>
-                  <div className="form-group">
-                    <div className="style_file_upload">
-                      <input
-                        type="file"
-                        name="imgUrl"
-                        id="imgUrl"
-                        className="inputfile"
-                        onChange={handleChange}
-                      />
-                      <label for="imgUrl">
-                        <span>Upload Logo</span>
-                      </label>
-                    </div>
-                    <div className="style_file_upload cover_img">
-                      <input
-                        type="file"
-                        name="coverPhoto"
-                        id="coverPhoto"
-                        className="inputfile inputfile-2"
-                        onChange={handleChange}
-                      />
-                      <label for="coverPhoto">
-                        <span>Upload Cover Photo</span>
-                      </label>
-                    </div>
-                  </div>
-                  <div className="form-group">
-                    <label for="exampleFormControlInput1">Games</label>
-                    <select
-                      className="game_search_result mscrollbar"
-                      multiple={true}
-                      name="game"
-                      value={state.game}
-                      onChange={handleChange}
-                    >
-                      {games.map((game, idx) => (
-                        <option key={idx} value={game._id}>
-                          {' '}
-                          {game.name}{' '}
-                        </option>
-                      ))}
-                    </select>
-                    <p>{formErrors.game}</p>
-                  </div>
-                  <div className="form-group">
-                    <label for="exampleFormControlInput1">Series</label>
-                    <select
-                      className="game_search_result mscrollbar"
-                      name="series"
-                      value={state.series}
-                      onChange={handleChange}
-                    >
-                      {series.map((ser, idx) => (
-                        <option key={idx} value={ser._id}>
-                          {' '}
-                          {ser.name}{' '}
-                        </option>
-                      ))}
-                    </select>
-                    <p>{formErrors.series}</p>
-                  </div>
-                  <div className="form-group">
-                    <label for="exampleFormControlInput1">Prizes</label>
-                    <div className="prize_box">
-                      {' '}
-                      <a href="#">
-                        <img src="/assets/media/games/tournament1.png" />
-                      </a>
-                      <select
-                        name="currency"
-                        id="currency"
-                        onChange={handleChange}
-                        value={state.currency}
-                      >
-                        <option value="USD">USD($)- Dollars</option>
-                        <option value="INR">INR (Rs) - Rupees</option>
-                      </select>
-                      <input
-                        type="number"
-                        className="form-control"
-                        placeholder=""
-                        name="prizepool"
-                        onChange={handleChange}
-                        value={state.prizepool}
-                      />
-                    </div>
-                    <p>{formErrors.prizepool}</p>
-                  </div>
+            <div className="create_tournament">
+              <form onSubmit={handleSubmit}>
+                {!step1 ? (
+                  <>
+                    <h2>Step1</h2>
 
-                  <div className="form-group">
-                    <label for="exampleFormControlTextarea1">
-                      Tournament Category
-                    </label>
-                    <div className="btn_selection">
-                      <button type="button" className="btn btn-primary btn-lg">
-                        Online{' '}
-                        <input
-                          type="hidden"
-                          name="category"
-                          value="Online"
-                          onChange={handleChange}
-                        />
-                      </button>
-                      <button
-                        type="button"
-                        className="btn btn-secondary btn-lg"
-                      >
-                        LAN{' '}
-                        <input
-                          type="hidden"
-                          name="category"
-                          value="LAN"
-                          onChange={handleChange}
-                        />
-                      </button>
-                    </div>
-                  </div>
-                  <div className="form-group">
-                    <label for="exampleFormControlTextarea1">
-                      Tourament Type
-                    </label>
-                    <div className="btn_selection">
-                      <button type="button" className="btn btn-primary btn-lg">
-                        Leaderboard{' '}
-                        <input
-                          type="hidden"
-                          name="tournamentType"
-                          value="Leaderboard"
-                          onChange={handleChange}
-                        />
-                      </button>
-                      <button
-                        type="button"
-                        className="btn btn-secondary btn-lg"
-                      >
-                        Single Elimination{' '}
-                        <input
-                          type="hidden"
-                          name="tournamentType"
-                          value="Single Elimination"
-                          onChange={handleChange}
-                        />
-                      </button>
-                      <button
-                        type="button"
-                        className="btn btn-secondary btn-lg"
-                      >
-                        Double Elimination{' '}
-                        <input
-                          type="hidden"
-                          name="tournamentType"
-                          value="Double Elimination"
-                          onChange={handleChange}
-                        />
-                      </button>
-                    </div>
-                  </div>
-                  <div className="form-group">
-                    <label for="exampleFormControlTextarea1">
-                      Tournament Format
-                    </label>
-                    <div className="btn_selection">
-                      <button type="button" className="btn btn-primary btn-lg">
-                        Solo{' '}
-                        <input
-                          type="hidden"
-                          name="format"
-                          value="Solo"
-                          onChange={handleChange}
-                        />
-                      </button>
-                      <button
-                        type="button"
-                        className="btn btn-secondary btn-lg"
-                      >
-                        Teams{' '}
-                        <input
-                          type="hidden"
-                          name="format"
-                          value="Teams"
-                          onChange={handleChange}
-                        />
-                      </button>
-                    </div>
-                  </div>
-                </>
-              ) : (
-                <>
-                  <h2>Step2</h2>
-
-                  <div className="form-group">
-                    <label for="exampleFormControlTextarea1">
-                      Number of Participants
-                    </label>
-                    <input
-                      type="number"
-                      name="participants"
-                      className="form-control"
-                      onChange={handleChange}
-                      value={state.participants}
-                      placeholder=""
-                    />
-                    <p>{formErrors.participants}</p>
-                  </div>
-                  <div className="form-group">
-                    <label for="exampleFormControlTextarea1">
-                      Entrance fee
-                    </label>
-                    <input
-                      type="number"
-                      name="entranceFee"
-                      className="form-control"
-                      onChange={handleChange}
-                      value={state.entranceFee}
-                      placeholder="$"
-                    />
-                    <p>{formErrors.entranceFee}</p>
-                  </div>
-                  <div className="form-group">
-                    <div className="date_time">
-                      <div className="date_box">
-                        <label for="exampleFormControlTextarea1">
-                          Session Start Date
-                        </label>
-                        <input
-                          type="date"
-                          name="startDate"
-                          onChange={handleChange}
-                          value={state.startDate}
-                        />
-                        <p>{formErrors.startDate}</p>
-                      </div>
-                      <div className="time_box">
-                        <label for="exampleFormControlTextarea1">
-                          Session Start Time
-                        </label>
-                        <TimePicker
-                          showSecond={showSecond}
-                          defaultValue={moment()}
-                          className="xxx"
-                          name="startTime"
-                          onChange={handleChange}
-                          value={state.startTime}
-                        />
-                        {/* <p>{formErrors.startTime}</p> */}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="form-group">
-                    <div className="date_time">
-                      <div className="date_box">
-                        <label for="exampleFormControlTextarea1">
-                          Session End Date
-                        </label>
-                        <input
-                          type="date"
-                          name="endDate"
-                          onChange={handleChange}
-                          value={state.endDate}
-                        />
-                        <p>{formErrors.endDate}</p>
-                      </div>
-                      <div className="time_box">
-                        <label for="exampleFormControlTextarea1">
-                          Session End Time
-                        </label>
-                        <TimePicker
-                          showSecond={showSecond}
-                          defaultValue={moment()}
-                          className="xxx"
-                          name="endTime"
-                          onChange={handleChange}
-                          value={state.endTime}
-                        />
-                        {/* <p>{formErrors.endTime}</p> */}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="form-group">
-                    <div className="colm">
-                      <label for="exampleFormControlInput1">Sponsors</label>
-
-                      <select
-                        className="game_search_result"
-                        name="sponsor"
-                        value={state.value}
-                        multiple={true}
-                        onChange={handleChange}
-                      >
-                        {sponsors.map((spon, idx) => (
-                          <option key={idx} value={spon._id}>
-                            {' '}
-                            {spon.name}{' '}
-                          </option>
-                        ))}
-                      </select>
-                      <p>{formErrors.sponsor}</p>
-                    </div>
-
-                    <div className="colm">
-                      <label for="exampleFormControlInput1">Organizer</label>
-
-                      <select
-                        className="game_search_result"
-                        name="organizer"
-                        value={state.organizer}
-                        multiple={true}
-                        onChange={handleChange}
-                      >
-                        {organizers.map((org, idx) => (
-                          <option key={idx} value={org._id}>
-                            {' '}
-                            {org.name}{' '}
-                          </option>
-                        ))}
-                      </select>
-                      <p>{formErrors.organizer}</p>
-                    </div>
-
-                    <div className="colm">
-                      <label for="exampleFormControlInput1">Location</label>
-                      <input
-                        type="text"
-                        name="location"
-                        className="form-control"
-                        placeholder="Location"
-                        onChange={handleChange}
-                        value={state.location}
-                      />
-                      <p>{formErrors.location}</p>
-                    </div>
-
-                    <div className="colm">
-                      <label for="exampleFormControlInput1">Add Cohosts</label>
-                      <input
-                        type="text"
-                        name="cohosts"
-                        className="form-control"
-                        placeholder="Add Cohosts"
-                        onChange={handleChange}
-                        value={state.cohosts}
-                      />
-                    </div>
-
-                    <div className="colm">
-                      <label for="exampleFormControlInput1">Description</label>
-                      <input
-                        type="text"
-                        name="description"
-                        className="form-control"
-                        placeholder="Description"
-                        onChange={handleChange}
-                        value={state.description}
-                      />
-                      <p>{formErrors.description}</p>
-                    </div>
-                    <div className="colm">
-                      <label for="exampleFormControlInput1">Tickets</label>
-                      <input
-                        type="number"
-                        name="tickets"
-                        className="form-control"
-                        placeholder="Tickets"
-                        onChange={handleChange}
-                        value={state.tickets}
-                      />
-                    </div>
-                    <div className="colm">
-                      <label for="exampleFormControlInput1">Website</label>
-                      <input
-                        type="text"
-                        name="website"
-                        className="form-control"
-                        placeholder="Website"
-                        onChange={handleChange}
-                        value={state.website}
-                      />
-                      <p>{formErrors.website}</p>
-                    </div>
-                    <div className="colm">
-                      <label for="exampleFormControlInput1">Social Links</label>
-                      <input
-                        type="text"
-                        name="sociallink"
-                        className="form-control"
-                        placeholder="Game"
-                        onChange={handleChange}
-                        value={state.sociallink}
-                      />
-                      <p>{formErrors.sociallink}</p>
-                    </div>
-                    <div className="colm">
+                    <div className="form-group">
                       <label for="exampleFormControlInput1">
-                        Let your fans know{' '}
+                        Tournament Name
                       </label>
-                      <div className="socail">
-                        {' '}
-                        <a href="#" className="fa fa-facebook"></a>
-                        <a href="#" className="fa fa-twitter"></a>
-                        <a href="#" className="fa fa-google"></a>
-                        <a href="#" className="fa fa-linkedin"></a>{' '}
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="name"
+                        name="name"
+                        onChange={handleChange}
+                        value={state.name}
+                      />
+                      <p>{formErrors.name}</p>
+                    </div>
+                    <div className="form-group">
+                      <div className="style_file_upload">
+                        <input
+                          type="file"
+                          name="imgUrl"
+                          id="imgUrl"
+                          className="inputfile"
+                          onChange={handleChange}
+                        />
+                        <label for="imgUrl">
+                          <span>Upload Logo</span>
+                        </label>
+                      </div>
+                      <div className="style_file_upload cover_img">
+                        <input
+                          type="file"
+                          name="coverPhoto"
+                          id="coverPhoto"
+                          className="inputfile inputfile-2"
+                          onChange={handleChange}
+                        />
+                        <label for="coverPhoto">
+                          <span>Upload Cover Photo</span>
+                        </label>
                       </div>
                     </div>
-                  </div>
-                  <input
-                    type="submit"
-                    className="btn"
-                    value="Create Tournament"
-                    onClick={() => setFormErrors(tournamentformvalidate(state))}
-                  />
-                </>
-              )}
-            </form>
-            <button
-              onClick={showstep1}
-              className={`btn rgtside ${showbtn ? 'd-none' : ''}`}
-            >
-              Back
-            </button>{' '}
-            <button
-              className={`btn rgtside ${showbtn ? '' : 'd-none'}`}
-              onClick={showstep2}
-            >
-              Continue
-            </button>
+                    <div className="form-group">
+                      <label for="exampleFormControlInput1">Games</label>
+                      <select
+                        className="game_search_result mscrollbar"
+                        multiple={true}
+                        name="game"
+                        value={state.game}
+                        onChange={handleChange}
+                      >
+                        {games.map((game, idx) => (
+                          <option key={idx} value={game._id}>
+                            {' '}
+                            {game.name}{' '}
+                          </option>
+                        ))}
+                      </select>
+                      <p>{formErrors.game}</p>
+                    </div>
+                    <div className="form-group">
+                      <label for="exampleFormControlInput1">Series</label>
+                      <select
+                        className="game_search_result mscrollbar"
+                        name="series"
+                        value={state.series}
+                        onChange={handleChange}
+                      >
+                        {series.map((ser, idx) => (
+                          <option key={idx} value={ser._id}>
+                            {' '}
+                            {ser.name}{' '}
+                          </option>
+                        ))}
+                      </select>
+                      <p>{formErrors.series}</p>
+                    </div>
+                    <div className="form-group">
+                      <label for="exampleFormControlInput1">Prizes</label>
+                      <div className="prize_box">
+                        {' '}
+                        <a href="#">
+                          <img src="/assets/media/games/tournament1.png" />
+                        </a>
+                        <select
+                          name="currency"
+                          id="currency"
+                          onChange={handleChange}
+                          value={state.currency}
+                        >
+                          <option value="USD">USD($)- Dollars</option>
+                          <option value="INR">INR (Rs) - Rupees</option>
+                        </select>
+                        <input
+                          type="number"
+                          className="form-control"
+                          placeholder=""
+                          name="prizepool"
+                          onChange={handleChange}
+                          value={state.prizepool}
+                        />
+                      </div>
+                      <p>{formErrors.prizepool}</p>
+                    </div>
+
+                    <div className="form-group">
+                      <label for="exampleFormControlTextarea1">
+                        Tournament Category
+                      </label>
+                      <div className="btn_selection">
+                        <button
+                          type="button"
+                          className="btn btn-primary btn-lg"
+                        >
+                          Online{' '}
+                          <input
+                            type="hidden"
+                            name="category"
+                            value="Online"
+                            onChange={handleChange}
+                          />
+                        </button>
+                        <button
+                          type="button"
+                          className="btn btn-secondary btn-lg"
+                        >
+                          LAN{' '}
+                          <input
+                            type="hidden"
+                            name="category"
+                            value="LAN"
+                            onChange={handleChange}
+                          />
+                        </button>
+                      </div>
+                    </div>
+                    <div className="form-group">
+                      <label for="exampleFormControlTextarea1">
+                        Tourament Type
+                      </label>
+                      <div className="btn_selection">
+                        <button
+                          type="button"
+                          className="btn btn-primary btn-lg"
+                        >
+                          Leaderboard{' '}
+                          <input
+                            type="hidden"
+                            name="tournamentType"
+                            value="Leaderboard"
+                            onChange={handleChange}
+                          />
+                        </button>
+                        <button
+                          type="button"
+                          className="btn btn-secondary btn-lg"
+                        >
+                          Single Elimination{' '}
+                          <input
+                            type="hidden"
+                            name="tournamentType"
+                            value="Single Elimination"
+                            onChange={handleChange}
+                          />
+                        </button>
+                        <button
+                          type="button"
+                          className="btn btn-secondary btn-lg"
+                        >
+                          Double Elimination{' '}
+                          <input
+                            type="hidden"
+                            name="tournamentType"
+                            value="Double Elimination"
+                            onChange={handleChange}
+                          />
+                        </button>
+                      </div>
+                    </div>
+                    <div className="form-group">
+                      <label for="exampleFormControlTextarea1">
+                        Tournament Format
+                      </label>
+                      <div className="btn_selection">
+                        <button
+                          type="button"
+                          className="btn btn-primary btn-lg"
+                        >
+                          Solo{' '}
+                          <input
+                            type="hidden"
+                            name="format"
+                            value="Solo"
+                            onChange={handleChange}
+                          />
+                        </button>
+                        <button
+                          type="button"
+                          className="btn btn-secondary btn-lg"
+                        >
+                          Teams{' '}
+                          <input
+                            type="hidden"
+                            name="format"
+                            value="Teams"
+                            onChange={handleChange}
+                          />
+                        </button>
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <h2>Step2</h2>
+
+                    <div className="form-group">
+                      <label for="exampleFormControlTextarea1">
+                        Number of Participants
+                      </label>
+                      <input
+                        type="number"
+                        name="participants"
+                        className="form-control"
+                        onChange={handleChange}
+                        value={state.participants}
+                        placeholder=""
+                      />
+                      <p>{formErrors.participants}</p>
+                    </div>
+                    <div className="form-group">
+                      <label for="exampleFormControlTextarea1">
+                        Entrance fee
+                      </label>
+                      <input
+                        type="number"
+                        name="entranceFee"
+                        className="form-control"
+                        onChange={handleChange}
+                        value={state.entranceFee}
+                        placeholder="$"
+                      />
+                      <p>{formErrors.entranceFee}</p>
+                    </div>
+                    <div className="form-group">
+                      <div className="date_time">
+                        <div className="date_box">
+                          <label for="exampleFormControlTextarea1">
+                            Session Start Date
+                          </label>
+                          <input
+                            type="date"
+                            name="startDate"
+                            onChange={handleChange}
+                            value={state.startDate}
+                          />
+                          <p>{formErrors.startDate}</p>
+                        </div>
+                        <div className="time_box">
+                          <label for="exampleFormControlTextarea1">
+                            Session Start Time
+                          </label>
+                          <TimePicker
+                            showSecond={showSecond}
+                            defaultValue={moment()}
+                            className="xxx"
+                            name="startTime"
+                            onChange={handleChange}
+                            value={state.startTime}
+                          />
+                          {/* <p>{formErrors.startTime}</p> */}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="form-group">
+                      <div className="date_time">
+                        <div className="date_box">
+                          <label for="exampleFormControlTextarea1">
+                            Session End Date
+                          </label>
+                          <input
+                            type="date"
+                            name="endDate"
+                            onChange={handleChange}
+                            value={state.endDate}
+                          />
+                          <p>{formErrors.endDate}</p>
+                        </div>
+                        <div className="time_box">
+                          <label for="exampleFormControlTextarea1">
+                            Session End Time
+                          </label>
+                          <TimePicker
+                            showSecond={showSecond}
+                            defaultValue={moment()}
+                            className="xxx"
+                            name="endTime"
+                            onChange={handleChange}
+                            value={state.endTime}
+                          />
+                          {/* <p>{formErrors.endTime}</p> */}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="form-group">
+                      <div className="colm">
+                        <label for="exampleFormControlInput1">Sponsors</label>
+
+                        <select
+                          className="game_search_result"
+                          name="sponsor"
+                          value={state.value}
+                          multiple={true}
+                          onChange={handleChange}
+                        >
+                          {sponsors.map((spon, idx) => (
+                            <option key={idx} value={spon._id}>
+                              {' '}
+                              {spon.name}{' '}
+                            </option>
+                          ))}
+                        </select>
+                        <p>{formErrors.sponsor}</p>
+                      </div>
+
+                      <div className="colm">
+                        <label for="exampleFormControlInput1">Organizer</label>
+
+                        <select
+                          className="game_search_result"
+                          name="organizer"
+                          value={state.organizer}
+                          multiple={true}
+                          onChange={handleChange}
+                        >
+                          {organizers.map((org, idx) => (
+                            <option key={idx} value={org._id}>
+                              {' '}
+                              {org.name}{' '}
+                            </option>
+                          ))}
+                        </select>
+                        <p>{formErrors.organizer}</p>
+                      </div>
+
+                      <div className="colm">
+                        <label for="exampleFormControlInput1">Location</label>
+                        <input
+                          type="text"
+                          name="location"
+                          className="form-control"
+                          placeholder="Location"
+                          onChange={handleChange}
+                          value={state.location}
+                        />
+                        <p>{formErrors.location}</p>
+                      </div>
+
+                      <div className="colm">
+                        <label for="exampleFormControlInput1">
+                          Add Cohosts
+                        </label>
+                        <input
+                          type="text"
+                          name="cohosts"
+                          className="form-control"
+                          placeholder="Add Cohosts"
+                          onChange={handleChange}
+                          value={state.cohosts}
+                        />
+                      </div>
+
+                      <div className="colm">
+                        <label for="exampleFormControlInput1">
+                          Description
+                        </label>
+                        <input
+                          type="text"
+                          name="description"
+                          className="form-control"
+                          placeholder="Description"
+                          onChange={handleChange}
+                          value={state.description}
+                        />
+                        <p>{formErrors.description}</p>
+                      </div>
+                      <div className="colm">
+                        <label for="exampleFormControlInput1">Tickets</label>
+                        <input
+                          type="number"
+                          name="tickets"
+                          className="form-control"
+                          placeholder="Tickets"
+                          onChange={handleChange}
+                          value={state.tickets}
+                        />
+                      </div>
+                      <div className="colm">
+                        <label for="exampleFormControlInput1">Website</label>
+                        <input
+                          type="text"
+                          name="website"
+                          className="form-control"
+                          placeholder="Website"
+                          onChange={handleChange}
+                          value={state.website}
+                        />
+                        <p>{formErrors.website}</p>
+                      </div>
+                      <div className="colm">
+                        <label for="exampleFormControlInput1">
+                          Social Links
+                        </label>
+                        <input
+                          type="text"
+                          name="sociallink"
+                          className="form-control"
+                          placeholder="Game"
+                          onChange={handleChange}
+                          value={state.sociallink}
+                        />
+                        <p>{formErrors.sociallink}</p>
+                      </div>
+                      <div className="colm">
+                        <label for="exampleFormControlInput1">
+                          Let your fans know{' '}
+                        </label>
+                        <div className="socail">
+                          {' '}
+                          <a href="#" className="fa fa-facebook"></a>
+                          <a href="#" className="fa fa-twitter"></a>
+                          <a href="#" className="fa fa-google"></a>
+                          <a href="#" className="fa fa-linkedin"></a>{' '}
+                        </div>
+                      </div>
+                    </div>
+                    <input
+                      type="submit"
+                      className="btn"
+                      value="Create Tournament"
+                      onClick={() =>
+                        setFormErrors(tournamentformvalidate(state))
+                      }
+                    />
+                  </>
+                )}
+              </form>
+              <button
+                onClick={showstep1}
+                className={`btn rgtside ${showbtn ? 'd-none' : ''}`}
+              >
+                Back
+              </button>{' '}
+              <button
+                className={`btn rgtside ${showbtn ? '' : 'd-none'}`}
+                onClick={showstep2}
+              >
+                Continue
+              </button>
+            </div>
           </div>
         </div>
       </div>

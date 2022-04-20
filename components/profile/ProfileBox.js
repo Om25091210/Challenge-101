@@ -487,26 +487,6 @@ const ProfileBox = ({ user, Userdata, games }) => {
                   >
                     <div className="form-group">
                       <div className="colm">
-                        <label htmlFor="exampleFormControlInput1">Role</label>
-                        <select
-                          id="roles"
-                          name="roles"
-                          onChange={handleChange}
-                          value={attr?.roles}
-                          className="custom-select text-capitalize"
-                          multiple={true}
-                        >
-                          <option value="Support">Support</option>
-                          <option value="Scout">Scout</option>
-                          <option value="Sniper">Sniper</option>
-                          <option value="Driver">Driver</option>
-                          <option value="Fragger">Fragger</option>
-                          <option value="In Game Leader">In Game Leader</option>
-                          <option value="Assualt">Assualt</option>
-                          <option value="Medic">Medic</option>
-                        </select>
-                      </div>
-                      <div className="colm">
                         <label htmlFor="exampleFormControlInput1">Region</label>
                         <select
                           id="regions"
@@ -563,25 +543,6 @@ const ProfileBox = ({ user, Userdata, games }) => {
                       </div>
 
                       <div className="colm">
-                        <label htmlFor="exampleFormControlInput1">
-                          Language
-                        </label>
-                        <select
-                          id="language"
-                          name="language"
-                          onChange={handleChange}
-                          value={attr?.language}
-                          className="custom-select text-capitalize"
-                          multiple={true}
-                        >
-                          <option value="English">English</option>
-                          <option value="Hindi">Hindi</option>
-                          <option value="Telagu">Telagu</option>
-                          <option value="Tamil">Tamil</option>
-                        </select>
-                      </div>
-
-                      <div className="colm">
                         <label htmlFor="exampleFormControlInput1">Paid</label>
                         <select
                           id="paid"
@@ -609,6 +570,47 @@ const ProfileBox = ({ user, Userdata, games }) => {
                           <option value={false}>Off</option>
                         </select>
                       </div>
+
+                      <div className="colm">
+                        <label htmlFor="exampleFormControlInput1">Role</label>
+                        <select
+                          id="roles"
+                          name="roles"
+                          onChange={handleChange}
+                          value={attr?.roles}
+                          className="custom-select text-capitalize"
+                          multiple={true}
+                        >
+                          <option value="Support">Support</option>
+                          <option value="Scout">Scout</option>
+                          <option value="Sniper">Sniper</option>
+                          <option value="Driver">Driver</option>
+                          <option value="Fragger">Fragger</option>
+                          <option value="In Game Leader">In Game Leader</option>
+                          <option value="Assualt">Assualt</option>
+                          <option value="Medic">Medic</option>
+                        </select>
+                      </div>
+
+                      <div className="colm">
+                        <label htmlFor="exampleFormControlInput1">
+                          Language
+                        </label>
+                        <select
+                          id="language"
+                          name="language"
+                          onChange={handleChange}
+                          value={attr?.language}
+                          className="custom-select text-capitalize"
+                          multiple={true}
+                        >
+                          <option value="English">English</option>
+                          <option value="Hindi">Hindi</option>
+                          <option value="Telagu">Telagu</option>
+                          <option value="Tamil">Tamil</option>
+                        </select>
+                      </div>
+
                       <button className="btn">Update</button>
                     </div>
                   </form>

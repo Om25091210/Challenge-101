@@ -681,6 +681,12 @@ ul.top_menu li.wallet li{     float: left;
 	position: relative;
 	height: 77px;
 }
+
+.edit_share.right_links .post_img {
+    position: relative;
+    height: 23px;
+}
+
 .right_links .image_box {
 	position: absolute;
 	left: -20px;
@@ -1056,6 +1062,7 @@ ul.top_menu li.wallet li{     float: left;
 .edit_post h4 {
 	margin-bottom: 20px;
 	text-transform: uppercase;
+	color: #000;
 }
 .edit_post textarea {
 	resize: none;
@@ -1064,6 +1071,7 @@ ul.top_menu li.wallet li{     float: left;
 	border:1px solid #ddd;
 	margin: 10px 0;
 	padding: 10px;
+	color: #000;
 }
 .edit_post .close {
 	position: absolute;
@@ -5188,7 +5196,7 @@ article .social_bar {
 	width: 200px;
 	border-radius: 5px;
 	padding: 10px;
-	margin-bottom: 10px;
+	margin-bottom: 10px; color: #000;
 }
 .video_box .upload_btn textarea {
 	width: 285px;
@@ -5667,16 +5675,32 @@ main {
 	margin: 150px 0 0 0;
 	float: right;
 }
+
+.create_form_box{ display: flex; justify-content: space-between; flex-wrap:wrap}
+.create_form_box h1{ font-size: 25px;}
+
 .left_create_form {
 	float: left;
 	width: 30%;
+	position: relative;
 }
-.create_tournament {
-	float: right;
-	width: 68%;
-	padding: 20px;
-	background: #f7f7f7;
+
+.left_create_form:after{ content: ""; position: absolute; left: 0; top:0; width: 100%; height: 100%; background:rgba(84,42,173, 0.5);}
+
+
+
+.create_heads {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    text-align: center;
+    padding: 50px; z-index: 9;
 }
+
+
+.create_tournament{ width:67%; padding: 20px;}
+
+
 
 .create_tournament .btn{    background: #7239ea !important;}
 
@@ -6565,7 +6589,6 @@ form.common_form input {
 }
 
 
-#language{ height: 122px;}
 form.common_form .pphone{float: right;}
 form.common_form .btn{ width: 100%; margin-top: 20px;}
 
@@ -7459,6 +7482,8 @@ body.DarkPage ul.top_menu .drop_down_bg.create_pages a span:first-child{ backgro
 body.DarkPage .left_side nav li .iconbg{ background: #2d343e;}
 body.DarkPage .left_side nav li.active .iconbg, body.DarkPage .left_side nav li a:hover .iconbg{ background: #7239ea;}
 body.DarkPage .left_side nav li.active i, body.DarkPage .left_side nav li a:hover i{ color: #fff;}
+
+body.DarkPage .edit_share.right_links .fa-picture-o{-webkit-filter: invert(100%); filter: invert(100%);}
 
 @media screen and ( max-height: 768px ){
     .left_side nav li{margin: 3px 0;}

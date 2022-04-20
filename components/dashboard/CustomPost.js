@@ -145,14 +145,19 @@ const CustomPost = ({ post }) => {
               onChange={(e) => setDescription(e.target.value)}
             ></textarea>
             <div className="right_links d-flex edit_share">
-              <div className="post_img">
+              <div class="post_img">
                 <input
                   type="file"
                   id="files"
                   name="files[]"
-                  onChange={imageChange}
                   accept="image/*"
+                  multiple=""
                 />
+                <label for="files">
+                  <span>
+                    <i class="fa fa-picture-o" aria-hidden="true"></i>
+                  </span>
+                </label>
               </div>
               {/* <a href="#">
                 <i className="fa fa-calendar-plus-o" aria-hidden="true"></i>
