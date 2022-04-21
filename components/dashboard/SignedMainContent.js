@@ -3,13 +3,8 @@ import axios from 'axios';
 import baseURL from '@utils/baseURL';
 import { useMutation } from 'react-query';
 import cookie from 'js-cookie';
-import CommentForm from '../comments/CommentForm';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
-import CustomPost from './CustomPost';
-import LikePost from '../postLikes/LikePost';
-import ReactTooltip from 'react-tooltip';
-import Moment from 'moment';
 import AllPosts from './AllPosts';
 import { TwitterShareButton } from 'react-share';
 
@@ -20,7 +15,9 @@ const SignedMainContent = ({ posts, user }) => {
   const [profilepic, setProfilePic] = useState('');
   const [username, setUsername] = useState('');
   const [personas, setPersonas] = useState({});
+  const [allgames, setAllGames] = useState([]);
   const [postType, setPostType] = useState('');
+  const [gameTag, setGameTag] = useState('');
   const router = useRouter();
   const [profiledata, setProfileData] = useState([]);
   const [topmenu, setTopmenu] = useState(true);
@@ -60,6 +57,7 @@ const SignedMainContent = ({ posts, user }) => {
     formdata.append('profilepic', profilepic);
     formdata.append('username', username);
     formdata.append('postType', postType);
+    formdata.append('gameTag', gameTag);
 
     //    for (const key of Object.keys(images)) {
     //      formdata.append('images', images[key]);
@@ -138,6 +136,21 @@ const SignedMainContent = ({ posts, user }) => {
         console.log(err);
       });
   }, []);
+
+  useEffect(() => {
+    axios
+      .get(`${baseURL}/api/all/games`)
+      .then((res) => {
+        setAllGames(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  const selectgameTag = (x) => {
+    setGameTag(x);
+  };
 
   const personaHandle = (username, profilepic, postType) => {
     setUsername(username);
@@ -335,9 +348,38 @@ const SignedMainContent = ({ posts, user }) => {
           {/* <a href="#">
             <i className="fa fa-calendar-plus-o" aria-hidden="true"></i>
           </a> */}
-          <a href="#">
+          <a href="#!" className="model_show_btn" alt="personal details">
             <i className="fa fa-gamepad" aria-hidden="true"></i>
           </a>
+          <div className="common_model_box">
+            <a href="#!" className="model_close">
+              X
+            </a>
+
+            <div className="inner_model_box">
+              <h3>All Games</h3>
+              <div className="poup_height msScroll_all">
+                <ul className="">
+                  {allgames &&
+                    allgames.map((game, idx) => (
+                      <li key={idx}>
+                        <div className="game_pic">
+                          <a href="#!">
+                            <img
+                              src={game.imgUrl}
+                              alt={game.name}
+                              onClick={() => selectgameTag(game.name)}
+                            />
+                          </a>
+                        </div>
+                        <p>{game.name}</p>
+                      </li>
+                    ))}
+                </ul>
+              </div>
+            </div>
+            <div className="overlay"></div>
+          </div>
           <a href="#">
             <i className="fa fa-video-camera" aria-hidden="true"></i>
           </a>

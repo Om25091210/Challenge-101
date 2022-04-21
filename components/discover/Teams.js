@@ -8,12 +8,14 @@ import TeamRequest from './invites/TeamRequest';
 import ReactCountryFlag from 'react-country-flag';
 import FavTeam from '../team/FavTeam';
 import Cookies from 'js-cookie';
+import LoadingSpinner from '../LoadingSpinner';
 
 const Teams = ({ user, profile, myState, selectedGame }) => {
   const [team, setTeam] = useState([]);
   const [sessionTeam, setSessionTeam] = useState({ key: null, value: null });
   const [favouriteTeams, setfavouriteTeams] = useState([]);
   const [showfavs, setShowFavs] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     var sg = undefined;
@@ -23,17 +25,21 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
 
     if (myState.selectedFilters.length > 0) {
       setTeam(myState.filteredResults);
+      setIsLoading(false);
     } else {
+      setIsLoading(true);
       if (sessionTeam.key === null) {
         axios.get(`${baseURL}/api/teams/teamsbygame/${sg}`).then((res) => {
           setTeam(res.data);
           setSessionTeam({ key: sg, value: team });
+          setIsLoading(false);
         });
       } else {
         if (sessionTeam.key != sg) {
           axios.get(`${baseURL}/api/teams/teamsbygame/${sg}`).then((res) => {
             setTeam(res.data);
             setSessionTeam({ key: sg, value: team });
+            setIsLoading(false);
           });
         } else {
           //setTeam (sessionTeam.get(sg));
@@ -108,9 +114,12 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
         />
       </div>
 
-      {team.length == 0 ? (
+      {isLoading ? (
         <div className="team_row">
-          {' '}
+          <LoadingSpinner />
+        </div>
+      ) : team.length == 0 ? (
+        <div className="team_row">
           <p>No results for the selected criteria. Please refine.</p>
         </div>
       ) : showfavs === true ? (
