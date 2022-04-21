@@ -351,7 +351,7 @@ const SignedMainContent = ({ posts, user }) => {
           <a href="#!" className="model_show_btn" alt="personal details">
             <i className="fa fa-gamepad" aria-hidden="true"></i>
           </a>
-          <div className="common_model_box">
+          <div className="common_model_box" id="more_games">
             <a href="#!" className="model_close">
               X
             </a>
