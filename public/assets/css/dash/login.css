@@ -24,7 +24,7 @@ body {
 .singup_page_box .singup_icons a {border: 1px solid #2f2e32 !important;padding: 10px;width: 18%; text-align: center;}
 .singup_page_box .singup_icons .fa{ color: #fff; font-size: 15px;}
 
-.singup_page_box .singup_icons  img{ width: 20px;}
+.singup_page_box .singup_icons  img{ width: 20px; display: inline-block;}
 
 .singup_page_box .singup_icons .fa-google{}
 .singup_page_box .singup_icons .fa-facebook{ color: #174ac0;}

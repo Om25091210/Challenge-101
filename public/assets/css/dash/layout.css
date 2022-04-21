@@ -1347,6 +1347,7 @@ ul.top_menu li.wallet li{     float: left;
 	font-size: 14px;
 	font-weight: 400;
 	margin: 10px 0;
+	 color: #000;
 }
 .reply_list {
 	float: left;
@@ -2106,7 +2107,7 @@ article .social_bar {
 	padding:0;
 	justify-content: space-between;
 	position: relative;
-	margin-top:320px;
+	margin-top:310px;
 }
 .profile_dp_box .profile_pic {
 	position: absolute;
@@ -3201,6 +3202,42 @@ article .social_bar {
 .team_search .advance .views .custom-checkbox {
 	margin-left:10px;
 }
+
+
+
+.ign_search.team_search .searchbox input[type="search"], .ign_search.team_search .searchbox input[type="text"] {
+	float:left;
+	width:300px;
+	height:46px;
+	padding:0px 40px 0px 10px;
+	overflow:hidden;
+	box-sizing:border-box;
+	letter-spacing:1px;
+	border:0;
+	border:1px solid #ddd;
+	border-radius:5px;
+	font-weight:400;
+	background: #fff !important;
+	color: #000; margin: 0 10px;
+}
+.ign_search.team_search .searchbox input[type="submit"] {
+	border:0;
+	background:url(/assets/media/search-icon.png) 0 13px no-repeat;
+	height:30px;
+	width:20px;
+	position:absolute;
+	right:25px;
+	cursor:pointer;
+	transition:0.3s ease-out;
+	text-indent: -999px;
+}
+
+.ign_search h3 {
+    margin-bottom: 0 !important;
+    border: 0 !important;
+    padding-bottom: 0 !important;
+}
+
 .team_filter {
 	display: flex;
 	justify-content: space-between;
@@ -5707,7 +5744,7 @@ main {
 .create_tournament form {
 	float: left;
 	width: 100%;
-	margin: 50px 0;
+	margin: 20px 0;
 	border-bottom: 1px solid #ddd;
 	padding-bottom: 20px;
 }
@@ -5736,7 +5773,7 @@ main {
 	font-size: 14px;
 	width: 100%;
 	border: 1px solid #ced4da;
-	font-weight: 400;
+	font-weight: 400; background-image: none !important;
 }
 .create_tournament form .form-group {
 	margin-bottom: 30px;
@@ -7437,7 +7474,7 @@ body.DarkPage .table th, body.DarkPage .table td{  border-top: 1px solid #636363
 body.DarkPage .table thead th{border-bottom: 2px solid #636363;}
 body.DarkPage .rigs li .lft_prod_det .prod_name{ color: #62626e;}
 
-body.DarkPage .team_search .searchbox input[type="search"] { background: #18171d; border-bottom: 1px solid #18171d; border-radius:5px;}
+
 body.DarkPage .searchbox input[type="search"]{background: #18171d; border-bottom: 1px solid #18171d;}
 
 body.DarkPage .add_money input{background: #18171d; }
@@ -7448,12 +7485,6 @@ body.DarkPage .add_money .btn{background: #7239ea !important; }
 body.DarkPage .ign_search{ background: #fff;}
 body.DarkPage .ign_search h3{ margin-bottom: 0; border: 0; padding-bottom: 0;}
 
-body.DarkPage .ign_search .searchbox input[type="search"]{height: 36px;
-    width: 500px;
-    background: #fff;
-    border: 0;
-    border-bottom: 1px solid #000;
-    border-radius: 0;}
 
 
 	body.DarkPage .rdrInputRanges, body.DarkPage .rdrStaticRanges, 
@@ -7484,6 +7515,10 @@ body.DarkPage .left_side nav li.active .iconbg, body.DarkPage .left_side nav li 
 body.DarkPage .left_side nav li.active i, body.DarkPage .left_side nav li a:hover i{ color: #fff;}
 
 body.DarkPage .edit_share.right_links .fa-picture-o{-webkit-filter: invert(100%); filter: invert(100%);}
+
+body.DarkPage .rc-time-picker-panel-inner{ background: #000 ;}
+body.DarkPage .rc-time-picker-panel-input{background: #000;color: #fff;}
+body.DarkPage  li.rc-time-picker-panel-select-option-selected {background: #000;font-weight: bold;}
 
 @media screen and ( max-height: 768px ){
     .left_side nav li{margin: 3px 0;}

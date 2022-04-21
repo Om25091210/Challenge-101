@@ -68,86 +68,97 @@ const CreateTeam = ({ user }) => {
       <LeftNav user={user} />
       <div className="main_middle create_main_middle">
         <div className="white_bg">
-          <div className="left_create_form">
-            <h1>Left create arena</h1>
-          </div>
-          <div className="create_tournament">
-            <h1>Create Arena</h1>
-            <form onSubmit={handleSubmit} encType="multipart/form-data">
-              <>
-                <div className="form-group">
-                  <label htmlFor="exampleFormControlInput1">Arena Name</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Arena name"
-                    name="name"
-                    onChange={handleChange}
-                    value={state.name}
-                  />
-                  {state.name.length >= 41 && (
-                    <h6>Arena name cannot be more then 40 characters</h6>
-                  )}
-                </div>
-                <div className="form-group">
-                  <div className="style_file_upload">
+          <div className="create_form_box">
+            <div className="left_create_form">
+              <img src="/assets/media/create_left_img.jpg" />
+
+              <div className="create_heads">
+                <h1>Create Arena</h1>
+                <p>
+                  Create Arena page and invite hundrends of gamers to
+                  participate. Boost to increase the reach.
+                </p>
+              </div>
+            </div>
+            <div className="create_tournament">
+              <form onSubmit={handleSubmit} encType="multipart/form-data">
+                <>
+                  <div className="form-group">
+                    <label htmlFor="exampleFormControlInput1">Arena Name</label>
                     <input
-                      type="file"
-                      name="logoUrl"
-                      id="logoUrl"
-                      className="inputfile"
-                      onChange={(e) => setImage(e.target.files[0])}
+                      type="text"
+                      className="form-control"
+                      placeholder="Arena name"
+                      name="name"
+                      onChange={handleChange}
+                      value={state.name}
                     />
-                    <label for="logoUrl">
-                      <span>Upload Logo</span>
-                    </label>
+                    {state.name.length >= 41 && (
+                      <h6>Arena name cannot be more then 40 characters</h6>
+                    )}
                   </div>
-                </div>
-                <div className="form-group">
-                  <label htmlFor="exampleFormControlInput1">Description</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Description"
-                    name="description"
-                    onChange={handleChange}
-                    value={state.description}
-                  />
-                  {state.description.length >= 201 && (
-                    <h6>Description cannot be more then 200 characters</h6>
-                  )}
-                </div>
-                <div className="form-group">
-                  <label htmlFor="exampleFormControlInput1">Address</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Address"
-                    name="address"
-                    onChange={handleChange}
-                    value={state.address}
-                  />
-                  {state.address.length >= 61 && (
-                    <h6>Address cannot be more then 60 characters</h6>
-                  )}
-                </div>
-                <div className="form-group">
-                  <label htmlFor="exampleFormControlInput1">Location</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Location"
-                    name="location"
-                    onChange={handleChange}
-                    value={state.location}
-                  />
-                  {state.location.length >= 71 && (
-                    <h6>Location cannot be more then 70 characters</h6>
-                  )}
-                </div>
-              </>
-              <button className={`btn rgtside`}>Create</button>
-            </form>
+                  <div className="form-group">
+                    <div className="style_file_upload">
+                      <input
+                        type="file"
+                        name="logoUrl"
+                        id="logoUrl"
+                        className="inputfile"
+                        onChange={(e) => setImage(e.target.files[0])}
+                      />
+                      <label for="logoUrl">
+                        <span>Upload Logo</span>
+                      </label>
+                    </div>
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="exampleFormControlInput1">
+                      Description
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Description"
+                      name="description"
+                      onChange={handleChange}
+                      value={state.description}
+                    />
+                    {state.description.length >= 201 && (
+                      <h6>Description cannot be more then 200 characters</h6>
+                    )}
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="exampleFormControlInput1">Address</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Address"
+                      name="address"
+                      onChange={handleChange}
+                      value={state.address}
+                    />
+                    {state.address.length >= 61 && (
+                      <h6>Address cannot be more then 60 characters</h6>
+                    )}
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="exampleFormControlInput1">Location</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Location"
+                      name="location"
+                      onChange={handleChange}
+                      value={state.location}
+                    />
+                    {state.location.length >= 71 && (
+                      <h6>Location cannot be more then 70 characters</h6>
+                    )}
+                  </div>
+                </>
+                <button className={`btn rgtside`}>Create</button>
+              </form>
+            </div>
           </div>
         </div>
       </div>

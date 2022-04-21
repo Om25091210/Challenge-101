@@ -65,69 +65,82 @@ const CreateBrand = ({ user }) => {
       <LeftNav user={user} />
       <div className="main_middle create_main_middle">
         <div className="white_bg">
-          <div className="left_create_form">
-            <h1>Left create Brand</h1>
-          </div>
-          <div className="create_tournament">
-            <h1>Create Brand</h1>
-            <form onSubmit={handleSubmit} encType="multipart/form-data">
-              <>
-                <div className="form-group">
-                  <label htmlFor="exampleFormControlInput1">Brand Name</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Brand name"
-                    name="name"
-                    onChange={handleChange}
-                    value={state.name}
-                  />
-                  {state.name.length >= 41 && (
-                    <h6>Brand name cannot be more then 40 characters</h6>
-                  )}
-                </div>
-                <div className="form-group">
-                  <div className="style_file_upload">
+          <div className="create_form_box">
+            <div className="left_create_form">
+              <img src="/assets/media/create_left_img.jpg" />
+
+              <div className="create_heads">
+                <h1>Create Brand</h1>
+                <p>
+                  Create Brand page and invite hundrends of gamers to
+                  participate. Boost to increase the reach.
+                </p>
+              </div>
+            </div>
+            <div className="create_tournament">
+              <form onSubmit={handleSubmit} encType="multipart/form-data">
+                <>
+                  <div className="form-group">
+                    <label htmlFor="exampleFormControlInput1">Brand Name</label>
                     <input
-                      type="file"
-                      name="logoUrl"
-                      id="logoUrl"
-                      className="inputfile"
-                      onChange={(e) => setImage(e.target.files[0])}
+                      type="text"
+                      className="form-control"
+                      placeholder="Brand name"
+                      name="name"
+                      onChange={handleChange}
+                      value={state.name}
                     />
-                    <label for="logoUrl">
-                      <span>Upload Logo</span>
-                    </label>
+                    {state.name.length >= 41 && (
+                      <h6>Brand name cannot be more then 40 characters</h6>
+                    )}
                   </div>
-                </div>
-                <div className="form-group">
-                  <label htmlFor="exampleFormControlInput1">Description</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Description"
-                    name="description"
-                    onChange={handleChange}
-                    value={state.description}
-                  />
-                  {state.description.length >= 201 && (
-                    <h6>Description cannot be more then 200 characters</h6>
-                  )}
-                </div>
-                <div className="form-group">
-                  <label htmlFor="exampleFormControlInput1">SocialLinks</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Link"
-                    name="socialLinks"
-                    onChange={handleChange}
-                    value={state.socialLinks}
-                  />
-                </div>
-              </>
-              <button className={`btn rgtside`}>Create</button>
-            </form>
+                  <div className="form-group">
+                    <div className="style_file_upload">
+                      <input
+                        type="file"
+                        name="logoUrl"
+                        id="logoUrl"
+                        className="inputfile"
+                        onChange={(e) => setImage(e.target.files[0])}
+                      />
+                      <label for="logoUrl">
+                        <span>Upload Logo</span>
+                      </label>
+                    </div>
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="exampleFormControlInput1">
+                      Description
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Description"
+                      name="description"
+                      onChange={handleChange}
+                      value={state.description}
+                    />
+                    {state.description.length >= 201 && (
+                      <h6>Description cannot be more then 200 characters</h6>
+                    )}
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="exampleFormControlInput1">
+                      SocialLinks
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Link"
+                      name="socialLinks"
+                      onChange={handleChange}
+                      value={state.socialLinks}
+                    />
+                  </div>
+                </>
+                <button className={`btn rgtside`}>Create</button>
+              </form>
+            </div>
           </div>
         </div>
       </div>

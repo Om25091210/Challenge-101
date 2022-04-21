@@ -657,9 +657,11 @@ const ProfileBox = ({ user, Userdata, games }) => {
             <div className="top_details">
               <div className="name_box">
                 <span className="game_name"> {SrhUser.username} </span>
-                <span className="name">{SrhUser.name}</span>
-                <span className="follower">
-                  {Userdata.followers.length} Followers
+                <span className="name">
+                  {SrhUser.name}{' '}
+                  <span className="follower">
+                    {Userdata.followers.length} Followers
+                  </span>
                 </span>
               </div>
               <div className="flag">
