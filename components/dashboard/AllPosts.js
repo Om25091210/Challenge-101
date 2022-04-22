@@ -53,7 +53,7 @@ const AllPosts = ({ post, user, profiledata }) => {
           </div>
           <div className="user_name_disc">
             <div className="title_follow">
-              <a href={`user/${post.user._id}`}>
+              <a href={`user/${post.user?._id}`}>
                 {post.game_tag === '' ? (
                   <h4>{post.username}</h4>
                 ) : (
