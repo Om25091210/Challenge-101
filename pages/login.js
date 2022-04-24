@@ -238,18 +238,18 @@ const SignIn = () => {
                   <div className="singup_icons">
                     <a href="#">
                       {' '}
-                      <img src="/assets/media/login/google.png" alt="" />
+                      <i className="fa fa-google" aria-hidden="true"></i>
                     </a>
                     <a href="#">
-                      <img src="/assets/media/login/facebook.png" alt="" />
-                    </a>
-                    <a href="#">
-                      {' '}
-                      <img src="/assets/media/login/twitch.png" alt="" />
+                      <i className="fa fa-facebook" aria-hidden="true"></i>
                     </a>
                     <a href="#">
                       {' '}
-                      <img src="/assets/media/login/steam.png" alt="" />
+                      <i className="fa fa-twitch" aria-hidden="true"></i>
+                    </a>
+                    <a href="#">
+                      {' '}
+                      <i className="fa fa-steam" aria-hidden="true"></i>
                     </a>
                     <a href="#">
                       {' '}

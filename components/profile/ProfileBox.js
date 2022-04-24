@@ -685,7 +685,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                     {isFollow.length === 0 ? 'Follow' : 'UnFollow'}
                   </button>{' '}
                   <a href="#" className="btn">
-                    MESSAGE
+                    Message
                   </a>
                 </div>
               )}
