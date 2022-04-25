@@ -154,7 +154,7 @@ const SignedHeader = ({ user }) => {
 
               <ul className="">
                 <li>
-                  <a href="/team/create">
+                  <a href="/">
                     <span>
                       <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                     </span>
@@ -166,7 +166,7 @@ const SignedHeader = ({ user }) => {
                   </a>
                 </li>
                 <li>
-                  <a href="/tournament/create">
+                  <a href="/discover">
                     <span>
                       {' '}
                       <i class="fa fa-briefcase" aria-hidden="true"></i>

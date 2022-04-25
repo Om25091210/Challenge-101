@@ -547,9 +547,9 @@ const TeamProfileBox = ({ user, data, isTeamPlayer }) => {
           ) : (
             ''
           )}
-          <p className="team_pos">
+          {/* <p className="team_pos">
             <span className="position">REGION:</span> {data.team.region}{' '}
-          </p>
+          </p> */}
 
           <div className="team_pos">
             <ul>

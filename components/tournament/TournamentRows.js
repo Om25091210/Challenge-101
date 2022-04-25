@@ -46,10 +46,7 @@ const TournamentRows = ({
                       </a>
                     </Link>
                     {result.startDate
-                      ? format(
-                          new Date(result.startDate),
-                          'd MMM yyyy, hh:mm a'
-                        )
+                      ? format(new Date(result.startDate), 'd.MMM.yyyy')
                       : 'Not defined'}
                   </div>
                   <div className="reg">
@@ -119,7 +116,7 @@ const TournamentRows = ({
                     {result.tournament.startDate
                       ? format(
                           new Date(result.tournament.startDate),
-                          'd MMM yyyy, hh:mm a'
+                          'd.MMM.yyyy'
                         )
                       : 'Not defined'}
                   </div>

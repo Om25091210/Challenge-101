@@ -290,7 +290,11 @@ const SignIn = () => {
                         autoComplete="off"
                         placeholder="Email"
                       />
-                      <button className="btn" type="submit">
+                      <button
+                        className="btn"
+                        type="submit"
+                        disabled={waitingMail.length < 14}
+                      >
                         submit
                       </button>
                     </div>

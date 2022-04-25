@@ -65,7 +65,17 @@ const Game = ({ user, data }) => {
                   </a>{' '}
                 </div>
               </div>
+              <p>{data?.profiles} Followers </p>
             </div>
+            <button className="btn">
+              {' '}
+              <i className="fa fa-steam"></i> Download at Steam{' '}
+              <span>free</span>
+            </button>
+            <button className="btn">
+              {' '}
+              PS Store <span>free</span>
+            </button>
           </div>
           <div className="tournament_sponsers">
             <div className="logos">
