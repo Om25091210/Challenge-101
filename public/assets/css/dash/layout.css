@@ -2285,6 +2285,8 @@ article .social_bar {
 	resize: none;
 	height: 81px;
 	float: left;
+	color: #000;
+	font-size: 13px;
 }
 .bio_box .games {
 	display: flex;
@@ -2749,10 +2751,11 @@ article .social_bar {
 	position:absolute;
 }
 .product_box .product-detail-box {
-	padding:0px;
+	padding: 20px 0 20px 20px;
 	margin:0 0 0 50px;
-	width:42%;
+	width:70%;
 	float:right;
+	border-left: 1px solid #ddd;
 }
 .product_box .product-detail-box h1 {
 	margin:-11px 0 0px;
@@ -2776,11 +2779,11 @@ article .social_bar {
 	 color: #000;
 }
 .product_box .product-detail-box .price {
-	padding:18px 0;
+	padding:10px 0;
 	margin:0;
 	border-bottom:1px solid #ededed;
 	font-size:30px;
-	color:#061b4e
+	color:#061b4e; margin-bottom: 10px;
 }
 .product_box .product-detail-box .price del {
 	padding-left:15px;
@@ -2937,6 +2940,7 @@ article .social_bar {
 	width: 100%;
 	margin: 15px 0;
 }
+.review .fa{ color: #000;}
 .review .rev_txt {
 	font-size:12px;
 	color: #000;
@@ -2963,7 +2967,7 @@ article .social_bar {
 }
 .brief {
 	font-size: 14px;
-	line-height: 25px;
+	line-height: 20px;
 }
 .products li {
 	float: left;
@@ -3003,7 +3007,7 @@ article .social_bar {
 	display: flex;
 	justify-content: space-between;
 	margin-top: 10px;
-	align-items: flex-start;; height: 42px; overflow: hidden;
+	align-items: flex-start;; height: 90px; overflow: hidden;
 }
 .products li .name_dots h4 {
 	text-transform: capitalize;
@@ -3037,7 +3041,8 @@ article .social_bar {
 	color:#000;
 }
 
-.products li .btn{ width: 100%;}
+.products li .btn{ width:48%;}
+.products li .btn.cart-btn{ width: 100%;}
 
 .quick_view {
 	overflow-x: hidden;
@@ -5700,8 +5705,9 @@ main {
 .tournament_dp_box .flag_tick_flow {
 	display: flex;
 }
+.tournament_dp_box .flag_tick_flow .tick{ margin-right: 5px;}
 .tournament_dp_box .profile_dp_box .top_details {
-	width: 50%;
+	width: auto;
 	padding-left:50px;
 }
 .games_page .tournament_sponsers {
@@ -5758,7 +5764,6 @@ main {
 	float: left;
 	width: 100%;
 	margin: 20px 0;
-	border-bottom: 1px solid #ddd;
 	padding-bottom: 20px;
 }
 .create_tournament h2 {
@@ -7490,6 +7495,7 @@ body.DarkPage .box{ background: #1e1e27; color: #fff;}
 body.DarkPage .amt_bal .amt img, body.DarkPage .amt img{-webkit-filter: invert(0);filter: invert(0);}
 body.DarkPage .game_list_page li p{ color: #ababab;}
 body.DarkPage .products li{ background: #26292e;}
+body.DarkPage .size-option ul li{ background: #fff; color: #000;}
 body.DarkPage .products li .pro_img{border: 1px solid #26292e;}
 body.DarkPage .team_match_row .vs{ color: #fff;}
 
@@ -7534,7 +7540,7 @@ body.DarkPage .checkout_total .amount{ background: #202028; color: #fff;}
 body.DarkPage .checkout_total .amount .amt_row span{ color: #fff;}
 body.DarkPage .address_order_box .user_add input{ background: #202028;}
 
-body.DarkPage .product_box .product-detail-box h1, body.DarkPage .prodcut_detail_page .labels, body.DarkPage .product_box .product-detail-box p{ color: #fff;}
+
 body.DarkPage ul.top_menu .drop_down_bg.create_pages a span:first-child{ background: #393945;}
 
 body.DarkPage .left_side nav li .iconbg{ background: #2d343e;}
