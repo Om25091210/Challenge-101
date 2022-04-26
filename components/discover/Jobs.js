@@ -9,7 +9,6 @@ import { useMutation } from 'react-query';
 import { toast } from 'react-toastify';
 
 const Jobs = ({ user, profile, myState }) => {
-
   const [jobs, setJobs] = useState([]);
   const [files, setFiles] = useState([]);
 
@@ -40,17 +39,13 @@ const Jobs = ({ user, profile, myState }) => {
   };
 
   useEffect(() => {
-  console.log(myState.filteredResults);
-  if (myState.filteredResults.length > 0 ){
-    setJobs(myState.filteredResults);
-   } else { 
+    console.log(myState.filteredResults);
+    if (myState.filteredResults.length > 0) {
+      setJobs(myState.filteredResults);
+    } else {
       axios.get(`${baseURL}/api/all/jobs`).then((res) => setJobs(res.data));
-   }
-
-  console.log(jobs);
-  
+    }
   }, [myState]);
-
 
   if (jobs) {
     return (
@@ -107,8 +102,10 @@ const Jobs = ({ user, profile, myState }) => {
             <div className="team_row arena_team_row" key={idx}>
               <div className="inner_team">
                 <div className="logo_box">
-                  <img src="/assets/media/discover/lxg.png" alt="" />
-                  <h3>{job.job_by ? job.job_by.name : 'Not Defined'}</h3>
+                  <a href={`jobs/${job._id}`}>
+                    <img src={job.job_by.imgUrl} alt="" />
+                    <h3>{job.job_by ? job.job_by.name : 'Not Defined'}</h3>
+                  </a>
                 </div>
                 <div className="mores">
                   <p>
