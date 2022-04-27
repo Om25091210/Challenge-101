@@ -6345,6 +6345,10 @@ ul.game_search_result li {
 	color: #000;
 	position: relative; text-align: center;
 }
+
+.game_list_page li .bottom_data .colm_box{ display: flex; justify-content: space-between;}
+.game_list_page li .bottom_data .colm_box .clm{ font-size: 11px;}
+
 .game_list_page li p {
 	line-height: 20px; font-size: 11px; height: 20px;
 }

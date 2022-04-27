@@ -198,9 +198,12 @@ const TournamentDetail = ({ user, data, products }) => {
                       </div>
                       <span className="name">
                         Indoor Stadium, {data.tournament.location}
-                        {Moment(data.tournament.startDate).format('MMM DD')} -
-                        {Moment(data.tournament.endDate).format('MMM DD')}{' '}
-                        {Moment(data.tournament.startDate).format('hh:mm A')}{' '}
+                        <p>
+                          {' '}
+                          {Moment(data.tournament.startDate).format('MMM DD')} -
+                          {Moment(data.tournament.endDate).format('MMM DD')}{' '}
+                          {Moment(data.tournament.startDate).format('hh:mm A')}{' '}
+                        </p>
                       </span>{' '}
                       <span className="follower">
                         {data.tournament?.description}

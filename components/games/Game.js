@@ -43,39 +43,48 @@ const Game = ({ user, data }) => {
             <div className="profile_details">
               <div className="top_details">
                 <div className="name_box">
-                  {' '}
-                  <span className="game_name">{game?.name}</span>{' '}
-                </div>
-                <div className="flag">
-                  {' '}
-                  <img src="/assets/media/profile/flag.png" alt="flag" />{' '}
-                </div>
-                <div className="tick">
-                  {' '}
-                  <span className="active">
+                  <div className="flag_tick_flow">
                     {' '}
-                    <i className="fa fa-check" aria-hidden="true"></i>{' '}
-                  </span>{' '}
-                </div>
-                <div className="button">
-                  {' '}
-                  <a href="#" className="btn">
-                    {' '}
-                    FOLLOW{' '}
-                  </a>{' '}
+                    <span className="game_name">{game?.name}</span>{' '}
+                    <div className="flag">
+                      {' '}
+                      <img
+                        src="/assets/media/profile/flag.png"
+                        alt="flag"
+                      />{' '}
+                    </div>
+                    <div className="tick">
+                      {' '}
+                      <span className="active">
+                        {' '}
+                        <i className="fa fa-check" aria-hidden="true"></i>{' '}
+                      </span>{' '}
+                    </div>
+                    <div className="button">
+                      {' '}
+                      <a href="#" className="btn">
+                        {' '}
+                        FOLLOW{' '}
+                      </a>{' '}
+                    </div>
+                  </div>
+                  <span class="follower">{data?.profiles} Followers </span>
                 </div>
               </div>
-              <p>{data?.profiles} Followers </p>
             </div>
-            <button className="btn">
-              {' '}
-              <i className="fa fa-steam"></i> Download at Steam{' '}
-              <span>free</span>
-            </button>
-            <button className="btn">
-              {' '}
-              PS Store <span>free</span>
-            </button>
+            <div class="bottom_details">
+              <div class="two_btns">
+                <a href="#" className="btn">
+                  {' '}
+                  <i className="fa fa-steam"></i> Download at Steam{' '}
+                  <span>free</span>
+                </a>
+                <a href="#" className="btn">
+                  {' '}
+                  PS Store <span>free</span>
+                </a>
+              </div>
+            </div>
           </div>
           <div className="tournament_sponsers">
             <div className="logos">

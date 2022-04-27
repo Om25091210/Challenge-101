@@ -32,7 +32,21 @@ const Games = ({ user, games }) => {
                     </div>
                     <div className="bottom_data">
                       <h3>{games.name}</h3>
-                      <p>110k players|91 tournaments|168 communities</p>
+                      <div className="colm_box">
+                        {' '}
+                        <div className="clm">
+                          {' '}
+                          110k <br /> players{' '}
+                        </div>{' '}
+                        <div className="clm">
+                          91
+                          <br /> tournaments{' '}
+                        </div>{' '}
+                        <div className="clm">
+                          168
+                          <br /> communities
+                        </div>
+                      </div>
                     </div>
                   </a>
                 </li>
