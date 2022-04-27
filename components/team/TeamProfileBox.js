@@ -281,7 +281,7 @@ const TeamProfileBox = ({ user, data, isTeamPlayer }) => {
                   FOLLOW
                 </a>{' '}
                 <a href="#" className="btn">
-                  ASK TO JOIN
+                  MESSAGE
                 </a>
               </div>
             )}

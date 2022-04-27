@@ -15,6 +15,8 @@ import { ethers } from 'ethers';
 import { getEllipsisTxt } from '../utils';
 import WalletSvg from './svg/WalletSvg';
 import { BlockchainContext } from '../context/BlockchainContext';
+import emailjs from '@emailjs/browser';
+import { toast } from 'react-toastify';
 
 const SignedHeader = ({ user }) => {
   const router = useRouter();
@@ -27,6 +29,7 @@ const SignedHeader = ({ user }) => {
 
   const [coin, setCoin] = useState();
   const [INR, setINR] = useState();
+  const [refModal, setRefModal] = useState(false);
 
   useEffect(() => {
     getUserBalance();
@@ -43,6 +46,25 @@ const SignedHeader = ({ user }) => {
       const value = res.data * coin;
       setINR(value.toFixed(2));
     });
+  };
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    try {
+      emailjs
+        .sendForm(
+          'service_sjg210c',
+          'template_c5hfskx',
+          '#refForm',
+          'aSB4mcvLDq-rgDO7O'
+        )
+        .then((error) => {
+          console.log(error.text);
+        });
+      toast.success('Invitation sent!');
+    } catch (err) {
+      toast.error('Please try again later');
+    }
   };
 
   return (
@@ -282,7 +304,9 @@ const SignedHeader = ({ user }) => {
                   <Link href="#">Support</Link>
                 </li>
                 <li>
-                  <Link href="#">Refer a friend</Link>
+                  <a href="#" onClick={() => setRefModal(true)}>
+                    Refer a friend
+                  </a>
                 </li>
 
                 <li>
@@ -298,6 +322,32 @@ const SignedHeader = ({ user }) => {
                     Logout
                   </a>
                 </li>
+                {refModal && (
+                  <div className="delete_post">
+                    <form onSubmit={sendEmail} id="refForm">
+                      <div className="delete_post_div">
+                        <p>Enter your friend's email to invite</p>
+                        <input
+                          type="text"
+                          value={user.name}
+                          name="name"
+                          hidden={true}
+                        />
+                        <input type="email" name="email" />
+                        <button
+                          onClick={() => setRefModal(false)}
+                          className="btn"
+                        >
+                          Cancel
+                        </button>
+                        <button type="submit" className="btn">
+                          Send
+                        </button>
+                      </div>
+                    </form>
+                    <div className="overlay"></div>
+                  </div>
+                )}
               </ul>
             </div>
           </li>

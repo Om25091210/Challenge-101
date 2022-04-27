@@ -197,13 +197,11 @@ const TournamentDetail = ({ user, data, products }) => {
                         ) : null}
                       </div>
                       <span className="name">
-                        Indoor Stadium, {data.tournament.location}
-                        <p>
-                          {' '}
-                          {Moment(data.tournament.startDate).format('MMM DD')} -
-                          {Moment(data.tournament.endDate).format('MMM DD')}{' '}
-                          {Moment(data.tournament.startDate).format('hh:mm A')}{' '}
-                        </p>
+                        <i className="fa fa-map-marker"></i> Indoor Stadium,{' '}
+                        {data.tournament.location} <i class="fa fa-clock-o"></i>{' '}
+                        {Moment(data.tournament.startDate).format('MMM DD')} -
+                        {Moment(data.tournament.endDate).format('MMM DD')}{' '}
+                        {Moment(data.tournament.startDate).format('hh:mm A')}{' '}
                       </span>{' '}
                       <span className="follower">
                         {data.tournament?.description}
