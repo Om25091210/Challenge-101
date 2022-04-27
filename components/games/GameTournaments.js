@@ -9,28 +9,27 @@ import baseURL from '@utils/baseURL';
 import TournamentRows from '@components/tournament/TournamentRows';
 
 const GameTournaments = ({ user }) => {
-
   const router = useRouter();
 
   const [tournaments, setTournaments] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
 
-
   const { id } = router.query;
 
-
   useEffect(() => {
-
-  	    axios.get(`${baseURL}/api/tournaments/tournamentsbygame/${id}`).then((res) => {
-            setTournaments(res.data);
-        });
-
+    axios
+      .get(`${baseURL}/api/tournaments/tournamentsbygame/${id}`)
+      .then((res) => {
+        setTournaments(res.data);
+      });
   }, []);
 
   return (
-
-  	    <TournamentRows tournaments={tournaments} searchResults={searchResults}/>
-
+    <TournamentRows
+      tournaments={tournaments}
+      searchResults={searchResults}
+      user={user}
+    />
   );
 };
 
