@@ -9,6 +9,7 @@ import ReactCountryFlag from 'react-country-flag';
 import FavTeam from '../team/FavTeam';
 import Cookies from 'js-cookie';
 import LoadingSpinner from '../LoadingSpinner';
+import Moment from 'moment';
 
 const Teams = ({ user, profile, myState, selectedGame }) => {
   const [team, setTeam] = useState([]);
@@ -252,7 +253,7 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
                     />
                   </p>
                   <h4>Established</h4>
-                  <p>{team.founded}</p>
+                  <p>{Moment(team.team.founded).format('MMM YYYY')}</p>
                 </div>
                 <div className="match">
                   <h4>Matches Played</h4>
@@ -424,7 +425,7 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
                     />
                   </p>
                   <h4>Established</h4>
-                  <p>{team.team.founded}</p>
+                  <p>{Moment(team.team.founded).format('MMM YYYY')}</p>
                 </div>
                 <div className="match">
                   <h4>Matches Played</h4>

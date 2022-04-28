@@ -251,7 +251,7 @@ const TeamProfileBox = ({ user, data, isTeamPlayer }) => {
             <div className="name_box">
               <span className="game_name"> {data.team.name} </span>
               <span className="name">
-                Founded {Moment(data.team.createdAt).format('MMM YYYY')}
+                Founded {Moment(data.team.founded).format('MMM YYYY')}
               </span>
               <span className="follower">{data.players.length} followers</span>
             </div>

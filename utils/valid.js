@@ -60,7 +60,7 @@ export const locationformvalidate = (values) => {
 export const teamformvalidate = (values) => {
   const errors = {};
   const regex = /^((https?|ftp|smtp):\/\/)?(www.)?[a-z0-9]+\.[a-z]+(\/[a-zA-Z0-9#]+\/?)*$/;
-  const year_regex = /^\d{4}$/;
+  const year_regex = /^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/;
   if (!values.name) {
     errors.name = 'Team Name is requried';
   }
@@ -69,9 +69,6 @@ export const teamformvalidate = (values) => {
   }
   if (!values.game) {
     errors.game = 'Select Atleast one game';
-  }
-  if (!values.prizepool) {
-    errors.prizepool = 'Prize cannot be empty';
   }
   if (!values.region) {
     errors.region = 'Region is required';

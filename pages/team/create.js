@@ -38,7 +38,6 @@ const CreateTeam = ({ user }) => {
     coverPhoto: '/assets/media/profile/cover_bg.jpg',
     founded: '',
     game: '',
-    currency: '$',
     prizepool: null,
     region: '',
     website: '',
@@ -186,13 +185,12 @@ const CreateTeam = ({ user }) => {
                         </label>
                       </div>
                     </div>
-
                     <div className="form-group">
                       <label htmlFor="exampleFormControlInput1">
                         Year Founded
                       </label>
                       <input
-                        type="text"
+                        type="date"
                         className="form-control"
                         placeholder="Year founded"
                         name="founded"
@@ -201,7 +199,6 @@ const CreateTeam = ({ user }) => {
                       />
                       <p>{formErrors.founded}</p>
                     </div>
-
                     <div className="form-group">
                       <label htmlFor="exampleFormControlInput1">Games</label>
 
@@ -225,35 +222,6 @@ const CreateTeam = ({ user }) => {
                 ) : (
                   <>
                     <h2>Step2</h2>
-
-                    <div className="form-group">
-                      <label for="exampleFormControlInput1">Prizes</label>
-                      <div className="prize_box">
-                        {' '}
-                        <a href="#">
-                          <img src="/assets/media/games/tournament1.png" />
-                        </a>
-                        <select
-                          name="currency"
-                          id="currency"
-                          onChange={handleChange}
-                          value={state.currency}
-                        >
-                          <option value="USD">USD($)- Dollars</option>
-                          <option value="INR">INR (Rs) - Rupees</option>
-                        </select>
-                        <input
-                          type="number"
-                          className="form-control"
-                          placeholder=""
-                          name="prizepool"
-                          onChange={handleChange}
-                          value={state.prizepool}
-                        />
-                      </div>
-                      <p>{formErrors.prizepool}</p>
-                    </div>
-
                     <div className="form-group">
                       <label htmlFor="exampleFormControlTextarea1">
                         Country
@@ -338,7 +306,7 @@ const CreateTeam = ({ user }) => {
                         <select
                           className="form-control"
                           name="sponsor"
-                          value={state.value}
+                          value={state.sponsor}
                           multiple={true}
                           onChange={handleChange}
                         >
@@ -356,7 +324,7 @@ const CreateTeam = ({ user }) => {
                         <select
                           className="form-control"
                           name="arena"
-                          value={state.value}
+                          value={state.arena}
                           multiple={true}
                           onChange={handleChange}
                         >
@@ -374,7 +342,7 @@ const CreateTeam = ({ user }) => {
                         <select
                           className="form-control"
                           name="role"
-                          value={state.value}
+                          value={state.role}
                           multiple={true}
                           onChange={handleChange}
                         >
