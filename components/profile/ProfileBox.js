@@ -739,7 +739,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                               </label>
                               <input
                                 type="text"
-                                className="custom-select text-capitalize"
+                                className=" text-capitalize"
                                 id="exampleFormControlInput1"
                                 placeholder="address line1"
                                 name="line1"
@@ -755,7 +755,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                               </label>
                               <input
                                 type="text"
-                                className="custom-select text-capitalize"
+                                className=" text-capitalize"
                                 id="exampleFormControlInput1"
                                 placeholder="address line2"
                                 name="line2"
@@ -771,7 +771,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                               </label>
                               <input
                                 type="text"
-                                className="custom-select text-capitalize"
+                                className="text-capitalize"
                                 id="exampleFormControlInput1"
                                 placeholder="city "
                                 name="city"
@@ -787,7 +787,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                               </label>
                               <input
                                 type="text"
-                                className="custom-select text-capitalize"
+                                className="text-capitalize"
                                 id="exampleFormControlInput1"
                                 placeholder="state"
                                 name="state"
@@ -803,7 +803,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                               </label>
                               <input
                                 type="text"
-                                className="custom-select text-capitalize"
+                                className="text-capitalize"
                                 id="exampleFormControlInput1"
                                 placeholder="country"
                                 name="country"
@@ -819,7 +819,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                               </label>
                               <input
                                 type="text"
-                                className="custom-select text-capitalize"
+                                className="text-capitalize"
                                 id="exampleFormControlInput1"
                                 placeholder="zip code"
                                 name="zipcode"

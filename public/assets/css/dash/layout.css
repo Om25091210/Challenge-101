@@ -66,6 +66,9 @@ input[type="text"], textarea {
 	width: 100%;
 	border: 1px solid #ced4da;
 }
+
+input[type="text"], input[type="email"], textarea, select { color: #000;}
+
 .verticalCenter {
 	display:table;
 	width:100%;
@@ -116,6 +119,9 @@ h3 {
 	font-size: 14px;
 	font-weight: 500;
 }
+
+.black{ color: #000;}
+
 .btn, .apply {
 	border-radius: 5px;
 	padding: 5px 20px;
