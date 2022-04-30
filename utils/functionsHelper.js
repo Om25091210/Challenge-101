@@ -10,15 +10,13 @@ export const searchTournaments = async (
   setError,
   setLoading,
   toast,
-  setStatus,
+  setStatus
 ) => {
   setLoading(true);
   try {
-
-
     const res = await axios.post(`${baseURL}/api/tournaments/search`, {
       search,
-      filters,
+      filters
     });
     toast.info(res.data.msg);
     setStatus('confirm');
@@ -31,6 +29,29 @@ export const searchTournaments = async (
   setLoading(false);
 };
 
+export const searchTeams = async (
+  { search, filters },
+  setError,
+  setLoading,
+  toast,
+  setStatus
+) => {
+  setLoading(true);
+  try {
+    const res = await axios.post(`${baseURL}/api/teams/search`, {
+      search,
+      filters
+    });
+    toast.info(res.data.msg);
+    setStatus('confirm');
+    return res.data;
+  } catch (error) {
+    const errorMsg = catchErrors(error);
+    setError(errorMsg);
+    toast.error(errorMsg);
+  }
+  setLoading(false);
+};
 
 export const logoutUser = () => {
   const router = useRouter();
@@ -38,25 +59,26 @@ export const logoutUser = () => {
   router.push('/login');
 };
 
-
 export const getTournaments = async () => {
-  const { data } = await axios.get(`${baseURL}/api/tournaments`, {
-  });
+  const { data } = await axios.get(`${baseURL}/api/tournaments`, {});
   return data;
 };
 
 //Get Teams, Ranking, Tournaments
 export const getTeamsRankingTournaments = async (filters) => {
-    const gameId = 'undefined'
-    const  teamIds  = await axios.get(`${baseURL}/api/teams/teamsbygame/${gameId}`, {
-    });
+  const gameId = 'undefined';
+  const teamIds = await axios.get(
+    `${baseURL}/api/teams/teamsbygame/${gameId}`,
+    {}
+  );
 
   return teamIds.data;
 };
 
-
 export const getTournament = async (tournamentid) => {
-  const { data } = await axios.get(`${baseURL}/api/tournaments/${tournamentid}`, {
-  });
+  const { data } = await axios.get(
+    `${baseURL}/api/tournaments/${tournamentid}`,
+    {}
+  );
   return data;
 };

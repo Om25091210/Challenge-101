@@ -10,13 +10,30 @@ import FavTeam from '../team/FavTeam';
 import Cookies from 'js-cookie';
 import LoadingSpinner from '../LoadingSpinner';
 import Moment from 'moment';
+import { searchTeams } from '@utils/functionsHelper';
+import { toast } from 'react-toastify';
 
 const Teams = ({ user, profile, myState, selectedGame }) => {
-  const [team, setTeam] = useState([]);
+  var [team, setTeam] = useState([]);
   const [sessionTeam, setSessionTeam] = useState({ key: null, value: null });
   const [favouriteTeams, setfavouriteTeams] = useState([]);
   const [showfavs, setShowFavs] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+
+  const [searchObj, setSearchObj] = useState({
+    search: '',
+    filters: ''
+  });
+  const [filteredResults, setFilteredResults] = useState([]);
+  const [status, setStatus] = useState('confirm');
+  const [error, setError] = useState(null);
+  const [formLoading, setFormLoading] = useState(false);
+  const [submitDisabled, setSubmitDisabled] = useState(true);
+
+  const { search, filters } = searchObj;
+
+  myState.filteredResults = filteredResults;
+  myState.setFilteredResults = setFilteredResults;
 
   useEffect(() => {
     var sg = undefined;
@@ -67,14 +84,50 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
       });
   }, []);
 
+  var sdata;
+
+  const handleChange = (e) => {
+    setSearchObj((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    sdata = await searchTeams(
+      searchObj,
+      setError,
+      setFormLoading,
+      toast,
+      setStatus
+    );
+    setTeam(sdata);
+    setIsLoading(false);
+  };
+
   return (
     <div className="tab" id="teams">
       <div className="white_bg">
         <div className="team_search">
           <div className="searchbox">
             <h3>Search</h3>
-            <input type="search" placeholder="Search" />
-            <input type="submit" />
+            <form
+              className="form w-100"
+              noValidate="noValidate"
+              onSubmit={handleSubmit}
+            >
+              <input
+                type="search"
+                placeholder="Search For Teams..."
+                id="search"
+                name="search"
+                value={search}
+                onChange={handleChange}
+                autoComplete="off"
+              />
+              <input type="submit" />
+            </form>
           </div>
           <div className="advance">
             <div className="views">
@@ -114,14 +167,9 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
           selectedGame={selectedGame}
         />
       </div>
-
-      {isLoading ? (
+      {team.length == 0 ? (
         <div className="team_row">
           <LoadingSpinner />
-        </div>
-      ) : team.length == 0 ? (
-        <div className="team_row">
-          <p>No results for the selected criteria. Please refine.</p>
         </div>
       ) : showfavs === true ? (
         favouriteTeams.map((team, idx) => (
@@ -253,7 +301,7 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
                     />
                   </p>
                   <h4>Established</h4>
-                  <p>{Moment(team.team.founded).format('MMM YYYY')}</p>
+                  <p>{Moment(team.founded).format('MMM YYYY')}</p>
                 </div>
                 <div className="match">
                   <h4>Matches Played</h4>
