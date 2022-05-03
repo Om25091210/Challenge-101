@@ -65,14 +65,21 @@ const TournamentRows = ({
                     {result.games &&
                       result.games.map((gam, idxg) => (
                         <div className="game_logo" key={idxg}>
-                          <img src={gam.imgUrl} alt={gam.name} /> {gam.name}
+                          <img src={gam.gameId.imgUrl} alt={gam.gameId.name} />{' '}
+                          {gam.gameId.name}
                         </div>
                       ))}
                   </div>
                   <div className="prize">
                     <div>
                       <h3>ENTRY FEE:</h3>
-                      <span>Free </span>
+                      {result.entranceFee.length === 0 ? (
+                        <span>Free</span>
+                      ) : result.entranceFee !== 0 ? (
+                        <span>{result.entranceFee}</span>
+                      ) : (
+                        'Not Available'
+                      )}
                     </div>
                     <div>
                       <h3>PRIZE POOL:</h3>
@@ -145,7 +152,13 @@ const TournamentRows = ({
                   <div className="prize">
                     <div>
                       <h3>ENTRY FEE:</h3>
-                      <span>Free </span>
+                      {result.tournament.entranceFee === 0 ? (
+                        <span>Free</span>
+                      ) : result.tournament.entranceFee !== 0 ? (
+                        <span>{result.tournament.entranceFee}</span>
+                      ) : (
+                        'Not Available'
+                      )}
                     </div>
                     <div>
                       <h3>PRIZE POOL:</h3>

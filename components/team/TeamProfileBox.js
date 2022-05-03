@@ -596,14 +596,13 @@ const TeamProfileBox = ({ user, data, isTeamPlayer }) => {
           <div className="team_pos">
             <ul>
               <h5 className="position">ARENAS:</h5>
-              {!data.team.arenas || data.team.arenas.length === 0 ? (
+              {!data.arenas || data.arenas.length === 0 ? (
                 <p>No arenas defined...</p>
               ) : (
-                data.team.arenas.map((item, index) => (
+                data.arenas.map((item, index) => (
                   <li key={index}>
                     <span className="pos_name">
-                      <img src={item.arenaId.logoUrl} alt="" />{' '}
-                      {item.arenaId.name}
+                      <img src={item.logoUrl} alt="" /> {item.name}
                     </span>
                   </li>
                 ))
