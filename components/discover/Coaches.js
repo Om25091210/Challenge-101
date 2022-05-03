@@ -4,6 +4,7 @@ import axios from 'axios';
 import baseURL from '@utils/baseURL';
 import Rating from './Rating';
 import ReactCountryFlag from 'react-country-flag';
+import LoadingSpinner from '../LoadingSpinner';
 
 const Coaches = ({ user, profile, myState }) => {
   const [coach, setCoach] = useState([]);
@@ -65,110 +66,116 @@ const Coaches = ({ user, profile, myState }) => {
         <Filters filterType={'COACHES'} myState={myState} />
       </div>
 
-      {coach.map((coach) => (
+      {coach.length == 0 ? (
         <div className="team_row">
-          <div className="stars">
-            <i className="fa fa-star" aria-hidden="true"></i>
-          </div>
-          <div className="inner_team">
-            <div className="logo_box">
-              {' '}
-              <div className="role_pic">
+          <LoadingSpinner />
+        </div>
+      ) : (
+        coach.map((coach) => (
+          <div className="team_row">
+            <div className="stars">
+              <i className="fa fa-star" aria-hidden="true"></i>
+            </div>
+            <div className="inner_team">
+              <div className="logo_box">
                 {' '}
-                <img src={coach.coaches.user.profilePicUrl} alt="" />
-              </div>
-              <h3>{coach.coaches.user.name}</h3>
-              <ReactCountryFlag
-                countryCode={coach.coaches.region}
-                svg
-                style={{
-                  width: '2em',
-                  height: '2em'
-                }}
-              />
-            </div>
-            <span className="logo">
-              <img src="/assets/media/discover/apex.png" alt="" />{' '}
-              <img src="/assets/media/discover/icon2.png" alt="" />
-            </span>{' '}
-            <span className="remarks">
-              <h4>
-                EXPERIENCE: <b>{coach.coaches.experience} Year</b>{' '}
-              </h4>
-            </span>
-            <div className="mores plateform">
-              <Rating value={coach.coaches.coach_rating} />
-              <span>
-                {coach.coaches.attributes.platform === 'PC' ? (
-                  <img src="/assets/media/discover/desk.png" alt="" />
-                ) : coach.coaches.attributes.platform === 'Console' ? (
-                  <img src="/assets/media/discover/console.png" alt="" />
-                ) : coach.coaches.attributes.platform === 'Mobile' ? (
-                  <img src="/assets/media/discover/mobile_game.png" alt="" />
-                ) : (
-                  <p>No Platform mentioned</p>
-                )}
-              </span>
-              <span>
-                <img src="/assets/media/discover/translator.png" alt="" />
-                {coach.coaches.attributes.language.length > 0 ? (
-                  <>
-                    {coach.coaches.attributes.language.map((lan) => (
-                      <b>{lan}</b>
-                    ))}
-                  </>
-                ) : (
-                  <p>No Language Available</p>
-                )}
-              </span>
-            </div>
-            <a href="#" className="join">
-              SCHEDULE SESSION
-            </a>{' '}
-          </div>
-
-          <div className="overview_box">
-            <h2>Coaches Overview</h2>
-            <div className="team_overview coach_overview">
-              <div className="over_prof">
-                <div className="pics">
+                <div className="role_pic">
+                  {' '}
                   <img src={coach.coaches.user.profilePicUrl} alt="" />
                 </div>
-                <h3>{coach.coaches.user.username}</h3>
+                <h3>{coach.coaches.user.name}</h3>
+                <ReactCountryFlag
+                  countryCode={coach.coaches.region}
+                  svg
+                  style={{
+                    width: '2em',
+                    height: '2em'
+                  }}
+                />
               </div>
-
-              <div className="ranking">
-                <h4>Teams Coached</h4>
-                <div className="past">
-                  <img src="/assets/media/discover/icon1.png" alt="" />{' '}
-                  {coach.teams.map((tem) => (
+              <span className="logo">
+                <img src="/assets/media/discover/apex.png" alt="" />{' '}
+                <img src="/assets/media/discover/icon2.png" alt="" />
+              </span>{' '}
+              <span className="remarks">
+                <h4>
+                  EXPERIENCE: <b>{coach.coaches.experience} Year</b>{' '}
+                </h4>
+              </span>
+              <div className="mores plateform">
+                <Rating value={coach.coaches.coach_rating} />
+                <span>
+                  {coach.coaches.attributes.platform === 'PC' ? (
+                    <img src="/assets/media/discover/desk.png" alt="" />
+                  ) : coach.coaches.attributes.platform === 'Console' ? (
+                    <img src="/assets/media/discover/console.png" alt="" />
+                  ) : coach.coaches.attributes.platform === 'Mobile' ? (
+                    <img src="/assets/media/discover/mobile_game.png" alt="" />
+                  ) : (
+                    <p>No Platform mentioned</p>
+                  )}
+                </span>
+                <span>
+                  <img src="/assets/media/discover/translator.png" alt="" />
+                  {coach.coaches.attributes.language?.length > 0 ? (
                     <>
-                      <b> {tem.name} </b>{' '}
+                      {coach.coaches.attributes.language.map((lan) => (
+                        <b>{lan}</b>
+                      ))}
+                    </>
+                  ) : (
+                    <p>No Language Available</p>
+                  )}
+                </span>
+              </div>
+              <a href="#" className="join">
+                SCHEDULE SESSION
+              </a>{' '}
+            </div>
+
+            <div className="overview_box">
+              <h2>Coaches Overview</h2>
+              <div className="team_overview coach_overview">
+                <div className="over_prof">
+                  <div className="pics">
+                    <img src={coach.coaches.user.profilePicUrl} alt="" />
+                  </div>
+                  <h3>{coach.coaches.user.username}</h3>
+                </div>
+
+                <div className="ranking">
+                  <h4>Teams Coached</h4>
+                  <div className="past">
+                    <img src="/assets/media/discover/icon1.png" alt="" />{' '}
+                    {coach.teams.map((tem) => (
+                      <>
+                        <b> {tem.name} </b>{' '}
+                      </>
+                    ))}
+                  </div>
+                  <h4>Players Coached</h4>
+                  <p>{coach.coaches.players_coached}</p>
+                  <h4>Tier Level:</h4>
+                  <p>{coach.coaches.tier_level}</p>
+                </div>
+                <div className="match">
+                  <h4>FEATURED REVIEW</h4>
+
+                  {coach.reviews.map((rew) => (
+                    <>
+                      {' '}
+                      <p> {rew.review} </p>
+                      <p>
+                        <Rating value={rew.rating} />- {rew.reviewer.name}
+                      </p>
                     </>
                   ))}
                 </div>
-                <h4>Players Coached</h4>
-                <p>{coach.coaches.players_coached}</p>
-                <h4>Tier Level:</h4>
-                <p>{coach.coaches.tier_level}</p>
-              </div>
-              <div className="match">
-                <h4>FEATURED REVIEW</h4>
-
-                {coach.reviews.map((rew) => (
-                  <>
-                    {' '}
-                    <p> {rew.review} </p>
-                    <p>
-                      <Rating value={rew.rating} />- {rew.reviewer.name}
-                    </p>
-                  </>
-                ))}
               </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))
+      )}
     </div>
   );
 };

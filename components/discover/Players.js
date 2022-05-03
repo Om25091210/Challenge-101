@@ -4,6 +4,7 @@ import axios from 'axios';
 import baseURL from '@utils/baseURL';
 import cookie from 'js-cookie';
 import ReactCountryFlag from 'react-country-flag';
+import LoadingSpinner from '../LoadingSpinner';
 
 const Players = ({ user, profile, myState, selectedGame }) => {
   const [playerData, setPlayerData] = useState([]);
@@ -11,6 +12,7 @@ const Players = ({ user, profile, myState, selectedGame }) => {
     key: null,
     value: null
   });
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     var sg = undefined;
@@ -20,18 +22,23 @@ const Players = ({ user, profile, myState, selectedGame }) => {
 
     if (myState.selectedFilters.length > 0) {
       setPlayerData(myState.filteredResults);
+      setIsLoading(false);
     } else {
+      setIsLoading(true);
       if (sessionPlayer.key === null) {
         axios.get(`${baseURL}/api/player/playersbygame/${sg}`).then((res) => {
           setPlayerData(res.data);
           setSessionPlayer({ key: sg, value: res.data });
         });
+        setIsLoading(false);
       } else {
+        setIsLoading(true);
         if (sessionPlayer.key != sg) {
           axios.get(`${baseURL}/api/player/playersbygame/${sg}`).then((res) => {
             setPlayerData(res.data);
             setSessionPlayer({ key: sg, value: res.data });
           });
+          setIsLoading(false);
         } else {
           //setPlayerData (sessionPlayer.get(sg));
         }
@@ -91,8 +98,7 @@ const Players = ({ user, profile, myState, selectedGame }) => {
 
       {playerData.length == 0 ? (
         <div className="team_row">
-          {' '}
-          <p>No results for the selected criteria. Please refine.</p>
+          <LoadingSpinner />
         </div>
       ) : (
         playerData.map((plyr, idx) => (
@@ -134,7 +140,7 @@ const Players = ({ user, profile, myState, selectedGame }) => {
               </>
               <span className="remarks">
                 <h4>ROLE</h4>
-                {plyr.players.attributes.roles.length > 0 ? (
+                {plyr.players.attributes.roles?.length > 0 ? (
                   <>
                     {plyr.players.attributes.roles.map((rol) => (
                       <p>{rol} </p>

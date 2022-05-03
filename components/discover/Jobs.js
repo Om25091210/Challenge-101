@@ -103,7 +103,7 @@ const Jobs = ({ user, profile, myState }) => {
               <div className="inner_team">
                 <div className="logo_box">
                   <a href={`jobs/${job._id}`}>
-                    <img src={job.job_by.imgUrl} alt="" />
+                    <img src={job.job_by?.imgUrl} alt="" />
                     <h3>{job.job_by ? job.job_by.name : 'Not Defined'}</h3>
                   </a>
                 </div>
