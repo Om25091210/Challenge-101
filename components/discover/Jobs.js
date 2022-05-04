@@ -101,7 +101,7 @@ const Jobs = ({ user, profile, myState }) => {
           jobs.map((job, idx) => (
             <div className="team_row arena_team_row" key={idx}>
               <div className="inner_team">
-                <div className="logo_box">
+                <div className="logo_box jobs_img">
                   <a href={`jobs/${job._id}`}>
                     <img src={job.job_by?.imgUrl} alt="" />
                     <h3>{job.job_by ? job.job_by.name : 'Not Defined'}</h3>

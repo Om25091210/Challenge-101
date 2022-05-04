@@ -3395,6 +3395,10 @@ article .social_bar {
 .team_row .logo img {
 	height: 25px;
 }
+
+.team_row .logo_box.jobs_img a{ text-align: center; }
+.team_row .logo_box.jobs_img img{ height: 50px; display: inline-block;}
+
 .team_row .stars {
 	color: #000;
 	padding: 5px 7px;
