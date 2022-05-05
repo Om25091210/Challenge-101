@@ -61,7 +61,11 @@ const GameLeagues = ({ user, game }) => {
                 <div className="games">
                   <h3>Games:</h3>
                   <div className="game_logo">
-                    <img src={game.name} alt={game.name} /> {game.name}
+                    <img
+                      src="/assets/media/category/game_loc.jpg"
+                      alt={game.name}
+                    />{' '}
+                    <b>{game.name}</b>
                   </div>
                 </div>
                 <div className="prize">

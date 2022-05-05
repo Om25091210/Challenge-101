@@ -72,6 +72,7 @@ const TeamSquadAdd = ({ teamplayers, team, isTeamPlayer }) => {
 
   return (
     <>
+      {/* isTeamPlayer */}
       {isTeamPlayer ? (
         <a href="#!" className="model_show_btn btn">
           Add Squad
@@ -86,48 +87,56 @@ const TeamSquadAdd = ({ teamplayers, team, isTeamPlayer }) => {
           <h3>Add a Squad</h3>
 
           <form className="common_form" onSubmit={handleEditStat}>
-            <input
-              type="text"
-              placeholder="Enter Name"
-              name="name"
-              value={squadData.name}
-              onChange={onChange}
-            ></input>
-            <p>{formErrors.name}</p>
-            <input
-              type="file"
-              name="imgUrl"
-              id="imgUrl"
-              className="inputfile"
-              onChange={onChange}
-            />
-            <input
-              type="text"
-              placeholder="Enter Location"
-              name="location"
-              value={squadData.location}
-              onChange={onChange}
-            ></input>
-            <p>{formErrors.location}</p>
-            <select
-              className="custom-select text-capitalize"
-              multiple={true}
-              name="players"
-              value={squadData.players}
-              onChange={onChange}
-            >
-              {teamplayers.map((game, idx) => (
-                <option key={idx} value={game._id}>
-                  {' '}
-                  {game.name}{' '}
-                </option>
-              ))}
-            </select>
-            <p>{formErrors.players}</p>
+            <div className="colm rows">
+              <input
+                type="text"
+                placeholder="Enter Name"
+                name="name"
+                value={squadData.name}
+                onChange={onChange}
+              ></input>
+              <p>{formErrors.name}</p>
+            </div>
+            <div className="colm rows">
+              <input
+                type="file"
+                name="imgUrl"
+                id="imgUrl"
+                className="inputfile"
+                onChange={onChange}
+              />
+            </div>
+            <div className="colm rows">
+              <input
+                type="text"
+                placeholder="Enter Location"
+                name="location"
+                value={squadData.location}
+                onChange={onChange}
+              ></input>
+              <p>{formErrors.location}</p>
+            </div>
+            <div className="colm rows">
+              <select
+                className="form-control text-capitalize"
+                multiple={true}
+                name="players"
+                value={squadData.players}
+                onChange={onChange}
+              >
+                {teamplayers.map((game, idx) => (
+                  <option key={idx} value={game._id}>
+                    {' '}
+                    {game.name}{' '}
+                  </option>
+                ))}
+              </select>
+              <p>{formErrors.players}</p>
+            </div>
             <button
               onClick={() => setFormErrors(teamsquadformvalidate(squadData))}
               className="btn"
-              type="submit"
+              // type="submit"
             >
               Submit
             </button>

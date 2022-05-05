@@ -3889,6 +3889,9 @@ article .social_bar {
 	align-items: center;
 	margin-right: 10px;
 }
+
+.top_game, .bottom_game .game_logo b{ font-size: 11px; font-weight: 400;}
+
 .bottom_game .game_logo img {
 	margin-right: 10px; width: 25px;
 }
@@ -5796,6 +5799,8 @@ main {
 	width: 100%;
 	border: 1px solid #ced4da;
 }
+
+
 .create_tournament form select {
 	-webkit-appearance:auto;
 	font-size: 14px;
@@ -6651,10 +6656,14 @@ form.common_form .colm {
 	margin-bottom: 20px; position: relative;
 }
 
+form.common_form .colm.rows{ width: 100%;}
+
 form.common_form .colm p{ position: absolute; left: 0; color: red; font-size: 11px; bottom: -15px;}
 
 
-form.common_form .colm select{ font-size: 13px;}
+form.common_form .colm select{ font-size: 13px; } 
+
+
 
 form.common_form .colm:nth-child(2n) {
 	float: right;
@@ -7588,6 +7597,10 @@ body.DarkPage .edit_share.right_links .fa-picture-o{-webkit-filter: invert(100%)
 body.DarkPage .rc-time-picker-panel-inner{ background: #000 ;}
 body.DarkPage .rc-time-picker-panel-input{background: #000;color: #fff;}
 body.DarkPage  li.rc-time-picker-panel-select-option-selected {background: #000;font-weight: bold;}
+
+body.DarkPage ::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
 
 .ring {
     position: absolute;

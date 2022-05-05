@@ -493,7 +493,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                           name="regions"
                           onChange={handleChangeAttr}
                           value={attr?.regions}
-                          className="custom-select text-capitalize"
+                          className="form-control text-capitalize"
                         >
                           <option value="--">--</option>
                           <option value="India">India</option>
@@ -513,7 +513,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                           name="playertype"
                           onChange={handleChangeAttr}
                           value={attr?.playertype}
-                          className="custom-select text-capitalize"
+                          className="form-control text-capitalize"
                         >
                           <option value="--">--</option>
                           <option value="Casual">Casual</option>
@@ -532,7 +532,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                           name="platform"
                           onChange={handleChangeAttr}
                           value={attr?.platform}
-                          className="custom-select text-capitalize"
+                          className="form-control text-capitalize"
                         >
                           <option value="--">--</option>
                           <option value="PC">PC</option>
@@ -549,7 +549,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                           name="paid"
                           onChange={handleChangeAttr}
                           value={attr?.paid}
-                          className="custom-select text-capitalize"
+                          className="form-control text-capitalize"
                         >
                           <option value="--">--</option>
                           <option value="Paid">Paid</option>
@@ -578,7 +578,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                           name="roles"
                           onChange={handleChange}
                           value={attr?.roles}
-                          className="custom-select text-capitalize"
+                          className="form-control text-capitalize"
                           multiple={true}
                         >
                           <option value="Support">Support</option>
@@ -601,7 +601,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                           name="language"
                           onChange={handleChange}
                           value={attr?.language}
-                          className="custom-select text-capitalize"
+                          className="form-control text-capitalize"
                           multiple={true}
                         >
                           <option value="English">English</option>
