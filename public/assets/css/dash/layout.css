@@ -2632,6 +2632,7 @@ article .social_bar {
 	display: inline-block;
 	vertical-align: middle;
 	filter: invert();
+	height: 35px;
 }
 .sponser {
 	margin-top: 50px;
