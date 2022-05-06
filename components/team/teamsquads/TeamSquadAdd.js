@@ -102,7 +102,7 @@ const TeamSquadAdd = ({ teamplayers, team, isTeamPlayer }) => {
                 type="file"
                 name="imgUrl"
                 id="imgUrl"
-                className="inputfile"
+                // className="inputfile"
                 onChange={onChange}
               />
             </div>
