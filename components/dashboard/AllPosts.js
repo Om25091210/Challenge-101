@@ -53,7 +53,6 @@ const AllPosts = ({ post, user, profiledata }) => {
   return (
     <div key={post._id}>
       <div className="post">
-        {post.user._id !== user._id ? <p>You Shared</p> : null}
         <div className="heads">
           <div className="user">
             <img src={post.profilepic} alt="" />

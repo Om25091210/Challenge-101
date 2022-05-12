@@ -76,9 +76,16 @@ const ProfileData = ({ user, Userdata, player, products }) => {
           <div className="profile_left_post">
             <div className="">
               {Userdata.posts.length !== 0 &&
-                Userdata.posts.map((post) => (
-                  <AllPosts post={post} user={user} />
-                ))}
+                Userdata.posts.map((post) =>
+                  post.user._id !== user._id ? (
+                    <>
+                      <p>You Shared</p>
+                      <AllPosts post={post} user={user} />
+                    </>
+                  ) : (
+                    <AllPosts post={post} user={user} />
+                  )
+                )}
             </div>
           </div>
 
