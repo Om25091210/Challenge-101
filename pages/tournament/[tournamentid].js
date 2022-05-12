@@ -334,12 +334,14 @@ const TournamentDetail = ({ user, data, products }) => {
                 <div className="right_team_bio">
                   <div className="games">
                     <h2>GAMES</h2>
-
                     <>
-                      {data.games &&
-                        data.games.map((item, index) => (
+                      {data.tournament.games &&
+                        data.tournament.games.map((item, index) => (
                           <span key={index}>
-                            <img src={item.imgUrl} alt={item.name} />
+                            <img
+                              src={item.gameId.imgUrl}
+                              alt={item.gameId.name}
+                            />
                           </span>
                         ))}
                     </>

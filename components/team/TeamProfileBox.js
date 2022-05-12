@@ -477,13 +477,6 @@ const TeamProfileBox = ({ user, data, isTeamPlayer }) => {
             </span>
           </div>
           <div className="bottom_details team_details">
-            <div className="badges">
-              <h5>MAJOR TITLES</h5>
-              <img src="/assets/media/team/titles1.png" alt="" />
-              <img src="/assets/media/team/titles2.png" alt="" />
-              <img src="/assets/media/team/titles3.png" alt="" />
-            </div>
-
             <div className="current_status">
               <h5>RANKING</h5>
 

@@ -714,12 +714,12 @@ const ProfileBox = ({ user, Userdata, games }) => {
                 <div className="game_role profile_address">
                   <div className="loc_box">
                     {' '}
-                    <span className="ct"> Location</span>{' '}
+                    {/* <span className="ct"> Location</span>{' '}
                     {isLoggedInUser ? (
                       <a href="#!" className="model_show_btn">
                         <i className="fa fa-pencil" aria-hidden="true"></i>
                       </a>
-                    ) : null}
+                    ) : null} */}
                     <div className="common_model_box">
                       <a href="#!" className="model_close">
                         X
@@ -844,7 +844,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                     </div>
                   </div>
 
-                  {!showlocation && Userdata.profile.address ? (
+                  {/* {!showlocation && Userdata.profile.address ? (
                     <ul className="user_add">
                       <li>{Userdata.profile.address.line1}</li>
                       <li>{Userdata.profile.address.line2}</li>
@@ -857,7 +857,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                         {Userdata.profile.address.zipcode}
                       </li>
                     </ul>
-                  ) : null}
+                  ) : null} */}
 
                   {isLoggedInUser ? (
                     // <button
