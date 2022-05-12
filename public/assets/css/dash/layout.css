@@ -619,8 +619,8 @@ ul.top_menu li.wallet li{     float: left;
 	background:#f3f6f9;
 	width:17px;
 	height:20px;
-	border-radius:5px 10px 0px 0px;
-	box-shadow:0 0 10px #eee;
+	border-radius:10px 11px 0px 0px;
+	/* box-shadow:0 0 10px #eee; */
 	cursor:pointer; z-index: 10;
 }
 .write_post .team_slider .slick-prev:before {
@@ -642,12 +642,12 @@ ul.top_menu li.wallet li{     float: left;
 	bottom:0px;
 	text-indent:-9999px;
 	border:0;
-	border-top:1px solid #b7b7b7;
+	border-top:1px solid #9395a9;
 	background:#f3f6f9;
 	width:17px;
-	height:20px;
-	border-radius:0 0 10px 10px;
-	box-shadow:0 0 10px #eee;
+	height:22px;
+	border-radius:0 0 10px 12px;
+	/* box-shadow:0 0 10px #eee; */
 	cursor:pointer; z-index: 10;
 }
 .write_post .team_slider .slick-next:before {
@@ -659,7 +659,7 @@ ul.top_menu li.wallet li{     float: left;
 	transform:rotate(45deg);
 	-webkit-transform:rotate(45deg);
 	left:5px;
-	top:7px;
+	top:4px;
 	position:absolute;
 }
 .write_post textarea {
@@ -672,7 +672,7 @@ ul.top_menu li.wallet li{     float: left;
 	font-weight:600;
 	color:#909090;
 	letter-spacing:0.075em;
-	padding-top:20px;
+	padding-top:14px;
 	height: 50px;
 }
 .write_post .right_links {
@@ -688,8 +688,10 @@ ul.top_menu li.wallet li{     float: left;
 	vertical-align: inherit;
 }
 .write_post button {
-	padding:13px 20px;
-	margin-left:10px; background: #7239ea;
+	padding: 11px 20px;
+    margin-left: 10px;
+    background: #7239ea;
+    font-size: 11px;
 }
 .right_links .post_img {
 	position: relative;
@@ -810,17 +812,19 @@ ul.top_menu li.wallet li{     float: left;
 .create_menu .close{position: absolute;
     right: 25px;
     top: 25px;
-    font-size: 20px;}
-.create_menu ul{ display: flex; flex-wrap: wrap; justify-content: space-between; float: left; width: 50%;}
+    font-size: 20px;     font-weight: 300;}
+.create_menu ul{ display: flex; flex-wrap: wrap; justify-content: space-between; float: left; width: 54%;}
 .create_menu ul li {
     flex: 0 0 30%;
     text-align: center;
     background: #f3f7fa;
     margin-bottom: 10px;
-    padding: 10px;
+    padding:7px;
     border-radius: 5px;
     box-shadow: 0 0 10px #ddd;
 }
+
+.create_menu ul li p{ font-size: 11px; text-transform: capitalize; padding-top: 7px;}
 
 .create_menu ul li .fa{ font-size: 20px;}
 .create_menu .message{ text-align: left; width:45%;
@@ -1161,8 +1165,8 @@ ul.top_menu li.wallet li{     float: left;
 	font-weight:400;
 	color:#a4a4a4;
 	letter-spacing:0.075em;
-	padding-top:20px;
-	height: 100%;
+	padding-top:13px;
+	height:50;
 }
 .add_comment_box .add_comments .user {
 	width:33px;
@@ -1202,7 +1206,7 @@ ul.top_menu li.wallet li{     float: left;
 }
 .add_comment_box button {
 	border-radius:5px;
-	padding:30px 20px;
+	padding:14px 20px;
 	background:#f3f6f9;
 	border:0;
 	margin-left:10px;
@@ -3111,7 +3115,7 @@ article .social_bar {
 }
 .other_logo {
 	background: #ddd;
-	display: inline-block;
+	display:none;
 	padding: 0 9px 0 10px;
 	border-radius: 5px;
 	text-align: center;
@@ -3120,7 +3124,7 @@ article .social_bar {
 	display: none;
 }
 .other_logo:first-child {
-    display: flex;
+    display: none;
     width: 52px;
     height: 42px;
     align-items: center;
@@ -3273,7 +3277,7 @@ article .social_bar {
 	color:#000
 }
 .team_filter .btn {
-	border-right:1px solid #ddd;
+	border-right:1px solid #2c2c34;
 	background: none;
 	color:#000;
 	border-radius: 0;
@@ -3286,14 +3290,14 @@ article .social_bar {
 }
 .team_filter .drop_downs {
 	display: flex;
-	width: 60%;
+	width: 70%;
 	justify-content: flex-start;
 	flex-wrap: wrap;
-	border-right: 1px solid #ddd;
+	border-right: 1px solid #2c2c34;
 	margin-right: 20px;
 }
 .team_filter .drop_downs .button-group {
-	flex: 0 0 23%;
+	flex: 0 0 15%;
 	margin-bottom: 20px;
 	display: flex;
 	align-items: center;
@@ -3327,7 +3331,7 @@ article .social_bar {
 }
 .filters {
 	display: flex;
-	width: 40%;
+	width: 30%;
 	align-items: start;
 }
 .filters h3 {
@@ -3799,9 +3803,15 @@ article .social_bar {
 	z-index: 3;
 }
 .game_row .star.live {
-	background: #7239ea;
+	/* background: #7239ea; */
+	color: #373840;
+}
+
+.game_row .star.active {
+    background: #7239ea; 
 	color: #fff;
 }
+
 .game_row .star i {
 	font-size: 30px;
 }
@@ -3809,7 +3819,7 @@ article .social_bar {
 	float: left;
 	width: 27%;
 	position: relative;
-	height: 264px;
+	height: 220px;
 	border-right: 2px solid #fff;
 }
 .game_pos .tour_logo {
@@ -3854,7 +3864,7 @@ article .social_bar {
 }
 .right_game_details .date h3 {
 	display: block;
-	font-size: 19px;
+	font-size: 15px;
 }
 .right_game_details button {
 	background: #35353f;
@@ -3874,7 +3884,7 @@ article .social_bar {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin-top: 50px; 
+	margin-top: 20px; 
 }
 .top_game, .bottom_game .games {
 	display: flex;
@@ -3882,13 +3892,13 @@ article .social_bar {
 	align-items: center;
 }
 .top_game, .bottom_game .games h3 {
-	font-size: 19px;
+	font-size: 15px; text-transform: capitalize;
 }
 .top_game, .bottom_game .game_logo {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin-right: 10px;
+	margin-right: 10px; font-size: 12px;
 }
 
 .top_game, .bottom_game .game_logo b{ font-size: 11px; font-weight: 400;}
@@ -3898,9 +3908,15 @@ article .social_bar {
 }
 .top_game{margin-right: 10px;}
 .prize h3 {
-	font-size: 14px;
-	font-weight:400;
+    font-size: 13px;
+    font-weight: 400;
+    color: #989899;
+    width: 73px;
+    display: inline-block;
+    margin-right: 10px;
 }
+
+.prize span{ font-size: 15px;}
 /* ---------- arena ------------------- */
 
 .game_bio .loc {
@@ -7296,7 +7312,7 @@ body.DarkPage .profile_tab_btn.three_nav li a {
 	color: #fff;
 }
 body.DarkPage .post .heads .date p {
-	color: #3aa5dd;
+	color: #fff;
 }
 body.DarkPage .post .right_details .post_data, body.DarkPage .post .heads .post_discp.disc_without_img {
 	background: #2b2b35;
@@ -7330,7 +7346,7 @@ body.DarkPage .style_file_upload span {
 	color: #fff;
 }
 body.DarkPage .post_comments .pop_comment, body.DarkPage .comments_point .create, body.DarkPage .reply_comment_item .comments_data {
-	background: #000;
+	background: #61616d;
 	color: #fff;
 }
 body.DarkPage .delete_comment, body.DarkPage .reply_comment, body.DarkPage .delete_btn {
@@ -7587,7 +7603,7 @@ body.DarkPage .create_menu .close{ color: #fff;}
 body.DarkPage ul.top_menu li.wallet li span.amt1 img {-webkit-filter: invert(0);filter: invert(0);}
 body.DarkPage ul.top_menu .drop_down_bg.profile_drop_down li:last-child a img {-webkit-filter: invert(0);filter: invert(0);}
 
-body.DarkPage .post_comments .pop_comment select {color: #fff;background: #000;border: 0;}
+body.DarkPage .post_comments .pop_comment select {color: #fff;background: #62626e;border: 0;}
 body.DarkPage .suggested_player .all, body.DarkPage .my_team .mng{ color: #fff;}
 
 
@@ -7659,6 +7675,28 @@ body.DarkPage  li.rc-time-picker-panel-select-option-selected {background: #000;
 body.DarkPage ::-webkit-calendar-picker-indicator {
     filter: invert(1);
 }
+
+body.DarkPage .write_post .team_slider .slick-next, body.DarkPage .write_post .team_slider .slick-prev{    background: #383845;}
+body.DarkPage .write_post .team_slider .slick-next:before, body.DarkPage .write_post .team_slider .slick-prev:before{border-color:#9395a9; }
+body.DarkPage .write_post textarea::-webkit-input-placeholder {
+	color: #fff;
+	}
+	
+	body.DarkPage .write_post textarea:-moz-placeholder { /* Firefox 18- */
+	color: #fff;  
+	}
+	
+	body.DarkPage .write_post textarea::-moz-placeholder {  /* Firefox 19+ */
+	color: #fff;  
+	}
+	
+	body.DarkPage .write_post textarea:-ms-input-placeholder {
+	color: #fff;  
+	}
+
+
+	body.DarkPage .discovery_page .tit span, body.DarkPage .discovery_page .tit i{background: #27272f; color: #fff;}
+
 
 .ring {
     position: absolute;

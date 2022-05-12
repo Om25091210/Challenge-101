@@ -41,13 +41,13 @@ const TournamentFav = ({ tournament, user }) => {
   return (
     <>
       {isFav === true ? (
-        <span className="star live">
+        <span className="star active">
           <i className="fa fa-star" aria-hidden="true" onClick={handleAdd}></i>
         </span>
       ) : (
         <span className="star live">
           <i
-            className="fa fa-star-o"
+            className="fa fa-star"
             aria-hidden="true"
             onClick={handleAdd}
             style={{ cursor: 'pointer' }}

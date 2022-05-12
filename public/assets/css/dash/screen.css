@@ -2,7 +2,7 @@
 @media screen and (max-width:1500px){
     .main_middle{ width: 800px;}
     .main_middle.profile_middle{ float: right; width: calc(100% - 150px); margin: 150px 20px 20px 0px;}
-    .write_post .right_links {width: 410px;}
+    .write_post .right_links {width:250px;}
     
 
 }

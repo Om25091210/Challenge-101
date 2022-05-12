@@ -187,7 +187,7 @@ const SignedMainContent = ({ posts, user }) => {
             <li>
               <a href="/team/create">
                 <i className="fa fa-users" aria-hidden="true"></i>
-                <p>create a Team page</p>
+                <p>create a Team </p>
               </a>
             </li>
             <li>
@@ -199,25 +199,25 @@ const SignedMainContent = ({ posts, user }) => {
             <li>
               <a href="#">
                 <i className="fa fa-comments" aria-hidden="true"></i>
-                <p> create a Community page</p>
+                <p> create a Community </p>
               </a>
             </li>
             <li>
               <a href="/brand/create">
                 <i className="fa fa-briefcase" aria-hidden="true"></i>
-                <p> create a Brand page</p>
+                <p> create a Brand </p>
               </a>
             </li>
             <li>
               <a href="/arena/create">
                 <i className="fa fa-gamepad" aria-hidden="true"></i>
-                <p> create an Arena page</p>
+                <p> create an Arena </p>
               </a>
             </li>
             <li>
               <a href="/company/create">
                 <i className="fa fa-shopping-cart" aria-hidden="true"></i>
-                <p> create a Company page</p>
+                <p> create a Company </p>
               </a>
             </li>
           </ul>

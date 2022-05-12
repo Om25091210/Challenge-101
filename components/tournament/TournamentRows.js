@@ -72,7 +72,7 @@ const TournamentRows = ({
                   </div>
                   <div className="prize">
                     <div>
-                      <h3>ENTRY FEE:</h3>
+                      <h3>ENTRY FEE</h3>
                       {result.entranceFee.length === 0 ? (
                         <span>Free</span>
                       ) : result.entranceFee !== 0 ? (
@@ -82,7 +82,7 @@ const TournamentRows = ({
                       )}
                     </div>
                     <div>
-                      <h3>PRIZE POOL:</h3>
+                      <h3>PRIZE POOL</h3>
                       {result.prizepool ? (
                         <MPNumberFormat
                           value={result.prizepool}
@@ -151,7 +151,7 @@ const TournamentRows = ({
                   </div>
                   <div className="prize">
                     <div>
-                      <h3>ENTRY FEE:</h3>
+                      <h3>ENTRY FEE</h3>
                       {result.tournament.entranceFee === 0 ? (
                         <span>Free</span>
                       ) : result.tournament.entranceFee !== 0 ? (
@@ -161,7 +161,7 @@ const TournamentRows = ({
                       )}
                     </div>
                     <div>
-                      <h3>PRIZE POOL:</h3>
+                      <h3>PRIZE POOL</h3>
                       {result.tournament.prizepool ? (
                         <MPNumberFormat
                           value={result.tournament.prizepool}
