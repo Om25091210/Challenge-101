@@ -10,7 +10,7 @@ const ReplyList = ({ post, comment, user }) => {
 
   useEffect(() => {
     axios
-      .get(`${baseURL}/api/comments/${post._id}/${comment._id}`)
+      .get(`${baseURL}/api/comments/${post?._id}/${comment?._id}`)
       .then((res) => {
         setReplies(res.data);
       })

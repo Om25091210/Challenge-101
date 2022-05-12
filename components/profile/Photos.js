@@ -6,6 +6,7 @@ import axios from 'axios';
 import baseURL from '@utils/baseURL';
 import ImageDropzone from '@components/common/ImageDropzone';
 import Moment from 'moment';
+import ProfilePhotosDel from './ProfilePhotosDel';
 
 const Photos = ({ Userdata }) => {
   const [images, setImages] = useState([]);
@@ -108,6 +109,10 @@ const Photos = ({ Userdata }) => {
                   {Moment(imgg.createdAt).format('MMMM, DD, YYYY hh:mm A')}
                 </span>
               </h2>
+              <ProfilePhotosDel
+                collectionId={imgg._id}
+                profile={Userdata.profile}
+              />
             </div>
           </div>
         ))}

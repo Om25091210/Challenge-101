@@ -6,6 +6,7 @@ import axios from 'axios';
 import baseURL from '@utils/baseURL';
 import VideoDropzone from '@components/common/VideosDropzone';
 import { Video } from 'cloudinary-react';
+import ProfileVideosDel from './ProfileVideosDel';
 
 const Videos = ({ Userdata }) => {
   const [videos, setVideos] = useState([]);
@@ -109,6 +110,10 @@ const Videos = ({ Userdata }) => {
                     <i className="fa fa-comment" aria-hidden="true"></i>18
                   </span>{' '}
                 </div>
+                <ProfileVideosDel
+                  collectionId={vid._id}
+                  profile={Userdata.profile}
+                />
               </li>
             ))}
 

@@ -7,6 +7,7 @@ import CommentForm from '@components/comments/CommentForm';
 import baseURL from '@utils/baseURL';
 import cookie from 'js-cookie';
 import axios from 'axios';
+import SharePost from './SharePost';
 
 const AllPosts = ({ post, user, profiledata }) => {
   const [commentsData, setCommentsData] = useState([]);
@@ -40,13 +41,19 @@ const AllPosts = ({ post, user, profiledata }) => {
   const isLoggedInUser = post.user !== '' && post.user?._id === user._id;
 
   const isLiked =
-    post.likes.map((like, idx) => {
+    post.likes.map((like) => {
       return (like.user = user._id);
+    }).length > 0;
+
+  const isShared =
+    post.shares?.map((share) => {
+      return (share.user = user._id);
     }).length > 0;
 
   return (
     <div key={post._id}>
       <div className="post">
+        {post.user._id !== user._id ? <p>You Shared</p> : null}
         <div className="heads">
           <div className="user">
             <img src={post.profilepic} alt="" />
@@ -154,8 +161,7 @@ const AllPosts = ({ post, user, profiledata }) => {
               <LikePost postId={post._id} isLiked={isLiked} />{' '}
               <a href="#">
                 {' '}
-                <i className="fa fa-share-alt" aria-hidden="true"></i>{' '}
-                <span>Share</span>{' '}
+                <SharePost postId={post._id} isShared={isShared} />
               </a>
               <div className="three_dots">
                 <a href="#!">

@@ -1,7 +1,12 @@
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 
-const TeamTabs = () => {
+const TeamTabs = ({ user, data }) => {
+  const isManager =
+    data.team.employees.filter(
+      (emp) => emp.role === 'Manager' && emp.employeeId._id === user._id
+    ).length > 0;
+
   return (
     <ul className="profile_tab_btn">
       <li className="active">
@@ -69,6 +74,13 @@ const TeamTabs = () => {
           RIGS
         </a>
       </li>
+      {isManager ? (
+        <li>
+          <a href="#!" rel="joines">
+            Joines
+          </a>
+        </li>
+      ) : null}
     </ul>
   );
 };

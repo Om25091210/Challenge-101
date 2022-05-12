@@ -7,6 +7,7 @@ import { useRouter } from 'next/router';
 import ReactCountryFlag from 'react-country-flag';
 import Moment from 'moment';
 import { useMutation } from 'react-query';
+import TeamFollow from './TeamFollow';
 
 const TeamProfileBox = ({ user, data, isTeamPlayer }) => {
   const [attr, setAttr] = useState(data.team.attributes);
@@ -278,7 +279,7 @@ const TeamProfileBox = ({ user, data, isTeamPlayer }) => {
             {isTeamPlayer ? null : (
               <div className="button">
                 <a href="#" className="btn">
-                  FOLLOW
+                  <TeamFollow team={data.team} user={user} />
                 </a>{' '}
                 <a href="#" className="btn">
                   MESSAGE

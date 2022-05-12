@@ -16,8 +16,9 @@ import Moment from 'moment';
 import ProductList from '@components/common/ProductList';
 import TeamMatches from '@components/tournament/TeamMatches';
 import TeamJobs from './TeamJobs';
+import TeamJoines from './TeamJoines';
 
-const TeamProfileData = ({ user, data, products, isTeamPlayer }) => {
+const TeamProfileData = ({ user, data, products, isTeamPlayer, profile }) => {
   const [jobs, setJobs] = useState([]);
   const [teamposts, setTeamPosts] = useState([]);
   const [tournamentStatData, setTournamentStatData] = useState([]);
@@ -392,6 +393,9 @@ const TeamProfileData = ({ user, data, products, isTeamPlayer }) => {
               </li>
             </ul>
           </div>
+        </div>
+        <div className="tab hide" id="joines">
+          <TeamJoines data={data.team} user={user} profile={profile} />
         </div>
       </div>
     </>

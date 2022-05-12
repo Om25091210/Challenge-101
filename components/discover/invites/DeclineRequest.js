@@ -5,36 +5,34 @@ import { toast } from 'react-toastify';
 
 const queryClient = new QueryClient();
 
-export default function TeamRequest({ user, profile, team }) {
+export default function DeclineRequest({ player, team }) {
   return (
     <QueryClientProvider client={queryClient} contextSharing={true}>
-      <Team_Req user={user} team={team} profile={profile} />
+      <Decline_Req team={team} player={player} />
     </QueryClientProvider>
   );
 }
 
-const Team_Req = ({ user, profile, team }) => {
+const Decline_Req = ({ player, team }) => {
   const [request, setRequest] = useState(false);
 
-  const playerId = profile.playergames[0]?.player._id;
-
-  const isReqSent =
-    team.request.filter((reque) => reque.playerId === playerId).length > 0;
+  const playerId = player?.playerId._id;
 
   const reqhandlesubmit = async (e) => {
     e.preventDefault();
     try {
       mutate({ request });
       setRequest(true);
-      toast.success('Request has been sent');
+      toast.success('The request has been declined.');
     } catch (err) {
+      console.log(err);
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }
   };
 
   const sendRequest = async () => {
     const { data } = await fetch(
-      `${baseURL}/api/teams/send/${team._id}/${playerId}`,
+      `${baseURL}/api/teams/decline/${team._id}/${playerId}`,
       {
         method: 'PUT'
       }
@@ -50,15 +48,9 @@ const Team_Req = ({ user, profile, team }) => {
 
   return (
     <>
-      {isReqSent ? (
-        <button className="join" disabled>
-          REQUEST SENT
-        </button>
-      ) : (
-        <button onClick={reqhandlesubmit} className="join">
-          REQUEST TO JOIN
-        </button>
-      )}
+      <button className="btn" onClick={reqhandlesubmit}>
+        Decline
+      </button>
     </>
   );
 };

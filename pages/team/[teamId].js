@@ -17,7 +17,7 @@ const Team = ({ user, data, products, profile }) => {
     return (profileId = plyr.player._id);
   });
   const isTeamPlayer =
-    data.players.filter((tem) => {
+    data?.players.filter((tem) => {
       return tem._id === profileId;
     }).length > 0;
 
@@ -40,6 +40,7 @@ const Team = ({ user, data, products, profile }) => {
             data={data}
             products={products}
             isTeamPlayer={isTeamPlayer}
+            profile={profile}
           />
         </div>
 
