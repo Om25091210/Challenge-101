@@ -2164,6 +2164,10 @@ article .social_bar {
 	font-weight: 400;
 	line-height: 25px;
 }
+
+.profile_dp_box .top_details .name_box .loc_date{ font-size: 13px; text-transform: capitalize;}
+.profile_dp_box .top_details .name_box .tour_time{ margin-left: 20px;}
+
 .profile_dp_box .top_details .name_box .follower {
 	font-size: 14px;
 	font-weight: 400;
@@ -2182,7 +2186,7 @@ article .social_bar {
 	height: 22px;
 	display: inline-block;
 	border-radius: 50%;
-	border:1px solid #000;
+	border:1px solid #fff;
 	background: #7239ea;
 }
 .profile_dp_box .top_details .tick .active .fa {
@@ -2190,13 +2194,13 @@ article .social_bar {
 }
 .profile_dp_box .top_details .button{ margin-left: 10px;}
 .profile_dp_box .top_details .button a {
-	margin-left: 10px;
-	background: #7239ea;
-	color: #fff;
-	font-size: 15px;
-	text-align: center;
-	padding: 5px 20px;
-	border-radius: 5px;
+	margin-left: 5px;
+    background: #7239ea;
+    color: #fff;
+    font-size: 12px;
+    text-align: center;
+    padding: 5px 17px;
+    border-radius: 20px;
 }
 .profile_dp_box .top_details .button a:hover {
 	background: #000;
@@ -2267,7 +2271,7 @@ article .social_bar {
 }
 .bio_box .left_bio .top_bio h3 {
 	font-weight: 600;
-	margin-right: 10px;
+	margin-right: 40px;
 	font-size: 17px;
 }
 
@@ -2304,6 +2308,9 @@ article .social_bar {
 	align-items: center;
 	justify-content: flex-start;
 }
+
+.bio_box .games h3{ margin-right: 20px; text-transform: uppercase;}
+
 .bio_box .games span {
 	display: flex;
 	align-items: center;
@@ -2320,13 +2327,16 @@ article .social_bar {
 	margin-right: 20px;
 }
 .bio_box .games a {
-	margin-right: 20px; width: 45px;
+	margin-right: 20px; width:auto;
 }
 .bio_box .right_bio {
 	width: 45%;
 	border-left: 1px solid #ddd;
 	padding-left: 5%;
 }
+
+.bio_box .right_team_bio a{ width: 30px;}
+
 .game_btn {
 	background: #7239ea;
 	border:0;
@@ -5310,7 +5320,7 @@ article .social_bar {
 	margin-right: 10px;
 }
 .tournament_sponsers .logos h5 {
-	padding-right: 40px;
+	padding-right: 10px;
 	font-weight: 600;
 }
 .two_btns {
@@ -5726,9 +5736,11 @@ main {
 }
 .tournament_dp_box .tournament_sponsers h5 {
 	text-transform: uppercase;
-	margin-right: 20px;
+	margin-right: 10px;
 	font-size: 16px;
 }
+.tournament_dp_box .tournament_sponsers .prices h5{ font-size: 12px; margin-right: 20px;}
+
 .tournament_dp_box .tournament_sponsers span {
 	text-transform: uppercase;
 }
@@ -6004,6 +6016,7 @@ ul.game_search_result li {
 }
 .results_box h2 {
 	margin-bottom: 30px;
+	border-bottom: 1px solid #36363c; padding-bottom: 20px;
 }
 .congratulations {
 	float: left;
@@ -6071,7 +6084,7 @@ ul.game_search_result li {
 	align-items: center;
 	float: left;
 	width: 20%;
-	border-right: 1px solid #999;
+	border-right: 1px solid #36363c;
 }
 .group_stage .match_date li {
 	margin-bottom: 20px;
@@ -6104,7 +6117,7 @@ ul.game_search_result li {
 	background: #ddd;
 	padding:10px;
 	margin: 10px 0;
-	border-right: 1px solid #999;
+	/* border-right: 1px solid #36363c; */
 }
 .team_match_row .all_matches {
 	display: flex;
@@ -6352,11 +6365,11 @@ ul.game_search_result li {
     top: 125px;
     right: 0;
     margin: auto;
-    width: 70px;
+    width: 75px;
     height: 70px;
     background: #fff;
-    border-radius: 5px;
-    border: 2px solid #000;
+    border-radius: 10px;
+    border:5px solid #000;
     display: block; overflow:hidden;
 	z-index: 2;
 }
@@ -6379,14 +6392,23 @@ ul.game_search_result li {
 }
 
 .game_list_page li .bottom_data .colm_box{ display: flex; justify-content: space-between;}
-.game_list_page li .bottom_data .colm_box .clm{ font-size: 11px;}
+.game_list_page li .bottom_data .colm_box .clm {
+    font-size: 11px;
+    color: #858585;
+    border-right: 1px solid #858585;
+    padding-right: 6px;
+    line-height: 9px;
+}
+.game_list_page li .bottom_data .colm_box .clm:last-child{ border: 0;}
+.game_list_page li .bottom_data .colm_box .clm br{ display: none;}
 
 .game_list_page li p {
 	line-height: 20px; font-size: 11px; height: 20px;
 }
 .game_list_page li h3 {
 	font-weight: 600;
-	height: 30px;
+    height: 40px;
+    padding-top: 10px;
 }
 
 .game_list_page li h5{ font-size: 12px; height: 80px;}
@@ -6450,7 +6472,7 @@ ul.game_search_result li {
 }
 .internet ul {
 	display: flex;
-	flex-direction: column;
+	flex-direction: column; margin-top: 20px;
 }
 .internet ul li {
 	display: flex;
@@ -6460,12 +6482,25 @@ ul.game_search_result li {
 	margin-left: 5px;
 }
 .tournament_dp_box .internet ul {
-	flex-direction:inherit;
+	flex-direction: inherit;
 }
+
+.tournament_dp_box .internet.games_internet ul {
+	flex-direction: column;
+}
+
+.tournament_dp_box .internet.games_internet ul li{ border: 0; padding: 0;}
+.tournament_dp_box .internet.games_internet ul li b{ display: inline-block;}
+
 .tournament_dp_box .internet ul li {
-	flex:0 0 25%;
-	display: block;
+    flex: 0 0 25%;
+    display: block;
+    border-left: 1px solid #36363c !important;
+    padding-left: 15px;
 }
+
+.tournament_dp_box .internet ul li:first-child{ padding-left: 0; border: 0 !important}
+
 .tournament_dp_box .internet ul li b {
 	display: block;
 	margin-left: 0;
@@ -6629,6 +6664,8 @@ ul.game_search_result li {
 	float: left;
 	width: 1100px;
 }
+
+#product_details .poup_height{ height: 510px;}
 
 
 /*  end custom model box */

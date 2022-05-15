@@ -12,7 +12,7 @@ const Games = ({ user, games }) => {
       <LeftNav user={user} />
 
       <div className="main_middle profile_middle">
-        <div className="white_bg">
+        <div className="">
           <h1>All Games</h1>
 
           <>

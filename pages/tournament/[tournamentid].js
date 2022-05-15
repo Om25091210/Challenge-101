@@ -196,12 +196,15 @@ const TournamentDetail = ({ user, data, products }) => {
                           </span>
                         ) : null}
                       </div>
-                      <span className="name">
+                      <span className="name loc_date">
                         <i className="fa fa-map-marker"></i> Indoor Stadium,{' '}
-                        {data.tournament.location} <i class="fa fa-clock-o"></i>{' '}
-                        {Moment(data.tournament.startDate).format('MMM DD')} -
-                        {Moment(data.tournament.endDate).format('MMM DD')}{' '}
-                        {Moment(data.tournament.startDate).format('hh:mm A')}{' '}
+                        {data.tournament.location}{' '}
+                        <span className="tour_time">
+                          <i class="fa fa-clock-o"></i>{' '}
+                          {Moment(data.tournament.startDate).format('MMM DD')} -
+                          {Moment(data.tournament.endDate).format('MMM DD')}{' '}
+                          {Moment(data.tournament.startDate).format('hh:mm A')}{' '}
+                        </span>
                       </span>{' '}
                       <span className="follower">
                         {data.tournament?.description}
@@ -237,7 +240,7 @@ const TournamentDetail = ({ user, data, products }) => {
                 </div>
 
                 <div className="flex prices">
-                  <h5>Prize</h5>
+                  <h5>Prize Pool</h5>
                   {data.tournament.currency}
                   <span className="">
                     <MPNumberFormat

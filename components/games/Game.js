@@ -89,9 +89,15 @@ const Game = ({ user, data }) => {
           <div className="tournament_sponsers">
             <div className="logos">
               <h5>OFFICIAL TOURNAMENTS</h5>
-              <img src="/assets/media/games/tournament1.png" alt="" />{' '}
-              <img src="/assets/media/games/tournament2.png" alt="" />{' '}
-              <img src="/assets/media/games/tournament3.png" alt="" />{' '}
+              <span>
+                <img src="/assets/media/games/tournament1.png" alt="" />{' '}
+              </span>
+              <span>
+                <img src="/assets/media/games/tournament2.png" alt="" />{' '}
+              </span>
+              <span>
+                <img src="/assets/media/games/tournament3.png" alt="" />{' '}
+              </span>
             </div>
           </div>
           <div className="bio_box  game_bio">
@@ -166,7 +172,7 @@ const Game = ({ user, data }) => {
                   <p> + {players.length - 3} </p>
                 )}
               </div>
-              <div className="internet">
+              <div className="internet games_internet">
                 <ul>
                   <li>
                     {' '}
