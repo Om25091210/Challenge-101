@@ -68,7 +68,6 @@ const Ranking = ({ user, games }) => {
     setSelectedGame(obj);
     //myState.setFilteredResults([]);
     $('a.model_close').parent().removeClass('show_model');
-     
   };
 
   useEffect(() => {
@@ -81,12 +80,10 @@ const Ranking = ({ user, games }) => {
     });
   }, []);
 
-
   useEffect(() => {
-
-     axios.get(`${baseURL}/api/teams/teamsbygame/${selectedGame?._id}`)
-            .then((res) => setTeamsRanks(res.data));
-
+    axios
+      .get(`${baseURL}/api/teams/teamsbygame/${selectedGame?._id}`)
+      .then((res) => setTeamsRanks(res.data));
   }, []);
 
   return (
@@ -149,7 +146,6 @@ const Ranking = ({ user, games }) => {
               </div>
             </div>
 
-
             <div className="white_bg">
               <div className="team_search">
                 <div className="searchbox">
@@ -172,8 +168,7 @@ const Ranking = ({ user, games }) => {
                   </div>
                 </div>
               </div>
-
-              <Filters ftype={'RANKING'} />
+              <Filters filterType={'TOURNAMENTS'} />
             </div>
           </div>
           <RankingTable teamranking={teamsRanks} />
@@ -184,7 +179,6 @@ const Ranking = ({ user, games }) => {
     </>
   );
 };
-
 
 export const getServerSideProps = async (context) => {
   const response = await fetch(`${baseURL}/api/all/games`);

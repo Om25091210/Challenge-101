@@ -14,6 +14,10 @@ const TeamAbout = ({ tmdata, isTeamPlayer }) => {
     role: ''
   });
   const [teamroles, setTeamRoles] = useState([]);
+  const [showform, setShowForm] = useState(false);
+  const [desc, setDesc] = useState(
+    tmdata.about ? tmdata.about.description : null
+  );
 
   const { data, isLoading, isSuccess } = useQuery(
     ['search', searchText],
@@ -43,6 +47,36 @@ const TeamAbout = ({ tmdata, isTeamPlayer }) => {
 
   const refreshData = () => {
     router.replace(router.asPath);
+  };
+
+  const toggleShowform = () => {
+    if (showform) {
+      setShowForm(false);
+    } else {
+      setShowForm(true);
+    }
+  };
+
+  const onChange = (e) => {
+    setDesc(e.target.value);
+  };
+
+  const addingDesc = async () => {
+    const res = await fetch(`${baseURL}/api/teams/desc/${tmdata._id}`, {
+      method: 'PUT',
+      body: JSON.stringify({
+        desc
+      }),
+      headers: {
+        'Content-type': 'application/json'
+      }
+    });
+    return res.json();
+  };
+  const handleButtonForm = (e) => {
+    addingDesc();
+    setShowForm(false);
+    refreshData();
   };
 
   const handleSubmitAbout = async (e) => {
@@ -86,9 +120,29 @@ const TeamAbout = ({ tmdata, isTeamPlayer }) => {
         <div className="about_team">
           <div className="about">
             <h2>OUR TEAM</h2>
-            <p>{tmdata.about ? tmdata.about.description : 'No Description'}</p>
-          </div>
+            <button className="bio_edit" onClick={toggleShowform}>
+              <i className="fa fa-pencil" aria-hidden="true"></i>
+            </button>
 
+            {!showform ? (
+              <p> {tmdata.about ? tmdata.about.description : ''} </p>
+            ) : null}
+
+            {showform ? (
+              <form onSubmit={(e) => e.preventDefault()}>
+                <textarea
+                  name="text"
+                  value={desc}
+                  onChange={onChange}
+                ></textarea>
+                <button onClick={handleButtonForm} className="btn">
+                  Update
+                </button>
+              </form>
+            ) : (
+              ''
+            )}
+          </div>
           <span>
             <div className="loc_box">
               {' '}

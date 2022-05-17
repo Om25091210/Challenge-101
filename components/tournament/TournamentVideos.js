@@ -35,7 +35,7 @@ const TournamentVideos = ({ user, tournament, isUser }) => {
 
     formdata.append('videodisc', videodisc);
     formdata.append('model', 'TOURNAMENT');
-    formdata.append('id', tournament._id);
+    formdata.append('id', tournament.tournament._id);
 
     try {
       await mutation.mutateAsync(formdata);
@@ -72,13 +72,13 @@ const TournamentVideos = ({ user, tournament, isUser }) => {
             </a>
           </div>
         ) : (
-          'No Clip Available'
+          ''
         )}
 
         <p></p>
 
-        {tournament.videosgallery &&
-          tournament.videosgallery.map((vid, idx) => (
+        {tournament.tournament.videosgallery.length > 0 ? (
+          tournament.tournament.videosgallery.map((vid, idx) => (
             <ul key={idx}>
               {vid.videos.map((vide, idex) => (
                 <li key={idex}>
@@ -143,7 +143,10 @@ const TournamentVideos = ({ user, tournament, isUser }) => {
                 </div>
               </li> */}
             </ul>
-          ))}
+          ))
+        ) : (
+          <p>No Clip's Available</p>
+        )}
       </form>
     </div>
   );

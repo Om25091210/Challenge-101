@@ -71,12 +71,12 @@ const TeamPhotos = ({ user, team, isTeamPlayer }) => {
             </a>
           </div>
         ) : (
-          'No Album Available'
+          ''
         )}
 
         <p></p>
 
-        {team.imagesgallery &&
+        {team.imagesgallery.length > 0 ? (
           team.imagesgallery.map((imgg, idx) => (
             <div className="imagess_box" key={idx}>
               <div className="imagess">
@@ -114,7 +114,10 @@ const TeamPhotos = ({ user, team, isTeamPlayer }) => {
                 <PhotosDelete collectionId={imgg._id} team={team} />
               </div>
             </div>
-          ))}
+          ))
+        ) : (
+          <p>No Photo's Available</p>
+        )}
       </form>
     </div>
   );

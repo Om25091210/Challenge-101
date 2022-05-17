@@ -36,7 +36,7 @@ const TournamentPhotos = ({ user, tournament, isUser }) => {
 
     formdata.append('title', title);
     formdata.append('model', 'TOURNAMENT');
-    formdata.append('id', tournament._id);
+    formdata.append('id', tournament.tournament._id);
     try {
       await photomutation.mutateAsync(formdata);
       toast.success('Tournament images have been updated');
@@ -70,13 +70,13 @@ const TournamentPhotos = ({ user, tournament, isUser }) => {
             </a>
           </div>
         ) : (
-          'No Album Available'
+          ''
         )}
 
         <p></p>
 
-        {tournament.imagesgallery &&
-          tournament.imagesgallery.map((imgg, idx) => (
+        {tournament.tournament.imagesgallery.length > 0 ? (
+          tournament.tournament.imagesgallery.map((imgg, idx) => (
             <div className="imagess_box" key={idx}>
               <div className="imagess">
                 <ul>
@@ -112,7 +112,10 @@ const TournamentPhotos = ({ user, tournament, isUser }) => {
                 </h2>
               </div>
             </div>
-          ))}
+          ))
+        ) : (
+          <p>No Photo's Available</p>
+        )}
       </form>
     </div>
   );
