@@ -28,7 +28,7 @@ const TeamFollow = ({ team, user }) => {
 
   return (
     <>
-      <button className="btn" onClick={() => followhandlesubmit(team?._id)}>
+      <button onClick={() => followhandlesubmit(team?._id)}>
         {isFollow === true ? 'Following' : 'Follow'}
       </button>
     </>

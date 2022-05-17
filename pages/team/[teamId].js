@@ -11,16 +11,16 @@ import AllScript from 'pages/AllScript';
 import baseURL from '@utils/baseURL';
 import { getData } from '@utils/fetchData';
 
-const Team = ({ user, data, products, profile }) => {
+const Team = ({ user, data, products, profile, teams }) => {
   let profileId = [];
-  profile.playergames.map((plyr) => {
+  profile?.playergames.map((plyr) => {
     return (profileId = plyr.player._id);
   });
   const isTeamPlayer =
-    data.players.filter((tem) => {
+    data?.players.filter((tem) => {
       return tem._id === profileId;
     }).length > 0;
-
+  console.log(isTeamPlayer);
   if (data) {
     return (
       <>
@@ -31,7 +31,12 @@ const Team = ({ user, data, products, profile }) => {
         <LeftNav user={user} />
 
         <div className="main_middle profile_middle">
-          <TeamProfileBox user={user} data={data} isTeamPlayer={isTeamPlayer} />
+          <TeamProfileBox
+            user={user}
+            data={data}
+            isTeamPlayer={isTeamPlayer}
+            teams={teams}
+          />
 
           <TeamTabs user={user} data={data} />
 

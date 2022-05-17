@@ -191,7 +191,7 @@ const TeamAbout = ({ tmdata, isTeamPlayer }) => {
           </span>
 
           {tmdata.about &&
-            tmdata.about.contacts.map((itm, index) => (
+            tmdata.about?.contacts.map((itm, index) => (
               <div className="team_mails" key={index}>
                 <h3>
                   <i className="fa fa-life-ring" aria-hidden="true"></i>{' '}
@@ -203,12 +203,12 @@ const TeamAbout = ({ tmdata, isTeamPlayer }) => {
         </div>
         <div className="team_member">
           <ul>
-            {!tmdata.employees || tmdata.employees.length === 0 ? (
+            {!tmdata?.employees || tmdata.employees.length === 0 ? (
               <li>
                 <div className="dp">No employees defined..</div>
               </li>
             ) : (
-              tmdata.employees.map((emp, idx) => (
+              tmdata?.employees.map((emp, idx) => (
                 <li key={idx}>
                   <div className="dp">
                     {' '}

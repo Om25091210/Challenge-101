@@ -27,7 +27,7 @@ const TeamAllStats = ({ teamId }) => {
         <li>
           <img src="/assets/media/profile/fire1.png" alt="" />
           <div className="two_value">
-            <span className="num">{stat.matchesPlayed}</span>
+            <span className="num">{stat?.matchesPlayed}</span>
             <span className="names">MATCHES PLAYED</span>
           </div>
         </li>
@@ -35,7 +35,7 @@ const TeamAllStats = ({ teamId }) => {
           <img src="/assets/media/profile/won.png" alt="" />
 
           <div className="two_value">
-            <span className="num">{stat.matchesWon}</span>
+            <span className="num">{stat?.matchesWon}</span>
             <span className="names">MATCHES WON</span>
           </div>
         </li>
@@ -43,21 +43,21 @@ const TeamAllStats = ({ teamId }) => {
           <img src="/assets/media/profile/cup.png" alt="" />
 
           <div className="two_value">
-            <span className="num">{stat.tournamentWon}</span>
+            <span className="num">{stat?.tournamentWon}</span>
             <span className="names">TROPHIES</span>
           </div>
         </li>
         <li>
           <img src="/assets/media/profile/money.png" alt="" />
           <div className="two_value">
-            <span className="num">{stat.earnings}</span>
+            <span className="num">{stat?.earnings}</span>
             <span className="names">EARNINGS</span>
           </div>
         </li>
         <li>
           <img src="/assets/media/profile/streak.png" alt="" />
           <div className="two_value">
-            <span className="num">{stat.tournamentPlayed}</span>
+            <span className="num">{stat?.tournamentPlayed}</span>
             <span className="names">TOURNAMENTS PLAYED</span>
           </div>
         </li>
