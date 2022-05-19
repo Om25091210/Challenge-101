@@ -46,13 +46,6 @@ const Game = ({ user, data }) => {
                   <div className="flag_tick_flow">
                     {' '}
                     <span className="game_name">{game?.name}</span>{' '}
-                    <div className="flag">
-                      {' '}
-                      <img
-                        src="/assets/media/profile/flag.png"
-                        alt="flag"
-                      />{' '}
-                    </div>
                     <div className="tick">
                       {' '}
                       <span className="active">

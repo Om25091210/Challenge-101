@@ -37,7 +37,7 @@ const TeamSquads = ({ squads, teamplayers, team, isTeamPlayer }) => {
                 </div>
                 <div className="squad_btn">
                   {' '}
-                  <span className="cuntry_name">INDIA</span>{' '}
+                  <span className="cuntry_name">{squad.location}</span>{' '}
                   <a href="#!" className="view">
                     VIEW TEAM{' '}
                     <i
