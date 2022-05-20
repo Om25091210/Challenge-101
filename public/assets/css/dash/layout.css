@@ -95,6 +95,10 @@ body {
 	font-size: 14px;
 	background:#f3f6f9;
 }
+
+.ml20{ margin-left: 20px;}
+.ml10{ margin-left: 10px;}
+
 .top_click {
 	display:none;
 }
@@ -1342,7 +1346,7 @@ ul.top_menu li.wallet li{     float: left;
 .reply_comment {
 	position: absolute;
 	right: 80px;
-	top: 10px;
+	top: 10px; background: none;
 }
 .delete_comment button, .reply_comment button, .delete_btn button {
 	padding: 4px 10px;
@@ -1885,14 +1889,14 @@ article .social_bar {
 }
 
 .online_icon {
-	background: #68e365;
-	position: absolute;
-	width: 0.75rem;
-	height: 0.75rem;
-	border-radius: 0.9375rem;
-	right: -0.0625rem;
-	bottom: 0rem;
-	border: 0.125rem solid #fff;
+    background: #07d7d7;
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    right: -8px;
+    bottom: 2rem;
+    border: 3px solid #000;
 }
 .ms-auto {
 	margin-left: auto !important;
@@ -2132,14 +2136,14 @@ article .social_bar {
 	width: 155px;
 	height: 155px;
 	border:5px solid #20202a;
-	border-radius: 5px;
+	border-radius: 20px;
 	left: 25px;
 }
 .profile_dp_box .profile_pic img {
 	object-fit: cover;
 	width: 145px;
 	height: 145px;
-	border-radius: 5px;
+	border-radius: 12px;
 }
 .profile_dp_box .profile_details {
 	float: left;
@@ -2221,7 +2225,7 @@ article .social_bar {
 	margin: 20px 15px
 }
 .profile_dp_box .bottom_details .current_team {
-	border-right:1px solid #ddd;
+	border-right:1px solid #36363e;
 	padding-right: 20px;
 }
 .profile_dp_box .bottom_details .ct {
@@ -2338,7 +2342,7 @@ article .social_bar {
 .bio_box .right_team_bio a{ width: 30px;}
 
 .game_btn {
-	background: #7239ea;
+	background: #262630;
 	border:0;
 	width: 100%;
 	font-size: 18px;
@@ -3307,7 +3311,7 @@ article .social_bar {
 	margin-right: 20px;
 }
 .team_filter .drop_downs .button-group {
-	flex: 0 0 15%;
+	/* flex: 0 0 15%; */
 	margin-bottom: 20px;
 	display: flex;
 	align-items: center;
@@ -3338,6 +3342,7 @@ article .social_bar {
 .team_filter .drop_downs .button-group .drop_name {
 	text-transform: uppercase;
 	font-size: 13px;
+
 }
 .filters {
 	display: flex;
@@ -3452,7 +3457,7 @@ article .social_bar {
 .team_row span.remarks h4 {
 	color: #7239ea;
 	font-size: 13px;
-	font-weight: 600;
+	font-weight: 600; margin-right: 10px;
 }
 .team_row span.remarks h4 b {
 	font-size:12px;
@@ -3567,7 +3572,7 @@ article .social_bar {
 	margin: 0 10px;
 }
 .drop_files {
-	padding: 20px 20px;
+	padding:10px 20px;
 	text-align: center;
 	border: 1px dotted #999;
 	border-radius: 5px;
@@ -3581,15 +3586,16 @@ article .social_bar {
 	align-items: center;
 }
 .drop_file_txt .or {
-	padding: 10px 0;
+	padding: 3px 0;
 	font-size: 15px;
 }
 .drop_file_txt .btn {
 	text-transform: capitalize;
 }
 .drop_files p {
-	font-size: 14px;
-	margin-top: 10px;
+	font-size: 12px;
+    margin-top: 5px;
+    line-height: 13px;
 }
 .overview_box {
 	float: left;
@@ -3670,7 +3676,7 @@ article .social_bar {
 	text-transform: capitalize;
 }
 .arena_team_row {
-	padding:70px 30px 70px 30px
+	padding:20px 30px 20px 30px
 }
 .arena_team_row h3 b {
 	display: block;
@@ -3687,6 +3693,9 @@ article .social_bar {
 	color: #7239ea;
 	font-weight: 600;
 }
+
+.team_row.arena_team_row .logo_box a{ display: flex; align-items: center;}
+
 /* -------------- Ranking page --------------- */
 
 .ranking_table {
@@ -5127,7 +5136,11 @@ article .social_bar {
 	background: #ddd;
 	text-align: center;
 	padding: 20px;
+	text-align: center; height: 90px;
 }
+
+.sponsers_box ul li .sponser_name img{ height: 50px; display: inline-block;}
+
 .sponsers_box .sponser_data {
 	padding: 40px 20px;
 	text-align: center;
@@ -7272,6 +7285,9 @@ form.common_form .btn{ width: 100%; margin-top: 20px;}
 .games_names .tit .fa{    background: #88878c; color: #000;
     padding: 2px;
     border-radius: 50%;}
+
+
+	
   
 /* ---------------------- Dark Themes----------------------------- */
 
@@ -7386,7 +7402,7 @@ body.DarkPage .post_comments .pop_comment, body.DarkPage .comments_point .create
 	background: #61616d;
 	color: #fff;
 }
-body.DarkPage .delete_comment, body.DarkPage .reply_comment, body.DarkPage .delete_btn {
+body.DarkPage .delete_comment,  body.DarkPage .delete_btn {
 	background: #000;
 	color: #fff;
 }
@@ -7503,8 +7519,7 @@ body.DarkPage .profile_tab_btn li.active a {
 body.DarkPage .profile_tab_btn.discover_tab_btn li.active a {
 	color: #fff;
 }
-body.DarkPage .prfoile_tab_data {
-}
+
 body.DarkPage .bio_box .left_bio .top_bio .socail a {
 	color: #fff;
 }
@@ -7515,7 +7530,7 @@ body.DarkPage .next_matches .bdr_clr_green {
 	background: #403351;
 }
 body.DarkPage .rigs li {
-	background: #202028;
+	background: #26292e;
 }
 body.DarkPage .video_box li {
 	background: #392d49;
@@ -7659,8 +7674,8 @@ body.DarkPage .bio_box .left_bio .bio_edit .fa, body.DarkPage .loc_box i{ color:
 
 body.DarkPage .features li .tit{ color: #fff;}
 
-body.DarkPage .table th, body.DarkPage .table td{  border-top: 1px solid #636363;}
-body.DarkPage .table thead th{border-bottom: 2px solid #636363;}
+body.DarkPage .table th, body.DarkPage .table td{  border-top: 0px solid #636363;}
+body.DarkPage .table thead th{border-bottom: 0px solid #636363;}
 body.DarkPage .rigs li .lft_prod_det .prod_name{ color: #62626e;}
 
 
@@ -7734,7 +7749,20 @@ body.DarkPage .write_post textarea::-webkit-input-placeholder {
 
 	body.DarkPage .discovery_page .tit span, body.DarkPage .discovery_page .tit i{background: #27272f; color: #fff;}
 
+	body.DarkPage  .team_filter .drop_downs .button-group .drop_name {color: #aaabb1;}
+	body.DarkPage .custom-checkbox .custom-control-label::before{ background: #525355; border: #525355 solid 1px;}
+	body.DarkPage .team_row .mores .fa-star-o{ color: #7239ea;}
+    body.DarkPage .team_overview .fa-star{ color: #7239ea;}
+	
 
+	body.DarkPage .sponsers_box ul li .sponser_name{ background: #0d0c12;}
+	body.DarkPage .sponsers_box .sponser_data {
+		background: #14141c;
+		height: 250px;
+		color: #6d6e74;
+	}
+
+/* ------------------------------ -- */
 .ring {
     position: absolute;
     left: 50%;

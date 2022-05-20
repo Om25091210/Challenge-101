@@ -200,7 +200,6 @@ const ProfileData = ({ user, Userdata, player, products }) => {
 
         <div className="tab hide" id="sponsors">
           <div className="sponsers_box">
-            <h1>sponser</h1>
             <ul>
               {Userdata.sponsors &&
                 Userdata.sponsors.map((item, index) => (

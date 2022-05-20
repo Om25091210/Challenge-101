@@ -104,7 +104,7 @@ const Coaches = ({ user, profile, myState }) => {
               </span>
               <div className="mores plateform">
                 <Rating value={coach.coaches.coach_rating} />
-                <span>
+                <span className="ml10">
                   {coach.coaches.attributes.platform === 'PC' ? (
                     <img src="/assets/media/discover/desk.png" alt="" />
                   ) : coach.coaches.attributes.platform === 'Console' ? (
@@ -115,7 +115,7 @@ const Coaches = ({ user, profile, myState }) => {
                     <p>No Platform mentioned</p>
                   )}
                 </span>
-                <span>
+                <span className="ml10">
                   <img src="/assets/media/discover/translator.png" alt="" />
                   {coach.coaches.attributes.language?.length > 0 ? (
                     <>

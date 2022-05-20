@@ -57,7 +57,6 @@ const TeamSponsors = ({ user, data, isTeamPlayer }) => {
   return (
     <div className="tab hide" id="sponsors">
       <div className="sponsers_box">
-        <h1>sponser</h1>
         <ul>
           {data.sponsors &&
             data.sponsors.map((item, index) => (

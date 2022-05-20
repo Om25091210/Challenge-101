@@ -241,7 +241,7 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
                     </>
                   )}
                 </span>{' '}
-                <span>
+                <span className="ml20">
                   <img src="/assets/media/discover/translator.png" alt="" />{' '}
                   {team.attributes?.language.length > 0 ? (
                     <>
@@ -399,7 +399,7 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
                     <p>No Platform mentioned</p>
                   )}
                 </span>{' '}
-                <span>
+                <span className="ml10">
                   {team.team.attributes.mic ? (
                     <>
                       <img src="/assets/media/discover/mice.png" alt="" />{' '}
@@ -413,7 +413,7 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
                     </>
                   )}
                 </span>{' '}
-                <span>
+                <span className="ml10">
                   <img src="/assets/media/discover/translator.png" alt="" />{' '}
                   {team.team.attributes?.language.length > 0 ? (
                     <>
