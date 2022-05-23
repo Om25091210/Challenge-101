@@ -301,7 +301,7 @@ ul.top_menu li a span.pop {
 	transition: 0.3s ease-in-out;
 }
 
-ul.top_menu li.chat_box a span.pop{right:-35px;}
+ul.top_menu li.chat_box a span.pop{right:-15px;}
 
 ul.top_menu li.noti a:hover span.pop {
 	top:3px
