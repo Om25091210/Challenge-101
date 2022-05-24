@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 
-const TeamStatDelete = ({ statData, isTeamPlayer }) => {
+const TeamStatDelete = ({ statData, isManager }) => {
   const router = useRouter();
   const deletehandleSubmit = async (e) => {
     e.preventDefault();
@@ -27,7 +27,7 @@ const TeamStatDelete = ({ statData, isTeamPlayer }) => {
   };
   return (
     <>
-      {isTeamPlayer ? (
+      {isManager ? (
         <button onClick={deletehandleSubmit} className="btn">
           Delete
         </button>

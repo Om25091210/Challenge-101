@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 import { teamsquadformvalidate } from '@utils/valid';
 import { useRouter } from 'next/router';
 
-const TeamSquadAdd = ({ teamplayers, team, isTeamPlayer }) => {
+const TeamSquadAdd = ({ teamplayers, team, isManager }) => {
   const [squadData, setSquadData] = useState({
     name: '',
     location: '',
@@ -72,8 +72,8 @@ const TeamSquadAdd = ({ teamplayers, team, isTeamPlayer }) => {
 
   return (
     <>
-      {/* isTeamPlayer */}
-      {isTeamPlayer ? (
+      {/* isManager */}
+      {isManager ? (
         <a href="#!" className="model_show_btn btn">
           Add Squad
         </a>

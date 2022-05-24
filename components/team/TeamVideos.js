@@ -8,7 +8,7 @@ import VideoDropzone from '@components/common/VideosDropzone';
 import { Video } from 'cloudinary-react';
 import VideosDelete from './VideosDelete';
 
-const TeamVideos = ({ user, team, isTeamPlayer }) => {
+const TeamVideos = ({ user, team, isManager }) => {
   const [videos, setVideos] = useState([]);
   const [videodisc, setVideodisc] = useState();
 
@@ -51,7 +51,7 @@ const TeamVideos = ({ user, team, isTeamPlayer }) => {
   return (
     <div className="video_box">
       <form onSubmit={handleSubmit}>
-        {isTeamPlayer ? <VideoDropzone setVideos={setVideos} /> : null}
+        {isManager ? <VideoDropzone setVideos={setVideos} /> : null}
 
         <p></p>
 

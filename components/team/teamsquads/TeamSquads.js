@@ -2,13 +2,13 @@ import TeamSquadAdd from './TeamSquadAdd';
 import TeamSquadDelete from './TeamSquadDelete';
 import TeamSquadEdit from './TeamSquadEdit';
 
-const TeamSquads = ({ squads, teamplayers, team, isTeamPlayer }) => {
+const TeamSquads = ({ squads, teamplayers, team, isManager }) => {
   return (
     <>
       <TeamSquadAdd
         teamplayers={teamplayers}
         team={team}
-        isTeamPlayer={isTeamPlayer}
+        isManager={isManager}
       />
       <div className="squads_box">
         <ul>
@@ -97,9 +97,9 @@ const TeamSquads = ({ squads, teamplayers, team, isTeamPlayer }) => {
                 <TeamSquadEdit
                   teamplayers={teamplayers}
                   squad={squad}
-                  isTeamPlayer={isTeamPlayer}
+                  isManager={isManager}
                 />
-                <TeamSquadDelete squad={squad} isTeamPlayer={isTeamPlayer} />
+                <TeamSquadDelete squad={squad} isManager={isManager} />
               </li>
             ))
           )}

@@ -9,7 +9,7 @@ import Moment from 'moment';
 import { useMutation } from 'react-query';
 import TeamFollow from './TeamFollow';
 
-const TeamProfileBox = ({ user, data, isTeamPlayer }) => {
+const TeamProfileBox = ({ user, data, isManager }) => {
   const [attr, setAttr] = useState(data.team.attributes);
   const router = useRouter();
   const refreshData = () => {
@@ -204,7 +204,7 @@ const TeamProfileBox = ({ user, data, isTeamPlayer }) => {
                   handleCoverSubmit(e);
                 }}
               />
-              {isTeamPlayer ? (
+              {isManager ? (
                 <label htmlFor="coverPhoto">
                   <span>
                     <i className="fa fa-camera" aria-hidden="true"></i> Upload
@@ -227,7 +227,7 @@ const TeamProfileBox = ({ user, data, isTeamPlayer }) => {
               src={data.team.imgUrl}
               alt=""
             />
-            {isTeamPlayer ? (
+            {isManager ? (
               <div className="edit_photo">
                 <label htmlFor="user-photo" className="edit_label">
                   <i className="fa fa-picture-o" aria-hidden="true"></i>
@@ -276,7 +276,7 @@ const TeamProfileBox = ({ user, data, isTeamPlayer }) => {
                 )}
               </span>
             </div>
-            {isTeamPlayer ? null : (
+            {isManager ? null : (
               <div className="button">
                 <a href="#" className="btn">
                   <TeamFollow team={data.team} user={user} />
@@ -289,7 +289,7 @@ const TeamProfileBox = ({ user, data, isTeamPlayer }) => {
             <span>
               <div className="loc_box">
                 {' '}
-                {isTeamPlayer ? (
+                {isManager ? (
                   <a href="#!" className="model_show_btn">
                     <button className="btn">
                       <i
@@ -447,7 +447,7 @@ const TeamProfileBox = ({ user, data, isTeamPlayer }) => {
             <span>
               <div className="loc_box">
                 {' '}
-                {isTeamPlayer ? (
+                {isManager ? (
                   <a href="#!" className="model_show_btn">
                     <button className="btn">
                       <i
@@ -523,7 +523,7 @@ const TeamProfileBox = ({ user, data, isTeamPlayer }) => {
             </div>
           </div>
 
-          {isTeamPlayer ? (
+          {isManager ? (
             <button className="bio_edit" onClick={toggleShowform}>
               <i className="fa fa-pencil" aria-hidden="true"></i>
             </button>
@@ -572,9 +572,9 @@ const TeamProfileBox = ({ user, data, isTeamPlayer }) => {
                     {empCoach.map((emply) => (
                       <span className="pos_name">
                         <span className="imgs">
-                          <img src={emply.employeeId.profilePicUrl} alt="" />
+                          <img src={emply.employeeId?.profilePicUrl} alt="" />
                         </span>
-                        {emply.employeeId.name}
+                        {emply.employeeId?.name}
                       </span>
                     ))}
                   </>
@@ -587,6 +587,22 @@ const TeamProfileBox = ({ user, data, isTeamPlayer }) => {
         </div>
 
         <div className="right_team_bio">
+          <div className="sponser">
+            <h5>SPONSORS</h5>
+
+            <ul>
+              {!data.sponsors || data.sponsors.length === 0 ? (
+                <p>No sponsors defined..</p>
+              ) : (
+                data.sponsors.map((item, index) => (
+                  <li key={index}>
+                    <img src={item.imgUrl} alt="" />{' '}
+                  </li>
+                ))
+              )}
+            </ul>
+          </div>
+
           <div className="team_pos">
             <ul>
               <h5 className="position">ARENAS:</h5>
@@ -598,22 +614,6 @@ const TeamProfileBox = ({ user, data, isTeamPlayer }) => {
                     <span className="pos_name">
                       <img src={item.logoUrl} alt="" /> {item.name}
                     </span>
-                  </li>
-                ))
-              )}
-            </ul>
-          </div>
-
-          <div className="sponser">
-            <h5>SPONSORS</h5>
-
-            <ul>
-              {!data.sponsors || data.sponsors.length === 0 ? (
-                <p>No sponsors defined..</p>
-              ) : (
-                data.sponsors.map((item, index) => (
-                  <li key={index}>
-                    <img src={item.imgUrl} alt="" />{' '}
                   </li>
                 ))
               )}

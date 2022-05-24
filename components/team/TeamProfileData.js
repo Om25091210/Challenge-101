@@ -18,7 +18,7 @@ import TeamMatches from '@components/tournament/TeamMatches';
 import TeamJobs from './TeamJobs';
 import TeamJoines from './TeamJoines';
 
-const TeamProfileData = ({ user, data, products, isTeamPlayer, profile }) => {
+const TeamProfileData = ({ user, data, products, isManager, profile }) => {
   const [jobs, setJobs] = useState([]);
   const [teamposts, setTeamPosts] = useState([]);
   const [tournamentStatData, setTournamentStatData] = useState([]);
@@ -51,7 +51,7 @@ const TeamProfileData = ({ user, data, products, isTeamPlayer, profile }) => {
   let Filteredteamposts = teamposts.filter((teampost) => {
     return teampost.post_type === 'Team' && teampost.username === data.name;
   });
-
+  console.log(data.squads);
   return (
     <>
       <div className="prfoile_tab_data white_bg">
@@ -220,7 +220,7 @@ const TeamProfileData = ({ user, data, products, isTeamPlayer, profile }) => {
             squads={data.squads}
             teamplayers={data.players}
             team={data.team}
-            isTeamPlayer={isTeamPlayer}
+            isManager={isManager}
           />
         </div>
         <div className="tab hide" id="achievement">
@@ -308,35 +308,27 @@ const TeamProfileData = ({ user, data, products, isTeamPlayer, profile }) => {
         <div className="tab hide" id="stats">
           <TeamStatistics
             tournamentStatData={tournamentStatData}
-            isTeamPlayer={isTeamPlayer}
+            isManager={isManager}
           />
         </div>
 
         <ProductList user={user} productList={products} />
 
         <div className="tab hide" id="photos">
-          <TeamPhotos
-            user={user}
-            team={data.team}
-            isTeamPlayer={isTeamPlayer}
-          />
+          <TeamPhotos user={user} team={data.team} isManager={isManager} />
         </div>
 
         <div className="tab hide" id="media">
-          <TeamVideos
-            user={user}
-            team={data.team}
-            isTeamPlayer={isTeamPlayer}
-          />
+          <TeamVideos user={user} team={data.team} isManager={isManager} />
         </div>
 
         <div className="tab hide" id="jobs">
-          <TeamJobs jobs={jobs} team={data.team} isTeamPlayer={isTeamPlayer} />
+          <TeamJobs jobs={jobs} team={data.team} isManager={isManager} />
         </div>
 
-        <TeamAbout tmdata={data.team} isTeamPlayer={isTeamPlayer} />
+        <TeamAbout tmdata={data.team} isManager={isManager} />
 
-        <TeamSponsors data={data} user={user} isTeamPlayer={isTeamPlayer} />
+        <TeamSponsors data={data} user={user} isManager={isManager} />
 
         <div className="tab hide" id="rigs">
           <div className="rigs">

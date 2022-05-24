@@ -5,10 +5,10 @@ import cookie from 'js-cookie';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 
-const TeamAboutEdit = ({ employeeData, team, isTeamPlayer }) => {
+const TeamAboutEdit = ({ employeeData, team, isManager }) => {
   const [aboutData, setAboutData] = useState({
-    username: employeeData.employeeId.name,
-    employeeId: employeeData.employeeId._id,
+    username: employeeData.employeeId?.name,
+    employeeId: employeeData.employeeId?._id,
     value: employeeData.role
   });
   const [teamroles, setTeamRoles] = useState([]);
@@ -63,7 +63,7 @@ const TeamAboutEdit = ({ employeeData, team, isTeamPlayer }) => {
   }, []);
   return (
     <div>
-      {isTeamPlayer ? (
+      {isManager ? (
         <a href="#!" className="model_show_btn btn">
           Edit
         </a>

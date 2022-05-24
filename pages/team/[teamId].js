@@ -21,6 +21,12 @@ const Team = ({ user, data, products, profile, teams }) => {
       return tem._id === profileId;
     }).length > 0;
 
+  const isManager =
+    data.team.employees.filter(
+      (emp) => emp.role === 'Manager' && emp.employeeId._id === user._id
+    ).length > 0;
+  console.log(isManager);
+
   if (data) {
     return (
       <>
@@ -34,7 +40,7 @@ const Team = ({ user, data, products, profile, teams }) => {
           <TeamProfileBox
             user={user}
             data={data}
-            isTeamPlayer={isTeamPlayer}
+            isManager={isManager}
             teams={teams}
           />
 
@@ -44,7 +50,7 @@ const Team = ({ user, data, products, profile, teams }) => {
             user={user}
             data={data}
             products={products}
-            isTeamPlayer={isTeamPlayer}
+            isManager={isManager}
             profile={profile}
           />
         </div>

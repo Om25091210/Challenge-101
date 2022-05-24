@@ -7,7 +7,7 @@ import TeamAboutEdit from './TeamAboutEdit';
 import { toast } from 'react-toastify';
 import cookie from 'js-cookie';
 
-const TeamAbout = ({ tmdata, isTeamPlayer }) => {
+const TeamAbout = ({ tmdata, isManager }) => {
   const [searchText, setSearchText] = useState('');
   const [results, setResults] = useState({
     employee: '',
@@ -120,9 +120,11 @@ const TeamAbout = ({ tmdata, isTeamPlayer }) => {
         <div className="about_team">
           <div className="about">
             <h2>OUR TEAM</h2>
-            <button className="bio_edit" onClick={toggleShowform}>
-              <i className="fa fa-pencil" aria-hidden="true"></i>
-            </button>
+            {isManager ? (
+              <button className="bio_edit" onClick={toggleShowform}>
+                <i className="fa fa-pencil" aria-hidden="true"></i>
+              </button>
+            ) : null}
 
             {!showform ? (
               <p> {tmdata.about ? tmdata.about.description : ''} </p>
@@ -147,7 +149,7 @@ const TeamAbout = ({ tmdata, isTeamPlayer }) => {
             <div className="loc_box">
               {' '}
               <a href="#!" className="model_show_btn">
-                {isTeamPlayer ? (
+                {isManager ? (
                   <button className="btn">
                     <i
                       aria-hidden="true"
@@ -266,11 +268,11 @@ const TeamAbout = ({ tmdata, isTeamPlayer }) => {
                 <li key={idx}>
                   <div className="dp">
                     {' '}
-                    <img src={emp.employeeId.profilePicUrl} alt="" />{' '}
+                    <img src={emp.employeeId?.profilePicUrl} alt="" />{' '}
                   </div>
                   <h3>{emp.role.toUpperCase()}</h3>
-                  <h4>{emp.employeeId.name} </h4>
-                  {isTeamPlayer ? (
+                  <h4>{emp.employeeId?.name} </h4>
+                  {isManager ? (
                     <button
                       className="btn"
                       onClick={() => handleDelete(emp._id)}
@@ -281,7 +283,7 @@ const TeamAbout = ({ tmdata, isTeamPlayer }) => {
                   <TeamAboutEdit
                     employeeData={emp}
                     team={tmdata}
-                    isTeamPlayer={isTeamPlayer}
+                    isManager={isManager}
                   />
                 </li>
               ))

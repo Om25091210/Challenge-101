@@ -4,7 +4,7 @@ import TeamStatAdd from './TeamStatAdd';
 import TeamStatDelete from './TeamStatDelete';
 import TeamStatEdit from './TeamStatEdit';
 
-const TeamStatistics = ({ tournamentStatData, isTeamPlayer }) => {
+const TeamStatistics = ({ tournamentStatData, isManager }) => {
   const [showform, setShowForm] = useState(false);
   const [editContactId, setEditContactId] = useState(null);
 
@@ -25,7 +25,7 @@ const TeamStatistics = ({ tournamentStatData, isTeamPlayer }) => {
     <div className="all_stat">
       <div className="tournament_table">
         <h2>all time stats</h2>
-        {isTeamPlayer ? (
+        {isManager ? (
           <button onClick={toggleShowform} className="btn">
             Add Data
           </button>
@@ -41,7 +41,7 @@ const TeamStatistics = ({ tournamentStatData, isTeamPlayer }) => {
                 <th scope="col">loss</th>
                 <th scope="col">win%</th>
                 <th scope="col">w strk</th>
-                {isTeamPlayer ? <th>Actions</th> : null}
+                {isManager ? <th>Actions</th> : null}
               </tr>
             </thead>
 
@@ -61,7 +61,7 @@ const TeamStatistics = ({ tournamentStatData, isTeamPlayer }) => {
                       <td>{(tsd.wins / tsd.mp).toFixed(2)}</td>
                       <td>{tsd.w_streak}</td>
                       <td>
-                        {isTeamPlayer ? (
+                        {isManager ? (
                           <button
                             onClick={(e) => handleEdit(e, tsd)}
                             className="btn"
@@ -69,10 +69,7 @@ const TeamStatistics = ({ tournamentStatData, isTeamPlayer }) => {
                             Edit
                           </button>
                         ) : null}
-                        <TeamStatDelete
-                          statData={tsd}
-                          isTeamPlayer={isTeamPlayer}
-                        />
+                        <TeamStatDelete statData={tsd} isManager={isManager} />
                       </td>
                     </tr>
                   )}

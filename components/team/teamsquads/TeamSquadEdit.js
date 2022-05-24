@@ -6,11 +6,11 @@ import { toast } from 'react-toastify';
 import { teamsquadformvalidate } from '@utils/valid';
 import { useRouter } from 'next/router';
 
-const TeamSquadEdit = ({ teamplayers, squad, isTeamPlayer }) => {
+const TeamSquadEdit = ({ teamplayers, squad, isManager }) => {
   const [editSquadData, setEditSquadData] = useState({
     name: squad.name,
     location: squad.location,
-    players: squad.players,
+    players: squad.players.map((plr) => plr.playerId),
     imgUrl: '/assets/media/default/tournament.jpg'
   });
   const [formErrors, setFormErrors] = useState({});
@@ -58,7 +58,6 @@ const TeamSquadEdit = ({ teamplayers, squad, isTeamPlayer }) => {
       try {
         await axios.patch(`${baseURL}/api/squads/${squad._id}`, editSquadData, {
           headers: {
-            Authorization: cookie.get('token'),
             'Content-Type': 'application/json'
           }
         });
@@ -75,7 +74,7 @@ const TeamSquadEdit = ({ teamplayers, squad, isTeamPlayer }) => {
   };
   return (
     <div>
-      {isTeamPlayer ? (
+      {isManager ? (
         <a href="#!" className="model_show_btn btn">
           <i className="fa fa-pencil" aria-hidden="true"></i>
         </a>
