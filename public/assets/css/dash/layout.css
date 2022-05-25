@@ -922,7 +922,7 @@ ul.top_menu li.wallet li{     float: left;
 .post .left_details {
 	float:left;
 	width:70px;
-	height:375px;
+	height:260px;
 	display:flex;
 	justify-content:center;
 	align-items:center;
@@ -935,11 +935,18 @@ ul.top_menu li.wallet li{     float: left;
 	flex-direction:column;
 	align-items:center;
 	color:#000;
-	margin:20px 0;
+	margin:10px 0;
 }
 .post .left_details a i {
-	font-size:25px;
+	font-size:25px; color: #abadc4;
 }
+
+.post .left_details a:first-child i{  font-size: 18px;
+    background: #abadc2;
+    color: #202028;
+    padding: 7px;
+    border-radius: 50%;}
+
 .post .right_details {
 	float:right;
 	width:calc(100% - 95px);
@@ -2063,7 +2070,7 @@ article .social_bar {
 .profile_box .profile_cover_photo {
 	position: absolute;
 	width: 100%;
-	height: 425px;
+	height: 437px;
 	left: 0;
 	overflow: hidden;
 	top:0;
@@ -2161,7 +2168,7 @@ article .social_bar {
 }
 .profile_dp_box .top_details .name_box .game_name {
 	font-size: 27px;
-	font-weight: 600;
+	font-weight: 600; margin-right: 10px;
 }
 .profile_dp_box .top_details .name_box .name {
 	font-size: 17px;
@@ -2253,6 +2260,20 @@ article .social_bar {
 	font-weight: 500;
 	text-transform: uppercase;
 }
+
+.bottom_details .games_btn_thumb {
+    display: flex;
+    float: right;
+    width: 300px;
+    flex-direction: column;
+}
+
+.bottom_details.games_bottom{ display: block;}
+.bottom_details .games_btn_thumb .btn{ background: #242430; margin-top: 10px;}
+.bottom_details .games_btn_thumb span{ color: #5f5f6c; font-size: 12px; margin-left: 5px;}
+.bottom_details .games_btn_thumb i{ color: #f04f48; margin-right: 5px;}
+.bottom_details .team_rank_box{ display: flex; width: 100%; justify-content: end;     align-items: center;}
+
 .bio_box {
 	float: left;
 	width: 100%;
@@ -2272,6 +2293,7 @@ article .social_bar {
 	display: flex;
 	margin-bottom: 20px;
 	align-items: center;
+	margin-top: 15px;
 }
 .bio_box .left_bio .top_bio h3 {
 	font-weight: 600;
@@ -2658,17 +2680,15 @@ article .social_bar {
 .sponser ul {
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
-	padding: 20px;
+	justify-content:flex-start;
+	padding: 20px 0;
 	border-radius: 5px;
 }
 .sponser ul li {
-	flex: 0 0 20%;
+	flex: 0 0 15%;
 	margin-right: 5px;
-	border: 1px solid #ddd;
 	height: 50px;
-	background: #ddd;
-	padding: 10px;
+	padding: 5px;
 	text-align: center;
 }
 .sponser ul li img {
@@ -3416,6 +3436,7 @@ article .social_bar {
 	height: 25px;
 }
 
+.team_row .logo_box.jobs_img{ width: 200px;}
 .team_row .logo_box.jobs_img a{ text-align: center; }
 .team_row .logo_box.jobs_img img{ height: 50px; display: inline-block;}
 
@@ -3465,6 +3486,8 @@ article .social_bar {
 	color: #000;
 	font-weight: 400;
 }
+.team_row .remarks.role_remk{ display: block;}
+
 .team_row .mores {
 	display: flex;
 	width: auto;
@@ -3696,6 +3719,8 @@ article .social_bar {
 
 .team_row.arena_team_row .logo_box a{ display: flex; align-items: center;}
 
+.team_row.arena_team_row .mores.jobss b{ color: #3b799b;}
+
 /* -------------- Ranking page --------------- */
 
 .ranking_table {
@@ -3911,7 +3936,7 @@ article .social_bar {
 	align-items: center;
 }
 .top_game, .bottom_game .games h3 {
-	font-size: 15px; text-transform: capitalize;
+	font-size: 15px; text-transform: capitalize; margin-right: 10px;
 }
 .top_game, .bottom_game .game_logo {
 	display: flex;
@@ -3919,6 +3944,8 @@ article .social_bar {
 	align-items: center;
 	margin-right: 10px; font-size: 12px;
 }
+
+
 
 .top_game, .bottom_game .game_logo b{ font-size: 11px; font-weight: 400;}
 
@@ -3936,6 +3963,10 @@ article .social_bar {
 }
 
 .prize span{ font-size: 15px;}
+
+.prize.leagues h3{ width: auto; font-size: 14px;}
+.prize.leagues span{ font-size: 12px;}
+.prize.leagues{ display: flex; flex-direction: column;}
 /* ---------- arena ------------------- */
 
 .game_bio .loc {
@@ -4356,6 +4387,13 @@ article .social_bar {
 }
 
 .profile_dp_box .profile_pic:hover .edit_photo{ opacity: 1; z-index: 10;}
+
+.report{position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 12px;
+    color: #fff;
+    z-index: 9;}
 
 .edit_photo .edit_label {
     box-shadow: 0px 0px 4px #000;
@@ -5758,7 +5796,7 @@ main {
 	text-transform: uppercase;
 }
 .tournament_dp_box .flag_tick_flow {
-	display: flex;
+	display: flex; align-items: center;
 }
 .tournament_dp_box .flag_tick_flow .tick{ margin-right: 5px;}
 .tournament_dp_box .profile_dp_box .top_details {

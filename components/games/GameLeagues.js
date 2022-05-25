@@ -68,9 +68,9 @@ const GameLeagues = ({ user, game }) => {
                     <b>{game.name}</b>
                   </div>
                 </div>
-                <div className="prize">
+                <div className="prize leagues">
                   <h3>PRIZE POOL:</h3>
-                  Rs. 45,00,000
+                  <span> Rs. 45,00,000</span>
                 </div>
               </div>
             </div>

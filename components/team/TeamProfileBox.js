@@ -182,8 +182,14 @@ const TeamProfileBox = ({ user, data, isManager }) => {
     .filter((x) => x.role === 'Coach');
 
   return (
-    <div className="profile_box">
+    <div className="profile_box team_profile_box">
       <div className="profile_cover_photo">
+        <div className="report">
+          <a href="">
+            <i class="fa fa-flag" aria-hidden="true"></i> Report Team
+          </a>
+        </div>
+
         <form onSubmit={handleCoverSubmit}>
           <img
             className="rounded-full h-full w-full object-cover"
@@ -477,7 +483,7 @@ const TeamProfileBox = ({ user, data, isManager }) => {
             </span>
           </div>
           <div className="bottom_details team_details">
-            <div className="current_status">
+            <div className="team_rank_box">
               <h5>RANKING</h5>
 
               {!data.team.ranks || data.team.ranks.length === 0 ? (

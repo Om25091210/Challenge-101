@@ -101,22 +101,25 @@ const Jobs = ({ user, profile, myState }) => {
           jobs.map((job, idx) => (
             <div className="team_row arena_team_row" key={idx}>
               <div className="inner_team">
+                <div className="mores jobss">
+                  <h3> {job.position}</h3>
+
+                  <p>
+                    <b>EXPERIENCE:</b> {job.experience} years
+                  </p>
+                  <p>
+                    <b> LOCATION:</b> {job.location}
+                  </p>
+
+                  <p>
+                    <b>Salery:</b> Not Disclosed
+                  </p>
+                </div>
                 <div className="logo_box jobs_img">
                   <a href={`jobs/${job._id}`}>
                     <img src={job.job_by?.imgUrl} alt="" />
                     <h3>{job.job_by ? job.job_by.name : 'Not Defined'}</h3>
                   </a>
-                </div>
-                <div className="mores">
-                  <p>
-                    <b>POSITION:</b> {job.position}
-                  </p>
-                  <p>
-                    <b>EXPERIENCE:</b> {job.experience}
-                  </p>
-                  <p>
-                    <b> LOCATION:</b> {job.location}
-                  </p>
                 </div>
                 <FileDropzone setFiles={setFiles} />
                 {files.map((file, idx) => (

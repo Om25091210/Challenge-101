@@ -378,12 +378,12 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
                   </span>
                 </>
               )}
-              <span className="remarks">
+              <span className="remarks role_remk">
                 <h4>ROLE:</h4>
                 {team.team.attributes.roles.length > 0 ? (
                   <p>{team.team.attributes.roles}</p>
                 ) : (
-                  'No Role Specified'
+                  <p>No Role Specified</p>
                 )}
               </span>
               <div className="mores plateform">

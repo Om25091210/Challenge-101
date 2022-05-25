@@ -65,16 +65,17 @@ const Game = ({ user, data }) => {
                 </div>
               </div>
             </div>
-            <div class="bottom_details">
-              <div class="two_btns">
+            <div class="bottom_details games_bottom">
+              <div class="games_btn_thumb">
                 <a href="#" className="btn">
                   {' '}
-                  <i className="fa fa-steam"></i> Download at Steam{' '}
-                  <span>free</span>
+                  <i class="fa fa-steam-square" aria-hidden="true"></i> Download
+                  at Steam <span>free</span>
                 </a>
                 <a href="#" className="btn">
                   {' '}
-                  PS Store <span>free</span>
+                  <i class="fa fa-cloud-download" aria-hidden="true"></i> PS
+                  Store <span>free</span>
                 </a>
               </div>
             </div>
@@ -310,9 +311,9 @@ const Game = ({ user, data }) => {
                       <img src="/assets/media/category/game3.png" alt="" /> CSGO
                     </div>
                   </div>
-                  <div className="prize">
+                  <div className="prize leagues">
                     <h3>PRIZE POOL:</h3>
-                    Rs. 45,00,000
+                    <span>Rs. 45,00,000</span>
                   </div>
                 </div>
               </div>
