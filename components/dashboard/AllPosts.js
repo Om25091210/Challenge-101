@@ -59,15 +59,19 @@ const AllPosts = ({ post, user, profiledata }) => {
           </div>
           <div className="user_name_disc">
             <div className="title_follow">
-              <a href={`user/${post.user?._id}`}>
-                {post.game_tag === '' ? (
+              {post.game_tag === '' ? (
+                <a href={`user/${post.user?._id}`}>
                   <h4>{post.username}</h4>
-                ) : (
-                  <h4>
-                    {post.username} is playing {post.game_tag}
-                  </h4>
-                )}
-              </a>
+                </a>
+              ) : (
+                <h4>
+                  <a href={`user/${post.user?._id}`}>{post.username}</a>
+                  is playing
+                  <a href={`games/${post.game_tag?.gameId}`}>
+                    {post.game_tag?.name}
+                  </a>
+                </h4>
+              )}
               {isLoggedInUser === false ? (
                 <button
                   className="btn"

@@ -57,7 +57,8 @@ const SignedMainContent = ({ posts, user }) => {
     formdata.append('profilepic', profilepic);
     formdata.append('username', username);
     formdata.append('postType', postType);
-    formdata.append('gameTag', gameTag);
+    formdata.append('gameTagName', gameTag.name);
+    formdata.append('gameTagId', gameTag._id);
 
     //    for (const key of Object.keys(images)) {
     //      formdata.append('images', images[key]);
@@ -368,7 +369,7 @@ const SignedMainContent = ({ posts, user }) => {
                             <img
                               src={game.imgUrl}
                               alt={game.name}
-                              onClick={() => selectgameTag(game.name)}
+                              onClick={() => selectgameTag(game)}
                             />
                           </a>
                         </div>
