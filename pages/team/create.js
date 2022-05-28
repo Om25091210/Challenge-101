@@ -17,6 +17,7 @@ import { useMutation } from 'react-query';
 import cookie from 'js-cookie';
 import { teamformvalidate } from '@utils/valid';
 import countryList from 'react-select-country-list';
+import { useRouter } from 'next/router';
 
 const CreateTeam = ({ user }) => {
   const showSecond = true;
@@ -31,6 +32,7 @@ const CreateTeam = ({ user }) => {
   const [showbtn, setShowbtn] = useState(true);
   const [formErrors, setFormErrors] = useState({});
   const options = useMemo(() => countryList().getData(), []);
+  const router = useRouter();
 
   const [state, setState] = useState({
     name: '',
@@ -85,6 +87,7 @@ const CreateTeam = ({ user }) => {
       try {
         await mutation.mutateAsync(formdata);
         toast.success('Your Team has been successfully created! ');
+        router.push('/discover');
       } catch (err) {
         toast.error(err.response?.data?.msg || 'Please recheck your inputs');
       }
@@ -237,7 +240,7 @@ const CreateTeam = ({ user }) => {
                     </div>
                     <div className="form-group">
                       <label htmlFor="exampleFormControlTextarea1">
-                        Website
+                        Website (Optional)
                       </label>
                       <input
                         type="text"
@@ -248,7 +251,7 @@ const CreateTeam = ({ user }) => {
                         onChange={handleChange}
                         value={state.website}
                       />
-                      <p>{formErrors.website}</p>
+                      {/* <p>{formErrors.website}</p> */}
                     </div>
                     <div className="form-group">
                       <div className="colm">
@@ -268,7 +271,7 @@ const CreateTeam = ({ user }) => {
                       </div>
                       <div className="colm">
                         <label htmlFor="exampleFormControlInput1">
-                          Achievements
+                          Achievements (Optional)
                         </label>
                         <input
                           type="text"
@@ -279,10 +282,12 @@ const CreateTeam = ({ user }) => {
                           onChange={handleChange}
                           value={state.achievements}
                         />
-                        <p>{formErrors.achievements}</p>
+                        {/* <p>{formErrors.achievements}</p> */}
                       </div>
                       <div className="colm">
-                        <label htmlFor="exampleFormControlInput1">Rigs</label>
+                        <label htmlFor="exampleFormControlInput1">
+                          Rigs (Optional)
+                        </label>
                         <select
                           className="form-control"
                           multiple={true}
@@ -297,11 +302,11 @@ const CreateTeam = ({ user }) => {
                           <option>Ghaphics Card</option>
                           <option>Processor</option>
                         </select>
-                        <p>{formErrors.rigs}</p>
+                        {/* <p>{formErrors.rigs}</p> */}
                       </div>
                       <div className="colm">
                         <label htmlFor="exampleFormControlInput1">
-                          Sponsors
+                          Sponsors (Optional)
                         </label>
                         <select
                           className="form-control"
@@ -317,10 +322,12 @@ const CreateTeam = ({ user }) => {
                             </option>
                           ))}
                         </select>
-                        <p>{formErrors.sponsor}</p>
+                        {/* <p>{formErrors.sponsor}</p> */}
                       </div>
                       <div className="colm">
-                        <label htmlFor="exampleFormControlInput1">Arena</label>
+                        <label htmlFor="exampleFormControlInput1">
+                          Arena (Optional)
+                        </label>
                         <select
                           className="form-control"
                           name="arena"
@@ -335,10 +342,12 @@ const CreateTeam = ({ user }) => {
                             </option>
                           ))}
                         </select>
-                        <p>{formErrors.arena}</p>
+                        {/* <p>{formErrors.arena}</p> */}
                       </div>
                       <div className="colm">
-                        <label htmlFor="exampleFormControlInput1">Team</label>
+                        <label htmlFor="exampleFormControlInput1">
+                          Team (Optional)
+                        </label>
                         <select
                           className="form-control"
                           name="role"
@@ -350,11 +359,11 @@ const CreateTeam = ({ user }) => {
                           <option>Coach</option>
                           <option>CEO</option>
                         </select>
-                        <p>{formErrors.role}</p>
+                        {/* <p>{formErrors.role}</p> */}
                       </div>
                       <div className="colm">
                         <label htmlFor="exampleFormControlInput1">
-                          Social Links
+                          Social Links (Optional)
                         </label>
                         <input
                           type="text"
@@ -364,19 +373,7 @@ const CreateTeam = ({ user }) => {
                           onChange={handleChange}
                           value={state.sociallink}
                         />
-                        <p>{formErrors.sociallink}</p>
-                      </div>
-                      <div className="colm">
-                        <label htmlFor="exampleFormControlInput1">
-                          Let your fans know{' '}
-                        </label>
-                        <div className="socail">
-                          {' '}
-                          <a href="#" className="fa fa-facebook"></a>
-                          <a href="#" className="fa fa-twitter"></a>
-                          <a href="#" className="fa fa-google"></a>
-                          <a href="#" className="fa fa-linkedin"></a>{' '}
-                        </div>
+                        {/* <p>{formErrors.sociallink}</p> */}
                       </div>
                     </div>
                     <input

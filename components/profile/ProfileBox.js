@@ -228,7 +228,8 @@ const ProfileBox = ({ user, Userdata, games }) => {
       attr.platform === '' ||
       attr.language === '' ||
       attr.paid === '' ||
-      attr.mic === ''
+      attr.mic === '' ||
+      attr.streamer === ''
     ) {
       toast.warning('Please enter all fields or check your inputs');
     } else {
@@ -608,6 +609,22 @@ const ProfileBox = ({ user, Userdata, games }) => {
                           <option value="Hindi">Hindi</option>
                           <option value="Telagu">Telagu</option>
                           <option value="Tamil">Tamil</option>
+                        </select>
+                      </div>
+                      <div className="colm">
+                        <label htmlFor="exampleFormControlInput1">
+                          Streamer
+                        </label>
+                        <select
+                          id="streamer"
+                          name="streamer"
+                          onChange={handleChangeAttr}
+                          value={attr?.streamer}
+                          className="form-control"
+                        >
+                          <option value="--">--</option>
+                          <option value={true}>Streamer</option>
+                          <option value={false}>Not Streamer</option>
                         </select>
                       </div>
 

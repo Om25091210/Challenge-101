@@ -3,6 +3,7 @@ import baseURL from '../../utils/baseURL';
 import SignedHeader from '@components/SignedHeader';
 import LeftNav from '@components/LeftNav';
 import AllScript from '../AllScript';
+import { MPNumberFormat } from '@utils/helpers';
 
 const Job = ({ data, user }) => {
   return (
@@ -22,7 +23,7 @@ const Job = ({ data, user }) => {
             <div className="job_profile1">
               <span>
                 <i class="fa fa-briefcase" aria-hidden="true"></i> :{' '}
-                {data.experience} Years
+                {data?.experience_start} - {data?.experience_end} Years
               </span>
               <span>
                 <i class="fa fa-map-marker" aria-hidden="true"></i>{' '}
@@ -30,8 +31,19 @@ const Job = ({ data, user }) => {
                   <b>{loc}</b>
                 ))}
               </span>
-              <span>
-                <i class="fa fa-money" aria-hidden="true"></i> Not Disclosed
+              <i class="fa fa-money" aria-hidden="true"></i>
+              <span className="">
+                <MPNumberFormat
+                  value={
+                    data.salary_start ? data.salary_start : 'Not Disclosed'
+                  }
+                  currency={data.currency}
+                />
+                -
+                <MPNumberFormat
+                  value={data.salary_end ? data.salary_end : 'Not Disclosed'}
+                  currency={data.currency}
+                />
               </span>
               <span>
                 {' '}
@@ -42,69 +54,19 @@ const Job = ({ data, user }) => {
               </span>
             </div>
 
-            <p className="emp_type">Employment Type : Full Time, Permanent</p>
+            <p className="emp_type">Employment Type : {data.employment_type}</p>
 
             <h2>Job Description</h2>
 
-            <ul>
-              <li>
-                {' '}
-                Contribute to implementing highly efficient applications, with
-                focus on code quality and performance.
-              </li>
-              <li>
-                {' '}
-                Implement quality code with focus on reusability and good code
-                coverage.
-              </li>
-              <li> Be a part of Agile teams and help deliver sprint goals.</li>
-              <li>
-                {' '}
-                Collaborating with scrum masters and project managers to
-                identify and mitigate risks, issues, as well as to find
-                innovative ways to improve the application development.
-              </li>
-              <li> Embrace emerging technologies and solutions to ensure ou</li>
-            </ul>
+            <ul>{data?.job_description}</ul>
 
             <h2>Desired Candidate Profile</h2>
 
-            <ul>
-              <li> 4-9 years of experience in UI/frontend development.</li>
-              <li>
-                {' '}
-                Sound knowledge of front-end development languages, tools and
-                methodologies HTML5, CSS3, JavaScript and associated
-                technologies and toolsets (e.g. jQuery, Sass)
-              </li>
-              <li>
-                {' '}
-                Hands-on experience of using a front-end development framework,
-                such as <strong>Angular, React or Vue</strong>. Our preference
-                is Angular, but experience in any of them is a plus.
-              </li>
-              <li>
-                {' '}
-                Able to write front-end code that is cross-browser and
-                cross-device friendly, through responsive or adaptive techniques
-                is essential.
-              </li>
-              <li> Delivery of small complete changes at high cadence.</li>
-              <li>
-                {' '}
-                Experience using Continuous Integration (CI) / Continuous
-                Delivery (CD) systems for development and deployment.
-              </li>
-              <li> Proven knowledge of Behavioral Driven Development (BDD).</li>
-              <li> Proven knowledge of Test Driven Development (TDD).</li>
-            </ul>
+            {data?.candidate_profile}
 
             <h2>Education</h2>
 
-            <div class="details">
-              <label>UG :</label>
-              <span class="">B.Tech/B.E. in Any Specialization</span>
-            </div>
+            <div class="details">{data?.education}</div>
           </div>
 
           <div className="right_job">

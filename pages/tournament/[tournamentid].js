@@ -25,6 +25,7 @@ import Matches from '@components/team/Matches';
 import TournamentSponsor from '@components/tournament/TournamentSponsor';
 import Moment from 'moment';
 import { toast } from 'react-toastify';
+import TournamentFollow from '../../components/tournament/TournamentFollow';
 
 const TournamentDetail = ({ user, data, products }) => {
   if (data) {
@@ -157,7 +158,10 @@ const TournamentDetail = ({ user, data, products }) => {
                         {isUser ? null : (
                           <div className="button">
                             <a href="#" className="btn">
-                              FOLLOW
+                              <TournamentFollow
+                                tournament={data.tournament}
+                                user={user}
+                              />
                             </a>
                           </div>
                         )}
@@ -196,6 +200,7 @@ const TournamentDetail = ({ user, data, products }) => {
                           </span>
                         ) : null}
                       </div>
+                      <p> {data.tournament?.followers.length} Followers</p>
                       <span className="name loc_date">
                         <i className="fa fa-map-marker"></i> Indoor Stadium,{' '}
                         {data.tournament.location}{' '}

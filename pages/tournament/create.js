@@ -17,6 +17,7 @@ import { toast } from 'react-toastify';
 import { useMutation } from 'react-query';
 import cookie from 'js-cookie';
 import { tournamentformvalidate } from '@utils/valid';
+import Router from 'next/router';
 
 const CreateTournament = ({ user }) => {
   const showSecond = true;
@@ -97,6 +98,7 @@ const CreateTournament = ({ user }) => {
         ).then((data) => data.json());
 
         toast.success('Your Tournament has been successfully created!! ');
+        Router.push('/tournament');
       } catch (err) {
         toast.error(err.response?.data?.msg || 'Please recheck your inputs');
       }
@@ -340,30 +342,18 @@ const CreateTournament = ({ user }) => {
                         Tournament Format
                       </label>
                       <div className="btn_selection">
-                        <button
-                          type="button"
-                          className="btn btn-primary btn-lg"
+                        <select
+                          name="format"
+                          onChange={handleChange}
+                          value={state.format}
                         >
-                          Solo{' '}
-                          <input
-                            type="hidden"
-                            name="format"
-                            value="Solo"
-                            onChange={handleChange}
-                          />
-                        </button>
-                        <button
-                          type="button"
-                          className="btn btn-secondary btn-lg"
-                        >
-                          Teams{' '}
-                          <input
-                            type="hidden"
-                            name="format"
-                            value="Teams"
-                            onChange={handleChange}
-                          />
-                        </button>
+                          <option value="--">--</option>
+                          <option value="1v1">1 v 1</option>
+                          <option value="2v2">2 v 2</option>
+                          <option value="4v4">4 v 4</option>
+                          <option value="5v5">5 v 5</option>
+                          <option value="8v8">8 v 8</option>
+                        </select>
                       </div>
                     </div>
                   </>
@@ -461,7 +451,9 @@ const CreateTournament = ({ user }) => {
                     </div>
                     <div className="form-group">
                       <div className="colm">
-                        <label for="exampleFormControlInput1">Sponsors</label>
+                        <label for="exampleFormControlInput1">
+                          Sponsors (Optional)
+                        </label>
 
                         <select
                           className="game_search_result"
@@ -477,11 +469,12 @@ const CreateTournament = ({ user }) => {
                             </option>
                           ))}
                         </select>
-                        <p>{formErrors.sponsor}</p>
                       </div>
 
                       <div className="colm">
-                        <label for="exampleFormControlInput1">Organizer</label>
+                        <label for="exampleFormControlInput1">
+                          Organizer (Optional)
+                        </label>
 
                         <select
                           className="game_search_result"
@@ -497,7 +490,6 @@ const CreateTournament = ({ user }) => {
                             </option>
                           ))}
                         </select>
-                        <p>{formErrors.organizer}</p>
                       </div>
 
                       <div className="colm">
@@ -515,7 +507,7 @@ const CreateTournament = ({ user }) => {
 
                       <div className="colm">
                         <label for="exampleFormControlInput1">
-                          Add Cohosts
+                          Add Cohosts (Optional)
                         </label>
                         <input
                           type="text"
@@ -542,7 +534,9 @@ const CreateTournament = ({ user }) => {
                         <p>{formErrors.description}</p>
                       </div>
                       <div className="colm">
-                        <label for="exampleFormControlInput1">Tickets</label>
+                        <label for="exampleFormControlInput1">
+                          Tickets (Optional)
+                        </label>
                         <input
                           type="number"
                           name="tickets"
@@ -553,7 +547,9 @@ const CreateTournament = ({ user }) => {
                         />
                       </div>
                       <div className="colm">
-                        <label for="exampleFormControlInput1">Website</label>
+                        <label for="exampleFormControlInput1">
+                          Website (Optional)
+                        </label>
                         <input
                           type="text"
                           name="website"
@@ -562,11 +558,10 @@ const CreateTournament = ({ user }) => {
                           onChange={handleChange}
                           value={state.website}
                         />
-                        <p>{formErrors.website}</p>
                       </div>
                       <div className="colm">
                         <label for="exampleFormControlInput1">
-                          Social Links
+                          Social Links (Optional)
                         </label>
                         <input
                           type="text"
@@ -576,19 +571,6 @@ const CreateTournament = ({ user }) => {
                           onChange={handleChange}
                           value={state.sociallink}
                         />
-                        <p>{formErrors.sociallink}</p>
-                      </div>
-                      <div className="colm">
-                        <label for="exampleFormControlInput1">
-                          Let your fans know{' '}
-                        </label>
-                        <div className="socail">
-                          {' '}
-                          <a href="#" className="fa fa-facebook"></a>
-                          <a href="#" className="fa fa-twitter"></a>
-                          <a href="#" className="fa fa-google"></a>
-                          <a href="#" className="fa fa-linkedin"></a>{' '}
-                        </div>
                       </div>
                     </div>
                     <input

@@ -105,14 +105,16 @@ const Jobs = ({ user, profile, myState }) => {
                   <h3> {job.position}</h3>
 
                   <p>
-                    <b>EXPERIENCE:</b> {job.experience} years
+                    <b>EXPERIENCE:</b> {job?.experience_start} -{' '}
+                    {job?.experience_end} years
                   </p>
                   <p>
                     <b> LOCATION:</b> {job.location}
                   </p>
 
                   <p>
-                    <b>Salery:</b> Not Disclosed
+                    <b>Salery:</b> {job?.currency} {job?.salary_start} -{' '}
+                    {job?.currency} {job?.salary_end}
                   </p>
                 </div>
                 <div className="logo_box jobs_img">

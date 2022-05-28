@@ -8,6 +8,7 @@ import {
 import cookie from 'js-cookie';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import { toast } from 'react-toastify';
 
 const queryClient = new QueryClient();
 
@@ -41,6 +42,7 @@ const Post_share = ({ postId, isShared }) => {
         Authorization: cookie.get('token')
       }
     });
+    toast.success('Shared in your timeline successfully');
   };
 
   const { mutate } = useMutation(addingShare);

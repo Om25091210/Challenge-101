@@ -51,7 +51,7 @@ const TeamProfileData = ({ user, data, products, isManager, profile }) => {
   let Filteredteamposts = teamposts.filter((teampost) => {
     return teampost.post_type === 'Team' && teampost.username === data.name;
   });
-  console.log(data.squads);
+
   return (
     <>
       <div className="prfoile_tab_data white_bg">
