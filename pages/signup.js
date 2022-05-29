@@ -180,6 +180,7 @@ const Signup = ({ games, avatars }) => {
     setOpen(!open);
   };
 
+  // const [step1, setStep1] = useState(true);
   const [step1, setStep1] = useState(true);
   const [showbtn, setShowbtn] = useState(true);
 
@@ -203,6 +204,19 @@ const Signup = ({ games, avatars }) => {
     setShowbtn(true);
   };
 
+  useEffect(() => {
+    $('a.model_show_btn').click(function () {
+      $(this).next().addClass('show_model');
+    });
+
+    $('a.model_close').click(function () {
+      $(this).parent().removeClass('show_model');
+    });
+
+    $('.msScroll_all').mCustomScrollbar({
+      autoHideScrollbar: true
+    });
+  }, []);
   return (
     <>
       <main id="kt_body" className="bg-body">
@@ -484,7 +498,7 @@ const Signup = ({ games, avatars }) => {
                   </div>
 
                   <div className="right_game_form">
-                    <h2>Put your game face on</h2>
+                    <h1>Put your game face on</h1>
                     <h4>Upload a picture or choose on avatar</h4>
 
                     <div className="gamer_photo">
@@ -508,9 +522,9 @@ const Signup = ({ games, avatars }) => {
                               <span>
                                 {' '}
                                 <i
-                                  className="fa fa-camera"
+                                  class="fa fa-cloud-upload"
                                   aria-hidden="true"
-                                ></i>{' '}
+                                ></i>
                                 Upload
                               </span>
                             </label>
@@ -565,6 +579,52 @@ const Signup = ({ games, avatars }) => {
                             </li>
                           ))}
                       </ul>
+
+                      <a href="#!" className="model_show_btn">
+                        More Games
+                      </a>
+                      <div className="common_model_box" id="more_games">
+                        <a href="#!" className="model_close">
+                          X
+                        </a>
+
+                        <div className="inner_model_box">
+                          <h3>More Games</h3>
+                          <div className="poup_height msScroll_all">
+                            <ul>
+                              {games &&
+                                games.map((game) => (
+                                  <li>
+                                    <a
+                                      href="#!"
+                                      onClick={() => handleSelectGame(game)}
+                                    >
+                                      <img src={game.imgUrl} alt={game.name} />
+                                    </a>
+                                    <div
+                                      className="hovers"
+                                      style={{ display: showIgn }}
+                                    >
+                                      <span>
+                                        <i
+                                          className="fa fa-check"
+                                          aria-hidden="true"
+                                        ></i>
+                                      </span>
+                                      <input
+                                        type="text"
+                                        name="userign"
+                                        onChange={handleUserign}
+                                        value={userign}
+                                      />
+                                    </div>
+                                  </li>
+                                ))}
+                            </ul>
+                          </div>
+                        </div>
+                        <div className="overlay"></div>
+                      </div>
                     </div>
 
                     <div className="fv-row mb-7">

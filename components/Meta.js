@@ -69,6 +69,12 @@ const Meta = () => (
       href="/assets/css/commerce/products_manager.css"
       type="text/css"
     />
+
+    <link
+      href="/assets/css/dash/jquery.mCustomScrollbar.css"
+      rel="stylesheet"
+      type="text/css"
+    />
   </Head>
 );
 

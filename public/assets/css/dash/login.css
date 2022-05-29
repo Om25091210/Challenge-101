@@ -70,41 +70,55 @@ display: flex; align-items: center; justify-content: center; position: relative;
 .left_game{ float: left; width: 40%; height: 100vh;}
 .left_game img{ width: 100%; object-fit: cover; height: 100%;}
 
-.right_game_form {float: right;width: 60%;background: #15202b;padding: 0 5%;height: 100vh;display: flex;color: #fff;flex-direction: column;justify-content: center;}
-.right_game_form h2{ color: #fff; text-align: left; font-size: 15px; }
-.right_game_form h4{ color: #15629c; text-align: left;}
+.right_game_form {float: right;width: 60%;background: #15202b;padding: 0 5%;/*height: 100vh;*/display: flex;color: #fff;flex-direction: column;justify-content: center;}
+.right_game_form h1{ color: #fff; text-align: left; font-size: 18px; }
+.right_game_form h2{ color: #fff; text-align: left; font-size: 18px; }
+.right_game_form h4{ color: #80aaae; font-size: 16px; text-align: left; padding-top: 5px;}
 .right_game_form label{ color: #fff !important}
-.right_game_form .gamer_photo{ display: flex; width: 100%; align-items: center;}
+.right_game_form .gamer_photo{ display: flex; width: 100%; align-items: center; margin-top: 30px;}
 .right_game_form .gamer_photo .gamer_dp{ width:140px; height: 140px; background: #ddd; border-radius: 5px; flex-shrink: 0; overflow: hidden;}
 .right_game_form .gamer_photo .gamer_dp img{ width: 100%; height: 100%; object-fit: cover;}
 .right_game_form .gamer_photo ul{ display: flex; flex-wrap: wrap; margin-left: 20px;}
-.right_game_form .gamer_photo ul li{ flex:0 0 9%; margin: 10px; border-radius: 5px; overflow: hidden; border:2px solid #15202b}
+.right_game_form .gamer_photo ul li{ flex:0 0 10%; margin: 6px; border-radius: 5px; overflow: hidden; border:2px solid #15202b}
 .right_game_form .gamer_photo ul li.uploads {
-    background: #ddd;
+    background: #1b2737;
     text-align: center;
     display: flex;
     align-items: center;
+    color: #fff !important;
+    border: 0 !important;
+    padding: 7px; border: 1px solid #1e3145; cursor: pointer;
 }
 
-.right_game_form .gamer_photo ul li.active{ border:2px solid #fff;     box-shadow: 0px 0px 10px blue;}
+.right_game_form .gamer_photo ul li.uploads span{ color: #596a7d;}
+.right_game_form .gamer_photo ul li.uploads .fa{ color: #596a7d;}
+
+.right_game_form .gamer_photo ul li.active{ border:2px solid #fff;    }
 
 .right_game_form .gamer_photo ul li img{ width: 100%; height: 60px; object-position: center; object-fit: cover;}
 .right_game_form .pick_game{ margin: 20px 0;}
-.right_game_form .pick_game ul{ display: flex; flex-wrap: wrap; margin-top: 20px;     height: 170px; overflow-y: auto;}
+.right_game_form .pick_game ul{ display: flex; flex-wrap: wrap; margin-top: 20px;}
 
-.right_game_form .pick_game ul li{ flex:0 0 20%; margin-right: 20px; overflow: hidden; margin-bottom: 10px; border-radius: 5px; background: #fff; position: relative; height:130px;}
-.right_game_form .pick_game ul li .hovers {position: absolute;top: 50%; transform: translateY(-50%);height: 50px;text-align: center;width: 100%;height: 100%;background: rgba(0,0,0,0.5);display: flex;justify-content: center;align-items: center;flex-flow: column;opacity: 0;z-index: -1; transition: 0.3s ease-in-out;}
+.right_game_form .pick_game ul li{ flex:0 0 20%; margin-right: 20px; overflow: hidden; margin-bottom: 10px; border-radius: 5px; background: #fff; position: relative; height:180px;}
+.right_game_form .pick_game ul li .hovers {position: absolute;top: 50%; transform: translateY(-50%);height: 50px;text-align: center;width: 100%;height: 104%;background: rgba(0,0,0,0.7);display: flex;justify-content: center;align-items: center;flex-flow: column;opacity: 0;z-index: -1; transition: 0.3s ease-in-out;}
 .right_game_form .pick_game ul li .hovers span{ display: block;}
 .right_game_form .pick_game ul li img {
-    height: 110px;
+    height: 170px;
     width: 100%;
     object-fit: contain;
     transition: 0.3s ease-in-out;
     object-position: center;
 }
 .right_game_form .pick_game ul li:hover img{ margin-top: -10px; height: 110px; }
-.right_game_form .pick_game ul li:hover .hovers{ margin-top: -10px;opacity: 1; z-index: 1;}
-.right_game_form .pick_game ul li:hover input{ color: #000;}
+.right_game_form .pick_game ul li:hover .hovers{ margin-top:0;opacity: 1; z-index: 1;}
+.right_game_form .pick_game ul li:hover input {
+    color: #fff;
+    width: 80%;
+    border-radius: 5px;
+    border: 1px solid #36588d; background: #262645;
+}
+
+
 
 
 #react-select-3-listbox{ color: #000;}
@@ -319,6 +333,18 @@ display: flex; align-items: center; justify-content: center; position: relative;
 	overflow:hidden;
 	box-shadow: 2px 0px 10px #b9b2b2;
 }
+
+.inner_model_box h3 {
+	font-size: 20px;
+	color: #19191d;
+	display: block;
+	font-weight: 600;
+	margin-bottom: 20px;
+	text-align: center;
+	text-transform: uppercase;
+	border-bottom: 1px solid #ddd;
+	padding-bottom: 10px
+}
 .common_model_box .model_close {
 	position: absolute;
 	right: -33px;
@@ -328,4 +354,31 @@ display: flex; align-items: center; justify-content: center; position: relative;
 	font-weight: 600;
 	background: #7239ea;
 	padding: 5px 10px 5px 10px;
+}
+
+.poup_height {
+	float: left;
+	width: 100%;
+	padding: 20px 0;
+	height: 450px;
+}
+
+#more_games {
+	float: left;
+	width:800px;
+}
+#more_games h3 {
+	text-align: center;
+}
+#more_games ul li {
+	float: left;
+	width: 18%;
+	margin-right: 5%;
+	margin-bottom: 20px;
+	background: #ddd;
+	border: 1px solid #999;
+	padding: 0;
+	box-shadow: 2px 4px 10px #eee;
+	border-radius: 5px;
+	overflow: hidden;
 }
