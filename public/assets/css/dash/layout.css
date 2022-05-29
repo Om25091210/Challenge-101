@@ -5817,11 +5817,15 @@ main {
 }
 /* -------------- Create team form --------------------- */
 
+
+
+
 .create_main_middle {
 	width: 80%;
 	margin: 150px 0 0 0;
 	float: right;
 }
+
 
 .create_form_box{ display: flex; justify-content: space-between; flex-wrap:wrap}
 .create_form_box h1{ font-size: 25px;}
@@ -5862,7 +5866,7 @@ main {
 .create_tournament h2 {
 	text-transform: uppercase;
 	padding: 20px 0;
-	color: #7239ea;
+	color: #1da1f2;
 }
 .create_tournament .rgtside {
 	float: right;
@@ -5872,6 +5876,7 @@ main {
 	text-transform: capitalize;
 	font-weight: 600;
 	padding-bottom: 10px;
+	display: block;
 }
 .create_tournament form input {
 	height: 45px;
@@ -5922,28 +5927,58 @@ main {
 ul.game_search_result {
 	float: left;
 	width: 100%;
-	display: flex;
 	margin: 30px 0;
 }
 ul.game_search_result li {
-	width: 80px;
-	height: 120px;
-	border: 1px solid #ddd;
-	text-align: center;
-	align-items: center;
-	align-content: center;
-	vertical-align: middle;
-	display: flex;
-	justify-content: center;
-	margin-right: 10px;
+    float: left;
+    width: 12%;
+    margin-bottom: 20px;
+    /* border: 1px solid #fff; */
+    margin-right: 3%; position: relative;
 }
+
+ul.game_search_result li:after{ display: none; content: ""; position: absolute; width: 100%; height: 100%; top:0; left: 0; background: rgba(0,0,0,0.5);}
+ul.game_search_result li:hover:after{ display: block;}
+
+.create_bg .game_search_input{ width:350px;}
+.create_bg .create_form_box input[type="submit"] {
+    border: 0;
+    background: url(/assets/media/search-icon.png) 0 7px no-repeat !important;
+    height: 30px;
+    width: 20px;
+    position: absolute;
+    left: 318px;
+    top: 40px;
+    cursor: pointer;
+    transition: 0.3s ease-out;
+}
+.create_bg .create_form_box input[type="submit"]:hover {
+	background-position:0 -20px;
+}
+.create_bg .create_form_box input[type="submit"]:focus {
+	outline:0;
+}
+
+.create_bg .type_btn {
+    width: 30%;
+    background: #222f41;
+    border: 1px solid #344860;
+    height: 45px;
+    border-radius: 5px;
+    margin-right: 3%;
+}
+
+.create_bg .type_btn:hover{background: #1da1f2;}
+
+.create_bg .type_btn.active{ background: #1da1f2;}
+
 .prize_box {
 	display: flex;
 	align-items: center;
 }
 .prize_box a {
 	display: inline-block;
-	border: 1px solid #ddd;
+	
 	margin-right: 10px;
 	padding: 5px;
 }
@@ -7595,9 +7630,14 @@ body.DarkPage .post_comments p {
 body.DarkPage .features li {
 	background: #1c1f24;
 }
-body.DarkPage .create_tournament {
-	background: #2b2b35;
+body.DarkPage .create_bg {
+	background: #1b2737; padding: 0;
 }
+
+body.DarkPage .create_bg input{ background: #222f41 !important; border-radius: 5px; border:1px solid #344860; color: #fff;}
+
+body.DarkPage .create_bg .style_file_upload .inputfile + label{border-radius: 5px; border:1px solid #344860;}
+
 body.DarkPage .communities li .bottom_data {
 	color: #fff;
 }

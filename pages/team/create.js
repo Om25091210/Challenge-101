@@ -130,7 +130,7 @@ const CreateTeam = ({ user }) => {
       <SignedHeader user={user} />
       <LeftNav user={user} />
       <div className="main_middle create_main_middle">
-        <div className="white_bg">
+        <div className="white_bg create_bg">
           <div className="create_form_box">
             <div className="left_create_form">
               <img src="/assets/media/create_left_img.jpg" />
@@ -148,6 +148,93 @@ const CreateTeam = ({ user }) => {
                 {!step1 ? (
                   <>
                     <h2>Step1</h2>
+
+                    <div className="form-group">
+                      <label htmlFor="exampleFormControlInput1">Type</label>
+
+                      <button className="type_btn">Ladder</button>
+                      <button className="type_btn">Competition</button>
+                      <button className="type_btn active">Tournament</button>
+                    </div>
+                    <div className="form-group">
+                      <label htmlFor="exampleFormControlInput1">Games</label>
+                      <input
+                        type="search"
+                        className="form-control game_search_input"
+                        placeholder="Search here for games"
+                        name="name"
+                        onChange={handleChange}
+                        value={state.name}
+                      />
+                      <input type="submit" value="" />
+
+                      <ul className="game_search_result">
+                        <li>
+                          {' '}
+                          <img src="/assets/media/signup/1.png" alt="" />
+                        </li>
+                        <li>
+                          {' '}
+                          <img src="/assets/media/signup/2.png" alt="" />
+                        </li>
+                        <li>
+                          {' '}
+                          <img src="/assets/media/signup/3.png" alt="" />
+                        </li>
+                        <li>
+                          {' '}
+                          <img src="/assets/media/signup/4.png" alt="" />
+                        </li>
+                        <li>
+                          {' '}
+                          <img src="/assets/media/signup/5.png" alt="" />
+                        </li>
+                        <li>
+                          {' '}
+                          <img src="/assets/media/signup/6.png" alt="" />
+                        </li>
+                        <li>
+                          {' '}
+                          <img src="/assets/media/signup/7.png" alt="" />
+                        </li>
+                        <li>
+                          {' '}
+                          <img src="/assets/media/signup/8.png" alt="" />
+                        </li>
+                        <li>
+                          {' '}
+                          <img src="/assets/media/signup/9.png" alt="" />
+                        </li>
+                        <li>
+                          {' '}
+                          <img src="/assets/media/signup/10.png" alt="" />
+                        </li>
+                        <li>
+                          {' '}
+                          <img src="/assets/media/signup/11.png" alt="" />
+                        </li>
+                        <li>
+                          {' '}
+                          <img src="/assets/media/signup/8.png" alt="" />
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div className="form-group">
+                      <label htmlFor="exampleFormControlInput1"> Prizes</label>
+
+                      <div className="prize_box">
+                        <a href="">
+                          <img src="/assets/media/signup/8.png" alt="" />
+                        </a>{' '}
+                        <input
+                          type="text"
+                          className="game_search_input"
+                          value=""
+                        />
+                      </div>
+                    </div>
+
                     <div className="form-group">
                       <label htmlFor="exampleFormControlInput1">
                         Team Name
