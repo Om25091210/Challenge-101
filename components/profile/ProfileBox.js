@@ -394,7 +394,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
           </form>
         </div>
         )
-        <div className="edit_phone ">
+        {/* <div className="edit_phone ">
           <div className="">
             {isLoggedInUser ? (
               <>
@@ -441,7 +441,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
               </>
             ) : null}
           </div>
-        </div>
+        </div> */}
         {isLoggedInUser ? (
           <>
             {deleteModal && (
@@ -465,7 +465,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
             )}
           </>
         ) : null}
-        {isLoggedInUser ? (
+        {/* {isLoggedInUser ? (
           <div className="edit_add ">
             <div className="">
               {' '}
@@ -636,7 +636,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
               </div>
             </div>
           </div>
-        ) : null}
+        ) : null} */}
         <div className="profile_dp_box">
           <div className="profile_pic">
             <form onSubmit={handleSubmit}>
@@ -948,98 +948,72 @@ const ProfileBox = ({ user, Userdata, games }) => {
             ) : null}
 
             <div className="discovery_page">
-              <div className="white_bg">
-                <h2>GAMES</h2>
+              {isLoggedInUser ? (
+                <div className="white_bg">
+                  <h2>GAMES</h2>
 
-                <div className="tit">
-                  <a href="#!" className="model_show_btn">
-                    <span>
-                      <b className="icon">
-                        <img src="/assets/media/ranking/console.png" alt="" />
-                      </b>{' '}
-                      Browse Games
-                    </span>
-                    <i className="fa fa-angle-right" aria-hidden="true"></i>
+                  <div className="tit">
+                    <a href="#!" className="model_show_btn">
+                      <span>
+                        <b className="icon">
+                          <img src="/assets/media/ranking/console.png" alt="" />
+                        </b>{' '}
+                        Browse Games
+                      </span>
+                      <i className="fa fa-angle-right" aria-hidden="true"></i>
 
-                    <div className="hover_games">
-                      <div className="other_logo">
-                        <img
-                          src={selectedGame ? selectedGame.imgUrl : ''}
-                          alt={selectedGame ? selectedGame.name : ''}
-                        />
-                      </div>
-                    </div>
-                  </a>
-
-                  <div className="common_model_box" id="more_games">
-                    <a href="#!" className="model_close">
-                      X
-                    </a>
-                    <div className="inner_model_box">
-                      <h3>Games</h3>
-
-                      <div className="team_search ign_search">
-                        <div className="searchbox">
-                          <h3>Search </h3>
-
-                          <form
-                            className=""
-                            noValidate="novalidate"
-                            onSubmit={handleSearchSubmit}
-                          >
-                            <input
-                              id="search"
-                              name="search"
-                              className=""
-                              placeholder="Search your player name or user IGN..."
-                              type="search"
-                              value={search}
-                              onChange={handleSearchChange}
-                              autoComplete="off"
-                            />
-                            <input
-                              type="text"
-                              className="form-control"
-                              placeholder="User IGN"
-                              name="userIgn"
-                              onChange={handleUserIgnChange}
-                              value={userIgn}
-                            />
-                            <input type="submit" value="" />
-                          </form>
+                      <div className="hover_games">
+                        <div className="other_logo">
+                          <img
+                            src={selectedGame ? selectedGame.imgUrl : ''}
+                            alt={selectedGame ? selectedGame.name : ''}
+                          />
                         </div>
                       </div>
+                    </a>
 
-                      <ul className="">
-                        {players &&
-                          players.map((player, idx) => (
-                            <li key={idx}>
-                              <div className="game_pic">
-                                <a
-                                  href="#!"
-                                  onClick={() => handleSelectGame(game)}
-                                >
-                                  {' '}
-                                  <img
-                                    src={player.imgUrl}
-                                    alt={player.name}
-                                  />{' '}
-                                </a>
-                              </div>
-                              <p>{player.name}</p>
-                            </li>
-                          ))}
-                      </ul>
+                    <div className="common_model_box" id="more_games">
+                      <a href="#!" className="model_close">
+                        X
+                      </a>
+                      <div className="inner_model_box">
+                        <h3>Games</h3>
 
-                      <div className="form-group" style={{ display: showIgn }}>
-                        <label htmlFor="exampleFormControlInput1">
-                          Please enter your in game name (IGN)
-                        </label>
-                      </div>
-                      <div className="poup_height msScroll_all">
+                        <div className="team_search ign_search">
+                          <div className="searchbox">
+                            <h3>Search </h3>
+
+                            <form
+                              className=""
+                              noValidate="novalidate"
+                              onSubmit={handleSearchSubmit}
+                            >
+                              <input
+                                id="search"
+                                name="search"
+                                className=""
+                                placeholder="Search your player name or user IGN..."
+                                type="search"
+                                value={search}
+                                onChange={handleSearchChange}
+                                autoComplete="off"
+                              />
+                              <input
+                                type="text"
+                                className="form-control"
+                                placeholder="User IGN"
+                                name="userIgn"
+                                onChange={handleUserIgnChange}
+                                value={userIgn}
+                              />
+                              <input type="submit" value="" />
+                            </form>
+                          </div>
+                        </div>
+
                         <ul className="">
-                          {games &&
-                            games.map((game, idx) => (
+                          {players &&
+                            players.map((player, idx) => (
                               <li key={idx}>
                                 <div className="game_pic">
                                   <a
@@ -1048,21 +1022,52 @@ const ProfileBox = ({ user, Userdata, games }) => {
                                   >
                                     {' '}
                                     <img
-                                      src={game.imgUrl}
-                                      alt={game.name}
+                                      src={player.imgUrl}
+                                      alt={player.name}
                                     />{' '}
                                   </a>
                                 </div>
-                                <p>{game.name}</p>
+                                <p>{player.name}</p>
                               </li>
                             ))}
                         </ul>
+
+                        <div
+                          className="form-group"
+                          style={{ display: showIgn }}
+                        >
+                          <label htmlFor="exampleFormControlInput1">
+                            Please enter your in game name (IGN)
+                          </label>
+                        </div>
+                        <div className="poup_height msScroll_all">
+                          <ul className="">
+                            {games &&
+                              games.map((game, idx) => (
+                                <li key={idx}>
+                                  <div className="game_pic">
+                                    <a
+                                      href="#!"
+                                      onClick={() => handleSelectGame(game)}
+                                    >
+                                      {' '}
+                                      <img
+                                        src={game.imgUrl}
+                                        alt={game.name}
+                                      />{' '}
+                                    </a>
+                                  </div>
+                                  <p>{game.name}</p>
+                                </li>
+                              ))}
+                          </ul>
+                        </div>
                       </div>
+                      <div className="overlay"></div>
                     </div>
-                    <div className="overlay"></div>
                   </div>
                 </div>
-              </div>
+              ) : null}
             </div>
           </div>
 

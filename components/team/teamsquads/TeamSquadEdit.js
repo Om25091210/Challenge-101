@@ -1,24 +1,32 @@
 import baseURL from '@utils/baseURL';
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import cookie from 'js-cookie';
 import { toast } from 'react-toastify';
 import { teamsquadformvalidate } from '@utils/valid';
+import countryList from 'react-select-country-list';
 import { useRouter } from 'next/router';
 
 const TeamSquadEdit = ({ teamplayers, squad, isManager }) => {
   const [editSquadData, setEditSquadData] = useState({
-    name: squad.name,
-    location: squad.location,
-    players: squad.players.map((plr) => plr.playerId),
-    imgUrl: '/assets/media/default/tournament.jpg'
+    game: squad.game?._id,
+    country: squad.country,
+    players: squad.players.map((plr) => plr.playerId)
   });
+  console.log(editSquadData);
   const [formErrors, setFormErrors] = useState({});
   const router = useRouter();
+  const options = useMemo(() => countryList().getData(), []);
+  const [games, setGames] = useState([]);
 
   const refreshData = () => {
     router.replace(router.asPath);
   };
+
+  useEffect(() => {
+    //Games
+    axios.get(`${baseURL}/api/all/games`).then((res) => setGames(res.data));
+  }, []);
 
   useEffect(() => {
     $('a.model_show_btn').click(function () {
@@ -88,29 +96,37 @@ const TeamSquadEdit = ({ teamplayers, squad, isManager }) => {
           <h3>Edit A Squad</h3>
 
           <form className="common_form" onSubmit={handleEditStat}>
-            <input
-              type="text"
-              placeholder="Enter Name"
-              name="name"
-              value={editSquadData.name}
-              onChange={onChange}
-            ></input>
-            <p>{formErrors.name}</p>
-            <input
-              type="file"
-              name="imgUrl"
-              id="imgUrl"
-              className="inputfile"
-              onChange={onChange}
-            />
-            <input
-              type="text"
-              placeholder="Enter Location"
-              name="location"
-              value={editSquadData.location}
-              onChange={onChange}
-            ></input>
-            <p>{formErrors.location}</p>
+            <div className="colm rows">
+              <select
+                className="form-control text-capitalize"
+                multiple={false}
+                name="game"
+                id="game"
+                value={editSquadData.game}
+                onChange={onChange}
+              >
+                {games.map((game, idx) => (
+                  <option key={idx} value={game._id}>
+                    {game.name}
+                  </option>
+                ))}
+              </select>
+              <p>{formErrors.game}</p>
+            </div>
+            <div className="colm rows">
+              <select
+                name="country"
+                value={editSquadData.country}
+                id=""
+                onChange={onChange}
+              >
+                {options.map((opt) => (
+                  <>
+                    <option value={opt.value}>{opt.label}</option>
+                  </>
+                ))}
+              </select>
+            </div>
             <select
               className="custom-select text-capitalize"
               multiple={true}

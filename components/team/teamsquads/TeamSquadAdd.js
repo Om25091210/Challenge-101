@@ -1,26 +1,33 @@
 import baseURL from '@utils/baseURL';
 import axios from 'axios';
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import cookie from 'js-cookie';
 import { toast } from 'react-toastify';
 import { teamsquadformvalidate } from '@utils/valid';
 import { useRouter } from 'next/router';
+import countryList from 'react-select-country-list';
 
 const TeamSquadAdd = ({ teamplayers, team, isManager }) => {
   const [squadData, setSquadData] = useState({
-    name: '',
-    location: '',
-    players: '',
-    imgUrl: '/assets/media/default/tournament.jpg',
-    teamId: team._id
+    game: '',
+    teamId: team._id,
+    country: '',
+    players: ''
   });
   const [formErrors, setFormErrors] = useState({});
   const router = useRouter();
+  const options = useMemo(() => countryList().getData(), []);
+  const [games, setGames] = useState([]);
 
   const refreshData = () => {
     router.replace(router.asPath);
   };
+
+  useEffect(() => {
+    //Games
+    axios.get(`${baseURL}/api/all/games`).then((res) => setGames(res.data));
+  }, []);
 
   const handleEditStat = async (e) => {
     e.preventDefault();
@@ -88,33 +95,30 @@ const TeamSquadAdd = ({ teamplayers, team, isManager }) => {
 
           <form className="common_form" onSubmit={handleEditStat}>
             <div className="colm rows">
-              <input
-                type="text"
-                placeholder="Enter Name"
-                name="name"
-                value={squadData.name}
+              <select
+                className="form-control text-capitalize"
+                multiple={false}
+                name="game"
+                value={squadData.game}
                 onChange={onChange}
-              ></input>
-              <p>{formErrors.name}</p>
+              >
+                {games.map((game, idx) => (
+                  <option key={idx} value={game._id}>
+                    {' '}
+                    {game.name}{' '}
+                  </option>
+                ))}
+              </select>
+              <p>{formErrors.game}</p>
             </div>
             <div className="colm rows">
-              <input
-                type="file"
-                name="imgUrl"
-                id="imgUrl"
-                // className="inputfile"
-                onChange={onChange}
-              />
-            </div>
-            <div className="colm rows">
-              <input
-                type="text"
-                placeholder="Enter Location"
-                name="location"
-                value={squadData.location}
-                onChange={onChange}
-              ></input>
-              <p>{formErrors.location}</p>
+              <select name="country" id="" onChange={onChange}>
+                {options.map((opt) => (
+                  <>
+                    <option value={opt.value}>{opt.label}</option>
+                  </>
+                ))}
+              </select>
             </div>
             <div className="colm rows">
               <select

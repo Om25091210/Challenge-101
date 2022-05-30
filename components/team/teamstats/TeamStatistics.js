@@ -25,11 +25,11 @@ const TeamStatistics = ({ tournamentStatData, isManager }) => {
     <div className="all_stat">
       <div className="tournament_table">
         <h2>all time stats</h2>
-        {isManager ? (
+        {/* {isManager ? (
           <button onClick={toggleShowform} className="btn">
             Add Data
           </button>
-        ) : null}
+        ) : null} */}
         <form onSubmit={(e) => e.preventDefault()}>
           <table className="table">
             <thead className="thead-light">
@@ -41,7 +41,7 @@ const TeamStatistics = ({ tournamentStatData, isManager }) => {
                 <th scope="col">loss</th>
                 <th scope="col">win%</th>
                 <th scope="col">w strk</th>
-                {isManager ? <th>Actions</th> : null}
+                {/* {isManager ? <th>Actions</th> : null} */}
               </tr>
             </thead>
 
@@ -61,15 +61,15 @@ const TeamStatistics = ({ tournamentStatData, isManager }) => {
                       <td>{(tsd.wins / tsd.mp).toFixed(2)}</td>
                       <td>{tsd.w_streak}</td>
                       <td>
-                        {isManager ? (
+                        {/* {isManager ? (
                           <button
                             onClick={(e) => handleEdit(e, tsd)}
                             className="btn"
                           >
                             Edit
                           </button>
-                        ) : null}
-                        <TeamStatDelete statData={tsd} isManager={isManager} />
+                        ) : null} */}
+                        {/* <TeamStatDelete statData={tsd} isManager={isManager} /> */}
                       </td>
                     </tr>
                   )}

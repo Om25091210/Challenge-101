@@ -20,7 +20,7 @@ import { tournamentformvalidate } from '@utils/valid';
 import Router from 'next/router';
 
 const CreateTournament = ({ user }) => {
-  const showSecond = true;
+  const showSecond = false;
   const str = showSecond ? 'HH:mm:ss' : 'HH:mm';
 
   const [tournament, setTournament] = useState();
@@ -407,10 +407,8 @@ const CreateTournament = ({ user }) => {
                           <label for="exampleFormControlTextarea1">
                             Session Start Time
                           </label>
-                          <TimePicker
-                            showSecond={showSecond}
-                            defaultValue={moment()}
-                            className="xxx"
+                          <input
+                            type="time"
                             name="startTime"
                             onChange={handleChange}
                             value={state.startTime}
@@ -437,13 +435,11 @@ const CreateTournament = ({ user }) => {
                           <label for="exampleFormControlTextarea1">
                             Session End Time
                           </label>
-                          <TimePicker
-                            showSecond={showSecond}
-                            defaultValue={moment()}
-                            className="xxx"
+                          <input
+                            type="time"
                             name="endTime"
-                            onChange={handleChange}
                             value={state.endTime}
+                            onChange={handleChange}
                           />
                           {/* <p>{formErrors.endTime}</p> */}
                         </div>

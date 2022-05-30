@@ -21,8 +21,8 @@ const TeamSquads = ({ squads, teamplayers, team, isManager }) => {
               <li className="squads" key={idx}>
                 <div className="squad_img">
                   {' '}
-                  <img src={squad.imgUrl} className="squad_bg" alt="" />
-                  <h2>{squad.name}</h2>
+                  <img src={squad.game?.imgUrl} className="squad_bg" alt="" />
+                  <h2>{squad.game?.name}</h2>
                   <div className="plyars">
                     {' '}
                     {squad.players.map((player, idpx) => (
@@ -53,8 +53,8 @@ const TeamSquads = ({ squads, teamplayers, team, isManager }) => {
                   </a>
                   <div className="banner">
                     {' '}
-                    <img src={squad.imgUrl} alt="" />
-                    <h2>{squad.name}</h2>
+                    <img src={squad.game?.imgUrl} alt="" />
+                    <h2>{squad.game?.name}</h2>
                   </div>
                   <table className="table">
                     <thead className="dark-light">

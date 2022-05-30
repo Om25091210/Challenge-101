@@ -10,6 +10,7 @@ import GameTeams from './GameTeams';
 import GamePlayers from './GamePlayers';
 import GameCommunities from './GameCommunities';
 import Matches from '@components/team/Matches';
+import GameFollow from './GameFollow';
 
 const Game = ({ user, data }) => {
   const [game, setGame] = useState(data?.games);
@@ -57,7 +58,7 @@ const Game = ({ user, data }) => {
                       {' '}
                       <a href="#" className="btn">
                         {' '}
-                        FOLLOW{' '}
+                        <GameFollow game={data.games} user={user} />
                       </a>{' '}
                     </div>
                   </div>
@@ -69,8 +70,8 @@ const Game = ({ user, data }) => {
               <div className="games_btn_thumb">
                 <a href="#" className="btn">
                   {' '}
-                  <i className="fa fa-steam-square" aria-hidden="true"></i> Download
-                  at Steam <span>free</span>
+                  <i className="fa fa-steam-square" aria-hidden="true"></i>{' '}
+                  Download at Steam <span>free</span>
                 </a>
                 <a href="#" className="btn">
                   {' '}
