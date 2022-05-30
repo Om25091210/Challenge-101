@@ -57,7 +57,12 @@ const CreateTournament = ({ user }) => {
     description: '',
     tickets: '',
     website: '',
-    sociallink: '',
+    facebook: '',
+    twitch: '',
+    twitter: '',
+    instagram: '',
+    youtube: '',
+    discord: '',
     file: null,
     series: null
   });
@@ -550,22 +555,62 @@ const CreateTournament = ({ user }) => {
                           type="text"
                           name="website"
                           className="form-control"
-                          placeholder="Website"
+                          placeholder="Enter Website Name with Extension"
                           onChange={handleChange}
                           value={state.website}
                         />
                       </div>
                       <div className="colm">
-                        <label for="exampleFormControlInput1">
+                        <label htmlFor="exampleFormControlInput1">
                           Social Links (Optional)
                         </label>
                         <input
                           type="text"
-                          name="sociallink"
                           className="form-control"
-                          placeholder="Game"
+                          placeholder="Enter your Facebook user ID as per the URL"
+                          name="facebook"
                           onChange={handleChange}
-                          value={state.sociallink}
+                          value={state.facebook}
+                        />
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="Enter your Twitch Channel name as per the URL"
+                          name="twitch"
+                          onChange={handleChange}
+                          value={state.twitch}
+                        />
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="Enter @Twitter Name"
+                          name="twitter"
+                          onChange={handleChange}
+                          value={state.twitter}
+                        />
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="Enter your Instagram User Name"
+                          name="instagram"
+                          onChange={handleChange}
+                          value={state.instagram}
+                        />
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="Enter your Youtube Channel Name as per the URL"
+                          name="youtube"
+                          onChange={handleChange}
+                          value={state.youtube}
+                        />
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="Enter your full Discord server link"
+                          name="discord"
+                          onChange={handleChange}
+                          value={state.discord}
                         />
                       </div>
                     </div>

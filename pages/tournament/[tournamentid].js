@@ -264,23 +264,54 @@ const TournamentDetail = ({ user, data, products }) => {
                   <div className="top_bio">
                     <h3>ABOUT THE TOURNAMENT</h3>
                     <div className="socail">
-                      <a href="https://www.facebook.com/" target="_blank">
+                      <a
+                        href={`https://www.facebook.com/${data.tournament.social[0]?.facebook}`}
+                        target="_blank"
+                      >
                         <i
                           className="fa fa-facebook-official"
                           aria-hidden="true"
                         ></i>
                       </a>
-                      <a href="https://www.instagram.com/" target="_blank">
+                      <a
+                        href={`https://www.instagram.com/${data.tournament.social[0]?.instagram}`}
+                        target="_blank"
+                      >
                         <i className="fa fa-instagram" aria-hidden="true"></i>
                       </a>
-                      <a href="https://www.twitch.tv/" target="_blank">
+                      <a
+                        href={`https://www.twitch.tv/${data.tournament.social[0].twitch}`}
+                        target="_blank"
+                      >
                         <i className="fa fa-twitch" aria-hidden="true"></i>
                       </a>
-                      <a href="https://store.steampowered.com/" target="_blank">
-                        <i
-                          className="fa fa-steam-square"
-                          aria-hidden="true"
-                        ></i>
+                      <a
+                        href={`${data.tournament.social[0]?.discord}`}
+                        target="_blank"
+                      >
+                        <img
+                          src="/assets/media/social/discord.png"
+                          height="20px"
+                          width="20px"
+                        />
+                      </a>
+                      <a
+                        href={`https://www.youtube.com/c/${data.tournament.social[0]?.youtube}`}
+                        target="_blank"
+                      >
+                        <i className="fa fa-youtube"></i>
+                      </a>
+                      <a
+                        href={`https://www.twitter.com/${data.tournament.social[0]?.twitter}`}
+                        target="_blank"
+                      >
+                        <i className="fa fa-twitter-square"></i>
+                      </a>
+                      <a
+                        href={`https://${data.tournament?.website}`}
+                        target="_blank"
+                      >
+                        <i className="fa fa-globe"></i>
                       </a>
                     </div>
                   </div>

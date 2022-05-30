@@ -49,7 +49,12 @@ const CreateTeam = ({ user }) => {
     sponsor: '',
     arena: '',
     role: '',
-    sociallink: ''
+    facebook: '',
+    twitch: '',
+    twitter: '',
+    instagram: '',
+    youtube: '',
+    discord: ''
   });
 
   useEffect(() => {
@@ -333,7 +338,7 @@ const CreateTeam = ({ user }) => {
                         type="text"
                         className="form-control"
                         id=""
-                        placeholder="Website"
+                        placeholder="Enter your website Name with Extension"
                         name="website"
                         onChange={handleChange}
                         value={state.website}
@@ -455,12 +460,51 @@ const CreateTeam = ({ user }) => {
                         <input
                           type="text"
                           className="form-control"
-                          placeholder="Game"
-                          name="sociallink"
+                          placeholder="Enter your Facebook user ID as per the URL"
+                          name="facebook"
                           onChange={handleChange}
-                          value={state.sociallink}
+                          value={state.facebook}
                         />
-                        {/* <p>{formErrors.sociallink}</p> */}
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="Enter your Twitch Channel name as per the URL"
+                          name="twitch"
+                          onChange={handleChange}
+                          value={state.twitch}
+                        />
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="Enter @Twitter Name"
+                          name="twitter"
+                          onChange={handleChange}
+                          value={state.twitter}
+                        />
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="Enter your Instagram User Name"
+                          name="instagram"
+                          onChange={handleChange}
+                          value={state.instagram}
+                        />
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="Enter your Youtube Channel Name as per the URL"
+                          name="youtube"
+                          onChange={handleChange}
+                          value={state.youtube}
+                        />
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="Enter your full Discord server link"
+                          name="discord"
+                          onChange={handleChange}
+                          value={state.discord}
+                        />
                       </div>
                     </div>
                     <input

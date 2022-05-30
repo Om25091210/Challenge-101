@@ -510,21 +510,45 @@ const TeamProfileBox = ({ user, data, isManager }) => {
           <div className="top_bio">
             <h3>ABOUT THE TEAM</h3>
             <div className="socail">
-              <a href="https://www.facebook.com/" target="_blank">
+              <a
+                href={`https://www.facebook.com/${data.team.social[0]?.facebook}`}
+                target="_blank"
+              >
                 <i className="fa fa-facebook-official" aria-hidden="true"></i>
               </a>
-              <a href="https://www.instagram.com/" target="_blank">
+              <a
+                href={`https://www.instagram.com/${data.team.social[0]?.instagram}`}
+                target="_blank"
+              >
                 <i className="fa fa-instagram" aria-hidden="true"></i>
               </a>
-              <a href="https://www.twitch.tv/" target="_blank">
+              <a
+                href={`https://www.twitch.tv/${data.team.social[0]?.twitch}`}
+                target="_blank"
+              >
                 <i className="fa fa-twitch" aria-hidden="true"></i>
               </a>
-              <a href="https://discord.com/" target="_blank">
+              <a href={`${data.team.social[0]?.discord}`} target="_blank">
                 <img
                   src="/assets/media/social/discord.png"
                   height="20px"
                   width="20px"
                 />
+              </a>
+              <a
+                href={`https://www.youtube.com/c/${data.team.social[0]?.youtube}`}
+                target="_blank"
+              >
+                <i className="fa fa-youtube"></i>
+              </a>
+              <a
+                href={`https://www.twitter.com/${data.team.social[0]?.twitter}`}
+                target="_blank"
+              >
+                <i className="fa fa-twitter-square"></i>
+              </a>
+              <a href={`https://${data.team?.website}`} target="_blank">
+                <i className="fa fa-globe"></i>
               </a>
             </div>
           </div>

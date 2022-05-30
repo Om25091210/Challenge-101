@@ -17,7 +17,10 @@ const SignedMainContent = ({ posts, user }) => {
   const [personas, setPersonas] = useState({});
   const [allgames, setAllGames] = useState([]);
   const [postType, setPostType] = useState('');
-  const [gameTag, setGameTag] = useState('');
+  const [gameTag, setGameTag] = useState({
+    name: '',
+    gameId: ''
+  });
   const router = useRouter();
   const [profiledata, setProfileData] = useState([]);
   const [topmenu, setTopmenu] = useState(true);
@@ -58,7 +61,7 @@ const SignedMainContent = ({ posts, user }) => {
     formdata.append('username', username);
     formdata.append('postType', postType);
     formdata.append('gameTagName', gameTag.name);
-    formdata.append('gameTagId', gameTag._id);
+    formdata.append('gameTagId', gameTag.gameId);
 
     //    for (const key of Object.keys(images)) {
     //      formdata.append('images', images[key]);
@@ -69,6 +72,7 @@ const SignedMainContent = ({ posts, user }) => {
       toast.success('Your post has been successfully uploaded');
       setDescription('');
       setImage(null);
+      setGameTag({ name: '', gameId: '' });
       router.push('/dashboard');
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
@@ -150,7 +154,7 @@ const SignedMainContent = ({ posts, user }) => {
   }, []);
 
   const selectgameTag = (x) => {
-    setGameTag(x);
+    setGameTag({ name: x.name, gameId: x._id });
   };
 
   const personaHandle = (username, profilepic, postType) => {
