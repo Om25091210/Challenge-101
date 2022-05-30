@@ -205,7 +205,7 @@ const TournamentDetail = ({ user, data, products }) => {
                         <i className="fa fa-map-marker"></i> Indoor Stadium,{' '}
                         {data.tournament.location}{' '}
                         <span className="tour_time">
-                          <i class="fa fa-clock-o"></i>{' '}
+                          <i className="fa fa-clock-o"></i>{' '}
                           {Moment(data.tournament.startDate).format('MMM DD')} -
                           {Moment(data.tournament.endDate).format('MMM DD')}{' '}
                           {Moment(data.tournament.startDate).format('hh:mm A')}{' '}

@@ -522,7 +522,7 @@ const Signup = ({ games, avatars }) => {
                               <span>
                                 {' '}
                                 <i
-                                  class="fa fa-cloud-upload"
+                                  className="fa fa-cloud-upload"
                                   aria-hidden="true"
                                 ></i>
                                 Upload

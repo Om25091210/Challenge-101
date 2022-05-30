@@ -61,20 +61,20 @@ const Game = ({ user, data }) => {
                       </a>{' '}
                     </div>
                   </div>
-                  <span class="follower">{data?.profiles} Followers </span>
+                  <span className="follower">{data?.profiles} Followers </span>
                 </div>
               </div>
             </div>
-            <div class="bottom_details games_bottom">
-              <div class="games_btn_thumb">
+            <div className="bottom_details games_bottom">
+              <div className="games_btn_thumb">
                 <a href="#" className="btn">
                   {' '}
-                  <i class="fa fa-steam-square" aria-hidden="true"></i> Download
+                  <i className="fa fa-steam-square" aria-hidden="true"></i> Download
                   at Steam <span>free</span>
                 </a>
                 <a href="#" className="btn">
                   {' '}
-                  <i class="fa fa-cloud-download" aria-hidden="true"></i> PS
+                  <i className="fa fa-cloud-download" aria-hidden="true"></i> PS
                   Store <span>free</span>
                 </a>
               </div>

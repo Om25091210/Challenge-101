@@ -22,16 +22,16 @@ const Job = ({ data, user }) => {
 
             <div className="job_profile1">
               <span>
-                <i class="fa fa-briefcase" aria-hidden="true"></i> :{' '}
+                <i className="fa fa-briefcase" aria-hidden="true"></i> :{' '}
                 {data?.experience_start} - {data?.experience_end} Years
               </span>
               <span>
-                <i class="fa fa-map-marker" aria-hidden="true"></i>{' '}
+                <i className="fa fa-map-marker" aria-hidden="true"></i>{' '}
                 {data.location.map((loc) => (
                   <b>{loc}</b>
                 ))}
               </span>
-              <i class="fa fa-money" aria-hidden="true"></i>
+              <i className="fa fa-money" aria-hidden="true"></i>
               <span className="">
                 <MPNumberFormat
                   value={
@@ -66,7 +66,7 @@ const Job = ({ data, user }) => {
 
             <h2>Education</h2>
 
-            <div class="details">{data?.education}</div>
+            <div className="details">{data?.education}</div>
           </div>
 
           <div className="right_job">

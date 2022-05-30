@@ -29,7 +29,7 @@ const TeamSquadDelete = ({ squad, isManager }) => {
     <>
       {isManager ? (
         <button onClick={deletehandleSubmit} className="btn">
-          <i class="fa fa-trash-o" aria-hidden="true"></i>
+          <i className="fa fa-trash-o" aria-hidden="true"></i>
         </button>
       ) : null}
     </>

@@ -185,8 +185,8 @@ const TeamProfileBox = ({ user, data, isManager }) => {
     <div className="profile_box team_profile_box">
       <div className="profile_cover_photo">
         <div className="report">
-          <a href="">
-            <i class="fa fa-flag" aria-hidden="true"></i> Report Team
+          <a href="#">
+            <i className="fa fa-flag" aria-hidden="true"></i> Report Team
           </a>
         </div>
 

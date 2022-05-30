@@ -51,7 +51,7 @@ const CommentForm = ({ post, user, commentsData }) => {
               onChange={onChange}
             ></textarea>
             <a href="#" className="smile gif">
-              <i class="fa fa-camera" aria-hidden="true"></i>
+              <i className="fa fa-camera" aria-hidden="true"></i>
             </a>{' '}
             <a href="#" className="smile">
               <img src="/assets/media/dash/smile.png" alt="" />

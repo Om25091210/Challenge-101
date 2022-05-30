@@ -46,7 +46,7 @@ const NFTGamesList = ({ user }) => {
                     <div className="tit">
                       TheMadTitan
                       <b>
-                        <i class="fa fa-steam" aria-hidden="true"></i> Z3US360
+                        <i className="fa fa-steam" aria-hidden="true"></i> Z3US360
                       </b>
                     </div>
                   </div>
@@ -58,7 +58,7 @@ const NFTGamesList = ({ user }) => {
                     <div className="tit">
                       TheMadTitan
                       <b>
-                        <i class="fa fa-steam" aria-hidden="true"></i> Z3US360
+                        <i className="fa fa-steam" aria-hidden="true"></i> Z3US360
                       </b>
                     </div>
                   </div>
@@ -70,7 +70,7 @@ const NFTGamesList = ({ user }) => {
                     <div className="tit">
                       TheMadTitan
                       <b>
-                        <i class="fa fa-steam" aria-hidden="true"></i> Z3US360
+                        <i className="fa fa-steam" aria-hidden="true"></i> Z3US360
                       </b>
                     </div>
                   </div>
@@ -82,7 +82,7 @@ const NFTGamesList = ({ user }) => {
                     <div className="tit">
                       TheMadTitan
                       <b>
-                        <i class="fa fa-steam" aria-hidden="true"></i> Z3US360
+                        <i className="fa fa-steam" aria-hidden="true"></i> Z3US360
                       </b>
                     </div>
                   </div>
@@ -94,7 +94,7 @@ const NFTGamesList = ({ user }) => {
                     <div className="tit">
                       TheMadTitan
                       <b>
-                        <i class="fa fa-steam" aria-hidden="true"></i> Z3US360
+                        <i className="fa fa-steam" aria-hidden="true"></i> Z3US360
                       </b>
                     </div>
                   </div>
@@ -113,7 +113,7 @@ const NFTGamesList = ({ user }) => {
                     <div className="tit">
                       TheMadTitan
                       <b>
-                        <i class="fa fa-steam" aria-hidden="true"></i> Z3US360
+                        <i className="fa fa-steam" aria-hidden="true"></i> Z3US360
                       </b>
                     </div>
                   </div>
@@ -126,7 +126,7 @@ const NFTGamesList = ({ user }) => {
                     <div className="tit">
                       TheMadTitan
                       <b>
-                        <i class="fa fa-steam" aria-hidden="true"></i> Z3US360
+                        <i className="fa fa-steam" aria-hidden="true"></i> Z3US360
                       </b>
                     </div>
                   </div>
@@ -139,7 +139,7 @@ const NFTGamesList = ({ user }) => {
                     <div className="tit">
                       TheMadTitan
                       <b>
-                        <i class="fa fa-steam" aria-hidden="true"></i> Z3US360
+                        <i className="fa fa-steam" aria-hidden="true"></i> Z3US360
                       </b>
                     </div>
                   </div>
@@ -151,7 +151,7 @@ const NFTGamesList = ({ user }) => {
                     <div className="tit">
                       TheMadTitan
                       <b>
-                        <i class="fa fa-steam" aria-hidden="true"></i> Z3US360
+                        <i className="fa fa-steam" aria-hidden="true"></i> Z3US360
                       </b>
                     </div>
                   </div>
@@ -163,7 +163,7 @@ const NFTGamesList = ({ user }) => {
                     <div className="tit">
                       TheMadTitan
                       <b>
-                        <i class="fa fa-steam" aria-hidden="true"></i> Z3US360
+                        <i className="fa fa-steam" aria-hidden="true"></i> Z3US360
                       </b>
                     </div>
                   </div>

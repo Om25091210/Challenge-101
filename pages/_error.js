@@ -8,14 +8,14 @@ const Error = ({ statusCode }) => {
         <link href="/assets/css/error.css" rel="stylesheet" type="text/css" />
       </Head>
 
-      <body class="body-500">
-        <section class="error-wrapper">
+      <body className="body-500">
+        <section className="error-wrapper">
           <div className="error_icon">
             {' '}
-            <i class="icon-500"></i>{' '}
+            <i className="icon-500"></i>{' '}
           </div>
-          <div class="text-center">
-            <h2 class="purple-bg">Something went wrong</h2>
+          <div className="text-center">
+            <h2 className="purple-bg">Something went wrong</h2>
           </div>
           <p>Why not try refreshing your page? or you can contact </p>
           <a href="#">support@multiplayr.gg</a>

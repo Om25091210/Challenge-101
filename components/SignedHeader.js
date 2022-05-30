@@ -178,7 +178,7 @@ const SignedHeader = ({ user }) => {
                 <li>
                   <a href="/">
                     <span>
-                      <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                      <i className="fa fa-shopping-cart" aria-hidden="true"></i>
                     </span>
                     <span>
                       {' '}
@@ -191,7 +191,7 @@ const SignedHeader = ({ user }) => {
                   <a href="/discover">
                     <span>
                       {' '}
-                      <i class="fa fa-briefcase" aria-hidden="true"></i>
+                      <i className="fa fa-briefcase" aria-hidden="true"></i>
                     </span>
 
                     <span>
@@ -205,7 +205,7 @@ const SignedHeader = ({ user }) => {
                   <a href="#">
                     <span>
                       {' '}
-                      <i class="fa fa-university" aria-hidden="true"></i>
+                      <i className="fa fa-university" aria-hidden="true"></i>
                     </span>
                     <span>
                       {' '}
@@ -366,7 +366,7 @@ const SignedHeader = ({ user }) => {
             </a>
             <div className="drop_down_bg wallet_drop_down">
               <h2>Wallet</h2>{' '}
-              <i class="fa fa-info-circle" aria-hidden="true"></i>
+              <i className="fa fa-info-circle" aria-hidden="true"></i>
               <ul>
                 <li className="balance1">
                   <span className="amt1">
