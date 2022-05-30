@@ -36,6 +36,8 @@ const TournamentDetail = ({ user, data, products }) => {
     const [tour, setTour] = useState(data.tournament);
     const isUser = data.tournament?.user?._id === user._id;
     const router = useRouter();
+    const [sociallinks, setSociallinks] = useState(data.tournament.social);
+    const [websitelink, setWebsitelink] = useState(data.tournament);
 
     const toggleShowform = () => {
       if (showform) {
@@ -51,6 +53,34 @@ const TournamentDetail = ({ user, data, products }) => {
 
     const onChange = (e) => {
       setDesc(e.target.value);
+    };
+
+    function handleChangeSocial(e) {
+      setSociallinks({ ...sociallinks, [e.target.name]: e.target.value });
+    }
+
+    function handleChangeWebsite(e) {
+      setWebsitelink({ ...websitelink, [e.target.name]: e.target.value });
+    }
+
+    const handleLinksSubmit = async (e) => {
+      e.preventDefault();
+      try {
+        await axios.put(
+          `${baseURL}/api/tournaments/sociallinks/${data.tournament._id}`,
+          { sociallinks, websitelink },
+          {
+            headers: {
+              Authorization: cookie.get('token'),
+              'Content-Type': 'application/json'
+            }
+          }
+        );
+        toast.success('Links Have Been Updated');
+        refreshData();
+      } catch (err) {
+        toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+      }
     };
 
     const addingDesc = async () => {
@@ -265,7 +295,7 @@ const TournamentDetail = ({ user, data, products }) => {
                     <h3>ABOUT THE TOURNAMENT</h3>
                     <div className="socail">
                       <a
-                        href={`https://www.facebook.com/${data.tournament.social[0]?.facebook}`}
+                        href={`https://www.facebook.com/${data.tournament.social?.facebook}`}
                         target="_blank"
                       >
                         <i
@@ -274,19 +304,19 @@ const TournamentDetail = ({ user, data, products }) => {
                         ></i>
                       </a>
                       <a
-                        href={`https://www.instagram.com/${data.tournament.social[0]?.instagram}`}
+                        href={`https://www.instagram.com/${data.tournament.social?.instagram}`}
                         target="_blank"
                       >
                         <i className="fa fa-instagram" aria-hidden="true"></i>
                       </a>
                       <a
-                        href={`https://www.twitch.tv/${data.tournament.social[0].twitch}`}
+                        href={`https://www.twitch.tv/${data.tournament.social.twitch}`}
                         target="_blank"
                       >
                         <i className="fa fa-twitch" aria-hidden="true"></i>
                       </a>
                       <a
-                        href={`${data.tournament.social[0]?.discord}`}
+                        href={`${data.tournament.social?.discord}`}
                         target="_blank"
                       >
                         <img
@@ -296,13 +326,13 @@ const TournamentDetail = ({ user, data, products }) => {
                         />
                       </a>
                       <a
-                        href={`https://www.youtube.com/c/${data.tournament.social[0]?.youtube}`}
+                        href={`https://www.youtube.com/c/${data.tournament.social?.youtube}`}
                         target="_blank"
                       >
                         <i className="fa fa-youtube"></i>
                       </a>
                       <a
-                        href={`https://www.twitter.com/${data.tournament.social[0]?.twitter}`}
+                        href={`https://www.twitter.com/${data.tournament.social?.twitter}`}
                         target="_blank"
                       >
                         <i className="fa fa-twitter-square"></i>
@@ -314,6 +344,85 @@ const TournamentDetail = ({ user, data, products }) => {
                         <i className="fa fa-globe"></i>
                       </a>
                     </div>
+                    <span>
+                      <div className="loc_box">
+                        {' '}
+                        {isUser ? (
+                          <a href="#!" className="model_show_btn">
+                            <button className="btn">
+                              <i
+                                className="fa fa-gear"
+                                aria-hidden="true"
+                                style={{ color: 'white' }}
+                              ></i>
+                            </button>
+                          </a>
+                        ) : null}
+                        <div className="common_model_box">
+                          <a href="#!" className="model_close">
+                            X
+                          </a>
+
+                          <div className="inner_model_box">
+                            <h3>Social Links</h3>
+                            <input
+                              type="text"
+                              placeholder="Facebook User ID"
+                              onChange={handleChangeSocial}
+                              value={sociallinks.facebook}
+                              name="facebook"
+                            />
+                            <input
+                              type="text"
+                              placeholder="Instagram Username"
+                              onChange={handleChangeSocial}
+                              value={sociallinks.instagram}
+                              name="instagram"
+                            />
+                            <input
+                              type="text"
+                              placeholder="Twitch Channel Name"
+                              onChange={handleChangeSocial}
+                              value={sociallinks.twitch}
+                              name="twitch"
+                            />
+                            <input
+                              type="text"
+                              placeholder="Discord Server URL"
+                              onChange={handleChangeSocial}
+                              value={sociallinks.discord}
+                              name="discord"
+                            />
+                            <input
+                              type="text"
+                              placeholder="Youtube Channel Name"
+                              onChange={handleChangeSocial}
+                              value={sociallinks.youtube}
+                              name="youtube"
+                            />
+                            <input
+                              type="text"
+                              placeholder="@Twitter Username"
+                              onChange={handleChangeSocial}
+                              value={sociallinks.twitter}
+                              name="twitter"
+                            />
+                            <input
+                              type="text"
+                              placeholder="Your Website Name with Extension"
+                              onChange={handleChangeWebsite}
+                              value={websitelink.website}
+                              name="website"
+                            />
+
+                            <button className="btn" onClick={handleLinksSubmit}>
+                              Confirm Changes
+                            </button>
+                          </div>
+                          <div className="overlay"></div>
+                        </div>
+                      </div>
+                    </span>
                   </div>
                   {isUser ? (
                     <button className="bio_edit" onClick={toggleShowform}>
