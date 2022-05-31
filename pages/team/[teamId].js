@@ -25,7 +25,11 @@ const Team = ({ user, data, products, profile, teams }) => {
     data.team.employees.filter(
       (emp) => emp.role === 'Manager' && emp.employeeId._id === user._id
     ).length > 0;
-  console.log(isManager);
+
+  const isAdmin =
+    data.team.employees.filter(
+      (emp) => emp.role === 'Admin' && emp.employeeId._id === user._id
+    ).length > 0;
 
   if (data) {
     return (
@@ -41,6 +45,7 @@ const Team = ({ user, data, products, profile, teams }) => {
             user={user}
             data={data}
             isManager={isManager}
+            isAdmin={isAdmin}
             teams={teams}
           />
 
@@ -51,6 +56,7 @@ const Team = ({ user, data, products, profile, teams }) => {
             data={data}
             products={products}
             isManager={isManager}
+            isAdmin={isAdmin}
             profile={profile}
           />
         </div>

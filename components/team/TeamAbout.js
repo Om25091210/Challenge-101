@@ -7,7 +7,7 @@ import TeamAboutEdit from './TeamAboutEdit';
 import { toast } from 'react-toastify';
 import cookie from 'js-cookie';
 
-const TeamAbout = ({ tmdata, isManager }) => {
+const TeamAbout = ({ tmdata, isManager, isAdmin, user }) => {
   const [searchText, setSearchText] = useState('');
   const [results, setResults] = useState({
     employee: '',
@@ -120,7 +120,7 @@ const TeamAbout = ({ tmdata, isManager }) => {
         <div className="about_team">
           <div className="about">
             <h2>OUR TEAM</h2>
-            {isManager ? (
+            {isManager || isAdmin ? (
               <button className="bio_edit" onClick={toggleShowform}>
                 <i className="fa fa-pencil" aria-hidden="true"></i>
               </button>
@@ -149,7 +149,7 @@ const TeamAbout = ({ tmdata, isManager }) => {
             <div className="loc_box">
               {' '}
               <a href="#!" className="model_show_btn">
-                {isManager ? (
+                {isManager || isAdmin ? (
                   <button className="btn">
                     <i
                       aria-hidden="true"
@@ -272,18 +272,26 @@ const TeamAbout = ({ tmdata, isManager }) => {
                   </div>
                   <h3>{emp.role.toUpperCase()}</h3>
                   <h4>{emp.employeeId?.name} </h4>
-                  {isManager ? (
-                    <button
-                      className="btn"
-                      onClick={() => handleDelete(emp._id)}
-                    >
-                      Delete
-                    </button>
+                  {isManager || isAdmin ? (
+                    <>
+                      {emp.employeeId._id === user._id &&
+                      emp.role === 'Manager' ? null : (
+                        <>
+                          <button
+                            className="btn"
+                            onClick={() => handleDelete(emp._id)}
+                          >
+                            Delete
+                          </button>
+                        </>
+                      )}
+                    </>
                   ) : null}
                   <TeamAboutEdit
                     employeeData={emp}
                     team={tmdata}
                     isManager={isManager}
+                    isAdmin={isAdmin}
                   />
                 </li>
               ))

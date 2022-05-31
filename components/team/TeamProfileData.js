@@ -18,7 +18,14 @@ import TeamMatches from '@components/tournament/TeamMatches';
 import TeamJobs from './TeamJobs';
 import TeamJoines from './TeamJoines';
 
-const TeamProfileData = ({ user, data, products, isManager, profile }) => {
+const TeamProfileData = ({
+  user,
+  data,
+  products,
+  isManager,
+  profile,
+  isAdmin
+}) => {
   const [jobs, setJobs] = useState([]);
   const [teamposts, setTeamPosts] = useState([]);
   const [tournamentStatData, setTournamentStatData] = useState([]);
@@ -221,6 +228,7 @@ const TeamProfileData = ({ user, data, products, isManager, profile }) => {
             teamplayers={data.players}
             team={data.team}
             isManager={isManager}
+            isAdmin={isAdmin}
           />
         </div>
         <div className="tab hide" id="achievement">
@@ -309,26 +317,52 @@ const TeamProfileData = ({ user, data, products, isManager, profile }) => {
           <TeamStatistics
             tournamentStatData={tournamentStatData}
             isManager={isManager}
+            isAdmin={isAdmin}
           />
         </div>
 
         <ProductList user={user} productList={products} />
 
         <div className="tab hide" id="photos">
-          <TeamPhotos user={user} team={data.team} isManager={isManager} />
+          <TeamPhotos
+            user={user}
+            team={data.team}
+            isManager={isManager}
+            isAdmin={isAdmin}
+          />
         </div>
 
         <div className="tab hide" id="media">
-          <TeamVideos user={user} team={data.team} isManager={isManager} />
+          <TeamVideos
+            user={user}
+            team={data.team}
+            isManager={isManager}
+            isAdmin={isAdmin}
+          />
         </div>
 
         <div className="tab hide" id="jobs">
-          <TeamJobs jobs={jobs} team={data.team} isManager={isManager} />
+          <TeamJobs
+            jobs={jobs}
+            team={data.team}
+            isManager={isManager}
+            isAdmin={isAdmin}
+          />
         </div>
 
-        <TeamAbout tmdata={data.team} isManager={isManager} />
+        <TeamAbout
+          tmdata={data.team}
+          isManager={isManager}
+          isAdmin={isAdmin}
+          user={user}
+        />
 
-        <TeamSponsors data={data} user={user} isManager={isManager} />
+        <TeamSponsors
+          data={data}
+          user={user}
+          isManager={isManager}
+          isAdmin={isAdmin}
+        />
 
         <div className="tab hide" id="rigs">
           <div className="rigs">

@@ -155,6 +155,7 @@ const SignedMainContent = ({ posts, user }) => {
 
   const selectgameTag = (x) => {
     setGameTag({ name: x.name, gameId: x._id });
+    toast.success(`${x.name} is selected.`);
   };
 
   const personaHandle = (username, profilepic, postType) => {

@@ -8,7 +8,7 @@ import ImageDropzone from '@components/common/ImageDropzone';
 import Moment from 'moment';
 import PhotosDelete from './PhotosDelete';
 
-const TeamPhotos = ({ user, team, isManager }) => {
+const TeamPhotos = ({ user, team, isManager, isAdmin }) => {
   const [images, setImages] = useState([]);
   const [title, setTitle] = useState();
 
@@ -52,7 +52,7 @@ const TeamPhotos = ({ user, team, isManager }) => {
   return (
     <div className="gallery_box">
       <form onSubmit={handlePhotosSubmit}>
-        {isManager ? <ImageDropzone setImages={setImages} /> : null}
+        {isManager || isAdmin ? <ImageDropzone setImages={setImages} /> : null}
 
         <p></p>
 

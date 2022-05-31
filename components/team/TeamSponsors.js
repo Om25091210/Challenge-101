@@ -4,7 +4,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 
-const TeamSponsors = ({ user, data, isManager }) => {
+const TeamSponsors = ({ user, data, isManager, isAdmin }) => {
   const [sponsors, setSponsors] = useState([]);
 
   const [state, setState] = useState({
@@ -76,7 +76,7 @@ const TeamSponsors = ({ user, data, isManager }) => {
         <span>
           <div className="loc_box">
             {' '}
-            {isManager ? (
+            {isManager || isAdmin ? (
               <a href="#!" className="model_show_btn">
                 <button className="btn">
                   <i aria-hidden="true"> Edit Sponsor</i>

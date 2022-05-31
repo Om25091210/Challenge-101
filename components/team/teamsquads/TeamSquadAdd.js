@@ -8,7 +8,7 @@ import { teamsquadformvalidate } from '@utils/valid';
 import { useRouter } from 'next/router';
 import countryList from 'react-select-country-list';
 
-const TeamSquadAdd = ({ teamplayers, team, isManager }) => {
+const TeamSquadAdd = ({ teamplayers, team, isManager, isAdmin }) => {
   const [squadData, setSquadData] = useState({
     game: '',
     teamId: team._id,
@@ -79,8 +79,8 @@ const TeamSquadAdd = ({ teamplayers, team, isManager }) => {
 
   return (
     <>
-      {/* isManager */}
-      {isManager ? (
+      {/* isManager or Admin */}
+      {isManager || isAdmin ? (
         <a href="#!" className="model_show_btn btn">
           Add Squad
         </a>

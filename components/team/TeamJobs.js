@@ -6,7 +6,7 @@ import cookie from 'js-cookie';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 
-const TeamJobs = ({ jobs, team, isManager }) => {
+const TeamJobs = ({ jobs, team, isManager, isAdmin }) => {
   const [showform, setShowForm] = useState(false);
   const [jobdata, setJobData] = useState({
     position: '',
@@ -80,7 +80,7 @@ const TeamJobs = ({ jobs, team, isManager }) => {
       <span>
         <div className="loc_box">
           {' '}
-          {isManager ? (
+          {isManager || isAdmin ? (
             <a href="#!" className="model_show_btn">
               <button className="btn">Add Job</button>
             </a>

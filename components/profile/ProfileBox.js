@@ -41,6 +41,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
   const [deleteModal, setDeleteModal] = useState(false);
 
   const [formErrors, setFormErrors] = useState({});
+  const [sociallinks, setSociallinks] = useState(Userdata.profile.social);
   const router = useRouter();
 
   const refreshData = () => {
@@ -51,6 +52,30 @@ const ProfileBox = ({ user, Userdata, games }) => {
     e.preventDefault();
     mutate({ follow });
     setFollow(true);
+  };
+
+  function handleChangeSocial(e) {
+    setSociallinks({ ...sociallinks, [e.target.name]: e.target.value });
+  }
+
+  const handleLinksSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.put(
+        `${baseURL}/api/profile/sociallinks/${user._id}`,
+        sociallinks,
+        {
+          headers: {
+            Authorization: cookie.get('token'),
+            'Content-Type': 'application/json'
+          }
+        }
+      );
+      toast.success('Links Have Been Updated');
+      refreshData();
+    } catch (err) {
+      toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+    }
   };
 
   const handleSubmitphno = async (e) => {
@@ -904,23 +929,127 @@ const ProfileBox = ({ user, Userdata, games }) => {
             <div className="top_bio">
               <h3>BIO</h3>
               <div className="socail">
-                <a href="https://www.facebook.com/" target="_blank">
+                <a
+                  href={`https://www.facebook.com/${sociallinks?.facebook}`}
+                  target="_blank"
+                >
                   <i className="fa fa-facebook-official" aria-hidden="true"></i>
                 </a>
-                <a href="https://www.instagram.com/" target="_blank">
+                <a
+                  href={`https://www.instagram.com/${sociallinks?.instagram}`}
+                  target="_blank"
+                >
                   <i className="fa fa-instagram" aria-hidden="true"></i>
                 </a>
-                <a href="https://www.twitch.tv/" target="_blank">
+                <a
+                  href={`https://www.twitch.tv/${sociallinks?.twitch}`}
+                  target="_blank"
+                >
                   <i className="fa fa-twitch" aria-hidden="true"></i>
                 </a>
-                <a href="https://discord.com/" target="_blank">
+                <a href={`${sociallinks.discord}`} target="_blank">
                   <img
                     src="/assets/media/social/discord.png"
                     height="20px"
                     width="20px"
                   />
                 </a>
+                <a
+                  href={`https://www.youtube.com/c/${sociallinks?.youtube}`}
+                  target="_blank"
+                >
+                  <i className="fa fa-youtube"></i>
+                </a>
+                <a
+                  href={`https://www.twitter.com/${sociallinks?.twitter}`}
+                  target="_blank"
+                >
+                  <i className="fa fa-twitter-square"></i>
+                </a>
+                <a href={`https://${sociallinks?.website}`} target="_blank">
+                  <i className="fa fa-globe"></i>
+                </a>
               </div>
+
+              <span>
+                <div className="loc_box">
+                  {' '}
+                  {isLoggedInUser ? (
+                    <a href="#!" className="model_show_btn">
+                      <button className="btn">
+                        <i
+                          className="fa fa-gear"
+                          aria-hidden="true"
+                          style={{ color: 'white' }}
+                        ></i>
+                      </button>
+                    </a>
+                  ) : null}
+                  <div className="common_model_box">
+                    <a href="#!" className="model_close">
+                      X
+                    </a>
+
+                    <div className="inner_model_box">
+                      <h3>Social Links</h3>
+                      <input
+                        type="text"
+                        placeholder="Facebook User ID"
+                        onChange={handleChangeSocial}
+                        value={sociallinks.facebook}
+                        name="facebook"
+                      />
+                      <input
+                        type="text"
+                        placeholder="Instagram Username"
+                        onChange={handleChangeSocial}
+                        value={sociallinks.instagram}
+                        name="instagram"
+                      />
+                      <input
+                        type="text"
+                        placeholder="Twitch Channel Name"
+                        onChange={handleChangeSocial}
+                        value={sociallinks.twitch}
+                        name="twitch"
+                      />
+                      <input
+                        type="text"
+                        placeholder="Discord Server URL"
+                        onChange={handleChangeSocial}
+                        value={sociallinks.discord}
+                        name="discord"
+                      />
+                      <input
+                        type="text"
+                        placeholder="Youtube Channel Name"
+                        onChange={handleChangeSocial}
+                        value={sociallinks.youtube}
+                        name="youtube"
+                      />
+                      <input
+                        type="text"
+                        placeholder="@Twitter Username"
+                        onChange={handleChangeSocial}
+                        value={sociallinks.twitter}
+                        name="twitter"
+                      />
+                      <input
+                        type="text"
+                        placeholder="Your Website Name with Extension"
+                        onChange={handleChangeSocial}
+                        value={sociallinks.website}
+                        name="website"
+                      />
+
+                      <button className="btn" onClick={handleLinksSubmit}>
+                        Confirm Changes
+                      </button>
+                    </div>
+                    <div className="overlay"></div>
+                  </div>
+                </div>
+              </span>
             </div>
             {!showform ? (
               <p> {Userdata.profile ? Userdata.profile.bio : ''} </p>

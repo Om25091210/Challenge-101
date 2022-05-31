@@ -9,7 +9,7 @@ import Moment from 'moment';
 import { useMutation } from 'react-query';
 import TeamFollow from './TeamFollow';
 
-const TeamProfileBox = ({ user, data, isManager }) => {
+const TeamProfileBox = ({ user, data, isManager, isAdmin }) => {
   const [attr, setAttr] = useState(data.team.attributes);
   const [sociallinks, setSociallinks] = useState(data.team.social);
   const [websitelink, setWebsitelink] = useState(data.team);
@@ -240,7 +240,7 @@ const TeamProfileBox = ({ user, data, isManager }) => {
                   handleCoverSubmit(e);
                 }}
               />
-              {isManager ? (
+              {isManager || isAdmin ? (
                 <label htmlFor="coverPhoto">
                   <span>
                     <i className="fa fa-camera" aria-hidden="true"></i> Upload
@@ -263,7 +263,7 @@ const TeamProfileBox = ({ user, data, isManager }) => {
               src={data.team.imgUrl}
               alt=""
             />
-            {isManager ? (
+            {isManager || isAdmin ? (
               <div className="edit_photo">
                 <label htmlFor="user-photo" className="edit_label">
                   <i className="fa fa-picture-o" aria-hidden="true"></i>
@@ -312,7 +312,7 @@ const TeamProfileBox = ({ user, data, isManager }) => {
                 )}
               </span>
             </div>
-            {isManager ? null : (
+            {isManager || isAdmin ? null : (
               <div className="button">
                 <a href="#" className="btn">
                   <TeamFollow team={data.team} user={user} />
@@ -325,7 +325,7 @@ const TeamProfileBox = ({ user, data, isManager }) => {
             <span>
               <div className="loc_box">
                 {' '}
-                {isManager ? (
+                {isManager || isAdmin ? (
                   <a href="#!" className="model_show_btn">
                     <button className="btn">
                       <i
@@ -483,7 +483,7 @@ const TeamProfileBox = ({ user, data, isManager }) => {
             <span>
               <div className="loc_box">
                 {' '}
-                {isManager ? (
+                {isManager || isAdmin ? (
                   <a href="#!" className="model_show_btn">
                     <button className="btn">
                       <i
@@ -584,7 +584,7 @@ const TeamProfileBox = ({ user, data, isManager }) => {
             <span>
               <div className="loc_box">
                 {' '}
-                {isManager ? (
+                {isManager || isAdmin ? (
                   <a href="#!" className="model_show_btn">
                     <button className="btn">
                       <i
@@ -662,7 +662,7 @@ const TeamProfileBox = ({ user, data, isManager }) => {
             </span>
           </div>
 
-          {isManager ? (
+          {isManager || isAdmin ? (
             <button className="bio_edit" onClick={toggleShowform}>
               <i className="fa fa-pencil" aria-hidden="true"></i>
             </button>
