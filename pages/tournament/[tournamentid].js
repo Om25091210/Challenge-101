@@ -682,11 +682,6 @@ const TournamentDetail = ({ user, data, products }) => {
                   Sponsors
                 </a>
               </li>
-              <li>
-                <a href="#!" rel="rigs">
-                  Rigs
-                </a>
-              </li>
             </ul>
             <div className="prfoile_tab_data">
               <div className="tab" id="overview">
@@ -1172,9 +1167,6 @@ const TournamentDetail = ({ user, data, products }) => {
                 />
               </div>
               <TournamentSponsor user={user} data={data} isUser={isUser} />
-              <div className="tab hide" id="rigs">
-                <h2>Rigs</h2>
-              </div>
             </div>
           </div>
         </div>

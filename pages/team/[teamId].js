@@ -47,6 +47,7 @@ const Team = ({ user, data, products, profile, teams }) => {
             isManager={isManager}
             isAdmin={isAdmin}
             teams={teams}
+            profile={profile}
           />
 
           <TeamTabs user={user} data={data} />

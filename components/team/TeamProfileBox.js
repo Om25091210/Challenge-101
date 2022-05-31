@@ -8,6 +8,7 @@ import ReactCountryFlag from 'react-country-flag';
 import Moment from 'moment';
 import { useMutation } from 'react-query';
 import TeamFollow from './TeamFollow';
+import TeamRequest from '../discover/invites/TeamRequest';
 
 const TeamProfileBox = ({ user, data, isManager, isAdmin }) => {
   const [attr, setAttr] = useState(data.team.attributes);
@@ -319,6 +320,9 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin }) => {
                 </a>{' '}
                 <a href="#" className="btn">
                   MESSAGE
+                </a>
+                <a href="#" className="btn">
+                  <TeamRequest team={data.team} user={user} profile={profile} />
                 </a>
               </div>
             )}

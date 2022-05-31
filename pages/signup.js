@@ -30,7 +30,7 @@ const Signup = ({ games, avatars }) => {
     phone_number: ''
   });
 
-  const [showPassword, setShowPassword] = useState(false);
+  const [checkbox, setCheckbox] = useState(false);
   const [error, setError] = useState(null);
   const [formLoading, setFormLoading] = useState(false);
   const [submitDisabled, setSubmitDisabled] = useState(true);
@@ -71,13 +71,15 @@ const Signup = ({ games, avatars }) => {
   const changeHandler = (country) => {
     setCountry(country);
   };
+  const checkboxHandler = (e) => {
+    setCheckbox(e.target.checked);
+  };
   const [selectedGame, setSelectedGame] = useState();
   const [userign, setUserign] = useState('');
 
   const handleSelectGame = (game) => {
     setSelectedGame(game);
     setShowIgn('');
-    console.log(game);
   };
 
   const handleUserign = (e) => {
@@ -424,8 +426,9 @@ const Signup = ({ games, avatars }) => {
                           <input
                             className="form-check-input"
                             type="checkbox"
-                            name="toc"
-                            value="1"
+                            name="checkbox"
+                            value={checkbox}
+                            onClick={(e) => checkboxHandler(e)}
                           />
                           <span className="form-check-label terms">
                             {' '}
@@ -439,7 +442,11 @@ const Signup = ({ games, avatars }) => {
                         <button
                           className={`btn rgtside ${showbtn ? '' : 'd-none'}`}
                           onClick={showstep2}
-                          disabled={submitDisabled || !usernameAvailable}
+                          disabled={
+                            submitDisabled ||
+                            !usernameAvailable ||
+                            checkbox === false
+                          }
                         >
                           Continue
                         </button>
@@ -503,7 +510,11 @@ const Signup = ({ games, avatars }) => {
 
                     <div className="gamer_photo">
                       <div className="gamer_dp">
-                        <img src="/assets/media/login/user.png" alt="" />
+                        {avatar ? (
+                          <img src={avatar.image} alt="" />
+                        ) : (
+                          <img src="/assets/media/login/left_game.jpg" alt="" />
+                        )}
                       </div>
                       <ul>
                         <li className="uploads active">
@@ -551,7 +562,7 @@ const Signup = ({ games, avatars }) => {
                       <h2>Games</h2>
                       <ul>
                         {games &&
-                          games.map((game) => (
+                          games.slice(0, 4).map((game) => (
                             <li>
                               <a
                                 href="#!"
@@ -581,7 +592,7 @@ const Signup = ({ games, avatars }) => {
                       </ul>
 
                       <a href="#!" className="model_show_btn">
-                        More Games
+                        see all
                       </a>
                       <div className="common_model_box" id="more_games">
                         <a href="#!" className="model_close">
@@ -589,7 +600,7 @@ const Signup = ({ games, avatars }) => {
                         </a>
 
                         <div className="inner_model_box">
-                          <h3>More Games</h3>
+                          <h3>All Games</h3>
                           <div className="poup_height msScroll_all">
                             <ul>
                               {games &&
