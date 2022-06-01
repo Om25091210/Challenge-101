@@ -64,22 +64,23 @@ display: flex; align-items: center; justify-content: center; position: relative;
 
 .game_sect{ float: left; width: 100%; position: relative;}
 .game_sect select{    -webkit-appearance: auto;-moz-appearance: auto;appearance: auto;}
-.game_sect .two_btn{ display: flex; justify-content: space-between;}
+.game_sect .two_btn{ display: flex; justify-content: end;}
 .game_sect button{ width: 200px  !important; background: #1da1f3 !important; display:inline-block;}
+#kt_sign_up_submit{ width: 200px  !important; flex-grow: 0; border-radius: 5px;}
 
 .left_game{ float: left; width: 40%; height: 100vh;}
 .left_game img{ width: 100%; object-fit: cover; height: 100%;}
 
-.right_game_form {float: right;width: 60%;background: #15202b;padding: 0 5%;/*height: 100vh;*/display: flex;color: #fff;flex-direction: column;justify-content: center;}
+.right_game_form {float: right;width: 60%;background: #15202b;padding: 0 5%;height: 100vh;display: flex;color: #fff;flex-direction: column;justify-content: center;}
 .right_game_form h1{ color: #fff; text-align: left; font-size: 18px; }
 .right_game_form h2{ color: #fff; text-align: left; font-size: 18px; }
 .right_game_form h4{ color: #80aaae; font-size: 16px; text-align: left; padding-top: 5px;}
 .right_game_form label{ color: #fff !important}
 .right_game_form .gamer_photo{ display: flex; width: 100%; align-items: center; margin-top: 30px;}
-.right_game_form .gamer_photo .gamer_dp{ width:140px; height: 140px; background: #ddd; border-radius: 5px; flex-shrink: 0; overflow: hidden;}
+.right_game_form .gamer_photo .gamer_dp{ width:125px; height: 120px; background: #ddd; border-radius: 5px; flex-shrink: 0; overflow: hidden;}
 .right_game_form .gamer_photo .gamer_dp img{ width: 100%; height: 100%; object-fit: cover;}
 .right_game_form .gamer_photo ul{ display: flex; flex-wrap: wrap; margin-left: 20px;}
-.right_game_form .gamer_photo ul li{ flex:0 0 10%; margin: 6px; border-radius: 5px; overflow: hidden; border:2px solid #15202b}
+.right_game_form .gamer_photo ul li{ flex:0 0 10%; height: 54px; margin: 6px; border-radius: 5px; overflow: hidden; border:2px solid #15202b}
 .right_game_form .gamer_photo ul li.uploads {
     background: #1b2737;
     text-align: center;
@@ -87,7 +88,7 @@ display: flex; align-items: center; justify-content: center; position: relative;
     align-items: center;
     color: #fff !important;
     border: 0 !important;
-    padding: 7px; border: 1px solid #1e3145; cursor: pointer;
+     cursor: pointer;
 }
 
 .right_game_form .gamer_photo ul li.uploads span{ color: #596a7d;}
@@ -96,20 +97,24 @@ display: flex; align-items: center; justify-content: center; position: relative;
 .right_game_form .gamer_photo ul li.active{ border:2px solid #fff;    }
 
 .right_game_form .gamer_photo ul li img{ width: 100%; height: 60px; object-position: center; object-fit: cover;}
-.right_game_form .pick_game{ margin: 20px 0;}
+.right_game_form .pick_game{ margin: 20px 0; position: relative;}
 .right_game_form .pick_game ul{ display: flex; flex-wrap: wrap; margin-top: 20px;}
 
-.right_game_form .pick_game ul li{ flex:0 0 20%; margin-right: 20px; overflow: hidden; margin-bottom: 10px; border-radius: 5px; background: #fff; position: relative; height:180px;}
+.right_game_form .pick_game ul li{ flex:0 0 20%; margin-right: 20px;  transition: 0.3s ease-in-out; overflow: hidden; margin-bottom: 10px; border-radius: 5px; background: #fff; position: relative; height:180px;}
 .right_game_form .pick_game ul li .hovers {position: absolute;top: 50%; transform: translateY(-50%);height: 50px;text-align: center;width: 100%;height: 104%;background: rgba(0,0,0,0.7);display: flex;justify-content: center;align-items: center;flex-flow: column;opacity: 0;z-index: -1; transition: 0.3s ease-in-out;}
 .right_game_form .pick_game ul li .hovers span{ display: block;}
+
 .right_game_form .pick_game ul li img {
-    height: 170px;
+    height: 180px;
     width: 100%;
-    object-fit: contain;
+    object-fit: cover;
     transition: 0.3s ease-in-out;
     object-position: center;
 }
-.right_game_form .pick_game ul li:hover img{ margin-top: -10px; height: 110px; }
+
+.right_game_form .pick_game ul li:hover{ height: 200px; margin-top: -10px; margin-bottom: -10px;}
+
+.right_game_form .pick_game ul li:hover img{  height: 200px; }
 .right_game_form .pick_game ul li:hover .hovers{ margin-top:0;opacity: 1; z-index: 1;}
 .right_game_form .pick_game ul li:hover input {
     color: #fff;
@@ -118,7 +123,9 @@ display: flex; align-items: center; justify-content: center; position: relative;
     border: 1px solid #36588d; background: #262645;
 }
 
-
+.right_game_form .pick_game .model_show_btn{ position: absolute;
+    right: 40px;
+    top: 50%; text-transform: capitalize;}
 
 
 #react-select-3-listbox{ color: #000;}
@@ -143,7 +150,7 @@ display: flex; align-items: center; justify-content: center; position: relative;
 
 .logos{ display: inline-block; text-align: center;}
 
-.style_file_upload .inputfile {
+.style_file_upload1 .inputfile {
 	width: 0.1px;
 	height: 0.1px;
 	opacity: 0;
@@ -151,7 +158,7 @@ display: flex; align-items: center; justify-content: center; position: relative;
 	position: absolute;
 	z-index: -1;
 }
-.style_file_upload .inputfile + label {
+.style_file_upload1 .inputfile + label {
 	width: 150px;
 	font-size:12px;
 	font-weight: 700;
@@ -160,25 +167,28 @@ display: flex; align-items: center; justify-content: center; position: relative;
 	cursor: pointer;
 	display: inline-block;
 	overflow: hidden;
-	padding: 0.625rem 1.25rem;
+	padding: 0;
 	color: #ddd;
-	border: 2px solid #ced4da;
-	height: 100px;
+	border: 0px solid #ced4da;
+	height: 54px;
 	display: flex;
 	align-items: center;
 	text-align: center;
 }
-.cover_img.style_file_upload .inputfile + label {
-	margin-left: 10px;
-	width: 250px;
+.style_file_upload1 .inputfile + label {
+    margin-left: 0;
+    width: 63px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
 }
 .no-js .inputfile + label {
 	display: none;
 }
-.style_file_upload span {
+.style_file_upload1 span {
 	color: #000;
 }
-.style_file_upload .inputfile:focus + label, .style_file_upload .inputfile.has-focus + label, .style_file_upload .inputfile.has-focus + label:hover {
+.style_file_upload1 .inputfile:focus + label, .style_file_upload1 .inputfile.has-focus + label, .style_file_upload1 .inputfile.has-focus + label:hover {
 	outline: 1px dotted #ced4da;
 	outline: -webkit-focus-ring-color auto 5px;
 	color: #ced4da;
@@ -228,6 +238,9 @@ display: flex; align-items: center; justify-content: center; position: relative;
 
 	.join_btn.btn{ width: 200px; background: #fc5203;}
 
+
+.fv-row{ width: 400px;}
+.css-1s2u09g-control{ background: none;}
 
 /* --------------Animation ------------ */
 
@@ -308,69 +321,15 @@ display: flex; align-items: center; justify-content: center; position: relative;
 
 
 /* start custom model box */
-.common_model_box {
-	display: none;
-}
-.common_model_box.show_model {
-	display: block;
-}
-.common_model_box {
-	position: fixed;
-	top: -30%;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	margin: auto;
-	width: 900px;
-	height: 400px;
-	z-index: 199;
-}
-.common_model_box .inner_model_box {
-	float: left;
-	width: 100%;
-	padding: 30px;
-	background: #fff;
-	overflow:hidden;
-	box-shadow: 2px 0px 10px #b9b2b2;
-}
 
-.inner_model_box h3 {
-	font-size: 20px;
-	color: #19191d;
-	display: block;
-	font-weight: 600;
-	margin-bottom: 20px;
-	text-align: center;
-	text-transform: uppercase;
-	border-bottom: 1px solid #ddd;
-	padding-bottom: 10px
-}
-.common_model_box .model_close {
-	position: absolute;
-	right: -33px;
-	top: 0px;
-	color: #fff;
-	font-size: 20px;
-	font-weight: 600;
-	background: #7239ea;
-	padding: 5px 10px 5px 10px;
-}
-
-.poup_height {
-	float: left;
-	width: 100%;
-	padding: 20px 0;
-	height: 450px;
-}
-
-#more_games {
+#see_all {
 	float: left;
 	width:800px;
 }
-#more_games h3 {
+#see_all h3 {
 	text-align: center;
 }
-#more_games ul li {
+#see_all ul li {
 	float: left;
 	width: 18%;
 	margin-right: 5%;

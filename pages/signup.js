@@ -183,7 +183,7 @@ const Signup = ({ games, avatars }) => {
   };
 
   // const [step1, setStep1] = useState(true);
-  const [step1, setStep1] = useState(true);
+  const [step1, setStep1] = useState(false);
   const [showbtn, setShowbtn] = useState(true);
 
   const showstep2 = async (e) => {
@@ -518,12 +518,12 @@ const Signup = ({ games, avatars }) => {
                       </div>
                       <ul>
                         <li className="uploads active">
-                          <div className="style_file_upload">
+                          <div className="style_file_upload1">
                             <input
                               type="file"
                               name="coverPhoto"
                               id="coverPhoto"
-                              className="custom-file-input"
+                              className="inputfile"
                               onChange={(e) => {
                                 setCoverPic(e.target.files[0]);
                                 handleCoverSubmit(e);
@@ -536,7 +536,7 @@ const Signup = ({ games, avatars }) => {
                                   className="fa fa-cloud-upload"
                                   aria-hidden="true"
                                 ></i>
-                                Upload
+                                <p> Upload</p>
                               </span>
                             </label>
                           </div>
@@ -594,7 +594,7 @@ const Signup = ({ games, avatars }) => {
                       <a href="#!" className="model_show_btn">
                         see all
                       </a>
-                      <div className="common_model_box" id="more_games">
+                      <div className="common_model_box" id="see_all">
                         <a href="#!" className="model_close">
                           X
                         </a>
