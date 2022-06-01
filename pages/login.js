@@ -103,7 +103,7 @@ const SignIn = () => {
   };
 
   return (
-    <main id="kt_body" className="bg-body">
+    <div id="kt_body" className="bg-body">
       <Meta />
 
       <div className="singup_page_box">
@@ -305,7 +305,7 @@ const SignIn = () => {
           </div>
         </div>
       </div>
-    </main>
+    </div>
   );
 };
 
