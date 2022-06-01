@@ -420,12 +420,12 @@ const CreateTeam = ({ user }) => {
                         />
                       </div>
                     </div>
-                    <input
-                      type="submit"
-                      className="btn create_tourn"
-                      value="Create Team"
+                    <button
+                      className="type_btn active"
                       onClick={() => setFormErrors(teamformvalidate(state))}
-                    />
+                    >
+                      Create Team
+                    </button>
                   </>
                 )}
               </form>

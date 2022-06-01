@@ -54,7 +54,7 @@ const AddLike = ({ postId, isLiked }) => {
             style={{ color: 'red' }}
             aria-hidden="true"
           ></i>{' '}
-          <span>Like</span>
+          <span>Liked</span>
         </>
       ) : (
         <>

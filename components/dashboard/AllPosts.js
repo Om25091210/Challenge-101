@@ -78,7 +78,7 @@ const AllPosts = ({ post, user, profiledata }) => {
                   className="btn"
                   onClick={() => followhandlesubmit(post.user._id)}
                 >
-                  {isFollow === true ? 'Followed' : 'Follow'}
+                  {isFollow === true ? 'UnFollow' : 'Follow'}
                 </button>
               ) : null}
             </div>

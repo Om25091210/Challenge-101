@@ -123,7 +123,7 @@ const Jobs = ({ user, profile, myState }) => {
                     <h3>{job.job_by ? job.job_by.name : 'Not Defined'}</h3>
                   </a>
                 </div>
-                <FileDropzone setFiles={setFiles} />
+                {/* <FileDropzone setFiles={setFiles} />
                 {files.map((file, idx) => (
                   <>
                     {' '}
@@ -132,7 +132,14 @@ const Jobs = ({ user, profile, myState }) => {
                       APPLY NOW{' '}
                     </a>
                   </>
-                ))}{' '}
+                ))}{' '} */}
+                <a
+                  href={`/jobs/${job._id}`}
+                  // onClick={onSubmit}
+                  className="btn btn_width"
+                >
+                  APPLY NOW{' '}
+                </a>
               </div>
             </div>
           ))

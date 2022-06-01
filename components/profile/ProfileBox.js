@@ -1082,14 +1082,24 @@ const ProfileBox = ({ user, Userdata, games }) => {
                   <h2>GAMES</h2>
 
                   <div className="tit">
+                    {Userdata.profile.playergames.map((game) => (
+                      <>
+                        <img
+                          src={game.game.imgUrl}
+                          alt={game.game.name}
+                          style={{ height: '4rem', width: '4rem' }}
+                        />
+                        <p>{game.game.name}</p>
+                      </>
+                    ))}
                     <a href="#!" className="model_show_btn">
-                      <span>
+                      {/* <span>
                         <b className="icon">
                           <img src="/assets/media/ranking/console.png" alt="" />
                         </b>{' '}
                         Browse Games
-                      </span>
-                      <i className="fa fa-angle-right" aria-hidden="true"></i>
+                      </span> */}
+                      <i className="fa fa-plus-circle" aria-hidden="true"></i>
 
                       <div className="hover_games">
                         <div className="other_logo">
