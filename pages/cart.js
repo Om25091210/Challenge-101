@@ -45,7 +45,7 @@ const Cart = ({ user }) => {
       let newArr = [];
       const updateCart = async () => {
         for (const item of cartLocal) {
-          const res = await getData(`product/${item._id}`);
+          const res = await getData(`product/${item?._id}`);
           const { _id, title, images, price, inStock, sold } = res.product;
           if (inStock > 0) {
             newArr.push({

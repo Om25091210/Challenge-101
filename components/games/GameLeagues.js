@@ -44,7 +44,7 @@ const GameLeagues = ({ user, game }) => {
               <div className="top_game">
                 <div className="date">
                   <h3>{result.name}</h3>
-                  09.OCT.2021
+                  --.---.----
                 </div>
                 <div className="reg">
                   {result.status ? (
@@ -70,7 +70,7 @@ const GameLeagues = ({ user, game }) => {
                 </div>
                 <div className="prize leagues">
                   <h3>PRIZE POOL:</h3>
-                  <span> Rs. 45,00,000</span>
+                  <span> $---.---</span>
                 </div>
               </div>
             </div>

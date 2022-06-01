@@ -26,8 +26,6 @@ const GameTeams = ({ user, game }) => {
 
   }, []);
 
-  console.log(teams);
-
   return (
 
   	 <ul className="communities teams">
@@ -40,7 +38,7 @@ const GameTeams = ({ user, game }) => {
     ) : (
        teams.map((result, idx) => (
                       
-              <li>
+              <li key={idx}>
               <a href={`/team/${result.team._id}`}>
                 <div className="imgs">
                   {' '}

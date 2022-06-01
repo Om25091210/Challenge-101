@@ -16,7 +16,7 @@ export default function TeamRequest({ user, profile, team }) {
 const Team_Req = ({ user, profile, team }) => {
   const [request, setRequest] = useState(false);
 
-  const playerId = profile.playergames[0]?.player._id;
+  const playerId = profile.playergames[0]?.player?._id;
 
   const isReqSent =
     team.request.filter((reque) => reque.playerId === playerId).length > 0;

@@ -63,8 +63,6 @@ const Filters = ({ filterType , myState, selectedGame}) => {
     fetchData();
   }, [myState]);
 
-  console.log(selectedMapFilters);
-
   const handleClearFilter = async (e, key, val) => {
     e.preventDefault();
     var sf = selectedFilters.filter((selfil) => selfil != val);
@@ -117,8 +115,6 @@ const Filters = ({ filterType , myState, selectedGame}) => {
     "selectedGame" : ssg
     });
 
-    console.log(params);
-
     try {
       
     let apiurl = `${baseURL}/api/discover/teams`; 
@@ -144,7 +140,6 @@ const Filters = ({ filterType , myState, selectedGame}) => {
         myState.setSelectedFilters(selectedMapFilters);
       });
 
-      console.log(myState.filteredResults);
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }

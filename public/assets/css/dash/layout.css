@@ -154,8 +154,8 @@ h3 {
 .poup_width_800 {
 	width: 800px !important
 }
-.ReactQueryDevtools {
-	display: none;
+.ReactQueryDevtools, .ReactQueryDevtoolsPanel{
+	display: none !important;
 }
 .theme_btn {
 	position: fixed;

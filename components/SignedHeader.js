@@ -35,6 +35,9 @@ const SignedHeader = ({ user }) => {
     getUserBalance();
   });
 
+
+  const [filterType, setFilterType] = useState('JOBS');
+
   const getUserBalance = () => {
     API.getAddressBalance(user.phone_number).then((res) => {
       setCoin(res.data);
@@ -188,7 +191,7 @@ const SignedHeader = ({ user }) => {
                   </a>
                 </li>
                 <li>
-                  <a href="/discover">
+                  <a href="/discover" onClick={() => setFilterType('JOBS')}>
                     <span>
                       {' '}
                       <i className="fa fa-briefcase" aria-hidden="true"></i>

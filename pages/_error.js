@@ -5,7 +5,6 @@ const Error = ({ statusCode }) => {
     <>
       <Head>
         <title>Multiplayr - Error - Home of Esports</title>
-        <link href="/assets/css/error.css" rel="stylesheet" type="text/css" />
       </Head>
 
       <body className="body-500">

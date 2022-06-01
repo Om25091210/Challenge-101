@@ -70,6 +70,50 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
+    <link rel="canonical" href="https://multiplayr.gg/" />
+    <link rel="shortcut icon" href="/assets/media/logos/icon.png" />
+
+    
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Rubik:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <link
+      href="/assets/css/dash/bootstrap.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <link href="/assets/css/dash/layout.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/css/dash/screen.css" rel="stylesheet" type="text/css" />
+
+    <link
+      href="/assets/css/dash/jquery.mCustomScrollbar.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <link
+      href="/assets/css/dash/jquery.fancybox.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="/assets/css/dash/jquery.fancybox-buttons.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <link href="/assets/css/dash/slick.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/css/error.css" rel="stylesheet" type="text/css" />
+
+
           <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
           <script src="/assets/js/dash/bootstrap.bundle.min.js" />
           <script src="/assets/js/dash/jquery.mCustomScrollbar.js" />
