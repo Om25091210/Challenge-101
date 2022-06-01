@@ -155,9 +155,17 @@ const Tournament = ({ user, games, tournaments }) => {
               <a href="#!" className="model_show_btn">
                 <span>
                   <b className="icon">
-                    <img src="/assets/media/ranking/console.png" alt="" />
+                    {selectedGame ? (
+                      <img
+                        src={selectedGame.imgUrl}
+                        alt=""
+                        style={{ width: '26px', height: '18px' }}
+                      />
+                    ) : (
+                      <img src="/assets/media/ranking/console.png" alt="" />
+                    )}
                   </b>{' '}
-                  Browse Games
+                  {selectedGame ? selectedGame.name : 'Browse Games'}
                 </span>
                 <i className="fa fa-angle-right" aria-hidden="true"></i>
 

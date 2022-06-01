@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { QueryClient, QueryClientProvider, useMutation } from 'react-query';
 import cookie from 'js-cookie';
 import baseURL from '../../utils/baseURL';
-import { toast } from 'react-toastify';
+import { useRouter } from 'next/router';
 
 const queryClient = new QueryClient();
 
@@ -16,6 +16,12 @@ export default function FavTournament({ tournament, user }) {
 const TournamentFav = ({ tournament, user }) => {
   const [add, setAdd] = useState(false);
 
+  const router = useRouter();
+
+  const refreshData = () => {
+    router.replace(router.asPath);
+  };
+
   const isFav =
     tournament.favourites?.filter((fav) => {
       return fav.user === user._id;
@@ -25,7 +31,7 @@ const TournamentFav = ({ tournament, user }) => {
     e.preventDefault();
     mutate({ add });
     setAdd(true);
-    toast.success(`${tournament.name} has been added to favourites.`);
+    refreshData();
   };
 
   const addingFav = async () => {
