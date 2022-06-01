@@ -10,7 +10,7 @@ import { useMutation } from 'react-query';
 import TeamFollow from './TeamFollow';
 import TeamRequest from '../discover/invites/TeamRequest';
 
-const TeamProfileBox = ({ user, data, isManager, isAdmin }) => {
+const TeamProfileBox = ({ user, data, isManager, isAdmin, profile }) => {
   const [attr, setAttr] = useState(data.team.attributes);
   const [sociallinks, setSociallinks] = useState(data.team.social);
   const [websitelink, setWebsitelink] = useState(data.team);

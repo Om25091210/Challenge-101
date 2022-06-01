@@ -8,6 +8,7 @@ import ReplyComment from './replies/ReplyComment';
 import ReplyList from './replies/ReplyList';
 import { formatDistanceToNowStrict } from 'date-fns';
 import PinnedComments from './PinnedComments';
+import ReportsComments from './report';
 
 const CommentList = ({ post, user, commentsData }) => {
   const postId = post._id;
@@ -48,6 +49,7 @@ const CommentList = ({ post, user, commentsData }) => {
                     })}
                   </span>
                   <PinnedComments user={user} comment={comment} post={post} />
+                  <ReportsComments />
                 </div>
                 <h3>{comment.text}</h3>
                 <div className="first_reply">
