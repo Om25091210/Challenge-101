@@ -638,7 +638,7 @@ const Signup = ({ games, avatars }) => {
                       </div>
                     </div>
 
-                    <div className="fv-row mb-7">
+                    <div className="fv-row mb-7 countries">
                       <label className="form-label"> Select Country </label>
                       <Select
                         options={options}
@@ -647,7 +647,7 @@ const Signup = ({ games, avatars }) => {
                       />
                     </div>
 
-                    <div className="two_btn">
+                    <div className="two_btn signup2">
                       <button
                         onClick={showstep1}
                         className={`btn3 btn rgtside ${

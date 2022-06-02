@@ -66,7 +66,7 @@ display: flex; align-items: center; justify-content: center; position: relative;
 .game_sect select{    -webkit-appearance: auto;-moz-appearance: auto;appearance: auto;}
 .game_sect .two_btn{ display: flex; justify-content: end;}
 .game_sect button{ width: 200px  !important; background: #1da1f3 !important; display:inline-block;}
-#kt_sign_up_submit{ width: 200px  !important; flex-grow: 0; border-radius: 5px;}
+.signup2 #kt_sign_up_submit{ width: 200px  !important; flex-grow: 0; border-radius: 5px;}
 
 .left_game{ float: left; width: 40%; height: 100vh;}
 .left_game img{ width: 100%; object-fit: cover; height: 100%;}
@@ -239,7 +239,7 @@ display: flex; align-items: center; justify-content: center; position: relative;
 	.join_btn.btn{ width: 200px; background: #fc5203;}
 
 
-.fv-row{ width: 400px;}
+.countries{ width: 400px;}
 .css-1s2u09g-control{ background: none;}
 
 /* --------------Animation ------------ */
