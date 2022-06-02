@@ -666,7 +666,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
           <div className="profile_pic">
             <form onSubmit={handleSubmit}>
               <img
-                className="rounded-full h-full w-full object-cover"
+                className=""
                 src={
                   profilePic
                     ? URL.createObjectURL(profilePic)

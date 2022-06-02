@@ -60,7 +60,7 @@ textarea, select, input[type="search"], input[type="text"], input[type="button"]
 
 .delete_post_div p{ color:#000}
 
-input[type="text"], textarea {
+input[type="text"], textarea, input[type="password"] {
 	height: 45px;
 	font-size: 14px;
 	width: 100%;
@@ -1124,6 +1124,9 @@ ul.top_menu li.wallet li{     float: left;
 .edit_post button {
 	margin-right: 10px;
 }
+
+.edit_post  input[type=file]{ position: absolute;}
+
 .delete_post_div {
 	text-align: center;
 }
@@ -2126,7 +2129,7 @@ article .social_bar {
 	transform: scale(1.1, 1.1);
 }
 .profile_box .profile_cover_photo img {
-	height: 425px;
+	height: 435px;
 	width: 100%;
 	object-fit: cover;
 }
@@ -7796,7 +7799,7 @@ body.DarkPage .left_side nav li .iconbg{ background: #2d343e;}
 body.DarkPage .left_side nav li.active .iconbg, body.DarkPage .left_side nav li a:hover .iconbg{ background: #7239ea;}
 body.DarkPage .left_side nav li.active i, body.DarkPage .left_side nav li a:hover i{ color: #fff;}
 
-body.DarkPage .edit_share.right_links .fa-picture-o{-webkit-filter: invert(100%); filter: invert(100%);}
+/* body.DarkPage .edit_share.right_links .fa-picture-o{-webkit-filter: invert(100%); filter: invert(100%);} */
 
 body.DarkPage .rc-time-picker-panel-inner{ background: #000 ;}
 body.DarkPage .rc-time-picker-panel-input{background: #000;color: #fff;}
@@ -7839,6 +7842,17 @@ body.DarkPage .write_post textarea::-webkit-input-placeholder {
 		height: 250px;
 		color: #6d6e74;
 	}
+
+	body.DarkPage .edit_post form, body.DarkPage .delete_post form{ background: #202028;     border: 10px solid #000;}
+	body.DarkPage .edit_post form h4, body.DarkPage .delete_post form h4{ color: #858585;}
+	body.DarkPage .edit_post .close{  background: #000;}
+	body.DarkPage .edit_post textarea{ background: #202028; border: 1px solid #36363c; color:#858585}
+	body.DarkPage .delete_post_div p{  color:#858585}
+
+	body.DarkPage .common_model_box .inner_model_box{ background: #202028; box-shadow: none; border: 1px solid #36363c;}
+	body.DarkPage .inner_model_box h3{color:#858585}
+	body.DarkPage #more_games ul li{ box-shadow: none;}
+	body.DarkPage .common_model_box .model_close{ background: #000;}
 
 /* ------------------------------ -- */
 .ring {

@@ -22,7 +22,7 @@ body {
 
 .singup_page_box .singup_icons{ display: flex; justify-content: space-between; margin:20px 0;}
 .singup_page_box .singup_icons a {border: 1px solid #2f2e32 !important;padding: 10px;width: 18%; text-align: center;}
-.singup_page_box .singup_icons .fa{ color: #fff; font-size: 15px;}
+.singup_page_box .singup_icons .fa{ color: #fff; font-size: 15px; background: none;}
 
 .singup_page_box .singup_icons  img{ width: 20px; display: inline-block;}
 
@@ -52,7 +52,7 @@ display: flex; align-items: center; justify-content: center; position: relative;
 .right_form label{ color: #fff !important}
 .right_form input, .form-control{ min-height: 35px; background: none; color: #fff; padding: 0 10px; height: 35px; border-radius: 3px; border:1px solid #2f2e32  !important}
 .right_form .form-control-solid{ background: #0f0e13;}
-.right_form  .form-check-input[type=checkbox]{min-height: 20px; height: 20px;}
+.right_form  .form-check-input[type=checkbox]{min-height: 20px; height: 20px; width: 20px;}
 .right_form .terms{ font-size: 11px !important;}
 .right_form .already{ font-size: 14px;}
 .right_form .mb-7, .right_form .mb-10{ margin-bottom: 10px !important}
@@ -143,9 +143,9 @@ display: flex; align-items: center; justify-content: center; position: relative;
     border: 1px solid #ddd;
     padding: 30px; margin-top: 40px;}
 
-	.inn_verify h2{ color: #000;}
+	.inn_verify h2{color:#858585}
 
-#verifycode label{ color: #000 !important; width: 100%;}
+#verifycode label{ color: #858585 !important; width: 100%;}
 /* #verifycode input[type="text"]{ width: 300px; display: inline-block;} */
 
 .logos{ display: inline-block; text-align: center;}

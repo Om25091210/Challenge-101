@@ -222,12 +222,7 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile }) => {
         </div>
 
         <form onSubmit={handleCoverSubmit}>
-          <img
-            className="rounded-full h-full w-full object-cover"
-            id="result"
-            src={data.team.coverPhoto}
-            alt=""
-          />
+          <img className="" id="result" src={data.team.coverPhoto} alt="" />
 
           <span className="edit_cover_photo ">
             <div className="style_file_upload">
