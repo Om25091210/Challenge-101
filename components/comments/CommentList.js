@@ -49,7 +49,7 @@ const CommentList = ({ post, user, commentsData }) => {
                     })}
                   </span>
                   <PinnedComments user={user} comment={comment} post={post} />
-                  <ReportsComments />
+                  {post.user._id === user._id ? null : <ReportsComments />}
                 </div>
                 <h3>{comment.text}</h3>
                 <div className="first_reply">
