@@ -109,11 +109,11 @@ const Videos = ({ Userdata }) => {
                   <span className="comments">
                     <i className="fa fa-comment" aria-hidden="true"></i>18
                   </span>{' '}
+                  <ProfileVideosDel
+                    collectionId={vid._id}
+                    profile={Userdata.profile}
+                  />
                 </div>
-                <ProfileVideosDel
-                  collectionId={vid._id}
-                  profile={Userdata.profile}
-                />
               </li>
             ))}
 

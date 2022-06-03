@@ -163,7 +163,7 @@ const AllPosts = ({ post, user, profiledata }) => {
             <div className="shere">
               {' '}
               <LikePost postId={post._id} isLiked={isLiked} />{' '}
-              <a href="#">
+              <a href="javascript:void(0)">
                 {' '}
                 <SharePost postId={post._id} isShared={isShared} />
               </a>

@@ -344,7 +344,7 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile }) => {
                     <h3>Personal Detail's</h3>
 
                     <form onSubmit={handleAttrForm} className="common_form">
-                      <div className="form-group">
+                      <div className="form-group form_flex">
                         <div className="colm">
                           <label htmlFor="exampleFormControlInput1">Role</label>
                           <select
@@ -501,10 +501,12 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile }) => {
                   <div className="inner_model_box">
                     <h3>Are You Sure?</h3>
 
-                    <button className="btn">No</button>
-                    <button className="btn" onClick={handleDeleteSubmit}>
-                      Yes
-                    </button>
+                    <div className="two_btn">
+                      <button className="btn">No</button>
+                      <button className="btn" onClick={handleDeleteSubmit}>
+                        Yes
+                      </button>
+                    </div>
                   </div>
                   <div className="overlay"></div>
                 </div>

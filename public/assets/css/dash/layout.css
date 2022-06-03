@@ -2206,6 +2206,9 @@ article .social_bar {
 .profile_dp_box .top_details .tick .active .fa {
 	padding-top: 5px;
 }
+
+.profile_dp_box .top_details span{ margin-left: 10px;}
+
 .profile_dp_box .top_details .button{ margin-left: 10px;}
 .profile_dp_box .top_details .button a {
 	margin-left: 5px;
@@ -2317,7 +2320,7 @@ article .social_bar {
 }
 .bio_box .left_bio .bio_edit {
 	border: 0;
-	right: 0;
+	right: 10px;
 	background: none;
 	position: absolute;
 	top:0;
@@ -2358,6 +2361,10 @@ article .social_bar {
 .bio_box .games a {
 	margin-right: 20px; width:auto;
 }
+
+.bio_box  .prof_games .games .tit{    display: flex;align-content: center;align-items: center;}
+.bio_box  .prof_games .games .tit a{ margin-left: 10px;}
+
 .bio_box .right_bio {
 	width: 45%;
 	border-left: 1px solid #ddd;
@@ -2486,7 +2493,7 @@ article .social_bar {
 	width: calc(100% - 60px);
 }
 .profile_left_post .users_share_box .shere {
-	width: 165px;
+	width: 225px;
 }
 .profile_left_post .post .left_details a i {
 	font-size: 15px;
@@ -5775,7 +5782,7 @@ main {
 	margin-right: 10px;
 }
 .tournament_dp_box .tournament_sponsers {
-	margin-top:0;
+	margin-top:25px;
 	padding: 0 20px 0 0;
 }
 .tournament_dp_box .tournament_sponsers ul {
@@ -6673,7 +6680,7 @@ ul.game_search_result li:hover:after{ display: block;}
 }
 .common_model_box .model_close {
 	position: absolute;
-	right: -33px;
+	right: -34px;
 	top: 0px;
 	color: #fff;
 	font-size: 20px;
@@ -6724,7 +6731,7 @@ ul.game_search_result li:hover:after{ display: block;}
 }
 
 #more_games ul li a{ border: 0;}
-#more_games .model_close{ width: 34px;}
+#more_games .model_close{ width: 34px; right: -56px;}
 
 #more_games ul li img {
 
@@ -6793,6 +6800,16 @@ ul.game_search_result li:hover:after{ display: block;}
 	font-size: 14px;
 	color: #333;
 }
+
+.form_flex{ display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;}
+
+form.common_form .form_flex .colm{    flex: 0 0 48%;
+    margin-bottom: 20px;
+    position: relative;}
+
+
 form.common_form .colm {
 	float: left;
 	width: 48%;
@@ -7853,6 +7870,13 @@ body.DarkPage .write_post textarea::-webkit-input-placeholder {
 	body.DarkPage .inner_model_box h3{color:#858585}
 	body.DarkPage #more_games ul li{ box-shadow: none;}
 	body.DarkPage .common_model_box .model_close{ background: #000;}
+
+	body.DarkPage .bio_box .left_bio form textarea{background: #202028;color:#858585}
+	body.DarkPage .video_box .upload_btn textarea{background: #202028;color:#858585}
+	body.DarkPage .inner_model_box li a{ color:#858585;}
+
+	body.DarkPage form.common_form label{color:#858585}
+	body.DarkPage form.common_form .colm select{background: #202028;color:#858585}
 
 /* ------------------------------ -- */
 .ring {

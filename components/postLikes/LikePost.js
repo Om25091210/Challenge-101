@@ -46,7 +46,7 @@ const AddLike = ({ postId, isLiked }) => {
   const { mutate } = useMutation(addingLike);
 
   return (
-    <a onClick={handleLike}>
+    <a onClick={handleLike} href="javascript:void(0)">
       {isLiked === true ? (
         <>
           <i

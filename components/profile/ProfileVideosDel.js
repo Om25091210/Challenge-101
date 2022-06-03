@@ -32,7 +32,7 @@ const ProfileVideosDel = ({ collectionId, profile }) => {
   };
   return (
     <>
-      <button className="btn" onClick={handleDeleteSubmit}>
+      <button className="" onClick={handleDeleteSubmit}>
         <i className="fa fa-trash-o" aria-hidden="true"></i>
       </button>
     </>

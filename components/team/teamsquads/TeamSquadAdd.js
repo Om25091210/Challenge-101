@@ -112,7 +112,12 @@ const TeamSquadAdd = ({ teamplayers, team, isManager, isAdmin }) => {
               <p>{formErrors.game}</p>
             </div>
             <div className="colm rows">
-              <select name="country" id="" onChange={onChange}>
+              <select
+                className="form-control text-capitalize"
+                name="country"
+                id=""
+                onChange={onChange}
+              >
                 {options.map((opt) => (
                   <>
                     <option value={opt.value}>{opt.label}</option>
@@ -123,7 +128,7 @@ const TeamSquadAdd = ({ teamplayers, team, isManager, isAdmin }) => {
             <div className="colm rows">
               <select
                 className="form-control text-capitalize"
-                multiple={true}
+                multiple={false}
                 name="players"
                 value={squadData.players}
                 onChange={onChange}

@@ -385,7 +385,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
         <div className="profile_cover_photo">
           <form onSubmit={handleCoverSubmit}>
             <img
-              className="rounded-full h-full w-full object-cover"
+              className=""
               id="result"
               src={
                 coverPic ? URL.createObjectURL(coverPic) : SrhUser?.coverPicUrl
@@ -1076,19 +1076,18 @@ const ProfileBox = ({ user, Userdata, games }) => {
               </button>
             ) : null}
 
-            <div className="discovery_page">
+            <div className="prof_games">
               {isLoggedInUser ? (
-                <div className="white_bg">
-                  <h2>GAMES</h2>
+                <div className="games">
+                  <h3>GAMES</h3>
 
                   <div className="tit">
                     {Userdata.profile.playergames.map((game) => (
                       <>
-                        <img
-                          src={game.game.imgUrl}
-                          alt={game.game.name}
-                          style={{ height: '4rem', width: '4rem' }}
-                        />
+                        <span>
+                          {' '}
+                          <img src={game.game.imgUrl} alt={game.game.name} />
+                        </span>
                         <p>{game.game.name}</p>
                       </>
                     ))}
