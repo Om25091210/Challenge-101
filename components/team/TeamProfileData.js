@@ -56,7 +56,9 @@ const TeamProfileData = ({
       .then((res) => setTournamentStatData(res.data));
   }, []);
   let Filteredteamposts = teamposts.filter((teampost) => {
-    return teampost.post_type === 'Team' && teampost.username === data.name;
+    return (
+      teampost.post_type === 'Team' && teampost.username === data.team.name
+    );
   });
 
   return (

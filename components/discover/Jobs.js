@@ -111,16 +111,21 @@ const Jobs = ({ user, profile, myState }) => {
                   <p>
                     <b> LOCATION:</b> {job.location}
                   </p>
-
-                  <p>
-                    <b>Salery:</b> {job?.currency} {job?.salary_start} -{' '}
-                    {job?.currency} {job?.salary_end}
-                  </p>
+                  {job?.salary_start === '0' || job?.salary_end === '0' ? (
+                    <p>
+                      <b>Salary:</b> Not Disclosed
+                    </p>
+                  ) : (
+                    <p>
+                      <b>Salery:</b> {job?.currency} {job?.salary_start} -{' '}
+                      {job?.currency} {job?.salary_end}
+                    </p>
+                  )}
                 </div>
                 <div className="logo_box jobs_img">
                   <a href={`jobs/${job._id}`}>
                     <img src={job.job_by?.imgUrl} alt="" />
-                    <h3>{job.job_by ? job.job_by.name : 'Not Defined'}</h3>
+                    <h3>{job.job_by ? job.job_by.name : 'Not Available'}</h3>
                   </a>
                 </div>
                 {/* <FileDropzone setFiles={setFiles} />

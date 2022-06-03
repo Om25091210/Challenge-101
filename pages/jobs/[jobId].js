@@ -33,17 +33,26 @@ const Job = ({ data, user }) => {
               </span>
               <i className="fa fa-money" aria-hidden="true"></i>
               <span className="">
-                <MPNumberFormat
-                  value={
-                    data.salary_start ? data.salary_start : 'Not Disclosed'
-                  }
-                  currency={data.currency}
-                />
-                -
-                <MPNumberFormat
-                  value={data.salary_end ? data.salary_end : 'Not Disclosed'}
-                  currency={data.currency}
-                />
+                {data.salary_start === '0' || data.salary_end === '0'
+                  ? 'Not Disclosed'
+                  : (
+                      <MPNumberFormat
+                        value={
+                          data.salary_start
+                            ? data.salary_start
+                            : 'Not Disclosed'
+                        }
+                        currency={data.currency}
+                      />
+                    ) -
+                    (
+                      <MPNumberFormat
+                        value={
+                          data.salary_end ? data.salary_end : 'Not Disclosed'
+                        }
+                        currency={data.currency}
+                      />
+                    )}
               </span>
               <span>
                 {' '}

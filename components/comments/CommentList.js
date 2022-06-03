@@ -29,11 +29,11 @@ const CommentList = ({ post, user, commentsData }) => {
             <option value="pinned_essages">Pinned Messages</option>
           </select>
         </div>
-        {commentsData.comments?.length === 0 ? (
+        {commentsData?.comments?.length === 0 ? (
           <p>There are no comments for this post.</p>
         ) : (
           <div>
-            {commentsData.comments?.map((comment) => (
+            {commentsData?.comments?.map((comment) => (
               <div key={comment._id}>
                 <div className="comments_point">
                   <LikeComment postId={postId} comment={comment} />
