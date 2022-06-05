@@ -60,14 +60,18 @@ textarea, select, input[type="search"], input[type="text"], input[type="button"]
 
 .delete_post_div p{ color:#000}
 
-input[type="text"], textarea, input[type="password"] {
+input[type="text"], textarea, input[type="password"], input[type="search"], input[type="number"], select {
 	height: 45px;
 	font-size: 14px;
 	width: 100%;
-	border: 1px solid #ced4da;
+	border: 1px solid #ced4da; border-radius: 5px;
 }
 
+textarea{border-radius: 5px !important; resize: none;}
+
 input[type="text"], input[type="email"], textarea, select { color: #000;}
+
+.mr20{ margin-right: 20px;}
 
 .verticalCenter {
 	display:table;
@@ -1126,6 +1130,7 @@ ul.top_menu li.wallet li{     float: left;
 }
 
 .edit_post  input[type=file]{ position: absolute;}
+.edit_post .btn{    background: #7239ea !important}
 
 .delete_post_div {
 	text-align: center;
@@ -1391,7 +1396,7 @@ ul.top_menu li.wallet li{     float: left;
 .reply_comment_item .avtar {
 	width: 30px;
 	height: 30px;
-	background: #ddd;
+	/* background: #ddd; */
 	overflow: hidden;
 	display: inline-block;
 	border-radius: 50%;
@@ -2219,6 +2224,7 @@ article .social_bar {
     padding: 5px 17px;
     border-radius: 20px;
 }
+.profile_dp_box .top_details .button button{ text-transform: uppercase;}
 .profile_dp_box .top_details .button a:hover {
 	background: #000;
 }
@@ -3722,6 +3728,8 @@ article .social_bar {
 	flex-direction: column;
 	font-size:12px;
 }
+
+.team_row.arena_team_row .mores.jobss h3{ font-size: 16px;}
 .team_row.arena_team_row .mores b {
 	color: #7239ea;
 	font-weight: 600;
@@ -5865,7 +5873,7 @@ main {
 
 
 
-.create_tournament .btn{    background: #7239ea !important;}
+.create_tournament .btn{    background: #1da1f2 !important;}
 
 .create_tournament form {
 	float: left;
@@ -5933,6 +5941,7 @@ main {
 }
 
 .create_tournament form .form-group p{position: absolute; left: 0; color: red; font-size: 11px; bottom: -15px;}
+.create_tournament .socail_url li{ margin-bottom: 10px;}
 
 ul.game_search_result {
 	float: left;
@@ -6678,6 +6687,9 @@ ul.game_search_result li:hover:after{ display: block;}
 	overflow:hidden;
 	box-shadow: 2px 0px 10px #b9b2b2;
 }
+
+.common_model_box .inner_model_box h3{ margin:0 0 20px 0 !important}
+
 .common_model_box .model_close {
 	position: absolute;
 	right: -34px;
@@ -6821,7 +6833,8 @@ form.common_form .colm.rows{ width: 100%;}
 form.common_form .colm p{ position: absolute; left: 0; color: red; font-size: 11px; bottom: -15px;}
 
 
-form.common_form .colm select{ font-size: 13px; } 
+form.common_form .colm select, .form-control{ font-size: 13px; height: 45px; border-radius: 5px; } 
+form.common_form .colm #currency { width: 100% !important;}
 
 
 
@@ -6842,7 +6855,9 @@ form.common_form input {
 
 
 form.common_form .pphone{float: right;}
-form.common_form .btn{ width: 100%; margin-top: 20px;}
+form.common_form .btn{ width: 100%; margin-top: 20px; height: 40px;}
+
+.add_jobs_height{ height: 450px; overflow-y: auto;}
 
 
 .checkout_strip {
@@ -7677,8 +7692,9 @@ body.DarkPage .match_row .team_vs .vs {
 	color: #fff;
 }
 body.DarkPage .create_tournament form input, body.DarkPage .create_tournament form select {
-	background: #202028;
+	background: #222f41;
 	color: #fff;
+	border: 1px solid #344860; border-radius: 5px;
 }
 
 body.DarkPage .game_list_page li a:hover span {
@@ -7833,16 +7849,32 @@ body.DarkPage .write_post textarea::-webkit-input-placeholder {
 	}
 	
 	body.DarkPage .write_post textarea:-moz-placeholder { /* Firefox 18- */
-	color: #fff;  
+	color: #ffffff;  
 	}
 	
 	body.DarkPage .write_post textarea::-moz-placeholder {  /* Firefox 19+ */
-	color: #fff;  
+	color: #ffffff;  
 	}
 	
 	body.DarkPage .write_post textarea:-ms-input-placeholder {
-	color: #fff;  
+	color: #ffffff;  
 	}
+
+	body.DarkPage .create_tournament form input::-webkit-input-placeholder {
+		color: #ffffff;
+		}
+		
+		body.DarkPage .create_tournament form input:-moz-placeholder { /* Firefox 18- */
+		color: #ffffff;  
+		}
+		
+		body.DarkPage .create_tournament form input::-moz-placeholder {  /* Firefox 19+ */
+		color: #ffffff;  
+		}
+		
+		body.DarkPage .create_tournament form input:-ms-input-placeholder {
+		color: #ffffff;  
+		}
 
 
 	body.DarkPage .discovery_page .tit span, body.DarkPage .discovery_page .tit i{background: #27272f; color: #fff;}
@@ -7876,8 +7908,13 @@ body.DarkPage .write_post textarea::-webkit-input-placeholder {
 	body.DarkPage .inner_model_box li a{ color:#858585;}
 
 	body.DarkPage form.common_form label{color:#858585}
-	body.DarkPage form.common_form .colm select{background: #202028;color:#858585}
+	body.DarkPage form.common_form .colm select, body.DarkPage .common_form  select, body.DarkPage .common_form input {background-color: #202028;color:#858585; border: 1px solid #737373;}
 	body.DarkPage .socail_urls input[type="text"]{ background: #202028; color:#858585}
+	body.DarkPage form.common_form .btn{background: #7239ea;}
+	body.DarkPage .about_team textarea{background: #202028;color:#858585; border: 1px solid #737373;}
+	body.DarkPage input[type="text"], body.DarkPage textarea, body.DarkPage input[type="password"], body.DarkPage input[type="number"]{background: #202028;color:#858585; border: 1px solid #737373;}
+
+	body.DarkPage .common_model_box#product_details .inner_model_box{ background: #fff;}
 
 /* ------------------------------ -- */
 .ring {

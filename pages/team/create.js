@@ -370,54 +370,69 @@ const CreateTeam = ({ user }) => {
                         <label htmlFor="exampleFormControlInput1">
                           Social Links (Optional)
                         </label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          placeholder="Enter your Facebook user ID as per the URL"
-                          name="facebook"
-                          onChange={handleChange}
-                          value={state.facebook}
-                        />
-                        <input
-                          type="text"
-                          className="form-control"
-                          placeholder="Enter your Twitch Channel name as per the URL"
-                          name="twitch"
-                          onChange={handleChange}
-                          value={state.twitch}
-                        />
-                        <input
-                          type="text"
-                          className="form-control"
-                          placeholder="Enter @Twitter Name"
-                          name="twitter"
-                          onChange={handleChange}
-                          value={state.twitter}
-                        />
-                        <input
-                          type="text"
-                          className="form-control"
-                          placeholder="Enter your Instagram User Name"
-                          name="instagram"
-                          onChange={handleChange}
-                          value={state.instagram}
-                        />
-                        <input
-                          type="text"
-                          className="form-control"
-                          placeholder="Enter your Youtube Channel Name as per the URL"
-                          name="youtube"
-                          onChange={handleChange}
-                          value={state.youtube}
-                        />
-                        <input
-                          type="text"
-                          className="form-control"
-                          placeholder="Enter your full Discord server link"
-                          name="discord"
-                          onChange={handleChange}
-                          value={state.discord}
-                        />
+                        <ul className="socail_url">
+                          <li>
+                            <input
+                              type="text"
+                              className="form-control"
+                              placeholder="Enter your Facebook user ID as per the URL"
+                              name="facebook"
+                              onChange={handleChange}
+                              value={state.facebook}
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              className="form-control"
+                              placeholder="Enter your Twitch Channel name as per the URL"
+                              name="twitch"
+                              onChange={handleChange}
+                              value={state.twitch}
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              className="form-control"
+                              placeholder="Enter @Twitter Name"
+                              name="twitter"
+                              onChange={handleChange}
+                              value={state.twitter}
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              className="form-control"
+                              placeholder="Enter your Instagram User Name"
+                              name="instagram"
+                              onChange={handleChange}
+                              value={state.instagram}
+                            />
+                          </li>
+                          <li>
+                            {' '}
+                            <input
+                              type="text"
+                              className="form-control"
+                              placeholder="Enter your Youtube Channel Name as per the URL"
+                              name="youtube"
+                              onChange={handleChange}
+                              value={state.youtube}
+                            />
+                          </li>
+                          <li>
+                            <input
+                              type="text"
+                              className="form-control"
+                              placeholder="Enter your full Discord server link"
+                              name="discord"
+                              onChange={handleChange}
+                              value={state.discord}
+                            />
+                          </li>
+                        </ul>
                       </div>
                     </div>
                     <button

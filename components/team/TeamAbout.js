@@ -151,12 +151,7 @@ const TeamAbout = ({ tmdata, isManager, isAdmin, user }) => {
               <a href="#!" className="model_show_btn">
                 {isManager || isAdmin ? (
                   <button className="btn">
-                    <i
-                      aria-hidden="true"
-                      style={{ color: 'white', fontSize: '25px' }}
-                    >
-                      Add Members
-                    </i>
+                    <i aria-hidden="true"> Add Members </i>
                   </button>
                 ) : null}
               </a>
@@ -168,75 +163,77 @@ const TeamAbout = ({ tmdata, isManager, isAdmin, user }) => {
                   <h3>Add Members</h3>
                   <form className="common_form" onSubmit={handleSubmitAbout}>
                     <div className="form-group">
-                      <div className="colm">
-                        <div>
+                      <ul>
+                        <li>
+                          <label htmlFor="search">Search</label>
                           <div>
-                            <label htmlFor="search">Search</label>
-                            <div>
-                              <input
-                                id="search"
-                                name="search"
-                                placeholder="Search for users"
-                                type="search"
-                                value={searchText}
-                                onChange={(e) => setSearchText(e.target.value)}
-                              />
+                            <input
+                              id="search"
+                              name="search"
+                              placeholder="Search for users"
+                              type="search"
+                              value={searchText}
+                              onChange={(e) => setSearchText(e.target.value)}
+                            />
 
-                              {searchText.trim() !== '' &&
-                                !isLoading &&
-                                isSuccess && (
+                            {searchText.trim() !== '' &&
+                              !isLoading &&
+                              isSuccess && (
+                                <div>
+                                  <h1>Users</h1>
                                   <div>
-                                    <h1>Users</h1>
-                                    <div>
-                                      {!data.users ||
-                                      data.users.length === 0 ? (
-                                        <p>No users found..</p>
-                                      ) : (
-                                        data.users.map((user) => (
-                                          <div
-                                            onClick={() => {
-                                              setSearchText(user.name);
-                                              setResults({
-                                                employee: user._id
-                                              });
-                                            }}
-                                            key={user._id}
-                                          >
-                                            <img
-                                              src={user.profilePicUrl}
-                                              height={30}
-                                              width={30}
-                                            />
-                                            <p>
-                                              {user.name.length > 20
-                                                ? user.name.substring(0, 20) +
-                                                  '...'
-                                                : user.name}
-                                            </p>
-                                          </div>
-                                        ))
-                                      )}
-                                    </div>
+                                    {!data.users || data.users.length === 0 ? (
+                                      <p>No users found..</p>
+                                    ) : (
+                                      data.users.map((user) => (
+                                        <div
+                                          onClick={() => {
+                                            setSearchText(user.name);
+                                            setResults({
+                                              employee: user._id
+                                            });
+                                          }}
+                                          key={user._id}
+                                        >
+                                          <img
+                                            src={user.profilePicUrl}
+                                            height={30}
+                                            width={30}
+                                          />
+                                          <p>
+                                            {user.name.length > 20
+                                              ? user.name.substring(0, 20) +
+                                                '...'
+                                              : user.name}
+                                          </p>
+                                        </div>
+                                      ))
+                                    )}
                                   </div>
-                                )}
-                            </div>
+                                </div>
+                              )}
                           </div>
-                        </div>
-                        <label htmlFor="exampleFormControlInput1">Roles</label>
-                        <select
-                          name="role"
-                          className="form-control"
-                          onChange={handleChangeAbt}
-                        >
-                          {teamroles.map((tr) =>
-                            tr.role.map((rol, idx) => (
-                              <option key={idx} value={rol}>
-                                {rol}
-                              </option>
-                            ))
-                          )}
-                        </select>
-                      </div>
+                        </li>
+                        <li>
+                          <label htmlFor="exampleFormControlInput1">
+                            Roles
+                          </label>
+                          <select
+                            name="role"
+                            className="form-control"
+                            onChange={handleChangeAbt}
+                          >
+                            {teamroles.map((tr) =>
+                              tr.role.map((rol, idx) => (
+                                <option key={idx} value={rol}>
+                                  {rol}
+                                </option>
+                              ))
+                            )}
+                          </select>
+                        </li>
+                      </ul>
+
                       <button className="btn">Add</button>
                     </div>
                   </form>

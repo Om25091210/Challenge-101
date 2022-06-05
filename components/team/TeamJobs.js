@@ -93,137 +93,158 @@ const TeamJobs = ({ jobs, team, isManager, isAdmin }) => {
             <div className="inner_model_box">
               <h3>Job Detail's</h3>
 
-              <form>
-                <div>
-                  <label htmlFor="position">Position:</label>
-                  <input
-                    type="text"
-                    placeholder="Enter Position"
-                    name="position"
-                    value={jobdata.position}
-                    onChange={onChange}
-                  ></input>
-                </div>
-                <div>
-                  <label htmlFor="job_role">Job Role:</label>
-                  <input
-                    type="text"
-                    placeholder="Enter Job Role"
-                    name="job_role"
-                    value={jobdata.job_role}
-                    onChange={onChange}
-                  ></input>
-                </div>
-                <div>
-                  <label htmlFor="experience_start">Minimun Experience:</label>
-                  <input
-                    type="number"
-                    placeholder="Enter experience"
-                    name="experience_start"
-                    value={jobdata.experience_start}
-                    onChange={onChange}
-                    className="form-control"
-                  />
-                  <label htmlFor="experience_end">Maximum Experience:</label>
-                  <input
-                    type="number"
-                    placeholder="Enter experience"
-                    name="experience_end"
-                    value={jobdata.experience_end}
-                    onChange={onChange}
-                    className="form-control"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="location">Location:</label>
-                  <input
-                    type="text"
-                    placeholder="Enter Location"
-                    name="location"
-                    onChange={onChange}
-                    value={jobdata.location}
-                  ></input>
-                </div>
-                <div>
-                  <select
-                    name="currency"
-                    id="currency"
-                    onChange={onChange}
-                    value={jobdata.currency}
-                  >
-                    <option value="USD">USD($)- Dollars</option>
-                    <option value="INR">INR (Rs) - Rupees</option>
-                  </select>
-                  <label htmlFor="salary_start">Minimum Salary:</label>
-                  <input
-                    type="number"
-                    placeholder="Enter min Salary"
-                    name="salary_start"
-                    onChange={onChange}
-                    value={jobdata.salary_start}
-                    className="form-control"
-                  />
-                  <label htmlFor="salary_end">Maximum Salary:</label>
-                  <input
-                    type="number"
-                    placeholder="Enter max Salary"
-                    name="salary_end"
-                    onChange={onChange}
-                    value={jobdata.salary_end}
-                    className="form-control"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="employment_type">Employement type:</label>
-                  <select
-                    name="employment_type"
-                    placeholder="Employement Type"
-                    className="form-control"
-                    value={jobdata.employment_type}
-                    onChange={onChange}
-                  >
-                    <option value="--">--</option>
-                    <option value="Full Time">Full Time</option>
-                    <option value="Permanent">Pernament</option>
-                    <option value="Part Time">Part Time</option>
-                  </select>
-                </div>
-                <div>
-                  <label htmlFor="job_description">Job Description:</label>
-                  <textarea
-                    onInput={(e) => handleInput(e)}
-                    rows="10"
-                    name="job_description"
-                    value={jobdata.job_description}
-                    onChange={onChange}
-                    placeholder="Job Description"
-                  ></textarea>
-                </div>
-                <div>
-                  <label htmlFor="candidate_profile">Candidate Profile</label>
-                  <textarea
-                    onInput={(e) => handleInput(e)}
-                    rows="10"
-                    name="candidate_profile"
-                    value={jobdata.candidate_profile}
-                    onChange={onChange}
-                    placeholder="Candidate Profile"
-                  ></textarea>
-                </div>
-                <div>
-                  <label htmlFor="education">Education:</label>
-                  <input
-                    type="text"
-                    placeholder="Enter Education Qualifications"
-                    name="education"
-                    onChange={onChange}
-                    value={jobdata.education}
-                  />
-                </div>
-                <button onClick={(e) => handleEditStat(e)} className="btn">
-                  Confirm
-                </button>
-              </form>
+              <div className="add_jobs_height">
+                <form className="common_form">
+                  <div className="form-group form_flex mr20">
+                    <div className="colm">
+                      <label htmlFor="position">Position:</label>
+                      <input
+                        type="text"
+                        placeholder="Enter Position"
+                        name="position"
+                        value={jobdata.position}
+                        onChange={onChange}
+                      ></input>
+                    </div>
+
+                    <div className="colm">
+                      <label htmlFor="job_role">Job Role:</label>
+                      <input
+                        type="text"
+                        placeholder="Enter Job Role"
+                        name="job_role"
+                        value={jobdata.job_role}
+                        onChange={onChange}
+                      ></input>
+                    </div>
+
+                    <div className="colm">
+                      <label htmlFor="experience_start">
+                        Minimun Experience:
+                      </label>
+                      <input
+                        type="number"
+                        placeholder="Enter experience"
+                        name="experience_start"
+                        value={jobdata.experience_start}
+                        onChange={onChange}
+                        className="form-control"
+                      />
+                    </div>
+
+                    <div className="colm">
+                      <label htmlFor="experience_end">
+                        Maximum Experience:
+                      </label>
+                      <input
+                        type="number"
+                        placeholder="Enter experience"
+                        name="experience_end"
+                        value={jobdata.experience_end}
+                        onChange={onChange}
+                        className="form-control"
+                      />
+                    </div>
+                    <div className="colm">
+                      <label htmlFor="location">Location:</label>
+                      <input
+                        type="text"
+                        placeholder="Enter Location"
+                        name="location"
+                        onChange={onChange}
+                        value={jobdata.location}
+                      ></input>
+                    </div>
+                    <div className="colm">
+                      <label htmlFor="location">Currency:</label>
+                      <select
+                        name="currency"
+                        id="currency"
+                        onChange={onChange}
+                        value={jobdata.currency}
+                      >
+                        <option value="USD">USD($)- Dollars</option>
+                        <option value="INR">INR (Rs) - Rupees</option>
+                      </select>
+                    </div>
+                    <div className="colm">
+                      <label htmlFor="salary_start">Minimum Salary:</label>
+                      <input
+                        type="number"
+                        placeholder="Enter min Salary"
+                        name="salary_start"
+                        onChange={onChange}
+                        value={jobdata.salary_start}
+                        className="form-control"
+                      />
+                    </div>
+                    <div className="colm">
+                      <label htmlFor="salary_end">Maximum Salary:</label>
+                      <input
+                        type="number"
+                        placeholder="Enter max Salary"
+                        name="salary_end"
+                        onChange={onChange}
+                        value={jobdata.salary_end}
+                        className="form-control"
+                      />
+                    </div>
+
+                    <div className="colm">
+                      <label htmlFor="employment_type">Employement type:</label>
+                      <select
+                        name="employment_type"
+                        placeholder="Employement Type"
+                        className="form-control"
+                        value={jobdata.employment_type}
+                        onChange={onChange}
+                      >
+                        <option value="--">--</option>
+                        <option value="Full Time">Full Time</option>
+                        <option value="Permanent">Pernament</option>
+                        <option value="Part Time">Part Time</option>
+                      </select>
+                    </div>
+                    <div className="colm">
+                      <label htmlFor="job_description">Job Description:</label>
+                      <textarea
+                        onInput={(e) => handleInput(e)}
+                        rows="10"
+                        name="job_description"
+                        value={jobdata.job_description}
+                        onChange={onChange}
+                        placeholder="Job Description"
+                      ></textarea>
+                    </div>
+                    <div className="colm">
+                      <label htmlFor="candidate_profile">
+                        Candidate Profile
+                      </label>
+                      <textarea
+                        onInput={(e) => handleInput(e)}
+                        rows="10"
+                        name="candidate_profile"
+                        value={jobdata.candidate_profile}
+                        onChange={onChange}
+                        placeholder="Candidate Profile"
+                      ></textarea>
+                    </div>
+                    <div className="colm">
+                      <label htmlFor="education">Education:</label>
+                      <input
+                        type="text"
+                        placeholder="Enter Education Qualifications"
+                        name="education"
+                        onChange={onChange}
+                        value={jobdata.education}
+                      />
+                    </div>
+                    <button onClick={(e) => handleEditStat(e)} className="btn">
+                      Confirm
+                    </button>
+                  </div>
+                </form>
+              </div>
             </div>
             <div className="overlay"></div>
           </div>
