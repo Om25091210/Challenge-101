@@ -8,8 +8,9 @@ import baseURL from '@utils/baseURL';
 import cookie from 'js-cookie';
 import axios from 'axios';
 import SharePost from './SharePost';
+import TeamFollow from '../team/TeamFollow';
 
-const AllPosts = ({ post, user, profiledata }) => {
+const AllPosts = ({ post, user, profiledata, type, team }) => {
   const [commentsData, setCommentsData] = useState([]);
 
   useEffect(() => {
@@ -73,7 +74,11 @@ const AllPosts = ({ post, user, profiledata }) => {
                   </a>
                 </h4>
               )}
-              {isLoggedInUser === false ? (
+              {type === 'TeamPost' ? (
+                <button className="btn">
+                  <TeamFollow team={team} user={user} />
+                </button>
+              ) : isLoggedInUser === false ? (
                 <button
                   className="btn"
                   onClick={() => followhandlesubmit(post.user._id)}

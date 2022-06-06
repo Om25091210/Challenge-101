@@ -8,18 +8,11 @@ import TeamSquads from './teamsquads/TeamSquads';
 import TeamStatistics from './teamstats/TeamStatistics';
 import axios from 'axios';
 import baseURL from '@utils/baseURL';
-import LikePost from '@components/postLikes/LikePost';
-import CustomPost from '@components/dashboard/CustomPost';
-import CommentForm from '@components/comments/CommentForm';
-import Moment from 'moment';
-
 import ProductList from '@components/common/ProductList';
 import TeamMatches from '@components/tournament/TeamMatches';
 import TeamJobs from './TeamJobs';
 import TeamJoines from './TeamJoines';
-import ReactTooltip from 'react-tooltip';
-import SharePost from '../dashboard/SharePost';
-import TeamFollow from './TeamFollow';
+import AllPosts from '../dashboard/AllPosts';
 
 const TeamProfileData = ({
   user,
@@ -32,29 +25,6 @@ const TeamProfileData = ({
   const [jobs, setJobs] = useState([]);
   const [teamposts, setTeamPosts] = useState([]);
   const [tournamentStatData, setTournamentStatData] = useState([]);
-  const [commentsData, setCommentsData] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get(`${baseURL}/api/comments/${teamposts._id}`)
-      .then((res) => {
-        setCommentsData(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-
-  // const isLiked = false
-
-  // const isShared = false
-  // const isShared =
-  //   teamposts.shares?.map((share) => {
-  //     return (share.user === user._id);
-  //   }).length > 0;
-
-  // const isShared =
-  //   teamposts.map((team)=> team?.shares.map((x)=> x.user === user._id))
 
   useEffect(() => {
     $('a.model_show_btn').click(function () {
@@ -82,30 +52,13 @@ const TeamProfileData = ({
       .get(`${baseURL}/api/tournamentstat/`)
       .then((res) => setTournamentStatData(res.data));
   }, []);
+
   let Filteredteamposts = teamposts.filter((teampost) => {
     return (
       teampost.post_type === 'Team' && teampost.username === data.team.name
     );
   });
 
-  // const isShared =
-  Filteredteamposts.map((team) => team?.shares.map((x) => x.user === user._id));
-
-  const isShared =
-    Filteredteamposts.shares?.map((share) => {
-      return share.user === user._id;
-    }).length > 0;
-
-  const isLiked =
-    Filteredteamposts?.likes?.map((like) => {
-      return like.user === user._id;
-    }).length > 0;
-
-  // console.log(data)
-  // console.log(profile)
-  // console.log(user)
-  console.log(Filteredteamposts);
-  console.log(isLiked);
   return (
     <>
       <div className="prfoile_tab_data white_bg">
@@ -117,152 +70,12 @@ const TeamProfileData = ({
             ) : (
               Filteredteamposts.length !== 0 &&
               Filteredteamposts.map((post, index) => (
-                <div className="post">
-                  <div key={index}>
-                    <div className="heads" key={index}>
-                      <div className="user">
-                        <img src={post.profilepic} alt="" />
-                      </div>
-                      <div className="user_name_disc">
-                        <div className="title_follow">
-                          {post.game_tag[0]?.gameId === null ? (
-                            <a href={`user/${post.user?._id}`}>
-                              <h4>{post.username}</h4>
-                            </a>
-                          ) : (
-                            <h4>
-                              <a href={`user/${post.user?._id}`}>
-                                {post.username}{' '}
-                              </a>
-                              is playing
-                              <a href={`games/${post.game_tag[0]?.gameId}`}>
-                                {' '}
-                                {post.game_tag[0]?.name}
-                              </a>
-                            </h4>
-                          )}
-                          {post.user._id !== user._id ? (
-                            <button
-                              className="btn"
-                              onClick={() => followhandlesubmit(post.user._id)}
-                            >
-                              <TeamFollow team={data.team} user={user} />
-                            </button>
-                          ) : null}
-                        </div>
-                        <div className="date">
-                          {post.createdAt === post.updatedAt ? (
-                            <p>
-                              {' '}
-                              {Moment(post.createdAt).format(
-                                'MMMM, DD, YYYY hh:mm A'
-                              )}{' '}
-                            </p>
-                          ) : (
-                            <p>
-                              {' '}
-                              {Moment(post.updatedAt).format(
-                                'MMMM, DD, YYYY hh:mm A'
-                              )}{' '}
-                            </p>
-                          )}
-                        </div>
-                      </div>
-
-                      {post.images.length === 0 ? (
-                        <div className="post_discp disc_without_img">
-                          <p>{post.description}</p>
-                        </div>
-                      ) : (
-                        <div className="post_discp ">
-                          <p>{post.description}</p>
-                        </div>
-                      )}
-                    </div>
-                    <div className="left_details">
-                      {' '}
-                      <a
-                        href="#!"
-                        data-tip={post.likes.map((like, iidx) => {
-                          return like.user.username;
-                        })}
-                        data-for="toolTip1"
-                        data-place="top"
-                      >
-                        <i className="fa fa-heart" aria-hidden="true"></i>{' '}
-                        <span>{post.likes.length}</span>
-                      </a>
-                      <ReactTooltip id="toolTip1" html={true} />
-                      <a href="#">
-                        {' '}
-                        <i className="fa fa-eye" aria-hidden="true"></i>{' '}
-                        <span>{post.views}</span>{' '}
-                      </a>{' '}
-                      <a href="#">
-                        {' '}
-                        <i
-                          className="fa fa-commenting"
-                          aria-hidden="true"
-                        ></i>{' '}
-                        <span>{commentsData.comments?.length}</span>{' '}
-                      </a>{' '}
-                    </div>
-                    <div className="right_details">
-                      {post?.images.length === 0 ? null : (
-                        <div className="post_data">
-                          <img src={post.images} alt="" />
-                        </div>
-                      )}
-                      <div className="users_share_box">
-                        <div className="more_user">
-                          {' '}
-                          <a href="#">
-                            <img src="/assets/media/dash/1.jpg" alt="user" />
-                            <span className="online"></span>
-                          </a>{' '}
-                          <a href="#">
-                            <img src="/assets/media/dash/2.jpg" alt="user" />
-                            <span className="online"></span>
-                          </a>{' '}
-                          <a href="#">
-                            <img src="/assets/media/dash/3.jpg" alt="user" />
-                            <span className="offiline"></span>
-                          </a>{' '}
-                          <a href="#" className="more">
-                            +3
-                          </a>{' '}
-                          <span className="others">
-                            Ashwin, George and 5 others have shared your post.
-                          </span>{' '}
-                        </div>
-                        <div className="shere">
-                          {' '}
-                          <LikePost postId={post._id} isLiked={isLiked} />{' '}
-                          <a href="#">
-                            {' '}
-                            <SharePost postId={post._id} isShared={isShared} />
-                          </a>
-                          <div className="three_dots">
-                            <a href="#!">
-                              {' '}
-                              <i
-                                className="fa fa-ellipsis-v"
-                                aria-hidden="true"
-                              ></i>
-                            </a>
-                            <CustomPost post={post} />
-                          </div>
-                        </div>
-                      </div>
-
-                      <CommentForm
-                        post={post}
-                        user={user}
-                        commentsData={commentsData}
-                      />
-                    </div>
-                  </div>
-                </div>
+                <AllPosts
+                  post={post}
+                  user={user}
+                  type="TeamPost"
+                  team={data.team}
+                />
               ))
             )}
           </div>

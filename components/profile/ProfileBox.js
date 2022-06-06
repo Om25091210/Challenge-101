@@ -1107,7 +1107,6 @@ const ProfileBox = ({ user, Userdata, games }) => {
                           {' '}
                           <img src={game.game.imgUrl} alt={game.game.name} />
                         </span>
-                        <p>{game.game.name}</p>
                       </>
                     ))}
                     <a href="#!" className="model_show_btn">
