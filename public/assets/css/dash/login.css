@@ -68,6 +68,8 @@ display: flex; align-items: center; justify-content: center; position: relative;
 .game_sect button{ width: 200px  !important; background: #1da1f3 !important; display:inline-block;}
 .signup2 #kt_sign_up_submit{ width: 200px  !important; flex-grow: 0; border-radius: 5px;}
 
+.signup2 button{ flex:0 0 200px; flex-grow: 0 !important;}
+
 .left_game{ float: left; width: 40%; height: 100vh;}
 .left_game img{ width: 100%; object-fit: cover; height: 100%;}
 

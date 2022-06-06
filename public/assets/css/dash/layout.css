@@ -2191,6 +2191,7 @@ article .social_bar {
 	font-size: 14px;
 	font-weight: 400;
 	display: block;
+	margin-left: 0;
 }
 .profile_dp_box .top_details .flag {
 	margin:5px 10px 0 10px;

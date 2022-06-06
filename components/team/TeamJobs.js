@@ -257,6 +257,21 @@ const TeamJobs = ({ jobs, team, isManager, isAdmin }) => {
         jobs.map((job, index) => (
           <div className="team_row arena_team_row" key={index}>
             <div className="inner_team">
+              <div className="mores jobss">
+                <h3>{job.position}</h3>
+
+                <p>
+                  <b>EXPERIENCE:</b> {job.experience_start} -{' '}
+                  {job.experience_end} Years
+                </p>
+                <p>
+                  <b> LOCATION:</b>
+                  {job.location}
+                </p>
+                <p>
+                  <b>Salary:</b> Not Disclosed
+                </p>
+              </div>
               <div className="logo_box">
                 <img
                   src={
@@ -268,20 +283,6 @@ const TeamJobs = ({ jobs, team, isManager, isAdmin }) => {
                   alt=""
                 />
                 <h3>{team.name}</h3>
-              </div>
-              <div className="mores">
-                <p>
-                  <b>POSITION:</b> {job.position}
-                </p>
-                <p>
-                  <b>EXPERIENCE:</b> {job.experience_start} -{' '}
-                  {job.experience_end} Years
-                </p>
-                <p>
-                  <b> LOCATION:</b>
-
-                  {job.location}
-                </p>
               </div>
               <a href="#" className="join">
                 APPLY NOW
