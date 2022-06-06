@@ -28,6 +28,7 @@ const ResetPassword = () => {
     return data;
   });
   const ResetPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?#^&_-])[A-Za-z\d@$!%*?#^&_-]{8,}$/;
+  const mediumRegex = /^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{4,7})/;
   const passwordValid = ResetPassword.test(password);
 
   const handleSubmit = async (e) => {
@@ -126,6 +127,25 @@ const ResetPassword = () => {
                       <div className="flex-grow-1 bg-secondary bg-active-success rounded h-5px"></div>
                     </div>
                   </div>
+                  <p className="text-muted">
+                    Password Strength:
+                    {mediumRegex.test(password) ? (
+                      <>
+                        {' '}
+                        {ResetPassword.test(password) ? (
+                          'Strong'
+                        ) : (
+                          <> {password.length === 0 ? null : 'Medium'}</>
+                        )}
+                      </>
+                    ) : (
+                      <>
+                        {password.length > 0 && password.length < 8
+                          ? 'Weak'
+                          : null}
+                      </>
+                    )}
+                  </p>
                   <div className="text-muted">
                     Use 8 or more characters with a mix of letters, numbers
                     &amp; symbols.

@@ -18,6 +18,8 @@ import AllScript from './AllScript';
 
 const usernameRegex = /^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{0,29}$/;
 let cancel;
+const strongRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#^?&_-])[A-Za-z\d@$!%*#^?&_-]{8,}$/;
+const mediumRegex = /^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{4,7})/;
 
 const Signup = ({ games, avatars }) => {
   const router = useRouter();
@@ -68,8 +70,8 @@ const Signup = ({ games, avatars }) => {
   const [country, setCountry] = useState('');
   const options = useMemo(() => countryList().getData(), []);
 
-  const changeHandler = (country) => {
-    setCountry(country);
+  const changeHandler = (e) => {
+    setCountry(e.target.value);
   };
   const checkboxHandler = (e) => {
     setCheckbox(e.target.checked);
@@ -110,7 +112,7 @@ const Signup = ({ games, avatars }) => {
           avatarImage,
           gameId,
           userign,
-          country: country.value
+          country: country
         });
 
         console.log(res);
@@ -168,7 +170,7 @@ const Signup = ({ games, avatars }) => {
     const isUser = Object.values({
       avatarImage,
       gameId,
-      country: country.label
+      country: country
     }).every((item) => Boolean(item));
     isUser ? setFinishSubmit(false) : setFinishSubmit(true);
   }, [country, avatarImage, gameId]);
@@ -415,6 +417,25 @@ const Signup = ({ games, avatars }) => {
                             <div className="flex-grow-1 bg-secondary bg-active-success rounded h-5px"></div>
                           </div>
                         </div>
+                        <p>
+                          Password Strength:
+                          {mediumRegex.test(password) ? (
+                            <>
+                              {' '}
+                              {strongRegex.test(password) ? (
+                                'Strong'
+                              ) : (
+                                <> {password.length === 0 ? null : 'Medium'}</>
+                              )}
+                            </>
+                          ) : (
+                            <>
+                              {password.length > 0 && password.length < 8
+                                ? 'Weak'
+                                : null}
+                            </>
+                          )}
+                        </p>
                         <div className="text-muted">
                           {' '}
                           Use 8 or more characters with a mix of letters,
@@ -638,13 +659,17 @@ const Signup = ({ games, avatars }) => {
                       </div>
                     </div>
 
-                    <div className="fv-row mb-7 countries">
-                      <label className="form-label"> Select Country </label>
-                      <Select
-                        options={options}
-                        value={country}
-                        onChange={changeHandler}
-                      />
+                    <div className="form-group">
+                      <label htmlFor="exampleFormControlTextarea1">
+                        Country
+                      </label>
+                      <select name="country" onChange={changeHandler}>
+                        {options.map((opt) => (
+                          <>
+                            <option value={opt.value}>{opt.label}</option>
+                          </>
+                        ))}
+                      </select>
                     </div>
 
                     <div className="two_btn signup2">
