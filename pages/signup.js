@@ -183,7 +183,7 @@ const Signup = ({ games, avatars }) => {
   };
 
   // const [step1, setStep1] = useState(true);
-  const [step1, setStep1] = useState(true);
+  const [step1, setStep1] = useState(false);
   const [showbtn, setShowbtn] = useState(true);
 
   const showstep2 = async (e) => {
