@@ -17,6 +17,9 @@ import ProductList from '@components/common/ProductList';
 import TeamMatches from '@components/tournament/TeamMatches';
 import TeamJobs from './TeamJobs';
 import TeamJoines from './TeamJoines';
+import ReactTooltip from 'react-tooltip';
+import SharePost from '../dashboard/SharePost';
+import TeamFollow from './TeamFollow';
 
 const TeamProfileData = ({
   user,
@@ -29,6 +32,30 @@ const TeamProfileData = ({
   const [jobs, setJobs] = useState([]);
   const [teamposts, setTeamPosts] = useState([]);
   const [tournamentStatData, setTournamentStatData] = useState([]);
+  const [commentsData, setCommentsData] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`${baseURL}/api/comments/${teamposts._id}`)
+      .then((res) => {
+        setCommentsData(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  // const isLiked = false
+
+  // const isShared = false
+  // const isShared =
+  //   teamposts.shares?.map((share) => {
+  //     return (share.user === user._id);
+  //   }).length > 0;
+
+  // const isShared =
+  //   teamposts.map((team)=> team?.shares.map((x)=> x.user === user._id))
+
   useEffect(() => {
     $('a.model_show_btn').click(function () {
       $(this).next().addClass('show_model');
@@ -61,6 +88,24 @@ const TeamProfileData = ({
     );
   });
 
+  // const isShared =
+  Filteredteamposts.map((team) => team?.shares.map((x) => x.user === user._id));
+
+  const isShared =
+    Filteredteamposts.shares?.map((share) => {
+      return share.user === user._id;
+    }).length > 0;
+
+  const isLiked =
+    Filteredteamposts?.likes?.map((like) => {
+      return like.user === user._id;
+    }).length > 0;
+
+  // console.log(data)
+  // console.log(profile)
+  // console.log(user)
+  console.log(Filteredteamposts);
+  console.log(isLiked);
   return (
     <>
       <div className="prfoile_tab_data white_bg">
@@ -80,7 +125,30 @@ const TeamProfileData = ({
                       </div>
                       <div className="user_name_disc">
                         <div className="title_follow">
-                          <h4>{post.username}</h4>
+                          {post.game_tag[0]?.gameId === null ? (
+                            <a href={`user/${post.user?._id}`}>
+                              <h4>{post.username}</h4>
+                            </a>
+                          ) : (
+                            <h4>
+                              <a href={`user/${post.user?._id}`}>
+                                {post.username}{' '}
+                              </a>
+                              is playing
+                              <a href={`games/${post.game_tag[0]?.gameId}`}>
+                                {' '}
+                                {post.game_tag[0]?.name}
+                              </a>
+                            </h4>
+                          )}
+                          {post.user._id !== user._id ? (
+                            <button
+                              className="btn"
+                              onClick={() => followhandlesubmit(post.user._id)}
+                            >
+                              <TeamFollow team={data.team} user={user} />
+                            </button>
+                          ) : null}
                         </div>
                         <div className="date">
                           {post.createdAt === post.updatedAt ? (
@@ -101,17 +169,30 @@ const TeamProfileData = ({
                         </div>
                       </div>
 
-                      <div className="post_discp">
-                        <p>{post.description}</p>
-                      </div>
+                      {post.images.length === 0 ? (
+                        <div className="post_discp disc_without_img">
+                          <p>{post.description}</p>
+                        </div>
+                      ) : (
+                        <div className="post_discp ">
+                          <p>{post.description}</p>
+                        </div>
+                      )}
                     </div>
                     <div className="left_details">
                       {' '}
-                      <a href="#">
-                        {' '}
+                      <a
+                        href="#!"
+                        data-tip={post.likes.map((like, iidx) => {
+                          return like.user.username;
+                        })}
+                        data-for="toolTip1"
+                        data-place="top"
+                      >
                         <i className="fa fa-heart" aria-hidden="true"></i>{' '}
-                        <span>{post.likes.length}</span>{' '}
-                      </a>{' '}
+                        <span>{post.likes.length}</span>
+                      </a>
+                      <ReactTooltip id="toolTip1" html={true} />
                       <a href="#">
                         {' '}
                         <i className="fa fa-eye" aria-hidden="true"></i>{' '}
@@ -123,13 +204,15 @@ const TeamProfileData = ({
                           className="fa fa-commenting"
                           aria-hidden="true"
                         ></i>{' '}
-                        <span>0</span>{' '}
+                        <span>{commentsData.comments?.length}</span>{' '}
                       </a>{' '}
                     </div>
                     <div className="right_details">
-                      <div className="post_data">
-                        <img src={post.images} alt="" />
-                      </div>
+                      {post?.images.length === 0 ? null : (
+                        <div className="post_data">
+                          <img src={post.images} alt="" />
+                        </div>
+                      )}
                       <div className="users_share_box">
                         <div className="more_user">
                           {' '}
@@ -149,22 +232,18 @@ const TeamProfileData = ({
                             +3
                           </a>{' '}
                           <span className="others">
-                            Ashwin, George and 5 others have liked your post.
+                            Ashwin, George and 5 others have shared your post.
                           </span>{' '}
                         </div>
                         <div className="shere">
                           {' '}
-                          <LikePost postId={post._id} />{' '}
+                          <LikePost postId={post._id} isLiked={isLiked} />{' '}
                           <a href="#">
                             {' '}
-                            <i
-                              className="fa fa-share-alt"
-                              aria-hidden="true"
-                            ></i>{' '}
-                            <span>Share</span>{' '}
+                            <SharePost postId={post._id} isShared={isShared} />
                           </a>
                           <div className="three_dots">
-                            <a>
+                            <a href="#!">
                               {' '}
                               <i
                                 className="fa fa-ellipsis-v"
@@ -176,7 +255,11 @@ const TeamProfileData = ({
                         </div>
                       </div>
 
-                      <CommentForm post={post} user={user} />
+                      <CommentForm
+                        post={post}
+                        user={user}
+                        commentsData={commentsData}
+                      />
                     </div>
                   </div>
                 </div>

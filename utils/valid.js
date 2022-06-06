@@ -5,7 +5,7 @@ const valid = (firstname, lastname, email, password, phone_number) => {
   if (!validateEmail(email)) return 'Invalid email. Please check';
 
   if (firstname.length < 3) return 'Name must be at least 3 characters.';
-  const pass = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+  const pass = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#^?&_-])[A-Za-z\d@$!%*#^?&_-]{8,}$/;
   if (!pass.test(password)) return 'Please enter a valid password.';
 
   if (phone_number.length < 10)

@@ -27,6 +27,8 @@ const ResetPassword = () => {
     );
     return data;
   });
+  const ResetPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?#^&_-])[A-Za-z\d@$!%*?#^&_-]{8,}$/;
+  const passwordValid = ResetPassword.test(password);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,15 +36,18 @@ const ResetPassword = () => {
     if (password !== confirmPassword) {
       return toast.error('Passwords do not match');
     }
-
-    try {
-      await mutation.mutateAsync();
-      toast.success('Your password has been updated');
-      router.push('/login');
-    } catch (err) {
-      toast.error(
-        err.response?.data?.msg || 'There was an error. Try again later.'
-      );
+    if (passwordValid === true) {
+      try {
+        await mutation.mutateAsync();
+        toast.success('Your password has been updated');
+        router.push('/login');
+      } catch (err) {
+        toast.error(
+          err.response?.data?.msg || 'There was an error. Try again later.'
+        );
+      }
+    } else {
+      return toast.error('Invalid Password');
     }
   };
 
@@ -98,6 +103,7 @@ const ResetPassword = () => {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
+                        id="password"
                       />
                       <span
                         className="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2"
