@@ -20,7 +20,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
   const [showform, setShowForm] = useState(false);
   const [showlocation, setShowlocation] = useState(false);
   const [showLocModal, setShowLocModal] = useState(true);
-  const [selectedGame, setSelectedGame] = useState({});
+  const [selectedGame, setSelectedGame] = useState();
   const [showIgn, setShowIgn] = useState('none');
 
   const [search, setSearch] = useState('');
@@ -298,13 +298,32 @@ const ProfileBox = ({ user, Userdata, games }) => {
   // }, []);
 
   const handleSelectGame = async (obj) => {
-    setSelectedGame({ game: obj, userign: userIgn });
+    setSelectedGame({ game: obj });
     setShowIgn('');
-    if (userIgn && userIgn.length > 4) {
-      //myState.setFilteredResults([]);
+  };
+
+  const gamehandleSubmit = async (e) => {
+    e.preventDefault();
+    var gameId = selectedGame?.game._id;
+    try {
+      await axios.patch(
+        `${baseURL}/api/profile/addgame/${Userdata.profile._id}`,
+        {
+          gameId,
+          userIgn
+        },
+        {
+          headers: {
+            Authorization: cookie.get('token'),
+            'Content-Type': 'application/json'
+          }
+        }
+      );
+      toast.success(`${selectedGame.game.name} has been added to your games`);
       $('a.model_close').parent().removeClass('show_model');
-    } else {
-      toast.error('Please enter your valid User In Game Name (IGN)');
+    } catch (err) {
+      console.log(err);
+      toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }
   };
 
@@ -1134,90 +1153,46 @@ const ProfileBox = ({ user, Userdata, games }) => {
                       </a>
                       <div className="inner_model_box">
                         <h3>Games</h3>
-
-                        <div className="team_search ign_search">
-                          <div className="searchbox">
-                            <h3>Search </h3>
-
-                            <form
-                              className=""
-                              noValidate="novalidate"
-                              onSubmit={handleSearchSubmit}
-                            >
-                              <input
-                                id="search"
-                                name="search"
-                                className=""
-                                placeholder="Search your player name or user IGN..."
-                                type="search"
-                                value={search}
-                                onChange={handleSearchChange}
-                                autoComplete="off"
-                              />
-                              <input
-                                type="text"
-                                className="form-control"
-                                placeholder="User IGN"
-                                name="userIgn"
-                                onChange={handleUserIgnChange}
-                                value={userIgn}
-                              />
-                              <input type="submit" value="" />
-                            </form>
-                          </div>
-                        </div>
-
-                        <ul className="">
-                          {players &&
-                            players.map((player, idx) => (
-                              <li key={idx}>
-                                <div className="game_pic">
-                                  <a
-                                    href="#!"
-                                    onClick={() => handleSelectGame(game)}
-                                  >
-                                    {' '}
-                                    <img
-                                      src={player.imgUrl}
-                                      alt={player.name}
-                                    />{' '}
-                                  </a>
-                                </div>
-                                <p>{player.name}</p>
-                              </li>
-                            ))}
-                        </ul>
-
-                        <div
-                          className="form-group"
-                          style={{ display: showIgn }}
+                        <form
+                          className="form w-100"
+                          noValidate="novalidate"
+                          id="kt_sign_up_form"
+                          onSubmit={gamehandleSubmit}
                         >
-                          <label htmlFor="exampleFormControlInput1">
-                            Please enter your in game name (IGN)
-                          </label>
-                        </div>
-                        <div className="poup_height msScroll_all">
-                          <ul className="">
-                            {games &&
-                              games.map((game, idx) => (
-                                <li key={idx}>
-                                  <div className="game_pic">
+                          <div className="poup_height msScroll_all">
+                            <ul>
+                              {games &&
+                                games.map((game) => (
+                                  <li>
                                     <a
                                       href="#!"
                                       onClick={() => handleSelectGame(game)}
                                     >
-                                      {' '}
-                                      <img
-                                        src={game.imgUrl}
-                                        alt={game.name}
-                                      />{' '}
+                                      <img src={game.imgUrl} alt={game.name} />
                                     </a>
-                                  </div>
-                                  <p>{game.name}</p>
-                                </li>
-                              ))}
-                          </ul>
-                        </div>
+                                    <div
+                                      className="hovers"
+                                      style={{ display: showIgn }}
+                                    >
+                                      <span>
+                                        <i
+                                          className="fa fa-check"
+                                          aria-hidden="true"
+                                        ></i>
+                                      </span>
+                                      <input
+                                        type="text"
+                                        name="userIgn"
+                                        onChange={handleUserIgnChange}
+                                        value={userIgn}
+                                      />
+                                    </div>
+                                  </li>
+                                ))}
+                            </ul>
+                          </div>
+                          <button className="btn">Add Game</button>
+                        </form>
                       </div>
                       <div className="overlay"></div>
                     </div>

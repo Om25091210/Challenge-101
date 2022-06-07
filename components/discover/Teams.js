@@ -418,7 +418,7 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
                   {team.team.attributes?.language.length > 0 ? (
                     <>
                       {team.team.attributes?.language.map((tem) => (
-                        <b>{tem}</b>
+                        <b>{tem.substring(0, 2).toUpperCase()}</b>
                       ))}
                     </>
                   ) : (

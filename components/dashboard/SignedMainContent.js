@@ -124,6 +124,7 @@ const SignedMainContent = ({ posts, user }) => {
   const selectgameTag = (x) => {
     setGameTag({ name: x.name, gameId: x._id });
     toast.success(`${x.name} is selected.`);
+    $('a.model_close').parent().removeClass('show_model');
   };
 
   const personaHandle = (username, profilepic, postType) => {

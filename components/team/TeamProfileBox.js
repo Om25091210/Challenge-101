@@ -482,7 +482,7 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile }) => {
             <span>
               <div className="loc_box">
                 {' '}
-                {isManager || isAdmin ? (
+                {/* {isManager || isAdmin ? (
                   <a href="#!" className="model_show_btn">
                     <button className="btn">
                       <i
@@ -492,7 +492,7 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile }) => {
                       ></i>
                     </button>
                   </a>
-                ) : null}
+                ) : null} */}
                 <div className="common_model_box">
                   <a href="#!" className="model_close">
                     X
