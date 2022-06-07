@@ -191,11 +191,11 @@ const ProfileData = ({ user, Userdata, player, products }) => {
         <ProductList user={user} productList={products} />
 
         <div className="tab hide" id="photos">
-          <Photos Userdata={Userdata} />
+          <Photos Userdata={Userdata} user={user} />
         </div>
 
         <div className="tab hide" id="video">
-          <Videos Userdata={Userdata} />
+          <Videos Userdata={Userdata} user={user} />
         </div>
 
         <div className="tab hide" id="sponsors">
@@ -205,11 +205,11 @@ const ProfileData = ({ user, Userdata, player, products }) => {
                 Userdata.sponsors.map((item, index) => (
                   <li key={index}>
                     <div className="sponser_name">
-                      <img src={item.imgUrl} alt={item.sponsorId} />
+                      <img src={item.imgUrl} alt={item.name} />
                     </div>
                     <div className="sponser_data">
                       {' '}
-                      <span className="head_spons_bg">{item.sponsorId}</span>
+                      <span className="head_spons_bg">{item.name}</span>
                       <p>{item.description}</p>
                     </div>
                   </li>
@@ -219,11 +219,13 @@ const ProfileData = ({ user, Userdata, player, products }) => {
             <span>
               <div className="loc_box">
                 {' '}
-                <a href="#!" className="model_show_btn">
-                  <button className="btn">
-                    <i aria-hidden="true"> Edit Sponsor</i>
-                  </button>
-                </a>
+                {Userdata.profile.user._id === user._id ? (
+                  <a href="#!" className="model_show_btn">
+                    <button className="btn">
+                      <i aria-hidden="true"> Edit Sponsor</i>
+                    </button>
+                  </a>
+                ) : null}
                 <div className="common_model_box" style={{ height: '12rem' }}>
                   <a href="#!" className="model_close">
                     X

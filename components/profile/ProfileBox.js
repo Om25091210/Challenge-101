@@ -988,6 +988,30 @@ const ProfileBox = ({ user, Userdata, games }) => {
                 <a href={`https://${sociallinks?.website}`} target="_blank">
                   <i className="fa fa-globe"></i>
                 </a>
+                {sociallinks.reddit.length > 0 ? (
+                  <a
+                    href={`https://www.reddit.com/user/${sociallinks?.reddit}`}
+                    target="_blank"
+                  >
+                    <i className="fa fa-reddit"></i>
+                  </a>
+                ) : null}
+                {sociallinks.playstation.length > 0 ? (
+                  <a
+                    href={`https://playstation.com/users/${sociallinks?.playstation}`}
+                    target="_blank"
+                  >
+                    <i className="fa fa-globe"></i>
+                  </a>
+                ) : null}
+                {sociallinks.xbox.length > 0 ? (
+                  <a
+                    href={`https://social.xbox.live/${sociallinks?.xbox}`}
+                    target="_blank"
+                  >
+                    <i className="fa fa-globe"></i>
+                  </a>
+                ) : null}
               </div>
 
               <span>
@@ -1079,6 +1103,36 @@ const ProfileBox = ({ user, Userdata, games }) => {
                             name="website"
                           />
                         </li>
+                        <li>
+                          {' '}
+                          <input
+                            type="text"
+                            placeholder="Enter your reddit username"
+                            onChange={handleChangeSocial}
+                            value={sociallinks.reddit}
+                            name="reddit"
+                          />
+                        </li>
+                        <li>
+                          {' '}
+                          <input
+                            type="text"
+                            placeholder="Enter your PlayStation ID"
+                            onChange={handleChangeSocial}
+                            value={sociallinks.playstation}
+                            name="playstation"
+                          />
+                        </li>
+                        <li>
+                          {' '}
+                          <input
+                            type="text"
+                            placeholder="Enter your XBOX ID"
+                            onChange={handleChangeSocial}
+                            value={sociallinks.xbox}
+                            name="xbox"
+                          />
+                        </li>
                       </ul>
                       <button className="btn" onClick={handleLinksSubmit}>
                         Confirm Changes
@@ -1110,7 +1164,10 @@ const ProfileBox = ({ user, Userdata, games }) => {
 
             {isLoggedInUser ? (
               <button className="bio_edit" onClick={toggleShowform}>
-                <i className="fa fa-pencil" aria-hidden="true"></i>
+                <i className="fa fa-gear btn" aria-hidden="true">
+                  {' '}
+                  Edit Bio
+                </i>
               </button>
             ) : null}
 

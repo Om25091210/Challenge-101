@@ -8,7 +8,7 @@ import VideoDropzone from '@components/common/VideosDropzone';
 import { Video } from 'cloudinary-react';
 import ProfileVideosDel from './ProfileVideosDel';
 
-const Videos = ({ Userdata }) => {
+const Videos = ({ Userdata, user }) => {
   const [videos, setVideos] = useState([]);
   const [videodisc, setVideodisc] = useState();
 
@@ -51,7 +51,9 @@ const Videos = ({ Userdata }) => {
   return (
     <div className="video_box">
       <form onSubmit={handleSubmit}>
-        <VideoDropzone setVideos={setVideos} />
+        {Userdata.profile.user._id === user._id ? (
+          <VideoDropzone setVideos={setVideos} />
+        ) : null}
 
         <p></p>
 

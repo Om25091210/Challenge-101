@@ -8,7 +8,7 @@ import ImageDropzone from '@components/common/ImageDropzone';
 import Moment from 'moment';
 import ProfilePhotosDel from './ProfilePhotosDel';
 
-const Photos = ({ Userdata }) => {
+const Photos = ({ Userdata, user }) => {
   const [images, setImages] = useState([]);
   const [title, setTitle] = useState();
 
@@ -51,7 +51,9 @@ const Photos = ({ Userdata }) => {
   return (
     <div className="gallery_box">
       <form onSubmit={handlePhotosSubmit}>
-        <ImageDropzone setImages={setImages} />
+        {Userdata.profile.user._id === user._id ? (
+          <ImageDropzone setImages={setImages} />
+        ) : null}
 
         <p></p>
 
