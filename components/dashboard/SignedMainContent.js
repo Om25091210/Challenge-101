@@ -21,6 +21,7 @@ const SignedMainContent = ({ posts, user }) => {
     name: '',
     gameId: ''
   });
+  const [showGame, setShowGame] = useState('');
   const router = useRouter();
   const [profiledata, setProfileData] = useState([]);
   const [topmenu, setTopmenu] = useState(true);
@@ -122,6 +123,7 @@ const SignedMainContent = ({ posts, user }) => {
   }, []);
 
   const selectgameTag = (x) => {
+    setShowGame(x);
     setGameTag({ name: x.name, gameId: x._id });
     toast.success(`${x.name} is selected.`);
     $('a.model_close').parent().removeClass('show_model');
@@ -324,7 +326,11 @@ const SignedMainContent = ({ posts, user }) => {
             <i className="fa fa-calendar-plus-o" aria-hidden="true"></i>
           </a> */}
           <a href="#!" className="model_show_btn" alt="personal details">
-            <i className="fa fa-gamepad" aria-hidden="true"></i>
+            {showGame.imgUrl ? (
+              <img src={showGame.imgUrl} />
+            ) : (
+              <i className="fa fa-gamepad" aria-hidden="true"></i>
+            )}
           </a>
           <div className="common_model_box" id="more_games">
             <a href="#!" className="model_close">

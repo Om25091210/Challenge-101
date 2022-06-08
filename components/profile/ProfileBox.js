@@ -1001,7 +1001,11 @@ const ProfileBox = ({ user, Userdata, games }) => {
                     href={`https://playstation.com/users/${sociallinks?.playstation}`}
                     target="_blank"
                   >
-                    <i className="fa fa-globe"></i>
+                    <img
+                      src="/assets/media/social/PS Logo.png"
+                      height="20px"
+                      width="20px"
+                    />
                   </a>
                 ) : null}
                 {sociallinks.xbox?.length > 0 ? (
@@ -1009,7 +1013,11 @@ const ProfileBox = ({ user, Userdata, games }) => {
                     href={`https://social.xbox.live/${sociallinks?.xbox}`}
                     target="_blank"
                   >
-                    <i className="fa fa-globe"></i>
+                    <img
+                      src="/assets/media/social/Xbox.png"
+                      height="20px"
+                      width="20px"
+                    />
                   </a>
                 ) : null}
               </div>
