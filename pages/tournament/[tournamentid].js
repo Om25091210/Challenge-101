@@ -230,7 +230,9 @@ const TournamentDetail = ({ user, data, products }) => {
                           </span>
                         ) : null}
                       </div>
-                      <p> {data.tournament?.followers.length} Followers</p>
+                      <span className="follower">
+                        <p> {data.tournament?.followers.length} Followers</p>
+                      </span>
                       <span className="name loc_date">
                         <i className="fa fa-map-marker"></i> Indoor Stadium,{' '}
                         {data.tournament.location}{' '}

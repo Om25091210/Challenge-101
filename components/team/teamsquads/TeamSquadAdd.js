@@ -95,6 +95,7 @@ const TeamSquadAdd = ({ teamplayers, team, isManager, isAdmin }) => {
 
           <form className="common_form" onSubmit={handleEditStat}>
             <div className="colm rows">
+              <label htmlFor="search">Games</label>
               <select
                 className="form-control text-capitalize"
                 multiple={false}
@@ -112,6 +113,7 @@ const TeamSquadAdd = ({ teamplayers, team, isManager, isAdmin }) => {
               <p>{formErrors.game}</p>
             </div>
             <div className="colm rows">
+              <label htmlFor="search">Country</label>
               <select
                 className="form-control text-capitalize"
                 name="country"
@@ -126,6 +128,7 @@ const TeamSquadAdd = ({ teamplayers, team, isManager, isAdmin }) => {
               </select>
             </div>
             <div className="colm rows">
+              <label htmlFor="search"> Players</label>
               <select
                 className="form-control text-capitalize"
                 multiple={false}

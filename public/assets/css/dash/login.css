@@ -129,6 +129,10 @@ display: flex; align-items: center; justify-content: center; position: relative;
     right: 40px;
     top: 50%; text-transform: capitalize;}
 
+.right_game_form select{background: #222f41;
+    color: #fff;
+    border: 1px solid #344860;
+    border-radius: 5px; width: 400px;}
 
 #react-select-3-listbox{ color: #000;}
 #verifycode{ float: left; width: 500px; height: 400px;}

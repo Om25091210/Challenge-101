@@ -2074,6 +2074,7 @@ article .social_bar {
 	float: left;
 	width: 100%;
 	position:relative;
+	background: #fff;
 }
 .profile_box .profile_cover_photo {
 	position: absolute;
@@ -2150,7 +2151,7 @@ article .social_bar {
 	position: absolute;
 	width: 155px;
 	height: 155px;
-	border:5px solid #20202a;
+	border:5px solid #ddd;
 	border-radius: 20px;
 	left: 25px;
 }
@@ -2213,7 +2214,7 @@ article .social_bar {
 	padding-top: 5px;
 }
 
-.profile_dp_box .top_details span{ margin-left: 10px;}
+.profile_dp_box .top_details span{ margin-right: 10px;}
 
 .profile_dp_box .top_details .button{ margin-left: 10px;}
 .profile_dp_box .top_details .button a {
@@ -2223,9 +2224,9 @@ article .social_bar {
     font-size: 12px;
     text-align: center;
     padding: 5px 17px;
-    border-radius: 20px;
+    border-radius: 20px; text-transform: uppercase;
 }
-.profile_dp_box .top_details .button button{ text-transform: uppercase;}
+.profile_dp_box .top_details .button button{ text-transform: uppercase; border-radius: 20px; font-size: 12px;}
 .profile_dp_box .top_details .button a:hover {
 	background: #000;
 }
@@ -2550,6 +2551,9 @@ article .social_bar {
 .all_stats ul li i {
 	padding:3px 0 0 15px;
 }
+
+.profile_match_details .games_details{ margin-top: 0;}
+
 .games_details {
 	background: #fff;
 	border-radius: 5px;
@@ -5178,6 +5182,11 @@ article .social_bar {
 	float: left;
 	width: 100%;
 }
+
+.sponsers_box .sponser_btn{display: flex;
+    flex-direction: row-reverse;
+    margin-bottom: 20px;}
+
 .sponsers_box ul {
 	display: flex;
 	color: #000;
@@ -5186,6 +5195,8 @@ article .social_bar {
 .sponsers_box ul li {
 	flex:0 0 33.333%;
 	border-right: 1px solid #3d3d41;
+	border-left: 1px solid #3d3d41;
+	border-top: 1px solid #3d3d41;
 	border-bottom: 1px solid #3d3d41;
 	background: #ddd;
 }
@@ -7913,9 +7924,11 @@ body.DarkPage .write_post textarea::-webkit-input-placeholder {
 	body.DarkPage .socail_urls input[type="text"]{ background: #202028; color:#858585}
 	body.DarkPage form.common_form .btn{background: #7239ea;}
 	body.DarkPage .about_team textarea{background: #202028;color:#858585; border: 1px solid #737373;}
-	body.DarkPage input[type="text"], body.DarkPage textarea, body.DarkPage input[type="password"], body.DarkPage input[type="number"]{background: #202028;color:#858585; border: 1px solid #737373;}
+	body.DarkPage input[type="text"], 	body.DarkPage input[type="email"], body.DarkPage textarea, body.DarkPage input[type="password"], body.DarkPage input[type="number"]{background: #202028 !important; color:#858585; border: 1px solid #737373;}
+	body.DarkPage input[type="text"]:focus{background: #202028 !important;}
 
 	body.DarkPage .common_model_box#product_details .inner_model_box{ background: #fff;}
+	body.DarkPage .profile_dp_box .profile_pic{border: 5px solid #20202a;}
 
 /* ------------------------------ -- */
 .ring {

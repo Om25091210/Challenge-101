@@ -200,6 +200,48 @@ const ProfileData = ({ user, Userdata, player, products }) => {
 
         <div className="tab hide" id="sponsors">
           <div className="sponsers_box">
+            <div className="sponser_btn">
+              {' '}
+              {Userdata.profile.user._id === user._id ? (
+                <a href="#!" className="model_show_btn">
+                  <button className="btn">
+                    <i aria-hidden="true"> Edit Sponsor</i>
+                  </button>
+                </a>
+              ) : null}
+              <div className="common_model_box" style={{ height: '12rem' }}>
+                <a href="#!" className="model_close">
+                  X
+                </a>
+                <div className="inner_model_box">
+                  <h3>Sponsor's</h3>
+
+                  <form className="common_form" onSubmit={handleSubmit}>
+                    <div className="form-group">
+                      <div className="">
+                        <select
+                          className="form-control custom-select text-capitalize"
+                          name="sponsor"
+                          value={state.value}
+                          multiple={true}
+                          onChange={handleChange}
+                        >
+                          {sponsors.map((spon, idx) => (
+                            <option key={idx} value={spon._id}>
+                              {' '}
+                              {spon.name}{' '}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                      <button className="btn">Update</button>
+                    </div>
+                  </form>
+                </div>
+                <div className="overlay"></div>
+              </div>
+            </div>
+
             <ul>
               {Userdata.sponsors &&
                 Userdata.sponsors.map((item, index) => (
@@ -215,50 +257,6 @@ const ProfileData = ({ user, Userdata, player, products }) => {
                   </li>
                 ))}
             </ul>
-
-            <span>
-              <div className="loc_box">
-                {' '}
-                {Userdata.profile.user._id === user._id ? (
-                  <a href="#!" className="model_show_btn">
-                    <button className="btn">
-                      <i aria-hidden="true"> Edit Sponsor</i>
-                    </button>
-                  </a>
-                ) : null}
-                <div className="common_model_box" style={{ height: '12rem' }}>
-                  <a href="#!" className="model_close">
-                    X
-                  </a>
-                  <div className="inner_model_box">
-                    <h3>Sponsor's</h3>
-
-                    <form className="common_form" onSubmit={handleSubmit}>
-                      <div className="form-group">
-                        <div className="">
-                          <select
-                            className="form-control custom-select text-capitalize"
-                            name="sponsor"
-                            value={state.value}
-                            multiple={true}
-                            onChange={handleChange}
-                          >
-                            {sponsors.map((spon, idx) => (
-                              <option key={idx} value={spon._id}>
-                                {' '}
-                                {spon.name}{' '}
-                              </option>
-                            ))}
-                          </select>
-                        </div>
-                        <button className="btn">Update</button>
-                      </div>
-                    </form>
-                  </div>
-                  <div className="overlay"></div>
-                </div>
-              </div>
-            </span>
           </div>
         </div>
 

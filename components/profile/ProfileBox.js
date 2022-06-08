@@ -988,7 +988,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                 <a href={`https://${sociallinks?.website}`} target="_blank">
                   <i className="fa fa-globe"></i>
                 </a>
-                {sociallinks.reddit.length > 0 ? (
+                {sociallinks.reddit?.length > 0 ? (
                   <a
                     href={`https://www.reddit.com/user/${sociallinks?.reddit}`}
                     target="_blank"
@@ -996,7 +996,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                     <i className="fa fa-reddit"></i>
                   </a>
                 ) : null}
-                {sociallinks.playstation.length > 0 ? (
+                {sociallinks.playstation?.length > 0 ? (
                   <a
                     href={`https://playstation.com/users/${sociallinks?.playstation}`}
                     target="_blank"
@@ -1004,7 +1004,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                     <i className="fa fa-globe"></i>
                   </a>
                 ) : null}
-                {sociallinks.xbox.length > 0 ? (
+                {sociallinks.xbox?.length > 0 ? (
                   <a
                     href={`https://social.xbox.live/${sociallinks?.xbox}`}
                     target="_blank"

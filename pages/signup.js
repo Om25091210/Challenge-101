@@ -660,9 +660,7 @@ const Signup = ({ games, avatars }) => {
                     </div>
 
                     <div className="form-group">
-                      <label htmlFor="exampleFormControlTextarea1">
-                        Country
-                      </label>
+                      <h2>Country</h2>
                       <select name="country" onChange={changeHandler}>
                         {options.map((opt) => (
                           <>
