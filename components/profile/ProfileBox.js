@@ -22,6 +22,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
   const [showLocModal, setShowLocModal] = useState(true);
   const [selectedGame, setSelectedGame] = useState();
   const [showIgn, setShowIgn] = useState('none');
+  const [step1, setStep1] = useState(true);
 
   const [search, setSearch] = useState('');
   const [players, setPlayers] = useState([]);
@@ -299,6 +300,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
 
   const handleSelectGame = async (obj) => {
     setSelectedGame({ game: obj });
+    setStep1(false);
     setShowIgn('');
   };
 
@@ -1224,39 +1226,60 @@ const ProfileBox = ({ user, Userdata, games }) => {
                           id="kt_sign_up_form"
                           onSubmit={gamehandleSubmit}
                         >
-                          <div className="poup_height msScroll_all">
-                            <ul>
-                              {games &&
-                                games.map((game) => (
-                                  <li>
-                                    <a
-                                      href="#!"
-                                      onClick={() => handleSelectGame(game)}
-                                    >
-                                      <img src={game.imgUrl} alt={game.name} />
-                                    </a>
-                                    <div
-                                      className="hovers"
-                                      style={{ display: showIgn }}
-                                    >
-                                      <span>
-                                        <i
-                                          className="fa fa-check"
-                                          aria-hidden="true"
-                                        ></i>
-                                      </span>
-                                      <input
-                                        type="text"
-                                        name="userIgn"
-                                        onChange={handleUserIgnChange}
-                                        value={userIgn}
-                                      />
-                                    </div>
-                                  </li>
-                                ))}
-                            </ul>
-                          </div>
-                          <button className="btn">Add Game</button>
+                          {step1 ? (
+                            <div className="poup_height msScroll_all">
+                              <ul>
+                                {games &&
+                                  games.map((game) => (
+                                    <li>
+                                      <a
+                                        href="#!"
+                                        onClick={() => handleSelectGame(game)}
+                                      >
+                                        <img
+                                          src={game.imgUrl}
+                                          alt={game.name}
+                                        />
+                                      </a>
+                                    </li>
+                                  ))}
+                              </ul>
+                            </div>
+                          ) : (
+                            <>
+                              <button
+                                className="btn"
+                                onClick={() => setStep1(true)}
+                              >
+                                Back
+                              </button>
+                              <div>
+                                <img
+                                  src={selectedGame?.game.imgUrl}
+                                  alt={selectedGame?.game.name}
+                                  width="300px"
+                                  height="300px"
+                                />
+                                <span>
+                                  <i
+                                    className="fa fa-check"
+                                    aria-hidden="true"
+                                  ></i>
+                                </span>
+                                <input
+                                  type="text"
+                                  name="userIgn"
+                                  onChange={handleUserIgnChange}
+                                  value={userIgn}
+                                />
+                              </div>
+                              <button type="submit" className="btn">
+                                <span className="indicator-label">
+                                  Add Game
+                                </span>
+                              </button>
+                            </>
+                          )}
                         </form>
                       </div>
                       <div className="overlay"></div>
@@ -1267,11 +1290,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
             </div>
           </div>
 
-          <ProfileGameStat
-            user={user}
-            Userdata={Userdata}
-            selectedGame={selectedGame}
-          />
+          <ProfileGameStat user={user} games={Userdata.profile.playergames} />
         </div>
       </div>
     </>
