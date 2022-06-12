@@ -403,7 +403,7 @@ const SignedMainContent = ({ posts, user }) => {
 
         <div className="tab hide" id="Following">
           <div>
-            <div className="post">
+            <div className="post" style={{ padding: 0 }}>
               {followingPosts.map((post) => (
                 <AllPosts user={user} post={post} profiledata={profiledata} />
               ))}

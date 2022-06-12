@@ -3733,7 +3733,7 @@ article .social_bar {
 	flex-direction: column;
 	font-size:12px;
 }
-
+.team_row.arena_team_row .mores.jobss{ width: 200px;}
 .team_row.arena_team_row .mores.jobss h3{ font-size: 16px;}
 .team_row.arena_team_row .mores b {
 	color: #7239ea;
@@ -5252,6 +5252,7 @@ article .social_bar {
 	border-radius: 5px;
 	overflow: hidden;
 	margin-right: 1%;
+	height: 400px;
 }
 .imagess_box li a {
 	display: none;
@@ -6622,6 +6623,11 @@ ul.game_search_result li:hover:after{ display: block;}
 	display: block;
 	margin-left: 0;
 }
+
+
+.socail_urls li{ float: left; width: 48%;}
+.socail_urls li:nth-child(2n){ float: right;}
+
 /* ------------- profile page -------------- */
 
 .profile_hover_games {
@@ -7658,9 +7664,14 @@ body.DarkPage .video_box li {
 body.DarkPage .gallery_box .jobs_browse, body.DarkPage .video_box .jobs_browse {
 	background: none;
 }
-body.DarkPage .video_box li .bottom_data span, body.DarkPage .video_box li .bottom_data h2 {
-	color: #fff;
+body.DarkPage .video_box li .bottom_data span, body.DarkPage .video_box li .bottom_data  i {
+	color: #858585;
 }
+
+body.DarkPage .video_box li .bottom_data h2{ color:#fff;}
+
+
+
 body.DarkPage .imagess_box {
 	background: #403351;
 }
@@ -7929,6 +7940,7 @@ body.DarkPage .write_post textarea::-webkit-input-placeholder {
 
 	body.DarkPage .common_model_box#product_details .inner_model_box{ background: #fff;}
 	body.DarkPage .profile_dp_box .profile_pic{border: 5px solid #20202a;}
+	body.DarkPage .discovery_page .tit span .icon{ background: #000;}
 
 /* ------------------------------ -- */
 .ring {
