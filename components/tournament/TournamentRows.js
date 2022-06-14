@@ -49,6 +49,13 @@ const TournamentRows = ({
                       ? format(new Date(result.startDate), 'dd.MMM.yyyy')
                       : 'Not defined'}
                   </div>
+                  {result.Type && result.Type === 'Ladder' ? (
+                    <p>Ladder</p>
+                  ) : result?.Type === 'Tournament' ? (
+                    <p>Tournament</p>
+                  ) : result.Type === 'Competition' ? (
+                    <p>Competition</p>
+                  ) : null}
                   <div className="reg">
                     <button className="active">
                       {result.status ? result.status : 'REGISTERED'}
@@ -127,6 +134,14 @@ const TournamentRows = ({
                         )
                       : 'Not defined'}
                   </div>
+                  {result.tournament.Type &&
+                  result.tournament.Type === 'Ladder' ? (
+                    <p>Ladder</p>
+                  ) : result?.tournament.Type === 'Tournament' ? (
+                    <p>Tournament</p>
+                  ) : result.tournament.Type === 'Competition' ? (
+                    <p>Competition</p>
+                  ) : null}
                   <div className="reg">
                     <button className="active">
                       {result.tournament.status
