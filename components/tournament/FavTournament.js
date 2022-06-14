@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider, useMutation } from 'react-query';
 import cookie from 'js-cookie';
 import baseURL from '../../utils/baseURL';
 import { useRouter } from 'next/router';
+import { toast } from 'react-toastify';
 
 const queryClient = new QueryClient();
 
@@ -41,6 +42,11 @@ const TournamentFav = ({ tournament, user }) => {
         Authorization: cookie.get('token')
       }
     });
+    if (isFav !== true) {
+      toast.success('Added to your favourites');
+    } else {
+      toast.success('Removed from your favourites');
+    }
   };
 
   const { mutate } = useMutation(addingFav);

@@ -42,7 +42,11 @@ const Post_share = ({ postId, isShared }) => {
         Authorization: cookie.get('token')
       }
     });
-    toast.success('Shared in your timeline successfully');
+    if (isShared !== true) {
+      toast.success('Shared in your timeline successfully');
+    } else {
+      toast.success('Removed from your timeline');
+    }
   };
 
   const { mutate } = useMutation(addingShare);

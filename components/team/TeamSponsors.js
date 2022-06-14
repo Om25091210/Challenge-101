@@ -33,6 +33,7 @@ const TeamSponsors = ({ user, data, isManager, isAdmin }) => {
       });
 
       toast.success('Your Sponsor has been set successfully! ');
+      $('a.model_close').parent().removeClass('show_model');
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }

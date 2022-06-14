@@ -14,7 +14,7 @@ import { getData } from '@utils/fetchData';
 const Team = ({ user, data, products, profile, teams }) => {
   let profileId = [];
   profile?.playergames.map((plyr) => {
-    return (profileId = plyr.player._id);
+    return (profileId = plyr.player?._id);
   });
   const isTeamPlayer =
     data?.players?.filter((tem) => {
