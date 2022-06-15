@@ -43,6 +43,7 @@ const CreateTournament = ({ user }) => {
     prizepool: null,
     category: '',
     tournamentType: '--',
+    Type: '',
     format: '',
     participants: null,
     entranceFee: null,
@@ -127,6 +128,10 @@ const CreateTournament = ({ user }) => {
     }
   }
 
+  const handleChangeCheck = (e) => {
+    setState({ ...state, [e.target.name]: e.target.value });
+  };
+
   const showstep2 = () => {
     if (!(state.name === '' || state.game === '' || state.prizepool === null)) {
       setStep1(true);
@@ -164,6 +169,40 @@ const CreateTournament = ({ user }) => {
                 {!step1 ? (
                   <>
                     <h2>Step1</h2>
+                    <div className="btn_selection">
+                      <label htmlFor="exampleFormControlInput1">Type</label>
+
+                      <button type="button" className="btn btn-primary btn-lg">
+                        Ladder
+                        <input
+                          type="checkbox"
+                          name="Type"
+                          id=""
+                          value="Ladder"
+                          onChange={handleChangeCheck}
+                        />
+                      </button>
+                      <button type="button" className="btn btn-primary btn-lg">
+                        Competition
+                        <input
+                          type="checkbox"
+                          name="Type"
+                          id=""
+                          value="Competition"
+                          onChange={handleChangeCheck}
+                        />
+                      </button>
+                      <button type="button" className="btn btn-primary btn-lg">
+                        Tournament
+                        <input
+                          type="checkbox"
+                          name="Type"
+                          id=""
+                          value="Tournament"
+                          onChange={handleChangeCheck}
+                        />
+                      </button>
+                    </div>
 
                     <div className="form-group">
                       <label for="exampleFormControlInput1">
@@ -277,24 +316,25 @@ const CreateTournament = ({ user }) => {
                           type="button"
                           className="btn btn-primary btn-lg"
                         >
-                          Online{' '}
+                          Online
                           <input
-                            type="hidden"
+                            type="checkbox"
                             name="category"
+                            id=""
                             value="Online"
-                            onChange={handleChange}
+                            onChange={handleChangeCheck}
                           />
                         </button>
                         <button
                           type="button"
-                          className="btn btn-secondary btn-lg"
+                          className="btn btn-secondary btn-lg bar"
                         >
                           LAN{' '}
                           <input
-                            type="hidden"
+                            type="checkbox"
                             name="category"
                             value="LAN"
-                            onChange={handleChange}
+                            onChange={handleChangeCheck}
                           />
                         </button>
                       </div>
@@ -308,36 +348,39 @@ const CreateTournament = ({ user }) => {
                           type="button"
                           className="btn btn-primary btn-lg"
                         >
-                          Leaderboard{' '}
+                          Leaderboard
                           <input
-                            type="hidden"
+                            type="checkbox"
                             name="tournamentType"
+                            id=""
                             value="Leaderboard"
-                            onChange={handleChange}
+                            onChange={handleChangeCheck}
                           />
                         </button>
                         <button
                           type="button"
                           className="btn btn-secondary btn-lg"
                         >
-                          Single Elimination{' '}
+                          Single Elimination
                           <input
-                            type="hidden"
+                            type="checkbox"
                             name="tournamentType"
+                            id=""
                             value="Single Elimination"
-                            onChange={handleChange}
+                            onChange={handleChangeCheck}
                           />
                         </button>
                         <button
                           type="button"
                           className="btn btn-secondary btn-lg"
                         >
-                          Double Elimination{' '}
+                          Double Elimination
                           <input
-                            type="hidden"
+                            type="checkbox"
                             name="tournamentType"
+                            id=""
                             value="Double Elimination"
-                            onChange={handleChange}
+                            onChange={handleChangeCheck}
                           />
                         </button>
                       </div>

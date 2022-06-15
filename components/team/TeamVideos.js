@@ -24,7 +24,7 @@ const TeamVideos = ({ user, team, isManager, isAdmin }) => {
   function refreshPage() {
     setTimeout(function () {
       window.location.reload(false);
-    }, 5000);
+    }, 3000);
   }
 
   const handleSubmit = async (e) => {

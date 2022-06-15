@@ -24,7 +24,7 @@ const TeamPhotos = ({ user, team, isManager, isAdmin }) => {
   function refreshPage() {
     setTimeout(function () {
       window.location.reload(false);
-    }, 5000);
+    }, 1000);
   }
 
   // console.log(images)
@@ -58,7 +58,7 @@ const TeamPhotos = ({ user, team, isManager, isAdmin }) => {
 
         {images.length > 0 ? (
           <div className="upload_btn">
-            <input
+            <textarea
               type="text"
               placeholder="Add a Title"
               id="title"

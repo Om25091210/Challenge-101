@@ -5,6 +5,12 @@ import cookie from 'js-cookie';
 import { toast } from 'react-toastify';
 
 const VideosDelete = ({ collectionId, team }) => {
+  const refreshPage = () => {
+    setTimeout(function () {
+      window.location.reload(false);
+    }, 1000);
+  };
+
   const handleDeleteSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -18,6 +24,7 @@ const VideosDelete = ({ collectionId, team }) => {
       console.log(error);
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }
+    refreshPage();
   };
   return (
     <>

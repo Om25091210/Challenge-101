@@ -42,13 +42,13 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
   const isLoggedInUser = post.user !== '' && post.user?._id === user._id;
 
   const isLiked =
-    post.likes.map((like) => {
-      return (like.user = user._id);
+    post.likes.filter((like) => {
+      return like.user === user._id;
     }).length > 0;
 
   const isShared =
-    post.shares?.map((share) => {
-      return (share.user = user._id);
+    post.shares?.filter((share) => {
+      return share.user === user._id;
     }).length > 0;
 
   return (
@@ -117,7 +117,7 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
           <a
             href="#!"
             data-tip={post.likes.map((like, iidx) => {
-              return like.user.username;
+              return like.user?.username;
             })}
             data-for="toolTip1"
             data-place="top"

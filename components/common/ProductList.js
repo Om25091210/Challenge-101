@@ -9,7 +9,6 @@ import { useRouter } from 'next/router';
 import Filter from '@components/Filter';
 
 const ProductList = ({ user, productList }) => {
-
   const [products, setProducts] = useState(productList);
 
   const [isCheck, setIsCheck] = useState(false);
@@ -70,15 +69,16 @@ const ProductList = ({ user, productList }) => {
               <h2>No Products</h2>
             </li>
           ) : (
-            products?.map((product, index) => (
-              <li key={index}>
-                <ProductItem
-                  key={product._id}
-                  product={product}
-                  handleCheck={handleCheck}
-                />
-              </li>
-            ))
+            // products?.map((product, index) => (
+            //   <li key={index}>
+            //     <ProductItem
+            //       key={product._id}
+            //       product={product}
+            //       handleCheck={handleCheck}
+            //     />
+            //   </li>
+            // ))
+            <h2>Coming Soon...</h2>
           )}
         </ul>
       </div>

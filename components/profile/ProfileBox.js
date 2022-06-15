@@ -327,6 +327,9 @@ const ProfileBox = ({ user, Userdata, games }) => {
       console.log(err);
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }
+    refreshData();
+    setUserIgn(null);
+    setStep1(true);
   };
 
   function handleChangeaddress(e) {
