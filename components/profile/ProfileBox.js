@@ -73,6 +73,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
         }
       );
       toast.success('Links Have Been Updated');
+      $('a.model_close').parent().removeClass('show_model');
       refreshData();
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');

@@ -74,6 +74,7 @@ const SignedMainContent = ({ posts, user }) => {
       setDescription('');
       setImage(null);
       setGameTag({ name: '', gameId: '' });
+      setShowGame('');
       router.push('/dashboard');
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');

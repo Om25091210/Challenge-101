@@ -59,7 +59,7 @@ const Photos = ({ Userdata, user }) => {
 
         {images.length > 0 ? (
           <div className="upload_btn">
-            <input
+            <textarea
               type="text"
               placeholder="Add a Title"
               id="title"
