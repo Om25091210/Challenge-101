@@ -6018,11 +6018,18 @@ ul.game_search_result li:hover:after{ display: block;}
 	width: 50%;
 	margin-left: 20px;
 }
-.btn_selection button {
+
+.btn_selection{ display: flex; margin: 10px 0 20px 0;}
+
+.btn_selection .big_btn {
 	margin-right: 10px;
 	font-size: 14px;
-	padding: 20px 40px;
 	border-radius: 5px;
+	width: 33%; position: relative; text-align: left; cursor: pointer;
+}
+
+.btn_selection .big_btn span {
+    
 }
 .date_time {
 	display: flex;
@@ -7714,11 +7721,15 @@ body.DarkPage .matches_box .match_row {
 body.DarkPage .match_row .team_vs .vs {
 	color: #fff;
 }
-body.DarkPage .create_tournament form input, body.DarkPage .create_tournament form select {
+body.DarkPage .create_tournament form input[type="text"], body.DarkPage .create_tournament form select {
 	background: #222f41;
 	color: #fff;
 	border: 1px solid #344860; border-radius: 5px;
 }
+
+body.DarkPage .create_tournament .btn_selection input[type="checkbox"]{ background-color: #222f41; border: 1px solid #344860; border-radius: 5px; cursor: pointer;}
+body.DarkPage .create_tournament .btn_selection input[type='checkbox']:checked{background-color: #1da1f2; border: 1px solid #1da1f2;}
+body.DarkPage .create_tournament .btn_selection input[type='checkbox']:focus{ outline: none; box-shadow: none;}
 
 body.DarkPage .game_list_page li a:hover span {
 	color: #fff;

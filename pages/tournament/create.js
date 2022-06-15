@@ -169,11 +169,11 @@ const CreateTournament = ({ user }) => {
                 {!step1 ? (
                   <>
                     <h2>Step1</h2>
-                    <div className="btn_selection">
-                      <label htmlFor="exampleFormControlInput1">Type</label>
 
-                      <button type="button" className="btn btn-primary btn-lg">
-                        Ladder
+                    <label htmlFor="exampleFormControlInput1">Type</label>
+                    <div className="btn_selection">
+                      <div className="big_btn">
+                        <span class="form-check-label terms"> Ladder</span>
                         <input
                           type="checkbox"
                           name="Type"
@@ -181,9 +181,10 @@ const CreateTournament = ({ user }) => {
                           value="Ladder"
                           onChange={handleChangeCheck}
                         />
-                      </button>
-                      <button type="button" className="btn btn-primary btn-lg">
-                        Competition
+                      </div>
+
+                      <div className="big_btn">
+                        <span class="form-check-label terms"> Competition</span>
                         <input
                           type="checkbox"
                           name="Type"
@@ -191,9 +192,10 @@ const CreateTournament = ({ user }) => {
                           value="Competition"
                           onChange={handleChangeCheck}
                         />
-                      </button>
-                      <button type="button" className="btn btn-primary btn-lg">
-                        Tournament
+                      </div>
+
+                      <div className="big_btn">
+                        <span class="form-check-label terms"> Tournament</span>
                         <input
                           type="checkbox"
                           name="Type"
@@ -201,7 +203,7 @@ const CreateTournament = ({ user }) => {
                           value="Tournament"
                           onChange={handleChangeCheck}
                         />
-                      </button>
+                      </div>
                     </div>
 
                     <div className="form-group">
@@ -312,11 +314,8 @@ const CreateTournament = ({ user }) => {
                         Tournament Category
                       </label>
                       <div className="btn_selection">
-                        <button
-                          type="button"
-                          className="btn btn-primary btn-lg"
-                        >
-                          Online
+                        <div className="big_btn">
+                          <span class="form-check-label terms"> Online</span>
                           <input
                             type="checkbox"
                             name="category"
@@ -324,19 +323,17 @@ const CreateTournament = ({ user }) => {
                             value="Online"
                             onChange={handleChangeCheck}
                           />
-                        </button>
-                        <button
-                          type="button"
-                          className="btn btn-secondary btn-lg bar"
-                        >
-                          LAN{' '}
+                        </div>
+
+                        <div className="big_btn">
+                          <span class="form-check-label terms"> LAN</span>
                           <input
                             type="checkbox"
                             name="category"
                             value="LAN"
                             onChange={handleChangeCheck}
                           />
-                        </button>
+                        </div>
                       </div>
                     </div>
                     <div className="form-group">
@@ -344,11 +341,11 @@ const CreateTournament = ({ user }) => {
                         Tourament Type
                       </label>
                       <div className="btn_selection">
-                        <button
-                          type="button"
-                          className="btn btn-primary btn-lg"
-                        >
-                          Leaderboard
+                        <div className="big_btn">
+                          <span class="form-check-label terms">
+                            {' '}
+                            Leaderboard
+                          </span>
                           <input
                             type="checkbox"
                             name="tournamentType"
@@ -356,12 +353,13 @@ const CreateTournament = ({ user }) => {
                             value="Leaderboard"
                             onChange={handleChangeCheck}
                           />
-                        </button>
-                        <button
-                          type="button"
-                          className="btn btn-secondary btn-lg"
-                        >
-                          Single Elimination
+                        </div>
+
+                        <div className="big_btn">
+                          <span class="form-check-label terms">
+                            {' '}
+                            Single Elimination
+                          </span>
                           <input
                             type="checkbox"
                             name="tournamentType"
@@ -369,12 +367,13 @@ const CreateTournament = ({ user }) => {
                             value="Single Elimination"
                             onChange={handleChangeCheck}
                           />
-                        </button>
-                        <button
-                          type="button"
-                          className="btn btn-secondary btn-lg"
-                        >
-                          Double Elimination
+                        </div>
+
+                        <div className="big_btn">
+                          <span class="form-check-label terms">
+                            {' '}
+                            Double Elimination
+                          </span>
                           <input
                             type="checkbox"
                             name="tournamentType"
@@ -382,7 +381,7 @@ const CreateTournament = ({ user }) => {
                             value="Double Elimination"
                             onChange={handleChangeCheck}
                           />
-                        </button>
+                        </div>
                       </div>
                     </div>
                     <div className="form-group">
