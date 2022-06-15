@@ -76,6 +76,7 @@ const ProfileData = ({ user, Userdata, player, products }) => {
         <div className="tab" id="feed">
           <div className="profile_left_post">
             <div className="">
+              {' '}
               {Userdata.posts.length !== 0 &&
                 Userdata.posts.map((post) =>
                   post.user._id !== user._id ? (
@@ -86,24 +87,192 @@ const ProfileData = ({ user, Userdata, player, products }) => {
                   ) : (
                     <AllPosts post={post} user={user} />
                   )
-                )}
+                )}{' '}
             </div>
           </div>
-
           <div className="profile_match_details">
+            {' '}
             {Userdata.teamMatchesList.map((result, index) => (
               <TeamAllStats teamId={result.team._id} />
             ))}
-
             <GamesDetails />
           </div>
         </div>
-
-        {/* 
         <div className="tab hide" id="statistics">
+          <ul className="stats_card">
+            <li>
+              <div className="card_img">
+                {' '}
+                <img src="/assets/media/stats.jpg" alt="" />{' '}
+              </div>
+              <div className="right_data">
+                <h3>Counter strike:Global Offensive</h3>
+                <div className="card_details">
+                  <div className="once">
+                    <p>kills avg</p>
+                    <span className="big_name"> 1.33 </span>{' '}
+                  </div>
+                  <div className="once">
+                    <p>headchange avg</p>
+                    <span className="big_name"> 1.1 </span>{' '}
+                  </div>
+                  <div className="once">
+                    <p>Gammer ceaton avg</p>
+                    <span className="big_name"> 473.29 </span>{' '}
+                  </div>
+                  <div className="once">
+                    <p>kills avg</p>
+                    <span className="big_name">50% </span>{' '}
+                  </div>
+                </div>
+              </div>
+              <div className="comp_btn">
+                <i class="fa fa-compress" aria-hidden="true"></i> Compare
+              </div>
+            </li>
 
+            <li>
+              <div className="card_img">
+                {' '}
+                <img src="/assets/media/stats.jpg" alt="" />{' '}
+              </div>
+              <div className="right_data">
+                <h3>Counter strike:Global Offensive</h3>
+                <div className="card_details">
+                  <div className="once">
+                    <p>kills avg</p>
+                    <span className="big_name"> 1.33 </span>{' '}
+                  </div>
+                  <div className="once">
+                    <p>headchange avg</p>
+                    <span className="big_name"> 1.1 </span>{' '}
+                  </div>
+                  <div className="once">
+                    <p>Gammer ceaton avg</p>
+                    <span className="big_name"> 473.29 </span>{' '}
+                  </div>
+                  <div className="once">
+                    <p>kills avg</p>
+                    <span className="big_name">50% </span>{' '}
+                  </div>
+                </div>
+              </div>
+              <div className="comp_btn">
+                <i class="fa fa-compress" aria-hidden="true"></i> Compare
+              </div>
+            </li>
+
+            <li>
+              <div className="card_img">
+                {' '}
+                <img src="/assets/media/stats.jpg" alt="" />{' '}
+              </div>
+              <div className="right_data">
+                <h3>Counter strike:Global Offensive</h3>
+                <div className="card_details">
+                  <div className="once">
+                    <p>kills avg</p>
+                    <span className="big_name"> 1.33 </span>{' '}
+                  </div>
+                  <div className="once">
+                    <p>headchange avg</p>
+                    <span className="big_name"> 1.1 </span>{' '}
+                  </div>
+                  <div className="once">
+                    <p>Gammer ceaton avg</p>
+                    <span className="big_name"> 473.29 </span>{' '}
+                  </div>
+                  <div className="once">
+                    <p>kills avg</p>
+                    <span className="big_name">50% </span>{' '}
+                  </div>
+                </div>
+              </div>
+              <div className="comp_btn">
+                <i class="fa fa-compress" aria-hidden="true"></i> Compare
+              </div>
+            </li>
+          </ul>
         </div>
-*/}
+        <div className="tab hide" id="teams">
+          <ul className="stats_card">
+            <li>
+              <div className="card_img">
+                {' '}
+                <img src="/assets/media/team_logo.jpg" alt="" />{' '}
+              </div>
+              <div className="right_data">
+                <div className="card_games_tit">
+                  <h3>
+                    Team Spirit <br /> April 2019-present
+                  </h3>
+                  <div className="gamer_pos">Caption|Assault</div>
+                </div>
+                <div className="card_details">
+                  <div className="once">
+                    <p>kills avg</p>
+                    <span className="big_name"> 1.33 </span>{' '}
+                  </div>
+                  <div className="once">
+                    <p>headchange avg</p>
+                    <span className="big_name"> 1.1 </span>{' '}
+                  </div>
+                  <div className="once">
+                    <p>Gammer ceaton avg</p>
+                    <span className="big_name"> 473.29 </span>{' '}
+                  </div>
+                  <div className="once">
+                    <p>kills avg</p>
+                    <span className="big_name">50% </span>{' '}
+                  </div>
+                </div>
+              </div>
+              <div className="comp_btn">
+                <i class="fa fa-compress" aria-hidden="true"></i> Compare
+              </div>
+            </li>
+
+            <li>
+              <div className="card_img">
+                {' '}
+                <img src="/assets/media/team_logo.jpg" alt="" />{' '}
+              </div>
+              <div className="right_data">
+                <div className="card_games_tit">
+                  <h3>
+                    Team Spirit <br /> April 2019-present
+                  </h3>
+                  <div className="gamer_pos">Caption|Support</div>
+                </div>
+                <div className="card_details">
+                  <div className="once">
+                    <p>kills avg</p>
+                    <span className="big_name"> 1.33 </span>{' '}
+                  </div>
+                  <div className="once">
+                    <p>headchange avg</p>
+                    <span className="big_name"> 1.1 </span>{' '}
+                  </div>
+                  <div className="once">
+                    <p>Gammer ceaton avg</p>
+                    <span className="big_name"> 473.29 </span>{' '}
+                  </div>
+                  <div className="once">
+                    <p>kills avg</p>
+                    <span className="big_name">50% </span>{' '}
+                  </div>
+                </div>
+              </div>
+              <div className="comp_btn">
+                <i class="fa fa-compress" aria-hidden="true"></i> Compare
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div className="tab hide" id="tournaments">
+          {' '}
+          tournaments{' '}
+        </div>
         <div className="tab hide" id="achievement">
           {' '}
           <div className="achivement_box">
@@ -112,7 +281,8 @@ const ProfileData = ({ user, Userdata, player, products }) => {
               <ul>
                 <li>
                   <div className="img">
-                    <i className="fa fa-trophy" aria-hidden="true"></i>
+                    {' '}
+                    <i className="fa fa-trophy" aria-hidden="true"></i>{' '}
                   </div>
                   <p className="tit">Silver x1</p>
                   <p>Awarded for placing second 1 tournament</p>
@@ -186,19 +356,14 @@ const ProfileData = ({ user, Userdata, player, products }) => {
             </div>
           </div>{' '}
         </div>
-
         <ProfileMatches user={user} Userdata={Userdata} />
-
         <ProductList user={user} productList={products} />
-
         <div className="tab hide" id="photos">
           <Photos Userdata={Userdata} user={user} />
         </div>
-
         <div className="tab hide" id="video">
           <Videos Userdata={Userdata} user={user} />
         </div>
-
         <div className="tab hide" id="sponsors">
           <div className="sponsers_box">
             <div className="sponser_btn">
@@ -206,17 +371,19 @@ const ProfileData = ({ user, Userdata, player, products }) => {
               {Userdata.profile.user._id === user._id ? (
                 <a href="#!" className="model_show_btn">
                   <button className="btn">
-                    <i aria-hidden="true"> Edit Sponsor</i>
+                    {' '}
+                    <i aria-hidden="true"> Edit Sponsor</i>{' '}
                   </button>
                 </a>
               ) : null}
               <div className="common_model_box" style={{ height: '12rem' }}>
+                {' '}
                 <a href="#!" className="model_close">
-                  X
+                  {' '}
+                  X{' '}
                 </a>
                 <div className="inner_model_box">
                   <h3>Sponsor's</h3>
-
                   <form className="common_form" onSubmit={handleSubmit}>
                     <div className="form-group">
                       <div className="">
@@ -242,13 +409,13 @@ const ProfileData = ({ user, Userdata, player, products }) => {
                 <div className="overlay"></div>
               </div>
             </div>
-
             <ul>
               {Userdata.sponsors &&
                 Userdata.sponsors.map((item, index) => (
                   <li key={index}>
                     <div className="sponser_name">
-                      <img src={item.imgUrl} alt={item.name} />
+                      {' '}
+                      <img src={item.imgUrl} alt={item.name} />{' '}
                     </div>
                     <div className="sponser_data">
                       {' '}
@@ -260,12 +427,9 @@ const ProfileData = ({ user, Userdata, player, products }) => {
             </ul>
           </div>
         </div>
-
         <ProductRigs user={user} productList={products} />
       </div>
-
       {/* ------------- start poup data ------------- */}
-
       <ProdPoup />
     </>
   );

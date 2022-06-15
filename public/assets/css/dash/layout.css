@@ -6029,7 +6029,11 @@ ul.game_search_result li:hover:after{ display: block;}
 }
 
 .btn_selection .big_btn span {
-    
+    /* position: absolute;
+    left:0;
+    right: 0; 
+    margin: auto;
+    top: 10px; */
 }
 .date_time {
 	display: flex;
@@ -7420,7 +7424,33 @@ form.common_form .btn{ width: 100%; margin-top: 20px; height: 40px;}
     border-radius: 50%;}
 
 
+	/* ---- 15/06/22 ---------------------- */
+
+	.stats_card li {
+		float: left;
+		width: 48%;
+		background: #1c1d2f;
+		padding: 20px;
+		border-radius: 10px;
+		display: flex;
+		justify-content: space-between;
+		align-content: center;
+		align-items: center; margin-bottom: 20px;
+	}
+	.stats_card li:nth-child(2n){ float:right;}
+	.stats_card .right_data h3{ font-size: 14px; padding-bottom: 20px;}
+	.stats_card .card_details{ display: flex; justify-content: space-between; align-content: center; width: 320px;}
+	.stats_card .card_details .once{}
+	.stats_card .card_details .once p{ font-size:8px;}
+	.stats_card .card_details .once .big_name{ font-size: 20px;}
+	.stats_card .comp_btn {
+		border: 1px solid #282840;
+		border-radius: 20px;
+		font-size: 12px;
+		padding: 5px 10px;
+	}
 	
+	.stats_card .card_games_tit{display: flex;justify-content: space-between;}
   
 /* ---------------------- Dark Themes----------------------------- */
 
@@ -7727,8 +7757,8 @@ body.DarkPage .create_tournament form input[type="text"], body.DarkPage .create_
 	border: 1px solid #344860; border-radius: 5px;
 }
 
-body.DarkPage .create_tournament .btn_selection input[type="checkbox"]{ background-color: #222f41; border: 1px solid #344860; border-radius: 5px; cursor: pointer;}
-body.DarkPage .create_tournament .btn_selection input[type='checkbox']:checked{background-color: #1da1f2; border: 1px solid #1da1f2;}
+body.DarkPage .create_tournament .btn_selection input[type="checkbox"]{ background-color: #222f41; border: 1px solid #344860; border-radius: 5px; cursor: pointer; }
+body.DarkPage .create_tournament .btn_selection input[type='checkbox']:checked{background-color: #1da1f2; border: 1px solid #1da1f2; }
 body.DarkPage .create_tournament .btn_selection input[type='checkbox']:focus{ outline: none; box-shadow: none;}
 
 body.DarkPage .game_list_page li a:hover span {
