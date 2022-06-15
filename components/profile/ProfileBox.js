@@ -404,6 +404,11 @@ const ProfileBox = ({ user, Userdata, games }) => {
     <>
       <div className="profile_box for_profile">
         <div className="profile_cover_photo">
+          <div class="report">
+            <a href="#">
+              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+            </a>
+          </div>
           <form onSubmit={handleCoverSubmit}>
             <img
               className=""
