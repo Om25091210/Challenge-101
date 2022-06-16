@@ -9,14 +9,16 @@ const ProfileVideosDel = ({ collectionId, profile }) => {
   const router = useRouter();
 
   const refreshData = () => {
-    router.replace(router.asPath);
+    setTimeout(function () {
+      window.location.reload(false);
+    }, 1000);
   };
 
   const handleDeleteSubmit = async (e) => {
     e.preventDefault();
     try {
       axios.delete(
-        `${baseURL}/api/teams/videos/${profile?._id}/${collectionId}`,
+        `${baseURL}/api/profile/videos/${profile?._id}/${collectionId}`,
         {
           headers: {
             Authorization: cookie.get('token')

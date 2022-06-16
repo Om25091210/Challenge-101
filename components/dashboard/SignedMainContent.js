@@ -26,7 +26,7 @@ const SignedMainContent = ({ posts, user }) => {
   const [profiledata, setProfileData] = useState([]);
   const [topmenu, setTopmenu] = useState(true);
 
-  const shareUrl = 'http://localhost:3000/dashboard';
+  const shareUrl = `${process.env.NEXT_PUBLIC_ESPORTS_API_BASE_URL}/dashboard`;
   useEffect(() => {
     axios
       .get(`${baseURL}/api/profile/${user._id}`)

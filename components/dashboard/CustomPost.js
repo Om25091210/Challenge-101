@@ -31,7 +31,7 @@ const CustomPost = ({ post }) => {
   const router = useRouter();
   const [copied, setCopied] = useState(false);
 
-  const shareUrl = process.env.NEXT_PUBLIC_ESPORTS_API_BASE_URL + '/posts';
+  const shareUrl = `${process.env.NEXT_PUBLIC_ESPORTS_API_BASE_URL}/posts`;
   // Delete a post
   const del = async (post) => {
     await axios.delete(`${baseURL}/api/posts/${post._id}`, {
@@ -206,7 +206,7 @@ const CustomPost = ({ post }) => {
             <div className="delete_post_div">
               <TwitterShareButton
                 url={`${shareUrl}/${post._id}`}
-                title={'Multiplayer - Home of Esports'}
+                title={'Multiplayr - Home of Esports'}
                 via={'Multiplayrdotgg'}
                 hashtags={['GG #Multiplayr']}
               >
@@ -214,23 +214,23 @@ const CustomPost = ({ post }) => {
               </TwitterShareButton>
               <FacebookShareButton
                 url={`${shareUrl}/${post._id}`}
-                quote={'Multiplayer - Home of Esports'}
-                via={'Multiplayrdotgg'}
-                hashtags={['GG #Multiplayr']}
+                quote={'Multiplayr - Home of Esports'}
+                via={'@Multiplayrdotgg'}
+                hashtag={'#Multiplayr'}
               >
                 <FacebookIcon size={40} round={true} />
               </FacebookShareButton>
 
               <TelegramShareButton
                 url={`${shareUrl}/${post._id}`}
-                title={'Multiplayer - Home of Esports'}
+                title={'Multiplayr - Home of Esports'}
               >
                 <TelegramIcon size={40} round={true} />
               </TelegramShareButton>
 
               <WhatsappShareButton
                 url={`${shareUrl}/${post._id}`}
-                title={'Multiplayer - Home of Esports'}
+                title={'Multiplayr - Home of Esports'}
               >
                 <WhatsappIcon size={40} round={true} />
               </WhatsappShareButton>
