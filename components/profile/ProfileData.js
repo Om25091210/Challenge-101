@@ -11,9 +11,10 @@ import AllPosts from '@components/dashboard/AllPosts';
 import axios from 'axios';
 import baseURL from '@utils/baseURL';
 import { toast } from 'react-toastify';
+import Moment from 'moment';
 import { useRouter } from 'next/router';
 
-const ProfileData = ({ user, Userdata, player, products }) => {
+const ProfileData = ({ user, Userdata, player, products, teams }) => {
   const [profile, setProfile] = useState(Userdata.profile);
   const [sponsors, setSponsors] = useState([]);
   const [state, setState] = useState({
@@ -196,77 +197,45 @@ const ProfileData = ({ user, Userdata, player, products }) => {
         </div>
         <div className="tab hide" id="teams">
           <ul className="stats_card">
-            <li>
-              <div className="card_img">
-                {' '}
-                <img src="/assets/media/team_logo.jpg" alt="" />{' '}
-              </div>
-              <div className="right_data">
-                <div className="card_games_tit">
-                  <h3>
-                    Team Spirit <br /> April 2019-present
-                  </h3>
-                  <div className="gamer_pos">Caption|Assault</div>
-                </div>
-                <div className="card_details">
-                  <div className="once">
-                    <p>kills avg</p>
-                    <span className="big_name"> 1.33 </span>{' '}
+            {teams &&
+              teams.map((team) => (
+                <li>
+                  <div className="card_img">
+                    {' '}
+                    <img src="/assets/media/team_logo.jpg" alt="" />{' '}
                   </div>
-                  <div className="once">
-                    <p>headchange avg</p>
-                    <span className="big_name"> 1.1 </span>{' '}
+                  <div className="right_data">
+                    <div className="card_games_tit">
+                      <h3>
+                        Team {team.name} <br />{' '}
+                        {Moment(team.founded).format('MMM YYYY')}
+                      </h3>
+                      <div className="gamer_pos">Caption|Assault</div>
+                    </div>
+                    <div className="card_details">
+                      <div className="once">
+                        <p>kills avg</p>
+                        <span className="big_name"> 1.33 </span>{' '}
+                      </div>
+                      <div className="once">
+                        <p>headchange avg</p>
+                        <span className="big_name"> 1.1 </span>{' '}
+                      </div>
+                      <div className="once">
+                        <p>Gammer ceaton avg</p>
+                        <span className="big_name"> 473.29 </span>{' '}
+                      </div>
+                      <div className="once">
+                        <p>kills avg</p>
+                        <span className="big_name">50% </span>{' '}
+                      </div>
+                    </div>
                   </div>
-                  <div className="once">
-                    <p>Gammer ceaton avg</p>
-                    <span className="big_name"> 473.29 </span>{' '}
+                  <div className="comp_btn">
+                    <i class="fa fa-compress" aria-hidden="true"></i> Compare
                   </div>
-                  <div className="once">
-                    <p>kills avg</p>
-                    <span className="big_name">50% </span>{' '}
-                  </div>
-                </div>
-              </div>
-              <div className="comp_btn">
-                <i class="fa fa-compress" aria-hidden="true"></i> Compare
-              </div>
-            </li>
-
-            <li>
-              <div className="card_img">
-                {' '}
-                <img src="/assets/media/team_logo.jpg" alt="" />{' '}
-              </div>
-              <div className="right_data">
-                <div className="card_games_tit">
-                  <h3>
-                    Team Spirit <br /> April 2019-present
-                  </h3>
-                  <div className="gamer_pos">Caption|Support</div>
-                </div>
-                <div className="card_details">
-                  <div className="once">
-                    <p>kills avg</p>
-                    <span className="big_name"> 1.33 </span>{' '}
-                  </div>
-                  <div className="once">
-                    <p>headchange avg</p>
-                    <span className="big_name"> 1.1 </span>{' '}
-                  </div>
-                  <div className="once">
-                    <p>Gammer ceaton avg</p>
-                    <span className="big_name"> 473.29 </span>{' '}
-                  </div>
-                  <div className="once">
-                    <p>kills avg</p>
-                    <span className="big_name">50% </span>{' '}
-                  </div>
-                </div>
-              </div>
-              <div className="comp_btn">
-                <i class="fa fa-compress" aria-hidden="true"></i> Compare
-              </div>
-            </li>
+                </li>
+              ))}
           </ul>
         </div>
         <div className="tab hide" id="tournaments">

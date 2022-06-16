@@ -48,7 +48,7 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
 
   const isShared =
     post.shares?.filter((share) => {
-      return share.user === user._id;
+      return share.user?._id === user._id;
     }).length > 0;
 
   return (
@@ -144,27 +144,37 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
             </div>
           )}
           <div className="users_share_box">
-            <div className="more_user">
-              {' '}
-              <a href="#">
-                <img src="/assets/media/dash/1.jpg" alt="user" />
-                <span className="online"></span>
-              </a>{' '}
-              <a href="#">
-                <img src="/assets/media/dash/2.jpg" alt="user" />
-                <span className="online"></span>
-              </a>{' '}
-              <a href="#">
-                <img src="/assets/media/dash/3.jpg" alt="user" />
-                <span className="offiline"></span>
-              </a>{' '}
-              <a href="#" className="more">
-                +3
-              </a>{' '}
-              <span className="others">
-                Ashwin, George and 5 others have shared your post.
-              </span>{' '}
-            </div>
+            {post.shares.length === 0 ? (
+              <p>No Shares for this post yet</p>
+            ) : (
+              <div className="more_user">
+                {post.shares &&
+                  post.shares.slice(0, 3).map((share) => (
+                    <a href="#">
+                      <img
+                        src={share.user?.profilePicUrl}
+                        alt={share.user?.username}
+                      />
+                      <span className="online"></span>
+                    </a>
+                  ))}
+                {post.shares.length > 3 ? (
+                  <a href="#" className="more">
+                    +{post.shares.length}
+                  </a>
+                ) : null}
+                <span className="others">
+                  {post.shares &&
+                    post.shares
+                      .slice(0, 3)
+                      .map((share) => <p>{share.user.username}</p>)}{' '}
+                  {post.shares.length > 3 ? (
+                    <p>and {post.shares.length} others</p>
+                  ) : null}{' '}
+                  have shared your post.
+                </span>
+              </div>
+            )}
             <div className="shere">
               {' '}
               <LikePost postId={post._id} isLiked={isLiked} />{' '}

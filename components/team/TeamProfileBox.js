@@ -9,8 +9,9 @@ import Moment from 'moment';
 import { useMutation } from 'react-query';
 import TeamFollow from './TeamFollow';
 import TeamRequest from '../discover/invites/TeamRequest';
+import TeamChallenge from './TeamChallenge';
 
-const TeamProfileBox = ({ user, data, isManager, isAdmin, profile }) => {
+const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
   const [attr, setAttr] = useState(data.team.attributes);
   const [sociallinks, setSociallinks] = useState(data.team.social);
   const [websitelink, setWebsitelink] = useState(data.team);
@@ -319,6 +320,9 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile }) => {
                 <a href="#" className="btn">
                   <TeamRequest team={data.team} user={user} profile={profile} />
                 </a>
+                {/* <a href="#" className="btn">
+                  <TeamChallenge team={data.team} teams={teams}/>
+                </a> */}
               </div>
             )}
             <span>
