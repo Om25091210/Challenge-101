@@ -147,6 +147,22 @@ const TournamentDetail = ({ user, data, products }) => {
       router.push('/dashboard');
     };
 
+    const handleRegistry = async (e) => {
+      e.preventDefault();
+      axios.put(
+        `${baseURL}/api/tournaments/register/${data.tournament._id}/${user._id}`
+      );
+      toast.success('Registered Successfully');
+      refreshData();
+    };
+
+    const isRegistered =
+      data?.tournament?.registered?.filter((tour) => {
+        return tour?.user?._id === user?._id;
+      }).length > 0;
+
+    const isRegFull = data.tournament.registered.length == data.participants;
+
     return (
       <>
         <MetaDash />
@@ -253,9 +269,17 @@ const TournamentDetail = ({ user, data, products }) => {
 
                 <div className="bottom_details">
                   <div className="two_btns">
-                    <a href="#" className="btn">
-                      REGISTER
-                    </a>{' '}
+                    <button
+                      className="btn"
+                      onClick={handleRegistry}
+                      disabled={isRegFull === true}
+                    >
+                      {isRegistered ? (
+                        'REGISTERED'
+                      ) : (
+                        <>{isRegFull ? 'SLOTS UNAVAILABLE' : 'REGISTER'}</>
+                      )}
+                    </button>{' '}
                     <a href="#" className="btn">
                       BOOK TICKETS
                     </a>
@@ -500,6 +524,8 @@ const TournamentDetail = ({ user, data, products }) => {
                     <a href="#">
                       <img src="/assets/media/category/3.png" alt="" />
                     </a>
+                    SLOTS: {data.tournament.registered.length} /{' '}
+                    {data.tournament.participants}
                   </div>
                 </div>
                 <div className="right_team_bio">

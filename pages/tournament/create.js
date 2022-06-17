@@ -219,6 +219,15 @@ const CreateTournament = ({ user }) => {
                         value={state.name}
                       />
                       <p>{formErrors.name}</p>
+                      {state.name.length > 64 ? (
+                        <p style={{ color: '#d92a27' }}>
+                          {state.name.length} / 64
+                        </p>
+                      ) : (
+                        <p style={{ color: 'grey' }}>
+                          {state.name.length} / 64
+                        </p>
+                      )}
                     </div>
                     <div className="form-group">
                       <div className="style_file_upload">

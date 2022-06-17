@@ -107,8 +107,12 @@ export const teamformvalidate = (values) => {
 export const tournamentformvalidate = (values) => {
   const regex = /^((https?|ftp|smtp):\/\/)?(www.)?[a-z0-9]+\.[a-z]+(\/[a-zA-Z0-9#]+\/?)*$/;
   const errors = {};
+  const limit = 64;
   if (!values.name) {
     errors.name = 'Tournament Name is requried';
+  }
+  if (values.name.length > limit) {
+    errors.name = 'Name Limit Exceeded';
   }
   if (!values.game) {
     errors.game = 'Select Atleast one game';
