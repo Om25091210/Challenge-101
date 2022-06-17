@@ -160,7 +160,7 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
                   ))}
                 {post.shares.length > 3 ? (
                   <a href="#" className="more">
-                    +{post.shares.length}
+                    +{post.shares.length - 3}
                   </a>
                 ) : null}
                 <span className="others">
@@ -169,7 +169,7 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
                       .slice(0, 3)
                       .map((share) => <p>{share.user.username}</p>)}{' '}
                   {post.shares.length > 3 ? (
-                    <p>and {post.shares.length} others</p>
+                    <p>and {post.shares.length - 3} others</p>
                   ) : null}{' '}
                   have shared your post.
                 </span>

@@ -240,7 +240,8 @@ const TournamentDetail = ({ user, data, products }) => {
                           <i className="fa fa-clock-o"></i>{' '}
                           {Moment(data.tournament.startDate).format('MMM DD')} -
                           {Moment(data.tournament.endDate).format('MMM DD')}{' '}
-                          {Moment(data.tournament.startDate).format('hh:mm A')}{' '}
+                          {/* {Moment(data.tournament.startTime).format('hh:mm A')}{' '} */}
+                          {data.tournament.startTime}
                         </span>
                       </span>{' '}
                       <span className="follower">
