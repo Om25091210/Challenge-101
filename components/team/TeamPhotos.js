@@ -51,74 +51,89 @@ const TeamPhotos = ({ user, team, isManager, isAdmin }) => {
 
   return (
     <div className="gallery_box">
-      <form onSubmit={handlePhotosSubmit}>
-        {isManager || isAdmin ? <ImageDropzone setImages={setImages} /> : null}
-
-        <p></p>
-
-        {images.length > 0 ? (
-          <div className="upload_btn">
-            <textarea
-              type="text"
-              placeholder="Add a Title"
-              id="title"
-              name="title"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
-            <a href="#!" onClick={handlePhotosSubmit} className="btn">
-              UPLOAD NOW{' '}
+      {isManager || isAdmin ? (
+        <>
+          <a href="#!" className="model_show_btn">
+            <button className="btn">
+              <i aria-hidden="true">
+                <i className="fa fa-plus-circle" aria-hidden="true"></i>
+              </i>
+            </button>
+          </a>
+          <div className="common_model_box">
+            <a href="#!" className="model_close">
+              X
             </a>
-          </div>
-        ) : (
-          ''
-        )}
-
-        <p></p>
-
-        {team.imagesgallery.length > 0 ? (
-          team.imagesgallery.map((imgg, idx) => (
-            <div className="imagess_box" key={idx}>
-              <div className="imagess">
-                <ul>
-                  <li>
-                    {imgg.images.map((imag, idex) => (
-                      <a
-                        className="fancybox"
-                        href={imag.path}
-                        data-fancybox-group="idex"
-                        title={imag.originalname}
-                        key={idex}
-                      >
-                        <img src={imag.path} alt={imag.originalname} />{' '}
-                        <span className="total_images">
-                          +{imgg.images.length}
-                        </span>
-                      </a>
-                    ))}
-                  </li>
-                </ul>
-              </div>
-              <div className="bottom_data">
-                <span className="img_icon">
-                  <i className="fa fa-picture-o" aria-hidden="true"></i>
-                </span>
-
-                <h2>
-                  {imgg.title}
-                  <span className="update">
-                    Updated:{' '}
-                    {Moment(imgg.createdAt).format('MMMM, DD, YYYY hh:mm A')}
-                  </span>
-                </h2>
-                <PhotosDelete collectionId={imgg._id} team={team} />
-              </div>
+            <div className="inner_model_box">
+              <h3>Add Photos</h3>
+              <ImageDropzone setImages={setImages} />
+              {images.length > 0 ? (
+                <div className="upload_btn">
+                  <textarea
+                    type="text"
+                    placeholder="Add a Title"
+                    id="title"
+                    name="title"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                  />
+                  <a href="#!" onClick={handlePhotosSubmit} className="btn">
+                    UPLOAD NOW{' '}
+                  </a>
+                </div>
+              ) : (
+                ''
+              )}
             </div>
-          ))
-        ) : (
-          <p>No Photo's Available</p>
-        )}
-      </form>
+            <div className="overlay"></div>
+          </div>
+        </>
+      ) : null}
+
+      <p></p>
+
+      {team.imagesgallery.length > 0 ? (
+        team.imagesgallery.map((imgg, idx) => (
+          <div className="imagess_box" key={idx}>
+            <div className="imagess">
+              <ul>
+                <li>
+                  {imgg.images.map((imag, idex) => (
+                    <a
+                      className="fancybox"
+                      href={imag.path}
+                      data-fancybox-group="idex"
+                      title={imag.originalname}
+                      key={idex}
+                    >
+                      <img src={imag.path} alt={imag.originalname} />{' '}
+                      <span className="total_images">
+                        +{imgg.images.length}
+                      </span>
+                    </a>
+                  ))}
+                </li>
+              </ul>
+            </div>
+            <div className="bottom_data">
+              <span className="img_icon">
+                <i className="fa fa-picture-o" aria-hidden="true"></i>
+              </span>
+
+              <h2>
+                {imgg.title}
+                <span className="update">
+                  Updated:{' '}
+                  {Moment(imgg.createdAt).format('MMMM, DD, YYYY hh:mm A')}
+                </span>
+              </h2>
+              <PhotosDelete collectionId={imgg._id} team={team} />
+            </div>
+          </div>
+        ))
+      ) : (
+        <p>No Photo's Available.</p>
+      )}
     </div>
   );
 };

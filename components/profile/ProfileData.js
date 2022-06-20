@@ -206,7 +206,7 @@ const ProfileData = ({ user, Userdata, player, products, teams }) => {
                 <li>
                   <div className="card_img">
                     {' '}
-                    <img src="/assets/media/team_logo.jpg" alt="" />{' '}
+                    <img src={team.imgUrl} alt="" />{' '}
                   </div>
                   <div className="right_data">
                     <div className="card_games_tit">

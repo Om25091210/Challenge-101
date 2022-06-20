@@ -50,76 +50,92 @@ const Videos = ({ Userdata, user }) => {
 
   return (
     <div className="video_box">
-      <form onSubmit={handleSubmit}>
-        {Userdata.profile.user._id === user._id ? (
-          <VideoDropzone setVideos={setVideos} />
-        ) : null}
-
-        <p></p>
-
-        {videos.length > 0 ? (
-          <div className="upload_btn">
-            <textarea
-              type="text"
-              placeholder="Add a description"
-              id="videodisc"
-              name="videodisc"
-              value={videodisc}
-              onChange={(e) => setVideodisc(e.target.value)}
-            ></textarea>
-
-            <a href="#!" onClick={handleSubmit} className="btn">
-              UPLOAD NOW{' '}
+      {Userdata.profile.user._id === user._id ? (
+        <>
+          <a href="#!" className="model_show_btn">
+            <button className="btn">
+              <i aria-hidden="true">
+                <i className="fa fa-plus-circle" aria-hidden="true"></i>
+              </i>
+            </button>
+          </a>
+          <div className="common_model_box">
+            <a href="#!" className="model_close">
+              X
             </a>
+            <div className="inner_model_box">
+              <h3>Add Videos</h3>
+              <VideoDropzone setVideos={setVideos} />
+              {videos.length > 0 ? (
+                <div className="upload_btn">
+                  <form onSubmit={handleSubmit}>
+                    <textarea
+                      type="text"
+                      placeholder="Add a description"
+                      id="videodisc"
+                      name="videodisc"
+                      value={videodisc}
+                      onChange={(e) => setVideodisc(e.target.value)}
+                    ></textarea>
+
+                    <a href="#!" onClick={handleSubmit} className="btn">
+                      UPLOAD NOW{' '}
+                    </a>
+                  </form>
+                </div>
+              ) : (
+                ''
+              )}
+            </div>
+            <div className="overlay"></div>
           </div>
-        ) : (
-          ''
-        )}
+        </>
+      ) : null}
 
-        <p></p>
+      <p></p>
 
-        {Userdata.profile.videosgallery.map((vid, idx) => (
-          <ul key={idx}>
-            {vid.videos.map((vide, idex) => (
-              <li key={idex}>
+      {Userdata.profile.videosgallery.map((vid, idx) => (
+        <ul key={idx}>
+          {vid.videos.map((vide, idex) => (
+            <li key={idex}>
+              {' '}
+              <div className="video">
                 {' '}
-                <div className="video">
-                  {' '}
-                  <Video
-                    cloudName="dch502zpg"
-                    controls
-                    fallback="Cannot display video"
-                    publicId={vide.path}
-                  ></Video>
-                </div>
-                <div className="bottom_data">
-                  {' '}
-                  <a href="#">The Team</a>{' '}
-                  <a href="#" className="yellow">
-                    Lq Heroes
-                  </a>
-                  <h2>
-                    {vide.originalname} : <span>{vid.videodisc}</span>
-                  </h2>
-                  <span className="date">{vide.createdAt}</span>{' '}
-                  <span className="views">
-                    <i className="fa fa-eye" aria-hidden="true"></i> 2223
-                  </span>{' '}
-                  <span className="likes">
-                    <i className="fa fa-heart" aria-hidden="true"></i>453
-                  </span>{' '}
-                  <span className="comments">
-                    <i className="fa fa-comment" aria-hidden="true"></i>18
-                  </span>{' '}
-                  <ProfileVideosDel
-                    collectionId={vid._id}
-                    profile={Userdata.profile}
-                  />
-                </div>
-              </li>
-            ))}
+                <Video
+                  cloudName="dch502zpg"
+                  controls
+                  fallback="Cannot display video"
+                  publicId={vide.path}
+                ></Video>
+              </div>
+              <div className="bottom_data">
+                {' '}
+                <a href="#">The Team</a>{' '}
+                <a href="#" className="yellow">
+                  Lq Heroes
+                </a>
+                <h2>
+                  {vide.originalname} : <span>{vid.videodisc}</span>
+                </h2>
+                <span className="date">{vide.createdAt}</span>{' '}
+                <span className="views">
+                  <i className="fa fa-eye" aria-hidden="true"></i> 2223
+                </span>{' '}
+                <span className="likes">
+                  <i className="fa fa-heart" aria-hidden="true"></i>453
+                </span>{' '}
+                <span className="comments">
+                  <i className="fa fa-comment" aria-hidden="true"></i>18
+                </span>{' '}
+                <ProfileVideosDel
+                  collectionId={vid._id}
+                  profile={Userdata.profile}
+                />
+              </div>
+            </li>
+          ))}
 
-            {/* <li style={{ display: 'none' }}>
+          {/* <li style={{ display: 'none' }}>
                 <div className="video">
                   {' '}
                   <img src="/assets/media/video/thumb1.jpg" alt="" />{' '}
@@ -146,9 +162,8 @@ const Videos = ({ Userdata, user }) => {
                   </span>{' '}
                 </div>
               </li> */}
-          </ul>
-        ))}
-      </form>
+        </ul>
+      ))}
     </div>
   );
 };

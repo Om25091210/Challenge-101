@@ -149,7 +149,7 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
             ) : (
               <div className="more_user">
                 {post.shares &&
-                  post.shares.slice(0, 3).map((share) => (
+                  post.shares.slice(0, 2).map((share) => (
                     <a href="#">
                       <img
                         src={share.user?.profilePicUrl}
@@ -158,19 +158,19 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
                       <span className="online"></span>
                     </a>
                   ))}
-                {post.shares.length > 3 ? (
+                {post.shares.length > 2 ? (
                   <a href="#" className="more">
-                    +{post.shares.length - 3}
+                    +{post.shares.length - 2}
                   </a>
                 ) : null}
                 <span className="others">
                   {post.shares &&
                     post.shares
-                      .slice(0, 3)
+                      .slice(0, 2)
                       .map((share) => <span>{share.user.username},</span>)}{' '}
-                  {post.shares.length > 3 ? (
+                  {post.shares.length > 2 ? (
                     <span>
-                      and <b>{post.shares.length - 3}</b> others
+                      and <b>{post.shares.length - 2}</b> others
                     </span>
                   ) : null}{' '}
                   have shared your post.
