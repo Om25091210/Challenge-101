@@ -147,19 +147,23 @@ const TournamentDetail = ({ user, data, products }) => {
       router.push('/dashboard');
     };
 
+    const isRegistered =
+      data?.tournament?.registered?.filter((tour) => {
+        return tour?.user?._id === user?._id;
+      }).length > 0;
+
     const handleRegistry = async (e) => {
       e.preventDefault();
       axios.put(
         `${baseURL}/api/tournaments/register/${data.tournament._id}/${user._id}`
       );
-      toast.success('Registered Successfully');
+      if (isRegistered === true) {
+        toast.success('Left the tournament');
+      } else {
+        toast.success('Registered Successfully');
+      }
       refreshData();
     };
-
-    const isRegistered =
-      data?.tournament?.registered?.filter((tour) => {
-        return tour?.user?._id === user?._id;
-      }).length > 0;
 
     const isRegFull = data.tournament.registered.length == data.participants;
 

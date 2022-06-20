@@ -3,6 +3,7 @@ import { MPNumberFormat } from '../../utils/helpers';
 import { format } from 'date-fns';
 import Link from 'next/link';
 import FavTournament from './FavTournament';
+import TournamentRegister from './TournamentRegister';
 
 const TournamentRows = ({
   tournaments,
@@ -57,9 +58,7 @@ const TournamentRows = ({
                     <p>Competition</p>
                   ) : null}
                   <div className="reg">
-                    <button className="active">
-                      {result.status ? result.status : 'REGISTERED'}
-                    </button>
+                    <TournamentRegister tournament={result} user={user} />
                   </div>
                 </div>
                 <div className="bottom_game">
@@ -143,11 +142,10 @@ const TournamentRows = ({
                     <p>Competition</p>
                   ) : null}
                   <div className="reg">
-                    <button className="active">
-                      {result.tournament.status
-                        ? result.tournament.status
-                        : 'REGISTERED'}
-                    </button>
+                    <TournamentRegister
+                      tournament={result.tournament}
+                      user={user}
+                    />
                   </div>
                 </div>
                 <div className="bottom_game">
