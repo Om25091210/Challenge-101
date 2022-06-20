@@ -130,7 +130,7 @@ h3 {
 
 .black{ color: #000;}
 
-.btn, .apply {
+.btn, .apply, .btn[type='submit']  {
 	border-radius: 5px;
 	padding: 5px 20px;
 	color: #fff;
@@ -992,7 +992,7 @@ ul.top_menu li.wallet li{     float: left;
 	display:inline-block;
 	margin-right:5px;
 	position:relative;
-	border-radius: 5px; overflow: hidden;
+	border-radius: 5px; overflow: hidden; background: #fff;
 }
 .users_share_box .more_user a img {
 	object-fit:cover;
@@ -1012,10 +1012,10 @@ ul.top_menu li.wallet li{     float: left;
 	font-size:13px;
 	font-weight:400;
 	color:#000;
-	padding-left:10px;
+	padding-left:10px; text-transform: capitalize;
 }
 .users_share_box .shere {
-	width: 240px;
+	width: 250px;
 }
 .users_share_box .shere > a {
 	color:#000;
@@ -5366,6 +5366,9 @@ article .social_bar {
 	z-index: 9;
 	flex-direction: column;
 }
+
+.gallery_box .upload_btn textarea, .video_box .upload_btn textarea{ width: 300px; margin-bottom: 20px;}
+
 .gallery_box .upload_btn input {
 	width: 200px;
 	border-radius: 5px;
@@ -6774,6 +6777,9 @@ ul.game_search_result li:hover:after{ display: block;}
 #more_games ul li a{ border: 0;}
 #more_games .model_close{ width: 34px; right: -56px;}
 
+#more_games.prof_game  ul li{ text-align: center;}
+#more_games.prof_game  ul li img{ display: inline-block; height: 60px;}
+
 #more_games ul li img {
 
 	object-fit: contain;
@@ -7451,6 +7457,18 @@ form.common_form .btn{ width: 100%; margin-top: 20px; height: 40px;}
 	}
 	
 	.stats_card .card_games_tit{display: flex;justify-content: space-between;}
+
+
+	.game_hover_img{width: 100%;
+		position: relative;
+		display: flex;
+		align-content: center;
+		align-items: center;
+		margin-bottom: 20px;
+		flex-direction: column;}
+
+		.game_hover_img img{ width: 245px;}
+		.game_hover_img .btn{ margin-right: 20px;}
   
 /* ---------------------- Dark Themes----------------------------- */
 
@@ -7751,8 +7769,8 @@ body.DarkPage .matches_box .match_row {
 body.DarkPage .match_row .team_vs .vs {
 	color: #fff;
 }
-body.DarkPage .create_tournament form input[type="text"], body.DarkPage .create_tournament form select {
-	background: #222f41;
+body.DarkPage .create_tournament form input[type="text"], body.DarkPage .create_tournament form input[type="date"], body.DarkPage .create_tournament form input[type="time"], body.DarkPage .create_tournament form select {
+	background: #222f41 !important;
 	color: #fff;
 	border: 1px solid #344860; border-radius: 5px;
 }
@@ -7760,6 +7778,9 @@ body.DarkPage .create_tournament form input[type="text"], body.DarkPage .create_
 body.DarkPage .create_tournament .btn_selection input[type="checkbox"]{ background-color: #222f41; border: 1px solid #344860; border-radius: 5px; cursor: pointer; }
 body.DarkPage .create_tournament .btn_selection input[type='checkbox']:checked{background-color: #1da1f2; border: 1px solid #1da1f2; }
 body.DarkPage .create_tournament .btn_selection input[type='checkbox']:focus{ outline: none; box-shadow: none;}
+
+body.DarkPage .create_tournament .style_file_upload .inputfile + label{border: 2px solid #344860; border-radius: 5px;}
+body.DarkPage .create_tournament input[type="number"]{background: #222f41 !important; border: 1px solid #344860}
 
 body.DarkPage .game_list_page li a:hover span {
 	color: #fff;
@@ -7982,6 +8003,7 @@ body.DarkPage .write_post textarea::-webkit-input-placeholder {
 	body.DarkPage .common_model_box#product_details .inner_model_box{ background: #fff;}
 	body.DarkPage .profile_dp_box .profile_pic{border: 5px solid #20202a;}
 	body.DarkPage .discovery_page .tit span .icon{ background: #000;}
+	body.DarkPage .right_bio select{	background-color: #202028;color:#858585; border: 1px solid #737373; border-radius: 5px;}
 
 /* ------------------------------ -- */
 .ring {

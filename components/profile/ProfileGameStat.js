@@ -35,15 +35,14 @@ const ProfileGameStat = ({ user, games }) => {
                 id={`item${index}`}
                 key={index}
               >
-                <div className="game_btn">
-                  <select name="selectedGame" onClick={handleSelectGame}>
-                    {games.map((game, index) => (
-                      <option value={game.userign}>
-                        {game.game.name}-{game.userign}
-                      </option>
-                    ))}
-                  </select>
-                </div>
+                <select name="selectedGame" onClick={handleSelectGame}>
+                  {games.map((game, index) => (
+                    <option value={game.userign}>
+                      {game.game.name}-{game.userign}
+                    </option>
+                  ))}
+                </select>
+
                 <ul>
                   <li>
                     <img src="/assets/media/profile/kill.png" alt="" />

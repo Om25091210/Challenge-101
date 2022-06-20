@@ -167,9 +167,11 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
                   {post.shares &&
                     post.shares
                       .slice(0, 3)
-                      .map((share) => <p>{share.user.username}</p>)}{' '}
+                      .map((share) => <span>{share.user.username},</span>)}{' '}
                   {post.shares.length > 3 ? (
-                    <p>and {post.shares.length - 3} others</p>
+                    <span>
+                      and <b>{post.shares.length - 3}</b> others
+                    </span>
                   ) : null}{' '}
                   have shared your post.
                 </span>
