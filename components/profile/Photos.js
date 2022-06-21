@@ -52,41 +52,44 @@ const Photos = ({ Userdata, user }) => {
     <div className="gallery_box">
       {Userdata.profile.user._id === user._id ? (
         <>
-          <a href="#!" className="model_show_btn">
-            <button className="btn">
-              <i aria-hidden="true">
-                <i className="fa fa-plus-circle" aria-hidden="true"></i>
-              </i>
-            </button>
-          </a>
-          <div className="common_model_box">
-            <a href="#!" className="model_close">
-              X
+          <div className="add_photos">
+            <a href="#!" className="model_show_btn">
+              <button className="btn">
+                <i aria-hidden="true">
+                  <i className="fa fa-plus-circle" aria-hidden="true"></i> Add
+                  Photos
+                </i>
+              </button>
             </a>
-            <div className="inner_model_box">
-              <h3>Add Photos</h3>
-              <ImageDropzone setImages={setImages} />
-              {images.length > 0 ? (
-                <div className="upload_btn">
-                  <form onSubmit={handlePhotosSubmit}>
-                    <textarea
-                      type="text"
-                      placeholder="Add a Title"
-                      id="title"
-                      name="title"
-                      value={title}
-                      onChange={(e) => setTitle(e.target.value)}
-                    />
-                    <a href="#!" onClick={handlePhotosSubmit} className="btn">
-                      UPLOAD NOW{' '}
-                    </a>
-                  </form>
-                </div>
-              ) : (
-                ''
-              )}
+            <div className="common_model_box">
+              <a href="#!" className="model_close">
+                X
+              </a>
+              <div className="inner_model_box">
+                <h3>Add Photos</h3>
+                <ImageDropzone setImages={setImages} />
+                {images.length > 0 ? (
+                  <div className="upload_btn">
+                    <form onSubmit={handlePhotosSubmit}>
+                      <textarea
+                        type="text"
+                        placeholder="Add a Title"
+                        id="title"
+                        name="title"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                      />
+                      <a href="#!" onClick={handlePhotosSubmit} className="btn">
+                        UPLOAD NOW{' '}
+                      </a>
+                    </form>
+                  </div>
+                ) : (
+                  ''
+                )}
+              </div>
+              <div className="overlay"></div>
             </div>
-            <div className="overlay"></div>
           </div>
         </>
       ) : null}

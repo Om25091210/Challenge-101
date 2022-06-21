@@ -52,42 +52,45 @@ const Videos = ({ Userdata, user }) => {
     <div className="video_box">
       {Userdata.profile.user._id === user._id ? (
         <>
-          <a href="#!" className="model_show_btn">
-            <button className="btn">
-              <i aria-hidden="true">
-                <i className="fa fa-plus-circle" aria-hidden="true"></i>
-              </i>
-            </button>
-          </a>
-          <div className="common_model_box">
-            <a href="#!" className="model_close">
-              X
+          <div className="add_photos">
+            <a href="#!" className="model_show_btn">
+              <button className="btn">
+                <i aria-hidden="true">
+                  <i className="fa fa-plus-circle" aria-hidden="true"></i> Add
+                  Video
+                </i>
+              </button>
             </a>
-            <div className="inner_model_box">
-              <h3>Add Videos</h3>
-              <VideoDropzone setVideos={setVideos} />
-              {videos.length > 0 ? (
-                <div className="upload_btn">
-                  <form onSubmit={handleSubmit}>
-                    <textarea
-                      type="text"
-                      placeholder="Add a description"
-                      id="videodisc"
-                      name="videodisc"
-                      value={videodisc}
-                      onChange={(e) => setVideodisc(e.target.value)}
-                    ></textarea>
+            <div className="common_model_box">
+              <a href="#!" className="model_close">
+                X
+              </a>
+              <div className="inner_model_box">
+                <h3>Add Videos</h3>
+                <VideoDropzone setVideos={setVideos} />
+                {videos.length > 0 ? (
+                  <div className="upload_btn">
+                    <form onSubmit={handleSubmit}>
+                      <textarea
+                        type="text"
+                        placeholder="Add a description"
+                        id="videodisc"
+                        name="videodisc"
+                        value={videodisc}
+                        onChange={(e) => setVideodisc(e.target.value)}
+                      ></textarea>
 
-                    <a href="#!" onClick={handleSubmit} className="btn">
-                      UPLOAD NOW{' '}
-                    </a>
-                  </form>
-                </div>
-              ) : (
-                ''
-              )}
+                      <a href="#!" onClick={handleSubmit} className="btn">
+                        UPLOAD NOW{' '}
+                      </a>
+                    </form>
+                  </div>
+                ) : (
+                  ''
+                )}
+              </div>
+              <div className="overlay"></div>
             </div>
-            <div className="overlay"></div>
           </div>
         </>
       ) : null}
