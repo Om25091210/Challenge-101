@@ -274,7 +274,9 @@ const CreateTournament = ({ user }) => {
                       <p>{formErrors.game}</p>
                     </div>
                     <div className="form-group">
-                      <label for="exampleFormControlInput1">Series</label>
+                      <label for="exampleFormControlInput1">
+                        Series (Optional)
+                      </label>
                       <select
                         className="game_search_result mscrollbar"
                         name="series"
@@ -288,7 +290,6 @@ const CreateTournament = ({ user }) => {
                           </option>
                         ))}
                       </select>
-                      <p>{formErrors.series}</p>
                     </div>
                     <div className="form-group">
                       <label for="exampleFormControlInput1">Prizes</label>

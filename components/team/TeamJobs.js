@@ -82,7 +82,9 @@ const TeamJobs = ({ jobs, team, isManager, isAdmin }) => {
           {' '}
           {isManager || isAdmin ? (
             <a href="#!" className="model_show_btn">
-              <button className="btn">Add Job</button>
+              <button className="btn">
+                <i className="fa fa-plus-circle" aria-hidden="true"></i>
+              </button>
             </a>
           ) : null}
           <div className="common_model_box">

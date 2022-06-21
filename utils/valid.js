@@ -117,9 +117,6 @@ export const tournamentformvalidate = (values) => {
   if (!values.game) {
     errors.game = 'Select Atleast one game';
   }
-  if (!values.series) {
-    errors.series = 'Select Atleast one series';
-  }
   if (!values.prizepool) {
     errors.prizepool = 'Prize cannot be empty';
   }

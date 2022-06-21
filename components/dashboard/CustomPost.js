@@ -51,6 +51,7 @@ const CustomPost = ({ post }) => {
       await mutateAsync(post);
       toast.success('Your post has been successfully deleted');
       refreshData();
+      setDeleteModal(false);
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }

@@ -26,6 +26,7 @@ import TournamentSponsor from '@components/tournament/TournamentSponsor';
 import Moment from 'moment';
 import { toast } from 'react-toastify';
 import TournamentFollow from '../../components/tournament/TournamentFollow';
+import AllPosts from '../../components/dashboard/AllPosts';
 
 const TournamentDetail = ({ user, data, products }) => {
   if (data) {
@@ -38,6 +39,20 @@ const TournamentDetail = ({ user, data, products }) => {
     const router = useRouter();
     const [sociallinks, setSociallinks] = useState(data.tournament.social);
     const [websitelink, setWebsitelink] = useState(data.tournament);
+    const [tournamentPosts, setTournamentPosts] = useState([]);
+
+    useEffect(() => {
+      axios
+        .get(`${baseURL}/api/posts/`)
+        .then((res) => setTournamentPosts(res.data.posts));
+    }, []);
+
+    let Filteredtournamentposts = tournamentPosts.filter((tourpost) => {
+      return (
+        tourpost.post_type === 'Tournament' &&
+        tourpost?.username === data.tournament.name
+      );
+    });
 
     const toggleShowform = () => {
       if (showform) {
@@ -519,15 +534,63 @@ const TournamentDetail = ({ user, data, products }) => {
 
                   <div className="games">
                     <h3>PARTICIPANTS: </h3>
-                    <a href="#">
-                      <img src="/assets/media/category/1.png" alt="" />
+                    <a
+                      href={`/user/${data.tournament.registered[0]?.user?._id}`}
+                    >
+                      <img
+                        src={`${data.tournament.registered[0]?.user?.profilePicUrl}`}
+                        alt=""
+                      />
                     </a>
-                    <a href="#">
-                      <img src="/assets/media/category/2.png" alt="" />
+                    <a
+                      href={`/user/${data.tournament.registered[1]?.user?._id}`}
+                    >
+                      <img
+                        src={`${data.tournament.registered[1]?.user?.profilePicUrl}`}
+                        alt=""
+                      />
                     </a>
-                    <a href="#">
-                      <img src="/assets/media/category/3.png" alt="" />
+                    <a
+                      href={`/user/${data.tournament.registered[2]?.user?._id}`}
+                    >
+                      <img
+                        src={`${data.tournament.registered[2]?.user?.profilePicUrl}`}
+                        alt=""
+                      />
+                      {data.tournament.registered.length === 0
+                        ? 'No Participants Yet'
+                        : null}
                     </a>
+                    {data.tournament.registered.length > 3 ? (
+                      <a href="#!" className="model_show_btn more">
+                        +{data.tournament.registered.length - 3}
+                      </a>
+                    ) : null}
+                    <div
+                      className="common_model_box"
+                      style={{ height: '12rem' }}
+                    >
+                      <a href="#!" className="model_close">
+                        X
+                      </a>
+
+                      <div className="inner_model_box">
+                        <h3>Participants</h3>
+                        {data.tournament.registered.map((ppl) => (
+                          <div>
+                            <img
+                              src={ppl.user.profilePicUrl}
+                              alt={ppl.user.name}
+                              style={{ height: '35px', width: '35px' }}
+                            />
+                            <a href={`/user/${ppl.user._id}`}>
+                              <p>{ppl.user.name}</p>
+                            </a>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="overlay"></div>
+                    </div>
                     SLOTS: {data.tournament.registered.length} /{' '}
                     {data.tournament.participants}
                   </div>
@@ -738,7 +801,19 @@ const TournamentDetail = ({ user, data, products }) => {
             </ul>
             <div className="prfoile_tab_data">
               <div className="tab" id="overview">
-                Overview
+                {Filteredtournamentposts.length === 0 ? (
+                  <h6>No Posts Under This Team</h6>
+                ) : (
+                  Filteredtournamentposts.length !== 0 &&
+                  Filteredtournamentposts.map((post, index) => (
+                    <AllPosts
+                      post={post}
+                      user={user}
+                      type="TournamentPost"
+                      team={data.team}
+                    />
+                  ))
+                )}
               </div>
               <div className="tab hide" id="series">
                 <TournamentSeries user={user} tournament={data.tournament} />

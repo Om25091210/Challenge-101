@@ -9,6 +9,7 @@ import cookie from 'js-cookie';
 import axios from 'axios';
 import SharePost from './SharePost';
 import TeamFollow from '../team/TeamFollow';
+import Link from 'next/link';
 
 const AllPosts = ({ post, user, profiledata, type, team }) => {
   const [commentsData, setCommentsData] = useState([]);
@@ -158,11 +159,34 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
                       <span className="online"></span>
                     </a>
                   ))}
-                {post.shares.length > 2 ? (
-                  <a href="#" className="more">
-                    +{post.shares.length - 2}
+
+                <a href="#!" className="model_show_btn more">
+                  +{post.shares.length - 2}
+                </a>
+
+                <div className="common_model_box" style={{ height: '12rem' }}>
+                  <a href="#!" className="model_close">
+                    X
                   </a>
-                ) : null}
+
+                  <div className="inner_model_box">
+                    <h3>Shares</h3>
+                    {post.shares.map((ppl) => (
+                      <div>
+                        <img
+                          src={ppl.user.profilePicUrl}
+                          alt={ppl.user.name}
+                          style={{ height: '35px', width: '35px' }}
+                        />
+                        <a href={`/user/${ppl.user._id}`}>
+                          <p>{ppl.user.name}</p>
+                        </a>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="overlay"></div>
+                </div>
+
                 <span className="others">
                   {post.shares &&
                     post.shares

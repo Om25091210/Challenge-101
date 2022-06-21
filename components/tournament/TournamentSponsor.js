@@ -91,7 +91,7 @@ const TournamentSponsor = ({ user, data, isUser }) => {
             <a href="#!" className="model_show_btn">
               {isUser ? (
                 <button className="btn">
-                  <i aria-hidden="true"> Edit Sponsor</i>
+                  <i className="fa fa-plus-circle" aria-hidden="true"></i>
                 </button>
               ) : null}
             </a>

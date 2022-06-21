@@ -432,7 +432,7 @@ const ProfileData = ({ user, Userdata, player, products, teams }) => {
                 <a href="#!" className="model_show_btn">
                   <button className="btn">
                     {' '}
-                    <i aria-hidden="true"> Edit Sponsor</i>{' '}
+                    <i className="fa fa-plus-circle" aria-hidden="true"></i>
                   </button>
                 </a>
               ) : null}
