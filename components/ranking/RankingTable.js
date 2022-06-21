@@ -3,6 +3,7 @@ import { format } from 'date-fns';
 import LoadingSpinner from '../LoadingSpinner';
 
 const RankingTable = ({ teamranking }) => {
+
   if (teamranking) {
     return (
       <div className="ranking_table">
@@ -17,7 +18,7 @@ const RankingTable = ({ teamranking }) => {
               <div className="heads">team</div>
               <div className="heads">Points</div>
               <div className="heads">TOURNAMENTS </div>
-              <div className="heads">MATCHES WON/LOSS</div>
+              <div className="heads">MATCHES WON</div>
               <div className="heads">win%</div>
               <div className="heads">form</div>
               <div className="heads">PRIZE MONEY</div>
@@ -32,45 +33,22 @@ const RankingTable = ({ teamranking }) => {
                 <div className="row_box" key={idx}>
                   <div className="cols_box">
                     <div className="cols">
-                      {result.ranks
-                        ? result.ranks[0]
-                          ? result.ranks[0].rank
-                          : 'Not Ranked'
-                        : 'Not Ranked'}
+                      {result.rank ? result.rank : 'Not Ranked'}
                     </div>
                     <div className="cols">{result.team.name} </div>
                     <div className="cols">
-                      {result.ranks
-                        ? result.ranks[0]
-                          ? result.ranks[0].points
-                          : 'Not Defined'
-                        : 'Not Defined'}
+                      {result.points ? result.points : 'Not Defined'}
                     </div>
                     <div className="cols">
                       {result.tournament ? result.tournament.length : ''}
                     </div>
                     <div className="cols">
-                      {result.ranks
-                        ? result.ranks[0]
-                          ? result.ranks[0].won
-                          : 0
-                        : 0}
+                      {result.points ? result.points : '0'}
                       /
-                      {result.ranks
-                        ? result.ranks[0]
-                          ? result.ranks[0].loss
-                          : 0
-                        : 0}
+                      0
                     </div>
                     <div className="cols">
-                      {result.ranks
-                        ? result.ranks[0]
-                          ? Math.round(
-                              (result.ranks[0].won / result.ranks[0].loss) * 100
-                            )
-                          : 0
-                        : 0}
-                      %
+                    tdb
                     </div>
                     <div className="cols">
                       {' '}
@@ -83,7 +61,10 @@ const RankingTable = ({ teamranking }) => {
                     <div className="cols">$45,000</div>
                   </div>
 
-                  {!result.tournament || result.tournament.length === 0 ? (
+                  {
+
+/*
+                    !result.tournament || result.tournament.length === 0 ? (
                     <div className="more_data">
                       <div className="activity_tag">
                         <span className="act_name">
@@ -134,7 +115,9 @@ const RankingTable = ({ teamranking }) => {
                         </div>
                       </div>
                     ))
-                  )}
+                  )
+*/
+                }
                 </div>
               ))
             )}
