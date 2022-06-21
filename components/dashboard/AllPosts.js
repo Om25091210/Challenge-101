@@ -164,25 +164,29 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
                   +{post.shares.length - 2}
                 </a>
 
-                <div className="common_model_box" style={{ height: '12rem' }}>
+                <div className="common_model_box" id="share_prof">
                   <a href="#!" className="model_close">
                     X
                   </a>
 
                   <div className="inner_model_box">
                     <h3>Shares</h3>
-                    {post.shares.map((ppl) => (
-                      <div>
-                        <img
-                          src={ppl.user.profilePicUrl}
-                          alt={ppl.user.name}
-                          style={{ height: '35px', width: '35px' }}
-                        />
-                        <a href={`/user/${ppl.user._id}`}>
-                          <p>{ppl.user.name}</p>
-                        </a>
-                      </div>
-                    ))}
+                    <ul>
+                      {post.shares.map((ppl) => (
+                        <li>
+                          {' '}
+                          <div className="game_pic">
+                            <img
+                              src={ppl.user.profilePicUrl}
+                              alt={ppl.user.name}
+                            />
+                          </div>
+                          <a href={`/user/${ppl.user._id}`}>
+                            <p>{ppl.user.name}</p>
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                   <div className="overlay"></div>
                 </div>

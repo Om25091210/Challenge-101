@@ -202,7 +202,7 @@ const CustomPost = ({ post }) => {
         </div>
       )}
       {shareToModal && (
-        <div className="delete_post">
+        <div className="delete_post share_to">
           <form>
             <div className="delete_post_div">
               <TwitterShareButton

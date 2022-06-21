@@ -963,16 +963,16 @@ ul.top_menu li.wallet li{     float: left;
 	background: #dfdfdf;
 	max-height: 100%;
 	min-width: 300px;
-	min-height: 300px;
+	max-height: 300px;
 	text-align: center;
 	display: flex;
 	justify-content: center;
 }
 .post .right_details .post_data img {
-	width: auto;
+	width: 100%;
 	max-height: 100%;
 	object-fit: cover;
-	min-height: 300px;
+	max-height: 300px;
 	display: block;
 }
 .users_share_box {
@@ -986,7 +986,7 @@ ul.top_menu li.wallet li{     float: left;
 	display:flex;
 	align-items:center;
 }
-.users_share_box .more_user a {
+.users_share_box .more_user > a {
 	width:30px;
 	height:30px;
 	display:inline-block;
@@ -1138,6 +1138,9 @@ ul.top_menu li.wallet li{     float: left;
 .delete_post_div button {
 	margin:10px 5px;
 }
+
+
+
 .online {
 	width:7px;
 	height:7px;
@@ -7511,7 +7514,50 @@ form.common_form .btn{ width: 100%; margin-top: 20px; height: 40px;}
 
 		.game_hover_img img{ width: 245px;}
 		.game_hover_img .btn{ margin-right: 20px;}
+
+		
+		#share_prof ul li {
+			float: left;
+			width: 23%;
+			margin-right: 2%;
+			margin-bottom: 20px;
+			background: #ddd;
+			border: 1px solid #999;
+			padding: 0;
+			/* box-shadow: 2px 4px 10px #eee; */
+			border-radius: 5px;
+			overflow: hidden;
+			text-align: center;
+		}
   
+		#share_prof ul li .game_pic {
+			width: 100%;
+			height: 100px;
+			margin-bottom: 10px;
+			text-align: center;
+			vertical-align: middle;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		#share_prof ul li p {
+			color: #000;
+			font-size: 12px;
+			padding: 0px 5px 8px 5px;
+		}
+
+		.share_to button{ background: none !important}
+		.share_to button.close{position: absolute;
+			right: -35px;
+			top: -9px;
+			color: #fff;
+			opacity: 1;
+			font-weight: normal;
+			font-size: 15px;
+			background: #000 !important;
+			padding: 5px 10px 5px 10px;}
+
 /* ---------------------- Dark Themes----------------------------- */
 
 	body.DarkPage {
