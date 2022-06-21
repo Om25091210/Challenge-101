@@ -33,6 +33,9 @@ const CreateTeam = ({ user }) => {
   const [formErrors, setFormErrors] = useState({});
   const options = useMemo(() => countryList().getData(), []);
   const router = useRouter();
+  const [searchText, setSearchText] = useState('');
+  const [searchText1, setSearchText1] = useState('');
+  const [rigsData, setRigsData] = useState([]);
 
   const [state, setState] = useState({
     name: '',
@@ -45,7 +48,6 @@ const CreateTeam = ({ user }) => {
     website: '',
     description: '',
     achievements: '',
-    rigs: '',
     sponsor: '',
     arena: '',
     role: '',
@@ -54,7 +56,14 @@ const CreateTeam = ({ user }) => {
     twitter: '',
     instagram: '',
     youtube: '',
-    discord: ''
+    discord: '',
+
+    keyboard: '',
+    mouse: '',
+    monitor: '',
+    graphicsCard: '',
+    headphone: '',
+    processor: ''
   });
 
   useEffect(() => {
@@ -68,6 +77,9 @@ const CreateTeam = ({ user }) => {
     axios
       .get(`${baseURL}/api/all/sponsors`)
       .then((res) => setSponsors(res.data));
+
+    // Rigs data
+    axios.get(`${baseURL}/api/rigsdata/`).then((res) => setRigsData(res.data));
   }, []);
 
   const mutation = useMutation(
@@ -127,6 +139,54 @@ const CreateTeam = ({ user }) => {
   const showstep1 = () => {
     setStep1(false);
     setShowbtn(true);
+  };
+
+  const [filteredData, setFilteredData] = useState([]);
+  const handleFilter = (event) => {
+    const searchWord = event.target.value;
+
+    setSearchText(searchWord);
+    const newFilter = rigsData?.filter((value) => {
+      return (
+        value.name.toLowerCase().includes(searchWord.toLowerCase()) &&
+        value.category === 'Keyboard'
+      );
+    });
+
+    if (searchText === '') {
+      setFilteredData([]);
+    } else {
+      setFilteredData(newFilter);
+    }
+  };
+  const handleSelectedRig = (data) => {
+    setSearchText(data.name);
+    // $('custom-rig-tag').addClass('hide')
+    state.keyboard = data._id;
+  };
+
+  const [filteredData1, setFilteredData1] = useState([]);
+  const handleFilter1 = (event) => {
+    const searchWord = event.target.value;
+
+    setSearchText1(searchWord);
+    const newFilter = rigsData?.filter((value) => {
+      return (
+        value.name.toLowerCase().includes(searchWord.toLowerCase()) &&
+        value.category === 'Mouse'
+      );
+    });
+
+    if (searchText1 === '') {
+      setFilteredData1([]);
+    } else {
+      setFilteredData1(newFilter);
+    }
+  };
+  const handleSelectedRig1 = (data) => {
+    setSearchText1(data.name);
+    // $('custom-rig-tag').addClass('hide')
+    state.mouse = data._id;
   };
 
   return (
@@ -293,21 +353,83 @@ const CreateTeam = ({ user }) => {
                         <label htmlFor="exampleFormControlInput1">
                           Rigs (Optional)
                         </label>
-                        <select
-                          className="form-control"
-                          multiple={true}
-                          name="rigs"
-                          value={state.rigs}
-                          onChange={handleChange}
-                        >
-                          <option> Keyboard</option>
-                          <option>Mouse</option>
-                          <option>Headphone</option>
-                          <option>Monitor</option>
-                          <option>Ghaphics Card</option>
-                          <option>Processor</option>
-                        </select>
-                        {/* <p>{formErrors.rigs}</p> */}
+                        <label>Keyboard</label>
+                        <input
+                          id="keyboard"
+                          name="keyboard"
+                          placeholder="Enter Keyboard Name"
+                          type="search"
+                          value={searchText}
+                          onChange={handleFilter}
+                          autoComplete="off"
+                        />
+
+                        {searchText.length !== 0 ? (
+                          <div className="custom-rig-tag">
+                            <div>
+                              {!filteredData || filteredData.length === 0 ? (
+                                <p>No keyboards found..</p>
+                              ) : (
+                                filteredData.map((data) => (
+                                  <div
+                                    onClick={() => handleSelectedRig(data)}
+                                    key={data._id}
+                                  >
+                                    <img
+                                      src={data.image}
+                                      height={50}
+                                      width={50}
+                                    />
+                                    <p>
+                                      {data.name.length > 20
+                                        ? data.name.substring(0, 20) + '...'
+                                        : data.name}
+                                    </p>
+                                  </div>
+                                ))
+                              )}
+                            </div>
+                          </div>
+                        ) : null}
+
+                        <label>Mouse</label>
+                        <input
+                          id="mouse"
+                          name="mouse"
+                          placeholder="Enter Mouse Name"
+                          type="search"
+                          value={searchText1}
+                          onChange={handleFilter1}
+                          autoComplete="off"
+                        />
+
+                        {searchText1.length !== 0 ? (
+                          <div className="custom-rig-tag">
+                            <div>
+                              {!filteredData1 || filteredData1.length === 0 ? (
+                                <p>No Mouse found..</p>
+                              ) : (
+                                filteredData1.map((data) => (
+                                  <div
+                                    onClick={() => handleSelectedRig1(data)}
+                                    key={data._id}
+                                  >
+                                    <img
+                                      src={data.image}
+                                      height={50}
+                                      width={50}
+                                    />
+                                    <p>
+                                      {data.name.length > 20
+                                        ? data.name.substring(0, 20) + '...'
+                                        : data.name}
+                                    </p>
+                                  </div>
+                                ))
+                              )}
+                            </div>
+                          </div>
+                        ) : null}
                       </div>
                       <div className="colm">
                         <label htmlFor="exampleFormControlInput1">

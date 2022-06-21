@@ -68,6 +68,9 @@ const Ranking = ({ user, games }) => {
     setSelectedGame(obj);
     //myState.setFilteredResults([]);
     $('a.model_close').parent().removeClass('show_model');
+    axios
+      .get(`${baseURL}/api/rankings/bywinnings100/${selectedGame?._id}`)
+      .then((res) => setTeamsRanks(res.data));
   };
 
   useEffect(() => {
@@ -81,13 +84,10 @@ const Ranking = ({ user, games }) => {
   }, []);
 
   useEffect(() => {
-    console.log(selectedGame._id);
     axios
       .get(`${baseURL}/api/rankings/bywinnings100/${selectedGame?._id}`)
       .then((res) => setTeamsRanks(res.data));
   }, []);
-
-  console.log(teamsRanks);
 
   return (
     <>
@@ -106,9 +106,17 @@ const Ranking = ({ user, games }) => {
               <a href="#!" className="model_show_btn">
                 <span>
                   <b className="icon">
-                    <img src="/assets/media/ranking/console.png" alt="" />
-                  </b>{' '}
-                  Browse Games
+                    {selectedGame ? (
+                      <img
+                        src={selectedGame.imgUrl}
+                        alt=""
+                        style={{ width: '26px', height: '18px' }}
+                      />
+                    ) : (
+                      <img src="/assets/media/ranking/console.png" alt="" />
+                    )}
+                  </b>
+                  {selectedGame ? selectedGame.name : 'Browse Games'}
                 </span>
                 <i className="fa fa-angle-right" aria-hidden="true"></i>
 
