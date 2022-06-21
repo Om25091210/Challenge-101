@@ -20,6 +20,19 @@ const TeamSquads = ({ squads, teamplayers, team, isManager, isAdmin }) => {
           ) : (
             squads.map((squad, idx) => (
               <li className="squads" key={idx}>
+                <div className="edit_delet">
+                  <TeamSquadEdit
+                    teamplayers={teamplayers}
+                    squad={squad}
+                    isManager={isManager}
+                    isAdmin={isAdmin}
+                  />
+                  <TeamSquadDelete
+                    squad={squad}
+                    isManager={isManager}
+                    isAdmin={isAdmin}
+                  />
+                </div>
                 <div className="squad_img">
                   {' '}
                   <img src={squad.game?.imgUrl} className="squad_bg" alt="" />
@@ -95,17 +108,6 @@ const TeamSquads = ({ squads, teamplayers, team, isManager, isAdmin }) => {
                     </tbody>
                   </table>
                 </div>
-                <TeamSquadEdit
-                  teamplayers={teamplayers}
-                  squad={squad}
-                  isManager={isManager}
-                  isAdmin={isAdmin}
-                />
-                <TeamSquadDelete
-                  squad={squad}
-                  isManager={isManager}
-                  isAdmin={isAdmin}
-                />
               </li>
             ))
           )}

@@ -81,7 +81,7 @@ const TeamSquadEdit = ({ teamplayers, squad, isManager, isAdmin }) => {
     }
   };
   return (
-    <div>
+    <div className="sqd_edit_btn">
       {isManager || isAdmin ? (
         <a href="#!" className="model_show_btn btn">
           <i className="fa fa-pencil" aria-hidden="true"></i>

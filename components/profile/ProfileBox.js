@@ -1230,7 +1230,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                       <div className="inner_model_box">
                         <h3>Games</h3>
                         <form
-                          className="form w-100"
+                          className="form w-100 add_game_box"
                           noValidate="novalidate"
                           id="kt_sign_up_form"
                           onSubmit={gamehandleSubmit}
@@ -1262,12 +1262,10 @@ const ProfileBox = ({ user, Userdata, games }) => {
                               >
                                 Back
                               </button>
-                              <div>
+                              <div className="add_game_poup">
                                 <img
                                   src={selectedGame?.game.imgUrl}
                                   alt={selectedGame?.game.name}
-                                  width="300px"
-                                  height="300px"
                                 />
                                 <span>
                                   <i
@@ -1282,6 +1280,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                                   value={userIgn}
                                 />
                               </div>
+
                               <button type="submit" className="btn">
                                 <span className="indicator-label">
                                   Add Game

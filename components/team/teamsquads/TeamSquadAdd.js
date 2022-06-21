@@ -81,7 +81,7 @@ const TeamSquadAdd = ({ teamplayers, team, isManager, isAdmin }) => {
     <>
       {/* isManager or Admin */}
       {isManager || isAdmin ? (
-        <a href="#!" className="model_show_btn btn">
+        <a href="#!" className="model_show_btn btn add_sqd">
           Add Squad
         </a>
       ) : null}

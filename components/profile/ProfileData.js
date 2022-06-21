@@ -86,7 +86,7 @@ const ProfileData = ({ user, Userdata, player, products, teams }) => {
                 Userdata.posts.map((post) =>
                   post.user._id !== user._id ? (
                     <>
-                      <p>You Shared</p>
+                      {/* <p>You Shared</p> */}
                       <AllPosts post={post} user={user} />
                     </>
                   ) : (
