@@ -87,7 +87,7 @@ const Ranking = ({ user, games }) => {
     axios
       .get(`${baseURL}/api/rankings/bywinnings100/${selectedGame?._id}`)
       .then((res) => setTeamsRanks(res.data));
-  }, []);
+  }, [selectedGame]);
 
   return (
     <>
@@ -157,6 +157,8 @@ const Ranking = ({ user, games }) => {
               </div>
             </div>
 
+          
+
             <div className="white_bg">
               <div className="team_search">
                 <div className="searchbox">
@@ -164,22 +166,12 @@ const Ranking = ({ user, games }) => {
                   <input type="search" placeholder="Search" />
                   <input type="submit" />
                 </div>
-                <div className="advance">
-                  <h3>Favourite</h3>
-                  <div className="custom-control custom-switch">
-                    <input
-                      type="checkbox"
-                      className="custom-control-input"
-                      id="customSwitch1"
-                    />
-                    <label
-                      className="custom-control-label"
-                      htmlFor="customSwitch1"
-                    ></label>
-                  </div>
-                </div>
               </div>
-              <Filters filterType={'TOURNAMENTS'} />
+          
+          {/*
+             <Filters filterType={'RANKINGS'} />   
+          */}
+
             </div>
           </div>
           <RankingTable teamranking={teamsRanks} />

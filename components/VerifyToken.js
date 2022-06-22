@@ -42,7 +42,6 @@ const VerifyToken = ({ verificationToken, finishsubmit, show1 }) => {
   const handleSubmitCode = async (e) => {
     e.preventDefault();
     if (inviteCodes.includes(inviteCode)) {
-      toast.success('Redirecting to dashboard');
       router.push('/dashboard');
     } else {
       toast.warning("Invite's Only.");
