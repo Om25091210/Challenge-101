@@ -34,8 +34,15 @@ const ProfileMatches = ({ user, Userdata }) => {
                     <>
                       {' '}
                       <li>
-                        <img src={player.playerId.imgUrl} alt="" />{' '}
-                        <h4>{player.playerId.name}</h4>
+                        {player.playerId?.imgUrl ? (
+                          <img
+                            src={player.playerId?.imgUrl}
+                            alt={player.playerId.name}
+                          />
+                        ) : (
+                          <img src="/assets/media/user.png" alt="" />
+                        )}
+                        <h4>{player.playerId?.name}</h4>
                       </li>
                     </>
                   ))}
