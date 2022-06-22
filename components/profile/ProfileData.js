@@ -17,6 +17,7 @@ import FavTournament from '../tournament/FavTournament';
 import Link from 'next/link';
 import { format } from 'date-fns';
 import { MPNumberFormat } from '../../utils/helpers';
+import Tournament_Reg from '../tournament/TournamentRegister';
 
 const ProfileData = ({ user, Userdata, player, products, teams }) => {
   const [profile, setProfile] = useState(Userdata.profile);
@@ -279,16 +280,48 @@ const ProfileData = ({ user, Userdata, player, products, teams }) => {
                       <p>Competition</p>
                     ) : null}
                     <div className="reg">
-                      <button className="active">
-                        {result?.registered.map((reg) =>
-                          reg.user === user._id ? 'REGISTERED' : 'REGISTER'
-                        )}
-                      </button>
+                      <Tournament_Reg user={user} tournament={result} />
                     </div>
                   </div>
                   <div className="bottom_game">
                     <div className="users">
-                      <img src="/assets/media/category/users.png" alt="" />
+                      {result.registered[0]?.user.profilePicUrl ? (
+                        <img
+                          style={{ height: '30px', width: '30px' }}
+                          src={result.registered[0]?.user?.profilePicUrl}
+                          alt=""
+                        />
+                      ) : null}
+                      {result.registered[1]?.user.profilePicUrl ? (
+                        <img
+                          style={{ height: '30px', width: '30px' }}
+                          src={result.registered[1]?.user?.profilePicUrl}
+                          alt=""
+                        />
+                      ) : null}
+                      {result.registered[2]?.user.profilePicUrl ? (
+                        <img
+                          style={{ height: '30px', width: '30px' }}
+                          src={result.registered[2]?.user?.profilePicUrl}
+                          alt=""
+                        />
+                      ) : null}
+                      {result.registered[3]?.user.profilePicUrl ? (
+                        <img
+                          style={{ height: '30px', width: '30px' }}
+                          src={result.registered[3]?.user?.profilePicUrl}
+                          alt=""
+                        />
+                      ) : null}
+
+                      {result.participants > 0 ? (
+                        <p>
+                          Signed: {result.registered.length} /{' '}
+                          {result.participants}
+                        </p>
+                      ) : (
+                        <p>Signed: Not Available</p>
+                      )}
                     </div>
                     <div className="games">
                       <h3>Games:</h3>

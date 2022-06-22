@@ -159,10 +159,11 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
                       <span className="online"></span>
                     </a>
                   ))}
-
-                <a href="#!" className="model_show_btn more">
-                  +{post.shares.length - 2}
-                </a>
+                {post.shares.length < 3 ? null : (
+                  <a href="#!" className="model_show_btn more">
+                    +{post.shares.length - 2}
+                  </a>
+                )}
 
                 <div className="common_model_box" id="share_prof">
                   <a href="#!" className="model_close">

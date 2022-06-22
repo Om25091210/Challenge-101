@@ -82,7 +82,7 @@ const TeamSquadAdd = ({ teamplayers, team, isManager, isAdmin }) => {
       {/* isManager or Admin */}
       {isManager || isAdmin ? (
         <a href="#!" className="model_show_btn btn add_sqd">
-          Add Squad
+          <i className="fa fa-plus-circle" aria-hidden="true"></i> Add Squad
         </a>
       ) : null}
       <div className="common_model_box">
@@ -103,6 +103,7 @@ const TeamSquadAdd = ({ teamplayers, team, isManager, isAdmin }) => {
                 value={squadData.game}
                 onChange={onChange}
               >
+                <option value="">--</option>
                 {games.map((game, idx) => (
                   <option key={idx} value={game._id}>
                     {' '}
@@ -120,6 +121,7 @@ const TeamSquadAdd = ({ teamplayers, team, isManager, isAdmin }) => {
                 id=""
                 onChange={onChange}
               >
+                <option value="">--</option>
                 {options.map((opt) => (
                   <>
                     <option value={opt.value}>{opt.label}</option>
@@ -136,6 +138,7 @@ const TeamSquadAdd = ({ teamplayers, team, isManager, isAdmin }) => {
                 value={squadData.players}
                 onChange={onChange}
               >
+                <option value="">--</option>
                 {teamplayers.map((game, idx) => (
                   <option key={idx} value={game._id}>
                     {' '}

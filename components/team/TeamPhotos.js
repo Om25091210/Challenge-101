@@ -110,9 +110,13 @@ const TeamPhotos = ({ user, team, isManager, isAdmin }) => {
                       key={idex}
                     >
                       <img src={imag.path} alt={imag.originalname} />{' '}
-                      <span className="total_images">
-                        +{imgg.images.length}
-                      </span>
+                      {imgg.images.length < 5 ? null : (
+                        <>
+                          <span className="total_images">
+                            +{imgg.images.length - 4}
+                          </span>
+                        </>
+                      )}
                     </a>
                   ))}
                 </li>

@@ -110,7 +110,13 @@ const Photos = ({ Userdata, user }) => {
                     key={idex}
                   >
                     <img src={imag.path} alt={imag.originalname} />{' '}
-                    <span className="total_images">+{imgg.images.length}</span>
+                    {imag.length < 5 ? null : (
+                      <>
+                        <span className="total_images">
+                          +{imgg.images.length - 4}
+                        </span>
+                      </>
+                    )}
                   </a>
                 ))}
               </li>
