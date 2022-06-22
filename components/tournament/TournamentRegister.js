@@ -16,6 +16,8 @@ const Tournament_Reg = ({ user, tournament }) => {
       return tour?.user?._id === user?._id;
     }).length > 0;
 
+  const isRegFull = tournament.registered.length === tournament.participants;
+
   const reghandlesubmit = async (e) => {
     e.preventDefault();
     try {
@@ -40,9 +42,16 @@ const Tournament_Reg = ({ user, tournament }) => {
           REGISTERED
         </button>
       ) : (
-        <button onClick={reghandlesubmit} className="join">
-          REGISTER
-        </button>
+        <>
+          {' '}
+          {isRegFull !== true ? (
+            <button onClick={reghandlesubmit} className="join">
+              REGISTER
+            </button>
+          ) : (
+            <button disabled={true}>Slots Unavailable</button>
+          )}
+        </>
       )}
     </>
   );

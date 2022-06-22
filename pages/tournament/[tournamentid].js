@@ -180,7 +180,8 @@ const TournamentDetail = ({ user, data, products }) => {
       refreshData();
     };
 
-    const isRegFull = data.tournament.registered.length == data.participants;
+    const isRegFull =
+      data.tournament.registered.length === data.tournament.participants;
 
     return (
       <>
