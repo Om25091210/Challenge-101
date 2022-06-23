@@ -37,6 +37,9 @@ display:none;
 input[type=text]::-ms-clear {
 display:none;
 }
+
+.custom-select:focus{ box-shadow: none;}
+
 img {
 	border:0;
 	max-width:100%;
@@ -932,7 +935,7 @@ ul.top_menu li.wallet li{     float: left;
 	align-items:center;
 	flex-direction:column;
 	position: absolute;
-    top: 10%;
+    left:20px;
 }
 .post .left_details a {
 	display:flex;
@@ -2630,7 +2633,7 @@ article .social_bar {
 
 	.add_game_poup img{ width: 300px;}
 
-.add_game_poup input{ width: 300px;}
+.add_game_poup input{ width: 300px; margin: 10px 0;}
 .add_game_box{display: flex;
     flex-direction: column;
     align-items: center;
@@ -3997,6 +4000,17 @@ article .social_bar {
 .bottom_game .game_logo img {
 	margin-right: 10px; width: 25px;
 }
+
+.bottom_game .users{ display: flex; align-items: center;}
+.bottom_game .users img{ width: 30px; height: 30px; border-radius: 5px; background: #fff;}
+.bottom_game .users p{ color: #df5030;
+    margin-left: 10px;
+    font-size: 10px;
+    text-align: center;
+    line-height: 12px;
+    text-transform: uppercase;}
+.bottom_game .users p b{ display: block; color: #fff;}
+
 .top_game{margin-right: 10px;}
 .prize h3 {
     font-size: 13px;
@@ -5891,6 +5905,16 @@ main {
 	left: 0;
 	top: 0;
 }
+
+
+.tournament_dp_box .left_bio .games a img{ width: 20px; height: 20px; background: #fff; border-radius:5px;}
+
+.tournament_dp_box .left_bio  .slots{    text-align: left;
+    font-size: 12px;
+    line-height: 14px;}
+
+.tournament_dp_box .left_bio  .slots b{ display: block; font-size: 10px;}
+
 /* -------------- Create team form --------------------- */
 
 
@@ -5998,7 +6022,7 @@ main {
 	background-position: 0 13px;
 }
 
-.create_tournament form .form-group p{position: absolute; left: 0; color: red; font-size: 11px; bottom: -15px;}
+.create_tournament form .form-group p{position: relative; left: 0; color: red; font-size: 11px; bottom: -6px;}
 .create_tournament .socail_url li{ margin-bottom: 10px;}
 
 ul.game_search_result {
@@ -7532,7 +7556,7 @@ form.common_form .btn{ width: 100%; margin-top: 20px; height: 40px;}
   
 		#share_prof ul li .game_pic {
 			width: 100%;
-			height: 100px;
+			height: 40px;
 			margin-bottom: 10px;
 			text-align: center;
 			vertical-align: middle;
@@ -7541,10 +7565,14 @@ form.common_form .btn{ width: 100%; margin-top: 20px; height: 40px;}
 			justify-content: center;
 		}
 
-		#share_prof ul li p {
+		#share_prof ul li a {
 			color: #000;
 			font-size: 12px;
-			padding: 0px 5px 8px 5px;
+			padding: 5px;
+			margin: 0;
+			background: #fff;
+			width: 100%;
+			float: left;
 		}
 
 		.share_to button{ background: none !important}
@@ -7807,7 +7835,7 @@ body.DarkPage .rigs li {
 	background: #26292e;
 }
 body.DarkPage .video_box li {
-	background: #392d49;
+	background: #2b2b35;
 }
 body.DarkPage .gallery_box .jobs_browse, body.DarkPage .video_box .jobs_browse {
 	background: none;

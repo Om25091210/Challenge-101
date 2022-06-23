@@ -1267,12 +1267,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
                                   src={selectedGame?.game.imgUrl}
                                   alt={selectedGame?.game.name}
                                 />
-                                <span>
-                                  <i
-                                    className="fa fa-check"
-                                    aria-hidden="true"
-                                  ></i>
-                                </span>
+
                                 <input
                                   type="text"
                                   name="userIgn"

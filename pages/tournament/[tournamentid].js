@@ -567,33 +567,37 @@ const TournamentDetail = ({ user, data, products }) => {
                         +{data.tournament.registered.length - 3}
                       </a>
                     ) : null}
-                    <div
-                      className="common_model_box"
-                      style={{ height: '12rem' }}
-                    >
+                    <div className="common_model_box" id="share_prof">
                       <a href="#!" className="model_close">
                         X
                       </a>
 
                       <div className="inner_model_box">
                         <h3>Participants</h3>
-                        {data.tournament.registered.map((ppl) => (
-                          <div>
-                            <img
-                              src={ppl.user.profilePicUrl}
-                              alt={ppl.user.name}
-                              style={{ height: '35px', width: '35px' }}
-                            />
-                            <a href={`/user/${ppl.user._id}`}>
-                              <p>{ppl.user.name}</p>
-                            </a>
-                          </div>
-                        ))}
+                        <ul>
+                          {data.tournament.registered.map((ppl) => (
+                            <li>
+                              <div className="game_pic">
+                                {' '}
+                                <img
+                                  src={ppl.user.profilePicUrl}
+                                  alt={ppl.user.name}
+                                  style={{ height: '35px', width: '35px' }}
+                                />
+                              </div>
+                              <a href={`/user/${ppl.user._id}`}>
+                                <p>{ppl.user.name}</p>
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
                       </div>
                       <div className="overlay"></div>
                     </div>
-                    SLOTS: {data.tournament.registered.length} /{' '}
-                    {data.tournament.participants}
+                    <p className="slots">
+                      {data.tournament.registered.length} /{' '}
+                      {data.tournament.participants} <b> SLOTS</b>
+                    </p>
                   </div>
                 </div>
                 <div className="right_team_bio">

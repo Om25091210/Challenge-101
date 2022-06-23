@@ -152,7 +152,6 @@ const TournamentRows = ({
                   <div className="users">
                     {result.tournament.registered[0]?.user.profilePicUrl ? (
                       <img
-                        style={{ height: '30px', width: '30px' }}
                         src={
                           result.tournament.registered[0]?.user?.profilePicUrl
                         }
@@ -161,7 +160,6 @@ const TournamentRows = ({
                     ) : null}
                     {result.tournament.registered[1]?.user.profilePicUrl ? (
                       <img
-                        style={{ height: '30px', width: '30px' }}
                         src={
                           result.tournament.registered[1]?.user?.profilePicUrl
                         }
@@ -170,7 +168,6 @@ const TournamentRows = ({
                     ) : null}
                     {result.tournament.registered[2]?.user.profilePicUrl ? (
                       <img
-                        style={{ height: '30px', width: '30px' }}
                         src={
                           result.tournament.registered[2]?.user?.profilePicUrl
                         }
@@ -179,7 +176,6 @@ const TournamentRows = ({
                     ) : null}
                     {result.tournament.registered[3]?.user.profilePicUrl ? (
                       <img
-                        style={{ height: '30px', width: '30px' }}
                         src={
                           result.tournament.registered[3]?.user?.profilePicUrl
                         }
@@ -189,8 +185,9 @@ const TournamentRows = ({
 
                     {result.tournament.participants > 0 ? (
                       <p>
-                        Signed: {result.tournament.registered.length} /{' '}
+                        {result.tournament.registered.length} /{' '}
                         {result.tournament.participants}
+                        <b>Signed</b>
                       </p>
                     ) : (
                       <p>Signed: Not Available</p>

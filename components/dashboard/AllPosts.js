@@ -113,32 +113,33 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
             </div>
           )}
         </div>
-        <div className="left_details">
-          {' '}
-          <a
-            href="#!"
-            data-tip={post.likes.map((like, iidx) => {
-              return like.user?.username;
-            })}
-            data-for="toolTip1"
-            data-place="top"
-          >
-            <i className="fa fa-heart" aria-hidden="true"></i>{' '}
-            <span>{post.likes.length}</span>
-          </a>
-          <ReactTooltip id="toolTip1" html={true} />
-          <a href="#">
-            {' '}
-            <i className="fa fa-eye" aria-hidden="true"></i>{' '}
-            <span>{post.views}</span>{' '}
-          </a>{' '}
-          <a href="#">
-            {' '}
-            <i className="fa fa-commenting" aria-hidden="true"></i>{' '}
-            <span>{commentsData.comments?.length}</span>{' '}
-          </a>{' '}
-        </div>
+
         <div className="right_details">
+          <div className="left_details">
+            {' '}
+            <a
+              href="#!"
+              data-tip={post.likes.map((like, iidx) => {
+                return like.user?.username;
+              })}
+              data-for="toolTip1"
+              data-place="top"
+            >
+              <i className="fa fa-heart" aria-hidden="true"></i>{' '}
+              <span>{post.likes.length}</span>
+            </a>
+            <ReactTooltip id="toolTip1" html={true} />
+            <a href="#">
+              {' '}
+              <i className="fa fa-eye" aria-hidden="true"></i>{' '}
+              <span>{post.views}</span>{' '}
+            </a>{' '}
+            <a href="#">
+              {' '}
+              <i className="fa fa-commenting" aria-hidden="true"></i>{' '}
+              <span>{commentsData.comments?.length}</span>{' '}
+            </a>{' '}
+          </div>
           {post?.images.length === 0 ? null : (
             <div className="post_data">
               <img src={post.images} alt="" />
