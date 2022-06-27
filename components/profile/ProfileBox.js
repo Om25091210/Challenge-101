@@ -767,15 +767,12 @@ const ProfileBox = ({ user, Userdata, games }) => {
               <div className="current_status">
                 <div className="current_team">
                   <span className="ct"> Current Team</span>
-
-                  {Userdata.teamMatchesList.map((result, index) => (
-                    <a href={`/team/${result.team._id}`}>
-                      <span className="were">
-                        {result.team.name}{' '}
-                        <i className="fa fa-arrow-right" aria-hidden="true"></i>
-                      </span>
-                    </a>
-                  ))}
+                  <a href={`/team/${Userdata.profile.current_team._id}`}>
+                    <span className="were">
+                      {Userdata.profile.current_team.name}{' '}
+                      <i className="fa fa-arrow-right" aria-hidden="true"></i>
+                    </span>
+                  </a>
                 </div>
                 <div className="game_role">
                   {/*

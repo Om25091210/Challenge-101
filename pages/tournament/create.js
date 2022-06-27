@@ -66,7 +66,6 @@ const CreateTournament = ({ user }) => {
     discord: '',
     file: null,
     series: null,
-
     playersPerTeam: null,
     playType: '',
     maxTeams: null,
@@ -278,6 +277,19 @@ const CreateTournament = ({ user }) => {
                         ))}
                       </select>
                       <p>{formErrors.game}</p>
+                    </div>
+                    <div className="form-group">
+                      <label for="exampleFormControlInput1">Platform</label>
+                      <select
+                        className="game_search_result mscrollbar"
+                        name="platform"
+                        value={state.platform}
+                        onChange={handleChange}
+                        multiple={true}
+                      >
+                        <option value="--">--</option>
+                        <option value="PC">PC</option>
+                      </select>
                     </div>
                     <div className="form-group">
                       <label for="exampleFormControlInput1">

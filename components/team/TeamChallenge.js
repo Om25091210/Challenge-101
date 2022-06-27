@@ -9,7 +9,9 @@ const TeamChallenge = ({ teams, team }) => {
     Userteam: '',
     game: '',
     players: '',
-    challengerTeam: team._id
+    challengerTeam: team._id,
+    startDate: '',
+    startTime: ''
   });
 
   function onChange(e) {
@@ -46,7 +48,8 @@ const TeamChallenge = ({ teams, team }) => {
           'Content-Type': 'application/json'
         }
       });
-      toast.success('Team Squad has being added.');
+      toast.success('The Challenge Has Been Sent');
+      $('a.model_close').parent().removeClass('show_model');
     } catch (err) {
       console.log(err);
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
@@ -85,9 +88,23 @@ const TeamChallenge = ({ teams, team }) => {
             </select>
             <select name="players" id="players" multiple onChange={onChange}>
               {UserTeam[0]?.players?.map((plyr) => (
-                <option value={plyr?.playerId}>{plyr.playerId?.name}</option>
+                <option value={plyr?.playerId?._id}>
+                  {plyr.playerId?.name}
+                </option>
               ))}
             </select>
+            <input
+              type="date"
+              onChange={onChange}
+              name="startDate"
+              value={state.startDate}
+            />
+            <input
+              type="time"
+              name="startTime"
+              onChange={onChange}
+              value={state.startTime}
+            />
             <button className="btn" type="submit">
               Done
             </button>

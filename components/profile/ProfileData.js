@@ -76,6 +76,16 @@ const ProfileData = ({ user, Userdata, player, products, teams }) => {
     }
   }
 
+  const handleTeamChange = async (teamId) => {
+    try {
+      axios.put(`${baseURL}/api/profile/current/${user._id}/${teamId}`);
+      toast.success('Saved Changes');
+    } catch (err) {
+      toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+    }
+    refreshData();
+  };
+
   return (
     <>
       <div className="prfoile_tab_data">
@@ -216,6 +226,13 @@ const ProfileData = ({ user, Userdata, player, products, teams }) => {
                         {Moment(team.founded).format('MMM YYYY')}
                       </h3>
                       <div className="gamer_pos">Caption|Assault</div>
+                      {Userdata.profile.current_team._id === team._id ? (
+                        <button disabled={true}>Current Team</button>
+                      ) : (
+                        <button onClick={() => handleTeamChange(team._id)}>
+                          Set as Current team
+                        </button>
+                      )}
                     </div>
                     <div className="card_details">
                       <div className="once">
