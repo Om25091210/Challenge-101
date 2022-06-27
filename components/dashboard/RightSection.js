@@ -3,11 +3,9 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import baseURL from '@utils/baseURL';
 import Moment from 'moment';
+import Challengelist from './ChallengeList';
 
-import RecentActivity from '@components/dashboard/RecentActivity';
-import FriendRequests from '@components/dashboard/friendRequests';
-
-const RightSection = ({ user, profile, suggestedplayers, teams }) => {
+const RightSection = ({ user, suggestedplayers, teams }) => {
   const [matches, setMatches] = useState([]);
 
   useEffect(() => {
@@ -23,7 +21,8 @@ const RightSection = ({ user, profile, suggestedplayers, teams }) => {
 
   return (
     <div className="right_side overhight">
-      <RecentActivity user={user} />
+      {/* <RecentActivity user={user} /> */}
+      <Challengelist user={user} teams={teams} />
 
       <div className="recent_activity suggested_player">
         <h2>Suggested Players</h2>

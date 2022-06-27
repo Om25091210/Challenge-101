@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { useMutation } from 'react-query';
 import baseURL from '../../utils/baseURL';
 import cookie from 'js-cookie';
 import { toast } from 'react-toastify';
@@ -12,7 +11,7 @@ const TeamChallenge = ({ teams, team }) => {
     players: '',
     challengerTeam: team._id
   });
-  console.log(teams);
+
   function onChange(e) {
     if (e.target.options) {
       var options = e.target.options;
@@ -31,14 +30,13 @@ const TeamChallenge = ({ teams, team }) => {
   const UserTeam = teams.filter((team) => {
     return team._id === parseInt(state.Userteam);
   });
-  console.log(UserTeam);
-  console.log(team);
+
   var commonGames = UserTeam[0]?.games.filter(function (val1) {
     return team.games.some(function (val2) {
       return val1.gameId._id === val2.gameId;
     });
   });
-  console.log(commonGames);
+
   const handleEditStat = async (e) => {
     e.preventDefault();
     try {
@@ -77,13 +75,17 @@ const TeamChallenge = ({ teams, team }) => {
             </select>
             <select name="game" id="game" onChange={onChange}>
               <option value="">---</option>
-              {commonGames?.map((cG) => (
-                <option value={cG.gameId._id}>{cG.gameId.name}</option>
-              ))}
+              {commonGames?.length === 0 ? (
+                <option value="">No games available between the teams.</option>
+              ) : (
+                commonGames?.map((cG) => (
+                  <option value={cG.gameId?._id}>{cG.gameId?.name}</option>
+                ))
+              )}
             </select>
             <select name="players" id="players" multiple onChange={onChange}>
               {UserTeam[0]?.players?.map((plyr) => (
-                <option value={plyr.playerId}>{plyr.playerId.name}</option>
+                <option value={plyr?.playerId}>{plyr.playerId?.name}</option>
               ))}
             </select>
             <button className="btn" type="submit">

@@ -320,9 +320,9 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
                 <a href="#" className="btn">
                   <TeamRequest team={data.team} user={user} profile={profile} />
                 </a>
-                {/* <a href="#" className="btn">
-                  <TeamChallenge team={data.team} teams={teams}/>
-                </a> */}
+                <a href="#" className="btn">
+                  <TeamChallenge team={data.team} teams={teams} />
+                </a>
               </div>
             )}
             <span>

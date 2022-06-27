@@ -65,7 +65,13 @@ const CreateTournament = ({ user }) => {
     youtube: '',
     discord: '',
     file: null,
-    series: null
+    series: null,
+
+    playersPerTeam: null,
+    playType: '',
+    maxTeams: null,
+    minTeams: null,
+    platform: ''
   });
 
   useEffect(() => {
@@ -419,19 +425,85 @@ const CreateTournament = ({ user }) => {
                     <h2>Step2</h2>
 
                     <div className="form-group">
-                      <label for="exampleFormControlTextarea1">
-                        Number of Participants
-                      </label>
-                      <input
-                        type="number"
-                        name="participants"
-                        className="form-control"
-                        onChange={handleChange}
-                        value={state.participants}
-                        placeholder=""
-                      />
-                      <p>{formErrors.participants}</p>
+                      <label for="exampleFormControlTextarea1">Play Type</label>
+                      <div className="btn_selection">
+                        <div className="big_btn">
+                          <span class="form-check-label terms">Players</span>
+                          <input
+                            type="checkbox"
+                            name="playType"
+                            value="PLAYERS"
+                            onChange={handleChangeCheck}
+                          />
+                        </div>
+
+                        <div className="big_btn">
+                          <span class="form-check-label terms">Teams</span>
+                          <input
+                            type="checkbox"
+                            name="playType"
+                            value="TEAMS"
+                            onChange={handleChangeCheck}
+                          />
+                        </div>
+                      </div>
                     </div>
+                    {state.playType === 'PLAYERS' ? (
+                      <div className="form-group">
+                        <label for="exampleFormControlTextarea1">
+                          Number of Participants
+                        </label>
+                        <input
+                          type="number"
+                          name="participants"
+                          className="form-control"
+                          onChange={handleChange}
+                          value={state.participants}
+                          placeholder=""
+                        />
+                        <p>{formErrors.participants}</p>
+                      </div>
+                    ) : null}
+                    {state.playType === 'TEAMS' ? (
+                      <>
+                        <div className="form-group">
+                          <label for="exampleFormControlTextarea1">
+                            Players Per Team
+                          </label>
+                          <input
+                            type="number"
+                            name="playersPerTeam"
+                            className="form-control"
+                            onChange={handleChange}
+                            value={state.playersPerTeam}
+                          />
+                        </div>
+                        <div className="form-group">
+                          <label for="exampleFormControlTextarea1">
+                            Maximum Teams
+                          </label>
+                          <input
+                            type="number"
+                            name="maxTeams"
+                            className="form-control"
+                            onChange={handleChange}
+                            value={state.maxTeams}
+                          />
+                        </div>
+                        <div className="form-group">
+                          <label for="exampleFormControlTextarea1">
+                            Minimum Teams
+                          </label>
+                          <input
+                            type="number"
+                            name="minTeams"
+                            className="form-control"
+                            onChange={handleChange}
+                            value={state.minTeams}
+                          />
+                        </div>
+                      </>
+                    ) : null}
                     <div className="form-group">
                       <label for="exampleFormControlTextarea1">
                         Entrance fee

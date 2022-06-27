@@ -115,6 +115,20 @@ function LeftNav({ user }) {
           ) : (
             ''
           )}
+          {user?.isSuperAdmin === true ? (
+            <li>
+              <Link href="/adminpage">
+                <a className="">
+                  <span className="iconbg">
+                    <i className="fa fa-cog" aria-hidden="true"></i>
+                  </span>{' '}
+                  <span className="title">Admin Settings</span>
+                </a>
+              </Link>{' '}
+            </li>
+          ) : (
+            ''
+          )}
         </ul>
       </nav>
 
