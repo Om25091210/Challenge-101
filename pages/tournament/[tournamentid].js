@@ -183,6 +183,9 @@ const TournamentDetail = ({ user, data, products }) => {
     const isRegFull =
       data.tournament.registered.length === data.tournament.participants;
 
+    const isTeamRegFull =
+      data.tournament.maxTeams === data.tournament.participants;
+
     return (
       <>
         <MetaDash />
@@ -289,17 +292,37 @@ const TournamentDetail = ({ user, data, products }) => {
 
                 <div className="bottom_details">
                   <div className="two_btns">
-                    <button
-                      className="btn"
-                      onClick={handleRegistry}
-                      disabled={isRegFull === true}
-                    >
-                      {isRegistered ? (
-                        'REGISTERED'
-                      ) : (
-                        <>{isRegFull ? 'SLOTS UNAVAILABLE' : 'REGISTER'}</>
-                      )}
-                    </button>{' '}
+                    {data.tournament.playType === 'TEAMS' ? (
+                      <>
+                        <button
+                          className="btn"
+                          onClick={handleRegistry}
+                          disabled={isTeamRegFull === true}
+                        >
+                          {isRegistered ? (
+                            'REGISTERED'
+                          ) : (
+                            <>
+                              {isTeamRegFull ? 'SLOTS UNAVAILABLE' : 'REGISTER'}
+                            </>
+                          )}
+                        </button>{' '}
+                      </>
+                    ) : (
+                      <>
+                        <button
+                          className="btn"
+                          onClick={handleRegistry}
+                          disabled={isRegFull === true}
+                        >
+                          {isRegistered ? (
+                            'REGISTERED'
+                          ) : (
+                            <>{isRegFull ? 'SLOTS UNAVAILABLE' : 'REGISTER'}</>
+                          )}
+                        </button>
+                      </>
+                    )}{' '}
                     <a href="#" className="btn">
                       BOOK TICKETS
                     </a>
@@ -535,33 +558,39 @@ const TournamentDetail = ({ user, data, products }) => {
 
                   <div className="games">
                     <h3>PARTICIPANTS: </h3>
-                    <a
-                      href={`/user/${data.tournament.registered[0]?.user?._id}`}
-                    >
-                      <img
-                        src={`${data.tournament.registered[0]?.user?.profilePicUrl}`}
-                        alt=""
-                      />
-                    </a>
-                    <a
-                      href={`/user/${data.tournament.registered[1]?.user?._id}`}
-                    >
-                      <img
-                        src={`${data.tournament.registered[1]?.user?.profilePicUrl}`}
-                        alt=""
-                      />
-                    </a>
-                    <a
-                      href={`/user/${data.tournament.registered[2]?.user?._id}`}
-                    >
-                      <img
-                        src={`${data.tournament.registered[2]?.user?.profilePicUrl}`}
-                        alt=""
-                      />
-                      {data.tournament.registered.length === 0
-                        ? 'No Participants Yet'
-                        : null}
-                    </a>
+                    {data.tournament.registered[0]?.user._id ? (
+                      <a
+                        href={`/user/${data.tournament.registered[0]?.user?._id}`}
+                      >
+                        <img
+                          src={`${data.tournament.registered[0]?.user?.profilePicUrl}`}
+                          alt=""
+                        />
+                      </a>
+                    ) : null}
+                    {data.tournament.registered[1]?.user._id ? (
+                      <a
+                        href={`/user/${data.tournament.registered[1]?.user?._id}`}
+                      >
+                        <img
+                          src={`${data.tournament.registered[1]?.user?.profilePicUrl}`}
+                          alt=""
+                        />
+                      </a>
+                    ) : null}
+                    {data.tournament.registered[2]?.user._id ? (
+                      <a
+                        href={`/user/${data.tournament.registered[2]?.user?._id}`}
+                      >
+                        <img
+                          src={`${data.tournament.registered[2]?.user?.profilePicUrl}`}
+                          alt=""
+                        />
+                      </a>
+                    ) : null}
+                    {data.tournament.registered.length === 0
+                      ? 'No Participants Yet'
+                      : null}
                     {data.tournament.registered.length > 3 ? (
                       <a href="#!" className="model_show_btn more">
                         +{data.tournament.registered.length - 3}
@@ -596,7 +625,15 @@ const TournamentDetail = ({ user, data, products }) => {
                     </div>
                     <p className="slots">
                       {data.tournament.registered.length} /{' '}
-                      {data.tournament.participants} <b> SLOTS</b>
+                      {data.playType === 'TEAMS' ? (
+                        <>
+                          {data.tournament.participants} <b> SLOTS</b>
+                        </>
+                      ) : (
+                        <>
+                          {data.tournament.maxTeams} <b> SLOTS</b>
+                        </>
+                      )}
                     </p>
                   </div>
                 </div>

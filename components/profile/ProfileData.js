@@ -98,7 +98,11 @@ const ProfileData = ({ user, Userdata, player, products, teams }) => {
                   post.user._id !== user._id ? (
                     <>
                       {/* <p>You Shared</p> */}
-                      <AllPosts post={post} user={user} />
+                      <AllPosts
+                        post={post}
+                        user={user}
+                        profiledata={Userdata.profile}
+                      />
                     </>
                   ) : (
                     <AllPosts post={post} user={user} />
@@ -222,14 +226,21 @@ const ProfileData = ({ user, Userdata, player, products, teams }) => {
                   <div className="right_data">
                     <div className="card_games_tit">
                       <h3>
-                        Team {team.name} <br />{' '}
+                        <a href={`tean/${team._id}`}>
+                          Team {team.name} <br />{' '}
+                        </a>
                         {Moment(team.founded).format('MMM YYYY')}
                       </h3>
                       <div className="gamer_pos">Caption|Assault</div>
                       {Userdata.profile?.current_team?._id === team?._id ? (
-                        <button disabled={true}>Current Team</button>
+                        <button className="btn" disabled={true}>
+                          Current Team
+                        </button>
                       ) : (
-                        <button onClick={() => handleTeamChange(team?._id)}>
+                        <button
+                          className="btn"
+                          onClick={() => handleTeamChange(team?._id)}
+                        >
                           Set as Current team
                         </button>
                       )}
@@ -537,7 +548,7 @@ const ProfileData = ({ user, Userdata, player, products, teams }) => {
             </ul>
           </div>
         </div>
-        <ProductRigs user={user} productList={products} />
+        <ProductRigs user={user} productList={products} Userdata={Userdata} />
       </div>
       {/* ------------- start poup data ------------- */}
       <ProdPoup />

@@ -73,9 +73,6 @@ export const teamformvalidate = (values) => {
   if (!values.region) {
     errors.region = 'Region is required';
   }
-  // if (!regex.test(values.website)) {
-  //   errors.website = 'Invalid Website Link';
-  // }
   if (!values.description) {
     errors.description = 'Description is required';
   } else if (values.description.length < 15) {
@@ -83,24 +80,6 @@ export const teamformvalidate = (values) => {
   } else if (values.description.length > 250) {
     errors.description = 'Description Cannot exceed more 60 characters.';
   }
-  // if (!values.achievements) {
-  //   errors.achievements = 'Achievements is required';
-  // }
-  // if (!values.sponsor) {
-  //   errors.sponsor = 'Select Atleast one Sponosr.';
-  // }
-  // if (!values.rigs) {
-  //   errors.rigs = 'Select Atleast one Rigs.';
-  // }
-  // if (!values.arena) {
-  //   errors.arena = 'Select Atleast one Arena';
-  // }
-  // if (!values.role) {
-  //   errors.role = 'Select Atleast one Team Role';
-  // }
-  // if (!regex.test(values.sociallink)) {
-  //   errors.sociallink = 'Invalid Social Link';
-  // }
   return errors;
 };
 
@@ -120,33 +99,18 @@ export const tournamentformvalidate = (values) => {
   if (!values.prizepool) {
     errors.prizepool = 'Prize cannot be empty';
   }
-  if (!values.participants) {
-    errors.participants = 'Participant is Required.';
-  }
   if (!values.entranceFee) {
     errors.entranceFee = 'Entrance Fee is Required.';
   }
   if (!values.startDate) {
     errors.startDate = 'Start Date is Required.';
   }
-  // if (!values.startTime) {
-  //   errors.startTime = 'Start Time is Required.';
-  // }
   if (!values.endDate) {
     errors.endDate = 'End Date is Required.';
   }
-  // if (!values.endTime) {
-  //   errors.endTime = 'End Time is Required.';
-  // }
   if (!values.location) {
     errors.location = 'Location is Required.';
   }
-  // if (!values.organizer) {
-  //   errors.organizer = 'Select Atleast One Organizer.';
-  // }
-  // if (!values.sponsor) {
-  //   errors.sponsor = 'Select Atleast One Sponser.';
-  // }
   if (!values.description) {
     errors.description = 'Description is required';
   } else if (values.description.length < 15) {
@@ -154,12 +118,6 @@ export const tournamentformvalidate = (values) => {
   } else if (values.description.length > 60) {
     errors.description = 'Description Cannot exceed more 60 characters.';
   }
-  // if (!regex.test(values.sociallink)) {
-  //   errors.sociallink = 'Invalid Social Link';
-  // }
-  // if (!regex.test(values.website)) {
-  //   errors.website = 'Invalid Website Link';
-  // }
   return errors;
 };
 

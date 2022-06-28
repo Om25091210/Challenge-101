@@ -11,7 +11,7 @@ const InviteCode = () => {
   const handleSubmitCode = async (e) => {
     e.preventDefault();
     if (inviteCodes.includes(inviteCode)) {
-      toast.success('Redirecting to dashboard');
+      toast.success('Redirecting to dashboard', { autoClose: 2000 });
       router.push('/dashboard');
     } else {
       toast.warning("Invite's Only.");

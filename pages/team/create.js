@@ -35,6 +35,8 @@ const CreateTeam = ({ user }) => {
   const router = useRouter();
   const [searchText, setSearchText] = useState('');
   const [searchText1, setSearchText1] = useState('');
+  const [searchText2, setSearchText2] = useState('');
+  const [searchText3, setSearchText3] = useState('');
   const [rigsData, setRigsData] = useState([]);
 
   const [state, setState] = useState({
@@ -63,7 +65,8 @@ const CreateTeam = ({ user }) => {
     monitor: '',
     graphicsCard: '',
     headphone: '',
-    processor: ''
+    processor: '',
+    role: ''
   });
 
   useEffect(() => {
@@ -187,6 +190,50 @@ const CreateTeam = ({ user }) => {
     setSearchText1(data.name);
     // $('custom-rig-tag').addClass('hide')
     state.mouse = data._id;
+  };
+
+  const [filteredData2, setFilteredData2] = useState([]);
+  const handleFilter2 = (event) => {
+    const searchWord = event.target.value;
+
+    setSearchText2(searchWord);
+    const newFilter = rigsData?.filter((value) => {
+      return (
+        value.name.toLowerCase().includes(searchWord.toLowerCase()) &&
+        value.category === 'Role'
+      );
+    });
+
+    if (searchText2 === '') {
+      setFilteredData2([]);
+    } else {
+      setFilteredData2(newFilter);
+    }
+  };
+  const handleSelectedRig2 = (data) => {
+    setSearchText2(data.name);
+    // $('custom-rig-tag').addClass('hide')
+    state.role = data._id;
+  };
+
+  const [filteredData3, setFilteredData3] = useState([]);
+  const handleFilter3 = (event) => {
+    const searchWord = event.target.value;
+
+    setSearchText3(searchWord);
+    const newFilter = sponsors?.filter((value) => {
+      return value.name.toLowerCase().includes(searchWord.toLowerCase());
+    });
+
+    if (searchText3 === '') {
+      setFilteredData3([]);
+    } else {
+      setFilteredData3(newFilter);
+    }
+  };
+  const handleSelectedRig3 = (data) => {
+    setSearchText3(data.name);
+    state.sponsor = data._id;
   };
 
   return (
@@ -431,7 +478,7 @@ const CreateTeam = ({ user }) => {
                           </div>
                         ) : null}
                       </div>
-                      <div className="colm">
+                      {/* <div className="colm">
                         <label htmlFor="exampleFormControlInput1">
                           Sponsors (Optional)
                         </label>
@@ -449,7 +496,47 @@ const CreateTeam = ({ user }) => {
                             </option>
                           ))}
                         </select>
-                        {/* <p>{formErrors.sponsor}</p> */}
+                      </div> */}
+                      <div className="colm">
+                        <label htmlFor="exampleFormControlInput1">
+                          Sponsor (Optional)
+                        </label>
+                        <input
+                          type="search"
+                          id="sponsor"
+                          name="sponsor"
+                          placeholder="Enter One Sponsor Name"
+                          value={searchText3}
+                          onChange={handleFilter3}
+                          autoComplete="off"
+                        />
+                        {searchText3.length !== 0 ? (
+                          <div className="custom-rig-tag">
+                            <div>
+                              {!filteredData3 || filteredData3.length === 0 ? (
+                                <p>No Sponsor found..</p>
+                              ) : (
+                                filteredData3.map((data) => (
+                                  <div
+                                    onClick={() => handleSelectedRig3(data)}
+                                    key={data._id}
+                                  >
+                                    <img
+                                      src={data?.imgUrl}
+                                      height={50}
+                                      width={50}
+                                    />
+                                    <p>
+                                      {data.name.length > 20
+                                        ? data.name.substring(0, 20) + '...'
+                                        : data.name}
+                                    </p>
+                                  </div>
+                                ))
+                              )}
+                            </div>
+                          </div>
+                        ) : null}
                       </div>
                       <div className="colm">
                         <label htmlFor="exampleFormControlInput1">
@@ -469,24 +556,47 @@ const CreateTeam = ({ user }) => {
                             </option>
                           ))}
                         </select>
-                        {/* <p>{formErrors.arena}</p> */}
                       </div>
                       <div className="colm">
                         <label htmlFor="exampleFormControlInput1">
                           Team (Optional)
                         </label>
-                        <select
-                          className="form-control"
+                        <input
+                          type="search"
+                          id="role"
                           name="role"
-                          value={state.role}
-                          multiple={true}
-                          onChange={handleChange}
-                        >
-                          <option> Manager</option>
-                          <option>Coach</option>
-                          <option>CEO</option>
-                        </select>
-                        {/* <p>{formErrors.role}</p> */}
+                          placeholder="Enter The Role"
+                          value={searchText2}
+                          onChange={handleFilter2}
+                          autoComplete="off"
+                        />
+                        {searchText2.length !== 0 ? (
+                          <div className="custom-rig-tag">
+                            <div>
+                              {!filteredData2 || filteredData2.length === 0 ? (
+                                <p>No Role found..</p>
+                              ) : (
+                                filteredData2.map((data) => (
+                                  <div
+                                    onClick={() => handleSelectedRig2(data)}
+                                    key={data._id}
+                                  >
+                                    <img
+                                      src={data?.image}
+                                      height={50}
+                                      width={50}
+                                    />
+                                    <p>
+                                      {data.name.length > 20
+                                        ? data.name.substring(0, 20) + '...'
+                                        : data.name}
+                                    </p>
+                                  </div>
+                                ))
+                              )}
+                            </div>
+                          </div>
+                        ) : null}
                       </div>
                       <div className="colm">
                         <label htmlFor="exampleFormControlInput1">

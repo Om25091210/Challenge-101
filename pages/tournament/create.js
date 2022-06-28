@@ -45,7 +45,7 @@ const CreateTournament = ({ user }) => {
     tournamentType: '--',
     Type: '',
     format: '',
-    participants: null,
+    participants: 0,
     entranceFee: null,
     startDate: '',
     startTime: '',
@@ -473,7 +473,6 @@ const CreateTournament = ({ user }) => {
                           value={state.participants}
                           placeholder=""
                         />
-                        <p>{formErrors.participants}</p>
                       </div>
                     ) : null}
                     {state.playType === 'TEAMS' ? (

@@ -183,14 +183,25 @@ const TournamentRows = ({
                       />
                     ) : null}
 
-                    {result.tournament.participants > 0 ? (
+                    {result.tournament.playType === 'TEAMS' ? (
                       <p>
                         {result.tournament.registered.length} /{' '}
-                        {result.tournament.participants}
+                        {result.tournament.maxTeams}
                         <b>Signed</b>
                       </p>
                     ) : (
-                      <p>Signed: Not Available</p>
+                      <>
+                        {result.tournament.participants > 0 ||
+                        result.tournament.maxTeams > 0 ? (
+                          <p>
+                            {result.tournament.registered.length} /{' '}
+                            {result.tournament.participants}
+                            <b>Signed</b>
+                          </p>
+                        ) : (
+                          <p>Not Available</p>
+                        )}
+                      </>
                     )}
                   </div>
                   <div className="games">

@@ -9,10 +9,21 @@ import cookie from 'js-cookie';
 import axios from 'axios';
 import SharePost from './SharePost';
 import TeamFollow from '../team/TeamFollow';
-import Link from 'next/link';
 
 const AllPosts = ({ post, user, profiledata, type, team }) => {
   const [commentsData, setCommentsData] = useState([]);
+  const [profile, setProfile] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`${baseURL}/api/profile/${user._id}`)
+      .then((res) => {
+        setProfile(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   useEffect(() => {
     axios
@@ -36,7 +47,7 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
 
   const isFollow =
     profiledata &&
-    profiledata.following
+    profile.following
       ?.filter((profile) => profile.user === post.user?._id)
       .map((profile, ind) => profile.user).length > 0;
 
