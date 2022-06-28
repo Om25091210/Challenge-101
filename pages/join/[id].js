@@ -6,7 +6,6 @@ import baseURL from '../../utils/baseURL';
 import Moment from 'moment';
 
 import AllScript from '../AllScript';
-import Timer from '../../components/profile/Timer';
 
 const NFTGamesList = ({ user, challenge }) => {
   const teamOne = challenge.players.filter(
@@ -58,9 +57,7 @@ const NFTGamesList = ({ user, challenge }) => {
           </div>
           <div className="time_connect">
             <h2>Time to connect</h2>
-            <div className="time">
-              <Timer time={challenge.startDate} />
-            </div>
+            <div className="time"></div>
             <div className="left_games">
               <ul>
                 <li>

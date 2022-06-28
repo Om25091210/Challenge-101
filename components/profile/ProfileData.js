@@ -226,7 +226,7 @@ const ProfileData = ({ user, Userdata, player, products, teams }) => {
                         {Moment(team.founded).format('MMM YYYY')}
                       </h3>
                       <div className="gamer_pos">Caption|Assault</div>
-                      {Userdata.profile.current_team._id === team._id ? (
+                      {Userdata.profile?.current_team._id === team._id ? (
                         <button disabled={true}>Current Team</button>
                       ) : (
                         <button onClick={() => handleTeamChange(team._id)}>
