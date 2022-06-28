@@ -78,7 +78,7 @@ const ProfileData = ({ user, Userdata, player, products, teams }) => {
 
   const handleTeamChange = async (teamId) => {
     try {
-      axios.put(`${baseURL}/api/profile/current/${user._id}/${teamId}`);
+      axios.put(`${baseURL}/api/profile/current/${user?._id}/${teamId}`);
       toast.success('Saved Changes');
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');

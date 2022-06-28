@@ -767,9 +767,9 @@ const ProfileBox = ({ user, Userdata, games }) => {
               <div className="current_status">
                 <div className="current_team">
                   <span className="ct"> Current Team</span>
-                  <a href={`/team/${Userdata.profile.current_team._id}`}>
+                  <a href={`/team/${Userdata.profile?.current_team?._id}`}>
                     <span className="were">
-                      {Userdata.profile.current_team.name}{' '}
+                      {Userdata.profile?.current_team?.name}{' '}
                       <i className="fa fa-arrow-right" aria-hidden="true"></i>
                     </span>
                   </a>
