@@ -152,38 +152,78 @@ const TournamentRows = ({
                 </div>
                 <div className="bottom_game">
                   <div className="users">
-                    {result.tournament.registered[0]?.user.profilePicUrl ? (
-                      <img
-                        src={
-                          result.tournament.registered[0]?.user?.profilePicUrl
-                        }
-                        alt=""
-                      />
-                    ) : null}
-                    {result.tournament.registered[1]?.user.profilePicUrl ? (
-                      <img
-                        src={
-                          result.tournament.registered[1]?.user?.profilePicUrl
-                        }
-                        alt=""
-                      />
-                    ) : null}
-                    {result.tournament.registered[2]?.user.profilePicUrl ? (
-                      <img
-                        src={
-                          result.tournament.registered[2]?.user?.profilePicUrl
-                        }
-                        alt=""
-                      />
-                    ) : null}
-                    {result.tournament.registered[3]?.user.profilePicUrl ? (
-                      <img
-                        src={
-                          result.tournament.registered[3]?.user?.profilePicUrl
-                        }
-                        alt=""
-                      />
-                    ) : null}
+                    {result.tournament?.playType === 'PLAYERS' ||
+                    result.tournament.registered.length > 0 ? (
+                      <>
+                        {result.tournament.registered[0]?.user.profilePicUrl ? (
+                          <img
+                            src={
+                              result.tournament.registered[0]?.user
+                                ?.profilePicUrl
+                            }
+                            alt=""
+                          />
+                        ) : null}
+                        {result.tournament.registered[1]?.user.profilePicUrl ? (
+                          <img
+                            src={
+                              result.tournament.registered[1]?.user
+                                ?.profilePicUrl
+                            }
+                            alt=""
+                          />
+                        ) : null}
+                        {result.tournament.registered[2]?.user.profilePicUrl ? (
+                          <img
+                            src={
+                              result.tournament.registered[2]?.user
+                                ?.profilePicUrl
+                            }
+                            alt=""
+                          />
+                        ) : null}
+                        {result.tournament.registered[3]?.user.profilePicUrl ? (
+                          <img
+                            src={
+                              result.tournament.registered[3]?.user
+                                ?.profilePicUrl
+                            }
+                            alt=""
+                          />
+                        ) : null}
+                      </>
+                    ) : (
+                      <>
+                        {result.tournament.teams[0]?.teamId.imgUrl ? (
+                          <img
+                            style={{ height: '30px', width: '30px' }}
+                            src={result.tournament.teams[0]?.teamId?.imgUrl}
+                            alt=""
+                          />
+                        ) : null}
+                        {result.tournament.teams[1]?.teamId.imgUrl ? (
+                          <img
+                            style={{ height: '30px', width: '30px' }}
+                            src={result.tournament.teams[1]?.teamId?.imgUrl}
+                            alt=""
+                          />
+                        ) : null}
+                        {result.tournament.teams[2]?.teamId?.imgUrl ? (
+                          <img
+                            style={{ height: '30px', width: '30px' }}
+                            src={result.tournament.teams[2]?.teamId?.imgUrl}
+                            alt=""
+                          />
+                        ) : null}
+                        {result.tournament.teams[3]?.teamId?.imgUrl ? (
+                          <img
+                            style={{ height: '30px', width: '30px' }}
+                            src={result.tournament.teams[3]?.teamId?.imgUrl}
+                            alt=""
+                          />
+                        ) : null}
+                      </>
+                    )}
 
                     {result.tournament.playType === 'TEAMS' ? (
                       <p>

@@ -100,17 +100,7 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
               ) : null}
             </div>
             <div className="date">
-              {post.createdAt === post.updatedAt ? (
-                <p>
-                  {' '}
-                  {Moment(post.createdAt).format('MMMM, DD, YYYY hh:mm A')}{' '}
-                </p>
-              ) : (
-                <p>
-                  {' '}
-                  {Moment(post.updatedAt).format('MMMM, DD, YYYY hh:mm A')}{' '}
-                </p>
-              )}
+              <p> {Moment(post.createdAt).format('MMMM, DD, YYYY hh:mm A')} </p>
             </div>
           </div>
 

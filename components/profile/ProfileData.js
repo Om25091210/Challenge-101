@@ -342,13 +342,154 @@ const ProfileData = ({ user, Userdata, player, products, teams }) => {
                         />
                       ) : null}
 
-                      {result.participants > 0 ? (
+                      {result.playType === 'TEAMS' ? (
                         <p>
-                          Signed: {result.registered.length} /{' '}
-                          {result.participants}
+                          {result.teams.length} / {result.maxTeams}
+                          <b>Signed</b>
                         </p>
                       ) : (
-                        <p>Signed: Not Available</p>
+                        <>
+                          {result.participants > 0 || result.maxTeams > 0 ? (
+                            <p>
+                              {result.registered.length} / {result.participants}
+                              <b>Signed</b>
+                            </p>
+                          ) : (
+                            <p>Not Available</p>
+                          )}
+                        </>
+                      )}
+                    </div>
+                    <div className="games">
+                      <h3>Games:</h3>
+
+                      {result.games &&
+                        result.games.map((gam, idxg) => (
+                          <div className="game_logo" key={idxg}>
+                            <img
+                              src={gam.gameId.imgUrl}
+                              alt={gam.gameId.name}
+                            />{' '}
+                            {gam.gameId.name}
+                          </div>
+                        ))}
+                    </div>
+                    <div className="prize">
+                      <div>
+                        <h3>ENTRY FEE</h3>
+                        {result?.entranceFee === 0 ? (
+                          <span>Free</span>
+                        ) : result?.entranceFee !== 0 ? (
+                          <span>{result?.entranceFee}</span>
+                        ) : (
+                          'Not Available'
+                        )}
+                      </div>
+                      <div>
+                        <h3>PRIZE POOL</h3>
+                        {result?.prizepool ? (
+                          <MPNumberFormat
+                            value={result?.prizepool}
+                            currency={result?.currency}
+                          />
+                        ) : (
+                          'Not Available'
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </>
+          ))}
+          {Userdata.teamTournaments.map((result, idx) => (
+            <>
+              <div className="game_row" key={idx}>
+                <FavTournament tournament={result} user={user} />
+                <div className="game_pos">
+                  <div className="game_loc">
+                    {' '}
+                    <img src="/assets/media/category/game_loc.jpg" alt="" />
+                  </div>
+
+                  <span className="tour_logo">
+                    {' '}
+                    <img src={result?.imgUrl} alt="" />
+                  </span>
+                </div>
+                <div className="right_game_details">
+                  <div className="top_game">
+                    <div className="date">
+                      <Link href={`/tournament/${result?._id}`}>
+                        <a>
+                          <h3>{result?.name}</h3>
+                        </a>
+                      </Link>
+                      {result?.startDate
+                        ? format(new Date(result?.startDate), 'dd.MMM.yyyy')
+                        : 'Not defined'}
+                    </div>
+                    {result?.Type && result?.Type === 'Ladder' ? (
+                      <p>Ladder</p>
+                    ) : result?.Type === 'Tournament' ? (
+                      <p>Tournament</p>
+                    ) : result?.Type === 'Competition' ? (
+                      <p>Competition</p>
+                    ) : null}
+                    <div className="reg">
+                      <Tournament_Reg
+                        tournament={result}
+                        profile={Userdata.profile}
+                      />
+                    </div>
+                  </div>
+                  <div className="bottom_game">
+                    <div className="users">
+                      {result.teams[0]?.teamId.imgUrl ? (
+                        <img
+                          style={{ height: '30px', width: '30px' }}
+                          src={result.teams[0]?.teamId?.imgUrl}
+                          alt=""
+                        />
+                      ) : null}
+                      {result.teams[1]?.teamId.imgUrl ? (
+                        <img
+                          style={{ height: '30px', width: '30px' }}
+                          src={result.teams[1]?.teamId?.imgUrl}
+                          alt=""
+                        />
+                      ) : null}
+                      {result.teams[2]?.teamId.imgUrl ? (
+                        <img
+                          style={{ height: '30px', width: '30px' }}
+                          src={result.teams[2]?.teamId?.imgUrl}
+                          alt=""
+                        />
+                      ) : null}
+                      {result.teams[3]?.teamId.imgUrl ? (
+                        <img
+                          style={{ height: '30px', width: '30px' }}
+                          src={result.teams[3]?.teamId?.imgUrl}
+                          alt=""
+                        />
+                      ) : null}
+
+                      {result.playType === 'TEAMS' ? (
+                        <p>
+                          {result.teams.length} / {result.maxTeams}
+                          <b>Signed</b>
+                        </p>
+                      ) : (
+                        <>
+                          {result.participants > 0 || result.maxTeams > 0 ? (
+                            <p>
+                              {result.registered.length} / {result.participants}
+                              <b>Signed</b>
+                            </p>
+                          ) : (
+                            <p>Not Available</p>
+                          )}
+                        </>
                       )}
                     </div>
                     <div className="games">
