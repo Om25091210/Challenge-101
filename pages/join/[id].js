@@ -8,10 +8,10 @@ import Moment from 'moment';
 import AllScript from '../AllScript';
 
 const NFTGamesList = ({ user, challenge }) => {
-  const teamOne = challenge.players.filter(
+  const teamOne = challenge.players?.filter(
     (plr) => plr.teamId === challenge.challenger._id
   );
-  const teamTwo = challenge.players.filter(
+  const teamTwo = challenge.players?.filter(
     (plr) => plr.teamId === challenge.challenged._id
   );
 
@@ -31,8 +31,8 @@ const NFTGamesList = ({ user, challenge }) => {
             <div className="team1">
               <div className="imgs">
                 <img
-                  src={challenge.challenger.imgUrl}
-                  alt={challenge.challenger.name}
+                  src={challenge.challenger?.imgUrl}
+                  alt={challenge.challenger?.name}
                 />
               </div>
               <span>{challenge.challenger.name}</span>{' '}
@@ -60,72 +60,23 @@ const NFTGamesList = ({ user, challenge }) => {
             <div className="time"></div>
             <div className="left_games">
               <ul>
-                <li>
-                  <div className="games_names">
-                    <div className="img"></div>
+                {teamOne.length > 0 &&
+                  teamOne.map((team) => (
+                    <li>
+                      <div className="games_names">
+                        <div className="img"></div>
 
-                    <div className="tit">
-                      {challenge.challenger.name}
-                      <b>
-                        <i className="fa fa-steam" aria-hidden="true"></i>{' '}
-                        Z3US360
-                      </b>
-                    </div>
-                  </div>
-                  <div className="ready">Ready</div>
-                </li>
-                <li>
-                  <div className="games_names">
-                    <div className="img"></div>
-                    <div className="tit">
-                      {challenge.challenger.name}
-                      <b>
-                        <i className="fa fa-steam" aria-hidden="true"></i>{' '}
-                        Z3US360
-                      </b>
-                    </div>
-                  </div>
-                  <div className="ready">Ready</div>
-                </li>
-                <li>
-                  <div className="games_names">
-                    <div className="img"></div>
-                    <div className="tit">
-                      {challenge.challenger.name}
-                      <b>
-                        <i className="fa fa-steam" aria-hidden="true"></i>{' '}
-                        Z3US360
-                      </b>
-                    </div>
-                  </div>
-                  <div className="ready">Ready</div>
-                </li>
-                <li>
-                  <div className="games_names">
-                    <div className="img"></div>
-                    <div className="tit">
-                      {challenge.challenger.name}
-                      <b>
-                        <i className="fa fa-steam" aria-hidden="true"></i>{' '}
-                        Z3US360
-                      </b>
-                    </div>
-                  </div>
-                  <div className="ready">Ready</div>
-                </li>
-                <li>
-                  <div className="games_names">
-                    <div className="img"></div>
-                    <div className="tit">
-                      {challenge.challenger.name}
-                      <b>
-                        <i className="fa fa-steam" aria-hidden="true"></i>{' '}
-                        Z3US360
-                      </b>
-                    </div>
-                  </div>
-                  <div className="ready">Ready</div>
-                </li>
+                        <div className="tit">
+                          {challenge.challenger.name}
+                          <b>
+                            <i className="fa fa-steam" aria-hidden="true"></i>{' '}
+                            Z3US360
+                          </b>
+                        </div>
+                      </div>
+                      <div className="ready">Ready</div>
+                    </li>
+                  ))}
               </ul>
             </div>
 
@@ -151,87 +102,35 @@ const NFTGamesList = ({ user, challenge }) => {
 
             <div className="right_games">
               <ul>
-                <li>
-                  <div className="games_names">
-                    <div className="img">
-                      <img
-                        src={
-                          teamTwo[0]?.playerId.apidata.data.platformInfo
-                            .avatarUrl
-                        }
-                        alt={
-                          teamTwo[0]?.playerId.apidata.data.platformInfo
-                            .platformUserHandle
-                        }
-                      />
-                    </div>
-                    <div className="tit">
-                      {challenge.challenged.name}
-                      <b>
-                        <i className="fa fa-steam" aria-hidden="true"></i>{' '}
-                        {
-                          teamTwo[0]?.playerId.apidata.data.platformInfo
-                            .platformUserHandle
-                        }
-                      </b>
-                    </div>
-                  </div>
-                  <div className="ready">Ready</div>
-                </li>
-
-                <li>
-                  <div className="games_names">
-                    <div className="img"></div>
-                    <div className="tit">
-                      {challenge.challenged.name}
-                      <b>
-                        <i className="fa fa-steam" aria-hidden="true"></i>{' '}
-                        Z3US360
-                      </b>
-                    </div>
-                  </div>
-                  <div className="ready">Ready</div>
-                </li>
-
-                <li>
-                  <div className="games_names">
-                    <div className="img"></div>
-                    <div className="tit">
-                      {challenge.challenged.name}
-                      <b>
-                        <i className="fa fa-steam" aria-hidden="true"></i>{' '}
-                        Z3US360
-                      </b>
-                    </div>
-                  </div>
-                  <div className="ready">Ready</div>
-                </li>
-                <li>
-                  <div className="games_names">
-                    <div className="img"></div>
-                    <div className="tit">
-                      {challenge.challenged.name}
-                      <b>
-                        <i className="fa fa-steam" aria-hidden="true"></i>{' '}
-                        Z3US360
-                      </b>
-                    </div>
-                  </div>
-                  <div className="ready">Ready</div>
-                </li>
-                <li>
-                  <div className="games_names">
-                    <div className="img"></div>
-                    <div className="tit">
-                      {challenge.challenged.name}
-                      <b>
-                        <i className="fa fa-steam" aria-hidden="true"></i>{' '}
-                        Z3US360
-                      </b>
-                    </div>
-                  </div>
-                  <div className="ready">Ready</div>
-                </li>
+                {teamTwo.length > 0 &&
+                  teamTwo.map((team) => (
+                    <li>
+                      <div className="games_names">
+                        <div className="img">
+                          <img
+                            src={
+                              team?.playerId.apidata.data.platformInfo.avatarUrl
+                            }
+                            alt={
+                              team?.playerId.apidata.data.platformInfo
+                                .platformUserHandle
+                            }
+                          />
+                        </div>
+                        <div className="tit">
+                          {challenge.challenged.name}
+                          <b>
+                            <i className="fa fa-steam" aria-hidden="true"></i>{' '}
+                            {
+                              team?.playerId.apidata.data.platformInfo
+                                .platformUserHandle
+                            }
+                          </b>
+                        </div>
+                      </div>
+                      <div className="ready">Ready</div>
+                    </li>
+                  ))}
               </ul>
             </div>
           </div>

@@ -5,7 +5,7 @@ import baseURL from '@utils/baseURL';
 import Moment from 'moment';
 import Challengelist from './ChallengeList';
 
-const RightSection = ({ user, suggestedplayers, teams }) => {
+const RightSection = ({ user, suggestedplayers, teams, profile }) => {
   const [matches, setMatches] = useState([]);
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const RightSection = ({ user, suggestedplayers, teams }) => {
   return (
     <div className="right_side overhight">
       {/* <RecentActivity user={user} /> */}
-      <Challengelist user={user} teams={teams} />
+      <Challengelist user={user} teams={teams} profile={profile} />
 
       <div className="recent_activity suggested_player">
         <h2>Suggested Players</h2>

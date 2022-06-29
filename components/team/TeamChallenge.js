@@ -89,7 +89,9 @@ const TeamChallenge = ({ teams, team }) => {
             <select name="players" id="players" multiple onChange={onChange}>
               {UserTeam[0]?.players?.map((plyr) => (
                 <option value={plyr?.playerId?._id}>
-                  {plyr.playerId?.name}
+                  {plyr.playerId?.apidata
+                    ? plyr.playerId.apidata.data.platformInfo.platformUserHandle
+                    : plyr.playerId?.name}
                 </option>
               ))}
             </select>

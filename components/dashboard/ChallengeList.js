@@ -4,7 +4,7 @@ import baseURL from '@utils/baseURL';
 import ChallengeApprove from '../discover/invites/ChallengeApprove';
 import ChallengeDecline from '../discover/invites/ChallengeDecline';
 
-const Challengelist = ({ user, teams }) => {
+const Challengelist = ({ user, teams, profile }) => {
   const [challenges, setChallenges] = useState([]);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ const Challengelist = ({ user, teams }) => {
 
   const teamCheck = teams.filter((team) => {
     return challenges.find((chall) => {
-      return team._id === chall.challenged;
+      return team._id === chall.challenger._id;
     });
   });
 
@@ -24,7 +24,12 @@ const Challengelist = ({ user, teams }) => {
       return (
         teamCheck.length > 0 &&
         teamCheck[0].players.some((plyr) => {
-          return plyr.playerId?._id === invi.playerId?._id;
+          return profile.playergames.some((pg) => {
+            return (
+              pg?.player?._id === invi.playerId?._id &&
+              plyr.playerId?._id === invi.playerId?._id
+            );
+          });
         })
       );
     });
