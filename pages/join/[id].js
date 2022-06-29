@@ -80,7 +80,7 @@ const NFTGamesList = ({ user, challenge }) => {
               </ul>
             </div>
 
-            {challenge.room.roomId > 0 ? (
+            {challenge.room?.roomId > 0 ? (
               <>
                 <div className="btn">
                   <p>Room ID: {challenge.room.roomId}</p>

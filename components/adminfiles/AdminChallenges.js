@@ -1,5 +1,6 @@
 import React from 'react';
 import RoomDetails from './RoomDetails';
+import Moment from 'moment';
 
 const AdminChallenges = ({ challenges }) => {
   return (
@@ -33,7 +34,11 @@ const AdminChallenges = ({ challenges }) => {
                   VS
                   <p>{result.challenged.name}</p>
                 </div>
-                <div className="cols">{result.createdAt}</div>
+                <div className="cols">
+                  {Moment(result.startDate).format('DD/MMM/YYYY')}
+                  <br />
+                  {Moment(result.startDate).format('hh:mm A')}
+                </div>
                 <div className="cols">
                   Room Id: {result.room?.roomId ? result.room.roomId : '---'}
                   <br />

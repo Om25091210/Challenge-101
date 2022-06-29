@@ -7,6 +7,11 @@ const TeamTabs = ({ user, data }) => {
       (emp) => emp.role === 'Manager' && emp.employeeId._id === user._id
     ).length > 0;
 
+  const isAdmin =
+    data.team.employees.filter(
+      (emp) => emp.role === 'Admin' && emp.employeeId._id === user._id
+    ).length > 0;
+
   return (
     <ul className="profile_tab_btn">
       <li className="active">
@@ -74,7 +79,7 @@ const TeamTabs = ({ user, data }) => {
           RIGS
         </a>
       </li>
-      {isManager ? (
+      {isManager || isAdmin ? (
         <li>
           <a href="#!" rel="joines">
             Joines

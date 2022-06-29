@@ -16,7 +16,7 @@ import { useQuery, useMutation } from 'react-query';
 import { searchTournaments } from '@utils/functionsHelper';
 import Filters from '@components/common/Filters';
 
-const Tournament = ({ user, games, tournaments }) => {
+const Tournament = ({ user, games, tournaments, profile }) => {
   const [searchObj, setSearchObj] = useState({
     search: '',
     filters: ''
@@ -264,6 +264,7 @@ const Tournament = ({ user, games, tournaments }) => {
             user={user}
             favouriteTournaments={favouriteTournaments}
             showfavs={showfavs}
+            profile={profile}
           />
         </div>
       </div>

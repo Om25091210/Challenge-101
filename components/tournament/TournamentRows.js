@@ -10,7 +10,8 @@ const TournamentRows = ({
   searchResults,
   user,
   favouriteTournaments,
-  showfavs
+  showfavs,
+  profile
 }) => {
   if (searchResults.length > 0) {
     tournaments = searchResults;
@@ -145,6 +146,7 @@ const TournamentRows = ({
                     <TournamentRegister
                       tournament={result.tournament}
                       user={user}
+                      profile={profile}
                     />
                   </div>
                 </div>
@@ -185,7 +187,7 @@ const TournamentRows = ({
 
                     {result.tournament.playType === 'TEAMS' ? (
                       <p>
-                        {result.tournament.registered.length} /{' '}
+                        {result.tournament.teams.length} /{' '}
                         {result.tournament.maxTeams}
                         <b>Signed</b>
                       </p>

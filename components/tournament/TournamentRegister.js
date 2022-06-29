@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 
-const Tournament_Reg = ({ user, tournament }) => {
+const Tournament_Reg = ({ user, tournament, profile }) => {
   const router = useRouter();
   const refreshPage = () => {
     setTimeout(function () {
@@ -16,16 +16,27 @@ const Tournament_Reg = ({ user, tournament }) => {
       return tour?.user?._id === user?._id;
     }).length > 0;
 
+  const isTeamRegistered =
+    tournament?.teams?.filter((team) => {
+      return team?.teamId === profile?.current_team;
+    }).length > 0;
+
   const isRegFull = tournament.registered.length === tournament.participants;
 
-  const isTeamRegFull = tournament.maxTeams === tournament.participants;
+  const isTeamRegFull = tournament.maxTeams === tournament.teams.length;
 
   const reghandlesubmit = async (e) => {
     e.preventDefault();
     try {
-      axios.put(
-        `${baseURL}/api/tournaments/register/${tournament._id}/${user._id}`
-      );
+      if (tournament.playType === 'PLAYERS') {
+        axios.put(
+          `${baseURL}/api/tournaments/register/${tournament._id}/${user._id}`
+        );
+      } else {
+        axios.put(
+          `${baseURL}/api/tournaments/register/team/${tournament._id}/${profile?.current_team}`
+        );
+      }
       if (!isRegistered) {
         toast.success('Registered Successfully');
       } else {
@@ -39,7 +50,7 @@ const Tournament_Reg = ({ user, tournament }) => {
 
   return (
     <>
-      {isRegistered ? (
+      {isRegistered || isTeamRegistered ? (
         <button className="join" onClick={reghandlesubmit}>
           REGISTERED
         </button>
