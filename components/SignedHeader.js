@@ -35,7 +35,6 @@ const SignedHeader = ({ user }) => {
     getUserBalance();
   });
 
-
   const [filterType, setFilterType] = useState('JOBS');
 
   const getUserBalance = () => {
@@ -313,7 +312,7 @@ const SignedHeader = ({ user }) => {
                 </li>
 
                 <li>
-                  <a href="#!">
+                  <a href="/buypremium">
                     {' '}
                     <img src="/assets/media/login/go.png" alt="" />
                   </a>

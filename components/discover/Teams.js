@@ -105,6 +105,10 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
     setTeam(sdata);
     setIsLoading(false);
   };
+  const isAdmin =
+    team.employees?.filter(
+      (emp) => emp.role === 'Admin' && emp.employeeId._id === user._id
+    ).length > 0;
 
   return (
     <div className="tab" id="teams">
@@ -426,7 +430,11 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
                   )}
                 </span>{' '}
               </div>
-              <TeamRequest team={team.team} user={user} profile={profile} />
+              {isAdmin ? (
+                <p>Go to Team</p>
+              ) : (
+                <TeamRequest team={team.team} user={user} profile={profile} />
+              )}
             </div>
 
             <div className="overview_box">

@@ -54,7 +54,7 @@ const Challengelist = ({ user, teams, profile }) => {
               <a href="#">
                 <span className="act_name">
                   {result.challenger.name} has challenged you for a{' '}
-                  {result.game.name} match
+                  {result.game?.name} match
                 </span>
               </a>
               <ChallengeApprove
