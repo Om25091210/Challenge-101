@@ -438,6 +438,7 @@ const ProfileData = ({ user, Userdata, player, products, teams }) => {
                     ) : null}
                     <div className="reg">
                       <Tournament_Reg
+                        user={user}
                         tournament={result}
                         profile={Userdata.profile}
                       />

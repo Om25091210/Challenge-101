@@ -13,6 +13,7 @@ import TeamMatches from '@components/tournament/TeamMatches';
 import TeamJobs from './TeamJobs';
 import TeamJoines from './TeamJoines';
 import AllPosts from '../dashboard/AllPosts';
+import TeamRigs from './TeamRigs';
 
 const TeamProfileData = ({
   user,
@@ -265,36 +266,13 @@ const TeamProfileData = ({
           isManager={isManager}
           isAdmin={isAdmin}
         />
-
         <div className="tab hide" id="rigs">
-          <div className="rigs">
-            <ul>
-              {data.rigs.length === 0 ? (
-                <p>No rigs available for the team.</p>
-              ) : (
-                data.rigs.map((rig) => (
-                  <li>
-                    <div className="lft_prod_det">
-                      {' '}
-                      <span className="new"> New</span>
-                      <div className="prod_brand">
-                        {rig.name.length > 30
-                          ? rig.name.substring(0, 30) + '...'
-                          : rig.name}
-                      </div>
-                      <p className="prod_name">{rig.category}</p>
-                      <a href="#prod2" className="quickpoup">
-                        Buy Now
-                      </a>{' '}
-                    </div>
-                    <div className="prod_img">
-                      <img src={rig.image} alt="" />
-                    </div>
-                  </li>
-                ))
-              )}
-            </ul>
-          </div>
+          <TeamRigs
+            data={data}
+            user={user}
+            profile={profile}
+            isAdmin={isAdmin}
+          />
         </div>
         <div className="tab hide" id="joines">
           <TeamJoines data={data.team} user={user} profile={profile} />

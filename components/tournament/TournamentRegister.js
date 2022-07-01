@@ -16,9 +16,16 @@ const Tournament_Reg = ({ user, tournament, profile }) => {
       return tour?.user?._id === user?._id;
     }).length > 0;
 
+  let x = null;
+  if (profile?.current_team?._id) {
+    x = profile?.current_team?._id;
+  } else {
+    x = profile?.current_team;
+  }
+
   const isTeamRegistered =
     tournament?.teams?.filter((team) => {
-      return team?.teamId === profile?.current_team;
+      return team?.teamId?._id === x;
     }).length > 0;
 
   const isRegFull = tournament.registered.length === tournament.participants;
@@ -50,31 +57,50 @@ const Tournament_Reg = ({ user, tournament, profile }) => {
 
   return (
     <>
-      {isRegistered || isTeamRegistered ? (
-        <button className="join" onClick={reghandlesubmit}>
-          REGISTERED
-        </button>
-      ) : (
+      {tournament.playType === 'TEAMS' ? (
         <>
-          {' '}
-          {tournament.playType === 'TEAMS' ? (
+          {isTeamRegistered ? (
+            <>
+              <button className="join" onClick={reghandlesubmit}>
+                REGISTERED
+              </button>
+            </>
+          ) : (
             <>
               {isTeamRegFull !== true ? (
-                <button onClick={reghandlesubmit} className="join">
-                  REGISTER
-                </button>
+                <>
+                  <button onClick={reghandlesubmit} className="join">
+                    REGISTER
+                  </button>
+                </>
               ) : (
-                <button disabled={true}>Slots Unavailable</button>
+                <>
+                  <button disabled={true}>Slots Unavailable</button>
+                </>
               )}
+            </>
+          )}
+        </>
+      ) : (
+        <>
+          {isRegistered ? (
+            <>
+              <button className="join" onClick={reghandlesubmit}>
+                REGISTERED
+              </button>
             </>
           ) : (
             <>
               {isRegFull !== true ? (
-                <button onClick={reghandlesubmit} className="join">
-                  REGISTER
-                </button>
+                <>
+                  <button onClick={reghandlesubmit} className="join">
+                    REGISTER
+                  </button>
+                </>
               ) : (
-                <button disabled={true}>Slots Unavailable</button>
+                <>
+                  <button disabled={true}>Slots Unavailable</button>
+                </>
               )}
             </>
           )}
