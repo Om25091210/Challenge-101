@@ -130,7 +130,7 @@ h4 {
 	padding: 11px 40px;
 	font-size: 1.25rem;
 	border-radius: 10px;
-	line-height: 1.7;
+	line-height: 1.7; cursor: pointer;
 }
 .btn:hover, .btn.hover, .btn:active, .btn.active {
 	text-decoration: none;
@@ -181,7 +181,8 @@ h4 {
 	width:500px
 }
 
-
+.zoom-img{ transition: 0.3s ease-in-out; transform: scale(1,1);}
+.zoom-img:hover{transform: scale(1.2, 1.2);}
 
 /* ---------------- section css -------------------- */
 
@@ -198,7 +199,8 @@ header {
     padding: 20px 0; align-items: center;
 }
 
-header button{ background:none; border-radius:20px; border:1px solid  #6f232d; padding:10px 30px; color:#fff;}
+header button{ background:none; border-radius:20px; border:1px solid  #6f232d; padding:10px 30px; color:#fff; margin-left: 10px; cursor: pointer;}
+header button:hover{ background: #000;}
 
 
 #home .txt_sec {
@@ -297,6 +299,9 @@ footer .top_footer .box {
     display: flex;
     flex-direction: column;
 }
+
+footer .top_footer a{ color: #fff;}
+footer .top_footer a:hover{color: #a0a1ac;}
 
 footer .top_footer .box:first-child{ width:50%;}
 footer .top_footer .box:first-child input{ width:250px; padding:10px 20px; margin:10px 0}
