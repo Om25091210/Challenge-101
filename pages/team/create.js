@@ -478,25 +478,6 @@ const CreateTeam = ({ user }) => {
                           </div>
                         ) : null}
                       </div>
-                      {/* <div className="colm">
-                        <label htmlFor="exampleFormControlInput1">
-                          Sponsors (Optional)
-                        </label>
-                        <select
-                          className="form-control"
-                          name="sponsor"
-                          value={state.sponsor}
-                          multiple={true}
-                          onChange={handleChange}
-                        >
-                          {sponsors.map((spon, idx) => (
-                            <option key={idx} value={spon._id}>
-                              {' '}
-                              {spon.name}{' '}
-                            </option>
-                          ))}
-                        </select>
-                      </div> */}
                       <div className="colm">
                         <label htmlFor="exampleFormControlInput1">
                           Sponsor (Optional)

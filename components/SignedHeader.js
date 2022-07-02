@@ -190,7 +190,7 @@ const SignedHeader = ({ user }) => {
                   </a>
                 </li>
                 <li>
-                  <a href="/discover" onClick={() => setFilterType('JOBS')}>
+                  <a href="/jobs/create" onClick={() => setFilterType('JOBS')}>
                     <span>
                       {' '}
                       <i className="fa fa-briefcase" aria-hidden="true"></i>

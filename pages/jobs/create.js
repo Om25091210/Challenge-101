@@ -126,7 +126,7 @@ const CreateJobs = ({ user }) => {
                     <select
                       name="role"
                       className="form-control"
-                      onChange={handleChange}
+                      onChange={handleChangeCheck}
                       value={state.role}
                     >
                       {teamroles.map((tr) =>
@@ -145,14 +145,13 @@ const CreateJobs = ({ user }) => {
                       className="game_search_result mscrollbar"
                       name="owner"
                       value={state.owner}
-                      onChange={handleChange}
+                      onChange={handleChangeCheck}
                     >
                       <option value="--">--</option>
                       <option value={profile.profile?.current_team?._id}>
                         {profile.profile?.current_team?.name}
                       </option>
                     </select>
-                    <p>{formErrors.game}</p>
                   </div>
 
                   <div className="form-group">
@@ -164,7 +163,7 @@ const CreateJobs = ({ user }) => {
                       name="location"
                       placeholder="Select Opportunity Type..."
                       value={state.location}
-                      onChange={handleChange}
+                      onChange={handleChangeCheck}
                     >
                       {options.map((opt) => (
                         <>
