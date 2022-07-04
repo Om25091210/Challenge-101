@@ -15,7 +15,7 @@ const Challengelist = ({ user, teams, profile }) => {
 
   const teamCheck = teams.filter((team) => {
     return challenges.find((chall) => {
-      return team._id === chall.challenger._id;
+      return team._id === chall.challenger?._id;
     });
   });
 

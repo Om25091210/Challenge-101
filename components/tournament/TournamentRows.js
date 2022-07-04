@@ -155,7 +155,8 @@ const TournamentRows = ({
                     {result.tournament?.playType === 'PLAYERS' ||
                     result.tournament.registered.length > 0 ? (
                       <>
-                        {result.tournament.registered[0]?.user.profilePicUrl ? (
+                        {result.tournament.registered[0]?.user
+                          ?.profilePicUrl ? (
                           <img
                             src={
                               result.tournament.registered[0]?.user
