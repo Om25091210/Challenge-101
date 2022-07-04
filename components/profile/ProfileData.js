@@ -18,6 +18,8 @@ import Link from 'next/link';
 import { format } from 'date-fns';
 import { MPNumberFormat } from '../../utils/helpers';
 import Tournament_Reg from '../tournament/TournamentRegister';
+import ImageDropzone from '../common/ImageDropzone';
+import cookie from 'js-cookie';
 
 const ProfileData = ({ user, Userdata, player, products, teams }) => {
   const [profile, setProfile] = useState(Userdata.profile);
@@ -26,15 +28,30 @@ const ProfileData = ({ user, Userdata, player, products, teams }) => {
   const [allGames, setAllGames] = useState([]);
   const [teamroles, setTeamRoles] = useState([]);
   const [searchText, setSearchText] = useState('');
+  const [searchText2, setSearchText2] = useState('');
+  const [allTournaments, setAllTournaments] = useState([]);
+  const [organizer, setOrganizer] = useState([]);
+  const [images, setImages] = useState([]);
+  const [title, setTitle] = useState('');
   const [state, setState] = useState({
     sponsor: ''
   });
   const [team, setTeam] = useState({
     teamId: null,
-    game: ''.toString(),
+    game: '',
     role: '',
     teamStartDate: '',
     teamEndDate: ''
+  });
+  const [tournament, setTournament] = useState({
+    tournamentId: '',
+    organizer: '',
+    games: '',
+    team: null,
+    role: '',
+    year: '',
+    team_ranking: null,
+    winnings: null
   });
   const router = useRouter();
 
@@ -54,6 +71,13 @@ const ProfileData = ({ user, Userdata, player, products, teams }) => {
     axios.get(`${baseURL}/api/all/teams`).then((res) => setAllTeams(res.data));
 
     axios.get(`${baseURL}/api/all/games`).then((res) => setAllGames(res.data));
+
+    axios
+      .get(`${baseURL}/api/tournaments/`)
+      .then((res) => setAllTournaments(res.data));
+    axios
+      .get(`${baseURL}/api/all/organizers`)
+      .then((res) => setOrganizer(res.data));
 
     axios
       .get(`${baseURL}/api/all/teamroles`)
@@ -99,6 +123,28 @@ const ProfileData = ({ user, Userdata, player, products, teams }) => {
     team.teamId = data._id;
   };
 
+  const [filteredData2, setFilteredData2] = useState([]);
+  const handleFilter2 = (event) => {
+    const searchWord2 = event.target.value;
+    console.log('Here------' + searchWord2);
+    setSearchText2(searchWord2);
+    const newFilter = allTournaments?.filter((value) => {
+      return value.tournament.name
+        .toLowerCase()
+        .includes(searchWord2.toLowerCase());
+    });
+
+    if (searchText2 === '') {
+      setFilteredData2([]);
+    } else {
+      setFilteredData2(newFilter);
+    }
+  };
+  const handleSelected2 = (data) => {
+    setSearchText2(data.name);
+    tournament.tournamentId = data._id;
+  };
+
   function handleAddTeam(e) {
     if (e.target.options) {
       var options = e.target.options;
@@ -117,8 +163,30 @@ const ProfileData = ({ user, Userdata, player, products, teams }) => {
     }
   }
 
+  function handleAddTournament(e) {
+    if (e.target.options) {
+      var options = e.target.options;
+      var value = [];
+      for (var i = 0, l = options.length; i < l; i++) {
+        if (options[i].selected) {
+          value.push(options[i].value);
+        }
+      }
+      setTournament({ ...tournament, [e.target.name]: value });
+    } else if (e.target.files) {
+      console.log(e.target.files[0]);
+      setTournament({ ...tournament, [e.target.name]: e.target.files[0] });
+    } else {
+      setTournament({ ...tournament, [e.target.name]: e.target.value });
+    }
+  }
+
   const onChange = (e) => {
     setTeam({ ...team, [e.target.name]: e.target.value });
+  };
+
+  const onChangeTour = (e) => {
+    setTournament({ ...tournament, [e.target.name]: e.target.value });
   };
 
   function handleChange(e) {
@@ -149,12 +217,41 @@ const ProfileData = ({ user, Userdata, player, products, teams }) => {
   const handleAddTeamSubmit = async (e) => {
     e.preventDefault();
     try {
-      axios.put(`${baseURL}/api/profile/team/${user?._id}`, team);
+      axios.post(`${baseURL}/api/profile/team/${profile?._id}`, team);
       toast.success('Added Team Successfully');
+      $('a.model_close').parent().removeClass('show_model');
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }
     refreshData();
+  };
+
+  const handleAddTournamentSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      axios.post(
+        `${baseURL}/api/profile/tournaments/${profile?._id}`,
+        tournament
+      );
+      toast.success('Added Tournament Successfully');
+      $('a.model_close').parent().removeClass('show_model');
+    } catch (err) {
+      toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+    }
+    refreshData();
+  };
+
+  const handlePhotoSubmit = async (e) => {
+    e.preventDefault();
+    for (const key of Object.keys(images)) {
+      setImages({ images: images[key] });
+    }
+    axios.put(`${baseURL}/api/uploads/uploadImages`, images, {
+      headers: {
+        Authorization: cookie.get('token'),
+        'Content-Type': 'application/json'
+      }
+    });
   };
 
   return (
@@ -560,28 +657,28 @@ const ProfileData = ({ user, Userdata, player, products, teams }) => {
                   </div>
                   <div className="bottom_game">
                     <div className="users">
-                      {result.registered[0]?.user.profilePicUrl ? (
+                      {result.registered[0]?.user?.profilePicUrl ? (
                         <img
                           style={{ height: '30px', width: '30px' }}
                           src={result.registered[0]?.user?.profilePicUrl}
                           alt=""
                         />
                       ) : null}
-                      {result.registered[1]?.user.profilePicUrl ? (
+                      {result.registered[1]?.user?.profilePicUrl ? (
                         <img
                           style={{ height: '30px', width: '30px' }}
                           src={result.registered[1]?.user?.profilePicUrl}
                           alt=""
                         />
                       ) : null}
-                      {result.registered[2]?.user.profilePicUrl ? (
+                      {result.registered[2]?.user?.profilePicUrl ? (
                         <img
                           style={{ height: '30px', width: '30px' }}
                           src={result.registered[2]?.user?.profilePicUrl}
                           alt=""
                         />
                       ) : null}
-                      {result.registered[3]?.user.profilePicUrl ? (
+                      {result.registered[3]?.user?.profilePicUrl ? (
                         <img
                           style={{ height: '30px', width: '30px' }}
                           src={result.registered[3]?.user?.profilePicUrl}
@@ -782,7 +879,356 @@ const ProfileData = ({ user, Userdata, player, products, teams }) => {
               </div>
             </>
           ))}
+          {profile.tournaments.map((result, idx) => (
+            <>
+              <div className="game_row" key={idx}>
+                <div className="game_pos">
+                  <div className="game_loc">
+                    {' '}
+                    <img src="/assets/media/category/game_loc.jpg" alt="" />
+                  </div>
+
+                  <span className="tour_logo">
+                    {' '}
+                    <img src={result?.tournamentId.imgUrl} alt="" />
+                  </span>
+                </div>
+                <div className="right_game_details">
+                  <div className="top_game">
+                    <div className="date">
+                      <Link href={`/tournament/${result?.tournamentId._id}`}>
+                        <a>
+                          <h3>{result?.tournamentId.name}</h3>
+                        </a>
+                      </Link>
+                      {result?.tournamentId?.startDate
+                        ? format(
+                            new Date(result?.tournamentId.startDate),
+                            'dd.MMM.yyyy'
+                          )
+                        : 'Not defined'}
+                    </div>
+                    {result?.tournamentId.Type &&
+                    result?.tournamentId.Type === 'Ladder' ? (
+                      <p>Ladder</p>
+                    ) : result?.tournamentId.Type === 'Tournament' ? (
+                      <p>Tournament</p>
+                    ) : result?.tournamentId.Type === 'Competition' ? (
+                      <p>Competition</p>
+                    ) : null}
+                  </div>
+                  <div className="bottom_game">
+                    <div className="users">
+                      {result.tournamentId.teams[0]?.teamId.imgUrl ? (
+                        <img
+                          style={{ height: '30px', width: '30px' }}
+                          src={result.tournamentId.teams[0]?.teamId?.imgUrl}
+                          alt=""
+                        />
+                      ) : null}
+                      {result.tournamentId.teams[1]?.teamId.imgUrl ? (
+                        <img
+                          style={{ height: '30px', width: '30px' }}
+                          src={result.tournamentId.teams[1]?.teamId?.imgUrl}
+                          alt=""
+                        />
+                      ) : null}
+                      {result.tournamentId.teams[2]?.teamId.imgUrl ? (
+                        <img
+                          style={{ height: '30px', width: '30px' }}
+                          src={result.tournamentId.teams[2]?.teamId?.imgUrl}
+                          alt=""
+                        />
+                      ) : null}
+                      {result.tournamentId.teams[3]?.teamId.imgUrl ? (
+                        <img
+                          style={{ height: '30px', width: '30px' }}
+                          src={result.tournamentId.teams[3]?.teamId?.imgUrl}
+                          alt=""
+                        />
+                      ) : null}
+
+                      {result.tournamentId.playType === 'TEAMS' ? (
+                        <p>
+                          {result.tournamentId.teams.length} /{' '}
+                          {result.tournamentId.maxTeams}
+                          <b>Signed</b>
+                        </p>
+                      ) : (
+                        <>
+                          {result.tournamentId.participants > 0 ||
+                          result.tournamentId.maxTeams > 0 ? (
+                            <p>
+                              {result.tournamentId.registered.length} /{' '}
+                              {result.tournamentId.participants}
+                              <b>Signed</b>
+                            </p>
+                          ) : (
+                            <p>Not Available</p>
+                          )}
+                        </>
+                      )}
+                    </div>
+                    <div className="games">
+                      <h3>Games:</h3>
+
+                      {result.games &&
+                        result.games.map((gam, idxg) => (
+                          <div className="game_logo" key={idxg}>
+                            <img
+                              src={gam.gameId.imgUrl}
+                              alt={gam.gameId.name}
+                            />{' '}
+                            {gam.gameId.name}
+                          </div>
+                        ))}
+                    </div>
+                    <div className="prize">
+                      <div>
+                        <h3>ENTRY FEE</h3>
+                        {result?.entranceFee === 0 ? (
+                          <span>Free</span>
+                        ) : result?.entranceFee !== 0 ? (
+                          <span>{result?.entranceFee}</span>
+                        ) : (
+                          'Not Available'
+                        )}
+                      </div>
+                      <div>
+                        <h3>PRIZE POOL</h3>
+                        {result?.prizepool ? (
+                          <MPNumberFormat
+                            value={result?.tournamentId?.prizepool}
+                            currency={result?.tournamentId?.currency}
+                          />
+                        ) : (
+                          'Not Available'
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </>
+          ))}
+          <div className="sponser_btn">
+            {' '}
+            {Userdata.profile.user._id === user._id ? (
+              <a href="#!" className="model_show_btn">
+                <button className="btn">
+                  {' '}
+                  <i className="fa fa-plus-circle" aria-hidden="true"></i>
+                  Add Tournament
+                </button>
+              </a>
+            ) : null}
+            <div className="common_model_box" style={{ marginTop: '0px' }}>
+              {' '}
+              <a href="#!" className="model_close">
+                {' '}
+                X{' '}
+              </a>
+              <div className="inner_model_box">
+                <h3>Tournament</h3>
+                <form
+                  className="common_form"
+                  onSubmit={handleAddTournamentSubmit}
+                >
+                  <div className="form-group">
+                    <div className="colm">
+                      <label htmlFor="exampleFormControlInput1">
+                        Tournament Name
+                      </label>
+                      <input
+                        type="search"
+                        id="tournamentId"
+                        name="tournamentId"
+                        value={searchText2}
+                        onChange={handleFilter2}
+                        autoComplete="off"
+                      />
+                      {searchText2.length !== 0 ? (
+                        <div className="custom-rig-tag">
+                          <div>
+                            {!filteredData2 || filteredData2.length === 0 ? (
+                              <p>No Tournament found..</p>
+                            ) : (
+                              filteredData2.map((data) => (
+                                <div
+                                  onClick={() =>
+                                    handleSelected2(data.tournament)
+                                  }
+                                  key={data.tournament?._id}
+                                >
+                                  <img
+                                    src={data?.tournament.imgUrl}
+                                    height={50}
+                                    width={50}
+                                  />
+                                  <p>
+                                    {data?.tournament.name?.length > 20
+                                      ? data.tournament.name.substring(0, 20) +
+                                        '...'
+                                      : data.tournament.name}
+                                  </p>
+                                </div>
+                              ))
+                            )}
+                          </div>
+                        </div>
+                      ) : null}
+                    </div>
+
+                    <div className="form-group">
+                      <label htmlFor="exampleFormControlInput1">
+                        Orgazised By
+                      </label>
+
+                      <select
+                        className="form-control game_search_result"
+                        multiple={false}
+                        name="organizer"
+                        value={tournament.organizer}
+                        onChange={onChangeTour}
+                      >
+                        <option value="--">--</option>
+                        {organizer.map((organizer, idx) => (
+                          <option key={idx} value={organizer._id}>
+                            {' '}
+                            {organizer.name}{' '}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+
+                    <div className="form-group">
+                      <label htmlFor="exampleFormControlInput1">Games</label>
+
+                      <select
+                        className="form-control game_search_result"
+                        multiple={true}
+                        name="games"
+                        value={tournament.games}
+                        onChange={handleAddTournament}
+                      >
+                        {allGames.map((game, idx) => (
+                          <option key={idx} value={game._id}>
+                            {' '}
+                            {game.name}{' '}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+
+                    <label htmlFor="exampleFormControlInput1">Your Team</label>
+                    <select
+                      name="team"
+                      className="form-control"
+                      onChange={onChangeTour}
+                      value={tournament.team}
+                    >
+                      <option value="--">--</option>
+                      {teams.map((tem) => (
+                        <option value={tem._id} key={tem._id}>
+                          {tem.name}
+                        </option>
+                      ))}
+
+                      {profile.teams.map((tem) => (
+                        <option key={tem.teamId._id} value={tem.teamId._id}>
+                          {tem.teamId.name}
+                        </option>
+                      ))}
+                    </select>
+
+                    <label htmlFor="exampleFormControlInput1">Roles</label>
+                    <select
+                      name="role"
+                      className="form-control"
+                      onChange={onChangeTour}
+                      value={tournament.role}
+                    >
+                      <option value="--">--</option>
+                      {teamroles.map((tr) =>
+                        tr.role.map((rol, idx) => (
+                          <option key={idx} value={rol}>
+                            {rol}
+                          </option>
+                        ))
+                      )}
+                    </select>
+
+                    <div className="form-group">
+                      <label htmlFor="exampleFormControlInput1">Year</label>
+                      <input
+                        type="date"
+                        className="form-control"
+                        name="year"
+                        onChange={handleAddTournament}
+                        value={tournament.year}
+                      />
+                    </div>
+
+                    <div className="form-group">
+                      <label htmlFor="exampleFormControlInput1">
+                        Your Team Ranking
+                      </label>
+                      <input
+                        type="number"
+                        className="form-control"
+                        name="team_ranking"
+                        onChange={handleAddTournament}
+                        value={tournament.team_ranking}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label htmlFor="exampleFormControlInput1">Winnings</label>
+                      <input
+                        type="number"
+                        className="form-winnings"
+                        name="winnings"
+                        onChange={handleAddTournament}
+                        value={tournament.winnings}
+                      />
+                    </div>
+
+                    <div className="add_photos">
+                      <ImageDropzone setImages={setImages} />
+                      {images.length > 0 ? (
+                        <div className="upload_btn">
+                          <form onSubmit={handlePhotoSubmit}>
+                            <textarea
+                              type="text"
+                              placeholder="Add a Description"
+                              id="title"
+                              name="title"
+                              value={title}
+                              onChange={(e) => setTitle(e.target.value)}
+                            />
+                            <a
+                              href="#!"
+                              className="btn"
+                              onClick={handlePhotoSubmit}
+                            >
+                              UPLOAD NOW{' '}
+                            </a>
+                          </form>
+                        </div>
+                      ) : (
+                        ''
+                      )}
+                      <div className="overlay"></div>
+                    </div>
+
+                    <button className="btn">Update</button>
+                  </div>
+                </form>
+              </div>
+              <div className="overlay"></div>
+            </div>
+          </div>
         </div>
+
         <div className="tab hide" id="achievement">
           {' '}
           <div className="achivement_box">

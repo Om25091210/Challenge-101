@@ -236,8 +236,6 @@ const ProductRigs = ({ user, productList, Userdata }) => {
 
                         <RigsFilter val="Gpu" data={rigsData} states={states} />
 
-                        <RigsFilter val="" data={rigsData} states={states} />
-
                         <RigsFilter
                           val="Chair"
                           data={rigsData}
