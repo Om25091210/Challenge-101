@@ -275,23 +275,15 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
                 <div className="ranking">
                   <h4>Ranking</h4>
 
-                  {!team.ranks || team.ranks.length === 0 ? (
-                    <p>No ranks defined..</p>
-                  ) : (
-                    team.ranks.map((item, index) => (
-                      <div key={index} className="current_team">
-                        <span className="ct">
-                          {' '}
-                          <i
-                            className="fa fa-sort-asc"
-                            aria-hidden="true"
-                          ></i>{' '}
-                          {item.rank}
-                        </span>
-                        <span className="were">{item.rankType} </span>
-                      </div>
-                    ))
-                  )}
+                  <div className="current_team">
+                    <span className="ct">
+                      <i className="fa fa-sort-asc" aria-hidden="true"></i>
+                      {team.teamrank?.rank}
+                    </span>
+                    <span className="were">
+                      Winning: {team.teamrank?.winning}{' '}
+                    </span>
+                  </div>
 
                   <h4>country</h4>
                   <p>
@@ -350,18 +342,18 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
       ) : (
         team.map((team, idx) => (
           <div className="team_row" key={idx}>
-            <FavTeam team={team.team} profile={profile} />
+            <FavTeam team={team} profile={profile} />
             <div className="inner_team">
               <div className="logo_box">
                 {' '}
                 <div className="role_pic">
-                  <img src={team.team.imgUrl} alt="" />
+                  <img src={team.imgUrl} alt="" />
                 </div>
-                <a href={`/team/${team.team._id}`}>
-                  <h3>{team.team.name}</h3>
+                <a href={`/team/${team._id}`}>
+                  <h3>{team.name}</h3>
                 </a>
                 <ReactCountryFlag
-                  countryCode={team.team.region}
+                  countryCode={team.region}
                   svg
                   style={{
                     width: '2em',
@@ -369,12 +361,12 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
                   }}
                 />
               </div>
-              {team.team.games.length <= 0 ? (
+              {team.games.length <= 0 ? (
                 <p>No Game for this team</p>
               ) : (
                 <>
                   <span className="logo">
-                    {team.team.games.map((im) => (
+                    {team.games.map((im) => (
                       <>
                         <img src={im.gameId?.imgUrl} alt="" />
                       </>
@@ -384,8 +376,8 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
               )}
               <span className="remarks role_remk">
                 <h4>ROLE:</h4>
-                {team.team.attributes.roles.length > 0 ? (
-                  <p>{team.team.attributes.roles}</p>
+                {team.attributes.roles.length > 0 ? (
+                  <p>{team.attributes.roles}</p>
                 ) : (
                   <p>No Role Specified</p>
                 )}
@@ -393,18 +385,18 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
               <div className="mores plateform">
                 {' '}
                 <span>
-                  {team.team.attributes?.platform === 'PC' ? (
+                  {team.attributes?.platform === 'PC' ? (
                     <img src="/assets/media/discover/desk.png" alt="" />
-                  ) : team.team.attributes?.platform === 'Console' ? (
+                  ) : team.attributes?.platform === 'Console' ? (
                     <img src="/assets/media/discover/console.png" alt="" />
-                  ) : team.team.attributes?.platform === 'Mobile' ? (
+                  ) : team.attributes?.platform === 'Mobile' ? (
                     <img src="/assets/media/discover/mobile_game.png" alt="" />
                   ) : (
                     <p>No Platform mentioned</p>
                   )}
                 </span>{' '}
                 <span className="ml10">
-                  {team.team.attributes.mic ? (
+                  {team.attributes.mic ? (
                     <>
                       <img src="/assets/media/discover/mice.png" alt="" />{' '}
                       <b>On</b>
@@ -419,9 +411,9 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
                 </span>{' '}
                 <span className="ml10">
                   <img src="/assets/media/discover/translator.png" alt="" />{' '}
-                  {team.team.attributes?.language.length > 0 ? (
+                  {team.attributes?.language.length > 0 ? (
                     <>
-                      {team.team.attributes?.language.map((tem) => (
+                      {team.attributes?.language.map((tem) => (
                         <b>{tem.substring(0, 2).toUpperCase()}</b>
                       ))}
                     </>
@@ -433,7 +425,7 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
               {isAdmin ? (
                 <p>Go to Team</p>
               ) : (
-                <TeamRequest team={team.team} user={user} profile={profile} />
+                <TeamRequest team={team} user={user} profile={profile} />
               )}
             </div>
 
@@ -443,36 +435,34 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
                 <div className="over_prof">
                   <div className="pics">
                     {' '}
-                    <img src={team.team.imgUrl} alt="" />{' '}
+                    <img src={team.imgUrl} alt="" />{' '}
                   </div>
-                  <h3>{team.team.name}</h3>
+                  <h3>{team.name}</h3>
                 </div>
 
                 <div className="ranking">
                   <h4>Ranking</h4>
 
-                  {!team.team.ranks || team.team.ranks.length === 0 ? (
-                    <p>No ranks defined..</p>
-                  ) : (
-                    team.team.ranks.map((item, index) => (
-                      <div key={index} className="current_team">
+                  <div className="current_team">
+                    {!team.teamrank ? (
+                      <p>No ranking</p>
+                    ) : (
+                      <>
                         <span className="ct">
-                          {' '}
-                          <i
-                            className="fa fa-sort-asc"
-                            aria-hidden="true"
-                          ></i>{' '}
-                          {item.rank}
+                          <i className="fa fa-sort-asc" aria-hidden="true"></i>
+                          {team.teamrank?.rank}
                         </span>
-                        <span className="were">{item.rankType} </span>
-                      </div>
-                    ))
-                  )}
+                        <span className="were">
+                          Winning: {team.teamrank?.winning}{' '}
+                        </span>
+                      </>
+                    )}
+                  </div>
 
                   <h4>country</h4>
                   <p>
                     <ReactCountryFlag
-                      countryCode={team.team.region}
+                      countryCode={team.region}
                       svg
                       style={{
                         width: '2em',
@@ -481,7 +471,7 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
                     />
                   </p>
                   <h4>Established</h4>
-                  <p>{Moment(team.team.founded).format('MMM YYYY')}</p>
+                  <p>{Moment(team.founded).format('MMM YYYY')}</p>
                 </div>
                 <div className="match">
                   <h4>Matches Played</h4>
@@ -489,8 +479,8 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
                   <h4>Matches Won</h4>
                   <p>131 Victories</p>
                   <h4>Manager</h4>
-                  {team.team.employees.length !== 0 ? (
-                    team.team.employees.map(
+                  {team.employees.length !== 0 ? (
+                    team.employees.map(
                       (role) =>
                         role.role === 'manager' && (
                           <p>{role.employeeId.username}</p>

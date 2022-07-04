@@ -34,7 +34,7 @@ const ProfileBox = ({ user, Userdata, games }) => {
   const [phno, setPhno] = useState(user?.phone_number);
 
   const [attr, setAttr] = useState(
-    Userdata.profile.playergames[0]?.player?.attributes
+    Userdata.profile?.playergames[0]?.player?.attributes
   );
 
   const [follow, setFollow] = useState(false);
