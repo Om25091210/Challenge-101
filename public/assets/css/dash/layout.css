@@ -7586,6 +7586,33 @@ form.common_form .btn{ width: 100%; margin-top: 20px; height: 40px;}
 			background: #000 !important;
 			padding: 5px 10px 5px 10px;}
 
+/* ---------- Challenges page---------------- */
+
+.challenge_page h1{ font-size: 30px;}
+.challenge_page p{ padding-bottom: 20px;}
+
+.challenge_page .filter_btns{display: inline-block; vertical-align: middle;}
+.challenge_page .filter_btns button{ font-size: 12px; margin-right: 5px;}
+.challenge_page .filter_btns .advance{ display: inline-block; margin: 0 5px;}
+.challenge_page .filter_btns  h3{ display: inline-block; font-size: 11px; margin-right: 5px;}
+.challenge_page .filter_btns .advance .custom-control{ display: inline-block;}
+.challenge_card_box{ float: left; width: 100%; margin: 20px 0;}
+
+.challenge_card{ float: left; width: 100%; margin-bottom: 20px;}
+.challenge_card li{ float: left; width: 32%; margin-right: 2%; margin-bottom: 20px; background: #50525f; padding: 20px; border-radius: 10px;}
+.challenge_card li:nth-child(3n){ margin-right: 0;}
+.challenge_card li .row1{ display: flex; justify-content: space-between; margin-bottom: 20px;}
+.challenge_card li .row1 .img{ display: inline-block; vertical-align: middle; width: 40px; height: 40px; background: #000; border-radius: 10px;}
+.challenge_card li .row1 b{ display: block; font-size: 11px; font-weight: normal;}
+.challenge_card li .row1:last-child{ border-top:1px solid #fff; padding-top: 10px;}
+
+.challenge_card.smil_card li{ width: 24%; margin-right: 1%;}
+.challenge_card.smil_card li:nth-child(3n){ margin-right: 1%;}
+.challenge_card.smil_card li:nth-child(4n){ margin-right: 0;}
+.smil_card span { float: left; width: auto;}
+.smil_card span img{ display: inline-block; margin-left: 10px;}
+
+
 /* ---------------------- Dark Themes----------------------------- */
 
 	body.DarkPage {
