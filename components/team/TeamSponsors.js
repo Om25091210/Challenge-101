@@ -59,7 +59,10 @@ const TeamSponsors = ({ user, data, isManager, isAdmin, teamSponsors }) => {
     <div className="tab hide" id="sponsors">
       <div className="sponsers_box">
         <ul>
-          {teamSponsors.type === 'SPONSORS' &&
+          {teamSponsors.sponsors?.length === 0 ? (
+            <p style={{ color: 'white' }}>No Sponsors available.</p>
+          ) : (
+            teamSponsors.type === 'SPONSORS' &&
             teamSponsors.sponsors.map((item, index) => (
               <li key={index}>
                 <div className="sponser_name">
@@ -71,7 +74,8 @@ const TeamSponsors = ({ user, data, isManager, isAdmin, teamSponsors }) => {
                   <p>{item.description}</p>
                 </div>
               </li>
-            ))}
+            ))
+          )}
         </ul>
 
         <span>

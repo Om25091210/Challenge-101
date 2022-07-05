@@ -7,18 +7,19 @@ import axios from 'axios';
 import baseURL from '@utils/baseURL';
 import Moment from 'moment';
 
-const ProfileMatches = ({ user, Userdata }) => {
+const ProfileMatches = ({ user, Userdata, teamMatchesList }) => {
   return (
     <div className="tab hide" id="matches">
       {' '}
-      {Userdata.teamMatchesList.length == 0 ? (
+      {teamMatchesList.teamMatches?.length == 0 ? (
         <p>
           {' '}
           Player info is not attached to the profile. Please ensure that player
           is assigned to this profile.{' '}
         </p>
       ) : (
-        Userdata.teamMatchesList.map((result, index) => (
+        teamMatchesList.type === 'MATCHES' &&
+        teamMatchesList.teamMatches.map((result, index) => (
           <div className="next_matches" key={index}>
             <div className="bdr_clr_green">
               <div className="single_team">

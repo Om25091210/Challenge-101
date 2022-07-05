@@ -52,7 +52,7 @@ const TeamRigs = ({ user, profile, data, isAdmin, teamRigs }) => {
     <>
       <div className="rigs">
         <ul>
-          {teamRigs.length === 0 ? (
+          {teamRigs.rigs?.length === 0 ? (
             <p>No rigs available for the team.</p>
           ) : (
             teamRigs.type === 'RIGS' &&
