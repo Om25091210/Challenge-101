@@ -131,8 +131,8 @@ const challenges = ({ user, data, teams }) => {
                     <label> Choose your Team</label>
                     <select name="Userteam" id="teamselect" onChange={onChange}>
                       <option value="">---</option>
-                      {teams.map((team) => (
-                        <option value={team._id}>{team.name}</option>
+                      {teams.map((team,idtx) => (
+                        <option value={team._id} key={idtx}>{team.name}</option>
                       ))}
                     </select>
                   </div>
@@ -154,10 +154,10 @@ const challenges = ({ user, data, teams }) => {
                           {!filteredData || filteredData.length === 0 ? (
                             <p>No Teams found..</p>
                           ) : (
-                            filteredData.map((data) => (
+                            filteredData.map((data, idfx) => (
                               <div
                                 onClick={() => handleSelectedTeam(data)}
-                                key={data._id}
+                                key={idfx}
                               >
                                 <img src={data.imgUrl} height={50} width={50} />
                                 <p>{data.name}</p>
@@ -175,8 +175,8 @@ const challenges = ({ user, data, teams }) => {
                         No games available between the teams.
                       </option>
                     ) : (
-                      commonGames?.map((cG) => (
-                        <option value={cG.gameId?._id}>
+                      commonGames?.map((cG, idcx) => (
+                        <option value={cG.gameId?._id} key={idcx}>
                           {cG.gameId?.name}
                         </option>
                       ))
@@ -190,8 +190,8 @@ const challenges = ({ user, data, teams }) => {
                       multiple
                       onChange={onChange}
                     >
-                      {UserTeam[0]?.players?.map((plyr) => (
-                        <option value={plyr?.playerId?._id}>
+                      {UserTeam[0]?.players?.map((plyr, idpx) => (
+                        <option value={plyr?.playerId?._id} key={idpx}>
                           {plyr.playerId?.apidata
                             ? plyr.playerId.apidata.data.platformInfo
                                 .platformUserHandle
@@ -223,8 +223,8 @@ const challenges = ({ user, data, teams }) => {
               </div>
               <div className="overlay"></div>
             </div>
-            {data.map((challenge) => (
-              <p>{challenge.challenger?.name}</p>
+            {data.map((challenge, icx) => (
+              <p key={icx}>{challenge.challenger?.name}</p>
             ))}
 
             <h2>GAME</h2>
