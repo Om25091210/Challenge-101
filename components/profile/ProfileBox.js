@@ -11,8 +11,9 @@ import { locationformvalidate } from '@utils/valid';
 import ProfileGameStat from './ProfileGameStat';
 import { useRouter } from 'next/router';
 import ReactCountryFlag from 'react-country-flag';
+import ProfileEdit from './ProfileEdit';
 
-const ProfileBox = ({ user, Userdata, games }) => {
+const ProfileBox = ({ user, Userdata, games, teams }) => {
   const [profilePic, setProfilePic] = useState(null);
   const [bio, setBio] = useState(
     Userdata.profile ? Userdata.profile.bio : null
@@ -780,6 +781,12 @@ const ProfileBox = ({ user, Userdata, games }) => {
                   <span className="were">Captain - CS GO</span>
                 */}
                 </div>
+                <ProfileEdit
+                  profile={Userdata.profile}
+                  user={user}
+                  teams={teams}
+                  games={games}
+                />
                 <div className="game_role profile_address">
                   <div className="loc_box">
                     {' '}
