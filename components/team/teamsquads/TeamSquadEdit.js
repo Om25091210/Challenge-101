@@ -13,7 +13,7 @@ const TeamSquadEdit = ({ teamplayers, squad, isManager, isAdmin }) => {
     country: squad.country,
     players: squad.players.map((plr) => plr.playerId)
   });
-  console.log(editSquadData);
+
   const [formErrors, setFormErrors] = useState({});
   const router = useRouter();
   const options = useMemo(() => countryList().getData(), []);

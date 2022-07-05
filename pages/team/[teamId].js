@@ -13,6 +13,7 @@ import { getData } from '@utils/fetchData';
 
 const Team = ({ user, data, products, profile, teams }) => {
   let profileId = [];
+
   profile?.playergames.map((plyr) => {
     return (profileId = plyr.player?._id);
   });
@@ -50,7 +51,7 @@ const Team = ({ user, data, products, profile, teams }) => {
             profile={profile}
           />
 
-          <TeamTabs user={user} data={data} />
+          {/* <TeamTabs user={user} data={data} /> */}
 
           <TeamProfileData
             user={user}

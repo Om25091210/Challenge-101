@@ -4,7 +4,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 
-const TeamSponsors = ({ user, data, isManager, isAdmin }) => {
+const TeamSponsors = ({ user, data, isManager, isAdmin, teamSponsors }) => {
   const [sponsors, setSponsors] = useState([]);
 
   const [state, setState] = useState({
@@ -59,8 +59,8 @@ const TeamSponsors = ({ user, data, isManager, isAdmin }) => {
     <div className="tab hide" id="sponsors">
       <div className="sponsers_box">
         <ul>
-          {data.sponsors &&
-            data.sponsors.map((item, index) => (
+          {teamSponsors.type === 'SPONSORS' &&
+            teamSponsors.sponsors.map((item, index) => (
               <li key={index}>
                 <div className="sponser_name">
                   <img src={item.imgUrl} alt={item.sponsorId} />

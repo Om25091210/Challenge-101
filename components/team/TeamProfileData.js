@@ -60,8 +60,91 @@ const TeamProfileData = ({
     );
   });
 
+  let [tabData, setTabData] = useState([]);
+
+  const handleTabs = async (Type) => {
+    console.log(Type);
+    await axios
+      .get(`${baseURL}/api/teams/teamdata/${Type}/${data.team?._id}`)
+      .then((res) => setTabData(res.data));
+  };
+
   return (
     <>
+      <ul className="profile_tab_btn">
+        <li className="active">
+          <a href="#!" rel="overview">
+            OVERVIEW
+          </a>
+        </li>
+        <li>
+          <a href="#!" rel="squads" onClick={() => handleTabs('SQUADS')}>
+            Squads
+          </a>
+        </li>
+        <li>
+          <a href="#!" rel="achievement">
+            {' '}
+            ACHIEVEMENTS
+          </a>
+        </li>
+        <li>
+          <a href="#!" rel="matches" onClick={() => handleTabs('MATCHES')}>
+            MATCHES
+          </a>
+        </li>
+        <li>
+          <a href="#!" rel="stats">
+            STATISTICS
+          </a>
+        </li>
+        <li>
+          <a href="#!" rel="store">
+            {' '}
+            CLAN STORE{' '}
+          </a>
+        </li>
+        <li>
+          <a href="#!" rel="photos">
+            PHOTOS
+          </a>
+        </li>
+        <li>
+          <a href="#!" rel="media">
+            MEDIA
+          </a>
+        </li>
+        <li>
+          <a href="#!" rel="jobs">
+            JOBS
+          </a>
+        </li>
+        <li>
+          <a href="#!" rel="about" onClick={() => handleTabs('ABOUT')}>
+            {' '}
+            ABOUT
+          </a>
+        </li>
+        <li>
+          <a href="#!" rel="sponsors" onClick={() => handleTabs('SPONSORS')}>
+            {' '}
+            SPONSORS
+          </a>
+        </li>
+        <li>
+          <a href="#!" rel="rigs" onClick={() => handleTabs('RIGS')}>
+            {' '}
+            RIGS
+          </a>
+        </li>
+        {isManager || isAdmin ? (
+          <li>
+            <a href="#!" rel="joines">
+              Joines
+            </a>
+          </li>
+        ) : null}
+      </ul>
       <div className="prfoile_tab_data white_bg">
         <div className="tab" id="overview">
           {' '}
@@ -81,7 +164,7 @@ const TeamProfileData = ({
             )}
           </div>
           <div className="profile_match_details">
-            <TeamAllStats teamId={data.team._id} />
+            {/* <TeamAllStats teamId={data.team._id} /> */}
 
             <div className="games_details">
               <ul>
@@ -127,8 +210,7 @@ const TeamProfileData = ({
         </div>
         <div className="tab hide" id="squads">
           <TeamSquads
-            squads={data.squads}
-            teamplayers={data.players}
+            squadsData={tabData}
             team={data.team}
             isManager={isManager}
             isAdmin={isAdmin}
@@ -215,7 +297,7 @@ const TeamProfileData = ({
             </div>
           </div>
         </div>
-        <TeamMatches tournament={data.teamMatches} />
+        <TeamMatches tournament={tabData.teamMatches} />
         <div className="tab hide" id="stats">
           <TeamStatistics
             tournamentStatData={tournamentStatData}
@@ -252,16 +334,18 @@ const TeamProfileData = ({
             isAdmin={isAdmin}
           />
         </div>
-
-        <TeamAbout
-          tmdata={data.team}
-          isManager={isManager}
-          isAdmin={isAdmin}
-          user={user}
-        />
-
+        <div className="tab hide" id="about">
+          <TeamAbout
+            Data={data}
+            teamAbout={tabData}
+            isManager={isManager}
+            isAdmin={isAdmin}
+            user={user}
+          />
+        </div>
         <TeamSponsors
           data={data}
+          teamSponsors={tabData}
           user={user}
           isManager={isManager}
           isAdmin={isAdmin}
@@ -269,6 +353,7 @@ const TeamProfileData = ({
         <div className="tab hide" id="rigs">
           <TeamRigs
             data={data}
+            teamRigs={tabData}
             user={user}
             profile={profile}
             isAdmin={isAdmin}

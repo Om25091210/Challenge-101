@@ -139,12 +139,13 @@ const TeamSquadAdd = ({ teamplayers, team, isManager, isAdmin }) => {
                 onChange={onChange}
               >
                 <option value="">--</option>
-                {teamplayers.map((game, idx) => (
-                  <option key={idx} value={game._id}>
-                    {' '}
-                    {game.name}{' '}
-                  </option>
-                ))}
+                {teamplayers &&
+                  teamplayers.map((game, idx) => (
+                    <option key={idx} value={game._id}>
+                      {' '}
+                      {game.name}{' '}
+                    </option>
+                  ))}
               </select>
               <p>{formErrors.players}</p>
             </div>

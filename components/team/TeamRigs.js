@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 import RigsFilter from '../profile/RigsFilter';
 
-const TeamRigs = ({ user, profile, data, isAdmin }) => {
+const TeamRigs = ({ user, profile, data, isAdmin, teamRigs }) => {
   const [rigsData, setRigsData] = useState([]);
   const [states, setStates] = useState({
     Keyboard: '',
@@ -52,10 +52,11 @@ const TeamRigs = ({ user, profile, data, isAdmin }) => {
     <>
       <div className="rigs">
         <ul>
-          {data.rigs.length === 0 ? (
+          {teamRigs.length === 0 ? (
             <p>No rigs available for the team.</p>
           ) : (
-            data.rigs.map((rig) => (
+            teamRigs.type === 'RIGS' &&
+            teamRigs.rigs.map((rig) => (
               <li>
                 <div className="lft_prod_det">
                   {' '}

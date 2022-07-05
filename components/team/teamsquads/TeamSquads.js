@@ -2,27 +2,28 @@ import TeamSquadAdd from './TeamSquadAdd';
 import TeamSquadDelete from './TeamSquadDelete';
 import TeamSquadEdit from './TeamSquadEdit';
 
-const TeamSquads = ({ squads, teamplayers, team, isManager, isAdmin }) => {
+const TeamSquads = ({ squadsData, team, isManager, isAdmin }) => {
   return (
     <>
       <TeamSquadAdd
-        teamplayers={teamplayers}
+        teamplayers={squadsData.players}
         team={team}
         isManager={isManager}
         isAdmin={isAdmin}
       />
       <div className="squads_box">
         <ul>
-          {!squads || squads.length === 0 ? (
+          {!squadsData.squads || squadsData.squads.length === 0 ? (
             <li>
               <div className="dp">No Squads defined..</div>
             </li>
           ) : (
-            squads.map((squad, idx) => (
+            squadsData.type === 'SQUADS' &&
+            squadsData.squads.map((squad, idx) => (
               <li className="squads" key={idx}>
                 <div className="edit_delet">
                   <TeamSquadEdit
-                    teamplayers={teamplayers}
+                    teamplayers={squadsData.players}
                     squad={squad}
                     isManager={isManager}
                     isAdmin={isAdmin}
