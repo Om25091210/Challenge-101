@@ -6,7 +6,6 @@ import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 import ReactCountryFlag from 'react-country-flag';
 import Moment from 'moment';
-import { useMutation } from 'react-query';
 import TeamFollow from './TeamFollow';
 import TeamRequest from '../discover/invites/TeamRequest';
 import TeamChallenge from './TeamChallenge';
@@ -15,6 +14,7 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
   const [attr, setAttr] = useState(data.team.attributes);
   const [sociallinks, setSociallinks] = useState(data.team.social);
   const [websitelink, setWebsitelink] = useState(data.team);
+  console.log(data);
   const router = useRouter();
   const refreshData = () => {
     router.replace(router.asPath);
@@ -287,7 +287,7 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
               <span className="name">
                 Founded {Moment(data.team.founded).format('MMM YYYY')}
               </span>
-              <span className="follower">{data.players.length} followers</span>
+              <span className="follower">{data.players?.length} followers</span>
             </div>
 
             <div className="flag">
