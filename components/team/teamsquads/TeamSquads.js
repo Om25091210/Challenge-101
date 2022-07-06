@@ -52,7 +52,7 @@ const TeamSquads = ({ squadsData, team, isManager, isAdmin }) => {
                 </div>
                 <div className="squad_btn">
                   {' '}
-                  <span className="cuntry_name">{squad.location}</span>{' '}
+                  <span className="cuntry_name">{squad.country}</span>{' '}
                   <a href="#!" className="view">
                     VIEW TEAM{' '}
                     <i

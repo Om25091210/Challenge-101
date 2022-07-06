@@ -3,12 +3,18 @@ import Moment from 'moment';
 import axios from 'axios';
 import baseURL from '../../utils/baseURL';
 
-const ProfileTeams = ({ Userdata, UserTeams, profile, user, teamsData }) => {
+const ProfileTeams = ({
+  Userdata,
+  UserTeams,
+  profile,
+  user,
+  teamsData,
+  allGames,
+  teamroles
+}) => {
   const [filteredData, setFilteredData] = useState([]);
-  const [images, setImages] = useState([]);
+
   const [allTeams, setAllTeams] = useState([]);
-  const [allGames, setAllGames] = useState([]);
-  const [teamroles, setTeamRoles] = useState([]);
   const [searchText, setSearchText] = useState('');
 
   let teams = [];
@@ -18,12 +24,6 @@ const ProfileTeams = ({ Userdata, UserTeams, profile, user, teamsData }) => {
 
   useEffect(() => {
     axios.get(`${baseURL}/api/all/teams`).then((res) => setAllTeams(res.data));
-
-    axios.get(`${baseURL}/api/all/games`).then((res) => setAllGames(res.data));
-
-    axios
-      .get(`${baseURL}/api/all/teamroles`)
-      .then((res) => setTeamRoles(res.data));
   }, []);
   const [team, setTeam] = useState({
     teamId: null,
@@ -62,7 +62,6 @@ const ProfileTeams = ({ Userdata, UserTeams, profile, user, teamsData }) => {
       }
       setTeam({ ...team, [e.target.name]: value });
     } else if (e.target.files) {
-      console.log(e.target.files[0]);
       setTeam({ ...team, [e.target.name]: e.target.files[0] });
     } else {
       setTeam({ ...team, [e.target.name]: e.target.value });
@@ -95,18 +94,6 @@ const ProfileTeams = ({ Userdata, UserTeams, profile, user, teamsData }) => {
     refreshData();
   };
 
-  const handlePhotoSubmit = async (e) => {
-    e.preventDefault();
-    for (const key of Object.keys(images)) {
-      setImages({ images: images[key] });
-    }
-    axios.put(`${baseURL}/api/uploads/uploadImages`, images, {
-      headers: {
-        Authorization: cookie.get('token'),
-        'Content-Type': 'application/json'
-      }
-    });
-  };
   return (
     <>
       <div className="tab hide" id="teams">
@@ -259,13 +246,11 @@ const ProfileTeams = ({ Userdata, UserTeams, profile, user, teamsData }) => {
                     onChange={onChange}
                     value={team.role}
                   >
-                    {teamroles.map((tr) =>
-                      tr.role.map((rol, idx) => (
-                        <option key={idx} value={rol}>
-                          {rol}
-                        </option>
-                      ))
-                    )}
+                    {teamroles.map((tr, idx) => (
+                      <option key={idx} value={tr}>
+                        {tr}
+                      </option>
+                    ))}
                   </select>
 
                   <div className="form-group">

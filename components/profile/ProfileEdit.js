@@ -90,12 +90,6 @@ const ProfileEdit = ({ profile, user, teams, games }) => {
       .then((res) => setAllroles(res.data));
   }, []);
 
-  // console.log(user)
-  console.log(profile);
-  console.log(states);
-  // console.log(teams);
-
-  // console.log(result)
   const handleChangeCheck = (e) => {
     setStates({ ...states, [e.target.name]: e.target.value });
   };
@@ -264,9 +258,10 @@ const ProfileEdit = ({ profile, user, teams, games }) => {
                       value={states.team}
                       onChange={handleSubmit}
                     >
-                      {teams.map((tem) => (
-                        <option value={tem._id}>{tem.name}</option>
-                      ))}
+                      {teams &&
+                        teams.map((tem) => (
+                          <option value={tem._id}>{tem.name}</option>
+                        ))}
                     </select>
                   </div>
                 </>
@@ -322,12 +317,15 @@ const ProfileEdit = ({ profile, user, teams, games }) => {
                 <>
                   <div className="form-group">
                     <label htmlFor="exampleFormControlInput1">Role</label>
-                    <input
-                      type="text"
+                    <select
                       name="role"
                       value={states.role}
                       onChange={handleChangeCheck}
-                    />
+                    >
+                      {allroles.map((role) => (
+                        <option value={role}>{role}</option>
+                      ))}
+                    </select>
                   </div>
                 </>
               ) : (

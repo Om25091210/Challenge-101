@@ -26,8 +26,8 @@ const Profile = ({ user, Userdata, games, player, products, teams }) => {
             Userdata={Userdata}
             games={games}
             player={player}
+            teams={teams}
           />
-          {/* <ProfileTabs /> */}
           <ProfileData
             user={user}
             Userdata={Userdata}

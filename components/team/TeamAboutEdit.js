@@ -85,13 +85,11 @@ const TeamAboutEdit = ({ employeeData, team, isManager, isAdmin }) => {
               onChange={onChange}
               value={aboutData.value}
             >
-              {teamroles.map((tr) =>
-                tr.role.map((rol, idx) => (
-                  <option key={idx} value={rol}>
-                    {rol}
-                  </option>
-                ))
-              )}
+              {teamroles.map((tr, idx) => (
+                <option key={idx} value={tr}>
+                  {tr}
+                </option>
+              ))}
             </select>
             <button className="btn" type="submit">
               Submit

@@ -213,13 +213,11 @@ const TeamAbout = ({ Data, isManager, isAdmin, user, teamAbout }) => {
                           className="form-control"
                           onChange={handleChangeAbt}
                         >
-                          {teamroles.map((tr) =>
-                            tr.role.map((rol, idx) => (
-                              <option key={idx} value={rol}>
-                                {rol}
-                              </option>
-                            ))
-                          )}
+                          {teamroles.map((tr, idx) => (
+                            <option key={idx} value={tr}>
+                              {tr}
+                            </option>
+                          ))}
                         </select>
                       </li>
                     </ul>

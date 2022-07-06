@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import baseURL from '@utils/baseURL';
 import cookie from 'js-cookie';
@@ -24,6 +24,7 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
   const [desc, setDesc] = useState(data.team ? data.team.description : null);
   const [coverPic, setCoverPic] = useState(null);
   const [profilePic, setProfilePic] = useState(null);
+  const [sponsors, setSponsors] = useState([]);
 
   const toggleShowform = () => {
     if (showform) {
@@ -213,6 +214,12 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
     .map((x) => x)
     .filter((x) => x.role === 'Coach');
 
+  useEffect(() => {
+    axios
+      .get(`${baseURL}/api/teams/teamdata/SPONSORS/${data.team?._id}`)
+      .then((res) => setSponsors(res.data.sponsors));
+  }, []);
+  console.log(sponsors);
   return (
     <div className="profile_box team_profile_box">
       <div className="profile_cover_photo">
@@ -755,10 +762,10 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
             <h5>SPONSORS</h5>
 
             <ul>
-              {!data.sponsors || data.sponsors.length === 0 ? (
+              {!sponsors || sponsors.length === 0 ? (
                 <p>No sponsors defined..</p>
               ) : (
-                data.sponsors.map((item, index) => (
+                sponsors.map((item, index) => (
                   <li key={index}>
                     <img src={item.imgUrl} alt="" />{' '}
                   </li>

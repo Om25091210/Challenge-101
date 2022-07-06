@@ -1,28 +1,26 @@
 import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 import FavTournament from '../tournament/FavTournament';
-import Moment from 'moment';
 import { format } from 'date-fns';
-
 import { MPNumberFormat } from '../../utils/helpers';
 import Tournament_Reg from '../tournament/TournamentRegister';
 import ImageDropzone from '../common/ImageDropzone';
 import axios from 'axios';
 import baseURL from '../../utils/baseURL';
 
-const ProfileAddTournament = ({
+const ProfileTournament = ({
   user,
-  Userdata,
   profile,
+  allGames,
+  teamroles,
   teams,
   tournamentData
 }) => {
-  const [allGames, setAllGames] = useState([]);
-  const [teamroles, setTeamRoles] = useState([]);
   const [allTournaments, setAllTournaments] = useState([]);
   const [organizer, setOrganizer] = useState([]);
   const [title, setTitle] = useState('');
   const [searchText, setSearchText] = useState('');
+  const [images, setImages] = useState([]);
 
   const [tournament, setTournament] = useState({
     tournamentId: '',
@@ -36,18 +34,12 @@ const ProfileAddTournament = ({
   });
 
   useEffect(() => {
-    axios.get(`${baseURL}/api/all/games`).then((res) => setAllGames(res.data));
-
     axios
       .get(`${baseURL}/api/tournaments/`)
       .then((res) => setAllTournaments(res.data));
     axios
       .get(`${baseURL}/api/all/organizers`)
       .then((res) => setOrganizer(res.data));
-
-    axios
-      .get(`${baseURL}/api/all/teamroles`)
-      .then((res) => setTeamRoles(res.data));
   }, []);
 
   const handleAddTournamentSubmit = async (e) => {
@@ -95,7 +87,6 @@ const ProfileAddTournament = ({
       }
       setTournament({ ...tournament, [e.target.name]: value });
     } else if (e.target.files) {
-      console.log(e.target.files[0]);
       setTournament({ ...tournament, [e.target.name]: e.target.files[0] });
     } else {
       setTournament({ ...tournament, [e.target.name]: e.target.value });
@@ -103,6 +94,18 @@ const ProfileAddTournament = ({
   }
   const onChangeTour = (e) => {
     setTournament({ ...tournament, [e.target.name]: e.target.value });
+  };
+  const handlePhotoSubmit = async (e) => {
+    e.preventDefault();
+    for (const key of Object.keys(images)) {
+      setImages({ images: images[key] });
+    }
+    axios.put(`${baseURL}/api/uploads/uploadImages`, images, {
+      headers: {
+        Authorization: cookie.get('token'),
+        'Content-Type': 'application/json'
+      }
+    });
   };
   return (
     <>
@@ -369,13 +372,11 @@ const ProfileAddTournament = ({
                     value={tournament.role}
                   >
                     <option value="--">--</option>
-                    {teamroles.map((tr) =>
-                      tr.role.map((rol, idx) => (
-                        <option key={idx} value={rol}>
-                          {rol}
-                        </option>
-                      ))
-                    )}
+                    {teamroles.map((tr, idx) => (
+                      <option key={idx} value={tr}>
+                        {tr}
+                      </option>
+                    ))}
                   </select>
 
                   <div className="form-group">
@@ -413,30 +414,30 @@ const ProfileAddTournament = ({
                   </div>
 
                   <div className="add_photos">
-                    {/* <ImageDropzone setImages={setImages} /> */}
-                    {/* {images.length > 0 ? (
-                        <div className="upload_btn">
-                          <form onSubmit={handlePhotoSubmit}>
-                            <textarea
-                              type="text"
-                              placeholder="Add a Description"
-                              id="title"
-                              name="title"
-                              value={title}
-                              onChange={(e) => setTitle(e.target.value)}
-                            />
-                            <a
-                              href="#!"
-                              className="btn"
-                              onClick={handlePhotoSubmit}
-                            >
-                              UPLOAD NOW{' '}
-                            </a>
-                          </form>
-                        </div>
-                      ) : (
-                        ''
-                      )} */}
+                    <ImageDropzone setImages={setImages} />
+                    {images.length > 0 ? (
+                      <div className="upload_btn">
+                        <form onSubmit={handlePhotoSubmit}>
+                          <textarea
+                            type="text"
+                            placeholder="Add a Description"
+                            id="title"
+                            name="title"
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
+                          />
+                          <a
+                            href="#!"
+                            className="btn"
+                            onClick={handlePhotoSubmit}
+                          >
+                            UPLOAD NOW{' '}
+                          </a>
+                        </form>
+                      </div>
+                    ) : (
+                      ''
+                    )}
                     <div className="overlay"></div>
                   </div>
 
@@ -452,4 +453,4 @@ const ProfileAddTournament = ({
   );
 };
 
-export default ProfileAddTournament;
+export default ProfileTournament;

@@ -10,29 +10,28 @@ import GamesDetails from './GamesDetails';
 import AllPosts from '@components/dashboard/AllPosts';
 import axios from 'axios';
 import baseURL from '@utils/baseURL';
-import { toast } from 'react-toastify';
-import Moment from 'moment';
 import { useRouter } from 'next/router';
-import FavTournament from '../tournament/FavTournament';
-import Link from 'next/link';
-import { format } from 'date-fns';
-import { MPNumberFormat } from '../../utils/helpers';
-import Tournament_Reg from '../tournament/TournamentRegister';
-import ImageDropzone from '../common/ImageDropzone';
 import cookie from 'js-cookie';
 import ProfileSponsors from './ProfileSponsors';
-import ProfileAddTournament from './ProfileAddTournament';
+import ProfileTournament from './ProfileTournament';
 import ProfileTeams from './ProfileTeams';
 
-const ProfileData = ({ user, Userdata, player, products, teams }) => {
+const ProfileData = ({ user, Userdata, products, teams }) => {
   const profile = Userdata.profile;
   const [sponsors, setSponsors] = useState([]);
   let [tabData, setTabData] = useState([]);
+  const [allGames, setAllGames] = useState([]);
+  const [teamroles, setTeamRoles] = useState([]);
 
   useEffect(() => {
     axios
       .get(`${baseURL}/api/all/sponsors`)
       .then((res) => setSponsors(res.data));
+    axios.get(`${baseURL}/api/all/games`).then((res) => setAllGames(res.data));
+
+    axios
+      .get(`${baseURL}/api/all/teamroles`)
+      .then((res) => setTeamRoles(res.data));
   }, []);
 
   const router = useRouter();
@@ -43,7 +42,6 @@ const ProfileData = ({ user, Userdata, player, products, teams }) => {
 
   useEffect(() => {}, [profile]);
   useEffect(() => {}, [Userdata]);
-  console.log(Userdata);
 
   const handleTabs = async (Type) => {
     console.log(Type);
@@ -58,7 +56,7 @@ const ProfileData = ({ user, Userdata, player, products, teams }) => {
       )
       .then((res) => setTabData(res.data));
   };
-  console.log(tabData);
+
   return (
     <>
       <ul className="profile_tab_btn">
@@ -261,14 +259,17 @@ const ProfileData = ({ user, Userdata, player, products, teams }) => {
           Userdata={Userdata}
           profile={profile}
           user={user}
+          allGames={allGames}
+          teamroles={teamroles}
           teamsData={tabData}
         />
 
-        <ProfileAddTournament
+        <ProfileTournament
           user={user}
-          Userdata={Userdata}
           profile={profile}
           teams={teams}
+          allGames={allGames}
+          teamroles={teamroles}
           tournamentData={tabData}
         />
 
