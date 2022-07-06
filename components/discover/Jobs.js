@@ -7,6 +7,7 @@ import FileDropzone from '@components/common/FileDropzone';
 import cookie from 'js-cookie';
 import { useMutation } from 'react-query';
 import { toast } from 'react-toastify';
+import ReactCountryFlag from 'react-country-flag';
 
 const Jobs = ({ user, profile, myState }) => {
   const [jobs, setJobs] = useState([]);
@@ -105,27 +106,35 @@ const Jobs = ({ user, profile, myState }) => {
                   <h3> {job.position}</h3>
 
                   <p>
-                    <b>EXPERIENCE:</b> {job?.experience_start} -{' '}
-                    {job?.experience_end} years
+                    <b>EXPERIENCE: -- </b>
                   </p>
                   <p>
-                    <b> LOCATION:</b> {job.location}
+                    <b> LOCATION:</b>{' '}
+                    <ReactCountryFlag
+                      countryCode={job.location}
+                      svg
+                      style={{
+                        width: '2em',
+                        height: '2em'
+                      }}
+                    />
                   </p>
-                  {job?.salary_start === '0' || job?.salary_end === '0' ? (
+                  {job.salary === 0 ? (
                     <p>
                       <b>Salary:</b> Not Disclosed
                     </p>
                   ) : (
                     <p>
-                      <b>Salery:</b> {job?.currency} {job?.salary_start} -{' '}
-                      {job?.currency} {job?.salary_end}
+                      <b>Salery:</b> {job?.currency} {job.salary}
                     </p>
                   )}
                 </div>
                 <div className="logo_box jobs_img">
                   <a href={`jobs/${job._id}`}>
-                    <img src={job.job_by?.imgUrl} alt="" />
-                    <h3>{job.job_by ? job.job_by.name : 'Not Available'}</h3>
+                    <img src={job.job_owner?.imgUrl} alt="" />
+                    <h3>
+                      {job.job_owner ? job.job_owner.name : 'Not Available'}
+                    </h3>
                   </a>
                 </div>
                 {/* <FileDropzone setFiles={setFiles} />

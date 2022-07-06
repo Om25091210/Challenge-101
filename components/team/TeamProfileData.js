@@ -332,6 +332,8 @@ const TeamProfileData = ({
             team={data.team}
             isManager={isManager}
             isAdmin={isAdmin}
+            user={user}
+            profile={profile}
           />
         </div>
         <div className="tab hide" id="about">

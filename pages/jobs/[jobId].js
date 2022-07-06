@@ -4,6 +4,7 @@ import SignedHeader from '@components/SignedHeader';
 import LeftNav from '@components/LeftNav';
 import AllScript from '../AllScript';
 import { MPNumberFormat } from '@utils/helpers';
+import ReactCountryFlag from 'react-country-flag';
 
 const Job = ({ data, user }) => {
   return (
@@ -17,65 +18,42 @@ const Job = ({ data, user }) => {
           <div className="left_jobs">
             <h1>
               {' '}
-              {data.position} - {data.job_role}
+              {data.title} - {data.job_type}
             </h1>
 
             <div className="job_profile1">
               <span>
-                <i className="fa fa-briefcase" aria-hidden="true"></i> :{' '}
-                {data?.experience_start} - {data?.experience_end} Years
-              </span>
-              <span>
-                <i className="fa fa-map-marker" aria-hidden="true"></i>{' '}
-                {data.location.map((loc) => (
-                  <b>{loc}</b>
-                ))}
+                {data.location}{' '}
+                <ReactCountryFlag
+                  countryCode={data.location}
+                  svg
+                  style={{
+                    width: '2em',
+                    height: '2em'
+                  }}
+                />
               </span>
               <i className="fa fa-money" aria-hidden="true"></i>
               <span className="">
-                {data.salary_start === '0' || data.salary_end === '0'
-                  ? 'Not Disclosed'
-                  : (
-                      <MPNumberFormat
-                        value={
-                          data.salary_start
-                            ? data.salary_start
-                            : 'Not Disclosed'
-                        }
-                        currency={data.currency}
-                      />
-                    ) -
-                    (
-                      <MPNumberFormat
-                        value={
-                          data.salary_end ? data.salary_end : 'Not Disclosed'
-                        }
-                        currency={data.currency}
-                      />
-                    )}
+                {data.salary === 0 ? (
+                  'Not Disclosed'
+                ) : (
+                  <MPNumberFormat
+                    value={data.salary ? data.salary : 'Not Disclosed'}
+                    currency={data.currency}
+                  />
+                )}
               </span>
-              <span>
-                {' '}
-                Status: {data.status ? 'Available' : 'Closed'}
-                {/* {data.languages.map((lan) => (
-          <b> Languages: {lan} </b>
-        ))} */}
-              </span>
+              <span> Status: {data.status ? 'Available' : 'Closed'}</span>
             </div>
 
-            <p className="emp_type">Employment Type : {data.employment_type}</p>
-
             <h2>Job Description</h2>
+            <ul>{data?.description}</ul>
 
-            <ul>{data?.job_description}</ul>
-
-            <h2>Desired Candidate Profile</h2>
-
-            {data?.candidate_profile}
-
-            <h2>Education</h2>
-
-            <div className="details">{data?.education}</div>
+            <h2>Available Positions</h2>
+            {data.availPos.map((pos) => (
+              <p>{pos}</p>
+            ))}
           </div>
 
           <div className="right_job">
