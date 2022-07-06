@@ -27,6 +27,7 @@ import Moment from 'moment';
 import { toast } from 'react-toastify';
 import TournamentFollow from '../../components/tournament/TournamentFollow';
 import AllPosts from '../../components/dashboard/AllPosts';
+import TournamentRules from '../../components/tournament/TournamentRules';
 
 const TournamentDetail = ({ user, data, products }) => {
   if (data) {
@@ -345,6 +346,7 @@ const TournamentDetail = ({ user, data, products }) => {
                 </div>
 
                 <div className="flex prices">
+                  <TournamentRules tournamentId={data.tournament._id} />
                   <h5>Prize Pool</h5>
                   {data.tournament.currency}
                   <span className="">

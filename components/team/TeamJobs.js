@@ -44,33 +44,33 @@ const TeamJobs = ({ jobs, team, isManager, isAdmin, user, profile }) => {
           <div className="team_row arena_team_row" key={index}>
             <div className="inner_team">
               <div className="mores jobss">
-                <h3>{job.position}</h3>
+                <h3>{job.job_type}</h3>
 
                 <p>
-                  <b>EXPERIENCE:</b> {job.experience_start} -{' '}
-                  {job.experience_end} Years
+                  <b>EXPERIENCE: -- </b>
                 </p>
                 <p>
                   <b> LOCATION:</b>
                   {job.location}
                 </p>
                 <p>
-                  <b>Salary:</b> Not Disclosed
+                  <b>Salary:</b> {job.currency}{' '}
+                  {job.salary === 0 ? '--' : job.salary}
                 </p>
               </div>
               <div className="logo_box">
                 <img
                   src={
-                    team.imgUrl != ''
-                      ? team.imgUrl
+                    job.job_owner.imgUrl != ''
+                      ? job.job_owner.imgUrl
                       : '/assets/media/discover/lxg.png'
                   }
                   className="thumb_img"
                   alt=""
                 />
-                <h3>{team.name}</h3>
+                <h3>{job.job_owner.name}</h3>
               </div>
-              <a href="#" className="join">
+              <a href={`/jobs/${job._id}`} className="join">
                 APPLY NOW
               </a>{' '}
             </div>

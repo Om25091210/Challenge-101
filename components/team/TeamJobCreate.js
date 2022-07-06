@@ -22,7 +22,6 @@ const TeamJobCreate = ({ user, profile }) => {
   });
 
   const options = useMemo(() => countryList().getData(), []);
-  console.log(profile);
   useEffect(() => {
     //TeamRole
     axios
@@ -97,13 +96,9 @@ const TeamJobCreate = ({ user, profile }) => {
               onChange={handleChangeCheck}
               value={state.role}
             >
-              {teamroles.map((tr) =>
-                tr.map((rol, idx) => (
-                  <option key={idx} value={rol}>
-                    {rol}
-                  </option>
-                ))
-              )}
+              {teamroles.map((role) => (
+                <option value={role}>{role}</option>
+              ))}
             </select>
           </div>
 

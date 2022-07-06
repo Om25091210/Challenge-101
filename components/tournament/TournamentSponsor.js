@@ -18,7 +18,8 @@ const TournamentSponsor = ({ user, data, isUser }) => {
   const isLoggedInUser = data.tournament?.user?._id === user._id;
   const [sponsors, setSponsors] = useState([]);
   const [state, setState] = useState({
-    sponsor: ''
+    sponsor: '',
+    title: ''
   });
   const router = useRouter();
   const refreshData = () => {
@@ -44,6 +45,7 @@ const TournamentSponsor = ({ user, data, isUser }) => {
           body: JSON.stringify(state)
         }
       );
+      $('a.model_close').parent().removeClass('show_model');
       toast.success('Your Sponsor has been set successfully! ');
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
@@ -104,6 +106,17 @@ const TournamentSponsor = ({ user, data, isUser }) => {
                 <form className="common_form" onSubmit={handleSubmit}>
                   <div className="form-group">
                     <div className="colm">
+                      <label htmlFor="title">Title</label>
+                      <input
+                        type="text"
+                        value={state.title}
+                        onChange={handleChange}
+                        name="title"
+                      />
+                    </div>
+
+                    <div className="colm">
+                      <label htmlFor="sponosr">Add Sponsor</label>
                       <select
                         className="form-control"
                         multiple={true}
@@ -119,6 +132,7 @@ const TournamentSponsor = ({ user, data, isUser }) => {
                         ))}
                       </select>
                     </div>
+
                     <button className="btn">Update</button>
                   </div>
                 </form>

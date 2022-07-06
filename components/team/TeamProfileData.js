@@ -14,6 +14,7 @@ import TeamJobs from './TeamJobs';
 import TeamJoines from './TeamJoines';
 import AllPosts from '../dashboard/AllPosts';
 import TeamRigs from './TeamRigs';
+import RecruitmentCard from '../common/RecruitmentCard';
 
 const TeamProfileData = ({
   user,
@@ -206,6 +207,11 @@ const TeamProfileData = ({
               </div>
               <button className="game_btn">INVITE TO TEAM</button>
             </div>
+            <RecruitmentCard
+              type="TEAM"
+              RecruitTeamId={data.team._id}
+              user={user}
+            />
           </div>
         </div>
         <div className="tab hide" id="squads">
