@@ -23,12 +23,12 @@ const Team = ({ user, data, products, profile, teams }) => {
     }).length > 0;
 
   const isManager =
-    data.team.employees.filter(
+    data.team?.employees.filter(
       (emp) => emp.role === 'Manager' && emp.employeeId._id === user._id
     ).length > 0;
 
   const isAdmin =
-    data.team.employees.filter(
+    data.team?.employees.filter(
       (emp) => emp.role === 'Admin' && emp.employeeId._id === user._id
     ).length > 0;
 

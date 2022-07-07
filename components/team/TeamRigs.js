@@ -13,7 +13,7 @@ const TeamRigs = ({ user, profile, data, isAdmin, teamRigs }) => {
     Headphone: '',
     Mat: '',
     Monitor: '',
-    Gpu: '',
+    GPU: '',
     Chair: '',
     rigsType: 'PC',
     Cbrand: '',
@@ -162,7 +162,7 @@ const TeamRigs = ({ user, profile, data, isAdmin, teamRigs }) => {
                         states={states}
                       />
 
-                      <RigsFilter val="Gpu" data={rigsData} states={states} />
+                      <RigsFilter val="GPU" data={rigsData} states={states} />
 
                       <RigsFilter val="Chair" data={rigsData} states={states} />
                     </>

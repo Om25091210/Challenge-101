@@ -106,12 +106,13 @@ const TeamSponsors = ({ user, data, isManager, isAdmin, teamSponsors }) => {
                         multiple={true}
                         onChange={handleChange}
                       >
-                        {sponsors.map((spon, idx) => (
-                          <option key={idx} value={spon._id}>
-                            {' '}
-                            {spon.name}{' '}
-                          </option>
-                        ))}
+                        {sponsors &&
+                          sponsors.map((spon, idx) => (
+                            <option key={idx} value={spon._id}>
+                              {' '}
+                              {spon.name}{' '}
+                            </option>
+                          ))}
                       </select>
                     </div>
                     <button className="btn">Update</button>

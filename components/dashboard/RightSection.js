@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import baseURL from '@utils/baseURL';
 import Moment from 'moment';
-import Challengelist from './ChallengeList';
+import Challengelist from '../challenges/ChallengeList';
 
 const RightSection = ({ user, suggestedplayers, teams, profile }) => {
   const [matches, setMatches] = useState([]);

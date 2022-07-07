@@ -53,7 +53,7 @@ const Challenge_Approve = ({ challenge, user, team }) => {
   return (
     <>
       <button className="btn" onClick={reqhandlesubmit}>
-        Approve
+        Accept
       </button>
     </>
   );

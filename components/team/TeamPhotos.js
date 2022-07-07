@@ -96,6 +96,7 @@ const TeamPhotos = ({ user, team, isManager, isAdmin }) => {
       <p></p>
 
       {team.imagesgallery.length > 0 ? (
+        team.imagesgallery &&
         team.imagesgallery.map((imgg, idx) => (
           <div className="imagess_box" key={idx}>
             <div className="imagess">

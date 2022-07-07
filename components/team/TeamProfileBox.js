@@ -8,7 +8,7 @@ import ReactCountryFlag from 'react-country-flag';
 import Moment from 'moment';
 import TeamFollow from './TeamFollow';
 import TeamRequest from '../discover/invites/TeamRequest';
-import TeamChallenge from './TeamChallenge';
+import TeamChallenge from '../challenges/TeamChallenge';
 
 const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
   const [attr, setAttr] = useState(data.team.attributes);

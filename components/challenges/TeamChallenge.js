@@ -6,12 +6,15 @@ import { toast } from 'react-toastify';
 
 const TeamChallenge = ({ teams, team }) => {
   const [state, setState] = useState({
-    Userteam: '',
+    User_team: '',
     game: '',
     players: '',
-    challengerTeam: team._id,
+    opponent_team: team._id,
     startDate: '',
-    startTime: ''
+    startTime: '',
+    format: '',
+    entry_fee: null,
+    challengeType: ''
   });
 
   function onChange(e) {
@@ -29,11 +32,11 @@ const TeamChallenge = ({ teams, team }) => {
     }
   }
 
-  const UserTeam = teams.filter((team) => {
-    return team._id === parseInt(state.Userteam);
+  const User_team = teams.filter((team) => {
+    return team._id === parseInt(state.User_team);
   });
 
-  var commonGames = UserTeam[0]?.games.filter(function (val1) {
+  var commonGames = User_team[0]?.games.filter(function (val1) {
     return team.games.some(function (val2) {
       return val1.gameId._id === val2.gameId;
     });
@@ -61,7 +64,10 @@ const TeamChallenge = ({ teams, team }) => {
       <a href="#!" className="model_show_btn">
         <button>Challenge</button>
       </a>
-      <div className="common_model_box">
+      <div
+        className="common_model_box"
+        style={{ marginTop: '100', overflow: 'scroll' }}
+      >
         <a href="#!" className="model_close btn">
           X
         </a>
@@ -70,7 +76,7 @@ const TeamChallenge = ({ teams, team }) => {
           <h3>Challenge the team {team.name}</h3>
 
           <form onSubmit={handleEditStat} className="common_form personal_form">
-            <select name="Userteam" id="teamselect" onChange={onChange}>
+            <select name="User_team" id="teamselect" onChange={onChange}>
               <option value="">---</option>
               {teams.map((team) => (
                 <option value={team._id}>{team.name}</option>
@@ -87,7 +93,7 @@ const TeamChallenge = ({ teams, team }) => {
               )}
             </select>
             <select name="players" id="players" multiple onChange={onChange}>
-              {UserTeam[0]?.players?.map((plyr) => (
+              {User_team[0]?.players?.map((plyr) => (
                 <option value={plyr?.playerId?._id}>
                   {plyr.playerId?.apidata
                     ? plyr.playerId.apidata.data.platformInfo.platformUserHandle
@@ -95,6 +101,24 @@ const TeamChallenge = ({ teams, team }) => {
                 </option>
               ))}
             </select>
+            <select name="format" onChange={onChange}>
+              <option value="">Choose the challenge format</option>
+              <option value="Best of 3">Best of 3</option>
+              <option value="Best of 5">Best of 5</option>
+            </select>
+            <select name="challengeType" onChange={onChange}>
+              <option value="">Choose challenge type</option>
+              <option value="Team Deathmatch">Team Deathmatch</option>
+              <option value="Deathmatch">Deathmatch</option>
+              <option value="Domination">Domination</option>
+            </select>
+            <input
+              type="text"
+              onChange={onChange}
+              value={state.entry_fee}
+              name="entry_fee"
+              placeholder="Enter fees"
+            />
             <input
               type="date"
               onChange={onChange}

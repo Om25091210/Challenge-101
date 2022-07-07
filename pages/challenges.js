@@ -7,20 +7,24 @@ import AllScript from './AllScript';
 import cookie from 'js-cookie';
 import { toast } from 'react-toastify';
 import axios from 'axios';
-import PremiumPass from '../components/crypto/PremiumPass';
+import Moment from 'moment';
+import ChallengeApprove from '../components/discover/invites/ChallengeApprove';
 
-const challenges = ({ user, data, teams }) => {
+const challenges = ({ user, data, teams, profile }) => {
   const [searchText, setSearchText] = useState('');
   const [opponentTeam, setOpponentTeam] = useState(null);
   const [showform, setShowForm] = useState(true);
 
   const [state, setState] = useState({
-    Userteam: '',
+    User_team: '',
     game: '',
     players: '',
-    challengerTeam: null,
+    opponent_team: null,
     startDate: '',
-    startTime: ''
+    startTime: '',
+    format: '',
+    entry_fee: null,
+    challengeType: ''
   });
 
   const UserTeam = teams.filter((team) => {
@@ -97,6 +101,27 @@ const challenges = ({ user, data, teams }) => {
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }
   };
+  const teamCheck = teams.filter((team) => {
+    return data.find((chall) => {
+      return team._id === chall.opponent_team?._id;
+    });
+  });
+
+  const teamFiltered = data.filter((val2) => {
+    return val2.invites?.some((invi) => {
+      return (
+        teamCheck.length > 0 &&
+        teamCheck[0].players.some((plyr) => {
+          return profile.playergames.some((pg) => {
+            return (
+              pg?.player?._id === invi.playerId?._id &&
+              plyr.playerId?._id === invi.playerId?._id
+            );
+          });
+        })
+      );
+    });
+  });
 
   return (
     <>
@@ -118,7 +143,10 @@ const challenges = ({ user, data, teams }) => {
               Challenge
             </a>
 
-            <div className="common_model_box">
+            <div
+              className="common_model_box"
+              style={{ marginTop: '200', overflowY: 'scroll' }}
+            >
               <a href="#!" className="model_close">
                 X
               </a>
@@ -131,8 +159,10 @@ const challenges = ({ user, data, teams }) => {
                     <label> Choose your Team</label>
                     <select name="Userteam" id="teamselect" onChange={onChange}>
                       <option value="">---</option>
-                      {teams.map((team,idtx) => (
-                        <option value={team._id} key={idtx}>{team.name}</option>
+                      {teams.map((team, idtx) => (
+                        <option value={team._id} key={idtx}>
+                          {team.name}
+                        </option>
                       ))}
                     </select>
                   </div>
@@ -168,20 +198,23 @@ const challenges = ({ user, data, teams }) => {
                       </div>
                     ) : null}
                   </div>
-                  <select name="game" id="game" onChange={onChange}>
-                    <option value="">---</option>
-                    {commonGames?.length === 0 ? (
-                      <option value="">
-                        No games available between the teams.
-                      </option>
-                    ) : (
-                      commonGames?.map((cG, idcx) => (
-                        <option value={cG.gameId?._id} key={idcx}>
-                          {cG.gameId?.name}
+                  <div className="colm rows">
+                    <label>Choose a game</label>
+                    <select name="game" id="game" onChange={onChange}>
+                      <option value="">---</option>
+                      {commonGames?.length === 0 ? (
+                        <option value="">
+                          No games available between the teams.
                         </option>
-                      ))
-                    )}
-                  </select>
+                      ) : (
+                        commonGames?.map((cG, idcx) => (
+                          <option value={cG.gameId?._id} key={idcx}>
+                            {cG.gameId?.name}
+                          </option>
+                        ))
+                      )}
+                    </select>
+                  </div>
                   <div className="colm rows">
                     <label htmlFor="search">Choose Your Team Players</label>
                     <select
@@ -199,6 +232,32 @@ const challenges = ({ user, data, teams }) => {
                         </option>
                       ))}
                     </select>
+                  </div>
+                  <div className="colm rows">
+                    <label htmlFor="">Format</label>
+                    <select name="format" onChange={onChange}>
+                      <option value="">---</option>
+                      <option value="Best of 3">Best of 3</option>
+                      <option value="Best of 5">Best of 5</option>
+                    </select>
+                  </div>
+                  <div className="colm rows">
+                    <label htmlFor="">Challenge Type</label>
+                    <select name="challengeType" onChange={onChange}>
+                      <option value="">---</option>
+                      <option value="Team Deathmatch">Team Deathmatch</option>
+                      <option value="Deathmatch">Deathmatch</option>
+                      <option value="Domination">Domination</option>
+                    </select>
+                  </div>
+                  <div className="colm rows">
+                    <input
+                      type="text"
+                      onChange={onChange}
+                      value={state.entry_fee}
+                      name="entry_fee"
+                      placeholder="Enter fees"
+                    />
                   </div>
                   <div className="colm rows">
                     <input
@@ -223,9 +282,6 @@ const challenges = ({ user, data, teams }) => {
               </div>
               <div className="overlay"></div>
             </div>
-            {data.map((challenge, icx) => (
-              <p key={icx}>{challenge.challenger?.name}</p>
-            ))}
 
             <h2>GAME</h2>
 
@@ -281,107 +337,54 @@ const challenges = ({ user, data, teams }) => {
 
           <div className="white_bg challenge_card_box">
             <ul className="challenge_card">
-              <li>
-                <div className="row1">
-                  <div className="card_img">
-                    {' '}
-                    <div className="img"></div> Team Werewolves
-                  </div>{' '}
-                  <img src="/assets/media/challenge/f.png" alt="" />
+              {!teamFiltered || teamFiltered.length === 0 ? (
+                <div>
+                  <span>No Challenges for you</span>
                 </div>
+              ) : (
+                teamFiltered.map((chall) => (
+                  <li>
+                    <div className="row1">
+                      <div className="card_img">
+                        <div className="img">
+                          <img src={chall.User_team?.imgUrl} alt="" />
+                        </div>
+                        {chall.User_team?.name}
+                      </div>
+                      <img src="/assets/media/challenge/f.png" alt="" />
+                    </div>
 
-                <div className="row1">
-                  <span>
-                    <b>Type:</b>
-                    Team Dethmatch
-                  </span>
-                  <span>
-                    <b>Format:</b>
-                    Best of 3
-                  </span>
-                  <span>
-                    <b>Entry Fee:</b>
-                    10
-                  </span>
-                </div>
+                    <div className="row1">
+                      <span>
+                        <b>Type:</b>
+                        {chall?.challengeType}
+                      </span>
+                      <span>
+                        <b>Format:</b>
+                        {chall.format ? chall.format : '---'}
+                      </span>
+                      <span>
+                        <b>Entry Fee:</b>
+                        {chall.entry_fee ? chall.entry_fee : '---'}
+                      </span>
+                    </div>
 
-                <div className="row1">
-                  <span>
-                    <b>Challenge Express:</b>
-                    OD:OH:45M
-                  </span>
+                    <div className="row1">
+                      <span>
+                        <b>Challenge Express:</b>
+                        {Moment(chall?.startDate).format('DD MMM YYYY')}-
+                        {chall?.startTime}
+                      </span>
 
-                  <button className="btn">Accept</button>
-                </div>
-              </li>
-
-              <li>
-                <div className="row1">
-                  <div className="card_img">
-                    {' '}
-                    <div className="img"></div> Team Werewolves
-                  </div>{' '}
-                  <img src="/assets/media/challenge/f.png" alt="" />
-                </div>
-
-                <div className="row1">
-                  <span>
-                    <b>Type:</b>
-                    Team Dethmatch
-                  </span>
-                  <span>
-                    <b>Format:</b>
-                    Best of 3
-                  </span>
-                  <span>
-                    <b>Entry Fee:</b>
-                    10
-                  </span>
-                </div>
-
-                <div className="row1">
-                  <span>
-                    <b>Challenge Express:</b>
-                    OD:OH:45M
-                  </span>
-
-                  <button className="btn">Accept</button>
-                </div>
-              </li>
-
-              <li>
-                <div className="row1">
-                  <div className="card_img">
-                    {' '}
-                    <div className="img"></div> Team Werewolves
-                  </div>{' '}
-                  <img src="/assets/media/challenge/f.png" alt="" />
-                </div>
-
-                <div className="row1">
-                  <span>
-                    <b>Type:</b>
-                    Team Dethmatch
-                  </span>
-                  <span>
-                    <b>Format:</b>
-                    Best of 3
-                  </span>
-                  <span>
-                    <b>Entry Fee:</b>
-                    10
-                  </span>
-                </div>
-
-                <div className="row1">
-                  <span>
-                    <b>Challenge Express:</b>
-                    OD:OH:45M
-                  </span>
-
-                  <button className="btn">Accept</button>
-                </div>
-              </li>
+                      <ChallengeApprove
+                        challenge={chall}
+                        team={chall.opponent_team}
+                        user={user}
+                      />
+                    </div>
+                  </li>
+                ))
+              )}
             </ul>
 
             <p>Similar players you can challenge.</p>

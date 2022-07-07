@@ -15,7 +15,7 @@ const Challengelist = ({ user, teams, profile }) => {
 
   const teamCheck = teams.filter((team) => {
     return challenges.find((chall) => {
-      return team._id === chall.challenger?._id;
+      return team._id === chall.User_team?._id;
     });
   });
 
@@ -34,7 +34,7 @@ const Challengelist = ({ user, teams, profile }) => {
       );
     });
   });
-
+  console.log(teamFiltered);
   return (
     <div className="recent_activity">
       <h2>Challenge List</h2>
@@ -53,7 +53,7 @@ const Challengelist = ({ user, teams, profile }) => {
               {' '}
               <a href="#">
                 <span className="act_name">
-                  {result.challenger.name} has challenged you for a{' '}
+                  {result.User_team?.name} has challenged you for a
                   {result.game?.name} match
                 </span>
               </a>
