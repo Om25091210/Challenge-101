@@ -6,7 +6,7 @@ import 'rc-time-picker/assets/index.css';
 import { toast } from 'react-toastify';
 
 const TeamJobCreate = ({ user, profile }) => {
-  const [teamroles, setTeamRoles] = useState([]);
+  const [teamroles, setTeamroles] = useState([]);
 
   const [state, setState] = useState({
     name: '',
@@ -26,7 +26,7 @@ const TeamJobCreate = ({ user, profile }) => {
     //TeamRole
     axios
       .get(`${baseURL}/api/all/teamroles`)
-      .then((res) => setTeamRoles(res.data));
+      .then((res) => setTeamroles(res.data));
   }, []);
 
   const handleSubmit = async (e) => {
@@ -97,8 +97,8 @@ const TeamJobCreate = ({ user, profile }) => {
               value={state.role}
             >
               {teamroles &&
-                teamroles.map((tr, idx) => (
-                  <option key={idx} value={tr}>
+                teamroles.map((tr, itdx) => (
+                  <option key={itdx} value={tr}>
                     {tr}
                   </option>
                 ))}
@@ -201,8 +201,8 @@ const TeamJobCreate = ({ user, profile }) => {
               multiple={true}
             >
               {teamroles &&
-                teamroles.map((role, idx) => (
-                  <option key={idx} value={role}>
+                teamroles.map((role, iedx) => (
+                  <option key={iedx} value={role}>
                     {role}
                   </option>
                 ))}
