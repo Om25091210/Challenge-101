@@ -197,13 +197,11 @@ const TeamJobCreate = ({ user, profile }) => {
               onChange={handleChange}
               multiple={true}
             >
-              {teamroles.map((tr) =>
-                tr.role.map((role, idx) => (
-                  <option key={idx} value={role}>
-                    {role}
-                  </option>
-                ))
-              )}
+              {teamroles.map((role) => (
+                <option key={idx} value={role}>
+                  {role}
+                </option>
+              ))}
             </select>
           </div>
 
