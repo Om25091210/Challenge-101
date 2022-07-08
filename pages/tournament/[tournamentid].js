@@ -28,14 +28,11 @@ import { toast } from 'react-toastify';
 import TournamentFollow from '../../components/tournament/TournamentFollow';
 import AllPosts from '../../components/dashboard/AllPosts';
 import TournamentRules from '../../components/tournament/TournamentRules';
+import TournamentEdit from '../../components/tournament/TournamentEdit';
+import Tournament_Reg from '../../components/tournament/TournamentRegister';
 
-const TournamentDetail = ({ user, data, products }) => {
+const TournamentDetail = ({ user, data, products, profile }) => {
   if (data) {
-    const [showform, setShowForm] = useState(false);
-    const [desc, setDesc] = useState(
-      data.tournament ? data.tournament.description : null
-    );
-    const [tour, setTour] = useState(data.tournament);
     const isUser = data.tournament?.user?._id === user._id;
     const router = useRouter();
     const [sociallinks, setSociallinks] = useState(data.tournament.social);
@@ -55,20 +52,8 @@ const TournamentDetail = ({ user, data, products }) => {
       );
     });
 
-    const toggleShowform = () => {
-      if (showform) {
-        setShowForm(false);
-      } else {
-        setShowForm(true);
-      }
-    };
-
     const refreshData = () => {
       router.replace(router.asPath);
-    };
-
-    const onChange = (e) => {
-      setDesc(e.target.value);
     };
 
     function handleChangeSocial(e) {
@@ -99,56 +84,6 @@ const TournamentDetail = ({ user, data, products }) => {
       }
     };
 
-    const addingDesc = async () => {
-      const res = await fetch(
-        `${baseURL}/api/tournaments/${data.tournament._id}`,
-        {
-          method: 'PUT',
-          body: JSON.stringify({
-            desc
-          }),
-          headers: {
-            'Content-type': 'application/json'
-          }
-        }
-      );
-      return res.json();
-    };
-    const handleButtonForm = (e) => {
-      addingDesc();
-      setShowForm(false);
-      refreshData();
-    };
-
-    const handleSubmitphno = async (e) => {
-      e.preventDefault();
-      try {
-        const res = await fetch(
-          `${baseURL}/api/tournaments/tourdetails/${data.tournament._id}`,
-          {
-            method: 'PATCH',
-            body: JSON.stringify({
-              tour
-            }),
-            headers: {
-              'Content-type': 'application/json'
-            }
-          }
-        );
-        toast.success(
-          'Your Tournament Details has been Updated successfully! '
-        );
-      } catch (err) {
-        toast.error(err.response?.data?.msg || 'Please recheck your inputs');
-      }
-      $('a.model_close').parent().removeClass('show_model');
-      refreshData();
-    };
-
-    function handleChangeTour(e) {
-      setTour({ ...tour, [e.target.name]: e.target.value });
-    }
-
     const handleDeleteSubmit = async (e) => {
       e.preventDefault();
       axios.delete(`${baseURL}/api/tournaments/${data.tournament._id}`, {
@@ -162,11 +97,6 @@ const TournamentDetail = ({ user, data, products }) => {
       toast.success('Deleted Successfully');
       router.push('/dashboard');
     };
-
-    const isRegistered =
-      data?.tournament?.registered?.filter((tour) => {
-        return tour?.user?._id === user?._id;
-      }).length > 0;
 
     const handleRegistry = async (e) => {
       e.preventDefault();
@@ -293,37 +223,11 @@ const TournamentDetail = ({ user, data, products }) => {
 
                 <div className="bottom_details">
                   <div className="two_btns">
-                    {data.tournament.playType === 'TEAMS' ? (
-                      <>
-                        <button
-                          className="btn"
-                          onClick={handleRegistry}
-                          disabled={isTeamRegFull === true}
-                        >
-                          {isRegistered ? (
-                            'REGISTERED'
-                          ) : (
-                            <>
-                              {isTeamRegFull ? 'SLOTS UNAVAILABLE' : 'REGISTER'}
-                            </>
-                          )}
-                        </button>{' '}
-                      </>
-                    ) : (
-                      <>
-                        <button
-                          className="btn"
-                          onClick={handleRegistry}
-                          disabled={isRegFull === true}
-                        >
-                          {isRegistered ? (
-                            'REGISTERED'
-                          ) : (
-                            <>{isRegFull ? 'SLOTS UNAVAILABLE' : 'REGISTER'}</>
-                          )}
-                        </button>
-                      </>
-                    )}{' '}
+                    <Tournament_Reg
+                      user={user}
+                      tournament={data.tournament}
+                      profile={profile}
+                    />{' '}
                     <a href="#" className="btn">
                       BOOK TICKETS
                     </a>
@@ -346,7 +250,12 @@ const TournamentDetail = ({ user, data, products }) => {
                 </div>
 
                 <div className="flex prices">
-                  <TournamentRules tournamentId={data.tournament._id} />
+                  {data.tournament.user?._id === user._id ? (
+                    <div>
+                      <TournamentEdit data={data} user={user} />
+                      <TournamentRules tournamentId={data.tournament._id} />
+                    </div>
+                  ) : null}
                   <h5>Prize Pool</h5>
                   {data.tournament.currency}
                   <span className="">
@@ -516,33 +425,8 @@ const TournamentDetail = ({ user, data, products }) => {
                       </div>
                     </span>
                   </div>
-                  {isUser ? (
-                    <button className="bio_edit" onClick={toggleShowform}>
-                      <i className="fa fa-pencil" aria-hidden="true"></i>
-                    </button>
-                  ) : null}
 
-                  {!showform ? (
-                    <p>
-                      {' '}
-                      {data.tournament ? data.tournament.description : ''}{' '}
-                    </p>
-                  ) : null}
-
-                  {showform ? (
-                    <form onSubmit={(e) => e.preventDefault()}>
-                      <textarea
-                        name="text"
-                        value={desc}
-                        onChange={onChange}
-                      ></textarea>
-                      <button onClick={handleButtonForm} className="btn">
-                        Update
-                      </button>
-                    </form>
-                  ) : (
-                    ''
-                  )}
+                  <p> {data.tournament ? data.tournament.description : ''} </p>
 
                   <div className="games">
                     <h3>organizer:</h3>
@@ -560,39 +444,38 @@ const TournamentDetail = ({ user, data, products }) => {
 
                   <div className="games">
                     <h3>PARTICIPANTS: </h3>
-                    {data.tournament.registered[0]?.user._id ? (
-                      <a
-                        href={`/user/${data.tournament.registered[0]?.user?._id}`}
-                      >
-                        <img
-                          src={`${data.tournament.registered[0]?.user?.profilePicUrl}`}
-                          alt=""
-                        />
-                      </a>
-                    ) : null}
-                    {data.tournament.registered[1]?.user._id ? (
-                      <a
-                        href={`/user/${data.tournament.registered[1]?.user?._id}`}
-                      >
-                        <img
-                          src={`${data.tournament.registered[1]?.user?.profilePicUrl}`}
-                          alt=""
-                        />
-                      </a>
-                    ) : null}
-                    {data.tournament.registered[2]?.user._id ? (
-                      <a
-                        href={`/user/${data.tournament.registered[2]?.user?._id}`}
-                      >
-                        <img
-                          src={`${data.tournament.registered[2]?.user?.profilePicUrl}`}
-                          alt=""
-                        />
-                      </a>
-                    ) : null}
-                    {data.tournament.registered.length === 0
-                      ? 'No Participants Yet'
-                      : null}
+                    {data.tournament.playType === 'TEAMS'
+                      ? data.tournament.teams
+                          ?.slice(0, 3)
+                          .map((team) => (
+                            <img
+                              style={{ height: '30px', width: '30px' }}
+                              src={team?.teamId.imgUrl}
+                              alt=""
+                            />
+                          ))
+                      : data.tournament.registered
+                          ?.slice(0, 3)
+                          .map((reg) => (
+                            <img
+                              style={{ height: '30px', width: '30px' }}
+                              src={reg?.user?.profilePicUrl}
+                              alt=""
+                            />
+                          ))}
+                    {data.tournament.playType === 'PLAYERS' ? (
+                      <>
+                        {data.tournament.registered.length === 0
+                          ? 'No Participants Yet'
+                          : null}
+                      </>
+                    ) : (
+                      <>
+                        {data.tournament.teams.length === 0
+                          ? 'No Teams Yet'
+                          : null}
+                      </>
+                    )}
                     {data.tournament.registered.length > 3 ? (
                       <a href="#!" className="model_show_btn more">
                         +{data.tournament.registered.length - 3}
@@ -606,34 +489,57 @@ const TournamentDetail = ({ user, data, products }) => {
                       <div className="inner_model_box">
                         <h3>Participants</h3>
                         <ul>
-                          {data.tournament.registered.map((ppl) => (
-                            <li>
-                              <div className="game_pic">
-                                {' '}
-                                <img
-                                  src={ppl.user.profilePicUrl}
-                                  alt={ppl.user.name}
-                                  style={{ height: '35px', width: '35px' }}
-                                />
-                              </div>
-                              <a href={`/user/${ppl.user._id}`}>
-                                <p>{ppl.user.name}</p>
-                              </a>
-                            </li>
-                          ))}
+                          {data.tournament.playType === 'PLAYERS' ? (
+                            <>
+                              {data.tournament.registered.map((ppl) => (
+                                <li>
+                                  <div className="game_pic">
+                                    {' '}
+                                    <img
+                                      src={ppl.user?.profilePicUrl}
+                                      alt={ppl.user?.name}
+                                      style={{ height: '35px', width: '35px' }}
+                                    />
+                                  </div>
+                                  <a href={`/user/${ppl.user?._id}`}>
+                                    <p>{ppl.user?.name}</p>
+                                  </a>
+                                </li>
+                              ))}
+                            </>
+                          ) : (
+                            <>
+                              {data.tournament.teams.map((team) => (
+                                <li>
+                                  <div className="game_pic">
+                                    {' '}
+                                    <img
+                                      src={team.teamId?.imgUrl}
+                                      alt={team.teamId?.name}
+                                      style={{ height: '35px', width: '35px' }}
+                                    />
+                                  </div>
+                                  <a href={`/user/${team.teamId?._id}`}>
+                                    <p>{team.teamId?.name}</p>
+                                  </a>
+                                </li>
+                              ))}
+                            </>
+                          )}
                         </ul>
                       </div>
                       <div className="overlay"></div>
                     </div>
                     <p className="slots">
-                      {data.tournament.registered.length} /{' '}
-                      {data.playType === 'TEAMS' ? (
+                      {data.tournament.playType === 'TEAMS' ? (
                         <>
-                          {data.tournament.participants} <b> SLOTS</b>
+                          {data.tournament.teams.length} /{' '}
+                          {data.tournament.maxTeams} <b> SLOTS</b>
                         </>
                       ) : (
                         <>
-                          {data.tournament.maxTeams} <b> SLOTS</b>
+                          {data.tournament.registered.length} /{' '}
+                          {data.tournament.participants} <b> SLOTS</b>
                         </>
                       )}
                     </p>
@@ -679,116 +585,6 @@ const TournamentDetail = ({ user, data, products }) => {
                         {data.tournament.tournamentType}
                       </li>
                     </ul>
-
-                    <span>
-                      <div>
-                        {' '}
-                        <a
-                          href="#!"
-                          className="model_show_btn"
-                          alt="personal details"
-                        >
-                          {isUser ? (
-                            <button className="btn">Tournament Edit</button>
-                          ) : null}
-                        </a>
-                        <div className="common_model_box">
-                          <a href="#!" className="model_close">
-                            X
-                          </a>
-                          <div className="inner_model_box">
-                            <h3>Tournament Detail's</h3>
-                            <form
-                              onSubmit={handleSubmitphno}
-                              className="common_form"
-                            >
-                              <div className="form-group">
-                                <div className="colm">
-                                  <label htmlFor="exampleFormControlInput1">
-                                    Category
-                                  </label>
-                                  <select
-                                    name="category"
-                                    id="category"
-                                    className="form-control"
-                                    value={tour?.category}
-                                    onChange={handleChangeTour}
-                                  >
-                                    <option value="--">--</option>
-                                    <option value="Death Match">
-                                      Death Match
-                                    </option>
-                                    <option value="Survival">Survival</option>
-                                    <option value="Online">Online</option>
-                                    <option value="Lan">LAN</option>
-                                  </select>
-                                </div>
-                                <div className="colm">
-                                  <label htmlFor="exampleFormControlInput1">
-                                    Registration
-                                  </label>
-                                  <input
-                                    type="number"
-                                    className="form-control"
-                                    placeholder=""
-                                    name="entranceFee"
-                                    onChange={handleChangeTour}
-                                    value={tour?.entranceFee}
-                                  />
-                                </div>
-                                <div className="colm">
-                                  <label htmlFor="exampleFormControlInput1">
-                                    PlayOut
-                                  </label>
-                                  <select
-                                    name="playout"
-                                    id="playout"
-                                    className="form-control"
-                                    value={tour?.playout}
-                                    onChange={handleChangeTour}
-                                  >
-                                    <option value="--">--</option>
-                                    <option value="RoundRobin">
-                                      Round Robin
-                                    </option>
-                                    <option value="Single Elimination">
-                                      Single Elimination
-                                    </option>
-                                    <option value="Double Elimination">
-                                      Double Elimination
-                                    </option>
-                                  </select>
-                                </div>
-                                <div className="colm">
-                                  <label htmlFor="exampleFormControlInput1">
-                                    Elimination
-                                  </label>
-                                  <select
-                                    name="tournamentType"
-                                    className="form-control"
-                                    value={tour?.tournamentType}
-                                    onChange={handleChangeTour}
-                                  >
-                                    <option value="--">--</option>
-                                    <option value="Single Elimination">
-                                      Single Elimination
-                                    </option>
-                                    <option value="Double Elimination">
-                                      Double Elimination
-                                    </option>
-                                    <option value="Leaderboard">
-                                      Leaderboard
-                                    </option>
-                                  </select>
-                                </div>
-                                <button className="btn">Update</button>
-                              </div>
-                            </form>
-                          </div>
-                          <div className="overlay"></div>
-                        </div>
-                      </div>
-                    </span>
                   </div>
                 </div>
               </div>

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Moment from 'moment';
 import axios from 'axios';
 import baseURL from '../../utils/baseURL';
+import { toast } from 'react-toastify';
+import { useRouter } from 'next/router';
 
 const ProfileTeams = ({
   Userdata,
@@ -39,6 +41,12 @@ const ProfileTeams = ({
     const newFilter = allTeams?.filter((value) => {
       return value.name.toLowerCase().includes(searchWord.toLowerCase());
     });
+
+    const router = useRouter();
+
+    const refreshData = () => {
+      router.replace(router.asPath);
+    };
 
     if (searchText === '') {
       setFilteredData([]);

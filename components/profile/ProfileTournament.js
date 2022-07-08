@@ -7,6 +7,8 @@ import Tournament_Reg from '../tournament/TournamentRegister';
 import ImageDropzone from '../common/ImageDropzone';
 import axios from 'axios';
 import baseURL from '../../utils/baseURL';
+import { toast } from 'react-toastify';
+import { useRouter } from 'next/router';
 
 const ProfileTournament = ({
   user,
@@ -32,6 +34,12 @@ const ProfileTournament = ({
     team_ranking: null,
     winnings: null
   });
+
+  const router = useRouter();
+
+  const refreshData = () => {
+    router.replace(router.asPath);
+  };
 
   useEffect(() => {
     axios

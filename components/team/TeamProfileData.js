@@ -207,11 +207,13 @@ const TeamProfileData = ({
               </div>
               <button className="game_btn">INVITE TO TEAM</button>
             </div>
-            <RecruitmentCard
-              type="TEAM"
-              RecruitTeamId={data.team._id}
-              user={user}
-            />
+            {isManager || isAdmin ? (
+              <RecruitmentCard
+                type="TEAM"
+                RecruitTeamId={data.team._id}
+                user={user}
+              />
+            ) : null}
           </div>
         </div>
         <div className="tab hide" id="squads">

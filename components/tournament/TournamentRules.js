@@ -29,6 +29,24 @@ const TournamentRules = ({ tournamentId }) => {
     setStates({ ...states, [e.target.name]: e.target.value });
   };
 
+  function handleSubmit(e) {
+    if (e.target.options) {
+      var options = e.target.options;
+      var value = [];
+      for (var i = 0, l = options.length; i < l; i++) {
+        if (options[i].selected) {
+          value.push(options[i].value);
+        }
+      }
+      setStates({ ...states, [e.target.name]: value });
+    } else if (e.target.files) {
+      console.log(e.target.files[0]);
+      setStates({ ...states, [e.target.name]: e.target.files[0] });
+    } else {
+      setStates({ ...states, [e.target.name]: e.target.value });
+    }
+  }
+
   const router = useRouter();
 
   const refreshData = () => {
@@ -179,7 +197,8 @@ const TournamentRules = ({ tournamentId }) => {
                     className="game_search_result mscrollbar"
                     name="country"
                     value={states.country}
-                    onChange={onChange}
+                    onChange={handleSubmit}
+                    multiple={true}
                   >
                     {options.map((opt) => (
                       <>

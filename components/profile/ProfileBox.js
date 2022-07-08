@@ -15,10 +15,6 @@ import ProfileEdit from './ProfileEdit';
 
 const ProfileBox = ({ user, Userdata, games, teams }) => {
   const [profilePic, setProfilePic] = useState(null);
-  const [bio, setBio] = useState(
-    Userdata.profile ? Userdata.profile.bio : null
-  );
-  const [showform, setShowForm] = useState(false);
   const [showlocation, setShowlocation] = useState(false);
   const [showLocModal, setShowLocModal] = useState(true);
   const [selectedGame, setSelectedGame] = useState();
@@ -187,32 +183,6 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
     setSearch(e.target.value);
   }
 
-  const onChange = (e) => {
-    setBio(e.target.value);
-  };
-
-  const addingBio = async () => {
-    const res = await fetch(`${baseURL}/api/profile/${profileId}`, {
-      method: 'PUT',
-      body: JSON.stringify({
-        bio
-      }),
-      headers: {
-        'Content-type': 'application/json',
-        Authorization: cookie.get('token')
-      }
-    });
-    return res.json();
-  };
-
-  const toggleShowform = () => {
-    if (showform) {
-      setShowForm(false);
-    } else {
-      setShowForm(true);
-    }
-  };
-
   const toggleShowlocation = () => {
     if (showlocation) {
       setShowlocation(false);
@@ -280,13 +250,6 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
       $('a.model_close').parent().removeClass('show_model');
       refreshData();
     }
-  };
-
-  const handleButtonForm = () => {
-    addingBio();
-    setBio('');
-    setShowForm(false);
-    refreshData();
   };
 
   // useEffect(() => {
@@ -781,12 +744,14 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
                   <span className="were">Captain - CS GO</span>
                 */}
                 </div>
-                <ProfileEdit
-                  profile={Userdata.profile}
-                  user={user}
-                  teams={teams}
-                  games={games}
-                />
+                {isLoggedInUser ? (
+                  <ProfileEdit
+                    profile={Userdata.profile}
+                    user={user}
+                    teams={teams}
+                    games={games}
+                  />
+                ) : null}
                 <div className="game_role profile_address">
                   <div className="loc_box">
                     {' '}
@@ -1166,33 +1131,8 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
                 </div>
               </span>
             </div>
-            {!showform ? (
-              <p> {Userdata.profile ? Userdata.profile.bio : ''} </p>
-            ) : null}
 
-            {showform ? (
-              <form onSubmit={(e) => e.preventDefault()}>
-                <textarea
-                  name="text"
-                  value={bio}
-                  onChange={onChange}
-                ></textarea>
-                <button onClick={handleButtonForm} className="btn">
-                  Update
-                </button>
-              </form>
-            ) : (
-              ''
-            )}
-
-            {isLoggedInUser ? (
-              <button className="bio_edit" onClick={toggleShowform}>
-                <i className="fa fa-gear btn" aria-hidden="true">
-                  {' '}
-                  Edit Bio
-                </i>
-              </button>
-            ) : null}
+            <p> {Userdata.profile ? Userdata.profile.bio : ''} </p>
 
             <div className="prof_games">
               {isLoggedInUser ? (

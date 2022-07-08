@@ -16,16 +16,9 @@ const Tournament_Reg = ({ user, tournament, profile }) => {
       return tour?.user?._id === user?._id;
     }).length > 0;
 
-  let x = null;
-  if (profile?.current_team?._id) {
-    x = profile?.current_team?._id;
-  } else {
-    x = profile?.current_team;
-  }
-
   const isTeamRegistered =
     tournament?.teams?.filter((team) => {
-      return team?.teamId?._id === x;
+      return team?.teamId?._id === profile?.current_team?._id;
     }).length > 0;
 
   const isRegFull = tournament.registered?.length === tournament.participants;
@@ -41,10 +34,10 @@ const Tournament_Reg = ({ user, tournament, profile }) => {
         );
       } else {
         axios.put(
-          `${baseURL}/api/tournaments/register/team/${tournament._id}/${profile?.current_team}`
+          `${baseURL}/api/tournaments/register/team/${tournament._id}/${profile?.current_team._id}`
         );
       }
-      if (!isRegistered) {
+      if (!isRegistered || !isTeamRegistered) {
         toast.success('Registered Successfully');
       } else {
         toast.success('Left Tournament');

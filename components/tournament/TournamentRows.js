@@ -155,74 +155,39 @@ const TournamentRows = ({
                     {result.tournament?.playType === 'PLAYERS' ||
                     result.tournament.registered.length > 0 ? (
                       <>
-                        {result.tournament.registered[0]?.user
-                          ?.profilePicUrl ? (
-                          <img
-                            src={
-                              result.tournament.registered[0]?.user
-                                ?.profilePicUrl
-                            }
-                            alt=""
-                          />
-                        ) : null}
-                        {result.tournament.registered[1]?.user.profilePicUrl ? (
-                          <img
-                            src={
-                              result.tournament.registered[1]?.user
-                                ?.profilePicUrl
-                            }
-                            alt=""
-                          />
-                        ) : null}
-                        {result.tournament.registered[2]?.user.profilePicUrl ? (
-                          <img
-                            src={
-                              result.tournament.registered[2]?.user
-                                ?.profilePicUrl
-                            }
-                            alt=""
-                          />
-                        ) : null}
-                        {result.tournament.registered[3]?.user.profilePicUrl ? (
-                          <img
-                            src={
-                              result.tournament.registered[3]?.user
-                                ?.profilePicUrl
-                            }
-                            alt=""
-                          />
-                        ) : null}
+                        {result.tournament.registered.map((ppl) => (
+                          <li>
+                            <div className="game_pic">
+                              {' '}
+                              <img
+                                src={ppl.user?.profilePicUrl}
+                                alt={ppl.user?.name}
+                                style={{ height: '35px', width: '35px' }}
+                              />
+                            </div>
+                            <a href={`/user/${ppl.user?._id}`}>
+                              <p>{ppl.user?.name}</p>
+                            </a>
+                          </li>
+                        ))}
                       </>
                     ) : (
                       <>
-                        {result.tournament.teams[0]?.teamId.imgUrl ? (
-                          <img
-                            style={{ height: '30px', width: '30px' }}
-                            src={result.tournament.teams[0]?.teamId?.imgUrl}
-                            alt=""
-                          />
-                        ) : null}
-                        {result.tournament.teams[1]?.teamId.imgUrl ? (
-                          <img
-                            style={{ height: '30px', width: '30px' }}
-                            src={result.tournament.teams[1]?.teamId?.imgUrl}
-                            alt=""
-                          />
-                        ) : null}
-                        {result.tournament.teams[2]?.teamId?.imgUrl ? (
-                          <img
-                            style={{ height: '30px', width: '30px' }}
-                            src={result.tournament.teams[2]?.teamId?.imgUrl}
-                            alt=""
-                          />
-                        ) : null}
-                        {result.tournament.teams[3]?.teamId?.imgUrl ? (
-                          <img
-                            style={{ height: '30px', width: '30px' }}
-                            src={result.tournament.teams[3]?.teamId?.imgUrl}
-                            alt=""
-                          />
-                        ) : null}
+                        {result.tournament.teams.map((team) => (
+                          <li>
+                            <div className="game_pic">
+                              {' '}
+                              <img
+                                src={team.teamId?.imgUrl}
+                                alt={team.teamId?.name}
+                                style={{ height: '35px', width: '35px' }}
+                              />
+                            </div>
+                            <a href={`/user/${team.teamId?._id}`}>
+                              <p>{team.teamId?.name}</p>
+                            </a>
+                          </li>
+                        ))}
                       </>
                     )}
 
