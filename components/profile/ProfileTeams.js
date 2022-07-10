@@ -105,68 +105,6 @@ const ProfileTeams = ({
   return (
     <>
       <div className="tab hide" id="teams">
-        <div>
-          <ul className="stats_card">
-            {teams.length === 0 ? (
-              <p>{user.name} has no teams.</p>
-            ) : (
-              teams &&
-              teams.map((team) => (
-                <li>
-                  <div className="card_img">
-                    {' '}
-                    <img src={team.imgUrl} alt="" />{' '}
-                  </div>
-                  <div className="right_data">
-                    <div className="card_games_tit">
-                      <h3>
-                        <a href={`tean/${team._id}`}>
-                          Team {team.name} <br />{' '}
-                        </a>
-                        {Moment(team.founded).format('MMM YYYY')}
-                      </h3>
-                      <div className="gamer_pos">Caption|Assault</div>
-                      {Userdata.profile?.current_team?._id === team?._id ? (
-                        <button className="btn" disabled={true}>
-                          Current Team
-                        </button>
-                      ) : (
-                        <button
-                          className="btn"
-                          onClick={() => handleTeamChange(team?._id)}
-                        >
-                          Set as Current team
-                        </button>
-                      )}
-                    </div>
-                    <div className="card_details">
-                      <div className="once">
-                        <p>kills avg</p>
-                        <span className="big_name"> 1.33 </span>{' '}
-                      </div>
-                      <div className="once">
-                        <p>headchange avg</p>
-                        <span className="big_name"> 1.1 </span>{' '}
-                      </div>
-                      <div className="once">
-                        <p>Gammer ceaton avg</p>
-                        <span className="big_name"> 473.29 </span>{' '}
-                      </div>
-                      <div className="once">
-                        <p>kills avg</p>
-                        <span className="big_name">50% </span>{' '}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="comp_btn">
-                    <i class="fa fa-compress" aria-hidden="true"></i> Compare
-                  </div>
-                </li>
-              ))
-            )}
-          </ul>
-        </div>
-
         <div className="sponser_btn">
           {' '}
           {Userdata.profile.user._id === user._id ? (
@@ -290,6 +228,67 @@ const ProfileTeams = ({
             </div>
             <div className="overlay"></div>
           </div>
+        </div>
+        <div>
+          <ul className="stats_card">
+            {teams.length === 0 ? (
+              <p>{user.name} has no teams.</p>
+            ) : (
+              teams &&
+              teams.map((team) => (
+                <li>
+                  <div className="card_img">
+                    {' '}
+                    <img src={team.imgUrl} alt="" />{' '}
+                  </div>
+                  <div className="right_data">
+                    <div className="card_games_tit">
+                      <h3>
+                        <a href={`tean/${team._id}`}>
+                          Team {team.name} <br />{' '}
+                        </a>
+                        {Moment(team.founded).format('MMM YYYY')}
+                      </h3>
+                      <div className="gamer_pos">Caption|Assault</div>
+                      {Userdata.profile?.current_team?._id === team?._id ? (
+                        <button className="btn" disabled={true}>
+                          Current Team
+                        </button>
+                      ) : (
+                        <button
+                          className="btn"
+                          onClick={() => handleTeamChange(team?._id)}
+                        >
+                          Set as Current team
+                        </button>
+                      )}
+                    </div>
+                    <div className="card_details">
+                      <div className="once">
+                        <p>kills avg</p>
+                        <span className="big_name"> 1.33 </span>{' '}
+                      </div>
+                      <div className="once">
+                        <p>headchange avg</p>
+                        <span className="big_name"> 1.1 </span>{' '}
+                      </div>
+                      <div className="once">
+                        <p>Gammer ceaton avg</p>
+                        <span className="big_name"> 473.29 </span>{' '}
+                      </div>
+                      <div className="once">
+                        <p>kills avg</p>
+                        <span className="big_name">50% </span>{' '}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="comp_btn">
+                    <i class="fa fa-compress" aria-hidden="true"></i> Compare
+                  </div>
+                </li>
+              ))
+            )}
+          </ul>
         </div>
       </div>
     </>

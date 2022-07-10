@@ -2244,7 +2244,7 @@ article .social_bar {
 	padding: 0 20px 0 186px;
 }
 .profile_dp_box .bottom_details .current_status {
-	display: flex;
+	display: flex; align-items: center;
 }
 .profile_dp_box .bottom_details .current_team, .profile_dp_box .bottom_details .game_role {
 	display: flex;
@@ -2368,7 +2368,7 @@ article .social_bar {
 	margin-left: 5px;
 }
 .bio_box .games span img {
-	width: 40px;
+	width: 35px;
 }
 .bio_box .games h2 {
 	margin-right: 20px;
@@ -2420,6 +2420,16 @@ article .social_bar {
 	color: #7239ea;
 	font-size: 13px;
 }
+
+#big_poup{ width: 800px;}
+#big_poup .common_form .form-group:nth-child(1){ width: 100%;}
+#big_poup .common_form .form-group{ float: left; width: 48%;}
+#big_poup .common_form .form-group:nth-child(2n){ float: right;}
+#big_poup .inner_model_box{ height: 480px; overflow-y: auto;}
+#big_poup .tit{ display: flex;}
+#big_poup .tit span{ margin-right: 5px;}
+/* --- profile tabs --- */
+
 .profile_tab_btn {
 	float:left;
 	width:100%;
@@ -5183,6 +5193,7 @@ article .social_bar {
 .rigs {
 	float: left;
 	width: 100%;
+	margin: 20px 0;
 }
 .rigs li {
 	float: left;
@@ -7513,6 +7524,7 @@ form.common_form .btn{ width: 100%; margin-top: 20px; height: 40px;}
 
 	/* ---- 15/06/22 ---------------------- */
 
+	.stats_card{ float: left; width: 100%; margin: 20px 0;}
 	.stats_card li {
 		float: left;
 		width: 48%;
@@ -7522,15 +7534,24 @@ form.common_form .btn{ width: 100%; margin-top: 20px; height: 40px;}
 		display: flex;
 		justify-content: space-between;
 		align-content: center;
-		align-items: center; margin-bottom: 20px;
+		align-items: top; margin-bottom: 20px;     min-height: 160px;
 	}
 
 	.stats_card li .card_img{ width: 40px;}
 
 	.stats_card li:nth-child(2n){ float:right;}
-	.stats_card .right_data h3{ font-size: 14px; padding-bottom: 20px;}
+	.stats_card .right_data{display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+		margin: 0 10px;}
+		.stats_card .right_data h3 {
+			font-size: 12px;
+			padding-bottom: 20px;
+			width: 110px;
+			word-break: break-word;
+			display: inline-block;
+		}
 	.stats_card .card_details{ display: flex; justify-content: space-between; align-content: center; width: 320px;}
-	.stats_card .card_details .once{}
 	.stats_card .card_details .once p{ font-size:8px;}
 	.stats_card .card_details .once .big_name{ font-size: 20px;}
 	.stats_card .comp_btn {
@@ -7541,6 +7562,7 @@ form.common_form .btn{ width: 100%; margin-top: 20px; height: 40px;}
 	}
 	
 	.stats_card .card_games_tit{display: flex;justify-content: space-between;}
+	.stats_card .card_games_tit .btn{font-size: 12px;height: 30px;margin: 0 10px;}
 
 
 	.game_hover_img{width: 100%;
@@ -7627,6 +7649,130 @@ form.common_form .btn{ width: 100%; margin-top: 20px; height: 40px;}
 .smil_card span { float: left; width: auto;}
 .smil_card span img{ display: inline-block; margin-left: 10px;}
 
+
+/* ------------- Rules ---------------- */
+
+#rules{ position: relative;}
+.rules_details{ float: left; width: 100%; margin: 20px 0; position: relative;}
+.rules_details .rules_row{ float: left; width: 100%; background: #202028; min-height: 200px; margin-bottom: 10px;}
+.rules_details .rules_row h2{ background: #2b2b34; padding: 20px; border-radius: 5px;}
+
+
+.add_form {
+    display: none;
+    position: absolute;
+    background: #202028;
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 100%;
+    padding: 20px;
+    z-index: 99;
+    right: 0;
+    margin: auto;
+}
+.add_form h3{ padding:0 0 20px 0; font-size: 20px; text-align: center;}
+.add_form textarea{ height: 100px;}
+.add_form .common_form{ width: 600px; margin: auto;}
+
+.show_block {
+	display: block;
+}
+.close_block {
+	position: absolute;
+	top: -20px;
+	right: -17px;
+	background: #000;
+	/* padding: 10px; */
+    border-radius: 50%;
+	width: 40px;
+	height: 40px;
+	text-align: center;
+	padding-top: 7px;
+	color: #fff;
+	font-size: 19px;
+	padding-left: 3px;
+	opacity: 1;
+}
+ 
+
+/* ---------------- Prizes ----------------- */
+
+#result{ position: relative;}
+
+.new_result {
+    float: left;
+    width: 100%;
+    background: #1c1e2a;
+    padding: 80px 50px;
+    margin: 50px 0;
+}
+.top_three_prize{ display: flex;
+    justify-content: space-between;}
+ .prize_box{ width: 30%; background: #2e3244; padding: 20px; border-radius: 5px; position: relative; display: flex; flex-direction: column; align-items: center;}
+ .first_symb {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: -50px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background: #7c7c7c;
+    border-radius: 10px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    font-size: 31px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.top_three_prize .prize_box:nth-child(1) .first_symb{ background: #cca43d;}
+.top_three_prize .prize_box:nth-child(2) .first_symb{ background: #999999;}
+.top_three_prize .prize_box:nth-child(3) .first_symb{ background: #b16229;}
+
+.first_symb b{ font-size: 20px; padding-top: 7px;}
+.prize_money {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
+    padding: 30px 20px; text-align: center; margin-top: 30px;
+}
+.prize_money .money{font-size: 33px;
+    font-weight: 600;}
+	.prize_money .money span{ display: block;}
+.prize_foot{ float: left; width: 100%; text-align: center; font-size: 11px;}
+.prize_foot img{ display: inline-block;}
+
+
+.more_prizes{ float: left; width: 100%; margin: 100px 0;  display: flex;
+    justify-content: space-between;}
+	
+.more_prizes .prize_box{ width: 19%;}	
+.more_prizes .prize_box p{ font-size: 11px;}
+.more_prizes .prize_box .money{ font-size: 20px;}
+.more_prizes .prize_box .first_symb{ font-size: 17px; align-items: end; width: 75px;
+    height: 105px;}
+	.more_prizes .prize_box .first_symb::after {
+		content: "";
+		width: 100%;
+		height: 70px;
+		background: #cca43d;
+		position: absolute;
+		top: 0;
+		border-radius: 5px;
+	}
+.more_prizes .prize_box .first_symb b{ font-size: 11px;}
+.more_prizes .prize_foot{ font-size: 10px;}
+.more_prizes .prize_foot img{ width: 75px;}
+
+
+/* --------------- Point Table ------------------ */
+
+.points_table{ float: left; width: 100%; margin: 20px 0;}
 
 /* ---------------------- Dark Themes----------------------------- */
 
@@ -7940,7 +8086,8 @@ body.DarkPage .create_tournament form input[type="text"], body.DarkPage .create_
 
 body.DarkPage .create_tournament .btn_selection input[type="checkbox"]{ background-color: #222f41; border: 1px solid #344860; border-radius: 5px; cursor: pointer; }
 body.DarkPage .create_tournament .btn_selection input[type='checkbox']:checked{background-color: #1da1f2; border: 1px solid #1da1f2; }
-body.DarkPage .create_tournament .btn_selection input[type='checkbox']:focus{ outline: none; box-shadow: none;}
+body.DarkPage .inner_model_box .btn_selection input[type='checkbox']:checked{background-color: #1da1f2; border: 1px solid #1da1f2; }
+.btn_selection input[type='checkbox']:focus{ outline: none; box-shadow: none;}
 
 body.DarkPage .create_tournament .style_file_upload .inputfile + label{border: 2px solid #344860; border-radius: 5px;}
 body.DarkPage .create_tournament input[type="number"]{background: #222f41 !important; border: 1px solid #344860}

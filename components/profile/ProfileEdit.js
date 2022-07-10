@@ -145,17 +145,13 @@ const ProfileEdit = ({ profile, user, teams, games }) => {
             </button>
           </a>
         ) : null}
-        <div
-          className="common_model_box"
-          // style={{ overflow: "auto", height: "400px" }}
-          style={{ marginTop: '0', overflow: 'scroll' }}
-        >
+        <div className="common_model_box edit_profile" id="big_poup">
           <a href="#!" className="model_close">
             X
           </a>
           <div className="inner_model_box">
             <div className="add_job_height">
-              <h3>Profile</h3>
+              <h3>Edit Profile</h3>
               <form className="common_form" onSubmit={handleProfileEdit}>
                 <div className="form-group">
                   <label for="exampleFormControlTextarea1">
@@ -201,173 +197,170 @@ const ProfileEdit = ({ profile, user, teams, games }) => {
                       />
                     </div>
                   </div>
+                </div>
 
-                  <div className="form-group">
-                    <label htmlFor="exampleFormControlInput1">First name</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      name="firstName"
-                      onChange={handleChangeCheck}
-                      value={states.firstName}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="exampleFormControlInput1">Last name</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      name="lastName"
-                      onChange={handleChangeCheck}
-                      value={states.lastName}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="exampleFormControlInput1">User name</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      name="username"
-                      onChange={handleChangeCheck}
-                      value={states.username}
-                    />
-                  </div>
+                <div className="form-group">
+                  <label htmlFor="exampleFormControlInput1">First name</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="firstName"
+                    onChange={handleChangeCheck}
+                    value={states.firstName}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="exampleFormControlInput1">Last name</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="lastName"
+                    onChange={handleChangeCheck}
+                    value={states.lastName}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="exampleFormControlInput1">User name</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="username"
+                    onChange={handleChangeCheck}
+                    value={states.username}
+                  />
+                </div>
 
-                  {states.profileType === 'Business' ? (
-                    <>
-                      <div className="form-group">
-                        <label htmlFor="exampleFormControlInput1">
-                          Company
-                        </label>
-                        <input
-                          type="text"
-                          name="company"
-                          value={states.company}
-                          onChange={handleChangeCheck}
-                        />
-                      </div>
-                      <div className="form-group">
-                        <label htmlFor="exampleFormControlInput1">
-                          industry
-                        </label>
-                        <input
-                          type="text"
-                          name="industry"
-                          value={states.industry}
-                          onChange={handleChangeCheck}
-                        />
-                      </div>
-                    </>
-                  ) : null}
-                  {states.profileType === 'Gamer' ||
-                  states.profileType === 'Coach' ? (
-                    <>
-                      <div className="form-group">
-                        <label htmlFor="exampleFormControlInput1">
-                          Team Name
-                        </label>
-                        <select
-                          name="team"
-                          id="team"
-                          multiple={true}
-                          value={states.team}
-                          onChange={handleSubmit}
-                        >
-                          {teams &&
-                            teams.map((tem) => (
-                              <option value={tem._id}>{tem.name}</option>
-                            ))}
-                        </select>
-                      </div>
-                    </>
-                  ) : null}
-                  {states.profileType === 'Gamer' ||
-                  states.profileType === 'Coach' ||
-                  states.profileType === 'Streamer' ? (
-                    <>
-                      <div className="form-group">
-                        <label htmlFor="exampleFormControlInput1">Game</label>
-                        <select
-                          name="games"
-                          id="team"
-                          multiple={true}
-                          value={states.games}
-                          onChange={handleSubmit}
-                        >
-                          {games.map((game) => (
-                            <option value={game._id}>{game.name}</option>
+                {states.profileType === 'Business' ? (
+                  <>
+                    <div className="form-group">
+                      <label htmlFor="exampleFormControlInput1">Company</label>
+                      <input
+                        type="text"
+                        name="company"
+                        value={states.company}
+                        onChange={handleChangeCheck}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label htmlFor="exampleFormControlInput1">industry</label>
+                      <input
+                        type="text"
+                        name="industry"
+                        value={states.industry}
+                        onChange={handleChangeCheck}
+                      />
+                    </div>
+                  </>
+                ) : null}
+                {states.profileType === 'Gamer' ||
+                states.profileType === 'Coach' ? (
+                  <>
+                    <div className="form-group">
+                      <label htmlFor="exampleFormControlInput1">
+                        Team Name
+                      </label>
+                      <select
+                        name="team"
+                        id="team"
+                        multiple={true}
+                        value={states.team}
+                        onChange={handleSubmit}
+                      >
+                        {teams &&
+                          teams.map((tem) => (
+                            <option value={tem._id}>{tem.name}</option>
                           ))}
-                        </select>
-                      </div>
-                    </>
-                  ) : null}
+                      </select>
+                    </div>
+                  </>
+                ) : null}
+                {states.profileType === 'Gamer' ||
+                states.profileType === 'Coach' ||
+                states.profileType === 'Streamer' ? (
+                  <>
+                    <div className="form-group">
+                      <label htmlFor="exampleFormControlInput1">Game</label>
+                      <select
+                        name="games"
+                        id="team"
+                        multiple={true}
+                        value={states.games}
+                        onChange={handleSubmit}
+                      >
+                        {games.map((game) => (
+                          <option value={game._id}>{game.name}</option>
+                        ))}
+                      </select>
+                    </div>
+                  </>
+                ) : null}
 
-                  {states.profileType === 'Streamer' ? (
-                    <>
-                      <div className="form-group">
-                        <label htmlFor="exampleFormControlInput1">
-                          Streaming Platform
-                        </label>
-                        <input
-                          type="text"
-                          name="streamPlatform"
-                          value={states.streamPlatform}
-                          onChange={handleChangeCheck}
-                        />
-                      </div>
-                      <div className="form-group">
-                        <label htmlFor="exampleFormControlInput1">Link</label>
-                        <input
-                          type="text"
-                          name="streamLink"
-                          value={states.streamLink}
-                          onChange={handleChangeCheck}
-                        />
-                      </div>
-                    </>
-                  ) : null}
+                {states.profileType === 'Streamer' ? (
+                  <>
+                    <div className="form-group">
+                      <label htmlFor="exampleFormControlInput1">
+                        Streaming Platform
+                      </label>
+                      <input
+                        type="text"
+                        name="streamPlatform"
+                        value={states.streamPlatform}
+                        onChange={handleChangeCheck}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label htmlFor="exampleFormControlInput1">Link</label>
+                      <input
+                        type="text"
+                        name="streamLink"
+                        value={states.streamLink}
+                        onChange={handleChangeCheck}
+                      />
+                    </div>
+                  </>
+                ) : null}
 
-                  {states.profileType === 'Gamer' ||
-                  states.profileType === 'Business' ? (
-                    <>
-                      <div className="form-group">
-                        <label htmlFor="exampleFormControlInput1">Role</label>
-                        <select
-                          name="role"
-                          value={states.role}
-                          onChange={handleChangeCheck}
-                        >
-                          {allroles.map((role) => (
-                            <option value={role}>{role}</option>
-                          ))}
-                        </select>
-                      </div>
-                    </>
-                  ) : (
-                    <></>
-                  )}
+                {states.profileType === 'Gamer' ||
+                states.profileType === 'Business' ? (
+                  <>
+                    <div className="form-group">
+                      <label htmlFor="exampleFormControlInput1">Role</label>
+                      <select
+                        name="role"
+                        value={states.role}
+                        onChange={handleChangeCheck}
+                      >
+                        {allroles.map((role) => (
+                          <option value={role}>{role}</option>
+                        ))}
+                      </select>
+                    </div>
+                  </>
+                ) : (
+                  <></>
+                )}
 
-                  <div className="form-group">
-                    <label htmlFor="exampleFormControlInput1">Start Date</label>
-                    <input
-                      type="date"
-                      name="startDate"
-                      value={states.startDate}
-                      onChange={handleChangeCheck}
-                    />
-                  </div>
+                <div className="form-group">
+                  <label htmlFor="exampleFormControlInput1">Start Date</label>
+                  <input
+                    type="date"
+                    name="startDate"
+                    value={states.startDate}
+                    onChange={handleChangeCheck}
+                  />
+                </div>
 
-                  <div className="form-group">
-                    <label htmlFor="exampleFormControlInput1">Bio</label>
-                    <input
-                      type="textarea"
-                      className="form-control"
-                      name="bio"
-                      onChange={handleChangeCheck}
-                      value={states.bio}
-                    />
-                  </div>
-
+                <div className="form-group">
+                  <label htmlFor="exampleFormControlInput1">Bio</label>
+                  <input
+                    type="textarea"
+                    className="form-control"
+                    name="bio"
+                    onChange={handleChangeCheck}
+                    value={states.bio}
+                  />
+                </div>
+                <div className="form-group">
                   <label htmlFor="exampleFormControlInput1">Games</label>
                   <div className="prof_games">
                     <div className="games">
@@ -468,7 +461,8 @@ const ProfileEdit = ({ profile, user, teams, games }) => {
                       </div>
                     </div>
                   </div>
-
+                </div>
+                <div className="form-group">
                   <p>Profile Links</p>
 
                   <div className="custom-control custom-switch">
@@ -484,9 +478,9 @@ const ProfileEdit = ({ profile, user, teams, games }) => {
                       htmlFor="customSwitch1"
                     ></label>
                   </div>
-
-                  <button className="btn">Update</button>
                 </div>
+
+                <button className="btn">Update</button>
               </form>
             </div>
           </div>

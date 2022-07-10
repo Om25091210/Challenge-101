@@ -50,36 +50,6 @@ const TeamRigs = ({ user, profile, data, isAdmin, teamRigs }) => {
 
   return (
     <>
-      <div className="rigs">
-        <ul>
-          {teamRigs.rigs?.length === 0 ? (
-            <p>No rigs available for the team.</p>
-          ) : (
-            teamRigs.type === 'RIGS' &&
-            teamRigs.rigs.map((rig) => (
-              <li>
-                <div className="lft_prod_det">
-                  {' '}
-                  <span className="new"> New</span>
-                  <div className="prod_brand">
-                    {rig.name.length > 30
-                      ? rig.name.substring(0, 30) + '...'
-                      : rig.name}
-                  </div>
-                  <p className="prod_name">{rig.category}</p>
-                  <a href="#prod2" className="quickpoup">
-                    Buy Now
-                  </a>{' '}
-                </div>
-                <div className="prod_img">
-                  <img src={rig.image} alt="" />
-                </div>
-              </li>
-            ))
-          )}
-        </ul>
-      </div>
-
       <div className="sponser_btn">
         {' '}
         {isAdmin ? (
@@ -236,6 +206,35 @@ const TeamRigs = ({ user, profile, data, isAdmin, teamRigs }) => {
           </div>
           <div className="overlay"></div>
         </div>
+      </div>
+      <div className="rigs">
+        <ul>
+          {teamRigs.rigs?.length === 0 ? (
+            <p>No rigs available for the team.</p>
+          ) : (
+            teamRigs.type === 'RIGS' &&
+            teamRigs.rigs.map((rig) => (
+              <li>
+                <div className="lft_prod_det">
+                  {' '}
+                  <span className="new"> New</span>
+                  <div className="prod_brand">
+                    {rig.name.length > 30
+                      ? rig.name.substring(0, 30) + '...'
+                      : rig.name}
+                  </div>
+                  <p className="prod_name">{rig.category}</p>
+                  <a href="#prod2" className="quickpoup">
+                    Buy Now
+                  </a>{' '}
+                </div>
+                <div className="prod_img">
+                  <img src={rig.image} alt="" />
+                </div>
+              </li>
+            ))
+          )}
+        </ul>
       </div>
     </>
   );

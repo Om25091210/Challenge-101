@@ -63,6 +63,14 @@ function Customjs() {
       jQuery(this).parent().removeClass('show');
     });
 
+    jQuery('a.rules_form').click(function () {
+      jQuery(this).next().addClass('show_block');
+    });
+
+    jQuery('.close_block').click(function () {
+      jQuery(this).parent().removeClass('show_block');
+    });
+
     jQuery('.left_side').hover(function () {
       jQuery('.logo').toggleClass('bigwidth');
     });

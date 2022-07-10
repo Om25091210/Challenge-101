@@ -118,7 +118,217 @@ const ProfileTournament = ({
   return (
     <>
       <div className="tab hide" id="tournaments">
-        {' '}
+        <div className="sponser_btn">
+          {' '}
+          {profile.user._id === user._id ? (
+            <a href="#!" className="model_show_btn">
+              <button className="btn">
+                {' '}
+                <i className="fa fa-plus-circle" aria-hidden="true"></i>
+                Add Tournament
+              </button>
+            </a>
+          ) : null}
+          <div className="common_model_box add_tourn" id="big_poup">
+            {' '}
+            <a href="#!" className="model_close">
+              {' '}
+              X{' '}
+            </a>
+            <div className="inner_model_box">
+              <h3>Tournament</h3>
+              <form
+                className="common_form"
+                onSubmit={handleAddTournamentSubmit}
+              >
+                <div className="form-group">
+                  <label htmlFor="exampleFormControlInput1">
+                    Tournament Name
+                  </label>
+                  <input
+                    type="search"
+                    id="tournamentId"
+                    name="tournamentId"
+                    value={searchText}
+                    onChange={handleFilter}
+                    autoComplete="off"
+                  />
+                  {searchText.length !== 0 ? (
+                    <div className="custom-rig-tag">
+                      <div>
+                        {!filteredData || filteredData.length === 0 ? (
+                          <p>No Tournament found..</p>
+                        ) : (
+                          filteredData.map((data) => (
+                            <div
+                              onClick={() => handleSelected(data.tournament)}
+                              key={data.tournament?._id}
+                            >
+                              <img
+                                src={data?.tournament.imgUrl}
+                                height={50}
+                                width={50}
+                              />
+                              <p>
+                                {data?.tournament.name?.length > 20
+                                  ? data.tournament.name.substring(0, 20) +
+                                    '...'
+                                  : data.tournament.name}
+                              </p>
+                            </div>
+                          ))
+                        )}
+                      </div>
+                    </div>
+                  ) : null}
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="exampleFormControlInput1">Orgazised By</label>
+
+                  <select
+                    className="form-control game_search_result"
+                    multiple={false}
+                    name="organizer"
+                    value={tournament.organizer}
+                    onChange={onChangeTour}
+                  >
+                    <option value="--">--</option>
+                    {organizer.map((organizer, idx) => (
+                      <option key={idx} value={organizer._id}>
+                        {' '}
+                        {organizer.name}{' '}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="exampleFormControlInput1">Games</label>
+
+                  <select
+                    className="form-control game_search_result"
+                    multiple={true}
+                    name="games"
+                    value={tournament.games}
+                    onChange={handleAddTournament}
+                  >
+                    {allGames.map((game, idx) => (
+                      <option key={idx} value={game._id}>
+                        {' '}
+                        {game.name}{' '}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div className="form-group">
+                  <label htmlFor="exampleFormControlInput1">Your Team</label>
+                  <select
+                    name="team"
+                    className="form-control"
+                    onChange={onChangeTour}
+                    value={tournament.team}
+                  >
+                    <option value="--">--</option>
+                    {teams.map((tem) => (
+                      <option value={tem._id} key={tem._id}>
+                        {tem.name}
+                      </option>
+                    ))}
+
+                    {profile.teams.map((tem) => (
+                      <option key={tem.teamId._id} value={tem.teamId._id}>
+                        {tem.teamId.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div className="form-group">
+                  <label htmlFor="exampleFormControlInput1">Roles</label>
+                  <select
+                    name="role"
+                    className="form-control"
+                    onChange={onChangeTour}
+                    value={tournament.role}
+                  >
+                    <option value="--">--</option>
+                    {teamroles.map((tr, idx) => (
+                      <option key={idx} value={tr}>
+                        {tr}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="exampleFormControlInput1">Year</label>
+                  <input
+                    type="date"
+                    className="form-control"
+                    name="year"
+                    onChange={handleAddTournament}
+                    value={tournament.year}
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="exampleFormControlInput1">
+                    Your Team Ranking
+                  </label>
+                  <input
+                    type="number"
+                    className="form-control"
+                    name="team_ranking"
+                    onChange={handleAddTournament}
+                    value={tournament.team_ranking}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="exampleFormControlInput1">Winnings</label>
+                  <input
+                    type="number"
+                    className="form-winnings"
+                    name="winnings"
+                    onChange={handleAddTournament}
+                    value={tournament.winnings}
+                  />
+                </div>
+
+                <div className="form-group">
+                  <div className="add_photos">
+                    <ImageDropzone setImages={setImages} />
+                    {images.length > 0 ? (
+                      <div className="upload_btn">
+                        <form onSubmit={handlePhotoSubmit}>
+                          <textarea
+                            type="text"
+                            placeholder="Add a Description"
+                            id="title"
+                            name="title"
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
+                          />
+                          <a
+                            href="#!"
+                            className="btn"
+                            onClick={handlePhotoSubmit}
+                          >
+                            UPLOAD NOW{' '}
+                          </a>
+                        </form>
+                      </div>
+                    ) : (
+                      ''
+                    )}
+                    <div className="overlay"></div>
+                  </div>
+                </div>
+                <button className="btn">Update</button>
+              </form>
+            </div>
+            <div className="overlay"></div>
+          </div>
+        </div>
         {tournamentData.Alltournaments?.length === 0 ? (
           <p>{user.name} has no Tournaments.</p>
         ) : (
@@ -244,218 +454,6 @@ const ProfileTournament = ({
             </>
           ))
         )}
-        <div className="sponser_btn">
-          {' '}
-          {profile.user._id === user._id ? (
-            <a href="#!" className="model_show_btn">
-              <button className="btn">
-                {' '}
-                <i className="fa fa-plus-circle" aria-hidden="true"></i>
-                Add Tournament
-              </button>
-            </a>
-          ) : null}
-          <div className="common_model_box" style={{ marginTop: '0px' }}>
-            {' '}
-            <a href="#!" className="model_close">
-              {' '}
-              X{' '}
-            </a>
-            <div className="inner_model_box">
-              <h3>Tournament</h3>
-              <form
-                className="common_form"
-                onSubmit={handleAddTournamentSubmit}
-              >
-                <div className="form-group">
-                  <div className="colm">
-                    <label htmlFor="exampleFormControlInput1">
-                      Tournament Name
-                    </label>
-                    <input
-                      type="search"
-                      id="tournamentId"
-                      name="tournamentId"
-                      value={searchText}
-                      onChange={handleFilter}
-                      autoComplete="off"
-                    />
-                    {searchText.length !== 0 ? (
-                      <div className="custom-rig-tag">
-                        <div>
-                          {!filteredData || filteredData.length === 0 ? (
-                            <p>No Tournament found..</p>
-                          ) : (
-                            filteredData.map((data) => (
-                              <div
-                                onClick={() => handleSelected(data.tournament)}
-                                key={data.tournament?._id}
-                              >
-                                <img
-                                  src={data?.tournament.imgUrl}
-                                  height={50}
-                                  width={50}
-                                />
-                                <p>
-                                  {data?.tournament.name?.length > 20
-                                    ? data.tournament.name.substring(0, 20) +
-                                      '...'
-                                    : data.tournament.name}
-                                </p>
-                              </div>
-                            ))
-                          )}
-                        </div>
-                      </div>
-                    ) : null}
-                  </div>
-
-                  <div className="form-group">
-                    <label htmlFor="exampleFormControlInput1">
-                      Orgazised By
-                    </label>
-
-                    <select
-                      className="form-control game_search_result"
-                      multiple={false}
-                      name="organizer"
-                      value={tournament.organizer}
-                      onChange={onChangeTour}
-                    >
-                      <option value="--">--</option>
-                      {organizer.map((organizer, idx) => (
-                        <option key={idx} value={organizer._id}>
-                          {' '}
-                          {organizer.name}{' '}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <div className="form-group">
-                    <label htmlFor="exampleFormControlInput1">Games</label>
-
-                    <select
-                      className="form-control game_search_result"
-                      multiple={true}
-                      name="games"
-                      value={tournament.games}
-                      onChange={handleAddTournament}
-                    >
-                      {allGames.map((game, idx) => (
-                        <option key={idx} value={game._id}>
-                          {' '}
-                          {game.name}{' '}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <label htmlFor="exampleFormControlInput1">Your Team</label>
-                  <select
-                    name="team"
-                    className="form-control"
-                    onChange={onChangeTour}
-                    value={tournament.team}
-                  >
-                    <option value="--">--</option>
-                    {teams.map((tem) => (
-                      <option value={tem._id} key={tem._id}>
-                        {tem.name}
-                      </option>
-                    ))}
-
-                    {profile.teams.map((tem) => (
-                      <option key={tem.teamId._id} value={tem.teamId._id}>
-                        {tem.teamId.name}
-                      </option>
-                    ))}
-                  </select>
-
-                  <label htmlFor="exampleFormControlInput1">Roles</label>
-                  <select
-                    name="role"
-                    className="form-control"
-                    onChange={onChangeTour}
-                    value={tournament.role}
-                  >
-                    <option value="--">--</option>
-                    {teamroles.map((tr, idx) => (
-                      <option key={idx} value={tr}>
-                        {tr}
-                      </option>
-                    ))}
-                  </select>
-
-                  <div className="form-group">
-                    <label htmlFor="exampleFormControlInput1">Year</label>
-                    <input
-                      type="date"
-                      className="form-control"
-                      name="year"
-                      onChange={handleAddTournament}
-                      value={tournament.year}
-                    />
-                  </div>
-
-                  <div className="form-group">
-                    <label htmlFor="exampleFormControlInput1">
-                      Your Team Ranking
-                    </label>
-                    <input
-                      type="number"
-                      className="form-control"
-                      name="team_ranking"
-                      onChange={handleAddTournament}
-                      value={tournament.team_ranking}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="exampleFormControlInput1">Winnings</label>
-                    <input
-                      type="number"
-                      className="form-winnings"
-                      name="winnings"
-                      onChange={handleAddTournament}
-                      value={tournament.winnings}
-                    />
-                  </div>
-
-                  <div className="add_photos">
-                    <ImageDropzone setImages={setImages} />
-                    {images.length > 0 ? (
-                      <div className="upload_btn">
-                        <form onSubmit={handlePhotoSubmit}>
-                          <textarea
-                            type="text"
-                            placeholder="Add a Description"
-                            id="title"
-                            name="title"
-                            value={title}
-                            onChange={(e) => setTitle(e.target.value)}
-                          />
-                          <a
-                            href="#!"
-                            className="btn"
-                            onClick={handlePhotoSubmit}
-                          >
-                            UPLOAD NOW{' '}
-                          </a>
-                        </form>
-                      </div>
-                    ) : (
-                      ''
-                    )}
-                    <div className="overlay"></div>
-                  </div>
-
-                  <button className="btn">Update</button>
-                </div>
-              </form>
-            </div>
-            <div className="overlay"></div>
-          </div>
-        </div>
       </div>
     </>
   );

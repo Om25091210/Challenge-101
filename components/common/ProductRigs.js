@@ -116,6 +116,163 @@ const ProductRigs = ({ user, productList, Userdata }) => {
 
   return (
     <div className="tab hide" id="rigs">
+      <div className="sponser_btn">
+        {' '}
+        {Userdata.profile.user._id === user._id ? (
+          <a href="#!" className="model_show_btn">
+            <button className="btn">
+              {' '}
+              <i className="fa fa-plus-circle" aria-hidden="true"></i> Add Your
+              Rigs
+            </button>
+          </a>
+        ) : null}
+        <div className="common_model_box">
+          {' '}
+          <a href="#!" className="model_close">
+            {' '}
+            X{' '}
+          </a>
+          <div className="inner_model_box">
+            <h3>Rigs</h3>
+
+            <form className="common_form" onSubmit={handleSubmit}>
+              <div className="form-group">
+                <label for="exampleFormControlTextarea1">Platform</label>
+                <div className="btn_selection">
+                  <div className="big_btn">
+                    <span class="form-check-label terms">PC</span>
+                    <input
+                      type="checkbox"
+                      name="rigsType"
+                      value="PC"
+                      onChange={handleChangeCheck}
+                    />
+                  </div>
+
+                  <div className="big_btn">
+                    <span class="form-check-label terms">Console</span>
+                    <input
+                      type="checkbox"
+                      name="rigsType"
+                      value="Console"
+                      onChange={handleChangeCheck}
+                    />
+                  </div>
+
+                  <div className="big_btn">
+                    <span class="form-check-label terms">Mobile</span>
+                    <input
+                      type="checkbox"
+                      name="rigsType"
+                      value="Mobile"
+                      onChange={handleChangeCheck}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="form-group">
+                <div className="">
+                  {states.rigsType === 'PC' ? (
+                    <>
+                      <RigsFilter
+                        val="Keyboard"
+                        data={rigsData}
+                        states={states}
+                      />
+
+                      <RigsFilter val="Mouse" data={rigsData} states={states} />
+
+                      <RigsFilter
+                        val="Headphone"
+                        data={rigsData}
+                        states={states}
+                      />
+
+                      <RigsFilter val="Mat" data={rigsData} states={states} />
+
+                      <RigsFilter
+                        val="Monitor"
+                        data={rigsData}
+                        states={states}
+                      />
+
+                      <RigsFilter val="Gpu" data={rigsData} states={states} />
+
+                      <RigsFilter val="Chair" data={rigsData} states={states} />
+                    </>
+                  ) : (
+                    <>
+                      {states.rigsType === 'Console' ? (
+                        <>
+                          <RigsFilter
+                            val="Cbrand"
+                            data={rigsData}
+                            states={states}
+                          />
+
+                          <RigsFilter
+                            val="Cmodel"
+                            data={rigsData}
+                            states={states}
+                          />
+
+                          <RigsFilter
+                            val="Controller"
+                            data={rigsData}
+                            states={states}
+                          />
+
+                          <RigsFilter
+                            val="Headphone"
+                            data={rigsData}
+                            states={states}
+                          />
+
+                          <RigsFilter
+                            val="Chair"
+                            data={rigsData}
+                            states={states}
+                          />
+                        </>
+                      ) : (
+                        <>
+                          <RigsFilter
+                            val="Mbrand"
+                            data={rigsData}
+                            states={states}
+                          />
+
+                          <RigsFilter
+                            val="Mmodel"
+                            data={rigsData}
+                            states={states}
+                          />
+
+                          <RigsFilter
+                            val="Controller"
+                            data={rigsData}
+                            states={states}
+                          />
+
+                          <RigsFilter
+                            val="Earphone"
+                            data={rigsData}
+                            states={states}
+                          />
+                        </>
+                      )}
+                    </>
+                  )}
+                </div>
+                <button className="btn">Done</button>
+              </div>
+            </form>
+          </div>
+          <div className="overlay"></div>
+        </div>
+      </div>
       <div className="rigs">
         <ul>
           {Userdata.profile.rigs.length === 0 ? (
@@ -147,172 +304,6 @@ const ProductRigs = ({ user, productList, Userdata }) => {
             ))
           )}
         </ul>
-
-        <div className="sponser_btn">
-          {' '}
-          {Userdata.profile.user._id === user._id ? (
-            <a href="#!" className="model_show_btn">
-              <button className="btn">
-                {' '}
-                <i className="fa fa-plus-circle" aria-hidden="true"></i> Add
-                Your Rigs
-              </button>
-            </a>
-          ) : null}
-          <div className="common_model_box">
-            {' '}
-            <a href="#!" className="model_close">
-              {' '}
-              X{' '}
-            </a>
-            <div className="inner_model_box">
-              <h3>Rigs</h3>
-
-              <form className="common_form" onSubmit={handleSubmit}>
-                <div className="form-group">
-                  <label for="exampleFormControlTextarea1">Platform</label>
-                  <div className="btn_selection">
-                    <div className="big_btn">
-                      <span class="form-check-label terms">PC</span>
-                      <input
-                        type="checkbox"
-                        name="rigsType"
-                        value="PC"
-                        onChange={handleChangeCheck}
-                      />
-                    </div>
-
-                    <div className="big_btn">
-                      <span class="form-check-label terms">Console</span>
-                      <input
-                        type="checkbox"
-                        name="rigsType"
-                        value="Console"
-                        onChange={handleChangeCheck}
-                      />
-                    </div>
-
-                    <div className="big_btn">
-                      <span class="form-check-label terms">Mobile</span>
-                      <input
-                        type="checkbox"
-                        name="rigsType"
-                        value="Mobile"
-                        onChange={handleChangeCheck}
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                <div className="form-group">
-                  <div className="">
-                    {states.rigsType === 'PC' ? (
-                      <>
-                        <RigsFilter
-                          val="Keyboard"
-                          data={rigsData}
-                          states={states}
-                        />
-
-                        <RigsFilter
-                          val="Mouse"
-                          data={rigsData}
-                          states={states}
-                        />
-
-                        <RigsFilter
-                          val="Headphone"
-                          data={rigsData}
-                          states={states}
-                        />
-
-                        <RigsFilter val="Mat" data={rigsData} states={states} />
-
-                        <RigsFilter
-                          val="Monitor"
-                          data={rigsData}
-                          states={states}
-                        />
-
-                        <RigsFilter val="Gpu" data={rigsData} states={states} />
-
-                        <RigsFilter
-                          val="Chair"
-                          data={rigsData}
-                          states={states}
-                        />
-                      </>
-                    ) : (
-                      <>
-                        {states.rigsType === 'Console' ? (
-                          <>
-                            <RigsFilter
-                              val="Cbrand"
-                              data={rigsData}
-                              states={states}
-                            />
-
-                            <RigsFilter
-                              val="Cmodel"
-                              data={rigsData}
-                              states={states}
-                            />
-
-                            <RigsFilter
-                              val="Controller"
-                              data={rigsData}
-                              states={states}
-                            />
-
-                            <RigsFilter
-                              val="Headphone"
-                              data={rigsData}
-                              states={states}
-                            />
-
-                            <RigsFilter
-                              val="Chair"
-                              data={rigsData}
-                              states={states}
-                            />
-                          </>
-                        ) : (
-                          <>
-                            <RigsFilter
-                              val="Mbrand"
-                              data={rigsData}
-                              states={states}
-                            />
-
-                            <RigsFilter
-                              val="Mmodel"
-                              data={rigsData}
-                              states={states}
-                            />
-
-                            <RigsFilter
-                              val="Controller"
-                              data={rigsData}
-                              states={states}
-                            />
-
-                            <RigsFilter
-                              val="Earphone"
-                              data={rigsData}
-                              states={states}
-                            />
-                          </>
-                        )}
-                      </>
-                    )}
-                  </div>
-                  <button className="btn">Done</button>
-                </div>
-              </form>
-            </div>
-            <div className="overlay"></div>
-          </div>
-        </div>
       </div>
     </div>
   );

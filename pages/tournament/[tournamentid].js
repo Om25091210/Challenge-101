@@ -445,24 +445,18 @@ const TournamentDetail = ({ user, data, products, profile }) => {
                   <div className="games">
                     <h3>PARTICIPANTS: </h3>
                     {data.tournament.playType === 'TEAMS'
-                      ? data.tournament.teams
-                          ?.slice(0, 3)
-                          .map((team) => (
-                            <img
-                              style={{ height: '30px', width: '30px' }}
-                              src={team?.teamId.imgUrl}
-                              alt=""
-                            />
-                          ))
-                      : data.tournament.registered
-                          ?.slice(0, 3)
-                          .map((reg) => (
-                            <img
-                              style={{ height: '30px', width: '30px' }}
-                              src={reg?.user?.profilePicUrl}
-                              alt=""
-                            />
-                          ))}
+                      ? data.tournament.teams?.slice(0, 3).map((team) => (
+                          <span>
+                            {' '}
+                            <img src={team?.teamId.imgUrl} alt="" />
+                          </span>
+                        ))
+                      : data.tournament.registered?.slice(0, 3).map((reg) => (
+                          <span>
+                            {' '}
+                            <img src={reg?.user?.profilePicUrl} alt="" />
+                          </span>
+                        ))}
                     {data.tournament.playType === 'PLAYERS' ? (
                       <>
                         {data.tournament.registered.length === 0
@@ -594,9 +588,30 @@ const TournamentDetail = ({ user, data, products, profile }) => {
                   Overview
                 </a>
               </li>
+
+              <li>
+                <a href="#!" rel="rules">
+                  Rules
+                </a>
+              </li>
+              <li>
+                <a href="#!" rel="result">
+                  Prizes/Result
+                </a>
+              </li>
               <li>
                 <a href="#!" rel="series">
                   TOURNAMENT SERIES
+                </a>
+              </li>
+              <li>
+                <a href="#!" rel="points">
+                  Points Table
+                </a>
+              </li>
+              <li>
+                <a href="#!" rel="matches">
+                  Shedules/Matches
                 </a>
               </li>
               <li>
@@ -605,30 +620,20 @@ const TournamentDetail = ({ user, data, products, profile }) => {
                   PARTICIPANTS
                 </a>
               </li>
+
               <li>
-                <a href="#!" rel="matches">
-                  Matches
-                </a>
-              </li>
-              <li>
-                <a href="#!" rel="result">
-                  SCHEDULE/RESULTS
+                <a href="#!" rel="braket">
+                  Braket
                 </a>
               </li>
               <li>
                 <a href="#!" rel="store">
-                  {' '}
                   Store
                 </a>
               </li>
               <li>
                 <a href="#!" rel="video">
-                  VIDEOS/STREAMS{' '}
-                </a>
-              </li>
-              <li>
-                <a href="#!" rel="media">
-                  MEDIA
+                  Streams/Media
                 </a>
               </li>
               <li>
@@ -653,19 +658,507 @@ const TournamentDetail = ({ user, data, products, profile }) => {
                   ))
                 )}
               </div>
+
+              <div className="tab hide" id="rules">
+                <a href="#!" class="rules_form">
+                  <button class="btn">
+                    {' '}
+                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                    Add Rules
+                  </button>
+                </a>
+
+                <div className="add_form">
+                  <a href="#!" className="close_block">
+                    X
+                  </a>
+
+                  <h3>Rules</h3>
+
+                  <form className="common_form">
+                    <div class="form-group">
+                      <label for="exampleFormControlInput1">
+                        Advance Match Check in
+                      </label>
+                      <select>
+                        <option>Advance Match Check in</option>
+                        <option>Advance Match Check in</option>
+                        <option>Advance Match Check in</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleFormControlInput1">
+                        Automatic Forfeit
+                      </label>
+                      <select>
+                        <option>Advance Match Check in</option>
+                        <option>Advance Match Check in</option>
+                        <option>Advance Match Check in</option>
+                      </select>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="exampleFormControlInput1">
+                        Prize Distribution Rules
+                      </label>
+                      <textarea></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleFormControlInput1">General Info</label>
+                      <textarea></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleFormControlInput1">
+                        How to Compete
+                      </label>
+                      <textarea></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleFormControlInput1">
+                        Add more rules
+                      </label>
+                      <textarea></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleFormControlInput1">
+                        Eligible Countries
+                      </label>
+                      <select>
+                        <option>Advance Match Check in</option>
+                        <option>Advance Match Check in</option>
+                        <option>Advance Match Check in</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleFormControlInput1">Admins</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="admin"
+                        value=""
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleFormControlInput1">
+                        Contact Details
+                      </label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="contact"
+                        value=""
+                      />
+                    </div>
+                  </form>
+                </div>
+
+                <div className="rules_details">
+                  <div className="rules_row">
+                    <h2> PRIZES</h2>
+                  </div>
+                  <div className="rules_row">
+                    <h2> MATCH SETTINGS</h2>
+                  </div>
+                  <div className="rules_row">
+                    <h2> GENERAL RULES</h2>
+                  </div>
+                  <div className="rules_row">
+                    <h2> HOW TO COMPETE</h2>
+                  </div>
+
+                  <div className="rules_row">
+                    <h2> ELIGIBLE COUNTRIES</h2>
+                  </div>
+                </div>
+              </div>
+
+              <div className="tab hide" id="result">
+                <a href="#!" class="rules_form">
+                  <button class="btn">
+                    {' '}
+                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                    Add Prizes
+                  </button>
+                </a>
+
+                <div className="add_form">
+                  <a href="#!" className="close_block">
+                    X
+                  </a>
+
+                  <h3>Add Prizes</h3>
+
+                  <form className="common_form">
+                    <div className="prize1">
+                      <div class="form-group">
+                        <label for="exampleFormControlInput1">1st Prize</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          name="admin"
+                          value=""
+                        />
+                      </div>
+
+                      <div class="form-group">
+                        <label for="exampleFormControlInput1">Goodies</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          name="admin"
+                          value=""
+                        />
+                      </div>
+
+                      <div class="form-group">
+                        <label for="exampleFormControlInput1">
+                          Upload Image of Trophy
+                        </label>
+                        <div class="style_file_upload">
+                          <input
+                            type="file"
+                            name="imgUrl"
+                            id="imgUrl"
+                            class="inputfile"
+                          />
+                          <label for="imgUrl">
+                            <span>PNG Image</span>
+                          </label>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="exampleFormControlInput1">
+                          Prize Sponsored by
+                        </label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          name="admin"
+                          value=""
+                        />
+                      </div>
+                    </div>
+
+                    <button>
+                      <i class="fa fa-plus-circle" aria-hidden="true"></i> Add
+                      More Prize
+                    </button>
+                  </form>
+                </div>
+                <div className="new_result">
+                  <div className="top_three_prize">
+                    <div className="prize_box">
+                      <div className="first_symb">
+                        1<b>st</b>
+                      </div>
+                      <div className="prize_money">
+                        <img src="/assets/media/result/first.png" alt="" />
+                        <div className="money">
+                          100,000$
+                          <span>+</span>
+                          <p>Gamer of Nation Trophy</p>
+                        </div>
+                      </div>
+
+                      <div className="prize_foot">
+                        Prizes sponsered by{' '}
+                        <img src="/assets/media/result/by.png" alt="" />
+                      </div>
+                    </div>
+
+                    <div className="prize_box">
+                      <div className="first_symb">
+                        2<b>nd</b>
+                      </div>
+                      <div className="prize_money">
+                        <img src="/assets/media/result/second.png" alt="" />
+                        <div className="money">
+                          100,000$
+                          <span>+</span>
+                          <p>Gamer of Nation Trophy</p>
+                        </div>
+                      </div>
+
+                      <div className="prize_foot">
+                        Prizes sponsered by{' '}
+                        <img src="/assets/media/result/by.png" alt="" />
+                      </div>
+                    </div>
+
+                    <div className="prize_box">
+                      <div className="first_symb">
+                        3<b>rd</b>
+                      </div>
+                      <div className="prize_money">
+                        <img src="/assets/media/result/third.png" alt="" />
+                        <div className="money">
+                          100,000$
+                          <span>+</span>
+                          <p>Gamer of Nation Trophy</p>
+                        </div>
+                      </div>
+
+                      <div className="prize_foot">
+                        Prizes sponsered by{' '}
+                        <img src="/assets/media/result/by.png" alt="" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="more_prizes">
+                    <div className="prize_box">
+                      <div className="first_symb">
+                        4<b>rt prize</b>
+                      </div>
+                      <div className="prize_money">
+                        <div className="money">
+                          100,000$
+                          <span>+</span>
+                          <p>Gamer of Nation Trophy</p>
+                        </div>
+                      </div>
+
+                      <div className="prize_foot">
+                        Prizes sponsered by{' '}
+                        <img src="/assets/media/result/by.png" alt="" />
+                      </div>
+                    </div>
+                    <div className="prize_box">
+                      <div className="first_symb">
+                        4<b>rt prize</b>
+                      </div>
+                      <div className="prize_money">
+                        <div className="money">
+                          100,000$
+                          <span>+</span>
+                          <p>Gamer of Nation Trophy</p>
+                        </div>
+                      </div>
+
+                      <div className="prize_foot">
+                        Prizes sponsered by{' '}
+                        <img src="/assets/media/result/by.png" alt="" />
+                      </div>
+                    </div>
+                    <div className="prize_box">
+                      <div className="first_symb">
+                        4<b>rt prize</b>
+                      </div>
+                      <div className="prize_money">
+                        <div className="money">
+                          100,000$
+                          <span>+</span>
+                          <p>Gamer of Nation Trophy</p>
+                        </div>
+                      </div>
+
+                      <div className="prize_foot">
+                        Prizes sponsered by{' '}
+                        <img src="/assets/media/result/by.png" alt="" />
+                      </div>
+                    </div>
+                    <div className="prize_box">
+                      <div className="first_symb">
+                        4<b>rt prize</b>
+                      </div>
+                      <div className="prize_money">
+                        <div className="money">
+                          100,000$
+                          <span>+</span>
+                          <p>Gamer of Nation Trophy</p>
+                        </div>
+                      </div>
+
+                      <div className="prize_foot">
+                        Prizes sponsered by{' '}
+                        <img src="/assets/media/result/by.png" alt="" />
+                      </div>
+                    </div>
+                    <div className="prize_box">
+                      <div className="first_symb">
+                        4<b>rt prize</b>
+                      </div>
+                      <div className="prize_money">
+                        <div className="money">
+                          100,000$
+                          <span>+</span>
+                          <p>Gamer of Nation Trophy</p>
+                        </div>
+                      </div>
+
+                      <div className="prize_foot">
+                        Prizes sponsered by{' '}
+                        <img src="/assets/media/result/by.png" alt="" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <div className="tab hide" id="series">
                 <TournamentSeries user={user} tournament={data.tournament} />
               </div>
+              <div className="tab hide" id="points">
+                <h1>Points Table</h1>
+                <div className="points_table">
+                  <div className="groupds_box">
+                    <div className="group">
+                      <div className="title_bg">Group A</div>
+                      <table className="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">Competitor</th>
+                            <th scope="col">
+                              <b>M</b> <b>W</b> <b>D</b> <b>L</b> <b>P</b>
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              <img src="/assets/media/teams/team1.png" alt="" />{' '}
+                              <strong>Team Flawed Bot</strong>
+                            </td>
+                            <td>
+                              <b>46</b> <b>23</b> <b>1</b> <b>22</b> <b>123</b>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <img src="/assets/media/teams/team2.png" alt="" />{' '}
+                              <strong>Wings Gaming</strong>
+                            </td>
+                            <td>
+                              <b>46</b> <b>23</b> <b>1</b> <b>22</b> <b>123</b>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <img src="/assets/media/teams/team3.png" alt="" />{' '}
+                              <strong>Fnatic eSports</strong>
+                            </td>
+                            <td>
+                              <b>46</b> <b>23</b> <b>1</b> <b>22</b> <b>123</b>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <img src="/assets/media/teams/team4.png" alt="" />{' '}
+                              <strong>inictus Gaming</strong>
+                            </td>
+                            <td>
+                              <b>46</b> <b>23</b> <b>1</b> <b>22</b> <b>123</b>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <img src="/assets/media/teams/team5.png" alt="" />{' '}
+                              <strong>Fortuna eSports</strong>
+                            </td>
+                            <td>
+                              <b>46</b> <b>23</b> <b>1</b> <b>22</b> <b>123</b>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <img src="/assets/media/teams/team6.png" alt="" />{' '}
+                              <strong>Gambit Gaming</strong>
+                            </td>
+                            <td>
+                              <b>46</b> <b>23</b> <b>1</b> <b>22</b> <b>123</b>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div className="group">
+                      <div className="title_bg">Group B</div>
+                      <table className="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">Competitor</th>
+                            <th scope="col">
+                              <b>M</b> <b>W</b> <b>D</b> <b>L</b> <b>P</b>
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              <img src="/assets/media/teams/team1.png" alt="" />{' '}
+                              <strong>Team Flawed Bot</strong>
+                            </td>
+                            <td>
+                              <b>46</b> <b>23</b> <b>1</b> <b>22</b> <b>123</b>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <img src="/assets/media/teams/team2.png" alt="" />{' '}
+                              <strong>Wings Gaming</strong>
+                            </td>
+                            <td>
+                              <b>46</b> <b>23</b> <b>1</b> <b>22</b> <b>123</b>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <img src="/assets/media/teams/team3.png" alt="" />{' '}
+                              <strong>Fnatic eSports</strong>
+                            </td>
+                            <td>
+                              <b>46</b> <b>23</b> <b>1</b> <b>22</b> <b>123</b>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <img src="/assets/media/teams/team4.png" alt="" />{' '}
+                              <strong>inictus Gaming</strong>
+                            </td>
+                            <td>
+                              <b>46</b> <b>23</b> <b>1</b> <b>22</b> <b>123</b>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <img src="/assets/media/teams/team5.png" alt="" />{' '}
+                              <strong>Fortuna eSports</strong>
+                            </td>
+                            <td>
+                              <b>46</b> <b>23</b> <b>1</b> <b>22</b> <b>123</b>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <img src="/assets/media/teams/team6.png" alt="" />{' '}
+                              <strong>Gambit Gaming</strong>
+                            </td>
+                            <td>
+                              <b>46</b> <b>23</b> <b>1</b> <b>22</b> <b>123</b>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="tab hide" id="matches">
+                <Matches teamMatches={data.tournamentMatches} />
+              </div>
+
               <div className="tab hide" id="participants">
                 <TournamentParticipants
                   user={user}
                   tournament={data.tournament}
                 />
               </div>
-              <div className="tab hide" id="matches">
-                <Matches teamMatches={data.tournamentMatches} />
-              </div>
-              <div className="tab hide" id="result">
+
+              <div className="tab hide" id="braket">
+                <h1>Braket</h1>
+
                 <div className="results_box white_bg">
                   <div className="congratulations">
                     <h1>Congragulations to our winners!</h1>
