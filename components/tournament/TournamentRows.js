@@ -151,22 +151,19 @@ const TournamentRows = ({
                   </div>
                 </div>
                 <div className="bottom_game">
-                  <div className="users">
+                  <ul className="users">
                     {result.tournament?.playType === 'PLAYERS' ||
                     result.tournament.registered.length > 0 ? (
                       <>
                         {result.tournament.registered.map((ppl) => (
                           <li>
-                            <div className="game_pic">
-                              {' '}
-                              <img
-                                src={ppl.user?.profilePicUrl}
-                                alt={ppl.user?.name}
-                                style={{ height: '35px', width: '35px' }}
-                              />
-                            </div>
+                            {' '}
+                            <img
+                              src={ppl.user?.profilePicUrl}
+                              alt={ppl.user?.name}
+                            />
                             <a href={`/user/${ppl.user?._id}`}>
-                              <p>{ppl.user?.name}</p>
+                              {ppl.user?.name}
                             </a>
                           </li>
                         ))}
@@ -175,16 +172,13 @@ const TournamentRows = ({
                       <>
                         {result.tournament.teams.map((team) => (
                           <li>
-                            <div className="game_pic">
-                              {' '}
-                              <img
-                                src={team.teamId?.imgUrl}
-                                alt={team.teamId?.name}
-                                style={{ height: '35px', width: '35px' }}
-                              />
-                            </div>
+                            <img
+                              src={team.teamId?.imgUrl}
+                              alt={team.teamId?.name}
+                            />
+
                             <a href={`/user/${team.teamId?._id}`}>
-                              <p>{team.teamId?.name}</p>
+                              {team.teamId?.name}
                             </a>
                           </li>
                         ))}
@@ -192,26 +186,30 @@ const TournamentRows = ({
                     )}
 
                     {result.tournament.playType === 'TEAMS' ? (
-                      <p>
-                        {result.tournament.teams.length} /{' '}
-                        {result.tournament.maxTeams}
-                        <b>Signed</b>
-                      </p>
+                      <li>
+                        <p>
+                          {result.tournament.teams.length} /{' '}
+                          {result.tournament.maxTeams}
+                          <b>Signed</b>
+                        </p>
+                      </li>
                     ) : (
                       <>
                         {result.tournament.participants > 0 ||
                         result.tournament.maxTeams > 0 ? (
-                          <p>
-                            {result.tournament.registered.length} /{' '}
-                            {result.tournament.participants}
-                            <b>Signed</b>
-                          </p>
+                          <li>
+                            <p>
+                              {result.tournament.registered.length} /{' '}
+                              {result.tournament.participants}
+                              <b>Signed</b>
+                            </p>
+                          </li>
                         ) : (
                           <p>Not Available</p>
                         )}
                       </>
                     )}
-                  </div>
+                  </ul>
                   <div className="games">
                     <h3>Games:</h3>
 

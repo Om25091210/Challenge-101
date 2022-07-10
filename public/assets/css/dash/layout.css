@@ -4001,14 +4001,29 @@ article .social_bar {
 	margin-right: 10px; width: 25px;
 }
 
-.bottom_game .users{ display: flex; align-items: center;}
-.bottom_game .users img{ width: 30px; height: 30px; border-radius: 5px; background: #fff;}
+.bottom_game .users {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+}
+.bottom_game .users li{ text-align: center;}
+.bottom_game .users img{ width: 30px; height: 30px; border-radius: 5px; background: #fff; display: inline-block;}
 .bottom_game .users p{ color: #df5030;
     margin-left: 10px;
     font-size: 10px;
     text-align: center;
     line-height: 12px;
     text-transform: uppercase;}
+	.bottom_game .users a {
+		font-size: 10px;
+		color: #df5030;
+		width: 50px;
+		word-break: break-word;
+		display: block;
+		text-align: center;
+		line-height: 10px;
+		text-transform: capitalize; padding-top: 5px;
+	}
 .bottom_game .users p b{ display: block; color: #fff;}
 
 .top_game{margin-right: 10px;}

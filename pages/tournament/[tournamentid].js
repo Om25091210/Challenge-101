@@ -498,7 +498,6 @@ const TournamentDetail = ({ user, data, products, profile }) => {
                                     <img
                                       src={ppl.user?.profilePicUrl}
                                       alt={ppl.user?.name}
-                                      style={{ height: '35px', width: '35px' }}
                                     />
                                   </div>
                                   <a href={`/user/${ppl.user?._id}`}>
@@ -516,7 +515,6 @@ const TournamentDetail = ({ user, data, products, profile }) => {
                                     <img
                                       src={team.teamId?.imgUrl}
                                       alt={team.teamId?.name}
-                                      style={{ height: '35px', width: '35px' }}
                                     />
                                   </div>
                                   <a href={`/user/${team.teamId?._id}`}>
