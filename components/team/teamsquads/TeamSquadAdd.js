@@ -7,13 +7,17 @@ import { toast } from 'react-toastify';
 import { teamsquadformvalidate } from '@utils/valid';
 import { useRouter } from 'next/router';
 import countryList from 'react-select-country-list';
+import TeamSquadFilter from './TeamSquadFilter';
 
 const TeamSquadAdd = ({ teamplayers, team, isManager, isAdmin }) => {
+  const [playerData, setPlayerData] = useState([]);
+  const [count, setCount] = useState(0);
+
   const [squadData, setSquadData] = useState({
     game: '',
     teamId: team._id,
     country: '',
-    players: ''
+    playerData: playerData
   });
   const [formErrors, setFormErrors] = useState({});
   const router = useRouter();
@@ -22,6 +26,9 @@ const TeamSquadAdd = ({ teamplayers, team, isManager, isAdmin }) => {
 
   const refreshData = () => {
     router.replace(router.asPath);
+  };
+  const handleRoleForm = (e) => {
+    setCount(count + 1);
   };
 
   useEffect(() => {
@@ -85,7 +92,10 @@ const TeamSquadAdd = ({ teamplayers, team, isManager, isAdmin }) => {
           <i className="fa fa-plus-circle" aria-hidden="true"></i> Add Squad
         </a>
       ) : null}
-      <div className="common_model_box">
+      <div
+        className="common_model_box"
+        style={{ marginTop: '200', overflowY: 'scroll' }}
+      >
         <a href="#!" className="model_close">
           X
         </a>
@@ -129,26 +139,21 @@ const TeamSquadAdd = ({ teamplayers, team, isManager, isAdmin }) => {
                 ))}
               </select>
             </div>
-            <div className="colm rows">
-              <label htmlFor="search"> Players</label>
-              <select
-                className="form-control text-capitalize"
-                multiple={false}
-                name="players"
-                value={squadData.players}
-                onChange={onChange}
-              >
-                <option value="">--</option>
-                {teamplayers &&
-                  teamplayers.map((game, idx) => (
-                    <option key={idx} value={game._id}>
-                      {' '}
-                      {game.name}{' '}
-                    </option>
-                  ))}
-              </select>
-              <p>{formErrors.players}</p>
-            </div>
+
+            <TeamSquadFilter playerData={playerData} />
+            <TeamSquadFilter playerData={playerData} />
+
+            {[...Array(count)].map((e, index) => (
+              <div key={index}>
+                <TeamSquadFilter playerData={playerData} />
+              </div>
+            ))}
+
+            <label htmlFor="">Add More Players</label>
+            <span onClick={(e) => handleRoleForm(e)}>
+              <i className="fa fa-life-ring" aria-hidden="true"></i>
+            </span>
+
             <button
               onClick={() => setFormErrors(teamsquadformvalidate(squadData))}
               className="btn"

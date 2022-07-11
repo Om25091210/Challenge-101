@@ -30,6 +30,8 @@ import AllPosts from '../../components/dashboard/AllPosts';
 import TournamentRules from '../../components/tournament/TournamentRules';
 import TournamentEdit from '../../components/tournament/TournamentEdit';
 import Tournament_Reg from '../../components/tournament/TournamentRegister';
+import ReactCountryFlag from 'react-country-flag';
+import TournamentPrize from '../../components/tournament/TournamentPrize';
 
 const TournamentDetail = ({ user, data, products, profile }) => {
   if (data) {
@@ -38,11 +40,17 @@ const TournamentDetail = ({ user, data, products, profile }) => {
     const [sociallinks, setSociallinks] = useState(data.tournament.social);
     const [websitelink, setWebsitelink] = useState(data.tournament);
     const [tournamentPosts, setTournamentPosts] = useState([]);
+    const [tourRules, setTourRules] = useState([]);
 
     useEffect(() => {
       axios
         .get(`${baseURL}/api/posts/`)
         .then((res) => setTournamentPosts(res.data.posts));
+
+      //Get the Tournament Rules
+      axios
+        .get(`${baseURL}/api/tournamentRules/${data.tournament._id}`)
+        .then((res) => setTourRules(res.data));
     }, []);
 
     let Filteredtournamentposts = tournamentPosts.filter((tourpost) => {
@@ -97,25 +105,6 @@ const TournamentDetail = ({ user, data, products, profile }) => {
       toast.success('Deleted Successfully');
       router.push('/dashboard');
     };
-
-    const handleRegistry = async (e) => {
-      e.preventDefault();
-      axios.put(
-        `${baseURL}/api/tournaments/register/${data.tournament._id}/${user._id}`
-      );
-      if (isRegistered === true) {
-        toast.success('Left the tournament');
-      } else {
-        toast.success('Registered Successfully');
-      }
-      refreshData();
-    };
-
-    const isRegFull =
-      data.tournament.registered.length === data.tournament.participants;
-
-    const isTeamRegFull =
-      data.tournament.maxTeams === data.tournament.participants;
 
     return (
       <>
@@ -253,7 +242,6 @@ const TournamentDetail = ({ user, data, products, profile }) => {
                   {data.tournament.user?._id === user._id ? (
                     <div>
                       <TournamentEdit data={data} user={user} />
-                      <TournamentRules tournamentId={data.tournament._id} />
                     </div>
                   ) : null}
                   <h5>Prize Pool</h5>
@@ -660,192 +648,48 @@ const TournamentDetail = ({ user, data, products, profile }) => {
               </div>
 
               <div className="tab hide" id="rules">
-                <a href="#!" class="rules_form">
-                  <button class="btn">
-                    {' '}
-                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                    Add Rules
-                  </button>
-                </a>
-
-                <div className="add_form">
-                  <a href="#!" className="close_block">
-                    X
-                  </a>
-
-                  <h3>Rules</h3>
-
-                  <form className="common_form">
-                    <div class="form-group">
-                      <label for="exampleFormControlInput1">
-                        Advance Match Check in
-                      </label>
-                      <select>
-                        <option>Advance Match Check in</option>
-                        <option>Advance Match Check in</option>
-                        <option>Advance Match Check in</option>
-                      </select>
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleFormControlInput1">
-                        Automatic Forfeit
-                      </label>
-                      <select>
-                        <option>Advance Match Check in</option>
-                        <option>Advance Match Check in</option>
-                        <option>Advance Match Check in</option>
-                      </select>
-                    </div>
-
-                    <div class="form-group">
-                      <label for="exampleFormControlInput1">
-                        Prize Distribution Rules
-                      </label>
-                      <textarea></textarea>
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleFormControlInput1">General Info</label>
-                      <textarea></textarea>
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleFormControlInput1">
-                        How to Compete
-                      </label>
-                      <textarea></textarea>
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleFormControlInput1">
-                        Add more rules
-                      </label>
-                      <textarea></textarea>
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleFormControlInput1">
-                        Eligible Countries
-                      </label>
-                      <select>
-                        <option>Advance Match Check in</option>
-                        <option>Advance Match Check in</option>
-                        <option>Advance Match Check in</option>
-                      </select>
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleFormControlInput1">Admins</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        name="admin"
-                        value=""
-                      />
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleFormControlInput1">
-                        Contact Details
-                      </label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        name="contact"
-                        value=""
-                      />
-                    </div>
-                  </form>
-                </div>
+                {data.tournament.user?._id === user._id ? (
+                  <TournamentRules
+                    tournamentId={data.tournament._id}
+                    tourRules={tourRules}
+                  />
+                ) : null}
 
                 <div className="rules_details">
                   <div className="rules_row">
                     <h2> PRIZES</h2>
+                    <p>{tourRules?.prizeRules}</p>
                   </div>
                   <div className="rules_row">
                     <h2> MATCH SETTINGS</h2>
                   </div>
                   <div className="rules_row">
                     <h2> GENERAL RULES</h2>
+                    <p>{tourRules?.general}</p>
                   </div>
                   <div className="rules_row">
                     <h2> HOW TO COMPETE</h2>
+                    <p>{tourRules?.compete}</p>
                   </div>
 
                   <div className="rules_row">
                     <h2> ELIGIBLE COUNTRIES</h2>
+                    {tourRules?.country?.map((cty) => (
+                      <ReactCountryFlag
+                        countryCode={cty}
+                        svg
+                        style={{
+                          width: '2em',
+                          height: '2em'
+                        }}
+                      />
+                    ))}
                   </div>
                 </div>
               </div>
 
               <div className="tab hide" id="result">
-                <a href="#!" class="rules_form">
-                  <button class="btn">
-                    {' '}
-                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                    Add Prizes
-                  </button>
-                </a>
-
-                <div className="add_form">
-                  <a href="#!" className="close_block">
-                    X
-                  </a>
-
-                  <h3>Add Prizes</h3>
-
-                  <form className="common_form">
-                    <div className="prize1">
-                      <div class="form-group">
-                        <label for="exampleFormControlInput1">1st Prize</label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          name="admin"
-                          value=""
-                        />
-                      </div>
-
-                      <div class="form-group">
-                        <label for="exampleFormControlInput1">Goodies</label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          name="admin"
-                          value=""
-                        />
-                      </div>
-
-                      <div class="form-group">
-                        <label for="exampleFormControlInput1">
-                          Upload Image of Trophy
-                        </label>
-                        <div class="style_file_upload">
-                          <input
-                            type="file"
-                            name="imgUrl"
-                            id="imgUrl"
-                            class="inputfile"
-                          />
-                          <label for="imgUrl">
-                            <span>PNG Image</span>
-                          </label>
-                        </div>
-                      </div>
-
-                      <div class="form-group">
-                        <label for="exampleFormControlInput1">
-                          Prize Sponsored by
-                        </label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          name="admin"
-                          value=""
-                        />
-                      </div>
-                    </div>
-
-                    <button>
-                      <i class="fa fa-plus-circle" aria-hidden="true"></i> Add
-                      More Prize
-                    </button>
-                  </form>
-                </div>
+                <TournamentPrize tournamentId={data.tournament._id} />
                 <div className="new_result">
                   <div className="top_three_prize">
                     <div className="prize_box">

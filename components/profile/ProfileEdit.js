@@ -127,6 +127,7 @@ const ProfileEdit = ({ profile, user, teams, games }) => {
         states
       );
       toast.success('Profile Updated');
+      $('a.model_close').parent().removeClass('show_model');
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }
