@@ -10,7 +10,7 @@ import axios from 'axios';
 import Moment from 'moment';
 import ChallengeApprove from '../components/discover/invites/ChallengeApprove';
 
-const challenges = ({ user, data, teams, profile }) => {
+const challenges = ({ user, data, teams, profile, allteams }) => {
   const [searchText, setSearchText] = useState('');
   const [opponentTeam, setOpponentTeam] = useState(null);
   const [showform, setShowForm] = useState(true);
@@ -30,10 +30,9 @@ const challenges = ({ user, data, teams, profile }) => {
   const UserTeam = teams.filter((team) => {
     return team._id === parseInt(state.Userteam);
   });
-
   var commonGames = UserTeam[0]?.games.filter(function (val1) {
     return opponentTeam?.games.some(function (val2) {
-      return val1.gameId._id === val2.gameId._id;
+      return val1.gameId._id === val2.gameId;
     });
   });
 
@@ -42,7 +41,7 @@ const challenges = ({ user, data, teams, profile }) => {
     const searchWord = event.target.value;
 
     setSearchText(searchWord);
-    const newFilter = teams?.filter((value) => {
+    const newFilter = allteams?.filter((value) => {
       return value.name.toLowerCase().includes(searchWord.toLowerCase());
     });
 
@@ -81,7 +80,7 @@ const challenges = ({ user, data, teams, profile }) => {
   const handleSelectedTeam = (data) => {
     setSearchText(data.name);
     setShowForm(false);
-    state.challengerTeam = data._id;
+    state.opponent_team = data._id;
     setOpponentTeam(data);
   };
 
@@ -554,8 +553,11 @@ export const getServerSideProps = async (context) => {
   const response = await fetch(`${baseURL}/api/challenges`);
   const data = await response.json();
 
+  const res = await fetch(`${baseURL}/api/all/teams`);
+  const allteams = await res.json();
+
   return {
-    props: { data }
+    props: { data, allteams }
   };
 };
 

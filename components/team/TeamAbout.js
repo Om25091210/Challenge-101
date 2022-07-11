@@ -6,43 +6,17 @@ import { useRouter } from 'next/router';
 import TeamAboutEdit from './TeamAboutEdit';
 import { toast } from 'react-toastify';
 import cookie from 'js-cookie';
+import TeamAbtAdd from './TeamAbtAdd';
 
 const TeamAbout = ({ Data, isManager, isAdmin, user, teamAbout }) => {
-  const [searchText, setSearchText] = useState('');
-  const [results, setResults] = useState({
-    employee: '',
-    role: ''
-  });
-  const [teamroles, setTeamRoles] = useState([]);
+  const [rolData, setRolData] = useState([]);
+  const [count, setCount] = useState(0);
+
   const [showform, setShowForm] = useState(false);
   const [desc, setDesc] = useState(
     Data.team.about ? Data.team.about.description : null
   );
 
-  const { data, isLoading, isSuccess } = useQuery(
-    ['search', searchText],
-    async () => {
-      const CancelToken = axios.CancelToken;
-      const source = CancelToken.source();
-
-      const promise = await axios.get(`${baseURL}/api/search/${searchText}`, {
-        cancelToken: source.token
-      });
-
-      promise.cancel = () => {
-        source.cancel();
-      };
-
-      return promise.data;
-    },
-    {
-      enabled: !!searchText
-    }
-  );
-
-  function handleChangeAbt(e) {
-    setResults({ ...results, [e.target.name]: e.target.value });
-  }
   const router = useRouter();
 
   const refreshData = () => {
@@ -79,10 +53,14 @@ const TeamAbout = ({ Data, isManager, isAdmin, user, teamAbout }) => {
     refreshData();
   };
 
+  const handleRoleForm = (e) => {
+    setCount(count + 1);
+  };
+
   const handleSubmitAbout = async (e) => {
     e.preventDefault();
     try {
-      axios.post(`${baseURL}/api/teams/ins/about/${Data.team?._id}`, results);
+      axios.post(`${baseURL}/api/teams/ins/about/${Data.team?._id}`, rolData);
       toast.success('Member Added Successfully');
       refreshData();
     } catch (error) {
@@ -108,12 +86,7 @@ const TeamAbout = ({ Data, isManager, isAdmin, user, teamAbout }) => {
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }
   };
-
-  useEffect(() => {
-    axios
-      .get(`${baseURL}/api/all/teamroles`)
-      .then((res) => setTeamRoles(res.data));
-  }, []);
+  console.log(count);
   return (
     <div className="our_team">
       <div className="about_team">
@@ -150,80 +123,38 @@ const TeamAbout = ({ Data, isManager, isAdmin, user, teamAbout }) => {
                 </button>
               ) : null}
             </a>
-            <div className="common_model_box" style={{ height: '12rem' }}>
+            <div
+              className="common_model_box"
+              style={{
+                height: '35rem',
+                marginTop: '1rem',
+                overflowY: 'scroll'
+              }}
+            >
               <a href="#!" className="model_close">
                 X
               </a>
               <div className="inner_model_box">
                 <h3>Add Members</h3>
                 <form className="common_form" onSubmit={handleSubmitAbout}>
-                  <div className="form-group">
-                    <ul>
-                      <li>
-                        <label htmlFor="search">Search</label>
-                        <div>
-                          <input
-                            id="search"
-                            name="search"
-                            placeholder="Search for users"
-                            type="search"
-                            value={searchText}
-                            onChange={(e) => setSearchText(e.target.value)}
-                          />
+                  <TeamAbtAdd role="CEO" rolesData={rolData} />
+                  <TeamAbtAdd role="Owner" rolesData={rolData} />
+                  <TeamAbtAdd role="Manager" rolesData={rolData} />
+                  <TeamAbtAdd role="Coach" rolesData={rolData} />
+                  <TeamAbtAdd role="PR Manager" rolesData={rolData} />
 
-                          {searchText.trim() !== '' && !isLoading && isSuccess && (
-                            <div>
-                              <h1>Users</h1>
-                              <div>
-                                {!data.users || data.users.length === 0 ? (
-                                  <p>No users found..</p>
-                                ) : (
-                                  data.users.map((user) => (
-                                    <div
-                                      onClick={() => {
-                                        setSearchText(user.name);
-                                        setResults({
-                                          employee: user._id
-                                        });
-                                      }}
-                                      key={user._id}
-                                    >
-                                      <img
-                                        src={user.profilePicUrl}
-                                        height={30}
-                                        width={30}
-                                      />
-                                      <p>
-                                        {user.name.length > 20
-                                          ? user.name.substring(0, 20) + '...'
-                                          : user.name}
-                                      </p>
-                                    </div>
-                                  ))
-                                )}
-                              </div>
-                            </div>
-                          )}
-                        </div>
-                      </li>
-                      <li>
-                        <label htmlFor="exampleFormControlInput1">Roles</label>
-                        <select
-                          name="role"
-                          className="form-control"
-                          onChange={handleChangeAbt}
-                        >
-                          {teamroles.map((tr, idx) => (
-                            <option key={idx} value={tr}>
-                              {tr}
-                            </option>
-                          ))}
-                        </select>
-                      </li>
-                    </ul>
+                  {[...Array(count)].map((e, index) => (
+                    <div key={index}>
+                      <TeamAbtAdd role="" rolesData={rolData} />
+                    </div>
+                  ))}
 
-                    <button className="btn">Add</button>
-                  </div>
+                  <label htmlFor="">Add More Roles</label>
+                  <span onClick={(e) => handleRoleForm(e)}>
+                    <i className="fa fa-life-ring" aria-hidden="true"></i>
+                  </span>
+
+                  <button className="btn">Add</button>
                 </form>
               </div>
               <div className="overlay"></div>
