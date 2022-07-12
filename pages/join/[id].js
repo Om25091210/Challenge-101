@@ -9,10 +9,10 @@ import AllScript from '../AllScript';
 
 const NFTGamesList = ({ user, challenge }) => {
   const teamOne = challenge.players?.filter(
-    (plr) => plr.teamId === challenge.challenger._id
+    (plr) => plr.teamId === challenge.User_team._id
   );
   const teamTwo = challenge.players?.filter(
-    (plr) => plr.teamId === challenge.challenged._id
+    (plr) => plr.teamId === challenge.opponent_team._id
   );
 
   return (
@@ -31,21 +31,21 @@ const NFTGamesList = ({ user, challenge }) => {
             <div className="team1">
               <div className="imgs">
                 <img
-                  src={challenge.challenger?.imgUrl}
-                  alt={challenge.challenger?.name}
+                  src={challenge.User_team?.imgUrl}
+                  alt={challenge.User_team?.name}
                 />
               </div>
-              <span>{challenge.challenger.name}</span>{' '}
+              <span>{challenge.User_team?.name}</span>{' '}
             </div>
             <div className="vs">VS</div>
             <div className="team2">
               <div className="imgs">
                 <img
-                  src={challenge.challenged.imgUrl}
-                  alt={challenge.challenged.name}
+                  src={challenge.opponent_team?.imgUrl}
+                  alt={challenge.opponent_team?.name}
                 />
               </div>
-              <span>{challenge.challenged.name}</span>{' '}
+              <span>{challenge.opponent_team?.name}</span>{' '}
             </div>
           </div>
           <div className="show_name_game">
@@ -64,13 +64,26 @@ const NFTGamesList = ({ user, challenge }) => {
                   teamOne.map((team) => (
                     <li>
                       <div className="games_names">
-                        <div className="img"></div>
+                        <div className="img">
+                          <img
+                            src={
+                              team?.playerId.apidata.data.platformInfo.avatarUrl
+                            }
+                            alt={
+                              team?.playerId.apidata.data.platformInfo
+                                .platformUserHandle
+                            }
+                          />
+                        </div>
 
                         <div className="tit">
-                          {challenge.challenger.name}
+                          {challenge.User_team.name}
                           <b>
                             <i className="fa fa-steam" aria-hidden="true"></i>{' '}
-                            Z3US360
+                            {
+                              team?.playerId.apidata.data.platformInfo
+                                .platformUserHandle
+                            }
                           </b>
                         </div>
                       </div>
@@ -118,7 +131,7 @@ const NFTGamesList = ({ user, challenge }) => {
                           />
                         </div>
                         <div className="tit">
-                          {challenge.challenged.name}
+                          {challenge.opponent_team.name}
                           <b>
                             <i className="fa fa-steam" aria-hidden="true"></i>{' '}
                             {
