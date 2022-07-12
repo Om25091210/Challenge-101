@@ -137,6 +137,7 @@ const Photos = ({ Userdata, user }) => {
             <ProfilePhotosDel
               collectionId={imgg._id}
               profile={Userdata.profile}
+              user={user}
             />
           </div>
         </div>

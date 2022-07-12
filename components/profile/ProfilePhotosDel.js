@@ -5,7 +5,7 @@ import cookie from 'js-cookie';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 
-const ProfilePhotosDel = ({ collectionId, profile }) => {
+const ProfilePhotosDel = ({ collectionId, profile, user }) => {
   const router = useRouter();
 
   const refreshData = () => {
@@ -32,9 +32,11 @@ const ProfilePhotosDel = ({ collectionId, profile }) => {
   };
   return (
     <>
-      <button className="btn" onClick={handleDeleteSubmit}>
-        <i className="fa fa-trash-o" aria-hidden="true"></i>
-      </button>
+      {profile.user === user._id ? (
+        <button className="btn" onClick={handleDeleteSubmit}>
+          <i className="fa fa-trash-o" aria-hidden="true"></i>
+        </button>
+      ) : null}
     </>
   );
 };

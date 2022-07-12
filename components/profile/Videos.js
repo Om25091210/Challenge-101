@@ -133,6 +133,7 @@ const Videos = ({ Userdata, user }) => {
                 <ProfileVideosDel
                   collectionId={vid._id}
                   profile={Userdata.profile}
+                  user={user}
                 />
               </div>
             </li>
