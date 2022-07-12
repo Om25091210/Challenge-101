@@ -15,18 +15,23 @@ const ProfileTeams = ({
   teamroles
 }) => {
   const [filteredData, setFilteredData] = useState([]);
-
   const [allTeams, setAllTeams] = useState([]);
   const [searchText, setSearchText] = useState('');
+  const router = useRouter();
+
+  const refreshData = () => {
+    router.replace(router.asPath);
+  };
 
   let teams = [];
   if (teamsData.teams?.length > 0) {
-    teams = [...UserTeams, ...teamsData?.teams];
+    teams = UserTeams.concat(teamsData?.teams);
   }
 
   useEffect(() => {
     axios.get(`${baseURL}/api/all/teams`).then((res) => setAllTeams(res.data));
   }, []);
+
   const [team, setTeam] = useState({
     teamId: null,
     game: '',
@@ -34,6 +39,7 @@ const ProfileTeams = ({
     teamStartDate: '',
     teamEndDate: ''
   });
+
   const handleFilter = (event) => {
     const searchWord = event.target.value;
 
@@ -42,18 +48,13 @@ const ProfileTeams = ({
       return value.name.toLowerCase().includes(searchWord.toLowerCase());
     });
 
-    const router = useRouter();
-
-    const refreshData = () => {
-      router.replace(router.asPath);
-    };
-
     if (searchText === '') {
       setFilteredData([]);
     } else {
       setFilteredData(newFilter);
     }
   };
+
   const handleSelected = (data) => {
     setSearchText(data.name);
     team.teamId = data._id;
@@ -244,7 +245,7 @@ const ProfileTeams = ({
                   <div className="right_data">
                     <div className="card_games_tit">
                       <h3>
-                        <a href={`tean/${team._id}`}>
+                        <a href={`team/${team._id}`}>
                           Team {team.name} <br />{' '}
                         </a>
                         {Moment(team.founded).format('MMM YYYY')}

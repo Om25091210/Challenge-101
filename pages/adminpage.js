@@ -7,6 +7,7 @@ import AdminTournaments from '../components/adminfiles/AdminTournaments';
 import AdminChallenges from '../components/adminfiles/AdminChallenges';
 
 const Adminpage = ({ user, data }) => {
+  console.log(data);
   return (
     <>
       <MetaDash />

@@ -19,20 +19,20 @@ const AdminChallenges = ({ challenges }) => {
         </div>
         {!challenges || challenges.length === 0 ? (
           <div className="activity_tag">
-            <span className="act_name">No challenges are ranked yet ...</span>
+            <span className="act_name">No challenges are yet...</span>
           </div>
         ) : (
           challenges.map((result, idx) => (
             <div className="row_box" key={idx}>
               <div className="cols_box">
                 <div className="cols">{result._id.substring(0, 14)}</div>
-                <div className="cols">{result.challenger.name}</div>
-                <div className="cols">{result.challenged.name}</div>
+                <div className="cols">{result.User_team.name}</div>
+                <div className="cols">{result.opponent_team.name}</div>
                 <div className="cols">{result.game.name}</div>
                 <div className="cols">
-                  <p>{result.challenger.name}</p>
+                  <p>{result.User_team.name}</p>
                   VS
-                  <p>{result.challenged.name}</p>
+                  <p>{result.opponent_team.name}</p>
                 </div>
                 <div className="cols">
                   {Moment(result.startDate).format('DD/MMM/YYYY')}
