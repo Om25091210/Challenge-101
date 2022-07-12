@@ -4,6 +4,7 @@ import baseURL from '@utils/baseURL';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 import cookie from 'js-cookie';
+import SocialLink from '../common/SocialLink';
 
 const ProfileEdit = ({ profile, user, teams, games }) => {
   const name = user.name.split(' ');
@@ -35,14 +36,7 @@ const ProfileEdit = ({ profile, user, teams, games }) => {
     industry: '',
     streamLink: '',
     streamPlatform: '',
-
-    facebook: '',
-    instagram: '',
-    twitch: '',
-    discord: '',
-    youtube: '',
-    twitter: '',
-    website: ''
+    socialLinks: []
   });
   const router = useRouter();
 
@@ -52,13 +46,22 @@ const ProfileEdit = ({ profile, user, teams, games }) => {
 
   const [step1, setStep1] = useState(true);
   const [selectedGame, setSelectedGame] = useState();
+  const [openForm, setOpenForm] = useState(false);
+  const [type, setType] = useState('');
 
   const handleSelectGame = async (obj) => {
     setSelectedGame({ game: obj });
     setStep1(false);
     setShowIgn('');
   };
-
+  const handleopenForm = async (data) => {
+    setOpenForm(true);
+    setType(data);
+  };
+  const handleRoleForm = (e) => {
+    setOpenForm(true);
+    setType('');
+  };
   const gamehandleSubmit = async (e) => {
     e.preventDefault();
     var gameId = selectedGame?.game._id;
@@ -464,23 +467,65 @@ const ProfileEdit = ({ profile, user, teams, games }) => {
                   </div>
                 </div>
                 <div className="form-group">
-                  <p>Profile Links</p>
+                  <label htmlFor="">Social Links</label>
+                  <div className="socail">
+                    <button
+                      type="button"
+                      onClick={() => handleopenForm('Facebook')}
+                    >
+                      <i
+                        className="fa fa-facebook-official"
+                        aria-hidden="true"
+                      ></i>
+                    </button>
 
-                  <div className="custom-control custom-switch">
-                    <input
-                      type="checkbox"
-                      className="custom-control-input"
-                      id="customSwitch1"
-                      onClick={() => setOnline(toggleMic)}
-                      value={states.Online}
-                    />
-                    <label
-                      className="custom-control-label"
-                      htmlFor="customSwitch1"
-                    ></label>
+                    <button
+                      type="button"
+                      onClick={() => handleopenForm('Instagram')}
+                    >
+                      <i className="fa fa-instagram" aria-hidden="true"></i>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => handleopenForm('Twitch')}
+                    >
+                      <i className="fa fa-twitch" aria-hidden="true"></i>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => handleopenForm('Youtube')}
+                    >
+                      <i className="fa fa-youtube"></i>
+                    </button>
+
+                    <span onClick={(e) => handleRoleForm(e)}>
+                      <i className="fa fa-plus-circle" aria-hidden="true"></i>
+                    </span>
                   </div>
-                </div>
 
+                  {openForm && (
+                    <SocialLink
+                      type={type}
+                      socialLink={states.socialLinks}
+                      closeForm={setOpenForm}
+                    />
+                  )}
+                </div>
+                <div className="custom-control custom-switch">
+                  <input
+                    type="checkbox"
+                    className="custom-control-input"
+                    id="customSwitch1"
+                    onClick={() => setOnline(toggleMic)}
+                    value={states.Online}
+                  />
+                  <label
+                    className="custom-control-label"
+                    htmlFor="customSwitch1"
+                  ></label>
+                </div>
                 <button className="btn">Update</button>
               </form>
             </div>

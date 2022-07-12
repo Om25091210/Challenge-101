@@ -86,7 +86,7 @@ const TeamAbout = ({ Data, isManager, isAdmin, user, teamAbout }) => {
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }
   };
-  console.log(count);
+
   return (
     <div className="our_team">
       <div className="about_team">

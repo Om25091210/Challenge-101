@@ -14,7 +14,7 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
   const [attr, setAttr] = useState(data.team.attributes);
   const [sociallinks, setSociallinks] = useState(data.team.social);
   const [websitelink, setWebsitelink] = useState(data.team);
-  console.log(data);
+
   const router = useRouter();
   const refreshData = () => {
     router.replace(router.asPath);
@@ -219,7 +219,7 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
       .get(`${baseURL}/api/teams/teamdata/SPONSORS/${data.team?._id}`)
       .then((res) => setSponsors(res.data.sponsors));
   }, []);
-  console.log(sponsors);
+
   return (
     <div className="profile_box team_profile_box">
       <div className="profile_cover_photo">

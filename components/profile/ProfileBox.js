@@ -16,19 +16,14 @@ import ProfileEdit from './ProfileEdit';
 const ProfileBox = ({ user, Userdata, games, teams }) => {
   const [profilePic, setProfilePic] = useState(null);
   const [showlocation, setShowlocation] = useState(false);
-  const [showLocModal, setShowLocModal] = useState(true);
   const [selectedGame, setSelectedGame] = useState();
   const [showIgn, setShowIgn] = useState('none');
   const [step1, setStep1] = useState(true);
-
-  const [search, setSearch] = useState('');
-  const [players, setPlayers] = useState([]);
 
   const [coverPic, setCoverPic] = useState(null);
   const [userIgn, setUserIgn] = useState(null);
 
   const [address, setAddress] = useState(Userdata.profile?.address);
-  const [phno, setPhno] = useState(user?.phone_number);
 
   const [attr, setAttr] = useState(
     Userdata.profile?.playergames[0]?.player?.attributes
@@ -39,7 +34,6 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
   const [deleteModal, setDeleteModal] = useState(false);
 
   const [formErrors, setFormErrors] = useState({});
-  const [sociallinks, setSociallinks] = useState(Userdata.profile.social);
   const router = useRouter();
 
   const refreshData = () => {
@@ -51,55 +45,6 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
     mutate({ follow });
     setFollow(true);
   };
-
-  function handleChangeSocial(e) {
-    setSociallinks({ ...sociallinks, [e.target.name]: e.target.value });
-  }
-
-  const handleLinksSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await axios.put(
-        `${baseURL}/api/profile/sociallinks/${user._id}`,
-        sociallinks,
-        {
-          headers: {
-            Authorization: cookie.get('token'),
-            'Content-Type': 'application/json'
-          }
-        }
-      );
-      toast.success('Links Have Been Updated');
-      $('a.model_close').parent().removeClass('show_model');
-      refreshData();
-    } catch (err) {
-      toast.error(err.response?.data?.msg || 'Please recheck your inputs');
-    }
-  };
-
-  const handleSubmitphno = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await fetch(`${baseURL}/api/profile/phone/${user._id}`, {
-        method: 'PATCH',
-        body: JSON.stringify({
-          phno
-        }),
-        headers: {
-          'Content-type': 'application/json'
-        }
-      });
-      toast.success('Your Phone Number has been Updated successfully! ');
-    } catch (err) {
-      toast.error(err.response?.data?.msg || 'Please recheck your inputs');
-    }
-    $('a.model_close').parent().removeClass('show_model');
-    refreshData();
-  };
-
-  function handleChangephno(e) {
-    setPhno(e.target.value);
-  }
 
   const addFollow = async () => {
     const res = await fetch(`${baseURL}/api/profile/follow/${SrhUser._id}`, {
@@ -177,10 +122,6 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
 
   function handleUserIgnChange(e) {
     setUserIgn(e.target.value);
-  }
-
-  function handleSearchChange(e) {
-    setSearch(e.target.value);
   }
 
   const toggleShowlocation = () => {
@@ -319,43 +260,6 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
       setAttr({ ...attr, [e.target.name]: e.target.value });
     }
   }
-
-  useEffect(() => {
-    $('a.model_show_btn').click(function () {
-      setShowIgn('none');
-      $(this).next().addClass('show_model');
-    });
-
-    $('a.model_close').click(function () {
-      $(this).parent().removeClass('show_model');
-    });
-  }, []);
-
-  const handleSearchSubmit = async (e) => {
-    e.preventDefault();
-    if (search === '') {
-      toast.warning('Please enter all fields or check your inputs');
-    } else {
-      try {
-        await axios
-          .get(`${baseURL}/api/player/getplayers/${search}`)
-          .then((res) => setPlayers(res.data));
-      } catch (err) {
-        console.log(err);
-        toast.error(err.response?.data?.msg || 'Please recheck your inputs');
-      }
-    }
-  };
-
-  useEffect(() => {}, []);
-
-  const mscroll = () => {
-    setTimeout(() => {
-      $('.fancybox-inner').mCustomScrollbar({
-        autoHideScrollbar: true
-      });
-    }, 200);
-  };
 
   const deletehandleSubmit = async (e) => {
     e.preventDefault();
@@ -928,208 +832,21 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
             <div className="top_bio">
               <h3>BIO</h3>
               <div className="socail">
-                <a
-                  href={`https://www.facebook.com/${sociallinks?.facebook}`}
-                  target="_blank"
-                >
-                  <i className="fa fa-facebook-official" aria-hidden="true"></i>
-                </a>
-                <a
-                  href={`https://www.instagram.com/${sociallinks?.instagram}`}
-                  target="_blank"
-                >
-                  <i className="fa fa-instagram" aria-hidden="true"></i>
-                </a>
-                <a
-                  href={`https://www.twitch.tv/${sociallinks?.twitch}`}
-                  target="_blank"
-                >
-                  <i className="fa fa-twitch" aria-hidden="true"></i>
-                </a>
-                <a href={`${sociallinks.discord}`} target="_blank">
-                  <img
-                    src="/assets/media/social/discord.png"
-                    height="20px"
-                    width="20px"
-                  />
-                </a>
-                <a
-                  href={`https://www.youtube.com/c/${sociallinks?.youtube}`}
-                  target="_blank"
-                >
-                  <i className="fa fa-youtube"></i>
-                </a>
-                <a
-                  href={`https://www.twitter.com/${sociallinks?.twitter}`}
-                  target="_blank"
-                >
-                  <i className="fa fa-twitter-square"></i>
-                </a>
-                <a href={`https://${sociallinks?.website}`} target="_blank">
-                  <i className="fa fa-globe"></i>
-                </a>
-                {sociallinks.reddit?.length > 0 ? (
-                  <a
-                    href={`https://www.reddit.com/user/${sociallinks?.reddit}`}
-                    target="_blank"
-                  >
-                    <i className="fa fa-reddit"></i>
-                  </a>
-                ) : null}
-                {sociallinks.playstation?.length > 0 ? (
-                  <a
-                    href={`https://playstation.com/users/${sociallinks?.playstation}`}
-                    target="_blank"
-                  >
-                    <img
-                      src="/assets/media/social/PS Logo.png"
-                      height="20px"
-                      width="20px"
-                    />
-                  </a>
-                ) : null}
-                {sociallinks.xbox?.length > 0 ? (
-                  <a
-                    href={`https://social.xbox.live/${sociallinks?.xbox}`}
-                    target="_blank"
-                  >
-                    <img
-                      src="/assets/media/social/Xbox.png"
-                      height="20px"
-                      width="20px"
-                    />
-                  </a>
-                ) : null}
+                {Userdata.profile?.social.map((value) =>
+                  value.type === 'Facebook' ? (
+                    <a href={`https://www.facebook.com/${value?.link}`}>
+                      <i
+                        className="fa fa-facebook-official"
+                        aria-hidden="true"
+                      ></i>
+                    </a>
+                  ) : value.type === 'Instagram' ? (
+                    <a href={`https://www.instagram.com/${value?.link}`}>
+                      <i className="fa fa-instagram" aria-hidden="true"></i>
+                    </a>
+                  ) : null
+                )}
               </div>
-
-              <span>
-                <div className="loc_box">
-                  {' '}
-                  {isLoggedInUser ? (
-                    <a href="#!" className="model_show_btn">
-                      <button className="btn">
-                        <i
-                          className="fa fa-gear"
-                          aria-hidden="true"
-                          style={{ color: 'white' }}
-                        ></i>
-                      </button>
-                    </a>
-                  ) : null}
-                  <div className="common_model_box">
-                    <a href="#!" className="model_close">
-                      X
-                    </a>
-
-                    <div className="inner_model_box">
-                      <h3>Social Links</h3>
-                      <ul className="socail_urls">
-                        <li>
-                          <input
-                            type="text"
-                            placeholder="Facebook User ID"
-                            onChange={handleChangeSocial}
-                            value={sociallinks.facebook}
-                            name="facebook"
-                          />
-                        </li>
-                        <li>
-                          {' '}
-                          <input
-                            type="text"
-                            placeholder="Instagram Username"
-                            onChange={handleChangeSocial}
-                            value={sociallinks.instagram}
-                            name="instagram"
-                          />
-                        </li>
-                        <li>
-                          {' '}
-                          <input
-                            type="text"
-                            placeholder="Twitch Channel Name"
-                            onChange={handleChangeSocial}
-                            value={sociallinks.twitch}
-                            name="twitch"
-                          />
-                        </li>
-                        <li>
-                          <input
-                            type="text"
-                            placeholder="Discord Server URL"
-                            onChange={handleChangeSocial}
-                            value={sociallinks.discord}
-                            name="discord"
-                          />
-                        </li>
-                        <li>
-                          <input
-                            type="text"
-                            placeholder="Youtube Channel Name"
-                            onChange={handleChangeSocial}
-                            value={sociallinks.youtube}
-                            name="youtube"
-                          />
-                        </li>
-                        <li>
-                          {' '}
-                          <input
-                            type="text"
-                            placeholder="@Twitter Username"
-                            onChange={handleChangeSocial}
-                            value={sociallinks.twitter}
-                            name="twitter"
-                          />
-                        </li>
-                        <li>
-                          {' '}
-                          <input
-                            type="text"
-                            placeholder="Your Website Name with Extension"
-                            onChange={handleChangeSocial}
-                            value={sociallinks.website}
-                            name="website"
-                          />
-                        </li>
-                        <li>
-                          {' '}
-                          <input
-                            type="text"
-                            placeholder="Enter your reddit username"
-                            onChange={handleChangeSocial}
-                            value={sociallinks.reddit}
-                            name="reddit"
-                          />
-                        </li>
-                        <li>
-                          {' '}
-                          <input
-                            type="text"
-                            placeholder="Enter your PlayStation ID"
-                            onChange={handleChangeSocial}
-                            value={sociallinks.playstation}
-                            name="playstation"
-                          />
-                        </li>
-                        <li>
-                          {' '}
-                          <input
-                            type="text"
-                            placeholder="Enter your XBOX ID"
-                            onChange={handleChangeSocial}
-                            value={sociallinks.xbox}
-                            name="xbox"
-                          />
-                        </li>
-                      </ul>
-                      <button className="btn" onClick={handleLinksSubmit}>
-                        Confirm Changes
-                      </button>
-                    </div>
-                    <div className="overlay"></div>
-                  </div>
-                </div>
-              </span>
             </div>
 
             <p> {Userdata.profile ? Userdata.profile.bio : ''} </p>
