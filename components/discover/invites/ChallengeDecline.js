@@ -53,7 +53,7 @@ const Challenge_Decline = ({ challenge, user }) => {
   return (
     <>
       <button className="btn" onClick={reqhandlesubmit}>
-        Decline
+        Reject
       </button>
     </>
   );

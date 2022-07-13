@@ -7,8 +7,7 @@ import AllScript from './AllScript';
 import cookie from 'js-cookie';
 import { toast } from 'react-toastify';
 import axios from 'axios';
-import Moment from 'moment';
-import ChallengeApprove from '../components/discover/invites/ChallengeApprove';
+import ChallengesDisplay from '../components/challenges/ChallengesDisplay';
 
 const challenges = ({ user, data, teams, profile, allteams }) => {
   const [searchText, setSearchText] = useState('');
@@ -28,7 +27,7 @@ const challenges = ({ user, data, teams, profile, allteams }) => {
   });
 
   const UserTeam = teams.filter((team) => {
-    return team._id === parseInt(state.Userteam);
+    return team._id === parseInt(state.User_team);
   });
   var commonGames = UserTeam[0]?.games.filter(function (val1) {
     return opponentTeam?.games.some(function (val2) {
@@ -100,23 +99,36 @@ const challenges = ({ user, data, teams, profile, allteams }) => {
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }
   };
+
   const teamCheck = teams.filter((team) => {
     return data.find((chall) => {
       return team._id === chall.opponent_team?._id;
     });
   });
 
-  const teamFiltered = data.filter((val2) => {
-    return val2.invites?.some((invi) => {
+  const teamFiltered =
+    data.filter((val2) => {
+      return val2.invites?.some((invi) => {
+        return (
+          teamCheck.length > 0 &&
+          teamCheck[0].players.some((plyr) => {
+            return profile.playergames.some((pg) => {
+              return (
+                pg?.player?._id === invi.playerId?._id &&
+                plyr.playerId?._id === invi.playerId?._id
+              );
+            });
+          })
+        );
+      });
+    }).length > 0;
+
+  const teamPlayer = data.filter((val1) => {
+    return val1.players.some((ply) => {
       return (
         teamCheck.length > 0 &&
         teamCheck[0].players.some((plyr) => {
-          return profile.playergames.some((pg) => {
-            return (
-              pg?.player?._id === invi.playerId?._id &&
-              plyr.playerId?._id === invi.playerId?._id
-            );
-          });
+          return plyr.playerId?._id === ply?.playerId;
         })
       );
     });
@@ -347,56 +359,11 @@ const challenges = ({ user, data, teams, profile, allteams }) => {
           </div>
 
           <div className="white_bg challenge_card_box">
-            <ul className="challenge_card">
-              {!teamFiltered || teamFiltered.length === 0 ? (
-                <div>
-                  <span>No Challenges for you</span>
-                </div>
-              ) : (
-                teamFiltered.map((chall) => (
-                  <li>
-                    <div className="row1">
-                      <div className="card_img">
-                        <div className="img">
-                          <img src={chall.User_team?.imgUrl} alt="" />
-                        </div>
-                        {chall.User_team?.name}
-                      </div>
-                      <img src="/assets/media/challenge/f.png" alt="" />
-                    </div>
-
-                    <div className="row1">
-                      <span>
-                        <b>Type:</b>
-                        {chall?.challengeType}
-                      </span>
-                      <span>
-                        <b>Format:</b>
-                        {chall.format ? chall.format : '---'}
-                      </span>
-                      <span>
-                        <b>Entry Fee:</b>
-                        {chall.entry_fee ? chall.entry_fee : '---'}
-                      </span>
-                    </div>
-
-                    <div className="row1">
-                      <span>
-                        <b>Challenge Express:</b>
-                        {Moment(chall?.startDate).format('DD MMM YYYY')}-
-                        {chall?.startTime}
-                      </span>
-
-                      <ChallengeApprove
-                        challenge={chall}
-                        team={chall.opponent_team}
-                        user={user}
-                      />
-                    </div>
-                  </li>
-                ))
-              )}
-            </ul>
+            <ChallengesDisplay
+              challenges={teamPlayer}
+              isInvite={teamFiltered}
+              user={user}
+            />
 
             <p>Similar players you can challenge.</p>
 

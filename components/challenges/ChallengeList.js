@@ -19,22 +19,34 @@ const Challengelist = ({ user, teams, profile }) => {
     });
   });
 
-  const teamFiltered = challenges.filter((val2) => {
-    return val2.invites?.some((invi) => {
+  const isInvite =
+    challenges.filter((val2) => {
+      return val2.invites?.some((invi) => {
+        return (
+          teamCheck.length > 0 &&
+          teamCheck[0].players.some((plyr) => {
+            return profile.playergames.some((pg) => {
+              return (
+                pg?.player?._id === invi.playerId?._id &&
+                plyr.playerId?._id === invi.playerId?._id
+              );
+            });
+          })
+        );
+      });
+    }).length > 0;
+
+  const teamPlayer = challenges.filter((val1) => {
+    return val1.players.some((ply) => {
       return (
         teamCheck.length > 0 &&
         teamCheck[0].players.some((plyr) => {
-          return profile.playergames.some((pg) => {
-            return (
-              pg?.player?._id === invi.playerId?._id &&
-              plyr.playerId?._id === invi.playerId?._id
-            );
-          });
+          return plyr.playerId?._id === ply?.playerId;
         })
       );
     });
   });
-  console.log(teamFiltered);
+
   return (
     <div className="recent_activity">
       <h2>Challenge List</h2>
@@ -43,12 +55,12 @@ const Challengelist = ({ user, teams, profile }) => {
         <i className="fa fa-angle-up" aria-hidden="true"></i>
       </a>
       <div className="white_box">
-        {!teamFiltered || teamFiltered.length === 0 ? (
+        {!teamPlayer || teamPlayer.length === 0 ? (
           <div className="activity_tag">
             <span className="act_name">No Challenges Yet.</span>
           </div>
         ) : (
-          teamFiltered.map((result, idx) => (
+          teamPlayer.map((result, idx) => (
             <div className="activity_tag" key={idx}>
               {' '}
               <a href="#">
@@ -57,12 +69,20 @@ const Challengelist = ({ user, teams, profile }) => {
                   {result.game?.name} match
                 </span>
               </a>
-              <ChallengeApprove
-                challenge={result}
-                user={user}
-                team={teamCheck[0]}
-              />
-              <ChallengeDecline challenge={result} user={user} />
+              {isInvite ? (
+                <>
+                  <ChallengeApprove
+                    challenge={result}
+                    user={user}
+                    team={teamCheck[0]}
+                  />
+                  <ChallengeDecline challenge={result} user={user} />
+                </>
+              ) : (
+                <button className="btn">
+                  <a href={`join/${result._id}`}>Go to Lobby</a>
+                </button>
+              )}
             </div>
           ))
         )}

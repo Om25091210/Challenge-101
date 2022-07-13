@@ -10,6 +10,7 @@ import axios from 'axios';
 import baseURL from '../../utils/baseURL';
 import { toast } from 'react-toastify';
 import RigsFilter from '../profile/RigsFilter';
+import ProfileRigsDelete from '../profile/ProfileRigsDelete';
 
 const ProductRigs = ({ user, productList, Userdata }) => {
   const [products, setProducts] = useState(productList);
@@ -113,7 +114,8 @@ const ProductRigs = ({ user, productList, Userdata }) => {
       $(this).parent().addClass('active');
     });
   }, []);
-
+  console.log(Userdata);
+  console.log(Userdata.profile.rigs);
   return (
     <div className="tab hide" id="rigs">
       <div className="sponser_btn">
@@ -280,6 +282,11 @@ const ProductRigs = ({ user, productList, Userdata }) => {
           ) : (
             Userdata.profile.rigs.map((rig) => (
               <li>
+                <ProfileRigsDelete
+                  rigId={rig._id}
+                  profile={Userdata.profile}
+                  user={user}
+                />
                 <div className="lft_prod_det">
                   {' '}
                   <span className="new"> New</span>

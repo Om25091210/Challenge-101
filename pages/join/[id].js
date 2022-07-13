@@ -67,10 +67,14 @@ const NFTGamesList = ({ user, challenge }) => {
                         <div className="img">
                           <img
                             src={
-                              team?.playerId.apidata.data.platformInfo.avatarUrl
+                              team?.playerId.apidata?.data.platformInfo
+                                .avatarUrl
+                                ? team?.playerId.apidata.data.platformInfo
+                                    .avatarUrl
+                                : team?.playerId.imgUrl
                             }
                             alt={
-                              team?.playerId.apidata.data.platformInfo
+                              team?.playerId.apidata?.data.platformInfo
                                 .platformUserHandle
                             }
                           />
@@ -81,7 +85,7 @@ const NFTGamesList = ({ user, challenge }) => {
                           <b>
                             <i className="fa fa-steam" aria-hidden="true"></i>{' '}
                             {
-                              team?.playerId.apidata.data.platformInfo
+                              team?.playerId.apidata?.data.platformInfo
                                 .platformUserHandle
                             }
                           </b>
@@ -122,10 +126,14 @@ const NFTGamesList = ({ user, challenge }) => {
                         <div className="img">
                           <img
                             src={
-                              team?.playerId.apidata.data.platformInfo.avatarUrl
+                              team?.playerId.apidata?.data.platformInfo
+                                .avatarUrl
+                                ? team?.playerId.apidata.data.platformInfo
+                                    .avatarUrl
+                                : team?.playerId.imgUrl
                             }
                             alt={
-                              team?.playerId.apidata.data.platformInfo
+                              team?.playerId.apidata?.data.platformInfo
                                 .platformUserHandle
                             }
                           />
@@ -135,7 +143,7 @@ const NFTGamesList = ({ user, challenge }) => {
                           <b>
                             <i className="fa fa-steam" aria-hidden="true"></i>{' '}
                             {
-                              team?.playerId.apidata.data.platformInfo
+                              team?.playerId.apidata?.data.platformInfo
                                 .platformUserHandle
                             }
                           </b>

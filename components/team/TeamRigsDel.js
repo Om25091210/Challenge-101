@@ -5,7 +5,7 @@ import cookie from 'js-cookie';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 
-const ProfilePhotosDel = ({ collectionId, profile, user }) => {
+const TeamRigsDel = ({ rigId, team, isAdmin }) => {
   const router = useRouter();
 
   const refreshData = () => {
@@ -15,14 +15,11 @@ const ProfilePhotosDel = ({ collectionId, profile, user }) => {
   const handleDeleteSubmit = async (e) => {
     e.preventDefault();
     try {
-      axios.delete(
-        `${baseURL}/api/profile/images/${profile?._id}/${collectionId}`,
-        {
-          headers: {
-            Authorization: cookie.get('token')
-          }
+      axios.delete(`${baseURL}/api/teams/rigs/${team?._id}/${rigId}`, {
+        headers: {
+          Authorization: cookie.get('token')
         }
-      );
+      });
       refreshData();
       toast.success('Deleted Successfully');
     } catch (error) {
@@ -30,9 +27,10 @@ const ProfilePhotosDel = ({ collectionId, profile, user }) => {
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }
   };
+
   return (
     <>
-      {profile.user?._id === user._id ? (
+      {isAdmin ? (
         <button className="btn" onClick={handleDeleteSubmit}>
           <i className="fa fa-trash-o" aria-hidden="true"></i>
         </button>
@@ -41,4 +39,4 @@ const ProfilePhotosDel = ({ collectionId, profile, user }) => {
   );
 };
 
-export default ProfilePhotosDel;
+export default TeamRigsDel;

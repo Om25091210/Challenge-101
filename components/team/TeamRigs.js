@@ -4,8 +4,9 @@ import baseURL from '../../utils/baseURL';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 import RigsFilter from '../profile/RigsFilter';
+import TeamRigsDel from './TeamRigsDel';
 
-const TeamRigs = ({ user, profile, data, isAdmin, teamRigs }) => {
+const TeamRigs = ({ data, isAdmin, teamRigs }) => {
   const [rigsData, setRigsData] = useState([]);
   const [states, setStates] = useState({
     Keyboard: '',
@@ -40,7 +41,7 @@ const TeamRigs = ({ user, profile, data, isAdmin, teamRigs }) => {
     e.preventDefault();
     try {
       axios.put(`${baseURL}/api/teams/rigs/${data.team?._id}`, states);
-      toast.success('Saved Changes', { autoClose: 2000 });
+      toast.success('The Rig has been added.', { autoClose: 2000 });
       $('a.model_close').parent().removeClass('show_model');
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
@@ -215,6 +216,11 @@ const TeamRigs = ({ user, profile, data, isAdmin, teamRigs }) => {
             teamRigs.type === 'RIGS' &&
             teamRigs.rigs.map((rig) => (
               <li>
+                <TeamRigsDel
+                  rigId={rig._id}
+                  team={data.team}
+                  isAdmin={isAdmin}
+                />
                 <div className="lft_prod_det">
                   {' '}
                   <span className="new"> New</span>
