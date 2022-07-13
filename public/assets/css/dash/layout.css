@@ -2422,12 +2422,15 @@ article .social_bar {
 }
 
 #big_poup{ width: 800px;}
-#big_poup .common_form .form-group:nth-child(1){ width: 100%;}
 #big_poup .common_form .form-group{ float: left; width: 48%;}
 #big_poup .common_form .form-group:nth-child(2n){ float: right;}
-#big_poup .inner_model_box{ height: 480px; overflow-y: auto;}
-#big_poup .tit{ display: flex;}
-#big_poup .tit span{ margin-right: 5px;}
+
+#big_poup.edit_profile .common_form .form-group:nth-child(1){ width: 100%;}
+#big_poup.edit_profile .common_form .form-group{ float: left; width: 48%;}
+#big_poup.edit_profile .common_form .form-group:nth-child(2n){ float: right;}
+#big_poup.edit_profile .inner_model_box{ height: 480px; overflow-y: auto;}
+#big_poup.edit_profile .tit{ display: flex;}
+#big_poup.edit_profile .tit span{ margin-right: 5px;}
 /* --- profile tabs --- */
 
 .profile_tab_btn {
@@ -7625,6 +7628,7 @@ form.common_form .btn{ width: 100%; margin-top: 20px; height: 40px;}
 
 /* ---------- Challenges page---------------- */
 
+.challenge_page .heads{ display: flex; justify-content: space-between; align-items: center;}
 .challenge_page h1{ font-size: 30px;}
 .challenge_page p{ padding-bottom: 20px;}
 
@@ -7665,7 +7669,7 @@ form.common_form .btn{ width: 100%; margin-top: 20px; height: 40px;}
     width: 100%;
     top: 0;
     left: 0;
-    height: 100%;
+    height: auto;
     padding: 20px;
     z-index: 99;
     right: 0;

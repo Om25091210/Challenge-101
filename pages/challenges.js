@@ -132,156 +132,168 @@ const challenges = ({ user, data, teams, profile, allteams }) => {
       <div className="main_middle profile_middle">
         <div className="discovery_page challenge_page">
           <div className="white_bg">
-            <h1>Play a challenge</h1>
-            <p>
-              Startup a challenge against other players and earn real money in
-              the process!
-            </p>
-            <a href="#!" className="model_show_btn btn add_sqd">
-              <i className="fa fa-plus-circle" aria-hidden="true"></i> Post
-              Challenge
-            </a>
+            <div className="heads">
+              <div>
+                <h1>Play a challenge</h1>
+                <p>
+                  Startup a challenge against other players and earn real money
+                  in the process!
+                </p>
+              </div>
+              <div>
+                <a href="#!" className="model_show_btn btn">
+                  <i className="fa fa-plus-circle" aria-hidden="true"></i> Post
+                  Challenge
+                </a>
 
-            <div
-              className="common_model_box"
-              style={{ marginTop: '200', overflowY: 'scroll' }}
-            >
-              <a href="#!" className="model_close">
-                X
-              </a>
+                <div className="common_model_box" id="big_poup">
+                  <a href="#!" className="model_close">
+                    X
+                  </a>
 
-              <div className="inner_model_box">
-                <h3>Post a Challenge</h3>
+                  <div className="inner_model_box">
+                    <h3>Post a Challenge</h3>
 
-                <form className="common_form" onSubmit={handleEditStat}>
-                  <div className="colm rows">
-                    <label> Choose your Team</label>
-                    <select name="Userteam" id="teamselect" onChange={onChange}>
-                      <option value="">---</option>
-                      {teams.map((team, idtx) => (
-                        <option value={team._id} key={idtx}>
-                          {team.name}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                  <div className="colm rows">
-                    <label>Opponent Team</label>
-                    <input
-                      id="challengedTeam"
-                      name="challengedTeam"
-                      placeholder="Enter Team Name"
-                      type="search"
-                      value={searchText}
-                      onChange={handleFilter}
-                      autoComplete="off"
-                    />
+                    <form className="common_form" onSubmit={handleEditStat}>
+                      <div className="form-group">
+                        <label> Choose your Team</label>
+                        <select
+                          name="Userteam"
+                          id="teamselect"
+                          onChange={onChange}
+                        >
+                          <option value="">---</option>
+                          {teams.map((team, idtx) => (
+                            <option value={team._id} key={idtx}>
+                              {team.name}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                      <div className="form-group">
+                        <label>Opponent Team</label>
+                        <input
+                          id="challengedTeam"
+                          name="challengedTeam"
+                          placeholder="Enter Team Name"
+                          type="search"
+                          value={searchText}
+                          onChange={handleFilter}
+                          autoComplete="off"
+                        />
 
-                    {searchText.length !== 0 && showform === true ? (
-                      <div className="custom-rig-tag">
-                        <div>
-                          {!filteredData || filteredData.length === 0 ? (
-                            <p>No Teams found..</p>
+                        {searchText.length !== 0 && showform === true ? (
+                          <div className="custom-rig-tag">
+                            <div>
+                              {!filteredData || filteredData.length === 0 ? (
+                                <p>No Teams found..</p>
+                              ) : (
+                                filteredData.map((data, idfx) => (
+                                  <div
+                                    onClick={() => handleSelectedTeam(data)}
+                                    key={idfx}
+                                  >
+                                    <img
+                                      src={data.imgUrl}
+                                      height={50}
+                                      width={50}
+                                    />
+                                    <p>{data.name}</p>
+                                  </div>
+                                ))
+                              )}
+                            </div>
+                          </div>
+                        ) : null}
+                      </div>
+                      <div className="form-group">
+                        <label>Choose a game</label>
+                        <select name="game" id="game" onChange={onChange}>
+                          <option value="">---</option>
+                          {commonGames?.length === 0 ? (
+                            <option value="">
+                              No games available between the teams.
+                            </option>
                           ) : (
-                            filteredData.map((data, idfx) => (
-                              <div
-                                onClick={() => handleSelectedTeam(data)}
-                                key={idfx}
-                              >
-                                <img src={data.imgUrl} height={50} width={50} />
-                                <p>{data.name}</p>
-                              </div>
+                            commonGames?.map((cG, idcx) => (
+                              <option value={cG.gameId?._id} key={idcx}>
+                                {cG.gameId?.name}
+                              </option>
                             ))
                           )}
-                        </div>
+                        </select>
                       </div>
-                    ) : null}
-                  </div>
-                  <div className="colm rows">
-                    <label>Choose a game</label>
-                    <select name="game" id="game" onChange={onChange}>
-                      <option value="">---</option>
-                      {commonGames?.length === 0 ? (
-                        <option value="">
-                          No games available between the teams.
-                        </option>
-                      ) : (
-                        commonGames?.map((cG, idcx) => (
-                          <option value={cG.gameId?._id} key={idcx}>
-                            {cG.gameId?.name}
+                      <div className="form-group">
+                        <label htmlFor="search">Choose Your Team Players</label>
+                        <select
+                          name="players"
+                          id="players"
+                          multiple
+                          onChange={onChange}
+                        >
+                          {UserTeam[0]?.players?.map((plyr, idpx) => (
+                            <option value={plyr?.playerId?._id} key={idpx}>
+                              {plyr.playerId?.apidata
+                                ? plyr.playerId.apidata.data.platformInfo
+                                    .platformUserHandle
+                                : plyr.playerId?.name}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="">Format</label>
+                        <select name="format" onChange={onChange}>
+                          <option value="">---</option>
+                          <option value="Best of 3">Best of 3</option>
+                          <option value="Best of 5">Best of 5</option>
+                        </select>
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="">Challenge Type</label>
+                        <select name="challengeType" onChange={onChange}>
+                          <option value="">---</option>
+                          <option value="Team Deathmatch">
+                            Team Deathmatch
                           </option>
-                        ))
-                      )}
-                    </select>
+                          <option value="Deathmatch">Deathmatch</option>
+                          <option value="Domination">Domination</option>
+                        </select>
+                      </div>
+                      <div className="form-group">
+                        <input
+                          type="text"
+                          onChange={onChange}
+                          value={state.entry_fee}
+                          name="entry_fee"
+                          placeholder="Enter fees"
+                        />
+                      </div>
+                      <div className="form-group">
+                        <input
+                          type="date"
+                          onChange={onChange}
+                          name="startDate"
+                          value={state.startDate}
+                        />
+                      </div>
+                      <div className="form-group">
+                        <input
+                          type="time"
+                          name="startTime"
+                          onChange={onChange}
+                          value={state.startTime}
+                        />
+                      </div>
+                      <button className="btn" type="submit">
+                        Submit
+                      </button>
+                    </form>
                   </div>
-                  <div className="colm rows">
-                    <label htmlFor="search">Choose Your Team Players</label>
-                    <select
-                      name="players"
-                      id="players"
-                      multiple
-                      onChange={onChange}
-                    >
-                      {UserTeam[0]?.players?.map((plyr, idpx) => (
-                        <option value={plyr?.playerId?._id} key={idpx}>
-                          {plyr.playerId?.apidata
-                            ? plyr.playerId.apidata.data.platformInfo
-                                .platformUserHandle
-                            : plyr.playerId?.name}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                  <div className="colm rows">
-                    <label htmlFor="">Format</label>
-                    <select name="format" onChange={onChange}>
-                      <option value="">---</option>
-                      <option value="Best of 3">Best of 3</option>
-                      <option value="Best of 5">Best of 5</option>
-                    </select>
-                  </div>
-                  <div className="colm rows">
-                    <label htmlFor="">Challenge Type</label>
-                    <select name="challengeType" onChange={onChange}>
-                      <option value="">---</option>
-                      <option value="Team Deathmatch">Team Deathmatch</option>
-                      <option value="Deathmatch">Deathmatch</option>
-                      <option value="Domination">Domination</option>
-                    </select>
-                  </div>
-                  <div className="colm rows">
-                    <input
-                      type="text"
-                      onChange={onChange}
-                      value={state.entry_fee}
-                      name="entry_fee"
-                      placeholder="Enter fees"
-                    />
-                  </div>
-                  <div className="colm rows">
-                    <input
-                      type="date"
-                      onChange={onChange}
-                      name="startDate"
-                      value={state.startDate}
-                    />
-                  </div>
-                  <div className="colm rows">
-                    <input
-                      type="time"
-                      name="startTime"
-                      onChange={onChange}
-                      value={state.startTime}
-                    />
-                  </div>
-                  <button className="btn" type="submit">
-                    Submit
-                  </button>
-                </form>
+                  <div className="overlay"></div>
+                </div>
               </div>
-              <div className="overlay"></div>
             </div>
-
             <h2>GAME</h2>
 
             <div className="tit">
