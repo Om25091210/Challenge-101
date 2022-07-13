@@ -3,6 +3,8 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import baseURL from '@utils/baseURL';
 import { useRouter } from 'next/router';
+import TournamentAddSponsor from './TournamentAddSponsor';
+import SponsorCard from './SponsorCard';
 
 const TournamentSponsor = ({ user, data, isUser }) => {
   useEffect(() => {
@@ -17,13 +19,18 @@ const TournamentSponsor = ({ user, data, isUser }) => {
 
   const isLoggedInUser = data.tournament?.user?._id === user._id;
   const [sponsors, setSponsors] = useState([]);
+  const [count, setCount] = useState(0);
   const [state, setState] = useState({
-    sponsor: '',
+    sponsor: [],
     title: ''
   });
   const router = useRouter();
   const refreshData = () => {
     router.replace(router.asPath);
+  };
+
+  const handleRoleForm = (e) => {
+    setCount(count + 1);
   };
 
   useEffect(() => {
@@ -105,34 +112,25 @@ const TournamentSponsor = ({ user, data, isUser }) => {
                 <h3>Sponsor's</h3>
                 <form className="common_form" onSubmit={handleSubmit}>
                   <div className="form-group">
-                    <div className="colm">
-                      <label htmlFor="title">Title</label>
-                      <input
-                        type="text"
-                        value={state.title}
-                        onChange={handleChange}
-                        name="title"
-                      />
-                    </div>
+                    <SponsorCard
+                      states={state}
+                      tournamentId={data.tournament._id}
+                      sponsors={sponsors}
+                    />
 
-                    <div className="colm">
-                      <label htmlFor="sponosr">Add Sponsor</label>
-                      <select
-                        className="form-control"
-                        multiple={true}
-                        name="sponsor"
-                        value={state.value}
-                        onChange={handleChange}
-                      >
-                        {sponsors.map((sponser, idx) => (
-                          <option key={idx} value={sponser._id}>
-                            {' '}
-                            {sponser.name}{' '}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
+                    {[...Array(count)].map((e, index) => (
+                      <div key={index}>
+                        <SponsorCard
+                          sponsors={sponsors}
+                          tournamentId={data.tournament._id}
+                        />
+                      </div>
+                    ))}
 
+                    <label htmlFor="">Add More Title and Sponsors</label>
+                    <span onClick={(e) => handleRoleForm(e)}>
+                      <i className="fa fa-life-ring" aria-hidden="true"></i>
+                    </span>
                     <button className="btn">Update</button>
                   </div>
                 </form>

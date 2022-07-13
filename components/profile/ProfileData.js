@@ -12,7 +12,6 @@ import axios from 'axios';
 import baseURL from '@utils/baseURL';
 import { useRouter } from 'next/router';
 import cookie from 'js-cookie';
-import ProfileSponsors from './ProfileSponsors';
 import ProfileTournament from './ProfileTournament';
 import ProfileTeams from './ProfileTeams';
 
@@ -372,13 +371,6 @@ const ProfileData = ({ user, Userdata, products, teams }) => {
         <div className="tab hide" id="video">
           <Videos Userdata={Userdata} user={user} />
         </div>
-
-        <ProfileSponsors
-          sponsors={sponsors}
-          Userdata={Userdata}
-          user={user}
-          profileSponsors={tabData}
-        />
 
         <ProductRigs user={user} productList={products} Userdata={Userdata} />
       </div>

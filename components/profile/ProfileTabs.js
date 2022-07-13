@@ -50,11 +50,6 @@ const ProfileTabs = (props) => (
       </a>
     </li>
     <li>
-      <a href="#!" rel="sponsors">
-        SPONSORS
-      </a>
-    </li>
-    <li>
       <a href="#!" rel="rigs">
         rigs
       </a>
