@@ -3,17 +3,18 @@ import { useEffect, useState, useMemo } from 'react';
 import baseURL from '../../utils/baseURL';
 import countryList from 'react-select-country-list';
 import { toast } from 'react-toastify';
+import { useRouter } from 'next/router';
 
 const RecruitmentCard = ({ type, RecruitTeamId, user }) => {
   const [allgames, setAllgames] = useState([]);
   const [allroles, setAllroles] = useState([]);
-  const [online, setOnline] = useState(false);
+  const [mic, setMic] = useState(false);
 
   const toggleMic = () => {
-    if (online === false) {
-      setOnline(true);
+    if (mic === false) {
+      setMic(true);
     } else {
-      setOnline(false);
+      setMic(false);
     }
   };
 
@@ -24,7 +25,7 @@ const RecruitmentCard = ({ type, RecruitTeamId, user }) => {
     games: '',
     role: '',
     region: '',
-    Online: online,
+    Mic: mic,
     language: '',
     type: '',
     salary: '',
@@ -62,15 +63,22 @@ const RecruitmentCard = ({ type, RecruitTeamId, user }) => {
     }
   }
 
+  const router = useRouter();
+  const refreshData = () => {
+    router.replace(router.asPath);
+  };
+
   const handleSubmitRecruit = async (e) => {
     e.preventDefault();
     try {
       await axios.post(`${baseURL}/api/recruit/`, states);
       toast.success('Added Recruitment card');
+      $('a.model_close').parent().removeClass('show_model');
     } catch (err) {
       console.log(err);
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }
+    refreshData();
   };
 
   return (
@@ -160,8 +168,8 @@ const RecruitmentCard = ({ type, RecruitTeamId, user }) => {
                         type="checkbox"
                         className="custom-control-input"
                         id="customSwitch1"
-                        onClick={() => setOnline(toggleMic)}
-                        value={states.Online}
+                        onClick={() => setMic(toggleMic)}
+                        value={states.Mic}
                       />
                       <label
                         className="custom-control-label"
@@ -171,12 +179,18 @@ const RecruitmentCard = ({ type, RecruitTeamId, user }) => {
 
                     <div className="form-group">
                       <label htmlFor="exampleFormControlInput1">Language</label>
-                      <input
-                        type="text"
+                      <select
                         name="language"
-                        onChange={onChange}
+                        onChange={handleSubmit}
+                        multiple={true}
                         value={states.language}
-                      />
+                      >
+                        <option value="ENG">English</option>
+                        <option value="RUS">Russian</option>
+                        <option value="HIN">Hindi</option>
+                        <option value="TEL">Telugu</option>
+                        <option value="TAM">Tamil</option>
+                      </select>
                     </div>
 
                     <div className="colm">

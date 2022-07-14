@@ -14,7 +14,7 @@ import TeamJobs from './TeamJobs';
 import TeamJoines from './TeamJoines';
 import AllPosts from '../dashboard/AllPosts';
 import TeamRigs from './TeamRigs';
-import RecruitmentCard from '../common/RecruitmentCard';
+import TeamGameDetails from './TeamGameDetails';
 
 const TeamProfileData = ({
   user,
@@ -166,54 +166,12 @@ const TeamProfileData = ({
           </div>
           <div className="profile_match_details">
             {/* <TeamAllStats teamId={data.team._id} /> */}
-
-            <div className="games_details">
-              <ul>
-                <li>
-                  <span className="nm">Game: </span>{' '}
-                  <img src="/assets/media/profile/game1.png" alt="" />
-                </li>
-                <li>
-                  <span className="nm">Roles: </span>{' '}
-                  <span className="task">Assault/Sniper</span>{' '}
-                </li>
-                <li>
-                  <span className="nm">Mic:</span>{' '}
-                  <span className="task"> On</span>
-                </li>
-                <li>
-                  <span className="nm">Platform:</span>{' '}
-                  <span className="task"> PC</span>
-                </li>
-                <li>
-                  <span className="nm">Language:</span>{' '}
-                  <span className="task"> ENG, RU, HINDI</span>
-                </li>
-                <li>
-                  <span className="nm">Win rate/KDA:</span>{' '}
-                  <span className="task"> 67% / 2.9 </span>
-                </li>
-                <li>
-                  <span className="nm">MMR:</span>{' '}
-                  <span className="task"> 3211 </span>
-                </li>
-                <li>
-                  <span className="nm">Availablilty:</span>{' '}
-                  <span className="task"> 4 hours per day 7 days a week </span>
-                </li>
-              </ul>
-              <div className="chart_box">
-                <img src="/assets/media/profilechart.jpg" alt="" />
-              </div>
-              <button className="game_btn">INVITE TO TEAM</button>
-            </div>
-            {isManager || isAdmin ? (
-              <RecruitmentCard
-                type="TEAM"
-                RecruitTeamId={data.team._id}
-                user={user}
-              />
-            ) : null}
+            <TeamGameDetails
+              team={data.team}
+              user={user}
+              isManager={isManager}
+              isAdmin={isAdmin}
+            />
           </div>
         </div>
         <div className="tab hide" id="squads">

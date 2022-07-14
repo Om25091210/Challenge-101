@@ -114,8 +114,7 @@ const ProductRigs = ({ user, productList, Userdata }) => {
       $(this).parent().addClass('active');
     });
   }, []);
-  console.log(Userdata);
-  console.log(Userdata.profile.rigs);
+
   return (
     <div className="tab hide" id="rigs">
       <div className="sponser_btn">
