@@ -129,7 +129,7 @@ const ProfileTournament = ({
               </button>
             </a>
           ) : null}
-          <div className="common_model_box add_tourn" id="big_poup">
+          <div className="common_model_box  add_tourn" id="big_poup">
             {' '}
             <a href="#!" className="model_close">
               {' '}
@@ -149,6 +149,7 @@ const ProfileTournament = ({
                     type="search"
                     id="tournamentId"
                     name="tournamentId"
+                    className="form-control"
                     value={searchText}
                     onChange={handleFilter}
                     autoComplete="off"
@@ -221,45 +222,47 @@ const ProfileTournament = ({
                     ))}
                   </select>
                 </div>
-                <div className="form-group">
-                  <label htmlFor="exampleFormControlInput1">Your Team</label>
-                  <select
-                    name="team"
-                    className="form-control"
-                    onChange={onChangeTour}
-                    value={tournament.team}
-                  >
-                    <option value="--">--</option>
-                    {teams.map((tem) => (
-                      <option value={tem._id} key={tem._id}>
-                        {tem.name}
-                      </option>
-                    ))}
 
-                    {profile.teams.map((tem) => (
-                      <option key={tem.teamId._id} value={tem.teamId._id}>
-                        {tem.teamId.name}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                <div className="form-group">
-                  <label htmlFor="exampleFormControlInput1">Roles</label>
-                  <select
-                    name="role"
-                    className="form-control"
-                    onChange={onChangeTour}
-                    value={tournament.role}
-                  >
-                    <option value="--">--</option>
-                    {teamroles.map((tr, idx) => (
-                      <option key={idx} value={tr}>
-                        {tr}
-                      </option>
-                    ))}
-                  </select>
-                </div>
+                <div className="edit_two">
+                  <div className="form-group">
+                    <label htmlFor="exampleFormControlInput1">Your Team</label>
+                    <select
+                      name="team"
+                      className="form-control"
+                      onChange={onChangeTour}
+                      value={tournament.team}
+                    >
+                      <option value="--">--</option>
+                      {teams.map((tem) => (
+                        <option value={tem._id} key={tem._id}>
+                          {tem.name}
+                        </option>
+                      ))}
 
+                      {profile.teams.map((tem) => (
+                        <option key={tem.teamId._id} value={tem.teamId._id}>
+                          {tem.teamId.name}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="exampleFormControlInput1">Roles</label>
+                    <select
+                      name="role"
+                      className="form-control"
+                      onChange={onChangeTour}
+                      value={tournament.role}
+                    >
+                      <option value="--">--</option>
+                      {teamroles.map((tr, idx) => (
+                        <option key={idx} value={tr}>
+                          {tr}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
                 <div className="form-group">
                   <label htmlFor="exampleFormControlInput1">Year</label>
                   <input
@@ -287,7 +290,7 @@ const ProfileTournament = ({
                   <label htmlFor="exampleFormControlInput1">Winnings</label>
                   <input
                     type="number"
-                    className="form-winnings"
+                    className="form-winnings form-control"
                     name="winnings"
                     onChange={handleAddTournament}
                     value={tournament.winnings}

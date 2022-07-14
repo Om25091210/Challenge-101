@@ -2451,6 +2451,17 @@ article .social_bar {
 #big_poup .big_btn input{background-color: #2c2c36; border-radius: 5px; border: 0;}
 #big_poup .big_btn input[type='checkbox']:checked{background-color: #1da1f2;}
 #big_poup.edit_profile h2{ float: left; width: 100%;}
+
+#big_poup.add_tourn .common_form .form-group{ float: left; width: 48%; margin-right: 10%;}
+#big_poup.add_tourn  .form-control, #big_poup.add_tourn  select{ border-radius: 5px; background: #2c2c36 !important; border:0; }
+#big_poup.add_tourn { height: 700px;}
+#big_poup.add_tourn  .inner_model_box{ height: 700px; overflow-y: auto;}
+
+#big_poup.add_tourn  .edit_two{ float: left; width: 100%;}
+#big_poup.add_tourn  .edit_two .form-group{ float: left; width: 48%; margin-right: 0; }
+#big_poup.add_tourn  .edit_two .form-group:nth-child(2n){ float: right;}
+
+
 /* --- profile tabs --- */
 
 .profile_tab_btn {
