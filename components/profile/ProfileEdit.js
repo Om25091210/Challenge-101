@@ -8,10 +8,12 @@ import SocialLink from '../common/SocialLink';
 
 const ProfileEdit = ({ profile, user, teams, games }) => {
   const name = user.name.split(' ');
-  const [online, setOnline] = useState();
+  const [online, setOnline] = useState(false);
   const [allroles, setAllroles] = useState([]);
   const [showIgn, setShowIgn] = useState('none');
   const [userIgn, setUserIgn] = useState(null);
+  const [step1, setStep1] = useState(true);
+  const [selectedGame, setSelectedGame] = useState();
 
   const toggleMic = () => {
     if (online === false) {
@@ -21,6 +23,12 @@ const ProfileEdit = ({ profile, user, teams, games }) => {
     }
   };
 
+  const router = useRouter();
+
+  const refreshData = () => {
+    router.replace(router.asPath);
+  };
+
   const [states, setStates] = useState({
     profileType: 'Gamer',
     firstName: name[0],
@@ -28,24 +36,16 @@ const ProfileEdit = ({ profile, user, teams, games }) => {
     username: user.username,
     bio: profile.bio,
     Online: online,
-    team: '',
-    games: '',
-    role: '',
-    startDate: '',
+    team: profile.current_team?._id,
+    role: profile?.role,
+    startDate: profile?.startDate,
     company: '',
     industry: '',
     streamLink: '',
     streamPlatform: '',
     socialLinks: []
   });
-  const router = useRouter();
 
-  const refreshData = () => {
-    router.replace(router.asPath);
-  };
-
-  const [step1, setStep1] = useState(true);
-  const [selectedGame, setSelectedGame] = useState();
   const [openForm, setOpenForm] = useState(false);
   const [type, setType] = useState('');
 
@@ -518,6 +518,7 @@ const ProfileEdit = ({ profile, user, teams, games }) => {
                   )}
                 </div>
                 <div className="custom-control custom-switch">
+                  <label htmlFor="">Online Statue</label>
                   <input
                     type="checkbox"
                     className="custom-control-input"

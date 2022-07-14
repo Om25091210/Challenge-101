@@ -1,20 +1,18 @@
-import PropTypes from 'prop-types';
-import Head from 'next/head';
-import RecruitmentCard from '../common/RecruitmentCard';
 import axios from 'axios';
-import baseURL from '../../utils/baseURL';
 import { useEffect, useState } from 'react';
+import baseURL from '../../utils/baseURL';
+import RecruitmentCard from '../common/RecruitmentCard';
 
-const GamesDetails = ({ user, profile }) => {
+const TeamGameDetails = ({ user, team, isManager, isAdmin }) => {
   const [recruits, setRecruits] = useState([]);
 
   useEffect(() => {
     axios
-      .get(`${baseURL}/api/recruit/PROFILE`)
+      .get(`${baseURL}/api/recruit/TEAM`)
       .then((res) => setRecruits(res.data));
   }, []);
 
-  const req = recruits.filter((rec) => rec.RecruitProfileId === user._id);
+  const req = recruits.filter((rec) => rec.RecruitTeamId === team._id);
 
   return (
     <>
@@ -48,7 +46,6 @@ const GamesDetails = ({ user, profile }) => {
               <li>
                 <span className="nm">Language:</span>{' '}
                 <span className="task">
-                  {' '}
                   {recruit.language.map((lang) => lang)}
                 </span>
               </li>
@@ -65,18 +62,16 @@ const GamesDetails = ({ user, profile }) => {
                 <span className="task"> 4 hours per day 7 days a week </span>
               </li>
             </ul>
-
             <div className="chart_box">
-              <img src="/assets/media/profile/chart.jpg" alt="" />
+              <img src="/assets/media/profilechart.jpg" alt="" />
             </div>
-
             <button className="game_btn">INVITE TO TEAM</button>
           </div>
         ))}
-      {req[0]?.RecruitProfileId === user._id ? null : (
+      {req[0]?.RecruitTeamId === team._id ? null : (
         <>
-          {profile.user?._id === user?._id ? (
-            <RecruitmentCard type="PROFILE" user={user} />
+          {isManager || isAdmin ? (
+            <RecruitmentCard type="TEAM" RecruitTeamId={team._id} user={user} />
           ) : null}
         </>
       )}
@@ -84,4 +79,4 @@ const GamesDetails = ({ user, profile }) => {
   );
 };
 
-export default GamesDetails;
+export default TeamGameDetails;
