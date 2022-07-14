@@ -129,6 +129,15 @@ function LeftNav({ user }) {
           ) : (
             ''
           )}
+
+          <li className="more_menu">
+            {' '}
+            <a className="">
+              <span className="iconbg">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+              </span>{' '}
+            </a>
+          </li>
         </ul>
       </nav>
 

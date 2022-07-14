@@ -583,6 +583,7 @@ ul.top_menu li.wallet li{     float: left;
 .left_side:hover .title{display:block;}
 .left_side nav li.active .iconbg, .left_side nav li a:hover .iconbg{background:#fff;}
 .left_side nav li.active i, .left_side nav li a:hover i{color:#7239ea;}
+.left_side nav li.more_menu .f{ font-size: 12px; }
 /* ------- middle css -------------- */
 
 .team_slider .slick-list {
@@ -2425,12 +2426,31 @@ article .social_bar {
 #big_poup .common_form .form-group{ float: left; width: 48%;}
 #big_poup .common_form .form-group:nth-child(2n){ float: right;}
 
-#big_poup.edit_profile .common_form .form-group:nth-child(1){ width: 100%;}
-#big_poup.edit_profile .common_form .form-group{ float: left; width: 48%;}
-#big_poup.edit_profile .common_form .form-group:nth-child(2n){ float: right;}
-#big_poup.edit_profile .inner_model_box{ height: 480px; overflow-y: auto;}
-#big_poup.edit_profile .tit{ display: flex;}
+#big_poup.edit_profile .common_form .form-group{ float: left; width: 100%;}
+#big_poup.edit_profile .common_form .form-group:nth-child(2){ width: 50%; margin-right: 5%;}
+#big_poup.edit_profile .common_form .form-group:nth-child(3){ width: 50%;margin-right: 5%;}
+#big_poup.edit_profile .common_form .form-group:nth-child(4){ width: 50%;margin-right: 5%;}
+#big_poup.edit_profile .common_form .textarea{ width: 70%; }
+#big_poup.edit_profile .common_form .textarea textarea{height: 100px; resize: none; background: #2c2c36 !important;  border:0;}
+#big_poup.edit_profile .common_form .edit_four{ float: left; width: 100%;}
+#big_poup.edit_profile .common_form .edit_four .form-group{ float: left; width: 48%; height: 50px; margin-right: 0;}
+#big_poup.edit_profile .common_form .edit_four .form-group:nth-child(2n){ float: right;}
+#big_poup.edit_profile { height: 700px;}
+#big_poup.edit_profile > .inner_model_box{ height: 700px; overflow-y: auto;}
+#big_poup.edit_profile .tit{ display: flex;     align-items: center;}
 #big_poup.edit_profile .tit span{ margin-right: 5px;}
+#big_poup.edit_profile .tit span img{ width: 75px; height: 100px; object-fit: cover;}
+#big_poup.edit_profile  .form-control, #big_poup.edit_profile  select{ border-radius: 5px; background: #2c2c36 !important; border:0; }
+#big_poup.edit_profile .custom-switch{ float: left;}
+#big_poup.edit_profile .socail button {
+    width: 40px;
+    height: 40px; text-align: left;
+}
+#big_poup.edit_profile .socail span{ margin-left: 30px;}
+#big_poup.edit_profile .fa{ font-size: 20px;}
+#big_poup .big_btn input{background-color: #2c2c36; border-radius: 5px; border: 0;}
+#big_poup .big_btn input[type='checkbox']:checked{background-color: #1da1f2;}
+#big_poup.edit_profile h2{ float: left; width: 100%;}
 /* --- profile tabs --- */
 
 .profile_tab_btn {
