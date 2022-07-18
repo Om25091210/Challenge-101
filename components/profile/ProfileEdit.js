@@ -126,10 +126,7 @@ const ProfileEdit = ({ profile, user, teams, games }) => {
   const handleProfileEdit = async (e) => {
     e.preventDefault();
     try {
-      axios.put(
-        `${baseURL}/api/profile/type/${profile?._id}/${user._id}`,
-        states
-      );
+      axios.put(`${baseURL}/api/profile/type/${profile?._id}`, states);
       toast.success('Profile Updated');
       $('a.model_close').parent().removeClass('show_model');
     } catch (err) {

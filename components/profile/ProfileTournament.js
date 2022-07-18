@@ -32,7 +32,8 @@ const ProfileTournament = ({
     role: '',
     year: '',
     team_ranking: null,
-    winnings: null
+    winnings: null,
+    currency: '$'
   });
 
   const router = useRouter();
@@ -115,6 +116,7 @@ const ProfileTournament = ({
       }
     });
   };
+
   return (
     <>
       <div className="tab hide" id="tournaments">
@@ -286,6 +288,17 @@ const ProfileTournament = ({
                     value={tournament.team_ranking}
                   />
                 </div>
+
+                <select
+                  name="currency"
+                  id="currency"
+                  onChange={onChangeTour}
+                  value={tournament.currency}
+                >
+                  <option value="$">USD($)- Dollars</option>
+                  <option value="Rs">INR (Rs) - Rupees</option>
+                </select>
+
                 <div className="form-group">
                   <label htmlFor="exampleFormControlInput1">Winnings</label>
                   <input
@@ -453,6 +466,63 @@ const ProfileTournament = ({
                     </div>
                   </div>
                 </div>
+              </div>
+
+              <div>
+                {result.winnings && (
+                  <>
+                    <div>
+                      <img
+                        src={result.tournamentId?.imgUrl}
+                        style={{ height: '60px', width: '60px' }}
+                      />
+                    </div>
+                    <div>
+                      {result?.tournamentId.name}
+                      <span>{format(new Date(result?.year), 'yyyy')}</span>
+                    </div>
+                    <div>
+                      <div>
+                        Game:{' '}
+                        {result?.games.map((gam) => (
+                          <>
+                            <img
+                              src={gam.gameId.imgUrl}
+                              style={{ height: '20px', width: '20px' }}
+                            />
+                            {gam.gameId.name}
+                          </>
+                        ))}
+                      </div>
+                      <div>
+                        Team:
+                        <img
+                          src={result?.team?.imgUrl}
+                          style={{ height: '20px', width: '20px' }}
+                        />
+                        {result.team.name}
+                      </div>
+                    </div>
+                    <div>
+                      <div>
+                        Ranking:{' '}
+                        {result?.team_ranking && result?.team_ranking === 3 ? (
+                          <>{result?.team_ranking} rd</>
+                        ) : result?.team_ranking === 2 ? (
+                          <>{result?.team_ranking} nd</>
+                        ) : result?.team_ranking === 1 ? (
+                          <>{result?.team_ranking} st</>
+                        ) : (
+                          <> {result?.team_ranking} th </>
+                        )}
+                      </div>
+                      <div>
+                        Winnings: {result?.currency} {result?.winnings}
+                      </div>
+                      <button className="btn">view Match</button>
+                    </div>
+                  </>
+                )}
               </div>
             </>
           ))
