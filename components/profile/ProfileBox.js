@@ -861,7 +861,10 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
                       <>
                         <span>
                           {' '}
-                          <img src={game.game.imgUrl} alt={game.game.name} />
+                          <img
+                            src={game?.game?.imgUrl}
+                            alt={game?.game?.name}
+                          />
                         </span>
                       </>
                     ))}

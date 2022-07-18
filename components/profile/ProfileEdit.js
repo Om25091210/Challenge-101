@@ -14,6 +14,8 @@ const ProfileEdit = ({ profile, user, teams, games }) => {
   const [userIgn, setUserIgn] = useState(null);
   const [step1, setStep1] = useState(true);
   const [selectedGame, setSelectedGame] = useState();
+  const [openForm, setOpenForm] = useState(false);
+  const [type, setType] = useState('');
 
   const toggleMic = () => {
     if (online === false) {
@@ -36,18 +38,17 @@ const ProfileEdit = ({ profile, user, teams, games }) => {
     username: user.username,
     bio: profile.bio,
     Online: online,
-    team: profile.current_team?._id,
-    role: profile?.role,
-    startDate: profile?.startDate,
+    team: '',
+    role: '',
+    b_role: '',
+    startDate: '',
+    game: '',
     company: '',
     industry: '',
-    streamLink: '',
-    streamPlatform: '',
+    link: '',
+    streamingPlatform: '',
     socialLinks: []
   });
-
-  const [openForm, setOpenForm] = useState(false);
-  const [type, setType] = useState('');
 
   const handleSelectGame = async (obj) => {
     setSelectedGame({ game: obj });
@@ -136,6 +137,43 @@ const ProfileEdit = ({ profile, user, teams, games }) => {
     }
     refreshData();
   };
+  const proteams = profile.teams.map((team) => {
+    return team.teamId;
+  });
+
+  let allTeams = [];
+  allTeams = teams.concat(proteams);
+
+  const User_team = teams.filter((team) => {
+    return team._id === parseInt(states.team);
+  });
+
+  const [filteredData, setFilteredData] = useState([]);
+  const [searchText, setSearchText] = useState('');
+  const [teamData, setTeamData] = useState([]);
+
+  const handleFilter = (event) => {
+    const searchWord = event.target.value;
+
+    setSearchText(searchWord);
+    const newFilter = teamData?.filter((value) => {
+      return value.name.toLowerCase().includes(searchWord.toLowerCase());
+    });
+    if (searchText === '') {
+      setFilteredData([]);
+    } else {
+      setFilteredData(newFilter);
+    }
+  };
+
+  const handleSelectedTeam = (data) => {
+    setSearchText(data.name);
+    states.team = data._id;
+  };
+
+  useEffect(() => {
+    axios.get(`${baseURL}/api/all/teams/`).then((res) => setTeamData(res.data));
+  }, []);
 
   return (
     <>
@@ -263,37 +301,89 @@ const ProfileEdit = ({ profile, user, teams, games }) => {
                       </div>
                     </>
                   ) : null}
-                  {states.profileType === 'Gamer' ||
-                  states.profileType === 'Coach' ? (
+                  {states.profileType === 'Gamer' ? (
                     <>
                       <div className="form-group">
                         <select
                           name="team"
                           id="team"
-                          multiple={true}
                           value={states.team}
                           onChange={handleSubmit}
                           placeholder="Team Name"
                         >
-                          {teams &&
-                            teams.map((tem) => (
+                          {allTeams &&
+                            allTeams.map((tem) => (
                               <option value={tem._id}>{tem.name}</option>
                             ))}
                         </select>
                       </div>
                     </>
+                  ) : states.profileType === 'Coach' ? (
+                    <div className="">
+                      <input
+                        type="search"
+                        id="team"
+                        name="team"
+                        placeholder={`Enter team name`}
+                        value={searchText}
+                        onChange={handleFilter}
+                        autoComplete="off"
+                      />
+                      {searchText.length !== 0 ? (
+                        <div className="custom-rig-tag">
+                          <div>
+                            {!filteredData || filteredData.length === 0 ? (
+                              <p>No team found..</p>
+                            ) : (
+                              filteredData.map((data) => (
+                                <div
+                                  onClick={() => handleSelectedTeam(data)}
+                                  key={data._id}
+                                >
+                                  <img
+                                    src={data?.imgUrl}
+                                    height={50}
+                                    width={50}
+                                  />
+                                  <p>
+                                    {data.name.length > 20
+                                      ? data.name.substring(0, 20) + '...'
+                                      : data.name}
+                                  </p>
+                                </div>
+                              ))
+                            )}
+                          </div>
+                        </div>
+                      ) : null}
+                    </div>
                   ) : null}
                   {states.profileType === 'Gamer' ||
-                  states.profileType === 'Coach' ||
-                  states.profileType === 'Streamer' ? (
+                  states.profileType === 'Coach' ? (
                     <>
                       <div className="form-group">
                         <select
-                          name="games"
+                          name="game"
                           id="team"
-                          multiple={true}
-                          value={states.games}
-                          onChange={handleSubmit}
+                          value={states.game}
+                          onChange={handleChangeCheck}
+                        >
+                          {User_team[0]?.games.map((game) => (
+                            <option value={game.gameId._id}>
+                              {game.gameId.name}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                    </>
+                  ) : states.profileType === 'Streamer' ? (
+                    <>
+                      <div className="form-group">
+                        <select
+                          name="game"
+                          id="team"
+                          value={states.game}
+                          onChange={handleChangeCheck}
                         >
                           {games.map((game) => (
                             <option value={game._id}>{game.name}</option>
@@ -309,7 +399,7 @@ const ProfileEdit = ({ profile, user, teams, games }) => {
                         <input
                           type="text"
                           name="streamPlatform"
-                          value={states.streamPlatform}
+                          value={states.streamingPlatform}
                           onChange={handleChangeCheck}
                           placeholder="Streaming Platform"
                           className="form-control"
@@ -320,21 +410,35 @@ const ProfileEdit = ({ profile, user, teams, games }) => {
                         <input
                           type="text"
                           name="streamLink"
-                          value={states.streamLink}
+                          value={states.link}
                           onChange={handleChangeCheck}
                           className="form-control"
+                          placeholder="Stream Link"
                         />
                       </div>
                     </>
                   ) : null}
 
-                  {states.profileType === 'Gamer' ||
-                  states.profileType === 'Business' ? (
+                  {states.profileType === 'Gamer' ? (
                     <>
                       <div className="form-group">
                         <select
                           name="role"
                           value={states.role}
+                          onChange={handleChangeCheck}
+                        >
+                          {allroles.map((role) => (
+                            <option value={role}>{role}</option>
+                          ))}
+                        </select>
+                      </div>
+                    </>
+                  ) : states.profileType === 'Business' ? (
+                    <>
+                      <div className="form-group">
+                        <select
+                          name="b_role"
+                          value={states.b_role}
                           onChange={handleChangeCheck}
                         >
                           {allroles.map((role) => (

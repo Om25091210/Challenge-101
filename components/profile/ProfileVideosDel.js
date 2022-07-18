@@ -34,7 +34,7 @@ const ProfileVideosDel = ({ collectionId, profile, user }) => {
   };
   return (
     <>
-      {profile.user === user._id ? (
+      {profile.user?._id === user._id ? (
         <button className="" onClick={handleDeleteSubmit}>
           <i className="fa fa-trash-o" aria-hidden="true"></i>
         </button>

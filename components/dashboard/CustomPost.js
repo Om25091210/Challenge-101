@@ -206,7 +206,7 @@ const CustomPost = ({ post }) => {
           <form>
             <div className="delete_post_div">
               <TwitterShareButton
-                url={`${shareUrl}/${post._id}`}
+                url={`${shareUrl}/${post?._id}`}
                 title={'Multiplayr - Home of Esports'}
                 via={'Multiplayrdotgg'}
                 hashtags={['GG #Multiplayr']}
@@ -214,7 +214,7 @@ const CustomPost = ({ post }) => {
                 <TwitterIcon size={40} round={true} />
               </TwitterShareButton>
               <FacebookShareButton
-                url={`${shareUrl}/${post._id}`}
+                url={`${shareUrl}/${post?._id}`}
                 quote={'Multiplayr - Home of Esports'}
                 via={'@Multiplayrdotgg'}
                 hashtag={'#Multiplayr'}
@@ -223,14 +223,14 @@ const CustomPost = ({ post }) => {
               </FacebookShareButton>
 
               <TelegramShareButton
-                url={`${shareUrl}/${post._id}`}
+                url={`${shareUrl}/${post?._id}`}
                 title={'Multiplayr - Home of Esports'}
               >
                 <TelegramIcon size={40} round={true} />
               </TelegramShareButton>
 
               <WhatsappShareButton
-                url={`${shareUrl}/${post._id}`}
+                url={`${shareUrl}/${post?._id}`}
                 title={'Multiplayr - Home of Esports'}
               >
                 <WhatsappIcon size={40} round={true} />

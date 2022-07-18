@@ -24,12 +24,13 @@ const GamesDetails = ({ user, profile }) => {
             <ul>
               <li>
                 <span className="nm">Game: </span>{' '}
-                {recruit.games.map((game) => (
-                  <img
-                    src={game.gameId.imgUrl}
-                    style={{ height: '35px', width: '35px' }}
-                  />
-                ))}
+                {recruit.games &&
+                  recruit.games.map((game) => (
+                    <img
+                      src={game.gameId?.imgUrl}
+                      style={{ height: '35px', width: '35px' }}
+                    />
+                  ))}
               </li>
               <li>
                 <span className="nm">Roles: </span>{' '}
