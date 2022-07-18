@@ -34,30 +34,38 @@ const CommentList = ({ post, user, commentsData }) => {
         ) : (
           <div>
             {commentsData?.comments?.map((comment) => (
-              <div key={comment._id}>
+              <div key={comment._id} className="single_comment_sec">
                 <div className="comments_point">
                   <LikeComment postId={postId} comment={comment} />
-                  <div className="user">
-                    {/* <img src={comment.user.profilePicUrl} alt="" /> */}
+                  <div className="comment_round_box">
+                    <div className="user">
+                      <img src={comment.user.profilePicUrl} alt="" />
+                    </div>
+                    <div className="create">
+                      <a href="#" className="">
+                        {comment.user != null
+                          ? comment.user.name
+                          : 'NOT DEFINED'}
+                      </a>{' '}
+                      <h3>{comment.text}</h3>
+                    </div>
                   </div>
-                  <a href="#" className="create">
-                    {comment.user != null ? comment.user.name : 'NOT DEFINED'}
-                  </a>{' '}
-                  <span className="days">
-                    {formatDistanceToNowStrict(new Date(comment.date), {
-                      addSuffix: true
-                    })}
-                  </span>
                   <PinnedComments user={user} comment={comment} post={post} />
                   {post.user._id === user._id &&
                   comment.user._id === user._id ? null : (
                     <ReportsComments />
                   )}
                 </div>
-                <h3>{comment.text}</h3>
-                <div className="first_reply">
-                  <DeleteComment post={post} comment={comment} user={user} />
-                  <ReplyComment post={post} comment={comment} />
+                <div className="time_del_rep">
+                  <span className="days">
+                    {formatDistanceToNowStrict(new Date(comment.date), {
+                      addSuffix: true
+                    })}
+                  </span>
+                  <div className="first_reply">
+                    <DeleteComment post={post} comment={comment} user={user} />
+                    <ReplyComment post={post} comment={comment} />
+                  </div>
                 </div>
 
                 <ReplyList post={post} comment={comment} user={user} />

@@ -648,14 +648,7 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
                   <span className="were">Captain - CS GO</span>
                 */}
                 </div>
-                {isLoggedInUser ? (
-                  <ProfileEdit
-                    profile={Userdata.profile}
-                    user={user}
-                    teams={teams}
-                    games={games}
-                  />
-                ) : null}
+
                 <div className="game_role profile_address">
                   <div className="loc_box">
                     {' '}
@@ -847,6 +840,15 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
                   ) : null
                 )}
               </div>
+
+              {isLoggedInUser ? (
+                <ProfileEdit
+                  profile={Userdata.profile}
+                  user={user}
+                  teams={teams}
+                  games={games}
+                />
+              ) : null}
             </div>
 
             <p> {Userdata.profile ? Userdata.profile.bio : ''} </p>
@@ -905,15 +907,17 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
                                 {games &&
                                   games.map((game) => (
                                     <li>
-                                      <a
-                                        href="#!"
-                                        onClick={() => handleSelectGame(game)}
-                                      >
-                                        <img
-                                          src={game.imgUrl}
-                                          alt={game.name}
-                                        />
-                                      </a>
+                                      <div className="game_pic">
+                                        <a
+                                          href="#!"
+                                          onClick={() => handleSelectGame(game)}
+                                        >
+                                          <img
+                                            src={game.imgUrl}
+                                            alt={game.name}
+                                          />
+                                        </a>
+                                      </div>
                                     </li>
                                   ))}
                               </ul>

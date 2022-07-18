@@ -177,7 +177,7 @@ const ProfileEdit = ({ profile, user, teams, games }) => {
 
   return (
     <>
-      <div className="loc_box">
+      <div className="loc_box edit_pof">
         {profile.user._id === user._id ? (
           <a href="#!" className="model_show_btn">
             <button className="btn">
@@ -522,17 +522,19 @@ const ProfileEdit = ({ profile, user, teams, games }) => {
                                     {games &&
                                       games.map((game) => (
                                         <li>
-                                          <a
-                                            href="#!"
-                                            onClick={() =>
-                                              handleSelectGame(game)
-                                            }
-                                          >
-                                            <img
-                                              src={game.imgUrl}
-                                              alt={game.name}
-                                            />
-                                          </a>
+                                          <div className="game_pic">
+                                            <a
+                                              href="#!"
+                                              onClick={() =>
+                                                handleSelectGame(game)
+                                              }
+                                            >
+                                              <img
+                                                src={game.imgUrl}
+                                                alt={game.name}
+                                              />
+                                            </a>
+                                          </div>
                                         </li>
                                       ))}
                                   </ul>

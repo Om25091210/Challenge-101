@@ -1276,18 +1276,32 @@ ul.top_menu li.wallet li{     float: left;
 	font-size:14px;
 	font-weight:600;
 }
+
+.single_comment_sec{ float: left; width: 100%;}
+
 .comments_point {
 	display:flex;
 	width:100%;
 	align-items:center;
-	margin:20px 0 20px 0px;
+	margin:20px 0 0 0px;
 }
+
+.comments_point .comment_round_box{    display: flex;
+   
+    padding: 5px;
+    border-radius: 5px;
+    margin-left: 10px;
+    flex-grow: 0;}
+
+.comments_point .like_btn img{ display: inline-block;}
+
 .comments_point .user {
-	width:38px;
-	height:38px;
+	width:32px;
+	height:32px;
 	border-radius:5px;
 	overflow:hidden;
 	margin-right:10px;
+	background: #fff;
 }
 .comments_point .user img {
 	width:100%;
@@ -1301,13 +1315,13 @@ ul.top_menu li.wallet li{     float: left;
 	display:block;
 }
 .comments_point .create {
-	font-size:11px;
-	color:#19191d;
-	font-weight:500;
-	margin-right:10px;
-	background:#e1e1e1;
-	padding:3px 10px;
-	border-radius:5px;
+    font-size: 11px;
+    color: #fff;
+    font-weight: 500;
+    background: #e1e1e1;
+    padding: 9px;
+    border-radius: 5px;
+    background: #202028;
 }
 .comments_point .days {
 	color:#858585;
@@ -1349,35 +1363,27 @@ ul.top_menu li.wallet li{     float: left;
 	display: inline-block;
 	vertical-align: text-top;
 }
-.first_reply {
-	float: right;
-	width: 100%;
-	margin: 0 0 10px 0;
-	text-align: right;
-	/* background: #ddd; */
-  padding: 10px 10px 10px 10px;
-	border-bottom: 1px solid #ddd;
-	position: relative;
-}
+
 .delete_comment, .reply_comment, .delete_btn {
 	display: inline-block;
 	background: #eee;
 	border-radius: 38px;
 	margin: 0 5px;
 }
-.reply_comment {
-	position: absolute;
-	right: 80px;
-	top: 10px; background: none;
-}
+.reply_comment { background: none;}
 .delete_comment button, .reply_comment button, .delete_btn button {
 	padding: 4px 10px;
 }
 .first_reply form {
 	float: left;
 	width: 100%;
+	margin-bottom: 20px;
 }
 
+
+.time_del_rep{ display: flex; align-items: baseline; margin-left: 95px;}
+.time_del_rep .days{ font-size: 10px;}
+.time_del_rep button{ background: none; font-size: 11px !important;}
 
 
 .first_reply form textarea {
@@ -1400,6 +1406,9 @@ ul.top_menu li.wallet li{     float: left;
 	border-bottom: 1px solid #ddd;
 	margin-bottom: 20px;
 }
+
+.reply_list article{ margin: 10px 0;}
+
 .reply_comment_item .avtar {
 	width: 30px;
 	height: 30px;
@@ -1441,12 +1450,11 @@ ul.top_menu li.wallet li{     float: left;
 	padding-top: 0;
 }
 article .social_bar {
-	margin-left: 45px;
-	align-items: center;
-	justify-content: right;
-	margin-top: 10px;
-	margin-bottom: 20px;
+    margin: 5px 0 5px 40px;
+    display: flex;
+    align-items: center;
 }
+article .social_bar img{ display: inline-block;}
 .post_comments button {
 	border:0;
 	background: none;
@@ -2329,6 +2337,14 @@ article .social_bar {
 	color: #000;
 	margin-right: 10px; vertical-align: middle;
 }
+
+.bio_box .left_bio .top_bio .edit_pof {
+    float: right;
+    position: absolute;
+    right: 0;
+    top: 10px;
+}
+
 .bio_box .left_bio p {
 	font-size: 13px;
 	line-height: 20px;
@@ -2369,7 +2385,7 @@ article .social_bar {
 	margin-left: 5px;
 }
 .bio_box .games span img {
-	width: 35px;
+	width: 40px; height: 40px;
 }
 .bio_box .games h2 {
 	margin-right: 20px;
@@ -2431,7 +2447,7 @@ article .social_bar {
 #big_poup.edit_profile .common_form .form-group:nth-child(3){ width: 50%;margin-right: 5%;}
 #big_poup.edit_profile .common_form .form-group:nth-child(4){ width: 50%;margin-right: 5%;}
 #big_poup.edit_profile .common_form .textarea{ width: 70%; }
-#big_poup.edit_profile .common_form .textarea textarea{height: 100px; resize: none; background: #2c2c36 !important;  border:0;}
+#big_poup.edit_profile .common_form .textarea textarea{height: 100px; resize: none; background: #2c2c36 !important; }
 #big_poup.edit_profile .common_form .edit_four{ float: left; width: 100%;}
 #big_poup.edit_profile .common_form .edit_four .form-group{ float: left; width: 48%; height: 50px; margin-right: 0;}
 #big_poup.edit_profile .common_form .edit_four .form-group:nth-child(2n){ float: right;}
@@ -2440,7 +2456,7 @@ article .social_bar {
 #big_poup.edit_profile .tit{ display: flex;     align-items: center;}
 #big_poup.edit_profile .tit span{ margin-right: 5px;}
 #big_poup.edit_profile .tit span img{ width: 75px; height: 100px; object-fit: cover;}
-#big_poup.edit_profile  .form-control, #big_poup.edit_profile  select{ border-radius: 5px; background: #2c2c36 !important; border:0; }
+#big_poup.edit_profile  .form-control, #big_poup.edit_profile  select{ border-radius: 5px; background: #2c2c36 !important; }
 #big_poup.edit_profile .custom-switch{ float: left;}
 #big_poup.edit_profile .socail button {
     width: 40px;
@@ -2448,12 +2464,12 @@ article .social_bar {
 }
 #big_poup.edit_profile .socail span{ margin-left: 30px;}
 #big_poup.edit_profile .fa{ font-size: 20px;}
-#big_poup .big_btn input{background-color: #2c2c36; border-radius: 5px; border: 0;}
+#big_poup .big_btn input{background-color: #2c2c36; border-radius: 5px; }
 #big_poup .big_btn input[type='checkbox']:checked{background-color: #1da1f2;}
 #big_poup.edit_profile h2{ float: left; width: 100%;}
 
 #big_poup.add_tourn .common_form .form-group{ float: left; width: 48%; margin-right: 10%;}
-#big_poup.add_tourn  .form-control, #big_poup.add_tourn  select{ border-radius: 5px; background: #2c2c36 !important; border:0; }
+#big_poup.add_tourn  .form-control, #big_poup.add_tourn  select{ border-radius: 5px; background: #2c2c36 !important; }
 #big_poup.add_tourn { height: 700px;}
 #big_poup.add_tourn  .inner_model_box{ height: 700px; overflow-y: auto;}
 
@@ -3523,7 +3539,7 @@ article .social_bar {
 	margin: 0;
 }
 .team_row .logo img {
-	height: 25px;
+	height: 25px; width: 25px;
 }
 
 .team_row .logo_box.jobs_img{ width: 200px;}
@@ -4022,6 +4038,9 @@ article .social_bar {
 	align-items: center;
 	margin-top: 20px; 
 }
+
+.bottom_game{ margin-top: 50px;}
+
 .top_game, .bottom_game .games {
 	display: flex;
 	justify-content: space-between;
@@ -4042,7 +4061,10 @@ article .social_bar {
 .top_game, .bottom_game .game_logo b{ font-size: 11px; font-weight: 400;}
 
 .bottom_game .game_logo img {
-	margin-right: 10px; width: 25px;
+	margin-right: 10px;
+    width: 25px;
+    height: 25px;
+    object-fit: cover;
 }
 
 .bottom_game .users {
@@ -6884,7 +6906,7 @@ ul.game_search_result li:hover:after{ display: block;}
 	padding: 0;
 	box-shadow: 2px 4px 10px #eee;
 	border-radius: 5px;
-	overflow: hidden;
+	overflow: hidden; text-align: center;
 }
 #more_games ul li:nth-child(5n) {
 	margin-right: 0;
@@ -6908,8 +6930,9 @@ ul.game_search_result li:hover:after{ display: block;}
 
 #more_games ul li img {
 
-	object-fit: contain;
-	height: 45px;
+	object-fit: cover;
+	height: 75px; height: 75px;
+	display: inline-block;
 }
 #more_games ul li p {
 	font-size: 14px;
@@ -7914,21 +7937,19 @@ body.DarkPage .write_post .right_links a {
 body.DarkPage .white_box .activity_tag {
 	border-bottom: 1px solid #36363c;
 }
-body.DarkPage .first_reply {
-	border-bottom: 1px solid #36363c;
-}
+
 body.DarkPage .reply_list {
 	border-bottom: 1px solid #36363c;
 }
 body.DarkPage .style_file_upload span {
 	color: #fff;
 }
-body.DarkPage .post_comments .pop_comment, body.DarkPage .comments_point .create, body.DarkPage .reply_comment_item .comments_data {
+body.DarkPage .post_comments .pop_comment, body.DarkPage .reply_comment_item .comments_data {
 	background: #61616d;
 	color: #fff;
 }
 body.DarkPage .delete_comment,  body.DarkPage .delete_btn {
-	background: #000;
+	background: none;
 	color: #fff;
 }
 body.DarkPage .post_comments button {
