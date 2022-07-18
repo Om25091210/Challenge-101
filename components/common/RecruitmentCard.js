@@ -129,9 +129,8 @@ const RecruitmentCard = ({ type, RecruitTeamId, user }) => {
                       <select
                         name="games"
                         id="games"
-                        multiple={true}
                         value={states.games}
-                        onChange={handleSubmit}
+                        onChange={onChange}
                       >
                         {allgames.map((game) => (
                           <option value={game?._id}>{game.name}</option>

@@ -22,12 +22,10 @@ const TeamGameDetails = ({ user, team, isManager, isAdmin }) => {
             <ul>
               <li>
                 <span className="nm">Game: </span>{' '}
-                {recruit.games.map((game) => (
-                  <img
-                    src={game.gameId.imgUrl}
-                    style={{ height: '35px', width: '35px' }}
-                  />
-                ))}
+                <img
+                  src={recruit.games.imgUrl}
+                  style={{ height: '35px', width: '35px' }}
+                />
               </li>
               <li>
                 <span className="nm">Roles: </span>{' '}
