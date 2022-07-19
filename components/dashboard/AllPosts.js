@@ -68,7 +68,7 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
       <div className="post">
         <div className="heads">
           <div className="user">
-            <img src={post.profilepic} alt="" />
+            <img src={post?.profilepic} alt="" />
           </div>
           <div className="user_name_disc">
             <div className="title_follow">
