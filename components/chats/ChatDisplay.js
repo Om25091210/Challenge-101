@@ -13,8 +13,8 @@ const ChatDisplay = ({ user, message, messager }) => {
             <img
               src={
                 isUserSender === true
-                  ? user.profilePicUrl
-                  : messager.profilePicUrl
+                  ? user?.profilePicUrl
+                  : messager?.profilePicUrl
               }
               className="rounded-circle user_img_msg"
               alt=""

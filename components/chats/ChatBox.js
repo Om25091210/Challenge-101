@@ -73,7 +73,6 @@ const ChatBox = ({ user, chats, setChats }) => {
   }, []);
 
   const addChat = ({ user }) => {
-
     const alreadyInChat =
       chats.length > 0 &&
       chats.filter((chat) => chat.messagesWith === user.friendId).length > 0;
@@ -83,7 +82,7 @@ const ChatBox = ({ user, chats, setChats }) => {
       const newChat = {
         messagesWith: user.friendId,
         name: user.friendName,
-        profilePicUrl: user.profilePicUrl,
+        profilePicUrl: user?.profilePicUrl,
         lastMessage: '',
         date: Date.now()
       };
@@ -194,7 +193,7 @@ const ChatBox = ({ user, chats, setChats }) => {
                             <div className="d-flex bd-highlight">
                               <div className="img_cont">
                                 <img
-                                  src={resultuser.profilePicUrl}
+                                  src={resultuser?.profilePicUrl}
                                   className="rounded-circle user_img"
                                   alt=""
                                 />
@@ -272,7 +271,7 @@ const ChatBox = ({ user, chats, setChats }) => {
                     <div className="d-flex bd-highlight">
                       <div className="img_cont">
                         <img
-                          src={user.profilePicUrl}
+                          src={user?.profilePicUrl}
                           className="rounded-circle user_img"
                           alt=""
                         />
