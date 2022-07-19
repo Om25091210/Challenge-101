@@ -175,20 +175,21 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
                   <div className="inner_model_box">
                     <h3>Shares</h3>
                     <ul>
-                      {post.shares.map((ppl) => (
-                        <li>
-                          {' '}
-                          <div className="game_pic">
-                            <img
-                              src={ppl.user.profilePicUrl}
-                              alt={ppl.user.name}
-                            />
-                          </div>
-                          <a href={`/user/${ppl.user._id}`}>
-                            <p>{ppl.user.name}</p>
-                          </a>
-                        </li>
-                      ))}
+                      {post.shares &&
+                        post.shares.map((ppl) => (
+                          <li>
+                            {' '}
+                            <div className="game_pic">
+                              <img
+                                src={ppl.user?.profilePicUrl}
+                                alt={ppl.user?.name}
+                              />
+                            </div>
+                            <a href={`/user/${ppl.user._id}`}>
+                              <p>{ppl.user.name}</p>
+                            </a>
+                          </li>
+                        ))}
                     </ul>
                   </div>
                   <div className="overlay"></div>
