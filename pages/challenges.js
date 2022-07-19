@@ -106,23 +106,6 @@ const challenges = ({ user, data, teams, profile, allteams }) => {
     });
   });
 
-  const teamFiltered =
-    data.filter((val2) => {
-      return val2.invites?.some((invi) => {
-        return (
-          teamCheck.length > 0 &&
-          teamCheck[0].players.some((plyr) => {
-            return profile.playergames.some((pg) => {
-              return (
-                pg?.player?._id === invi.playerId?._id &&
-                plyr.playerId?._id === invi.playerId?._id
-              );
-            });
-          })
-        );
-      });
-    }).length > 0;
-
   const teamPlayer = data.filter((val1) => {
     return val1.players.some((ply) => {
       return (
@@ -359,11 +342,22 @@ const challenges = ({ user, data, teams, profile, allteams }) => {
           </div>
 
           <div className="white_bg challenge_card_box">
-            <ChallengesDisplay
-              challenges={teamPlayer}
-              isInvite={teamFiltered}
-              user={user}
-            />
+            <ul className="challenge_card">
+              {!teamPlayer || teamPlayer.length === 0 ? (
+                <div>
+                  <span>No Challenges for you</span>
+                </div>
+              ) : (
+                teamPlayer.map((chall) => (
+                  <ChallengesDisplay
+                    user={user}
+                    chall={chall}
+                    teamCheck={teamCheck}
+                    profile={profile}
+                  />
+                ))
+              )}
+            </ul>
 
             <p>Similar players you can challenge.</p>
 

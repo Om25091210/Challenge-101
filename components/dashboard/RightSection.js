@@ -19,10 +19,38 @@ const RightSection = ({ user, suggestedplayers, teams, profile }) => {
       });
   }, []);
 
+  const [challenges, setChallenges] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`${baseURL}/api/challenges/userchallenges/${profile._id}`)
+      .then((res) => {
+        setChallenges(res.data);
+      });
+  }, []);
+
   return (
     <div className="right_side overhight">
       {/* <RecentActivity user={user} /> */}
-      <Challengelist user={user} teams={teams} profile={profile} />
+      {/* <Challengelist user={user} teams={teams} profile={profile} /> */}
+      <div className="recent_activity">
+        <h2>Challenge List</h2>
+        <a href="#!" className="hideShow">
+          Hide <i className="fa fa-angle-down" aria-hidden="true"></i>{' '}
+          <i className="fa fa-angle-up" aria-hidden="true"></i>
+        </a>
+        <div className="white_box">
+          {!challenges || challenges.length === 0 ? (
+            <div className="activity_tag">
+              <span className="act_name">No Challenges Yet.</span>
+            </div>
+          ) : (
+            challenges.map((result, idx) => (
+              <Challengelist result={result} profile={profile} user={user} />
+            ))
+          )}
+        </div>
+      </div>
 
       <div className="recent_activity suggested_player">
         <h2>Suggested Players</h2>

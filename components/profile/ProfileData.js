@@ -245,13 +245,12 @@ const ProfileData = ({ user, Userdata, products, teams }) => {
         </div>
 
         <ProfileTeams
-          UserTeams={teams}
           Userdata={Userdata}
           profile={profile}
           user={user}
           allGames={allGames}
           teamroles={teamroles}
-          teamsData={tabData}
+          teamsData={tabData?.teams}
         />
 
         <ProfileTournament

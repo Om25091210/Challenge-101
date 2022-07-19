@@ -7,7 +7,6 @@ import { useRouter } from 'next/router';
 
 const ProfileTeams = ({
   Userdata,
-  UserTeams,
   profile,
   user,
   teamsData,
@@ -22,11 +21,6 @@ const ProfileTeams = ({
   const refreshData = () => {
     router.replace(router.asPath);
   };
-
-  let teams = [];
-  if (teamsData.teams?.length > 0) {
-    teams = UserTeams.concat(teamsData?.teams);
-  }
 
   useEffect(() => {
     axios.get(`${baseURL}/api/all/teams`).then((res) => setAllTeams(res.data));
@@ -222,11 +216,11 @@ const ProfileTeams = ({
         </div>
         <div>
           <ul className="stats_card">
-            {teams.length === 0 ? (
+            {teamsData && teamsData.length === 0 ? (
               <p>{profile.user.name} has no teams.</p>
             ) : (
-              teams &&
-              teams.map((team) => (
+              teamsData &&
+              teamsData.map((team) => (
                 <li>
                   <div className="card_img">
                     {' '}

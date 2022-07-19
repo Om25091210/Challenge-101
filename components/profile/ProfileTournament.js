@@ -478,7 +478,7 @@ const ProfileTournament = ({
                       />
                     </div>
                     <div>
-                      {result?.tournamentId.name}
+                      {result.tournamentId?.name}
                       <span>{format(new Date(result?.year), 'yyyy')}</span>
                     </div>
                     <div>
