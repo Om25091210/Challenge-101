@@ -42,7 +42,7 @@ const CommentForm = ({ post, user, commentsData }) => {
         <form className="add_comment_box" onSubmit={(e) => e.preventDefault()}>
           <div className="add_comments">
             <div className="user">
-              <img src={user.profilePicUrl} alt="" />
+              <img src={user?.profilePicUrl} alt="" />
             </div>
             <textarea
               placeholder="Add a comment"

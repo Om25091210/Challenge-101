@@ -39,20 +39,20 @@ const CommentList = ({ post, user, commentsData }) => {
                   <LikeComment postId={postId} comment={comment} />
                   <div className="comment_round_box">
                     <div className="user">
-                      <img src={comment.user.profilePicUrl} alt="" />
+                      <img src={comment.user?.profilePicUrl} alt="" />
                     </div>
                     <div className="create">
-                      <a href={`/user/${comment?.user._id}`} className="">
+                      <a href={`/user/${comment?.user?._id}`} className="">
                         {comment.user != null
-                          ? comment.user.name
+                          ? comment.user?.name
                           : 'NOT DEFINED'}
                       </a>{' '}
                       <h3>{comment.text}</h3>
                     </div>
                   </div>
                   <PinnedComments user={user} comment={comment} post={post} />
-                  {post.user._id === user._id &&
-                  comment.user._id === user._id ? null : (
+                  {post.user?._id === user._id &&
+                  comment.user?._id === user._id ? null : (
                     <ReportsComments />
                   )}
                 </div>

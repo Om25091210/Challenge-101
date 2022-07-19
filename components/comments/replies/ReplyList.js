@@ -23,47 +23,50 @@ const ReplyList = ({ post, comment, user }) => {
     <>
       {replies.length === 0 ? null : (
         <div className="reply_list">
-          {replies.map((reply) => (
-            <article key={reply._id}>
-              <div className="reply_comment_item d-flex">
-                <a href={`/user/${reply.user._id}`}>
-                  <span className="avtar">
-                    <img
-                      src={
-                        reply.user != null
-                          ? reply.user.profilePicUrl
-                          : 'Not Defined'
-                      }
-                    />
-                  </span>
-                </a>
-                <div className="comments_data">
-                  <div className="member_profile">
-                    <a href={`/user/${reply?.user._id}`}>
-                      <h3>
-                        {reply.user != null ? reply.user.name : 'Not Defined'}
-                      </h3>{' '}
-                    </a>
+          {replies &&
+            replies.map((reply) => (
+              <article key={reply._id}>
+                <div className="reply_comment_item d-flex">
+                  <a href={`/user/${reply.user?._id}`}>
+                    <span className="avtar">
+                      <img
+                        src={
+                          reply.user != null
+                            ? reply.user?.profilePicUrl
+                            : 'Not Defined'
+                        }
+                      />
+                    </span>
+                  </a>
+                  <div className="comments_data">
+                    <div className="member_profile">
+                      <a href={`/user/${reply?.user?._id}`}>
+                        <h3>
+                          {reply.user != null
+                            ? reply.user?.name
+                            : 'Not Defined'}
+                        </h3>{' '}
+                      </a>
+                    </div>
+                    <p>{reply.text}</p>
                   </div>
-                  <p>{reply.text}</p>
+                  {post.user._id === user._id ? null : <ReportsComments />}
                 </div>
-                {post.user._id === user._id ? null : <ReportsComments />}
-              </div>
-              <div className="social_bar d-flex">
-                <LikeReply
-                  postId={post._id}
-                  commentId={comment._id}
-                  reply={reply}
-                />
-                <DeleteReply
-                  post={post}
-                  comment={comment}
-                  reply={reply}
-                  user={user}
-                />
-              </div>
-            </article>
-          ))}
+                <div className="social_bar d-flex">
+                  <LikeReply
+                    postId={post._id}
+                    commentId={comment._id}
+                    reply={reply}
+                  />
+                  <DeleteReply
+                    post={post}
+                    comment={comment}
+                    reply={reply}
+                    user={user}
+                  />
+                </div>
+              </article>
+            ))}
         </div>
       )}
     </>
