@@ -220,10 +220,10 @@ const SignedMainContent = ({ posts, user }) => {
           <ul className="user_slider">
             <li>
               <img
-                src={user.profilePicUrl}
+                src={user?.profilePicUrl}
                 alt=""
                 onClick={() =>
-                  personaHandle(user.name, user.profilePicUrl, 'User')
+                  personaHandle(user.name, user?.profilePicUrl, 'User')
                 }
               />
             </li>

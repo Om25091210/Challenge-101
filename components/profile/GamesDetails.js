@@ -4,9 +4,12 @@ import RecruitmentCard from '../common/RecruitmentCard';
 import axios from 'axios';
 import baseURL from '../../utils/baseURL';
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 
 const GamesDetails = ({ user, profile }) => {
   const [recruits, setRecruits] = useState([]);
+
+  const router = useRouter();
 
   useEffect(() => {
     axios
@@ -14,7 +17,9 @@ const GamesDetails = ({ user, profile }) => {
       .then((res) => setRecruits(res.data));
   }, []);
 
-  const req = recruits.filter((rec) => rec.RecruitProfileId === user._id);
+  const req = recruits.filter(
+    (rec) => rec.RecruitProfileId === router.query.id
+  );
 
   return (
     <>
@@ -67,8 +72,9 @@ const GamesDetails = ({ user, profile }) => {
             <div className="chart_box">
               <img src="/assets/media/profile/chart.jpg" alt="" />
             </div>
-
-            <button className="game_btn">INVITE TO TEAM</button>
+            {recruit.RecruitProfileId === user._id ? null : (
+              <button className="game_btn">INVITE TO TEAM</button>
+            )}
           </div>
         ))}
       {req[0]?.RecruitProfileId === user._id ? null : (

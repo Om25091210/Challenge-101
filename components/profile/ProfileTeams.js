@@ -223,7 +223,7 @@ const ProfileTeams = ({
         <div>
           <ul className="stats_card">
             {teams.length === 0 ? (
-              <p>{user.name} has no teams.</p>
+              <p>{profile.user.name} has no teams.</p>
             ) : (
               teams &&
               teams.map((team) => (
@@ -235,7 +235,7 @@ const ProfileTeams = ({
                   <div className="right_data">
                     <div className="card_games_tit">
                       <h3>
-                        <a href={`team/${team._id}`}>
+                        <a href={`/team/${team._id}`}>
                           Team {team.name} <br />{' '}
                         </a>
                         {Moment(team.founded).format('MMM YYYY')}

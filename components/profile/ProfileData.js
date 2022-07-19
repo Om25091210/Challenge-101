@@ -17,15 +17,11 @@ import ProfileTeams from './ProfileTeams';
 
 const ProfileData = ({ user, Userdata, products, teams }) => {
   const profile = Userdata.profile;
-  const [sponsors, setSponsors] = useState([]);
   let [tabData, setTabData] = useState([]);
   const [allGames, setAllGames] = useState([]);
   const [teamroles, setTeamRoles] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(`${baseURL}/api/all/sponsors`)
-      .then((res) => setSponsors(res.data));
     axios.get(`${baseURL}/api/all/games`).then((res) => setAllGames(res.data));
 
     axios
@@ -113,11 +109,6 @@ const ProfileData = ({ user, Userdata, products, teams }) => {
         <li>
           <a href="#!" rel="video">
             Videos/streams
-          </a>
-        </li>
-        <li>
-          <a href="#!" rel="sponsors" onClick={() => handleTabs('SPONSORS')}>
-            SPONSORS
           </a>
         </li>
         <li>

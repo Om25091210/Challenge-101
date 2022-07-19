@@ -42,7 +42,7 @@ const CommentList = ({ post, user, commentsData }) => {
                       <img src={comment.user.profilePicUrl} alt="" />
                     </div>
                     <div className="create">
-                      <a href="#" className="">
+                      <a href={`/user/${comment?.user._id}`} className="">
                         {comment.user != null
                           ? comment.user.name
                           : 'NOT DEFINED'}

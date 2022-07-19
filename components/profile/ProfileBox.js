@@ -643,10 +643,15 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
                   </a>
                 </div>
                 <div className="game_role">
-                  {/*
-                  <span className="ct"> In Game Role</span>
-                  <span className="were">Captain - CS GO</span>
-                */}
+                  {Userdata.profile?.headline.team ? (
+                    <>
+                      <span className="ct"> In Game Role</span>
+                      <span className="were">
+                        {Userdata.profile?.headline.inGameRole} -{' '}
+                        {Userdata.profile?.headline.game?.name}
+                      </span>
+                    </>
+                  ) : null}
                 </div>
 
                 <div className="game_role profile_address">

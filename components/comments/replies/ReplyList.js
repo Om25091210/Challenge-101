@@ -26,7 +26,7 @@ const ReplyList = ({ post, comment, user }) => {
           {replies.map((reply) => (
             <article key={reply._id}>
               <div className="reply_comment_item d-flex">
-                <a href="#">
+                <a href={`/user/${reply.user._id}`}>
                   <span className="avtar">
                     <img
                       src={
@@ -39,7 +39,7 @@ const ReplyList = ({ post, comment, user }) => {
                 </a>
                 <div className="comments_data">
                   <div className="member_profile">
-                    <a href="#">
+                    <a href={`/user/${reply?.user._id}`}>
                       <h3>
                         {reply.user != null ? reply.user.name : 'Not Defined'}
                       </h3>{' '}

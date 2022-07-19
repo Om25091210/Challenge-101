@@ -45,8 +45,8 @@ const RightSection = ({ user, suggestedplayers, teams, profile }) => {
                         <div className="img_thumb">
                           <img
                             src={
-                              item.user.profilePicUrl
-                                ? item.user.profilePicUrl
+                              item.user?.profilePicUrl
+                                ? item.user?.profilePicUrl
                                 : '/assets/media/dash/user.jpg'
                             }
                             alt=""
