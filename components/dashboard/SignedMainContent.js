@@ -157,6 +157,16 @@ const SignedMainContent = ({ posts, user }) => {
     }, 4000);
   }, []);
 
+  useEffect(() => {
+    $('a.model_show_btn').click(function () {
+      $(this).next().addClass('show_model');
+    });
+
+    $('a.model_close').click(function () {
+      $(this).parent().removeClass('show_model');
+    });
+  }, []);
+
   return (
     <div className="main_middle">
       {topmenu ? (
