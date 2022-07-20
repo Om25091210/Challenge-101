@@ -304,6 +304,7 @@ const ProfileEdit = ({ profile, user, teams, games, allteams }) => {
                           onChange={handleSubmit}
                           placeholder="Team Name"
                         >
+                          <option value="--">--</option>
                           {allteams &&
                             allteams.map((tem) => (
                               <option value={tem._id}>{tem.name}</option>
@@ -361,6 +362,7 @@ const ProfileEdit = ({ profile, user, teams, games, allteams }) => {
                           value={states.game}
                           onChange={handleChangeCheck}
                         >
+                          <option value="--">--</option>
                           {User_team &&
                             User_team[0]?.games.map((game) => (
                               <option value={game.gameId._id}>
