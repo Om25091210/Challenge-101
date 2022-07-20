@@ -199,7 +199,7 @@ header {
     padding: 20px 0; align-items: center;
 }
 
-header button{ background:none; border-radius:20px; border:1px solid  #6f232d; padding:10px 30px; color:#fff; margin-left: 10px; cursor: pointer;}
+header button{ background:none; border-radius:20px; border:1px solid  #e16623; padding:10px 30px; color:#fff; margin-left: 10px; cursor: pointer;}
 header button:hover{ background: #000;}
 
 
