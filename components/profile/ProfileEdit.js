@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import cookie from 'js-cookie';
 import SocialLink from '../common/SocialLink';
 
-const ProfileEdit = ({ profile, user, teams, games }) => {
+const ProfileEdit = ({ profile, user, teams, games, allteams }) => {
   const name = user.name.split(' ');
   const [online, setOnline] = useState(false);
   const [allroles, setAllroles] = useState([]);
@@ -16,7 +16,7 @@ const ProfileEdit = ({ profile, user, teams, games }) => {
   const [selectedGame, setSelectedGame] = useState();
   const [openForm, setOpenForm] = useState(false);
   const [type, setType] = useState('');
-
+  // console.log(allteams);
   const toggleMic = () => {
     if (online === false) {
       setOnline(true);
@@ -134,16 +134,12 @@ const ProfileEdit = ({ profile, user, teams, games }) => {
     }
     refreshData();
   };
-  const proteams = profile.teams.map((team) => {
-    return team.teamId;
-  });
 
-  let allTeams = [];
-  allTeams = teams.concat(proteams);
-
-  const User_team = teams.filter((team) => {
-    return team._id === parseInt(states.team);
-  });
+  const User_team =
+    allteams &&
+    allteams.filter((team) => {
+      return team._id === parseInt(states.team);
+    });
 
   const [filteredData, setFilteredData] = useState([]);
   const [searchText, setSearchText] = useState('');
@@ -308,8 +304,8 @@ const ProfileEdit = ({ profile, user, teams, games }) => {
                           onChange={handleSubmit}
                           placeholder="Team Name"
                         >
-                          {allTeams &&
-                            allTeams.map((tem) => (
+                          {allteams &&
+                            allteams.map((tem) => (
                               <option value={tem._id}>{tem.name}</option>
                             ))}
                         </select>
@@ -365,11 +361,12 @@ const ProfileEdit = ({ profile, user, teams, games }) => {
                           value={states.game}
                           onChange={handleChangeCheck}
                         >
-                          {User_team[0]?.games.map((game) => (
-                            <option value={game.gameId._id}>
-                              {game.gameId.name}
-                            </option>
-                          ))}
+                          {User_team &&
+                            User_team[0]?.games.map((game) => (
+                              <option value={game.gameId._id}>
+                                {game.gameId.name}
+                              </option>
+                            ))}
                         </select>
                       </div>
                     </>

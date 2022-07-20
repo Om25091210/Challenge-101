@@ -7,7 +7,6 @@ import { useMutation } from 'react-query';
 import { toast } from 'react-toastify';
 import cookie from 'js-cookie';
 import Badges from './badges';
-import { locationformvalidate } from '@utils/valid';
 import ProfileGameStat from './ProfileGameStat';
 import { useRouter } from 'next/router';
 import ReactCountryFlag from 'react-country-flag';
@@ -15,13 +14,13 @@ import ProfileEdit from './ProfileEdit';
 
 const ProfileBox = ({ user, Userdata, games, teams }) => {
   const [profilePic, setProfilePic] = useState(null);
-  const [showlocation, setShowlocation] = useState(false);
   const [selectedGame, setSelectedGame] = useState();
   const [showIgn, setShowIgn] = useState('none');
   const [step1, setStep1] = useState(true);
 
   const [coverPic, setCoverPic] = useState(null);
   const [userIgn, setUserIgn] = useState(null);
+  let [tabData, setTabData] = useState([]);
 
   const [address, setAddress] = useState(Userdata.profile?.address);
 
@@ -58,7 +57,6 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
   const { mutate } = useMutation(addFollow);
 
   const SrhUser = Userdata.profile?.user;
-  const profileId = Userdata.profile?._id;
   const isLoggedInUser = user._id === SrhUser?._id;
 
   const isFollow = Userdata.followers
@@ -124,75 +122,6 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
     setUserIgn(e.target.value);
   }
 
-  const toggleShowlocation = () => {
-    if (showlocation) {
-      setShowlocation(false);
-    } else {
-      setShowlocation(true);
-    }
-  };
-
-  const handleAddressForm = async (e) => {
-    e.preventDefault();
-    if (Object.keys(formErrors).length === 0) {
-      try {
-        await axios.put(
-          `${baseURL}/api/profile/updateaddress/${Userdata.profile._id}`,
-          address,
-          {
-            headers: {
-              Authorization: cookie.get('token'),
-              'Content-Type': 'application/json'
-            }
-          }
-        );
-        setShowlocation(false);
-        toast.success('Address successfully have been updated');
-      } catch (err) {
-        console.log(err);
-        toast.error(err.response?.data?.msg || 'Please recheck your inputs');
-      }
-      $('a.model_close').parent().removeClass('show_model');
-      refreshData();
-    }
-  };
-
-  const handleAttrForm = async (e) => {
-    e.preventDefault();
-
-    if (
-      attr.roles === '' ||
-      attr.regions === '' ||
-      attr.playertype === '' ||
-      attr.platform === '' ||
-      attr.language === '' ||
-      attr.paid === '' ||
-      attr.mic === '' ||
-      attr.streamer === ''
-    ) {
-      toast.warning('Please enter all fields or check your inputs');
-    } else {
-      try {
-        await axios.put(
-          `${baseURL}/api/all/attribute/${Userdata.profile.playergames[0]?.player._id}`,
-          attr,
-          {
-            headers: {
-              Authorization: cookie.get('token'),
-              'Content-Type': 'application/json'
-            }
-          }
-        );
-        toast.success("Detail's successfully have been updated");
-      } catch (err) {
-        console.log(err);
-        toast.error(err.response?.data?.msg || 'Please recheck your inputs');
-      }
-      $('a.model_close').parent().removeClass('show_model');
-      refreshData();
-    }
-  };
-
   // useEffect(() => {
   //   $('.common_poup').fancybox({
   //     wrapCSS: 'common_poup_wrap',
@@ -238,29 +167,6 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
     setStep1(true);
   };
 
-  function handleChangeaddress(e) {
-    setAddress({ ...address, [e.target.name]: e.target.value });
-  }
-
-  function handleChangeAttr(e) {
-    setAttr({ ...attr, [e.target.name]: e.target.value });
-  }
-
-  function handleChange(e) {
-    if (e.target.options) {
-      var options = e.target.options;
-      var value = [];
-      for (var i = 0, l = options.length; i < l; i++) {
-        if (options[i].selected) {
-          value.push(options[i].value);
-        }
-      }
-      setAttr({ ...attr, [e.target.name]: value });
-    } else {
-      setAttr({ ...attr, [e.target.name]: e.target.value });
-    }
-  }
-
   const deletehandleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -270,6 +176,19 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }
+  };
+
+  const handleTabs = async (Type) => {
+    await axios
+      .get(
+        `${baseURL}/api/profile/profiledata/${Type}/${Userdata.profile._id}`,
+        {
+          headers: {
+            Authorization: cookie.get('token')
+          }
+        }
+      )
+      .then((res) => setTabData(res.data));
   };
 
   return (
@@ -317,54 +236,6 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
           </form>
         </div>
         )
-        {/* <div className="edit_phone ">
-          <div className="">
-            {isLoggedInUser ? (
-              <>
-                <button
-                  onClick={() => setDeleteModal(true)}
-                  className="btn"
-                  style={{ marginRight: '4rem' }}
-                >
-                  <i className="fa fa-trash"></i>
-                </button>{' '}
-                <a href="#!" className="model_show_btn" alt="personal details">
-                  <button className="btn">
-                    <i className="fa fa-phone" aria-hidden="true"></i>
-                  </button>
-                </a>
-                <div className="common_model_box">
-                  <a href="#!" className="model_close">
-                    X
-                  </a>
-                  <div className="inner_model_box">
-                    <h3>Phone Number</h3>
-                    <form onSubmit={handleSubmitphno} className="common_form">
-                      <div className="form-group">
-                        <div className="">
-                          <label htmlFor="exampleFormControlInput1">
-                            Phone Number
-                          </label>
-                          <input
-                            type="text"
-                            className="form-control"
-                            id="exampleFormControlInput1"
-                            placeholder="phone_number"
-                            name="phno"
-                            onChange={handleChangephno}
-                            value={phno}
-                          />
-                        </div>
-                        <button className="btn">Update</button>
-                      </div>
-                    </form>
-                  </div>
-                  <div className="overlay"></div>
-                </div>
-              </>
-            ) : null}
-          </div>
-        </div> */}
         {isLoggedInUser ? (
           <>
             {deleteModal && (
@@ -388,178 +259,6 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
             )}
           </>
         ) : null}
-        {/* {isLoggedInUser ? (
-          <div className="edit_add ">
-            <div className="">
-              {' '}
-              <a href="#!" className="model_show_btn" alt="personal details">
-                <button className="btn">
-                  <i className="fa fa-address-book-o" aria-hidden="true"></i>
-                </button>
-              </a>
-              <div className="common_model_box">
-                <a href="#!" className="model_close">
-                  X
-                </a>
-
-                <div className="inner_model_box">
-                  <h3>Personal Detail's</h3>
-
-                  <form
-                    onSubmit={handleAttrForm}
-                    className="common_form personal_form"
-                  >
-                    <div className="form-group">
-                      <div className="colm">
-                        <label htmlFor="exampleFormControlInput1">Region</label>
-                        <select
-                          id="regions"
-                          name="regions"
-                          onChange={handleChangeAttr}
-                          value={attr?.regions}
-                          className="form-control text-capitalize"
-                        >
-                          <option value="--">--</option>
-                          <option value="India">India</option>
-                          <option value="USA">USA</option>
-                          <option value="Asia">Asia</option>
-                          <option value="China">China</option>
-                          <option value="Japan">Japan</option>
-                          <option value="Europe">Europe</option>
-                        </select>
-                      </div>
-                      <div className="colm">
-                        <label htmlFor="exampleFormControlInput1">
-                          Player Type
-                        </label>
-                        <select
-                          id="playertype"
-                          name="playertype"
-                          onChange={handleChangeAttr}
-                          value={attr?.playertype}
-                          className="form-control text-capitalize"
-                        >
-                          <option value="--">--</option>
-                          <option value="Casual">Casual</option>
-                          <option value="SemiPro">SemiPro</option>
-                          <option value="Pro">Pro</option>
-                          <option value="Gunman">Gunman</option>
-                          <option value="Local Lan">Local Lan</option>
-                        </select>
-                      </div>
-                      <div className="colm">
-                        <label htmlFor="exampleFormControlInput1">
-                          Platform
-                        </label>
-                        <select
-                          id="platform"
-                          name="platform"
-                          onChange={handleChangeAttr}
-                          value={attr?.platform}
-                          className="form-control text-capitalize"
-                        >
-                          <option value="--">--</option>
-                          <option value="PC">PC</option>
-                          <option value="Front">Front</option>
-                          <option value="Console">Console</option>
-                          <option value="Mobile">Mobile</option>
-                        </select>
-                      </div>
-
-                      <div className="colm">
-                        <label htmlFor="exampleFormControlInput1">Paid</label>
-                        <select
-                          id="paid"
-                          name="paid"
-                          onChange={handleChangeAttr}
-                          value={attr?.paid}
-                          className="form-control text-capitalize"
-                        >
-                          <option value="--">--</option>
-                          <option value="Paid">Paid</option>
-                          <option value="Unpaid">Unpaid</option>
-                        </select>
-                      </div>
-                      <div className="colm">
-                        <label htmlFor="exampleFormControlInput1">Mic</label>
-                        <select
-                          id="mic"
-                          name="mic"
-                          onChange={handleChangeAttr}
-                          value={attr?.mic}
-                          className="form-control"
-                        >
-                          <option value="--">--</option>
-                          <option value={true}>On</option>
-                          <option value={false}>Off</option>
-                        </select>
-                      </div>
-
-                      <div className="colm">
-                        <label htmlFor="exampleFormControlInput1">Role</label>
-                        <select
-                          id="roles"
-                          name="roles"
-                          onChange={handleChange}
-                          value={attr?.roles}
-                          className="form-control text-capitalize"
-                          multiple={true}
-                        >
-                          <option value="Support">Support</option>
-                          <option value="Scout">Scout</option>
-                          <option value="Sniper">Sniper</option>
-                          <option value="Driver">Driver</option>
-                          <option value="Fragger">Fragger</option>
-                          <option value="In Game Leader">In Game Leader</option>
-                          <option value="Assualt">Assualt</option>
-                          <option value="Medic">Medic</option>
-                        </select>
-                      </div>
-
-                      <div className="colm">
-                        <label htmlFor="exampleFormControlInput1">
-                          Language
-                        </label>
-                        <select
-                          id="language"
-                          name="language"
-                          onChange={handleChange}
-                          value={attr?.language}
-                          className="form-control text-capitalize"
-                          multiple={true}
-                        >
-                          <option value="English">English</option>
-                          <option value="Hindi">Hindi</option>
-                          <option value="Telagu">Telagu</option>
-                          <option value="Tamil">Tamil</option>
-                        </select>
-                      </div>
-                      <div className="colm">
-                        <label htmlFor="exampleFormControlInput1">
-                          Streamer
-                        </label>
-                        <select
-                          id="streamer"
-                          name="streamer"
-                          onChange={handleChangeAttr}
-                          value={attr?.streamer}
-                          className="form-control"
-                        >
-                          <option value="--">--</option>
-                          <option value={true}>Streamer</option>
-                          <option value={false}>Not Streamer</option>
-                        </select>
-                      </div>
-
-                      <button className="btn">Update</button>
-                    </div>
-                  </form>
-                </div>
-                <div className="overlay"></div>
-              </div>
-            </div>
-          </div>
-        ) : null} */}
         <div className="profile_dp_box">
           <div className="profile_pic">
             <form onSubmit={handleSubmit}>
@@ -635,9 +334,9 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
               <div className="current_status">
                 <div className="current_team">
                   <span className="ct"> Current Team</span>
-                  <a href={`/team/${Userdata.profile?.current_team?._id}`}>
+                  <a href={`/team/${Userdata.profile?.current_team}`}>
                     <span className="were">
-                      {Userdata.profile?.current_team?.name}{' '}
+                      {Userdata?.currentTeam}{' '}
                       <i className="fa fa-arrow-right" aria-hidden="true"></i>
                     </span>
                   </a>
@@ -650,172 +349,6 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
                         {Userdata.profile?.headline.inGameRole} -{' '}
                         {Userdata.profile?.headline.game?.name}
                       </span>
-                    </>
-                  ) : null}
-                </div>
-
-                <div className="game_role profile_address">
-                  <div className="loc_box">
-                    {' '}
-                    {/* <span className="ct"> Location</span>{' '}
-                    {isLoggedInUser ? (
-                      <a href="#!" className="model_show_btn">
-                        <i className="fa fa-pencil" aria-hidden="true"></i>
-                      </a>
-                    ) : null} */}
-                    <div className="common_model_box">
-                      <a href="#!" className="model_close">
-                        X
-                      </a>
-
-                      <div className="inner_model_box">
-                        <h3>Locations</h3>
-
-                        <form
-                          onSubmit={handleAddressForm}
-                          className="common_form"
-                        >
-                          <div className="form-group">
-                            <div className="colm">
-                              <label htmlFor="exampleFormControlInput1">
-                                Address Line 1
-                              </label>
-                              <input
-                                type="text"
-                                className=" text-capitalize"
-                                id="exampleFormControlInput1"
-                                placeholder="address line1"
-                                name="line1"
-                                onChange={handleChangeaddress}
-                                value={address?.line1}
-                              />
-                              <p>{formErrors.line1}</p>
-                            </div>
-
-                            <div className="colm">
-                              <label htmlFor="exampleFormControlInput1">
-                                Address Line 2
-                              </label>
-                              <input
-                                type="text"
-                                className=" text-capitalize"
-                                id="exampleFormControlInput1"
-                                placeholder="address line2"
-                                name="line2"
-                                onChange={handleChangeaddress}
-                                value={address?.line2}
-                              />
-                              <p>{formErrors.line2}</p>
-                            </div>
-
-                            <div className="colm">
-                              <label htmlFor="exampleFormControlInput1">
-                                City
-                              </label>
-                              <input
-                                type="text"
-                                className="text-capitalize"
-                                id="exampleFormControlInput1"
-                                placeholder="city "
-                                name="city"
-                                onChange={handleChangeaddress}
-                                value={address?.city}
-                              />
-                              <p>{formErrors.city}</p>
-                            </div>
-
-                            <div className="colm">
-                              <label htmlFor="exampleFormControlInput1">
-                                State
-                              </label>
-                              <input
-                                type="text"
-                                className="text-capitalize"
-                                id="exampleFormControlInput1"
-                                placeholder="state"
-                                name="state"
-                                onChange={handleChangeaddress}
-                                value={address?.state}
-                              />
-                              <p>{formErrors.state}</p>
-                            </div>
-
-                            <div className="colm">
-                              <label htmlFor="exampleFormControlInput1">
-                                Country
-                              </label>
-                              <input
-                                type="text"
-                                className="text-capitalize"
-                                id="exampleFormControlInput1"
-                                placeholder="country"
-                                name="country"
-                                onChange={handleChangeaddress}
-                                value={address?.country}
-                              />
-                              <p>{formErrors.country}</p>
-                            </div>
-
-                            <div className="colm">
-                              <label htmlFor="exampleFormControlInput1">
-                                Zipcode
-                              </label>
-                              <input
-                                type="text"
-                                className="text-capitalize"
-                                id="exampleFormControlInput1"
-                                placeholder="zip code"
-                                name="zipcode"
-                                onChange={handleChangeaddress}
-                                value={address?.zipcode}
-                              />
-                              <p>{formErrors.zipcode}</p>
-                            </div>
-
-                            <button
-                              className="btn"
-                              onClick={() =>
-                                setFormErrors(locationformvalidate(address))
-                              }
-                            >
-                              Update
-                            </button>
-                          </div>
-                        </form>
-                      </div>
-                      <div className="overlay"></div>
-                    </div>
-                  </div>
-
-                  {/* {!showlocation && Userdata.profile.address ? (
-                    <ul className="user_add">
-                      <li>{Userdata.profile.address.line1}</li>
-                      <li>{Userdata.profile.address.line2}</li>
-                      <li>
-                        {Userdata.profile.address.city},{' '}
-                        {Userdata.profile.address.state}
-                      </li>
-                      <li>
-                        {Userdata.profile.address.country},{' '}
-                        {Userdata.profile.address.zipcode}
-                      </li>
-                    </ul>
-                  ) : null} */}
-
-                  {isLoggedInUser ? (
-                    // <button
-                    //   className="bio_edit"
-                    //   onClick={toggleShowlocation}
-                    // >
-                    //   <i className="fa fa-pencil" aria-hidden="true"></i>
-                    // </button>
-
-                    <>
-                      {/* <button onClick={() => setShowLocModal(true)}>
-                        <i className="fa fa-pencil" aria-hidden="true"></i>
-                      </button> 
-                      
-                      */}
                     </>
                   ) : null}
                 </div>
@@ -847,12 +380,15 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
               </div>
 
               {isLoggedInUser ? (
-                <ProfileEdit
-                  profile={Userdata.profile}
-                  user={user}
-                  teams={teams}
-                  games={games}
-                />
+                <div onClick={() => handleTabs('TEAMS')}>
+                  <ProfileEdit
+                    profile={Userdata.profile}
+                    allteams={tabData?.teams}
+                    user={user}
+                    teams={teams}
+                    games={games}
+                  />
+                </div>
               ) : null}
             </div>
 
@@ -876,12 +412,6 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
                       </>
                     ))}
                     <a href="#!" className="model_show_btn">
-                      {/* <span>
-                        <b className="icon">
-                          <img src="/assets/media/ranking/console.png" alt="" />
-                        </b>{' '}
-                        Browse Games
-                      </span> */}
                       <i className="fa fa-plus-circle" aria-hidden="true"></i>
 
                       <div className="hover_games">
