@@ -50,7 +50,7 @@ const ReplyList = ({ post, comment, user }) => {
                     </div>
                     <p>{reply.text}</p>
                   </div>
-                  {post.user._id === user._id ? null : <ReportsComments />}
+                  {post.user?._id === user._id ? null : <ReportsComments />}
                 </div>
                 <div className="social_bar d-flex">
                   <LikeReply
