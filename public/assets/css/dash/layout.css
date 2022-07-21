@@ -576,14 +576,46 @@ ul.top_menu li.wallet li{     float: left;
 .left_side{position:fixed;left:0;top:80px;width:100px;height:100%;background:#7239ea;z-index:11; transition: 0.3s ease-in-out;}
 .left_side:hover{ width:210px;}
 .left_side nav{margin-top:30px; margin-left: 25px;}
-.left_side nav li{float:left;width:100%;text-align:left;margin:6px 0;position:relative;}
-.left_side nav li .iconbg{transition:0.3s ease-in-out;width:45px;height:45px;display:inline-flex;border-radius:10px;align-items:center;justify-content:center;text-decoration:none !important;}
+.left_side nav li{float:left;width:100%;text-align:left;margin:10px 0;position:relative;}
+.left_side nav li .iconbg{transition:0.3s ease-in-out;width:45px;height:45px;display:inline-flex;border-radius:5px;align-items:center;justify-content:center;text-decoration:none !important;}
 .left_side nav li i{color:#fff;font-size:20px !important;font-weight:100;}
 .left_side nav li .title{position:absolute;left:60px;top:13px;font-size:14px;color:#fff;font-weight:400;display:none;transition:0.5s ease-in-out;}
 .left_side:hover .title{display:block;}
 .left_side nav li.active .iconbg, .left_side nav li a:hover .iconbg{background:#fff;}
 .left_side nav li.active i, .left_side nav li a:hover i{color:#7239ea;}
 .left_side nav li.more_menu .f{ font-size: 12px; }
+
+/* ------- new design 21/07/22--------*/
+
+.more_left_menu{position: fixed;
+    left: 0;
+    background: #202028;
+    width: 200px;
+    border-radius: 10px;
+    padding: 20px;
+    bottom: 12px;
+	opacity: 0; z-index: -1;
+	transition: 0.3s ease-in-out; 
+
+}
+.more_left_menu.show_more{ opacity: 1; left: 110px; z-index: 9;}
+
+.left_side nav li .more_left_menu .title{ display: block;}
+.left_side nav li .more_left_menu .title.on_submenu_tit{ display: block;}
+.left_side.on_submenu_wd{ width: 100px;}
+.left_side nav li .title.on_submenu_tit{ display: none;}
+
+.left_side nav li.submenu  .iconbg.sub{background: none; border: 1px solid #6d6d71;}
+
+.left_side nav li.submenu > a {
+    float: left;
+    width: 46px;
+    border-top: 1px solid #6d6d71;
+    border-bottom: 1px solid #6d6d71;
+    padding: 20px 0;
+    /* margin: 15px 0; */
+}
+
 /* ------- middle css -------------- */
 
 .team_slider .slick-list {

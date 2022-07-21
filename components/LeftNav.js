@@ -69,74 +69,82 @@ function LeftNav({ user }) {
               </a>
             </Link>{' '}
           </li>
-          <li>
-            <Link href="/">
-              <a className="">
-                <span className="iconbg">
-                  <i className="fa fa-shopping-bag" aria-hidden="true"></i>
-                </span>{' '}
-                <span className="title">SHOP</span>
-              </a>
-            </Link>{' '}
-          </li>
-          <li>
-            <Link href="/nftindex">
-              <a className="">
-                <span className="iconbg">
-                  <i className="fa fa-connectdevelop" aria-hidden="true"></i>
-                </span>{' '}
-                <span className="title">SHOP NFTs</span>
-              </a>
-            </Link>{' '}
-          </li>
 
-          <li>
-            <Link href="/nftgames">
-              <a className="">
-                <span className="iconbg">
-                  <i className="fa fa-fast-forward" aria-hidden="true"></i>
-                </span>{' '}
-                <span className="title">Play</span>
-              </a>
-            </Link>{' '}
-          </li>
-
-          {user?.role === 'admin' ? (
-            <li>
-              <Link href="/settings">
-                <a className="">
-                  <span className="iconbg">
-                    <i className="fa fa-cog" aria-hidden="true"></i>
-                  </span>{' '}
-                  <span className="title">SETTINGS</span>
-                </a>
-              </Link>{' '}
-            </li>
-          ) : (
-            ''
-          )}
-          {user?.isSuperAdmin === true ? (
-            <li>
-              <Link href="/adminpage">
-                <a className="">
-                  <span className="iconbg">
-                    <i className="fa fa-cog" aria-hidden="true"></i>
-                  </span>{' '}
-                  <span className="title">Admin Settings</span>
-                </a>
-              </Link>{' '}
-            </li>
-          ) : (
-            ''
-          )}
-
-          <li className="more_menu">
-            {' '}
-            <a className="">
-              <span className="iconbg">
+          <li className="submenu">
+            <a href="#">
+              {' '}
+              <span className="iconbg sub">
                 <i class="fa fa-plus" aria-hidden="true"></i>
               </span>{' '}
             </a>
+
+            {/*  more submenu */}
+
+            <ul className="more_left_menu">
+              <li>
+                <Link href="/">
+                  <a className="">
+                    <span className="iconbg">
+                      <i className="fa fa-shopping-bag" aria-hidden="true"></i>
+                    </span>{' '}
+                    <span className="title">SHOP</span>
+                  </a>
+                </Link>{' '}
+              </li>
+              <li>
+                <Link href="/nftindex">
+                  <a className="">
+                    <span className="iconbg">
+                      <i
+                        className="fa fa-connectdevelop"
+                        aria-hidden="true"
+                      ></i>
+                    </span>{' '}
+                    <span className="title">SHOP NFTs</span>
+                  </a>
+                </Link>{' '}
+              </li>
+
+              <li>
+                <Link href="/nftgames">
+                  <a className="">
+                    <span className="iconbg">
+                      <i className="fa fa-fast-forward" aria-hidden="true"></i>
+                    </span>{' '}
+                    <span className="title">Play</span>
+                  </a>
+                </Link>{' '}
+              </li>
+
+              {user?.role === 'admin' ? (
+                <li>
+                  <Link href="/settings">
+                    <a className="">
+                      <span className="iconbg">
+                        <i className="fa fa-cog" aria-hidden="true"></i>
+                      </span>{' '}
+                      <span className="title">SETTINGS</span>
+                    </a>
+                  </Link>{' '}
+                </li>
+              ) : (
+                ''
+              )}
+              {user?.isSuperAdmin === true ? (
+                <li>
+                  <Link href="/adminpage">
+                    <a className="">
+                      <span className="iconbg">
+                        <i className="fa fa-cog" aria-hidden="true"></i>
+                      </span>{' '}
+                      <span className="title">Admin Settings</span>
+                    </a>
+                  </Link>{' '}
+                </li>
+              ) : (
+                ''
+              )}
+            </ul>
           </li>
         </ul>
       </nav>

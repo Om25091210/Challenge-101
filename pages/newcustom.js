@@ -152,6 +152,12 @@ function Customjs() {
       });
     });
 
+    $('nav .submenu a').click(function () {
+      $(this).next().toggleClass('show_more');
+      $('.left_side').toggleClass('on_submenu_wd');
+      $('.left_side nav li .title').toggleClass('on_submenu_tit');
+    });
+
     if (screen.width <= 767) {
       $('.top_click').click(function () {
         $('.left_side').toggleClass('show_left_menu');
