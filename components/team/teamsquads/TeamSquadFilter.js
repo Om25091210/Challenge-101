@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import baseURL from '../../../utils/baseURL';
 
-const TeamSquadFilter = ({ playerData }) => {
+const TeamSquadFilter = ({ playerData, players }) => {
   const [squadPlayers, setSquadPlayers] = useState({
     player: '',
     role: ''
@@ -27,8 +27,13 @@ const TeamSquadFilter = ({ playerData }) => {
     const searchWord = event.target.value;
 
     setSearchText(searchWord);
-    const newFilter = allplayers?.filter((value) => {
-      return value.name.toLowerCase().includes(searchWord.toLowerCase());
+    const newFilter = players?.filter((value) => {
+      return (
+        value.name?.toLowerCase().includes(searchWord.toLowerCase()) ||
+        value.apidata?.data.platformInfo.platformUserHandle
+          .toLowerCase()
+          .includes(searchWord.toLowerCase())
+      );
     });
     if (searchText === '') {
       setFilteredData([]);
@@ -78,10 +83,10 @@ const TeamSquadFilter = ({ playerData }) => {
               ) : (
                 filteredData.map((data) => (
                   <div onClick={() => handleSelectedRig(data)} key={data._id}>
-                    <img src={data?.profilePicUrl} height={50} width={50} />
+                    <img src={data?.imgUrl} height={50} width={50} />
                     <p>
-                      {data.name.length > 20
-                        ? data.name.substring(0, 20) + '...'
+                      {data.apidata
+                        ? data.apidata.data.platformInfo.platformUserHandle
                         : data.name}
                     </p>
                   </div>

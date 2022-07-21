@@ -140,12 +140,15 @@ const TeamSquadAdd = ({ teamplayers, team, isManager, isAdmin }) => {
               </select>
             </div>
 
-            <TeamSquadFilter playerData={playerData} />
-            <TeamSquadFilter playerData={playerData} />
+            <TeamSquadFilter playerData={playerData} players={teamplayers} />
+            <TeamSquadFilter playerData={playerData} players={teamplayers} />
 
             {[...Array(count)].map((e, index) => (
               <div key={index}>
-                <TeamSquadFilter playerData={playerData} />
+                <TeamSquadFilter
+                  playerData={playerData}
+                  players={teamplayers}
+                />
               </div>
             ))}
 
