@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import cookie from 'js-cookie';
 import SocialLink from '../common/SocialLink';
 
-const ProfileEdit = ({ profile, user, teams, games, allteams }) => {
+const ProfileEdit = ({ profile, user, games, allteams }) => {
   const name = user.name.split(' ');
   const [online, setOnline] = useState(false);
   const [allroles, setAllroles] = useState([]);
@@ -16,7 +16,7 @@ const ProfileEdit = ({ profile, user, teams, games, allteams }) => {
   const [selectedGame, setSelectedGame] = useState();
   const [openForm, setOpenForm] = useState(false);
   const [type, setType] = useState('');
-  // console.log(allteams);
+
   const toggleMic = () => {
     if (online === false) {
       setOnline(true);
@@ -186,7 +186,7 @@ const ProfileEdit = ({ profile, user, teams, games, allteams }) => {
           </a>
           <div className="inner_model_box">
             <div className="add_job_height">
-              <h3>Edit Profile</h3>
+              <h3>Profile Edit</h3>
               <form className="common_form" onSubmit={handleProfileEdit}>
                 <div className="form-group">
                   <label for="exampleFormControlTextarea1">

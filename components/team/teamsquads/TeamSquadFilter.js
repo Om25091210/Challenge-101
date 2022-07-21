@@ -75,10 +75,10 @@ const TeamSquadFilter = ({ playerData, players }) => {
           onChange={handleFilter}
           autoComplete="off"
         />
-        {searchText.length !== 0 ? (
+        {searchText?.length !== 0 ? (
           <div className="custom-rig-tag">
             <div>
-              {!filteredData || filteredData.length === 0 ? (
+              {!filteredData || filteredData?.length === 0 ? (
                 <p>No User found..</p>
               ) : (
                 filteredData.map((data) => (

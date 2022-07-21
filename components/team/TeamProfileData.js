@@ -15,6 +15,7 @@ import TeamJoines from './TeamJoines';
 import AllPosts from '../dashboard/AllPosts';
 import TeamRigs from './TeamRigs';
 import TeamGameDetails from './TeamGameDetails';
+import { toast } from 'react-toastify';
 
 const TeamProfileData = ({
   user,
@@ -65,11 +66,16 @@ const TeamProfileData = ({
 
   const handleTabs = async (Type) => {
     console.log(Type);
-    await axios
-      .get(`${baseURL}/api/teams/teamdata/${Type}/${data.team?._id}`)
-      .then((res) => setTabData(res.data));
+    try {
+      await axios
+        .get(`${baseURL}/api/teams/teamdata/${Type}/${data.team?._id}`)
+        .then((res) => setTabData(res.data));
+    } catch (err) {
+      console.log(err);
+      toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+    }
   };
-
+  console.log(tabData);
   return (
     <>
       <ul className="profile_tab_btn">

@@ -9,6 +9,7 @@ import Moment from 'moment';
 import TeamFollow from './TeamFollow';
 import TeamRequest from '../discover/invites/TeamRequest';
 import TeamChallenge from '../challenges/TeamChallenge';
+import TeamEdit from './TeamEdit';
 
 const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
   const [attr, setAttr] = useState(data.team.attributes);
@@ -332,164 +333,13 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
                 </a>
               </div>
             )}
-            <span>
-              <div className="loc_box">
-                {' '}
-                {isManager || isAdmin ? (
-                  <a href="#!" className="model_show_btn">
-                    <button className="btn">
-                      <i
-                        className="fa fa-pencil"
-                        aria-hidden="true"
-                        style={{ color: 'white' }}
-                      ></i>
-                    </button>
-                  </a>
-                ) : null}
-                <div className="common_model_box">
-                  <a href="#!" className="model_close">
-                    X
-                  </a>
 
-                  <div className="inner_model_box">
-                    <h3>Personal Detail's</h3>
+            <TeamEdit
+              isAdmin={isAdmin}
+              isManager={isManager}
+              team={data.team}
+            />
 
-                    <form onSubmit={handleAttrForm} className="common_form">
-                      <div className="form-group form_flex">
-                        <div className="colm">
-                          <label htmlFor="exampleFormControlInput1">Role</label>
-                          <select
-                            id="roles"
-                            name="roles"
-                            onChange={handleChange}
-                            value={attr?.roles}
-                            className="form-control"
-                            multiple={true}
-                          >
-                            <option value="Support">Support</option>
-                            <option value="Scout">Scout</option>
-                            <option value="Sniper">Sniper</option>
-                            <option value="Driver">Driver</option>
-                            <option value="Fragger">Fragger</option>
-                            <option value="In Game Leader">
-                              In Game Leader
-                            </option>
-                            <option value="Assualt">Assualt</option>
-                            <option value="Medic">Medic</option>
-                          </select>
-                        </div>
-                        <div className="colm">
-                          <label htmlFor="exampleFormControlInput1">
-                            Region
-                          </label>
-                          <select
-                            id="regions"
-                            name="regions"
-                            onChange={handleChangeAttr}
-                            value={attr?.regions}
-                            className="form-control"
-                          >
-                            <option value="--">--</option>
-                            <option value="India">India</option>
-                            <option value="USA">USA</option>
-                            <option value="Asia">Asia</option>
-                            <option value="China">China</option>
-                            <option value="Japan">Japan</option>
-                            <option value="Europe">Europe</option>
-                          </select>
-                        </div>
-                        <div className="colm">
-                          <label htmlFor="exampleFormControlInput1">
-                            Team Type
-                          </label>
-                          <select
-                            id="teamtype"
-                            name="teamtype"
-                            onChange={handleChangeAttr}
-                            value={attr?.teamtype}
-                            className="form-control"
-                          >
-                            <option value="--">--</option>
-                            <option value="Casual">Casual</option>
-                            <option value="SemiPro">SemiPro</option>
-                            <option value="Pro">Pro</option>
-                            <option value="Gunman">Gunman</option>
-                            <option value="Local Lan">Local Lan</option>
-                          </select>
-                        </div>
-                        <div className="colm">
-                          <label htmlFor="exampleFormControlInput1">
-                            Platform
-                          </label>
-                          <select
-                            id="platform"
-                            name="platform"
-                            onChange={handleChangeAttr}
-                            value={attr?.platform}
-                            className="form-control"
-                          >
-                            <option value="--">--</option>
-                            <option value="PC">PC</option>
-                            <option value="Front">Front</option>
-                            <option value="Console">Console</option>
-                            <option value="Mobile">Mobile</option>
-                          </select>
-                        </div>
-
-                        <div className="colm">
-                          <label htmlFor="exampleFormControlInput1">
-                            Language
-                          </label>
-                          <select
-                            id="language"
-                            name="language"
-                            onChange={handleChange}
-                            value={attr?.language}
-                            className="form-control"
-                            multiple={true}
-                          >
-                            <option value="English">English</option>
-                            <option value="Hindi">Hindi</option>
-                            <option value="Telagu">Telagu</option>
-                            <option value="Tamil">Tamil</option>
-                          </select>
-                        </div>
-                        <div className="colm">
-                          <label htmlFor="exampleFormControlInput1">Paid</label>
-                          <select
-                            id="paid"
-                            name="paid"
-                            onChange={handleChangeAttr}
-                            value={attr?.paid}
-                            className="form-control"
-                          >
-                            <option value="--">--</option>
-                            <option value="Paid">Paid</option>
-                            <option value="Unpaid">Unpaid</option>
-                          </select>
-                        </div>
-                        <div className="colm">
-                          <label htmlFor="exampleFormControlInput1">Mic</label>
-                          <select
-                            id="mic"
-                            name="mic"
-                            onChange={handleChangeAttr}
-                            value={attr?.mic}
-                            className="form-control"
-                          >
-                            <option value="--">--</option>
-                            <option value={true}>On</option>
-                            <option value={false}>Off</option>
-                          </select>
-                        </div>
-                        <button className="btn">Update</button>
-                      </div>
-                    </form>
-                  </div>
-                  <div className="overlay"></div>
-                </div>
-              </div>
-            </span>
             <span>
               <div className="loc_box">
                 {' '}
