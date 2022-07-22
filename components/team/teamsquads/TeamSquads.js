@@ -42,10 +42,7 @@ const TeamSquads = ({ squadsData, team, isManager, isAdmin }) => {
                     {' '}
                     {squad.players.map((player, idpx) => (
                       <a href="#" key={idpx}>
-                        <img
-                          src={player.playerId?.user?.profilePicUrl}
-                          alt=""
-                        />
+                        <img src={player.player?.imgUrl} alt="" />
                       </a>
                     ))}
                   </div>
