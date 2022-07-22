@@ -14,48 +14,16 @@ import TeamEdit from './TeamEdit';
 const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
   const [attr, setAttr] = useState(data.team.attributes);
   const [sociallinks, setSociallinks] = useState(data.team.social);
-  const [websitelink, setWebsitelink] = useState(data.team);
+  let [tabData, setTabData] = useState([]);
 
   const router = useRouter();
   const refreshData = () => {
     router.replace(router.asPath);
   };
 
-  const [showform, setShowForm] = useState(false);
-  const [desc, setDesc] = useState(data.team ? data.team.description : null);
   const [coverPic, setCoverPic] = useState(null);
   const [profilePic, setProfilePic] = useState(null);
   const [sponsors, setSponsors] = useState([]);
-
-  const toggleShowform = () => {
-    if (showform) {
-      setShowForm(false);
-    } else {
-      setShowForm(true);
-    }
-  };
-
-  const onChange = (e) => {
-    setDesc(e.target.value);
-  };
-
-  const addingDesc = async () => {
-    const res = await fetch(`${baseURL}/api/teams/${data.team._id}`, {
-      method: 'PUT',
-      body: JSON.stringify({
-        desc
-      }),
-      headers: {
-        'Content-type': 'application/json'
-      }
-    });
-    return res.json();
-  };
-  const handleButtonForm = (e) => {
-    addingDesc();
-    setShowForm(false);
-    refreshData();
-  };
 
   function handleChangeAttr(e) {
     setAttr({ ...attr, [e.target.name]: e.target.value });
@@ -63,10 +31,6 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
 
   function handleChangeSocial(e) {
     setSociallinks({ ...sociallinks, [e.target.name]: e.target.value });
-  }
-
-  function handleChangeWebsite(e) {
-    setWebsitelink({ ...websitelink, [e.target.name]: e.target.value });
   }
 
   const handleAttrForm = async (e) => {
@@ -193,7 +157,7 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
     try {
       await axios.put(
         `${baseURL}/api/teams/sociallinks/${data.team._id}`,
-        { sociallinks, websitelink },
+        sociallinks,
         {
           headers: {
             Authorization: cookie.get('token'),
@@ -544,24 +508,8 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
             </span>
           </div>
 
-          {isManager || isAdmin ? (
-            <button className="bio_edit" onClick={toggleShowform}>
-              <i className="fa fa-pencil" aria-hidden="true"></i>
-            </button>
-          ) : null}
+          {data.team ? data.team.description : ''}
 
-          {!showform ? <p> {data.team ? data.team.description : ''} </p> : null}
-
-          {showform ? (
-            <form onSubmit={(e) => e.preventDefault()}>
-              <textarea name="text" value={desc} onChange={onChange}></textarea>
-              <button onClick={handleButtonForm} className="btn">
-                Update
-              </button>
-            </form>
-          ) : (
-            ''
-          )}
           {/* <p className="team_pos">
             <span className="position">REGION:</span> {data.team.region}{' '}
           </p> */}
