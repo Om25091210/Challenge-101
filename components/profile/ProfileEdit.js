@@ -138,7 +138,7 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
   const User_team =
     allteams &&
     allteams.filter((team) => {
-      return team._id === parseInt(states.team);
+      return team?._id === parseInt(states.team);
     });
 
   const [filteredData, setFilteredData] = useState([]);
@@ -306,7 +306,7 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                           <option value="--">--</option>
                           {allteams &&
                             allteams.map((tem) => (
-                              <option value={tem._id}>{tem.name}</option>
+                              <option value={tem?._id}>{tem?.name}</option>
                             ))}
                         </select>
                       </div>

@@ -69,16 +69,15 @@ const ProductList = ({ user, productList }) => {
               <h2>No Products</h2>
             </li>
           ) : (
-            // products?.map((product, index) => (
-            //   <li key={index}>
-            //     <ProductItem
-            //       key={product._id}
-            //       product={product}
-            //       handleCheck={handleCheck}
-            //     />
-            //   </li>
-            // ))
-            <h2>Coming Soon...</h2>
+            products?.map((product, index) => (
+              <li key={index}>
+                <ProductItem
+                  key={product._id}
+                  product={product}
+                  handleCheck={handleCheck}
+                />
+              </li>
+            ))
           )}
         </ul>
       </div>
