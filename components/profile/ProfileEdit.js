@@ -200,7 +200,6 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                         name="profileType"
                         value="Gamer"
                         onChange={handleChangeCheck}
-                        checked
                       />
                     </div>
 
@@ -313,11 +312,12 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                       </div>
                     </>
                   ) : states.profileType === 'Coach' ? (
-                    <div className="">
+                    <div className="form-group">
                       <input
                         type="search"
                         id="team"
                         name="team"
+                        className="form-control"
                         placeholder={`Enter team name`}
                         value={searchText}
                         onChange={handleFilter}
@@ -620,7 +620,6 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                   )}
                 </div>
                 <div className="custom-control custom-switch">
-                  <label htmlFor="">Online Statue</label>
                   <input
                     type="checkbox"
                     className="custom-control-input"

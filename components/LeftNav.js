@@ -71,7 +71,7 @@ function LeftNav({ user }) {
           </li>
 
           <li className="submenu">
-            <a href="#">
+            <a href="javascript:void(0);">
               {' '}
               <span className="iconbg sub">
                 <i class="fa fa-plus" aria-hidden="true"></i>

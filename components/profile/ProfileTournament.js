@@ -345,6 +345,39 @@ const ProfileTournament = ({
             <div className="overlay"></div>
           </div>
         </div>
+
+        <div className="new_tournament">
+          <div className="tournamnet_new_row">
+            <div className="tour_img_name">
+              <span className="imgs"></span>
+              <span>
+                <h4>Gamer of Nation Championship II</h4>
+                <p>2022</p>
+              </span>
+            </div>
+
+            <div className="tour_game_team">
+              <ul>
+                <li>
+                  <b>Game:</b> <input type="checkbox" /> CS GO
+                </li>
+                <li>
+                  <b>Team:</b> <input type="checkbox" /> The Werewolves{' '}
+                </li>
+              </ul>
+            </div>
+
+            <div className="tour_game_team">
+              <ul>
+                <li>Ranking: 3rd</li>
+                <li>Winnings: Rs: 10,000 </li>
+              </ul>
+            </div>
+
+            <button className="btn">VIEW MATCHES</button>
+          </div>
+        </div>
+
         {tournamentData.Alltournaments?.length === 0 ? (
           <p>{user.name} has no Tournaments.</p>
         ) : (

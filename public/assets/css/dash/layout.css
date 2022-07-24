@@ -5292,6 +5292,7 @@ article .social_bar img{ display: inline-block;}
 	margin-bottom: 20px;
 	background: #ddd;
 	position: relative;
+	overflow: hidden;
 }
 .rigs li:nth-child(3n) {
 	margin-right: 0;
@@ -7062,6 +7063,7 @@ form.common_form label {
 	text-transform: capitalize;
 	font-weight: 400;
 	padding-bottom: 5px; color: #000;
+	display: block;
 }
 form.common_form input {
 	height: 45px;
@@ -7863,6 +7865,71 @@ form.common_form .btn{ width: 100%; margin-top: 20px; height: 40px;}
 /* --------------- Point Table ------------------ */
 
 .points_table{ float: left; width: 100%; margin: 20px 0;}
+
+.custom-rig-tag {
+    position: absolute;
+    width: 100%;
+    z-index: 9;
+    background: #18171d;
+    display: flex;
+    border: 1px solid #737373;
+    border-radius: 5px; padding: 5px 8px;
+}
+.rigs_items {
+    display: block;
+    width: 100%;
+}
+.rigs_items .items {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;     padding: 5px 0;
+}
+.rigs_items .items span {
+    width: 50px;
+    border: 1px solid #ddd;
+}
+.rigs_items .items p {
+    position: static !important; color: #fff !important;
+}
+
+.tournamnet_new_row {
+    float: left;
+    width: 100%;
+    background: #ddd;
+    padding: 10px;
+    margin: 20px 0;
+    background: #202028;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+	color:#d9d9d9;
+	font-size: 15px; font-weight: 400;
+}
+.tour_img_name {
+    float: left;
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.tour_img_name .imgs{ width: 100px; height: 100px; margin-right: 10px; border-radius: 5px; display: inline-block; background: #fff; }
+
+.tour_game_team{ }
+.tour_game_team li{ margin: 10px 0;}
+.tour_game_team input {
+    width: 25px;
+    height: 25px;
+    border-radius: 5px; margin: 0 10px;
+}
+.tour_game_team b {
+    width: 60px;
+    display: inline-block;
+}
+
+.tournamnet_new_row .btn{ padding: 20px 20px;}
+
 
 /* ---------------------- Dark Themes----------------------------- */
 

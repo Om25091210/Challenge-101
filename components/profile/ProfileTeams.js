@@ -234,7 +234,9 @@ const ProfileTeams = ({
                         </a>
                         {Moment(team.founded).format('MMM YYYY')}
                       </h3>
-                      <div className="gamer_pos">Caption|Assault</div>
+                      <div className="gamer_pos">
+                        <b>Caption</b> | <b>Assault</b>
+                      </div>
                     </div>
                     <div className="card_details">
                       <div className="once">
