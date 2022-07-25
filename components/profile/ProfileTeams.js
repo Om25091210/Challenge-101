@@ -101,7 +101,7 @@ const ProfileTeams = ({
               </button>
             </a>
           ) : null}
-          <div className="common_model_box">
+          <div className="common_model_box add_tourn" id="big_poup">
             {' '}
             <a href="#!" className="model_close">
               {' '}
@@ -111,65 +111,60 @@ const ProfileTeams = ({
               <h3>Team</h3>
               <form className="common_form" onSubmit={handleAddTeamSubmit}>
                 <div className="form-group">
-                  <div className="colm">
-                    <label htmlFor="exampleFormControlInput1">Team</label>
-                    <input
-                      type="search"
-                      id="team"
-                      name="team"
-                      placeholder="Enter Team Name"
-                      value={searchText}
-                      onChange={handleFilter}
-                      autoComplete="off"
-                    />
-                    {searchText.length !== 0 ? (
-                      <div className="custom-rig-tag">
-                        <div>
-                          {!filteredData || filteredData.length === 0 ? (
-                            <p>No Team found..</p>
-                          ) : (
-                            filteredData.map((data) => (
-                              <div
-                                onClick={() => handleSelected(data)}
-                                key={data._id}
-                              >
-                                <img
-                                  src={data?.imgUrl}
-                                  height={50}
-                                  width={50}
-                                />
-                                <p>
-                                  {data.name.length > 20
-                                    ? data.name.substring(0, 20) + '...'
-                                    : data.name}
-                                </p>
-                              </div>
-                            ))
-                          )}
-                        </div>
+                  <label htmlFor="exampleFormControlInput1">Team</label>
+                  <input
+                    type="search"
+                    id="team"
+                    name="team"
+                    placeholder="Enter Team Name"
+                    value={searchText}
+                    onChange={handleFilter}
+                    autoComplete="off"
+                  />
+                  {searchText.length !== 0 ? (
+                    <div className="custom-rig-tag">
+                      <div>
+                        {!filteredData || filteredData.length === 0 ? (
+                          <p>No Team found..</p>
+                        ) : (
+                          filteredData.map((data) => (
+                            <div
+                              onClick={() => handleSelected(data)}
+                              key={data._id}
+                            >
+                              <img src={data?.imgUrl} height={50} width={50} />
+                              <p>
+                                {data.name.length > 20
+                                  ? data.name.substring(0, 20) + '...'
+                                  : data.name}
+                              </p>
+                            </div>
+                          ))
+                        )}
                       </div>
-                    ) : null}
-                  </div>
+                    </div>
+                  ) : null}
+                </div>
 
-                  <div className="form-group">
-                    <label htmlFor="exampleFormControlInput1">Games</label>
+                <div className="form-group">
+                  <label htmlFor="exampleFormControlInput1">Games</label>
 
-                    <select
-                      className="form-control game_search_result"
-                      multiple={true}
-                      name="game"
-                      value={team.game}
-                      onChange={handleAddTeam}
-                    >
-                      {allGames.map((game, idx) => (
-                        <option key={idx} value={game._id}>
-                          {' '}
-                          {game.name}{' '}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-
+                  <select
+                    className="form-control game_search_result"
+                    multiple={true}
+                    name="game"
+                    value={team.game}
+                    onChange={handleAddTeam}
+                  >
+                    {allGames.map((game, idx) => (
+                      <option key={idx} value={game._id}>
+                        {' '}
+                        {game.name}{' '}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div className="form-group">
                   <label htmlFor="exampleFormControlInput1">Roles</label>
                   <select
                     name="role"
@@ -183,7 +178,9 @@ const ProfileTeams = ({
                       </option>
                     ))}
                   </select>
+                </div>
 
+                <div className="edit_two">
                   <div className="form-group">
                     <label htmlFor="exampleFormControlInput1">Start Date</label>
                     <input
@@ -207,8 +204,8 @@ const ProfileTeams = ({
                       value={team.teamEndDate}
                     />
                   </div>
-                  <button className="btn">Update</button>
                 </div>
+                <button className="btn">Update</button>
               </form>
             </div>
             <div className="overlay"></div>

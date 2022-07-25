@@ -241,11 +241,12 @@ const ProfileTournament = ({
                         </option>
                       ))}
 
-                      {profile.teams.map((tem) => (
-                        <option key={tem.teamId._id} value={tem.teamId._id}>
-                          {tem.teamId.name}
-                        </option>
-                      ))}
+                      {profile.teams &&
+                        profile.teams.map((tem) => (
+                          <option key={tem.teamId?._id} value={tem.teamId?._id}>
+                            {tem.teamId?.name}
+                          </option>
+                        ))}
                     </select>
                   </div>
                   <div className="form-group">
