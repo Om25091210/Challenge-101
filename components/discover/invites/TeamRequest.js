@@ -19,7 +19,7 @@ const Team_Req = ({ user, profile, team }) => {
   const playerId = profile.playergames[0]?.player?._id;
 
   const isReqSent =
-    team.request.filter((reque) => reque.playerId._id === playerId).length > 0;
+    team.request?.filter((reque) => reque.playerId._id === playerId).length > 0;
 
   const reqhandlesubmit = async (e) => {
     e.preventDefault();

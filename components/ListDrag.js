@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
-import uuid from 'uuid/v4';
 import Link from 'next/link';
 
 const itemsFromBackend = [
@@ -24,10 +23,31 @@ const itemsFromBackend = [
   }
 ];
 
+const itemsFromBackend1 = [
+  {
+    name: '',
+    icon: 'fa fa-plus',
+    position: 0,
+    id: '01iif192'
+  },
+  {
+    name: '',
+    icon: 'fa fa-plus',
+    position: 1,
+    id: '0qieiririr103'
+  },
+  {
+    name: '',
+    icon: 'fa fa-plus',
+    position: 2,
+    id: '02jfj2j381'
+  }
+];
+
 const columnsFromBackend = {
   '1230193': {
     name: 'Requested',
-    items: []
+    items: itemsFromBackend1
   },
   '00001': {
     name: 'To do',
@@ -35,9 +55,7 @@ const columnsFromBackend = {
   }
 };
 
-console.log(columnsFromBackend);
 const onDragEnd = (result, columns, setColumns) => {
-  console.log(result);
   if (!result.destination) return;
   const { source, destination } = result;
 
@@ -81,7 +99,7 @@ function ListDrag() {
   const handleClick = () => {
     setClick(!click);
   };
-  console.log(columns['00001'].items.length);
+
   return (
     <>
       <div
@@ -93,29 +111,22 @@ function ListDrag() {
           >
             {Object.entries(columns).map(([columnId, column], index) => {
               return (
-                <div
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center'
-                  }}
-                  key={columnId}
-                >
-                  <div style={{ margin: 8 }}>
+                <li key={columnId}>
+                  <div style={{ margin: 'auto' }}>
                     {click === true && columnId === '00001' ? null : (
                       <Droppable droppableId={columnId} key={columnId}>
                         {(provided, snapshot) => {
                           return (
-                            <div
+                            <li
                               {...provided.droppableProps}
                               ref={provided.innerRef}
                               style={{
-                                background: snapshot.isDraggingOver
-                                  ? 'lightblue'
-                                  : 'lightgrey',
                                 padding: 4,
                                 width: 100,
-                                minHeight: 50
+                                minHeight: 50,
+                                height: 145,
+                                overflow: 'hidden',
+                                marginLeft: 0
                               }}
                             >
                               {column.items.map((item, index) => {
@@ -127,57 +138,44 @@ function ListDrag() {
                                   >
                                     {(provided, snapshot) => {
                                       return (
-                                        <div
+                                        <li
                                           ref={provided.innerRef}
                                           {...provided.draggableProps}
                                           {...provided.dragHandleProps}
-                                          style={{
-                                            userSelect: 'none',
-                                            padding: 16,
-                                            margin: '0 0 8px 0',
-                                            minHeight: '50px',
-                                            backgroundColor: snapshot.isDragging
-                                              ? '#263B4A'
-                                              : '#456C86',
-                                            color: 'white',
-                                            ...provided.draggableProps.style
-                                          }}
                                         >
-                                          <li>
-                                            <Link href="/discover">
-                                              <a className="">
-                                                <span className="iconbg">
-                                                  <i
-                                                    className={item.icon}
-                                                    aria-hidden="true"
-                                                  ></i>
-                                                </span>{' '}
-                                                <span className="title">
-                                                  {item.name}
-                                                </span>
-                                              </a>
-                                            </Link>{' '}
-                                          </li>
-                                        </div>
+                                          <Link href="/discover">
+                                            <a className="">
+                                              <span className="iconbg">
+                                                <i
+                                                  className={item.icon}
+                                                  aria-hidden="true"
+                                                ></i>
+                                              </span>{' '}
+                                              <span className="title">
+                                                {item.name}
+                                              </span>
+                                            </a>
+                                          </Link>{' '}
+                                        </li>
                                       );
                                     }}
                                   </Draggable>
                                 );
                               })}
                               {provided.placeholder}
-                            </div>
+                            </li>
                           );
                         }}
                       </Droppable>
                     )}
                   </div>
-                </div>
+                </li>
               );
             })}
           </DragDropContext>
         )}
       </div>
-      <button className="btn" onClick={() => handleClick()}>
+      <button onClick={() => handleClick()}>
         <a href="#">
           {' '}
           <span className="iconbg sub">

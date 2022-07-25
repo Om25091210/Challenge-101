@@ -18,8 +18,6 @@ const challenges = ({ user }) => {
 
       <LeftNav user={user} />
       <div className="main_middle profile_middle">
-        <PremiumPass user={user} />
-
         <div className="premium_box">
           <div className="premium_inner">
             <div className="premium_top">
@@ -39,7 +37,7 @@ const challenges = ({ user }) => {
               <div className="right_top">
                 <span className="price">₹ 999 /- </span>
                 <p>Lifetime Membership</p>
-                <button className="btn">PURCHASE NOW</button>
+                <PremiumPass user={user} />
                 <ul>
                   <li>
                     <img src="/assets/media/buypremium/infine.png" alt="" /> No

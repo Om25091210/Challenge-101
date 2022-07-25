@@ -80,7 +80,7 @@ const GamesDetails = ({ user, profile }) => {
       {req[0]?.RecruitProfileId === user._id ? null : (
         <>
           {profile.user?._id === user?._id ? (
-            <RecruitmentCard type="PROFILE" user={user} />
+            <RecruitmentCard type="PROFILE" RecruitId={user?._id} />
           ) : null}
         </>
       )}

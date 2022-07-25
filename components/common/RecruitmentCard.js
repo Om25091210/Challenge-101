@@ -5,7 +5,7 @@ import countryList from 'react-select-country-list';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 
-const RecruitmentCard = ({ type, RecruitTeamId, user }) => {
+const RecruitmentCard = ({ type, RecruitId }) => {
   const [allgames, setAllgames] = useState([]);
   const [allroles, setAllroles] = useState([]);
   const [mic, setMic] = useState(false);
@@ -19,8 +19,7 @@ const RecruitmentCard = ({ type, RecruitTeamId, user }) => {
   };
 
   const [states, setStates] = useState({
-    RecruitTeamId,
-    RecruitProfileId: user?._id,
+    RecruitId,
     RecruitType: type,
     games: '',
     role: '',

@@ -79,11 +79,9 @@ function CoinBuyForm({ user }) {
 
   return (
     <>
-      <Card className="box add_money btn">
-        <Form onSubmit={handleSubmit}>
-          <button>Purchase Now</button>
-        </Form>
-      </Card>
+      <Form onSubmit={handleSubmit}>
+        <button className="btn">PURCHASE NOW</button>
+      </Form>
     </>
   );
 }

@@ -76,7 +76,7 @@ const TeamGameDetails = ({ user, team, isManager, isAdmin }) => {
       {req[0]?.RecruitTeamId === team._id ? null : (
         <>
           {isManager || isAdmin ? (
-            <RecruitmentCard type="TEAM" RecruitTeamId={team._id} user={user} />
+            <RecruitmentCard type="TEAM" RecruitId={team._id} user={user} />
           ) : null}
         </>
       )}

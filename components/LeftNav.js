@@ -1,6 +1,7 @@
 import DarkMode from './theme/dark-mode';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import ListDrag from './ListDrag';
 
 function LeftNav({ user }) {
   const router = useRouter();
@@ -71,15 +72,9 @@ function LeftNav({ user }) {
           </li>
 
           <li className="submenu">
-            <a href="javascript:void(0);">
-              {' '}
-              <span className="iconbg sub">
-                <i class="fa fa-plus" aria-hidden="true"></i>
-              </span>{' '}
-            </a>
+            {/* <ListDrag /> */}
 
             {/*  more submenu */}
-
             <ul className="more_left_menu">
               <li>
                 <Link href="/">

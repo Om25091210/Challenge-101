@@ -171,9 +171,13 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
           selectedGame={selectedGame}
         />
       </div>
-      {team.length == 0 ? (
+      {isLoading === true ? (
         <div className="team_row">
           <LoadingSpinner />
+        </div>
+      ) : team?.length === 0 ? (
+        <div className="team_row">
+          <p>No such teams found.</p>
         </div>
       ) : showfavs === true ? (
         favouriteTeams.map((team, idx) => (
@@ -361,22 +365,23 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
                   }}
                 />
               </div>
-              {team.games.length <= 0 ? (
+              {team.games && team.games.length <= 0 ? (
                 <p>No Game for this team</p>
               ) : (
                 <>
                   <span className="logo">
-                    {team.games.map((im) => (
-                      <>
-                        <img src={im.gameId?.imgUrl} alt="" />
-                      </>
-                    ))}
+                    {team.games &&
+                      team.games.map((im) => (
+                        <>
+                          <img src={im.gameId?.imgUrl} alt="" />
+                        </>
+                      ))}
                   </span>
                 </>
               )}
               <span className="remarks role_remk">
                 <h4>ROLE:</h4>
-                {team.attributes.roles.length > 0 ? (
+                {team.attributes?.roles.length > 0 ? (
                   <p>{team.attributes.roles}</p>
                 ) : (
                   <p>No Role Specified</p>
@@ -396,7 +401,7 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
                   )}
                 </span>{' '}
                 <span className="ml10">
-                  {team.attributes.mic ? (
+                  {team.attributes?.mic ? (
                     <>
                       <img src="/assets/media/discover/mice.png" alt="" />{' '}
                       <b>On</b>
@@ -479,7 +484,8 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
                   <h4>Matches Won</h4>
                   <p>131 Victories</p>
                   <h4>Manager</h4>
-                  {team.employees.length !== 0 ? (
+                  {team.employees && team.employees.length !== 0 ? (
+                    team.employees &&
                     team.employees.map(
                       (role) =>
                         role.role === 'manager' && (
