@@ -4,18 +4,21 @@ import { useEffect, useMemo, useState } from 'react';
 import countryList from 'react-select-country-list';
 import { toast } from 'react-toastify';
 import baseURL from '../../utils/baseURL';
+import { teamEditFormValidate } from '@utils/valid';
 import TeamAbtAdd from './TeamAbtAdd';
+import Moment from 'moment';
 
 const TeamEdit = ({ isAdmin, isManager, team }) => {
   const [allarena, setAllarena] = useState([]);
   const [empData, setEmpData] = useState([]);
+  const [formErrors, setFormErrors] = useState({});
   const [states, setStates] = useState({
     teamname: team.name,
-    founded: '',
+    founded: Moment(team.founded).format('yyyy-MM-DD'),
     about: team.description,
     emp: empData,
     arena: '',
-    region: ''
+    region: team.region
   });
 
   useEffect(() => {
@@ -53,14 +56,16 @@ const TeamEdit = ({ isAdmin, isManager, team }) => {
 
   const handleTeamEdit = async (e) => {
     e.preventDefault();
-    try {
-      axios.put(`${baseURL}/api/teams/edit/${team?._id}`, states);
-      toast.success('teams Updated');
-      $('a.model_close').parent().removeClass('show_model');
-    } catch (err) {
-      toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+    if (Object.keys(formErrors).length === 0) {
+      try {
+        axios.put(`${baseURL}/api/teams/edit/${team?._id}`, states);
+        toast.success('teams Updated');
+        $('a.model_close').parent().removeClass('show_model');
+      } catch (err) {
+        toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+      }
+      refreshData();
     }
-    refreshData();
   };
 
   return (
@@ -92,6 +97,7 @@ const TeamEdit = ({ isAdmin, isManager, team }) => {
                     onChange={handleChangeCheck}
                     value={states.teamname}
                   />
+                  <p>{formErrors.teamName}</p>
                 </div>
                 <div className="form-group">
                   <label htmlFor="exampleFormControlInput1">Founded</label>
@@ -102,6 +108,7 @@ const TeamEdit = ({ isAdmin, isManager, team }) => {
                     onChange={handleChangeCheck}
                     value={states.founded}
                   />
+                  <p>{formErrors.Tfounded}</p>
                 </div>
                 <div className="form-group textarea">
                   <label htmlFor="exampleFormControlInput1">About Us</label>
@@ -112,6 +119,7 @@ const TeamEdit = ({ isAdmin, isManager, team }) => {
                     onChange={handleChangeCheck}
                     value={states.about}
                   />
+                  <p>{formErrors.Tabout}</p>
                 </div>
 
                 <TeamAbtAdd role="Manager" rolesData={empData} />
@@ -148,9 +156,15 @@ const TeamEdit = ({ isAdmin, isManager, team }) => {
                       </>
                     ))}
                   </select>
+                  <p>{formErrors.Tregion}</p>
                 </div>
 
-                <button className="btn">Update</button>
+                <button
+                  className="btn"
+                  onClick={() => setFormErrors(teamEditFormValidate(states))}
+                >
+                  Update
+                </button>
               </form>
             </div>
           </div>

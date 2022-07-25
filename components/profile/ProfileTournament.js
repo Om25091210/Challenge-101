@@ -9,6 +9,7 @@ import axios from 'axios';
 import baseURL from '../../utils/baseURL';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
+import { profileTournaments } from '../../utils/valid';
 
 const ProfileTournament = ({
   user,
@@ -23,6 +24,7 @@ const ProfileTournament = ({
   const [title, setTitle] = useState('');
   const [searchText, setSearchText] = useState('');
   const [images, setImages] = useState([]);
+  const [formErrors, setFormErrors] = useState({});
 
   const [tournament, setTournament] = useState({
     tournamentId: '',
@@ -53,18 +55,21 @@ const ProfileTournament = ({
 
   const handleAddTournamentSubmit = async (e) => {
     e.preventDefault();
-    try {
-      axios.post(
-        `${baseURL}/api/profile/tournaments/${profile?._id}`,
-        tournament
-      );
-      toast.success('Added Tournament Successfully');
-      $('a.model_close').parent().removeClass('show_model');
-    } catch (err) {
-      toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+    if (Object.keys(formErrors).length === 0) {
+      try {
+        axios.post(
+          `${baseURL}/api/profile/tournaments/${profile?._id}`,
+          tournament
+        );
+        toast.success('Added Tournament Successfully');
+        $('a.model_close').parent().removeClass('show_model');
+      } catch (err) {
+        toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+      }
+      refreshData();
     }
-    refreshData();
   };
+
   const [filteredData, setFilteredData] = useState([]);
   const handleFilter = (event) => {
     const searchWord = event.target.value;
@@ -184,6 +189,7 @@ const ProfileTournament = ({
                       </div>
                     </div>
                   ) : null}
+                  <p>{formErrors.tournamentId}</p>
                 </div>
 
                 <div className="form-group">
@@ -197,12 +203,13 @@ const ProfileTournament = ({
                     onChange={onChangeTour}
                   >
                     <option value="--">--</option>
-                    {organizer.map((organizer, idx) => (
-                      <option key={idx} value={organizer._id}>
-                        {' '}
-                        {organizer.name}{' '}
-                      </option>
-                    ))}
+                    {organizer &&
+                      organizer.map((organizer, idx) => (
+                        <option key={idx} value={organizer._id}>
+                          {' '}
+                          {organizer.name}{' '}
+                        </option>
+                      ))}
                   </select>
                 </div>
 
@@ -216,13 +223,15 @@ const ProfileTournament = ({
                     value={tournament.games}
                     onChange={handleAddTournament}
                   >
-                    {allGames.map((game, idx) => (
-                      <option key={idx} value={game._id}>
-                        {' '}
-                        {game.name}{' '}
-                      </option>
-                    ))}
+                    {allGames &&
+                      allGames.map((game, idx) => (
+                        <option key={idx} value={game._id}>
+                          {' '}
+                          {game.name}{' '}
+                        </option>
+                      ))}
                   </select>
+                  <p>{formErrors.games}</p>
                 </div>
 
                 <div className="edit_two">
@@ -235,19 +244,21 @@ const ProfileTournament = ({
                       value={tournament.team}
                     >
                       <option value="--">--</option>
-                      {teams.map((tem) => (
-                        <option value={tem._id} key={tem._id}>
-                          {tem.name}
-                        </option>
-                      ))}
+                      {teams &&
+                        teams.map((tem) => (
+                          <option value={tem._id} key={tem._id}>
+                            {tem.name}
+                          </option>
+                        ))}
 
                       {profile.teams &&
                         profile.teams.map((tem) => (
-                          <option key={tem.teamId?._id} value={tem.teamId?._id}>
+                          <option key={tem.teamId._id} value={tem.teamId?._id}>
                             {tem.teamId?.name}
                           </option>
                         ))}
                     </select>
+                    <p>{formErrors.team}</p>
                   </div>
                   <div className="form-group">
                     <label htmlFor="exampleFormControlInput1">Roles</label>
@@ -258,12 +269,14 @@ const ProfileTournament = ({
                       value={tournament.role}
                     >
                       <option value="--">--</option>
-                      {teamroles.map((tr, idx) => (
-                        <option key={idx} value={tr}>
-                          {tr}
-                        </option>
-                      ))}
+                      {teamroles &&
+                        teamroles.map((tr, idx) => (
+                          <option key={idx} value={tr}>
+                            {tr}
+                          </option>
+                        ))}
                     </select>
+                    <p>{formErrors.role}</p>
                   </div>
                 </div>
                 <div className="form-group">
@@ -275,6 +288,7 @@ const ProfileTournament = ({
                     onChange={handleAddTournament}
                     value={tournament.year}
                   />
+                  <p>{formErrors.year}</p>
                 </div>
 
                 <div className="form-group">
@@ -288,6 +302,7 @@ const ProfileTournament = ({
                     onChange={handleAddTournament}
                     value={tournament.team_ranking}
                   />
+                  <p>{formErrors.team_ranking}</p>
                 </div>
 
                 <select
@@ -309,6 +324,7 @@ const ProfileTournament = ({
                     onChange={handleAddTournament}
                     value={tournament.winnings}
                   />
+                  <p>{formErrors.winnings}</p>
                 </div>
 
                 <div className="form-group">
@@ -340,7 +356,12 @@ const ProfileTournament = ({
                     <div className="overlay"></div>
                   </div>
                 </div>
-                <button className="btn">Update</button>
+                <button
+                  className="btn"
+                  onClick={() => setFormErrors(profileTournaments(tournament))}
+                >
+                  Update
+                </button>
               </form>
             </div>
             <div className="overlay"></div>
@@ -518,15 +539,16 @@ const ProfileTournament = ({
                     <div>
                       <div>
                         Game:{' '}
-                        {result?.games.map((gam) => (
-                          <>
-                            <img
-                              src={gam.gameId.imgUrl}
-                              style={{ height: '20px', width: '20px' }}
-                            />
-                            {gam.gameId.name}
-                          </>
-                        ))}
+                        {result.games &&
+                          result?.games.map((gam) => (
+                            <>
+                              <img
+                                src={gam.gameId.imgUrl}
+                                style={{ height: '20px', width: '20px' }}
+                              />
+                              {gam.gameId.name}
+                            </>
+                          ))}
                       </div>
                       <div>
                         Team:

@@ -5,6 +5,8 @@ import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 import cookie from 'js-cookie';
 import SocialLink from '../common/SocialLink';
+import { profileformvalidate } from '@utils/valid';
+import Moment from 'moment';
 
 const ProfileEdit = ({ profile, user, games, allteams }) => {
   const name = user.name.split(' ');
@@ -16,6 +18,7 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
   const [selectedGame, setSelectedGame] = useState();
   const [openForm, setOpenForm] = useState(false);
   const [type, setType] = useState('');
+  const [formErrors, setFormErrors] = useState({});
 
   const toggleMic = () => {
     if (online === false) {
@@ -41,7 +44,7 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
     team: '',
     role: '',
     b_role: '',
-    startDate: '',
+    startDate: Moment(profile?.headline.startDate).format('yyyy-MM-DD') || '',
     game: '',
     company: '',
     industry: '',
@@ -125,14 +128,16 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
 
   const handleProfileEdit = async (e) => {
     e.preventDefault();
-    try {
-      axios.put(`${baseURL}/api/profile/type/${profile?._id}`, states);
-      toast.success('Profile Updated');
-      $('a.model_close').parent().removeClass('show_model');
-    } catch (err) {
-      toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+    if (Object.keys(formErrors).length === 0) {
+      try {
+        axios.put(`${baseURL}/api/profile/type/${profile?._id}`, states);
+        toast.success('Profile Updated');
+        $('a.model_close').parent().removeClass('show_model');
+      } catch (err) {
+        toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+      }
+      refreshData();
     }
-    refreshData();
   };
 
   const User_team =
@@ -243,6 +248,7 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                     onChange={handleChangeCheck}
                     value={states.firstName}
                   />
+                  <p>{formErrors.firstName}</p>
                 </div>
                 <div className="form-group">
                   <label htmlFor="exampleFormControlInput1">Last name</label>
@@ -253,6 +259,7 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                     onChange={handleChangeCheck}
                     value={states.lastName}
                   />
+                  <p>{formErrors.lastName}</p>
                 </div>
                 <div className="form-group">
                   <label htmlFor="exampleFormControlInput1">User name</label>
@@ -263,6 +270,7 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                     onChange={handleChangeCheck}
                     value={states.username}
                   />
+                  <p>{formErrors.username}</p>
                 </div>
 
                 <h2>
@@ -280,6 +288,7 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                           placeholder="Company"
                           className="form-control"
                         />
+                        <p>{formErrors.company}</p>
                       </div>
                       <div className="form-group">
                         <input
@@ -290,6 +299,7 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                           placeholder="industry"
                           className="form-control"
                         />
+                        <p>{formErrors.industry}</p>
                       </div>
                     </>
                   ) : null}
@@ -309,6 +319,7 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                               <option value={tem?._id}>{tem?.name}</option>
                             ))}
                         </select>
+                        <p>{formErrors.team}</p>
                       </div>
                     </>
                   ) : states.profileType === 'Coach' ? (
@@ -350,6 +361,7 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                           </div>
                         </div>
                       ) : null}
+                      <p>{formErrors.Cteam}</p>
                     </div>
                   ) : null}
                   {states.profileType === 'Gamer' ||
@@ -370,6 +382,8 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                               </option>
                             ))}
                         </select>
+                        <p>{formErrors.Ggame}</p>
+                        <p>{formErrors.Cgame}</p>
                       </div>
                     </>
                   ) : states.profileType === 'Streamer' ? (
@@ -386,6 +400,7 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                           ))}
                         </select>
                       </div>
+                      <p>{formErrors.Sgame}</p>
                     </>
                   ) : null}
 
@@ -400,6 +415,7 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                           placeholder="Streaming Platform"
                           className="form-control"
                         />
+                        <p>{formErrors.platform}</p>
                       </div>
 
                       <div className="form-group">
@@ -412,6 +428,7 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                           placeholder="Stream Link"
                         />
                       </div>
+                      <p>{formErrors.link}</p>
                     </>
                   ) : null}
 
@@ -427,6 +444,7 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                             <option value={role}>{role}</option>
                           ))}
                         </select>
+                        <p>{formErrors.Grole}</p>
                       </div>
                     </>
                   ) : states.profileType === 'Business' ? (
@@ -441,6 +459,7 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                             <option value={role}>{role}</option>
                           ))}
                         </select>
+                        <p>{formErrors.b_role}</p>
                       </div>
                     </>
                   ) : (
@@ -457,6 +476,7 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                       className="form-control"
                     />
                   </div>
+                  <p>{formErrors.startDate}</p>
                 </div>
 
                 <div className="form-group textarea">
@@ -468,6 +488,7 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                     onChange={handleChangeCheck}
                     value={states.bio}
                   ></textarea>
+                  <p>{formErrors.bio}</p>
                 </div>
                 <div className="form-group">
                   <label htmlFor="exampleFormControlInput1">Games</label>
@@ -634,7 +655,12 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                     Online Status
                   </label>
                 </div>
-                <button className="btn">Update</button>
+                <button
+                  className="btn"
+                  onClick={() => setFormErrors(profileformvalidate(states))}
+                >
+                  Update
+                </button>
               </form>
             </div>
           </div>

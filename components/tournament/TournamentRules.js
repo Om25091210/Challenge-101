@@ -4,8 +4,10 @@ import { useEffect, useMemo, useState } from 'react';
 import countryList from 'react-select-country-list';
 import { toast } from 'react-toastify';
 import baseURL from '../../utils/baseURL';
+import { tournamentRules } from '../../utils/valid';
 
 const TournamentRules = ({ tournamentId, tourRules }) => {
+  const [formErrors, setFormErrors] = useState({});
   const [states, setStates] = useState({
     tournamentId,
     check_in: '',
@@ -79,13 +81,15 @@ const TournamentRules = ({ tournamentId, tourRules }) => {
 
   const handleTournamentRules = async (e) => {
     e.preventDefault();
-    try {
-      axios.post(`${baseURL}/api/tournamentRules/`, states);
-      toast.success('Tournament Rules Updated');
-    } catch (err) {
-      toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+    if (Object.keys(formErrors).length === 0) {
+      try {
+        axios.post(`${baseURL}/api/tournamentRules/`, states);
+        toast.success('Tournament Rules Updated');
+      } catch (err) {
+        toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+      }
+      refreshData();
     }
-    refreshData();
   };
 
   return (
@@ -121,6 +125,7 @@ const TournamentRules = ({ tournamentId, tourRules }) => {
               <option value={30}>30</option>
               <option value={45}>45</option>
             </select>
+            <p>{formErrors.check_in}</p>
           </div>
 
           <div class="form-group">
@@ -136,6 +141,7 @@ const TournamentRules = ({ tournamentId, tourRules }) => {
               <option value={15}>15</option>
               <option value={20}>20</option>
             </select>
+            <p>{formErrors.forfeit}</p>
           </div>
 
           <div class="form-group">
@@ -147,6 +153,7 @@ const TournamentRules = ({ tournamentId, tourRules }) => {
               onChange={onChange}
               value={states.prizeRules}
             />
+            <p>{formErrors.prizeRules}</p>
           </div>
 
           <div class="form-group">
@@ -156,6 +163,7 @@ const TournamentRules = ({ tournamentId, tourRules }) => {
               onChange={onChange}
               value={states.general}
             />
+            <p>{formErrors.general}</p>
           </div>
 
           <div class="form-group">
@@ -165,6 +173,7 @@ const TournamentRules = ({ tournamentId, tourRules }) => {
               onChange={onChange}
               value={states.compete}
             />
+            <p>{formErrors.compete}</p>
           </div>
 
           <div class="form-group">
@@ -176,6 +185,7 @@ const TournamentRules = ({ tournamentId, tourRules }) => {
               onChange={onChange}
               value={states.cusRuleHead}
             />
+            <p>{formErrors.cusRuleHead}</p>
           </div>
 
           <div class="form-group">
@@ -187,6 +197,7 @@ const TournamentRules = ({ tournamentId, tourRules }) => {
               value={states.cusRuleBody}
               placeholder="Add Content"
             />
+            <p>{formErrors.cusRuleBody}</p>
           </div>
 
           <div className="form-group">
@@ -204,6 +215,7 @@ const TournamentRules = ({ tournamentId, tourRules }) => {
                 </>
               ))}
             </select>
+            <p>{formErrors.country}</p>
           </div>
 
           <div class="form-group">
@@ -238,6 +250,7 @@ const TournamentRules = ({ tournamentId, tourRules }) => {
                 </div>
               </div>
             ) : null}
+            <p>{formErrors.admins}</p>
           </div>
 
           <div class="form-group">
@@ -248,9 +261,15 @@ const TournamentRules = ({ tournamentId, tourRules }) => {
               onChange={onChange}
               value={states.contact}
             />
+            <p>{formErrors.contact}</p>
           </div>
 
-          <input type="submit" value="Confirm" className="btn" />
+          <button
+            className="btn"
+            onClick={() => setFormErrors(tournamentRules(states))}
+          >
+            Confirm
+          </button>
         </form>
       </div>
     </>

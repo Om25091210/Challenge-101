@@ -4,6 +4,8 @@ import { useEffect, useMemo, useState } from 'react';
 import countryList from 'react-select-country-list';
 import { toast } from 'react-toastify';
 import baseURL from '../../utils/baseURL';
+import { tournamentEditValidate } from '../../utils/valid';
+import Moment from 'moment';
 
 const TournamentEdit = ({ data, user }) => {
   const [states, setStates] = useState({
@@ -11,10 +13,10 @@ const TournamentEdit = ({ data, user }) => {
     name: data.tournament.name,
     series: null,
     username: user.username,
-    startDate: '',
-    startTime: '',
-    endDate: '',
-    endTime: '',
+    startDate: Moment(data.tournament?.startDate).format('yyyy-MM-DD') || '',
+    startTime: data.tournament?.startTime || '',
+    endDate: Moment(data.tournament?.endDate).format('yyyy-MM-DD') || '',
+    endTime: data.tournament?.endTime || '',
     location: data.tournament.location,
     organizer: '',
     description: data.tournament.description,
@@ -28,6 +30,7 @@ const TournamentEdit = ({ data, user }) => {
   const [allorganizer, setAllorganizer] = useState([]);
   const [allgames, setAllgames] = useState([]);
   const [allseries, setAllseries] = useState([]);
+  const [formErrors, setFormErrors] = useState({});
 
   const options = useMemo(() => countryList().getData(), []);
 
@@ -71,17 +74,19 @@ const TournamentEdit = ({ data, user }) => {
 
   const handleEditSubmit = (e) => {
     e.preventDefault();
-    try {
-      axios.put(
-        `${baseURL}/api/tournaments/touredit/${data.tournament?._id}/${user._id}`,
-        states
-      );
-      $('a.model_close').parent().removeClass('show_model');
-      toast.success('Tournament Details Updated Successfully');
-    } catch (err) {
-      toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+    if (Object.keys(formErrors).length === 0) {
+      try {
+        axios.put(
+          `${baseURL}/api/tournaments/touredit/${data.tournament?._id}/${user._id}`,
+          states
+        );
+        $('a.model_close').parent().removeClass('show_model');
+        toast.success('Tournament Details Updated Successfully');
+      } catch (err) {
+        toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+      }
+      refreshData();
     }
-    refreshData();
   };
 
   return (
@@ -153,6 +158,7 @@ const TournamentEdit = ({ data, user }) => {
                       onChange={handleChangeCheck}
                       value={states.name}
                     />
+                    <p>{formErrors.name}</p>
                   </div>
                   <div className="form-group">
                     <label htmlFor="exampleFormControlInput1">
@@ -192,24 +198,28 @@ const TournamentEdit = ({ data, user }) => {
                       onChange={handleChangeCheck}
                       value={states.startDate}
                     />
+                    <p>{formErrors.startDate}</p>
                     <input
                       type="date"
                       name="endDate"
                       onChange={handleChangeCheck}
                       value={states.endDate}
                     />
+                    <p>{formErrors.endDate}</p>
                     <input
                       type="time"
                       name="startTime"
                       onChange={handleChangeCheck}
                       value={states.startTime}
                     />
+                    <p>{formErrors.startTime}</p>
                     <input
                       type="time"
                       name="endTime"
                       onChange={handleChangeCheck}
                       value={states.endTime}
                     />
+                    <p>{formErrors.endTime}</p>
                   </div>
 
                   <div className="form-group">
@@ -253,6 +263,7 @@ const TournamentEdit = ({ data, user }) => {
                       onChange={handleChangeCheck}
                       value={states.description}
                     />
+                    <p>{formErrors.description}</p>
                   </div>
 
                   <div className="form-group">
@@ -268,6 +279,7 @@ const TournamentEdit = ({ data, user }) => {
                         <option value={game._id}>{game.name}</option>
                       ))}
                     </select>
+                    <p>{formErrors.games}</p>
                   </div>
 
                   <div className="form-group">
@@ -351,7 +363,14 @@ const TournamentEdit = ({ data, user }) => {
                     />
                   </div>
 
-                  <button className="btn">Update</button>
+                  <button
+                    className="btn"
+                    onClick={() =>
+                      setFormErrors(tournamentEditValidate(states))
+                    }
+                  >
+                    Update
+                  </button>
                 </div>
               </form>
             </div>

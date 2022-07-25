@@ -99,11 +99,12 @@ const Jobs = ({ user, profile, myState }) => {
             </div>
           </div>
         ) : (
+          jobs &&
           jobs.map((job, idx) => (
             <div className="team_row arena_team_row" key={idx}>
               <div className="inner_team">
                 <div className="mores jobss">
-                  <h3> {job.position}</h3>
+                  <h3> {job.job_type}</h3>
 
                   <p>
                     <b>EXPERIENCE: -- </b>
@@ -125,7 +126,7 @@ const Jobs = ({ user, profile, myState }) => {
                     </p>
                   ) : (
                     <p>
-                      <b>Salery:</b> {job?.currency} {job.salary}
+                      <b>Salary:</b> {job?.currency} {job.salary}
                     </p>
                   )}
                 </div>

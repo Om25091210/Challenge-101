@@ -121,6 +121,240 @@ export const tournamentformvalidate = (values) => {
   return errors;
 };
 
+export const profileformvalidate = (values) => {
+  const errors = {};
+
+  if (values.firstName.length === 0) {
+    errors.firstName = 'First name Required';
+  }
+
+  if (values.lastName.length === 0) {
+    errors.lastName = 'Last name Required';
+  }
+
+  if (values.username.length === 0) {
+    errors.username = 'username Required';
+  }
+
+  if (values.bio.length === 0) {
+    errors.bio = 'Bio Required';
+  }
+
+  if (values.profileType === 'Business' && values.b_role.length === 0) {
+    errors.b_role = 'Business Role is Required';
+  }
+
+  if (values.startDate.length === 0) {
+    errors.startDate = 'Start Date Required';
+  }
+
+  if (values.profileType === 'Gamer' && values.team.length === 0) {
+    errors.team = 'Team is Required';
+  }
+
+  if (values.profileType === 'Coach' && values.team.length === 0) {
+    errors.Cteam = 'Team is Required';
+  }
+
+  if (values.profileType === 'Gamer' && values.role.length === 0) {
+    errors.Grole = 'Role Required';
+  }
+
+  if (values.profileType === 'Gamer' && values.game.length === 0) {
+    errors.Ggame = 'Game Required';
+  }
+
+  if (values.profileType === 'Coach' && values.game.length === 0) {
+    errors.Cgame = 'Game Required';
+  }
+
+  if (values.profileType === 'Streamer' && values.game.length === 0) {
+    errors.Sgame = 'Game Required';
+  }
+
+  if (values.profileType === 'Business' && values.company.length === 0) {
+    errors.company = 'Company name Required';
+  }
+
+  if (values.profileType === 'Business' && values.industry.length === 0) {
+    errors.industry = 'Industry name Required';
+  }
+
+  if (
+    values.profileType === 'Streamer' &&
+    values.streamingPlatform.length === 0
+  ) {
+    errors.platform = 'Platform Required';
+  }
+
+  if (values.profileType === 'Streamer' && values.link.length === 0) {
+    errors.link = 'Stream Link Required';
+  }
+
+  return errors;
+};
+
+export const teamEditFormValidate = (values) => {
+  const errors = {};
+  if (values.teamname.length === 0) {
+    errors.teamName = 'Team Required';
+  }
+
+  if (values.about.length < 5 || values.about.length === 0) {
+    errors.Tabout = 'Please recheck input';
+  }
+
+  if (values.region.length === 0) {
+    errors.Tregion = 'Country is Required';
+  }
+
+  if (values.founded.length === 0) {
+    errors.Tfounded = 'Team Founded is required';
+  }
+
+  return errors;
+};
+
+export const tournamentEditValidate = (values) => {
+  const errors = {};
+
+  if (values.name.length === 0) {
+    errors.name = 'Tournament name is required';
+  }
+
+  if (values.startDate.length === 0) {
+    errors.startDate = 'Start Date Required';
+  }
+
+  if (values.endDate.length === 0) {
+    errors.endDate = 'End Date Required';
+  }
+
+  if (values.startTime.length === 0) {
+    errors.startTime = 'Start Time Required';
+  }
+
+  if (values.endTime.length === 0) {
+    errors.endTime = 'End Time Required';
+  }
+
+  if (values.description.length === 0 || values.description.length < 10) {
+    errors.description = 'Please check input for intro';
+  }
+
+  if (values.games.length === 0) {
+    errors.games = 'Game is Required';
+  }
+
+  return errors;
+};
+
+export const tournamentRules = (values) => {
+  const errors = {};
+
+  if (values.check_in.length === 0) {
+    errors.check_in = 'Check in Required';
+  }
+
+  if (values.forfeit.length === 0) {
+    errors.forfeit = 'Forfeit Required';
+  }
+
+  if (values.prizeRules.length === 0 || values.prizeRules.length < 15) {
+    errors.prizeRules = 'Please Recheck Input';
+  }
+
+  if (values.general.length === 0 || values.general.length < 15) {
+    errors.general = 'Please Recheck Input';
+  }
+
+  if (values.compete.length === 0 || values.compete.length < 15) {
+    errors.compete = 'Please Recheck Input';
+  }
+
+  if (values.cusRuleBody.length === 0 || values.cusRuleBody.length < 15) {
+    errors.cusRuleBody = 'Please Recheck Input';
+  }
+
+  if (values.cusRuleHead.length === 0) {
+    errors.cusRuleHead = 'Header Name Required';
+  }
+
+  if (values.country.length === 0) {
+    errors.country = 'Country Required';
+  }
+
+  if (values.admins.length === 0) {
+    errors.admins = 'Admin Detail Required';
+  }
+
+  if (values.contact.length === 0) {
+    errors.contact = 'Contact Details Required';
+  }
+
+  return errors;
+};
+
+export const profileTeam = (values) => {
+  const errors = {};
+
+  if (values.teamId === null) {
+    errors.team = 'Team Required';
+  }
+
+  if (values.game.length === 0) {
+    errors.game = 'Game Required';
+  }
+
+  if (values.role.length === 0) {
+    errors.role = 'Role Required';
+  }
+
+  if (values.teamStartDate.length === 0) {
+    errors.teamStartDate = 'Start Date Required';
+  }
+
+  if (values.teamEndDate.length === 0) {
+    errors.teamEndDate = 'End Date Required';
+  }
+
+  return errors;
+};
+
+export const profileTournaments = (values) => {
+  const errors = {};
+
+  if (values.tournamentId.length === 0) {
+    errors.tournamentId = 'Tournament is Required';
+  }
+
+  if (values.games.length === 0) {
+    errors.games = 'Games are Required';
+  }
+
+  if (values.team === null) {
+    errors.team = 'Team is Required';
+  }
+
+  if (values.role.length === 0) {
+    errors.role = 'Role is Required';
+  }
+
+  if (values.year.length === 0) {
+    errors.year = 'Year is Required';
+  }
+
+  if (values.team_ranking === null) {
+    errors.team_ranking = 'Team Ranking is Required';
+  }
+
+  if (values.winnings === null) {
+    errors.winnings = 'Winnings is Required';
+  }
+
+  return errors;
+};
+
 export const teamsquadformvalidate = (values) => {
   const errors = {};
   // if (!values.game) {

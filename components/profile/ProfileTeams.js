@@ -4,6 +4,7 @@ import axios from 'axios';
 import baseURL from '../../utils/baseURL';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
+import { profileTeam } from '../../utils/valid';
 
 const ProfileTeams = ({
   Userdata,
@@ -16,6 +17,7 @@ const ProfileTeams = ({
   const [filteredData, setFilteredData] = useState([]);
   const [allTeams, setAllTeams] = useState([]);
   const [searchText, setSearchText] = useState('');
+  const [formErrors, setFormErrors] = useState({});
   const router = useRouter();
 
   const refreshData = () => {
@@ -77,14 +79,16 @@ const ProfileTeams = ({
 
   const handleAddTeamSubmit = async (e) => {
     e.preventDefault();
-    try {
-      axios.post(`${baseURL}/api/profile/team/${profile?._id}`, team);
-      toast.success('Added Team Successfully');
-      $('a.model_close').parent().removeClass('show_model');
-    } catch (err) {
-      toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+    if (Object.keys(formErrors).length === 0) {
+      try {
+        axios.post(`${baseURL}/api/profile/team/${profile?._id}`, team);
+        toast.success('Added Team Successfully');
+        $('a.model_close').parent().removeClass('show_model');
+      } catch (err) {
+        toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+      }
+      refreshData();
     }
-    refreshData();
   };
 
   return (
@@ -144,6 +148,7 @@ const ProfileTeams = ({
                       </div>
                     </div>
                   ) : null}
+                  <p>{formErrors.team}</p>
                 </div>
 
                 <div className="form-group">
@@ -156,13 +161,15 @@ const ProfileTeams = ({
                     value={team.game}
                     onChange={handleAddTeam}
                   >
-                    {allGames.map((game, idx) => (
-                      <option key={idx} value={game._id}>
-                        {' '}
-                        {game.name}{' '}
-                      </option>
-                    ))}
+                    {allGames &&
+                      allGames.map((game, idx) => (
+                        <option key={idx} value={game._id}>
+                          {' '}
+                          {game.name}{' '}
+                        </option>
+                      ))}
                   </select>
+                  <p>{formErrors.game}</p>
                 </div>
                 <div className="form-group">
                   <label htmlFor="exampleFormControlInput1">Roles</label>
@@ -172,12 +179,14 @@ const ProfileTeams = ({
                     onChange={onChange}
                     value={team.role}
                   >
-                    {teamroles.map((tr, idx) => (
-                      <option key={idx} value={tr}>
-                        {tr}
-                      </option>
-                    ))}
+                    {teamroles &&
+                      teamroles.map((tr, idx) => (
+                        <option key={idx} value={tr}>
+                          {tr}
+                        </option>
+                      ))}
                   </select>
+                  <p>{formErrors.role}</p>
                 </div>
 
                 <div className="edit_two">
@@ -191,6 +200,7 @@ const ProfileTeams = ({
                       onChange={handleAddTeam}
                       value={team.teamStartDate}
                     />
+                    <p>{formErrors.teamStartDate}</p>
                   </div>
 
                   <div className="form-group">
@@ -203,7 +213,14 @@ const ProfileTeams = ({
                       onChange={handleAddTeam}
                       value={team.teamEndDate}
                     />
+                    <p>{formErrors.teamEndDate}</p>
                   </div>
+                  <button
+                    className="btn"
+                    onClick={() => setFormErrors(profileTeam(team))}
+                  >
+                    Update
+                  </button>
                 </div>
                 <button className="btn">Update</button>
               </form>
