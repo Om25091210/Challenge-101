@@ -34,7 +34,7 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [post._id]);
 
   const followhandlesubmit = async (Uid) => {
     await fetch(`${baseURL}/api/profile/follow/${Uid}`, {

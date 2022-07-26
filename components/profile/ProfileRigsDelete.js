@@ -5,7 +5,7 @@ import cookie from 'js-cookie';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 
-const ProfileRigsDelete = ({ rigId, profile, user }) => {
+const ProfileRigsDelete = ({ rigId, profile, user, type, teamId }) => {
   const router = useRouter();
 
   const refreshData = () => {
@@ -15,7 +15,13 @@ const ProfileRigsDelete = ({ rigId, profile, user }) => {
   const handleDeleteSubmit = async (e) => {
     e.preventDefault();
     try {
-      axios.delete(`${baseURL}/api/profile/rigs/${profile?._id}/${rigId}`, {
+      let url = '';
+      if (type === 'ProfileTeamDel') {
+        url = `${baseURL}/api/profile/profileteam/${profile?._id}/${teamId}`;
+      } else {
+        url = `${baseURL}/api/profile/rigs/${profile?._id}/${rigId}`;
+      }
+      axios.delete(url, {
         headers: {
           Authorization: cookie.get('token')
         }

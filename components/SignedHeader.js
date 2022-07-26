@@ -73,7 +73,7 @@ const SignedHeader = ({ user }) => {
     <header>
       <div className="logo">
         <a href="#">
-          <img src="/assets/media/dash/logo.png" alt="Logo" />
+          <img src="/assets/media/logo-new.png" alt="Logo" />
         </a>
       </div>
 

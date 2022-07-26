@@ -1,13 +1,7 @@
 import baseURL from '../../utils/baseURL';
-import {
-  QueryClient,
-  QueryClientProvider,
-  useQuery,
-  useMutation
-} from 'react-query';
+import { QueryClient, QueryClientProvider, useMutation } from 'react-query';
 import cookie from 'js-cookie';
 import { useState } from 'react';
-import { useRouter } from 'next/router';
 
 const queryClient = new QueryClient();
 
@@ -20,18 +14,12 @@ export default function LikePost({ postId, isLiked }) {
 }
 
 const AddLike = ({ postId, isLiked }) => {
-  const [like, setLike] = useState(false);
-  const router = useRouter();
-
-  const refreshData = () => {
-    router.replace(router.asPath);
-  };
+  const [like, setLike] = useState(isLiked);
 
   const handleLike = (e) => {
     e.preventDefault();
     mutate({ like });
-    setLike(true);
-    refreshData();
+    setLike(!like);
   };
 
   const addingLike = async () => {
@@ -47,18 +35,19 @@ const AddLike = ({ postId, isLiked }) => {
 
   return (
     <a onClick={handleLike} href="#!">
-      {isLiked === true ? (
+      {like ? (
         <>
           <i
             className="fa fa-heart"
-            style={{ color: 'red' }}
             aria-hidden="true"
-          ></i>{' '}
+            style={{ color: 'red' }}
+          ></i>
           <span>Liked</span>
         </>
       ) : (
         <>
-          <i className="fa fa-heart" aria-hidden="true"></i> <span>Like</span>
+          <i className="fa fa-heart-o" aria-hidden="true"></i>
+          <span>Like</span>
         </>
       )}
     </a>

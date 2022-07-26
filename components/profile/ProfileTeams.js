@@ -5,6 +5,7 @@ import baseURL from '../../utils/baseURL';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 import { profileTeam } from '../../utils/valid';
+import ProfileRigsDelete from './ProfileRigsDelete';
 
 const ProfileTeams = ({
   Userdata,
@@ -222,7 +223,6 @@ const ProfileTeams = ({
                     Update
                   </button>
                 </div>
-                <button className="btn">Update</button>
               </form>
             </div>
             <div className="overlay"></div>
@@ -238,15 +238,15 @@ const ProfileTeams = ({
                 <li>
                   <div className="card_img">
                     {' '}
-                    <img src={team.imgUrl} alt="" />{' '}
+                    <img src={team.team.imgUrl} alt="" />{' '}
                   </div>
                   <div className="right_data">
                     <div className="card_games_tit">
                       <h3>
-                        <a href={`/team/${team._id}`}>
-                          Team {team.name} <br />{' '}
+                        <a href={`/team/${team.team._id}`}>
+                          Team {team.team.name} <br />{' '}
                         </a>
-                        {Moment(team.founded).format('MMM YYYY')}
+                        {Moment(team.team.founded).format('MMM YYYY')}
                       </h3>
                       <div className="gamer_pos">
                         <b>Caption</b> | <b>Assault</b>
@@ -274,6 +274,14 @@ const ProfileTeams = ({
                   <div className="comp_btn">
                     <i class="fa fa-compress" aria-hidden="true"></i> Compare
                   </div>
+                  {team.type === 'ProfileTeam' ? (
+                    <ProfileRigsDelete
+                      type="ProfileTeamDel"
+                      teamId={team.team._id}
+                      profile={profile}
+                      user={user}
+                    />
+                  ) : null}
                 </li>
               ))
             )}

@@ -1,13 +1,7 @@
 import baseURL from '../../utils/baseURL';
-import {
-  QueryClient,
-  QueryClientProvider,
-  useQuery,
-  useMutation
-} from 'react-query';
+import { QueryClient, QueryClientProvider, useMutation } from 'react-query';
 import cookie from 'js-cookie';
 import { useState } from 'react';
-import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
 
 const queryClient = new QueryClient();
@@ -21,18 +15,12 @@ export default function SharePost({ postId, isShared }) {
 }
 
 const Post_share = ({ postId, isShared }) => {
-  const [share, setShare] = useState(false);
-  const router = useRouter();
-
-  const refreshData = () => {
-    router.replace(router.asPath);
-  };
+  const [share, setShare] = useState(isShared);
 
   const handleShare = (e) => {
     e.preventDefault();
     mutate({ share });
-    setShare(true);
-    refreshData();
+    setShare(!share);
   };
 
   const addingShare = async () => {
@@ -53,18 +41,18 @@ const Post_share = ({ postId, isShared }) => {
 
   return (
     <a onClick={handleShare}>
-      {isShared === true ? (
+      {share ? (
         <>
           <i
             className="fa fa-share-alt"
-            style={{ color: 'lightgreen' }}
             aria-hidden="true"
+            style={{ color: 'lightgreen' }}
           ></i>
           <span>Shared</span>
         </>
       ) : (
         <>
-          <i className="fa fa-share-alt" aria-hidden="true"></i>{' '}
+          <i className="fa fa-share-alt" aria-hidden="true"></i>
           <span>Share</span>
         </>
       )}

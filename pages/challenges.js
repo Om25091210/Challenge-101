@@ -328,7 +328,6 @@ const challenges = ({ user, data, teams, profile, allteams }) => {
                     type="checkbox"
                     className="custom-control-input"
                     id="customSwitch1"
-                    onClick={() => setShowFavs(!showfavs)}
                   />
                   <label
                     className="custom-control-label"
