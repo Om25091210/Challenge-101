@@ -51,7 +51,8 @@ const CommentList = ({ post, user, commentsData }) => {
                     </div>
                   </div>
                   <PinnedComments user={user} comment={comment} post={post} />
-                  {post.user?._id === user._id &&
+                  {(post.user?._id === user._id &&
+                    comment.user?._id === user._id) ||
                   comment.user?._id === user._id ? null : (
                     <ReportsComments />
                   )}
