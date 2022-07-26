@@ -17,9 +17,7 @@ const GamesDetails = ({ user, profile }) => {
       .then((res) => setRecruits(res.data));
   }, []);
 
-  const req = recruits.filter(
-    (rec) => rec.RecruitProfileId === router.query.id
-  );
+  const req = recruits.filter((rec) => rec.RecruitId === router.query.id);
 
   return (
     <>
@@ -72,12 +70,12 @@ const GamesDetails = ({ user, profile }) => {
             <div className="chart_box">
               <img src="/assets/media/profile/chart.jpg" alt="" />
             </div>
-            {recruit.RecruitProfileId === user._id ? null : (
+            {recruit.RecruitId === user._id ? null : (
               <button className="game_btn">INVITE TO TEAM</button>
             )}
           </div>
         ))}
-      {req[0]?.RecruitProfileId === user._id ? null : (
+      {req[0]?.RecruitId === user._id ? null : (
         <>
           {profile.user?._id === user?._id ? (
             <RecruitmentCard type="PROFILE" RecruitId={user?._id} />

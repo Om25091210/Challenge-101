@@ -15,9 +15,7 @@ const TeamGameDetails = ({ user, team, isManager, isAdmin }) => {
       .then((res) => setRecruits(res.data));
   }, []);
 
-  const req = recruits.filter(
-    (rec) => rec.RecruitTeamId == router.query.teamId
-  );
+  const req = recruits.filter((rec) => rec.RecruitId == router.query.teamId);
 
   return (
     <>
@@ -73,7 +71,7 @@ const TeamGameDetails = ({ user, team, isManager, isAdmin }) => {
             )}
           </div>
         ))}
-      {req[0]?.RecruitTeamId === team._id ? null : (
+      {req[0]?.RecruitId == team._id ? null : (
         <>
           {isManager || isAdmin ? (
             <RecruitmentCard type="TEAM" RecruitId={team._id} user={user} />
