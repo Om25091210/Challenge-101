@@ -26,11 +26,24 @@ const TeamFollow = ({ team, user }) => {
       ?.filter((team) => team?.user === user?._id)
       .map((team) => team?.user).length > 0;
 
+  const isAdmin =
+    team &&
+    team.employees.filter(
+      (emp) => emp.role === 'Admin' && emp.employeeId?._id === user?._id
+    ).length > 0;
+
+  const isManager =
+    team?.employees.filter(
+      (emp) => emp.role === 'Manager' && emp.employeeId._id === user._id
+    ).length > 0;
+
   return (
     <>
-      <button onClick={() => followhandlesubmit(team?._id)}>
-        {isFollow === true ? 'Following' : 'Follow'}
-      </button>
+      {isAdmin || isManager ? null : (
+        <button className="btn" onClick={() => followhandlesubmit(team?._id)}>
+          {isFollow === true ? 'Following' : 'Follow'}
+        </button>
+      )}
     </>
   );
 };

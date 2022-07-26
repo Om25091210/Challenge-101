@@ -87,7 +87,7 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
                 </h4>
               )}
               {type === 'TeamPost' ? (
-                <button className="btn">
+                <button>
                   <TeamFollow team={team} user={user} />
                 </button>
               ) : isLoggedInUser === false ? (

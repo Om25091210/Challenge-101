@@ -142,8 +142,8 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
 
   const User_team =
     allteams &&
-    allteams.filter((team) => {
-      return team?._id === parseInt(states.team);
+    allteams.filter((tem) => {
+      return tem.team?._id === parseInt(states.team);
     });
 
   const [filteredData, setFilteredData] = useState([]);
@@ -316,7 +316,9 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                           <option value="--">--</option>
                           {allteams &&
                             allteams.map((tem) => (
-                              <option value={tem?._id}>{tem?.name}</option>
+                              <option value={tem.team?._id}>
+                                {tem.team?.name}
+                              </option>
                             ))}
                         </select>
                         <p>{formErrors.team}</p>
@@ -376,7 +378,7 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                         >
                           <option value="--">--</option>
                           {User_team &&
-                            User_team[0]?.games.map((game) => (
+                            User_team[0]?.team?.games.map((game) => (
                               <option value={game.gameId._id}>
                                 {game.gameId.name}
                               </option>
@@ -395,9 +397,10 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                           value={states.game}
                           onChange={handleChangeCheck}
                         >
-                          {games.map((game) => (
-                            <option value={game._id}>{game.name}</option>
-                          ))}
+                          {games &&
+                            games.map((game) => (
+                              <option value={game._id}>{game.name}</option>
+                            ))}
                         </select>
                       </div>
                       <p>{formErrors.Sgame}</p>
@@ -441,9 +444,10 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                           onChange={handleChangeCheck}
                         >
                           <option value="--">--</option>
-                          {allroles.map((role) => (
-                            <option value={role}>{role}</option>
-                          ))}
+                          {allroles &&
+                            allroles.map((role) => (
+                              <option value={role}>{role}</option>
+                            ))}
                         </select>
                         <p>{formErrors.Grole}</p>
                       </div>
@@ -457,9 +461,10 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                           onChange={handleChangeCheck}
                         >
                           <option value="--">--</option>
-                          {allroles.map((role) => (
-                            <option value={role}>{role}</option>
-                          ))}
+                          {allroles &&
+                            allroles.map((role) => (
+                              <option value={role}>{role}</option>
+                            ))}
                         </select>
                         <p>{formErrors.b_role}</p>
                       </div>
@@ -497,17 +502,18 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                   <div className="prof_games">
                     <div className="games">
                       <div className="tit">
-                        {profile.playergames.map((game) => (
-                          <>
-                            <span>
-                              {' '}
-                              <img
-                                src={game.game.imgUrl}
-                                alt={game.game.name}
-                              />
-                            </span>
-                          </>
-                        ))}
+                        {profile.playergames &&
+                          profile.playergames.map((game) => (
+                            <>
+                              <span>
+                                {' '}
+                                <img
+                                  src={game.game.imgUrl}
+                                  alt={game.game.name}
+                                />
+                              </span>
+                            </>
+                          ))}
                         <a href="#!" className="model_show_btn">
                           <i
                             className="fa fa-plus-circle"
