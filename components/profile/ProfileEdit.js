@@ -440,6 +440,7 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                           value={states.role}
                           onChange={handleChangeCheck}
                         >
+                          <option value="--">--</option>
                           {allroles.map((role) => (
                             <option value={role}>{role}</option>
                           ))}
@@ -455,6 +456,7 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                           value={states.b_role}
                           onChange={handleChangeCheck}
                         >
+                          <option value="--">--</option>
                           {allroles.map((role) => (
                             <option value={role}>{role}</option>
                           ))}
