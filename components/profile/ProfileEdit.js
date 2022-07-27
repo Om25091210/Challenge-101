@@ -402,8 +402,8 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                               <option value={game._id}>{game.name}</option>
                             ))}
                         </select>
+                        <p>{formErrors.Sgame}</p>
                       </div>
-                      <p>{formErrors.Sgame}</p>
                     </>
                   ) : null}
 
@@ -430,8 +430,8 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                           className="form-control"
                           placeholder="Stream Link"
                         />
+                        <p>{formErrors.link}</p>
                       </div>
-                      <p>{formErrors.link}</p>
                     </>
                   ) : null}
 

@@ -269,7 +269,7 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
                     ? URL.createObjectURL(profilePic)
                     : SrhUser?.profilePicUrl
                 }
-                alt={SrhUser.name}
+                alt={SrhUser?.name}
               />
               {isLoggedInUser ? (
                 <div className="edit_photo">
@@ -295,9 +295,9 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
           <div className="profile_details pro_detail_box">
             <div className="top_details">
               <div className="name_box">
-                <span className="game_name"> {SrhUser.username} </span>
+                <span className="game_name"> {SrhUser?.username} </span>
                 <span className="name">
-                  {SrhUser.name}{' '}
+                  {SrhUser?.name}{' '}
                   <span className="follower">
                     {Userdata.followers.length} Followers
                   </span>

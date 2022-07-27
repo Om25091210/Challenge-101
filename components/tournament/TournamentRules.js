@@ -6,10 +6,9 @@ import { toast } from 'react-toastify';
 import baseURL from '../../utils/baseURL';
 import { tournamentRules } from '../../utils/valid';
 
-const TournamentRules = ({ tournamentId, tourRules }) => {
+const TournamentRules = ({ tourRules }) => {
   const [formErrors, setFormErrors] = useState({});
   const [states, setStates] = useState({
-    tournamentId,
     check_in: '',
     forfeit: '',
     prizeRules: '',
