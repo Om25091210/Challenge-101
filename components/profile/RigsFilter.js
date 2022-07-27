@@ -33,7 +33,7 @@ const RigsFilter = ({ val, data, states }) => {
 
   return (
     <>
-      <div className="colm">
+      <div className="form-group">
         <label htmlFor="exampleFormControlInput1">{val}</label>
         <input
           type="search"

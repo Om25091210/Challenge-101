@@ -128,7 +128,7 @@ const ProductRigs = ({ user, productList, Userdata }) => {
             </button>
           </a>
         ) : null}
-        <div className="common_model_box">
+        <div className="common_model_box  poup_rigs" id="big_poup">
           {' '}
           <a href="#!" className="model_close">
             {' '}
@@ -173,17 +173,43 @@ const ProductRigs = ({ user, productList, Userdata }) => {
                 </div>
               </div>
 
-              <div className="form-group">
-                <div className="">
-                  {states.rigsType === 'PC' ? (
+              {states.rigsType === 'PC' ? (
+                <>
+                  <RigsFilter val="Keyboard" data={rigsData} states={states} />
+
+                  <RigsFilter val="Mouse" data={rigsData} states={states} />
+
+                  <RigsFilter val="Headphone" data={rigsData} states={states} />
+
+                  <RigsFilter val="Mat" data={rigsData} states={states} />
+
+                  <RigsFilter val="Monitor" data={rigsData} states={states} />
+
+                  <RigsFilter val="Gpu" data={rigsData} states={states} />
+
+                  <RigsFilter val="Chair" data={rigsData} states={states} />
+                </>
+              ) : (
+                <>
+                  {states.rigsType === 'Console' ? (
                     <>
                       <RigsFilter
-                        val="Keyboard"
+                        val="Cbrand"
                         data={rigsData}
                         states={states}
                       />
 
-                      <RigsFilter val="Mouse" data={rigsData} states={states} />
+                      <RigsFilter
+                        val="Cmodel"
+                        data={rigsData}
+                        states={states}
+                      />
+
+                      <RigsFilter
+                        val="Controller"
+                        data={rigsData}
+                        states={states}
+                      />
 
                       <RigsFilter
                         val="Headphone"
@@ -191,84 +217,39 @@ const ProductRigs = ({ user, productList, Userdata }) => {
                         states={states}
                       />
 
-                      <RigsFilter val="Mat" data={rigsData} states={states} />
-
-                      <RigsFilter
-                        val="Monitor"
-                        data={rigsData}
-                        states={states}
-                      />
-
-                      <RigsFilter val="Gpu" data={rigsData} states={states} />
-
                       <RigsFilter val="Chair" data={rigsData} states={states} />
                     </>
                   ) : (
                     <>
-                      {states.rigsType === 'Console' ? (
-                        <>
-                          <RigsFilter
-                            val="Cbrand"
-                            data={rigsData}
-                            states={states}
-                          />
+                      <RigsFilter
+                        val="Mbrand"
+                        data={rigsData}
+                        states={states}
+                      />
 
-                          <RigsFilter
-                            val="Cmodel"
-                            data={rigsData}
-                            states={states}
-                          />
+                      <RigsFilter
+                        val="Mmodel"
+                        data={rigsData}
+                        states={states}
+                      />
 
-                          <RigsFilter
-                            val="Controller"
-                            data={rigsData}
-                            states={states}
-                          />
+                      <RigsFilter
+                        val="Controller"
+                        data={rigsData}
+                        states={states}
+                      />
 
-                          <RigsFilter
-                            val="Headphone"
-                            data={rigsData}
-                            states={states}
-                          />
-
-                          <RigsFilter
-                            val="Chair"
-                            data={rigsData}
-                            states={states}
-                          />
-                        </>
-                      ) : (
-                        <>
-                          <RigsFilter
-                            val="Mbrand"
-                            data={rigsData}
-                            states={states}
-                          />
-
-                          <RigsFilter
-                            val="Mmodel"
-                            data={rigsData}
-                            states={states}
-                          />
-
-                          <RigsFilter
-                            val="Controller"
-                            data={rigsData}
-                            states={states}
-                          />
-
-                          <RigsFilter
-                            val="Earphone"
-                            data={rigsData}
-                            states={states}
-                          />
-                        </>
-                      )}
+                      <RigsFilter
+                        val="Earphone"
+                        data={rigsData}
+                        states={states}
+                      />
                     </>
                   )}
-                </div>
-                <button className="btn">Done</button>
-              </div>
+                </>
+              )}
+
+              <button className="btn">Done</button>
             </form>
           </div>
           <div className="overlay"></div>

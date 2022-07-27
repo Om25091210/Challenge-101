@@ -304,16 +304,18 @@ const ProfileTournament = ({
                   />
                   <p>{formErrors.team_ranking}</p>
                 </div>
-
-                <select
-                  name="currency"
-                  id="currency"
-                  onChange={onChangeTour}
-                  value={tournament.currency}
-                >
-                  <option value="$">USD($)- Dollars</option>
-                  <option value="Rs">INR (Rs) - Rupees</option>
-                </select>
+                <div className="form-group">
+                  <label htmlFor="exampleFormControlInput1">Price</label>
+                  <select
+                    name="currency"
+                    id="currency"
+                    onChange={onChangeTour}
+                    value={tournament.currency}
+                  >
+                    <option value="$">USD($)- Dollars</option>
+                    <option value="Rs">INR (Rs) - Rupees</option>
+                  </select>
+                </div>
 
                 <div className="form-group">
                   <label htmlFor="exampleFormControlInput1">Winnings</label>

@@ -640,6 +640,45 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                     </span>
                   </div>
 
+                  <div className="edit_four">
+                    <div className="form-group">
+                      <input
+                        type="text"
+                        name=""
+                        value=""
+                        placeholder=""
+                        className="form-control"
+                      />
+                    </div>
+                    <div className="form-group">
+                      <input
+                        type="text"
+                        name=""
+                        value=""
+                        placeholder=""
+                        className="form-control"
+                      />
+                    </div>
+                    <div className="form-group">
+                      <input
+                        type="text"
+                        name=""
+                        value=""
+                        placeholder=""
+                        className="form-control"
+                      />
+                    </div>
+                    <div className="form-group">
+                      <input
+                        type="text"
+                        name=""
+                        value=""
+                        placeholder=""
+                        className="form-control"
+                      />
+                    </div>
+                  </div>
+
                   {openForm && (
                     <SocialLink
                       type={type}

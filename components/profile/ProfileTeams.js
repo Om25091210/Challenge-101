@@ -229,7 +229,7 @@ const ProfileTeams = ({
           </div>
         </div>
         <div>
-          <ul className="stats_card">
+          <ul className="stats_card stats_team">
             {teamsData && teamsData.length === 0 ? (
               <p>{profile.user.name} has no teams.</p>
             ) : (
