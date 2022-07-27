@@ -52,6 +52,7 @@ const CreateTournament = ({ user }) => {
     endDate: '',
     endTime: '',
     location: '',
+    address: '',
     organizer: '',
     cohosts: '',
     sponsor: '',
@@ -269,12 +270,13 @@ const CreateTournament = ({ user }) => {
                         value={state.game}
                         onChange={handleChange}
                       >
-                        {games.map((game, idx) => (
-                          <option key={idx} value={game._id}>
-                            {' '}
-                            {game.name}{' '}
-                          </option>
-                        ))}
+                        {games &&
+                          games.map((game, idx) => (
+                            <option key={idx} value={game._id}>
+                              {' '}
+                              {game.name}{' '}
+                            </option>
+                          ))}
                       </select>
                       <p>{formErrors.game}</p>
                     </div>
@@ -301,12 +303,13 @@ const CreateTournament = ({ user }) => {
                         value={state.series}
                         onChange={handleChange}
                       >
-                        {series.map((ser, idx) => (
-                          <option key={idx} value={ser._id}>
-                            {' '}
-                            {ser.name}{' '}
-                          </option>
-                        ))}
+                        {series &&
+                          series.map((ser, idx) => (
+                            <option key={idx} value={ser._id}>
+                              {' '}
+                              {ser.name}{' '}
+                            </option>
+                          ))}
                       </select>
                     </div>
                     <div className="form-group">
@@ -598,12 +601,13 @@ const CreateTournament = ({ user }) => {
                           multiple={true}
                           onChange={handleChange}
                         >
-                          {sponsors.map((spon, idx) => (
-                            <option key={idx} value={spon._id}>
-                              {' '}
-                              {spon.name}{' '}
-                            </option>
-                          ))}
+                          {sponsors &&
+                            sponsors.map((spon, idx) => (
+                              <option key={idx} value={spon._id}>
+                                {' '}
+                                {spon.name}{' '}
+                              </option>
+                            ))}
                         </select>
                       </div>
 
@@ -619,25 +623,39 @@ const CreateTournament = ({ user }) => {
                           multiple={true}
                           onChange={handleChange}
                         >
-                          {organizers.map((org, idx) => (
-                            <option key={idx} value={org._id}>
-                              {' '}
-                              {org.name}{' '}
-                            </option>
-                          ))}
+                          {organizers &&
+                            organizers.map((org, idx) => (
+                              <option key={idx} value={org._id}>
+                                {' '}
+                                {org.name}{' '}
+                              </option>
+                            ))}
                         </select>
                       </div>
 
                       <div className="colm">
-                        <label for="exampleFormControlInput1">Location</label>
+                        <label htmlFor="exampleFormControlInput1">
+                          Address
+                        </label>
                         <input
                           type="text"
-                          name="location"
-                          className="form-control"
-                          placeholder="Location"
+                          name="address"
+                          placeholder="Address"
                           onChange={handleChange}
-                          value={state.location}
+                          value={state.address}
                         />
+                        <p>{formErrors.address}</p>
+                      </div>
+
+                      <div className="colm">
+                        <label for="exampleFormControlInput1">Location</label>
+                        <select name="location" onChange={handleChangeCheck}>
+                          <option value="India">India</option>
+                          <option value="Asia">Asia</option>
+                          <option value="China">China</option>
+                          <option value="Japan">Japan</option>
+                          <option value="Europe">Europe</option>
+                        </select>
                         <p>{formErrors.location}</p>
                       </div>
 

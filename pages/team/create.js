@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import Script from 'next/script';
 import Head from 'next/head';
 import MetaDash from '@components/MetaDash';
@@ -16,7 +16,6 @@ import { toast } from 'react-toastify';
 import { useMutation } from 'react-query';
 import cookie from 'js-cookie';
 import { teamformvalidate } from '@utils/valid';
-import countryList from 'react-select-country-list';
 import { useRouter } from 'next/router';
 
 const CreateTeam = ({ user }) => {
@@ -31,7 +30,6 @@ const CreateTeam = ({ user }) => {
   const [step1, setStep1] = useState(false);
   const [showbtn, setShowbtn] = useState(true);
   const [formErrors, setFormErrors] = useState({});
-  const options = useMemo(() => countryList().getData(), []);
   const router = useRouter();
   const [searchText, setSearchText] = useState('');
   const [searchText1, setSearchText1] = useState('');
@@ -342,11 +340,11 @@ const CreateTeam = ({ user }) => {
                         Country
                       </label>
                       <select name="region" id="" onChange={handleChange}>
-                        {options.map((opt) => (
-                          <>
-                            <option value={opt.value}>{opt.label}</option>
-                          </>
-                        ))}
+                        <option value="India">India</option>
+                        <option value="Asia">Asia</option>
+                        <option value="China">China</option>
+                        <option value="Japan">Japan</option>
+                        <option value="Europe">Europe</option>
                       </select>
                       <p>{formErrors.region}</p>
                     </div>

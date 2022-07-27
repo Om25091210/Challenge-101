@@ -83,7 +83,7 @@ const TournamentRules = ({ tournamentId, tourRules }) => {
     e.preventDefault();
     if (Object.keys(formErrors).length === 0) {
       try {
-        axios.post(`${baseURL}/api/tournamentRules/`, states);
+        axios.put(`${baseURL}/api/tournamentRules/${tournamentId}`, states);
         toast.success('Tournament Rules Updated');
       } catch (err) {
         toast.error(err.response?.data?.msg || 'Please recheck your inputs');
@@ -120,6 +120,7 @@ const TournamentRules = ({ tournamentId, tourRules }) => {
               value={states.check_in}
               onChange={onChange}
             >
+              <option value="--">--</option>
               <option value={10}>10</option>
               <option value={20}>20</option>
               <option value={30}>30</option>
@@ -136,6 +137,7 @@ const TournamentRules = ({ tournamentId, tourRules }) => {
               value={states.forfeit}
               onChange={onChange}
             >
+              <option value="--">--</option>
               <option value={5}>5</option>
               <option value={10}>10</option>
               <option value={15}>15</option>

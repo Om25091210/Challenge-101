@@ -1,13 +1,13 @@
 import axios from 'axios';
 import { useRouter } from 'next/router';
-import { useEffect, useMemo, useState } from 'react';
-import countryList from 'react-select-country-list';
+import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import baseURL from '../../utils/baseURL';
 import { tournamentEditValidate } from '../../utils/valid';
 import Moment from 'moment';
 
 const TournamentEdit = ({ data, user }) => {
+  const gameList = data.tournament.games.map((game) => game.gameId._id);
   const [states, setStates] = useState({
     tourType: 'Tournament',
     name: data.tournament.name,
@@ -18,9 +18,10 @@ const TournamentEdit = ({ data, user }) => {
     endDate: Moment(data.tournament?.endDate).format('yyyy-MM-DD') || '',
     endTime: data.tournament?.endTime || '',
     location: data.tournament.location,
+    address: data.tournament?.address,
     organizer: '',
     description: data.tournament.description,
-    games: '',
+    games: gameList,
     category: data.tournament.category,
     registration: data.tournament.entranceFee,
     playout: data.tournament.playout,
@@ -31,8 +32,6 @@ const TournamentEdit = ({ data, user }) => {
   const [allgames, setAllgames] = useState([]);
   const [allseries, setAllseries] = useState([]);
   const [formErrors, setFormErrors] = useState({});
-
-  const options = useMemo(() => countryList().getData(), []);
 
   useEffect(() => {
     axios
@@ -169,12 +168,13 @@ const TournamentEdit = ({ data, user }) => {
                       onChange={handleChangeCheck}
                       value={states.series}
                     >
-                      {allseries.map((ser, idx) => (
-                        <option key={idx} value={ser._id}>
-                          {' '}
-                          {ser.name}{' '}
-                        </option>
-                      ))}
+                      {allseries &&
+                        allseries.map((ser, idx) => (
+                          <option key={idx} value={ser._id}>
+                            {' '}
+                            {ser.name}{' '}
+                          </option>
+                        ))}
                     </select>
                   </div>
                   <div className="form-group">
@@ -223,17 +223,28 @@ const TournamentEdit = ({ data, user }) => {
                   </div>
 
                   <div className="form-group">
+                    <label htmlFor="exampleFormControlInput1">Address</label>
+                    <input
+                      type="text"
+                      name="address"
+                      placeholder="Address"
+                      onChange={handleChangeCheck}
+                      value={states.address}
+                    />
+                  </div>
+
+                  <div className="form-group">
                     <label htmlFor="exampleFormControlInput1">Location</label>
                     <select
                       name="location"
                       onChange={handleChangeCheck}
                       value={states.location}
                     >
-                      {options.map((opt) => (
-                        <>
-                          <option value={opt.value}>{opt.label}</option>
-                        </>
-                      ))}
+                      <option value="India">India</option>
+                      <option value="Asia">Asia</option>
+                      <option value="China">China</option>
+                      <option value="Japan">Japan</option>
+                      <option value="Europe">Europe</option>
                     </select>
                   </div>
 
@@ -246,11 +257,12 @@ const TournamentEdit = ({ data, user }) => {
                       multiple={true}
                     >
                       <option value="--">--</option>
-                      {allorganizer.map((org, idx) => (
-                        <option key={idx} value={org._id}>
-                          {org.name}
-                        </option>
-                      ))}
+                      {allorganizer &&
+                        allorganizer.map((org, idx) => (
+                          <option key={idx} value={org._id}>
+                            {org.name}
+                          </option>
+                        ))}
                     </select>
                   </div>
 
@@ -275,9 +287,10 @@ const TournamentEdit = ({ data, user }) => {
                       value={states.games}
                       onChange={handleSubmit}
                     >
-                      {allgames.map((game) => (
-                        <option value={game._id}>{game.name}</option>
-                      ))}
+                      {allgames &&
+                        allgames.map((game) => (
+                          <option value={game._id}>{game.name}</option>
+                        ))}
                     </select>
                     <p>{formErrors.games}</p>
                   </div>

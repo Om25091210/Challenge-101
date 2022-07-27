@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import baseURL from '../../utils/baseURL';
 import RecruitmentCard from '../common/RecruitmentCard';
 
@@ -9,6 +10,10 @@ const TeamGameDetails = ({ user, team, isManager, isAdmin }) => {
 
   const router = useRouter();
 
+  const refreshData = () => {
+    router.replace(router.asPath);
+  };
+
   useEffect(() => {
     axios
       .get(`${baseURL}/api/recruit/TEAM`)
@@ -16,6 +21,17 @@ const TeamGameDetails = ({ user, team, isManager, isAdmin }) => {
   }, []);
 
   const req = recruits.filter((rec) => rec.RecruitId == router.query.teamId);
+
+  const handleDelete = (e) => {
+    e.preventDefault();
+    try {
+      axios.delete(`${baseURL}/api/recruit/${req[0]?._id}`);
+      toast.success('Deleted Card Successfully');
+    } catch (err) {
+      toast.error(err.response?.data?.msg || 'Error Deleting the Card');
+    }
+    refreshData();
+  };
 
   return (
     <>
@@ -66,6 +82,11 @@ const TeamGameDetails = ({ user, team, isManager, isAdmin }) => {
             <div className="chart_box">
               <img src="/assets/media/profilechart.jpg" alt="" />
             </div>
+            {isManager || isAdmin ? (
+              <button className="btn" onClick={handleDelete}>
+                Delete
+              </button>
+            ) : null}
             {isManager || isAdmin ? null : (
               <button className="game_btn">INVITE TO TEAM</button>
             )}

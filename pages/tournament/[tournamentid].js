@@ -193,8 +193,16 @@ const TournamentDetail = ({ user, data, products, profile }) => {
                         <p> {data.tournament?.followers.length} Followers</p>
                       </span>
                       <span className="name loc_date">
-                        <i className="fa fa-map-marker"></i> Indoor Stadium,{' '}
-                        {data.tournament.location}{' '}
+                        {data.tournament?.address &&
+                        data.tournament?.address?.length > 0 ? (
+                          <>
+                            <i className="fa fa-map-marker"></i>
+                            <p>{data.tournament?.address}</p>
+                          </>
+                        ) : (
+                          <p>Address Unavailable</p>
+                        )}
+                        , {data.tournament.location}{' '}
                         <span className="tour_time">
                           <i className="fa fa-clock-o"></i>{' '}
                           {Moment(data.tournament.startDate).format('MMM DD')} -
