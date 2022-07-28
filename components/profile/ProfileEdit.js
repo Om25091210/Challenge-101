@@ -42,14 +42,14 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
     bio: profile.bio,
     Online: online,
     team: '',
-    role: '',
-    b_role: '',
+    role: profile?.headline?.inGameRole,
+    b_role: profile?.headline?.business_role,
     startDate: Moment(profile?.headline.startDate).format('yyyy-MM-DD') || '',
-    game: '',
-    company: '',
-    industry: '',
-    link: '',
-    streamingPlatform: '',
+    game: profile?.headline?.game?._id,
+    company: profile?.headline?.company,
+    industry: profile?.headline?.industry,
+    link: profile?.headline?.link,
+    streamingPlatform: profile?.headline?.streamingPlatform,
     socialLinks: []
   });
 

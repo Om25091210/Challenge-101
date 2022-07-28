@@ -9,6 +9,7 @@ import cookie from 'js-cookie';
 import axios from 'axios';
 import SharePost from './SharePost';
 import TeamFollow from '../team/TeamFollow';
+import { toast } from 'react-toastify';
 
 const AllPosts = ({ post, user, profiledata, type, team }) => {
   const [commentsData, setCommentsData] = useState([]);
@@ -36,6 +37,12 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
       });
   }, [post._id]);
 
+  const isFollow =
+    profiledata &&
+    profile.following
+      ?.filter((profile) => profile.user === post.user?._id)
+      .map((profile, ind) => profile.user).length > 0;
+
   const followhandlesubmit = async (Uid) => {
     await fetch(`${baseURL}/api/profile/follow/${Uid}`, {
       method: 'POST',
@@ -43,13 +50,12 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
         Authorization: cookie.get('token')
       }
     });
+    if (isFollow == true) {
+      toast.success(`You Unfollowed ${post.user.username}`);
+    } else {
+      toast.success(`You are Following ${post.user.username}`);
+    }
   };
-
-  const isFollow =
-    profiledata &&
-    profile.following
-      ?.filter((profile) => profile.user === post.user?._id)
-      .map((profile, ind) => profile.user).length > 0;
 
   const isLoggedInUser = post.user !== '' && post.user?._id === user._id;
 

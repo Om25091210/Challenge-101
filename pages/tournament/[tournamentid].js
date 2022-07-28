@@ -211,9 +211,7 @@ const TournamentDetail = ({ user, data, products, profile }) => {
                           {data.tournament.startTime}
                         </span>
                       </span>{' '}
-                      <span className="follower">
-                        {data.tournament?.description}
-                      </span>{' '}
+                      <span className="follower"></span>{' '}
                     </div>
                   </div>
                 </div>

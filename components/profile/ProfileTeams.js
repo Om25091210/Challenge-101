@@ -271,9 +271,6 @@ const ProfileTeams = ({
                       </div>
                     </div>
                   </div>
-                  <div className="comp_btn">
-                    <i class="fa fa-compress" aria-hidden="true"></i> Compare
-                  </div>
                   {team.type === 'ProfileTeam' ? (
                     <ProfileRigsDelete
                       type="ProfileTeamDel"

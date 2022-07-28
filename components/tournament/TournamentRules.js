@@ -82,9 +82,13 @@ const TournamentRules = ({ tourRules }) => {
     e.preventDefault();
     if (Object.keys(formErrors).length === 0) {
       try {
-        axios.put(`${baseURL}/api/tournamentRules/${tournamentId}`, states);
+        axios.put(
+          `${baseURL}/api/tournamentRules/${tourRules.tournamentId}`,
+          states
+        );
         toast.success('Tournament Rules Updated');
       } catch (err) {
+        console.log(err);
         toast.error(err.response?.data?.msg || 'Please recheck your inputs');
       }
       refreshData();
