@@ -260,7 +260,7 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
                 Founded {Moment(data.team.founded).format('MMM YYYY')}
               </span>
               <span className="follower">
-                {data.team.players?.length} followers
+                {data.team.followers?.length} followers
               </span>
             </div>
 

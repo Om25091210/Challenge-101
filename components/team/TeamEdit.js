@@ -150,11 +150,11 @@ const TeamEdit = ({ isAdmin, isManager, team }) => {
                     onChange={handleChangeCheck}
                   >
                     <option value="">--</option>
-                    {options.map((opt) => (
-                      <>
-                        <option value={opt.value}>{opt.label}</option>
-                      </>
-                    ))}
+                    <option value="India">India</option>
+                    <option value="Asia">Asia</option>
+                    <option value="China">China</option>
+                    <option value="Japan">Japan</option>
+                    <option value="Europe">Europe</option>
                   </select>
                   <p>{formErrors.Tregion}</p>
                 </div>
