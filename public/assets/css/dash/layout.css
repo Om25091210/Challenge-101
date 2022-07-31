@@ -10943,6 +10943,187 @@ form.common_form .btn {
 	font-size: 17px;
 }
 
+
+/* ---------- Season page ----------------- */
+
+
+
+.season_box{ float: left; width: 100%; background: #202028; padding: 40px; border-radius: 20px;}
+
+.season_header{ display: flex; justify-content: space-between; margin:10px 0 80px 0;}
+.season_header h1{ font-size: 60px; font-weight: 300;} 
+.season_header p{ font-size: 18px; color: #bababa;}
+.season_header ul{ margin: 10px 0 0 20px;}
+.season_header li{ font-size: 12px; list-style: circle;}
+
+.left_season {
+    float: left;
+    width: 60%;
+   
+}
+
+.left_season .top_raw{display: flex;
+    justify-content: space-between;
+    align-items: center;}
+
+.numbg_box{ float: left; width: 60%; position: relative;}
+.numbg_box .numbg {
+    float: left;
+    width: 100%;
+    background: #2d343d;
+    position: relative;
+    text-align: center;
+}
+.numbg_box .num_img {
+    position: absolute;
+    left: -9px;
+    background: url(../../media/season/numbg.png) center 0 no-repeat;
+    width: 73px;
+    height: 99px;
+    z-index: 9;
+    top: -20px;
+    text-align: center;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    color: #000;
+    font-size: 23px;
+    font-weight: 700;
+}
+.numbg_box .level{ float: right;}
+
+.left_season .top_raw .pages span {
+    background: #2d343d;
+    padding: 10px;
+    margin-left: 10px; cursor: pointer;
+}
+.left_season .top_raw .pages span:last-child{ background: #dc5c26;}
+
+.bottom_raw {
+    display: flex;
+    justify-content: space-between;
+    float: left;
+    width: 100%; margin-top: 60px;
+}
+	.left_two_box {
+		float: left;
+		width: 7%;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+	.left_two_box span {
+		background: #2d343d;
+		height: 48%;
+		border-radius: 10px;
+		text-align: center;
+		vertical-align: bottom;
+		display: flex;
+		/* height: 100%; */
+		/* display: flex; */
+		align-items: center;
+		align-content: center;
+		justify-content: center;
+	}
+
+.left_two_box b{transform: rotate(-90deg);}
+.steps_box{ float: right; width: 90%;}
+.steps_box ul.boxes {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.steps_box ul.boxes li {
+    background: #2d343d;
+    border-radius: 30px;
+    height: 170px;
+    float: left;
+    width: 18%;
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.steps_box ul.boxes li img{ display: inline-block; width: 50px;}
+
+.steps_box ul.boxes li p{ font-size: 10px; padding: 5px 0;}
+.steps_box ul.boxes li button {
+    background: #304f53;
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 10px;
+}
+
+.steps_box ul.step_line {
+    display: flex;
+    width: 100%;
+    justify-content: space-between; margin: 30px 0;
+}
+.steps_box ul.step_line li {
+    background: #2b2d36;
+    height: 5px;
+    float: left;
+    width: 100%;
+    text-align: center;
+    margin: 10px 0;
+    position: relative;
+}
+
+.steps_box ul.step_line li span{    background: #2d343d;
+    color: #fff;
+    padding: 2px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-top: 0;
+    position: absolute;
+    top: -12px;
+    z-index: 9;
+}
+
+.steps_box ul.step_line li.active{ background: #713cfa;} 
+.steps_box ul.step_line li.active span{background: #713cfa;}
+
+.right_season{ float: right; width: 35%;}
+.right_season .profile_tab_btn{ margin-bottom: 0; padding: 0;}
+.right_season .profile_tab_btn li {
+    background: #2d343d;
+    margin-right: 0;
+    padding: 20px 50px 20px 20px;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.right_season .profile_tab_btn li.active:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    border-bottom: 4px solid #7239ea;
+    left: 0;
+    bottom: -1px;
+}
+.right_season .prfoile_tab_data {
+    background: #2d343d;
+    padding: 20px;
+    border-radius: 0 0 10px 10px;
+}
+
+.right_season .prfoile_tab_data li {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    float: left;
+    margin: 8px 0;
+}
+.right_season .prfoile_tab_data li span{ display: inline-block; background: #404853; padding: 5px 10px; border-radius: 5px;}
+.right_season .prfoile_tab_data li span:first-child{ width: 80%;}
+
+
+
 /* ---------------------- Dark Themes----------------------------- */
 
 body.DarkPage {

@@ -1,7 +1,7 @@
 import DarkMode from './theme/dark-mode';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import ListDrag from './ListDrag';
+//import ListDrag from './ListDrag';
 
 function LeftNav({ user }) {
   const router = useRouter();
