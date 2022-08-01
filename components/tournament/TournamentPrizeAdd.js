@@ -7,7 +7,8 @@ const TournamentPrizeAdd = ({ prizes, prizesData }) => {
   const [states, setStates] = useState({
     prizeName: '',
     goodies: '',
-    prize_sponsor: ''
+    prize_sponsor: '',
+    place: prizes
   });
   const [allsponsor, setAllsponsor] = useState([]);
 

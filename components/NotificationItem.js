@@ -4,8 +4,9 @@ import cookie from 'js-cookie';
 import baseURL from '@utils/baseURL';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
-export const NotificationItem = () => {
+export const NotificationItem = ({ user }) => {
   const [notify, setNotify] = useState([]);
 
   useEffect(() => {
@@ -23,18 +24,24 @@ export const NotificationItem = () => {
       });
   }, []);
 
+  const router = useRouter();
+  const refreshData = () => {
+    router.replace(router.asPath);
+  };
+
   const handleClick = async () => {
     await fetch(`${baseURL}/api/notifications`, {
       method: 'POST',
       headers: {
-        authorization: cookie.get('token')
+        Authorization: cookie.get('token')
       }
     });
+    refreshData();
   };
 
   return (
     <>
-      <a href="#">
+      <a href="#" onClick={handleClick}>
         {' '}
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -50,7 +57,9 @@ export const NotificationItem = () => {
             />
           </g>
         </svg>{' '}
-        <span className="pop">{notify.length}</span>
+        {user.unreadNotification === false ? null : (
+          <span className="pop">{notify.length}</span>
+        )}
       </a>
 
       <div className="drop_down_bg bell_drop_down">

@@ -77,7 +77,7 @@ const SignedHeader = ({ user }) => {
         </a>
       </div>
 
-      <div className="sb-toggle-right  top_click">
+      <div className="sb-toggle-right top_click">
         {' '}
         <a href="#!">
           <div className="three_line three_line--htx">
@@ -255,7 +255,7 @@ const SignedHeader = ({ user }) => {
           </li>
 
           <li className="noti">
-            <NotificationItem />
+            <NotificationItem user={user} />
           </li>
 
           <li>
