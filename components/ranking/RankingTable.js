@@ -3,7 +3,6 @@ import { format } from 'date-fns';
 import LoadingSpinner from '../LoadingSpinner';
 
 const RankingTable = ({ teamranking }) => {
-
   if (teamranking) {
     return (
       <div className="ranking_table">
@@ -40,16 +39,12 @@ const RankingTable = ({ teamranking }) => {
                       {result.points ? result.points : 'Not Defined'}
                     </div>
                     <div className="cols">
-                      {result.tournament ? result.tournament.length : ''}
+                      {result.tournament ? result.tournament.length : 0}
                     </div>
                     <div className="cols">
-                      {result.points ? result.points : '0'}
-                      /
-                      0
+                      {result.points ? result.points : '0'}/ 0
                     </div>
-                    <div className="cols">
-                    tdb
-                    </div>
+                    <div className="cols">tdb</div>
                     <div className="cols">
                       {' '}
                       <span className="round green"></span>{' '}
@@ -61,10 +56,7 @@ const RankingTable = ({ teamranking }) => {
                     <div className="cols">$45,000</div>
                   </div>
 
-                  {
-
-/*
-                    !result.tournament || result.tournament.length === 0 ? (
+                  {!result.tournament || result.tournament.length === 0 ? (
                     <div className="more_data">
                       <div className="activity_tag">
                         <span className="act_name">
@@ -115,9 +107,7 @@ const RankingTable = ({ teamranking }) => {
                         </div>
                       </div>
                     ))
-                  )
-*/
-                }
+                  )}
                 </div>
               ))
             )}

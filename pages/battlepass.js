@@ -6,9 +6,20 @@ import LeftNav from '@components/LeftNav';
 import AllScript from './AllScript';
 import { parseCookies } from 'nookies';
 import { toast } from 'react-toastify';
+import RewardList from '../components/battlepass/RewardList';
+import TaskList from '../components/battlepass/TaskList';
+import Moment from 'moment';
 
 const battlepass = ({ user, data }) => {
   const [bpData, setBpData] = useState(data);
+  const { battlepass, freelevels, paidlevels } = bpData;
+  let x = Moment.duration(
+    Moment(battlepass.endDate).diff(Moment().startOf('day'))
+  )
+    .asDays()
+    .toString()
+    .slice(0, 2);
+  let daysLeft = Number(x);
 
   return (
     <>
@@ -23,8 +34,8 @@ const battlepass = ({ user, data }) => {
           <div className="season_header">
             <div>
               <img src="/assets/media/logo-new.png" alt="" />
-              <h1>SEASON 1</h1>
-              <p>Ends in 52 day(s)</p>
+              <h1>{battlepass.title}</h1>
+              <p>Ends in {daysLeft} day(s)</p>
             </div>
             <div>
               <img src="/assets/media/season/pass-btn.png" alt="" />
@@ -39,11 +50,11 @@ const battlepass = ({ user, data }) => {
           <div className="left_season">
             <div className="top_raw">
               <div className="numbg_box">
-                <span className="num_img">3</span>
+                <span className="num_img"> {battlepass.level} </span>
 
-                <span className="level">3/25 levels</span>
+                <span className="level"> {battlepass.level} /25 levels</span>
                 <span className="numbg">
-                  3800 / 4000 <b>XP</b>
+                  {battlepass.xp_points} / 4000 <b>XP</b>
                 </span>
               </div>
 
@@ -67,25 +78,22 @@ const battlepass = ({ user, data }) => {
                 </span>
                 <span className="battle">
                   <b>
-                    BATTLE PASS <i class="fa fa-lock" aria-hidden="true"></i>
+                    BATTLE PASS{' '}
+                    {battlepass.isBPUser ? (
+                      <i class="fa fa-lock" aria-hidden="true"></i>
+                    ) : (
+                      <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+                    )}
                   </b>
                 </span>
               </div>
               <div className="steps_box">
                 <ul className="boxes">
-                  <li>
-                    <img src="/assets/media/season/gift1.png" alt="" />
-                    <p>Season bridge 1</p>
-                    <button>Compare 1</button>
-                  </li>
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                  <li>
-                    <img src="/assets/media/season/gift3.png" alt="" />
-                    <p>Season bridge 1</p>
-                    <button>Compare 1</button>
-                  </li>
+                  <RewardList
+                    levels={freelevels}
+                    battlepass={battlepass}
+                    type="free"
+                  />
                 </ul>
 
                 <ul className="step_line">
@@ -107,31 +115,11 @@ const battlepass = ({ user, data }) => {
                 </ul>
 
                 <ul className="boxes">
-                  <li>
-                    <img src="/assets/media/season/gift1.png" alt="" />
-                    <p>Season bridge 1</p>
-                    <button>Compare 1</button>
-                  </li>
-                  <li>
-                    <img src="/assets/media/season/gift2.png" alt="" />
-                    <p>Season bridge 1</p>
-                    <button>Compare 1</button>
-                  </li>
-                  <li>
-                    <img src="/assets/media/season/gift3.png" alt="" />
-                    <p>Season bridge 1</p>
-                    <button>Compare 1</button>
-                  </li>
-                  <li>
-                    <img src="/assets/media/season/gift2.png" alt="" />
-                    <p>Season bridge 1</p>
-                    <button>Compare 1</button>
-                  </li>
-                  <li>
-                    <img src="/assets/media/season/gift4.png" alt="" />
-                    <p>Season bridge 1</p>
-                    <button>Compare 1</button>
-                  </li>
+                  <RewardList
+                    levels={paidlevels}
+                    battlepass={battlepass}
+                    type="paid"
+                  />
                 </ul>
               </div>
             </div>
@@ -156,29 +144,11 @@ const battlepass = ({ user, data }) => {
             <div className="prfoile_tab_data">
               <div className="tab " id="week1">
                 <ul>
-                  <li>
-                    <span>Connect a game account </span>
-                    <span> 25XP</span>
-                  </li>
-
-                  <li>
-                    <span>Connect a game account </span>
-                    <span> 25XP</span>
-                  </li>
-
-                  <li>
-                    <span>Connect a game account </span>
-                    <span> 25XP</span>
-                  </li>
-
-                  <li>
-                    <span>Connect a game account </span>
-                    <span> 25XP</span>
-                  </li>
+                  <TaskList week="Week 1" />
                 </ul>
               </div>
               <div className="tab hide" id="week2">
-                Secod
+                <TaskList week="Week 2" />
               </div>
             </div>
           </div>
@@ -188,5 +158,18 @@ const battlepass = ({ user, data }) => {
     </>
   );
 };
+export const getServerSideProps = async (context) => {
+  const { token } = parseCookies(context);
+  const response = await fetch(`${baseURL}/api/battlepass`, {
+    method: 'GET',
+    headers: {
+      Authorization: token
+    }
+  });
+  const data = await response.json();
 
+  return {
+    props: { data }
+  };
+};
 export default battlepass;
