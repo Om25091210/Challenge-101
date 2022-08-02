@@ -136,7 +136,7 @@ const ProfileTournament = ({
               </button>
             </a>
           ) : null}
-          <div className="common_model_box  add_tourn" id="big_poup">
+          <div className="common_model_box add_tourn" id="big_poup">
             {' '}
             <a href="#!" className="model_close">
               {' '}
@@ -504,7 +504,12 @@ const ProfileTournament = ({
                         {result?.entranceFee === 0 ? (
                           <span>Free</span>
                         ) : result?.entranceFee !== 0 ? (
-                          <span>{result?.entranceFee}</span>
+                          <span>
+                            <MPNumberFormat
+                              value={result?.entranceFee}
+                              currency={result?.currency}
+                            />
+                          </span>
                         ) : (
                           'Not Available'
                         )}

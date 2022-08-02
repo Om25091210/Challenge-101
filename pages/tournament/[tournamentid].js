@@ -107,6 +107,14 @@ const TournamentDetail = ({ user, data, products, profile }) => {
       router.push('/dashboard');
     };
 
+    let x = Moment.duration(
+      Moment(data.tournament.startDate).diff(Moment().startOf('day'))
+    )
+      .asDays()
+      .toString()
+      .slice(0, 3);
+    let daysLeft = Math.floor(Number(x));
+
     return (
       <>
         <MetaDash />
@@ -159,15 +167,19 @@ const TournamentDetail = ({ user, data, products, profile }) => {
                           <span>
                             <div className="loc_box">
                               {' '}
-                              <a href="#!" className="model_show_btn">
-                                <button className="btn">
-                                  <i
-                                    className="fa fa-trash"
-                                    aria-hidden="true"
-                                    style={{ color: 'white' }}
-                                  ></i>
-                                </button>
-                              </a>
+                              {daysLeft <= 1 ? null : (
+                                <>
+                                  <a href="#!" className="model_show_btn">
+                                    <button className="btn">
+                                      <i
+                                        className="fa fa-trash"
+                                        aria-hidden="true"
+                                        style={{ color: 'white' }}
+                                      ></i>
+                                    </button>
+                                  </a>
+                                </>
+                              )}
                               <div className="common_model_box">
                                 <a href="#!" className="model_close">
                                   X
@@ -208,7 +220,6 @@ const TournamentDetail = ({ user, data, products, profile }) => {
                           <i className="fa fa-clock-o"></i>{' '}
                           {Moment(data.tournament.startDate).format('MMM DD')} -
                           {Moment(data.tournament.endDate).format('MMM DD')}{' '}
-                          {/* {Moment(data.tournament.startTime).format('hh:mm A')}{' '} */}
                           {data.tournament.startTime}
                         </span>
                       </span>{' '}

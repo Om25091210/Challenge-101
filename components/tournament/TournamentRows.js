@@ -63,9 +63,62 @@ const TournamentRows = ({
                   </div>
                 </div>
                 <div className="bottom_game">
-                  <div className="users">
-                    <img src="/assets/media/category/users.png" alt="" />
-                  </div>
+                  <ul className="users">
+                    {result?.playType === 'PLAYERS' ||
+                    result.registered.length > 0 ? (
+                      <>
+                        {result.registered.map((ppl) => (
+                          <li>
+                            {' '}
+                            <img
+                              src={ppl.user?.profilePicUrl}
+                              alt={ppl.user?.name}
+                            />
+                            <a href={`/user/${ppl.user?._id}`}>
+                              {ppl.user?.name}
+                            </a>
+                          </li>
+                        ))}
+                      </>
+                    ) : (
+                      <>
+                        {result.teams.map((team) => (
+                          <li>
+                            <img
+                              src={team.teamId?.imgUrl}
+                              alt={team.teamId?.name}
+                            />
+
+                            <a href={`/user/${team.teamId?._id}`}>
+                              {team.teamId?.name}
+                            </a>
+                          </li>
+                        ))}
+                      </>
+                    )}
+
+                    {result.playType === 'TEAMS' ? (
+                      <li>
+                        <p>
+                          {result.teams.length} / {result.maxTeams}
+                          <b>Signed</b>
+                        </p>
+                      </li>
+                    ) : (
+                      <>
+                        {result.participants > 0 || result.maxTeams > 0 ? (
+                          <li>
+                            <p>
+                              {result.registered.length} / {result.participants}
+                              <b>Signed</b>
+                            </p>
+                          </li>
+                        ) : (
+                          <p>Not Available</p>
+                        )}
+                      </>
+                    )}
+                  </ul>
                   <div className="games">
                     <h3>Games:</h3>
 
@@ -83,7 +136,12 @@ const TournamentRows = ({
                       {result.entranceFee.length === 0 ? (
                         <span>Free</span>
                       ) : result.entranceFee !== 0 ? (
-                        <span>{result.entranceFee}</span>
+                        <span>
+                          <MPNumberFormat
+                            value={result?.entranceFee}
+                            currency={result?.currency}
+                          />
+                        </span>
                       ) : (
                         'Not Available'
                       )}
@@ -226,7 +284,12 @@ const TournamentRows = ({
                       {result.tournament.entranceFee === 0 ? (
                         <span>Free</span>
                       ) : result.tournament.entranceFee !== 0 ? (
-                        <span>{result.tournament.entranceFee}</span>
+                        <span>
+                          <MPNumberFormat
+                            value={result.tournament?.entranceFee}
+                            currency={result.tournament?.currency}
+                          />
+                        </span>
                       ) : (
                         'Not Available'
                       )}

@@ -21,7 +21,7 @@ const TournamentSponsor = ({ user, data, isUser }) => {
   const [sponsors, setSponsors] = useState([]);
   const [count, setCount] = useState(0);
   const [state, setState] = useState({
-    sponsor: [],
+    sponsorId: [],
     title: ''
   });
   const router = useRouter();
@@ -45,7 +45,7 @@ const TournamentSponsor = ({ user, data, isUser }) => {
       await fetch(
         `${baseURL}/api/tournaments/sponsors/${data.tournament._id}`,
         {
-          method: 'POST',
+          method: 'PUT',
           headers: {
             'Content-Type': 'application/json'
           },
