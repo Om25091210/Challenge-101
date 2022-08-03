@@ -112,7 +112,7 @@ export const tournamentformvalidate = (values) => {
     errors.location = 'Location is Required.';
   }
   if (!values.address) {
-    errors.location = 'Address is Required.';
+    errors.address = 'Address is Required.';
   }
   if (!values.description) {
     errors.description = 'Description is required';

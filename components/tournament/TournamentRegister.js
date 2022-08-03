@@ -32,15 +32,20 @@ const Tournament_Reg = ({ user, tournament, profile }) => {
         axios.put(
           `${baseURL}/api/tournaments/register/${tournament._id}/${user._id}`
         );
+        if (isRegistered === false) {
+          toast.success('Registered Successfully');
+        } else {
+          toast.success('Left Tournament');
+        }
       } else {
         axios.put(
           `${baseURL}/api/tournaments/register/team/${tournament._id}/${profile?.current_team._id}`
         );
-      }
-      if (!isRegistered || !isTeamRegistered) {
-        toast.success('Registered Successfully');
-      } else {
-        toast.success('Left Tournament');
+        if (isTeamRegistered === false) {
+          toast.success('Registered Successfully');
+        } else {
+          toast.success('Left Tournament');
+        }
       }
       refreshPage();
     } catch (err) {

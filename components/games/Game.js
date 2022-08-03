@@ -62,7 +62,9 @@ const Game = ({ user, data }) => {
                       </a>{' '}
                     </div>
                   </div>
-                  <span className="follower">{data?.profiles} Followers </span>
+                  <span className="follower">
+                    {data?.games?.followers.length} Followers{' '}
+                  </span>
                 </div>
               </div>
             </div>

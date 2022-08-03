@@ -15,6 +15,13 @@ const NFTGamesList = ({ user, challenge }) => {
     (plr) => plr.teamId === challenge.opponent_team._id
   );
 
+  let x = Moment.duration(
+    Moment(challenge.startDate).diff(Moment().startOf('day'))
+  )
+    .asDays()
+    .toString()
+    .slice(0, 3);
+  let daysLeft = Math.floor(Number(x));
   return (
     <>
       <MetaDash />
@@ -57,7 +64,7 @@ const NFTGamesList = ({ user, challenge }) => {
           </div>
           <div className="time_connect">
             <h2>Time to connect</h2>
-            <div className="time"></div>
+            <div className="time">{daysLeft} Day(s)</div>
             <div className="left_games">
               <ul>
                 {teamOne.length > 0 &&

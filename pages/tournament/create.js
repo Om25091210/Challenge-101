@@ -322,11 +322,11 @@ const CreateTournament = ({ user }) => {
                         <select
                           name="currency"
                           id="currency"
-                          onChange={handleChange}
+                          onChange={handleChangeCheck}
                           value={state.currency}
                         >
-                          <option value="USD">USD($)- Dollars</option>
-                          <option value="INR">INR (Rs) - Rupees</option>
+                          <option value="$">USD($)- Dollars</option>
+                          <option value="Rs">INR (Rs) - Rupees</option>
                         </select>
                         <input
                           type="number"
@@ -650,10 +650,11 @@ const CreateTournament = ({ user }) => {
                       <div className="colm">
                         <label for="exampleFormControlInput1">Location</label>
                         <select name="location" onChange={handleChangeCheck}>
-                          <option value="India">India</option>
+                          <option value="">--</option>
+                          <option value="IN">India</option>
                           <option value="Asia">Asia</option>
-                          <option value="China">China</option>
-                          <option value="Japan">Japan</option>
+                          <option value="CN">China</option>
+                          <option value="JP">Japan</option>
                           <option value="Europe">Europe</option>
                         </select>
                         <p>{formErrors.location}</p>

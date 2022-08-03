@@ -142,13 +142,13 @@ const TeamRigs = ({ data, isAdmin, teamRigs }) => {
                       {states.rigsType === 'Console' ? (
                         <>
                           <RigsFilter
-                            val="Cbrand"
+                            val="Console Brand"
                             data={rigsData}
                             states={states}
                           />
 
                           <RigsFilter
-                            val="Cmodel"
+                            val="Console Model"
                             data={rigsData}
                             states={states}
                           />
@@ -174,13 +174,13 @@ const TeamRigs = ({ data, isAdmin, teamRigs }) => {
                       ) : (
                         <>
                           <RigsFilter
-                            val="Mbrand"
+                            val="Mobile Brand"
                             data={rigsData}
                             states={states}
                           />
 
                           <RigsFilter
-                            val="Mmodel"
+                            val="Mobile Model"
                             data={rigsData}
                             states={states}
                           />

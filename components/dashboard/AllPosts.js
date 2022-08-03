@@ -110,11 +110,7 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
             </div>
           </div>
 
-          {post.images.length === 0 ? (
-            <div className="post_discp disc_without_img">
-              <p>{post.description}</p>
-            </div>
-          ) : (
+          {post.images.length === 0 ? null : (
             <div className="post_discp ">
               <p>{post.description}</p>
             </div>
@@ -147,7 +143,11 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
               <span>{commentsData.comments?.length}</span>{' '}
             </a>{' '}
           </div>
-          {post?.images.length === 0 ? null : (
+          {post?.images.length === 0 ? (
+            <div className="post_discp disc_without_img">
+              <p>{post.description}</p>
+            </div>
+          ) : (
             <div className="post_data">
               <img src={post.images} alt="" />
             </div>
