@@ -21,7 +21,7 @@ const TournamentSponsor = ({ user, data, isUser }) => {
   const [sponsors, setSponsors] = useState([]);
   const [count, setCount] = useState(0);
   const [state, setState] = useState({
-    sponsorId: [],
+    sponsor: [],
     title: ''
   });
   const router = useRouter();
@@ -45,7 +45,7 @@ const TournamentSponsor = ({ user, data, isUser }) => {
       await fetch(
         `${baseURL}/api/tournaments/sponsors/${data.tournament._id}`,
         {
-          method: 'PUT',
+          method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
@@ -55,25 +55,11 @@ const TournamentSponsor = ({ user, data, isUser }) => {
       $('a.model_close').parent().removeClass('show_model');
       toast.success('Your Sponsor has been set successfully! ');
     } catch (err) {
+      console.log(err);
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }
     refreshData();
   };
-
-  function handleChange(e) {
-    if (e.target.options) {
-      var options = e.target.options;
-      var value = [];
-      for (var i = 0, l = options.length; i < l; i++) {
-        if (options[i].selected) {
-          value.push(options[i].value);
-        }
-      }
-      setState({ ...state, [e.target.name]: value });
-    } else {
-      setState({ ...state, [e.target.name]: e.target.value });
-    }
-  }
 
   return (
     <div className="tab hide" id="sponsors">
