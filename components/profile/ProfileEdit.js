@@ -647,7 +647,7 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                         name=""
                         value=""
                         placeholder=""
-                        className="form-control"
+                        className="form-control facebook"
                       />
                     </div>
                     <div className="form-group">
@@ -656,7 +656,7 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                         name=""
                         value=""
                         placeholder=""
-                        className="form-control"
+                        className="form-control instagram"
                       />
                     </div>
                     <div className="form-group">
@@ -665,7 +665,7 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                         name=""
                         value=""
                         placeholder=""
-                        className="form-control"
+                        className="form-control twitter"
                       />
                     </div>
                     <div className="form-group">
@@ -674,7 +674,7 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                         name=""
                         value=""
                         placeholder=""
-                        className="form-control"
+                        className="form-control youtube"
                       />
                     </div>
                   </div>

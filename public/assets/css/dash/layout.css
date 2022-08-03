@@ -1899,9 +1899,11 @@ ul.top_menu .drop_down_bg.create_pages p {
 .comments_point {
 	display: flex;
 	width: 100%;
-	align-items: inherit;
+	align-items: center;
 	margin: 20px 0 0 0px;
 }
+
+.comments_point .like_btn{ height: 60px;}
 
 .comments_point .comment_round_box {
 	display: flex;
@@ -3437,6 +3439,7 @@ article .social_bar img {
 	float: left;
 	width: 48%;
 	margin-right: 10%;
+	position: relative;
 }
 
 #big_poup.add_tourn .form-control,
@@ -7222,7 +7225,7 @@ article .social_bar img {
 
 .gallery_box .upload_btn textarea,
 .video_box .upload_btn textarea {
-	width: 300px;
+	width: 100%;
 	margin-bottom: 20px;
 }
 
@@ -8164,6 +8167,23 @@ ul.game_search_result li:hover:after {
 .fa-linkedin {
 	background: #007bb5;
 	color: white;
+}
+
+#big_poup .edit_four .facebook {
+    background: url(/assets/media/social/face.png) 10px 12px no-repeat !important;
+    background-size: 9px !important;
+}
+#big_poup .edit_four .instagram {
+    background: url(/assets/media/social/instagram.png) 10px 13px no-repeat !important;
+    background-size: 16px !important;
+}
+#big_poup .edit_four .twitter {
+    background: url(/assets/media/social/twitter.png) 10px 15px no-repeat !important;
+    background-size: 15px !important;
+}
+#big_poup .edit_four .youtube {
+    background: url(/assets/media/social/youtube.png) 8px 13px no-repeat !important;
+    background-size: 20px !important;
 }
 
 .style_file_upload .inputfile {
@@ -10198,7 +10218,7 @@ form.common_form .btn {
 .stats_card li {
 	float: left;
 	width: 48%;
-	background: #1c1d2f;
+	background: #ddd;
 	padding: 20px;
 	border-radius: 10px;
 	display: flex;
@@ -10228,7 +10248,8 @@ form.common_form .btn {
 	border-radius: 5px;
 	overflow: hidden;
 	height: 107px;
-	object-fit: cover
+	object-fit: cover;
+	margin-right: 20px;
 }
 
 .stats_card li:nth-child(2n) {
@@ -10269,7 +10290,7 @@ form.common_form .btn {
 .stats_card .comp_btn {
 	border: 1px solid #737373;
 	border-radius: 20px;
-	font-size: 12px;
+	font-size: 10px;
 	padding: 5px 8px;
 	margin: 2px 10px;
 }
@@ -12123,6 +12144,8 @@ body.DarkPage .squads_details .table td a {
 body.DarkPage .squads_details .table td {
 	border-top: 1px solid #636363;
 }
+
+body.DarkPage .stats_card li{background: #1c1d2f;}
 
 /* ------------------------------ -- */
 .ring {
