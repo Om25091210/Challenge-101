@@ -22,7 +22,7 @@ const TournamentAddSponsor = ({ sponsors, states }) => {
 
   const handleSelectedRig = (data) => {
     setSearchText(data.name);
-    states.sponsorId.push(data._id);
+    states.sponsor.push(data._id);
   };
 
   return (

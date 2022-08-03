@@ -7,26 +7,26 @@ const TournamentPrizeDetail = ({ tournament }) => {
             tournament.prizes.slice(0, 3).map((tourPrize) => (
               <div className="prize_box">
                 <div className="first_symb">
-                  {tourPrize.place.length > 0 ? (
+                  {tourPrize.place ? (
                     <>{tourPrize?.place}</>
                   ) : (
                     'No place Assigned'
                   )}
                 </div>
                 <div className="prize_money">
-                  {tourPrize.trophy_img.length > 0 ? (
+                  {tourPrize.trophy_img ? (
                     <img src={tourPrize?.trophy_img} alt={tourPrize?.place} />
                   ) : (
                     'No Image'
                   )}
                   <div className="money">
-                    {tourPrize.goodies.length > 0 ? (
+                    {tourPrize.goodies ? (
                       <>{tourPrize?.goodies}</>
                     ) : (
                       'No Prize Yet'
                     )}
                     <span>+</span>
-                    {tourPrize.prizeName.length > 0 ? (
+                    {tourPrize.prizeName ? (
                       <>
                         <p>{tourPrize?.prizeName}</p>
                       </>
@@ -54,10 +54,10 @@ const TournamentPrizeDetail = ({ tournament }) => {
 
         <div className="more_prizes">
           {tournament &&
-            tournament.prizes.slice(3).map((tourPrize) => (
+            tournament.prizes.slice(0, 3).map((tourPrize) => (
               <div className="prize_box">
                 <div className="first_symb">
-                  {tourPrize.place.length > 0 ? (
+                  {tourPrize.place ? (
                     <>{tourPrize?.place}</>
                   ) : (
                     'No place Assigned'
@@ -65,13 +65,13 @@ const TournamentPrizeDetail = ({ tournament }) => {
                 </div>
                 <div className="prize_money">
                   <div className="money">
-                    {tourPrize.goodies.length > 0 ? (
+                    {tourPrize.goodies ? (
                       <>{tourPrize?.goodies}</>
                     ) : (
                       'No Prize Yet'
                     )}
                     <span>+</span>
-                    {tourPrize.prizeName.length > 0 ? (
+                    {tourPrize.prizeName ? (
                       <>
                         <p>{tourPrize?.prizeName}</p>
                       </>
