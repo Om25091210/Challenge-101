@@ -1447,9 +1447,9 @@ ul.top_menu .drop_down_bg.create_pages p {
 
 }
 
-.post .heads .post_discp.disc_without_img {
+.post  .post_discp.disc_without_img {
 	background: #ddd;
-	min-height: 200px;
+	min-height: 250px;
 	text-align: center;
 	display: flex;
 	justify-content: center;
