@@ -93,7 +93,7 @@ const TournamentEdit = ({ data, user }) => {
       <div className="loc_box">
         {' '}
         <a href="#!" className="model_show_btn">
-          <button className="btn">Tournament Edit</button>
+          <button className="btn">Edit</button>
         </a>
         <div className="common_model_box">
           <a href="#!" className="model_close">

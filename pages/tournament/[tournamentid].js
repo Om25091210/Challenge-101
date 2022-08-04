@@ -257,11 +257,6 @@ const TournamentDetail = ({ user, data, products, profile }) => {
                 </div>
 
                 <div className="flex prices">
-                  {data.tournament.user?._id === user._id ? (
-                    <div>
-                      <TournamentEdit data={data} user={user} />
-                    </div>
-                  ) : null}
                   <h5>Prize Pool</h5>
                   {data.tournament.currency}
                   <span className="">
@@ -334,100 +329,11 @@ const TournamentDetail = ({ user, data, products, profile }) => {
                     <span>
                       <div className="loc_box">
                         {' '}
-                        {isUser ? (
-                          <a href="#!" className="model_show_btn">
-                            <button className="btn">
-                              <i
-                                className="fa fa-gear"
-                                aria-hidden="true"
-                                style={{ color: 'white' }}
-                              ></i>
-                            </button>
-                          </a>
-                        ) : null}
-                        <div className="common_model_box">
-                          <a href="#!" className="model_close">
-                            X
-                          </a>
-
-                          <div className="inner_model_box">
-                            <h3>Social Links</h3>
-                            <ul className="socail_urls">
-                              <li>
-                                <input
-                                  type="text"
-                                  placeholder="Facebook User ID"
-                                  onChange={handleChangeSocial}
-                                  value={sociallinks.facebook}
-                                  name="facebook"
-                                />
-                              </li>
-                              <li>
-                                {' '}
-                                <input
-                                  type="text"
-                                  placeholder="Instagram Username"
-                                  onChange={handleChangeSocial}
-                                  value={sociallinks.instagram}
-                                  name="instagram"
-                                />
-                              </li>
-                              <li>
-                                {' '}
-                                <input
-                                  type="text"
-                                  placeholder="Twitch Channel Name"
-                                  onChange={handleChangeSocial}
-                                  value={sociallinks.twitch}
-                                  name="twitch"
-                                />
-                              </li>
-                              <li>
-                                <input
-                                  type="text"
-                                  placeholder="Discord Server URL"
-                                  onChange={handleChangeSocial}
-                                  value={sociallinks.discord}
-                                  name="discord"
-                                />
-                              </li>
-                              <li>
-                                <input
-                                  type="text"
-                                  placeholder="Youtube Channel Name"
-                                  onChange={handleChangeSocial}
-                                  value={sociallinks.youtube}
-                                  name="youtube"
-                                />
-                              </li>
-                              <li>
-                                {' '}
-                                <input
-                                  type="text"
-                                  placeholder="@Twitter Username"
-                                  onChange={handleChangeSocial}
-                                  value={sociallinks.twitter}
-                                  name="twitter"
-                                />
-                              </li>
-                              <li>
-                                {' '}
-                                <input
-                                  type="text"
-                                  placeholder="Your Website Name with Extension"
-                                  onChange={handleChangeSocial}
-                                  value={sociallinks.website}
-                                  name="website"
-                                />
-                              </li>
-                            </ul>
-
-                            <button className="btn" onClick={handleLinksSubmit}>
-                              Confirm Changes
-                            </button>
+                        {data.tournament.user?._id === user._id ? (
+                          <div>
+                            <TournamentEdit data={data} user={user} />
                           </div>
-                          <div className="overlay"></div>
-                        </div>
+                        ) : null}
                       </div>
                     </span>
                   </div>
