@@ -395,10 +395,7 @@ const CreateTeam = ({ user }) => {
                         {/* <p>{formErrors.achievements}</p> */}
                       </div>
                       <div className="colm">
-                        <label htmlFor="exampleFormControlInput1">
-                          Rigs (Optional)
-                        </label>
-                        <label>Keyboard</label>
+                        <label>Keyboard Rigs (Optional)</label>
                         <input
                           id="keyboard"
                           name="keyboard"
@@ -436,7 +433,8 @@ const CreateTeam = ({ user }) => {
                             </div>
                           </div>
                         ) : null}
-
+                      </div>
+                      <div className="colm">
                         <label>Mouse</label>
                         <input
                           id="mouse"
@@ -577,7 +575,7 @@ const CreateTeam = ({ user }) => {
                           </div>
                         ) : null}
                       </div>
-                      <div className="colm">
+                      <div className="colm full_width">
                         <label htmlFor="exampleFormControlInput1">
                           Social Links (Optional)
                         </label>

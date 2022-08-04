@@ -364,6 +364,8 @@ h3 {
 	background: #adadc3;
 }
 
+.full_width{ width: 100% !important;}
+
 /* ------- Header css -------------- */
 
 .without_login_header {
@@ -2995,8 +2997,11 @@ article .social_bar img {
 	text-transform: capitalize;
 }
 
+.profile_dp_box .top_details .name_box .loc_date .fa-map-marker{ margin-right: 10px;}
+
 .profile_dp_box .top_details .name_box .tour_time {
-	margin-left: 20px;
+	margin-left: 0;
+	display: block;
 }
 
 .profile_dp_box .top_details .name_box .follower {
@@ -7983,8 +7988,15 @@ main {
 	bottom: -6px;
 }
 
+.create_tournament .socail_url{    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: flex-start;}
+
 .create_tournament .socail_url li {
-	margin-bottom: 10px;
+	margin-bottom:25px;
+    width: 48%;
+    flex-wrap: wrap;
 }
 
 ul.game_search_result {
@@ -8058,22 +8070,23 @@ ul.game_search_result li:hover:after {
 	background: #1da1f2;
 }
 
-.prize_box {
+.prize_boxs {
 	display: flex;
 	align-items: center;
 }
 
-.prize_box a {
+.prize_boxs a {
 	display: inline-block;
 
 	margin-right: 10px;
 	padding: 5px;
 }
 
-.prize_box input {
+.prize_boxs input {
 	width: 50%;
 	margin-left: 20px;
 }
+
 
 .btn_selection {
 	display: flex;

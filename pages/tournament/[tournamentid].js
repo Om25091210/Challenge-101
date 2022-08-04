@@ -210,7 +210,7 @@ const TournamentDetail = ({ user, data, products, profile }) => {
                         data.tournament?.address?.length > 0 ? (
                           <>
                             <i className="fa fa-map-marker"></i>
-                            <p>{data.tournament?.address}</p>
+                            {data.tournament?.address}
                           </>
                         ) : (
                           <p>Address Unavailable</p>

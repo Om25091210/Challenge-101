@@ -314,7 +314,7 @@ const CreateTournament = ({ user }) => {
                     </div>
                     <div className="form-group">
                       <label for="exampleFormControlInput1">Prizes</label>
-                      <div className="prize_box">
+                      <div className="prize_boxs">
                         {' '}
                         <a href="#">
                           <img src="/assets/media/games/tournament1.png" />
@@ -714,7 +714,7 @@ const CreateTournament = ({ user }) => {
                           value={state.website}
                         />
                       </div>
-                      <div className="colm">
+                      <div className="colm full_width">
                         <label htmlFor="exampleFormControlInput1">
                           Social Links (Optional)
                         </label>
