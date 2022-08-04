@@ -139,6 +139,21 @@ const battlepass = ({ user, data }) => {
                   Week2
                 </a>
               </li>
+              <li class="">
+                <a href="#!" rel="week3">
+                  Week3
+                </a>
+              </li>
+              <li class="">
+                <a href="#!" rel="week4">
+                  Week4
+                </a>
+              </li>
+              <li class="">
+                <a href="#!" rel="week5">
+                  Week5
+                </a>
+              </li>
             </ul>
 
             <div className="prfoile_tab_data">
@@ -149,6 +164,15 @@ const battlepass = ({ user, data }) => {
               </div>
               <div className="tab hide" id="week2">
                 <TaskList week="Week 2" />
+              </div>
+              <div className="tab hide" id="week3">
+                <TaskList week="Week 3" />
+              </div>
+              <div className="tab hide" id="week4">
+                <TaskList week="Week 4" />
+              </div>
+              <div className="tab hide" id="week5">
+                <TaskList week="Week 5" />
               </div>
             </div>
           </div>

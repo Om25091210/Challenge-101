@@ -21,6 +21,9 @@ const Team_Req = ({ user, profile, team }) => {
   const isReqSent =
     team.request?.filter((reque) => reque.playerId._id === playerId).length > 0;
 
+  const isPlayer =
+    team.players?.filter((plyr) => plyr.playerId === playerId).length > 0;
+
   const reqhandlesubmit = async (e) => {
     e.preventDefault();
     try {
@@ -50,7 +53,11 @@ const Team_Req = ({ user, profile, team }) => {
 
   return (
     <>
-      {isReqSent ? (
+      {isPlayer ? (
+        <button className="join" disabled>
+          VIEW TEAM
+        </button>
+      ) : isReqSent ? (
         <button className="join" disabled>
           REQUEST SENT
         </button>

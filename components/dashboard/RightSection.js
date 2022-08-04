@@ -20,19 +20,18 @@ const RightSection = ({ user, suggestedplayers, teams, profile }) => {
   }, []);
 
   const [challenges, setChallenges] = useState([]);
-
+  let type = 'User_team';
   useEffect(() => {
     axios
-      .get(`${baseURL}/api/challenges/userchallenges/${profile._id}`)
+      .get(`${baseURL}/api/challenges/userchallenges/${type}/${profile._id}`)
       .then((res) => {
         setChallenges(res.data);
       });
   }, []);
-
   return (
     <div className="right_side overhight">
       {/* <RecentActivity user={user} /> */}
-      {/* <Challengelist user={user} teams={teams} profile={profile} /> */}
+
       <div className="recent_activity">
         <h2>Challenge List</h2>
         <a href="#!" className="hideShow">

@@ -14,7 +14,9 @@ const TeamChallenge = ({ teams, team }) => {
     startTime: '',
     format: '',
     entry_fee: null,
-    challengeType: ''
+    challengeType: '',
+    isOpenMatch: false,
+    ChallType: 'Team'
   });
 
   function onChange(e) {
@@ -40,6 +42,10 @@ const TeamChallenge = ({ teams, team }) => {
     return team.games.some(function (val2) {
       return val1.gameId._id === val2.gameId;
     });
+  });
+
+  var specialPlayers = User_team[0]?.players.filter(function (val1) {
+    return val1?.playerId.game === Number(state.game[0]);
   });
 
   const handleEditStat = async (e) => {
@@ -93,7 +99,7 @@ const TeamChallenge = ({ teams, team }) => {
               )}
             </select>
             <select name="players" id="players" multiple onChange={onChange}>
-              {User_team[0]?.players?.map((plyr) => (
+              {specialPlayers?.map((plyr) => (
                 <option value={plyr?.playerId?._id}>
                   {plyr.playerId?.apidata
                     ? plyr.playerId.apidata.data.platformInfo.platformUserHandle
