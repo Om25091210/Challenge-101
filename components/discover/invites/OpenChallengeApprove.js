@@ -102,12 +102,10 @@ const Open_ChallengeApprove = ({ challenge, profile }) => {
                       <label htmlFor="exampleFormControlInput1">
                         Challenge with the team
                       </label>
-
                       <select
                         name="selectedTeam"
-                        id="selectedTeam"
                         value={selectedTeam}
-                        onClick={(e) => setSelectedTeam(e.target.value)}
+                        onChange={(e) => setSelectedTeam(e.target.value)}
                       >
                         <option value="--">--</option>
                         {commonTeams &&

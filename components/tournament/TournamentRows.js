@@ -106,13 +106,13 @@ const TournamentRows = ({
                     {result.playType === 'TEAMS' ? (
                       <li>
                         <p>
-                          {result.teams.length} / {result.maxTeams}
+                          {result.teams.length} / {result.numberOfTeam}
                           <b>Signed</b>
                         </p>
                       </li>
                     ) : (
                       <>
-                        {result.participants > 0 || result.maxTeams > 0 ? (
+                        {result.participants > 0 || result.numberOfTeam > 0 ? (
                           <li>
                             <p>
                               {result.registered.length} / {result.participants}
