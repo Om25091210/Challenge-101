@@ -9,6 +9,7 @@ const AdminChallenges = ({ challenges }) => {
       <div className="table">
         <div className="heads_row">
           <div className="heads">ChallengeId</div>
+          <div className="heads">Challenge Type</div>
           <div className="heads">Challenger</div>
           <div className="heads">Challenged</div>
           <div className="heads">Game</div>
@@ -25,15 +26,79 @@ const AdminChallenges = ({ challenges }) => {
           challenges.map((result, idx) => (
             <div className="row_box" key={idx}>
               <div className="cols_box">
-                <div className="cols">{result._id.substring(0, 14)}</div>
-                <div className="cols">{result.User_team.name}</div>
-                <div className="cols">{result.opponent_team.name}</div>
-                <div className="cols">{result.game.name}</div>
-                <div className="cols">
-                  <p>{result.User_team.name}</p>
-                  VS
-                  <p>{result.opponent_team.name}</p>
-                </div>
+                {result.isOpenMatch === false ? (
+                  <>
+                    <div className="cols">{result._id.substring(0, 14)}</div>
+                    <div className="cols">{result.ChallType}</div>
+                    <div className="cols">{result?.User_team?.name}</div>
+                    <div className="cols">{result?.opponent_team?.name}</div>
+                    <div className="cols">{result.game.name}</div>
+                    <div className="cols">
+                      <p>{result?.User_team?.name}</p>
+                      VS
+                      <p>{result?.opponent_team?.name}</p>
+                    </div>
+                  </>
+                ) : result.isOpenMatch === true &&
+                  result.ChallType === 'Team' ? (
+                  <>
+                    <div className="cols">{result._id.substring(0, 14)}</div>
+                    <div className="cols">{result.ChallType}</div>
+                    <div className="cols">{result?.User_team?.name}</div>
+                    <div className="cols">
+                      {result.opponent_team ? result.opponent_team.name : '---'}
+                    </div>
+                    <div className="cols">{result.game.name}</div>
+                    <div className="cols">
+                      <p>{result?.User_team?.name}</p>
+                      VS
+                      <p>
+                        {result.opponent_team
+                          ? result.opponent_team.name
+                          : '---'}
+                      </p>
+                    </div>
+                  </>
+                ) : result.isOpenMatch === true &&
+                  result.ChallType === 'Solo' ? (
+                  <>
+                    <div className="cols">{result._id.substring(0, 14)}</div>
+                    <div className="cols">{result.ChallType}</div>
+                    {result.players.map(
+                      (ply) =>
+                        ply.teamId !== null && (
+                          <div className="cols">
+                            {
+                              ply?.playerId.apidata?.data.platformInfo
+                                .platformUserHandle
+                            }
+                          </div>
+                        )
+                    )}
+                    {result.players.length === 1 ? (
+                      <div className="cols">---</div>
+                    ) : (
+                      result.players.map(
+                        (ply) =>
+                          ply.teamId === null && (
+                            <div className="cols">
+                              {
+                                ply?.playerId.apidata?.data.platformInfo
+                                  .platformUserHandle
+                              }
+                            </div>
+                          )
+                      )
+                    )}
+                    <div className="cols">{result.game.name}</div>
+                    <div className="cols">
+                      <p>{result?.User_team?.name}</p>
+                      VS
+                      <p>{result?.opponent_team?.name}</p>
+                    </div>
+                  </>
+                ) : null}
+
                 <div className="cols">
                   {Moment(result.startDate).format('DD/MMM/YYYY')}
                   <br />

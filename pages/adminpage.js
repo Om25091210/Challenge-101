@@ -7,7 +7,6 @@ import AdminTournaments from '../components/adminfiles/AdminTournaments';
 import AdminChallenges from '../components/adminfiles/AdminChallenges';
 
 const Adminpage = ({ user, data }) => {
-  console.log(data);
   return (
     <>
       <MetaDash />
@@ -17,9 +16,9 @@ const Adminpage = ({ user, data }) => {
       <LeftNav user={user} />
 
       <div className="main_middle profile_middle">
-        <AdminTournaments tournaments={data.tournaments} />
-        <br /> <br />
         <AdminChallenges challenges={data.challenges} />
+        <br /> <br />
+        <AdminTournaments tournaments={data.tournaments} />
       </div>
 
       <AllScript />

@@ -70,7 +70,30 @@ function LeftNav({ user }) {
               </a>
             </Link>{' '}
           </li>
-
+          <li className={router.pathname == '/challenges' ? 'active' : ''}>
+            <Link href="/challenges">
+              <a className="">
+                <span className="iconbg">
+                  <i className="fa fa-trophy" aria-hidden="true"></i>
+                </span>{' '}
+                <span className="title">Challenges</span>
+              </a>
+            </Link>
+          </li>
+          {user?.isSuperAdmin === true ? (
+            <li>
+              <Link href="/adminpage">
+                <a className="">
+                  <span className="iconbg">
+                    <i className="fa fa-cog" aria-hidden="true"></i>
+                  </span>{' '}
+                  <span className="title">Admin Settings</span>
+                </a>
+              </Link>{' '}
+            </li>
+          ) : (
+            ''
+          )}
           <li className="submenu">
             {/* <ListDrag /> */}
 

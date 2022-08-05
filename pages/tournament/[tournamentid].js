@@ -369,7 +369,7 @@ const TournamentDetail = ({ user, data, products, profile }) => {
                             <img src={reg?.user?.profilePicUrl} alt="" />
                           </span>
                         ))}
-                    {data.tournament.playType === 'PLAYERS' ? (
+                    {data.tournament.playType === 'SOLO' ? (
                       <>
                         {data.tournament.registered.length === 0
                           ? 'No Participants Yet'
@@ -395,7 +395,7 @@ const TournamentDetail = ({ user, data, products, profile }) => {
                       <div className="inner_model_box">
                         <h3>Participants</h3>
                         <ul>
-                          {data.tournament.playType === 'PLAYERS' ? (
+                          {data.tournament.playType === 'SOLO' ? (
                             <>
                               {data.tournament.registered.map((ppl) => (
                                 <li>
@@ -438,7 +438,7 @@ const TournamentDetail = ({ user, data, products, profile }) => {
                       {data.tournament.playType === 'TEAMS' ? (
                         <>
                           {data.tournament.teams.length} /{' '}
-                          {data.tournament.maxTeams} <b> SLOTS</b>
+                          {data.tournament.numberOfTeam} <b> SLOTS</b>
                         </>
                       ) : (
                         <>
