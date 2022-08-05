@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import Script from 'next/script';
 import Head from 'next/head';
 import MetaDash from '@components/MetaDash';
@@ -18,12 +18,12 @@ import { useMutation } from 'react-query';
 import cookie from 'js-cookie';
 import { tournamentformvalidate } from '@utils/valid';
 import Router from 'next/router';
+import TournamentAddSponsor from '../../components/tournament/TournamentAddSponsor';
+import countryList from 'react-select-country-list';
 
 const CreateTournament = ({ user }) => {
   const showSecond = false;
   const str = showSecond ? 'HH:mm:ss' : 'HH:mm';
-
-  const [tournament, setTournament] = useState();
 
   const [games, setGames] = useState([]);
   const [organizers, setOrganizers] = useState([]);
@@ -32,6 +32,13 @@ const CreateTournament = ({ user }) => {
   const [step1, setStep1] = useState(false);
   const [showbtn, setShowbtn] = useState(true);
   const [formErrors, setFormErrors] = useState({});
+  const [newSpon, setNewSpon] = useState({
+    sponsor: [],
+    organizer: []
+  });
+  const [selectGames, setSelectGames] = useState({
+    game: ''
+  });
 
   const [state, setState] = useState({
     user: user._id,
@@ -44,8 +51,8 @@ const CreateTournament = ({ user }) => {
     category: '',
     tournamentType: '--',
     Type: '',
-    format: '',
     participants: 0,
+    minParticipants: 0,
     entranceFee: null,
     startDate: '',
     startTime: '',
@@ -53,9 +60,9 @@ const CreateTournament = ({ user }) => {
     endTime: '',
     location: '',
     address: '',
-    organizer: '',
+    organizer: newSpon.organizer || '',
     cohosts: '',
-    sponsor: '',
+    sponsor: newSpon.sponsor || '',
     description: '',
     tickets: '',
     website: '',
@@ -67,12 +74,12 @@ const CreateTournament = ({ user }) => {
     discord: '',
     file: null,
     series: null,
-    playersPerTeam: null,
+    numberOfTeam: null,
     playType: '',
-    maxTeams: null,
-    minTeams: null,
-    platform: ''
+    minTeams: null
   });
+
+  const options = useMemo(() => countryList().getData(), []);
 
   useEffect(() => {
     //Games
@@ -150,6 +157,14 @@ const CreateTournament = ({ user }) => {
     setShowbtn(true);
   };
 
+  let gamePlatform = games.filter((game) => game._id === selectGames.game);
+
+  const handleGame = (e, gameId) => {
+    e.preventDefault();
+    setSelectGames({ game: gameId });
+    state.game = gameId;
+  };
+
   return (
     <>
       <MetaDash />
@@ -225,7 +240,7 @@ const CreateTournament = ({ user }) => {
                         value={state.name}
                       />
                       <p>{formErrors.name}</p>
-                      {state.name.length > 64 ? (
+                      {state.name && state.name.length > 64 ? (
                         <p style={{ color: '#d92a27' }}>
                           {state.name.length} / 64
                         </p>
@@ -261,38 +276,23 @@ const CreateTournament = ({ user }) => {
                         </label>
                       </div>
                     </div>
-                    <div className="form-group">
-                      <label for="exampleFormControlInput1">Games</label>
-                      <select
-                        className="game_search_result mscrollbar"
-                        multiple={true}
-                        name="game"
-                        value={state.game}
-                        onChange={handleChange}
-                      >
-                        {games &&
-                          games.map((game, idx) => (
-                            <option key={idx} value={game._id}>
-                              {' '}
-                              {game.name}{' '}
-                            </option>
-                          ))}
-                      </select>
-                      <p>{formErrors.game}</p>
-                    </div>
-                    <div className="form-group">
-                      <label for="exampleFormControlInput1">Platform</label>
-                      <select
-                        className="game_search_result mscrollbar"
-                        name="platform"
-                        value={state.platform}
-                        onChange={handleChange}
-                        multiple={true}
-                      >
-                        <option value="--">--</option>
-                        <option value="PC">PC</option>
-                      </select>
-                    </div>
+
+                    <label for="exampleFormControlInput1">Games</label>
+                    {games.map((game) => (
+                      <>
+                        <div
+                          onClick={(e) => handleGame(e, game._id)}
+                          style={{
+                            height: '30px',
+                            width: '30px',
+                            display: 'flex'
+                          }}
+                        >
+                          <img src={game.imgUrl} alt={game.name} />
+                        </div>
+                      </>
+                    ))}
+
                     <div className="form-group">
                       <label for="exampleFormControlInput1">
                         Series (Optional)
@@ -312,13 +312,51 @@ const CreateTournament = ({ user }) => {
                           ))}
                       </select>
                     </div>
+
+                    <div>
+                      {gamePlatform &&
+                        gamePlatform.map((game) => (
+                          <>
+                            <img
+                              style={{ height: '35px', width: '35px' }}
+                              src={game.imgUrl}
+                              alt=""
+                            />
+                            <div>
+                              {game.platform.map((plt) => (
+                                <>
+                                  <p>
+                                    {' '}
+                                    {plt === 'PC' ? (
+                                      <img
+                                        src="/assets/media/discover/desk.png"
+                                        alt={game.name}
+                                      />
+                                    ) : null}
+                                    {plt === 'Console' ? (
+                                      <img
+                                        src="/assets/media/discover/console.png"
+                                        alt={game.name}
+                                      />
+                                    ) : null}
+                                    {plt === 'Mobile' ? (
+                                      <img
+                                        src="/assets/media/discover/mobile_game.png"
+                                        alt={game.name}
+                                      />
+                                    ) : null}
+                                  </p>
+                                </>
+                              ))}
+                            </div>
+                          </>
+                        ))}
+                    </div>
+
                     <div className="form-group">
-                      <label for="exampleFormControlInput1">Prizes</label>
+                      <label for="exampleFormControlInput1">Prize Pool</label>
                       <div className="prize_boxs">
                         {' '}
-                        <a href="#">
-                          <img src="/assets/media/games/tournament1.png" />
-                        </a>
                         <select
                           name="currency"
                           id="currency"
@@ -415,39 +453,22 @@ const CreateTournament = ({ user }) => {
                         </div>
                       </div>
                     </div>
-                    <div className="form-group">
-                      <label for="exampleFormControlTextarea1">
-                        Tournament Format
-                      </label>
-                      <div className="btn_selection">
-                        <select
-                          name="format"
-                          onChange={handleChange}
-                          value={state.format}
-                        >
-                          <option value="--">--</option>
-                          <option value="1v1">1 v 1</option>
-                          <option value="2v2">2 v 2</option>
-                          <option value="4v4">4 v 4</option>
-                          <option value="5v5">5 v 5</option>
-                          <option value="8v8">8 v 8</option>
-                        </select>
-                      </div>
-                    </div>
                   </>
                 ) : (
                   <>
                     <h2>Step2</h2>
 
                     <div className="form-group">
-                      <label for="exampleFormControlTextarea1">Play Type</label>
+                      <label for="exampleFormControlTextarea1">
+                        Tournament Format
+                      </label>
                       <div className="btn_selection">
                         <div className="big_btn">
-                          <span class="form-check-label terms">Players</span>
+                          <span class="form-check-label terms">Solo</span>
                           <input
                             type="checkbox"
                             name="playType"
-                            value="PLAYERS"
+                            value="SOLO"
                             onChange={handleChangeCheck}
                           />
                         </div>
@@ -463,45 +484,48 @@ const CreateTournament = ({ user }) => {
                         </div>
                       </div>
                     </div>
-                    {state.playType === 'PLAYERS' ? (
-                      <div className="form-group">
-                        <label for="exampleFormControlTextarea1">
-                          Number of Participants
-                        </label>
-                        <input
-                          type="number"
-                          name="participants"
-                          className="form-control"
-                          onChange={handleChange}
-                          value={state.participants}
-                          placeholder=""
-                        />
-                      </div>
+                    {state.playType === 'SOLO' ? (
+                      <>
+                        <div className="form-group">
+                          <label for="exampleFormControlTextarea1">
+                            Number of Participants
+                          </label>
+                          <input
+                            type="number"
+                            name="participants"
+                            className="form-control"
+                            onChange={handleChange}
+                            value={state.participants}
+                            placeholder=""
+                          />
+                        </div>
+                        <div className="form-group">
+                          <label for="exampleFormControlTextarea1">
+                            Minimum Participants
+                          </label>
+                          <input
+                            type="number"
+                            name="minParticipants"
+                            className="form-control"
+                            onChange={handleChange}
+                            value={state.minParticipants}
+                            placeholder=""
+                          />
+                        </div>
+                      </>
                     ) : null}
                     {state.playType === 'TEAMS' ? (
                       <>
                         <div className="form-group">
                           <label for="exampleFormControlTextarea1">
-                            Players Per Team
+                            Number of Teams
                           </label>
                           <input
                             type="number"
-                            name="playersPerTeam"
+                            name="numberOfTeam"
                             className="form-control"
                             onChange={handleChange}
-                            value={state.playersPerTeam}
-                          />
-                        </div>
-                        <div className="form-group">
-                          <label for="exampleFormControlTextarea1">
-                            Maximum Teams
-                          </label>
-                          <input
-                            type="number"
-                            name="maxTeams"
-                            className="form-control"
-                            onChange={handleChange}
-                            value={state.maxTeams}
+                            value={state.numberOfTeam}
                           />
                         </div>
                         <div className="form-group">
@@ -593,44 +617,22 @@ const CreateTournament = ({ user }) => {
                         <label for="exampleFormControlInput1">
                           Sponsors (Optional)
                         </label>
-
-                        <select
-                          className="game_search_result"
-                          name="sponsor"
-                          value={state.value}
-                          multiple={true}
-                          onChange={handleChange}
-                        >
-                          {sponsors &&
-                            sponsors.map((spon, idx) => (
-                              <option key={idx} value={spon._id}>
-                                {' '}
-                                {spon.name}{' '}
-                              </option>
-                            ))}
-                        </select>
+                        <TournamentAddSponsor
+                          states={newSpon}
+                          sponsors={sponsors}
+                          type="SPONSORS"
+                        />
                       </div>
 
                       <div className="colm">
                         <label for="exampleFormControlInput1">
                           Organizer (Optional)
                         </label>
-
-                        <select
-                          className="game_search_result"
-                          name="organizer"
-                          value={state.organizer}
-                          multiple={true}
-                          onChange={handleChange}
-                        >
-                          {organizers &&
-                            organizers.map((org, idx) => (
-                              <option key={idx} value={org._id}>
-                                {' '}
-                                {org.name}{' '}
-                              </option>
-                            ))}
-                        </select>
+                        <TournamentAddSponsor
+                          states={newSpon}
+                          sponsors={organizers}
+                          type="ORGANIZER"
+                        />
                       </div>
 
                       <div className="colm">
@@ -651,11 +653,12 @@ const CreateTournament = ({ user }) => {
                         <label for="exampleFormControlInput1">Location</label>
                         <select name="location" onChange={handleChangeCheck}>
                           <option value="">--</option>
-                          <option value="IN">India</option>
-                          <option value="Asia">Asia</option>
-                          <option value="CN">China</option>
-                          <option value="JP">Japan</option>
-                          <option value="Europe">Europe</option>
+                          {options &&
+                            options.map((opt) => (
+                              <>
+                                <option value={opt.value}>{opt.label}</option>
+                              </>
+                            ))}
                         </select>
                         <p>{formErrors.location}</p>
                       </div>

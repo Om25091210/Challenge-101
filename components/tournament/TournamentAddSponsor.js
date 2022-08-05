@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 
-const TournamentAddSponsor = ({ sponsors, states }) => {
-  const [newStates, setNewStates] = useState([]);
-
+const TournamentAddSponsor = ({ sponsors, states, type }) => {
   const [filteredData, setFilteredData] = useState([]);
   const [searchText, setSearchText] = useState('');
 
@@ -22,17 +20,25 @@ const TournamentAddSponsor = ({ sponsors, states }) => {
 
   const handleSelectedRig = (data) => {
     setSearchText(data.name);
-    states.sponsor.push(data._id);
+    if (type === 'ORGANIZER') {
+      states.organizer.push(data._id);
+    } else {
+      states.sponsor.push(data._id);
+    }
   };
 
   return (
     <>
       <div className="colm">
-        <label htmlFor="exampleFormControlInput1">Sponsor</label>
+        {type === 'ORGANIZER' || type === 'SPONSORS' ? null : (
+          <label htmlFor="exampleFormControlInput1">Sponsor</label>
+        )}
         <input
           type="search"
           name="sponsor"
-          placeholder={`Enter The Sponsor name`}
+          placeholder={`Enter The ${
+            type === 'ORGANIZER' ? 'Organizer' : 'Sponsor'
+          } name`}
           value={searchText}
           onChange={handleFilter}
           autoComplete="off"
@@ -41,7 +47,9 @@ const TournamentAddSponsor = ({ sponsors, states }) => {
           <div className="custom-rig-tag">
             <div>
               {!filteredData || filteredData.length === 0 ? (
-                <p>No Sponsor found..</p>
+                <p>
+                  No {type === 'ORGANIZER' ? 'Organizer' : 'Sponsor'} found..
+                </p>
               ) : (
                 filteredData.map((data) => (
                   <div onClick={() => handleSelectedRig(data)} key={data._id}>
