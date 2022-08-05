@@ -44,6 +44,7 @@ const Open_ChallengeApprove = ({ challenge, profile }) => {
         )
         .then((res) => {});
       toast.success('The request has been approved.');
+      $('a.model_close').parent().removeClass('show_model');
     } catch (err) {
       console.log(err);
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
@@ -102,12 +103,10 @@ const Open_ChallengeApprove = ({ challenge, profile }) => {
                       <label htmlFor="exampleFormControlInput1">
                         Challenge with the team
                       </label>
-
                       <select
                         name="selectedTeam"
-                        id="selectedTeam"
                         value={selectedTeam}
-                        onClick={(e) => setSelectedTeam(e.target.value)}
+                        onChange={(e) => setSelectedTeam(e.target.value)}
                       >
                         <option value="--">--</option>
                         {commonTeams &&
