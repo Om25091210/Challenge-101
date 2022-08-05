@@ -50,15 +50,7 @@ const challenges = ({ user, data, teams, profile }) => {
               <a href="#!" className="model_show_btn">
                 <span>
                   <b className="icon">
-                    {true ? (
-                      <img
-                        src="src=/assets/media/ranking/team1.png"
-                        alt=""
-                        style={{ width: '26px', height: '18px' }}
-                      />
-                    ) : (
-                      <img src="/assets/media/ranking/console.png" alt="" />
-                    )}
+                    <img src="/assets/media/ranking/console.png" alt="" />
                   </b>
                   Browse Games
                 </span>

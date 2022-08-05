@@ -2,6 +2,7 @@ import React from 'react';
 import Moment from 'moment';
 import ChallengeApprove from '../discover/invites/ChallengeApprove';
 import ChallengeDecline from '../discover/invites/ChallengeDecline';
+import OpenChallengeApprove from '../discover/invites/OpenChallengeApprove';
 
 const ChallengesDisplay = ({ chall, user, profile }) => {
   const isInvite =
@@ -10,7 +11,13 @@ const ChallengesDisplay = ({ chall, user, profile }) => {
         return pro.player?._id === chall.playerId?._id;
       });
     }).length > 0;
-  console.log(profile.playergames);
+
+  const IsPlayer =
+    chall.players.filter((ply) => {
+      return profile.playergames.some((pro) => {
+        return pro.player?._id === ply.playerId?._id;
+      });
+    }).length > 0;
 
   return (
     <>
@@ -25,7 +32,7 @@ const ChallengesDisplay = ({ chall, user, profile }) => {
             </div>
           ) : chall.ChallType === 'Solo' ? (
             chall.players &&
-            chall.players.map((ply) => (
+            chall.players.slice(0, 1).map((ply) => (
               <div className="card_img">
                 <div className="img">
                   <img
@@ -85,8 +92,12 @@ const ChallengesDisplay = ({ chall, user, profile }) => {
                 <a href={`join/${chall._id}`}>Go to Lobby</a>
               </button>
             )
+          ) : IsPlayer === false ? (
+            <OpenChallengeApprove profile={profile} challenge={chall} />
           ) : (
-            <button className="btn">Accept</button>
+            <button className="btn">
+              <a href={`join/${chall._id}`}>Go to Lobby</a>
+            </button>
           )}
         </div>
       </li>

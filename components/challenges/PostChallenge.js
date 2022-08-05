@@ -51,12 +51,16 @@ const PostChallenge = ({ games, teams }) => {
   const handleEditStat = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`${baseURL}/api/challenges/create`, state, {
-        headers: {
-          Authorization: cookie.get('token'),
-          'Content-Type': 'application/json'
+      await axios.post(
+        `${baseURL}/api/challenges/postchallenge/create`,
+        state,
+        {
+          headers: {
+            Authorization: cookie.get('token'),
+            'Content-Type': 'application/json'
+          }
         }
-      });
+      );
       toast.success('The Challenge Has Been Sent');
       $('a.model_close').parent().removeClass('show_model');
     } catch (err) {
