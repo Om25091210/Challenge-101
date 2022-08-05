@@ -97,7 +97,7 @@ const CreateListing = ({ user }) => {
                     <div className="big_btn">
                       <span class="form-check-label terms">Product</span>
                       <input
-                        type="checkbox"
+                        type="radio"
                         name="Type"
                         value="Product"
                         onChange={handleChangeCheck}
@@ -107,7 +107,7 @@ const CreateListing = ({ user }) => {
                     <div className="big_btn">
                       <span class="form-check-label terms">NFT</span>
                       <input
-                        type="checkbox"
+                        type="radio"
                         name="Type"
                         value="NFT"
                         onChange={handleChangeCheck}
@@ -117,7 +117,7 @@ const CreateListing = ({ user }) => {
                     <div className="big_btn">
                       <span class="form-check-label terms">Service</span>
                       <input
-                        type="checkbox"
+                        type="radio"
                         name="Type"
                         value="Service"
                         onChange={handleChangeCheck}

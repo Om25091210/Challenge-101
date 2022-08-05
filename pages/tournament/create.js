@@ -196,7 +196,7 @@ const CreateTournament = ({ user }) => {
                       <div className="big_btn">
                         <span class="form-check-label terms"> Ladder</span>
                         <input
-                          type="checkbox"
+                          type="radio"
                           name="Type"
                           id=""
                           value="Ladder"
@@ -207,7 +207,7 @@ const CreateTournament = ({ user }) => {
                       <div className="big_btn">
                         <span class="form-check-label terms"> Competition</span>
                         <input
-                          type="checkbox"
+                          type="radio"
                           name="Type"
                           id=""
                           value="Competition"
@@ -218,10 +218,11 @@ const CreateTournament = ({ user }) => {
                       <div className="big_btn">
                         <span class="form-check-label terms"> Tournament</span>
                         <input
-                          type="checkbox"
+                          type="radio"
                           name="Type"
                           id=""
                           value="Tournament"
+                          placeholder="Tournament"
                           onChange={handleChangeCheck}
                         />
                       </div>
@@ -386,7 +387,7 @@ const CreateTournament = ({ user }) => {
                         <div className="big_btn">
                           <span class="form-check-label terms"> Online</span>
                           <input
-                            type="checkbox"
+                            type="radio"
                             name="category"
                             id=""
                             value="Online"
@@ -397,7 +398,7 @@ const CreateTournament = ({ user }) => {
                         <div className="big_btn">
                           <span class="form-check-label terms"> LAN</span>
                           <input
-                            type="checkbox"
+                            type="radio"
                             name="category"
                             value="LAN"
                             onChange={handleChangeCheck}
@@ -416,7 +417,7 @@ const CreateTournament = ({ user }) => {
                             Leaderboard
                           </span>
                           <input
-                            type="checkbox"
+                            type="radio"
                             name="tournamentType"
                             id=""
                             value="Leaderboard"
@@ -430,7 +431,7 @@ const CreateTournament = ({ user }) => {
                             Single Elimination
                           </span>
                           <input
-                            type="checkbox"
+                            type="radio"
                             name="tournamentType"
                             id=""
                             value="Single Elimination"
@@ -444,7 +445,7 @@ const CreateTournament = ({ user }) => {
                             Double Elimination
                           </span>
                           <input
-                            type="checkbox"
+                            type="radio"
                             name="tournamentType"
                             id=""
                             value="Double Elimination"
@@ -466,7 +467,7 @@ const CreateTournament = ({ user }) => {
                         <div className="big_btn">
                           <span class="form-check-label terms">Solo</span>
                           <input
-                            type="checkbox"
+                            type="radio"
                             name="playType"
                             value="SOLO"
                             onChange={handleChangeCheck}

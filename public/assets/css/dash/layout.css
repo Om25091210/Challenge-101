@@ -8104,12 +8104,22 @@ ul.game_search_result li:hover:after {
 }
 
 .btn_selection .big_btn span {
-	/* position: absolute;
-    left:0;
-    right: 0; 
+    position: absolute;
+    left: 0;
+    right: 0;
     margin: auto;
-    top: 10px; */
+    top: 0;
+    width: 100%;
+    height: 100%;
+    line-height: 43px;
+    text-align: center;
+	background-color: #222f41;
+    border: 1px solid #344860;
+	z-index: 0;
+	border-radius: 5px
 }
+
+.btn_selection .big_btn.radio_bg span{background-color: #1da1f2; border: 1px solid #1da1f2;}
 
 .date_time {
 	display: flex;
@@ -11581,21 +11591,26 @@ body.DarkPage .create_tournament form select {
 	border-radius: 5px;
 }
 
-body.DarkPage .create_tournament .btn_selection input[type="checkbox"] {
-	background-color: #222f41;
-	border: 1px solid #344860;
+body.DarkPage .create_tournament .btn_selection input[type="checkbox"], 
+body.DarkPage .create_tournament .btn_selection input[type="radio"],
+body.DarkPage .inner_model_box .btn_selection input[type="radio"] {
+	/* background-color: #222f41;
+	border: 1px solid #344860; */
 	border-radius: 5px;
 	cursor: pointer;
+	position: relative; z-index: 1; opacity: 0;
 }
 
-body.DarkPage .create_tournament .btn_selection input[type='checkbox']:checked {
+body.DarkPage .create_tournament .btn_selection input[type='checkbox']:checked,
+body.DarkPage .create_tournament .btn_selection input[type='radio']:checked {
 	background-color: #1da1f2;
 	border: 1px solid #1da1f2;
+
 }
+
 
 body.DarkPage .inner_model_box .btn_selection input[type='checkbox']:checked {
-	background-color: #1da1f2;
-	border: 1px solid #1da1f2;
+	position: relative; z-index: 1; opacity: 0;
 }
 
 .btn_selection input[type='checkbox']:focus {

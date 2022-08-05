@@ -144,7 +144,7 @@ const ProductRigs = ({ user, productList, Userdata }) => {
                   <div className="big_btn">
                     <span class="form-check-label terms">PC</span>
                     <input
-                      type="checkbox"
+                      type="radio"
                       name="rigsType"
                       value="PC"
                       onChange={handleChangeCheck}
@@ -154,7 +154,7 @@ const ProductRigs = ({ user, productList, Userdata }) => {
                   <div className="big_btn">
                     <span class="form-check-label terms">Console</span>
                     <input
-                      type="checkbox"
+                      type="radio"
                       name="rigsType"
                       value="Console"
                       onChange={handleChangeCheck}
@@ -164,7 +164,7 @@ const ProductRigs = ({ user, productList, Userdata }) => {
                   <div className="big_btn">
                     <span class="form-check-label terms">Mobile</span>
                     <input
-                      type="checkbox"
+                      type="radio"
                       name="rigsType"
                       value="Mobile"
                       onChange={handleChangeCheck}

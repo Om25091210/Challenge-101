@@ -120,6 +120,11 @@ function Customjs() {
       $(this).parent().addClass('active');
     });
 
+    $('.big_btn input[type="radio"]').click(function () {
+      $(this).parent().siblings('.big_btn').removeClass('radio_bg');
+      $(this).parent().addClass('radio_bg');
+    });
+
     /* ----------- team ---------------- */
 
     $('.size-option ul li')

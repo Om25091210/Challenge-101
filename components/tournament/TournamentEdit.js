@@ -111,7 +111,7 @@ const TournamentEdit = ({ data, user }) => {
                     <div className="big_btn">
                       <span class="form-check-label terms">Tournament</span>
                       <input
-                        type="checkbox"
+                        type="radio"
                         name="tourType"
                         value="Tournament"
                         onChange={handleChangeCheck}
@@ -121,7 +121,7 @@ const TournamentEdit = ({ data, user }) => {
                     <div className="big_btn">
                       <span class="form-check-label terms">Ladder</span>
                       <input
-                        type="checkbox"
+                        type="radio"
                         name="tourType"
                         value="Ladder"
                         onChange={handleChangeCheck}
@@ -131,7 +131,7 @@ const TournamentEdit = ({ data, user }) => {
                     <div className="big_btn">
                       <span class="form-check-label terms">Competition</span>
                       <input
-                        type="checkbox"
+                        type="radio"
                         name="tourType"
                         value="Competition"
                         onChange={handleChangeCheck}
@@ -140,7 +140,7 @@ const TournamentEdit = ({ data, user }) => {
                     <div className="big_btn">
                       <span class="form-check-label terms">League</span>
                       <input
-                        type="checkbox"
+                        type="radio"
                         name="tourType"
                         value="League"
                         onChange={handleChangeCheck}

@@ -88,7 +88,7 @@ const PostChallenge = ({ games, teams }) => {
                 <div className="big_btn">
                   <span class="form-check-label terms">Solo</span>
                   <input
-                    type="checkbox"
+                    type="radio"
                     name="ChallType"
                     value="Solo"
                     onChange={handleChangeCheck}
@@ -98,7 +98,7 @@ const PostChallenge = ({ games, teams }) => {
                 <div className="big_btn">
                   <span class="form-check-label terms">Team</span>
                   <input
-                    type="checkbox"
+                    type="radio"
                     name="ChallType"
                     value="Team"
                     onChange={handleChangeCheck}

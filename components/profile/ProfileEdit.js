@@ -201,7 +201,7 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                     <div className="big_btn">
                       <span class="form-check-label terms">Gamer</span>
                       <input
-                        type="checkbox"
+                        type="radio"
                         name="profileType"
                         value="Gamer"
                         onChange={handleChangeCheck}
@@ -211,7 +211,7 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                     <div className="big_btn">
                       <span class="form-check-label terms">Coach</span>
                       <input
-                        type="checkbox"
+                        type="radio"
                         name="profileType"
                         value="Coach"
                         onChange={handleChangeCheck}
@@ -221,7 +221,7 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                     <div className="big_btn">
                       <span class="form-check-label terms">Streamer</span>
                       <input
-                        type="checkbox"
+                        type="radio"
                         name="profileType"
                         value="Streamer"
                         onChange={handleChangeCheck}
@@ -230,7 +230,7 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                     <div className="big_btn">
                       <span class="form-check-label terms">Business</span>
                       <input
-                        type="checkbox"
+                        type="radio"
                         name="profileType"
                         value="Business"
                         onChange={handleChangeCheck}
