@@ -44,6 +44,7 @@ const Open_ChallengeApprove = ({ challenge, profile }) => {
         )
         .then((res) => {});
       toast.success('The request has been approved.');
+      $('a.model_close').parent().removeClass('show_model');
     } catch (err) {
       console.log(err);
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');

@@ -70,7 +70,7 @@ const TournamentRows = ({
                 </div>
                 <div className="bottom_game">
                   <ul className="users">
-                    {result?.playType === 'PLAYERS' ||
+                    {result?.playType === 'SOLO' ||
                     result.registered.length > 0 ? (
                       <>
                         {result.registered.map((ppl) => (
@@ -222,7 +222,7 @@ const TournamentRows = ({
                 </div>
                 <div className="bottom_game">
                   <ul className="users">
-                    {result.tournament?.playType === 'PLAYERS' ||
+                    {result.tournament?.playType === 'SOLO' ||
                     result.tournament.registered.length > 0 ? (
                       <>
                         {result.tournament.registered.map((ppl) => (
@@ -259,14 +259,14 @@ const TournamentRows = ({
                       <li>
                         <p>
                           {result.tournament.teams.length} /{' '}
-                          {result.tournament.maxTeams}
+                          {result.tournament.numberOfTeam}
                           <b>Signed</b>
                         </p>
                       </li>
                     ) : (
                       <>
                         {result.tournament.participants > 0 ||
-                        result.tournament.maxTeams > 0 ? (
+                        result.tournament.numberOfTeam > 0 ? (
                           <li>
                             <p>
                               {result.tournament.registered.length} /{' '}
