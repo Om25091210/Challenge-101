@@ -52,11 +52,17 @@ const TournamentRows = ({
                       : 'Not defined'}
                   </div>
                   {result.Type && result.Type === 'Ladder' ? (
-                    <p>Ladder</p>
+                    <span className="type_img">
+                      <img src="/assets/media/tournament/1.png" alt="" />
+                    </span>
                   ) : result?.Type === 'Tournament' ? (
-                    <p>Tournament</p>
+                    <span className="type_img">
+                      <img src="/assets/media/tournament/1.png" alt="" />
+                    </span>
                   ) : result.Type === 'Competition' ? (
-                    <p>Competition</p>
+                    <span className="type_img">
+                      <img src="/assets/media/tournament/1.png" alt="" />
+                    </span>
                   ) : null}
                   <div className="reg">
                     <TournamentRegister tournament={result} user={user} />
@@ -194,11 +200,17 @@ const TournamentRows = ({
                   </div>
                   {result.tournament.Type &&
                   result.tournament.Type === 'Ladder' ? (
-                    <p>Ladder</p>
+                    <span className="type_img">
+                      <img src="/assets/media/tournament/1.png" alt="" />
+                    </span>
                   ) : result?.tournament.Type === 'Tournament' ? (
-                    <p>Tournament</p>
+                    <span className="type_img">
+                      <img src="/assets/media/tournament/1.png" alt="" />
+                    </span>
                   ) : result.tournament.Type === 'Competition' ? (
-                    <p>Competition</p>
+                    <span className="type_img">
+                      <img src="/assets/media/tournament/1.png" alt="" />
+                    </span>
                   ) : null}
                   <div className="reg">
                     <TournamentRegister

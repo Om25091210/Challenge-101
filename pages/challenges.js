@@ -126,7 +126,7 @@ const challenges = ({ user, data, teams, profile }) => {
                 <div className="row1">
                   <span>
                     Game:
-                    <img src={chall.game.imgUrl} alt="" />
+                    <img src={chall?.game.imgUrl} alt="" />
                   </span>
 
                   <span>

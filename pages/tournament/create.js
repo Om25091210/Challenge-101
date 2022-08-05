@@ -242,13 +242,11 @@ const CreateTournament = ({ user }) => {
                       />
                       <p>{formErrors.name}</p>
                       {state.name && state.name.length > 64 ? (
-                        <p style={{ color: '#d92a27' }}>
+                        <p className="char_limit reds">
                           {state.name.length} / 64
                         </p>
                       ) : (
-                        <p style={{ color: 'grey' }}>
-                          {state.name.length} / 64
-                        </p>
+                        <p className="char_limit ">{state.name.length} / 64</p>
                       )}
                     </div>
                     <div className="form-group">
@@ -279,20 +277,15 @@ const CreateTournament = ({ user }) => {
                     </div>
 
                     <label for="exampleFormControlInput1">Games</label>
-                    {games.map((game) => (
-                      <>
-                        <div
-                          onClick={(e) => handleGame(e, game._id)}
-                          style={{
-                            height: '30px',
-                            width: '30px',
-                            display: 'flex'
-                          }}
-                        >
-                          <img src={game.imgUrl} alt={game.name} />
-                        </div>
-                      </>
-                    ))}
+                    <ul className="game_search_result">
+                      {games.map((game) => (
+                        <>
+                          <li onClick={(e) => handleGame(e, game._id)}>
+                            <img src={game.imgUrl} alt={game.name} />
+                          </li>
+                        </>
+                      ))}
+                    </ul>
 
                     <div className="form-group">
                       <label for="exampleFormControlInput1">
@@ -314,19 +307,21 @@ const CreateTournament = ({ user }) => {
                       </select>
                     </div>
 
-                    <div>
-                      {gamePlatform &&
-                        gamePlatform.map((game) => (
-                          <>
-                            <img
-                              style={{ height: '35px', width: '35px' }}
-                              src={game.imgUrl}
-                              alt=""
-                            />
-                            <div>
+                    <div className="form-group">
+                      <label for="exampleFormControlInput1">Prize Pool</label>
+                      <div className="prize_boxs">
+                        {gamePlatform &&
+                          gamePlatform.map((game) => (
+                            <>
+                              <img
+                                style={{ height: '35px', width: '35px' }}
+                                src={game.imgUrl}
+                                alt=""
+                              />
+
                               {game.platform.map((plt) => (
                                 <>
-                                  <p>
+                                  <div className="console_bg">
                                     {' '}
                                     {plt === 'PC' ? (
                                       <img
@@ -346,18 +341,12 @@ const CreateTournament = ({ user }) => {
                                         alt={game.name}
                                       />
                                     ) : null}
-                                  </p>
+                                  </div>
                                 </>
                               ))}
-                            </div>
-                          </>
-                        ))}
-                    </div>
+                            </>
+                          ))}
 
-                    <div className="form-group">
-                      <label for="exampleFormControlInput1">Prize Pool</label>
-                      <div className="prize_boxs">
-                        {' '}
                         <select
                           name="currency"
                           id="currency"

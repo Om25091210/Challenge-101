@@ -297,6 +297,7 @@ h3 {
 	border: 0;
 	font-size: 15px;
 }
+.btn:focus{ outline: 0 !important; box-shadow: none !important;}
 
 .btn:hover,
 .apply:hover {
@@ -5393,6 +5394,8 @@ article .social_bar img {
 	background: #7239ea;
 }
 
+.top_game .type_img{ width: 30px;}
+
 .top_game,
 .bottom_game {
 	display: flex;
@@ -7831,6 +7834,7 @@ main {
 	text-align: left;
 	font-size: 12px;
 	line-height: 14px;
+	margin-left: 10px;
 }
 
 .tournament_dp_box .left_bio .slots b {
@@ -7980,14 +7984,15 @@ main {
 	background-position: 0 13px;
 }
 
-.create_tournament form .form-group p {
-	position: relative;
-	left: 0;
-	color: red;
-	font-size: 11px;
-	bottom: -6px;
+.create_tournament form .form-group .char_limit {
+    position: absolute;
+    right: 11px;
+    color: #929292;
+    font-size: 11px;
+    bottom: 12px;
 }
 
+.create_tournament form .form-group .char_limit.reds{ color: red;}
 .create_tournament .socail_url{    display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -8011,8 +8016,14 @@ ul.game_search_result li {
 	margin-bottom: 20px;
 	/* border: 1px solid #fff; */
 	margin-right: 3%;
+	height: 120px;
 	position: relative;
+	border-radius: 5px;
+    overflow: hidden;
+	background: #fff;
 }
+
+ul.game_search_result li img{ width: 100%; height: 120px;}
 
 ul.game_search_result li:after {
 	display: none;
@@ -8075,12 +8086,17 @@ ul.game_search_result li:hover:after {
 	align-items: center;
 }
 
-.prize_boxs a {
-	display: inline-block;
-
-	margin-right: 10px;
-	padding: 5px;
+.prize_boxs .console_bg {
+    display: inline-block;
+    margin: 0 5px;
+    padding: 5px;
+    background: #1da1f2;
+    width: 50px;
+    height: 32px;
+    border-radius: 5px; text-align: center;
 }
+
+.prize_boxs .console_bg img{ width: 20px; display: inline-block;}
 
 .prize_boxs input {
 	width: 50%;
@@ -10550,7 +10566,7 @@ form.common_form .btn {
 	position: absolute;
 	background: #202028;
 	width: 100%;
-	top: 0;
+	top: -5px;
 	left: 0;
 	height: auto;
 	padding: 20px;
