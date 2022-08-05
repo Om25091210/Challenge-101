@@ -313,11 +313,9 @@ const CreateTournament = ({ user }) => {
                         {gamePlatform &&
                           gamePlatform.map((game) => (
                             <>
-                              <img
-                                style={{ height: '35px', width: '35px' }}
-                                src={game.imgUrl}
-                                alt=""
-                              />
+                              <div className="select_img">
+                                <img src={game.imgUrl} alt="" />
+                              </div>
 
                               {game.platform.map((plt) => (
                                 <>
@@ -466,7 +464,7 @@ const CreateTournament = ({ user }) => {
                         <div className="big_btn">
                           <span class="form-check-label terms">Teams</span>
                           <input
-                            type="checkbox"
+                            type="radio"
                             name="playType"
                             value="TEAMS"
                             onChange={handleChangeCheck}

@@ -270,7 +270,7 @@ const CreateTeam = ({ user }) => {
                         onChange={handleChange}
                         value={state.name}
                       />
-                      <p>{formErrors.name}</p>
+                      <p className="error">{formErrors.name}</p>
                     </div>
                     <div className="form-group">
                       <div className="style_file_upload">
@@ -310,7 +310,7 @@ const CreateTeam = ({ user }) => {
                         onChange={handleChange}
                         value={state.founded}
                       />
-                      <p>{formErrors.founded}</p>
+                      <p className="error">{formErrors.founded}</p>
                     </div>
                     <div className="form-group">
                       <label htmlFor="exampleFormControlInput1">Games</label>
@@ -329,7 +329,7 @@ const CreateTeam = ({ user }) => {
                           </option>
                         ))}
                       </select>
-                      <p>{formErrors.game}</p>
+                      <p className="error">{formErrors.game}</p>
                     </div>
                   </>
                 ) : (
@@ -346,7 +346,7 @@ const CreateTeam = ({ user }) => {
                         <option value="Japan">Japan</option>
                         <option value="Europe">Europe</option>
                       </select>
-                      <p>{formErrors.region}</p>
+                      <p className="error">{formErrors.region}</p>
                     </div>
                     <div className="form-group">
                       <label htmlFor="exampleFormControlTextarea1">
@@ -377,7 +377,7 @@ const CreateTeam = ({ user }) => {
                           onChange={handleChange}
                           value={state.description}
                         />
-                        <p>{formErrors.description}</p>
+                        <p className="error">{formErrors.description}</p>
                       </div>
                       <div className="colm">
                         <label htmlFor="exampleFormControlInput1">
@@ -408,7 +408,7 @@ const CreateTeam = ({ user }) => {
 
                         {searchText.length !== 0 ? (
                           <div className="custom-rig-tag">
-                            <div>
+                            <div className="rigs_items">
                               {!filteredData || filteredData.length === 0 ? (
                                 <p>No keyboards found..</p>
                               ) : (
@@ -416,12 +416,11 @@ const CreateTeam = ({ user }) => {
                                   <div
                                     onClick={() => handleSelectedRig(data)}
                                     key={data._id}
+                                    className="items"
                                   >
-                                    <img
-                                      src={data.image}
-                                      height={50}
-                                      width={50}
-                                    />
+                                    <span>
+                                      <img src={data.image} />
+                                    </span>
                                     <p>
                                       {data.name.length > 20
                                         ? data.name.substring(0, 20) + '...'
@@ -448,7 +447,7 @@ const CreateTeam = ({ user }) => {
 
                         {searchText1.length !== 0 ? (
                           <div className="custom-rig-tag">
-                            <div>
+                            <div className="rigs_items">
                               {!filteredData1 || filteredData1.length === 0 ? (
                                 <p>No Mouse found..</p>
                               ) : (
@@ -456,12 +455,11 @@ const CreateTeam = ({ user }) => {
                                   <div
                                     onClick={() => handleSelectedRig1(data)}
                                     key={data._id}
+                                    className="items"
                                   >
-                                    <img
-                                      src={data.image}
-                                      height={50}
-                                      width={50}
-                                    />
+                                    <span>
+                                      <img src={data.image} />
+                                    </span>
                                     <p>
                                       {data.name.length > 20
                                         ? data.name.substring(0, 20) + '...'

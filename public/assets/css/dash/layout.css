@@ -287,6 +287,8 @@ h3 {
 	color: #000;
 }
 
+.error{ position: absolute; font-size: 10px; font-weight: 300; color: red;}
+
 .btn,
 .apply,
 .btn[type='submit'] {
@@ -8098,6 +8100,11 @@ ul.game_search_result li:hover:after {
 
 .prize_boxs .console_bg img{ width: 20px; display: inline-block;}
 
+.prize_boxs .select_img{ border-radius: 5px;}
+.prize_boxs .select_img img{ max-width: 50px;
+    height: 80px;
+    object-fit: cover;}
+
 .prize_boxs input {
 	width: 50%;
 	margin-left: 20px;
@@ -11601,6 +11608,7 @@ body.DarkPage .match_row .team_vs .vs {
 body.DarkPage .create_tournament form input[type="text"],
 body.DarkPage .create_tournament form input[type="date"],
 body.DarkPage .create_tournament form input[type="time"],
+body.DarkPage .create_tournament form input[type="search"],
 body.DarkPage .create_tournament form select {
 	background: #222f41 !important;
 	color: #fff;

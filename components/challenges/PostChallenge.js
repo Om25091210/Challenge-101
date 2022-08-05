@@ -170,6 +170,7 @@ const PostChallenge = ({ games, teams }) => {
                 </select>
               </div>
               <div className="form-group">
+                <label> &nbsp; </label>
                 <input
                   type="text"
                   onChange={onChange}
@@ -179,6 +180,7 @@ const PostChallenge = ({ games, teams }) => {
                 />
               </div>
               <div className="form-group">
+                <label> &nbsp; </label>
                 <input
                   type="date"
                   onChange={onChange}
@@ -187,6 +189,7 @@ const PostChallenge = ({ games, teams }) => {
                 />
               </div>
               <div className="form-group">
+                <label> &nbsp; </label>
                 <input
                   type="time"
                   name="startTime"
