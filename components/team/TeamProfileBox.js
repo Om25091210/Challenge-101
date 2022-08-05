@@ -285,9 +285,8 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
             </div>
             {isManager || isAdmin ? null : (
               <div className="button">
-                <a href="#" className="btn">
-                  <TeamFollow team={data.team} user={user} />
-                </a>{' '}
+                <TeamFollow team={data.team} user={user} />
+
                 <a href="#" className="btn">
                   MESSAGE
                 </a>
