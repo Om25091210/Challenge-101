@@ -9,10 +9,10 @@ import AllScript from '../AllScript';
 
 const NFTGamesList = ({ user, challenge }) => {
   const teamOne = challenge.players?.filter(
-    (plr) => plr.teamId === challenge.User_team._id
+    (plr) => plr.teamId === challenge.User_team?._id
   );
   const teamTwo = challenge.players?.filter(
-    (plr) => plr.teamId === challenge.opponent_team._id
+    (plr) => plr.teamId === challenge?.opponent_team?._id
   );
 
   let x = Moment.duration(
@@ -22,6 +22,7 @@ const NFTGamesList = ({ user, challenge }) => {
     .toString()
     .slice(0, 3);
   let daysLeft = Math.floor(Number(x));
+
   return (
     <>
       <MetaDash />
@@ -36,23 +37,85 @@ const NFTGamesList = ({ user, challenge }) => {
           </div>
           <div className="vs_box">
             <div className="team1">
-              <div className="imgs">
-                <img
-                  src={challenge.User_team?.imgUrl}
-                  alt={challenge.User_team?.name}
-                />
-              </div>
-              <span>{challenge.User_team?.name}</span>{' '}
+              {challenge.ChallType === 'Solo' ? (
+                challenge.players.map((ply) =>
+                  ply.teamId !== null ? (
+                    <>
+                      <div className="imgs">
+                        <img
+                          src={
+                            ply?.playerId.apidata?.data.platformInfo.avatarUrl
+                              ? ply?.playerId.apidata.data.platformInfo
+                                  .avatarUrl
+                              : ply?.playerId.imgUrl
+                          }
+                          alt={
+                            ply?.playerId.apidata?.data.platformInfo
+                              .platformUserHandle
+                          }
+                        />
+                      </div>
+                      <span>
+                        {
+                          ply?.playerId.apidata?.data.platformInfo
+                            .platformUserHandle
+                        }
+                      </span>
+                    </>
+                  ) : null
+                )
+              ) : (
+                <>
+                  <div className="imgs">
+                    <img
+                      src={challenge.User_team?.imgUrl}
+                      alt={challenge.User_team?.name}
+                    />
+                  </div>
+                  <span>{challenge.User_team?.name}</span>{' '}
+                </>
+              )}
             </div>
             <div className="vs">VS</div>
             <div className="team2">
-              <div className="imgs">
-                <img
-                  src={challenge.opponent_team?.imgUrl}
-                  alt={challenge.opponent_team?.name}
-                />
-              </div>
-              <span>{challenge.opponent_team?.name}</span>{' '}
+              {challenge.ChallType === 'Solo' ? (
+                challenge.players.map((ply) =>
+                  ply.teamId === null ? (
+                    <>
+                      <div className="imgs">
+                        <img
+                          src={
+                            ply?.playerId.apidata?.data.platformInfo.avatarUrl
+                              ? ply?.playerId.apidata.data.platformInfo
+                                  .avatarUrl
+                              : ply?.playerId.imgUrl
+                          }
+                          alt={
+                            ply?.playerId.apidata?.data.platformInfo
+                              .platformUserHandle
+                          }
+                        />
+                      </div>
+                      <span>
+                        {
+                          ply?.playerId.apidata?.data.platformInfo
+                            .platformUserHandle
+                        }
+                      </span>
+                    </>
+                  ) : null
+                )
+              ) : (
+                <>
+                  <div className="imgs">
+                    <img
+                      src={challenge.opponent_team?.imgUrl}
+                      alt={challenge.opponent_team?.name}
+                    />
+                  </div>
+                  <span>{challenge.opponent_team?.name}</span>{' '}
+                </>
+              )}
             </div>
           </div>
           <div className="show_name_game">
@@ -66,42 +129,82 @@ const NFTGamesList = ({ user, challenge }) => {
             <h2>Time to connect</h2>
             <div className="time">{daysLeft} Day(s)</div>
             <div className="left_games">
-              <ul>
-                {teamOne.length > 0 &&
-                  teamOne.map((team) => (
-                    <li>
-                      <div className="games_names">
-                        <div className="img">
-                          <img
-                            src={
-                              team?.playerId.apidata?.data.platformInfo
-                                .avatarUrl
-                                ? team?.playerId.apidata.data.platformInfo
-                                    .avatarUrl
-                                : team?.playerId.imgUrl
-                            }
-                            alt={
-                              team?.playerId.apidata?.data.platformInfo
-                                .platformUserHandle
-                            }
-                          />
-                        </div>
+              {challenge.isOpenMatch === false ? (
+                <ul>
+                  {teamOne.length > 0 &&
+                    teamOne.map((team) => (
+                      <li>
+                        <div className="games_names">
+                          <div className="img">
+                            <img
+                              src={
+                                team?.playerId.apidata?.data.platformInfo
+                                  .avatarUrl
+                                  ? team?.playerId.apidata.data.platformInfo
+                                      .avatarUrl
+                                  : team?.playerId.imgUrl
+                              }
+                              alt={
+                                team?.playerId.apidata?.data.platformInfo
+                                  .platformUserHandle
+                              }
+                            />
+                          </div>
 
-                        <div className="tit">
-                          {challenge.User_team.name}
-                          <b>
-                            <i className="fa fa-steam" aria-hidden="true"></i>{' '}
-                            {
-                              team?.playerId.apidata?.data.platformInfo
-                                .platformUserHandle
-                            }
-                          </b>
+                          <div className="tit">
+                            {challenge.User_team.name}
+                            <b>
+                              <i className="fa fa-steam" aria-hidden="true"></i>{' '}
+                              {
+                                team?.playerId.apidata?.data.platformInfo
+                                  .platformUserHandle
+                              }
+                            </b>
+                          </div>
                         </div>
-                      </div>
-                      <div className="ready">Ready</div>
-                    </li>
-                  ))}
-              </ul>
+                        <div className="ready">Ready</div>
+                      </li>
+                    ))}
+                </ul>
+              ) : challenge.isOpenMatch === true &&
+                challenge.ChallType === 'Team' ? (
+                <ul>
+                  {teamOne.length > 0 &&
+                    teamOne.map((team) => (
+                      <li>
+                        <div className="games_names">
+                          <div className="img">
+                            <img
+                              src={
+                                team?.playerId.apidata?.data.platformInfo
+                                  .avatarUrl
+                                  ? team?.playerId.apidata.data.platformInfo
+                                      .avatarUrl
+                                  : team?.playerId.imgUrl
+                              }
+                              alt={
+                                team?.playerId.apidata?.data.platformInfo
+                                  .platformUserHandle
+                              }
+                            />
+                          </div>
+
+                          <div className="tit">
+                            {challenge.User_team.name}
+                            <b>
+                              <i className="fa fa-steam" aria-hidden="true"></i>{' '}
+                              {
+                                team?.playerId.apidata?.data.platformInfo
+                                  .platformUserHandle
+                              }
+                            </b>
+                          </div>
+                        </div>
+                        <div className="ready">Ready</div>
+                      </li>
+                    ))}
+                </ul>
+              ) : null}
             </div>
 
             {challenge.room?.roomId > 0 ? (
@@ -125,41 +228,80 @@ const NFTGamesList = ({ user, challenge }) => {
             )}
 
             <div className="right_games">
-              <ul>
-                {teamTwo.length > 0 &&
-                  teamTwo.map((team) => (
-                    <li>
-                      <div className="games_names">
-                        <div className="img">
-                          <img
-                            src={
-                              team?.playerId.apidata?.data.platformInfo
-                                .avatarUrl
-                                ? team?.playerId.apidata.data.platformInfo
-                                    .avatarUrl
-                                : team?.playerId.imgUrl
-                            }
-                            alt={
-                              team?.playerId.apidata?.data.platformInfo
-                                .platformUserHandle
-                            }
-                          />
+              {challenge.isOpenMatch === false ? (
+                <ul>
+                  {teamTwo.length > 0 &&
+                    teamTwo.map((team) => (
+                      <li>
+                        <div className="games_names">
+                          <div className="img">
+                            <img
+                              src={
+                                team?.playerId.apidata?.data.platformInfo
+                                  .avatarUrl
+                                  ? team?.playerId.apidata.data.platformInfo
+                                      .avatarUrl
+                                  : team?.playerId.imgUrl
+                              }
+                              alt={
+                                team?.playerId.apidata?.data.platformInfo
+                                  .platformUserHandle
+                              }
+                            />
+                          </div>
+                          <div className="tit">
+                            {challenge.opponent_team.name}
+                            <b>
+                              <i className="fa fa-steam" aria-hidden="true"></i>{' '}
+                              {
+                                team?.playerId.apidata?.data.platformInfo
+                                  .platformUserHandle
+                              }
+                            </b>
+                          </div>
                         </div>
-                        <div className="tit">
-                          {challenge.opponent_team.name}
-                          <b>
-                            <i className="fa fa-steam" aria-hidden="true"></i>{' '}
-                            {
-                              team?.playerId.apidata?.data.platformInfo
-                                .platformUserHandle
-                            }
-                          </b>
+                        <div className="ready">Ready</div>
+                      </li>
+                    ))}
+                </ul>
+              ) : challenge.isOpenMatch === true &&
+                challenge.ChallType === 'Team' ? (
+                <ul>
+                  {teamTwo.length > 0 &&
+                    teamTwo.map((team) => (
+                      <li>
+                        <div className="games_names">
+                          <div className="img">
+                            <img
+                              src={
+                                team?.playerId.apidata?.data.platformInfo
+                                  .avatarUrl
+                                  ? team?.playerId.apidata.data.platformInfo
+                                      .avatarUrl
+                                  : team?.playerId.imgUrl
+                              }
+                              alt={
+                                team?.playerId.apidata?.data.platformInfo
+                                  .platformUserHandle
+                              }
+                            />
+                          </div>
+                          <div className="tit">
+                            {challenge.opponent_team.name}
+                            <b>
+                              <i className="fa fa-steam" aria-hidden="true"></i>{' '}
+                              {
+                                team?.playerId.apidata?.data.platformInfo
+                                  .platformUserHandle
+                              }
+                            </b>
+                          </div>
                         </div>
-                      </div>
-                      <div className="ready">Ready</div>
-                    </li>
-                  ))}
-              </ul>
+                        <div className="ready">Ready</div>
+                      </li>
+                    ))}
+                </ul>
+              ) : null}
             </div>
           </div>
         </div>
