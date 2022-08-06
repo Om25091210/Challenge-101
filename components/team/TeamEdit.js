@@ -10,19 +10,26 @@ import Moment from 'moment';
 
 const TeamEdit = ({ isAdmin, isManager, team }) => {
   const [allarena, setAllarena] = useState([]);
+  const [allgames, setAllgames] = useState([]);
   const [empData, setEmpData] = useState([]);
   const [formErrors, setFormErrors] = useState({});
+
+  const arenaList = team.arenas.map((arena) => arena.arenaId);
+  const gameList = team.games.map((game) => game.gameId);
+
   const [states, setStates] = useState({
     teamname: team.name,
     founded: Moment(team.founded).format('yyyy-MM-DD'),
     about: team.description,
     emp: empData,
-    arena: '',
-    region: team.region
+    arena: arenaList || '',
+    region: team.region,
+    game: gameList || ''
   });
 
   useEffect(() => {
     axios.get(`${baseURL}/api/arenas/`).then((res) => setAllarena(res.data));
+    axios.get(`${baseURL}/api/all/games`).then((res) => setAllgames(res.data));
   }, []);
 
   const options = useMemo(() => countryList().getData(), []);
@@ -157,6 +164,22 @@ const TeamEdit = ({ isAdmin, isManager, team }) => {
                     <option value="Europe">Europe</option>
                   </select>
                   <p>{formErrors.Tregion}</p>
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="search">Games</label>
+                  <select
+                    name="game"
+                    value={states.game}
+                    onChange={handleSubmit}
+                    multiple={true}
+                  >
+                    <option value="">--</option>
+                    {allgames &&
+                      allgames.map((game) => (
+                        <option value={game._id}>{game.name}</option>
+                      ))}
+                  </select>
                 </div>
 
                 <button

@@ -558,6 +558,22 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
 
         <div className="right_team_bio">
           <div className="sponser">
+            <h5>Games</h5>
+            <ul>
+              {!data.games || data.games.length === 0 ? (
+                <p>No Games Found..</p>
+              ) : (
+                data.games &&
+                data.games.map((item, index) => (
+                  <li key={index}>
+                    <img src={item.imgUrl} alt={item.name} />{' '}
+                  </li>
+                ))
+              )}
+            </ul>
+          </div>
+
+          <div className="sponser">
             <h5>SPONSORS</h5>
 
             <ul>
