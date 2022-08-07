@@ -10122,11 +10122,12 @@ form.common_form .btn {
 	text-align: center;
 	justify-content: space-evenly;
 	align-items: center;
-	margin: 50px 50px 0;
+	margin:50px 0;
 }
 
 .vs_box .vs {
-	font-size: 25px;
+    font-size: 50px;
+    font-weight: 600;
 }
 
 .vs_box .imgs {

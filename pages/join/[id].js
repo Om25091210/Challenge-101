@@ -218,10 +218,10 @@ const NFTGamesList = ({ user, challenge }) => {
               </>
             ) : (
               <>
-                <div className="btn">
+                <div className="btn ">
                   <p>Room ID: ---</p>
                 </div>
-                <div className="btn">
+                <div className="btn ml20">
                   <p>Room PWD: ---</p>
                 </div>
               </>
