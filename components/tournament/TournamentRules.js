@@ -234,7 +234,7 @@ const TournamentRules = ({ tourRules }) => {
             />
             {searchText.length !== 0 ? (
               <div className="custom-rig-tag">
-                <div>
+                <div className="rigs_items">
                   {!filteredData || filteredData.length === 0 ? (
                     <p>No User found..</p>
                   ) : (
@@ -242,8 +242,16 @@ const TournamentRules = ({ tourRules }) => {
                       <div
                         onClick={() => handleSelectedRig(data)}
                         key={data._id}
+                        className="items"
                       >
-                        <img src={data?.profilePicUrl} height={50} width={50} />
+                        <span>
+                          {' '}
+                          <img
+                            src={data?.profilePicUrl}
+                            height={50}
+                            width={50}
+                          />
+                        </span>
                         <p>
                           {data.name.length > 20
                             ? data.name.substring(0, 20) + '...'

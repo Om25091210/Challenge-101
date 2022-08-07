@@ -3327,6 +3327,7 @@ article .social_bar img {
 #big_poup .common_form .form-group {
 	float: left;
 	width: 48%;
+	position: relative;
 }
 
 #big_poup .common_form .form-group:nth-child(2n) {
@@ -3505,6 +3506,15 @@ article .social_bar img {
 	overflow-y: auto;
 }
 
+
+/* --------- Challange poup ---------------- */
+
+#big_poup.team_chal a{ padding: 5px 10px 5px 10px;
+    right: -29px;
+    border-radius: 0;}
+#big_poup.team_chal button{ border-radius: 5px;}
+
+#big_poup.team_chal select.form-control[multiple]{ height: 45px; border-radius: 5px;}
 
 /* --- profile tabs --- */
 
@@ -3884,14 +3894,16 @@ article .social_bar img {
 }
 
 .sponser {
-	margin-top: 50px;
+	margin-top: 10px;
 }
+
+.sponser h5{ padding-bottom: 10px;}
 
 .sponser ul {
 	display: flex;
 	align-items: center;
 	justify-content: flex-start;
-	padding: 20px 0;
+	padding: 10px 0;
 	border-radius: 5px;
 }
 
@@ -3904,9 +3916,13 @@ article .social_bar img {
 }
 
 .sponser ul li img {
-	height: 25px;
-	object-fit: cover;
+    height: 30px;
+    object-fit: cover;
+    width: 30px;
+
 }
+
+.sponser ul li p{ text-align: left;}
 
 .bio_box .right_team_bio h5 {
 	font-size: 12px;
@@ -9244,6 +9260,7 @@ form.common_form input {
 	height: 45px;
 	font-size: 14px;
 	width: 100%;
+	border-radius: 5px;
 }
 
 
@@ -10138,11 +10155,14 @@ form.common_form .btn {
 	background: #464646;
 }
 
+.vs_box .imgs img{ width: 100%; height: 100%; object-fit: cover;}
+
 .vs_box .team1,
 .vs_box .team2 {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	width: 25%;
 }
 
 .vs_box .team1 span,

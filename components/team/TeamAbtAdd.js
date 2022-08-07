@@ -63,13 +63,19 @@ const TeamAbtAdd = ({ role, rolesData }) => {
           />
           {searchText.length !== 0 ? (
             <div className="custom-rig-tag">
-              <div>
+              <div className="rigs_items">
                 {!filteredData ? (
                   <p>No {role} found..</p>
                 ) : (
                   filteredData.map((data) => (
-                    <div onClick={() => handleSelectedRig(data)} key={data._id}>
-                      <img src={data?.profilePicUrl} height={50} width={50} />
+                    <div
+                      onClick={() => handleSelectedRig(data)}
+                      key={data._id}
+                      className="items"
+                    >
+                      <span>
+                        <img src={data?.profilePicUrl} height={50} width={50} />
+                      </span>
                       <p>
                         {data?.name.length > 20
                           ? data.name.substring(0, 20) + '...'

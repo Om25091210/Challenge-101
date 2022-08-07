@@ -338,7 +338,7 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                       />
                       {searchText.length !== 0 ? (
                         <div className="custom-rig-tag">
-                          <div>
+                          <div className="rigs_items">
                             {!filteredData || filteredData.length === 0 ? (
                               <p>No team found..</p>
                             ) : (
@@ -346,12 +346,15 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                                 <div
                                   onClick={() => handleSelectedTeam(data)}
                                   key={data._id}
+                                  className="items"
                                 >
-                                  <img
-                                    src={data?.imgUrl}
-                                    height={50}
-                                    width={50}
-                                  />
+                                  <span>
+                                    <img
+                                      src={data?.imgUrl}
+                                      height={50}
+                                      width={50}
+                                    />
+                                  </span>
                                   <p>
                                     {data.name.length > 20
                                       ? data.name.substring(0, 20) + '...'

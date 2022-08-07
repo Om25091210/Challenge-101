@@ -293,7 +293,7 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
                 <a href="#" className="btn">
                   <TeamRequest team={data.team} user={user} profile={profile} />
                 </a>
-                <a href="#" className="btn">
+                <a href="#" className="">
                   <TeamChallenge team={data.team} teams={teams} />
                 </a>
               </div>
@@ -589,16 +589,17 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
             </ul>
           </div>
 
-          <div className="team_pos">
+          <div className="sponser">
+            <h5 className="position">ARENAS:</h5>
             <ul>
-              <h5 className="position">ARENAS:</h5>
               {!data.arenas || data.arenas.length === 0 ? (
                 <p>No arenas defined...</p>
               ) : (
                 data.arenas.map((item, index) => (
                   <li key={index}>
                     <span className="pos_name">
-                      <img src={item.logoUrl} alt="" /> {item.name}
+                      <img src={item.logoUrl} alt="" />
+                      <p> {item.name}</p>
                     </span>
                   </li>
                 ))

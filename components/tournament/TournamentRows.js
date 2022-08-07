@@ -53,15 +53,21 @@ const TournamentRows = ({
                   </div>
                   {result.Type && result.Type === 'Ladder' ? (
                     <span className="type_img">
-                      <img src="/assets/media/tournament/1.png" alt="" />
+                      <img src="/assets/media/tournament/ladder.png" alt="" />
                     </span>
                   ) : result?.Type === 'Tournament' ? (
                     <span className="type_img">
-                      <img src="/assets/media/tournament/1.png" alt="" />
+                      <img
+                        src="/assets/media/tournament/tournament.png"
+                        alt=""
+                      />
                     </span>
                   ) : result.Type === 'Competition' ? (
                     <span className="type_img">
-                      <img src="/assets/media/tournament/1.png" alt="" />
+                      <img
+                        src="/assets/media/tournament/competition.png"
+                        alt=""
+                      />
                     </span>
                   ) : null}
                   <div className="reg">
@@ -201,15 +207,21 @@ const TournamentRows = ({
                   {result.tournament.Type &&
                   result.tournament.Type === 'Ladder' ? (
                     <span className="type_img">
-                      <img src="/assets/media/tournament/1.png" alt="" />
+                      <img src="/assets/media/tournament/ladder.png" alt="" />
                     </span>
                   ) : result?.tournament.Type === 'Tournament' ? (
                     <span className="type_img">
-                      <img src="/assets/media/tournament/1.png" alt="" />
+                      <img
+                        src="/assets/media/tournament/tournament.png"
+                        alt=""
+                      />
                     </span>
                   ) : result.tournament.Type === 'Competition' ? (
                     <span className="type_img">
-                      <img src="/assets/media/tournament/1.png" alt="" />
+                      <img
+                        src="/assets/media/tournament/competition.png"
+                        alt=""
+                      />
                     </span>
                   ) : null}
                   <div className="reg">

@@ -487,7 +487,7 @@ const CreateTeam = ({ user }) => {
                         />
                         {searchText3.length !== 0 ? (
                           <div className="custom-rig-tag">
-                            <div>
+                            <div className="rigs_items">
                               {!filteredData3 || filteredData3.length === 0 ? (
                                 <p>No Sponsor found..</p>
                               ) : (
@@ -495,12 +495,15 @@ const CreateTeam = ({ user }) => {
                                   <div
                                     onClick={() => handleSelectedRig3(data)}
                                     key={data._id}
+                                    className="items"
                                   >
-                                    <img
-                                      src={data?.imgUrl}
-                                      height={50}
-                                      width={50}
-                                    />
+                                    <span>
+                                      <img
+                                        src={data?.imgUrl}
+                                        height={50}
+                                        width={50}
+                                      />
+                                    </span>
                                     <p>
                                       {data.name.length > 20
                                         ? data.name.substring(0, 20) + '...'
@@ -547,7 +550,7 @@ const CreateTeam = ({ user }) => {
                         />
                         {searchText2.length !== 0 ? (
                           <div className="custom-rig-tag">
-                            <div>
+                            <div className="rigs_items">
                               {!filteredData2 || filteredData2.length === 0 ? (
                                 <p>No Role found..</p>
                               ) : (
@@ -555,12 +558,15 @@ const CreateTeam = ({ user }) => {
                                   <div
                                     onClick={() => handleSelectedRig2(data)}
                                     key={data._id}
+                                    className="items"
                                   >
-                                    <img
-                                      src={data?.image}
-                                      height={50}
-                                      width={50}
-                                    />
+                                    <span>
+                                      <img
+                                        src={data?.image}
+                                        height={50}
+                                        width={50}
+                                      />
+                                    </span>
                                     <p>
                                       {data.name.length > 20
                                         ? data.name.substring(0, 20) + '...'

@@ -45,15 +45,21 @@ const TournamentAddSponsor = ({ sponsors, states, type }) => {
         />
         {searchText.length !== 0 ? (
           <div className="custom-rig-tag">
-            <div>
+            <div className="rigs_items">
               {!filteredData || filteredData.length === 0 ? (
                 <p>
                   No {type === 'ORGANIZER' ? 'Organizer' : 'Sponsor'} found..
                 </p>
               ) : (
                 filteredData.map((data) => (
-                  <div onClick={() => handleSelectedRig(data)} key={data._id}>
-                    <img src={data?.imgUrl} height={50} width={50} />
+                  <div
+                    onClick={() => handleSelectedRig(data)}
+                    key={data._id}
+                    className="items"
+                  >
+                    <span>
+                      <img src={data?.imgUrl} height={50} width={50} />
+                    </span>
                     <p>
                       {data.name.length > 20
                         ? data.name.substring(0, 20) + '...'

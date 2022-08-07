@@ -163,7 +163,7 @@ const ProfileTournament = ({
                   />
                   {searchText.length !== 0 ? (
                     <div className="custom-rig-tag">
-                      <div>
+                      <div className="rigs_items">
                         {!filteredData || filteredData.length === 0 ? (
                           <p>No Tournament found..</p>
                         ) : (
@@ -171,12 +171,15 @@ const ProfileTournament = ({
                             <div
                               onClick={() => handleSelected(data.tournament)}
                               key={data.tournament?._id}
+                              className="items"
                             >
-                              <img
-                                src={data?.tournament.imgUrl}
-                                height={50}
-                                width={50}
-                              />
+                              <span>
+                                <img
+                                  src={data?.tournament.imgUrl}
+                                  height={50}
+                                  width={50}
+                                />
+                              </span>
                               <p>
                                 {data?.tournament.name?.length > 20
                                   ? data.tournament.name.substring(0, 20) +
