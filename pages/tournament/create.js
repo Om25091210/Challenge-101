@@ -165,6 +165,19 @@ const CreateTournament = ({ user }) => {
     state.game = gameId;
   };
 
+  useEffect(() => {
+    $('.game_search_result li').click(function () {
+      $('.game_search_result li').removeClass('slc_img');
+
+      $(this).addClass('slc_img');
+    });
+
+    $('.big_btn input[type="radio"]').click(function () {
+      $(this).parent().siblings('.big_btn').removeClass('radio_bg');
+      $(this).parent().addClass('radio_bg');
+    });
+  });
+
   return (
     <>
       <MetaDash />
@@ -282,6 +295,7 @@ const CreateTournament = ({ user }) => {
                         <>
                           <li onClick={(e) => handleGame(e, game._id)}>
                             <img src={game.imgUrl} alt={game.name} />
+                            <i class="fa fa-check" aria-hidden="true"></i>
                           </li>
                         </>
                       ))}
