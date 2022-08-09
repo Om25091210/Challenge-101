@@ -80,13 +80,19 @@ const Open_ChallengeApprove = ({ challenge, profile }) => {
     <>
       {challenge.isOpenMatch === true && challenge.ChallType === 'Team' ? (
         <div>
-          <a
-            href="#!"
-            className="model_show_btn btn"
-            onClick={handleCommonTeams}
-          >
-            Accept
-          </a>
+          {challenge.User_team && challenge.opponent_team ? (
+            <button className="btn" disabled>
+              Challenge closed
+            </button>
+          ) : (
+            <a
+              href="#!"
+              className="model_show_btn btn"
+              onClick={handleCommonTeams}
+            >
+              Accept
+            </a>
+          )}
 
           <div className="common_model_box" id="big_poup">
             <a href="#!" className="model_close">
@@ -129,6 +135,10 @@ const Open_ChallengeApprove = ({ challenge, profile }) => {
             <div className="overlay"></div>
           </div>
         </div>
+      ) : challenge.players.length === 2 ? (
+        <button className="btn" disabled>
+          Challenge closed
+        </button>
       ) : (
         <button className="btn" onClick={reqhandlesubmit}>
           Accept

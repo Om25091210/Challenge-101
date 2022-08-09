@@ -5,21 +5,18 @@ import { toast } from 'react-toastify';
 
 const queryClient = new QueryClient();
 
-export default function TeamRequest({ user, profile, team }) {
+export default function TeamRequest({ profile, team, isReqSent }) {
   return (
     <QueryClientProvider client={queryClient} contextSharing={true}>
-      <Team_Req user={user} team={team} profile={profile} />
+      <Team_Req team={team} profile={profile} isReqSent={isReqSent} />
     </QueryClientProvider>
   );
 }
 
-const Team_Req = ({ user, profile, team }) => {
-  const [request, setRequest] = useState(false);
+const Team_Req = ({ profile, team, isReqSent }) => {
+  const [request, setRequest] = useState(isReqSent);
 
   const playerId = profile.playergames[0]?.player?._id;
-
-  const isReqSent =
-    team.request?.filter((reque) => reque.playerId._id === playerId).length > 0;
 
   const isPlayer =
     team.players?.filter((plyr) => plyr.playerId === playerId).length > 0;
@@ -28,7 +25,7 @@ const Team_Req = ({ user, profile, team }) => {
     e.preventDefault();
     try {
       mutate({ request });
-      setRequest(true);
+      setRequest(!request);
       toast.success('Request has been sent');
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
@@ -57,7 +54,7 @@ const Team_Req = ({ user, profile, team }) => {
         <button className="join" disabled>
           VIEW TEAM
         </button>
-      ) : isReqSent ? (
+      ) : request ? (
         <button className="join" disabled>
           REQUEST SENT
         </button>

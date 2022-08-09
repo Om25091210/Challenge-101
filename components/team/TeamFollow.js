@@ -1,30 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import baseURL from '../../utils/baseURL';
 import cookie from 'js-cookie';
+import { QueryClient, QueryClientProvider, useMutation } from 'react-query';
 import { useRouter } from 'next/router';
 
-const TeamFollow = ({ team, user }) => {
-  const router = useRouter();
+const queryClient = new QueryClient();
 
-  const refreshData = () => {
-    router.replace(router.asPath);
+export default function TeamFollow({ team, user, isFollow }) {
+  return (
+    <QueryClientProvider client={queryClient} contextSharing={true}>
+      <Team_Follow team={team} user={user} isFollow={isFollow} />
+    </QueryClientProvider>
+  );
+}
+const Team_Follow = ({ team, user, isFollow }) => {
+  const [follow, setfollow] = useState(isFollow);
+
+  const handlefollow = (e) => {
+    e.preventDefault();
+    mutate({ follow });
+    setfollow(!follow);
   };
 
-  const followhandlesubmit = async (teamId) => {
-    await fetch(`${baseURL}/api/teams/follow/team/${teamId}`, {
+  const addingfollow = async () => {
+    const res = await fetch(`${baseURL}/api/teams/follow/team/${team._id}`, {
       method: 'PUT',
       headers: {
         Authorization: cookie.get('token')
       }
     });
-    refreshData();
   };
 
-  const isFollow =
-    team &&
-    team.followers
-      ?.filter((team) => team?.user === user?._id)
-      .map((team) => team?.user).length > 0;
+  const { mutate } = useMutation(addingfollow);
 
   const isAdmin =
     team &&
@@ -40,12 +47,10 @@ const TeamFollow = ({ team, user }) => {
   return (
     <>
       {isAdmin || isManager ? null : (
-        <button className="btn" onClick={() => followhandlesubmit(team?._id)}>
-          {isFollow === true ? 'Following' : 'Follow'}
+        <button className="btn" onClick={handlefollow}>
+          {follow ? 'Following' : 'Follow'}
         </button>
       )}
     </>
   );
 };
-
-export default TeamFollow;

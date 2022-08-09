@@ -33,13 +33,13 @@ const NFTGamesList = ({ user, challenge }) => {
           <h1>Challenge</h1>
           <div className="points">
             <span>{Moment(challenge.startDate).format('DD/MMM/YYYY')}</span>{' '}
-            <span>{Moment(challenge.startDate).format('hh:mm A')}</span>
+            <span>{challenge.startTime}</span>
           </div>
           <div className="vs_box">
             <div className="team1">
               {challenge.ChallType === 'Solo' ? (
                 challenge.players.map((ply) =>
-                  ply.teamId !== null ? (
+                  ply.playerId && ply.teamId !== null ? (
                     <>
                       <div className="imgs">
                         <img
@@ -80,7 +80,7 @@ const NFTGamesList = ({ user, challenge }) => {
             <div className="team2">
               {challenge.ChallType === 'Solo' ? (
                 challenge.players.map((ply) =>
-                  ply.teamId === null ? (
+                  ply.playerId && ply.teamId === null ? (
                     <>
                       <div className="imgs">
                         <img

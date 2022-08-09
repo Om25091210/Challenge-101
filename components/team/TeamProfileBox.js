@@ -185,6 +185,15 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
       .then((res) => setSponsors(res.data.sponsors));
   }, []);
 
+  const isFollow =
+    data.team &&
+    data.team.followers
+      ?.filter((team) => team?.user === user?._id)
+      .map((team) => team?.user).length > 0;
+
+  const isReqSent =
+    data.team.request?.filter((reque) => reque.playerId._id === playerId)
+      .length > 0;
   return (
     <div className="profile_box team_profile_box">
       <div className="profile_cover_photo">
@@ -285,13 +294,17 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
             </div>
             {isManager || isAdmin ? null : (
               <div className="button">
-                <TeamFollow team={data.team} user={user} />
+                <TeamFollow team={data.team} user={user} isFollow={isFollow} />
 
                 <a href="#" className="btn">
                   MESSAGE
                 </a>
                 <a href="#" className="btn">
-                  <TeamRequest team={data.team} user={user} profile={profile} />
+                  <TeamRequest
+                    team={data.team}
+                    profile={profile}
+                    isReqSent={isReqSent}
+                  />
                 </a>
                 <a href="#" className="">
                   <TeamChallenge team={data.team} teams={teams} />

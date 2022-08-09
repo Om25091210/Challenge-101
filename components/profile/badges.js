@@ -26,7 +26,7 @@ const Badges = ({ Userdata }) => {
       <div className="badges">
         <h5>BADGES</h5>
         {Userdata.badges.length === 0 ? (
-          <p> :NO Badges</p>
+          <p> :Coming Soon</p>
         ) : (
           <>
             {Userdata.badges.map((bdg) => (

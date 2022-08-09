@@ -15,6 +15,7 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
   const [showIgn, setShowIgn] = useState('none');
   const [userIgn, setUserIgn] = useState(null);
   const [step1, setStep1] = useState(true);
+  const [showGameBox, setShowGameBox] = useState(true);
   const [selectedGame, setSelectedGame] = useState();
   const [openForm, setOpenForm] = useState(false);
   const [type, setType] = useState('');
@@ -50,13 +51,14 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
     industry: profile?.headline?.industry,
     link: profile?.headline?.link,
     streamingPlatform: profile?.headline?.streamingPlatform,
-    socialLinks: []
+    socialLinks: [],
+    gameId: selectedGame?.game._id,
+    userIgn: ''
   });
 
   const handleSelectGame = async (obj) => {
-    setSelectedGame({ game: obj });
+    setStates({ ...states, gameId: obj._id });
     setStep1(false);
-    setShowIgn('');
   };
   const handleopenForm = async (data) => {
     setOpenForm(true);
@@ -66,37 +68,10 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
     setOpenForm(true);
     setType('');
   };
-  const gamehandleSubmit = async (e) => {
-    e.preventDefault();
-    var gameId = selectedGame?.game._id;
-    try {
-      await axios.patch(
-        `${baseURL}/api/profile/addgame/${Userdata.profile._id}`,
-        {
-          gameId,
-          userIgn
-        },
-        {
-          headers: {
-            Authorization: cookie.get('token'),
-            'Content-Type': 'application/json'
-          }
-        }
-      );
-      toast.success(`${selectedGame.game.name} has been added to your games`);
-      $('a.model_close').parent().removeClass('show_model');
-    } catch (err) {
-      console.log(err);
-      toast.error(err.response?.data?.msg || 'Please recheck your inputs');
-    }
-    refreshData();
-    setUserIgn(null);
-    setStep1(true);
-  };
 
-  function handleUserIgnChange(e) {
-    setUserIgn(e.target.value);
-  }
+  const gamehandleSubmit = async (e) => {
+    setShowGameBox(false);
+  };
 
   useEffect(() => {
     axios
@@ -532,74 +507,78 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                             </div>
                           </div>
                         </a>
-
-                        <div className="common_model_box" id="more_games">
-                          <a href="#!" className="model_close">
-                            X
-                          </a>
-                          <div className="inner_model_box">
-                            <form
-                              className="form w-100 add_game_box"
-                              noValidate="novalidate"
-                              id="kt_sign_up_form"
-                              onSubmit={gamehandleSubmit}
-                            >
-                              {step1 ? (
-                                <div className="poup_height msScroll_all">
-                                  <ul>
-                                    {games &&
-                                      games.map((game) => (
-                                        <li>
-                                          <div className="game_pic">
-                                            <a
-                                              href="#!"
-                                              onClick={() =>
-                                                handleSelectGame(game)
-                                              }
-                                            >
-                                              <img
-                                                src={game.imgUrl}
-                                                alt={game.name}
-                                              />
-                                            </a>
-                                          </div>
-                                        </li>
-                                      ))}
-                                  </ul>
-                                </div>
-                              ) : (
-                                <>
-                                  <button
-                                    className="btn"
-                                    onClick={() => setStep1(true)}
-                                  >
-                                    Back
-                                  </button>
-                                  <div className="add_game_poup">
-                                    <img
-                                      src={selectedGame?.game.imgUrl}
-                                      alt={selectedGame?.game.name}
-                                    />
-
-                                    <input
-                                      type="text"
-                                      name="userIgn"
-                                      onChange={handleUserIgnChange}
-                                      value={userIgn}
-                                    />
+                        {showGameBox ? (
+                          <div className="common_model_box" id="more_games">
+                            <a href="#!" className="model_close">
+                              X
+                            </a>
+                            <div className="inner_model_box">
+                              <div
+                                className="form w-100 add_game_box"
+                                noValidate="novalidate"
+                                id="kt_sign_up_form"
+                              >
+                                {step1 ? (
+                                  <div className="poup_height msScroll_all">
+                                    <ul>
+                                      {games &&
+                                        games.map((game) => (
+                                          <li>
+                                            <div className="game_pic">
+                                              <a
+                                                href="#!"
+                                                onClick={() =>
+                                                  handleSelectGame(game)
+                                                }
+                                              >
+                                                <img
+                                                  src={game.imgUrl}
+                                                  alt={game.name}
+                                                />
+                                              </a>
+                                            </div>
+                                          </li>
+                                        ))}
+                                    </ul>
                                   </div>
+                                ) : (
+                                  <>
+                                    <button
+                                      className="btn"
+                                      onClick={() => setStep1(true)}
+                                    >
+                                      Back
+                                    </button>
+                                    <div className="add_game_poup">
+                                      <img
+                                        src={selectedGame?.game.imgUrl}
+                                        alt={selectedGame?.game.name}
+                                      />
 
-                                  <button type="submit" className="btn">
-                                    <span className="indicator-label">
-                                      Add Game
-                                    </span>
-                                  </button>
-                                </>
-                              )}
-                            </form>
+                                      <input
+                                        type="text"
+                                        name="userIgn"
+                                        onChange={handleSubmit}
+                                        value={states.userIgn}
+                                      />
+                                    </div>
+
+                                    <button
+                                      type="submit"
+                                      className="btn"
+                                      onClick={gamehandleSubmit}
+                                    >
+                                      <span className="indicator-label">
+                                        Add Game
+                                      </span>
+                                    </button>
+                                  </>
+                                )}
+                              </div>
+                            </div>
+                            <div className="overlay"></div>
                           </div>
-                          <div className="overlay"></div>
-                        </div>
+                        ) : null}
                       </div>
                     </div>
                   </div>
@@ -607,34 +586,22 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                 <div className="form-group">
                   <label htmlFor="">Social Links</label>
                   <div className="socail">
-                    <button
-                      type="button"
-                      onClick={() => handleopenForm('Facebook')}
-                    >
+                    <button type="button">
                       <i
                         className="fa fa-facebook-official"
                         aria-hidden="true"
                       ></i>
                     </button>
 
-                    <button
-                      type="button"
-                      onClick={() => handleopenForm('Instagram')}
-                    >
+                    <button type="button">
                       <i className="fa fa-instagram" aria-hidden="true"></i>
                     </button>
 
-                    <button
-                      type="button"
-                      onClick={() => handleopenForm('Twitch')}
-                    >
+                    <button type="button">
                       <i className="fa fa-twitch" aria-hidden="true"></i>
                     </button>
 
-                    <button
-                      type="button"
-                      onClick={() => handleopenForm('Youtube')}
-                    >
+                    <button type="button">
                       <i className="fa fa-youtube"></i>
                     </button>
 
