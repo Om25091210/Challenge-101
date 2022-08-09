@@ -18,7 +18,7 @@ import { BlockchainContext } from '../context/BlockchainContext';
 import emailjs from '@emailjs/browser';
 import { toast } from 'react-toastify';
 
-const SignedHeader = ({ user }) => {
+const SignedHeader = ({ user, profile }) => {
   const router = useRouter();
   const { state, dispatch } = useContext(DataContext);
   const { auth, cart } = state;
@@ -275,7 +275,15 @@ const SignedHeader = ({ user }) => {
                 {user?.name}{' '}
                 <p className="">
                   {' '}
-                  <span className="online"></span> Online
+                  {profile?.online_status === true ? (
+                    <>
+                      <span className="online"></span> Online
+                    </>
+                  ) : (
+                    <>
+                      <span className="offline"></span> Offline
+                    </>
+                  )}
                 </p>
               </span>
               <span className="drop">

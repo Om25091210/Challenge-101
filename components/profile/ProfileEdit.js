@@ -10,7 +10,6 @@ import Moment from 'moment';
 
 const ProfileEdit = ({ profile, user, games, allteams }) => {
   const name = user.name.split(' ');
-  const [online, setOnline] = useState(false);
   const [allroles, setAllroles] = useState([]);
   const [showIgn, setShowIgn] = useState('none');
   const [userIgn, setUserIgn] = useState(null);
@@ -20,14 +19,6 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
   const [openForm, setOpenForm] = useState(false);
   const [type, setType] = useState('');
   const [formErrors, setFormErrors] = useState({});
-
-  const toggleMic = () => {
-    if (online === false) {
-      setOnline(true);
-    } else {
-      setOnline(false);
-    }
-  };
 
   const router = useRouter();
 
@@ -41,7 +32,7 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
     lastName: name[1],
     username: user.username,
     bio: profile.bio,
-    Online: online,
+    Online: profile?.online_status || false,
     team: '',
     role: profile?.headline?.inGameRole,
     b_role: profile?.headline?.business_role,
@@ -55,6 +46,14 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
     gameId: selectedGame?.game._id,
     userIgn: ''
   });
+
+  const handleOnline = () => {
+    if (states.Online === true) {
+      states.Online = false;
+    } else {
+      states.Online = true;
+    }
+  };
 
   const handleSelectGame = async (obj) => {
     setStates({ ...states, gameId: obj._id });
@@ -662,7 +661,7 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                     type="checkbox"
                     className="custom-control-input"
                     id="customSwitch1"
-                    onClick={() => setOnline(toggleMic)}
+                    onClick={() => handleOnline()}
                     value={states.Online}
                   />
                   <label

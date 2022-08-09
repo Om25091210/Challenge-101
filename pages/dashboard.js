@@ -28,7 +28,7 @@ const Dashboard = ({ user, profile, teams, posts, suggplayers }) => {
     <>
       <MetaDash />
 
-      <SignedHeader user={user} />
+      <SignedHeader user={user} profile={profile} />
 
       <LeftNav user={user} />
 
