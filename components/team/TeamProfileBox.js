@@ -191,6 +191,8 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
       ?.filter((team) => team?.user === user?._id)
       .map((team) => team?.user).length > 0;
 
+  const playerId = profile.playergames[0]?.player?._id;
+
   const isReqSent =
     data.team.request?.filter((reque) => reque.playerId._id === playerId)
       .length > 0;
