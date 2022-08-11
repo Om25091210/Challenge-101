@@ -1,10 +1,11 @@
 import axios from 'axios';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { toast } from 'react-toastify';
 import baseURL from '../../utils/baseURL';
 import { tournamentEditValidate } from '../../utils/valid';
 import Moment from 'moment';
+import countryList from 'react-select-country-list';
 
 const TournamentEdit = ({ data, user }) => {
   const gameList = data.tournament.games.map((game) => game.gameId._id);
@@ -42,6 +43,8 @@ const TournamentEdit = ({ data, user }) => {
       .get(`${baseURL}/api/all/series`)
       .then((res) => setAllseries(res.data));
   }, []);
+
+  const options = useMemo(() => countryList().getData(), []);
 
   function handleSubmit(e) {
     if (e.target.options) {
@@ -240,11 +243,13 @@ const TournamentEdit = ({ data, user }) => {
                       onChange={handleChangeCheck}
                       value={states.location}
                     >
-                      <option value="India">India</option>
-                      <option value="Asia">Asia</option>
-                      <option value="China">China</option>
-                      <option value="Japan">Japan</option>
-                      <option value="Europe">Europe</option>
+                      <option value="">--</option>
+                      {options &&
+                        options.map((opt) => (
+                          <>
+                            <option value={opt.value}>{opt.label}</option>
+                          </>
+                        ))}
                     </select>
                   </div>
 

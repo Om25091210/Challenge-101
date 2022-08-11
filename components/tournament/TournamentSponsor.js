@@ -61,6 +61,20 @@ const TournamentSponsor = ({ user, data, isUser }) => {
     refreshData();
   };
 
+  const handleDeleteSponsor = (e, sponsorId) => {
+    e.preventDefault();
+    try {
+      axios.put(
+        `${baseURL}/api/tournaments/sponsordelete/${data.tournament._id}/${sponsorId}`
+      );
+      toast.success('Deleted Sponsor Successfully');
+      refreshData();
+    } catch (err) {
+      console.log(err);
+      toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+    }
+  };
+
   return (
     <div className="tab hide" id="sponsors">
       <div className="sponsers_box">
@@ -75,6 +89,12 @@ const TournamentSponsor = ({ user, data, isUser }) => {
                   {' '}
                   <span className="head_spons_bg">{spons.name}</span>
                   <p>{spons.description}</p>
+                  <button
+                    className="btn"
+                    onClick={(e) => handleDeleteSponsor(e, spons._id)}
+                  >
+                    <i className="fa fa-trash" />
+                  </button>
                 </div>
               </li>
             ))}

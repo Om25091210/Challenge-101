@@ -24,7 +24,11 @@ const TeamEdit = ({ isAdmin, isManager, team }) => {
     emp: empData,
     arena: arenaList || '',
     region: team.region,
-    game: gameList || ''
+    game: gameList || '',
+    roles: team.attributes.roles || '',
+    languages: team.attributes.languages || '',
+    mic: team.attributes.mic || '',
+    platform: team.attributes.platform || ''
   });
 
   useEffect(() => {
@@ -157,11 +161,12 @@ const TeamEdit = ({ isAdmin, isManager, team }) => {
                     onChange={handleChangeCheck}
                   >
                     <option value="">--</option>
-                    <option value="India">India</option>
-                    <option value="Asia">Asia</option>
-                    <option value="China">China</option>
-                    <option value="Japan">Japan</option>
-                    <option value="Europe">Europe</option>
+                    {options &&
+                      options.map((opt) => (
+                        <>
+                          <option value={opt.value}>{opt.label}</option>
+                        </>
+                      ))}
                   </select>
                   <p>{formErrors.Tregion}</p>
                 </div>
@@ -179,6 +184,76 @@ const TeamEdit = ({ isAdmin, isManager, team }) => {
                       allgames.map((game) => (
                         <option value={game._id}>{game.name}</option>
                       ))}
+                  </select>
+                </div>
+
+                <div className="colm">
+                  <label htmlFor="exampleFormControlInput1">Team Roles</label>
+                  <select
+                    className="form-control"
+                    id="exampleFormControlInput1"
+                    name="roles"
+                    onChange={handleSubmit}
+                    value={states.roles}
+                    multiple={true}
+                  >
+                    <option value="">--</option>
+                    <option value="Support">Support</option>
+                    <option value="Scout">Scout</option>
+                    <option value="Sniper">Sniper</option>
+                    <option value="Driver">Driver</option>
+                    <option value="Fragger">Fragger</option>
+                    <option value="Ingame Leader">Ingame Leader</option>
+                  </select>
+                </div>
+
+                <div className="colm">
+                  <label htmlFor="exampleFormControlInput1">Platform</label>
+                  <select
+                    className="form-control"
+                    id="exampleFormControlInput1"
+                    name="platform"
+                    onChange={handleChangeCheck}
+                    value={states.platform}
+                  >
+                    <option value="">--</option>
+                    <option value="PC">PC</option>
+                    <option value="Console">Console</option>
+                    <option value="Mobile">Mobile</option>
+                  </select>
+                </div>
+
+                <div className="colm">
+                  <label htmlFor="exampleFormControlInput1">Mic</label>
+                  <select
+                    className="form-control"
+                    id="exampleFormControlInput1"
+                    name="mic"
+                    onChange={handleChangeCheck}
+                    value={states.mic}
+                  >
+                    <option value="">--</option>
+                    <option value={true}>On</option>
+                    <option value={false}>Off</option>
+                  </select>
+                </div>
+
+                <div className="colm">
+                  <label htmlFor="exampleFormControlInput1">Languages</label>
+                  <select
+                    className="form-control"
+                    id="exampleFormControlInput1"
+                    name="languages"
+                    onChange={handleSubmit}
+                    value={states.languages}
+                    multiple={true}
+                  >
+                    <option value="">--</option>
+                    <option value="English">English</option>
+                    <option value="Hindi">Hindi</option>
+                    <option value="Tamil">Tamil</option>
+                    <option value="Telugu">Telugu</option>
+                    <option value="Kannada">Kannada</option>
                   </select>
                 </div>
 

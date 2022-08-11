@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import Script from 'next/script';
 import Head from 'next/head';
 import MetaDash from '@components/MetaDash';
@@ -17,6 +17,8 @@ import { useMutation } from 'react-query';
 import cookie from 'js-cookie';
 import { teamformvalidate } from '@utils/valid';
 import { useRouter } from 'next/router';
+import countryList from 'react-select-country-list';
+import TeamAddSearch from '../../components/team/TeamAddSearch';
 
 const CreateTeam = ({ user }) => {
   const showSecond = true;
@@ -64,7 +66,11 @@ const CreateTeam = ({ user }) => {
     graphicsCard: '',
     headphone: '',
     processor: '',
-    role: ''
+
+    mic: false,
+    languages: [],
+    platform: '',
+    roles: []
   });
 
   useEffect(() => {
@@ -82,6 +88,8 @@ const CreateTeam = ({ user }) => {
     // Rigs data
     axios.get(`${baseURL}/api/rigsdata/`).then((res) => setRigsData(res.data));
   }, []);
+
+  const options = useMemo(() => countryList().getData(), []);
 
   const mutation = useMutation(
     async (formdata) =>
@@ -140,98 +148,6 @@ const CreateTeam = ({ user }) => {
   const showstep1 = () => {
     setStep1(false);
     setShowbtn(true);
-  };
-
-  const [filteredData, setFilteredData] = useState([]);
-  const handleFilter = (event) => {
-    const searchWord = event.target.value;
-
-    setSearchText(searchWord);
-    const newFilter = rigsData?.filter((value) => {
-      return (
-        value.name.toLowerCase().includes(searchWord.toLowerCase()) &&
-        value.category === 'Keyboard'
-      );
-    });
-
-    if (searchText === '') {
-      setFilteredData([]);
-    } else {
-      setFilteredData(newFilter);
-    }
-  };
-  const handleSelectedRig = (data) => {
-    setSearchText(data.name);
-    // $('custom-rig-tag').addClass('hide')
-    state.keyboard = data._id;
-  };
-
-  const [filteredData1, setFilteredData1] = useState([]);
-  const handleFilter1 = (event) => {
-    const searchWord = event.target.value;
-
-    setSearchText1(searchWord);
-    const newFilter = rigsData?.filter((value) => {
-      return (
-        value.name.toLowerCase().includes(searchWord.toLowerCase()) &&
-        value.category === 'Mouse'
-      );
-    });
-
-    if (searchText1 === '') {
-      setFilteredData1([]);
-    } else {
-      setFilteredData1(newFilter);
-    }
-  };
-  const handleSelectedRig1 = (data) => {
-    setSearchText1(data.name);
-    // $('custom-rig-tag').addClass('hide')
-    state.mouse = data._id;
-  };
-
-  const [filteredData2, setFilteredData2] = useState([]);
-  const handleFilter2 = (event) => {
-    const searchWord = event.target.value;
-
-    setSearchText2(searchWord);
-    const newFilter = rigsData?.filter((value) => {
-      return (
-        value.name.toLowerCase().includes(searchWord.toLowerCase()) &&
-        value.category === 'Role'
-      );
-    });
-
-    if (searchText2 === '') {
-      setFilteredData2([]);
-    } else {
-      setFilteredData2(newFilter);
-    }
-  };
-  const handleSelectedRig2 = (data) => {
-    setSearchText2(data.name);
-    // $('custom-rig-tag').addClass('hide')
-    state.role = data._id;
-  };
-
-  const [filteredData3, setFilteredData3] = useState([]);
-  const handleFilter3 = (event) => {
-    const searchWord = event.target.value;
-
-    setSearchText3(searchWord);
-    const newFilter = sponsors?.filter((value) => {
-      return value.name.toLowerCase().includes(searchWord.toLowerCase());
-    });
-
-    if (searchText3 === '') {
-      setFilteredData3([]);
-    } else {
-      setFilteredData3(newFilter);
-    }
-  };
-  const handleSelectedRig3 = (data) => {
-    setSearchText3(data.name);
-    state.sponsor = data._id;
   };
 
   return (
@@ -340,11 +256,13 @@ const CreateTeam = ({ user }) => {
                         Country
                       </label>
                       <select name="region" id="" onChange={handleChange}>
-                        <option value="India">India</option>
-                        <option value="Asia">Asia</option>
-                        <option value="China">China</option>
-                        <option value="Japan">Japan</option>
-                        <option value="Europe">Europe</option>
+                        <option value="">--</option>
+                        {options &&
+                          options.map((opt) => (
+                            <>
+                              <option value={opt.value}>{opt.label}</option>
+                            </>
+                          ))}
                       </select>
                       <p className="error">{formErrors.region}</p>
                     </div>
@@ -394,191 +312,110 @@ const CreateTeam = ({ user }) => {
                         />
                         {/* <p>{formErrors.achievements}</p> */}
                       </div>
-                      <div className="colm">
-                        <label>Keyboard Rigs (Optional)</label>
-                        <input
-                          id="keyboard"
-                          name="keyboard"
-                          placeholder="Enter Keyboard Name"
-                          type="search"
-                          value={searchText}
-                          onChange={handleFilter}
-                          autoComplete="off"
-                        />
 
-                        {searchText.length !== 0 ? (
-                          <div className="custom-rig-tag">
-                            <div className="rigs_items">
-                              {!filteredData || filteredData.length === 0 ? (
-                                <p>No keyboards found..</p>
-                              ) : (
-                                filteredData.map((data) => (
-                                  <div
-                                    onClick={() => handleSelectedRig(data)}
-                                    key={data._id}
-                                    className="items"
-                                  >
-                                    <span>
-                                      <img src={data.image} />
-                                    </span>
-                                    <p>
-                                      {data.name.length > 20
-                                        ? data.name.substring(0, 20) + '...'
-                                        : data.name}
-                                    </p>
-                                  </div>
-                                ))
-                              )}
-                            </div>
-                          </div>
-                        ) : null}
-                      </div>
-                      <div className="colm">
-                        <label>Mouse</label>
-                        <input
-                          id="mouse"
-                          name="mouse"
-                          placeholder="Enter Mouse Name"
-                          type="search"
-                          value={searchText1}
-                          onChange={handleFilter1}
-                          autoComplete="off"
-                        />
+                      <TeamAddSearch
+                        sponsors={rigsData}
+                        type="KEYBOARD"
+                        states={state}
+                        val="Keyboard"
+                      />
 
-                        {searchText1.length !== 0 ? (
-                          <div className="custom-rig-tag">
-                            <div className="rigs_items">
-                              {!filteredData1 || filteredData1.length === 0 ? (
-                                <p>No Mouse found..</p>
-                              ) : (
-                                filteredData1.map((data) => (
-                                  <div
-                                    onClick={() => handleSelectedRig1(data)}
-                                    key={data._id}
-                                    className="items"
-                                  >
-                                    <span>
-                                      <img src={data.image} />
-                                    </span>
-                                    <p>
-                                      {data.name.length > 20
-                                        ? data.name.substring(0, 20) + '...'
-                                        : data.name}
-                                    </p>
-                                  </div>
-                                ))
-                              )}
-                            </div>
-                          </div>
-                        ) : null}
-                      </div>
+                      <TeamAddSearch
+                        sponsors={rigsData}
+                        type="MOUSE"
+                        states={state}
+                        val="Mouse"
+                      />
+
+                      <TeamAddSearch sponsors={sponsors} states={state} />
+
+                      <TeamAddSearch
+                        sponsors={arenas}
+                        states={state}
+                        type="ARENA"
+                      />
+
+                      <TeamAddSearch
+                        sponsors={rigsData}
+                        states={state}
+                        type="ROLE"
+                        val="Role"
+                      />
+
                       <div className="colm">
                         <label htmlFor="exampleFormControlInput1">
-                          Sponsor (Optional)
-                        </label>
-                        <input
-                          type="search"
-                          id="sponsor"
-                          name="sponsor"
-                          placeholder="Enter One Sponsor Name"
-                          value={searchText3}
-                          onChange={handleFilter3}
-                          autoComplete="off"
-                        />
-                        {searchText3.length !== 0 ? (
-                          <div className="custom-rig-tag">
-                            <div className="rigs_items">
-                              {!filteredData3 || filteredData3.length === 0 ? (
-                                <p>No Sponsor found..</p>
-                              ) : (
-                                filteredData3.map((data) => (
-                                  <div
-                                    onClick={() => handleSelectedRig3(data)}
-                                    key={data._id}
-                                    className="items"
-                                  >
-                                    <span>
-                                      <img
-                                        src={data?.imgUrl}
-                                        height={50}
-                                        width={50}
-                                      />
-                                    </span>
-                                    <p>
-                                      {data.name.length > 20
-                                        ? data.name.substring(0, 20) + '...'
-                                        : data.name}
-                                    </p>
-                                  </div>
-                                ))
-                              )}
-                            </div>
-                          </div>
-                        ) : null}
-                      </div>
-                      <div className="colm">
-                        <label htmlFor="exampleFormControlInput1">
-                          Arena (Optional)
+                          Team Roles
                         </label>
                         <select
                           className="form-control"
-                          name="arena"
-                          value={state.arena}
-                          multiple={true}
+                          id="exampleFormControlInput1"
+                          name="roles"
                           onChange={handleChange}
+                          value={state.roles}
                         >
-                          {arenas.map((arn, idx) => (
-                            <option key={idx} value={arn._id}>
-                              {' '}
-                              {arn.name}{' '}
-                            </option>
-                          ))}
+                          <option value="">--</option>
+                          <option value="Support">Support</option>
+                          <option value="Scout">Scout</option>
+                          <option value="Sniper">Sniper</option>
+                          <option value="Driver">Driver</option>
+                          <option value="Fragger">Fragger</option>
+                          <option value="Ingame Leader">Ingame Leader</option>
                         </select>
                       </div>
+
                       <div className="colm">
                         <label htmlFor="exampleFormControlInput1">
-                          Team (Optional)
+                          Platform
                         </label>
-                        <input
-                          type="search"
-                          id="role"
-                          name="role"
-                          placeholder="Enter The Role"
-                          value={searchText2}
-                          onChange={handleFilter2}
-                          autoComplete="off"
-                        />
-                        {searchText2.length !== 0 ? (
-                          <div className="custom-rig-tag">
-                            <div className="rigs_items">
-                              {!filteredData2 || filteredData2.length === 0 ? (
-                                <p>No Role found..</p>
-                              ) : (
-                                filteredData2.map((data) => (
-                                  <div
-                                    onClick={() => handleSelectedRig2(data)}
-                                    key={data._id}
-                                    className="items"
-                                  >
-                                    <span>
-                                      <img
-                                        src={data?.image}
-                                        height={50}
-                                        width={50}
-                                      />
-                                    </span>
-                                    <p>
-                                      {data.name.length > 20
-                                        ? data.name.substring(0, 20) + '...'
-                                        : data.name}
-                                    </p>
-                                  </div>
-                                ))
-                              )}
-                            </div>
-                          </div>
-                        ) : null}
+                        <select
+                          className="form-control"
+                          id="exampleFormControlInput1"
+                          name="platform"
+                          onChange={handleChange}
+                          value={state.platform}
+                        >
+                          <option value="">--</option>
+                          <option value="PC">PC</option>
+                          <option value="Console">Console</option>
+                          <option value="Mobile">Mobile</option>
+                        </select>
                       </div>
+
+                      <div className="colm">
+                        <label htmlFor="exampleFormControlInput1">Mic</label>
+                        <select
+                          className="form-control"
+                          id="exampleFormControlInput1"
+                          name="mic"
+                          onChange={handleChange}
+                          value={state.mic}
+                        >
+                          <option value="">--</option>
+                          <option value={true}>On</option>
+                          <option value={false}>Off</option>
+                        </select>
+                      </div>
+
+                      <div className="colm">
+                        <label htmlFor="exampleFormControlInput1">
+                          Languages
+                        </label>
+                        <select
+                          className="form-control"
+                          id="exampleFormControlInput1"
+                          name="languages"
+                          onChange={handleChange}
+                          value={state.languages}
+                        >
+                          <option value="">--</option>
+                          <option value="English">English</option>
+                          <option value="Hindi">Hindi</option>
+                          <option value="Tamil">Tamil</option>
+                          <option value="Telugu">Telugu</option>
+                          <option value="Kannada">Kannada</option>
+                        </select>
+                      </div>
+
                       <div className="colm full_width">
                         <label htmlFor="exampleFormControlInput1">
                           Social Links (Optional)

@@ -101,7 +101,7 @@ const TournamentRows = ({
                               alt={team.teamId?.name}
                             />
 
-                            <a href={`/user/${team.teamId?._id}`}>
+                            <a href={`/team/${team.teamId?._id}`}>
                               {team.teamId?.name}
                             </a>
                           </li>
@@ -259,7 +259,7 @@ const TournamentRows = ({
                               alt={team.teamId?.name}
                             />
 
-                            <a href={`/user/${team.teamId?._id}`}>
+                            <a href={`/team/${team.teamId?._id}`}>
                               {team.teamId?.name}
                             </a>
                           </li>

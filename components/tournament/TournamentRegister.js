@@ -28,7 +28,7 @@ const Tournament_Reg = ({ user, tournament, profile }) => {
   const reghandlesubmit = async (e) => {
     e.preventDefault();
     try {
-      if (tournament.playType === 'PLAYERS') {
+      if (tournament.playType === 'SOLO') {
         axios.put(
           `${baseURL}/api/tournaments/register/${tournament._id}/${user._id}`
         );
