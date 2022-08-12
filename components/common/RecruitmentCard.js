@@ -156,9 +156,9 @@ const RecruitmentCard = ({ type, RecruitId }) => {
                       <label htmlFor="exampleFormControlInput1">Role</label>
                       <select
                         name="role"
-                        onChange={type === 'TEAM' ? handleSubmit : onChange}
+                        onChange={onChange}
                         value={states.role}
-                        multiple={type === 'TEAM' ? true : false}
+                        multiple={false}
                       >
                         {allroles.map((role) => (
                           <option value={role}>{role}</option>

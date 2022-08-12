@@ -75,7 +75,7 @@ const TeamProfileData = ({
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }
   };
-  console.log(tabData);
+
   return (
     <>
       <ul className="profile_tab_btn">

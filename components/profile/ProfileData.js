@@ -144,7 +144,11 @@ const ProfileData = ({ user, Userdata, products, teams }) => {
             {Userdata.teamMatchesList?.map((result, index) => (
               <TeamAllStats teamId={result.team._id} />
             ))}
-            <GamesDetails user={user} profile={profile} />
+            <GamesDetails
+              user={user}
+              profile={profile}
+              Userdata={Userdata.profile}
+            />
           </div>
         </div>
         <div className="tab hide" id="statistics">
