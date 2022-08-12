@@ -52,7 +52,7 @@ const TeamAddSearch = ({ sponsors, states, type, val }) => {
         ) : type === 'MOUSE' ? (
           <label htmlFor="exampleFormControlInput1">Mouse</label>
         ) : type === 'ROLE' ? (
-          <label htmlFor="exampleFormControlInput1">Team (Optional)</label>
+          <label htmlFor="exampleFormControlInput1">Role (Optional)</label>
         ) : (
           <label htmlFor="exampleFormControlInput1">Sponsor</label>
         )}

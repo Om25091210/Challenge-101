@@ -57,7 +57,7 @@ export const NotificationItem = ({ user }) => {
             />
           </g>
         </svg>{' '}
-        {user.unreadNotification === false ? null : (
+        {user?.unreadNotification === false ? null : (
           <span className="pop">{notify.length}</span>
         )}
       </a>
@@ -70,169 +70,172 @@ export const NotificationItem = ({ user }) => {
             ) : (
               <div>
                 {' '}
-                {notify.map((notification, idx) => (
-                  <li className="notif_tag" key={idx}>
-                    {notification.type === 'comment' ? (
-                      <>
-                        <span className="notif_img">
-                          <img src={notification.user?.profilePicUrl} />
-                        </span>{' '}
-                        <span className="notif_name">
-                          <a
-                            href={`/user/${notification.user?._id}`}
-                            onClick={handleClick}
-                          >
-                            {notification.user?.username}
-                          </a>{' '}
-                          left a comment on{' '}
-                          <a
-                            href={`/posts/${notification.post._id}`}
-                            onClick={handleClick}
-                          >
-                            {notification.post.description.length > 15
-                              ? notification.post.description
-                                  .substring(0, 15)
-                                  .concat('...')
-                              : notification.post.description}
-                          </a>
-                          {/* don't have data in text */}
-                          <p>
-                            {notification.text.length > 15
-                              ? notification.text.substring(0, 15).concat('...')
-                              : notification.text}
-                          </p>
-                          <p>
-                            {formatDistanceToNowStrict(
-                              new Date(notification.date),
-                              {
-                                addSuffix: true
-                              }
-                            )}
-                          </p>
-                        </span>
-                      </>
-                    ) : notification.type === 'reply' ? (
-                      <>
-                        <span className="notif_img">
-                          <img src={notification.user?.profilePicUrl} />
-                        </span>{' '}
-                        <span className="notif_name">
-                          <a
-                            href={`/user/${notification.user?._id}`}
-                            onClick={handleClick}
-                          >
-                            {notification.user?.username}
-                          </a>{' '}
-                          replied to your comment on{' '}
-                          <a
-                            href={`/posts/${notification.post?._id}`}
-                            onClick={handleClick}
-                          >
-                            {notification.post?.description.length > 15
-                              ? notification.post?.description
-                                  .substring(0, 15)
-                                  .concat('...')
-                              : notification.post?.description}
-                          </a>
-                          {/* replies is not available */}
-                          <p>
-                            {notification?.text.length > 15
-                              ? notification?.text
-                                  .substring(0, 15)
-                                  .concat('...')
-                              : notification?.text}
-                          </p>
-                          <p>
-                            {formatDistanceToNowStrict(
-                              new Date(notification.date),
-                              {
-                                addSuffix: true
-                              }
-                            )}
-                          </p>
-                        </span>
-                      </>
-                    ) : notification.type === 'follow' ? (
-                      <>
-                        <span className="notif_img">
-                          <img src={notification.user?.profilePicUrl} />
-                        </span>{' '}
-                        <span className="notif_name">
-                          <a
-                            href={`/user/${notification.user?._id}`}
-                            onClick={handleClick}
-                          >
-                            {notification.user?.username}
-                          </a>{' '}
-                          started following you
-                          <p>
-                            {formatDistanceToNowStrict(
-                              new Date(notification.date),
-                              {
-                                addSuffix: true
-                              }
-                            )}
-                          </p>
-                        </span>
-                      </>
-                    ) : notification.type === 'like' ? (
-                      <>
-                        <span className="notif_img">
-                          <img src={notification.user?.profilePicUrl} />
-                        </span>{' '}
-                        <span className="notif_name">
-                          <Link
-                            href={`/user/${notification.user?._id}`}
-                            onClick={handleClick}
-                          >
-                            <a>{notification.user?.username}</a>
-                          </Link>{' '}
-                          liked your post on{' '}
-                          <a
-                            href={`/posts/${notification.post?._id}`}
-                            onClick={handleClick}
-                          >
-                            {notification.post?.description.length > 15
-                              ? notification.post?.description
-                                  .substring(0, 15)
-                                  .concat('...')
-                              : notification.post?.description}
-                          </a>
-                          <p>
-                            {formatDistanceToNowStrict(
-                              new Date(notification.date),
-                              {
-                                addSuffix: true
-                              }
-                            )}
-                          </p>
-                        </span>
-                      </>
-                    ) : notification.type === 'badge' ? (
-                      <>
-                        <span className="notif_img">
-                          <img src="" />
-                        </span>{' '}
-                        <span className="notif_name">
-                          You have been awarded the{' '}
-                          <span>
-                            {/* Badge is not available */}
-                            {notification.text} badge
+                {notify &&
+                  notify.map((notification, idx) => (
+                    <li className="notif_tag" key={idx}>
+                      {notification.type === 'comment' ? (
+                        <>
+                          <span className="notif_img">
+                            <img src={notification.user?.profilePicUrl} />
+                          </span>{' '}
+                          <span className="notif_name">
+                            <a
+                              href={`/user/${notification.user?._id}`}
+                              onClick={handleClick}
+                            >
+                              {notification.user?.username}
+                            </a>{' '}
+                            left a comment on{' '}
+                            <a
+                              href={`/posts/${notification.post._id}`}
+                              onClick={handleClick}
+                            >
+                              {notification.post.description.length > 15
+                                ? notification.post.description
+                                    .substring(0, 15)
+                                    .concat('...')
+                                : notification.post.description}
+                            </a>
+                            {/* don't have data in text */}
+                            <p>
+                              {notification.text.length > 15
+                                ? notification.text
+                                    .substring(0, 15)
+                                    .concat('...')
+                                : notification.text}
+                            </p>
+                            <p>
+                              {formatDistanceToNowStrict(
+                                new Date(notification.date),
+                                {
+                                  addSuffix: true
+                                }
+                              )}
+                            </p>
                           </span>
-                          .
-                          <p>
-                            {formatDistanceToNowStrict(
-                              new Date(notification.date),
-                              {
-                                addSuffix: true
-                              }
-                            )}
-                          </p>
-                        </span>
-                      </>
-                    ) : null}
-                  </li>
-                ))}
+                        </>
+                      ) : notification.type === 'reply' ? (
+                        <>
+                          <span className="notif_img">
+                            <img src={notification.user?.profilePicUrl} />
+                          </span>{' '}
+                          <span className="notif_name">
+                            <a
+                              href={`/user/${notification.user?._id}`}
+                              onClick={handleClick}
+                            >
+                              {notification.user?.username}
+                            </a>{' '}
+                            replied to your comment on{' '}
+                            <a
+                              href={`/posts/${notification.post?._id}`}
+                              onClick={handleClick}
+                            >
+                              {notification.post?.description.length > 15
+                                ? notification.post?.description
+                                    .substring(0, 15)
+                                    .concat('...')
+                                : notification.post?.description}
+                            </a>
+                            {/* replies is not available */}
+                            <p>
+                              {notification?.text.length > 15
+                                ? notification?.text
+                                    .substring(0, 15)
+                                    .concat('...')
+                                : notification?.text}
+                            </p>
+                            <p>
+                              {formatDistanceToNowStrict(
+                                new Date(notification.date),
+                                {
+                                  addSuffix: true
+                                }
+                              )}
+                            </p>
+                          </span>
+                        </>
+                      ) : notification.type === 'follow' ? (
+                        <>
+                          <span className="notif_img">
+                            <img src={notification.user?.profilePicUrl} />
+                          </span>{' '}
+                          <span className="notif_name">
+                            <a
+                              href={`/user/${notification.user?._id}`}
+                              onClick={handleClick}
+                            >
+                              {notification.user?.username}
+                            </a>{' '}
+                            started following you
+                            <p>
+                              {formatDistanceToNowStrict(
+                                new Date(notification.date),
+                                {
+                                  addSuffix: true
+                                }
+                              )}
+                            </p>
+                          </span>
+                        </>
+                      ) : notification.type === 'like' ? (
+                        <>
+                          <span className="notif_img">
+                            <img src={notification.user?.profilePicUrl} />
+                          </span>{' '}
+                          <span className="notif_name">
+                            <Link
+                              href={`/user/${notification.user?._id}`}
+                              onClick={handleClick}
+                            >
+                              <a>{notification.user?.username}</a>
+                            </Link>{' '}
+                            liked your post on{' '}
+                            <a
+                              href={`/posts/${notification.post?._id}`}
+                              onClick={handleClick}
+                            >
+                              {notification.post?.description.length > 15
+                                ? notification.post?.description
+                                    .substring(0, 15)
+                                    .concat('...')
+                                : notification.post?.description}
+                            </a>
+                            <p>
+                              {formatDistanceToNowStrict(
+                                new Date(notification.date),
+                                {
+                                  addSuffix: true
+                                }
+                              )}
+                            </p>
+                          </span>
+                        </>
+                      ) : notification.type === 'badge' ? (
+                        <>
+                          <span className="notif_img">
+                            <img src="" />
+                          </span>{' '}
+                          <span className="notif_name">
+                            You have been awarded the{' '}
+                            <span>
+                              {/* Badge is not available */}
+                              {notification.text} badge
+                            </span>
+                            .
+                            <p>
+                              {formatDistanceToNowStrict(
+                                new Date(notification.date),
+                                {
+                                  addSuffix: true
+                                }
+                              )}
+                            </p>
+                          </span>
+                        </>
+                      ) : null}
+                    </li>
+                  ))}
               </div>
             )}
           </div>

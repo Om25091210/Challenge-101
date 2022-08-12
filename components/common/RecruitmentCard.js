@@ -8,15 +8,6 @@ import { useRouter } from 'next/router';
 const RecruitmentCard = ({ type, RecruitId }) => {
   const [allgames, setAllgames] = useState([]);
   const [allroles, setAllroles] = useState([]);
-  const [mic, setMic] = useState(false);
-
-  const toggleMic = () => {
-    if (mic === false) {
-      setMic(true);
-    } else {
-      setMic(false);
-    }
-  };
 
   const [states, setStates] = useState({
     RecruitId,
@@ -24,14 +15,23 @@ const RecruitmentCard = ({ type, RecruitId }) => {
     games: '',
     role: '',
     region: '',
-    Mic: mic,
+    Mic: false,
     language: '',
     type: '',
     salary: '',
     rank: '',
-    availability: ''
+    availability: '',
+    platform: ''
   });
   const options = useMemo(() => countryList().getData(), []);
+
+  const handleMic = () => {
+    if (states.Mic === true) {
+      states.Mic = false;
+    } else {
+      states.Mic = true;
+    }
+  };
 
   useEffect(() => {
     axios.get(`${baseURL}/api/all/games`).then((res) => setAllgames(res.data));
@@ -131,17 +131,34 @@ const RecruitmentCard = ({ type, RecruitId }) => {
                         value={states.games}
                         onChange={onChange}
                       >
+                        <option value="">--</option>
                         {allgames.map((game) => (
                           <option value={game?._id}>{game.name}</option>
                         ))}
+                      </select>
+                    </div>
+                    <div className="colm">
+                      <label htmlFor="exampleFormControlInput1">Platform</label>
+                      <select
+                        id="platform"
+                        name="platform"
+                        onChange={onChange}
+                        value={states.platform}
+                        className="form-control text-capitalize"
+                      >
+                        <option value="--">--</option>
+                        <option value="PC">PC</option>
+                        <option value="Console">Console</option>
+                        <option value="Mobile">Mobile</option>
                       </select>
                     </div>
                     <div className="form-group">
                       <label htmlFor="exampleFormControlInput1">Role</label>
                       <select
                         name="role"
-                        onChange={onChange}
+                        onChange={type === 'TEAM' ? handleSubmit : onChange}
                         value={states.role}
+                        multiple={type === 'TEAM' ? true : false}
                       >
                         {allroles.map((role) => (
                           <option value={role}>{role}</option>
@@ -162,11 +179,12 @@ const RecruitmentCard = ({ type, RecruitId }) => {
                     </div>
 
                     <div className="custom-control custom-switch">
+                      <label htmlFor="custonSwitch1">Mic</label>
                       <input
                         type="checkbox"
                         className="custom-control-input"
                         id="customSwitch1"
-                        onClick={() => setMic(toggleMic)}
+                        onClick={() => handleMic()}
                         value={states.Mic}
                       />
                       <label
@@ -183,11 +201,11 @@ const RecruitmentCard = ({ type, RecruitId }) => {
                         multiple={true}
                         value={states.language}
                       >
-                        <option value="ENG">English</option>
-                        <option value="RUS">Russian</option>
-                        <option value="HIN">Hindi</option>
-                        <option value="TEL">Telugu</option>
-                        <option value="TAM">Tamil</option>
+                        <option value="ENGLISH">English</option>
+                        <option value="RUSSIAN">Russian</option>
+                        <option value="HINDI">Hindi</option>
+                        <option value="TELUGU">Telugu</option>
+                        <option value="TAMIL">Tamil</option>
                       </select>
                     </div>
 

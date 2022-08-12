@@ -65,12 +65,7 @@ const CreateTeam = ({ user }) => {
     monitor: '',
     graphicsCard: '',
     headphone: '',
-    processor: '',
-
-    mic: false,
-    languages: [],
-    platform: '',
-    roles: []
+    processor: ''
   });
 
   useEffect(() => {
@@ -341,80 +336,6 @@ const CreateTeam = ({ user }) => {
                         type="ROLE"
                         val="Role"
                       />
-
-                      <div className="colm">
-                        <label htmlFor="exampleFormControlInput1">
-                          Team Roles
-                        </label>
-                        <select
-                          className="form-control"
-                          id="exampleFormControlInput1"
-                          name="roles"
-                          onChange={handleChange}
-                          value={state.roles}
-                        >
-                          <option value="">--</option>
-                          <option value="Support">Support</option>
-                          <option value="Scout">Scout</option>
-                          <option value="Sniper">Sniper</option>
-                          <option value="Driver">Driver</option>
-                          <option value="Fragger">Fragger</option>
-                          <option value="Ingame Leader">Ingame Leader</option>
-                        </select>
-                      </div>
-
-                      <div className="colm">
-                        <label htmlFor="exampleFormControlInput1">
-                          Platform
-                        </label>
-                        <select
-                          className="form-control"
-                          id="exampleFormControlInput1"
-                          name="platform"
-                          onChange={handleChange}
-                          value={state.platform}
-                        >
-                          <option value="">--</option>
-                          <option value="PC">PC</option>
-                          <option value="Console">Console</option>
-                          <option value="Mobile">Mobile</option>
-                        </select>
-                      </div>
-
-                      <div className="colm">
-                        <label htmlFor="exampleFormControlInput1">Mic</label>
-                        <select
-                          className="form-control"
-                          id="exampleFormControlInput1"
-                          name="mic"
-                          onChange={handleChange}
-                          value={state.mic}
-                        >
-                          <option value="">--</option>
-                          <option value={true}>On</option>
-                          <option value={false}>Off</option>
-                        </select>
-                      </div>
-
-                      <div className="colm">
-                        <label htmlFor="exampleFormControlInput1">
-                          Languages
-                        </label>
-                        <select
-                          className="form-control"
-                          id="exampleFormControlInput1"
-                          name="languages"
-                          onChange={handleChange}
-                          value={state.languages}
-                        >
-                          <option value="">--</option>
-                          <option value="English">English</option>
-                          <option value="Hindi">Hindi</option>
-                          <option value="Tamil">Tamil</option>
-                          <option value="Telugu">Telugu</option>
-                          <option value="Kannada">Kannada</option>
-                        </select>
-                      </div>
 
                       <div className="colm full_width">
                         <label htmlFor="exampleFormControlInput1">

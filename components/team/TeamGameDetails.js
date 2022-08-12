@@ -48,22 +48,26 @@ const TeamGameDetails = ({ user, team, isManager, isAdmin }) => {
               </li>
               <li>
                 <span className="nm">Roles: </span>{' '}
-                <span className="task">{recruit.role}</span>{' '}
+                {team.attributes?.roles.map((role) => (
+                  <>
+                    <span className="task">{role}</span>{' '}
+                  </>
+                ))}
               </li>
               <li>
                 <span className="nm">Mic:</span>{' '}
                 <span className="task">
-                  {recruit.mic === true ? 'On' : 'Off'}
+                  {team.attributes?.mic === true ? 'On' : 'Off'}
                 </span>
               </li>
               <li>
                 <span className="nm">Platform:</span>{' '}
-                <span className="task"> PC</span>
+                <span className="task">{team.attributes?.platform}</span>
               </li>
               <li>
                 <span className="nm">Language:</span>{' '}
                 <span className="task">
-                  {recruit.language.map((lang) => lang)}
+                  {team.attributes.languages.map((lang) => lang)}
                 </span>
               </li>
               <li>
