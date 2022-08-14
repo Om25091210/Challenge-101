@@ -512,11 +512,17 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
                           name="website"
                         />
                       </li>
+                      <li>
+                        {' '}
+                        <button
+                          className="btn"
+                          style={{ width: '100%', height: '45px' }}
+                          onClick={handleLinksSubmit}
+                        >
+                          Confirm Changes
+                        </button>
+                      </li>
                     </ul>
-
-                    <button className="btn" onClick={handleLinksSubmit}>
-                      Confirm Changes
-                    </button>
                   </div>
                   <div className="overlay"></div>
                 </div>

@@ -3506,6 +3506,8 @@ article .social_bar img {
 	overflow-y: auto;
 }
 
+#big_poup.poup_rigs .common_form .form-group:nth-child(2n){ float: left; margin-right: 20px;}
+
 
 /* --------- Challange poup ---------------- */
 
@@ -5412,6 +5414,8 @@ article .social_bar img {
 	background: #7239ea;
 }
 
+.right_game_details.tour_row .top_game .date{ display: flex;}
+
 .top_game .type_img{ width: 30px;}
 
 .top_game,
@@ -6313,7 +6317,7 @@ article .social_bar img {
 }
 
 #squads .add_sqd {
-	float: right;
+	float: left;
 }
 
 /* -------------------- Achiments -------------- */
@@ -6636,9 +6640,11 @@ article .social_bar img {
 }
 
 .participants .banner img {
-	display: block;
+    display: block;
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
 }
-
 .groupds_box {
 	float: left;
 	width: 100%;
@@ -9154,6 +9160,14 @@ ul.game_search_result li:hover:after, ul.game_search_result li.slc_img:after {
 }
 
 
+#more_games.prof_edit  ul li .game_pic a{ padding: 0; margin: 0;}
+#more_games.prof_edit ul li .game_pic a img {
+    width: 135px;
+    height: 110px;
+    object-fit: cover;
+    margin-top: 10px;
+}
+
 /*  end custom model box */
 
 .fancybox-skin {
@@ -9445,6 +9459,15 @@ form.common_form .btn {
 .checkout_total .amount .btn {
 	margin-top: 20px;
 	width: 100%;
+}
+
+#edit_pro_add_game button {
+    width: 125px;
+    text-align: center;
+}
+
+#edit_pro_add_game button span{ margin: 0;
+
 }
 
 /* --------------- New Chat section css --------------------- */
@@ -11336,8 +11359,8 @@ body.DarkPage .post .heads .date p {
 }
 
 body.DarkPage .post .right_details .post_data,
-body.DarkPage .post .heads .post_discp.disc_without_img {
-	background: #2b2b35;
+body.DarkPage .post .post_discp.disc_without_img {
+	background: #62626e;
 }
 
 
@@ -12153,14 +12176,14 @@ body.DarkPage .inner_model_box li a {
 }
 
 body.DarkPage form.common_form label {
-	color: #858585
+	color: #d9d9d9
 }
 
 body.DarkPage form.common_form .colm select,
 body.DarkPage .common_form select,
 body.DarkPage .common_form input {
 	background-color: #202028;
-	color: #858585;
+	color: #707088;
 	border: 1px solid #737373;
 }
 

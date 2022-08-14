@@ -55,7 +55,8 @@ const TeamVideos = ({ user, team, isManager, isAdmin }) => {
           <a href="#!" className="model_show_btn">
             <button className="btn">
               <i aria-hidden="true">
-                <i className="fa fa-plus-circle" aria-hidden="true"></i>
+                <i className="fa fa-plus-circle" aria-hidden="true"></i> Add
+                Media
               </i>
             </button>
           </a>

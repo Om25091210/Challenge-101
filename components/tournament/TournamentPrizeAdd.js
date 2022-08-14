@@ -79,7 +79,7 @@ const TournamentPrizeAdd = ({ prizes, prizesData }) => {
         </div>
       </div>
 
-      <div className="colm">
+      <div class="form-group">
         <label htmlFor="exampleFormControlInput1">Sponsor</label>
         <input
           type="search"

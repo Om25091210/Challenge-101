@@ -74,7 +74,7 @@ const TeamJobCreate = ({ user, profile }) => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="common_form">
         <>
           <div className="form-group">
             <label for="exampleFormControlInput1">Job Title</label>
@@ -137,7 +137,7 @@ const TeamJobCreate = ({ user, profile }) => {
             </select>
           </div>
 
-          <div className="colm">
+          <div className="form-group">
             <label htmlFor="startDate">application Start Date:</label>
             <input
               type="date"
@@ -149,7 +149,7 @@ const TeamJobCreate = ({ user, profile }) => {
             />
           </div>
 
-          <div className="colm">
+          <div className="form-group">
             <label htmlFor="endDate">application End Date:</label>
             <input
               type="date"
@@ -161,7 +161,7 @@ const TeamJobCreate = ({ user, profile }) => {
             />
           </div>
 
-          <div className="form-group">
+          <div className="form-group" style={{ height: '70px' }}>
             <label for="exampleFormControlInput1">
               Money Included (Optional)
             </label>
@@ -170,24 +170,30 @@ const TeamJobCreate = ({ user, profile }) => {
               <a href="#">
                 <img src="/assets/media/games/tournament1.png" />
               </a>
-              <select
-                name="currency"
-                id="currency"
-                onChange={handleChange}
-                value={state.currency}
-              >
-                <option value="USD">USD($)- Dollars</option>
-                <option value="INR">INR (Rs) - Rupees</option>
-              </select>
-              <input
-                type="number"
-                className="form-control"
-                placeholder=""
-                name="salary"
-                onChange={handleChange}
-                value={state.salary}
-              />
             </div>
+          </div>
+          <div className="form-group">
+            <label for="exampleFormControlInput1">&nbsp;</label>
+            <select
+              name="currency"
+              id="currency"
+              onChange={handleChange}
+              value={state.currency}
+            >
+              <option value="USD">USD($)- Dollars</option>
+              <option value="INR">INR (Rs) - Rupees</option>
+            </select>
+          </div>
+          <div className="form-group">
+            <label for="exampleFormControlInput1">&nbsp;</label>
+            <input
+              type="number"
+              className="form-control"
+              placeholder=""
+              name="salary"
+              onChange={handleChange}
+              value={state.salary}
+            />
           </div>
 
           <div className="form-group">

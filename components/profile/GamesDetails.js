@@ -42,7 +42,7 @@ const GamesDetails = ({ user, profile, Userdata }) => {
               <span className="nm">Game: </span>{' '}
               {recruitData.games?.map((game) => (
                 <img
-                  src={game.gameId.imgUrl}
+                  src={game.gameId?.imgUrl}
                   style={{ height: '35px', width: '35px' }}
                 />
               ))}

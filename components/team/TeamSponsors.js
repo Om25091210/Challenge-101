@@ -84,7 +84,8 @@ const TeamSponsors = ({ user, data, isManager, isAdmin, teamSponsors }) => {
             {isManager || isAdmin ? (
               <a href="#!" className="model_show_btn">
                 <button className="btn">
-                  <i className="fa fa-plus-circle" aria-hidden="true"></i>
+                  <i className="fa fa-plus-circle" aria-hidden="true"></i> Add
+                  Sponsor
                 </button>
               </a>
             ) : null}

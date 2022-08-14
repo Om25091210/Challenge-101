@@ -16,11 +16,12 @@ const TeamJobs = ({ jobs, team, isManager, isAdmin, user, profile }) => {
           {isManager || isAdmin ? (
             <a href="#!" className="model_show_btn">
               <button className="btn">
-                <i className="fa fa-plus-circle" aria-hidden="true"></i>
+                <i className="fa fa-plus-circle" aria-hidden="true"></i> Add
+                Jobs
               </button>
             </a>
           ) : null}
-          <div className="common_model_box">
+          <div className="common_model_box" id="big_poup">
             <a href="#!" className="model_close">
               X
             </a>

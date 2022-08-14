@@ -507,7 +507,10 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                           </div>
                         </a>
                         {showGameBox ? (
-                          <div className="common_model_box" id="more_games">
+                          <div
+                            className="common_model_box prof_edit"
+                            id="more_games"
+                          >
                             <a href="#!" className="model_close">
                               X
                             </a>
@@ -515,7 +518,7 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                               <div
                                 className="form w-100 add_game_box"
                                 noValidate="novalidate"
-                                id="kt_sign_up_form"
+                                id="edit_pro_add_game"
                               >
                                 {step1 ? (
                                   <div className="poup_height msScroll_all">

@@ -90,6 +90,50 @@ const TeamAbout = ({ Data, isManager, isAdmin, user, teamAbout }) => {
   return (
     <div className="our_team">
       <div className="about_team">
+        <span>
+          <div className="loc_box">
+            {' '}
+            <a href="#!" className="model_show_btn">
+              {isManager || isAdmin ? (
+                <button className="btn">
+                  <i className="fa fa-plus-circle" aria-hidden="true"></i> Add
+                  Members
+                </button>
+              ) : null}
+            </a>
+            <div className="common_model_box" id="big_poup">
+              <a href="#!" className="model_close">
+                X
+              </a>
+              <div className="inner_model_box">
+                <h3>Add Members</h3>
+                <form className="common_form" onSubmit={handleSubmitAbout}>
+                  <TeamAbtAdd role="CEO" rolesData={rolData} />
+                  <TeamAbtAdd role="Owner" rolesData={rolData} />
+                  <TeamAbtAdd role="Manager" rolesData={rolData} />
+                  <TeamAbtAdd role="Coach" rolesData={rolData} />
+                  <TeamAbtAdd role="PR Manager" rolesData={rolData} />
+
+                  {[...Array(count)].map((e, index) => (
+                    <div key={index}>
+                      <TeamAbtAdd role="" rolesData={rolData} />
+                    </div>
+                  ))}
+                  <div className="form-group">
+                    <label htmlFor="">Add More Roles</label>
+                    <span onClick={(e) => handleRoleForm(e)}>
+                      <i className="fa fa-life-ring" aria-hidden="true"></i>
+                    </span>
+                  </div>
+
+                  <button className="btn">Add</button>
+                </form>
+              </div>
+              <div className="overlay"></div>
+            </div>
+          </div>
+        </span>
+
         <div className="about">
           <h2>OUR TEAM</h2>
           {isManager || isAdmin ? (
@@ -113,54 +157,6 @@ const TeamAbout = ({ Data, isManager, isAdmin, user, teamAbout }) => {
             ''
           )}
         </div>
-        <span>
-          <div className="loc_box">
-            {' '}
-            <a href="#!" className="model_show_btn">
-              {isManager || isAdmin ? (
-                <button className="btn">
-                  <i aria-hidden="true"> Add Members </i>
-                </button>
-              ) : null}
-            </a>
-            <div
-              className="common_model_box"
-              style={{
-                height: '35rem',
-                marginTop: '1rem',
-                overflowY: 'scroll'
-              }}
-            >
-              <a href="#!" className="model_close">
-                X
-              </a>
-              <div className="inner_model_box">
-                <h3>Add Members</h3>
-                <form className="common_form" onSubmit={handleSubmitAbout}>
-                  <TeamAbtAdd role="CEO" rolesData={rolData} />
-                  <TeamAbtAdd role="Owner" rolesData={rolData} />
-                  <TeamAbtAdd role="Manager" rolesData={rolData} />
-                  <TeamAbtAdd role="Coach" rolesData={rolData} />
-                  <TeamAbtAdd role="PR Manager" rolesData={rolData} />
-
-                  {[...Array(count)].map((e, index) => (
-                    <div key={index}>
-                      <TeamAbtAdd role="" rolesData={rolData} />
-                    </div>
-                  ))}
-
-                  <label htmlFor="">Add More Roles</label>
-                  <span onClick={(e) => handleRoleForm(e)}>
-                    <i className="fa fa-life-ring" aria-hidden="true"></i>
-                  </span>
-
-                  <button className="btn">Add</button>
-                </form>
-              </div>
-              <div className="overlay"></div>
-            </div>
-          </div>
-        </span>
 
         {Data.about &&
           Data.about?.contacts.map((itm, index) => (

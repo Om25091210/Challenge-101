@@ -39,37 +39,41 @@ const TournamentRows = ({
                   <img src={result.imgUrl} alt="" />
                 </span>
               </div>
-              <div className="right_game_details">
+              <div className="right_game_details tour_row">
                 <div className="top_game">
                   <div className="date">
-                    <Link href={`/tournament/${result._id}`}>
-                      <a>
-                        <h3>{result.name}</h3>
-                      </a>
-                    </Link>
-                    {result.startDate
-                      ? format(new Date(result.startDate), 'dd.MMM.yyyy')
-                      : 'Not defined'}
+                    <div>
+                      <Link href={`/tournament/${result._id}`}>
+                        <a>
+                          <h3>{result.name}</h3>
+                        </a>
+                      </Link>
+                      {result.startDate
+                        ? format(new Date(result.startDate), 'dd.MMM.yyyy')
+                        : 'Not defined'}
+                    </div>
+
+                    {result.Type && result.Type === 'Ladder' ? (
+                      <span className="type_img">
+                        <img src="/assets/media/tournament/ladder.png" alt="" />
+                      </span>
+                    ) : result?.Type === 'Tournament' ? (
+                      <span className="type_img">
+                        <img
+                          src="/assets/media/tournament/tournament.png"
+                          alt=""
+                        />
+                      </span>
+                    ) : result.Type === 'Competition' ? (
+                      <span className="type_img">
+                        <img
+                          src="/assets/media/tournament/competition.png"
+                          alt=""
+                        />
+                      </span>
+                    ) : null}
                   </div>
-                  {result.Type && result.Type === 'Ladder' ? (
-                    <span className="type_img">
-                      <img src="/assets/media/tournament/ladder.png" alt="" />
-                    </span>
-                  ) : result?.Type === 'Tournament' ? (
-                    <span className="type_img">
-                      <img
-                        src="/assets/media/tournament/tournament.png"
-                        alt=""
-                      />
-                    </span>
-                  ) : result.Type === 'Competition' ? (
-                    <span className="type_img">
-                      <img
-                        src="/assets/media/tournament/competition.png"
-                        alt=""
-                      />
-                    </span>
-                  ) : null}
+
                   <div className="reg">
                     <TournamentRegister tournament={result} user={user} />
                   </div>
@@ -189,41 +193,44 @@ const TournamentRows = ({
                   <img src={result.tournament.imgUrl} alt="" />
                 </span>
               </div>
-              <div className="right_game_details">
+              <div className="right_game_details tour_row">
                 <div className="top_game">
                   <div className="date">
-                    <Link href={`/tournament/${result.tournament._id}`}>
-                      <a>
-                        <h3>{result.tournament.name}</h3>
-                      </a>
-                    </Link>
-                    {result.tournament.startDate
-                      ? format(
-                          new Date(result.tournament.startDate),
-                          'dd.MMM.yyyy'
-                        )
-                      : 'Not defined'}
+                    <div>
+                      <Link href={`/tournament/${result.tournament._id}`}>
+                        <a>
+                          <h3>{result.tournament.name}</h3>
+                        </a>
+                      </Link>
+                      {result.tournament.startDate
+                        ? format(
+                            new Date(result.tournament.startDate),
+                            'dd.MMM.yyyy'
+                          )
+                        : 'Not defined'}
+                    </div>
+                    {result.tournament.Type &&
+                    result.tournament.Type === 'Ladder' ? (
+                      <span className="type_img">
+                        <img src="/assets/media/tournament/ladder.png" alt="" />
+                      </span>
+                    ) : result?.tournament.Type === 'Tournament' ? (
+                      <span className="type_img">
+                        <img
+                          src="/assets/media/tournament/tournament.png"
+                          alt=""
+                        />
+                      </span>
+                    ) : result.tournament.Type === 'Competition' ? (
+                      <span className="type_img">
+                        <img
+                          src="/assets/media/tournament/competition.png"
+                          alt=""
+                        />
+                      </span>
+                    ) : null}
                   </div>
-                  {result.tournament.Type &&
-                  result.tournament.Type === 'Ladder' ? (
-                    <span className="type_img">
-                      <img src="/assets/media/tournament/ladder.png" alt="" />
-                    </span>
-                  ) : result?.tournament.Type === 'Tournament' ? (
-                    <span className="type_img">
-                      <img
-                        src="/assets/media/tournament/tournament.png"
-                        alt=""
-                      />
-                    </span>
-                  ) : result.tournament.Type === 'Competition' ? (
-                    <span className="type_img">
-                      <img
-                        src="/assets/media/tournament/competition.png"
-                        alt=""
-                      />
-                    </span>
-                  ) : null}
+
                   <div className="reg">
                     <TournamentRegister
                       tournament={result.tournament}
