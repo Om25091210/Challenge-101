@@ -10903,9 +10903,10 @@ form.common_form .btn {
 
 .tour_game_team li {
 	margin: 10px 0;
+	display: flex;
 }
 
-.tour_game_team input {
+.tour_game_team li img {
 	width: 25px;
 	height: 25px;
 	border-radius: 5px;
@@ -10918,7 +10919,7 @@ form.common_form .btn {
 }
 
 .tournamnet_new_row .btn {
-	padding: 20px 20px;
+	padding: 20px 20px; text-transform: uppercase;
 }
 
 

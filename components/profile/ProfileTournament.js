@@ -373,7 +373,7 @@ const ProfileTournament = ({
           </div>
         </div>
 
-        <div className="new_tournament">
+        <div className="new_tournament test">
           <div className="tournamnet_new_row">
             <div className="tour_img_name">
               <span className="imgs"></span>
@@ -536,56 +536,66 @@ const ProfileTournament = ({
               <div>
                 {result.winnings && (
                   <>
-                    <div>
-                      <img
-                        src={result.tournamentId?.imgUrl}
-                        style={{ height: '60px', width: '60px' }}
-                      />
-                    </div>
-                    <div>
-                      {result.tournamentId?.name}
-                      <span>{format(new Date(result?.year), 'yyyy')}</span>
-                    </div>
-                    <div>
-                      <div>
-                        Game:{' '}
-                        {result.games &&
-                          result?.games.map((gam) => (
-                            <>
+                    <div className="new_tournament">
+                      <div className="tournamnet_new_row">
+                        <div className="tour_img_name">
+                          <span className="imgs">
+                            <img src={result.tournamentId?.imgUrl} />
+                          </span>
+
+                          <span>
+                            <h4> {result.tournamentId?.name}</h4>
+                            <p>{format(new Date(result?.year), 'yyyy')}</p>
+                          </span>
+                        </div>
+                        <div className="tour_game_team">
+                          <ul>
+                            <li>
+                              <b> Game: </b>
+                              {result.games &&
+                                result?.games.map((gam) => (
+                                  <>
+                                    <img
+                                      src={gam.gameId.imgUrl}
+                                      style={{ height: '20px', width: '20px' }}
+                                    />
+                                    {gam.gameId.name}
+                                  </>
+                                ))}
+                            </li>
+                            <li>
+                              <b> Team:</b>
                               <img
-                                src={gam.gameId.imgUrl}
+                                src={result?.team?.imgUrl}
                                 style={{ height: '20px', width: '20px' }}
                               />
-                              {gam.gameId.name}
-                            </>
-                          ))}
+                              {result.team.name}
+                            </li>
+                          </ul>
+                        </div>
+                        <div className="tour_game_team">
+                          <ul>
+                            <li>
+                              Ranking:{' '}
+                              {result?.team_ranking &&
+                              result?.team_ranking === 3 ? (
+                                <>{result?.team_ranking} rd</>
+                              ) : result?.team_ranking === 2 ? (
+                                <>{result?.team_ranking} nd</>
+                              ) : result?.team_ranking === 1 ? (
+                                <>{result?.team_ranking} st</>
+                              ) : (
+                                <> {result?.team_ranking} th </>
+                              )}
+                            </li>
+
+                            <li>
+                              Winnings: {result?.currency} {result?.winnings}
+                            </li>
+                          </ul>
+                        </div>
+                        <button className="btn">view Match</button>
                       </div>
-                      <div>
-                        Team:
-                        <img
-                          src={result?.team?.imgUrl}
-                          style={{ height: '20px', width: '20px' }}
-                        />
-                        {result.team.name}
-                      </div>
-                    </div>
-                    <div>
-                      <div>
-                        Ranking:{' '}
-                        {result?.team_ranking && result?.team_ranking === 3 ? (
-                          <>{result?.team_ranking} rd</>
-                        ) : result?.team_ranking === 2 ? (
-                          <>{result?.team_ranking} nd</>
-                        ) : result?.team_ranking === 1 ? (
-                          <>{result?.team_ranking} st</>
-                        ) : (
-                          <> {result?.team_ranking} th </>
-                        )}
-                      </div>
-                      <div>
-                        Winnings: {result?.currency} {result?.winnings}
-                      </div>
-                      <button className="btn">view Match</button>
                     </div>
                   </>
                 )}
