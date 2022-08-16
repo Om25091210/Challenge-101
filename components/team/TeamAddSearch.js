@@ -44,7 +44,7 @@ const TeamAddSearch = ({ sponsors, states, type, val }) => {
   };
   return (
     <>
-      <div>
+      <div className="form-group">
         {type === 'ARENA' ? (
           <label htmlFor="exampleFormControlInput1">Arena</label>
         ) : type === 'KEYBOARD' ? (

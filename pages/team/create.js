@@ -277,7 +277,7 @@ const CreateTeam = ({ user }) => {
                       {/* <p>{formErrors.website}</p> */}
                     </div>
                     <div className="form-group">
-                      <div className="colm">
+                      <div className="form-group">
                         <label htmlFor="exampleFormControlInput1">
                           Description
                         </label>
@@ -292,7 +292,7 @@ const CreateTeam = ({ user }) => {
                         />
                         <p className="error">{formErrors.description}</p>
                       </div>
-                      <div className="colm">
+                      <div className="form-group">
                         <label htmlFor="exampleFormControlInput1">
                           Achievements (Optional)
                         </label>
