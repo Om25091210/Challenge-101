@@ -99,25 +99,23 @@ const TeamSponsors = ({ user, data, isManager, isAdmin, teamSponsors }) => {
 
                 <form className="common_form" onSubmit={handleSubmit}>
                   <div className="form-group">
-                    <div className="colm">
-                      <select
-                        className="form-control"
-                        name="sponsor"
-                        value={state.value}
-                        multiple={true}
-                        onChange={handleChange}
-                      >
-                        {sponsors &&
-                          sponsors.map((spon, idx) => (
-                            <option key={idx} value={spon._id}>
-                              {' '}
-                              {spon.name}{' '}
-                            </option>
-                          ))}
-                      </select>
-                    </div>
-                    <button className="btn">Update</button>
+                    <select
+                      className="form-control"
+                      name="sponsor"
+                      value={state.value}
+                      multiple={true}
+                      onChange={handleChange}
+                    >
+                      {sponsors &&
+                        sponsors.map((spon, idx) => (
+                          <option key={idx} value={spon._id}>
+                            {' '}
+                            {spon.name}{' '}
+                          </option>
+                        ))}
+                    </select>
                   </div>
+                  <button className="btn">Update</button>
                 </form>
               </div>
               <div className="overlay"></div>

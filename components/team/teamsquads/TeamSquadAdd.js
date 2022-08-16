@@ -92,10 +92,7 @@ const TeamSquadAdd = ({ teamplayers, team, isManager, isAdmin }) => {
           <i className="fa fa-plus-circle" aria-hidden="true"></i> Add Squad
         </a>
       ) : null}
-      <div
-        className="common_model_box"
-        style={{ marginTop: '200', overflowY: 'scroll' }}
-      >
+      <div className="common_model_box" id="big_poup">
         <a href="#!" className="model_close">
           X
         </a>
@@ -104,7 +101,7 @@ const TeamSquadAdd = ({ teamplayers, team, isManager, isAdmin }) => {
           <h3>Add a Squad</h3>
 
           <form className="common_form" onSubmit={handleEditStat}>
-            <div className="colm rows">
+            <div className="form-group">
               <label htmlFor="search">Games</label>
               <select
                 className="form-control text-capitalize"
@@ -123,7 +120,7 @@ const TeamSquadAdd = ({ teamplayers, team, isManager, isAdmin }) => {
               </select>
               <p>{formErrors.game}</p>
             </div>
-            <div className="colm rows">
+            <div className="form-group">
               <label htmlFor="search">Country</label>
               <select
                 className="form-control text-capitalize"
@@ -152,10 +149,12 @@ const TeamSquadAdd = ({ teamplayers, team, isManager, isAdmin }) => {
               </div>
             ))}
 
-            <label htmlFor="">Add More Players</label>
-            <span onClick={(e) => handleRoleForm(e)}>
-              <i className="fa fa-life-ring" aria-hidden="true"></i>
-            </span>
+            <div className="form-group">
+              <label htmlFor="">Add More Players</label>
+              <span onClick={(e) => handleRoleForm(e)}>
+                <i className="fa fa-life-ring" aria-hidden="true"></i>
+              </span>
+            </div>
 
             <button
               onClick={() => setFormErrors(teamsquadformvalidate(squadData))}

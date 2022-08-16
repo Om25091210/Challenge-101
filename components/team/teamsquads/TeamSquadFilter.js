@@ -65,7 +65,7 @@ const TeamSquadFilter = ({ playerData, players }) => {
         </select>
       </div>
 
-      <div className="colm">
+      <div className="form-group">
         <label htmlFor="exampleFormControlInput1">Player</label>
         <input
           type="search"

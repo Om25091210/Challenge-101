@@ -165,25 +165,25 @@ const TeamJobCreate = ({ user, profile }) => {
             <label for="exampleFormControlInput1">
               Money Included (Optional)
             </label>
-            <div className="prize_box">
+            <div className="prize_boxs">
               {' '}
-              <a href="#">
-                <img src="/assets/media/games/tournament1.png" />
-              </a>
+              <div className="select_img">
+                <a href="#">
+                  <img src="/assets/media/games/tournament1.png" />
+                </a>
+              </div>
+              <select
+                name="currency"
+                id="currency"
+                onChange={handleChange}
+                value={state.currency}
+              >
+                <option value="USD">USD($)- Dollars</option>
+                <option value="INR">INR (Rs) - Rupees</option>
+              </select>
             </div>
           </div>
-          <div className="form-group">
-            <label for="exampleFormControlInput1">&nbsp;</label>
-            <select
-              name="currency"
-              id="currency"
-              onChange={handleChange}
-              value={state.currency}
-            >
-              <option value="USD">USD($)- Dollars</option>
-              <option value="INR">INR (Rs) - Rupees</option>
-            </select>
-          </div>
+
           <div className="form-group">
             <label for="exampleFormControlInput1">&nbsp;</label>
             <input
