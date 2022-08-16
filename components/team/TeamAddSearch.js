@@ -9,7 +9,7 @@ const TeamAddSearch = ({ sponsors, states, type, val }) => {
 
     setSearchText(searchWord);
     let newFilter = [];
-    if (val === 'Mouse' || val === 'Keyboard' || val === 'Role') {
+    if (val === 'Mouse' || val === 'Keyboard') {
       newFilter = sponsors?.filter((value) => {
         return (
           value.name.toLowerCase().includes(searchWord.toLowerCase()) &&
@@ -36,8 +36,6 @@ const TeamAddSearch = ({ sponsors, states, type, val }) => {
       states.keyboard = data._id;
     } else if (type === 'MOUSE') {
       states.mouse = data._id;
-    } else if (type === 'ROLE') {
-      states.role = data._id;
     } else {
       states.sponsor = data._id;
     }
@@ -46,15 +44,13 @@ const TeamAddSearch = ({ sponsors, states, type, val }) => {
     <>
       <div className="form-group">
         {type === 'ARENA' ? (
-          <label htmlFor="exampleFormControlInput1">Arena</label>
+          <label htmlFor="exampleFormControlInput1">Arena (Optional)</label>
         ) : type === 'KEYBOARD' ? (
-          <label htmlFor="exampleFormControlInput1">Keyboard</label>
+          <label htmlFor="exampleFormControlInput1">Keyboard (Optional)</label>
         ) : type === 'MOUSE' ? (
-          <label htmlFor="exampleFormControlInput1">Mouse</label>
-        ) : type === 'ROLE' ? (
-          <label htmlFor="exampleFormControlInput1">Role (Optional)</label>
+          <label htmlFor="exampleFormControlInput1">Mouse (Optional)</label>
         ) : (
-          <label htmlFor="exampleFormControlInput1">Sponsor</label>
+          <label htmlFor="exampleFormControlInput1">Sponsor (Optional)</label>
         )}
         <input
           type="search"
@@ -66,8 +62,6 @@ const TeamAddSearch = ({ sponsors, states, type, val }) => {
               ? 'Mouse'
               : type === 'KEYBOARD'
               ? 'Keyboard'
-              : type === 'ROLE'
-              ? 'Role'
               : 'Sponsor'
           } name`}
           value={searchText}
@@ -97,9 +91,7 @@ const TeamAddSearch = ({ sponsors, states, type, val }) => {
                     className="items"
                   >
                     <span>
-                      {type === 'KEYBOARD' ||
-                      type === 'MOUSE' ||
-                      type === 'ROLE' ? (
+                      {type === 'KEYBOARD' || type === 'MOUSE' ? (
                         <img src={data?.image} height={50} width={50} />
                       ) : type === 'ARENA' ? (
                         <img src={data?.logoUrl} height={50} width={50} />

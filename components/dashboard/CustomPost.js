@@ -133,7 +133,7 @@ const CustomPost = ({ post }) => {
             <div className="team_slider">
               <ul className="user_slider">
                 <li>
-                  <img src="/assets/media/dash/user.jpg" alt="" />
+                  <img src={post.user.profilePicUrl} alt="" />
                 </li>
               </ul>
             </div>

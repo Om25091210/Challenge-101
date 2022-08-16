@@ -95,14 +95,17 @@ const TournamentDetail = ({ user, data, products, profile }) => {
 
     const handleDeleteSubmit = async (e) => {
       e.preventDefault();
-      axios.delete(`${baseURL}/api/tournaments/${data.tournament._id}`, {
-        headers: {
-          Authorization: cookie.get('token')
-        },
-        data: {
-          user: user._id
+      axios.delete(
+        `${baseURL}/api/tournaments/${data.tournament._id}/${data.tournament.name}`,
+        {
+          headers: {
+            Authorization: cookie.get('token')
+          },
+          data: {
+            user: user._id
+          }
         }
-      });
+      );
       toast.success('Deleted Successfully');
       router.push('/dashboard');
     };

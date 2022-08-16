@@ -52,7 +52,7 @@ const CreateTeam = ({ user }) => {
     achievements: '',
     sponsor: '',
     arena: '',
-    role: '',
+    role: 'Admin',
     facebook: '',
     twitch: '',
     twitter: '',
@@ -330,12 +330,16 @@ const CreateTeam = ({ user }) => {
                         type="ARENA"
                       />
 
-                      <TeamAddSearch
-                        sponsors={rigsData}
-                        states={state}
-                        type="ROLE"
-                        val="Role"
-                      />
+                      <div className="form-group">
+                        <label htmlFor="exampleFormControlTextarea1">
+                          Role (Optional)
+                        </label>
+                        <select name="role" onChange={handleChange}>
+                          <option value="">--</option>
+                          <option value="Admin">Admin</option>
+                          <option value="Manager">Manager</option>
+                        </select>
+                      </div>
 
                       <div className="colm full_width">
                         <label htmlFor="exampleFormControlInput1">

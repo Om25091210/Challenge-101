@@ -76,7 +76,8 @@ const CreateTournament = ({ user }) => {
     series: null,
     numberOfTeam: null,
     playType: '',
-    minTeams: null
+    minTeams: null,
+    platform: ''
   });
 
   const options = useMemo(() => countryList().getData(), []);
@@ -163,6 +164,11 @@ const CreateTournament = ({ user }) => {
     e.preventDefault();
     setSelectGames({ game: gameId });
     state.game = gameId;
+  };
+
+  const handleSelect = (e, plt) => {
+    e.preventDefault();
+    state.platform = plt;
   };
 
   useEffect(() => {
@@ -336,22 +342,37 @@ const CreateTournament = ({ user }) => {
                                   <div className="console_bg">
                                     {' '}
                                     {plt === 'PC' ? (
-                                      <img
-                                        src="/assets/media/discover/desk.png"
-                                        alt={game.name}
-                                      />
+                                      <a
+                                        href="#"
+                                        onClick={(e) => handleSelect(e, plt)}
+                                      >
+                                        <img
+                                          src="/assets/media/discover/desk.png"
+                                          alt={game.name}
+                                        />
+                                      </a>
                                     ) : null}
                                     {plt === 'Console' ? (
-                                      <img
-                                        src="/assets/media/discover/console.png"
-                                        alt={game.name}
-                                      />
+                                      <a
+                                        href="#"
+                                        onClick={(e) => handleSelect(e, plt)}
+                                      >
+                                        <img
+                                          src="/assets/media/discover/console.png"
+                                          alt={game.name}
+                                        />
+                                      </a>
                                     ) : null}
                                     {plt === 'Mobile' ? (
-                                      <img
-                                        src="/assets/media/discover/mobile_game.png"
-                                        alt={game.name}
-                                      />
+                                      <a
+                                        href="#"
+                                        onClick={(e) => handleSelect(e, plt)}
+                                      >
+                                        <img
+                                          src="/assets/media/discover/mobile_game.png"
+                                          alt={game.name}
+                                        />
+                                      </a>
                                     ) : null}
                                   </div>
                                 </>

@@ -40,7 +40,7 @@ const PlayerDisplay = ({ isLoading, playerData, user }) => {
                     {plyr?.players.name
                       ? plyr.players.name
                       : plyr?.players.apidata?.data?.platformInfo
-                          .platformUserHandle}
+                          ?.platformUserHandle}
                   </h3>
                 </a>
                 <ReactCountryFlag

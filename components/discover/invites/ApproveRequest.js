@@ -2,6 +2,7 @@ import { QueryClient, QueryClientProvider, useMutation } from 'react-query';
 import React, { useState } from 'react';
 import baseURL from '@utils/baseURL';
 import { toast } from 'react-toastify';
+import Cookies from 'js-cookie';
 
 const queryClient = new QueryClient();
 
@@ -34,7 +35,10 @@ const Approve_Req = ({ player, team }) => {
     const { data } = await fetch(
       `${baseURL}/api/teams/accept/${team._id}/${playerId}`,
       {
-        method: 'PUT'
+        method: 'PUT',
+        headers: {
+          Authorization: Cookies.get('token')
+        }
       }
     );
     return data;
