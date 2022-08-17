@@ -129,6 +129,7 @@ const TeamJobCreate = ({ user, profile }) => {
               value={state.location}
               onChange={handleChangeCheck}
             >
+              <option value="">--</option>
               {options.map((opt) => (
                 <>
                   <option value={opt.value}>{opt.label}</option>
@@ -175,11 +176,11 @@ const TeamJobCreate = ({ user, profile }) => {
               <select
                 name="currency"
                 id="currency"
-                onChange={handleChange}
+                onChange={handleChangeCheck}
                 value={state.currency}
               >
-                <option value="USD">USD($)- Dollars</option>
-                <option value="INR">INR (Rs) - Rupees</option>
+                <option value="$">USD($)- Dollars</option>
+                <option value="Rs">INR (Rs) - Rupees</option>
               </select>
             </div>
           </div>

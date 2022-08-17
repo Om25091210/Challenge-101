@@ -110,9 +110,9 @@ const Jobs = ({ user, profile, myState }) => {
                     <b>EXPERIENCE: -- </b>
                   </p>
                   <p>
-                    <b> LOCATION:</b>{' '}
+                    <b> LOCATION:</b> <p>{job.location.name}</p>
                     <ReactCountryFlag
-                      countryCode={job.location}
+                      countryCode={job.location.iso}
                       svg
                       style={{
                         width: '2em',

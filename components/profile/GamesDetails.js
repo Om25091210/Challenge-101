@@ -59,7 +59,7 @@ const GamesDetails = ({ user, profile, Userdata }) => {
             </li>
             <li>
               <span className="nm">Platform:</span>{' '}
-              <span className="task"> PC</span>
+              <span className="task"> {recruitData?.platform}</span>
             </li>
             <li>
               <span className="nm">Language:</span>{' '}

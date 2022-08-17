@@ -6,6 +6,7 @@ import cookie from 'js-cookie';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 import TeamJobCreate from './TeamJobCreate';
+import ReactCountryFlag from 'react-country-flag';
 
 const TeamJobs = ({ jobs, team, isManager, isAdmin, user, profile }) => {
   return (
@@ -52,11 +53,25 @@ const TeamJobs = ({ jobs, team, isManager, isAdmin, user, profile }) => {
                 </p>
                 <p>
                   <b> LOCATION:</b>
-                  {job.location}
+                  <p>{job.location?.name}</p>
+                  <ReactCountryFlag
+                    countryCode={job.location?.iso}
+                    svg
+                    style={{
+                      width: '2em',
+                      height: '2em'
+                    }}
+                  />
                 </p>
                 <p>
-                  <b>Salary:</b> {job.currency}{' '}
-                  {job.salary === 0 ? '--' : job.salary}
+                  <b>Salary:</b>
+                  {job.salary === 0 ? (
+                    'Not Disclosed'
+                  ) : (
+                    <>
+                      {job.currency} {job.salary}{' '}
+                    </>
+                  )}
                 </p>
               </div>
               <div className="logo_box">
