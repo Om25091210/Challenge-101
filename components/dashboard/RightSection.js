@@ -7,6 +7,7 @@ import Challengelist from '../challenges/ChallengeList';
 
 const RightSection = ({ user, suggestedplayers, teams, profile }) => {
   const [matches, setMatches] = useState([]);
+  const [later, setLater] = useState(false);
 
   useEffect(() => {
     axios
@@ -99,7 +100,7 @@ const RightSection = ({ user, suggestedplayers, teams, profile }) => {
         <div className="white_box">
           <ul className="team">
             {teams.length > 0 ? (
-              teams.map((tm, idx) => (
+              teams.slice(0, 3).map((tm, idx) => (
                 <li key={idx}>
                   <Link href={`/team/${tm._id}`}>
                     <div>
@@ -120,41 +121,52 @@ const RightSection = ({ user, suggestedplayers, teams, profile }) => {
           <a href={`/team/create`} className="create_team">
             + Create a team
           </a>
-          <p>Or use the Team Finder to find a team.</p>
-          <div className="grey_bg">
-            <img src="/assets/media/dash/user1.png" alt="" />
-            <p>
-              You have been invited to join The Team. <a href="#">Click Here</a>
-            </p>
-          </div>
+          {later === false ? null : (
+            <>
+              <p>Or use the Team Finder to find a team.</p>
+              <div className="grey_bg">
+                <img src="/assets/media/dash/user1.png" alt="" />
+                <p>
+                  You have been invited to join The Team.{' '}
+                  <a href="#">Click Here</a>
+                </p>
+              </div>
+            </>
+          )}
         </div>
       </div>
       <div className="recent_activity team_match">
-        <h2>UPCOMING MATCHES </h2>
+        {later === false ? null : (
+          <>
+            <h2>UPCOMING MATCHES </h2>
+            {matches && matches.length > 0 ? (
+              matches.map((match, idx) => (
+                <div className="white_box" key={idx}>
+                  <div className="match_name">
+                    {match.name}{' '}
+                    <i
+                      className="fa fa-long-arrow-right"
+                      aria-hidden="true"
+                    ></i>{' '}
+                    <br />
+                    <span>
+                      {Moment(match.scheduledAt).format(
+                        'MMMM, DD, YYYY hh:mm A'
+                      )}
+                    </span>
+                  </div>
+                  <div className="match_time">
+                    <b>status: {match.status}</b>
+                  </div>
+                  <div className="match_time">
+                    <span>
+                      <a href={match.officialStreamUrl} target="_blank">
+                        {match.officialStreamUrl}
+                      </a>
+                    </span>
+                  </div>
 
-        {matches && matches.length > 0 ? (
-          matches.map((match, idx) => (
-            <div className="white_box" key={idx}>
-              <div className="match_name">
-                {match.name}{' '}
-                <i className="fa fa-long-arrow-right" aria-hidden="true"></i>{' '}
-                <br />
-                <span>
-                  {Moment(match.scheduledAt).format('MMMM, DD, YYYY hh:mm A')}
-                </span>
-              </div>
-              <div className="match_time">
-                <b>status: {match.status}</b>
-              </div>
-              <div className="match_time">
-                <span>
-                  <a href={match.officialStreamUrl} target="_blank">
-                    {match.officialStreamUrl}
-                  </a>
-                </span>
-              </div>
-
-              {/*    <ul className="team">
+                  {/*    <ul className="team">
                   <li>
                     <a href="#">
                       <img src="/assets/media/dash/team1.png" alt="" />
@@ -170,10 +182,12 @@ const RightSection = ({ user, suggestedplayers, teams, profile }) => {
                 </ul>
 
             */}
-            </div>
-          ))
-        ) : (
-          <p> No New Matches</p>
+                </div>
+              ))
+            ) : (
+              <p> No New Matches</p>
+            )}
+          </>
         )}
       </div>
     </div>

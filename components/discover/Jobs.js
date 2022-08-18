@@ -107,7 +107,7 @@ const Jobs = ({ user, profile, myState }) => {
                   <h3> {job.job_type}</h3>
 
                   <p>
-                    <b>EXPERIENCE: -- </b>
+                    <b>EXPERIENCE: No Experience </b>
                   </p>
                   <p>
                     <b> LOCATION:</b> <p>{job.location.name}</p>
@@ -122,11 +122,11 @@ const Jobs = ({ user, profile, myState }) => {
                   </p>
                   {job.salary === 0 ? (
                     <p>
-                      <b>Salary:</b> Not Disclosed
+                      <b>SALARY:</b> Not Disclosed
                     </p>
                   ) : (
                     <p>
-                      <b>Salary:</b> {job?.currency} {job.salary}
+                      <b>SALARY:</b> {job?.currency} {job.salary}
                     </p>
                   )}
                 </div>

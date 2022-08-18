@@ -48,11 +48,11 @@ const Game = ({ user, data }) => {
                     {' '}
                     <span className="game_name">{game?.name}</span>{' '}
                     <div className="tick">
-                      {' '}
+                      {/* {' '}
                       <span className="active">
                         {' '}
                         <i className="fa fa-check" aria-hidden="true"></i>{' '}
-                      </span>{' '}
+                      </span>{' '} */}
                     </div>
                     <div className="button">
                       {' '}
@@ -149,7 +149,7 @@ const Game = ({ user, data }) => {
               </div>
             </div>
             <div className="right_team_bio">
-              <div className="games">
+              {/* <div className="games">
                 <h2>PLAYERS: </h2>
                 <a href="#" target="_blank">
                   {' '}
@@ -168,8 +168,8 @@ const Game = ({ user, data }) => {
                 ) : (
                   <p> + {players.length - 3} </p>
                 )}
-              </div>
-              <div className="internet games_internet">
+              </div> */}
+              {/* <div className="internet games_internet">
                 <ul>
                   <li>
                     {' '}
@@ -184,7 +184,7 @@ const Game = ({ user, data }) => {
                     steaming: <b>+744</b>{' '}
                   </li>
                 </ul>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
@@ -197,7 +197,7 @@ const Game = ({ user, data }) => {
             </a>{' '}
           </li>
 
-          <li>
+          {/* <li>
             {' '}
             <a href="#!" rel="league">
               {' '}
@@ -224,7 +224,7 @@ const Game = ({ user, data }) => {
               {' '}
               VIDEOS/STREAMS{' '}
             </a>{' '}
-          </li>
+          </li> */}
           <li>
             {' '}
             <a href="#!" rel="teams">
@@ -232,13 +232,13 @@ const Game = ({ user, data }) => {
               TEAMS{' '}
             </a>{' '}
           </li>
-          <li>
+          {/* <li>
             {' '}
             <a href="#!" rel="players">
               {' '}
               PLAYERS{' '}
             </a>{' '}
-          </li>
+          </li> */}
           <li>
             {' '}
             <a href="#!" rel="communities">
@@ -249,8 +249,6 @@ const Game = ({ user, data }) => {
         </ul>
         <div className="prfoile_tab_data">
           <div className="tab" id="tournament">
-            <h2>Tournament</h2>
-
             {/* /* ---- start game row --- */}
             <GameTournaments user={user} />
 
@@ -258,8 +256,6 @@ const Game = ({ user, data }) => {
           </div>
 
           <div className="tab hide" id="league">
-            <h2>League</h2>
-
             {/* /* ---- start game row --- */}
 
             <GameLeagues user={user} game={game} />
@@ -267,8 +263,6 @@ const Game = ({ user, data }) => {
             {/* /* ---- end game row --- */}
           </div>
           <div className="tab hide" id="ladder">
-            <h2>Ladder</h2>
-
             {/* /* ---- start game row --- */}
 
             <div className="game_row">

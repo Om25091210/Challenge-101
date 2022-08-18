@@ -17,6 +17,7 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
   const [selectedGame, setSelectedGame] = useState();
   const [showIgn, setShowIgn] = useState('none');
   const [step1, setStep1] = useState(true);
+  const [later, setLater] = useState(false);
 
   const [coverPic, setCoverPic] = useState(null);
   const [userIgn, setUserIgn] = useState(null);
@@ -314,9 +315,11 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
                 />
               </div>
               <div className="tick">
-                <span className="active">
-                  <i className="fa fa-check" aria-hidden="true"></i>
-                </span>
+                {later === false ? null : (
+                  <span className="active">
+                    <i className="fa fa-check" aria-hidden="true"></i>
+                  </span>
+                )}
               </div>
               {isLoggedInUser ? null : (
                 <div className="button">

@@ -32,7 +32,7 @@ const Games = ({ user, games }) => {
                     </div>
                     <div className="bottom_data">
                       <h3>{games.name}</h3>
-                      <div className="colm_box">
+                      {/* <div className="colm_box">
                         {' '}
                         <div className="clm">
                           {' '}
@@ -46,7 +46,7 @@ const Games = ({ user, games }) => {
                           168
                           <br /> communities
                         </div>
-                      </div>
+                      </div> */}
                     </div>
                   </a>
                 </li>

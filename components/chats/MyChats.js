@@ -7,7 +7,7 @@ import { getUserFromLocalStorage } from '../../utils/localStorage';
 import { getSender } from '../../utils/chat';
 import cookie from 'js-cookie';
 import axios from 'axios';
-import Spinner from '@components/common/Spinner';
+import LoadingSpinner from '../LoadingSpinner';
 import chatBaseURL from '@utils/chatBaseURL';
 
 const MyChats = ({ fetchAgain, user }) => {
@@ -49,7 +49,7 @@ const MyChats = ({ fetchAgain, user }) => {
           ))}
         </div>
       ) : (
-        <Spinner />
+        <LoadingSpinner />
       )}
     </div>
   );

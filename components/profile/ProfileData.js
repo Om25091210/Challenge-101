@@ -60,11 +60,11 @@ const ProfileData = ({ user, Userdata, products, teams }) => {
             FEED
           </a>
         </li>
-        <li>
+        {/* <li>
           <a href="#!" className="active" rel="statistics">
             Statistics
           </a>
-        </li>
+        </li> */}
         <li>
           <a
             href="#!"
@@ -85,22 +85,22 @@ const ProfileData = ({ user, Userdata, products, teams }) => {
             Tournaments
           </a>
         </li>
-        <li>
+        {/* <li>
           <a href="#!" rel="achievement">
             {' '}
             ACHIEVEMENTS
           </a>
-        </li>
-        <li>
+        </li> */}
+        {/* <li>
           <a href="#!" rel="matches" onClick={() => handleTabs('MATCHES')}>
             MATCHES
           </a>
-        </li>
-        <li>
+        </li> */}
+        {/* <li>
           <a href="#!" rel="store">
             merchandise
           </a>
-        </li>
+        </li> */}
         <li>
           <a href="#!" rel="photos">
             Photos
@@ -111,11 +111,11 @@ const ProfileData = ({ user, Userdata, products, teams }) => {
             Videos/streams
           </a>
         </li>
-        <li>
+        {/* <li>
           <a href="#!" rel="rigs">
             rigs
           </a>
-        </li>
+        </li> */}
       </ul>
       <div className="prfoile_tab_data">
         <div className="tab" id="feed">

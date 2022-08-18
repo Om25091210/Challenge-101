@@ -69,6 +69,7 @@ export const onboardUser = async (verificationToken, setLoading, toast) => {
     );
     setToken(res.data.token);
     toast.success(res.data.msg);
+    Router.push('/dashboard');
   } catch (error) {
     const errorMsg = catchErrors(error);
     toast.error(errorMsg);

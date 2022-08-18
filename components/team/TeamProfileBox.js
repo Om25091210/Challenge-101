@@ -14,7 +14,7 @@ import TeamEdit from './TeamEdit';
 const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
   const [attr, setAttr] = useState(data.team.attributes);
   const [sociallinks, setSociallinks] = useState(data.team.social);
-  let [tabData, setTabData] = useState([]);
+  const [later, setLater] = useState(false);
 
   const router = useRouter();
   const refreshData = () => {
@@ -286,13 +286,15 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
               />
             </div>
             <div className="tick">
-              <span className="active">
-                {data.team.isVerified ? (
-                  <i className="fa fa-check" aria-hidden="true"></i>
-                ) : (
-                  <i className="fa fa-question-circle" aria-hidden="true"></i>
-                )}
-              </span>
+              {later === false ? null : (
+                <span className="active">
+                  {data.team.isVerified ? (
+                    <i className="fa fa-check" aria-hidden="true"></i>
+                  ) : (
+                    <i className="fa fa-question-circle" aria-hidden="true"></i>
+                  )}
+                </span>
+              )}
             </div>
             {isManager || isAdmin ? null : (
               <div className="button">

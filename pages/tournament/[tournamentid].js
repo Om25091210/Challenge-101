@@ -42,6 +42,7 @@ const TournamentDetail = ({ user, data, products, profile }) => {
     const [websitelink, setWebsitelink] = useState(data.tournament);
     const [tournamentPosts, setTournamentPosts] = useState([]);
     const [tourRules, setTourRules] = useState([]);
+    const [later, setLater] = useState(false);
 
     useEffect(() => {
       axios
@@ -152,9 +153,16 @@ const TournamentDetail = ({ user, data, products, profile }) => {
                         </span>
                         <div className="flag"></div>
                         <div className="tick">
-                          <span className="active">
-                            <i className="fa fa-check" aria-hidden="true"></i>
-                          </span>
+                          {later === false ? null : (
+                            <>
+                              <span className="active">
+                                <i
+                                  className="fa fa-check"
+                                  aria-hidden="true"
+                                ></i>
+                              </span>
+                            </>
+                          )}
                         </div>
                         {isUser ? null : (
                           <div className="button">
@@ -509,12 +517,12 @@ const TournamentDetail = ({ user, data, products, profile }) => {
                   Rules
                 </a>
               </li>
-              <li>
+              {/* <li>
                 <a href="#!" rel="result">
                   Prizes/Result
                 </a>
-              </li>
-              <li>
+              </li> */}
+              {/* <li>
                 <a href="#!" rel="series">
                   TOURNAMENT SERIES
                 </a>
@@ -545,7 +553,7 @@ const TournamentDetail = ({ user, data, products, profile }) => {
                 <a href="#!" rel="store">
                   Store
                 </a>
-              </li>
+              </li> */}
               <li>
                 <a href="#!" rel="video">
                   Streams/Media
@@ -624,7 +632,6 @@ const TournamentDetail = ({ user, data, products, profile }) => {
                 <TournamentSeries user={user} tournament={data.tournament} />
               </div>
               <div className="tab hide" id="points">
-                <h1>Points Table</h1>
                 <div className="points_table">
                   <div className="groupds_box">
                     <div className="group">
@@ -781,8 +788,6 @@ const TournamentDetail = ({ user, data, products, profile }) => {
               </div>
 
               <div className="tab hide" id="braket">
-                <h1>Braket</h1>
-
                 <div className="results_box white_bg">
                   <div className="congratulations">
                     <h1>Congragulations to our winners!</h1>

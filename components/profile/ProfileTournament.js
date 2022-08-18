@@ -374,235 +374,76 @@ const ProfileTournament = ({
         </div>
 
         <div className="new_tournament test">
-          <div className="tournamnet_new_row">
-            <div className="tour_img_name">
-              <span className="imgs"></span>
-              <span>
-                <h4>Gamer of Nation Championship II</h4>
-                <p>2022</p>
-              </span>
-            </div>
-
-            <div className="tour_game_team">
-              <ul>
-                <li>
-                  <b>Game:</b> <input type="checkbox" /> CS GO
-                </li>
-                <li>
-                  <b>Team:</b> <input type="checkbox" /> The Werewolves{' '}
-                </li>
-              </ul>
-            </div>
-
-            <div className="tour_game_team">
-              <ul>
-                <li>Ranking: 3rd</li>
-                <li>Winnings: Rs: 10,000 </li>
-              </ul>
-            </div>
-
-            <button className="btn">VIEW MATCHES</button>
-          </div>
-        </div>
-
-        {tournamentData.Alltournaments?.length === 0 ? (
-          <p>{user.name} has no Tournaments.</p>
-        ) : (
-          tournamentData.type === 'TOURNAMENTS' &&
-          tournamentData.Alltournaments.map((result, idx) => (
-            <>
-              <div className="game_row" key={idx}>
-                <FavTournament tournament={result} user={user} />
-                <div className="game_pos">
-                  <div className="game_loc">
-                    {' '}
-                    <img src="/assets/media/category/game_loc.jpg" alt="" />
-                  </div>
-
-                  <span className="tour_logo">
-                    {' '}
-                    <img src={result?.imgUrl} alt="" />
+          {tournamentData.Alltournaments &&
+            tournamentData.Alltournaments.map((tournament) => (
+              <div className="tournamnet_new_row">
+                <div className="tour_img_name">
+                  <span className="imgs">
+                    <img
+                      src={tournament.tournament.imgUrl}
+                      alt={tournament.tournament.name}
+                    />
+                  </span>
+                  <span>
+                    <h4>{tournament.tournament.name}</h4>
+                    <p>
+                      {format(
+                        new Date(tournament.tournament?.startDate),
+                        'yyyy'
+                      )}
+                    </p>
                   </span>
                 </div>
-                <div className="right_game_details">
-                  <div className="top_game">
-                    <div className="date">
-                      <Link href={`/tournament/${result?._id}`}>
-                        <a>
-                          <h3>{result?.name}</h3>
-                        </a>
-                      </Link>
-                      {result?.startDate
-                        ? format(new Date(result?.startDate), 'dd.MMM.yyyy')
-                        : 'Not defined'}
-                    </div>
-                    {result?.Type && result?.Type === 'Ladder' ? (
-                      <p>Ladder</p>
-                    ) : result?.Type === 'Tournament' ? (
-                      <p>Tournament</p>
-                    ) : result?.Type === 'Competition' ? (
-                      <p>Competition</p>
-                    ) : null}
-                    <div className="reg">
-                      <Tournament_Reg user={user} tournament={result} />
-                    </div>
-                  </div>
-                  <div className="bottom_game">
-                    <div className="users">
-                      {result.playType === 'TEAMS'
-                        ? result.teams
-                            ?.slice(0, 3)
-                            .map((team) => (
-                              <img
-                                style={{ height: '30px', width: '30px' }}
-                                src={team?.teamId.imgUrl}
-                                alt=""
-                              />
-                            ))
-                        : result.registered
-                            ?.slice(0, 3)
-                            .map((reg) => (
-                              <img
-                                style={{ height: '30px', width: '30px' }}
-                                src={reg?.user?.profilePicUrl}
-                                alt=""
-                              />
-                            ))}
 
-                      {result.playType === 'TEAMS' ? (
-                        <p>
-                          {result.teams.length} / {result.maxTeams}
-                          <b>Signed</b>
-                        </p>
+                <div className="tour_game_team">
+                  <ul>
+                    <li>
+                      <b>Game:</b>
+                      {tournament.tournament.games.map((game) => (
+                        <>
+                          <img
+                            src={game.gameId.imgUrl}
+                            alt={game.gameId.name}
+                          />
+                          {game.gameId.name}
+                        </>
+                      ))}
+                    </li>
+                    <li>
+                      <b>Team:</b>
+                      {tournament.type === 'TeamTournament' ? (
+                        <>
+                          {tournament.tournament.teams.map((team) => (
+                            <>
+                              <img
+                                src={team.teamId.imgUrl}
+                                alt={team.teamId.name}
+                              />
+                              {team.teamId.name}
+                            </>
+                          ))}
+                        </>
                       ) : (
                         <>
-                          {result.participants > 0 || result.maxTeams > 0 ? (
-                            <p>
-                              {result.registered.length} / {result.participants}
-                              <b>Signed</b>
-                            </p>
-                          ) : (
-                            <p>Not Available</p>
-                          )}
+                          <input type="checkbox" />
+                          <p>No Team</p>
                         </>
                       )}
-                    </div>
-                    <div className="games">
-                      <h3>Games:</h3>
-
-                      {result.games &&
-                        result.games.map((gam, idxg) => (
-                          <div className="game_logo" key={idxg}>
-                            <img
-                              src={gam.gameId.imgUrl}
-                              alt={gam.gameId.name}
-                            />{' '}
-                            {gam.gameId.name}
-                          </div>
-                        ))}
-                    </div>
-                    <div className="prize">
-                      <div>
-                        <h3>ENTRY FEE</h3>
-                        {result?.entranceFee === 0 ? (
-                          <span>Free</span>
-                        ) : result?.entranceFee !== 0 ? (
-                          <span>
-                            <MPNumberFormat
-                              value={result?.entranceFee}
-                              currency={result?.currency}
-                            />
-                          </span>
-                        ) : (
-                          'Not Available'
-                        )}
-                      </div>
-                      <div>
-                        <h3>PRIZE POOL</h3>
-                        {result?.prizepool ? (
-                          <MPNumberFormat
-                            value={result?.prizepool}
-                            currency={result?.currency}
-                          />
-                        ) : (
-                          'Not Available'
-                        )}
-                      </div>
-                    </div>
-                  </div>
+                    </li>
+                  </ul>
                 </div>
+
+                <div className="tour_game_team">
+                  <ul>
+                    <li>Ranking: --</li>
+                    <li>Winnings: --</li>
+                  </ul>
+                </div>
+
+                <button className="btn">VIEW MATCHES</button>
               </div>
-
-              <div>
-                {result.winnings && (
-                  <>
-                    <div className="new_tournament">
-                      <div className="tournamnet_new_row">
-                        <div className="tour_img_name">
-                          <span className="imgs">
-                            <img src={result.tournamentId?.imgUrl} />
-                          </span>
-
-                          <span>
-                            <h4> {result.tournamentId?.name}</h4>
-                            <p>{format(new Date(result?.year), 'yyyy')}</p>
-                          </span>
-                        </div>
-                        <div className="tour_game_team">
-                          <ul>
-                            <li>
-                              <b> Game: </b>
-                              {result.games &&
-                                result?.games.map((gam) => (
-                                  <>
-                                    <img
-                                      src={gam.gameId.imgUrl}
-                                      style={{ height: '20px', width: '20px' }}
-                                    />
-                                    {gam.gameId.name}
-                                  </>
-                                ))}
-                            </li>
-                            <li>
-                              <b> Team:</b>
-                              <img
-                                src={result?.team?.imgUrl}
-                                style={{ height: '20px', width: '20px' }}
-                              />
-                              {result.team.name}
-                            </li>
-                          </ul>
-                        </div>
-                        <div className="tour_game_team">
-                          <ul>
-                            <li>
-                              Ranking:{' '}
-                              {result?.team_ranking &&
-                              result?.team_ranking === 3 ? (
-                                <>{result?.team_ranking} rd</>
-                              ) : result?.team_ranking === 2 ? (
-                                <>{result?.team_ranking} nd</>
-                              ) : result?.team_ranking === 1 ? (
-                                <>{result?.team_ranking} st</>
-                              ) : (
-                                <> {result?.team_ranking} th </>
-                              )}
-                            </li>
-
-                            <li>
-                              Winnings: {result?.currency} {result?.winnings}
-                            </li>
-                          </ul>
-                        </div>
-                        <button className="btn">view Match</button>
-                      </div>
-                    </div>
-                  </>
-                )}
-              </div>
-            </>
-          ))
-        )}
+            ))}
+        </div>
       </div>
     </>
   );

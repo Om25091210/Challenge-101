@@ -258,13 +258,13 @@ const SignedHeader = ({ user, profile }) => {
             <NotificationItem user={user} />
           </li>
 
-          <li>
+          {/* <li>
             <a href="/cart">
               {' '}
               <i className="fa fa-shopping-cart" aria-hidden="true"></i>{' '}
               <span className="pop">{cart.length}</span>
             </a>
-          </li>
+          </li> */}
 
           <li className="profile">
             <a href="#!">

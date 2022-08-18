@@ -4,7 +4,6 @@ import MetaDash from '@components/MetaDash';
 import SignedHeader from '@components/SignedHeader';
 import LeftNav from '@components/LeftNav';
 import TeamProfileBox from '@components/team/TeamProfileBox';
-import TeamTabs from '@components/team/TeamTabs';
 import TeamProfileData from '@components/team/TeamProfileData';
 import FooterMain from '@components/FooterMain';
 import AllScript from 'pages/AllScript';
@@ -50,8 +49,6 @@ const Team = ({ user, data, products, profile, teams }) => {
             teams={teams}
             profile={profile}
           />
-
-          {/* <TeamTabs user={user} data={data} /> */}
 
           <TeamProfileData
             user={user}
