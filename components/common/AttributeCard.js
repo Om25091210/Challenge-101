@@ -5,16 +5,16 @@ import countryList from 'react-select-country-list';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 
-const RecruitmentCard = ({ type, RecruitId }) => {
+const AttributeCard = ({ type, attributeId }) => {
   const [allgames, setAllgames] = useState([]);
   const [allroles, setAllroles] = useState([]);
 
   const [states, setStates] = useState({
-    RecruitId,
-    RecruitType: type,
+    attributeId,
+    attributeType: type,
     games: '',
     role: '',
-    region: '',
+    regions: '',
     Mic: false,
     language: '',
     type: '',
@@ -67,10 +67,10 @@ const RecruitmentCard = ({ type, RecruitId }) => {
     router.replace(router.asPath);
   };
 
-  const handleSubmitRecruit = async (e) => {
+  const handleSubmitAttribute = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`${baseURL}/api/recruit/`, states);
+      await axios.post(`${baseURL}/api/attribute/`, states);
       toast.success('Added Recruitment card');
       $('a.model_close').parent().removeClass('show_model');
     } catch (err) {
@@ -122,7 +122,7 @@ const RecruitmentCard = ({ type, RecruitId }) => {
 
               <div className="inner_model_box">
                 <div className="add_jobs_height">
-                  <form onSubmit={handleSubmitRecruit}>
+                  <form onSubmit={handleSubmitAttribute}>
                     <div className="form-group">
                       <label htmlFor="exampleFormControlInput1">Game</label>
                       <select
@@ -169,7 +169,7 @@ const RecruitmentCard = ({ type, RecruitId }) => {
                       <label htmlFor="exampleFormControlTextarea1">
                         Region
                       </label>
-                      <select name="region" onChange={onChange}>
+                      <select name="regions" onChange={onChange}>
                         {options.map((opt) => (
                           <>
                             <option value={opt.value}>{opt.label}</option>
@@ -281,4 +281,4 @@ const RecruitmentCard = ({ type, RecruitId }) => {
   );
 };
 
-export default RecruitmentCard;
+export default AttributeCard;

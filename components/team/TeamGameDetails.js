@@ -3,10 +3,10 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import baseURL from '../../utils/baseURL';
-import RecruitmentCard from '../common/RecruitmentCard';
+import AttributeCard from '../common/AttributeCard';
 
 const TeamGameDetails = ({ user, team, isManager, isAdmin }) => {
-  const [recruitData, setRecruitData] = useState([]);
+  const [attributeData, setAttributeData] = useState([]);
 
   const router = useRouter();
 
@@ -16,14 +16,14 @@ const TeamGameDetails = ({ user, team, isManager, isAdmin }) => {
 
   useEffect(() => {
     axios
-      .get(`${baseURL}/api/recruit/TEAM/${team._id}`)
-      .then((res) => setRecruitData(res.data));
+      .get(`${baseURL}/api/attribute/TEAM/${team._id}`)
+      .then((res) => setAttributeData(res.data));
   }, []);
 
   const handleDelete = (e) => {
     e.preventDefault();
     try {
-      axios.delete(`${baseURL}/api/recruit/${recruitData?._id}`);
+      axios.delete(`${baseURL}/api/attribute/${attributeData?._id}`);
       toast.success('Deleted Card Successfully');
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Error Deleting the Card');
@@ -33,12 +33,12 @@ const TeamGameDetails = ({ user, team, isManager, isAdmin }) => {
 
   return (
     <>
-      {Object.keys(recruitData).length === 0 ? null : (
+      {Object.keys(attributeData).length === 0 ? null : (
         <div className="games_details">
           <ul>
             <li>
               <span className="nm">Game: </span>{' '}
-              {recruitData.games?.map((game) => (
+              {attributeData.games?.map((game) => (
                 <img
                   src={game.gameId?.imgUrl}
                   style={{ height: '35px', width: '35px' }}
@@ -47,22 +47,22 @@ const TeamGameDetails = ({ user, team, isManager, isAdmin }) => {
             </li>
             <li>
               <span className="nm">Roles: </span>{' '}
-              <span className="task">{recruitData.role}</span>
+              <span className="task">{attributeData.role}</span>
             </li>
             <li>
               <span className="nm">Mic:</span>{' '}
               <span className="task">
-                {recruitData.mic === true ? 'On' : 'Off'}
+                {attributeData.mic === true ? 'On' : 'Off'}
               </span>
             </li>
             <li>
               <span className="nm">Platform:</span>{' '}
-              <span className="task">{recruitData.platform}</span>
+              <span className="task">{attributeData.platform}</span>
             </li>
             <li>
               <span className="nm">Language:</span>{' '}
               <span className="task">
-                {recruitData.language.map((lang) => lang.slice(0, 3))}
+                {attributeData.language.map((lang) => lang.slice(0, 3))}
               </span>
             </li>
             <li>
@@ -91,10 +91,10 @@ const TeamGameDetails = ({ user, team, isManager, isAdmin }) => {
           )}
         </div>
       )}
-      {recruitData?.RecruitId == team._id ? null : (
+      {attributeData?.attributeId == team._id ? null : (
         <>
           {isManager || isAdmin ? (
-            <RecruitmentCard type="TEAM" RecruitId={team._id} user={user} />
+            <AttributeCard type="TEAM" attributeId={team._id} user={user} />
           ) : null}
         </>
       )}

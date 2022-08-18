@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import Head from 'next/head';
-import RecruitmentCard from '../common/RecruitmentCard';
+import AttributeCard from '../common/AttributeCard';
 import axios from 'axios';
 import baseURL from '../../utils/baseURL';
 import { useEffect, useState } from 'react';
@@ -8,7 +8,7 @@ import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
 
 const GamesDetails = ({ user, profile, Userdata }) => {
-  const [recruitData, setRecruitData] = useState();
+  const [attributeData, setAttributeData] = useState();
 
   const router = useRouter();
 
@@ -18,14 +18,14 @@ const GamesDetails = ({ user, profile, Userdata }) => {
 
   useEffect(() => {
     axios
-      .get(`${baseURL}/api/recruit/PROFILE/${Userdata.user._id}`)
-      .then((res) => setRecruitData(res.data));
+      .get(`${baseURL}/api/attribute/PROFILE/${Userdata.user._id}`)
+      .then((res) => setAttributeData(res.data));
   }, [Userdata]);
 
   const handleDelete = (e) => {
     e.preventDefault();
     try {
-      axios.delete(`${baseURL}/api/recruit/${recruitData._id}`);
+      axios.delete(`${baseURL}/api/attribute/${attributeData._id}`);
       toast.success('Deleted Card Successfully');
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Error Deleting the Card');
@@ -35,12 +35,12 @@ const GamesDetails = ({ user, profile, Userdata }) => {
 
   return (
     <>
-      {recruitData && (
+      {attributeData && (
         <div className="games_details">
           <ul>
             <li>
               <span className="nm">Game: </span>{' '}
-              {recruitData.games?.map((game) => (
+              {attributeData.games?.map((game) => (
                 <img
                   src={game.gameId?.imgUrl}
                   style={{ height: '35px', width: '35px' }}
@@ -49,23 +49,23 @@ const GamesDetails = ({ user, profile, Userdata }) => {
             </li>
             <li>
               <span className="nm">Roles: </span>{' '}
-              <span className="task">{recruitData.role}</span>{' '}
+              <span className="task">{attributeData.role}</span>{' '}
             </li>
             <li>
               <span className="nm">Mic:</span>{' '}
               <span className="task">
-                {recruitData.mic === true ? 'On' : 'Off'}
+                {attributeData.mic === true ? 'On' : 'Off'}
               </span>
             </li>
             <li>
               <span className="nm">Platform:</span>{' '}
-              <span className="task"> {recruitData?.platform}</span>
+              <span className="task"> {attributeData?.platform}</span>
             </li>
             <li>
               <span className="nm">Language:</span>{' '}
               <span className="task">
                 {' '}
-                {recruitData.language?.map((lang) => lang.slice(0, 3))}
+                {attributeData.language?.map((lang) => lang.slice(0, 3))}
               </span>
             </li>
             <li>
@@ -85,21 +85,21 @@ const GamesDetails = ({ user, profile, Userdata }) => {
           <div className="chart_box">
             <img src="/assets/media/profile/chart.jpg" alt="" />
           </div>
-          {recruitData.RecruitId === user._id ? (
+          {attributeData.attributeId === user._id ? (
             <button className="btn" onClick={handleDelete}>
               Delete
             </button>
           ) : null}
-          {recruitData.RecruitId === user._id ? null : (
+          {attributeData.attributeId === user._id ? null : (
             <button className="game_btn">INVITE TO TEAM</button>
           )}
         </div>
       )}
 
-      {recruitData?.RecruitId === user._id ? null : (
+      {attributeData?.attributeId === user._id ? null : (
         <>
           {profile.user?._id === user?._id ? (
-            <RecruitmentCard type="PROFILE" RecruitId={user?._id} />
+            <AttributeCard type="PROFILE" attributeId={user?._id} />
           ) : null}
         </>
       )}
