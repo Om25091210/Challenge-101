@@ -1,65 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import ChatDisplay from './ChatDisplay';
-import ChatInput from './ChatInput';
 import ChatBox from './ChatBox';
 import cookie from 'js-cookie';
 import axios from 'axios';
 import baseURL from '@utils/baseURL';
 import dynamic from 'next/dynamic';
 
-import {
-  ChatList,
-  ChatCard,
-  NewChatForm,
-  ChatFeed,
-  ChatHeader,
-  IceBreaker,
-  MessageBubble,
-  IsTyping,
-  ConnectionBar,
-  NewMessageForm,
-  ChatSettings,
-  ChatSettingsTop,
-  PeopleSettings,
-  PhotosSettings,
-  OptionsSettings
-} from 'react-chat-engine';
-
-const ChatEngine = dynamic(() =>
-  import('react-chat-engine').then((module) => module.ChatEngine)
-);
-const MessageFormSocial = dynamic(() =>
-  import('react-chat-engine').then((module) => module.MessageFormSocial)
-);
-
-const ChatSection = ({ user, messagesWith }) => {
-  const [showChat, setShowChat] = useState(false);
-
-  useEffect(() => {
-    if (typeof document !== undefined) {
-      setShowChat(true);
-    }
-  }, []);
-
-  const [messager, setMessager] = useState({});
-
-  useEffect(() => {
-    if (messagesWith != undefined) {
-      axios
-        .get(`${baseURL}/api/chats/user/${messagesWith}`, {
-          headers: {
-            Authorization: cookie.get('token')
-          }
-        })
-        .then((res) => {
-          setMessager(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-  }, [messagesWith]);
-
+const ChatSection = ({ user }) => {
   return (
     <div>
       <div className="chatbox">
@@ -78,10 +25,7 @@ const ChatSection = ({ user, messagesWith }) => {
 
           <div className="tab_data tab_data_scroll">
             <div className="chat tab" id="tab1">
-
-
-
-             
+              <ChatBox user={user} />
             </div>
           </div>
         </div>

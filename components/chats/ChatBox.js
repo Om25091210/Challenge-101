@@ -2,33 +2,23 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 import baseURL from '../../utils/baseURL';
+import chatBaseURL from '../../utils/chatBaseURL';
 import { useForm } from 'react-hook-form';
 import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
 import Link from 'next/link';
+import MyChats from './MyChats';
+import ChatDisplay from './ChatDisplay';
+import { useAppContext } from './ChatProvider';
+import { toast } from 'react-toastify';
+import cookie from 'js-cookie';
 
-const ChatBox = ({ user, chats, setChats }) => {
-  const [receiverName, setReceiverName] = useState('');
-  const [receiverEmail, setReceiverEmail] = useState('');
-  const [list, setList] = useState([]);
+const ChatBox = ({ user }) => {
+  const { setSelectedChat, chats, setChats } = useAppContext();
 
-  const { register, handleSubmit } = useForm();
-
-  const addFriend = async ({ receiverEmail, receiverName }) => {
-    try {
-      const res = await axios.post(`${baseURL}/api/friendrequests/search`, {
-        user,
-        receiverEmail,
-        receiverName
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const [fetchAgain, setFetchAgain] = useState(false);
+  const [loadingChat, setLoadingChat] = useState(false);
 
   const [searchText, setSearchText] = useState('');
-  const [loading, setLoading] = useState(false);
-
-  const router = useRouter();
 
   const { data, isLoading, isSuccess } = useQuery(
     ['search', searchText],
@@ -54,47 +44,30 @@ const ChatBox = ({ user, chats, setChats }) => {
     }
   );
 
-  async function getList({ user }) {
-    return await fetch(`${baseURL}/api/friendrequests/list/${user._id}`)
-      .then((data) => data.json())
-      .finally(() => {
-        setLoading(true);
-      });
-  }
+  const accessChat = async (userId) => {
+    let x = {};
+    try {
+      setLoadingChat(true);
+      await axios
+        .post(
+          `${chatBaseURL}/api/v1/chat`,
+          { userId },
+          {
+            headers: {
+              Authorization: cookie.get('token')
+            }
+          }
+        )
+        .then((res) => (x = res.data));
 
-  useEffect(() => {
-    let mounted = true;
-    getList({ user }).then((items) => {
-      if (mounted) {
-        setList(items);
-      }
-    });
-    return () => (mounted = false);
-  }, []);
-
-  const addChat = ({ user }) => {
-    const alreadyInChat =
-      chats.length > 0 &&
-      chats.filter((chat) => chat.messagesWith === user.friendId).length > 0;
-    if (alreadyInChat) {
-      router.push(`/dashboard?chat=${user.friendId}`);
-    } else {
-      const newChat = {
-        messagesWith: user.friendId,
-        name: user.friendName,
-        profilePicUrl: user?.profilePicUrl,
-        lastMessage: '',
-        date: Date.now()
-      };
-      setChats((prevState) => [newChat, ...prevState]);
-      router.push(`/dashboard?chat=${user.friendId}`);
+      if (!chats.find((c) => c._id === x._id)) setChats([x, ...chats]);
+      setSelectedChat(data);
+      setLoadingChat(false);
+      setSearchText('');
+    } catch (error) {
+      console.log(error);
+      toast.error(error);
     }
-    setChats('');
-  };
-
-  const userName = ({ user }) => {
-    const result = user.friendUsername;
-    return result;
   };
 
   const test = () => {
@@ -103,8 +76,6 @@ const ChatBox = ({ user, chats, setChats }) => {
       jQuery('.dlab-chat-history-box').removeClass('d-none');
     });
   };
-
-  const isFriend = user.friendsList.filter((x) => !list.includes(x));
 
   return (
     <>
@@ -189,7 +160,10 @@ const ChatBox = ({ user, chats, setChats }) => {
                       )
                       .map((resultuser) => (
                         <ul className="contacts">
-                          <li className="active dlab-chat-user ">
+                          <li
+                            className="active dlab-chat-user btn"
+                            onClick={() => accessChat(resultuser._id)}
+                          >
                             <div className="d-flex bd-highlight">
                               <div className="img_cont">
                                 <img
@@ -208,40 +182,6 @@ const ChatBox = ({ user, chats, setChats }) => {
                                 </span>
                               </div>
                             </div>
-
-                            <form
-                              className="form w-100"
-                              method="POST"
-                              noValidate="novalidate"
-                              onSubmit={handleSubmit(addFriend)}
-                            >
-                              <input
-                                type="hidden"
-                                name="receiverEmail"
-                                {...register('receiverEmail')}
-                                className="receiverEmail"
-                                value={resultuser.email}
-                              />
-                              <input
-                                type="hidden"
-                                name="receiverName"
-                                {...register('receiverName')}
-                                className="receiverName"
-                                value={resultuser.username}
-                              />
-
-                              <button
-                                type="submit"
-                                className="btn add accept friend-add"
-                              >
-                                <i className="fa fa-user"></i>
-                                {isFriend.find(
-                                  ({ friendId }) => friendId === resultuser._id
-                                )
-                                  ? 'Friends'
-                                  : 'Add Friend'}
-                              </button>
-                            </form>
                           </li>
                         </ul>
                       ))
@@ -253,42 +193,13 @@ const ChatBox = ({ user, chats, setChats }) => {
         </div>
 
         <div>
-          {!list || list.length === 0 ? (
-            <p>No friends to chat..</p>
-          ) : (
-            <ul className="contacts">
-              {list.map((user, index) => (
-                <li
-                  key={index}
-                  className="active dlab-chat-user"
-                  onClick={() => test()}
-                >
-                  <Link
-                    as={`/dashboard`}
-                    href={`/dashboard?chat=${user.friendId}`}
-                    onClick={() => addChat({ user })}
-                  >
-                    <div className="d-flex bd-highlight">
-                      <div className="img_cont">
-                        <img
-                          src={user?.profilePicUrl}
-                          className="rounded-circle user_img"
-                          alt=""
-                        />
-                        <span className="online_icon"></span>
-                      </div>
-                      <div
-                        className="user_info"
-                        onClick={() => userName({ user })}
-                      >
-                        <span>{user.friendName}</span>
-                        <p>{user.friendUsername} is online</p>
-                      </div>
-                    </div>
-                  </Link>
-                </li>
-              ))}
-            </ul>
+          {user && <MyChats fetchAgain={fetchAgain} user={user} />}
+          {user && (
+            <ChatDisplay
+              fetchAgain={fetchAgain}
+              setFetchAgain={setFetchAgain}
+              user={user}
+            />
           )}
         </div>
       </div>

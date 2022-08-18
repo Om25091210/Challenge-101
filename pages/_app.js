@@ -1,4 +1,4 @@
-import "../styles/globals.css";
+import '../styles/globals.css';
 
 import App from 'next/app';
 import { DefaultSeo } from 'next-seo';
@@ -19,19 +19,19 @@ import { redirectUser } from '@utils/auth';
 import Script from 'next/script';
 import { getCookieValue, setCookieValue } from '@utils/helpers';
 import { DataProvider } from '@store/GlobalState';
+import { ChatProvider } from '../components/chats/ChatProvider';
 
-import { SpinnerProvider } from "@components/common/SpinnerContext";
-import Layout from "@components/layout";
-import { BlockchainProvider } from "../context/BlockchainContext";
+import { SpinnerProvider } from '@components/common/SpinnerContext';
+import Layout from '@components/layout';
+import { BlockchainProvider } from '../context/BlockchainContext';
 
 function MyApp({ Component, pageProps }) {
-
   const router = useRouter();
   const [queryClient] = useState(() => new QueryClient());
-  const supportedChainIds = [1, 3, 4, 42, 80001]
+  const supportedChainIds = [1, 3, 4, 42, 80001];
 
   const connectors = {
-    injected: {},
+    injected: {}
     // magic: {
     //   apiKey: 'pk_...', // Your magic api key
     //   chainId: 1, // The chain ID you want to allow on magic
@@ -42,7 +42,7 @@ function MyApp({ Component, pageProps }) {
     //   url: 'http://localhost:3000',
     //   darkMode: false,
     // },
-  }
+  };
 
   /**
    * Customise these values to match your site
@@ -102,22 +102,20 @@ function MyApp({ Component, pageProps }) {
 
       <QueryClientProvider client={queryClient}>
         <Hydrate state={pageProps.dehydratedState}>
-
           <DataProvider>
-                <ToastContainer />
-
+            <ToastContainer />
+            <ChatProvider>
               <BlockchainProvider>
                 <SpinnerProvider>
-                    <Component {...pageProps} />
+                  <Component {...pageProps} />
                 </SpinnerProvider>
               </BlockchainProvider>
-
+            </ChatProvider>
           </DataProvider>
 
           <ReactQueryDevtools />
         </Hydrate>
       </QueryClientProvider>
-
     </>
   );
 }
@@ -146,7 +144,6 @@ MyApp.getInitialProps = async ({ ctx }) => {
   ];
 
   try {
-
     const isProtected = protectedRoutes.includes(ctx.pathname);
 
     const availableForEveryone =
