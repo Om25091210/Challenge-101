@@ -15,12 +15,19 @@ import GameFollow from './GameFollow';
 const Game = ({ user, data }) => {
   const [game, setGame] = useState(data?.games);
   const [players, setPlayers] = useState([]);
+  const [tournaments, setTournaments] = useState([]);
 
   useEffect(() => {
     axios
       .get(`${baseURL}/api/player/playersbyteamsbygame/${game._id}`)
       .then((res) => {
         setPlayers(res.data);
+      });
+
+    axios
+      .get(`${baseURL}/api/tournaments/tournamentsbygame/${game._id}`)
+      .then((res) => {
+        setTournaments(res.data);
       });
   }, []);
   const newPlyr = players.slice(1, 4);
@@ -86,15 +93,21 @@ const Game = ({ user, data }) => {
           <div className="tournament_sponsers">
             <div className="logos">
               <h5>OFFICIAL TOURNAMENTS</h5>
-              <span>
-                <img src="/assets/media/games/tournament1.png" alt="" />{' '}
-              </span>
-              <span>
-                <img src="/assets/media/games/tournament2.png" alt="" />{' '}
-              </span>
-              <span>
-                <img src="/assets/media/games/tournament3.png" alt="" />{' '}
-              </span>
+              {tournaments.length > 0 ? (
+                <>
+                  {tournaments &&
+                    tournaments.slice(0, 3).map((tournament) => (
+                      <span>
+                        <img
+                          src={tournament.tournament.imgUrl}
+                          alt={tournament.tournament.name}
+                        />{' '}
+                      </span>
+                    ))}
+                </>
+              ) : (
+                <p>No Official Tournaments</p>
+              )}
             </div>
           </div>
           <div className="bio_box  game_bio">
