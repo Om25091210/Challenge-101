@@ -89,12 +89,14 @@ const TournamentSponsor = ({ user, data, isUser }) => {
                   {' '}
                   <span className="head_spons_bg">{spons.name}</span>
                   <p>{spons.description}</p>
-                  <button
-                    className="btn"
-                    onClick={(e) => handleDeleteSponsor(e, spons._id)}
-                  >
-                    <i className="fa fa-trash" />
-                  </button>
+                  {isUser ? (
+                    <button
+                      className="btn"
+                      onClick={(e) => handleDeleteSponsor(e, spons._id)}
+                    >
+                      <i className="fa fa-trash" />
+                    </button>
+                  ) : null}
                 </div>
               </li>
             ))}
