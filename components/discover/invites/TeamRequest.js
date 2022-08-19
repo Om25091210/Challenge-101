@@ -51,9 +51,9 @@ const Team_Req = ({ profile, team, isReqSent }) => {
   return (
     <>
       {isPlayer ? (
-        <button className="join" disabled>
-          VIEW TEAM
-        </button>
+        <a href={`/team/${team._id}`}>
+          <button className="join">VIEW TEAM</button>
+        </a>
       ) : request ? (
         <button className="join" disabled>
           REQUEST SENT

@@ -173,14 +173,14 @@ const PlayerDisplay = ({ isLoading, playerData, user }) => {
                   <h4>Trophies</h4>
                   <p>78</p>
                 </div>
-                <div className="percentage">
+                {/* <div className="percentage">
                   {' '}
                   <img
                     src="/assets/media/discover/chart.png"
                     style={{ width: '400px' }}
                     alt=""
                   />{' '}
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
