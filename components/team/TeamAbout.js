@@ -61,6 +61,7 @@ const TeamAbout = ({ Data, isManager, isAdmin, user, teamAbout }) => {
     e.preventDefault();
     try {
       axios.post(`${baseURL}/api/teams/ins/about/${Data.team?._id}`, rolData);
+      $('a.model_close').parent().removeClass('show_model');
       toast.success('Member Added Successfully');
       refreshData();
     } catch (error) {
@@ -181,13 +182,14 @@ const TeamAbout = ({ Data, isManager, isAdmin, user, teamAbout }) => {
               <li key={idx}>
                 <div className="dp">
                   {' '}
-                  <img src={emp?.profilePicUrl} alt="" />{' '}
+                  <img src={emp?.employeeId.profilePicUrl} alt="" />{' '}
                 </div>
                 <h3>{emp.role.toUpperCase()}</h3>
-                <h4>{emp?.name} </h4>
+                <h4>{emp?.employeeId.name} </h4>
                 {isManager || isAdmin ? (
                   <>
-                    {emp._id === user._id && emp.role === 'Manager' ? null : (
+                    {emp.employeeId._id === user._id &&
+                    emp.role === 'Manager' ? null : (
                       <>
                         <button
                           className="btn"

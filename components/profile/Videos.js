@@ -40,7 +40,7 @@ const Videos = ({ Userdata, user }) => {
 
     try {
       await mutation.mutateAsync(formdata);
-
+      $('a.model_close').parent().removeClass('show_model');
       toast.success('User videos have been updated');
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Please upload your videos again');
