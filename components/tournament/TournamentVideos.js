@@ -56,7 +56,8 @@ const TournamentVideos = ({ user, tournament, isUser }) => {
           <a href="#!" className="model_show_btn">
             <button className="btn">
               <i aria-hidden="true">
-                <i className="fa fa-plus-circle" aria-hidden="true"></i>
+                <i className="fa fa-plus-circle" aria-hidden="true"></i> Add
+                Video
               </i>
             </button>
           </a>

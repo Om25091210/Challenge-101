@@ -3925,7 +3925,12 @@ article .social_bar img {
 
 }
 
-.sponser ul li p{ text-align: left;}
+.sponser ul li p {
+    text-align: left;
+    line-height: 13px;
+    padding-top: 5px;
+    font-size: 10px;
+}
 
 .bio_box .right_team_bio h5 {
 	font-size: 12px;
@@ -5417,7 +5422,7 @@ article .social_bar img {
 
 .right_game_details.tour_row .top_game .date{ display: flex;}
 
-.top_game .type_img{ width: 30px;}
+.top_game .type_img{ width: 30px; margin-left: 10px;}
 
 .top_game,
 .bottom_game {
@@ -6899,17 +6904,16 @@ article .social_bar img {
 }
 
 .team_member li {
-	float: left;
-	width: 22%;
-	margin-right: 4%;
-	margin-bottom: 30px;
-	text-align: center;
+    float: left;
+    width: 15%;
+    margin-right: 8%;
+    margin-bottom: 30px;
+    text-align: center;
 }
-
 .team_member li .dp {
 	float: left;
 	width: 100%;
-	height: 200px;
+	height: 130px;
 	background: #0d0c12;
 	overflow: hidden;
 	margin-bottom: 20px;
@@ -6932,8 +6936,10 @@ article .social_bar img {
 }
 
 .team_member li h4 {
-	font-size: 16px;
-	font-weight: 600;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 0px 0 20px 0;
+    text-transform: capitalize;
 }
 
 /*-------------- Rigs ----------------- */
@@ -7834,7 +7840,7 @@ main {
 }
 
 .games_page .tournament_sponsers {
-	margin-top: 0;
+	margin-top:25px;
 }
 
 .profile_box .profile_cover_photo:after {
@@ -8137,6 +8143,9 @@ ul.game_search_result li:hover:after, ul.game_search_result li.slc_img:after {
 .prize_boxs .console_bg img{ width: 20px; display: inline-block;}
 
 .prize_boxs .select_img{ border-radius: 5px; margin-right: 10px;}
+
+.inner_model_box .prize_boxs .select_img img{ height: 40px;}
+
 .prize_boxs .select_img img{ max-width: 50px;
     height: 80px;
     object-fit: cover;}
@@ -10656,6 +10665,8 @@ form.common_form .btn {
 	margin: auto;
 }
 
+.add_form .form-group{ position: relative;}
+
 .show_block {
 	display: block;
 }
@@ -10899,6 +10910,12 @@ form.common_form .btn {
 	border-radius: 5px;
 	display: inline-block;
 	background: #fff;
+}
+
+.tour_img_name .imgs img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .tour_game_team li {
@@ -12196,6 +12213,7 @@ body.DarkPage .socail_urls input[type="text"] {
 
 body.DarkPage form.common_form .btn {
 	background: #7239ea;
+	color: #fff;
 }
 
 body.DarkPage .about_team textarea {

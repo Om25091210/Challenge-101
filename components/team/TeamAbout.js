@@ -185,26 +185,28 @@ const TeamAbout = ({ Data, isManager, isAdmin, user, teamAbout }) => {
                 </div>
                 <h3>{emp.role.toUpperCase()}</h3>
                 <h4>{emp?.name} </h4>
-                {isManager || isAdmin ? (
-                  <>
-                    {emp._id === user._id && emp.role === 'Manager' ? null : (
-                      <>
-                        <button
-                          className="btn"
-                          onClick={() => handleDelete(emp._id)}
-                        >
-                          Delete
-                        </button>
-                      </>
-                    )}
-                  </>
-                ) : null}
-                <TeamAboutEdit
-                  employeeData={emp}
-                  team={Data.team}
-                  isManager={isManager}
-                  isAdmin={isAdmin}
-                />
+                <div className="flex">
+                  {isManager || isAdmin ? (
+                    <>
+                      {emp._id === user._id && emp.role === 'Manager' ? null : (
+                        <>
+                          <button
+                            className="btn"
+                            onClick={() => handleDelete(emp._id)}
+                          >
+                            Delete
+                          </button>
+                        </>
+                      )}
+                    </>
+                  ) : null}
+                  <TeamAboutEdit
+                    employeeData={emp}
+                    team={Data.team}
+                    isManager={isManager}
+                    isAdmin={isAdmin}
+                  />
+                </div>
               </li>
             ))
           )}
