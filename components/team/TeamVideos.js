@@ -19,6 +19,7 @@ const TeamVideos = ({ user, team, isManager, isAdmin }) => {
         'Content-Type': 'multipart/form-data'
       }
     });
+    $('a.model_close').parent().removeClass('show_model');
   });
 
   function refreshPage() {

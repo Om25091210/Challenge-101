@@ -262,19 +262,19 @@ const ProfileTeams = ({
                     <div className="card_details">
                       <div className="once">
                         <p>kills avg</p>
-                        <span className="big_name"> 1.33 </span>{' '}
+                        <span className="big_name"> -- </span>{' '}
                       </div>
                       <div className="once">
-                        <p>headchange avg</p>
-                        <span className="big_name"> 1.1 </span>{' '}
+                        <p>KnockDowns avg</p>
+                        <span className="big_name"> -- </span>{' '}
                       </div>
                       <div className="once">
-                        <p>Gammer ceaton avg</p>
-                        <span className="big_name"> 473.29 </span>{' '}
+                        <p>Damage Dealt avg</p>
+                        <span className="big_name"> -- </span>{' '}
                       </div>
                       <div className="once">
-                        <p>kills avg</p>
-                        <span className="big_name">50% </span>{' '}
+                        <p>Win Rate</p>
+                        <span className="big_name"> -- </span>{' '}
                       </div>
                     </div>
                   </div>
