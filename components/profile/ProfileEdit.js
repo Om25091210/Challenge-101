@@ -607,9 +607,9 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                       <i className="fa fa-youtube"></i>
                     </button>
 
-                    <span onClick={(e) => handleRoleForm(e)}>
+                    <button onClick={(e) => handleRoleForm(e)}>
                       <i className="fa fa-plus-circle" aria-hidden="true"></i>
-                    </span>
+                    </button>
                   </div>
 
                   <div className="edit_four">

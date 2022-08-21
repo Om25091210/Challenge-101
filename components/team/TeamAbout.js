@@ -187,7 +187,7 @@ const TeamAbout = ({ Data, isManager, isAdmin, user, teamAbout }) => {
                 <h3>{emp.role.toUpperCase()}</h3>
 
                 <h4>{emp?.name} </h4>
-                <div className="flex">
+                <div className="two_btn">
                   {isManager || isAdmin ? (
                     <>
                       {emp._id === user._id && emp.role === 'Manager' ? null : (

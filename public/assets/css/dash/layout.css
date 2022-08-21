@@ -758,8 +758,7 @@ ul.top_menu li.profile>a span p {
     color: #ddd;
     position: relative;
     font-size: 11px;
-    padding-top: 3px;
-	text-align: right;
+    padding-top: 3px; padding-left: 20px;
 }
 ul.top_menu li.profile>a span p .online {
 	position: static;
@@ -4467,6 +4466,8 @@ article .social_bar img {
 	vertical-align: bottom;
 }
 
+.discovery_page .tit span .icon img{ width: 26px;}
+
 .calendar_page .tit span {
 	padding: 7px 10px;
 }
@@ -6941,6 +6942,10 @@ article .social_bar img {
     padding: 0px 0 20px 0;
     text-transform: capitalize;
 }
+
+.team_member li p{ font-size: 12px; padding: 10px 0;}
+
+.team_member .two_btn button{ padding: 0;}
 
 /*-------------- Rigs ----------------- */
 
