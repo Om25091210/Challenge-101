@@ -39,6 +39,7 @@ const TeamAddSearch = ({ sponsors, states, type, val }) => {
     } else {
       states.sponsor = data._id;
     }
+    setFilteredData([]);
   };
   return (
     <>
@@ -69,46 +70,52 @@ const TeamAddSearch = ({ sponsors, states, type, val }) => {
           autoComplete="off"
         />
         {searchText.length !== 0 ? (
-          <div className="custom-rig-tag">
-            <div className="rigs_items">
-              {!filteredData || filteredData.length === 0 ? (
-                <p>
-                  No{' '}
-                  {type === 'ARENA'
-                    ? 'Arena'
-                    : type === 'MOUSE'
-                    ? 'Mouse'
-                    : type === 'KEYBOARD'
-                    ? 'Keyboard'
-                    : 'Sponsor'}{' '}
-                  found..
-                </p>
-              ) : (
-                filteredData.map((data) => (
-                  <div
-                    onClick={() => handleSelectedRig(data)}
-                    key={data._id}
-                    className="items"
-                  >
-                    <span>
-                      {type === 'KEYBOARD' || type === 'MOUSE' ? (
-                        <img src={data?.image} height={50} width={50} />
-                      ) : type === 'ARENA' ? (
-                        <img src={data?.logoUrl} height={50} width={50} />
-                      ) : (
-                        <img src={data?.imgUrl} height={50} width={50} />
-                      )}
-                    </span>
-                    <p>
-                      {data.name.length > 20
-                        ? data.name.substring(0, 20) + '...'
-                        : data.name}
-                    </p>
+          <>
+            {filteredData.length > 0 ? (
+              <>
+                <div className="custom-rig-tag">
+                  <div className="rigs_items">
+                    {!filteredData || filteredData.length === 0 ? (
+                      <p>
+                        No{' '}
+                        {type === 'ARENA'
+                          ? 'Arena'
+                          : type === 'MOUSE'
+                          ? 'Mouse'
+                          : type === 'KEYBOARD'
+                          ? 'Keyboard'
+                          : 'Sponsor'}{' '}
+                        found..
+                      </p>
+                    ) : (
+                      filteredData.map((data) => (
+                        <div
+                          onClick={() => handleSelectedRig(data)}
+                          key={data._id}
+                          className="items"
+                        >
+                          <span>
+                            {type === 'KEYBOARD' || type === 'MOUSE' ? (
+                              <img src={data?.image} height={50} width={50} />
+                            ) : type === 'ARENA' ? (
+                              <img src={data?.logoUrl} height={50} width={50} />
+                            ) : (
+                              <img src={data?.imgUrl} height={50} width={50} />
+                            )}
+                          </span>
+                          <p>
+                            {data.name.length > 20
+                              ? data.name.substring(0, 20) + '...'
+                              : data.name}
+                          </p>
+                        </div>
+                      ))
+                    )}
                   </div>
-                ))
-              )}
-            </div>
-          </div>
+                </div>
+              </>
+            ) : null}
+          </>
         ) : null}
       </div>
     </>

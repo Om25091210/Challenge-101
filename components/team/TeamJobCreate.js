@@ -168,11 +168,6 @@ const TeamJobCreate = ({ user, profile }) => {
             </label>
             <div className="prize_boxs">
               {' '}
-              <div className="select_img">
-                <a href="#">
-                  <img src="/assets/media/games/tournament1.png" />
-                </a>
-              </div>
               <select
                 name="currency"
                 id="currency"
@@ -216,12 +211,15 @@ const TeamJobCreate = ({ user, profile }) => {
             </select>
           </div>
 
-          <input
-            type="textarea"
-            onChange={handleChange}
-            name="description"
-            value={state.description}
-          />
+          <div className="form-group">
+            <label for="exampleFormControlInput1">Description</label>
+            <input
+              type="textarea"
+              onChange={handleChange}
+              name="description"
+              value={state.description}
+            />
+          </div>
 
           <input type="submit" className="btn" value="Create Job" />
         </>

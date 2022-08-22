@@ -66,11 +66,11 @@ const TeamSponsors = ({ user, data, isManager, isAdmin, teamSponsors }) => {
             teamSponsors.sponsors.map((item, index) => (
               <li key={index}>
                 <div className="sponser_name">
-                  <img src={item.imgUrl} alt={item.sponsorId} />
+                  <img src={item.imgUrl} alt={item.name} />
                 </div>
                 <div className="sponser_data">
                   {' '}
-                  <span className="head_spons_bg">{item.sponsorId}</span>
+                  <span className="head_spons_bg">{item.name}</span>
                   <p>{item.description}</p>
                 </div>
               </li>

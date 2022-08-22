@@ -55,6 +55,7 @@ const ProfileTeams = ({
   const handleSelected = (data) => {
     setSearchText(data.name);
     team.teamId = data._id;
+    setFilteredData([]);
   };
 
   function handleAddTeam(e) {
@@ -127,34 +128,40 @@ const ProfileTeams = ({
                     autoComplete="off"
                   />
                   {searchText.length !== 0 ? (
-                    <div className="custom-rig-tag">
-                      <div className="rigs_items">
-                        {!filteredData || filteredData.length === 0 ? (
-                          <p>No Team found..</p>
-                        ) : (
-                          filteredData.map((data) => (
-                            <div
-                              onClick={() => handleSelected(data)}
-                              key={data._id}
-                              className="items"
-                            >
-                              <span>
-                                <img
-                                  src={data?.imgUrl}
-                                  height={50}
-                                  width={50}
-                                />
-                              </span>
-                              <p>
-                                {data.name.length > 20
-                                  ? data.name.substring(0, 20) + '...'
-                                  : data.name}
-                              </p>
+                    <>
+                      {filteredData.length > 0 ? (
+                        <>
+                          <div className="custom-rig-tag">
+                            <div className="rigs_items">
+                              {!filteredData || filteredData.length === 0 ? (
+                                <p>No Team found..</p>
+                              ) : (
+                                filteredData.map((data) => (
+                                  <div
+                                    onClick={() => handleSelected(data)}
+                                    key={data._id}
+                                    className="items"
+                                  >
+                                    <span>
+                                      <img
+                                        src={data?.imgUrl}
+                                        height={50}
+                                        width={50}
+                                      />
+                                    </span>
+                                    <p>
+                                      {data.name.length > 20
+                                        ? data.name.substring(0, 20) + '...'
+                                        : data.name}
+                                    </p>
+                                  </div>
+                                ))
+                              )}
                             </div>
-                          ))
-                        )}
-                      </div>
-                    </div>
+                          </div>
+                        </>
+                      ) : null}
+                    </>
                   ) : null}
                   <p>{formErrors.team}</p>
                 </div>

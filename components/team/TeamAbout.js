@@ -187,6 +187,9 @@ const TeamAbout = ({ Data, isManager, isAdmin, user, teamAbout }) => {
                 <h3>{emp.role.toUpperCase()}</h3>
 
                 <h4>{emp?.name} </h4>
+
+                <h4>{emp?.employeeId.name} </h4>
+
                 <div className="two_btn">
                   {isManager || isAdmin ? (
                     <>
@@ -209,29 +212,6 @@ const TeamAbout = ({ Data, isManager, isAdmin, user, teamAbout }) => {
                     isAdmin={isAdmin}
                   />
                 </div>
-
-                <h4>{emp?.employeeId.name} </h4>
-                {isManager || isAdmin ? (
-                  <>
-                    {emp.employeeId._id === user._id &&
-                    emp.role === 'Manager' ? null : (
-                      <>
-                        <button
-                          className="btn"
-                          onClick={() => handleDelete(emp._id)}
-                        >
-                          Delete
-                        </button>
-                      </>
-                    )}
-                  </>
-                ) : null}
-                <TeamAboutEdit
-                  employeeData={emp}
-                  team={Data.team}
-                  isManager={isManager}
-                  isAdmin={isAdmin}
-                />
               </li>
             ))
           )}

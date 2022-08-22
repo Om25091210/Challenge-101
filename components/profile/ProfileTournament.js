@@ -89,6 +89,7 @@ const ProfileTournament = ({
   const handleSelected = (data) => {
     setSearchText(data.name);
     tournament.tournamentId = data._id;
+    setFilteredData([]);
   };
   function handleAddTournament(e) {
     if (e.target.options) {
@@ -162,35 +163,45 @@ const ProfileTournament = ({
                     autoComplete="off"
                   />
                   {searchText.length !== 0 ? (
-                    <div className="custom-rig-tag">
-                      <div className="rigs_items">
-                        {!filteredData || filteredData.length === 0 ? (
-                          <p>No Tournament found..</p>
-                        ) : (
-                          filteredData.map((data) => (
-                            <div
-                              onClick={() => handleSelected(data.tournament)}
-                              key={data.tournament?._id}
-                              className="items"
-                            >
-                              <span>
-                                <img
-                                  src={data?.tournament.imgUrl}
-                                  height={50}
-                                  width={50}
-                                />
-                              </span>
-                              <p>
-                                {data?.tournament.name?.length > 20
-                                  ? data.tournament.name.substring(0, 20) +
-                                    '...'
-                                  : data.tournament.name}
-                              </p>
+                    <>
+                      {filteredData.length > 0 ? (
+                        <>
+                          <div className="custom-rig-tag">
+                            <div className="rigs_items">
+                              {!filteredData || filteredData.length === 0 ? (
+                                <p>No Tournament found..</p>
+                              ) : (
+                                filteredData.map((data) => (
+                                  <div
+                                    onClick={() =>
+                                      handleSelected(data.tournament)
+                                    }
+                                    key={data.tournament?._id}
+                                    className="items"
+                                  >
+                                    <span>
+                                      <img
+                                        src={data?.tournament.imgUrl}
+                                        height={50}
+                                        width={50}
+                                      />
+                                    </span>
+                                    <p>
+                                      {data?.tournament.name?.length > 20
+                                        ? data.tournament.name.substring(
+                                            0,
+                                            20
+                                          ) + '...'
+                                        : data.tournament.name}
+                                    </p>
+                                  </div>
+                                ))
+                              )}
                             </div>
-                          ))
-                        )}
-                      </div>
-                    </div>
+                          </div>
+                        </>
+                      ) : null}
+                    </>
                   ) : null}
                   <p>{formErrors.tournamentId}</p>
                 </div>

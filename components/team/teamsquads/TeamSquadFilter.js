@@ -43,10 +43,15 @@ const TeamSquadFilter = ({ playerData, players }) => {
   };
 
   const handleSelectedRig = (data) => {
-    setSearchText(data.name);
+    if (data.apidata) {
+      setSearchText(data.apidata.data.platformInfo.platformUserHandle);
+    } else {
+      setSearchText(data.name);
+    }
 
     squadPlayers.player = data._id;
     playerData.push(squadPlayers);
+    setFilteredData([]);
   };
 
   const onChange = (e) => {
@@ -76,24 +81,42 @@ const TeamSquadFilter = ({ playerData, players }) => {
           autoComplete="off"
         />
         {searchText?.length !== 0 ? (
-          <div className="custom-rig-tag">
-            <div>
-              {!filteredData || filteredData?.length === 0 ? (
-                <p>No User found..</p>
-              ) : (
-                filteredData.map((data) => (
-                  <div onClick={() => handleSelectedRig(data)} key={data._id}>
-                    <img src={data?.imgUrl} height={50} width={50} />
-                    <p>
-                      {data.apidata
-                        ? data.apidata.data.platformInfo.platformUserHandle
-                        : data.name}
-                    </p>
+          <>
+            {filteredData.length > 0 ? (
+              <>
+                <div className="custom-rig-tag">
+                  <div>
+                    {!filteredData || filteredData?.length === 0 ? (
+                      <p>No User found..</p>
+                    ) : (
+                      filteredData.map((data) => (
+                        <div
+                          onClick={() => handleSelectedRig(data)}
+                          key={data._id}
+                        >
+                          {data.apidata ? (
+                            <img
+                              src={data.apidata?.data.platformInfo?.avatarUrl}
+                              height={50}
+                              width={50}
+                            />
+                          ) : (
+                            <img src={data?.imgUrl} height={50} width={50} />
+                          )}
+                          <p>
+                            {data.apidata
+                              ? data.apidata.data.platformInfo
+                                  .platformUserHandle
+                              : data.name}
+                          </p>
+                        </div>
+                      ))
+                    )}
                   </div>
-                ))
-              )}
-            </div>
-          </div>
+                </div>
+              </>
+            ) : null}
+          </>
         ) : null}
       </div>
     </>
