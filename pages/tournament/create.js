@@ -182,6 +182,11 @@ const CreateTournament = ({ user }) => {
       $(this).parent().siblings('.big_btn').removeClass('radio_bg');
       $(this).parent().addClass('radio_bg');
     });
+
+    $('.console_bg').click(function () {
+      $('.console_bg').removeClass('active');
+      $(this).addClass('active');
+    });
   });
 
   return (

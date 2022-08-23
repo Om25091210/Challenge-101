@@ -115,14 +115,18 @@ const AttributeCard = ({ type, attributeId }) => {
               </button>
             </a>
 
-            <div className="common_model_box">
+            <div className="common_model_box edit_profile" id="big_poup">
               <a href="#!" className="model_close">
                 X
               </a>
 
               <div className="inner_model_box">
-                <div className="add_jobs_height">
-                  <form onSubmit={handleSubmitAttribute}>
+                <div className="">
+                  <h3> RECRUITED </h3>
+                  <form
+                    onSubmit={handleSubmitAttribute}
+                    className="common_form"
+                  >
                     <div className="form-group">
                       <label htmlFor="exampleFormControlInput1">Game</label>
                       <select
@@ -130,6 +134,7 @@ const AttributeCard = ({ type, attributeId }) => {
                         id="games"
                         value={states.games}
                         onChange={onChange}
+                        className="form-control"
                       >
                         <option value="">--</option>
                         {allgames.map((game) => (
@@ -137,60 +142,79 @@ const AttributeCard = ({ type, attributeId }) => {
                         ))}
                       </select>
                     </div>
-                    <div className="colm">
-                      <label htmlFor="exampleFormControlInput1">Platform</label>
-                      <select
-                        id="platform"
-                        name="platform"
-                        onChange={onChange}
-                        value={states.platform}
-                        className="form-control text-capitalize"
-                      >
-                        <option value="--">--</option>
-                        <option value="PC">PC</option>
-                        <option value="Console">Console</option>
-                        <option value="Mobile">Mobile</option>
-                      </select>
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="exampleFormControlInput1">Role</label>
-                      <select
-                        name="role"
-                        onChange={onChange}
-                        value={states.role}
-                        multiple={false}
-                      >
-                        {allroles.map((role) => (
-                          <option value={role}>{role}</option>
-                        ))}
-                      </select>
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="exampleFormControlTextarea1">
-                        Region
-                      </label>
-                      <select name="regions" onChange={onChange}>
-                        {options.map((opt) => (
-                          <>
-                            <option value={opt.value}>{opt.label}</option>
-                          </>
-                        ))}
-                      </select>
-                    </div>
 
-                    <div className="custom-control custom-switch">
-                      <label htmlFor="custonSwitch1">Mic</label>
-                      <input
-                        type="checkbox"
-                        className="custom-control-input"
-                        id="customSwitch1"
-                        onClick={() => handleMic()}
-                        value={states.Mic}
-                      />
-                      <label
-                        className="custom-control-label"
-                        htmlFor="customSwitch1"
-                      ></label>
+                    <div className="edit_four">
+                      <div className="form-group">
+                        <label htmlFor="exampleFormControlInput1">
+                          Platform
+                        </label>
+                        <select
+                          id="platform"
+                          name="platform"
+                          onChange={onChange}
+                          value={states.platform}
+                          className="form-control text-capitalize"
+                        >
+                          <option value="--">--</option>
+                          <option value="PC">PC</option>
+                          <option value="Console">Console</option>
+                          <option value="Mobile">Mobile</option>
+                        </select>
+                      </div>
+
+                      <div className="form-group">
+                        <label htmlFor="exampleFormControlInput1">Role</label>
+                        <select
+                          name="role"
+                          onChange={onChange}
+                          value={states.role}
+                          multiple={false}
+                          className="form-control"
+                        >
+                          {allroles.map((role) => (
+                            <option value={role}>{role}</option>
+                          ))}
+                        </select>
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="exampleFormControlTextarea1">
+                          Region
+                        </label>
+                        <select
+                          name="regions"
+                          onChange={onChange}
+                          className="form-control"
+                        >
+                          {options.map((opt) => (
+                            <>
+                              <option value={opt.value}>{opt.label}</option>
+                            </>
+                          ))}
+                        </select>
+                      </div>
+
+                      <div className="form-group">
+                        <div className="custom-control custom-switch">
+                          <label htmlFor="exampleFormControlTextarea1">
+                            &nbsp;
+                          </label>
+
+                          <input
+                            type="checkbox"
+                            className="custom-control-input"
+                            id="customSwitch1"
+                            onClick={() => handleMic()}
+                            value={states.Mic}
+                          />
+
+                          <label
+                            className="custom-control-label"
+                            htmlFor="customSwitch1"
+                          >
+                            Mic
+                          </label>
+                        </div>
+                      </div>
                     </div>
 
                     <div className="form-group">
@@ -200,6 +224,7 @@ const AttributeCard = ({ type, attributeId }) => {
                         onChange={handleSubmit}
                         multiple={true}
                         value={states.language}
+                        className="form-control"
                       >
                         <option value="ENGLISH">English</option>
                         <option value="RUSSIAN">Russian</option>
@@ -209,14 +234,14 @@ const AttributeCard = ({ type, attributeId }) => {
                       </select>
                     </div>
 
-                    <div className="colm">
+                    <div className="form-group">
                       <label htmlFor="exampleFormControlInput1">Type</label>
                       <select
                         id="type"
                         name="type"
                         onChange={onChange}
                         value={states.type}
-                        className="form-control text-capitalize"
+                        className="form-control"
                       >
                         <option value="--">--</option>
                         <option value="Casual">Casual</option>
@@ -234,6 +259,7 @@ const AttributeCard = ({ type, attributeId }) => {
                         id="salary"
                         value={states.salary}
                         onChange={onChange}
+                        className="form-control"
                       >
                         <option value="--">--</option>
                         <option value="prize_sharing">Prize Sharing</option>
@@ -252,6 +278,7 @@ const AttributeCard = ({ type, attributeId }) => {
                           name="rank"
                           onChange={onChange}
                           value={states.rank}
+                          className="form-control"
                         />
                       </div>
                     ) : null}
@@ -265,6 +292,7 @@ const AttributeCard = ({ type, attributeId }) => {
                         name="availability"
                         onChange={onChange}
                         value={states.availability}
+                        className="form-control"
                       />
                     </div>
 

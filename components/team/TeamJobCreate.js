@@ -138,82 +138,80 @@ const TeamJobCreate = ({ user, profile }) => {
             </select>
           </div>
 
-          <div className="form-group">
-            <label htmlFor="startDate">application Start Date:</label>
-            <input
-              type="date"
-              placeholder="MM/DD/YYYY"
-              name="startDate"
-              onChange={handleChange}
-              value={state.startDate}
-              className="form-control"
-            />
-          </div>
+          <div className="edit_four">
+            <div className="form-group">
+              <label htmlFor="startDate">application Start Date:</label>
+              <input
+                type="date"
+                placeholder="MM/DD/YYYY"
+                name="startDate"
+                onChange={handleChange}
+                value={state.startDate}
+                className="form-control"
+              />
+            </div>
 
-          <div className="form-group">
-            <label htmlFor="endDate">application End Date:</label>
-            <input
-              type="date"
-              placeholder="MM/DD/YYYY"
-              name="endDate"
-              onChange={handleChange}
-              value={state.endDate}
-              className="form-control"
-            />
-          </div>
+            <div className="form-group">
+              <label htmlFor="endDate">application End Date:</label>
+              <input
+                type="date"
+                placeholder="MM/DD/YYYY"
+                name="endDate"
+                onChange={handleChange}
+                value={state.endDate}
+                className="form-control"
+              />
+            </div>
 
-          <div className="form-group" style={{ height: '70px' }}>
-            <label for="exampleFormControlInput1">
-              Money Included (Optional)
-            </label>
-            <div className="prize_boxs">
-              {' '}
+            <div className="form-group" style={{ height: '70px' }}>
+              <label for="exampleFormControlInput1">
+                Money Included (Optional)
+              </label>
+              <div className="prize_boxs">
+                {' '}
+                <select
+                  name="currency"
+                  id="currency"
+                  onChange={handleChangeCheck}
+                  value={state.currency}
+                >
+                  <option value="$">USD($)- Dollars</option>
+                  <option value="Rs">INR (Rs) - Rupees</option>
+                </select>
+                <input
+                  type="number"
+                  className="form-control"
+                  placeholder=""
+                  name="salary"
+                  onChange={handleChange}
+                  value={state.salary}
+                />
+              </div>
+            </div>
+
+            <div className="form-group">
+              <label for="exampleFormControlInput1">Positions Available</label>
               <select
-                name="currency"
-                id="currency"
-                onChange={handleChangeCheck}
-                value={state.currency}
+                className="game_search_result mscrollbar"
+                name="availPos"
+                placeholder="Select Opportunity Type..."
+                value={state.availPos}
+                onChange={handleChange}
+                multiple={true}
               >
-                <option value="$">USD($)- Dollars</option>
-                <option value="Rs">INR (Rs) - Rupees</option>
+                {teamroles &&
+                  teamroles.map((role, iedx) => (
+                    <option key={iedx} value={role}>
+                      {role}
+                    </option>
+                  ))}
               </select>
             </div>
           </div>
 
           <div className="form-group">
-            <label for="exampleFormControlInput1">&nbsp;</label>
-            <input
-              type="number"
-              className="form-control"
-              placeholder=""
-              name="salary"
-              onChange={handleChange}
-              value={state.salary}
-            />
-          </div>
-
-          <div className="form-group">
-            <label for="exampleFormControlInput1">Positions Available</label>
-            <select
-              className="game_search_result mscrollbar"
-              name="availPos"
-              placeholder="Select Opportunity Type..."
-              value={state.availPos}
-              onChange={handleChange}
-              multiple={true}
-            >
-              {teamroles &&
-                teamroles.map((role, iedx) => (
-                  <option key={iedx} value={role}>
-                    {role}
-                  </option>
-                ))}
-            </select>
-          </div>
-
-          <div className="form-group">
             <label for="exampleFormControlInput1">Description</label>
-            <input
+            <textarea
               type="textarea"
               onChange={handleChange}
               name="description"

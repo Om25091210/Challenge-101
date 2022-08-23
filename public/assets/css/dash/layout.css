@@ -3372,7 +3372,7 @@ article .social_bar img {
 #big_poup.edit_profile .common_form .edit_four .form-group {
 	float: left;
 	width: 48%;
-	height: 50px;
+	height: 65px;
 	margin-right: 0;
 }
 
@@ -3404,11 +3404,12 @@ article .social_bar img {
 	object-fit: cover;
 }
 
-#big_poup.edit_profile .form-control,
-#big_poup.edit_profile select {
+#big_poup .form-control, #big_poup select{
 	border-radius: 5px;
-	background: #2c2c36 !important;
+	background-color: #2c2c36 !important;
 }
+
+
 
 #big_poup.edit_profile .custom-switch {
 	float: left;
@@ -3451,11 +3452,8 @@ article .social_bar img {
 	position: relative;
 }
 
-#big_poup.add_tourn .form-control,
-#big_poup.add_tourn select {
-	border-radius: 5px;
-	background: #2c2c36 !important;
-}
+
+#big_poup select{ background-color: #2c2c36; border: 1px solid #737373}
 
 #big_poup.add_tourn {
 	height: 600px;
@@ -7993,6 +7991,23 @@ main {
 	position: relative;
 }
 
+.create_tournament .common_form .edit_four {
+	float: left;
+	width: 100%;
+}
+
+.create_tournament .common_form .edit_four .form-group {
+	float: left;
+	width: 48%;
+	height: 65px;
+	margin-right: 0;
+}
+
+.create_tournament .common_form .edit_four .form-group:nth-child(2n) {
+	float: right;
+}
+
+
 .create_tournament form .style_file_upload {
 	display: inline-block;
 	position: relative;
@@ -8139,11 +8154,15 @@ ul.game_search_result li:hover:after, ul.game_search_result li.slc_img:after {
     display: inline-block;
     margin: 0 5px;
     padding: 5px;
-    background: #1da1f2;
+    background: #202028;
     width: 50px;
     height: 32px;
-    border-radius: 5px; text-align: center;
+    border-radius: 5px;
+    text-align: center;
+    border: 1px solid #ddd;
 }
+
+.prize_boxs .console_bg.active{ background: #1da1f2;  border: 1px solid #1da1f2;}
 
 .prize_boxs .console_bg img{ width: 20px; display: inline-block;}
 
@@ -8244,6 +8263,8 @@ ul.game_search_result li:hover:after, ul.game_search_result li.slc_img:after {
 .create_tournament form .fa:hover {
 	opacity: 0.7;
 }
+
+.create_tournament .style_file_upload span{ color: #707088 !important;}
 
 .fa-facebook {
 	background: #3B5998;
@@ -10905,7 +10926,7 @@ form.common_form .btn {
 	width: 30%;
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	justify-content:flex-start;
 }
 
 .tour_img_name .imgs {
@@ -11690,12 +11711,15 @@ body.DarkPage .create_tournament form input[type="text"],
 body.DarkPage .create_tournament form input[type="date"],
 body.DarkPage .create_tournament form input[type="time"],
 body.DarkPage .create_tournament form input[type="search"],
-body.DarkPage .create_tournament form select {
+body.DarkPage .create_tournament form select,
+body.DarkPage .create_tournament form textarea {
 	background: #222f41 !important;
-	color: #fff;
+	color: #707088;
 	border: 1px solid #344860;
 	border-radius: 5px;
 }
+
+.create_tournament form textarea{ height: 60px; resize: none;}
 
 body.DarkPage .create_tournament .btn_selection input[type="checkbox"], 
 body.DarkPage .create_tournament .btn_selection input[type="radio"],
@@ -12072,39 +12096,39 @@ body.DarkPage .write_post .team_slider .slick-prev:before {
 }
 
 body.DarkPage .write_post textarea::-webkit-input-placeholder {
-	color: #fff;
+	color: #707088;
 }
 
 body.DarkPage .write_post textarea:-moz-placeholder {
 	/* Firefox 18- */
-	color: #ffffff;
+	color: #707088;
 }
 
 body.DarkPage .write_post textarea::-moz-placeholder {
 	/* Firefox 19+ */
-	color: #ffffff;
+	color: #707088;
 }
 
 body.DarkPage .write_post textarea:-ms-input-placeholder {
-	color: #ffffff;
+	color: #707088;
 }
 
 body.DarkPage .create_tournament form input::-webkit-input-placeholder {
-	color: #ffffff;
+	color: #707088;
 }
 
 body.DarkPage .create_tournament form input:-moz-placeholder {
 	/* Firefox 18- */
-	color: #ffffff;
+	color: #707088;
 }
 
 body.DarkPage .create_tournament form input::-moz-placeholder {
 	/* Firefox 19+ */
-	color: #ffffff;
+	color: #707088;
 }
 
 body.DarkPage .create_tournament form input:-ms-input-placeholder {
-	color: #ffffff;
+	color: #707088;
 }
 
 
@@ -12233,7 +12257,6 @@ body.DarkPage textarea,
 body.DarkPage input[type="password"],
 body.DarkPage input[type="number"] {
 	background: #202028 !important;
-	color: #858585;
 	border: 1px solid #737373;
 }
 
