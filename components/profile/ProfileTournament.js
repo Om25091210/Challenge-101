@@ -216,7 +216,7 @@ const ProfileTournament = ({
                     value={tournament.organizer}
                     onChange={onChangeTour}
                   >
-                    <option value="--">--</option>
+                    <option value="">Select Organizer</option>
                     {organizer &&
                       organizer.map((organizer, idx) => (
                         <option key={idx} value={organizer._id}>
@@ -257,7 +257,7 @@ const ProfileTournament = ({
                       onChange={onChangeTour}
                       value={tournament.team}
                     >
-                      <option value="--">--</option>
+                      <option value="">Select Team</option>
                       {teams &&
                         teams.map((tem) => (
                           <option value={tem._id} key={tem._id}>
@@ -282,7 +282,7 @@ const ProfileTournament = ({
                       onChange={onChangeTour}
                       value={tournament.role}
                     >
-                      <option value="--">--</option>
+                      <option value="">Select Role</option>
                       {teamroles &&
                         teamroles.map((tr, idx) => (
                           <option key={idx} value={tr}>

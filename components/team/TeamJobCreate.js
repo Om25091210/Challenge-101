@@ -16,7 +16,6 @@ const TeamJobCreate = ({ user, profile }) => {
     startDate: '',
     endDate: '',
     salary: 0,
-    availPos: '',
     description: '',
     currency: ''
   });
@@ -96,6 +95,7 @@ const TeamJobCreate = ({ user, profile }) => {
               onChange={handleChangeCheck}
               value={state.role}
             >
+              <option value="">Select Opportunity Type...</option>
               {teamroles &&
                 teamroles.map((tr, itdx) => (
                   <option key={itdx} value={tr}>
@@ -113,7 +113,7 @@ const TeamJobCreate = ({ user, profile }) => {
               value={state.owner}
               onChange={handleChangeCheck}
             >
-              <option value="--">--</option>
+              <option value="">Select Job Owner...</option>
               <option value={profile?.current_team?._id}>
                 {profile?.current_team?.name}
               </option>
@@ -129,7 +129,7 @@ const TeamJobCreate = ({ user, profile }) => {
               value={state.location}
               onChange={handleChangeCheck}
             >
-              <option value="">--</option>
+              <option value="">Select Location...</option>
               {options.map((opt) => (
                 <>
                   <option value={opt.value}>{opt.label}</option>
@@ -187,25 +187,6 @@ const TeamJobCreate = ({ user, profile }) => {
                   value={state.salary}
                 />
               </div>
-            </div>
-
-            <div className="form-group">
-              <label for="exampleFormControlInput1">Positions Available</label>
-              <select
-                className="game_search_result mscrollbar"
-                name="availPos"
-                placeholder="Select Opportunity Type..."
-                value={state.availPos}
-                onChange={handleChange}
-                multiple={true}
-              >
-                {teamroles &&
-                  teamroles.map((role, iedx) => (
-                    <option key={iedx} value={role}>
-                      {role}
-                    </option>
-                  ))}
-              </select>
             </div>
           </div>
 

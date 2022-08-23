@@ -287,7 +287,7 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                           onChange={handleSubmit}
                           placeholder="Team Name"
                         >
-                          <option value="--">--</option>
+                          <option value="">Select Team</option>
                           {allteams &&
                             allteams.map((tem) => (
                               <option value={tem.team?._id}>
@@ -353,7 +353,7 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                           value={states.game}
                           onChange={handleChangeCheck}
                         >
-                          <option value="--">--</option>
+                          <option value="">Select Game</option>
                           {User_team &&
                             User_team[0]?.team?.games.map((game) => (
                               <option value={game.gameId._id}>
@@ -374,6 +374,7 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                           value={states.game}
                           onChange={handleChangeCheck}
                         >
+                          <option value="">Select Game</option>
                           {games &&
                             games.map((game) => (
                               <option value={game._id}>{game.name}</option>
@@ -420,7 +421,7 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                           value={states.role}
                           onChange={handleChangeCheck}
                         >
-                          <option value="--">--</option>
+                          <option value="">Select Role</option>
                           {allroles &&
                             allroles.map((role) => (
                               <option value={role}>{role}</option>
@@ -437,7 +438,7 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                           value={states.b_role}
                           onChange={handleChangeCheck}
                         >
-                          <option value="--">--</option>
+                          <option value="">Select Role</option>
                           {allroles &&
                             allroles.map((role) => (
                               <option value={role}>{role}</option>

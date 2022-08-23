@@ -680,7 +680,7 @@ const CreateTournament = ({ user }) => {
                       <div className="colm">
                         <label for="exampleFormControlInput1">Location</label>
                         <select name="location" onChange={handleChangeCheck}>
-                          <option value="">--</option>
+                          <option value="">Select Location...</option>
                           {options &&
                             options.map((opt) => (
                               <>

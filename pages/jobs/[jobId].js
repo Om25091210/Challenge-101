@@ -49,11 +49,6 @@ const Job = ({ data, user }) => {
 
             <h2>Job Description</h2>
             <ul>{data?.description}</ul>
-
-            <h2>Available Positions</h2>
-            {data.availPos.map((pos) => (
-              <p>{pos}</p>
-            ))}
           </div>
 
           <div className="right_job">

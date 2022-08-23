@@ -414,7 +414,7 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
                         </span>
                       </>
                     ))}
-                    <a href="#!" className="model_show_btn">
+                    {/* <a href="#!" className="model_show_btn">
                       <i className="fa fa-plus-circle" aria-hidden="true"></i>
 
                       <div className="hover_games">
@@ -425,7 +425,7 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
                           />
                         </div>
                       </div>
-                    </a>
+                    </a> */}
 
                     <div className="common_model_box" id="more_games">
                       <a href="#!" className="model_close">

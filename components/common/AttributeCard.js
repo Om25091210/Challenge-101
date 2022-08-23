@@ -136,7 +136,7 @@ const AttributeCard = ({ type, attributeId }) => {
                         onChange={onChange}
                         className="form-control"
                       >
-                        <option value="">--</option>
+                        <option value="">Select Game</option>
                         {allgames.map((game) => (
                           <option value={game?._id}>{game.name}</option>
                         ))}
@@ -155,7 +155,7 @@ const AttributeCard = ({ type, attributeId }) => {
                           value={states.platform}
                           className="form-control text-capitalize"
                         >
-                          <option value="--">--</option>
+                          <option value="">Select Platform</option>
                           <option value="PC">PC</option>
                           <option value="Console">Console</option>
                           <option value="Mobile">Mobile</option>
@@ -243,7 +243,7 @@ const AttributeCard = ({ type, attributeId }) => {
                         value={states.type}
                         className="form-control"
                       >
-                        <option value="--">--</option>
+                        <option value="">Select Game Type</option>
                         <option value="Casual">Casual</option>
                         <option value="SemiPro">SemiPro</option>
                         <option value="Pro">Pro</option>
@@ -261,7 +261,7 @@ const AttributeCard = ({ type, attributeId }) => {
                         onChange={onChange}
                         className="form-control"
                       >
-                        <option value="--">--</option>
+                        <option value="">Select Salary</option>
                         <option value="prize_sharing">Prize Sharing</option>
                         <option value="winner_takes_all">
                           Winner takes all
