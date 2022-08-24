@@ -55,10 +55,10 @@ const SignedHeader = ({ user, profile }) => {
     try {
       emailjs
         .sendForm(
-          'service_sjg210c',
-          'template_c5hfskx',
+          process.env.EMAILJS_SERVICE_ID,
+          process.env.EMAILJS_TEMPLETE_ID,
           '#refForm',
-          'aSB4mcvLDq-rgDO7O'
+          process.env.EMAILJS_PUBLIC_KEY
         )
         .then((error) => {
           console.log(error.text);
