@@ -67,7 +67,8 @@ const SingleChat = ({ fetchAgain, user, setFetchAgain }) => {
     }
   };
 
-    console.log('Socket Path' + socketEndPoint)
+  
+  console.log('******* Socket Path ****** :' + socketEndPoint)
 
   useEffect(() => {
     socket = io(socketEndPoint);
