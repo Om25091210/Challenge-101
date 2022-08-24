@@ -3,12 +3,13 @@ import baseURL from '@utils/baseURL';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
+import TournamentAddSponsor from '../tournament/TournamentAddSponsor';
 
 const TeamSponsors = ({ user, data, isManager, isAdmin, teamSponsors }) => {
   const [sponsors, setSponsors] = useState([]);
 
   const [state, setState] = useState({
-    sponsor: ''
+    sponsor: []
   });
   const router = useRouter();
   const refreshData = () => {
@@ -38,6 +39,11 @@ const TeamSponsors = ({ user, data, isManager, isAdmin, teamSponsors }) => {
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }
     refreshData();
+  };
+
+  const [count, setCount] = useState(0);
+  const handleRoleForm = (e) => {
+    setCount(count + 1);
   };
 
   function handleChange(e) {
@@ -98,23 +104,20 @@ const TeamSponsors = ({ user, data, isManager, isAdmin, teamSponsors }) => {
                 <h3>Sponsor's</h3>
 
                 <form className="common_form" onSubmit={handleSubmit}>
-                  <div className="form-group">
-                    <select
-                      className="form-control"
-                      name="sponsor"
-                      value={state.value}
-                      multiple={true}
-                      onChange={handleChange}
-                    >
-                      {sponsors &&
-                        sponsors.map((spon, idx) => (
-                          <option key={idx} value={spon._id}>
-                            {' '}
-                            {spon.name}{' '}
-                          </option>
-                        ))}
-                    </select>
-                  </div>
+                  <TournamentAddSponsor sponsors={sponsors} states={state} />
+
+                  {[...Array(count)].map((e, index) => (
+                    <div key={index}>
+                      <TournamentAddSponsor
+                        sponsors={sponsors}
+                        states={state}
+                      />
+                    </div>
+                  ))}
+                  <label htmlFor="">Add More Sponsors</label>
+                  <span onClick={(e) => handleRoleForm(e)}>
+                    <i className="fa fa-life-ring" aria-hidden="true"></i>
+                  </span>
                   <button className="btn">Update</button>
                 </form>
               </div>

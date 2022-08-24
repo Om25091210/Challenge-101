@@ -124,7 +124,7 @@ const TournamentRules = ({ tourRules }) => {
               value={states.check_in}
               onChange={onChange}
             >
-              <option value="--">--</option>
+              <option value="">Select Advance Check In...</option>
               <option value={10}>10</option>
               <option value={20}>20</option>
               <option value={30}>30</option>
@@ -141,7 +141,7 @@ const TournamentRules = ({ tourRules }) => {
               value={states.forfeit}
               onChange={onChange}
             >
-              <option value="--">--</option>
+              <option value="">Select Forfeit time...</option>
               <option value={5}>5</option>
               <option value={10}>10</option>
               <option value={15}>15</option>
@@ -215,6 +215,7 @@ const TournamentRules = ({ tourRules }) => {
               onChange={handleSubmit}
               multiple={true}
             >
+              <option value="">Select Country...</option>
               {options.map((opt) => (
                 <>
                   <option value={opt.value}>{opt.label}</option>

@@ -155,7 +155,7 @@ const AttributeCard = ({ type, attributeId }) => {
                           value={states.platform}
                           className="form-control text-capitalize"
                         >
-                          <option value="">Select Platform</option>
+                          <option value="">Select Platform...</option>
                           <option value="PC">PC</option>
                           <option value="Console">Console</option>
                           <option value="Mobile">Mobile</option>
@@ -171,6 +171,7 @@ const AttributeCard = ({ type, attributeId }) => {
                           multiple={false}
                           className="form-control"
                         >
+                          <option value="">Select Role...</option>
                           {allroles.map((role) => (
                             <option value={role}>{role}</option>
                           ))}

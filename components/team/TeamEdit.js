@@ -140,7 +140,6 @@ const TeamEdit = ({ isAdmin, isManager, team }) => {
                     onChange={handleSubmit}
                     multiple={true}
                   >
-                    <option value="--">--</option>
                     {allarena &&
                       allarena.map((are) => (
                         <option value={are._id}>{are.name}</option>
@@ -156,7 +155,7 @@ const TeamEdit = ({ isAdmin, isManager, team }) => {
                     value={states.region}
                     onChange={handleChangeCheck}
                   >
-                    <option value="">--</option>
+                    <option value="">Select Country...</option>
                     {options &&
                       options.map((opt) => (
                         <>
@@ -175,7 +174,6 @@ const TeamEdit = ({ isAdmin, isManager, team }) => {
                     onChange={handleSubmit}
                     multiple={true}
                   >
-                    <option value="">--</option>
                     {allgames &&
                       allgames.map((game) => (
                         <option value={game._id}>{game.name}</option>

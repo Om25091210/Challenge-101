@@ -23,9 +23,9 @@ const Job = ({ data, user }) => {
 
             <div className="job_profile1">
               <span>
-                {data.location}{' '}
+                {data.location.name}{' '}
                 <ReactCountryFlag
-                  countryCode={data.location}
+                  countryCode={data.location.iso}
                   svg
                   style={{
                     width: '2em',

@@ -194,7 +194,7 @@ const ProfileTeams = ({
                     onChange={onChange}
                     value={team.role}
                   >
-                    <option value="">Select Role</option>
+                    <option value="">Select Role...</option>
                     {teamroles &&
                       teamroles.map((tr, idx) => (
                         <option key={idx} value={tr}>

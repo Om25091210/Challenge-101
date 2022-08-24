@@ -49,7 +49,7 @@ const CreateTournament = ({ user }) => {
     currency: '$',
     prizepool: null,
     category: '',
-    tournamentType: '--',
+    tournamentType: '',
     Type: '',
     participants: 0,
     minParticipants: 0,
@@ -61,10 +61,10 @@ const CreateTournament = ({ user }) => {
     location: '',
     address: '',
     organizer: newSpon.organizer || '',
-    cohosts: '',
+    // cohosts: '',
     sponsor: newSpon.sponsor || '',
     description: '',
-    tickets: '',
+    // tickets: '',
     website: '',
     facebook: '',
     twitch: '',
@@ -691,7 +691,7 @@ const CreateTournament = ({ user }) => {
                         <p>{formErrors.location}</p>
                       </div>
 
-                      <div className="colm">
+                      {/* <div className="colm">
                         <label for="exampleFormControlInput1">
                           Add Cohosts (Optional)
                         </label>
@@ -703,7 +703,7 @@ const CreateTournament = ({ user }) => {
                           onChange={handleChange}
                           value={state.cohosts}
                         />
-                      </div>
+                      </div> */}
 
                       <div className="colm">
                         <label for="exampleFormControlInput1">
@@ -719,7 +719,7 @@ const CreateTournament = ({ user }) => {
                         />
                         <p>{formErrors.description}</p>
                       </div>
-                      <div className="colm">
+                      {/* <div className="colm">
                         <label for="exampleFormControlInput1">
                           Tickets (Optional)
                         </label>
@@ -731,7 +731,7 @@ const CreateTournament = ({ user }) => {
                           onChange={handleChange}
                           value={state.tickets}
                         />
-                      </div>
+                      </div> */}
                       <div className="colm">
                         <label for="exampleFormControlInput1">
                           Website (Optional)

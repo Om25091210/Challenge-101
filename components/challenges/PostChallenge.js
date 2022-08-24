@@ -112,7 +112,7 @@ const PostChallenge = ({ games, teams }) => {
               <div className="form-group">
                 <label htmlFor="">Format</label>
                 <select name="format" onChange={onChange}>
-                  <option value="">---</option>
+                  <option value="">Choose Format...</option>
                   <option value="Best of 3">Best of 3</option>
                   <option value="Best of 5">Best of 5</option>
                 </select>
@@ -126,7 +126,7 @@ const PostChallenge = ({ games, teams }) => {
                       id="teamselect"
                       onChange={onChange}
                     >
-                      <option value="">---</option>
+                      <option value="">Choose your Team...</option>
                       {teams.map((team, idtx) => (
                         <option value={team._id} key={idtx}>
                           {team.name}
@@ -137,7 +137,7 @@ const PostChallenge = ({ games, teams }) => {
                   <div className="form-group">
                     <label>Choose a game</label>
                     <select name="game" id="game" onChange={onChange}>
-                      <option value="">---</option>
+                      <option value="">Choose a game...</option>
                       {UserTeam &&
                         UserTeam[0]?.games.map((game) => (
                           <option value={game.gameId._id}>
@@ -151,7 +151,7 @@ const PostChallenge = ({ games, teams }) => {
                 <div className="form-group">
                   <label>Choose a game</label>
                   <select name="game" id="game" onChange={onChange}>
-                    <option value="">---</option>
+                    <option value="">Choose a game...</option>
                     {games &&
                       games.map((game) => (
                         <option value={game._id}>{game.name}</option>
@@ -163,7 +163,7 @@ const PostChallenge = ({ games, teams }) => {
               <div className="form-group">
                 <label htmlFor="">Challenge Type</label>
                 <select name="challengeType" onChange={onChange}>
-                  <option value="">---</option>
+                  <option value="">Choose Challenge Type...</option>
                   <option value="Team Deathmatch">Team Deathmatch</option>
                   <option value="Deathmatch">Deathmatch</option>
                   <option value="Domination">Domination</option>

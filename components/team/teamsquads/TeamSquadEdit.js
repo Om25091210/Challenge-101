@@ -105,6 +105,7 @@ const TeamSquadEdit = ({ teamplayers, squad, isManager, isAdmin }) => {
                 value={editSquadData.game}
                 onChange={onChange}
               >
+                <option value="">Select Game...</option>
                 {games.map((game, idx) => (
                   <option key={idx} value={game._id}>
                     {game.name}
@@ -120,6 +121,7 @@ const TeamSquadEdit = ({ teamplayers, squad, isManager, isAdmin }) => {
                 id=""
                 onChange={onChange}
               >
+                <option value="">Select Country...</option>
                 {options.map((opt) => (
                   <>
                     <option value={opt.value}>{opt.label}</option>

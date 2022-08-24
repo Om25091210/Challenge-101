@@ -163,7 +163,6 @@ const TournamentDisplay = ({
                       result.games.map((gam, idxg) => (
                         <div className="game_logo" key={idxg}>
                           <img src={gam.gameId.imgUrl} alt={gam.gameId.name} />{' '}
-                          {gam.gameId.name}
                         </div>
                       ))}
                   </div>
@@ -326,7 +325,7 @@ const TournamentDisplay = ({
                     {result.games &&
                       result.games.map((gam, idxg) => (
                         <div className="game_logo" key={idxg}>
-                          <img src={gam.imgUrl} alt={gam.name} /> {gam.name}
+                          <img src={gam.imgUrl} alt={gam.name} />
                         </div>
                       ))}
                   </div>
@@ -490,7 +489,7 @@ const TournamentDisplay = ({
                     {result.games &&
                       result.games.map((gam, idxg) => (
                         <div className="game_logo" key={idxg}>
-                          <img src={gam.imgUrl} alt={gam.name} /> {gam.name}
+                          <img src={gam.imgUrl} alt={gam.name} />
                         </div>
                       ))}
                   </div>

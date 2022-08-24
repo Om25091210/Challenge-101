@@ -251,7 +251,7 @@ const CreateTeam = ({ user }) => {
                         Country
                       </label>
                       <select name="region" id="" onChange={handleChange}>
-                        <option value="">--</option>
+                        <option value="">Select Region...</option>
                         {options &&
                           options.map((opt) => (
                             <>
@@ -335,7 +335,7 @@ const CreateTeam = ({ user }) => {
                           Role (Optional)
                         </label>
                         <select name="role" onChange={handleChange}>
-                          <option value="">--</option>
+                          <option value="">Select Role...</option>
                           <option value="Admin">Admin</option>
                           <option value="Manager">Manager</option>
                         </select>

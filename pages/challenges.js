@@ -63,7 +63,7 @@ const challenges = ({ user, data, teams, profile }) => {
                 </div>
               </a>
             </div>
-            <div className="filter_btns">
+            {/* <div className="filter_btns">
               <button className="btn">Challenge Invites</button>
               <button className="btn">Open Matches</button>
               <button className="btn">My Challenges</button>
@@ -84,7 +84,7 @@ const challenges = ({ user, data, teams, profile }) => {
               </div>
               <h3>Sort By:</h3> <button className="btn">Day left</button>{' '}
               <button className="btn">Reward</button>
-            </div>
+            </div> */}
           </div>
 
           <div className="white_bg challenge_card_box">
@@ -104,7 +104,7 @@ const challenges = ({ user, data, teams, profile }) => {
               )}
             </ul>
 
-            <p>Similar players you can challenge.</p>
+            {/* <p>Similar players you can challenge.</p>
 
             <ul className="challenge_card smil_card">
               <li>
@@ -258,7 +258,7 @@ const challenges = ({ user, data, teams, profile }) => {
                   <button className="btn">Challenge Now</button>
                 </div>
               </li>
-            </ul>
+            </ul> */}
           </div>
         </div>
       </div>

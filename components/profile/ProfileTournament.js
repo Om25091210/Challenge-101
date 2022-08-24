@@ -216,7 +216,7 @@ const ProfileTournament = ({
                     value={tournament.organizer}
                     onChange={onChangeTour}
                   >
-                    <option value="">Select Organizer</option>
+                    <option value="">Select Organizer...</option>
                     {organizer &&
                       organizer.map((organizer, idx) => (
                         <option key={idx} value={organizer._id}>
@@ -257,7 +257,7 @@ const ProfileTournament = ({
                       onChange={onChangeTour}
                       value={tournament.team}
                     >
-                      <option value="">Select Team</option>
+                      <option value="">Select Team...</option>
                       {teams &&
                         teams.map((tem) => (
                           <option value={tem._id} key={tem._id}>
@@ -282,7 +282,7 @@ const ProfileTournament = ({
                       onChange={onChangeTour}
                       value={tournament.role}
                     >
-                      <option value="">Select Role</option>
+                      <option value="">Select Role...</option>
                       {teamroles &&
                         teamroles.map((tr, idx) => (
                           <option key={idx} value={tr}>
@@ -396,7 +396,9 @@ const ProfileTournament = ({
                     />
                   </span>
                   <span>
-                    <h4>{tournament.tournament.name}</h4>
+                    <a href={`/tournament/${tournament.tournament._id}`}>
+                      <h4>{tournament.tournament.name}</h4>
+                    </a>
                     <p>
                       {format(
                         new Date(tournament.tournament?.startDate),
@@ -416,7 +418,6 @@ const ProfileTournament = ({
                             src={game.gameId.imgUrl}
                             alt={game.gameId.name}
                           />
-                          {game.gameId.name}
                         </>
                       ))}
                     </li>
@@ -436,7 +437,6 @@ const ProfileTournament = ({
                         </>
                       ) : (
                         <>
-                          <input type="checkbox" />
                           <p>No Team</p>
                         </>
                       )}

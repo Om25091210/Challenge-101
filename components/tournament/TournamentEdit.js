@@ -171,6 +171,7 @@ const TournamentEdit = ({ data, user }) => {
                       onChange={handleChangeCheck}
                       value={states.series}
                     >
+                      <option value="">Select Series...</option>
                       {allseries &&
                         allseries.map((ser, idx) => (
                           <option key={idx} value={ser._id}>
@@ -243,7 +244,7 @@ const TournamentEdit = ({ data, user }) => {
                       onChange={handleChangeCheck}
                       value={states.location}
                     >
-                      <option value="">Select Location</option>
+                      <option value="">Select Location...</option>
                       {options &&
                         options.map((opt) => (
                           <>
@@ -261,7 +262,7 @@ const TournamentEdit = ({ data, user }) => {
                       value={states.organizer}
                       multiple={true}
                     >
-                      <option value="">Select Organizer</option>
+                      <option value="">Select Organizer...</option>
                       {allorganizer &&
                         allorganizer.map((org, idx) => (
                           <option key={idx} value={org._id}>
@@ -292,6 +293,7 @@ const TournamentEdit = ({ data, user }) => {
                       value={states.games}
                       onChange={handleSubmit}
                     >
+                      <option value="">Select Game...</option>
                       {allgames &&
                         allgames.map((game) => (
                           <option value={game._id}>{game.name}</option>
@@ -310,7 +312,7 @@ const TournamentEdit = ({ data, user }) => {
                         value={states.category}
                         onChange={handleChangeCheck}
                       >
-                        <option value="">Select Category</option>
+                        <option value="">Select Category...</option>
                         <option value="Death Match">Death Match</option>
                         <option value="Survival">Survival</option>
                         <option value="Online">Online</option>
@@ -339,7 +341,7 @@ const TournamentEdit = ({ data, user }) => {
                         value={states.playout}
                         onChange={handleChangeCheck}
                       >
-                        <option value="">Select Playout</option>
+                        <option value="">Select Playout...</option>
                         <option value="RoundRobin">Round Robin</option>
                         <option value="Single Elimination">
                           Single Elimination
@@ -359,7 +361,7 @@ const TournamentEdit = ({ data, user }) => {
                         value={states.elimination}
                         onChange={handleChangeCheck}
                       >
-                        <option value="">Elimination Type</option>
+                        <option value="">Elimination Type...</option>
                         <option value="Single Elimination">
                           Single Elimination
                         </option>

@@ -41,6 +41,11 @@ const TeamFav = ({ team, profile }) => {
         Authorization: cookie.get('token')
       }
     });
+    if (isFav === true) {
+      toast.success('Removed From Favourites');
+    } else {
+      toast.success('Added To Favourites');
+    }
   };
 
   const { mutate } = useMutation(addingFav);
