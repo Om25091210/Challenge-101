@@ -67,7 +67,8 @@ const SingleChat = ({ fetchAgain, user, setFetchAgain }) => {
     }
   };
 
-  let REACT_APP_SOCKET_ENDPOINT = 'ws://localhost:8900';
+    console.log('Socket Path' + socketEndPoint)
+
   useEffect(() => {
     socket = io(socketEndPoint);
     socket.emit('setup', user);
