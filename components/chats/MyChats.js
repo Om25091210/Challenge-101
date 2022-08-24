@@ -15,7 +15,7 @@ const MyChats = ({ fetchAgain, user }) => {
   const fetchChats = async () => {
     try {
       await axios
-        .get(`${chatBaseURL}/api/v1/chat`, {
+        .get(`${chatBaseURL}/chatapi/v1/chat`, {
           headers: {
             Authorization: cookie.get('token')
           }
@@ -25,7 +25,6 @@ const MyChats = ({ fetchAgain, user }) => {
       toast.error(error);
     }
   };
-  console.log(chats);
   useEffect(() => {
     // setLoggedUser(getUserFromLocalStorage("user"));
     fetchChats();

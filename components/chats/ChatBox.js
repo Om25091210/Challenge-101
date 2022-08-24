@@ -50,7 +50,7 @@ const ChatBox = ({ user }) => {
       setLoadingChat(true);
       await axios
         .post(
-          `${chatBaseURL}/api/v1/chat`,
+          `${chatBaseURL}/chatapi/v1/chat`,
           { userId },
           {
             headers: {

@@ -1,7 +1,7 @@
 export const getSender = (loggedUser, users) => {
   return (
     users &&
-    (users[0]._id === loggedUser._id ? users[1].username : users[0].username)
+    (users[0]._id === loggedUser._id ? users[1]?.username : users[0].username)
   );
 };
 

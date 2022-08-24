@@ -29,7 +29,7 @@ const SingleChat = ({ fetchAgain, user, setFetchAgain }) => {
     try {
       setLoading(true);
       await axios
-        .get(`${chatBaseURL}/api/v1/message/${selectedChat._id}`, {
+        .get(`${chatBaseURL}/chatapi/v1/message/${selectedChat._id}`, {
           headers: {
             Authorization: cookie.get('token')
           }
@@ -52,7 +52,7 @@ const SingleChat = ({ fetchAgain, user, setFetchAgain }) => {
     };
     try {
       await axios
-        .post(`${chatBaseURL}/api/v1/message/`, formdata, {
+        .post(`${chatBaseURL}/chatapi/v1/message/`, formdata, {
           headers: {
             Authorization: cookie.get('token')
           }
