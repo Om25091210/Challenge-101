@@ -1,45 +1,54 @@
-import { useState } from 'react';
-import baseURL from '@utils/baseURL';
-import { useMutation } from 'react-query';
+import { useEffect, useState } from 'react';
 import cookie from 'js-cookie';
 import CommentList from '../comments/CommentList';
+import axios from 'axios';
+import baseURL from '../../utils/baseURL';
+import { toast } from 'react-toastify';
 
-const CommentForm = ({ post, user, commentsData }) => {
-  const [comment, setComment] = useState([]);
+const CommentForm = ({ post, user }) => {
+  const [comment, setComment] = useState();
+  const [comments, setComments] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`${baseURL}/api/comments/${post._id}`)
+      .then((res) => {
+        setComments(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [post._id]);
 
   const onChange = (e) => {
     setComment(e.target.value);
   };
 
-  const handleButtonForm = () => {
-    mutate({ comment });
-    setComment('');
-  };
-
-  const addingComment = async () => {
-    const res = await fetch(`${baseURL}/api/comments/${post._id}`, {
-      method: 'POST',
-      body: JSON.stringify({
-        comment
-      }),
-      headers: {
-        'Content-type': 'application/json',
-        Authorization: cookie.get('token')
-      }
-    });
-    return res.json();
-  };
-
-  const { mutate } = useMutation(addingComment, {
-    onSuccess: (successData) => {
-      console.log(successData);
+  let x = {};
+  const handleButtonForm = async (e) => {
+    e.preventDefault();
+    let formdata = {
+      comment: comment
+    };
+    try {
+      await axios
+        .post(`${baseURL}/api/comments/${post._id}`, formdata, {
+          headers: {
+            Authorization: cookie.get('token')
+          }
+        })
+        .then((res) => (x = res.data));
+      setComment('');
+      setComments([...comments, x]);
+    } catch (error) {
+      toast.error(error);
     }
-  });
+  };
 
   if (post) {
     return (
       <div>
-        <form className="add_comment_box" onSubmit={(e) => e.preventDefault()}>
+        <form className="add_comment_box" onSubmit={handleButtonForm}>
           <div className="add_comments">
             <div className="user">
               <img src={user?.profilePicUrl} alt="" />
@@ -57,11 +66,11 @@ const CommentForm = ({ post, user, commentsData }) => {
               <img src="/assets/media/dash/smile.png" alt="" />
             </a>{' '}
           </div>
-          <button onClick={handleButtonForm}>
+          <button type="submit">
             <img src="/assets/media/dash/send.png" alt="" />
           </button>
         </form>
-        <CommentList post={post} user={user} commentsData={commentsData} />
+        <CommentList post={post} user={user} comments={comments} />
       </div>
     );
   } else {

@@ -7,6 +7,7 @@ import io from 'socket.io-client';
 import axios from 'axios';
 import ScrollableChat from './ScrollableChat';
 import chatBaseURL from '@utils/chatBaseURL';
+import socketEndPoint from '@utils/socketEndPoint';
 let socket, selectedChatCompare;
 
 const SingleChat = ({ fetchAgain, user, setFetchAgain }) => {
@@ -25,7 +26,7 @@ const SingleChat = ({ fetchAgain, user, setFetchAgain }) => {
 
   const fetchMessages = async () => {
     if (!selectedChat) return;
-    console.log(selectedChat);
+
     try {
       setLoading(true);
       await axios
@@ -65,9 +66,10 @@ const SingleChat = ({ fetchAgain, user, setFetchAgain }) => {
       toast.error(error);
     }
   };
+
   let REACT_APP_SOCKET_ENDPOINT = 'ws://localhost:8900';
   useEffect(() => {
-    socket = io(REACT_APP_SOCKET_ENDPOINT);
+    socket = io(socketEndPoint);
     socket.emit('setup', user);
 
     socket.on('connected', () => setSocketConnected(true));

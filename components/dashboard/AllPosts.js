@@ -12,7 +12,6 @@ import TeamFollow from '../team/TeamFollow';
 import { toast } from 'react-toastify';
 
 const AllPosts = ({ post, user, profiledata, type, team }) => {
-  const [commentsData, setCommentsData] = useState([]);
   const [profile, setProfile] = useState([]);
 
   useEffect(() => {
@@ -25,17 +24,6 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
         console.log(err);
       });
   }, []);
-
-  useEffect(() => {
-    axios
-      .get(`${baseURL}/api/comments/${post._id}`)
-      .then((res) => {
-        setCommentsData(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [post._id]);
 
   const isFollow =
     profiledata &&
@@ -140,7 +128,7 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
             <a href="#">
               {' '}
               <i className="fa fa-commenting" aria-hidden="true"></i>{' '}
-              <span>{commentsData.comments?.length}</span>{' '}
+              {/* <span>{comments?.comments?.length}</span>{' '} */}
             </a>{' '}
           </div>
           {post?.images.toString().length === 0 ? (
@@ -232,7 +220,7 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
             </div>
           </div>
 
-          <CommentForm post={post} user={user} commentsData={commentsData} />
+          <CommentForm post={post} user={user} />
         </div>
       </div>
     </div>

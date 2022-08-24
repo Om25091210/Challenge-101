@@ -10,68 +10,153 @@ import { formatDistanceToNowStrict } from 'date-fns';
 import PinnedComments from './PinnedComments';
 import ReportsComments from './report';
 
-const CommentList = ({ post, user, commentsData }) => {
+const CommentList = ({ post, user, comments }) => {
   const postId = post._id;
+  const [value, setValue] = useState({
+    type: 'all comments'
+  });
+  const n = 3;
+  const [commentsData, setCommentsData] = useState([]);
+  const [next, setNext] = useState(n);
+
+  const handleMoreImage = () => {
+    setNext(next + n);
+  };
+
+  let options = ['Popular Comments', 'Newest Comments', 'Pinned Comments'];
+  const handleChangeCheck = (e) => {
+    setValue({ ...value, [e.target.name]: e.target.value });
+  };
+
+  useEffect(() => {
+    axios
+      .get(`${baseURL}/api/comments/commentData/${post._id}/${value?.type}`)
+      .then((res) => {
+        setCommentsData(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [post._id, value]);
 
   return (
     <div>
       <div className="post_comments">
         <div className="pop_comment">
           <select
-            name="comments"
-            id="comm"
-            className="custom-select text-capitalize"
+            name="type"
+            id="type"
+            value={value.type}
+            onChange={handleChangeCheck}
+            className="form-control"
           >
-            <option value="popular_comments" rel="popC">
-              Popular Comments
-            </option>
-            <option value="newest_comments">Newest Comments</option>
-            <option value="pinned_essages">Pinned Messages</option>
+            <option value="All Comments">All comments</option>
+            {options.map((opt) => (
+              <>
+                <option value={opt}>{opt}</option>
+              </>
+            ))}
           </select>
         </div>
-        {commentsData?.comments?.length === 0 ? (
+        {comments?.length === 0 ? (
           <p>There are no comments for this post.</p>
         ) : (
           <div>
-            {commentsData?.comments?.map((comment) => (
-              <div key={comment._id} className="single_comment_sec">
-                <div className="comments_point">
-                  <LikeComment postId={postId} comment={comment} />
-                  <div className="comment_round_box">
-                    <div className="user">
-                      <img src={comment.user?.profilePicUrl} alt="" />
+            {commentsData?.length === 0
+              ? comments.slice(0, next).map((comment) => (
+                  <div key={comment._id} className="single_comment_sec">
+                    <div className="comments_point">
+                      <LikeComment postId={postId} comment={comment} />
+                      <div className="comment_round_box">
+                        <div className="user">
+                          <img src={comment.user?.profilePicUrl} alt="" />
+                        </div>
+                        <div className="create">
+                          <a href={`/user/${comment?.user?._id}`} className="">
+                            {comment.user != null
+                              ? comment.user?.name
+                              : 'NOT DEFINED'}
+                          </a>{' '}
+                          <h3>{comment.text}</h3>
+                        </div>
+                      </div>
+                      <PinnedComments
+                        user={user}
+                        comment={comment}
+                        post={post}
+                      />
+                      {(post.user?._id === user._id &&
+                        comment.user?._id === user._id) ||
+                      comment.user?._id === user._id ? null : (
+                        <ReportsComments />
+                      )}
                     </div>
-                    <div className="create">
-                      <a href={`/user/${comment?.user?._id}`} className="">
-                        {comment.user != null
-                          ? comment.user?.name
-                          : 'NOT DEFINED'}
-                      </a>{' '}
-                      <h3>{comment.text}</h3>
+                    <div className="time_del_rep">
+                      <span className="days">
+                        {formatDistanceToNowStrict(new Date(comment.date), {
+                          addSuffix: true
+                        })}
+                      </span>
+                      <div className="first_reply">
+                        <DeleteComment
+                          post={post}
+                          comment={comment}
+                          user={user}
+                        />
+                        <ReplyComment post={post} comment={comment} />
+                      </div>
                     </div>
-                  </div>
-                  <PinnedComments user={user} comment={comment} post={post} />
-                  {(post.user?._id === user._id &&
-                    comment.user?._id === user._id) ||
-                  comment.user?._id === user._id ? null : (
-                    <ReportsComments />
-                  )}
-                </div>
-                <div className="time_del_rep">
-                  <span className="days">
-                    {formatDistanceToNowStrict(new Date(comment.date), {
-                      addSuffix: true
-                    })}
-                  </span>
-                  <div className="first_reply">
-                    <DeleteComment post={post} comment={comment} user={user} />
-                    <ReplyComment post={post} comment={comment} />
-                  </div>
-                </div>
 
-                <ReplyList post={post} comment={comment} user={user} />
-              </div>
-            ))}
+                    <ReplyList post={post} comment={comment} user={user} />
+                  </div>
+                ))
+              : commentsData.slice(0, next).map((comment) => (
+                  <div key={comment._id} className="single_comment_sec">
+                    <div className="comments_point">
+                      <LikeComment postId={postId} comment={comment} />
+                      <div className="comment_round_box">
+                        <div className="user">
+                          <img src={comment.user?.profilePicUrl} alt="" />
+                        </div>
+                        <div className="create">
+                          <a href={`/user/${comment?.user?._id}`} className="">
+                            {comment.user != null
+                              ? comment.user?.name
+                              : 'NOT DEFINED'}
+                          </a>{' '}
+                          <h3>{comment.text}</h3>
+                        </div>
+                      </div>
+                      <PinnedComments
+                        user={user}
+                        comment={comment}
+                        post={post}
+                      />
+                      {(post.user?._id === user._id &&
+                        comment.user?._id === user._id) ||
+                      comment.user?._id === user._id ? null : (
+                        <ReportsComments />
+                      )}
+                    </div>
+                    <div className="time_del_rep">
+                      <span className="days">
+                        {formatDistanceToNowStrict(new Date(comment.date), {
+                          addSuffix: true
+                        })}
+                      </span>
+                      <div className="first_reply">
+                        <DeleteComment
+                          post={post}
+                          comment={comment}
+                          user={user}
+                        />
+                        <ReplyComment post={post} comment={comment} />
+                      </div>
+                    </div>
+
+                    <ReplyList post={post} comment={comment} user={user} />
+                  </div>
+                ))}
           </div>
         )}
       </div>
@@ -80,9 +165,12 @@ const CommentList = ({ post, user, commentsData }) => {
         <p>Thank you everyone for all of your support.</p>
       </div>
       <div className="loadmore">
-        <a href="#">
-          Load comments <i className="fa fa-angle-down" aria-hidden="true"></i>
-        </a>
+        {next < comments?.length && (
+          <button className="btn" onClick={handleMoreImage}>
+            Load comments{' '}
+            <i className="fa fa-angle-down" aria-hidden="true"></i>
+          </button>
+        )}
       </div>
     </div>
   );
