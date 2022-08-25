@@ -366,20 +366,55 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
             <div className="top_bio">
               <h3>BIO</h3>
               <div className="socail">
-                {Userdata.profile?.social.map((value) =>
-                  value.type === 'Facebook' ? (
-                    <a href={`https://www.facebook.com/${value?.link}`}>
-                      <i
-                        className="fa fa-facebook-official"
-                        aria-hidden="true"
-                      ></i>
-                    </a>
-                  ) : value.type === 'Instagram' ? (
-                    <a href={`https://www.instagram.com/${value?.link}`}>
-                      <i className="fa fa-instagram" aria-hidden="true"></i>
-                    </a>
-                  ) : null
-                )}
+                {Userdata.profile.social?.facebook.length > 0 ? (
+                  <a
+                    href={`https://www.facebook.com/${Userdata.profile.social?.facebook}`}
+                  >
+                    <i
+                      className="fa fa-facebook-official"
+                      aria-hidden="true"
+                    ></i>
+                  </a>
+                ) : null}
+                {Userdata.profile.social?.instagram.length > 0 ? (
+                  <a
+                    href={`https://www.instagram.com/${Userdata.profile.social?.instagram}`}
+                  >
+                    <i className="fa fa-instagram" aria-hidden="true"></i>
+                  </a>
+                ) : null}
+
+                {Userdata.profile.social?.twitch.length > 0 ? (
+                  <a
+                    href={`https://www.twitch.tv/${Userdata.profile.social?.twitch}`}
+                  >
+                    <i className="fa fa-twitch" aria-hidden="true"></i>
+                  </a>
+                ) : null}
+
+                {Userdata.profile.social?.youtube.length > 0 ? (
+                  <a
+                    href={`https://www.youtube.com/c/${Userdata.profile.social?.youtube}`}
+                  >
+                    <i className="fa fa-youtube" aria-hidden="true"></i>
+                  </a>
+                ) : null}
+
+                {Userdata.profile.social?.discord.length > 0 ? (
+                  <a href={`${Userdata.profile.social?.discord}`}>
+                    <img
+                      src="/assets/media/social/discord.png"
+                      height="20px"
+                      width="20px"
+                    />
+                  </a>
+                ) : null}
+
+                {Userdata.profile.social?.website.length > 0 ? (
+                  <a href={`https://${Userdata.profile.social?.website}`}>
+                    <i className="fa fa-globe" aria-hidden="true"></i>
+                  </a>
+                ) : null}
               </div>
 
               {isLoggedInUser ? (

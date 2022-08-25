@@ -24,7 +24,13 @@ const TeamEdit = ({ isAdmin, isManager, team }) => {
     emp: empData,
     arena: arenaList || '',
     region: team.region,
-    game: gameList || ''
+    game: gameList || '',
+    facebook: team.social?.facebook || '',
+    instagram: team.social?.instagram || '',
+    twitch: team.social?.twitch || '',
+    youtube: team.social?.youtube || '',
+    discord: team.social?.discord || '',
+    website: team.social?.website || ''
   });
 
   useEffect(() => {
@@ -179,6 +185,63 @@ const TeamEdit = ({ isAdmin, isManager, team }) => {
                         <option value={game._id}>{game.name}</option>
                       ))}
                   </select>
+                </div>
+
+                <div className="edit_four">
+                  <div className="form-group">
+                    <input
+                      type="text"
+                      name="facebook"
+                      value={states.facebook}
+                      onChange={handleChangeCheck}
+                      className="form-control facebook"
+                    />
+                  </div>
+                  <div className="form-group">
+                    <input
+                      type="text"
+                      name="instagram"
+                      value={states.instagram}
+                      onChange={handleChangeCheck}
+                      className="form-control instagram"
+                    />
+                  </div>
+                  <div className="form-group">
+                    <input
+                      type="text"
+                      name="twitch"
+                      value={states.twitch}
+                      onChange={handleChangeCheck}
+                      className="form-control facebook"
+                    />
+                  </div>
+                  <div className="form-group">
+                    <input
+                      type="text"
+                      name="youtube"
+                      value={states.youtube}
+                      onChange={handleChangeCheck}
+                      className="form-control youtube"
+                    />
+                  </div>
+                  <div className="form-group">
+                    <input
+                      type="text"
+                      name="discord"
+                      value={states.discord}
+                      onChange={handleChangeCheck}
+                      className="form-control facebook"
+                    />
+                  </div>
+                  <div className="form-group">
+                    <input
+                      type="text"
+                      name="website"
+                      value={states.website}
+                      onChange={handleChangeCheck}
+                      className="form-control facebook"
+                    />
+                  </div>
                 </div>
 
                 <button

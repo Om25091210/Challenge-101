@@ -196,6 +196,10 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
   const isReqSent =
     data.team.request?.filter((reque) => reque.playerId._id === playerId)
       .length > 0;
+
+  const isPlayer =
+    data.team.players?.filter((plyr) => plyr.playerId === playerId).length > 0;
+
   return (
     <div className="profile_box team_profile_box">
       <div className="profile_cover_photo">
@@ -297,23 +301,38 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
               )}
             </div>
             {isManager || isAdmin ? null : (
-              <div className="button">
-                <TeamFollow team={data.team} user={user} isFollow={isFollow} />
-
-                <a href="#" className="btn">
-                  MESSAGE
-                </a>
-                <a href="#" className="btn">
-                  <TeamRequest
-                    team={data.team}
-                    profile={profile}
-                    isReqSent={isReqSent}
-                  />
-                </a>
-                <a href="#" className="">
-                  <TeamChallenge team={data.team} teams={teams} />
-                </a>
-              </div>
+              <>
+                {isPlayer ? (
+                  <>
+                    <TeamFollow
+                      team={data.team}
+                      user={user}
+                      isFollow={isFollow}
+                    />
+                    <a href="#" className="btn">
+                      MESSAGE
+                    </a>
+                  </>
+                ) : (
+                  <div className="button">
+                    <TeamFollow
+                      team={data.team}
+                      user={user}
+                      isFollow={isFollow}
+                    />
+                    <a href="#" className="btn">
+                      <TeamRequest
+                        team={data.team}
+                        profile={profile}
+                        isReqSent={isReqSent}
+                      />
+                    </a>
+                    <a href="#" className="">
+                      <TeamChallenge team={data.team} teams={teams} />
+                    </a>
+                  </div>
+                )}
+              </>
             )}
 
             <TeamEdit
@@ -384,152 +403,51 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
           <div className="top_bio">
             <h3>ABOUT THE TEAM</h3>
             <div className="socail">
-              <a
-                href={`https://www.facebook.com/${data.team.social?.facebook}`}
-                target="_blank"
-              >
-                <i className="fa fa-facebook-official" aria-hidden="true"></i>
-              </a>
-              <a
-                href={`https://www.instagram.com/${data.team.social?.instagram}`}
-                target="_blank"
-              >
-                <i className="fa fa-instagram" aria-hidden="true"></i>
-              </a>
-              <a
-                href={`https://www.twitch.tv/${data.team.social?.twitch}`}
-                target="_blank"
-              >
-                <i className="fa fa-twitch" aria-hidden="true"></i>
-              </a>
-              <a href={`${data.team.social?.discord}`} target="_blank">
-                <img
-                  src="/assets/media/social/discord.png"
-                  height="20px"
-                  width="20px"
-                />
-              </a>
-              <a
-                href={`https://www.youtube.com/c/${data.team.social?.youtube}`}
-                target="_blank"
-              >
-                <i className="fa fa-youtube"></i>
-              </a>
-              <a
-                href={`https://www.twitter.com/${data.team.social?.twitter}`}
-                target="_blank"
-              >
-                <i className="fa fa-twitter-square"></i>
-              </a>
-              <a href={`https://${data.team?.website}`} target="_blank">
-                <i className="fa fa-globe"></i>
-              </a>
-            </div>
-            <span>
-              <div className="loc_box">
-                {' '}
-                {isManager || isAdmin ? (
-                  <a href="#!" className="model_show_btn">
-                    <button className="btn">
-                      <i
-                        className="fa fa-gear"
-                        aria-hidden="true"
-                        style={{ color: 'white' }}
-                      ></i>
-                    </button>
-                  </a>
-                ) : null}
-                <div className="common_model_box">
-                  <a href="#!" className="model_close">
-                    X
-                  </a>
+              {data.team.social?.facebook.length > 0 ? (
+                <a
+                  href={`https://www.facebook.com/${data.team.social?.facebook}`}
+                >
+                  <i className="fa fa-facebook-official" aria-hidden="true"></i>
+                </a>
+              ) : null}
+              {data.team.social?.instagram.length > 0 ? (
+                <a
+                  href={`https://www.instagram.com/${data.team.social?.instagram}`}
+                >
+                  <i className="fa fa-instagram" aria-hidden="true"></i>
+                </a>
+              ) : null}
 
-                  <div className="inner_model_box">
-                    <h3>Social Links</h3>
-                    <ul className="socail_urls">
-                      <li>
-                        <input
-                          type="text"
-                          placeholder="Facebook User ID"
-                          onChange={handleChangeSocial}
-                          value={sociallinks.facebook}
-                          name="facebook"
-                        />
-                      </li>
-                      <li>
-                        {' '}
-                        <input
-                          type="text"
-                          placeholder="Instagram Username"
-                          onChange={handleChangeSocial}
-                          value={sociallinks.instagram}
-                          name="instagram"
-                        />
-                      </li>
-                      <li>
-                        {' '}
-                        <input
-                          type="text"
-                          placeholder="Twitch Channel Name"
-                          onChange={handleChangeSocial}
-                          value={sociallinks.twitch}
-                          name="twitch"
-                        />
-                      </li>
-                      <li>
-                        <input
-                          type="text"
-                          placeholder="Discord Server URL"
-                          onChange={handleChangeSocial}
-                          value={sociallinks.discord}
-                          name="discord"
-                        />
-                      </li>
-                      <li>
-                        <input
-                          type="text"
-                          placeholder="Youtube Channel Name"
-                          onChange={handleChangeSocial}
-                          value={sociallinks.youtube}
-                          name="youtube"
-                        />
-                      </li>
-                      <li>
-                        {' '}
-                        <input
-                          type="text"
-                          placeholder="@Twitter Username"
-                          onChange={handleChangeSocial}
-                          value={sociallinks.twitter}
-                          name="twitter"
-                        />
-                      </li>
-                      <li>
-                        {' '}
-                        <input
-                          type="text"
-                          placeholder="Your Website Name with Extension"
-                          onChange={handleChangeSocial}
-                          value={sociallinks.website}
-                          name="website"
-                        />
-                      </li>
-                      <li>
-                        {' '}
-                        <button
-                          className="btn"
-                          style={{ width: '100%', height: '45px' }}
-                          onClick={handleLinksSubmit}
-                        >
-                          Confirm Changes
-                        </button>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="overlay"></div>
-                </div>
-              </div>
-            </span>
+              {data.team.social?.twitch.length > 0 ? (
+                <a href={`https://www.twitch.tv/${data.team.social?.twitch}`}>
+                  <i className="fa fa-twitch" aria-hidden="true"></i>
+                </a>
+              ) : null}
+
+              {data.team.social?.youtube.length > 0 ? (
+                <a
+                  href={`https://www.youtube.com/c/${data.team.social?.youtube}`}
+                >
+                  <i className="fa fa-youtube" aria-hidden="true"></i>
+                </a>
+              ) : null}
+
+              {data.team.social?.discord.length > 0 ? (
+                <a href={`${data.team.social?.discord}`}>
+                  <img
+                    src="/assets/media/social/discord.png"
+                    height="20px"
+                    width="20px"
+                  />
+                </a>
+              ) : null}
+
+              {data.team.social?.website.length > 0 ? (
+                <a href={`https://${data.team.social?.website}`}>
+                  <i className="fa fa-globe" aria-hidden="true"></i>
+                </a>
+              ) : null}
+            </div>
           </div>
 
           {data.team ? data.team.description : ''}

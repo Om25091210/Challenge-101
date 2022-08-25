@@ -27,7 +27,12 @@ const TournamentEdit = ({ data, user }) => {
     registration: data.tournament.entranceFee,
     playout: data.tournament.playout,
     elimination: data.tournament.tournamentType,
-    website: data.tournament.website
+    website: data.tournament.website || '',
+    facebook: data.tournament.social?.facebook || '',
+    instagram: data.tournament.social?.instagram || '',
+    twitch: data.tournament.social?.twitch || '',
+    youtube: data.tournament.social?.youtube || '',
+    discord: data.tournament.social?.discord || ''
   });
   const [allorganizer, setAllorganizer] = useState([]);
   const [allgames, setAllgames] = useState([]);
@@ -370,6 +375,54 @@ const TournamentEdit = ({ data, user }) => {
                         </option>
                         <option value="Leaderboard">Leaderboard</option>
                       </select>
+                    </div>
+                  </div>
+
+                  <div className="edit_four">
+                    <div className="form-group">
+                      <input
+                        type="text"
+                        name="facebook"
+                        value={states.facebook}
+                        onChange={handleChangeCheck}
+                        className="form-control facebook"
+                      />
+                    </div>
+                    <div className="form-group">
+                      <input
+                        type="text"
+                        name="instagram"
+                        value={states.instagram}
+                        onChange={handleChangeCheck}
+                        className="form-control instagram"
+                      />
+                    </div>
+                    <div className="form-group">
+                      <input
+                        type="text"
+                        name="twitch"
+                        value={states.twitch}
+                        onChange={handleChangeCheck}
+                        className="form-control facebook"
+                      />
+                    </div>
+                    <div className="form-group">
+                      <input
+                        type="text"
+                        name="youtube"
+                        value={states.youtube}
+                        onChange={handleChangeCheck}
+                        className="form-control youtube"
+                      />
+                    </div>
+                    <div className="form-group">
+                      <input
+                        type="text"
+                        name="discord"
+                        value={states.discord}
+                        onChange={handleChangeCheck}
+                        className="form-control facebook"
+                      />
                     </div>
                   </div>
 

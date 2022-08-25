@@ -287,55 +287,49 @@ const TournamentDetail = ({ user, data, products, profile }) => {
                   <div className="top_bio">
                     <h3>ABOUT THE TOURNAMENT</h3>
                     <div className="socail">
-                      <a
-                        href={`https://www.facebook.com/${data.tournament.social?.facebook}`}
-                        target="_blank"
-                      >
-                        <i
-                          className="fa fa-facebook-official"
-                          aria-hidden="true"
-                        ></i>
-                      </a>
-                      <a
-                        href={`https://www.instagram.com/${data.tournament.social?.instagram}`}
-                        target="_blank"
-                      >
-                        <i className="fa fa-instagram" aria-hidden="true"></i>
-                      </a>
-                      <a
-                        href={`https://www.twitch.tv/${data.tournament.social.twitch}`}
-                        target="_blank"
-                      >
-                        <i className="fa fa-twitch" aria-hidden="true"></i>
-                      </a>
-                      <a
-                        href={`${data.tournament.social?.discord}`}
-                        target="_blank"
-                      >
-                        <img
-                          src="/assets/media/social/discord.png"
-                          height="20px"
-                          width="20px"
-                        />
-                      </a>
-                      <a
-                        href={`https://www.youtube.com/c/${data.tournament.social?.youtube}`}
-                        target="_blank"
-                      >
-                        <i className="fa fa-youtube"></i>
-                      </a>
-                      <a
-                        href={`https://www.twitter.com/${data.tournament.social?.twitter}`}
-                        target="_blank"
-                      >
-                        <i className="fa fa-twitter-square"></i>
-                      </a>
-                      <a
-                        href={`https://${data.tournament?.website}`}
-                        target="_blank"
-                      >
-                        <i className="fa fa-globe"></i>
-                      </a>
+                      {data.tournament.social?.facebook.length > 0 ? (
+                        <a
+                          href={`https://www.facebook.com/${data.tournament.social?.facebook}`}
+                        >
+                          <i
+                            className="fa fa-facebook-official"
+                            aria-hidden="true"
+                          ></i>
+                        </a>
+                      ) : null}
+                      {data.tournament.social?.instagram.length > 0 ? (
+                        <a
+                          href={`https://www.instagram.com/${data.tournament.social?.instagram}`}
+                        >
+                          <i className="fa fa-instagram" aria-hidden="true"></i>
+                        </a>
+                      ) : null}
+
+                      {data.tournament.social?.twitch.length > 0 ? (
+                        <a
+                          href={`https://www.twitch.tv/${data.tournament.social?.twitch}`}
+                        >
+                          <i className="fa fa-twitch" aria-hidden="true"></i>
+                        </a>
+                      ) : null}
+
+                      {data.tournament.social?.youtube.length > 0 ? (
+                        <a
+                          href={`https://www.youtube.com/c/${data.tournament.social?.youtube}`}
+                        >
+                          <i className="fa fa-youtube" aria-hidden="true"></i>
+                        </a>
+                      ) : null}
+
+                      {data.tournament.social?.discord.length > 0 ? (
+                        <a href={`${data.tournament.social?.discord}`}>
+                          <img
+                            src="/assets/media/social/discord.png"
+                            height="20px"
+                            width="20px"
+                          />
+                        </a>
+                      ) : null}
                     </div>
                     <span>
                       <div className="loc_box">

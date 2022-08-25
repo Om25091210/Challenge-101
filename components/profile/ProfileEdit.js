@@ -42,7 +42,12 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
     industry: profile?.headline?.industry,
     link: profile?.headline?.link,
     streamingPlatform: profile?.headline?.streamingPlatform,
-    socialLinks: [],
+    facebook: profile.social?.facebook || '',
+    instagram: profile.social?.instagram || '',
+    twitch: profile.social?.twitch || '',
+    youtube: profile.social?.youtube || '',
+    discord: profile.social?.discord || '',
+    website: profile.social?.website || '',
     gameId: selectedGame?.game._id,
     userIgn: ''
   });
@@ -588,77 +593,63 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                 </div>
                 <div className="form-group">
                   <label htmlFor="">Social Links</label>
-                  <div className="socail">
-                    <button type="button">
-                      <i
-                        className="fa fa-facebook-official"
-                        aria-hidden="true"
-                      ></i>
-                    </button>
-
-                    <button type="button">
-                      <i className="fa fa-instagram" aria-hidden="true"></i>
-                    </button>
-
-                    <button type="button">
-                      <i className="fa fa-twitch" aria-hidden="true"></i>
-                    </button>
-
-                    <button type="button">
-                      <i className="fa fa-youtube"></i>
-                    </button>
-
-                    <button onClick={(e) => handleRoleForm(e)}>
-                      <i className="fa fa-plus-circle" aria-hidden="true"></i>
-                    </button>
-                  </div>
 
                   <div className="edit_four">
                     <div className="form-group">
                       <input
                         type="text"
-                        name=""
-                        value=""
-                        placeholder=""
+                        name="facebook"
+                        value={states.facebook}
+                        onChange={handleChangeCheck}
                         className="form-control facebook"
                       />
                     </div>
                     <div className="form-group">
                       <input
                         type="text"
-                        name=""
-                        value=""
-                        placeholder=""
+                        name="instagram"
+                        value={states.instagram}
+                        onChange={handleChangeCheck}
                         className="form-control instagram"
                       />
                     </div>
                     <div className="form-group">
                       <input
                         type="text"
-                        name=""
-                        value=""
-                        placeholder=""
-                        className="form-control twitter"
+                        name="twitch"
+                        value={states.twitch}
+                        onChange={handleChangeCheck}
+                        className="form-control facebook"
                       />
                     </div>
                     <div className="form-group">
                       <input
                         type="text"
-                        name=""
-                        value=""
-                        placeholder=""
+                        name="youtube"
+                        value={states.youtube}
+                        onChange={handleChangeCheck}
                         className="form-control youtube"
                       />
                     </div>
+                    <div className="form-group">
+                      <input
+                        type="text"
+                        name="discord"
+                        value={states.discord}
+                        onChange={handleChangeCheck}
+                        className="form-control facebook"
+                      />
+                    </div>
+                    <div className="form-group">
+                      <input
+                        type="text"
+                        name="website"
+                        value={states.website}
+                        onChange={handleChangeCheck}
+                        className="form-control facebook"
+                      />
+                    </div>
                   </div>
-
-                  {openForm && (
-                    <SocialLink
-                      type={type}
-                      socialLink={states.socialLinks}
-                      closeForm={setOpenForm}
-                    />
-                  )}
                 </div>
                 <div className="custom-control custom-switch">
                   <input
