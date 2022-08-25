@@ -17,6 +17,8 @@ import WalletSvg from './svg/WalletSvg';
 import { BlockchainContext } from '../context/BlockchainContext';
 import emailjs from '@emailjs/browser';
 import { toast } from 'react-toastify';
+import axios from 'axios';
+import baseURL from '@utils/baseURL';
 
 const SignedHeader = ({ user, profile }) => {
   const router = useRouter();
@@ -30,6 +32,14 @@ const SignedHeader = ({ user, profile }) => {
   const [coin, setCoin] = useState();
   const [INR, setINR] = useState();
   const [refModal, setRefModal] = useState(false);
+  const [mail, setMail] = useState({
+    email: '',
+    sender: user.name
+  });
+
+  const onChangeEmail = (e) => {
+    setMail({ ...mail, [e.target.name]: e.target.value });
+  };
 
   useEffect(() => {
     getUserBalance();
@@ -53,17 +63,9 @@ const SignedHeader = ({ user, profile }) => {
   const sendEmail = (e) => {
     e.preventDefault();
     try {
-      emailjs
-        .sendForm(
-          process.env.EMAILJS_SERVICE_ID,
-          process.env.EMAILJS_TEMPLETE_ID,
-          '#refForm',
-          process.env.EMAILJS_PUBLIC_KEY
-        )
-        .then((error) => {
-          console.log(error.text);
-        });
+      axios.post(`${baseURL}/api/all/refer`, mail);
       toast.success('Invitation sent!');
+      setRefModal(false);
     } catch (err) {
       toast.error('Please try again later');
     }
@@ -345,7 +347,11 @@ const SignedHeader = ({ user, profile }) => {
                           name="name"
                           hidden={true}
                         />
-                        <input type="email" name="email" />
+                        <input
+                          type="email"
+                          name="email"
+                          onChange={onChangeEmail}
+                        />
                         <button
                           onClick={() => setRefModal(false)}
                           className="btn"

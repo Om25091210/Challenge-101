@@ -48,7 +48,8 @@ const Job = ({ data, user }) => {
             </div>
 
             <h2>Job Description</h2>
-            <ul>{data?.description}</ul>
+            {/* <ul>{data?.description}</ul> */}
+            <div dangerouslySetInnerHTML={{ __html: data.description }} />
           </div>
 
           <div className="right_job">

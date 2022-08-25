@@ -77,7 +77,7 @@ const TeamChallenge = ({ teams, team }) => {
 
         <div className="inner_model_box">
           <div className="add_job_height">
-            <h3>Challenge the team {team.name}</h3>
+            <h3>Challenge {team.name}</h3>
 
             <form onSubmit={handleEditStat} className="common_form">
               <div className="form-group">

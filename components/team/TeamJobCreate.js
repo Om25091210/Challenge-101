@@ -4,9 +4,20 @@ import axios from 'axios';
 import countryList from 'react-select-country-list';
 import 'rc-time-picker/assets/index.css';
 import { toast } from 'react-toastify';
+import { EditorState } from 'draft-js';
+import dynamic from 'next/dynamic';
+const Editor = dynamic(
+  () => import('react-draft-wysiwyg').then((mod) => mod.Editor),
+  { ssr: false }
+);
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+import { convertToRaw } from 'draft-js';
+import draftToHtml from 'draftjs-to-html';
 
 const TeamJobCreate = ({ user, profile }) => {
   const [teamroles, setTeamroles] = useState([]);
+  const [editorState, setEditorState] = useState(EditorState.createEmpty());
+  let edited2 = draftToHtml(convertToRaw(editorState.getCurrentContent()));
 
   const [state, setState] = useState({
     name: '',
@@ -31,6 +42,7 @@ const TeamJobCreate = ({ user, profile }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     let jobData = state;
+    state.description = edited2;
 
     try {
       console.log(jobData);
@@ -190,15 +202,25 @@ const TeamJobCreate = ({ user, profile }) => {
             </div>
           </div>
 
-          <div className="form-group">
-            <label for="exampleFormControlInput1">Description</label>
-            <textarea
-              type="textarea"
-              onChange={handleChange}
-              name="description"
-              value={state.description}
-            />
-          </div>
+          <Editor
+            editorState={editorState}
+            toolbarClassName="toolbarClassName"
+            wrapperClassName="wrapperClassName"
+            editorClassName="editorClassName"
+            onEditorStateChange={setEditorState}
+            toolbar={{
+              options: ['inline', 'list'],
+              inline: {
+                options: ['bold']
+              },
+              block: {
+                options: ['blocktype']
+              },
+              list: {
+                options: ['unordered']
+              }
+            }}
+          />
 
           <input type="submit" className="btn" value="Create Job" />
         </>
