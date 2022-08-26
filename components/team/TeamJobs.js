@@ -46,10 +46,14 @@ const TeamJobs = ({ jobs, team, isManager, isAdmin, user, profile }) => {
           <div className="team_row arena_team_row" key={index}>
             <div className="inner_team">
               <div className="mores jobss">
-                <h3>{job.job_type}</h3>
+                <h3>{job.title}</h3>
 
                 <p>
-                  <b>EXPERIENCE: -- </b>
+                  {job.experience && job.experience > 0 ? (
+                    <b>EXPERIENCE: {job?.experience} Year(s) </b>
+                  ) : (
+                    <b>EXPERIENCE: -- </b>
+                  )}
                 </p>
                 <p>
                   <b> LOCATION:</b>

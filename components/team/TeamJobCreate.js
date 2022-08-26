@@ -28,7 +28,8 @@ const TeamJobCreate = ({ user, profile }) => {
     endDate: '',
     salary: 0,
     description: '',
-    currency: ''
+    currency: '',
+    experience: ''
   });
 
   const options = useMemo(() => countryList().getData(), []);
@@ -197,6 +198,17 @@ const TeamJobCreate = ({ user, profile }) => {
                   name="salary"
                   onChange={handleChange}
                   value={state.salary}
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="endDate">Experience</label>
+                <input
+                  type="number"
+                  name="experience"
+                  onChange={handleChangeCheck}
+                  value={state.experience}
+                  className="form-control"
                 />
               </div>
             </div>

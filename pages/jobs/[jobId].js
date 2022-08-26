@@ -16,10 +16,15 @@ const Job = ({ data, user }) => {
       <div className="main_middle profile_middle">
         <div className="jobs_box">
           <div className="left_jobs">
-            <h1>
-              {' '}
-              {data.title} - {data.job_type}
-            </h1>
+            <h1> {data.title}</h1>
+
+            <div>
+              {data.experience && data.experience > 0 ? (
+                <p>EXPERIENCE: {data?.experience} Year(s) </p>
+              ) : (
+                <p>EXPERIENCE: -- </p>
+              )}
+            </div>
 
             <div className="job_profile1">
               <span>
