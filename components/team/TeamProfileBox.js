@@ -403,14 +403,14 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
           <div className="top_bio">
             <h3>ABOUT THE TEAM</h3>
             <div className="socail">
-              {data.team.social?.facebook.toString()?.length > 0 ? (
+              {data.team.social?.facebook ? (
                 <a
                   href={`https://www.facebook.com/${data.team.social?.facebook}`}
                 >
                   <i className="fa fa-facebook-official" aria-hidden="true"></i>
                 </a>
               ) : null}
-              {data.team.social?.instagram.toString()?.length > 0 ? (
+              {data.team.social?.instagram ? (
                 <a
                   href={`https://www.instagram.com/${data.team.social?.instagram}`}
                 >
@@ -418,13 +418,13 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
                 </a>
               ) : null}
 
-              {data.team.social?.twitch.toString()?.length > 0 ? (
+              {data.team.social?.twitch ? (
                 <a href={`https://www.twitch.tv/${data.team.social?.twitch}`}>
                   <i className="fa fa-twitch" aria-hidden="true"></i>
                 </a>
               ) : null}
 
-              {data.team.social?.youtube.toString()?.length > 0 ? (
+              {data.team.social?.youtube ? (
                 <a
                   href={`https://www.youtube.com/c/${data.team.social?.youtube}`}
                 >
@@ -432,8 +432,8 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
                 </a>
               ) : null}
 
-              {data.team.social?.discord.toString()?.length > 0 ? (
-                <a href={`${data.team.social?.discord}`}>
+              {data.team.social?.discord ? (
+                <a href={`https://${data.team.social?.discord}`}>
                   <img
                     src="/assets/media/social/discord.png"
                     height="20px"
@@ -442,7 +442,7 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
                 </a>
               ) : null}
 
-              {data.team.social?.website.toString()?.length > 0 ? (
+              {data.team.social?.website ? (
                 <a href={`https://${data.team.social?.website}`}>
                   <i className="fa fa-globe" aria-hidden="true"></i>
                 </a>
