@@ -51,10 +51,8 @@ const CommentList = ({ post, user, comments }) => {
             className="form-control"
           >
             <option value="All Comments">All comments</option>
-            {options.map((opt) => (
-              <>
-                <option value={opt}>{opt}</option>
-              </>
+            {options.map((opt, ido) => (
+                <option key={ido} value={opt}>{opt}</option>
             ))}
           </select>
         </div>

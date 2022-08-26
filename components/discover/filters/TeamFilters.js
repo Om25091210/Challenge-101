@@ -254,7 +254,7 @@ const TeamFilters = ({
               <div className="filter_list">
                 {' '}
                 {selectedMapFilters.map((filter, idx) => (
-                  <span className="filter1">
+                  <span className="filter1" key={idx}>
                     {' '}
                     {filter.key}:
                     {Array.from(filter.values).map((filval, idxv) => (

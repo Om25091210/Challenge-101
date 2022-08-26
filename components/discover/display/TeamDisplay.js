@@ -70,10 +70,8 @@ const TeamDisplay = ({
               ) : (
                 <>
                   <span className="logo">
-                    {team.team.games.map((im) => (
-                      <>
-                        <img src={im.gameId?.imgUrl} alt="" />
-                      </>
+                    {team.team.games.map((im, tgx) => (
+                        <img key={tgx} src={im.gameId?.imgUrl} alt="" />
                     ))}
                   </span>
                 </>
@@ -117,8 +115,8 @@ const TeamDisplay = ({
                   <img src="/assets/media/discover/translator.png" alt="" />{' '}
                   {team.attribute && team.attribute?.language.length > 0 ? (
                     <>
-                      {team.attribute?.language.map((tem) => (
-                        <b>{tem}</b>
+                      {team.attribute?.language.map((tem, atx) => (
+                        <b key={atx}>{tem}</b>
                       ))}
                     </>
                   ) : (
@@ -175,9 +173,9 @@ const TeamDisplay = ({
                   <h4>Manager</h4>
                   {team.team.employees.length !== 0 ? (
                     team.team.employees.map(
-                      (role) =>
+                      (role, etx) =>
                         role.role === 'manager' && (
-                          <p>{role.employeeId.username}</p>
+                          <p key={etx}>{role.employeeId.username}</p>
                         )
                     )
                   ) : (
@@ -235,10 +233,8 @@ const TeamDisplay = ({
                 <>
                   <span className="logo">
                     {team.team.games &&
-                      team.team.games.map((im) => (
-                        <>
-                          <img src={im.gameId?.imgUrl} alt="" />
-                        </>
+                      team.team.games.map((im, ggx) => (
+                          <img key={ggx} src={im.gameId?.imgUrl} alt="" />
                       ))}
                   </span>
                 </>
@@ -282,8 +278,8 @@ const TeamDisplay = ({
                   <img src="/assets/media/discover/translator.png" alt="" />{' '}
                   {team.attribute.language?.length > 0 ? (
                     <>
-                      {team.attribute.language.map((tem) => (
-                        <b>{tem.substring(0, 2).toUpperCase()}</b>
+                      {team.attribute.language.map((tem, idxx) => (
+                        <b key={idxx}>{tem.substring(0, 2).toUpperCase()}</b>
                       ))}
                     </>
                   ) : (
@@ -347,9 +343,9 @@ const TeamDisplay = ({
                   {team.team.employees && team.team.employees.length !== 0 ? (
                     team.team.employees &&
                     team.team.employees.map(
-                      (role) =>
+                      (role, txx) =>
                         role.role === 'manager' && (
-                          <p>{role.employeeId.username}</p>
+                          <p key={txx}>{role.employeeId.username}</p>
                         )
                     )
                   ) : (
@@ -407,10 +403,8 @@ const TeamDisplay = ({
                 <>
                   <span className="logo">
                     {team.team.games &&
-                      team.team.games.map((game) => (
-                        <>
-                          <img src={game.gameId?.imgUrl} alt="" />
-                        </>
+                      team.team.games.map((game, gx) => (
+                          <img key={gx} src={game.gameId?.imgUrl} alt="" />
                       ))}
                   </span>
                 </>
@@ -454,8 +448,8 @@ const TeamDisplay = ({
                   <img src="/assets/media/discover/translator.png" alt="" />{' '}
                   {team.attribute?.language?.length > 0 ? (
                     <>
-                      {team.attribute?.language.map((tem) => (
-                        <b>{tem.substring(0, 2).toUpperCase()}</b>
+                      {team.attribute?.language.map((tem, tx) => (
+                        <b key={tx}>{tem.substring(0, 2).toUpperCase()}</b>
                       ))}
                     </>
                   ) : (
@@ -519,9 +513,9 @@ const TeamDisplay = ({
                   {team.team.employees.length !== 0 ? (
                     team.team.employees &&
                     team.team.employees.map(
-                      (role) =>
+                      (role, tmx) =>
                         role.role === 'Manager' && (
-                          <p>{role.employeeId.username}</p>
+                          <p key={tmx}>{role.employeeId.username}</p>
                         )
                     )
                   ) : (
