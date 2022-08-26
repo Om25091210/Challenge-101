@@ -23,7 +23,7 @@ const Team_Req = ({ profile, team, user }) => {
 
   const isAdmin =
     team.employees?.filter(
-      (emp) => emp.role === 'Admin' && emp.employeeId._id === user._id
+      (emp) => emp.role === 'Admin' && emp.employeeId._id === user?._id
     ).length > 0;
 
   const isPlayer =

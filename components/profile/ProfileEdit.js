@@ -125,6 +125,10 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
       return tem.team?._id === parseInt(states.team);
     });
 
+  const addgames = games.filter(
+    ({ _id }) => !profile.playergames.some((x) => x.game._id == _id)
+  );
+
   const [filteredData, setFilteredData] = useState([]);
   const [searchText, setSearchText] = useState('');
   const [teamData, setTeamData] = useState([]);
@@ -529,8 +533,8 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                                 {step1 ? (
                                   <div className="poup_height msScroll_all">
                                     <ul>
-                                      {games &&
-                                        games.map((game) => (
+                                      {addgames &&
+                                        addgames.map((game) => (
                                           <li>
                                             <div className="game_pic">
                                               <a
