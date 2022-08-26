@@ -23,7 +23,6 @@ const TeamSquads = ({ squadsData, team, isManager, isAdmin }) => {
               <li className="squads" key={idx}>
                 <div className="edit_delet">
                   <TeamSquadEdit
-                    teamplayers={squadsData.players}
                     squad={squad}
                     isManager={isManager}
                     isAdmin={isAdmin}

@@ -10,7 +10,8 @@ const TeamFilters = ({
   selectedGame,
   showfavs,
   profile,
-  searchData
+  searchData,
+  user
 }) => {
   const [data, setData] = useState(null);
 
@@ -285,6 +286,7 @@ const TeamFilters = ({
           team={team}
           showfavs={showfavs}
           profile={profile}
+          user={user}
           searchData={searchData}
         />
       </>

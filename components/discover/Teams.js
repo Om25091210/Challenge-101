@@ -3,7 +3,7 @@ import { searchTeams } from '@utils/functionsHelper';
 import { toast } from 'react-toastify';
 import TeamFilters from './filters/TeamFilters';
 
-const Teams = ({ profile, selectedGame }) => {
+const Teams = ({ profile, selectedGame, user }) => {
   let myState = {};
 
   const [selectedFilters, setSelectedFilters] = useState([]);
@@ -109,6 +109,7 @@ const Teams = ({ profile, selectedGame }) => {
           profile={profile}
           myState={myState}
           searchData={searchData}
+          user={user}
         />
       </div>
     </div>

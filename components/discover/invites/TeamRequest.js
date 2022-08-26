@@ -5,18 +5,26 @@ import { toast } from 'react-toastify';
 
 const queryClient = new QueryClient();
 
-export default function TeamRequest({ profile, team, isReqSent }) {
+export default function TeamRequest({ profile, team, user }) {
   return (
     <QueryClientProvider client={queryClient} contextSharing={true}>
-      <Team_Req team={team} profile={profile} isReqSent={isReqSent} />
+      <Team_Req team={team} profile={profile} user={user} />
     </QueryClientProvider>
   );
 }
 
-const Team_Req = ({ profile, team, isReqSent }) => {
+const Team_Req = ({ profile, team, user }) => {
+  const playerId = profile.playergames[0]?.player?._id;
+
+  const isReqSent =
+    team.request?.filter((plyr) => plyr.playerId._id === playerId).length > 0;
+
   const [request, setRequest] = useState(isReqSent);
 
-  const playerId = profile.playergames[0]?.player?._id;
+  const isAdmin =
+    team.employees?.filter(
+      (emp) => emp.role === 'Admin' && emp.employeeId._id === user._id
+    ).length > 0;
 
   const isPlayer =
     team.players?.filter((plyr) => plyr.playerId === playerId).length > 0;
@@ -50,7 +58,7 @@ const Team_Req = ({ profile, team, isReqSent }) => {
 
   return (
     <>
-      {isPlayer ? (
+      {isPlayer || isAdmin ? (
         <a href={`/team/${team._id}`}>
           <button className="join">VIEW TEAM</button>
         </a>

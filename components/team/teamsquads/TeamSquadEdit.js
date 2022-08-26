@@ -7,11 +7,11 @@ import { teamsquadformvalidate } from '@utils/valid';
 import countryList from 'react-select-country-list';
 import { useRouter } from 'next/router';
 
-const TeamSquadEdit = ({ teamplayers, squad, isManager, isAdmin }) => {
+const TeamSquadEdit = ({ squad, isManager, isAdmin }) => {
   const [editSquadData, setEditSquadData] = useState({
     game: squad.game?._id,
     country: squad.country,
-    players: squad.players.map((plr) => plr.playerId)
+    players: squad.players.map((plr) => plr.player)
   });
 
   const [formErrors, setFormErrors] = useState({});
@@ -80,6 +80,7 @@ const TeamSquadEdit = ({ teamplayers, squad, isManager, isAdmin }) => {
       toast.error('All fields are required.');
     }
   };
+
   return (
     <div className="sqd_edit_btn">
       {isManager || isAdmin ? (
@@ -136,10 +137,10 @@ const TeamSquadEdit = ({ teamplayers, squad, isManager, isAdmin }) => {
               value={editSquadData.players}
               onChange={onChange}
             >
-              {teamplayers.map((game, idx) => (
-                <option key={idx} value={game._id}>
+              {editSquadData.players.map((ply, idx) => (
+                <option key={idx} value={ply._id}>
                   {' '}
-                  {game.name}{' '}
+                  {ply.name}{' '}
                 </option>
               ))}
             </select>
