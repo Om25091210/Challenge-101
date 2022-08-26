@@ -287,7 +287,7 @@ const TournamentDetail = ({ user, data, products, profile }) => {
                   <div className="top_bio">
                     <h3>ABOUT THE TOURNAMENT</h3>
                     <div className="socail">
-                      {data.tournament.social?.facebook.length > 0 ? (
+                      {data.tournament.social?.facebook ? (
                         <a
                           href={`https://www.facebook.com/${data.tournament.social?.facebook}`}
                         >
@@ -297,7 +297,7 @@ const TournamentDetail = ({ user, data, products, profile }) => {
                           ></i>
                         </a>
                       ) : null}
-                      {data.tournament.social?.instagram.length > 0 ? (
+                      {data.tournament.social?.instagram ? (
                         <a
                           href={`https://www.instagram.com/${data.tournament.social?.instagram}`}
                         >
@@ -305,7 +305,7 @@ const TournamentDetail = ({ user, data, products, profile }) => {
                         </a>
                       ) : null}
 
-                      {data.tournament.social?.twitch.length > 0 ? (
+                      {data.tournament.social?.twitch ? (
                         <a
                           href={`https://www.twitch.tv/${data.tournament.social?.twitch}`}
                         >
@@ -313,7 +313,7 @@ const TournamentDetail = ({ user, data, products, profile }) => {
                         </a>
                       ) : null}
 
-                      {data.tournament.social?.youtube.length > 0 ? (
+                      {data.tournament.social?.youtube ? (
                         <a
                           href={`https://www.youtube.com/c/${data.tournament.social?.youtube}`}
                         >
@@ -321,13 +321,19 @@ const TournamentDetail = ({ user, data, products, profile }) => {
                         </a>
                       ) : null}
 
-                      {data.tournament.social?.discord.length > 0 ? (
-                        <a href={`${data.tournament.social?.discord}`}>
+                      {data.tournament.social?.discord ? (
+                        <a href={`https://${data.tournament.social?.discord}`}>
                           <img
                             src="/assets/media/social/discord.png"
                             height="20px"
                             width="20px"
                           />
+                        </a>
+                      ) : null}
+
+                      {data.tournament?.website ? (
+                        <a href={`https://${data.tournament?.website}`}>
+                          <i className="fa fa-globe" aria-hidden="true"></i>
                         </a>
                       ) : null}
                     </div>

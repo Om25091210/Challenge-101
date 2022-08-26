@@ -366,7 +366,7 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
             <div className="top_bio">
               <h3>BIO</h3>
               <div className="socail">
-                {Userdata.profile.social?.facebook.length > 0 ? (
+                {Userdata.profile.social?.facebook ? (
                   <a
                     href={`https://www.facebook.com/${Userdata.profile.social?.facebook}`}
                   >
@@ -376,7 +376,7 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
                     ></i>
                   </a>
                 ) : null}
-                {Userdata.profile.social?.instagram.length > 0 ? (
+                {Userdata.profile.social?.instagram ? (
                   <a
                     href={`https://www.instagram.com/${Userdata.profile.social?.instagram}`}
                   >
@@ -384,7 +384,7 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
                   </a>
                 ) : null}
 
-                {Userdata.profile.social?.twitch.length > 0 ? (
+                {Userdata.profile.social?.twitch ? (
                   <a
                     href={`https://www.twitch.tv/${Userdata.profile.social?.twitch}`}
                   >
@@ -392,7 +392,7 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
                   </a>
                 ) : null}
 
-                {Userdata.profile.social?.youtube.length > 0 ? (
+                {Userdata.profile.social?.youtube ? (
                   <a
                     href={`https://www.youtube.com/c/${Userdata.profile.social?.youtube}`}
                   >
@@ -400,8 +400,8 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
                   </a>
                 ) : null}
 
-                {Userdata.profile.social?.discord.length > 0 ? (
-                  <a href={`${Userdata.profile.social?.discord}`}>
+                {Userdata.profile.social?.discord ? (
+                  <a href={`https://${Userdata.profile.social?.discord}`}>
                     <img
                       src="/assets/media/social/discord.png"
                       height="20px"
@@ -410,7 +410,7 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
                   </a>
                 ) : null}
 
-                {Userdata.profile.social?.website.length > 0 ? (
+                {Userdata.profile.social?.website ? (
                   <a href={`https://${Userdata.profile.social?.website}`}>
                     <i className="fa fa-globe" aria-hidden="true"></i>
                   </a>

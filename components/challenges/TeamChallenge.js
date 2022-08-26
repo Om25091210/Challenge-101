@@ -121,14 +121,18 @@ const TeamChallenge = ({ teams, team }) => {
                   multiple
                   onChange={onChange}
                 >
-                  {specialPlayers?.map((plyr) => (
-                    <option value={plyr?.playerId?._id}>
-                      {plyr.playerId?.apidata
-                        ? plyr.playerId.apidata.data.platformInfo
-                            .platformUserHandle
-                        : plyr.playerId?.name}
-                    </option>
-                  ))}
+                  {specialPlayers && specialPlayers.length === 0 ? (
+                    <option value="">No Common Players.</option>
+                  ) : (
+                    specialPlayers?.map((plyr) => (
+                      <option value={plyr?.playerId?._id}>
+                        {plyr.playerId?.apidata
+                          ? plyr.playerId.apidata.data.platformInfo
+                              .platformUserHandle
+                          : plyr.playerId?.name}
+                      </option>
+                    ))
+                  )}
                 </select>
               </div>
 
