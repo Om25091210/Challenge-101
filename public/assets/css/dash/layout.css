@@ -4735,7 +4735,7 @@ article .social_bar img {
 }
 
 .filters {
-	display: flex;
+	display: block;
 	width: 30%;
 	align-items: start;
 }
@@ -4756,6 +4756,7 @@ article .social_bar img {
 .filter_list {
 	display: flex;
 	flex-wrap: wrap;
+	margin: 10px 0;
 }
 
 .team_filter .filter_list .filter1 {
@@ -7280,7 +7281,7 @@ article .social_bar img {
 }
 
 .video_box .upload_btn textarea {
-	width: 285px;
+	width: 100%;
 	border-radius: 5px;
 	padding: 10px;
 	margin-bottom: 10px;

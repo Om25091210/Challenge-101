@@ -49,7 +49,7 @@ const Teams = ({ profile, selectedGame, user }) => {
 
   return (
     <div className="tab" id="teams">
-      <div className="white_bg">
+      <div className="">
         <div className="team_search">
           <div className="searchbox">
             <h3>Search</h3>
