@@ -23,7 +23,7 @@ const Tournament_Reg = ({ user, tournament, profile }) => {
 
   const isRegFull = tournament.registered?.length === tournament.participants;
 
-  const isTeamRegFull = tournament.maxTeams === tournament.teams?.length;
+  const isTeamRegFull = tournament.numberOfTeam === tournament.teams?.length;
 
   const reghandlesubmit = async (e) => {
     e.preventDefault();

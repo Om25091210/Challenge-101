@@ -119,7 +119,7 @@ const TournamentDisplay = ({
                       </>
                     ) : (
                       <>
-                        {result.teams.map((team) => (
+                        {result.teams.slice(0, 4).map((team) => (
                           <li>
                             <img
                               src={team.teamId?.imgUrl}
@@ -279,7 +279,7 @@ const TournamentDisplay = ({
                       </>
                     ) : (
                       <>
-                        {result.tournament.teams.map((team) => (
+                        {result.tournament.teams.slice(0, 4).map((team) => (
                           <li>
                             <img
                               src={team.teamId?.imgUrl}
@@ -443,7 +443,7 @@ const TournamentDisplay = ({
                       </>
                     ) : (
                       <>
-                        {result.tournament.teams.map((team) => (
+                        {result.tournament.teams.slice(0, 4).map((team) => (
                           <li>
                             <img
                               src={team.teamId?.imgUrl}

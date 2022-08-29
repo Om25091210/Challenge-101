@@ -487,9 +487,15 @@ const TournamentDetail = ({ user, data, products, profile }) => {
                       </li>
                       <li>
                         <b>REGISTRATION </b>
-                        {data.tournament.entranceFee !== 0
-                          ? data.tournament.entranceFee
-                          : 'Free'}
+                        {data.tournament.entranceFee !== 0 ? (
+                          <>
+                            {' '}
+                            {data.tournament.currency}{' '}
+                            {data.tournament.entranceFee}
+                          </>
+                        ) : (
+                          'Free'
+                        )}
                       </li>
                       <li>
                         {' '}
