@@ -52,6 +52,7 @@ const TeamAbtAdd = ({ role, rolesData }) => {
               type="text"
               placeholder={`enter role`}
               value={addRole}
+              className="form-control"
               onChange={(e) => setAddRole(e.target.value)}
             />
           )}
@@ -59,6 +60,7 @@ const TeamAbtAdd = ({ role, rolesData }) => {
             type="text"
             placeholder={`enter ${role} name`}
             value={searchText}
+            className="form-control"
             onChange={handleFilter}
           />
           {searchText.length !== 0 ? (

@@ -8290,19 +8290,42 @@ ul.game_search_result li:hover:after, ul.game_search_result li.slc_img:after {
 #big_poup .edit_four .facebook {
     background: url(/assets/media/social/face.png) 10px 12px no-repeat !important;
     background-size: 9px !important;
+	padding-left: 35px;
 }
 #big_poup .edit_four .instagram {
     background: url(/assets/media/social/instagram.png) 10px 13px no-repeat !important;
     background-size: 16px !important;
+	padding-left: 35px;
 }
 #big_poup .edit_four .twitter {
     background: url(/assets/media/social/twitter.png) 10px 15px no-repeat !important;
     background-size: 15px !important;
+	padding-left: 35px;
 }
 #big_poup .edit_four .youtube {
     background: url(/assets/media/social/youtube.png) 8px 13px no-repeat !important;
     background-size: 20px !important;
+	padding-left: 35px;
 }
+
+#big_poup .edit_four .discord {
+    background: url(/assets/media/social/discord1.png) 8px 13px no-repeat !important;
+    background-size: 20px !important;
+	padding-left: 35px;
+}
+
+#big_poup .edit_four .twitch {
+    background: url(/assets/media/social/twitch.png) 8px 13px no-repeat !important;
+    background-size: 20px !important;
+	padding-left: 35px;
+}
+
+#big_poup .edit_four .website {
+    background: url(/assets/media/social/globe.png) 8px 13px no-repeat !important;
+    background-size: 20px !important;
+	padding-left: 35px;
+}
+
 
 .style_file_upload .inputfile {
 	width: 0.1px;

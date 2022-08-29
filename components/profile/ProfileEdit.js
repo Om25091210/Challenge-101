@@ -623,7 +623,7 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                         name="twitch"
                         value={states.twitch}
                         onChange={handleChangeCheck}
-                        className="form-control facebook"
+                        className="form-control twitch"
                       />
                     </div>
                     <div className="form-group">
@@ -641,7 +641,7 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                         name="discord"
                         value={states.discord}
                         onChange={handleChangeCheck}
-                        className="form-control facebook"
+                        className="form-control discord"
                       />
                     </div>
                     <div className="form-group">
@@ -650,7 +650,7 @@ const ProfileEdit = ({ profile, user, games, allteams }) => {
                         name="website"
                         value={states.website}
                         onChange={handleChangeCheck}
-                        className="form-control facebook"
+                        className="form-control website"
                       />
                     </div>
                   </div>
