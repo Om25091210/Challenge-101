@@ -68,7 +68,6 @@ const CreateTournament = ({ user }) => {
     website: '',
     facebook: '',
     twitch: '',
-    twitter: '',
     instagram: '',
     youtube: '',
     discord: '',

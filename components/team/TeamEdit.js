@@ -212,7 +212,7 @@ const TeamEdit = ({ isAdmin, isManager, team }) => {
                       name="twitch"
                       value={states.twitch}
                       onChange={handleChangeCheck}
-                      className="form-control facebook"
+                      className="form-control twitch"
                     />
                   </div>
                   <div className="form-group">
@@ -230,7 +230,7 @@ const TeamEdit = ({ isAdmin, isManager, team }) => {
                       name="discord"
                       value={states.discord}
                       onChange={handleChangeCheck}
-                      className="form-control facebook"
+                      className="form-control discord"
                     />
                   </div>
                   <div className="form-group">
@@ -239,7 +239,7 @@ const TeamEdit = ({ isAdmin, isManager, team }) => {
                       name="website"
                       value={states.website}
                       onChange={handleChangeCheck}
-                      className="form-control facebook"
+                      className="form-control website"
                     />
                   </div>
                 </div>

@@ -378,62 +378,66 @@ const TournamentEdit = ({ data, user }) => {
                     </div>
                   </div>
 
-                  <div className="edit_four">
-                    <div className="form-group">
-                      <input
-                        type="text"
-                        name="facebook"
-                        value={states.facebook}
-                        onChange={handleChangeCheck}
-                        className="form-control facebook"
-                      />
-                    </div>
-                    <div className="form-group">
-                      <input
-                        type="text"
-                        name="instagram"
-                        value={states.instagram}
-                        onChange={handleChangeCheck}
-                        className="form-control instagram"
-                      />
-                    </div>
-                    <div className="form-group">
-                      <input
-                        type="text"
-                        name="twitch"
-                        value={states.twitch}
-                        onChange={handleChangeCheck}
-                        className="form-control facebook"
-                      />
-                    </div>
-                    <div className="form-group">
-                      <input
-                        type="text"
-                        name="youtube"
-                        value={states.youtube}
-                        onChange={handleChangeCheck}
-                        className="form-control youtube"
-                      />
-                    </div>
-                    <div className="form-group">
-                      <input
-                        type="text"
-                        name="discord"
-                        value={states.discord}
-                        onChange={handleChangeCheck}
-                        className="form-control facebook"
-                      />
-                    </div>
-                  </div>
-
                   <div className="form-group">
-                    <label htmlFor="exampleFormControlInput1">Websites</label>
-                    <input
-                      type="text"
-                      name="website"
-                      onChange={handleChangeCheck}
-                      value={states.website}
-                    />
+                    <label htmlFor="">Social Links</label>
+                    <div className="edit_four">
+                      <div className="form-group">
+                        <input
+                          type="text"
+                          name="facebook"
+                          value={states.facebook}
+                          onChange={handleChangeCheck}
+                          className="form-control facebook"
+                        />
+                      </div>
+                      <div className="form-group">
+                        <input
+                          type="text"
+                          name="instagram"
+                          value={states.instagram}
+                          onChange={handleChangeCheck}
+                          className="form-control instagram"
+                        />
+                      </div>
+                      <div className="form-group">
+                        <input
+                          type="text"
+                          name="twitch"
+                          value={states.twitch}
+                          onChange={handleChangeCheck}
+                          className="form-control twitch"
+                        />
+                      </div>
+                      <div className="form-group">
+                        <input
+                          type="text"
+                          name="youtube"
+                          value={states.youtube}
+                          onChange={handleChangeCheck}
+                          className="form-control youtube"
+                        />
+                      </div>
+                      <div className="form-group">
+                        <input
+                          type="text"
+                          name="discord"
+                          value={states.discord}
+                          onChange={handleChangeCheck}
+                          className="form-control discord"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="form-group">
+                      <label htmlFor="exampleFormControlInput1">Website</label>
+                      <input
+                        type="text"
+                        name="website"
+                        onChange={handleChangeCheck}
+                        value={states.website}
+                        className="form-control discord"
+                      />
+                    </div>
                   </div>
 
                   <button

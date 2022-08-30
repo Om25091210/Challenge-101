@@ -23,6 +23,10 @@ const CommentList = ({ post, user, comments }) => {
     setNext(next + n);
   };
 
+  const handleCollapse = () => {
+    setNext(n);
+  };
+
   let options = ['Popular Comments', 'Newest Comments', 'Pinned Comments'];
   const handleChangeCheck = (e) => {
     setValue({ ...value, [e.target.name]: e.target.value });
@@ -52,7 +56,9 @@ const CommentList = ({ post, user, comments }) => {
           >
             <option value="All Comments">All comments</option>
             {options.map((opt, ido) => (
-                <option key={ido} value={opt}>{opt}</option>
+              <option key={ido} value={opt}>
+                {opt}
+              </option>
             ))}
           </select>
         </div>
@@ -163,11 +169,19 @@ const CommentList = ({ post, user, comments }) => {
         <p>Thank you everyone for all of your support.</p>
       </div>
       <div className="loadmore">
-        {next < comments?.length && (
+        {next < comments?.length ? (
           <button className="btn" onClick={handleMoreImage}>
             Load comments{' '}
             <i className="fa fa-angle-down" aria-hidden="true"></i>
           </button>
+        ) : (
+          <>
+            {next >= comments?.length ? (
+              <button className="btn" onClick={handleCollapse}>
+                Collapse <i className="fa fa-angle-up" aria-hidden="true"></i>
+              </button>
+            ) : null}
+          </>
         )}
       </div>
     </div>
