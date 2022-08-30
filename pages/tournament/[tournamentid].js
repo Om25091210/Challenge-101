@@ -33,6 +33,7 @@ import Tournament_Reg from '../../components/tournament/TournamentRegister';
 import ReactCountryFlag from 'react-country-flag';
 import TournamentPrize from '../../components/tournament/TournamentPrize';
 import TournamentPrizeDetail from '../../components/tournament/TournamentPrizeDetail';
+import TournamentSlots from '../../components/tournament/TournamentSlots';
 
 const TournamentDetail = ({ user, data, products, profile }) => {
   if (data) {
@@ -458,6 +459,27 @@ const TournamentDetail = ({ user, data, products, profile }) => {
                         </>
                       )}
                     </p>
+                    <div>
+                      {data.tournament.playType === 'TEAMS' ? (
+                        <>
+                          {data.tournament.teams.length === 0 ? null : (
+                            <TournamentSlots
+                              total={data.tournament.numberOfTeam}
+                              reg={data.tournament.teams.length}
+                            />
+                          )}
+                        </>
+                      ) : (
+                        <>
+                          {data.tournament.registered.length === 0 ? null : (
+                            <TournamentSlots
+                              total={data.tournament.participants}
+                              reg={data.tournament.registered.length}
+                            />
+                          )}
+                        </>
+                      )}
+                    </div>
                   </div>
                 </div>
                 <div className="right_team_bio">
