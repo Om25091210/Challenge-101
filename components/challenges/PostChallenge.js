@@ -79,7 +79,7 @@ const PostChallenge = ({ games, teams }) => {
           Challenge
         </a>
 
-        <div className="common_model_box" id="big_poup">
+        <div className="common_model_box post_chllang" id="big_poup">
           <a href="#!" className="model_close">
             X
           </a>

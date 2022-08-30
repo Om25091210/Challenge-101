@@ -1891,6 +1891,8 @@ ul.top_menu .drop_down_bg.create_pages p {
 	font-weight: 600;
 }
 
+.post_comments .pop_comment select:focus{ box-shadow: none;}
+
 .post_comments p {
 	color: #19191d;
 	font-size: 14px;
@@ -3330,6 +3332,9 @@ article .social_bar img {
 	position: relative;
 }
 
+#big_poup .add_more_role .form-group{ display: flex; width: 100%;     justify-content: space-between;}
+#big_poup .add_more_role .form-group input{ width: 49%;}
+
 #big_poup .common_form .form-group:nth-child(2n) {
 	float: right;
 }
@@ -3408,6 +3413,8 @@ article .social_bar img {
 	border-radius: 5px;
 	background-color: #2c2c36 !important;
 }
+
+#big_poup input[type="text"],#big_poup input[type="time"], #big_poup input[type="date"]{background-color: #2c2c36 !important;}
 
 
 
@@ -3515,6 +3522,8 @@ article .social_bar img {
 #big_poup.team_chal button{ border-radius: 5px;}
 
 #big_poup.team_chal select.form-control[multiple]{ height: 45px; border-radius: 5px;}
+
+#big_poup.post_chllang .form-group:nth-child(8){ float: left;}
 
 /* --- profile tabs --- */
 
@@ -6899,6 +6908,8 @@ article .social_bar img {
 	margin-top: 50px;
 }
 
+.team_member.no-bdr{ border: 0; margin-top: 0;}
+
 .team_member ul {
 	margin-top: 50px;
 }
@@ -8288,40 +8299,40 @@ ul.game_search_result li:hover:after, ul.game_search_result li.slc_img:after {
 }
 
 #big_poup .edit_four .facebook {
-    background: url(/assets/media/social/face.png) 10px 12px no-repeat !important;
+    background: #2c2c36 url(/assets/media/social/face.png) 10px 12px no-repeat !important;
     background-size: 9px !important;
 	padding-left: 35px;
 }
 #big_poup .edit_four .instagram {
-    background: url(/assets/media/social/instagram.png) 10px 13px no-repeat !important;
+    background: #2c2c36 url(/assets/media/social/instagram.png) 10px 13px no-repeat !important;
     background-size: 16px !important;
 	padding-left: 35px;
 }
 #big_poup .edit_four .twitter {
-    background: url(/assets/media/social/twitter.png) 10px 15px no-repeat !important;
+    background: #2c2c36 url(/assets/media/social/twitter.png) 10px 15px no-repeat !important;
     background-size: 15px !important;
 	padding-left: 35px;
 }
 #big_poup .edit_four .youtube {
-    background: url(/assets/media/social/youtube.png) 8px 13px no-repeat !important;
+    background: #2c2c36 url(/assets/media/social/youtube.png) 8px 13px no-repeat !important;
     background-size: 20px !important;
 	padding-left: 35px;
 }
 
 #big_poup .edit_four .discord {
-    background: url(/assets/media/social/discord1.png) 8px 13px no-repeat !important;
+    background: #2c2c36 url(/assets/media/social/discord1.png) 8px 13px no-repeat !important;
     background-size: 20px !important;
 	padding-left: 35px;
 }
 
 #big_poup .edit_four .twitch {
-    background: url(/assets/media/social/twitch.png) 8px 13px no-repeat !important;
+    background: #2c2c36 url(/assets/media/social/twitch.png) 8px 13px no-repeat !important;
     background-size: 20px !important;
 	padding-left: 35px;
 }
 
 #big_poup .edit_four .website {
-    background: url(/assets/media/social/globe.png) 8px 13px no-repeat !important;
+    background: #2c2c36 url(/assets/media/social/globe.png) 8px 13px no-repeat !important;
     background-size: 20px !important;
 	padding-left: 35px;
 }
@@ -9335,6 +9346,7 @@ form.common_form input {
 	font-size: 14px;
 	width: 100%;
 	border-radius: 5px;
+	text-transform: capitalize;
 }
 
 
@@ -10513,6 +10525,9 @@ form.common_form .btn {
 	align-items: center;
 	justify-content: center;
 }
+
+#share_prof.part_poup ul li .game_pic {height: auto;}
+#share_prof.part_poup a.model_close{ margin: 0;}
 
 #share_prof ul li a {
 	color: #000;
@@ -11908,6 +11923,7 @@ body.DarkPage .post_comments .pop_comment select {
 	background: #62626e;
 	border: 0;
 }
+
 
 body.DarkPage .suggested_player .all,
 body.DarkPage .my_team .mng {

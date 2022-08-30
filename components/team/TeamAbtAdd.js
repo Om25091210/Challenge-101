@@ -44,62 +44,60 @@ const TeamAbtAdd = ({ role, rolesData }) => {
   return (
     <>
       <div className="form-group">
-        <ul>
-          {role.length > 0 ? (
-            <label htmlFor="">{role}</label>
-          ) : (
-            <input
-              type="text"
-              placeholder={`enter role`}
-              value={addRole}
-              className="form-control"
-              onChange={(e) => setAddRole(e.target.value)}
-            />
-          )}
+        {role.length > 0 ? (
+          <label htmlFor="">{role}</label>
+        ) : (
           <input
             type="text"
-            placeholder={`enter ${role} name`}
-            value={searchText}
+            placeholder={`enter role`}
+            value={addRole}
             className="form-control"
-            onChange={handleFilter}
+            onChange={(e) => setAddRole(e.target.value)}
           />
-          {searchText.length !== 0 ? (
-            <>
-              {filteredData.length > 0 ? (
-                <>
-                  <div className="custom-rig-tag">
-                    <div className="rigs_items">
-                      {!filteredData ? (
-                        <p>No {role} found..</p>
-                      ) : (
-                        filteredData.map((data) => (
-                          <div
-                            onClick={() => handleSelectedRig(data)}
-                            key={data._id}
-                            className="items"
-                          >
-                            <span>
-                              <img
-                                src={data?.profilePicUrl}
-                                height={50}
-                                width={50}
-                              />
-                            </span>
-                            <p>
-                              {data?.name.length > 20
-                                ? data.name.substring(0, 20) + '...'
-                                : data.name}
-                            </p>
-                          </div>
-                        ))
-                      )}
-                    </div>
+        )}
+        <input
+          type="text"
+          placeholder={`enter ${role} name`}
+          value={searchText}
+          className="form-control"
+          onChange={handleFilter}
+        />
+        {searchText.length !== 0 ? (
+          <>
+            {filteredData.length > 0 ? (
+              <>
+                <div className="custom-rig-tag">
+                  <div className="rigs_items">
+                    {!filteredData ? (
+                      <p>No {role} found..</p>
+                    ) : (
+                      filteredData.map((data) => (
+                        <div
+                          onClick={() => handleSelectedRig(data)}
+                          key={data._id}
+                          className="items"
+                        >
+                          <span>
+                            <img
+                              src={data?.profilePicUrl}
+                              height={50}
+                              width={50}
+                            />
+                          </span>
+                          <p>
+                            {data?.name.length > 20
+                              ? data.name.substring(0, 20) + '...'
+                              : data.name}
+                          </p>
+                        </div>
+                      ))
+                    )}
                   </div>
-                </>
-              ) : null}
-            </>
-          ) : null}
-        </ul>
+                </div>
+              </>
+            ) : null}
+          </>
+        ) : null}
       </div>
     </>
   );

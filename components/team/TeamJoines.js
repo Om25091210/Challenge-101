@@ -5,7 +5,7 @@ import DeclineRequest from '../discover/invites/DeclineRequest';
 const TeamJoines = ({ data, user }) => {
   return (
     <>
-      <div className="team_member">
+      <div className="team_member no-bdr">
         <ul>
           {data.request.map((req) => (
             <li>

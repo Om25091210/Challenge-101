@@ -398,7 +398,7 @@ const TournamentDetail = ({ user, data, products, profile }) => {
                         +{data.tournament.registered.length - 3}
                       </a>
                     ) : null}
-                    <div className="common_model_box" id="share_prof">
+                    <div className="common_model_box part_poup" id="share_prof">
                       <a href="#!" className="model_close">
                         X
                       </a>

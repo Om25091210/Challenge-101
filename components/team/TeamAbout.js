@@ -116,7 +116,8 @@ const TeamAbout = ({ Data, isManager, isAdmin, user, teamAbout }) => {
                   <TeamAbtAdd role="PR Manager" rolesData={rolData} />
 
                   {[...Array(count)].map((e, index) => (
-                    <div key={index}>
+                    <div className="form-group add_more_role" key={index}>
+                      <label htmlFor="exampleFormControlInput1"> &nbsp;</label>
                       <TeamAbtAdd role="" rolesData={rolData} />
                     </div>
                   ))}
