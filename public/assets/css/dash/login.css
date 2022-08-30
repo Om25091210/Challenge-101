@@ -59,6 +59,7 @@ display: flex; align-items: center; justify-content: center; position: relative;
 .right_form h4{ color: #fff; font-size: 13px; text-align:center;}
 .right_form  .remeberme{ display: flex; justify-content: space-between;}
 .right_form a{ color: #1990ea;}
+.right_form .align-center{ align-items: center;}
 
 /* ------   signup step2 -------------- */
 

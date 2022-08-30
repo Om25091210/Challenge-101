@@ -11678,6 +11678,8 @@ body.DarkPage .video_box li .bottom_data i {
 	color: #858585;
 }
 
+body.DarkPage .video_box li .bottom_data .btn i{ color: #fff;}
+
 body.DarkPage .video_box li .bottom_data h2 {
 	color: #fff;
 }

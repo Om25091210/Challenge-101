@@ -286,7 +286,7 @@ const Signup = ({ games, avatars }) => {
                 </div>
 
                 <div className="right_form">
-                  <div className="d-flex flex-center flex-column flex-column-fluid">
+                  <div className="d-flex flex-column flex-column-fluid align-center">
                     <h2>Create an Account</h2>
                     <div className="form_box">
                       <input type="hidden" name="remember" value="true" />

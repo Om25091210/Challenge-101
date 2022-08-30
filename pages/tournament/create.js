@@ -514,30 +514,33 @@ const CreateTournament = ({ user }) => {
                     {state.playType === 'SOLO' ? (
                       <>
                         <div className="form-group">
-                          <label for="exampleFormControlTextarea1">
-                            Number of Participants
-                          </label>
-                          <input
-                            type="number"
-                            name="participants"
-                            className="form-control"
-                            onChange={handleChange}
-                            value={state.participants}
-                            placeholder=""
-                          />
-                        </div>
-                        <div className="form-group">
-                          <label for="exampleFormControlTextarea1">
-                            Minimum Participants
-                          </label>
-                          <input
-                            type="number"
-                            name="minParticipants"
-                            className="form-control"
-                            onChange={handleChange}
-                            value={state.minParticipants}
-                            placeholder=""
-                          />
+                          <div className="colm">
+                            <label for="exampleFormControlTextarea1">
+                              Number of Participants
+                            </label>
+                            <input
+                              type="number"
+                              name="participants"
+                              className="form-control"
+                              onChange={handleChange}
+                              value={state.participants}
+                              placeholder=""
+                            />
+                          </div>
+
+                          <div className="colm">
+                            <label for="exampleFormControlTextarea1">
+                              Minimum Participants
+                            </label>
+                            <input
+                              type="number"
+                              name="minParticipants"
+                              className="form-control"
+                              onChange={handleChange}
+                              value={state.minParticipants}
+                              placeholder=""
+                            />
+                          </div>
                         </div>
                       </>
                     ) : null}
@@ -570,18 +573,20 @@ const CreateTournament = ({ user }) => {
                       </>
                     ) : null}
                     <div className="form-group">
-                      <label for="exampleFormControlTextarea1">
-                        Entrance fee
-                      </label>
-                      <input
-                        type="number"
-                        name="entranceFee"
-                        className="form-control"
-                        onChange={handleChange}
-                        value={state.entranceFee}
-                        placeholder="$"
-                      />
-                      <p>{formErrors.entranceFee}</p>
+                      <div className="colm">
+                        <label for="exampleFormControlTextarea1">
+                          Entrance fee
+                        </label>
+                        <input
+                          type="number"
+                          name="entranceFee"
+                          className="form-control"
+                          onChange={handleChange}
+                          value={state.entranceFee}
+                          placeholder="$"
+                        />
+                        <p>{formErrors.entranceFee}</p>
+                      </div>
                     </div>
                     <div className="form-group">
                       <div className="date_time">
