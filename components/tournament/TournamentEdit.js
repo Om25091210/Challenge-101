@@ -103,18 +103,20 @@ const TournamentEdit = ({ data, user }) => {
         <a href="#!" className="model_show_btn">
           <button className="btn">Edit</button>
         </a>
-        <div className="common_model_box">
+        <div className="common_model_box edit_profile" id="big_poup">
           <a href="#!" className="model_close">
             X
           </a>
 
           <div className="inner_model_box">
-            <div className="add_jobs_height">
+            <div className="">
+              <h3>Edit Tournament </h3>
               <form className="common_form" onSubmit={handleEditSubmit}>
                 <div className="form-group">
                   <label for="exampleFormControlTextarea1">
                     Tournament Category
                   </label>
+
                   <div className="btn_selection">
                     <div className="big_btn">
                       <span class="form-check-label terms">Tournament</span>
@@ -196,39 +198,44 @@ const TournamentEdit = ({ data, user }) => {
                       value={states.username}
                     />
                   </div>
-
-                  <div className="form-group">
-                    <label htmlFor="exampleFormControlInput1">
-                      Date & Time
-                    </label>
-                    <input
-                      type="date"
-                      name="startDate"
-                      onChange={handleChangeCheck}
-                      value={states.startDate}
-                    />
-                    <p>{formErrors.startDate}</p>
-                    <input
-                      type="date"
-                      name="endDate"
-                      onChange={handleChangeCheck}
-                      value={states.endDate}
-                    />
-                    <p>{formErrors.endDate}</p>
-                    <input
-                      type="time"
-                      name="startTime"
-                      onChange={handleChangeCheck}
-                      value={states.startTime}
-                    />
-                    <p>{formErrors.startTime}</p>
-                    <input
-                      type="time"
-                      name="endTime"
-                      onChange={handleChangeCheck}
-                      value={states.endTime}
-                    />
-                    <p>{formErrors.endTime}</p>
+                  <h2> Date & Time</h2>
+                  <div className="edit_four">
+                    <div className="form-group">
+                      <input
+                        type="date"
+                        name="startDate"
+                        onChange={handleChangeCheck}
+                        value={states.startDate}
+                      />
+                      <p>{formErrors.startDate}</p>
+                    </div>
+                    <div className="form-group">
+                      <input
+                        type="date"
+                        name="endDate"
+                        onChange={handleChangeCheck}
+                        value={states.endDate}
+                      />
+                      <p>{formErrors.endDate}</p>
+                    </div>
+                    <div className="form-group">
+                      <input
+                        type="time"
+                        name="startTime"
+                        onChange={handleChangeCheck}
+                        value={states.startTime}
+                      />
+                      <p>{formErrors.startTime}</p>
+                    </div>
+                    <div className="form-group">
+                      <input
+                        type="time"
+                        name="endTime"
+                        onChange={handleChangeCheck}
+                        value={states.endTime}
+                      />
+                      <p>{formErrors.endTime}</p>
+                    </div>
                   </div>
 
                   <div className="form-group">
@@ -426,17 +433,16 @@ const TournamentEdit = ({ data, user }) => {
                           className="form-control discord"
                         />
                       </div>
-                    </div>
 
-                    <div className="form-group">
-                      <label htmlFor="exampleFormControlInput1">Website</label>
-                      <input
-                        type="text"
-                        name="website"
-                        onChange={handleChangeCheck}
-                        value={states.website}
-                        className="form-control discord"
-                      />
+                      <div className="form-group">
+                        <input
+                          type="text"
+                          name="website"
+                          onChange={handleChangeCheck}
+                          value={states.website}
+                          className="form-control website"
+                        />
+                      </div>
                     </div>
                   </div>
 
