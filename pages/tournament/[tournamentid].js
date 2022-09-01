@@ -625,6 +625,7 @@ const TournamentDetail = ({ user, data, products, profile }) => {
                   </div>
                   <div className="rules_row">
                     <h2> MATCH SETTINGS</h2>
+                    <p>{tourRules?.matchSettings}</p>
                   </div>
                   <div className="rules_row">
                     <h2> GENERAL RULES</h2>

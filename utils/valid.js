@@ -263,6 +263,10 @@ export const tournamentRules = (values) => {
     errors.forfeit = 'Forfeit Required';
   }
 
+  if (values.matchSettings.length === 0) {
+    errors.matchSettings = 'Match Setting Required';
+  }
+
   if (values.prizeRules.length === 0 || values.prizeRules.length < 15) {
     errors.prizeRules = 'Please Recheck Input';
   }
@@ -275,13 +279,13 @@ export const tournamentRules = (values) => {
     errors.compete = 'Please Recheck Input';
   }
 
-  if (values.cusRuleBody.length === 0 || values.cusRuleBody.length < 15) {
-    errors.cusRuleBody = 'Please Recheck Input';
-  }
+  // if (values.cusRuleBody.length === 0 || values.cusRuleBody.length < 15) {
+  //   errors.cusRuleBody = 'Please Recheck Input';
+  // }
 
-  if (values.cusRuleHead.length === 0) {
-    errors.cusRuleHead = 'Header Name Required';
-  }
+  // if (values.cusRuleHead.length === 0) {
+  //   errors.cusRuleHead = 'Header Name Required';
+  // }
 
   if (values.country.length === 0) {
     errors.country = 'Country Required';

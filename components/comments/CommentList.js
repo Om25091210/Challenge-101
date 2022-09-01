@@ -176,11 +176,11 @@ const CommentList = ({ post, user, comments }) => {
           </button>
         ) : (
           <>
-            {next >= comments?.length ? (
+            {comments?.length < n ? null : (
               <button className="" onClick={handleCollapse}>
                 Collapse <i className="fa fa-angle-up" aria-hidden="true"></i>
               </button>
-            ) : null}
+            )}
           </>
         )}
       </div>

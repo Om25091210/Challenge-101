@@ -12,6 +12,7 @@ const TournamentRules = ({ tourRules }) => {
     check_in: '',
     forfeit: '',
     prizeRules: '',
+    matchSettings: '',
     general: '',
     compete: '',
     cusRuleHead: '',
@@ -163,6 +164,16 @@ const TournamentRules = ({ tourRules }) => {
           </div>
 
           <div class="form-group">
+            <label for="matchSettings">Match Settings</label>
+            <textarea
+              name="matchSettings"
+              onChange={onChange}
+              value={states.matchSettings}
+            />
+            <p>{formErrors.matchSettings}</p>
+          </div>
+
+          <div class="form-group">
             <label for="general">General Info</label>
             <textarea
               name="general"
@@ -215,7 +226,6 @@ const TournamentRules = ({ tourRules }) => {
               onChange={handleSubmit}
               multiple={true}
             >
-              <option value="">Select Country...</option>
               {options.map((opt) => (
                 <>
                   <option value={opt.value}>{opt.label}</option>
