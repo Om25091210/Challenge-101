@@ -22,7 +22,7 @@ const PlayerDisplay = ({ isLoading, playerData, user }) => {
                   <img
                     src={plyr.players.imgUrl}
                     alt="Player"
-                    style={{ width: '150px' }}
+                    style={{ width: '70px' }}
                   />
                 ) : (
                   <img

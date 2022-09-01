@@ -22,7 +22,7 @@ const TeamJobs = ({ jobs, team, isManager, isAdmin, user, profile }) => {
               </button>
             </a>
           ) : null}
-          <div className="common_model_box" id="big_poup">
+          <div className="common_model_box edit_profile" id="big_poup">
             <a href="#!" className="model_close">
               X
             </a>
@@ -30,7 +30,7 @@ const TeamJobs = ({ jobs, team, isManager, isAdmin, user, profile }) => {
             <div className="inner_model_box">
               <h3>Job Detail's</h3>
 
-              <div className="add_jobs_height">
+              <div className="">
                 <TeamJobCreate user={user} profile={profile} />
               </div>
             </div>

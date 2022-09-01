@@ -3507,6 +3507,9 @@ article .social_bar img {
 	overflow-y: auto;
 }
 
+#big_poup.add_tourn .add_photos h2{ display: none;}
+#big_poup.add_tourn .add_photos .jobs_browse{ margin: 0;}
+
 /* --- Rigs poup ------ */
 
 #big_poup.poup_rigs .form-group:nth-child(1) {
@@ -3525,6 +3528,10 @@ article .social_bar img {
 
 #big_poup.poup_rigs .common_form .form-group:nth-child(2n){ float: left; margin-right: 20px;}
 
+
+/* ------------ Editor----------------- */
+
+.rdw-editor-wrapper{background-color: #2c2c36 !important; border-radius: 5px; padding: 10px;}
 
 /* --------- Challange poup ---------------- */
 
@@ -8792,6 +8799,7 @@ ul.game_search_result li:hover:after, ul.game_search_result li.slc_img:after {
 }
 
 /* --------------Game page ------------------- */
+.all_game_box h1{ font-size: 18px; padding-bottom: 20px;}
 
 .game_list_page li {
 	float: left;

@@ -344,6 +344,7 @@ const ProfileTournament = ({
                 </div>
 
                 <div className="form-group">
+                  <label htmlFor="exampleFormControlInput1">Upload Proof</label>
                   <div className="add_photos">
                     <ImageDropzone setImages={setImages} />
                     {images.length > 0 ? (

@@ -200,39 +200,41 @@ const TeamJobCreate = ({ user, profile }) => {
                   value={state.salary}
                 />
               </div>
+            </div>
 
-              <div className="form-group">
-                <label htmlFor="endDate">Experience</label>
-                <input
-                  type="number"
-                  name="experience"
-                  onChange={handleChangeCheck}
-                  value={state.experience}
-                  className="form-control"
-                />
-              </div>
+            <div className="form-group">
+              <label htmlFor="endDate">Experience</label>
+              <input
+                type="number"
+                name="experience"
+                onChange={handleChangeCheck}
+                value={state.experience}
+                className="form-control"
+              />
             </div>
           </div>
 
-          <Editor
-            editorState={editorState}
-            toolbarClassName="toolbarClassName"
-            wrapperClassName="wrapperClassName"
-            editorClassName="editorClassName"
-            onEditorStateChange={setEditorState}
-            toolbar={{
-              options: ['inline', 'list'],
-              inline: {
-                options: ['bold']
-              },
-              block: {
-                options: ['blocktype']
-              },
-              list: {
-                options: ['unordered']
-              }
-            }}
-          />
+          <div className="form-group">
+            <Editor
+              editorState={editorState}
+              toolbarClassName="toolbarClassName"
+              wrapperClassName="wrapperClassName"
+              editorClassName="editorClassName"
+              onEditorStateChange={setEditorState}
+              toolbar={{
+                options: ['inline', 'list'],
+                inline: {
+                  options: ['bold']
+                },
+                block: {
+                  options: ['blocktype']
+                },
+                list: {
+                  options: ['unordered']
+                }
+              }}
+            />
+          </div>
 
           <input type="submit" className="btn" value="Create Job" />
         </>
