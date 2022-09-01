@@ -170,14 +170,14 @@ const CommentList = ({ post, user, comments }) => {
       </div>
       <div className="loadmore">
         {next < comments?.length ? (
-          <button className="btn" onClick={handleMoreImage}>
+          <button className="" onClick={handleMoreImage}>
             Load comments{' '}
             <i className="fa fa-angle-down" aria-hidden="true"></i>
           </button>
         ) : (
           <>
             {next >= comments?.length ? (
-              <button className="btn" onClick={handleCollapse}>
+              <button className="" onClick={handleCollapse}>
                 Collapse <i className="fa fa-angle-up" aria-hidden="true"></i>
               </button>
             ) : null}

@@ -406,9 +406,12 @@ header .logo.bigwidth {
 	width: 210px;
 }
 
+header .logo img{ width: 60px;}
+
 header .logo a {
 	margin-top: 20px;
 	display: block;
+	margin-left: 20px;
 }
 
 .searchbox {
@@ -749,7 +752,7 @@ ul.top_menu li.profile>a .dps {
 }
 
 ul.top_menu li.profile>a span {
-	margin: 0 7px;
+	margin: 0 7px 0 2px;
 	text-transform: capitalize;
 	color: #7239ea;
 }
@@ -758,13 +761,21 @@ ul.top_menu li.profile>a span p {
     color: #ddd;
     position: relative;
     font-size: 11px;
-    padding-top: 3px; padding-left: 20px;
+    padding-top: 3px; padding-left:0;
 }
 ul.top_menu li.profile>a span p .online {
 	position: static;
 	width: 10px;
 	height: 10px;
 }
+
+ul.top_menu li.profile>a span p .offline {
+	position: static;
+	width: 10px;
+	height: 10px;
+	display: inline-block;
+}
+
 
 ul.top_menu li.profile>a span.drop {
 	margin-top: -24px;
@@ -1889,6 +1900,7 @@ ul.top_menu .drop_down_bg.create_pages p {
 	color: #000;
 	background: #e1e1e1;
 	font-weight: 600;
+	height: 30px;
 }
 
 .post_comments .pop_comment select:focus{ box-shadow: none;}
@@ -3565,12 +3577,13 @@ article .social_bar img {
 .prfoile_tab_data {
 	float: left;
 	width: 100%;
+	margin: 20px 0 0 0;
 }
 
 .prfoile_tab_data .tab {
 	float: left;
 	width: 100%;
-	margin: 20px 0 0 0;
+	
 	min-height: 200px;
 }
 

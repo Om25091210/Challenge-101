@@ -218,7 +218,7 @@ const SignedMainContent = ({ posts, user }) => {
           </div>
 
           <a href="#" onClick={menu_close} className="close">
-            X
+            <i class="fa fa-times-circle" aria-hidden="true"></i>
           </a>
         </div>
       ) : (

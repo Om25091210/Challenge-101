@@ -279,11 +279,11 @@ const SignedHeader = ({ user, profile }) => {
                   {' '}
                   {profile?.online_status === true ? (
                     <>
-                      <span className="online"></span> Online
+                      <div className="online"></div> Online
                     </>
                   ) : (
                     <>
-                      <span className="offline"></span> Offline
+                      <div className="offline"></div> Offline
                     </>
                   )}
                 </p>
