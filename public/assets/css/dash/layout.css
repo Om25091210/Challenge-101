@@ -5514,7 +5514,7 @@ article .social_bar img {
 }
 
 .bottom_game .users li {
-	text-align: center;
+	text-align: center; margin-right: 5px;
 }
 
 .bottom_game .users img {
