@@ -179,15 +179,7 @@ const PostChallenge = ({ games, teams }) => {
                   placeholder="Enter fees"
                 />
               </div>
-              <div className="form-group">
-                <label> &nbsp; </label>
-                <input
-                  type="date"
-                  onChange={onChange}
-                  name="startDate"
-                  value={state.startDate}
-                />
-              </div>
+
               <div className="form-group">
                 <label> &nbsp; </label>
                 <input
@@ -197,6 +189,16 @@ const PostChallenge = ({ games, teams }) => {
                   value={state.startTime}
                 />
               </div>
+              <div className="form-group">
+                <label> &nbsp; </label>
+                <input
+                  type="date"
+                  onChange={onChange}
+                  name="startDate"
+                  value={state.startDate}
+                />
+              </div>
+
               <button className="btn" type="submit">
                 Submit
               </button>

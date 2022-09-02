@@ -202,6 +202,8 @@ textarea {
 	resize: none;
 }
 
+input[type="date"]{ text-transform: uppercase !important;}
+
 input[type="text"],
 input[type="email"],
 textarea,
@@ -5213,6 +5215,8 @@ article .social_bar img {
 .team_row.arena_team_row .mores.jobss b {
 	color: #3b799b;
 }
+
+.team_row.arena_team_row .mores.jobss  img{margin: 0;}
 
 /* -------------- Ranking page --------------- */
 
