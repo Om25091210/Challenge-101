@@ -9,12 +9,12 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 import PremiumPass from '../components/crypto/PremiumPass';
 
-const challenges = ({ user }) => {
+const challenges = ({ user, profile }) => {
   return (
     <>
       <MetaDash />
 
-      <SignedHeader user={user} />
+      <SignedHeader user={user} profile={profile} />
 
       <LeftNav user={user} />
       <div className="main_middle profile_middle">

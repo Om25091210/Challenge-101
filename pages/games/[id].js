@@ -5,11 +5,11 @@ import AllScript from '../AllScript';
 import Game from '@components/games/Game';
 import baseURL from '@utils/baseURL';
 
-const Games = ({ user, data }) => {
+const Games = ({ user, data, profile }) => {
   return (
     <>
       <MetaDash />
-      <SignedHeader user={user} />
+      <SignedHeader user={user} profile={profile} />
       <LeftNav user={user} />
 
       <Game user={user} data={data} />
@@ -21,8 +21,8 @@ const Games = ({ user, data }) => {
 
 export const getServerSideProps = async (context) => {
   const { id } = context.params;
-  
-  if(!isNaN(id)){ 
+
+  if (!isNaN(id)) {
     try {
       const response = await fetch(`${baseURL}/api/games/${id}`);
       const data = await response.json();
@@ -36,13 +36,12 @@ export const getServerSideProps = async (context) => {
       return {
         props: {}
       };
-    }  
+    }
   } else {
-      return {
-        props: {}
-      };  
+    return {
+      props: {}
+    };
   }
-  
 };
 
 export default Games;

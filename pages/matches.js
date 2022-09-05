@@ -11,12 +11,12 @@ import StatsChart from '@components/matches/statschart';
 import FooterMain from '@components/FooterMain';
 import AllScript from './AllScript';
 
-const Matches = ({ user }) => {
+const Matches = ({ user, profile }) => {
   return (
     <>
       <MetaDash />
 
-      <SignedHeader user={user} />
+      <SignedHeader user={user} profile={profile} />
 
       <LeftNav user={user} />
 

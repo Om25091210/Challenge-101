@@ -36,7 +36,7 @@ const Team = ({ user, data, products, profile, teams }) => {
       <>
         <MetaDash />
 
-        <SignedHeader user={user} />
+        <SignedHeader user={user} profile={profile} />
 
         <LeftNav user={user} />
 

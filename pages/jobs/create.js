@@ -14,7 +14,7 @@ const CreateJobs = ({ user, profile }) => {
   return (
     <>
       <MetaDash />
-      <SignedHeader user={user} />
+      <SignedHeader user={user} profile={profile} />
       <LeftNav user={user} />
       <div className="main_middle create_main_middle">
         <div className="white_bg ">

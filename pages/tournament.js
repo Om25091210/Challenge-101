@@ -29,7 +29,7 @@ const Tournament = ({ user, games, profile }) => {
     <>
       <MetaDash />
 
-      <SignedHeader user={user} />
+      <SignedHeader user={user} profile={profile} />
 
       <LeftNav user={user} />
 

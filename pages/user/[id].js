@@ -16,7 +16,7 @@ const Profile = ({ user, Userdata, games, player, products, teams }) => {
     return (
       <>
         <MetaDash />
-        <SignedHeader user={user} />
+        <SignedHeader user={user} profile={Userdata.profile} />
         <LeftNav user={user} />
 
         <div className="main_middle profile_middle">

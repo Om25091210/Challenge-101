@@ -10,7 +10,7 @@ import { toast } from 'react-toastify';
 import { useMutation } from 'react-query';
 import cookie from 'js-cookie';
 
-const CreateBrand = ({ user }) => {
+const CreateBrand = ({ user, profile }) => {
   const [image, setImage] = useState(null);
   const [state, setState] = useState({
     name: '',
@@ -64,7 +64,7 @@ const CreateBrand = ({ user }) => {
   return (
     <>
       <MetaDash />
-      <SignedHeader user={user} />
+      <SignedHeader user={user} profile={profile} />
       <LeftNav user={user} />
       <div className="main_middle create_main_middle">
         <div className="white_bg">

@@ -10,7 +10,7 @@ import RewardList from '../components/battlepass/RewardList';
 import TaskList from '../components/battlepass/TaskList';
 import Moment from 'moment';
 
-const battlepass = ({ user, data }) => {
+const battlepass = ({ user, data, profile }) => {
   const [bpData, setBpData] = useState(data);
   const { battlepass, freelevels, paidlevels } = bpData;
   let x = Moment.duration(
@@ -25,7 +25,7 @@ const battlepass = ({ user, data }) => {
     <>
       <MetaDash />
 
-      <SignedHeader user={user} />
+      <SignedHeader user={user} profile={profile} />
 
       <LeftNav user={user} />
 

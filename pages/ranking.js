@@ -21,7 +21,7 @@ import {
 } from '@utils/functionsHelper';
 import Filters from '@components/common/Filters';
 
-const Ranking = ({ user, games }) => {
+const Ranking = ({ user, games, profile }) => {
   const [searchObj, setSearchObj] = useState({
     search: '',
     filters: ''
@@ -93,7 +93,7 @@ const Ranking = ({ user, games }) => {
     <>
       <MetaDash />
 
-      <SignedHeader user={user} />
+      <SignedHeader user={user} profile={profile} />
 
       <LeftNav user={user} />
 
@@ -157,8 +157,6 @@ const Ranking = ({ user, games }) => {
               </div>
             </div>
 
-          
-
             <div className="white_bg">
               <div className="team_search">
                 <div className="searchbox">
@@ -167,11 +165,10 @@ const Ranking = ({ user, games }) => {
                   <input type="submit" />
                 </div>
               </div>
-          
-          {/*
+
+              {/*
              <Filters filterType={'RANKINGS'} />   
           */}
-
             </div>
           </div>
           <RankingTable teamranking={teamsRanks} />

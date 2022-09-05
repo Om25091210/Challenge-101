@@ -14,7 +14,7 @@ import CoinBuyForm from '@components/crypto/CoinBuyForm';
 import SendForm from '@components/crypto/SendForm';
 import Moment from 'moment';
 
-const MyWallet = ({ user }) => {
+const MyWallet = ({ user, profile }) => {
   const publicKey = user?.phone_number;
   const username = user.username;
   const [coin, setCoin] = useState();
@@ -137,7 +137,7 @@ const MyWallet = ({ user }) => {
   return (
     <>
       <MetaDash />
-      <SignedHeader user={user} />
+      <SignedHeader user={user} profile={profile} />
       <LeftNav user={user} />
       <div className="main_middle profile_middle">
         <h1>My wallet</h1>

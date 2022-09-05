@@ -45,7 +45,7 @@ const challenges = ({ user, teams, profile, games }) => {
     <>
       <MetaDash />
 
-      <SignedHeader user={user} />
+      <SignedHeader user={user} profile={profile} />
 
       <LeftNav user={user} />
       <div className="main_middle profile_middle">

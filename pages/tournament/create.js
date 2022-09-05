@@ -21,7 +21,7 @@ import Router from 'next/router';
 import TournamentAddSponsor from '../../components/tournament/TournamentAddSponsor';
 import countryList from 'react-select-country-list';
 
-const CreateTournament = ({ user }) => {
+const CreateTournament = ({ user, profile }) => {
   const showSecond = false;
   const str = showSecond ? 'HH:mm:ss' : 'HH:mm';
 
@@ -191,7 +191,7 @@ const CreateTournament = ({ user }) => {
   return (
     <>
       <MetaDash />
-      <SignedHeader user={user} />
+      <SignedHeader user={user} profile={profile} />
       <LeftNav user={user} />
       <div className="main_middle create_main_middle">
         <div className="white_bg ">

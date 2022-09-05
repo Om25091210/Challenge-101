@@ -7,7 +7,7 @@ import Moment from 'moment';
 
 import AllScript from '../AllScript';
 
-const NFTGamesList = ({ user, challenge }) => {
+const NFTGamesList = ({ user, challenge, profile }) => {
   const teamOne = challenge.players?.filter(
     (plr) => plr.teamId === challenge.User_team?._id
   );
@@ -26,7 +26,7 @@ const NFTGamesList = ({ user, challenge }) => {
   return (
     <>
       <MetaDash />
-      <SignedHeader user={user} />
+      <SignedHeader user={user} profile={profile} />
       <LeftNav user={user} />
       <div className="main_middle profile_middle">
         <div className="join_game_box">

@@ -142,7 +142,7 @@ const TeamChallenge = ({ teams, team }) => {
                   className="form-control"
                   onChange={onChange}
                 >
-                  <option value="">Choose the challenge format</option>
+                  <option value="">Choose the challenge format...</option>
                   <option value="Best of 3">Best of 3</option>
                   <option value="Best of 5">Best of 5</option>
                 </select>
@@ -153,7 +153,7 @@ const TeamChallenge = ({ teams, team }) => {
                   className="form-control"
                   onChange={onChange}
                 >
-                  <option value="">Choose challenge type</option>
+                  <option value="">Choose challenge type...</option>
                   <option value="Team Deathmatch">Team Deathmatch</option>
                   <option value="Deathmatch">Deathmatch</option>
                   <option value="Domination">Domination</option>

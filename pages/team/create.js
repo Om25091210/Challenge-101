@@ -20,7 +20,7 @@ import { useRouter } from 'next/router';
 import countryList from 'react-select-country-list';
 import TeamAddSearch from '../../components/team/TeamAddSearch';
 
-const CreateTeam = ({ user }) => {
+const CreateTeam = ({ user, profile }) => {
   const showSecond = true;
   const str = showSecond ? 'HH:mm:ss' : 'HH:mm';
 
@@ -147,7 +147,7 @@ const CreateTeam = ({ user }) => {
   return (
     <>
       <MetaDash />
-      <SignedHeader user={user} />
+      <SignedHeader user={user} profile={profile} />
       <LeftNav user={user} />
       <div className="main_middle create_main_middle">
         <div className="white_bg create_bg">

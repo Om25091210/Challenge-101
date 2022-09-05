@@ -6,12 +6,12 @@ import AllScript from './AllScript';
 import AdminTournaments from '../components/adminfiles/AdminTournaments';
 import AdminChallenges from '../components/adminfiles/AdminChallenges';
 
-const Adminpage = ({ user, data }) => {
+const Adminpage = ({ user, data, profile }) => {
   return (
     <>
       <MetaDash />
 
-      <SignedHeader user={user} />
+      <SignedHeader user={user} profile={profile} />
 
       <LeftNav user={user} />
 

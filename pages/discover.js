@@ -54,7 +54,7 @@ const Discover = ({ user, profile, games }) => {
     <>
       <MetaDash />
 
-      <SignedHeader user={user} />
+      <SignedHeader user={user} profile={profile} />
 
       <LeftNav user={user} />
 
@@ -76,7 +76,7 @@ const Discover = ({ user, profile, games }) => {
                       alt={selectedGame ? selectedGame.name : ''}
                     />
                   </b>{' '}
-                  Browse Games
+                  {selectedGame ? selectedGame.name : 'Browse Games'}
                 </span>
                 <i className="fa fa-angle-right" aria-hidden="true"></i>
 

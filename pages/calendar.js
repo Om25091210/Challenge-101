@@ -10,14 +10,12 @@ import AllScript from './AllScript';
 import baseURL from '@utils/baseURL';
 
 const Calendar = ({ user, profile, games }) => {
-
   const [selectedGame, setSelectedGame] = useState(null);
 
   const handleSelectGame = async (obj) => {
     setSelectedGame(obj);
     //myState.setFilteredResults([]);
     $('a.model_close').parent().removeClass('show_model');
-     
   };
 
   useEffect(() => {
@@ -34,7 +32,7 @@ const Calendar = ({ user, profile, games }) => {
     <>
       <MetaDash />
 
-      <SignedHeader user={user} />
+      <SignedHeader user={user} profile={profile} />
 
       <LeftNav user={user} />
 
@@ -72,17 +70,21 @@ const Calendar = ({ user, profile, games }) => {
 
                   <div className="poup_height msScroll_all">
                     <ul className="">
-                      {games && games.map((game, idx) => (
-                        <li key={idx}>
-                          <div className="game_pic">
-                            <a href="#!" onClick={() => handleSelectGame(game)}>
-                              {' '}
-                              <img src={game.imgUrl} alt={game.name} />{' '}
-                            </a>
-                          </div>
-                          <p>{game.name}</p>
-                        </li>
-                      ))}
+                      {games &&
+                        games.map((game, idx) => (
+                          <li key={idx}>
+                            <div className="game_pic">
+                              <a
+                                href="#!"
+                                onClick={() => handleSelectGame(game)}
+                              >
+                                {' '}
+                                <img src={game.imgUrl} alt={game.name} />{' '}
+                              </a>
+                            </div>
+                            <p>{game.name}</p>
+                          </li>
+                        ))}
                     </ul>
                   </div>
                 </div>
@@ -90,8 +92,9 @@ const Calendar = ({ user, profile, games }) => {
               </div>
             </div>
 
-            <DateCal gameId={selectedGame != null ? selectedGame._id : "undefined"}/>
-
+            <DateCal
+              gameId={selectedGame != null ? selectedGame._id : 'undefined'}
+            />
           </div>
         </div>
       </div>

@@ -9,17 +9,17 @@ import { tournamentRules } from '../../utils/valid';
 const TournamentRules = ({ tourRules }) => {
   const [formErrors, setFormErrors] = useState({});
   const [states, setStates] = useState({
-    check_in: '',
-    forfeit: '',
-    prizeRules: '',
-    matchSettings: '',
-    general: '',
-    compete: '',
-    cusRuleHead: '',
-    cusRuleBody: '',
-    country: '',
-    admins: '',
-    contact: ''
+    check_in: tourRules?.check_in || '',
+    forfeit: tourRules?.forfeit || '',
+    prizeRules: tourRules?.prizeRules || '',
+    matchSettings: tourRules?.matchSettings || '',
+    general: tourRules?.general || '',
+    compete: tourRules?.compete || '',
+    cusRuleHead: tourRules?.cusRuleHead || '',
+    cusRuleBody: tourRules?.cusRuleBody || '',
+    country: tourRules?.country || '',
+    admins: tourRules?.admins?._id || '',
+    contact: tourRules?.contact || ''
   });
   const [allusers, setAllusers] = useState([]);
 
@@ -103,7 +103,7 @@ const TournamentRules = ({ tourRules }) => {
         <button class="btn">
           {' '}
           <i class="fa fa-plus-circle" aria-hidden="true"></i>
-          {tourRules.tournamentId === router.query.tournamentid &&
+          {tourRules.tournamentId == router.query.tournamentid &&
           tourRules.tournamentId
             ? 'Edit Rules'
             : 'Add Rules'}
@@ -236,11 +236,14 @@ const TournamentRules = ({ tourRules }) => {
           </div>
 
           <div class="form-group">
-            <label for="exampleFormControlInput1">Admins</label>
+            <label for="exampleFormControlInput1">Admin</label>
             <input
               type="search"
               name="admins"
               value={searchText}
+              placeholder={`${
+                tourRules?.admins ? `${tourRules.admins?.name}` : ''
+              }`}
               onChange={handleFilter}
               autoComplete="off"
             />

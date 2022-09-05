@@ -4,11 +4,11 @@ import LeftNav from '@components/LeftNav';
 import AllScript from '../AllScript';
 import baseURL from '@utils/baseURL';
 
-const Games = ({ user, games }) => {
+const Games = ({ user, games, profile }) => {
   return (
     <>
       <MetaDash />
-      <SignedHeader user={user} />
+      <SignedHeader user={user} profile={profile} />
       <LeftNav user={user} />
 
       <div className="main_middle profile_middle">

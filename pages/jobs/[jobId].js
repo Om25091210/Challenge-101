@@ -6,11 +6,11 @@ import AllScript from '../AllScript';
 import { MPNumberFormat } from '@utils/helpers';
 import ReactCountryFlag from 'react-country-flag';
 
-const Job = ({ data, user }) => {
+const Job = ({ data, user, profile }) => {
   return (
     <>
       <MetaDash />
-      <SignedHeader user={user} />
+      <SignedHeader user={user} profile={profile} />
 
       <LeftNav user={user} />
       <div className="main_middle profile_middle">

@@ -35,14 +35,13 @@ import TournamentPrize from '../../components/tournament/TournamentPrize';
 import TournamentPrizeDetail from '../../components/tournament/TournamentPrizeDetail';
 import TournamentSlots from '../../components/tournament/TournamentSlots';
 
-const TournamentDetail = ({ user, data, products, profile }) => {
+const TournamentDetail = ({ user, data, tourRules, products, profile }) => {
   if (data) {
     const isUser = data.tournament?.user?._id === user._id;
     const router = useRouter();
     const [sociallinks, setSociallinks] = useState(data.tournament.social);
     const [websitelink, setWebsitelink] = useState(data.tournament);
     const [tournamentPosts, setTournamentPosts] = useState([]);
-    const [tourRules, setTourRules] = useState([]);
     const [later, setLater] = useState(false);
 
     useEffect(() => {
@@ -51,9 +50,6 @@ const TournamentDetail = ({ user, data, products, profile }) => {
         .then((res) => setTournamentPosts(res.data.posts));
 
       //Get the Tournament Rules
-      axios
-        .get(`${baseURL}/api/tournamentRules/${data.tournament._id}`)
-        .then((res) => setTourRules(res.data));
     }, []);
 
     let Filteredtournamentposts = tournamentPosts.filter((tourpost) => {
@@ -123,7 +119,7 @@ const TournamentDetail = ({ user, data, products, profile }) => {
     return (
       <>
         <MetaDash />
-        <SignedHeader user={user} />
+        <SignedHeader user={user} profile={profile} />
         <LeftNav user={user} />
 
         <div>
@@ -1309,6 +1305,11 @@ export const getServerSideProps = async (context, query) => {
   const data = await response.json();
   // const data = dat.data;
 
+  const res = await fetch(
+    `${baseURL}/api/tournamentRules/${data.tournament._id}`
+  );
+  const tourRules = await res.json();
+
   const resprod = await getData(
     `product?limit=${
       page * 6
@@ -1316,7 +1317,7 @@ export const getServerSideProps = async (context, query) => {
   );
 
   return {
-    props: { data, products: resprod.products }
+    props: { data, tourRules, products: resprod.products }
   };
 };
 

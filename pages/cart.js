@@ -12,7 +12,7 @@ import FooterMain from '@components/FooterMain';
 import AllScript from '@pages/AllScript';
 import baseURL from '@utils/baseURL';
 
-const Cart = ({ user }) => {
+const Cart = ({ user, profile }) => {
   const { state, dispatch } = useContext(DataContext);
   const { cart, auth, orders } = state;
 
@@ -118,7 +118,7 @@ const Cart = ({ user }) => {
     <>
       <MetaDash />
 
-      <SignedHeader user={user} />
+      <SignedHeader user={user} profile={profile} />
 
       <LeftNav user={user} />
 
@@ -143,7 +143,8 @@ const Cart = ({ user }) => {
             <div className="checkout_strip">
               <h1>Shopping Cart</h1>
               <button className="btn" onClick={() => router.back()}>
-                <i className="fa fa-long-arrow-left" aria-hidden="true"></i> Go Back
+                <i className="fa fa-long-arrow-left" aria-hidden="true"></i> Go
+                Back
               </button>
             </div>
 

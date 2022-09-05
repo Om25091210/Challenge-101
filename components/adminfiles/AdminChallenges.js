@@ -92,9 +92,19 @@ const AdminChallenges = ({ challenges }) => {
                     )}
                     <div className="cols">{result.game.name}</div>
                     <div className="cols">
-                      <p>{result?.User_team?.name}</p>
+                      <p>
+                        {
+                          result?.players[0]?.playerId.apidata?.data
+                            .platformInfo.platformUserHandle
+                        }
+                      </p>
                       VS
-                      <p>{result?.opponent_team?.name}</p>
+                      <p>
+                        {
+                          result?.players[1]?.playerId.apidata?.data
+                            .platformInfo.platformUserHandle
+                        }
+                      </p>
                     </div>
                   </>
                 ) : null}
