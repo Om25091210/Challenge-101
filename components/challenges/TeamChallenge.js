@@ -87,7 +87,7 @@ const TeamChallenge = ({ teams, team }) => {
                   id="teamselect"
                   onChange={onChange}
                 >
-                  <option value="">---</option>
+                  <option value="">Select Your Team...</option>
                   {teams.map((team) => (
                     <option value={team._id}>{team.name}</option>
                   ))}
@@ -100,7 +100,7 @@ const TeamChallenge = ({ teams, team }) => {
                   className="form-control"
                   onChange={onChange}
                 >
-                  <option value="">---</option>
+                  <option value="">Select Game...</option>
                   {commonGames?.length === 0 ? (
                     <option value="">
                       No games available between the teams.

@@ -113,10 +113,38 @@ const RightSection = ({ user, suggestedplayers, teams, profile }) => {
             ) : (
               <p> No teams defined</p>
             )}
-            <li>
-              <a href="/discover">+</a>
-            </li>
           </ul>
+          <a href="#!" className="model_show_btn more btn">
+            View All Teams
+          </a>
+
+          <div className="common_model_box" id="share_prof">
+            <a href="#!" className="model_close">
+              X
+            </a>
+
+            <div className="inner_model_box">
+              <h3>Teams</h3>
+              <ul>
+                {teams &&
+                  teams.map((tm, idx) => (
+                    <li key={idx}>
+                      <Link href={`/team/${tm._id}`}>
+                        <div>
+                          <img src={tm.imgUrl} alt={tm.name} />
+                          <p> {tm.name}</p>
+                        </div>
+                      </Link>
+                    </li>
+                  ))}
+              </ul>
+              <p>
+                {' '}
+                <a href="/discover"> Discover </a> More Teams
+              </p>
+            </div>
+            <div className="overlay"></div>
+          </div>
 
           <a href={`/team/create`} className="create_team">
             + Create a team
