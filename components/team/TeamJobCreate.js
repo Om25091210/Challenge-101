@@ -28,7 +28,7 @@ const TeamJobCreate = ({ user, profile }) => {
     endDate: '',
     salary: 0,
     description: '',
-    currency: '',
+    currency: '$',
     experience: ''
   });
 

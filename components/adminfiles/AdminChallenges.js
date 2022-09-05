@@ -102,7 +102,7 @@ const AdminChallenges = ({ challenges }) => {
                 <div className="cols">
                   {Moment(result.startDate).format('DD/MMM/YYYY')}
                   <br />
-                  {Moment(result.startDate).format('hh:mm A')}
+                  {result.startTime}
                 </div>
                 <div className="cols">
                   Room Id: {result.room?.roomId ? result.room.roomId : '---'}

@@ -11,18 +11,35 @@ import ChallengesDisplay from '../components/challenges/ChallengesDisplay';
 import { parseCookies } from 'nookies';
 import PostChallenge from '../components/challenges/PostChallenge';
 
-const challenges = ({ user, data, teams, profile }) => {
+const challenges = ({ user, teams, profile, games }) => {
   const [challenges, setChallenges] = useState([]);
-  let type = 'opponent_team';
-  useEffect(() => {
-    axios
-      .get(`${baseURL}/api/challenges/userchallenges/${type}/${profile._id}`)
-      .then((res) => {
-        setChallenges(res.data);
-      });
-  }, []);
+  const [selectedGame, setSelectedGame] = useState(null);
+  const [playergames, setPlayergames] = useState([]);
 
-  let allchallenges = [...challenges, ...data.challenge];
+  let type = 'opponent_team';
+
+  useEffect(() => {
+    if (selectedGame != null) {
+      axios
+        .get(`${baseURL}/api/challenges/challengesbygame/${selectedGame?._id}`)
+        .then((res) => {
+          setChallenges(res.data);
+        });
+    } else {
+      axios
+        .get(`${baseURL}/api/challenges/userchallenges/${type}/${profile._id}`)
+        .then((res) => {
+          setChallenges(res.data.Challe);
+          setPlayergames(res.data.games);
+        });
+    }
+  }, [selectedGame]);
+
+  const handleSelectGame = async (obj) => {
+    setSelectedGame(obj);
+    //myState.setFilteredResults([]);
+    $('a.model_close').parent().removeClass('show_model');
+  };
 
   return (
     <>
@@ -42,7 +59,7 @@ const challenges = ({ user, data, teams, profile }) => {
                   in the process!
                 </p>
               </div>
-              <PostChallenge games={data.games} teams={teams} />
+              <PostChallenge games={playergames} teams={teams} />
             </div>
             <h2>GAME</h2>
 
@@ -50,18 +67,54 @@ const challenges = ({ user, data, teams, profile }) => {
               <a href="#!" className="model_show_btn">
                 <span>
                   <b className="icon">
-                    <img src="/assets/media/ranking/console.png" alt="" />
-                  </b>
-                  Browse Games
+                    <img
+                      src={
+                        selectedGame
+                          ? selectedGame.imgUrl
+                          : '/assets/media/ranking/console.png'
+                      }
+                      alt={selectedGame ? selectedGame.name : ''}
+                    />
+                  </b>{' '}
+                  {selectedGame ? selectedGame.name : 'Browse Games'}
                 </span>
                 <i className="fa fa-angle-right" aria-hidden="true"></i>
 
                 <div className="hover_games">
                   <div className="other_logo">
-                    <img />
+                    <img
+                      src={selectedGame ? selectedGame.imgUrl : ''}
+                      alt={selectedGame ? selectedGame.name : ''}
+                    />
                   </div>
                 </div>
               </a>
+
+              <div className="common_model_box" id="more_games">
+                <a href="#!" className="model_close">
+                  X
+                </a>
+                <div className="inner_model_box">
+                  <h3>Games</h3>
+
+                  <div className="poup_height msScroll_all">
+                    <ul className="">
+                      {games.map((game, idx) => (
+                        <li key={idx}>
+                          <div className="game_pic">
+                            <a href="#!" onClick={() => handleSelectGame(game)}>
+                              {' '}
+                              <img src={game.imgUrl} alt={game.name} />{' '}
+                            </a>
+                          </div>
+                          <p>{game.name}</p>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+                <div className="overlay"></div>
+              </div>
             </div>
             {/* <div className="filter_btns">
               <button className="btn">Challenge Invites</button>
@@ -89,12 +142,14 @@ const challenges = ({ user, data, teams, profile }) => {
 
           <div className="white_bg challenge_card_box">
             <ul className="challenge_card">
-              {!allchallenges || allchallenges.length === 0 ? (
+              {!challenges || challenges.length === 0 ? (
                 <div>
-                  <span>No Challenges for you</span>
+                  <span>
+                    No Challenges for {selectedGame ? selectedGame.name : 'you'}
+                  </span>
                 </div>
               ) : (
-                allchallenges.map((chall) => (
+                challenges.map((chall) => (
                   <ChallengesDisplay
                     user={user}
                     chall={chall}
@@ -268,19 +323,11 @@ const challenges = ({ user, data, teams, profile }) => {
 };
 
 export const getServerSideProps = async (context) => {
-  const { token } = parseCookies(context);
-
-  const response = await fetch(`${baseURL}/api/challenges`, {
-    method: 'get',
-    headers: {
-      Authorization: token
-    }
-  });
-
-  const data = await response.json();
+  const res = await fetch(`${baseURL}/api/all/games`);
+  const games = await res.json();
 
   return {
-    props: { data }
+    props: { games }
   };
 };
 
