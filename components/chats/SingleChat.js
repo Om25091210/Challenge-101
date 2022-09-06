@@ -67,8 +67,7 @@ const SingleChat = ({ fetchAgain, user, setFetchAgain }) => {
     }
   };
 
-  
-  console.log('******* Socket Path ****** :' + socketEndPoint)
+  console.log('******* Socket Path ****** :' + socketEndPoint);
 
   useEffect(() => {
     socket = io(socketEndPoint);
@@ -125,13 +124,15 @@ const SingleChat = ({ fetchAgain, user, setFetchAgain }) => {
   };
 
   return (
-    <>
+    <div className="chatting-data">
       {selectedChat ? (
         <>
           <div onClick={() => setSelectedChat('')} />
           {!selectedChat.isGroupChat ? (
             <>
-              <p className="btn">{getSender(user, selectedChat.users)}</p>
+              <div className="selecter-user">
+                {getSender(user, selectedChat.users)}
+              </div>
             </>
           ) : (
             <>
@@ -143,13 +144,13 @@ const SingleChat = ({ fetchAgain, user, setFetchAgain }) => {
           {loading ? (
             <p>Spinner</p>
           ) : (
-            <div className="message">
+            <div className="chat-message">
               <ScrollableChat messages={messages} user={user} />
             </div>
           )}
-          <form onSubmit={sendMessage}>
+          <form onSubmit={sendMessage} className="send-chat-box">
             {isTyping ? <div className="btn">Typing ...</div> : <></>}
-            <input
+            <textarea
               placeholder="Enter a message.."
               value={newMessage}
               required
@@ -162,11 +163,11 @@ const SingleChat = ({ fetchAgain, user, setFetchAgain }) => {
           </form>
         </>
       ) : (
-        <div className="btn">
+        <div className="default-text">
           <p>Click On Users to Start Conversation</p>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

@@ -80,7 +80,7 @@ const ChatBox = ({ user }) => {
   return (
     <>
       <div className="card mb-sm-3 mb-md-0 contacts_card dlab-chat-user-box ">
-        <div className="card-header chat-list-header text-center">
+        <div className="card-header chat-list-header text-center hide">
           <a href="#!">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -135,65 +135,65 @@ const ChatBox = ({ user }) => {
             </svg>
           </a>
         </div>
-        <div className="card-header chat-list-header text-center">
-          <div className="user_search">
-            <input
-              id="search"
-              name="search"
-              className=""
-              placeholder="Search for users and posts..."
-              type="search"
-              value={searchText}
-              onChange={(e) => setSearchText(e.target.value)}
-              autoComplete="off"
-            />
-            {searchText.trim() !== '' && !isLoading && isSuccess && (
-              <div className="search_result">
-                <h2>Users</h2>
-                <div className="flex flex-col space-y-2">
-                  {!data || data.length === 0 ? (
-                    <p>No users found..</p>
-                  ) : (
-                    data
-                      .filter(
-                        (resultuser) => resultuser.username !== user.username
-                      )
-                      .map((resultuser) => (
-                        <ul className="contacts">
-                          <li
-                            className="active dlab-chat-user btn"
-                            onClick={() => accessChat(resultuser._id)}
-                          >
-                            <div className="d-flex bd-highlight">
-                              <div className="img_cont">
-                                <img
-                                  src={resultuser?.profilePicUrl}
-                                  className="rounded-circle user_img"
-                                  alt=""
-                                />
-                                <span className="online_icon"></span>
+        <div className="new-chat-box">
+          <div className="left-search-contact">
+            <div className="user_search">
+              <input
+                id="search"
+                name="search"
+                className=""
+                placeholder="Search for users and posts..."
+                type="search"
+                value={searchText}
+                onChange={(e) => setSearchText(e.target.value)}
+                autoComplete="off"
+              />
+              {searchText.trim() !== '' && !isLoading && isSuccess && (
+                <div className="search_result">
+                  {/* <h2>Users</h2> */}
+                  <div className="flex flex-col space-y-2">
+                    {!data || data.length === 0 ? (
+                      <p>No users found..</p>
+                    ) : (
+                      data
+                        .filter(
+                          (resultuser) => resultuser.username !== user.username
+                        )
+                        .map((resultuser) => (
+                          <ul className="contact_list">
+                            <li
+                              className="active dlab-chat-user"
+                              onClick={() => accessChat(resultuser._id)}
+                            >
+                              <div className="d-flex bd-highlight">
+                                <div className="img_cont">
+                                  <img
+                                    src={resultuser?.profilePicUrl}
+                                    className="rounded-circle user_img"
+                                    alt=""
+                                  />
+                                  <span className="online_icon"></span>
+                                </div>
+                                <div className="user_info">
+                                  <span>
+                                    {' '}
+                                    {resultuser.name.length > 20
+                                      ? resultuser.name.substring(0, 20) + '...'
+                                      : resultuser.name}
+                                  </span>
+                                </div>
                               </div>
-                              <div className="user_info">
-                                <span>
-                                  {' '}
-                                  {resultuser.name.length > 20
-                                    ? resultuser.name.substring(0, 20) + '...'
-                                    : resultuser.name}
-                                </span>
-                              </div>
-                            </div>
-                          </li>
-                        </ul>
-                      ))
-                  )}
+                            </li>
+                          </ul>
+                        ))
+                    )}
+                  </div>
                 </div>
-              </div>
-            )}
-          </div>
-        </div>
+              )}
+            </div>
 
-        <div>
-          {user && <MyChats fetchAgain={fetchAgain} user={user} />}
+            {user && <MyChats fetchAgain={fetchAgain} user={user} />}
+          </div>
           {user && (
             <ChatDisplay
               fetchAgain={fetchAgain}

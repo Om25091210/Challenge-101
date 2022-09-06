@@ -5,13 +5,11 @@ import SingleChat from './SingleChat';
 const ChatDisplay = ({ fetchAgain, setFetchAgain, user }) => {
   return (
     <>
-      <div>
-        <SingleChat
-          fetchAgain={fetchAgain}
-          setFetchAgain={setFetchAgain}
-          user={user}
-        />
-      </div>
+      <SingleChat
+        fetchAgain={fetchAgain}
+        setFetchAgain={setFetchAgain}
+        user={user}
+      />
     </>
   );
 };

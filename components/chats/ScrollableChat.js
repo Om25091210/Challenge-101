@@ -18,11 +18,11 @@ const ScrollableChat = ({ messages, user }) => {
   }, [messages]);
 
   return (
-    <div>
+    <>
       {messages &&
         messages.map((m, i) => (
-          <div style={{ display: 'flex' }} key={m._id}>
-            <span
+          <div key={m._id} className="sender-receiver-box">
+            {/* <span
               style={{
                 backgroundColor: `${
                   m.sender._id === user._id ? '#ddd' : '#202028'
@@ -35,11 +35,23 @@ const ScrollableChat = ({ messages, user }) => {
               }}
             >
               {m.message}
-            </span>
+            </span> */}
+
+            {m.sender._id === user._id ? (
+              <div className="sender_box">
+                <span className="sender">{m.message}</span>{' '}
+                <span className="msg_time">8:40 AM, Today</span>
+              </div>
+            ) : (
+              <div className="receiver_box">
+                <span className="msg_time">8:40 AM, Today</span>
+                <span className="receiver">{m.message}</span>
+              </div>
+            )}
           </div>
         ))}
       <div ref={messagesEndRef}></div>
-    </div>
+    </>
   );
 };
 

@@ -30,27 +30,41 @@ const MyChats = ({ fetchAgain, user }) => {
     fetchChats();
   }, [fetchAgain]);
   return (
-    <div>
+    <>
       {chats ? (
-        <div overflowY="scroll">
+        <ul className="contact_list">
           {chats?.map((chat) => (
-            <div
-              className="btn"
+            <li
+              className="active dlab-chat-user"
               onClick={() => setSelectedChat(chat)}
               key={chat?._id}
             >
-              <p>
-                {!chat?.isGroupChat
-                  ? getSender(user, chat?.users)
-                  : chat?.chatName}
-              </p>
-            </div>
+              <div className="d-flex bd-highlight">
+                <div className="img_cont">
+                  <img
+                    src="/assets/media/avatar/1.png"
+                    className="rounded-circle user_img mCS_img_loaded"
+                    alt=""
+                  />
+                  <span className="online_icon"></span>
+                </div>
+                <div className="user_info">
+                  {' '}
+                  <span>
+                    {!chat?.isGroupChat
+                      ? getSender(user, chat?.users)
+                      : chat?.chatName}
+                  </span>
+                  <p></p>
+                </div>
+              </div>
+            </li>
           ))}
-        </div>
+        </ul>
       ) : (
         <LoadingSpinner />
       )}
-    </div>
+    </>
   );
 };
 

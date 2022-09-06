@@ -13,7 +13,7 @@ const ChatSection = ({ user }) => {
         <div className="chatbox-close"></div>
 
         <div className="tab_box">
-          <div className="tabs">
+          <div className="tabs" style={{ display: 'none' }}>
             <ul>
               <li className="active">
                 <a href="#" rel="tab1">
