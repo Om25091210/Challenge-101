@@ -17,6 +17,7 @@ const SignedMainContent = ({ posts, user }) => {
   const [personas, setPersonas] = useState({});
   const [allgames, setAllGames] = useState([]);
   const [postType, setPostType] = useState('');
+  const [teamId, setTeamId] = useState('');
   const [gameTag, setGameTag] = useState({
     name: '',
     gameId: ''
@@ -61,6 +62,7 @@ const SignedMainContent = ({ posts, user }) => {
     formdata.append('profilepic', profilepic);
     formdata.append('username', username);
     formdata.append('postType', postType);
+    formdata.append('teamId', teamId);
     formdata.append('gameTagName', gameTag.name);
     formdata.append('gameTagId', gameTag.gameId);
 
@@ -130,10 +132,13 @@ const SignedMainContent = ({ posts, user }) => {
     $('a.model_close').parent().removeClass('show_model');
   };
 
-  const personaHandle = (username, profilepic, postType) => {
+  const personaHandle = (username, profilepic, postType, teamId) => {
     setUsername(username);
     setProfilePic(profilepic);
     setPostType(postType);
+    if (teamId > 0) {
+      setTeamId(teamId);
+    }
   };
 
   var settings = {
@@ -251,7 +256,8 @@ const SignedMainContent = ({ posts, user }) => {
                       personaHandle(
                         persona.teamId.name,
                         persona.teamId.imgUrl,
-                        'Team'
+                        'Team',
+                        persona.teamId._id
                       )
                     }
                   />
@@ -263,7 +269,8 @@ const SignedMainContent = ({ posts, user }) => {
                       personaHandle(
                         persona.tournamentId.name,
                         persona.tournamentId.imgUrl,
-                        'Tournament'
+                        'Tournament',
+                        persona.tournamentId._id
                       )
                     }
                   />

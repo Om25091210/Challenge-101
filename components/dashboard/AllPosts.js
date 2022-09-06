@@ -67,9 +67,24 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
           <div className="user_name_disc">
             <div className="title_follow">
               {post.game_tag[0]?.gameId === null ? (
-                <a href={`/user/${post.user?._id}`}>
-                  <h4>{post.username}</h4>
-                </a>
+                <>
+                  {post.post_type === 'Team' ||
+                  post.post_type === 'Tournament' ? (
+                    <a
+                      href={`/${
+                        post.post_type === 'Team' ? 'team' : 'tournament'
+                      }/${post?.teamId}`}
+                    >
+                      <h4>{post.username}</h4>
+                    </a>
+                  ) : (
+                    <>
+                      <a href={`/user/${post.user?._id}`}>
+                        <h4>{post.username}</h4>
+                      </a>
+                    </>
+                  )}
+                </>
               ) : (
                 <h4>
                   <a href={`/user/${post.user?._id}`}>{post.username} </a>
