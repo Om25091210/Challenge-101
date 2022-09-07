@@ -69,7 +69,7 @@ const AdminChallenges = ({ challenges }) => {
                         ply.teamId !== null && (
                           <div className="cols">
                             {
-                              ply?.playerId.apidata?.data.platformInfo
+                              ply?.playerId?.apidata?.data.platformInfo
                                 .platformUserHandle
                             }
                           </div>
@@ -83,7 +83,7 @@ const AdminChallenges = ({ challenges }) => {
                           ply.teamId === null && (
                             <div className="cols">
                               {
-                                ply?.playerId.apidata?.data.platformInfo
+                                ply?.playerId?.apidata?.data.platformInfo
                                   .platformUserHandle
                               }
                             </div>
@@ -94,14 +94,14 @@ const AdminChallenges = ({ challenges }) => {
                     <div className="cols">
                       <p>
                         {
-                          result?.players[0]?.playerId.apidata?.data
+                          result?.players[0]?.playerId?.apidata?.data
                             .platformInfo.platformUserHandle
                         }
                       </p>
                       VS
                       <p>
                         {
-                          result?.players[1]?.playerId.apidata?.data
+                          result?.players[1]?.playerId?.apidata?.data
                             .platformInfo.platformUserHandle
                         }
                       </p>

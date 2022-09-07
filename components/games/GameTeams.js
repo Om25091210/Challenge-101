@@ -31,13 +31,13 @@ const GameTeams = ({ user, game }) => {
       ) : (
         teams.map((result, idx) => (
           <li key={idx}>
-            <a href={`/team/${result?._id}`}>
+            <a href={`/team/${result?.team._id}`}>
               <div className="imgs">
                 {' '}
-                <img src={result?.imgUrl} alt={result?.name} />{' '}
+                <img src={result?.team.imgUrl} alt={result?.team.name} />{' '}
               </div>
               <div className="bottom_data">
-                <h3>{result?.name}</h3>
+                <h3>{result?.team.name}</h3>
               </div>
             </a>
           </li>

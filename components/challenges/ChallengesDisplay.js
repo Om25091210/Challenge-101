@@ -53,7 +53,11 @@ const ChallengesDisplay = ({ chall, user, profile }) => {
               </div>
             ))
           ) : null}
-          <img src="/assets/media/challenge/f.png" alt="" />
+          <img
+            src={chall.game.imgUrl}
+            alt={chall.game.name}
+            style={{ height: '30px', width: '30px' }}
+          />
         </div>
 
         <div className="row1">

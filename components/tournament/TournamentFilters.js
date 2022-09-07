@@ -175,7 +175,6 @@ const TournamentFilters = ({
       //console.log(team);
     }
   }, [myState, tournament]);
-  console.log(tournament);
 
   return (
     <>
