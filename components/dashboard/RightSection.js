@@ -4,6 +4,8 @@ import axios from 'axios';
 import baseURL from '@utils/baseURL';
 import Moment from 'moment';
 import Challengelist from '../challenges/ChallengeList';
+import ApproveRequest from '../discover/invites/ApproveRequest';
+import DeclineRequest from '../discover/invites/DeclineRequest';
 
 const RightSection = ({ user, suggestedplayers, teams, profile }) => {
   const [matches, setMatches] = useState([]);
@@ -149,18 +151,22 @@ const RightSection = ({ user, suggestedplayers, teams, profile }) => {
           <a href={`/team/create`} className="create_team">
             + Create a team
           </a>
-          {later === false ? null : (
-            <>
-              <p>Or use the Team Finder to find a team.</p>
-              <div className="grey_bg">
-                <img src="/assets/media/dash/user1.png" alt="" />
-                <p>
-                  You have been invited to join The Team.{' '}
-                  <a href="#">Click Here</a>
-                </p>
-              </div>
-            </>
-          )}
+          <>
+            {profile.request &&
+              profile.request.map((req) => (
+                <>
+                  <div className="grey_bg">
+                    <img src={req.teamId.imgUrl} alt={req.teamId.name} />
+                    <p>
+                      You have been invited to join{' '}
+                      <a href={`team/${req.teamId._id}`}>{req.teamId.name}</a>
+                    </p>
+                  </div>
+                  <ApproveRequest player={req} team={req.teamId} />
+                  <DeclineRequest player={req} team={req.teamId} />
+                </>
+              ))}
+          </>
         </div>
       </div>
       <div className="recent_activity team_match">

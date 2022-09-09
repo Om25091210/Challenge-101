@@ -17,7 +17,7 @@ export default function ApproveRequest({ player, team }) {
 const Approve_Req = ({ player, team }) => {
   const [request, setRequest] = useState(false);
 
-  const playerId = player?.playerId._id;
+  const playerId = player?.teamId ? player.playerId : player.playerId._id;
 
   const reqhandlesubmit = async (e) => {
     e.preventDefault();

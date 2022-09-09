@@ -6,11 +6,25 @@ import baseURL from '../../utils/baseURL';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
+import cookie from 'js-cookie';
 
-const GamesDetails = ({ user, profile, Userdata }) => {
+const GamesDetails = ({ user, profile, Userdata, teams }) => {
   const [attributeData, setAttributeData] = useState();
 
+  const isReq =
+    Userdata.playergames.filter((pro) => {
+      return Userdata.request.some((req) => {
+        return pro.player?._id === req.playerId;
+      });
+    }).length > 0;
+
+  const [request, setRequest] = useState(isReq);
+  const [selectTeam, setSelectTeam] = useState();
   const router = useRouter();
+
+  const handleChangeCheck = (e) => {
+    setSelectTeam({ ...selectTeam, [e.target.name]: e.target.value });
+  };
 
   const refreshData = () => {
     router.replace(router.asPath);
@@ -32,6 +46,40 @@ const GamesDetails = ({ user, profile, Userdata }) => {
     }
     refreshData();
   };
+
+  const handleGameData = async (e) => {
+    e.preventDefault();
+    let gameId = attributeData.games[0].gameId._id;
+    let userId = Userdata.user._id;
+    let teamId = selectTeam.teamId;
+
+    try {
+      await fetch(
+        `${baseURL}/api/teams/gamedata/${gameId}/${userId}/${teamId}`,
+        {
+          method: 'PUT',
+          headers: {
+            Authorization: cookie.get('token')
+          }
+        }
+      );
+      toast.success('Invitation has been sent.');
+      $('a.model_close').parent().removeClass('show_model');
+    } catch (err) {
+      toast.error(err.response?.data?.msg || 'Server Error');
+    }
+    setRequest(!request);
+  };
+
+  useEffect(() => {
+    $('a.model_show_btn').click(function () {
+      $(this).next().addClass('show_model');
+    });
+
+    $('a.model_close').click(function () {
+      $(this).parent().removeClass('show_model');
+    });
+  }, []);
 
   return (
     <>
@@ -91,7 +139,57 @@ const GamesDetails = ({ user, profile, Userdata }) => {
             </button>
           ) : null}
           {attributeData.attributeId === user._id ? null : (
-            <button className="game_btn">INVITE TO TEAM</button>
+            <>
+              {request ? (
+                <button className="game_btn" disabled>
+                  INVITATION SENT
+                </button>
+              ) : (
+                <a href="#!" className="model_show_btn">
+                  <button className="game_btn">
+                    <i className="fa fa-plus-circle" aria-hidden="true"></i>
+                    INVITE TO TEAM
+                  </button>
+                </a>
+              )}
+
+              <div className="common_model_box" id="big_poup">
+                <a href="#!" className="model_close">
+                  X
+                </a>
+                <div className="inner_model_box">
+                  <div className="add_job_height">
+                    <h3>Invite {Userdata.user.username} To Team</h3>
+                    <form action="">
+                      <label htmlFor="exampleFormControlInput1">
+                        Select Team
+                      </label>
+                      {teams &&
+                        teams.map((team) => (
+                          <div>
+                            <input
+                              type="radio"
+                              name="teamId"
+                              id=""
+                              value={team._id}
+                              onChange={handleChangeCheck}
+                            />
+                            <p>{team.name}</p>
+                          </div>
+                        ))}
+                      <button
+                        className="btn"
+                        onClick={handleGameData}
+                        type="submit"
+                      >
+                        Invite
+                      </button>
+                    </form>
+                  </div>
+                </div>
+                <div className="overlay"></div>
+              </div>
+            </>
           )}
         </div>
       )}

@@ -148,6 +148,7 @@ const ProfileData = ({ user, Userdata, products, teams }) => {
               user={user}
               profile={profile}
               Userdata={Userdata.profile}
+              teams={teams}
             />
           </div>
         </div>
