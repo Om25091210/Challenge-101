@@ -779,13 +779,14 @@ ul.top_menu li.profile>a span p {
 	position: relative;
 	font-size: 11px;
 	padding-top: 3px;
-	padding-left: 0;
+	padding-left:15px;
 }
 
 ul.top_menu li.profile>a span p .online {
-	position: static;
-	width: 10px;
-	height: 10px;
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: 5px;
 }
 
 ul.top_menu li.profile>a span p .offline {
@@ -793,6 +794,32 @@ ul.top_menu li.profile>a span p .offline {
 	width: 10px;
 	height: 10px;
 	display: inline-block;
+}
+
+ul.top_menu li.profile>a span p .offline {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 0.9375rem;
+    left: 0;
+    bottom: 3px;
+    border: 0.125rem solid #fff;
+    background: #ddd;
+}
+ul.top_menu li.profile>a span p .online_icon {
+	background: #07d7d7;
+	position: absolute;
+	width: 18px;
+	height: 18px;
+	border-radius: 50%;
+	right: -8px;
+	bottom: 2rem;
+	border: 3px solid #ddd;
+
+}
+
+ul.top_menu li.profile>a span p .online_icon.offline {
+	background: #f72b50;
 }
 
 
@@ -2719,27 +2746,7 @@ article .social_bar img {
 	background: #f72b50;
 }
 
-.offline {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    border-radius: 0.9375rem;
-    left: -5px;
-    bottom: 3px;
-    border: 0.125rem solid #fff;
-    background: #ddd;
-}
-.online_icon {
-	background: #07d7d7;
-	position: absolute;
-	width: 18px;
-	height: 18px;
-	border-radius: 50%;
-	right: -8px;
-	bottom: 2rem;
-	border: 3px solid #ddd;
 
-}
 
 .ms-auto {
 	margin-left: auto !important;
