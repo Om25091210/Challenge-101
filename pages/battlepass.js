@@ -9,6 +9,7 @@ import { toast } from 'react-toastify';
 import RewardList from '../components/battlepass/RewardList';
 import TaskList from '../components/battlepass/TaskList';
 import Moment from 'moment';
+import SubcriptionCard from '../components/common/SubcriptionCard';
 
 const battlepass = ({ user, data, profile }) => {
   const [bpData, setBpData] = useState(data);
@@ -20,7 +21,18 @@ const battlepass = ({ user, data, profile }) => {
     .toString()
     .slice(0, 2);
   let daysLeft = Number(x);
-
+  const pricingMonthly = [
+    {
+      id: 1,
+      title: 'Quarterly',
+      price: '799'
+    },
+    {
+      id: 2,
+      title: 'Yearly',
+      price: '2999'
+    }
+  ];
   return (
     <>
       <MetaDash />
@@ -39,6 +51,17 @@ const battlepass = ({ user, data, profile }) => {
             </div>
             <div>
               <img src="/assets/media/season/pass-btn.png" alt="" />
+              {pricingMonthly.map((pM) => (
+                <>
+                  <p>{pM.title}</p>
+                  <SubcriptionCard
+                    user={user}
+                    id={pM.id}
+                    title={pM.title}
+                    price={pM.price}
+                  />
+                </>
+              ))}
               <ul>
                 <li>Access to Multiplayr Premium Tournaments/Ladders.</li>
                 <li>Access to unlimited number of tournaments</li>
