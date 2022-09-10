@@ -30,7 +30,7 @@ const TournamentAddSponsor = ({ sponsors, states, type }) => {
 
   return (
     <>
-      <div>
+      <div className="form-group">
         {type === 'ORGANIZER' || type === 'SPONSORS' ? null : (
           <label htmlFor="exampleFormControlInput1">Sponsor</label>
         )}

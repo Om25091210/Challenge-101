@@ -12,23 +12,27 @@ const SponsorCard = ({ states, sponsors }) => {
 
   return (
     <>
-      <div className="colm">
-        <label htmlFor="title">Title</label>
-        <input type="text" name="title" />
+      <div className="edit_four">
+        <div className="form-group">
+          <label htmlFor="title">Title</label>
+          <input type="text" name="title" />
+        </div>
+
+        <TournamentAddSponsor sponsors={sponsors} states={states} />
       </div>
 
-      <TournamentAddSponsor sponsors={sponsors} states={states} />
-
       {[...Array(count)].map((e, index) => (
-        <div key={index}>
+        <div className="form-group">
           <TournamentAddSponsor sponsors={sponsors} states={states} />
         </div>
       ))}
 
-      <label htmlFor="">Add More Sponsors</label>
-      <span onClick={(e) => handleRoleForm(e)}>
-        <i className="fa fa-life-ring" aria-hidden="true"></i>
-      </span>
+      <div className="form-group">
+        <label htmlFor="">Add More Sponsors</label>
+        <span onClick={(e) => handleRoleForm(e)}>
+          <i className="fa fa-life-ring" aria-hidden="true"></i>
+        </span>
+      </div>
     </>
   );
 };

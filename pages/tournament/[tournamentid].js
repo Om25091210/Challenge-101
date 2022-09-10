@@ -634,16 +634,20 @@ const TournamentDetail = ({ user, data, tourRules, products, profile }) => {
 
                   <div className="rules_row">
                     <h2> ELIGIBLE COUNTRIES</h2>
-                    {tourRules?.country?.map((cty) => (
-                      <ReactCountryFlag
-                        countryCode={cty}
-                        svg
-                        style={{
-                          width: '2em',
-                          height: '2em'
-                        }}
-                      />
-                    ))}
+                    <ul>
+                      {tourRules?.country?.map((cty) => (
+                        <li>
+                          <ReactCountryFlag
+                            countryCode={cty}
+                            svg
+                            style={{
+                              width: '2em',
+                              height: '2em'
+                            }}
+                          />
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               </div>

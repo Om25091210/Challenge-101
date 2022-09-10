@@ -7385,7 +7385,7 @@ article .social_bar img {
 .sponsers_box ul {
 	display: flex;
 	color: #000;
-	flex-wrap: wrap;
+	flex-wrap: wrap; margin-top: 50px;
 }
 
 .sponsers_box ul li {
@@ -10881,6 +10881,7 @@ form.common_form .btn {
 	margin-right: 20px;
 }
 
+#share_prof ul{ float: left; width: 100%;}
 
 #share_prof ul li {
 	float: left;
@@ -10889,7 +10890,7 @@ form.common_form .btn {
 	margin-bottom: 20px;
 	background: #ddd;
 	border: 1px solid #999;
-	padding: 0;
+	padding: 10px 0;
 	/* box-shadow: 2px 4px 10px #eee; */
 	border-radius: 5px;
 	overflow: hidden;
@@ -10897,15 +10898,23 @@ form.common_form .btn {
 }
 
 #share_prof ul li .game_pic {
-	width: 100%;
-	height: 40px;
-	margin-bottom: 10px;
-	text-align: center;
-	vertical-align: middle;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+    text-align: center;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
+#share_prof ul li .game_pic img {
+    width: 100%;
+    height: 50px;
+    object-fit: contain;
+}
+
+#share_prof ul li .game_pic p{ color: #000 !important; padding-top: 10px;}
 
 #share_prof.part_poup ul li .game_pic {
 	height: auto;
@@ -11085,6 +11094,11 @@ form.common_form .btn {
 	padding: 20px;
 	border-radius: 5px;
 }
+
+.rules_details .rules_row p{ padding: 10px;}
+
+.rules_details .rules_row ul{ padding: 10px; display: flex;}
+.rules_details .rules_row ul li{ margin-right: 10px;}
 
 
 .add_form {

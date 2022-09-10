@@ -132,7 +132,7 @@ const RightSection = ({ user, suggestedplayers, teams, profile }) => {
                   teams.map((tm, idx) => (
                     <li key={idx}>
                       <Link href={`/team/${tm._id}`}>
-                        <div>
+                        <div className="game_pic">
                           <img src={tm.imgUrl} alt={tm.name} />
                           <p> {tm.name}</p>
                         </div>

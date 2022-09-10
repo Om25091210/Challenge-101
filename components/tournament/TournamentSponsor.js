@@ -78,6 +78,51 @@ const TournamentSponsor = ({ user, data, isUser }) => {
   return (
     <div className="tab hide" id="sponsors">
       <div className="sponsers_box">
+        <span>
+          <div className="loc_box">
+            {' '}
+            <a href="#!" className="model_show_btn">
+              {isUser ? (
+                <button className="btn">
+                  <i className="fa fa-plus-circle" aria-hidden="true" />
+                  Add Sponsor
+                </button>
+              ) : null}
+            </a>
+            <div className="common_model_box edit_profile " id="big_poup">
+              <a href="#!" className="model_close">
+                X
+              </a>
+              <div className="inner_model_box">
+                <h3>Sponsor's</h3>
+                <form className="common_form" onSubmit={handleSubmit}>
+                  <SponsorCard
+                    states={state}
+                    tournamentId={data.tournament._id}
+                    sponsors={sponsors}
+                  />
+
+                  {[...Array(count)].map((e, index) => (
+                    <div key={index}>
+                      <SponsorCard
+                        sponsors={sponsors}
+                        tournamentId={data.tournament._id}
+                      />
+                    </div>
+                  ))}
+                  <div className="form-group">
+                    <label htmlFor="">Add More Title and Sponsors</label>
+                    <span onClick={(e) => handleRoleForm(e)}>
+                      <i className="fa fa-life-ring" aria-hidden="true"></i>
+                    </span>
+                  </div>
+                  <button className="btn">Update</button>
+                </form>
+              </div>
+              <div className="overlay"></div>
+            </div>
+          </div>
+        </span>
         <ul>
           {data.sponsors &&
             data.sponsors.map((spons, index) => (
@@ -101,53 +146,6 @@ const TournamentSponsor = ({ user, data, isUser }) => {
               </li>
             ))}
         </ul>
-
-        <span>
-          <div className="loc_box">
-            {' '}
-            <a href="#!" className="model_show_btn">
-              {isUser ? (
-                <button className="btn">
-                  <i className="fa fa-plus-circle" aria-hidden="true" />
-                  Add Sponsor
-                </button>
-              ) : null}
-            </a>
-            <div className="common_model_box" style={{ height: '12rem' }}>
-              <a href="#!" className="model_close">
-                X
-              </a>
-              <div className="inner_model_box">
-                <h3>Sponsor's</h3>
-                <form className="common_form" onSubmit={handleSubmit}>
-                  <div className="form-group">
-                    <SponsorCard
-                      states={state}
-                      tournamentId={data.tournament._id}
-                      sponsors={sponsors}
-                    />
-
-                    {[...Array(count)].map((e, index) => (
-                      <div key={index}>
-                        <SponsorCard
-                          sponsors={sponsors}
-                          tournamentId={data.tournament._id}
-                        />
-                      </div>
-                    ))}
-
-                    <label htmlFor="">Add More Title and Sponsors</label>
-                    <span onClick={(e) => handleRoleForm(e)}>
-                      <i className="fa fa-life-ring" aria-hidden="true"></i>
-                    </span>
-                    <button className="btn">Update</button>
-                  </div>
-                </form>
-              </div>
-              <div className="overlay"></div>
-            </div>
-          </div>
-        </span>
       </div>
     </div>
   );

@@ -547,28 +547,31 @@ const CreateTournament = ({ user, profile }) => {
                     {state.playType === 'TEAMS' ? (
                       <>
                         <div className="form-group">
-                          <label for="exampleFormControlTextarea1">
-                            Number of Teams
-                          </label>
-                          <input
-                            type="number"
-                            name="numberOfTeam"
-                            className="form-control"
-                            onChange={handleChange}
-                            value={state.numberOfTeam}
-                          />
-                        </div>
-                        <div className="form-group">
-                          <label for="exampleFormControlTextarea1">
-                            Minimum Teams
-                          </label>
-                          <input
-                            type="number"
-                            name="minTeams"
-                            className="form-control"
-                            onChange={handleChange}
-                            value={state.minTeams}
-                          />
+                          <div className="colm">
+                            <label for="exampleFormControlTextarea1">
+                              Number of Teams
+                            </label>
+                            <input
+                              type="number"
+                              name="numberOfTeam"
+                              className="form-control"
+                              onChange={handleChange}
+                              value={state.numberOfTeam}
+                            />
+                          </div>
+
+                          <div className="colm">
+                            <label for="exampleFormControlTextarea1">
+                              Minimum Teams
+                            </label>
+                            <input
+                              type="number"
+                              name="minTeams"
+                              className="form-control"
+                              onChange={handleChange}
+                              value={state.minTeams}
+                            />
+                          </div>
                         </div>
                       </>
                     ) : null}

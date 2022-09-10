@@ -94,7 +94,7 @@ const Open_ChallengeApprove = ({ challenge, profile }) => {
             </a>
           )}
 
-          <div className="common_model_box" id="big_poup">
+          <div className="common_model_box edit_profile" id="">
             <a href="#!" className="model_close">
               X
             </a>
