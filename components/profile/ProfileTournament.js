@@ -438,7 +438,17 @@ const ProfileTournament = ({
                         </>
                       ) : (
                         <>
-                          <p>No Team</p>
+                          {tournament.type === 'profileTournament' ? (
+                            <>
+                              <img
+                                src={tournament.proteam.imgUrl}
+                                alt={tournament.proteam.name}
+                              />
+                              {tournament.proteam.name}
+                            </>
+                          ) : (
+                            <p>No Team</p>
+                          )}
                         </>
                       )}
                     </li>
@@ -446,10 +456,17 @@ const ProfileTournament = ({
                 </div>
 
                 <div className="tour_game_team">
-                  <ul>
-                    <li>Ranking: --</li>
-                    <li>Winnings: --</li>
-                  </ul>
+                  {tournament.type === 'profileTournament' ? (
+                    <ul>
+                      <li>Ranking: {tournament.ranking}</li>
+                      <li>Winnings: {tournament.winnings}</li>
+                    </ul>
+                  ) : (
+                    <ul>
+                      <li>Ranking: --</li>
+                      <li>Winnings: --</li>
+                    </ul>
+                  )}
                 </div>
 
                 <button className="btn">VIEW MATCHES</button>

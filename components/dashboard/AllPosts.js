@@ -13,6 +13,7 @@ import { toast } from 'react-toastify';
 
 const AllPosts = ({ post, user, profiledata, type, team }) => {
   const [profile, setProfile] = useState([]);
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
     axios
@@ -24,6 +25,17 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
         console.log(err);
       });
   }, []);
+
+  useEffect(() => {
+    axios
+      .get(`${baseURL}/api/comments/${post._id}`)
+      .then((res) => {
+        setComments(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [post._id]);
 
   const isFollow =
     profiledata &&
@@ -143,7 +155,7 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
             <a href="#">
               {' '}
               <i className="fa fa-commenting" aria-hidden="true"></i>{' '}
-              {/* <span>{comments?.comments?.length}</span>{' '} */}
+              <span>{comments?.length}</span>{' '}
             </a>{' '}
           </div>
           {post?.images.toString().length === 0 ? (
