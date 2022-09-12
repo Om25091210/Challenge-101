@@ -102,7 +102,7 @@ const RightSection = ({ user, suggestedplayers, teams, profile }) => {
         <div className="white_box">
           <ul className="team">
             {teams.length > 0 ? (
-              teams.slice(0, 3).map((tm, idx) => (
+              teams.slice(0, 2).map((tm, idx) => (
                 <li key={idx}>
                   <Link href={`/team/${tm._id}`}>
                     <div>

@@ -64,26 +64,6 @@ const TeamSponsors = ({ user, data, isManager, isAdmin, teamSponsors }) => {
   return (
     <div className="tab hide" id="sponsors">
       <div className="sponsers_box">
-        <ul>
-          {teamSponsors.sponsors?.length === 0 ? (
-            <p style={{ color: 'white' }}>No Sponsors available.</p>
-          ) : (
-            teamSponsors.type === 'SPONSORS' &&
-            teamSponsors.sponsors.map((item, index) => (
-              <li key={index}>
-                <div className="sponser_name">
-                  <img src={item.imgUrl} alt={item.name} />
-                </div>
-                <div className="sponser_data">
-                  {' '}
-                  <span className="head_spons_bg">{item.name}</span>
-                  <p>{item.description}</p>
-                </div>
-              </li>
-            ))
-          )}
-        </ul>
-
         <span>
           <div className="loc_box">
             {' '}
@@ -125,6 +105,26 @@ const TeamSponsors = ({ user, data, isManager, isAdmin, teamSponsors }) => {
             </div>
           </div>
         </span>
+
+        <ul>
+          {teamSponsors.sponsors?.length === 0 ? (
+            <p style={{ color: 'white' }}>No Sponsors available.</p>
+          ) : (
+            teamSponsors.type === 'SPONSORS' &&
+            teamSponsors.sponsors.map((item, index) => (
+              <li key={index}>
+                <div className="sponser_name">
+                  <img src={item.imgUrl} alt={item.name} />
+                </div>
+                <div className="sponser_data">
+                  {' '}
+                  <span className="head_spons_bg">{item.name}</span>
+                  <p>{item.description}</p>
+                </div>
+              </li>
+            ))
+          )}
+        </ul>
       </div>
     </div>
   );

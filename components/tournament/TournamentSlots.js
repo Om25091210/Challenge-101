@@ -44,10 +44,7 @@ const TournamentSlots = ({ total, reg }) => {
 
   return (
     <>
-      <div
-        className="container"
-        style={{ backgroundColor: 'transparent', height: '40px' }}
-      >
+      <div>
         <Doughnut
           style={{ height: '100%', width: '40px' }}
           options={options}

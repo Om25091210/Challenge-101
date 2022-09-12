@@ -36,7 +36,7 @@ const TournamentDisplay = ({
 
   return (
     <>
-      <div>
+      <div className="team_row_box">
         {isLoading === true ? (
           <div className="activity_tag">
             <LoadingSpinner />
@@ -111,9 +111,9 @@ const TournamentDisplay = ({
                               src={ppl.user?.profilePicUrl}
                               alt={ppl.user?.name}
                             />
-                            <a href={`/user/${ppl.user?._id}`}>
+                            {/* <a href={`/user/${ppl.user?._id}`}>
                               {ppl.user?.name}
-                            </a>
+                            </a> */}
                           </li>
                         ))}
                       </>
@@ -126,9 +126,9 @@ const TournamentDisplay = ({
                               alt={team.teamId?.name}
                             />
 
-                            <a href={`/team/${team.teamId?._id}`}>
+                            {/* <a href={`/team/${team.teamId?._id}`}>
                               {team.teamId?.name}
-                            </a>
+                            </a> */}
                           </li>
                         ))}
                       </>
@@ -271,9 +271,9 @@ const TournamentDisplay = ({
                               src={ppl.user?.profilePicUrl}
                               alt={ppl.user?.name}
                             />
-                            <a href={`/user/${ppl.user?._id}`}>
+                            {/* <a href={`/user/${ppl.user?._id}`}>
                               {ppl.user?.name}
-                            </a>
+                            </a> */}
                           </li>
                         ))}
                       </>
@@ -286,9 +286,9 @@ const TournamentDisplay = ({
                               alt={team.teamId?.name}
                             />
 
-                            <a href={`/team/${team.teamId?._id}`}>
+                            {/* <a href={`/team/${team.teamId?._id}`}>
                               {team.teamId?.name}
-                            </a>
+                            </a> */}
                           </li>
                         ))}
                       </>
@@ -435,9 +435,9 @@ const TournamentDisplay = ({
                               src={ppl.user?.profilePicUrl}
                               alt={ppl.user?.name}
                             />
-                            <a href={`/user/${ppl.user?._id}`}>
+                            {/* <a href={`/user/${ppl.user?._id}`}>
                               {ppl.user?.name}
-                            </a>
+                            </a> */}
                           </li>
                         ))}
                       </>
@@ -450,9 +450,9 @@ const TournamentDisplay = ({
                               alt={team.teamId?.name}
                             />
 
-                            <a href={`/team/${team.teamId?._id}`}>
+                            {/* <a href={`/team/${team.teamId?._id}`}>
                               {team.teamId?.name}
-                            </a>
+                            </a> */}
                           </li>
                         ))}
                       </>

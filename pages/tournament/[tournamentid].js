@@ -455,7 +455,7 @@ const TournamentDetail = ({ user, data, tourRules, products, profile }) => {
                         </>
                       )}
                     </p>
-                    <div>
+                    <div className="slot-graphs">
                       {data.tournament.playType === 'TEAMS' ? (
                         <>
                           {data.tournament.teams.length === 0 ? null : (

@@ -137,12 +137,14 @@ const TeamAbout = ({ Data, isManager, isAdmin, user, teamAbout }) => {
         </span>
 
         <div className="about">
-          <h2>OUR TEAM</h2>
-          {isManager || isAdmin ? (
-            <button className="bio_edit" onClick={toggleShowform}>
-              <i className="fa fa-pencil" aria-hidden="true"></i>
-            </button>
-          ) : null}
+          <h2>
+            OUR TEAM{' '}
+            {isManager || isAdmin ? (
+              <button className="bio_edit" onClick={toggleShowform}>
+                <i className="fa fa-pencil" aria-hidden="true"></i>
+              </button>
+            ) : null}
+          </h2>
 
           {!showform ? (
             <p> {Data.team.about ? Data.team.about.description : ''} </p>

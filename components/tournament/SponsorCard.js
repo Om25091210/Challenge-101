@@ -13,10 +13,10 @@ const SponsorCard = ({ states, sponsors }) => {
   return (
     <>
       <div className="edit_four">
-        <div className="form-group">
+        {/* <div className="form-group">
           <label htmlFor="title">Title</label>
           <input type="text" name="title" />
-        </div>
+        </div> */}
 
         <TournamentAddSponsor sponsors={sponsors} states={states} />
       </div>

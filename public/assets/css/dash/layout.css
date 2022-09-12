@@ -2269,6 +2269,14 @@ article .social_bar img {
 	display: none;
 }
 
+.recent_activity.my_team{ text-align: center;}
+
+.recent_activity .btn {
+    margin: 30px 0 10px 0;
+    text-align: center;
+}
+
+
 .white_box {
 	float: left;
 	width: 100%;
@@ -2417,8 +2425,10 @@ article .social_bar img {
 }
 
 .my_team .team {
-	display: flex;
+	 float: left; width: 100%; text-align: center;
 }
+
+.my_team .team li{ display: inline-block; width: 50%  !important; text-align: center; margin-right: 0 !important; cursor: pointer;}
 
 .my_team .team li:last-child a {
 	background: #ececec;
@@ -2440,16 +2450,8 @@ article .social_bar img {
 	font-weight: 400;
 }
 
-.my_team .team li {
-	text-align: center;
-	width: 40%;
-	margin-right: 5%;
-}
 
-.my_team .team li:last-child {
-	width: 10%;
-	margin-right: 0;
-}
+
 
 .my_team .team li a {
 	color: #000;
@@ -2492,6 +2494,7 @@ article .social_bar img {
 	font-size: 11px;
 	font-weight: 400;
 	text-align: center;
+	padding-top: 10px;
 }
 
 .my_team .grey_bg {
@@ -3242,7 +3245,8 @@ article .social_bar img {
 .profile_dp_box .top_details {
 	display: flex;
 	position: relative;
-	padding-left: 220px
+	padding-left: 220px;
+	align-items: baseline;
 }
 
 .profile_dp_box .top_details .name_box {
@@ -3321,7 +3325,7 @@ article .social_bar img {
 	font-size: 12px;
 	text-align: center;
 	padding: 5px 17px;
-	border-radius: 20px;
+	border-radius: 5px;
 	text-transform: uppercase;
 }
 
@@ -4232,7 +4236,7 @@ article .social_bar img {
 }
 
 .sponser ul li {
-	flex: 0 0 15%;
+	flex: 0 0 45px;
 	margin-right: 5px;
 	height: 50px;
 	padding: 5px;
@@ -4254,11 +4258,11 @@ article .social_bar img {
 }
 
 .bio_box .right_team_bio h5 {
-	font-size: 12px;
-	font-weight: 600;
-	padding-bottom: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    padding-bottom: 0px;
+    text-transform: uppercase;
 }
-
 .product_box {
 	padding: 0;
 }
@@ -5103,6 +5107,11 @@ article .social_bar img {
 	color: #fff;
 }
 
+.team_row_box{float: left;
+    width: 104%;
+    background: #0d0c12;
+    margin: 0 -20px 0 -20px;}
+
 .team_row {
 	float: left;
 	width: 100%;
@@ -5680,7 +5689,32 @@ article .social_bar img {
 	width: 26%;
 	position: relative;
 	height: 220px;
-	border-right: 2px solid #ddd;
+
+}
+
+.game_pos:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-bottom: 220px solid #202028;
+    border-left: 100px solid transparent;
+    right: 0;
+    top: 0;
+    z-index: 9;
+	
+}
+
+.game_pos:before {
+    content: "";
+    position: absolute;
+    right: 48px;
+    top: 0;
+    border-right: 1px solid #000;
+    z-index: 10;
+    width: 3px;
+    height: 100%;
+    transform: skewX(-24deg);
 }
 
 .game_pos .tour_logo {
@@ -8228,6 +8262,8 @@ main {
 	display: block;
 	font-size: 10px;
 }
+
+.tournament_dp_box .left_bio .slot-graphs{    margin: -11px 0 0 12px;}
 
 /* -------------- Create team form --------------------- */
 

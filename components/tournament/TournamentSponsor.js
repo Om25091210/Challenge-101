@@ -110,12 +110,12 @@ const TournamentSponsor = ({ user, data, isUser }) => {
                       />
                     </div>
                   ))}
-                  <div className="form-group">
+                  {/* <div className="form-group">
                     <label htmlFor="">Add More Title and Sponsors</label>
                     <span onClick={(e) => handleRoleForm(e)}>
                       <i className="fa fa-life-ring" aria-hidden="true"></i>
                     </span>
-                  </div>
+                  </div> */}
                   <button className="btn">Update</button>
                 </form>
               </div>
