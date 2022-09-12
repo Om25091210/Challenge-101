@@ -6,6 +6,7 @@ import axios from 'axios';
 import baseURL from '@utils/baseURL';
 import VideoDropzone from '@components/common/VideosDropzone';
 import { Video } from 'cloudinary-react';
+import TournamentVidDel from './TournamentVidDel';
 
 const TournamentVideos = ({ user, tournament, isUser }) => {
   const [videos, setVideos] = useState([]);
@@ -113,14 +114,15 @@ const TournamentVideos = ({ user, tournament, isUser }) => {
                 </div>
                 <div className="bottom_data">
                   {' '}
-                  <a href="#">The Team</a>{' '}
+                  {/* <a href="#">The Team</a>{' '}
                   <a href="#" className="yellow">
                     Lq Heroes
-                  </a>
+                  </a> */}
                   <h2>
-                    {vide.originalname} : <span>{vid.videodisc}</span>
+                    {/* {vide.originalname} :  */}
+                    <span>{vid.videodisc}</span>
                   </h2>
-                  <span className="date">{vide.createdAt}</span>{' '}
+                  {/* <span className="date">{vide.createdAt}</span>{' '}
                   <span className="views">
                     <i className="fa fa-eye" aria-hidden="true"></i> 2223
                   </span>{' '}
@@ -129,7 +131,12 @@ const TournamentVideos = ({ user, tournament, isUser }) => {
                   </span>{' '}
                   <span className="comments">
                     <i className="fa fa-comment" aria-hidden="true"></i>18
-                  </span>{' '}
+                  </span>{' '} */}
+                  <TournamentVidDel
+                    collectionId={vid._id}
+                    tournamentId={tournament.tournament._id}
+                    isUser={isUser}
+                  />
                 </div>
               </li>
             ))}

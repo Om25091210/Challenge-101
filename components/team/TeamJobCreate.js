@@ -13,11 +13,14 @@ const Editor = dynamic(
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import { convertToRaw } from 'draft-js';
 import draftToHtml from 'draftjs-to-html';
+import { useRouter } from 'next/router';
 
 const TeamJobCreate = ({ user, profile }) => {
   const [teamroles, setTeamroles] = useState([]);
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
   let edited2 = draftToHtml(convertToRaw(editorState.getCurrentContent()));
+
+  const router = useRouter();
 
   const [state, setState] = useState({
     name: '',
@@ -58,6 +61,7 @@ const TeamJobCreate = ({ user, profile }) => {
       ).then((data) => data.json());
       $('a.model_close').parent().removeClass('show_model');
       toast.success('Your Job has been successfully created!! ');
+      router.push('/discover');
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }

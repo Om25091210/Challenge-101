@@ -127,19 +127,23 @@ const RightSection = ({ user, suggestedplayers, teams, profile }) => {
 
             <div className="inner_model_box">
               <h3>Teams</h3>
-              <ul>
-                {teams &&
-                  teams.map((tm, idx) => (
-                    <li key={idx}>
-                      <Link href={`/team/${tm._id}`}>
-                        <div className="game_pic">
-                          <img src={tm.imgUrl} alt={tm.name} />
-                          <p> {tm.name}</p>
-                        </div>
-                      </Link>
-                    </li>
-                  ))}
-              </ul>
+              {teams.length === 0 ? (
+                <p>No Teams Available </p>
+              ) : (
+                <ul>
+                  {teams &&
+                    teams.map((tm, idx) => (
+                      <li key={idx}>
+                        <Link href={`/team/${tm._id}`}>
+                          <div className="game_pic">
+                            <img src={tm.imgUrl} alt={tm.name} />
+                            <p> {tm.name}</p>
+                          </div>
+                        </Link>
+                      </li>
+                    ))}
+                </ul>
+              )}
               <p>
                 {' '}
                 <a href="/discover"> Discover </a> More Teams

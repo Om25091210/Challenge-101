@@ -20,7 +20,6 @@ const AttributeCard = ({ type, attributeId }) => {
     type: '',
     salary: '',
     rank: '',
-    availability: '',
     platform: ''
   });
   const options = useMemo(() => countryList().getData(), []);
@@ -283,19 +282,6 @@ const AttributeCard = ({ type, attributeId }) => {
                         />
                       </div>
                     ) : null}
-
-                    <div className="form-group">
-                      <label htmlFor="exampleFormControlInput1">
-                        Availability
-                      </label>
-                      <input
-                        type="date"
-                        name="availability"
-                        onChange={onChange}
-                        value={states.availability}
-                        className="form-control"
-                      />
-                    </div>
 
                     <input type="submit" value="Confirm" className="btn" />
                   </form>

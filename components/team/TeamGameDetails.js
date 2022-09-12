@@ -67,16 +67,16 @@ const TeamGameDetails = ({ user, team, isManager, isAdmin }) => {
             </li>
             <li>
               <span className="nm">Win rate/KDA:</span>{' '}
-              <span className="task"> 67% / 2.9 </span>
+              <span className="task"> -- </span>
             </li>
             <li>
               <span className="nm">MMR:</span>{' '}
-              <span className="task"> 3211 </span>
+              <span className="task"> -- </span>
             </li>
-            <li>
+            {/* <li>
               <span className="nm">Availablilty:</span>{' '}
               <span className="task"> 4 hours per day 7 days a week </span>
-            </li>
+            </li> */}
           </ul>
           <div className="chart_box">
             <img src="/assets/media/profilechart.jpg" alt="" />

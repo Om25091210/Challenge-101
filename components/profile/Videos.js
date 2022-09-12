@@ -113,15 +113,16 @@ const Videos = ({ Userdata, user }) => {
               </div>
               <div className="bottom_data">
                 {' '}
-                <a href="#">The Team</a>{' '}
+                {/* <a href="#">The Team</a>{' '}
                 <a href="#" className="yellow">
                   Lq Heroes
-                </a>
+                </a> */}
                 <h2>
-                  {vide.originalname} : <span>{vid.videodisc}</span>
+                  {/* {vide.originalname} :  */}
+                  <span>{vid.videodisc}</span>
                 </h2>
-                <span className="date">{vide.createdAt}</span>{' '}
-                <span className="views">
+                {/* <span className="date">{vide.createdAt}</span>{' '} */}
+                {/* <span className="views">
                   <i className="fa fa-eye" aria-hidden="true"></i> 2223
                 </span>{' '}
                 <span className="likes">
@@ -129,7 +130,7 @@ const Videos = ({ Userdata, user }) => {
                 </span>{' '}
                 <span className="comments">
                   <i className="fa fa-comment" aria-hidden="true"></i>18
-                </span>{' '}
+                </span>{' '} */}
                 <ProfileVideosDel
                   collectionId={vid._id}
                   profile={Userdata.profile}

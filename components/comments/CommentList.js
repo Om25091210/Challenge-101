@@ -165,9 +165,9 @@ const CommentList = ({ post, user, comments }) => {
         )}
       </div>
 
-      <div className="thx_msg">
+      {/* <div className="thx_msg">
         <p>Thank you everyone for all of your support.</p>
-      </div>
+      </div> */}
       <div className="loadmore">
         {next < comments?.length ? (
           <button className="" onClick={handleMoreImage}>

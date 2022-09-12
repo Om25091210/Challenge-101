@@ -12,11 +12,11 @@ const SignedMainContent = ({ posts, user }) => {
   const [description, setDescription] = useState('');
   const [image, setImage] = useState(null);
   const [followingPosts, setFollowingPosts] = useState([]);
-  const [profilepic, setProfilePic] = useState('');
-  const [username, setUsername] = useState('');
+  const [profilepic, setProfilePic] = useState(user.profilePicUrl);
+  const [username, setUsername] = useState(user.name);
   const [personas, setPersonas] = useState({});
   const [allgames, setAllGames] = useState([]);
-  const [postType, setPostType] = useState('');
+  const [postType, setPostType] = useState('User');
   const [teamId, setTeamId] = useState('');
   const [gameTag, setGameTag] = useState({
     name: '',
@@ -27,7 +27,7 @@ const SignedMainContent = ({ posts, user }) => {
   const [profiledata, setProfileData] = useState([]);
   const [topmenu, setTopmenu] = useState(true);
 
-  const shareUrl = `${process.env.NEXT_PUBLIC_ESPORTS_API_BASE_URL}/dashboard`;
+  const shareUrl = `${process.env.NEXT_PUBLIC_ESPORTS_API_BASE_URL}/signup`;
   useEffect(() => {
     axios
       .get(`${baseURL}/api/profile/${user._id}`)
@@ -379,9 +379,9 @@ const SignedMainContent = ({ posts, user }) => {
             </div>
             <div className="overlay"></div>
           </div>
-          <a href="#">
+          {/* <a href="#">
             <i className="fa fa-video-camera" aria-hidden="true"></i>
-          </a>
+          </a> */}
           <TwitterShareButton
             url={shareUrl}
             title={'Multiplayer - Home of Esports'}

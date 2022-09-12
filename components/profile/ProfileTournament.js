@@ -61,7 +61,7 @@ const ProfileTournament = ({
           `${baseURL}/api/profile/tournaments/${profile?._id}`,
           tournament
         );
-        toast.success('Added Tournament Successfully');
+        toast.success('Tournament Added Successfully, Our Team Will Verify.');
         $('a.model_close').parent().removeClass('show_model');
       } catch (err) {
         toast.error(err.response?.data?.msg || 'Please recheck your inputs');
