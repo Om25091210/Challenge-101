@@ -218,20 +218,20 @@ const battlepass = ({ user, data, profile }) => {
             <div className="prfoile_tab_data">
               <div className="tab " id="week1">
                 <ul>
-                  <TaskList week="Week 1" />
+                  <TaskList week="Week 1" battlepass={bpData.battlepass} />
                 </ul>
               </div>
               <div className="tab hide" id="week2">
-                <TaskList week="Week 2" />
+                <TaskList week="Week 2" battlepass={bpData.battlepass} />
               </div>
               <div className="tab hide" id="week3">
-                <TaskList week="Week 3" />
+                <TaskList week="Week 3" battlepass={bpData.battlepass} />
               </div>
               <div className="tab hide" id="week4">
-                <TaskList week="Week 4" />
+                <TaskList week="Week 4" battlepass={bpData.battlepass} />
               </div>
               <div className="tab hide" id="week5">
-                <TaskList week="Week 5" />
+                <TaskList week="Week 5" battlepass={bpData.battlepass} />
               </div>
             </div>
           </div>

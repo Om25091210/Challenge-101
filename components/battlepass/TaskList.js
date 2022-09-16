@@ -15,6 +15,7 @@ const TaskList = ({ week, battlepass }) => {
       {tasks && tasks.length === 0 ? (
         <p>Complete previous week tasks to unlock.</p>
       ) : (
+        tasks &&
         tasks.map((task) => (
           <li>
             <span>{task.desc}</span>

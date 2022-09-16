@@ -17,6 +17,7 @@ const RewardCollect = ({ battlepass, task }) => {
   const [collect, setCollect] = useState(task?.isCollected);
 
   const isComplete =
+    battlepass.completed_tasks &&
     battlepass.completed_tasks.filter((completed_task) => {
       return completed_task.taskId === task._id;
     }).length > 0;
