@@ -61,7 +61,7 @@ export const teamformvalidate = (values) => {
   const errors = {};
   const regex = /^((https?|ftp|smtp):\/\/)?(www.)?[a-z0-9]+\.[a-z]+(\/[a-zA-Z0-9#]+\/?)*$/;
   const year_regex = /^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/;
-  if (!values.name) {
+  if (!values.name.length < 8) {
     errors.name = 'Team Name is requried';
   }
   if (!year_regex.test(values.founded)) {
@@ -75,10 +75,10 @@ export const teamformvalidate = (values) => {
   }
   if (!values.description) {
     errors.description = 'Description is required';
-  } else if (values.description.length < 15) {
-    errors.description = 'Description should be minimum of 15 characters.';
+  } else if (values.description.length < 51) {
+    errors.description = 'Description should be minimum of 50 characters.';
   } else if (values.description.length > 250) {
-    errors.description = 'Description Cannot exceed more 60 characters.';
+    errors.description = 'Description Cannot exceed more than 250 characters.';
   }
   return errors;
 };
@@ -87,7 +87,7 @@ export const tournamentformvalidate = (values) => {
   const regex = /^((https?|ftp|smtp):\/\/)?(www.)?[a-z0-9]+\.[a-z]+(\/[a-zA-Z0-9#]+\/?)*$/;
   const errors = {};
   const limit = 64;
-  if (!values.name) {
+  if (!values.name.length === 0) {
     errors.name = 'Tournament Name is requried';
   }
   if (values.name.length > limit) {
@@ -111,15 +111,17 @@ export const tournamentformvalidate = (values) => {
   if (!values.location) {
     errors.location = 'Location is Required.';
   }
-  if (!values.address) {
-    errors.address = 'Address is Required.';
+  if (values.category === 'LAN') {
+    if (!values.address) {
+      errors.address = 'Address is Required.';
+    }
   }
   if (!values.description) {
     errors.description = 'Description is required';
-  } else if (values.description.length < 15) {
-    errors.description = 'Description should be minimum of 15 characters.';
-  } else if (values.description.length > 60) {
-    errors.description = 'Description Cannot exceed more 60 characters.';
+  } else if (values.description.length < 51) {
+    errors.description = 'Description should be minimum of 50 characters.';
+  } else if (values.description.length > 250) {
+    errors.description = 'Description Cannot exceed more than 250 characters.';
   }
   return errors;
 };
@@ -141,6 +143,10 @@ export const profileformvalidate = (values) => {
 
   if (values.bio.length === 0) {
     errors.bio = 'Bio Required';
+  } else if (values.bio.length < 51) {
+    errors.bio = 'Bio should be minimum of 50 characters';
+  } else if (values.bio.length > 250) {
+    errors.bio = 'Bio Cannot exceed more than 250 characters';
   }
 
   if (values.profileType === 'Business' && values.b_role.length === 0) {
@@ -203,8 +209,12 @@ export const teamEditFormValidate = (values) => {
     errors.teamName = 'Team Required';
   }
 
-  if (values.about.length < 5 || values.about.length === 0) {
-    errors.Tabout = 'Please recheck input';
+  if (values.about.length === 0) {
+    errors.Tabout = 'Team Description cannot be empty';
+  } else if (values.about.length < 51) {
+    errors.Tabout = 'Description should be minimum of 50 characters.';
+  } else if (values.about.length > 250) {
+    errors.Tabout = 'Description Cannot exceed more than 250 characters.';
   }
 
   if (values.region.length === 0) {
@@ -241,8 +251,12 @@ export const tournamentEditValidate = (values) => {
     errors.endTime = 'End Time Required';
   }
 
-  if (values.description.length === 0 || values.description.length < 10) {
-    errors.description = 'Please check input for intro';
+  if (values.description.length === 0) {
+    errors.description = 'Tournament Description cannot be empty';
+  } else if (values.description.length < 51) {
+    errors.description = 'Description should be minimum of 50 characters.';
+  } else if (values.description.length > 250) {
+    errors.description = 'Description Cannot exceed more than 250 characters.';
   }
 
   if (values.games.length === 0) {
@@ -268,15 +282,15 @@ export const tournamentRules = (values) => {
   }
 
   if (values.prizeRules.length === 0 || values.prizeRules.length < 15) {
-    errors.prizeRules = 'Please Recheck Input';
+    errors.prizeRules = 'Prize Rules is Required';
   }
 
   if (values.general.length === 0 || values.general.length < 15) {
-    errors.general = 'Please Recheck Input';
+    errors.general = 'General Rules is required';
   }
 
   if (values.compete.length === 0 || values.compete.length < 15) {
-    errors.compete = 'Please Recheck Input';
+    errors.compete = 'Compete Rules is required';
   }
 
   // if (values.cusRuleBody.length === 0 || values.cusRuleBody.length < 15) {

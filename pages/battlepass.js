@@ -13,6 +13,19 @@ import SubcriptionCard from '../components/common/SubcriptionCard';
 
 const battlepass = ({ user, data, profile }) => {
   const [bpData, setBpData] = useState(data);
+  const [pageNumber, setPageNumber] = useState(0);
+  const rewardPerPage = 5;
+  const rewardVisited = pageNumber * rewardPerPage;
+
+  const displayRewards = data.freelevels.slice(
+    rewardVisited,
+    rewardVisited + rewardPerPage
+  );
+  const displayLevels = data.freelevels.slice(
+    rewardVisited,
+    rewardVisited + rewardPerPage
+  );
+
   const { battlepass, freelevels, paidlevels } = bpData;
   let x = Moment.duration(
     Moment(battlepass.endDate).diff(Moment().startOf('day'))
@@ -33,6 +46,18 @@ const battlepass = ({ user, data, profile }) => {
       price: '2999'
     }
   ];
+
+  const pageCount = Math.ceil(data.freelevels.length / rewardPerPage);
+
+  const handleNext = (e, type) => {
+    e.preventDefault();
+    if (type === 'Next') {
+      setPageNumber(pageNumber + 1);
+    } else {
+      setPageNumber(pageNumber - 1);
+    }
+  };
+
   return (
     <>
       <MetaDash />
@@ -83,14 +108,26 @@ const battlepass = ({ user, data, profile }) => {
 
               <div className="pages">
                 {' '}
-                page 1/5
+                page {pageNumber + 1}/{pageCount}
                 <span>
                   {' '}
-                  <i class="fa fa-chevron-left" aria-hidden="true"></i>{' '}
+                  <button
+                    className="btn"
+                    disabled={pageNumber === 0 ? true : false}
+                    onClick={(e) => handleNext(e, 'Prev')}
+                  >
+                    <i class="fa fa-chevron-left" aria-hidden="true" />
+                  </button>
                 </span>
                 <span>
                   {' '}
-                  <i class="fa fa-chevron-right" aria-hidden="true"></i>{' '}
+                  <button
+                    className="btn"
+                    disabled={displayRewards.length < 5 ? true : false}
+                    onClick={(e) => handleNext(e, 'Next')}
+                  >
+                    <i class="fa fa-chevron-right" aria-hidden="true" />
+                  </button>
                 </span>
               </div>
             </div>
@@ -116,25 +153,22 @@ const battlepass = ({ user, data, profile }) => {
                     levels={freelevels}
                     battlepass={battlepass}
                     type="free"
+                    rewardPerPage={rewardPerPage}
+                    rewardVisited={rewardVisited}
                   />
                 </ul>
 
                 <ul className="step_line">
-                  <li className="active">
-                    <span>1</span>
-                  </li>
-                  <li className="active">
-                    <span>2</span>
-                  </li>
-                  <li className="active">
-                    <span>3</span>
-                  </li>
-                  <li>
-                    <span>4</span>
-                  </li>
-                  <li>
-                    <span>5</span>
-                  </li>
+                  {displayLevels &&
+                    displayLevels.map((lev) => (
+                      <li
+                        className={`${
+                          lev._id <= battlepass?.level ? 'active' : ''
+                        }`}
+                      >
+                        <span>{lev._id}</span>
+                      </li>
+                    ))}
                 </ul>
 
                 <ul className="boxes">
@@ -142,6 +176,8 @@ const battlepass = ({ user, data, profile }) => {
                     levels={paidlevels}
                     battlepass={battlepass}
                     type="paid"
+                    rewardPerPage={rewardPerPage}
+                    rewardVisited={rewardVisited}
                   />
                 </ul>
               </div>

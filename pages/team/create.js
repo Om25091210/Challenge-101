@@ -107,7 +107,7 @@ const CreateTeam = ({ user, profile }) => {
       try {
         await mutation.mutateAsync(formdata);
         toast.success('Your Team has been successfully created! ');
-        router.push('/discover');
+        router.push('/dashboard');
       } catch (err) {
         toast.error(err.response?.data?.msg || 'Please recheck your inputs');
       }
@@ -133,7 +133,13 @@ const CreateTeam = ({ user, profile }) => {
   }
 
   const showstep2 = () => {
-    if (!(state.name === '' || state.founded === '' || state.game === '')) {
+    if (state.name === '' || state.name < 8) {
+      toast.info('Team name should be atleast 8 characters long!');
+    } else if (state.founded === '') {
+      toast.info('Year is incorrect');
+    } else if (state.game === '') {
+      toast.info('please select minimum 1 game');
+    } else {
       setStep1(true);
       setShowbtn(false);
     }

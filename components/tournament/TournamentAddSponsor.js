@@ -63,7 +63,15 @@ const TournamentAddSponsor = ({ sponsors, states, type }) => {
                           className="items"
                         >
                           <span>
-                            <img src={data?.imgUrl} height={50} width={50} />
+                            {data.imgUrl ? (
+                              <img src={data?.imgUrl} height={50} width={50} />
+                            ) : (
+                              <img
+                                src={data?.profilePicUrl}
+                                height={50}
+                                width={50}
+                              />
+                            )}
                           </span>
                           <p>
                             {data.name.length > 20

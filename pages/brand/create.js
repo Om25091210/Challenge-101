@@ -9,6 +9,7 @@ import 'rc-time-picker/assets/index.css';
 import { toast } from 'react-toastify';
 import { useMutation } from 'react-query';
 import cookie from 'js-cookie';
+import { useRouter } from 'next/router';
 
 const CreateBrand = ({ user, profile }) => {
   const [image, setImage] = useState(null);
@@ -16,8 +17,15 @@ const CreateBrand = ({ user, profile }) => {
     name: '',
     logoUrl: '/assets/media/discover/lxg.png',
     description: '',
-    socialLinks: ''
+    facebook: '',
+    twitch: '',
+    website: '',
+    instagram: '',
+    youtube: '',
+    discord: ''
   });
+
+  const router = useRouter();
 
   const mutation = useMutation(
     async (formdata) =>
@@ -41,12 +49,18 @@ const CreateBrand = ({ user, profile }) => {
       let formdata = new FormData();
       formdata.append('name', state.name);
       formdata.append('description', state.description);
-      formdata.append('socialLinks', state.socialLinks);
+      formdata.append('facebook', state.facebook);
+      formdata.append('twitch', state.twitch);
+      formdata.append('website', state.website);
+      formdata.append('instagram', state.instagram);
+      formdata.append('youtube', state.youtube);
+      formdata.append('discord', state.discord);
       formdata.append('logoUrl', image);
 
       try {
         await mutation.mutateAsync(formdata);
         toast.success('Your Brand has been successfully created');
+        router.push('/dashboard');
       } catch (err) {
         console.log(err);
         toast.error(err.response?.data?.msg || 'Please recheck your inputs');
@@ -124,18 +138,73 @@ const CreateBrand = ({ user, profile }) => {
                       <h6>Description cannot be more then 200 characters</h6>
                     )}
                   </div>
-                  <div className="form-group">
+                  <div className="colm full_width">
                     <label htmlFor="exampleFormControlInput1">
-                      SocialLinks
+                      Social Links (Optional)
                     </label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Link"
-                      name="socialLinks"
-                      onChange={handleChange}
-                      value={state.socialLinks}
-                    />
+                    <ul className="socail_url">
+                      <li>
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="Enter your Facebook user ID as per the URL"
+                          name="facebook"
+                          onChange={handleChange}
+                          value={state.facebook}
+                        />
+                      </li>
+                      <li>
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="Enter your Twitch Channel name as per the URL"
+                          name="twitch"
+                          onChange={handleChange}
+                          value={state.twitch}
+                        />
+                      </li>
+                      <li>
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="Enter @Twitter Name"
+                          name="twitter"
+                          onChange={handleChange}
+                          value={state.twitter}
+                        />
+                      </li>
+                      <li>
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="Enter your Instagram User Name"
+                          name="instagram"
+                          onChange={handleChange}
+                          value={state.instagram}
+                        />
+                      </li>
+                      <li>
+                        {' '}
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="Enter your Youtube Channel Name as per the URL"
+                          name="youtube"
+                          onChange={handleChange}
+                          value={state.youtube}
+                        />
+                      </li>
+                      <li>
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="Enter your full Discord server link"
+                          name="discord"
+                          onChange={handleChange}
+                          value={state.discord}
+                        />
+                      </li>
+                    </ul>
                   </div>
                 </>
                 <button className={`btn rgtside`}>Create</button>

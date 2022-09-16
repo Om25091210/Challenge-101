@@ -46,7 +46,7 @@ const CreateTournament = ({ user, profile }) => {
     imgUrl: '/assets/media/default/tournament.jpg',
     coverPhoto: '/assets/media/profile/cover_bg.jpg',
     game: '',
-    currency: '$',
+    currency: 'Rs',
     prizepool: null,
     category: '',
     tournamentType: '',
@@ -146,7 +146,19 @@ const CreateTournament = ({ user, profile }) => {
   };
 
   const showstep2 = () => {
-    if (!(state.name === '' || state.game === '' || state.prizepool === null)) {
+    if (state.name === '' || state.name < 8) {
+      toast.info('Tournament Name should have 8 characters minimum');
+    } else if (state.game.length === 0) {
+      toast.info('Please select a game');
+    } else if (state.platform.length === 0) {
+      toast.info('please select a platform');
+    } else if (state.prizepool === null) {
+      toast.info('please select a prizepool');
+    } else if (state.category === '') {
+      toast.info('Please select a category');
+    } else if (state.tournamentType === '') {
+      toast.info('please select a Tournament Type');
+    } else {
       setStep1(true);
       setShowbtn(false);
     }
@@ -390,8 +402,8 @@ const CreateTournament = ({ user, profile }) => {
                           onChange={handleChangeCheck}
                           value={state.currency}
                         >
-                          <option value="$">USD($)- Dollars</option>
                           <option value="Rs">INR (Rs) - Rupees</option>
+                          <option value="$">USD($)- Dollars</option>
                         </select>
                         <input
                           type="number"
@@ -586,7 +598,7 @@ const CreateTournament = ({ user, profile }) => {
                           className="form-control"
                           onChange={handleChange}
                           value={state.entranceFee}
-                          placeholder="$"
+                          placeholder={state.currency}
                         />
                         <p>{formErrors.entranceFee}</p>
                       </div>
@@ -665,14 +677,15 @@ const CreateTournament = ({ user, profile }) => {
                         </label>
                         <TournamentAddSponsor
                           states={newSpon}
-                          sponsors={organizers}
+                          sponsors={organizers.concat(user)}
                           type="ORGANIZER"
                         />
                       </div>
 
                       <div className="colm">
                         <label htmlFor="exampleFormControlInput1">
-                          Address
+                          Address{' '}
+                          {state.category === 'Online' ? '(Optional)' : null}
                         </label>
                         <input
                           type="text"

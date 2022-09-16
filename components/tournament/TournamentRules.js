@@ -294,6 +294,7 @@ const TournamentRules = ({ tourRules }) => {
               name="contact"
               onChange={onChange}
               value={states.contact}
+              placeholder="Discord Server/Email/Phone number"
             />
             <p>{formErrors.contact}</p>
           </div>

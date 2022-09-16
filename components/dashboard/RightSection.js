@@ -6,10 +6,12 @@ import Moment from 'moment';
 import Challengelist from '../challenges/ChallengeList';
 import ApproveRequest from '../discover/invites/ApproveRequest';
 import DeclineRequest from '../discover/invites/DeclineRequest';
+import cookie from 'js-cookie';
 
 const RightSection = ({ user, suggestedplayers, teams, profile }) => {
   const [matches, setMatches] = useState([]);
   const [later, setLater] = useState(false);
+  const [brands, setBrands] = useState([]);
 
   useEffect(() => {
     axios
@@ -30,7 +32,15 @@ const RightSection = ({ user, suggestedplayers, teams, profile }) => {
       .then((res) => {
         setChallenges(res.data);
       });
+    axios
+      .get(`${baseURL}/api/brand/`, {
+        headers: {
+          Authorization: cookie.get('token')
+        }
+      })
+      .then((res) => setBrands(res.data));
   }, []);
+
   return (
     <div className="right_side overhight">
       {/* <RecentActivity user={user} /> */}
@@ -96,7 +106,7 @@ const RightSection = ({ user, suggestedplayers, teams, profile }) => {
       </div>
       <div className="recent_activity my_team">
         <h2>My Team </h2>
-        <a href="/team" className="mng">
+        <a href="#" className="mng">
           Manage
         </a>
         <div className="white_box">
@@ -173,6 +183,67 @@ const RightSection = ({ user, suggestedplayers, teams, profile }) => {
           </>
         </div>
       </div>
+
+      <div className="recent_activity my_team">
+        <h2>My Pages </h2>
+        <a href="#" className="mng">
+          Manage
+        </a>
+        <div className="white_box">
+          <ul className="team">
+            {brands.length > 0 ? (
+              brands.slice(0, 2).map((bd, idx) => (
+                <li key={idx}>
+                  <Link href={`/brand/${bd._id}`}>
+                    <div>
+                      <img src={bd.logoUrl} alt={bd.name} />
+                      <p> {bd.name}</p>
+                    </div>
+                  </Link>
+                </li>
+              ))
+            ) : (
+              <p> No brands/company</p>
+            )}
+          </ul>
+          <a href="#!" className="model_show_btn more btn">
+            View All Brand
+          </a>
+
+          <div className="common_model_box" id="share_prof">
+            <a href="#!" className="model_close">
+              X
+            </a>
+
+            <div className="inner_model_box">
+              <h3>Brands/Company</h3>
+              {brands.length === 0 ? (
+                <p>No Brands Available </p>
+              ) : (
+                <ul>
+                  {brands &&
+                    brands.map((bd, idx) => (
+                      <li key={idx}>
+                        <Link href={`/brand/${bd._id}`}>
+                          <div className="game_pic">
+                            <img src={bd.logoUrl} alt={bd.name} />
+                            <p> {bd.name}</p>
+                          </div>
+                        </Link>
+                      </li>
+                    ))}
+                </ul>
+              )}
+            </div>
+            <div className="overlay"></div>
+          </div>
+
+          <a href={`/brand/create`} className="create_team">
+            + Create a brand/company
+          </a>
+        </div>
+      </div>
+
       <div className="recent_activity team_match">
         {later === false ? null : (
           <>
