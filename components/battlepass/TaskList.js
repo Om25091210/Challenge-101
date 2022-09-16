@@ -1,8 +1,9 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import baseURL from '@utils/baseURL';
+import CollectReward from './CollectReward';
 
-const TaskList = ({ week }) => {
+const TaskList = ({ week, battlepass }) => {
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
@@ -17,7 +18,7 @@ const TaskList = ({ week }) => {
         tasks.map((task) => (
           <li>
             <span>{task.desc}</span>
-            <span>{task.reward_point}XP</span>
+            <CollectReward battlepass={battlepass} task={task} />
           </li>
         ))
       )}
