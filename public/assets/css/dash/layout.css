@@ -8209,7 +8209,7 @@ ul.game_search_result {
 
 ul.game_search_result li {
 	float: left;
-	width: 12%;
+	width: 100px;
 	margin-bottom: 20px;
 	/* border: 1px solid #fff;
 	*/
