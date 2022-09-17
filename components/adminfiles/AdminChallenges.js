@@ -5,7 +5,7 @@ import Moment from 'moment';
 const AdminChallenges = ({ challenges }) => {
   return (
     <>
-      <h2>Latest Challenges</h2>
+      <h1>Latest Challenges</h1>
       <div className="table">
         <div className="heads_row">
           <div className="heads">ChallengeId</div>
