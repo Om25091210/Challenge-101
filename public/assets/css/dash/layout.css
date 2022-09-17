@@ -2309,6 +2309,8 @@ article .social_bar img {
 	text-align: center;
 }
 
+.recent_activity.my_team h2{ text-align: left;}
+
 .recent_activity .btn {
 	margin: 30px 0 10px 0;
 	text-align: center;
