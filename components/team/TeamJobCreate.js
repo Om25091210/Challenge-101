@@ -14,9 +14,11 @@ import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import { convertToRaw } from 'draft-js';
 import draftToHtml from 'draftjs-to-html';
 import { useRouter } from 'next/router';
+import { jobformvalidate } from '@utils/valid';
 
 const TeamJobCreate = ({ user, profile }) => {
   const [teamroles, setTeamroles] = useState([]);
+  const [formErrors, setFormErrors] = useState({});
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
   let edited2 = draftToHtml(convertToRaw(editorState.getCurrentContent()));
 
@@ -31,7 +33,7 @@ const TeamJobCreate = ({ user, profile }) => {
     endDate: '',
     salary: 0,
     description: '',
-    currency: '$',
+    currency: 'Rs',
     experience: ''
   });
 
@@ -45,25 +47,27 @@ const TeamJobCreate = ({ user, profile }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let jobData = state;
-    state.description = edited2;
+    if (Object.keys(formErrors).length === 0) {
+      let jobData = state;
+      state.description = edited2;
 
-    try {
-      console.log(jobData);
-      const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(jobData)
-      };
-      const dt = fetch(
-        `${baseURL}/api/jobs/create`,
-        requestOptions
-      ).then((data) => data.json());
-      $('a.model_close').parent().removeClass('show_model');
-      toast.success('Your Job has been successfully created!! ');
-      router.push('/discover');
-    } catch (err) {
-      toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+      try {
+        console.log(jobData);
+        const requestOptions = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(jobData)
+        };
+        const dt = fetch(
+          `${baseURL}/api/jobs/create`,
+          requestOptions
+        ).then((data) => data.json());
+        $('a.model_close').parent().removeClass('show_model');
+        toast.success('Your Job has been successfully created!! ');
+        router.push('/discover');
+      } catch (err) {
+        toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+      }
     }
   };
 
@@ -102,6 +106,7 @@ const TeamJobCreate = ({ user, profile }) => {
               onChange={handleChange}
               value={state.name}
             />
+            <p>{formErrors.name}</p>
           </div>
 
           <div className="form-group">
@@ -120,6 +125,7 @@ const TeamJobCreate = ({ user, profile }) => {
                   </option>
                 ))}
             </select>
+            <p>{formErrors.role}</p>
           </div>
 
           <div className="form-group">
@@ -135,10 +141,11 @@ const TeamJobCreate = ({ user, profile }) => {
                 {profile?.current_team?.name}
               </option>
             </select>
+            <p>{formErrors.owner}</p>
           </div>
 
           <div className="form-group">
-            <label for="exampleFormControlInput1">Location (Optional)</label>
+            <label for="exampleFormControlInput1">Location</label>
             <select
               className="game_search_result mscrollbar"
               name="location"
@@ -153,6 +160,7 @@ const TeamJobCreate = ({ user, profile }) => {
                 </>
               ))}
             </select>
+            <p>{formErrors.location}</p>
           </div>
 
           <div className="edit_four">
@@ -166,6 +174,7 @@ const TeamJobCreate = ({ user, profile }) => {
                 value={state.startDate}
                 className="form-control"
               />
+              <p>{formErrors.startDate}</p>
             </div>
 
             <div className="form-group">
@@ -178,6 +187,7 @@ const TeamJobCreate = ({ user, profile }) => {
                 value={state.endDate}
                 className="form-control"
               />
+              <p>{formErrors.endDate}</p>
             </div>
 
             <div className="form-group" style={{ height: '70px' }}>
@@ -192,8 +202,8 @@ const TeamJobCreate = ({ user, profile }) => {
                   onChange={handleChangeCheck}
                   value={state.currency}
                 >
-                  <option value="$">USD($)- Dollars</option>
                   <option value="Rs">INR (Rs) - Rupees</option>
+                  <option value="$">USD($)- Dollars</option>
                 </select>
                 <input
                   type="number"
@@ -215,6 +225,7 @@ const TeamJobCreate = ({ user, profile }) => {
                 value={state.experience}
                 className="form-control"
               />
+              <p>{formErrors.experience}</p>
             </div>
           </div>
 
@@ -238,9 +249,15 @@ const TeamJobCreate = ({ user, profile }) => {
                 }
               }}
             />
+            <p>{formErrors.description}</p>
           </div>
 
-          <input type="submit" className="btn" value="Create Job" />
+          <input
+            type="submit"
+            className="btn"
+            value="Create Job"
+            onClick={() => setFormErrors(jobformvalidate(state))}
+          />
         </>
       </form>
     </>

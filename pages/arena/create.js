@@ -9,9 +9,11 @@ import 'rc-time-picker/assets/index.css';
 import { toast } from 'react-toastify';
 import { useMutation } from 'react-query';
 import cookie from 'js-cookie';
+import { arenafromvalidate } from '@utils/valid';
 
 const CreateTeam = ({ user, profile }) => {
   const [image, setImage] = useState(null);
+  const [formErrors, setFormErrors] = useState({});
   const [state, setState] = useState({
     name: '',
     logoUrl: '/assets/media/team/game1.png',
@@ -32,14 +34,7 @@ const CreateTeam = ({ user, profile }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (
-      state.name === '' ||
-      state.description === '' ||
-      state.address === '' ||
-      state.location === ''
-    ) {
-      toast.warning('Please enter all fields or check your inputs');
-    } else {
+    if (Object.keys(formErrors).length === 0) {
       let formdata = new FormData();
       formdata.append('name', state.name);
       formdata.append('description', state.description);
@@ -93,9 +88,10 @@ const CreateTeam = ({ user, profile }) => {
                       onChange={handleChange}
                       value={state.name}
                     />
-                    {state.name.length >= 41 && (
-                      <h6>Arena name cannot be more then 40 characters</h6>
+                    {state.name.length > 15 && (
+                      <h6>Arena name cannot be more then 15 characters</h6>
                     )}
+                    <p>{formErrors.name}</p>
                   </div>
                   <div className="form-group">
                     <div className="style_file_upload">
@@ -123,9 +119,7 @@ const CreateTeam = ({ user, profile }) => {
                       onChange={handleChange}
                       value={state.description}
                     />
-                    {state.description.length >= 201 && (
-                      <h6>Description cannot be more then 200 characters</h6>
-                    )}
+                    <p>{formErrors.description}</p>
                   </div>
                   <div className="form-group">
                     <label htmlFor="exampleFormControlInput1">Address</label>
@@ -137,9 +131,7 @@ const CreateTeam = ({ user, profile }) => {
                       onChange={handleChange}
                       value={state.address}
                     />
-                    {state.address.length >= 61 && (
-                      <h6>Address cannot be more then 60 characters</h6>
-                    )}
+                    <p>{formErrors.address}</p>
                   </div>
                   <div className="form-group">
                     <label htmlFor="exampleFormControlInput1">Location</label>
@@ -151,12 +143,15 @@ const CreateTeam = ({ user, profile }) => {
                       onChange={handleChange}
                       value={state.location}
                     />
-                    {state.location.length >= 71 && (
-                      <h6>Location cannot be more then 70 characters</h6>
-                    )}
+                    <p>{formErrors.location}</p>
                   </div>
                 </>
-                <button className={`btn rgtside`}>Create</button>
+                <input
+                  type="submit"
+                  className="btn"
+                  value="Create Arena"
+                  onClick={() => setFormErrors(arenafromvalidate(state))}
+                />
               </form>
             </div>
           </div>

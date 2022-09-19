@@ -61,7 +61,7 @@ export const teamformvalidate = (values) => {
   const errors = {};
   const regex = /^((https?|ftp|smtp):\/\/)?(www.)?[a-z0-9]+\.[a-z]+(\/[a-zA-Z0-9#]+\/?)*$/;
   const year_regex = /^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/;
-  if (!values.name.length < 8) {
+  if (values.name.length === 0) {
     errors.name = 'Team Name is requried';
   }
   if (!year_regex.test(values.founded)) {
@@ -373,6 +373,84 @@ export const profileTournaments = (values) => {
     errors.winnings = 'Winnings is Required';
   }
 
+  return errors;
+};
+
+export const brandfromvalidate = (values) => {
+  const errors = {};
+  if (values.name.length === 0) {
+    errors.name = 'Brand Name Required';
+  }
+  if (values.description.length === 0) {
+    errors.description = 'Description of Brand Required';
+  } else if (values.description.length < 51) {
+    errors.description =
+      'Description should contain a minimum of 50 characters';
+  } else if (values.description.length > 250) {
+    errors.description = 'Description Cannot exceed more than 250 characters';
+  }
+  return errors;
+};
+
+export const arenafromvalidate = (values) => {
+  const errors = {};
+  if (values.name.length === 0) {
+    errors.name = 'Arena Name Required';
+  }
+  if (values.description.length === 0) {
+    errors.description = 'Description of Arena Required';
+  } else if (values.description.length < 51) {
+    errors.description =
+      'Description should contain a minimum of 50 characters';
+  } else if (values.description.length > 250) {
+    errors.description = 'Description Cannot exceed more than 250 characters';
+  }
+  if (values.address.length === 0) {
+    errors.address = 'Address is Required';
+  } else if (values.address.length > 150) {
+    errors.address = 'Address cannot exceed more then 150 characters';
+  }
+  if (values.location.length === 0) {
+    errors.location = 'Location is Required';
+  } else if (values.location.length > 60) {
+    errors.location = 'Location cannot exceed more then 60 characters';
+  }
+  return errors;
+};
+
+export const jobformvalidate = (values) => {
+  const errors = {};
+  if (values.name.length === 0) {
+    errors.name = 'Job Title is Required';
+  } else if (values.name.length > 20) {
+    errors.name = 'Job Title cannot exceed 20 characters';
+  }
+  if (values.role.length === 0) {
+    errors.role = 'Select a Job Type';
+  }
+  if (values.owner.length === 0) {
+    errors.owner = 'Select Job Owner';
+  }
+  if (values.location.length === 0) {
+    errors.location = 'Select Your Location';
+  }
+  if (values.startDate.length === 0) {
+    errors.startDate = 'Application start date is required';
+  }
+  if (values.endDate.length === 0) {
+    errors.endDate = 'Application end date is required';
+  }
+  if (values.experience.length === 0) {
+    errors.experience = 'Experience is required';
+  }
+  if (values.description.length === 0) {
+    errors.description = 'Description is Required';
+  } else if (values.description.length < 51) {
+    errors.description =
+      'Description should contain a minimum of 50 characters';
+  } else if (values.description.length > 250) {
+    errors.description = 'Description Cannot exceed more than 250 characters';
+  }
   return errors;
 };
 

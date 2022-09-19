@@ -10,9 +10,11 @@ import { toast } from 'react-toastify';
 import { useMutation } from 'react-query';
 import cookie from 'js-cookie';
 import { useRouter } from 'next/router';
+import { brandfromvalidate } from '@utils/valid';
 
 const CreateBrand = ({ user, profile }) => {
   const [image, setImage] = useState(null);
+  const [formErrors, setFormErrors] = useState({});
   const [state, setState] = useState({
     name: '',
     logoUrl: '/assets/media/discover/lxg.png',
@@ -39,13 +41,7 @@ const CreateBrand = ({ user, profile }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (
-      state.name === '' ||
-      state.description === '' ||
-      state.socialLinks === ''
-    ) {
-      toast.warning('Please enter all fields or check your inputs');
-    } else {
+    if (Object.keys(formErrors).length === 0) {
       let formdata = new FormData();
       formdata.append('name', state.name);
       formdata.append('description', state.description);
@@ -104,9 +100,10 @@ const CreateBrand = ({ user, profile }) => {
                       onChange={handleChange}
                       value={state.name}
                     />
-                    {state.name.length >= 41 && (
-                      <h6>Brand name cannot be more then 40 characters</h6>
+                    {state.name.length > 15 && (
+                      <h6>Brand name cannot be more then 15 characters</h6>
                     )}
+                    <p>{formErrors.name}</p>
                   </div>
                   <div className="form-group">
                     <div className="style_file_upload">
@@ -134,9 +131,7 @@ const CreateBrand = ({ user, profile }) => {
                       onChange={handleChange}
                       value={state.description}
                     />
-                    {state.description.length >= 201 && (
-                      <h6>Description cannot be more then 200 characters</h6>
-                    )}
+                    <p>{formErrors.description}</p>
                   </div>
                   <div className="colm full_width">
                     <label htmlFor="exampleFormControlInput1">
@@ -207,7 +202,12 @@ const CreateBrand = ({ user, profile }) => {
                     </ul>
                   </div>
                 </>
-                <button className={`btn rgtside`}>Create</button>
+                <input
+                  type="submit"
+                  className="btn"
+                  value="Create Brand"
+                  onClick={() => setFormErrors(brandfromvalidate(state))}
+                />
               </form>
             </div>
           </div>

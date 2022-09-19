@@ -15,10 +15,10 @@ import { ethers } from 'ethers';
 import { getEllipsisTxt } from '../utils';
 import WalletSvg from './svg/WalletSvg';
 import { BlockchainContext } from '../context/BlockchainContext';
-import emailjs from '@emailjs/browser';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import baseURL from '@utils/baseURL';
+import cookie from 'js-cookie';
 
 const SignedHeader = ({ user, profile }) => {
   const router = useRouter();
@@ -63,7 +63,11 @@ const SignedHeader = ({ user, profile }) => {
   const sendEmail = (e) => {
     e.preventDefault();
     try {
-      axios.post(`${baseURL}/api/all/refer`, mail);
+      axios.post(`${baseURL}/api/all/refer`, mail, {
+        headers: {
+          Authorization: cookie.get('token')
+        }
+      });
       toast.success('Invitation sent!');
       setRefModal(false);
     } catch (err) {

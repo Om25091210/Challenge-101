@@ -35,7 +35,7 @@ const ProfileTournament = ({
     year: '',
     team_ranking: null,
     winnings: null,
-    currency: '$'
+    currency: 'Rs'
   });
 
   const router = useRouter();
@@ -326,8 +326,8 @@ const ProfileTournament = ({
                     onChange={onChangeTour}
                     value={tournament.currency}
                   >
-                    <option value="$">USD($)- Dollars</option>
                     <option value="Rs">INR (Rs) - Rupees</option>
+                    <option value="$">USD($)- Dollars</option>
                   </select>
                 </div>
 
