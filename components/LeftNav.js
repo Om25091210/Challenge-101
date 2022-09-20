@@ -80,7 +80,7 @@ function LeftNav({ user }) {
               </a>
             </Link>
           </li>
-          {user?.isSuperAdmin === true ? (
+          {user?.isSuperAdmin === true || user?.isSupportAdmin === true ? (
             <li>
               <Link href="/adminpage">
                 <a className="">

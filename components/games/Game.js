@@ -11,25 +11,38 @@ import GamePlayers from './GamePlayers';
 import GameCommunities from './GameCommunities';
 import Matches from '@components/team/Matches';
 import GameFollow from './GameFollow';
+import Cookies from 'js-cookie';
 
 const Game = ({ user, data }) => {
   const [game, setGame] = useState(data?.games);
   const [players, setPlayers] = useState([]);
   const [tournaments, setTournaments] = useState([]);
+  let [tabData, setTabData] = useState([]);
 
-  useEffect(() => {
-    axios
-      .get(`${baseURL}/api/player/playersbyteamsbygame/${game._id}`)
-      .then((res) => {
-        setPlayers(res.data);
-      });
+  const handleTabs = async (Type) => {
+    console.log(Type);
+    await axios
+      .get(`${baseURL}/api/games/gamedata/${Type}/${game._id}`, {
+        headers: {
+          Authorization: Cookies.get('token')
+        }
+      })
+      .then((res) => setTabData(res.data));
+  };
 
-    axios
-      .get(`${baseURL}/api/tournaments/tournamentsbygame/${game._id}`)
-      .then((res) => {
-        setTournaments(res.data);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get(`${baseURL}/api/player/playersbyteamsbygame/${game._id}`)
+  //     .then((res) => {
+  //       setPlayers(res.data);
+  //     });
+
+  //   axios
+  //     .get(`${baseURL}/api/tournaments/tournamentsbygame/${game._id}`)
+  //     .then((res) => {
+  //       setTournaments(res.data);
+  //     });
+  // }, []);
   const newPlyr = players.slice(1, 4);
 
   return (
@@ -204,29 +217,33 @@ const Game = ({ user, data }) => {
         <ul className="profile_tab_btn">
           <li className="active">
             {' '}
-            <a href="#!" rel="tournament">
+            <a
+              href="#!"
+              rel="tournament"
+              onClick={() => handleTabs('TOURNAMENTS')}
+            >
               {' '}
               TOURNAMENTS{' '}
-            </a>{' '}
+            </a>
           </li>
 
           {/* <li>
             {' '}
-            <a href="#!" rel="league">
+            <a href="#!" rel="league" onClick={() => handleTabs('LEAGUES')}>
               {' '}
               LEAGUES{' '}
             </a>{' '}
           </li>
           <li>
             {' '}
-            <a href="#!" rel="ladder">
+            <a href="#!" rel="ladder" onClick={() => handleTabs('LADDER')}>
               {' '}
               LADDER{' '}
             </a>{' '}
           </li>
           <li>
             {' '}
-            <a href="#!" rel="matches">
+            <a href="#!" rel="matches" onClick={() => handleTabs('MATCHES')}>
               {' '}
               MATCHES{' '}
             </a>{' '}
@@ -240,7 +257,7 @@ const Game = ({ user, data }) => {
           </li> */}
           <li>
             {' '}
-            <a href="#!" rel="teams">
+            <a href="#!" rel="teams" onClick={() => handleTabs('TEAMS')}>
               {' '}
               TEAMS{' '}
             </a>{' '}
@@ -263,7 +280,7 @@ const Game = ({ user, data }) => {
         <div className="prfoile_tab_data">
           <div className="tab" id="tournament">
             {/* /* ---- start game row --- */}
-            <GameTournaments user={user} />
+            <GameTournaments user={user} tournaments={tabData} />
 
             {/* /* ---- end game row --- */}
           </div>
@@ -271,7 +288,7 @@ const Game = ({ user, data }) => {
           <div className="tab hide" id="league">
             {/* /* ---- start game row --- */}
 
-            <GameLeagues user={user} game={game} />
+            <GameLeagues leagues={tabData} game={game} />
 
             {/* /* ---- end game row --- */}
           </div>
@@ -338,7 +355,7 @@ const Game = ({ user, data }) => {
             <GameVideos user={user} game={game} />
           </div>
           <div className="tab hide" id="teams">
-            <GameTeams user={user} game={game} />
+            <GameTeams user={user} teams={tabData} game={game} />
           </div>
           <div className="tab hide" id="players">
             <GamePlayers user={user} game={game} />

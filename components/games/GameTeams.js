@@ -6,38 +6,25 @@ import cookie from 'js-cookie';
 import axios from 'axios';
 import baseURL from '@utils/baseURL';
 
-const GameTeams = ({ user, game }) => {
-  const router = useRouter();
-
-  const [teams, setTeams] = useState([]);
-  const [searchResults, setSearchResults] = useState([]);
-
-  const { id } = router.query;
-
-  useEffect(() => {
-    axios.get(`${baseURL}/api/teams/teamsbygame/${id}`).then((res) => {
-      setTeams(res.data);
-    });
-  }, []);
-
+const GameTeams = ({ teams, game }) => {
   return (
     <ul className="communities teams">
       {!teams || teams.length === 0 ? (
         <li>
           <div className="activity_tag">
-            <span className="act_name">No teams for selected game ...</span>
+            <span className="act_name">No teams have {game.name}</span>
           </div>
         </li>
       ) : (
-        teams.map((result, idx) => (
+        teams.map((team, idx) => (
           <li key={idx}>
-            <a href={`/team/${result?.team._id}`}>
+            <a href={`/team/${team._id}`}>
               <div className="imgs">
                 {' '}
-                <img src={result?.team.imgUrl} alt={result?.team.name} />{' '}
+                <img src={team.imgUrl} alt={team.name} />{' '}
               </div>
               <div className="bottom_data">
-                <h3>{result?.team.name}</h3>
+                <h3>{team.name}</h3>
               </div>
             </a>
           </li>

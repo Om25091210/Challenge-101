@@ -12,8 +12,8 @@ import TeamChallenge from '../challenges/TeamChallenge';
 import TeamEdit from './TeamEdit';
 
 const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
-  const [attr, setAttr] = useState(data.team.attributes);
-  const [sociallinks, setSociallinks] = useState(data.team.social);
+  const [attr, setAttr] = useState(data.team?.attributes);
+  const [sociallinks, setSociallinks] = useState(data.team?.social);
   const [later, setLater] = useState(false);
 
   const router = useRouter();
@@ -172,12 +172,12 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
     }
   };
 
-  const empManager = data.team.employees
-    .map((x) => x)
-    .filter((x) => x.role === 'Manager');
-  const empCoach = data.team.employees
-    .map((x) => x)
-    .filter((x) => x.role === 'Coach');
+  const empManager =
+    data.team &&
+    data.team.employees.map((x) => x).filter((x) => x.role === 'Manager');
+  const empCoach =
+    data.team &&
+    data.team.employees.map((x) => x).filter((x) => x.role === 'Coach');
 
   useEffect(() => {
     axios
@@ -194,10 +194,12 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
   const playerId = profile.playergames[0]?.player?._id;
 
   const isReqSent =
+    data.team &&
     data.team.request?.filter((reque) => reque.playerId._id === playerId)
       .length > 0;
 
   const isPlayer =
+    data.team &&
     data.team.players?.filter((plyr) => plyr.playerId === playerId).length > 0;
 
   return (
@@ -210,7 +212,12 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
         </div>
 
         <form onSubmit={handleCoverSubmit}>
-          <img className="" id="result" src={data.team.coverPhoto} alt="" />
+          <img
+            className=""
+            id="result"
+            src={data.team && data.team.coverPhoto}
+            alt=""
+          />
 
           <span className="edit_cover_photo ">
             <div className="style_file_upload">

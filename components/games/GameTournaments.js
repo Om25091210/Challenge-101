@@ -5,14 +5,12 @@ import { useRouter } from 'next/router';
 import cookie from 'js-cookie';
 import axios from 'axios';
 import baseURL from '@utils/baseURL';
-
-import TournamentRows from '@components/tournament/TournamentRows';
+import TournamentDisplay from '../tournament/TournamentDisplay';
 
 const GameTournaments = ({ user }) => {
   const router = useRouter();
 
   const [tournaments, setTournaments] = useState([]);
-  const [searchResults, setSearchResults] = useState([]);
 
   const { id } = router.query;
 
@@ -24,13 +22,7 @@ const GameTournaments = ({ user }) => {
       });
   }, []);
 
-  return (
-    <TournamentRows
-      tournaments={tournaments}
-      searchResults={searchResults}
-      user={user}
-    />
-  );
+  return <TournamentDisplay tournament={tournaments} user={user} />;
 };
 
 export default GameTournaments;

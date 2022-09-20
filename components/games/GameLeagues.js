@@ -6,23 +6,12 @@ import cookie from 'js-cookie';
 import axios from 'axios';
 import baseURL from '@utils/baseURL';
 
-const GameLeagues = ({ user, game }) => {
-  const [leagues, setLeagues] = useState([]);
-  const [searchResults, setSearchResults] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get(`${baseURL}/api/leagues/leaguesbygame/${game._id}`)
-      .then((res) => {
-        setLeagues(res.data);
-      });
-  }, []);
-
+const GameLeagues = ({ leagues, game }) => {
   return (
     <>
       {!leagues || leagues.length === 0 ? (
         <div className="activity_tag">
-          <span className="act_name">No new leagues for selected game ...</span>
+          <span className="act_name">No new leagues have {game.name}</span>
         </div>
       ) : (
         leagues.map((result, idx) => (

@@ -26,6 +26,7 @@ const CreateListing = ({ user }) => {
     colors: '',
     delivery_time: ''
   });
+  const [newList, setNewList] = useState();
 
   function handleChange(e) {
     if (e.target.options) {
@@ -64,10 +65,10 @@ const CreateListing = ({ user }) => {
       const dt = fetch(
         `${baseURL}/api/listings/create`,
         requestOptions
-      ).then((data) => data.json());
+      ).then((res) => setNewList(res.data));
 
       toast.success('The Listing has been successfully created!! ');
-      // Router.push('/tournament');
+      // Router.push(`/listings/${newList._id}`);
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }

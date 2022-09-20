@@ -198,7 +198,8 @@ const TournamentDisplay = ({
               </div>
             </div>
           ))
-        ) : searchData.length > 0 ? (
+        ) : searchData && searchData.length > 0 ? (
+          searchData &&
           searchData.map((result, idx) => (
             <div className="game_row" key={idx}>
               <FavTournament tournament={result.tournament} user={user} />

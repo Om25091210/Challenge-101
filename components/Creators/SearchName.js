@@ -1,41 +1,36 @@
 import React, { useState } from 'react';
 
-const TournamentAddSponsor = ({ sponsors, states, type }) => {
+const SearchName = ({ data, type, handleChange }) => {
   const [filteredData, setFilteredData] = useState([]);
   const [searchText, setSearchText] = useState('');
 
   const handleFilter = (event) => {
     const searchWord = event.target.value;
-
     setSearchText(searchWord);
-    const newFilter = sponsors?.filter((value) => {
+    const newFilter = data?.filter((value) => {
       return value.name.toLowerCase().includes(searchWord.toLowerCase());
     });
     if (searchText === '') {
       setFilteredData([]);
     } else {
       setFilteredData(newFilter);
+      if (filteredData.length === 0) {
+        handleChange(event);
+      }
     }
   };
 
-  const handleSelectedRig = (data) => {
-    setSearchText(data.name);
-    if (type === 'ORGANIZER') {
-      states.organizer.push(data._id);
-    } else {
-      states.sponsor.push(data._id);
-    }
-    setFilteredData([]);
+  const handleClaim = (data) => {
+    console.log('AAAAA');
   };
 
   return (
     <>
       <div className="form-group">
-        <label htmlFor="exampleFormControlInput1">{type}</label>
+        <label htmlFor="exampleFormControlInput1">{type} Name</label>
         <input
           type="search"
-          name="sponsor"
-          placeholder={`Enter The ${type} name`}
+          name="name"
           value={searchText}
           onChange={handleFilter}
           autoComplete="off"
@@ -47,11 +42,14 @@ const TournamentAddSponsor = ({ sponsors, states, type }) => {
                 <div className="custom-rig-tag">
                   <div className="rigs_items">
                     {!filteredData || filteredData.length === 0 ? (
-                      <p>No {type} found..</p>
+                      <p>
+                        No {type === 'ORGANIZER' ? 'Organizer' : 'Sponsor'}{' '}
+                        found..
+                      </p>
                     ) : (
                       filteredData.map((data) => (
                         <div
-                          onClick={() => handleSelectedRig(data)}
+                          onClick={() => handleClaim(data)}
                           key={data._id}
                           className="items"
                         >
@@ -59,11 +57,7 @@ const TournamentAddSponsor = ({ sponsors, states, type }) => {
                             {data.imgUrl ? (
                               <img src={data?.imgUrl} height={50} width={50} />
                             ) : (
-                              <img
-                                src={data?.profilePicUrl}
-                                height={50}
-                                width={50}
-                              />
+                              <img src={data?.logoUrl} height={50} width={50} />
                             )}
                           </span>
                           <p>
@@ -71,6 +65,9 @@ const TournamentAddSponsor = ({ sponsors, states, type }) => {
                               ? data.name.substring(0, 20) + '...'
                               : data.name}
                           </p>
+                          <button className="btn" disabled>
+                            Claim
+                          </button>
                         </div>
                       ))
                     )}
@@ -85,4 +82,4 @@ const TournamentAddSponsor = ({ sponsors, states, type }) => {
   );
 };
 
-export default TournamentAddSponsor;
+export default SearchName;

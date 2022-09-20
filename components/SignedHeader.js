@@ -34,7 +34,7 @@ const SignedHeader = ({ user, profile }) => {
   const [refModal, setRefModal] = useState(false);
   const [mail, setMail] = useState({
     email: '',
-    sender: user.name
+    sender: user?.name
   });
 
   const onChangeEmail = (e) => {
