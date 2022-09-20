@@ -143,7 +143,8 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
               data-for="toolTip1"
               data-place="top"
             >
-              <i className="fa fa-heart" aria-hidden="true"></i>{' '}
+              {/* <i className="fa fa-heart" aria-hidden="true"></i>{' '} */}
+              <span className="likes"></span>
               <span>{post.likes.length}</span>
             </a>
             <ReactTooltip id="toolTip1" html={true} />
@@ -154,7 +155,8 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
             </a>{' '}
             <a href="#">
               {' '}
-              <i className="fa fa-commenting" aria-hidden="true"></i>{' '}
+              {/* <i className="fa fa-commenting" aria-hidden="true"></i>{' '} */}
+              <span className="comments-icon"></span>
               <span>{comments?.length}</span>{' '}
             </a>{' '}
           </div>

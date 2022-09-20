@@ -7,8 +7,8 @@ body.DarkPage header {
     background: #242731;
 }
 body.DarkPage .top_menu img, body.DarkPage .top_menu svg {
-    -webkit-filter: invert(100%);
-    filter: invert(100%);
+    /* -webkit-filter: invert(100%);
+    filter: invert(100%); */
     color: #b5fe1b;
 }
 body.DarkPage .notif_tag .notif_img img {
@@ -65,9 +65,12 @@ body.DarkPage .white_box .activity_tag .act_name {
 body.DarkPage .suggested_player li a .name {
     color: #fff;
 }
-body.DarkPage .add_comment_box .add_comments, body.DarkPage .post_comments {
+body.DarkPage .add_comment_box .add_comments {
     background: #2b2b35;
 }
+
+body.DarkPage .post_comments{ background: none;}
+
 body.DarkPage .add_comment_box .add_comments textarea {
     color: #fff;
 }
@@ -348,9 +351,11 @@ body.DarkPage .game_list_page li a:hover span {
 body.DarkPage .add_comment_box button {
     background: #2b2b35;
 }
-body.DarkPage .add_comment_box button img {
-    filter: invert(100);
+
+body.DarkPage .add_comment_box button:hover {
+    background: #f6e52e;
 }
+
 body.DarkPage .my_team .create_team {
     background: #2b2b35;
     color: #fff;
@@ -555,7 +560,7 @@ body.DarkPage .left_side nav li .iconbg {
     background: #2d343e;
 }
 body.DarkPage .left_side nav li.active .iconbg, body.DarkPage .left_side nav li a:hover .iconbg {
-    background: #b5fe1b;
+    background-color: #b5fe1b !important
 }
 body.DarkPage .left_side nav li.active i, body.DarkPage .left_side nav li a:hover i {
     color: #000;

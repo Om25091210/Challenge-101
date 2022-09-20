@@ -43,16 +43,12 @@ const Post_share = ({ postId, isShared }) => {
     <a onClick={handleShare}>
       {share ? (
         <>
-          <i
-            className="fa fa-share-alt"
-            aria-hidden="true"
-            style={{ color: 'lightgreen' }}
-          ></i>
+          <span className="shares"></span>
           <span>Shared</span>
         </>
       ) : (
         <>
-          <i className="fa fa-share-alt" aria-hidden="true"></i>
+          <span className="shared"></span>
           <span>Share</span>
         </>
       )}

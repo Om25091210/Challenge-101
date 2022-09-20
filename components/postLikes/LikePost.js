@@ -37,16 +37,17 @@ const AddLike = ({ postId, isLiked }) => {
     <a onClick={handleLike} href="#!">
       {like ? (
         <>
-          <i
+          {/* <i
             className="fa fa-heart"
             aria-hidden="true"
             style={{ color: 'red' }}
-          ></i>
+          ></i> */}
+          <span className="liked"></span>
           <span>Liked</span>
         </>
       ) : (
         <>
-          <i className="fa fa-heart-o" aria-hidden="true"></i>
+          <span className="likes"></span>
           <span>Like</span>
         </>
       )}

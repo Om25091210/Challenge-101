@@ -302,7 +302,7 @@ h3 {
 .btn,
 .apply,
 .btn[type='submit'] {
-	border-radius: 5px;
+	border-radius: 20px;
 	padding: 5px 20px;
 	color: #000;
 	background: #f6e52e;
@@ -1102,7 +1102,7 @@ ul.top_menu .drop_down_bg.create_pages p {
 /* -- add menu icon */
 .left_side li .iconbg img{ width: 30px;}
 
-/* .left_side li .iconbg {
+.left_side li .iconbg {
 	background-repeat: no-repeat !important;
 	background-position: 8px 6px !important;
 	background-color: #2d343e !important;
@@ -1111,17 +1111,27 @@ ul.top_menu .drop_down_bg.create_pages p {
 
 .left_side li:nth-child(1) .iconbg {
 	background-image: url(/assets/media/icons/home.png) !important;
-} 
+}
 
-
-
+.left_side li:nth-child(1):hover .iconbg, .left_side li:nth-child(1).active .iconbg {
+	background-image: url(/assets/media/icons/home-b.png) !important;
+}
 
 .left_side li:nth-child(2) .iconbg {
 	background-image: url(/assets/media/icons/Ranking.png) !important;
 }
 
+.left_side li:nth-child(2):hover .iconbg, .left_side li:nth-child(2).active .iconbg {
+	background-image: url(/assets/media/icons/Ranking-b.png) !important;
+}
+
 .left_side li:nth-child(3) .iconbg {
 	background-image: url(/assets/media/icons/Torunaments.png) !important;
+
+}
+
+ .left_side li:nth-child(3):hover .iconbg, .left_side li:nth-child(3).active .iconbg {
+	background-image: url(/assets/media/icons/Torunaments-b.png) !important;
 
 }
 
@@ -1130,14 +1140,27 @@ ul.top_menu .drop_down_bg.create_pages p {
 
 }
 
+.left_side li:nth-child(4):hover .iconbg, .left_side li:nth-child(4).active .iconbg {
+	background-image: url(/assets/media/icons/Games-b.png) !important;
+
+}
 
 .left_side li:nth-child(5) .iconbg {
 	background-image: url(/assets/media/icons/Discovery.png) !important;
 
 }
 
+.left_side li:nth-child(5):hover .iconbg, .left_side li:nth-child(5).active .iconbg {
+	background-image: url(/assets/media/icons/Discovery-b.png) !important;
+
+}
+
 .left_side li:nth-child(6) .iconbg {
 	background-image: url(/assets/media/icons/Calendar.png) !important;
+}
+
+.left_side li:nth-child(6):hover .iconbg, .left_side li:nth-child(6).active .iconbg {
+	background-image: url(/assets/media/icons/Calendar-b.png) !important;
 }
 
 
@@ -1146,13 +1169,21 @@ ul.top_menu .drop_down_bg.create_pages p {
 
 }
 
+.left_side li:nth-child(7):hover .iconbg, .left_side li:nth-child(7).active .iconbg {
+	background-image: url(/assets/media/icons/Challenge-b.png) !important;
+
+}
+
 .left_side li:nth-child(8) .iconbg {
 	background-image: url(/assets/media/icons/Dashboard.png) !important;
 
-} */
+}
 
-.left_side li a:hover .iconbg img {     -webkit-filter:  contrast(100%);
-    filter: contrast(100%);}
+.left_side li:nth-child(8):hover .iconbg, .left_side li:nth-child(8).active .iconbg {
+	background-image: url(/assets/media/icons/Dashboard-b.png) !important;
+
+}
+
 
 /* ------- middle css -------------- */
 .team_slider .slick-list {
@@ -1505,7 +1536,7 @@ ul.top_menu .drop_down_bg.create_pages p {
 	position: relative;
 	background: #fff;
 	padding: 20px;
-	border-radius: 5px;
+	border-radius: 15px;
 	margin-bottom: 20px;
 }
 
@@ -1696,7 +1727,9 @@ ul.top_menu .drop_down_bg.create_pages p {
 }
 
 .users_share_box .shere {
-	width: 250px;
+    width: 250px;
+    display: flex;
+    align-items: flex-start;
 }
 
 .users_share_box .shere>a {
@@ -1949,6 +1982,8 @@ ul.top_menu .drop_down_bg.create_pages p {
 	transition: 0.3s ease-in-out;
 }
 
+.add_comment_box button img{ width: 25px;}
+
 .add_comment_box button:hover {
 	background: #7239ea;
 }
@@ -1976,7 +2011,7 @@ ul.top_menu .drop_down_bg.create_pages p {
 	width: auto;
 	padding: 3px 9px;
 	border-radius: 5px;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 }
 
 .post_comments .pop_comment select {
@@ -2008,7 +2043,7 @@ ul.top_menu .drop_down_bg.create_pages p {
 	display: flex;
 	width: 100%;
 	align-items: center;
-	margin: 20px 0 0 0px;
+	margin: 3px 0 0 0px;
 }
 
 .comments_point .like_btn {
@@ -2070,12 +2105,14 @@ ul.top_menu .drop_down_bg.create_pages p {
 .comments_point .pinned {
 	font-size: 11px;
 	margin-right: 10px;
-	color: #fff;
+	color: #000;
 	font-weight: 500;
-	background: #7239ea;
+	background: #f6e52e;
 	padding: 3px 10px;
 	border-radius: 5px;
 }
+
+.comments_point .pinned .fa{ color: #000;}
 
 .loadmore {
 	float: left;
@@ -2252,6 +2289,58 @@ article .social_bar img {
 	text-align: center;
 	padding-top: 20px;
 }
+
+.left_details .likes{ margin-right: 0;}
+
+.likes {
+    background-image: url(/assets/media/icons/Likebefore.png);
+    background-repeat: no-repeat;
+    width: 21px;
+    height: 21px;
+    display: block;
+    background-position: 0;
+    background-size: 100%;
+    margin-right: 10px;
+}
+.liked {
+    background-image: url(/assets/media/icons/Likeafter.png);
+    background-repeat: no-repeat;
+    width: 21px;
+    height: 21px;
+    display: block;
+    background-position: 0;
+    background-size: 100%;
+    margin-right: 10px;
+}
+
+.shared{background-image: url(/assets/media/icons/Shared.png);
+    background-repeat: no-repeat;
+    width: 21px;
+    height: 21px;
+    display: inline-block;
+    background-position: 0;
+    background-size: 100%; vertical-align: sub;
+    margin-right: 10px;}
+
+	.shares{background-image: url(/assets/media/icons/Share.png);
+		background-repeat: no-repeat;
+		width: 21px;
+		height: 21px;
+	    display: inline-block;
+		background-position: 0;
+		background-size: 100%; vertical-align: sub;
+		margin-right: 10px;}
+
+		.comments-icon {
+			background-image: url(/assets/media/icons/Comments.png);
+			background-repeat: no-repeat;
+			width: 28px;
+			height: 29px;
+			display: inline-block;
+			background-position: 0;
+			background-size: 100%;
+			vertical-align: sub;
+		}
 
 /* ------- Right side Css -------------- */
 .right_side {

@@ -67,7 +67,7 @@ const CommentForm = ({ post, user }) => {
             </a>{' '}
           </div>
           <button type="submit">
-            <img src="/assets/media/dash/send.png" alt="" />
+            <img src="/assets/media/icons/Send.png" alt="" />
           </button>
         </form>
         <CommentList post={post} user={user} comments={comments} />

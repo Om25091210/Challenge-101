@@ -14,7 +14,7 @@ function LeftNav({ user }) {
             <Link href="/dashboard">
               <a>
                 <span className="iconbg">
-                  <img src="/assets/media/icons/home.png" alt="" />
+                  {/* <img src="/assets/media/icons/home.png" alt="" /> */}
                 </span>{' '}
                 <span className="title">HOME</span>
               </a>
@@ -24,7 +24,7 @@ function LeftNav({ user }) {
             <Link href="/ranking">
               <a className="">
                 <span className="iconbg">
-                  <img src="/assets/media/icons/Ranking.png" alt="" />
+                  {/* <img src="/assets/media/icons/Ranking.png" alt="" /> */}
                 </span>{' '}
                 <span className="title">RANKING</span>
               </a>
@@ -34,7 +34,7 @@ function LeftNav({ user }) {
             <Link href="/tournament">
               <a className="">
                 <span className="iconbg">
-                  <img src="/assets/media/icons/Torunaments.png" alt="" />
+                  {/* <img src="/assets/media/icons/Torunaments.png" alt="" /> */}
                 </span>{' '}
                 <span className="title">TOURNAMENTS</span>
               </a>
@@ -44,7 +44,7 @@ function LeftNav({ user }) {
             <Link href="/games/list">
               <a className="">
                 <span className="iconbg">
-                  <img src="/assets/media/icons/Games.png" alt="" />
+                  {/* <img src="/assets/media/icons/Games.png" alt="" /> */}
                 </span>{' '}
                 <span className="title">GAMES</span>
               </a>
@@ -54,7 +54,7 @@ function LeftNav({ user }) {
             <Link href="/discover">
               <a className="">
                 <span className="iconbg">
-                  <img src="/assets/media/icons/Discovery.png" alt="" />
+                  {/* <img src="/assets/media/icons/Discovery.png" alt="" /> */}
                 </span>{' '}
                 <span className="title">DISCOVER</span>
               </a>
@@ -64,7 +64,7 @@ function LeftNav({ user }) {
             <Link href="/calendar">
               <a className="">
                 <span className="iconbg">
-                  <img src="/assets/media/icons/Calendar.png" alt="" />
+                  {/* <img src="/assets/media/icons/Calendar.png" alt="" /> */}
                 </span>{' '}
                 <span className="title">CALENDER</span>
               </a>
@@ -74,7 +74,7 @@ function LeftNav({ user }) {
             <Link href="/challenges">
               <a className="">
                 <span className="iconbg">
-                  <img src="/assets/media/icons/Challenge.png" alt="" />
+                  {/* <img src="/assets/media/icons/Challenge.png" alt="" /> */}
                 </span>{' '}
                 <span className="title">Challenges</span>
               </a>
@@ -85,7 +85,7 @@ function LeftNav({ user }) {
               <Link href="/adminpage">
                 <a className="">
                   <span className="iconbg">
-                    <img src="/assets/media/icons/Dashboard.png" alt="" />
+                    {/* <img src="/assets/media/icons/Dashboard.png" alt="" /> */}
                   </span>{' '}
                   <span className="title">Admin Settings</span>
                 </a>
