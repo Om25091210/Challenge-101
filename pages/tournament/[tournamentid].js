@@ -34,6 +34,7 @@ import ReactCountryFlag from 'react-country-flag';
 import TournamentPrize from '../../components/tournament/TournamentPrize';
 import TournamentPrizeDetail from '../../components/tournament/TournamentPrizeDetail';
 import TournamentSlots from '../../components/tournament/TournamentSlots';
+import { parseCookies } from 'nookies';
 
 const TournamentDetail = ({ user, data, tourRules, products, profile }) => {
   if (data) {
@@ -70,26 +71,6 @@ const TournamentDetail = ({ user, data, tourRules, products, profile }) => {
     function handleChangeWebsite(e) {
       setWebsitelink({ ...websitelink, [e.target.name]: e.target.value });
     }
-
-    const handleLinksSubmit = async (e) => {
-      e.preventDefault();
-      try {
-        await axios.put(
-          `${baseURL}/api/tournaments/sociallinks/${data.tournament._id}`,
-          { sociallinks, websitelink },
-          {
-            headers: {
-              Authorization: cookie.get('token'),
-              'Content-Type': 'application/json'
-            }
-          }
-        );
-        toast.success('Links Have Been Updated');
-        refreshData();
-      } catch (err) {
-        toast.error(err.response?.data?.msg || 'Please recheck your inputs');
-      }
-    };
 
     const handleDeleteSubmit = async (e) => {
       e.preventDefault();
@@ -355,7 +336,12 @@ const TournamentDetail = ({ user, data, tourRules, products, profile }) => {
                       {data.organizers &&
                         data.organizers.map((item, index) => (
                           <span key={index}>
-                            <img src={item.imgUrl} alt={item.name} />{' '}
+                            <img
+                              src={
+                                item.imgUrl ? item.imgUrl : item.profilePicUrl
+                              }
+                              alt={item.name}
+                            />{' '}
                             <b>{item.name}</b>
                           </span>
                         ))}
@@ -1298,14 +1284,18 @@ const TournamentDetail = ({ user, data, tourRules, products, profile }) => {
 
 export const getServerSideProps = async (context, query) => {
   const { tournamentid } = context.params;
-  console.log(tournamentid);
   const page = query ? query.page || 1 : 1;
   const category = query ? query.category || 'all' : 'all';
   const sort = query ? query.sort || '' : '';
   const search = query ? query.search || 'all' : 'all';
   // const response = await fetch(`${baseEsportsAPIURL}/esport/tournaments/${tournamentid}`, {method:'GET',
   // headers: {'Authorization': 'Basic ' + Buffer.from('multiplyr' + ":" + 'Multiplyr123$').toString('base64')}});
-  const response = await fetch(`${baseURL}/api/tournaments/${tournamentid}`);
+  const { token } = parseCookies(context);
+  const response = await fetch(`${baseURL}/api/tournaments/${tournamentid}`, {
+    headers: {
+      Authorization: token
+    }
+  });
   const data = await response.json();
   // const data = dat.data;
 

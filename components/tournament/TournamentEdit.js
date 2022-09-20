@@ -281,6 +281,7 @@ const TournamentEdit = ({ data, user }) => {
                             {org.name}
                           </option>
                         ))}
+                      <option value={user._id}>{user.name}</option>
                     </select>
                   </div>
 
