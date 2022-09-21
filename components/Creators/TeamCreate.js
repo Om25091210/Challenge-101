@@ -170,6 +170,7 @@ const TeamCreate = ({ isClaim }) => {
                       data={teams}
                       type="Team"
                       handleChange={handleChange}
+                      isSearchOnly={false}
                     />
                     <div className="form-group">
                       <div className="style_file_upload">

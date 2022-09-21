@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-const SearchName = ({ data, type, handleChange }) => {
+const SearchName = ({ data, type, handleChange, isSearchOnly }) => {
   const [filteredData, setFilteredData] = useState([]);
   const [searchText, setSearchText] = useState('');
+  const [trigger, setTrigger] = useState(true);
 
   const handleFilter = (event) => {
     const searchWord = event.target.value;
@@ -14,7 +15,7 @@ const SearchName = ({ data, type, handleChange }) => {
       setFilteredData([]);
     } else {
       setFilteredData(newFilter);
-      if (filteredData.length === 0) {
+      if (filteredData.length === 0 && isSearchOnly === false) {
         handleChange(event);
       }
     }
@@ -24,10 +25,22 @@ const SearchName = ({ data, type, handleChange }) => {
     console.log('AAAAA');
   };
 
+  useEffect(() => {
+    $('a.model_show_btn').click(function () {
+      $(this).next().addClass('show_model');
+    });
+
+    $('a.model_close').click(function () {
+      $(this).parent().removeClass('show_model');
+    });
+  }, [trigger]);
+
   return (
     <>
       <div className="form-group">
-        <label htmlFor="exampleFormControlInput1">{type} Name</label>
+        {isSearchOnly === false && (
+          <label htmlFor="exampleFormControlInput1">{type} Name</label>
+        )}
         <input
           type="search"
           name="name"
@@ -49,7 +62,7 @@ const SearchName = ({ data, type, handleChange }) => {
                     ) : (
                       filteredData.map((data) => (
                         <div
-                          onClick={() => handleClaim(data)}
+                          // onClick={() => handleClaim(data)}
                           key={data._id}
                           className="items"
                         >
@@ -65,9 +78,29 @@ const SearchName = ({ data, type, handleChange }) => {
                               ? data.name.substring(0, 20) + '...'
                               : data.name}
                           </p>
-                          <button className="btn" disabled>
-                            Claim
-                          </button>
+                          <div className="loc_box edit_pof">
+                            <a
+                              href="#!"
+                              className="model_show_btn"
+                              onClick={() => setTrigger(!trigger)}
+                            >
+                              Claim
+                            </a>
+                            <div
+                              className="common_model_box edit_profile"
+                              id="big_poup"
+                            >
+                              <a href="#!" className="model_close">
+                                X
+                              </a>
+                              <div className="inner_model_box">
+                                <div className="add_job_height">
+                                  <h3>Claim {data.name}</h3>
+                                </div>
+                              </div>
+                              <div className="overlay"></div>
+                            </div>
+                          </div>
                         </div>
                       ))
                     )}

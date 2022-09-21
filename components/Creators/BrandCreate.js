@@ -99,6 +99,7 @@ const BrandCreate = ({ isClaim }) => {
                       data={brands}
                       type="Brand"
                       handleChange={handleChange}
+                      isSearchOnly={false}
                     />
                     {state.name.length > 15 && (
                       <h6>Brand name cannot be more then 15 characters</h6>

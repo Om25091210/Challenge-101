@@ -19,6 +19,7 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 import baseURL from '@utils/baseURL';
 import cookie from 'js-cookie';
+import SearchName from './Creators/SearchName';
 
 const SignedHeader = ({ user, profile }) => {
   const router = useRouter();
@@ -29,6 +30,7 @@ const SignedHeader = ({ user, profile }) => {
     BlockchainContext
   );
 
+  const [teams, setTeams] = useState([]);
   const [coin, setCoin] = useState();
   const [INR, setINR] = useState();
   const [refModal, setRefModal] = useState(false);
@@ -75,6 +77,11 @@ const SignedHeader = ({ user, profile }) => {
     }
   };
 
+  useEffect(() => {
+    // Teams
+    axios.get(`${baseURL}/api/all/teams`).then((res) => setTeams(res.data));
+  }, []);
+
   return (
     <header>
       <div className="logo">
@@ -94,8 +101,7 @@ const SignedHeader = ({ user, profile }) => {
 
       <div className="right_menu">
         <div className="searchbox">
-          <input type="search" placeholder="Search" />
-          <input type="submit" value="" />
+          <SearchName data={teams} type="Team" isSearchOnly={true} />
         </div>
         <ul className="top_menu">
           <li className="pluse">
