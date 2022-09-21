@@ -99,7 +99,8 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
 
     e.preventDefault();
     const formdata = new FormData();
-    formdata.append('coverPic', coverPic);
+    setCoverPic(img);
+    formdata.append('coverPic', img);
     try {
       await axios.put(`${baseURL}/api/auth/coverPic`, formdata, {
         headers: {
@@ -109,6 +110,7 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
       });
 
       toast.success('User settings have been updated');
+      refreshData();
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }
@@ -196,7 +198,7 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
               <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
             </a>
           </div>
-          <form onSubmit={handleCoverSubmit}>
+          <form>
             <img
               className=""
               id="result"
@@ -214,10 +216,7 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
                     name="coverPhoto"
                     id="coverPhoto"
                     className="custom-file-input"
-                    onChange={(e) => {
-                      setCoverPic(e.target.files[0]);
-                      handleCoverSubmit(e);
-                    }}
+                    onChange={handleCoverSubmit}
                   />
                   <label htmlFor="coverPhoto">
                     <span>

@@ -124,8 +124,9 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
     }
 
     e.preventDefault();
+    setCoverPic(img);
     const formdata = new FormData();
-    formdata.append('coverPic', coverPic);
+    formdata.append('coverPic', img);
     try {
       await axios.put(
         `${baseURL}/api/teams/coverPic/${data.team._id}`,
@@ -139,6 +140,7 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
       );
 
       toast.success('Cover Photo have been updated');
+      refreshData();
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }
@@ -214,7 +216,7 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
           </a>
         </div>
 
-        <form onSubmit={handleCoverSubmit}>
+        <form>
           <img
             className=""
             id="result"
@@ -229,10 +231,7 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
                 name="coverPhoto"
                 id="coverPhoto"
                 className="custom-file-input"
-                onChange={(e) => {
-                  setCoverPic(e.target.files[0]);
-                  handleCoverSubmit(e);
-                }}
+                onChange={handleCoverSubmit}
               />
               {isManager || isAdmin ? (
                 <label htmlFor="coverPhoto">
