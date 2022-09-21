@@ -67,7 +67,8 @@ const TournamentCreate = ({ user, isClaim }) => {
     playType: '',
     minTeams: null,
     platform: '',
-    isClaim
+    isClaim,
+    checkIn: ''
   });
 
   const options = useMemo(() => countryList().getData(), []);
@@ -589,6 +590,20 @@ const TournamentCreate = ({ user, isClaim }) => {
                           placeholder={state.currency}
                         />
                         <p>{formErrors.entranceFee}</p>
+                      </div>
+                      <div className="colm">
+                        <label for="exampleFormControlTextarea1">
+                          Check-in period
+                        </label>
+                        <input
+                          type="number"
+                          name="checkIn"
+                          className="form-control"
+                          onChange={handleChange}
+                          value={state.checkIn}
+                          placeholder="Minutes before start time"
+                        />
+                        <p>{formErrors.checkIn}</p>
                       </div>
                     </div>
                     <div className="form-group">

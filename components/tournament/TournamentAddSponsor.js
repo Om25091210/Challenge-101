@@ -31,7 +31,7 @@ const TournamentAddSponsor = ({ sponsors, states, type }) => {
   return (
     <>
       <div className="form-group">
-        <label htmlFor="exampleFormControlInput1">{type}</label>
+        {/* <label htmlFor="exampleFormControlInput1">{type}</label> */}
         <input
           type="search"
           name="sponsor"

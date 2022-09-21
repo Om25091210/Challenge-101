@@ -64,22 +64,26 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
     ?.filter((x) => x.user === user._id)
     .map((x) => x.user);
 
-  const mutation = useMutation(async (formdata) => {
-    await axios.put(`${baseURL}/api/auth/profilePic`, formdata, {
-      headers: {
-        Authorization: cookie.get('token'),
-        'Content-Type': 'multipart/form-data'
-      }
-    });
-  });
+  const mutation = useMutation(
+    async (formdata) =>
+      await axios.post(`${baseURL}/api/auth/profilePic`, formdata, {
+        headers: {
+          Authorization: cookie.get('token'),
+          'Content-Type': 'multipart/form-data'
+        }
+      })
+  );
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const [file] = e.target.files;
+    setProfilePic(file);
     const formdata = new FormData();
-    formdata.append('profilePic', profilePic);
+    formdata.append('profilePic', file);
     try {
       await mutation.mutateAsync(formdata);
       toast.success('User settings have been updated');
+      refreshData();
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }
@@ -262,7 +266,7 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
         ) : null}
         <div className="profile_dp_box">
           <div className="profile_pic">
-            <form onSubmit={handleSubmit}>
+            <form>
               <img
                 className=""
                 src={
@@ -282,10 +286,8 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
                     name="user-photo"
                     type="file"
                     className="custom-file-input"
-                    onChange={(e) => {
-                      setProfilePic(e.target.files[0]);
-                      handleSubmit(e);
-                    }}
+                    onChange={handleSubmit}
+                    accept="image/*"
                   />
                 </div>
               ) : null}

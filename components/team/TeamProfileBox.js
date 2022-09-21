@@ -83,8 +83,10 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const [file] = e.target.files;
+    setProfilePic(file);
     const formdata = new FormData();
-    formdata.append('profilePic', profilePic);
+    formdata.append('profilePic', file);
     try {
       await axios.put(
         `${baseURL}/api/teams/profilePic/${data.team._id}`,
@@ -97,7 +99,8 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
         }
       );
 
-      toast.success('Profile Photo have been updated');
+      toast.success('Team Profile Photo have been updated');
+      refreshData();
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }
@@ -248,7 +251,7 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
         <div className="profile_pic">
           {/* <img src={data.team.imgUrl} alt="" /> */}
 
-          <form onSubmit={handleSubmit}>
+          <form>
             <img
               className="rounded-full h-full w-full object-cover"
               src={data.team.imgUrl}
@@ -264,10 +267,7 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
                   name="user-photo"
                   type="file"
                   className="custom-file-input"
-                  onChange={(e) => {
-                    setProfilePic(e.target.files[0]);
-                    handleSubmit(e);
-                  }}
+                  onChange={handleSubmit}
                 />
               </div>
             ) : null}

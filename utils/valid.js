@@ -99,6 +99,9 @@ export const tournamentformvalidate = (values) => {
   if (!values.prizepool) {
     errors.prizepool = 'Prize cannot be empty';
   }
+  if (!values.checkIn) {
+    errors.checkIn = 'Check-in Period Required';
+  }
   if (!values.entranceFee) {
     errors.entranceFee = 'Entrance Fee is Required.';
   }
