@@ -8,11 +8,10 @@ import SocialLink from '../common/SocialLink';
 import { profileformvalidate } from '@utils/valid';
 import Moment from 'moment';
 
-const ProfileEdit = ({ profile, user, games, allteams }) => {
+const ProfileEdit = ({ Userdata, user, games, allteams }) => {
   const name = user.name.split(' ');
   const [allroles, setAllroles] = useState([]);
-  const [showIgn, setShowIgn] = useState('none');
-  const [userIgn, setUserIgn] = useState(null);
+  const [profile, setProfile] = useState(Userdata);
   const [step1, setStep1] = useState(true);
   const [showGameBox, setShowGameBox] = useState(true);
   const [selectedGame, setSelectedGame] = useState();

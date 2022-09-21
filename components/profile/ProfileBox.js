@@ -21,19 +21,10 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
 
   const [coverPic, setCoverPic] = useState(null);
   const [userIgn, setUserIgn] = useState(null);
+  const [follow, setFollow] = useState(false);
+  const [deleteModal, setDeleteModal] = useState(false);
   let [tabData, setTabData] = useState([]);
 
-  const [address, setAddress] = useState(Userdata.profile?.address);
-
-  const [attr, setAttr] = useState(
-    Userdata.profile?.playergames[0]?.player?.attributes
-  );
-
-  const [follow, setFollow] = useState(false);
-
-  const [deleteModal, setDeleteModal] = useState(false);
-
-  const [formErrors, setFormErrors] = useState({});
   const router = useRouter();
 
   const refreshData = () => {
@@ -326,7 +317,7 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
               {isLoggedInUser ? null : (
                 <div className="button">
                   <button className="btn" onClick={followhandlesubmit}>
-                    {isFollow.length === 0 ? 'Follow' : 'UnFollow'}
+                    {isFollow.length === 0 ? 'Follow' : 'Unfollow'}
                   </button>{' '}
                   <a href="#" className="btn">
                     Message
@@ -422,10 +413,9 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
               {isLoggedInUser ? (
                 <div onClick={() => handleTabs('TEAMS')}>
                   <ProfileEdit
-                    profile={Userdata.profile}
+                    Userdata={Userdata.profile}
                     allteams={tabData?.teams}
                     user={user}
-                    teams={teams}
                     games={games}
                   />
                 </div>
@@ -451,85 +441,6 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
                         </span>
                       </>
                     ))}
-                    {/* <a href="#!" className="model_show_btn">
-                      <i className="fa fa-plus-circle" aria-hidden="true"></i>
-
-                      <div className="hover_games">
-                        <div className="other_logo">
-                          <img
-                            src={selectedGame ? selectedGame.imgUrl : ''}
-                            alt={selectedGame ? selectedGame.name : ''}
-                          />
-                        </div>
-                      </div>
-                    </a> */}
-
-                    <div className="common_model_box" id="more_games">
-                      <a href="#!" className="model_close">
-                        X
-                      </a>
-                      <div className="inner_model_box">
-                        <h3>Games</h3>
-                        <form
-                          className="form w-100 add_game_box"
-                          noValidate="novalidate"
-                          id="kt_sign_up_form"
-                          onSubmit={gamehandleSubmit}
-                        >
-                          {step1 ? (
-                            <div className="poup_height msScroll_all">
-                              <ul>
-                                {games &&
-                                  games.map((game) => (
-                                    <li>
-                                      <div className="game_pic">
-                                        <a
-                                          href="#!"
-                                          onClick={() => handleSelectGame(game)}
-                                        >
-                                          <img
-                                            src={game.imgUrl}
-                                            alt={game.name}
-                                          />
-                                        </a>
-                                      </div>
-                                    </li>
-                                  ))}
-                              </ul>
-                            </div>
-                          ) : (
-                            <>
-                              <button
-                                className="btn"
-                                onClick={() => setStep1(true)}
-                              >
-                                Back
-                              </button>
-                              <div className="add_game_poup">
-                                <img
-                                  src={selectedGame?.game.imgUrl}
-                                  alt={selectedGame?.game.name}
-                                />
-
-                                <input
-                                  type="text"
-                                  name="userIgn"
-                                  onChange={handleUserIgnChange}
-                                  value={userIgn}
-                                />
-                              </div>
-
-                              <button type="submit" className="btn">
-                                <span className="indicator-label">
-                                  Add Game
-                                </span>
-                              </button>
-                            </>
-                          )}
-                        </form>
-                      </div>
-                      <div className="overlay"></div>
-                    </div>
                   </div>
                 </div>
               ) : null}

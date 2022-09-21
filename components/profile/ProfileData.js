@@ -102,12 +102,12 @@ const ProfileData = ({ user, Userdata, products, teams }) => {
           </a>
         </li> */}
         <li>
-          <a href="#!" rel="photos">
+          <a href="#!" rel="photos" onClick={() => handleTabs('PHOTOS')}>
             Photos
           </a>
         </li>
         <li>
-          <a href="#!" rel="video">
+          <a href="#!" rel="video" onClick={() => handleTabs('VIDEOS')}>
             Videos/streams
           </a>
         </li>
@@ -144,12 +144,7 @@ const ProfileData = ({ user, Userdata, products, teams }) => {
             {Userdata.teamMatchesList?.map((result, index) => (
               <TeamAllStats teamId={result.team._id} />
             ))}
-            <GamesDetails
-              user={user}
-              profile={profile}
-              Userdata={Userdata.profile}
-              teams={teams}
-            />
+            <GamesDetails user={user} Userdata={profile} teams={teams} />
           </div>
         </div>
         <div className="tab hide" id="statistics">
@@ -250,8 +245,7 @@ const ProfileData = ({ user, Userdata, products, teams }) => {
         </div>
 
         <ProfileTeams
-          Userdata={Userdata}
-          profile={profile}
+          Userdata={Userdata.profile}
           user={user}
           allGames={allGames}
           teamroles={teamroles}
@@ -351,23 +345,19 @@ const ProfileData = ({ user, Userdata, products, teams }) => {
           </div>{' '}
         </div>
 
-        <ProfileMatches
+        {/* <ProfileMatches
           user={user}
           Userdata={Userdata}
           teamMatchesList={tabData}
-        />
+        /> */}
 
         <ProductList user={user} productList={products} />
 
-        <div className="tab hide" id="photos">
-          <Photos Userdata={Userdata} user={user} />
-        </div>
+        <Photos Userdata={Userdata.profile} user={user} photos={tabData} />
 
-        <div className="tab hide" id="video">
-          <Videos Userdata={Userdata} user={user} />
-        </div>
+        <Videos Userdata={Userdata.profile} user={user} data={tabData} />
 
-        <ProductRigs user={user} productList={products} Userdata={Userdata} />
+        {/* <ProductRigs user={user} productList={products} Userdata={Userdata} /> */}
       </div>
       {/* ------------- start poup data ------------- */}
       <ProdPoup />

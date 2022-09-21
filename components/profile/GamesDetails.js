@@ -8,13 +8,14 @@ import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
 import cookie from 'js-cookie';
 
-const GamesDetails = ({ user, profile, Userdata, teams }) => {
+const GamesDetails = ({ user, Userdata, teams }) => {
   const [attributeData, setAttributeData] = useState();
+  const [trigger, setTrigger] = useState(true);
 
   const isReq =
     Userdata.playergames.filter((pro) => {
       return Userdata.request.some((req) => {
-        return pro.player?._id === req.playerId;
+        return pro.player === req.playerId;
       });
     }).length > 0;
 
@@ -79,7 +80,7 @@ const GamesDetails = ({ user, profile, Userdata, teams }) => {
     $('a.model_close').click(function () {
       $(this).parent().removeClass('show_model');
     });
-  }, []);
+  }, [trigger]);
 
   return (
     <>
@@ -145,7 +146,11 @@ const GamesDetails = ({ user, profile, Userdata, teams }) => {
                   INVITATION SENT
                 </button>
               ) : (
-                <a href="#!" className="model_show_btn">
+                <a
+                  href="#!"
+                  className="model_show_btn"
+                  onClick={() => setTrigger(!trigger)}
+                >
                   <button className="game_btn">
                     <i className="fa fa-plus-circle" aria-hidden="true"></i>
                     INVITE TO TEAM
@@ -196,7 +201,7 @@ const GamesDetails = ({ user, profile, Userdata, teams }) => {
 
       {attributeData?.attributeId === user._id ? null : (
         <>
-          {profile.user?._id === user?._id ? (
+          {Userdata.user?._id === user?._id ? (
             <AttributeCard type="PROFILE" attributeId={user?._id} />
           ) : null}
         </>

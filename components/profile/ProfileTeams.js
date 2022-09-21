@@ -7,14 +7,7 @@ import { useRouter } from 'next/router';
 import { profileTeam } from '../../utils/valid';
 import ProfileRigsDelete from './ProfileRigsDelete';
 
-const ProfileTeams = ({
-  Userdata,
-  profile,
-  user,
-  teamsData,
-  allGames,
-  teamroles
-}) => {
+const ProfileTeams = ({ Userdata, user, teamsData, allGames, teamroles }) => {
   const [filteredData, setFilteredData] = useState([]);
   const [allTeams, setAllTeams] = useState([]);
   const [searchText, setSearchText] = useState('');
@@ -98,7 +91,7 @@ const ProfileTeams = ({
       <div className="tab hide" id="teams">
         <div className="sponser_btn">
           {' '}
-          {Userdata.profile.user._id === user._id ? (
+          {Userdata.user._id === user._id ? (
             <a href="#!" className="model_show_btn">
               <button className="btn">
                 {' '}
@@ -246,7 +239,7 @@ const ProfileTeams = ({
         <div>
           <ul className="stats_card stats_team">
             {teamsData && teamsData.length === 0 ? (
-              <p>{profile.user.name} has no teams.</p>
+              <p>{Userdata.user.name} has no teams.</p>
             ) : (
               teamsData &&
               teamsData.map((team) => (
@@ -290,7 +283,7 @@ const ProfileTeams = ({
                     <ProfileRigsDelete
                       type="ProfileTeamDel"
                       teamId={team.team._id}
-                      profile={profile}
+                      profile={Userdata}
                       user={user}
                     />
                   ) : null}

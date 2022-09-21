@@ -8,7 +8,7 @@ import VideoDropzone from '@components/common/VideosDropzone';
 import { Video } from 'cloudinary-react';
 import ProfileVideosDel from './ProfileVideosDel';
 
-const Videos = ({ Userdata, user }) => {
+const Videos = ({ Userdata, user, data }) => {
   const [videos, setVideos] = useState([]);
   const [videodisc, setVideodisc] = useState();
 
@@ -49,80 +49,83 @@ const Videos = ({ Userdata, user }) => {
   };
 
   return (
-    <div className="video_box">
-      {Userdata.profile.user._id === user._id ? (
-        <>
-          <div className="add_photos">
-            <a href="#!" className="model_show_btn">
-              <button className="btn">
-                <i aria-hidden="true">
-                  <i className="fa fa-plus-circle" aria-hidden="true"></i> Add
-                  Video
-                </i>
-              </button>
-            </a>
-            <div className="common_model_box">
-              <a href="#!" className="model_close">
-                X
+    <div className="tab hide" id="video">
+      <div className="video_box">
+        {Userdata.user._id === user._id ? (
+          <>
+            <div className="add_photos">
+              <a href="#!" className="model_show_btn">
+                <button className="btn">
+                  <i aria-hidden="true">
+                    <i className="fa fa-plus-circle" aria-hidden="true"></i> Add
+                    Video
+                  </i>
+                </button>
               </a>
-              <div className="inner_model_box">
-                <h3>Add Videos</h3>
-                <VideoDropzone setVideos={setVideos} />
-                {videos.length > 0 ? (
-                  <div className="upload_btn">
-                    <form onSubmit={handleSubmit}>
-                      <textarea
-                        type="text"
-                        placeholder="Add a description"
-                        id="videodisc"
-                        name="videodisc"
-                        value={videodisc}
-                        onChange={(e) => setVideodisc(e.target.value)}
-                      ></textarea>
+              <div className="common_model_box">
+                <a href="#!" className="model_close">
+                  X
+                </a>
+                <div className="inner_model_box">
+                  <h3>Add Videos</h3>
+                  <VideoDropzone setVideos={setVideos} />
+                  {videos.length > 0 ? (
+                    <div className="upload_btn">
+                      <form onSubmit={handleSubmit}>
+                        <textarea
+                          type="text"
+                          placeholder="Add a description"
+                          id="videodisc"
+                          name="videodisc"
+                          value={videodisc}
+                          onChange={(e) => setVideodisc(e.target.value)}
+                        ></textarea>
 
-                      <a href="#!" onClick={handleSubmit} className="btn">
-                        UPLOAD NOW{' '}
-                      </a>
-                    </form>
-                  </div>
-                ) : (
-                  ''
-                )}
+                        <a href="#!" onClick={handleSubmit} className="btn">
+                          UPLOAD NOW{' '}
+                        </a>
+                      </form>
+                    </div>
+                  ) : (
+                    ''
+                  )}
+                </div>
+                <div className="overlay"></div>
               </div>
-              <div className="overlay"></div>
             </div>
-          </div>
-        </>
-      ) : null}
+          </>
+        ) : null}
 
-      <p></p>
+        <p></p>
 
-      {Userdata.profile.videosgallery.map((vid, idx) => (
-        <ul key={idx}>
-          {vid.videos.map((vide, idex) => (
-            <li key={idex}>
-              {' '}
-              <div className="video">
-                {' '}
-                <Video
-                  cloudName="dch502zpg"
-                  controls
-                  fallback="Cannot display video"
-                  publicId={vide.path}
-                ></Video>
-              </div>
-              <div className="bottom_data">
-                {' '}
-                {/* <a href="#">The Team</a>{' '}
+        {data &&
+          data.map((vid, idx) => (
+            <ul key={idx}>
+              {vid.videos &&
+                vid.videos.map((vide, idex) => (
+                  <li key={idex}>
+                    {' '}
+                    <div className="video">
+                      {' '}
+                      <Video
+                        cloudName="dch502zpg"
+                        controls
+                        fallback="Cannot display video"
+                        publicId={vide.path}
+                      ></Video>
+                    </div>
+                    <div className="bottom_data">
+                      {' '}
+                      {/* <a href="#">The Team</a>{' '}
                 <a href="#" className="yellow">
                   Lq Heroes
                 </a> */}
-                <h2>
-                  {/* {vide.originalname} :  */}
-                  <span>{vid.videodisc}</span>
-                </h2>
-                {/* <span className="date">{vide.createdAt}</span>{' '} */}
-                {/* <span className="views">
+                      <h2>
+                        {/* {vide.originalname} :  */}
+                        <span>{vid.videodisc}</span>
+                      </h2>
+                      {/* <span className="date">{vide.createdAt}</span>{' '} */}
+                      {/* <span className="views">
                   <i className="fa fa-eye" aria-hidden="true"></i> 2223
                 </span>{' '}
                 <span className="likes">
@@ -131,16 +134,16 @@ const Videos = ({ Userdata, user }) => {
                 <span className="comments">
                   <i className="fa fa-comment" aria-hidden="true"></i>18
                 </span>{' '} */}
-                <ProfileVideosDel
-                  collectionId={vid._id}
-                  profile={Userdata.profile}
-                  user={user}
-                />
-              </div>
-            </li>
-          ))}
+                      <ProfileVideosDel
+                        collectionId={vid._id}
+                        profile={Userdata}
+                        user={user}
+                      />
+                    </div>
+                  </li>
+                ))}
 
-          {/* <li style={{ display: 'none' }}>
+              {/* <li style={{ display: 'none' }}>
                 <div className="video">
                   {' '}
                   <img src="/assets/media/video/thumb1.jpg" alt="" />{' '}
@@ -167,8 +170,9 @@ const Videos = ({ Userdata, user }) => {
                   </span>{' '}
                 </div>
               </li> */}
-        </ul>
-      ))}
+            </ul>
+          ))}
+      </div>
     </div>
   );
 };

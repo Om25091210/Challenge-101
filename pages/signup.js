@@ -39,6 +39,7 @@ const Signup = ({ games, avatars }) => {
   const [verificationToken, setVerificationToken] = useState('');
   const [finishsubmit, setFinishSubmit] = useState(true);
   const [showIgn, setShowIgn] = useState('none');
+  const [trigger, setTrigger] = useState(true);
 
   const [username, setUsername] = useState('');
   const [avatar, setAvatar] = useState();
@@ -220,7 +221,7 @@ const Signup = ({ games, avatars }) => {
     $('.msScroll_all').mCustomScrollbar({
       autoHideScrollbar: true
     });
-  }, []);
+  }, [trigger]);
   return (
     <>
       <div id="kt_body" className="bg-body">
@@ -612,7 +613,11 @@ const Signup = ({ games, avatars }) => {
                           ))}
                       </ul>
 
-                      <a href="#!" className="model_show_btn">
+                      <a
+                        href="#!"
+                        className="model_show_btn"
+                        onClick={() => setTrigger(!trigger)}
+                      >
                         see all
                       </a>
                       <div className="common_model_box" id="see_all">
