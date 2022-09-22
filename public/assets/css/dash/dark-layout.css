@@ -251,8 +251,13 @@ body.DarkPage .video_box li .bottom_data span, body.DarkPage .video_box li .bott
     color: #858585;
 }
 body.DarkPage .video_box li .bottom_data .btn i {
+    color: #000;
+}
+
+body.DarkPage .video_box li .bottom_data .btn:hover i {
     color: #fff;
 }
+
 body.DarkPage .video_box li .bottom_data h2 {
     color: #fff;
 }
@@ -277,11 +282,57 @@ body.DarkPage .create_bg {
     padding: 0;
 }
 body.DarkPage .create_bg input {
-    background: #222f41 !important;
+    /* background: #222f41 !important; */
     border-radius: 5px;
     border: 1px solid #344860;
-    color: #fff;
+    color: #000;
 }
+
+
+
+body.DarkPage .create_tournament .socail_url li .facebook {
+	background: #222f41 url(/assets/media/social/face.png) 10px 12px no-repeat !important;
+	background-size: 9px !important;
+	padding-left: 35px;
+}
+
+body.DarkPage .create_tournament .socail_url li .instagram {
+	background: #222f41 url(/assets/media/social/instagram.png) 10px 13px no-repeat !important;
+	background-size: 16px !important;
+	padding-left: 35px;
+}
+
+body.DarkPage .create_tournament .socail_url li .twitter {
+	background: #222f41 url(/assets/media/social/twitter.png) 10px 15px no-repeat !important;
+	background-size: 15px !important;
+	padding-left: 35px;
+}
+
+body.DarkPage .create_tournament .socail_url li .youtube {
+	background: #222f41 url(/assets/media/social/youtube.png) 8px 13px no-repeat !important;
+	background-size: 20px !important;
+	padding-left: 35px;
+}
+
+body.DarkPage .create_tournament .socail_url li .discord {
+	background: #222f41 url(/assets/media/social/discord1.png) 8px 13px no-repeat !important;
+	background-size: 20px !important;
+	padding-left: 35px;
+}
+
+body.DarkPage .create_tournament .socail_url li .twitch {
+	background: #222f41 url(/assets/media/social/twitch.png) 8px 13px no-repeat !important;
+	background-size: 20px !important;
+	padding-left: 35px;
+}
+
+body.DarkPage .create_tournament .socail_url li .website, body.DarkPage .create_tournament form .colm .website {
+	background: #222f41 url(/assets/media/social/globe.png) 8px 13px no-repeat !important;
+	background-size: 20px !important;
+	padding-left: 35px;
+}
+
+
 body.DarkPage .create_bg .style_file_upload .inputfile+label {
     border-radius: 5px;
     border: 1px solid #344860;

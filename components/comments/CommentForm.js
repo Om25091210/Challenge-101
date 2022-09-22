@@ -59,12 +59,12 @@ const CommentForm = ({ post, user }) => {
               value={comment}
               onChange={onChange}
             ></textarea>
-            <a href="#" className="smile gif">
+            {/* <a href="#" className="smile gif">
               <i className="fa fa-camera" aria-hidden="true"></i>
             </a>{' '}
             <a href="#" className="smile">
               <img src="/assets/media/dash/smile.png" alt="" />
-            </a>{' '}
+            </a>{' '} */}
           </div>
           <button type="submit">
             <img src="/assets/media/icons/Send.png" alt="" />

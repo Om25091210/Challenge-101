@@ -62,7 +62,7 @@ const CreateTeam = ({ user, profile }) => {
       <SignedHeader user={user} profile={profile} />
       <LeftNav user={user} />
       <div className="main_middle create_main_middle">
-        <div className="white_bg">
+        <div className="white_bg create_bg">
           <div className="create_form_box">
             <div className="left_create_form">
               <img src="/assets/media/create_left_img.jpg" />

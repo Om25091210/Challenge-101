@@ -1920,7 +1920,7 @@ ul.top_menu .drop_down_bg.create_pages p {
 
 .add_comment_box .add_comments textarea {
 	background: none;
-	width: 80%;
+	width: 90%;
 	border: 0;
 	resize: none;
 	margin: 0px 10px;
@@ -2001,7 +2001,7 @@ ul.top_menu .drop_down_bg.create_pages p {
 	float: left;
 	width: 100%;
 	align-items: center;
-	margin-top: 20px;
+	margin-top: 0px;
 }
 
 .post_comments .pop_comment {
@@ -2898,7 +2898,7 @@ article .social_bar img {
 	background: #f72b50;
 }
 
-.contact_list .offline {
+ .offline {
 	position: absolute;
 	width: 10px;
 	height: 10px;
@@ -2909,7 +2909,7 @@ article .social_bar img {
 	background: #ddd;
 }
 
-.contact_list .online_icon {
+.online_icon {
 	background: #07d7d7;
 	position: absolute;
 	width: 18px;
@@ -3218,7 +3218,7 @@ article .social_bar img {
 	font-size: 12px;
 	text-align: center;
 	padding: 5px 17px;
-	border-radius: 5px;
+	border-radius: 20px;
 	text-transform: uppercase;
 }
 
@@ -3901,7 +3901,7 @@ article .social_bar img {
 }
 
 .profile_match_details .games_details {
-	margin-top: 0;
+	margin-top: 0 !important;
 }
 
 .games_details {
@@ -5131,7 +5131,7 @@ article .social_bar img {
 	background: #f6e52e;
 	color: #000;
 	padding: 10px 20px;
-	border-radius: 5px;
+	border-radius: 20px;
 	font-size: 12px;
 	border: 0;
 }
@@ -8165,6 +8165,8 @@ main {
 	text-align: center;
 	padding: 50px;
 	z-index: 9;
+	top:50%;
+	transform: translateY(-50%);
 }
 
 .create_tournament {
@@ -8174,6 +8176,7 @@ main {
 
 .create_tournament .btn {
 	background: #f6e52e !important;
+	color: #000;
 }
 
 .create_tournament form {
@@ -8292,6 +8295,49 @@ main {
 	flex-wrap: wrap;
 }
 
+.create_tournament .socail_url li .facebook {
+	background: #2c2c36 url(/assets/media/social/face.png) 10px 12px no-repeat !important;
+	background-size: 9px !important;
+	padding-left: 35px;
+}
+
+.create_tournament .socail_url li .instagram {
+	background: #2c2c36 url(/assets/media/social/instagram.png) 10px 13px no-repeat !important;
+	background-size: 16px !important;
+	padding-left: 35px;
+}
+
+.create_tournament .socail_url li .twitter {
+	background: #2c2c36 url(/assets/media/social/twitter.png) 10px 15px no-repeat !important;
+	background-size: 15px !important;
+	padding-left: 35px;
+}
+
+.create_tournament .socail_url li .youtube {
+	background: #2c2c36 url(/assets/media/social/youtube.png) 8px 13px no-repeat !important;
+	background-size: 20px !important;
+	padding-left: 35px;
+}
+
+.create_tournament .socail_url li .discord {
+	background: #2c2c36 url(/assets/media/social/discord1.png) 8px 13px no-repeat !important;
+	background-size: 20px !important;
+	padding-left: 35px;
+}
+
+.create_tournament .socail_url li .twitch {
+	background: #2c2c36 url(/assets/media/social/twitch.png) 8px 13px no-repeat !important;
+	background-size: 20px !important;
+	padding-left: 35px;
+}
+
+.create_tournament .socail_url li .website {
+	background: #2c2c36 url(/assets/media/social/globe.png) 8px 13px no-repeat !important;
+	background-size: 20px !important;
+	padding-left: 35px;
+}
+
+
 ul.game_search_result {
 	float: left;
 	width: 100%;
@@ -8355,7 +8401,7 @@ ul.game_search_result li.slc_img:after {
 	width: 350px;
 }
 
-.create_bg .create_form_box input[type="submit"] {
+/* .create_bg .create_form_box input[type="submit"] {
 	border: 0;
 	background: url(/assets/media/search-icon.png) 0 7px no-repeat !important;
 	height: 30px;
@@ -8365,7 +8411,7 @@ ul.game_search_result li.slc_img:after {
 	top: 40px;
 	cursor: pointer;
 	transition: 0.3s ease-out;
-}
+} */
 
 .create_bg .create_form_box input[type="submit"]:hover {
 	background-position: 0 -20px;
@@ -8504,6 +8550,8 @@ ul.game_search_result li.slc_img:after {
 	position: relative;
 }
 
+.create_tournament form .form-group .colm .form-group{ margin-bottom: 0;}
+
 .create_tournament form .form-group .colm:nth-child(2n) {
 	float: right;
 }
@@ -8550,43 +8598,43 @@ ul.game_search_result li.slc_img:after {
 	color: white;
 }
 
-#big_poup .edit_four .facebook {
+#big_poup .edit_four .facebook, .facebook1 {
 	background: #2c2c36 url(/assets/media/social/face.png) 10px 12px no-repeat !important;
 	background-size: 9px !important;
 	padding-left: 35px;
 }
 
-#big_poup .edit_four .instagram {
+#big_poup .edit_four .instagram, .instagram1 {
 	background: #2c2c36 url(/assets/media/social/instagram.png) 10px 13px no-repeat !important;
 	background-size: 16px !important;
 	padding-left: 35px;
 }
 
-#big_poup .edit_four .twitter {
+#big_poup .edit_four .twitter, .twitter1 {
 	background: #2c2c36 url(/assets/media/social/twitter.png) 10px 15px no-repeat !important;
 	background-size: 15px !important;
 	padding-left: 35px;
 }
 
-#big_poup .edit_four .youtube {
+#big_poup .edit_four .youtube, .youtube1 {
 	background: #2c2c36 url(/assets/media/social/youtube.png) 8px 13px no-repeat !important;
 	background-size: 20px !important;
 	padding-left: 35px;
 }
 
-#big_poup .edit_four .discord {
+#big_poup .edit_four .discord, .discord1 {
 	background: #2c2c36 url(/assets/media/social/discord1.png) 8px 13px no-repeat !important;
 	background-size: 20px !important;
 	padding-left: 35px;
 }
 
-#big_poup .edit_four .twitch {
+#big_poup .edit_four .twitch, .twitch1 {
 	background: #2c2c36 url(/assets/media/social/twitch.png) 8px 13px no-repeat !important;
 	background-size: 20px !important;
 	padding-left: 35px;
 }
 
-#big_poup .edit_four .website {
+#big_poup .edit_four .website, .website1 {
 	background: #2c2c36 url(/assets/media/social/globe.png) 8px 13px no-repeat !important;
 	background-size: 20px !important;
 	padding-left: 35px;
@@ -11194,6 +11242,15 @@ form.common_form .btn {
 	padding: 5px 8px;
 }
 
+.searchbox .custom-rig-tag {
+    min-height: 200px;
+    overflow: hidden;
+    max-height: 200px;
+    overflow-y: auto;
+    top: 35px;
+}
+
+
 .rigs_items {
 	display: block;
 	width: 100%;
@@ -11202,19 +11259,21 @@ form.common_form .btn {
 .rigs_items .items {
 	position: relative;
 	display: flex;
-	justify-content: space-between;
+	justify-content: flex-start;
 	align-items: center;
 	padding: 5px 0;
 }
 
 .rigs_items .items span {
-	width: 50px;
-	border: 1px solid #ddd;
+    width: 25px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
 }
 
 .rigs_items .items p {
 	position: static !important;
 	color: #fff !important;
+	font-size: 10px; padding: 0 10px;
 }
 
 .tournamnet_new_row {

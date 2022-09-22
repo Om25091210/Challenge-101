@@ -200,7 +200,7 @@ const TournamentCreate = ({ user, isClaim }) => {
   return (
     <>
       <div className="main_middle create_main_middle">
-        <div className="white_bg ">
+        <div className="white_bg create_bg">
           <div className="create_form_box">
             <div className="left_create_form">
               <img src="/assets/media/create_left_img.jpg" />
@@ -548,62 +548,66 @@ const TournamentCreate = ({ user, isClaim }) => {
                     {state.playType === 'TEAMS' ? (
                       <>
                         <div className="form-group">
-                          <div className="colm">
-                            <label for="exampleFormControlTextarea1">
-                              Number of Teams
-                            </label>
-                            <input
-                              type="number"
-                              name="numberOfTeam"
-                              className="form-control"
-                              onChange={handleChange}
-                              value={state.numberOfTeam}
-                            />
-                          </div>
+                          <div className="date_time">
+                            <div className="date_box">
+                              <label for="exampleFormControlTextarea1">
+                                Number of Teams
+                              </label>
+                              <input
+                                type="number"
+                                name="numberOfTeam"
+                                className="form-control"
+                                onChange={handleChange}
+                                value={state.numberOfTeam}
+                              />
+                            </div>
 
-                          <div className="colm">
-                            <label for="exampleFormControlTextarea1">
-                              Minimum Teams
-                            </label>
-                            <input
-                              type="number"
-                              name="minTeams"
-                              className="form-control"
-                              onChange={handleChange}
-                              value={state.minTeams}
-                            />
+                            <div className="time_box">
+                              <label for="exampleFormControlTextarea1">
+                                Minimum Teams
+                              </label>
+                              <input
+                                type="number"
+                                name="minTeams"
+                                className="form-control"
+                                onChange={handleChange}
+                                value={state.minTeams}
+                              />
+                            </div>
                           </div>
                         </div>
                       </>
                     ) : null}
                     <div className="form-group">
-                      <div className="colm">
-                        <label for="exampleFormControlTextarea1">
-                          Entrance fee
-                        </label>
-                        <input
-                          type="number"
-                          name="entranceFee"
-                          className="form-control"
-                          onChange={handleChange}
-                          value={state.entranceFee}
-                          placeholder={state.currency}
-                        />
-                        <p>{formErrors.entranceFee}</p>
-                      </div>
-                      <div className="colm">
-                        <label for="exampleFormControlTextarea1">
-                          Check-in period
-                        </label>
-                        <input
-                          type="number"
-                          name="checkIn"
-                          className="form-control"
-                          onChange={handleChange}
-                          value={state.checkIn}
-                          placeholder="Minutes before start time"
-                        />
-                        <p>{formErrors.checkIn}</p>
+                      <div className="date_time">
+                        <div className="date_box">
+                          <label for="exampleFormControlTextarea1">
+                            Entrance fee
+                          </label>
+                          <input
+                            type="number"
+                            name="entranceFee"
+                            className="form-control"
+                            onChange={handleChange}
+                            value={state.entranceFee}
+                            placeholder={state.currency}
+                          />
+                          <p>{formErrors.entranceFee}</p>
+                        </div>
+                        <div className="time_box">
+                          <label for="exampleFormControlTextarea1">
+                            Check-in period
+                          </label>
+                          <input
+                            type="number"
+                            name="checkIn"
+                            className="form-control"
+                            onChange={handleChange}
+                            value={state.checkIn}
+                            placeholder="Minutes before start time"
+                          />
+                          <p>{formErrors.checkIn}</p>
+                        </div>
                       </div>
                     </div>
                     <div className="form-group">
@@ -762,7 +766,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                         <input
                           type="text"
                           name="website"
-                          className="form-control"
+                          className="form-control website"
                           placeholder="Enter Website Name with Extension"
                           onChange={handleChange}
                           value={state.website}
@@ -776,7 +780,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                           <li>
                             <input
                               type="text"
-                              className="form-control"
+                              className="form-control facebook"
                               placeholder="Enter your Facebook user ID as per the URL"
                               name="facebook"
                               onChange={handleChange}
@@ -786,7 +790,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                           <li>
                             <input
                               type="text"
-                              className="form-control"
+                              className="form-control twitch"
                               placeholder="Enter your Twitch Channel name as per the URL"
                               name="twitch"
                               onChange={handleChange}
@@ -796,7 +800,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                           <li>
                             <input
                               type="text"
-                              className="form-control"
+                              className="form-control twitter"
                               placeholder="Enter @Twitter Name"
                               name="twitter"
                               onChange={handleChange}
@@ -806,7 +810,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                           <li>
                             <input
                               type="text"
-                              className="form-control"
+                              className="form-control instagram"
                               placeholder="Enter your Instagram User Name"
                               name="instagram"
                               onChange={handleChange}
@@ -817,7 +821,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                             {' '}
                             <input
                               type="text"
-                              className="form-control"
+                              className="form-control youtube"
                               placeholder="Enter your Youtube Channel Name as per the URL"
                               name="youtube"
                               onChange={handleChange}
@@ -827,7 +831,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                           <li>
                             <input
                               type="text"
-                              className="form-control"
+                              className="form-control discord"
                               placeholder="Enter your full Discord server link"
                               name="discord"
                               onChange={handleChange}

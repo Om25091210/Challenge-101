@@ -78,7 +78,7 @@ const BrandCreate = ({ isClaim }) => {
   return (
     <>
       <div className="main_middle create_main_middle">
-        <div className="white_bg">
+        <div className="white_bg create_bg">
           <div className="create_form_box">
             <div className="left_create_form">
               <img src="/assets/media/create_left_img.jpg" />
@@ -142,7 +142,7 @@ const BrandCreate = ({ isClaim }) => {
                       <li>
                         <input
                           type="text"
-                          className="form-control"
+                          className="form-control facebook"
                           placeholder="Enter your Facebook user ID as per the URL"
                           name="facebook"
                           onChange={handleChange}
@@ -152,7 +152,7 @@ const BrandCreate = ({ isClaim }) => {
                       <li>
                         <input
                           type="text"
-                          className="form-control"
+                          className="form-control twitch"
                           placeholder="Enter your Twitch Channel name as per the URL"
                           name="twitch"
                           onChange={handleChange}
@@ -162,7 +162,7 @@ const BrandCreate = ({ isClaim }) => {
                       <li>
                         <input
                           type="text"
-                          className="form-control"
+                          className="form-control twitter"
                           placeholder="Enter @Twitter Name"
                           name="twitter"
                           onChange={handleChange}
@@ -172,7 +172,7 @@ const BrandCreate = ({ isClaim }) => {
                       <li>
                         <input
                           type="text"
-                          className="form-control"
+                          className="form-control instagram"
                           placeholder="Enter your Instagram User Name"
                           name="instagram"
                           onChange={handleChange}
@@ -183,7 +183,7 @@ const BrandCreate = ({ isClaim }) => {
                         {' '}
                         <input
                           type="text"
-                          className="form-control"
+                          className="form-control youtube"
                           placeholder="Enter your Youtube Channel Name as per the URL"
                           name="youtube"
                           onChange={handleChange}
@@ -193,7 +193,7 @@ const BrandCreate = ({ isClaim }) => {
                       <li>
                         <input
                           type="text"
-                          className="form-control"
+                          className="form-control discord"
                           placeholder="Enter your full Discord server link"
                           name="discord"
                           onChange={handleChange}

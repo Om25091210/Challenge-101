@@ -336,7 +336,7 @@ const TeamCreate = ({ isClaim }) => {
                           <li>
                             <input
                               type="text"
-                              className="form-control"
+                              className="form-control facebook"
                               placeholder="Enter your Facebook user ID as per the URL"
                               name="facebook"
                               onChange={handleChange}
@@ -346,7 +346,7 @@ const TeamCreate = ({ isClaim }) => {
                           <li>
                             <input
                               type="text"
-                              className="form-control"
+                              className="form-control twitch"
                               placeholder="Enter your Twitch Channel name as per the URL"
                               name="twitch"
                               onChange={handleChange}
@@ -356,7 +356,7 @@ const TeamCreate = ({ isClaim }) => {
                           <li>
                             <input
                               type="text"
-                              className="form-control"
+                              className="form-control twitter"
                               placeholder="Enter @Twitter Name"
                               name="twitter"
                               onChange={handleChange}
@@ -366,7 +366,7 @@ const TeamCreate = ({ isClaim }) => {
                           <li>
                             <input
                               type="text"
-                              className="form-control"
+                              className="form-control instagram"
                               placeholder="Enter your Instagram User Name"
                               name="instagram"
                               onChange={handleChange}
@@ -377,7 +377,7 @@ const TeamCreate = ({ isClaim }) => {
                             {' '}
                             <input
                               type="text"
-                              className="form-control"
+                              className="form-control youtube"
                               placeholder="Enter your Youtube Channel Name as per the URL"
                               name="youtube"
                               onChange={handleChange}
@@ -387,7 +387,7 @@ const TeamCreate = ({ isClaim }) => {
                           <li>
                             <input
                               type="text"
-                              className="form-control"
+                              className="form-control discord"
                               placeholder="Enter your full Discord server link"
                               name="discord"
                               onChange={handleChange}
