@@ -1,31 +1,56 @@
+import baseURL from '../../utils/baseURL';
+import { QueryClient, QueryClientProvider, useMutation } from 'react-query';
+import cookie from 'js-cookie';
 import { useState } from 'react';
 
-const RewardList = ({
-  levels,
-  battlepass,
-  type,
-  rewardPerPage,
-  rewardVisited
-}) => {
-  const displayRewards = levels
-    .slice(rewardVisited, rewardVisited + rewardPerPage)
-    .map((display) => {
-      return display.reward.map((rwd) =>
-        rwd.rewardId.type === type ? (
-          <li>
-            <img src={rwd.rewardId.imgUrl} alt={rwd.rewardId.name} />
-            <p>{rwd.rewardId.name}</p>
-            {rwd.rewardId.levelId <= battlepass.level ? (
-              <button className="btn">Claim</button>
-            ) : null}
-          </li>
-        ) : (
-          <li></li>
-        )
-      );
+const queryClient = new QueryClient();
+
+export default function RewardList({ battlepass, rewards, reward }) {
+  return (
+    <QueryClientProvider client={queryClient} contextSharing={true}>
+      <ListReward battlepass={battlepass} rewards={rewards} reward={reward} />
+    </QueryClientProvider>
+  );
+}
+
+const ListReward = ({ battlepass, rewards, reward }) => {
+  const isClaimed =
+    rewards.filter((rwd) => {
+      return rwd.rewardId === reward._id;
+    }).length > 0;
+  console.log(isClaimed);
+  const [collect, setCollect] = useState(isClaimed);
+
+  const handleCollect = (e) => {
+    e.preventDefault();
+    mutate({ collect });
+    setCollect(!collect);
+  };
+
+  const collectingReward = async () => {
+    await fetch(`${baseURL}/api/battlepass/claimreward/${reward._id}`, {
+      method: 'PUT',
+      headers: {
+        Authorization: cookie.get('token')
+      }
     });
+  };
 
-  return <>{displayRewards}</>;
+  const { mutate } = useMutation(collectingReward);
+  console.log(battlepass);
+  return (
+    <>
+      <li>
+        <img src={reward.imgUrl} alt={reward.name} />
+        <p>{reward.name}</p>
+        {reward.levelId <= battlepass.level ? (
+          collect === true ? (
+            <button disabled>Claimed</button>
+          ) : (
+            <button onClick={handleCollect}>Claim</button>
+          )
+        ) : null}
+      </li>
+    </>
+  );
 };
-
-export default RewardList;

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import baseURL from '@utils/baseURL';
 import CollectReward from './CollectReward';
 
-const TaskList = ({ week, battlepass }) => {
+const TaskList = ({ week, battlepass, user }) => {
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const TaskList = ({ week, battlepass }) => {
         tasks.map((task) => (
           <li>
             <span>{task.desc}</span>
-            <CollectReward battlepass={battlepass} task={task} />
+            <CollectReward battlepass={battlepass} task={task} user={user} />
           </li>
         ))
       )}

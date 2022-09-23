@@ -5,16 +5,19 @@ import { useState } from 'react';
 
 const queryClient = new QueryClient();
 
-export default function CollectReward({ battlepass, task }) {
+export default function CollectReward({ battlepass, task, user }) {
   return (
     <QueryClientProvider client={queryClient} contextSharing={true}>
-      <RewardCollect battlepass={battlepass} task={task} />
+      <RewardCollect battlepass={battlepass} task={task} user={user} />
     </QueryClientProvider>
   );
 }
 
-const RewardCollect = ({ battlepass, task }) => {
-  const [collect, setCollect] = useState(task?.isCollected);
+const RewardCollect = ({ battlepass, task, user }) => {
+  const isCollected =
+    task.users.filter((usr) => usr.userId === user._id).length > 0;
+
+  const [collect, setCollect] = useState(isCollected);
 
   const isComplete =
     battlepass.completed_tasks &&
