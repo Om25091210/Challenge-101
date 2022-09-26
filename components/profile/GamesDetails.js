@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
 import cookie from 'js-cookie';
+import RecruitEdit from './RecruitEdit';
 
 const GamesDetails = ({ user, Userdata, teams }) => {
   const [attributeData, setAttributeData] = useState();
@@ -138,6 +139,9 @@ const GamesDetails = ({ user, Userdata, teams }) => {
             <button className="btn" onClick={handleDelete}>
               Delete
             </button>
+          ) : null}
+          {attributeData.attributeId === user._id ? (
+            <RecruitEdit attributeData={attributeData} />
           ) : null}
           {attributeData.attributeId === user._id ? null : (
             <>

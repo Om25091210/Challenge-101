@@ -109,19 +109,19 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
   const handleCoverSubmit = async (e) => {
     var img = e.target.files[0];
 
-    if (
-      !pixelarity.open(
-        img,
-        false,
-        function (res) {
-          $('#result').attr('src', res);
-        },
-        'jpg',
-        1
-      )
-    ) {
-      alert('Whoops! That is not an image!');
-    }
+    // if (
+    //   !pixelarity.open(
+    //     img,
+    //     false,
+    //     function (res) {
+    //       $('#result').attr('src', res);
+    //     },
+    //     'jpg',
+    //     1
+    //   )
+    // ) {
+    //   alert('Whoops! That is not an image!');
+    // }
 
     e.preventDefault();
     setCoverPic(img);

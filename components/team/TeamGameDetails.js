@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import baseURL from '../../utils/baseURL';
 import AttributeCard from '../common/AttributeCard';
+import RecruitEdit from '../profile/RecruitEdit';
 
 const TeamGameDetails = ({ user, team, isManager, isAdmin }) => {
   const [attributeData, setAttributeData] = useState([]);
@@ -85,6 +86,9 @@ const TeamGameDetails = ({ user, team, isManager, isAdmin }) => {
             <button className="btn" onClick={handleDelete}>
               Delete
             </button>
+          ) : null}
+          {isManager || isAdmin ? (
+            <RecruitEdit attributeData={attributeData} />
           ) : null}
           {isManager || isAdmin ? null : (
             <button className="game_btn">INVITE TO TEAM</button>
