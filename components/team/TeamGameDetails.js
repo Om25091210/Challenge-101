@@ -79,9 +79,9 @@ const TeamGameDetails = ({ user, team, isManager, isAdmin }) => {
               <span className="task"> 4 hours per day 7 days a week </span>
             </li> */}
           </ul>
-          <div className="chart_box">
+          {/* <div className="chart_box">
             <img src="/assets/media/profilechart.jpg" alt="" />
-          </div>
+          </div> */}
           {isManager || isAdmin ? (
             <button className="btn" onClick={handleDelete}>
               Delete

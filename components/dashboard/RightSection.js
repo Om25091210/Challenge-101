@@ -6,12 +6,11 @@ import Moment from 'moment';
 import Challengelist from '../challenges/ChallengeList';
 import ApproveRequest from '../discover/invites/ApproveRequest';
 import DeclineRequest from '../discover/invites/DeclineRequest';
-import cookie from 'js-cookie';
 
 const RightSection = ({ user, suggestedplayers, teams, profile }) => {
   const [matches, setMatches] = useState([]);
   const [later, setLater] = useState(false);
-  const [brands, setBrands] = useState([]);
+  const [myPageData, setMypageData] = useState([]);
 
   useEffect(() => {
     axios
@@ -33,12 +32,8 @@ const RightSection = ({ user, suggestedplayers, teams, profile }) => {
         setChallenges(res.data);
       });
     axios
-      .get(`${baseURL}/api/brand/`, {
-        headers: {
-          Authorization: cookie.get('token')
-        }
-      })
-      .then((res) => setBrands(res.data));
+      .get(`${baseURL}/api/tournaments/usertournament/${user._id}`)
+      .then((res) => setMypageData(res.data));
   }, []);
 
   return (
@@ -191,23 +186,30 @@ const RightSection = ({ user, suggestedplayers, teams, profile }) => {
         </a>
         <div className="white_box">
           <ul className="team">
-            {brands.length > 0 ? (
-              brands.slice(0, 2).map((bd, idx) => (
+            {myPageData.length > 0 ? (
+              myPageData.slice(0, 2).map((page, idx) => (
                 <li key={idx}>
-                  <Link href={`/brand/${bd._id}`}>
+                  <Link
+                    href={`/${page.logoUrl ? 'brand' : 'tournament'}/${
+                      page._id
+                    }`}
+                  >
                     <div>
-                      <img src={bd.logoUrl} alt={bd.name} />
-                      <p> {bd.name}</p>
+                      <img
+                        src={page.logoUrl ? page.logoUrl : page.imgUrl}
+                        alt={page.name}
+                      />
+                      <p> {page.name}</p>
                     </div>
                   </Link>
                 </li>
               ))
             ) : (
-              <p> No brands/company</p>
+              <p> No brands/tournament</p>
             )}
           </ul>
           <a href="#!" className="model_show_btn more btn">
-            View All Brand
+            View All
           </a>
 
           <div className="common_model_box" id="share_prof">
@@ -216,18 +218,25 @@ const RightSection = ({ user, suggestedplayers, teams, profile }) => {
             </a>
 
             <div className="inner_model_box">
-              <h3>Brands/Company</h3>
-              {brands.length === 0 ? (
-                <p>No Brands Available </p>
+              <h3>Brands/Tournaments</h3>
+              {myPageData.length === 0 ? (
+                <p>No Brands/Tournament Available </p>
               ) : (
                 <ul>
-                  {brands &&
-                    brands.map((bd, idx) => (
+                  {myPageData &&
+                    myPageData.map((page, idx) => (
                       <li key={idx}>
-                        <Link href={`/brand/${bd._id}`}>
+                        <Link
+                          href={`/${page.logoUrl ? 'brand' : 'tournament'}/${
+                            page._id
+                          }`}
+                        >
                           <div className="game_pic">
-                            <img src={bd.logoUrl} alt={bd.name} />
-                            <p> {bd.name}</p>
+                            <img
+                              src={page.logoUrl ? page.logoUrl : page.imgUrl}
+                              alt={page.name}
+                            />
+                            <p> {page.name}</p>
                           </div>
                         </Link>
                       </li>
@@ -239,7 +248,10 @@ const RightSection = ({ user, suggestedplayers, teams, profile }) => {
           </div>
 
           <a href={`/brand/create`} className="create_team">
-            + Create a brand/company
+            + Create a brand
+          </a>
+          <a href={`/tournament/create`} className="create_team">
+            + Create Tournament
           </a>
         </div>
       </div>

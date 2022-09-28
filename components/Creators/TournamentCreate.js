@@ -41,8 +41,8 @@ const TournamentCreate = ({ user, isClaim }) => {
     category: '',
     tournamentType: '',
     Type: '',
-    participants: 0,
-    minParticipants: 0,
+    participants: null,
+    minParticipants: null,
     entranceFee: null,
     startDate: '',
     startTime: '',
@@ -99,18 +99,47 @@ const TournamentCreate = ({ user, isClaim }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (Object.keys(formErrors).length === 0) {
-      let tourdata = state;
+      const formdata = new FormData();
+
+      formdata.append('name', state.name);
+      formdata.append('imgUrl', state.imgUrl);
+      formdata.append('user', state.user);
+      formdata.append('game', state.game);
+      formdata.append('currency', state.currency);
+      formdata.append('prizepool', state.prizepool);
+      formdata.append('category', state.category);
+      formdata.append('tournamentType', state.tournamentType);
+      formdata.append('Type', state.Type);
+      formdata.append('participants', state.participants);
+      formdata.append('minParticipants', state.minParticipants);
+      formdata.append('entranceFee', state.entranceFee);
+      formdata.append('startDate', state.startDate);
+      formdata.append('startTime', state.startTime);
+      formdata.append('endDate', state.endDate);
+      formdata.append('endTime', state.endTime);
+      formdata.append('location', state.location);
+      formdata.append('address', state.address);
+      formdata.append('organizer', state.organizer);
+      formdata.append('sponsor', state.sponsor);
+      formdata.append('description', state.description);
+      formdata.append('website', state.website);
+      formdata.append('facebook', state.facebook);
+      formdata.append('twitch', state.twitch);
+      formdata.append('instagram', state.instagram);
+      formdata.append('youtube', state.youtube);
+      formdata.append('discord', state.discord);
+      formdata.append('series', Number(state.series));
+      formdata.append('numberOfTeam', Number(state.numberOfTeam));
+      formdata.append('playType', state.playType);
+      formdata.append('minTeams', Number(state.minTeams));
+      formdata.append('platform', state.platform);
+      formdata.append('isClaim', state.isClaim);
+      formdata.append('checkIn', state.checkIn);
 
       try {
-        const requestOptions = {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(tourdata)
-        };
-        const dt = fetch(
-          `${baseURL}/api/tournaments/create`,
-          requestOptions
-        ).then((res) => setNewTour(res.data));
+        await axios
+          .post(`${baseURL}/api/tournaments/create`, formdata)
+          .then((res) => setNewTour(res.data));
 
         toast.success('Your Tournament has been successfully created!');
       } catch (err) {
@@ -288,7 +317,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                           <span>Upload Logo</span>
                         </label>
                       </div>
-                      <div className="style_file_upload cover_img">
+                      {/* <div className="style_file_upload cover_img">
                         <input
                           type="file"
                           name="coverPhoto"
@@ -299,7 +328,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                         <label for="coverPhoto">
                           <span>Upload Cover Photo</span>
                         </label>
-                      </div>
+                      </div> */}
                     </div>
 
                     <label for="exampleFormControlInput1">Games</label>

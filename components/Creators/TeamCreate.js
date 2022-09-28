@@ -189,7 +189,7 @@ const TeamCreate = ({ isClaim }) => {
                           <span>Upload Logo</span>
                         </label>
                       </div>
-                      <div className="style_file_upload cover_img">
+                      {/* <div className="style_file_upload cover_img">
                         <input
                           type="file"
                           name="coverPhoto"
@@ -200,7 +200,7 @@ const TeamCreate = ({ isClaim }) => {
                         <label for="coverPhoto">
                           <span>Upload Cover Photo</span>
                         </label>
-                      </div>
+                      </div> */}
                     </div>
                     <div className="form-group">
                       <label htmlFor="exampleFormControlInput1">

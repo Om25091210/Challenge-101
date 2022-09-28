@@ -132,9 +132,9 @@ const GamesDetails = ({ user, Userdata, teams }) => {
             </li> */}
           </ul>
 
-          <div className="chart_box">
+          {/* <div className="chart_box">
             <img src="/assets/media/profile/chart.jpg" alt="" />
-          </div>
+          </div> */}
           {attributeData.attributeId === user._id ? (
             <button className="btn" onClick={handleDelete}>
               Delete
