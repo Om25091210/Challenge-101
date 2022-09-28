@@ -145,6 +145,10 @@ const TeamCreate = ({ isClaim }) => {
     }
   };
 
+  if (newTeam) {
+    isClaim === true ? router.push(`/team/${newTeam._id}`) : null;
+  }
+
   return (
     <>
       <div className="main_middle create_main_middle">
@@ -400,6 +404,7 @@ const TeamCreate = ({ isClaim }) => {
                     <button
                       className="type_btn active"
                       onClick={() => setFormErrors(teamformvalidate(state))}
+                      disabled={mutation.isLoading}
                     >
                       Create Team
                     </button>

@@ -116,10 +116,6 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
     }
   };
 
-  function handleUserIgnChange(e) {
-    setUserIgn(e.target.value);
-  }
-
   // useEffect(() => {
   //   $('.common_poup').fancybox({
   //     wrapCSS: 'common_poup_wrap',
@@ -135,34 +131,6 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
     setSelectedGame({ game: obj });
     setStep1(false);
     setShowIgn('');
-  };
-
-  const gamehandleSubmit = async (e) => {
-    e.preventDefault();
-    var gameId = selectedGame?.game._id;
-    try {
-      await axios.patch(
-        `${baseURL}/api/profile/addgame/${Userdata.profile._id}`,
-        {
-          gameId,
-          userIgn
-        },
-        {
-          headers: {
-            Authorization: cookie.get('token'),
-            'Content-Type': 'application/json'
-          }
-        }
-      );
-      toast.success(`${selectedGame.game.name} has been added to your games`);
-      $('a.model_close').parent().removeClass('show_model');
-    } catch (err) {
-      console.log(err);
-      toast.error(err.response?.data?.msg || 'Please recheck your inputs');
-    }
-    refreshData();
-    setUserIgn(null);
-    setStep1(true);
   };
 
   const deletehandleSubmit = async (e) => {

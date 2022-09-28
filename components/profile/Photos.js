@@ -1,15 +1,8 @@
-import { useEffect, useState } from 'react';
-import { useMutation } from 'react-query';
-import { toast } from 'react-toastify';
-import cookie from 'js-cookie';
-import axios from 'axios';
-import baseURL from '@utils/baseURL';
-import ImageDropzone from '@components/common/ImageDropzone';
 import Moment from 'moment';
 import ProfilePhotosDel from './ProfilePhotosDel';
 import AddImage from '../common/AddImage';
 
-const Photos = ({ Userdata, user, photos }) => {
+const Photos = ({ Userdata, user, photosData }) => {
   return (
     <div className="tab hide" id="photos">
       <div className="gallery_box">
@@ -40,8 +33,11 @@ const Photos = ({ Userdata, user, photos }) => {
 
         <p></p>
 
-        {photos &&
-          photos.map((imgg, idx) => (
+        {photosData && photosData.length === 0 ? (
+          <p>No photosData</p>
+        ) : (
+          photosData &&
+          photosData.map((imgg, idx) => (
             <div className="imagess_box" key={idx}>
               <div className="imagess">
                 <ul>
@@ -87,7 +83,8 @@ const Photos = ({ Userdata, user, photos }) => {
                 />
               </div>
             </div>
-          ))}
+          ))
+        )}
       </div>
     </div>
   );

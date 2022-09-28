@@ -353,9 +353,17 @@ const ProfileData = ({ user, Userdata, products, teams }) => {
 
         <ProductList user={user} productList={products} />
 
-        <Photos Userdata={Userdata.profile} user={user} photos={tabData} />
+        <Photos
+          Userdata={Userdata.profile}
+          user={user}
+          photosData={tabData?.photos}
+        />
 
-        <Videos Userdata={Userdata.profile} user={user} data={tabData} />
+        <Videos
+          Userdata={Userdata.profile}
+          user={user}
+          data={tabData?.videos}
+        />
 
         {/* <ProductRigs user={user} productList={products} Userdata={Userdata} /> */}
       </div>

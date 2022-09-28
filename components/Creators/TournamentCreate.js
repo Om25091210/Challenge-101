@@ -95,14 +95,13 @@ const TournamentCreate = ({ user, isClaim }) => {
     //Series
     axios.get(`${baseURL}/api/all/series`).then((res) => setSeries(res.data));
   }, []);
-  console.log(tournaments);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (Object.keys(formErrors).length === 0) {
       let tourdata = state;
 
       try {
-        console.log(tourdata);
         const requestOptions = {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -114,12 +113,15 @@ const TournamentCreate = ({ user, isClaim }) => {
         ).then((res) => setNewTour(res.data));
 
         toast.success('Your Tournament has been successfully created!');
-        // isClaim === true ? Router.push("/tournament") : null
       } catch (err) {
         toast.error(err.response?.data?.msg || 'Please recheck your inputs');
       }
     }
   };
+
+  if (newTour) {
+    isClaim === true ? Router.push(`/tournament/${newTour._id}`) : null;
+  }
 
   function handleChange(e) {
     if (e.target.options) {

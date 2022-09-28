@@ -25,7 +25,7 @@ const BrandCreate = ({ isClaim }) => {
     discord: '',
     isClaim
   });
-  console.log(state);
+
   function handleChange(e) {
     setState({ ...state, [e.target.name]: e.target.value });
   }
@@ -62,7 +62,6 @@ const BrandCreate = ({ isClaim }) => {
       try {
         await mutation.mutateAsync(formdata);
         toast.success('Your Brand has been successfully created');
-        // router.push(`/brand/${newBrand?._id}`);
       } catch (err) {
         console.log(err);
         toast.error(err.response?.data?.msg || 'Please recheck your inputs');
@@ -70,11 +69,15 @@ const BrandCreate = ({ isClaim }) => {
     }
   };
 
+  if (newBrand) {
+    isClaim === true ? router.push(`/brand/${newBrand._id}`) : null;
+  }
+
   useEffect(() => {
     //Brands
     axios.get(`${baseURL}/api/all/brands`).then((res) => setBrands(res.data));
   }, []);
-  console.log(state);
+
   return (
     <>
       <div className="main_middle create_main_middle">
@@ -207,7 +210,10 @@ const BrandCreate = ({ isClaim }) => {
                   type="submit"
                   className="btn"
                   value="Create Brand"
-                  onClick={() => setFormErrors(brandfromvalidate(state))}
+                  onClick={() => {
+                    setFormErrors(brandfromvalidate(state));
+                  }}
+                  disabled={mutation.isLoading}
                 />
               </form>
             </div>
