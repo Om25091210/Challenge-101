@@ -53,7 +53,7 @@ const Signup = ({ games, avatars }) => {
   const { state, dispatch } = useContext(DataContext);
   const { auth } = state;
 
-  const { firstname, lastname, email, password, phone_number } = user;
+  const { firstname, lastname, email, password, phone_number, gender } = user;
 
   const handleChange = (e) => {
     setUser((prevState) => ({ ...prevState, [e.target.name]: e.target.value }));
@@ -110,6 +110,7 @@ const Signup = ({ games, avatars }) => {
           email,
           password,
           phone_number,
+          gender,
           avatarImage,
           gameId,
           userign,
@@ -160,7 +161,8 @@ const Signup = ({ games, avatars }) => {
       lastname,
       email,
       password,
-      phone_number
+      phone_number,
+      gender
     }).every((item) => Boolean(item));
     isUser ? setSubmitDisabled(false) : setSubmitDisabled(true);
   }, [user]);
@@ -193,7 +195,14 @@ const Signup = ({ games, avatars }) => {
     //Validate the sign up form
     e.preventDefault();
 
-    const errMsg = valid(firstname, lastname, email, password, phone_number);
+    const errMsg = valid(
+      firstname,
+      lastname,
+      email,
+      password,
+      phone_number,
+      gender
+    );
 
     if (errMsg) {
       toast.info(errMsg);
@@ -346,6 +355,20 @@ const Signup = ({ games, avatars }) => {
                           onChange={handleChange}
                           autoComplete="off"
                         />
+                      </div>
+                      <div className="fv-row mb-7">
+                        <label className="form-label"> Gender</label>
+                        <select
+                          className="form-control form-control-lg form-control-solid"
+                          name="gender"
+                          value={gender}
+                          onChange={handleChange}
+                        >
+                          <option value="">Select Gender...</option>
+                          <option value="Male">Male</option>
+                          <option value="Female">Female</option>
+                          <option value="Others">Others</option>
+                        </select>
                       </div>
                       <div className="fv-row mb-7">
                         <label className="form-label"> Username </label>

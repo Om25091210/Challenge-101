@@ -1,5 +1,12 @@
-const valid = (firstname, lastname, email, password, phone_number) => {
-  if (!firstname || !lastname || !email || !password || !phone_number)
+const valid = (firstname, lastname, email, password, phone_number, gender) => {
+  if (
+    !firstname ||
+    !lastname ||
+    !email ||
+    !password ||
+    !phone_number ||
+    !gender
+  )
     return 'Please enter all the required fields.';
 
   if (!validateEmail(email)) return 'Invalid email. Please check';

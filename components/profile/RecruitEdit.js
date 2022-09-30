@@ -3,10 +3,10 @@ import React, { useEffect, useMemo, useState } from 'react';
 import baseURL from '../../utils/baseURL';
 import countryList from 'react-select-country-list';
 import { toast } from 'react-toastify';
+import { regionsData } from '../../utils/functionsHelper';
 
-const RecruitEdit = ({ attributeData }) => {
+const RecruitEdit = ({ attributeData, profile }) => {
   const [allgames, setAllgames] = useState([]);
-  const [allroles, setAllroles] = useState([]);
   const [states, setStates] = useState({
     games: attributeData.games[0].gameId._id,
     role: attributeData.role[0],
@@ -16,7 +16,8 @@ const RecruitEdit = ({ attributeData }) => {
     type: attributeData.type,
     salary: attributeData.salary,
     rank: attributeData?.rank,
-    platform: attributeData.platform
+    platform: attributeData.platform,
+    gender: attributeData?.gender
   });
   const options = useMemo(() => countryList().getData(), []);
 
@@ -30,9 +31,6 @@ const RecruitEdit = ({ attributeData }) => {
 
   useEffect(() => {
     axios.get(`${baseURL}/api/all/games`).then((res) => setAllgames(res.data));
-    axios
-      .get(`${baseURL}/api/all/teamroles`)
-      .then((res) => setAllroles(res.data));
   }, []);
 
   function handleSubmit(e) {
@@ -61,7 +59,7 @@ const RecruitEdit = ({ attributeData }) => {
     e.preventDefault();
     try {
       await axios.put(
-        `${baseURL}/api/attribute/${attributeData.attributeType}/${attributeData.attributeId}`,
+        `${baseURL}/api/attribute/${attributeData.attributeId}`,
         states
       );
       toast.success('Recruitment card Edited Successfully');
@@ -137,9 +135,12 @@ const RecruitEdit = ({ attributeData }) => {
                     className="form-control"
                   >
                     <option value="">Select Role...</option>
-                    {allroles.map((role) => (
-                      <option value={role}>{role}</option>
-                    ))}
+                    <option value="Sniper">Sniper</option>
+                    <option value="AR">AR</option>
+                    <option value="Shotgun">Shotgun</option>
+                    <option value="Pistol">Pistol</option>
+                    <option value="Marksman Rifle">Marksman Rifle</option>
+                    <option value="SMGs">SMGs</option>
                   </select>
                 </div>
                 <div className="form-group">
@@ -151,14 +152,41 @@ const RecruitEdit = ({ attributeData }) => {
                     value={states.regions}
                   >
                     <option value="">Select Region</option>
-                    {options &&
-                      options.map((opt) => (
-                        <>
-                          <option value={opt.value}>{opt.label}</option>
-                        </>
+                    {regionsData &&
+                      regionsData.map((role) => (
+                        <option value={role}>{role}</option>
                       ))}
                   </select>
                 </div>
+
+                {attributeData.attributeType === 'PROFILE' ? (
+                  <div className="form-group">
+                    <label htmlFor="exampleFormControlInput1">Gender</label>
+                    <select
+                      name="gender"
+                      onChange={onChange}
+                      disabled={true}
+                      value={profile}
+                    >
+                      <option value={profile}>{profile}</option>
+                    </select>{' '}
+                  </div>
+                ) : (
+                  <div className="form-group">
+                    <label htmlFor="exampleFormControlTextarea1">Gender</label>
+                    <select
+                      name="gender"
+                      onChange={onChange}
+                      className="form-control"
+                      value={states.gender}
+                    >
+                      <option value="">Select Gender...</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                      <option value="Others">Others</option>
+                    </select>
+                  </div>
+                )}
 
                 <div className="form-group">
                   <div className="custom-control custom-switch">
@@ -191,11 +219,10 @@ const RecruitEdit = ({ attributeData }) => {
                   value={states.language}
                   className="form-control"
                 >
-                  <option value="ENGLISH">English</option>
-                  <option value="RUSSIAN">Russian</option>
-                  <option value="HINDI">Hindi</option>
-                  <option value="TELUGU">Telugu</option>
-                  <option value="TAMIL">Tamil</option>
+                  <option value="English">English</option>
+                  <option value="Hindi">Hindi</option>
+                  <option value="Tamil">Tamil</option>
+                  <option value="Bengali">Bengali</option>
                 </select>
               </div>
 
@@ -227,8 +254,9 @@ const RecruitEdit = ({ attributeData }) => {
                   className="form-control"
                 >
                   <option value="">Select Salary</option>
-                  <option value="prize_sharing">Prize Sharing</option>
-                  <option value="winner_takes_all">Winner takes all</option>
+                  <option value="Unpaid">Unpaid</option>
+                  <option value="Paid">Paid</option>
+                  <option value="prize_sharing">Prize money Sharing</option>
                 </select>
               </div>
               {attributeData.attributeType === 'TEAM' ? (

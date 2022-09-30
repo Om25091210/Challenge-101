@@ -141,7 +141,10 @@ const GamesDetails = ({ user, Userdata, teams }) => {
             </button>
           ) : null}
           {attributeData.attributeId === user._id ? (
-            <RecruitEdit attributeData={attributeData} />
+            <RecruitEdit
+              attributeData={attributeData}
+              profile={Userdata?.gender}
+            />
           ) : null}
           {attributeData.attributeId === user._id ? null : (
             <>
@@ -206,7 +209,11 @@ const GamesDetails = ({ user, Userdata, teams }) => {
       {attributeData?.attributeId === user._id ? null : (
         <>
           {Userdata.user?._id === user?._id ? (
-            <AttributeCard type="PROFILE" attributeId={user?._id} />
+            <AttributeCard
+              type="PROFILE"
+              attributeId={user?._id}
+              profile={Userdata?.gender}
+            />
           ) : null}
         </>
       )}

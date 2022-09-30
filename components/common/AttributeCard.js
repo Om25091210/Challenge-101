@@ -1,13 +1,12 @@
 import axios from 'axios';
 import { useEffect, useState, useMemo } from 'react';
 import baseURL from '../../utils/baseURL';
-import countryList from 'react-select-country-list';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
+import { regionsData } from '../../utils/functionsHelper';
 
-const AttributeCard = ({ type, attributeId }) => {
+const AttributeCard = ({ type, attributeId, profile }) => {
   const [allgames, setAllgames] = useState([]);
-  const [allroles, setAllroles] = useState([]);
 
   const [states, setStates] = useState({
     attributeId,
@@ -20,9 +19,9 @@ const AttributeCard = ({ type, attributeId }) => {
     type: '',
     salary: '',
     rank: '',
-    platform: ''
+    platform: '',
+    gender: ''
   });
-  const options = useMemo(() => countryList().getData(), []);
 
   const handleMic = () => {
     if (states.Mic === true) {
@@ -34,9 +33,6 @@ const AttributeCard = ({ type, attributeId }) => {
 
   useEffect(() => {
     axios.get(`${baseURL}/api/all/games`).then((res) => setAllgames(res.data));
-    axios
-      .get(`${baseURL}/api/all/teamroles`)
-      .then((res) => setAllroles(res.data));
   }, []);
 
   const onChange = (e) => {
@@ -171,11 +167,46 @@ const AttributeCard = ({ type, attributeId }) => {
                           className="form-control"
                         >
                           <option value="">Select Role...</option>
-                          {allroles.map((role) => (
-                            <option value={role}>{role}</option>
-                          ))}
+                          <option value="Sniper">Sniper</option>
+                          <option value="AR">AR</option>
+                          <option value="Shotgun">Shotgun</option>
+                          <option value="Pistol">Pistol</option>
+                          <option value="Marksman Rifle">Marksman Rifle</option>
+                          <option value="SMGs">SMGs</option>
                         </select>
                       </div>
+                      {type === 'PROFILE' ? (
+                        <div className="form-group">
+                          <label htmlFor="exampleFormControlInput1">
+                            Gender
+                          </label>
+                          <select
+                            name="gender"
+                            onChange={onChange}
+                            disabled={true}
+                            value={profile}
+                          >
+                            <option value={profile}>{profile}</option>
+                          </select>
+                        </div>
+                      ) : (
+                        <div className="form-group">
+                          <label htmlFor="exampleFormControlInput1">
+                            Gender
+                          </label>
+                          <select
+                            name="gender"
+                            onChange={onChange}
+                            value={states.gender}
+                            className="form-control"
+                          >
+                            <option value="">Select Gender...</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Others">Others</option>
+                          </select>
+                        </div>
+                      )}
                       <div className="form-group">
                         <label htmlFor="exampleFormControlTextarea1">
                           Region
@@ -185,11 +216,11 @@ const AttributeCard = ({ type, attributeId }) => {
                           onChange={onChange}
                           className="form-control"
                         >
-                          {options.map((opt) => (
-                            <>
-                              <option value={opt.value}>{opt.label}</option>
-                            </>
-                          ))}
+                          <option value="">Select Region</option>
+                          {regionsData &&
+                            regionsData.map((role) => (
+                              <option value={role}>{role}</option>
+                            ))}
                         </select>
                       </div>
 
@@ -226,11 +257,10 @@ const AttributeCard = ({ type, attributeId }) => {
                         value={states.language}
                         className="form-control"
                       >
-                        <option value="ENGLISH">English</option>
-                        <option value="RUSSIAN">Russian</option>
-                        <option value="HINDI">Hindi</option>
-                        <option value="TELUGU">Telugu</option>
-                        <option value="TAMIL">Tamil</option>
+                        <option value="English">English</option>
+                        <option value="Hindi">Hindi</option>
+                        <option value="Tamil">Tamil</option>
+                        <option value="Bengali">Bengali</option>
                       </select>
                     </div>
 
@@ -247,7 +277,6 @@ const AttributeCard = ({ type, attributeId }) => {
                         <option value="Casual">Casual</option>
                         <option value="SemiPro">SemiPro</option>
                         <option value="Pro">Pro</option>
-                        <option value="Gunman">Gunman</option>
                         <option value="Local Lan">Local Lan</option>
                       </select>
                     </div>
@@ -262,9 +291,10 @@ const AttributeCard = ({ type, attributeId }) => {
                         className="form-control"
                       >
                         <option value="">Select Salary</option>
-                        <option value="prize_sharing">Prize Sharing</option>
-                        <option value="winner_takes_all">
-                          Winner takes all
+                        <option value="Unpaid">Unpaid</option>
+                        <option value="Paid">Paid</option>
+                        <option value="prize_sharing">
+                          Prize money Sharing
                         </option>
                       </select>
                     </div>
