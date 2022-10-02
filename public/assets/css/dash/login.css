@@ -17,7 +17,7 @@ body {
 
 .singup_page_box{ float: left; width: 100%; position: relative; overflow: hidden;}
 .singup_page_box .text-red-600{ color:red;}
-.singup_page_box .btn {background: #1990ea;width: 100%;color: #fff;opacity: 1;height: 40px; line-height: 18px;}
+.singup_page_box .btn {width: 100%;color: #000;opacity: 1;height: 40px; line-height: 18px;}
 .singup_page_box .btn.btn-icon{ background: none;}
 
 .singup_page_box .singup_icons{ display: flex; justify-content: space-between; margin:20px 0;}

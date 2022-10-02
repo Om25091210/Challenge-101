@@ -376,8 +376,8 @@ body.DarkPage .create_tournament .btn_selection input[type="checkbox"], body.Dar
     opacity: 0;
 }
 body.DarkPage .create_tournament .btn_selection input[type='checkbox']:checked, body.DarkPage .create_tournament .btn_selection input[type='radio']:checked {
-    background-color: #1da1f2;
-    border: 1px solid #1da1f2;
+    background-color: #f6e52e;
+    border: 1px solid #f6e52e;
 }
 body.DarkPage .inner_model_box .btn_selection input[type='checkbox']:checked {
     position: relative;

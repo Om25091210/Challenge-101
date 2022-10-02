@@ -159,7 +159,7 @@ const GamesDetails = ({ user, Userdata, teams }) => {
                   onClick={() => setTrigger(!trigger)}
                 >
                   <button className="game_btn">
-                    <i className="fa fa-plus-circle" aria-hidden="true"></i>
+                    <i className="fa fa-plus-circle" aria-hidden="true"></i>{' '}
                     INVITE TO TEAM
                   </button>
                 </a>
@@ -173,22 +173,22 @@ const GamesDetails = ({ user, Userdata, teams }) => {
                   <div className="add_job_height">
                     <h3>Invite {Userdata.user.username} To Team</h3>
                     <form action="">
-                      <label htmlFor="exampleFormControlInput1">
-                        Select Team
-                      </label>
-                      {teams &&
-                        teams.map((team) => (
-                          <div>
-                            <input
-                              type="radio"
-                              name="teamId"
-                              id=""
-                              value={team._id}
-                              onChange={handleChangeCheck}
-                            />
-                            <p>{team.name}</p>
-                          </div>
-                        ))}
+                      <h2> Select Team</h2>
+                      <div className="select-option">
+                        {teams &&
+                          teams.map((team) => (
+                            <div className="options">
+                              <input
+                                type="radio"
+                                name="teamId"
+                                id=""
+                                value={team._id}
+                                onChange={handleChangeCheck}
+                              />
+                              <p>{team.name}</p>
+                            </div>
+                          ))}
+                      </div>
                       <button
                         className="btn"
                         onClick={handleGameData}

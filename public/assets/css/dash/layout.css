@@ -517,22 +517,22 @@ ul.top_menu li a span.pop {
 	justify-content: center;
 	font-size: 12px;
 	position: absolute;
-	top: -15px;
-	right: -17px;
 	transition: 0.3s ease-in-out;
 }
 
 ul.top_menu li.chat_box a span.pop {
-	right: -15px;
+	left:20px;
+	top:-15px;
+}
+
+@-moz-document url-prefix() {
+	ul.top_menu li.chat_box a span.pop{ top:-2px;}
 }
 
 ul.top_menu li.noti a:hover span.pop {
 	top: 3px
 }
 
-ul.top_menu li a:hover span.pop {
-	top: -17px
-}
 
 ul.top_menu li i {
 	color: #000;
@@ -3953,6 +3953,18 @@ article .social_bar img {
 .games_details .chart_box img {
 	width: 100%;
 }
+
+.select-option {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+.select-option .options {
+    display: flex;
+    flex: 1 1 23%;
+    margin: 20px 0;
+}
+.select-option .options p{ font-size: 13px; font-weight: 400; margin-left: 10px;}
 
 .personal_box {
 	position: absolute;
@@ -8435,7 +8447,8 @@ ul.game_search_result li.slc_img:after {
 }
 
 .create_bg .type_btn.active {
-	background: #1da1f2;
+	background: #f6e52e;
+	color: #000;
 }
 
 .prize_boxs {
@@ -8517,8 +8530,9 @@ ul.game_search_result li.slc_img:after {
 }
 
 .btn_selection .big_btn.radio_bg span {
-	background-color: #1da1f2;
-	border: 1px solid #1da1f2;
+	background-color: #f6e52e;
+	border: 1px solid #f6e52e;
+	color: #000;
 }
 
 .date_time {
@@ -10833,6 +10847,7 @@ form.common_form .btn {
 #share_prof ul li .game_pic p {
 	color: #000 !important;
 	padding-top: 10px;
+	height: 30px;
 }
 
 #share_prof.part_poup ul li .game_pic {
