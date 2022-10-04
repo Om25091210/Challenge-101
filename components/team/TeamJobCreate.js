@@ -145,7 +145,9 @@ const TeamJobCreate = ({ user, profile }) => {
           </div>
 
           <div className="form-group">
-            <label for="exampleFormControlInput1">Location</label>
+            <label for="exampleFormControlInput1">
+              Location <span>Optional</span>
+            </label>
             <select
               className="game_search_result mscrollbar"
               name="location"
@@ -192,7 +194,7 @@ const TeamJobCreate = ({ user, profile }) => {
 
             <div className="form-group" style={{ height: '70px' }}>
               <label for="exampleFormControlInput1">
-                Money Included (Optional)
+                Money Included <span>Optional</span>
               </label>
               <div className="prize_boxs">
                 {' '}
@@ -230,6 +232,8 @@ const TeamJobCreate = ({ user, profile }) => {
           </div>
 
           <div className="form-group">
+            <label for="exampleFormControlInput1">Description</label>
+
             <Editor
               editorState={editorState}
               toolbarClassName="toolbarClassName"

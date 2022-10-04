@@ -40,7 +40,7 @@ function LeftNav({ user }) {
               </a>
             </Link>
           </li>
-          <li className={router.pathname == '/games' ? 'active' : ''}>
+          <li className={router.pathname == '/games/list' ? 'active' : ''}>
             <Link href="/games/list">
               <a className="">
                 <span className="iconbg">
