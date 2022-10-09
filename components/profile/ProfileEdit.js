@@ -18,6 +18,7 @@ const ProfileEdit = ({ Userdata, user, games, allteams }) => {
   const [openForm, setOpenForm] = useState(false);
   const [type, setType] = useState('');
   const [formErrors, setFormErrors] = useState({});
+  const [trigger, setTrigger] = useState(false);
 
   const router = useRouter();
 
@@ -671,7 +672,10 @@ const ProfileEdit = ({ Userdata, user, games, allteams }) => {
                 </div>
                 <button
                   className="btn"
-                  onClick={() => setFormErrors(profileformvalidate(states))}
+                  onClick={() => {
+                    setFormErrors(profileformvalidate(states));
+                    setTrigger(!trigger);
+                  }}
                 >
                   Update
                 </button>

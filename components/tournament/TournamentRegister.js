@@ -1,16 +1,26 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import baseURL from '@utils/baseURL';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 
-const Tournament_Reg = ({ user, tournament, profile }) => {
+const Tournament_Reg = ({ user, tournament, profile, groups, teams }) => {
   const router = useRouter();
-  const refreshPage = () => {
-    setTimeout(function () {
-      window.location.reload(true);
-    }, 1500);
-  };
+  const [isGamePlayer, setIsGamePlayer] = useState();
+  const [trigger, setTrigger] = useState(true);
+  const [selectedTeam, setSelectedTeam] = useState();
+
+  useEffect(() => {
+    $('a.model_show_btn').click(function () {
+      $(this).next().addClass('show_model');
+    });
+
+    $('a.model_close').click(function () {
+      $(this).parent().removeClass('show_model');
+    });
+  }, [trigger]);
+
+  console.log(teams);
   const isRegistered =
     tournament?.registered?.filter((tour) => {
       return tour?.user?._id === user?._id;
@@ -29,30 +39,30 @@ const Tournament_Reg = ({ user, tournament, profile }) => {
     e.preventDefault();
     try {
       if (tournament.playType === 'SOLO') {
-        axios.put(
-          `${baseURL}/api/tournaments/register/${tournament._id}/${user._id}`
-        );
-        if (isRegistered === false) {
+        axios
+          .put(
+            `${baseURL}/api/tournaments/register/${tournament._id}/${user._id}`
+          )
+          .then((res) => setIsGamePlayer(res.data));
+        if (!isGamePlayer) {
+          toast.warning(
+            `Please connect ${tournament.games[0].gameId.name} to your profile.`
+          );
+        } else if (isRegistered === false || isTeamRegistered === false) {
           toast.success('Registered Successfully');
         } else {
           toast.success('Left Tournament');
         }
       } else {
         axios.put(
-          `${baseURL}/api/tournaments/register/team/${tournament._id}/${profile?.current_team._id}`
+          `${baseURL}/api/tournaments/register/team/${tournament._id}/${selectedTeam}`
         );
-        if (isTeamRegistered === false) {
-          toast.success('Registered Successfully');
-        } else {
-          toast.success('Left Tournament');
-        }
       }
-      refreshPage();
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }
   };
-
+  console.log(selectedTeam);
   return (
     <>
       {tournament.playType === 'TEAMS' ? (
@@ -67,9 +77,46 @@ const Tournament_Reg = ({ user, tournament, profile }) => {
             <>
               {isTeamRegFull !== true ? (
                 <>
-                  <button onClick={reghandlesubmit} className="join">
-                    REGISTER
-                  </button>
+                  <div className="loc_box edit_pof">
+                    <a
+                      href="#!"
+                      className="model_show_btn"
+                      onClick={() => setTrigger(!trigger)}
+                    >
+                      Register
+                    </a>
+                    <div
+                      className="common_model_box edit_profile"
+                      id="big_poup"
+                    >
+                      <a href="#!" className="model_close">
+                        X
+                      </a>
+                      <div className="inner_model_box">
+                        <div className="add_job_height">
+                          <h3>Register</h3>
+                        </div>
+                        <label htmlFor="exampleFormControlInput1">
+                          Challenge with the team
+                        </label>
+                        <select
+                          name="selectedTeam"
+                          value={selectedTeam}
+                          onChange={(e) => setSelectedTeam(e.target.value)}
+                        >
+                          <option value="--">--</option>
+                          {teams &&
+                            teams.map((tem) => (
+                              <option value={tem._id}>{tem.name}</option>
+                            ))}
+                        </select>
+                        <button className="btn" onClick={reghandlesubmit}>
+                          Confirm
+                        </button>
+                      </div>
+                      <div className="overlay"></div>
+                    </div>
+                  </div>
                 </>
               ) : (
                 <>

@@ -62,13 +62,13 @@ const Adminpage = ({ user, data, profile }) => {
                   </a>
                 </li>
                 <li>
-                  <a href="/arena/create">
+                  <a href="#">
                     <i className="fa fa-gamepad" aria-hidden="true"></i>
                     <p> create an Arena </p>
                   </a>
                 </li>
                 <li>
-                  <a href="/company/create">
+                  <a href="#">
                     <i className="fa fa-shopping-cart" aria-hidden="true"></i>
                     <p> create a Company </p>
                   </a>

@@ -35,8 +35,16 @@ import TournamentPrize from '../../components/tournament/TournamentPrize';
 import TournamentPrizeDetail from '../../components/tournament/TournamentPrizeDetail';
 import TournamentSlots from '../../components/tournament/TournamentSlots';
 import { parseCookies } from 'nookies';
+import TournamentGroups from '../../components/tournament/TournamentGroups';
 
-const TournamentDetail = ({ user, data, tourRules, products, profile }) => {
+const TournamentDetail = ({
+  user,
+  data,
+  tourRules,
+  products,
+  profile,
+  teams
+}) => {
   if (data) {
     const isUser = data.tournament?.user?._id === user._id;
     const router = useRouter();
@@ -222,8 +230,10 @@ const TournamentDetail = ({ user, data, tourRules, products, profile }) => {
                     <Tournament_Reg
                       user={user}
                       tournament={data.tournament}
+                      groups={data.tourGroups}
                       profile={profile}
-                    />{' '}
+                      teams={teams}
+                    />
                     <a href="#" className="btn">
                       BOOK TICKETS
                     </a>
@@ -349,7 +359,11 @@ const TournamentDetail = ({ user, data, tourRules, products, profile }) => {
                   </div>
 
                   <div className="games">
-                    <h3>PARTICIPANTS: </h3>
+                    <h3>
+                      {data.tournament.playType === 'TEAMS'
+                        ? 'Teams:'
+                        : 'PARTICIPANTS:'}{' '}
+                    </h3>
                     {data.tournament.playType === 'TEAMS'
                       ? data.tournament.teams?.slice(0, 3).map((team) => (
                           <span>
@@ -536,7 +550,7 @@ const TournamentDetail = ({ user, data, tourRules, products, profile }) => {
                 <a href="#!" rel="series">
                   TOURNAMENT SERIES
                 </a>
-              </li>
+              </li> */}
               <li>
                 <a href="#!" rel="points">
                   Points Table
@@ -547,19 +561,19 @@ const TournamentDetail = ({ user, data, tourRules, products, profile }) => {
                   Shedules/Matches
                 </a>
               </li>
-              <li>
+              {/* <li>
                 <a href="#!" rel="participants">
                   {' '}
                   PARTICIPANTS
                 </a>
-              </li>
+              </li> */}
 
               <li>
                 <a href="#!" rel="braket">
                   Braket
                 </a>
               </li>
-              <li>
+              {/* <li>
                 <a href="#!" rel="store">
                   Store
                 </a>
@@ -647,146 +661,32 @@ const TournamentDetail = ({ user, data, tourRules, products, profile }) => {
                 <TournamentSeries user={user} tournament={data.tournament} />
               </div>
               <div className="tab hide" id="points">
+                <button className="btn">Start Grouping</button>
                 <div className="points_table">
                   <div className="groupds_box">
-                    <div className="group">
-                      <div className="title_bg">Group A</div>
-                      <table className="table">
-                        <thead>
-                          <tr>
-                            <th scope="col">Competitor</th>
-                            <th scope="col">
-                              <b>M</b> <b>W</b> <b>D</b> <b>L</b> <b>P</b>
-                            </th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>
-                              <img src="/assets/media/teams/team1.png" alt="" />{' '}
-                              <strong>Team Flawed Bot</strong>
-                            </td>
-                            <td>
-                              <b>46</b> <b>23</b> <b>1</b> <b>22</b> <b>123</b>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <img src="/assets/media/teams/team2.png" alt="" />{' '}
-                              <strong>Wings Gaming</strong>
-                            </td>
-                            <td>
-                              <b>46</b> <b>23</b> <b>1</b> <b>22</b> <b>123</b>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <img src="/assets/media/teams/team3.png" alt="" />{' '}
-                              <strong>Fnatic eSports</strong>
-                            </td>
-                            <td>
-                              <b>46</b> <b>23</b> <b>1</b> <b>22</b> <b>123</b>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <img src="/assets/media/teams/team4.png" alt="" />{' '}
-                              <strong>inictus Gaming</strong>
-                            </td>
-                            <td>
-                              <b>46</b> <b>23</b> <b>1</b> <b>22</b> <b>123</b>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <img src="/assets/media/teams/team5.png" alt="" />{' '}
-                              <strong>Fortuna eSports</strong>
-                            </td>
-                            <td>
-                              <b>46</b> <b>23</b> <b>1</b> <b>22</b> <b>123</b>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <img src="/assets/media/teams/team6.png" alt="" />{' '}
-                              <strong>Gambit Gaming</strong>
-                            </td>
-                            <td>
-                              <b>46</b> <b>23</b> <b>1</b> <b>22</b> <b>123</b>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                    <div className="group">
-                      <div className="title_bg">Group B</div>
-                      <table className="table">
-                        <thead>
-                          <tr>
-                            <th scope="col">Competitor</th>
-                            <th scope="col">
-                              <b>M</b> <b>W</b> <b>D</b> <b>L</b> <b>P</b>
-                            </th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>
-                              <img src="/assets/media/teams/team1.png" alt="" />{' '}
-                              <strong>Team Flawed Bot</strong>
-                            </td>
-                            <td>
-                              <b>46</b> <b>23</b> <b>1</b> <b>22</b> <b>123</b>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <img src="/assets/media/teams/team2.png" alt="" />{' '}
-                              <strong>Wings Gaming</strong>
-                            </td>
-                            <td>
-                              <b>46</b> <b>23</b> <b>1</b> <b>22</b> <b>123</b>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <img src="/assets/media/teams/team3.png" alt="" />{' '}
-                              <strong>Fnatic eSports</strong>
-                            </td>
-                            <td>
-                              <b>46</b> <b>23</b> <b>1</b> <b>22</b> <b>123</b>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <img src="/assets/media/teams/team4.png" alt="" />{' '}
-                              <strong>inictus Gaming</strong>
-                            </td>
-                            <td>
-                              <b>46</b> <b>23</b> <b>1</b> <b>22</b> <b>123</b>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <img src="/assets/media/teams/team5.png" alt="" />{' '}
-                              <strong>Fortuna eSports</strong>
-                            </td>
-                            <td>
-                              <b>46</b> <b>23</b> <b>1</b> <b>22</b> <b>123</b>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <img src="/assets/media/teams/team6.png" alt="" />{' '}
-                              <strong>Gambit Gaming</strong>
-                            </td>
-                            <td>
-                              <b>46</b> <b>23</b> <b>1</b> <b>22</b> <b>123</b>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
+                    {data.tournament.playType === 'SOLO' ? (
+                      <>
+                        <TournamentGroups
+                          group={data.tourGroups[0]}
+                          type="participants"
+                        />
+                        <TournamentGroups
+                          group={data.tourGroups[1]}
+                          type="participants"
+                        />
+                      </>
+                    ) : (
+                      <>
+                        <TournamentGroups
+                          group={data.tourGroups[0]}
+                          type="teams"
+                        />
+                        <TournamentGroups
+                          group={data.tourGroups[1]}
+                          type="teams"
+                        />
+                      </>
+                    )}
                   </div>
                 </div>
               </div>

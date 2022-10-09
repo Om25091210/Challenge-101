@@ -302,7 +302,7 @@ const TournamentEdit = ({ data, user }) => {
                     <select
                       name="games"
                       id="team"
-                      multiple={true}
+                      multiple={false}
                       value={states.games}
                       onChange={handleSubmit}
                     >
