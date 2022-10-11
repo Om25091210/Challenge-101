@@ -92,6 +92,13 @@ html {
 	/*default font-size is 10px */
 }
 
+:root {
+    --yellow: #f6e52e;
+	--bgcolor1:#242731;
+
+  }
+
+
 article,
 aside,
 details,
@@ -305,7 +312,7 @@ h3 {
 	border-radius: 20px;
 	padding: 5px 20px;
 	color: #000;
-	background: #f6e52e;
+	background: var(--yellow);
 	border: 0;
 	font-size: 15px;
 }
@@ -507,7 +514,7 @@ ul.top_menu li.noti a span.pop {
 }
 
 ul.top_menu li a span.pop {
-	background: #f6e52e;
+	background: var(--yellow);
 	width: 25px;
 	height: 25px;
 	display: flex;
@@ -835,7 +842,7 @@ ul.top_menu li.wallet .connect_wallet {
 }
 
 ul.top_menu li.wallet .connect_wallet .btn {
-	background: #f6e52e !important
+	background: var(--yellow) !important
 }
 
 ul.top_menu .drop_down_bg.wallet_drop_down h2 {
@@ -2107,7 +2114,7 @@ ul.top_menu .drop_down_bg.create_pages p {
 	margin-right: 10px;
 	color: #000;
 	font-weight: 500;
-	background: #f6e52e;
+	background: var(--yellow);
 	padding: 3px 10px;
 	border-radius: 5px;
 }
@@ -3213,7 +3220,7 @@ article .social_bar img {
 
 .profile_dp_box .top_details .button a {
 	margin-left: 5px;
-	background: #f6e52e;
+	background: var(--yellow);
 	color: #000;
 	font-size: 12px;
 	text-align: center;
@@ -3755,7 +3762,7 @@ article .social_bar img {
 	content: "";
 	position: absolute;
 	width: 100%;
-	border-bottom: 4px solid #f6e52e;
+	border-bottom: 4px solid var(--yellow);
 	left: 0;
 	bottom: -12px;
 }
@@ -5142,7 +5149,7 @@ article .social_bar img {
 }
 
 .team_row .join {
-	background: #f6e52e;
+	background: var(--yellow);
 	color: #000;
 	padding: 10px 20px;
 	border-radius: 20px;
@@ -5590,7 +5597,7 @@ article .social_bar img {
 	position: absolute;
 	width: 0;
 	height: 0;
-	border-bottom: 220px solid #242731;
+	border-bottom: 220px solid var(--bgcolor1);
 	border-left: 100px solid transparent;
 	right: 0;
 	top: 0;
@@ -6426,7 +6433,7 @@ article .social_bar img {
 }
 
 .squad_btn a {
-	background: #f6e52e;
+	background: var(--yellow);
 	padding: 22px 0 0 0;
 	text-align: center;
 	width: 50%;
@@ -8189,7 +8196,7 @@ main {
 }
 
 .create_tournament .btn, .create_tournament .common_form .btn {
-	background: #f6e52e !important;
+	background: var(--yellow) !important;
 	color: #000;
 	width: auto;
 	 float: right;
@@ -8452,7 +8459,7 @@ ul.game_search_result li.slc_img:after {
 }
 
 .create_bg .type_btn.active {
-	background: #f6e52e;
+	background: var(--yellow);
 	color: #000;
 }
 
@@ -8535,8 +8542,8 @@ ul.game_search_result li.slc_img:after {
 }
 
 .btn_selection .big_btn.radio_bg span {
-	background-color: #f6e52e;
-	border: 1px solid #f6e52e;
+	background-color: var(--yellow);
+	border: 1px solid var(--yellow);
 	color: #000;
 }
 
@@ -10519,7 +10526,7 @@ form.common_form .btn {
 	float: left;
 	width: 100%;
 	text-align: center;
-	background: #242731;
+	background: var(--bgcolor1);
 	padding: 20px;
 }
 
@@ -11309,7 +11316,7 @@ form.common_form .btn {
 	background: #ddd;
 	padding: 10px;
 	margin: 20px 0;
-	background: #242731;
+	background: var(--bgcolor1);
 	border-radius: 10px;
 	display: flex;
 	align-items: center;

@@ -75,6 +75,7 @@ const SignedMainContent = ({ posts, user }) => {
       toast.success('Your post has been successfully uploaded');
       setDescription('');
       setImage(null);
+      $('.image_box').remove();
       setGameTag({ name: '', gameId: '' });
       setShowGame('');
       router.push('/dashboard');
