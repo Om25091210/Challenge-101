@@ -217,6 +217,8 @@ export const teamEditFormValidate = (values) => {
   const errors = {};
   if (values.teamname.length === 0) {
     errors.teamName = 'Team Required';
+  } else if (values.teamName.length > 30) {
+    errors.teamName = 'Team Name cannot exceed 30 characters';
   }
 
   if (values.about.length === 0) {

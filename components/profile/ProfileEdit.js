@@ -658,7 +658,8 @@ const ProfileEdit = ({ Userdata, user, games, allteams }) => {
                 <div className="custom-control custom-switch">
                   <input
                     type="checkbox"
-                    className="custom-control-input"
+                    // className="custom-control-input"
+                    className={profile?.online_status ? 'Online' : 'Not_Online'}
                     id="customSwitch1"
                     onClick={() => handleOnline()}
                     value={states.Online}

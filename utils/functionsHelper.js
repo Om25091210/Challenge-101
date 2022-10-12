@@ -113,3 +113,24 @@ export const regionsData = [
   'Uttar Pradesh',
   'West Bengal'
 ];
+
+export const LanguageData = [
+  'English',
+  'Hindi',
+  'Tamil',
+  'Bengali',
+  'Marathi',
+  'Telugu',
+  'Gujarathi',
+  'Kannada',
+  'Urdu',
+  'Odia',
+  'Malayalam',
+  'Punjabi',
+  'Assamese',
+  'Maithili',
+  'Kashmiri',
+  'Nepali',
+  'Konkani',
+  'Tulu'
+];

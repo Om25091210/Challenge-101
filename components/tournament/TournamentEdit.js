@@ -326,8 +326,6 @@ const TournamentEdit = ({ data, user }) => {
                         onChange={handleChangeCheck}
                       >
                         <option value="">Select Category...</option>
-                        <option value="Death Match">Death Match</option>
-                        <option value="Survival">Survival</option>
                         <option value="Online">Online</option>
                         <option value="Lan">LAN</option>
                       </select>

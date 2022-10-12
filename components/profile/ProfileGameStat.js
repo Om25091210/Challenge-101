@@ -36,6 +36,7 @@ const ProfileGameStat = ({ user, games }) => {
                 key={index}
               >
                 <select name="selectedGame" onClick={handleSelectGame}>
+                  <option value="">Select Your IGN...</option>
                   {games.map((game, index) => (
                     <option value={game.userign}>
                       {game.game.name}-{game.userign}

@@ -124,7 +124,14 @@ const TournamentDetail = ({
               <div className="profile_dp_box">
                 <div className="profile_pic">
                   {' '}
-                  <img src="/assets/media/tournament/1.png" alt="" />{' '}
+                  <img
+                    src={
+                      data.tournament.imgUrl
+                        ? data.tournament.imgUrl
+                        : '/assets/media/tournament/1.png'
+                    }
+                    alt=""
+                  />{' '}
                 </div>
                 <div className="profile_details">
                   <div className="top_details">
@@ -234,9 +241,11 @@ const TournamentDetail = ({
                       profile={profile}
                       teams={teams}
                     />
-                    <a href="#" className="btn">
-                      BOOK TICKETS
-                    </a>
+                    {data.tournament.category === 'LAN' ? (
+                      <a href="#" className="btn">
+                        BOOK TICKETS
+                      </a>
+                    ) : null}
                   </div>
                 </div>
               </div>
