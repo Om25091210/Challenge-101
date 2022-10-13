@@ -11,7 +11,7 @@ const CreateBrand = ({ user, profile }) => {
       <MetaDash />
       <SignedHeader user={user} profile={profile} />
       <LeftNav user={user} />
-      <BrandCreate isClaim={true} />
+      <BrandCreate isClaim={true} user={user} />
       <AllScript />
       <script></script>
     </>

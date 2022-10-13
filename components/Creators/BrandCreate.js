@@ -8,7 +8,7 @@ import axios from 'axios';
 import baseURL from '@utils/baseURL';
 import SearchName from './SearchName';
 
-const BrandCreate = ({ isClaim }) => {
+const BrandCreate = ({ isClaim, user }) => {
   const [image, setImage] = useState(null);
   const [formErrors, setFormErrors] = useState({});
   const [newBrand, setNewBrand] = useState();
@@ -103,6 +103,7 @@ const BrandCreate = ({ isClaim }) => {
                       type="Brand"
                       handleChange={handleChange}
                       isSearchOnly={false}
+                      user={user}
                     />
                     {state.name.length > 15 && (
                       <h6>Brand name cannot be more then 15 characters</h6>

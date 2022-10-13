@@ -294,6 +294,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                         type="Tournament"
                         handleChange={handleChange}
                         isSearchOnly={false}
+                        user={user}
                       />
                       <p>{formErrors.name}</p>
                       {state.name && state.name.length > 64 ? (
