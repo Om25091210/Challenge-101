@@ -4,6 +4,7 @@ import baseURL from '../../utils/baseURL';
 import countryList from 'react-select-country-list';
 import { toast } from 'react-toastify';
 import { regionsData } from '../../utils/functionsHelper';
+import { LanguageData } from '../../utils/functionsHelper';
 
 const RecruitEdit = ({ attributeData, profile }) => {
   const [allgames, setAllgames] = useState([]);
@@ -219,10 +220,10 @@ const RecruitEdit = ({ attributeData, profile }) => {
                   value={states.language}
                   className="form-control"
                 >
-                  <option value="English">English</option>
-                  <option value="Hindi">Hindi</option>
-                  <option value="Tamil">Tamil</option>
-                  <option value="Bengali">Bengali</option>
+                  {LanguageData &&
+                    LanguageData.map((lang) => (
+                      <option value={lang}>{lang}</option>
+                    ))}
                 </select>
               </div>
 

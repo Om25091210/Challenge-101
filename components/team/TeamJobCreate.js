@@ -17,7 +17,6 @@ import { useRouter } from 'next/router';
 import { jobformvalidate } from '@utils/valid';
 
 const TeamJobCreate = ({ user, profile }) => {
-  const [teamroles, setTeamroles] = useState([]);
   const [formErrors, setFormErrors] = useState({});
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
   let edited2 = draftToHtml(convertToRaw(editorState.getCurrentContent()));
@@ -38,12 +37,6 @@ const TeamJobCreate = ({ user, profile }) => {
   });
 
   const options = useMemo(() => countryList().getData(), []);
-  useEffect(() => {
-    //TeamRole
-    axios
-      .get(`${baseURL}/api/all/teamroles`)
-      .then((res) => setTeamroles(res.data));
-  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -118,12 +111,12 @@ const TeamJobCreate = ({ user, profile }) => {
               value={state.role}
             >
               <option value="">Select Opportunity Type...</option>
-              {teamroles &&
-                teamroles.map((tr, itdx) => (
-                  <option key={itdx} value={tr}>
-                    {tr}
-                  </option>
-                ))}
+              <option value="Sniper">Sniper</option>
+              <option value="AR">AR</option>
+              <option value="Shotgun">Shotgun</option>
+              <option value="Pistol">Pistol</option>
+              <option value="Marksman Rifle">Marksman Rifle</option>
+              <option value="SMGs">SMGs</option>
             </select>
             <p>{formErrors.role}</p>
           </div>

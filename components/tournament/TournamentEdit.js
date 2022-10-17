@@ -9,10 +9,14 @@ import countryList from 'react-select-country-list';
 
 const TournamentEdit = ({ data, user }) => {
   const gameList = data.tournament.games.map((game) => game.gameId._id);
+  const countryNames = data.tournament.eligibleCountries.map((cty) => cty.iso);
   const [states, setStates] = useState({
     tourType: 'Tournament',
     name: data.tournament.name,
-    series: null,
+    // series: null,
+    teamSize: data.tournament?.teamSize,
+    playType: data.tournament?.playType,
+    eligibleCountries: countryNames,
     username: user.username,
     startDate: Moment(data.tournament?.startDate).format('yyyy-MM-DD') || '',
     startTime: data.tournament?.startTime || '',
@@ -36,7 +40,7 @@ const TournamentEdit = ({ data, user }) => {
   });
   const [allorganizer, setAllorganizer] = useState([]);
   const [allgames, setAllgames] = useState([]);
-  const [allseries, setAllseries] = useState([]);
+  // const [allseries, setAllseries] = useState([]);
   const [formErrors, setFormErrors] = useState({});
 
   useEffect(() => {
@@ -44,9 +48,9 @@ const TournamentEdit = ({ data, user }) => {
       .get(`${baseURL}/api/all/organizers`)
       .then((res) => setAllorganizer(res.data));
     axios.get(`${baseURL}/api/all/games`).then((res) => setAllgames(res.data));
-    axios
-      .get(`${baseURL}/api/all/series`)
-      .then((res) => setAllseries(res.data));
+    // axios
+    //   .get(`${baseURL}/api/all/series`)
+    //   .then((res) => setAllseries(res.data));
   }, []);
 
   const options = useMemo(() => countryList().getData(), []);
@@ -169,7 +173,7 @@ const TournamentEdit = ({ data, user }) => {
                     />
                     <p>{formErrors.name}</p>
                   </div>
-                  <div className="form-group">
+                  {/* <div className="form-group">
                     <label htmlFor="exampleFormControlInput1">
                       Part of Series - Name
                     </label>
@@ -187,7 +191,7 @@ const TournamentEdit = ({ data, user }) => {
                           </option>
                         ))}
                     </select>
-                  </div>
+                  </div> */}
                   <div className="form-group">
                     <label htmlFor="exampleFormControlInput1">Username</label>
                     <input
@@ -247,6 +251,38 @@ const TournamentEdit = ({ data, user }) => {
                       onChange={handleChangeCheck}
                       value={states.address}
                     />
+                  </div>
+
+                  {states.playType === 'TEAMS' ? (
+                    <select
+                      name="teamSize"
+                      id="teamSize"
+                      onClick={handleChangeCheck}
+                    >
+                      <option value="">Select Team Size</option>
+                      <option value="1v1">1v1</option>
+                      <option value="2v2">2v2</option>
+                      <option value="4v4">4v4</option>
+                      <option value="5v5">5v5</option>
+                    </select>
+                  ) : null}
+
+                  <div className="colm">
+                    <label for="exampleFormControlInput1">
+                      Eligible Countries (Optional)
+                    </label>
+                    <select
+                      name="eligibleCountries"
+                      onChange={handleSubmit}
+                      multiple={true}
+                    >
+                      {options &&
+                        options.map((opt) => (
+                          <>
+                            <option value={opt.value}>{opt.label}</option>
+                          </>
+                        ))}
+                    </select>
                   </div>
 
                   <div className="form-group">

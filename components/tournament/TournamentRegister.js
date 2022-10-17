@@ -20,7 +20,6 @@ const Tournament_Reg = ({ user, tournament, profile, groups, teams }) => {
     });
   }, [trigger]);
 
-  console.log(teams);
   const isRegistered =
     tournament?.registered?.filter((tour) => {
       return tour?.user?._id === user?._id;
@@ -62,7 +61,7 @@ const Tournament_Reg = ({ user, tournament, profile, groups, teams }) => {
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }
   };
-  console.log(selectedTeam);
+
   return (
     <>
       {tournament.playType === 'TEAMS' ? (
