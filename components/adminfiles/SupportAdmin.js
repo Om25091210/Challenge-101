@@ -8,8 +8,9 @@ import TournamentCreate from '../Creators/TournamentCreate';
 import TeamCreate from '../Creators/TeamCreate';
 import ClaimCard from './ClaimCard';
 import baseURL from '../../utils/baseURL';
+import ChallengesDisplay from '../challenges/ChallengesDisplay';
 
-const SupportAdmin = ({ user }) => {
+const SupportAdmin = ({ user, data, profile }) => {
   const [show, setShow] = useState(false);
   const [type, setType] = useState();
   let [tabData, setTabData] = useState([]);
@@ -120,6 +121,11 @@ const SupportAdmin = ({ user }) => {
             Brands
           </a>
         </li>
+        <li>
+          <a href="#!" rel="Challenges">
+            Wagers
+          </a>
+        </li>
       </ul>
       <div className="prfoile_tab_data">
         <div className="tab hide" id="Tournaments">
@@ -142,6 +148,26 @@ const SupportAdmin = ({ user }) => {
           <div className="white_bg challenge_card_box">
             <ul className="challenge_card">
               <ClaimCard data={tabData} user={user} />
+            </ul>
+          </div>
+        </div>
+        <div className="tab" id="Challenges">
+          <div className="white_bg challenge_card_box">
+            <ul className="challenge_card">
+              {!data.challenges || data.challenges.length === 0 ? (
+                <div>
+                  <span>No Wagers here.</span>
+                </div>
+              ) : (
+                data.challenges.map((chall) => (
+                  <ChallengesDisplay
+                    user={user}
+                    chall={chall}
+                    profile={profile}
+                    type="SupportAdmin"
+                  />
+                ))
+              )}
             </ul>
           </div>
         </div>

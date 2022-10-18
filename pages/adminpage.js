@@ -25,7 +25,7 @@ const Adminpage = ({ user, data, profile }) => {
           </>
         ) : (
           <>
-            <SupportAdmin user={user} />
+            <SupportAdmin user={user} data={data} profile={profile} />
           </>
         )}
       </div>

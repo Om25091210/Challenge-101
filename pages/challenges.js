@@ -154,6 +154,7 @@ const challenges = ({ user, teams, profile, games }) => {
                     user={user}
                     chall={chall}
                     profile={profile}
+                    type="Challenges"
                   />
                 ))
               )}
