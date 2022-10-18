@@ -69,14 +69,14 @@ const Team = ({ user, data, products, profile, teams }) => {
 };
 
 export const getServerSideProps = async (context, query) => {
-  const { teamId } = context.params;
+  const { teamname } = context.params;
   const page = query ? query.page || 1 : 1;
   const category = query ? query.category || 'all' : 'all';
   const sort = query ? query.sort || '' : '';
   const search = query ? query.search || 'all' : 'all';
 
   try {
-    const response = await fetch(`${baseURL}/api/teams/${teamId}`);
+    const response = await fetch(`${baseURL}/api/teams/${teamname}`);
     const data = await response.json();
 
     const res = await getData(

@@ -146,7 +146,7 @@ const TeamCreate = ({ isClaim, user }) => {
   };
 
   if (newTeam) {
-    isClaim === true ? router.push(`/team/${newTeam._id}`) : null;
+    isClaim === true ? router.push(`/team/${newTeam.name}`) : null;
   }
 
   return (
