@@ -275,6 +275,7 @@ const TournamentEdit = ({ data, user }) => {
                       name="eligibleCountries"
                       onChange={handleSubmit}
                       multiple={true}
+                      value={states.eligibleCountries}
                     >
                       {options &&
                         options.map((opt) => (
