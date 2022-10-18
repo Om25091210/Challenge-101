@@ -80,7 +80,7 @@ const SearchName = ({ data, type, handleChange, isSearchOnly }) => {
                           </p>
                           <div className="loc_box edit_pof">
                             <a
-                              href="#!"
+                              href="javascript:void(0);"
                               className="model_show_btn"
                               onClick={() => setTrigger(!trigger)}
                             >
