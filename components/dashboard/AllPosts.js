@@ -12,19 +12,7 @@ import TeamFollow from '../team/TeamFollow';
 import { toast } from 'react-toastify';
 
 const AllPosts = ({ post, user, profiledata, type, team }) => {
-  const [profile, setProfile] = useState([]);
   const [comments, setComments] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get(`${baseURL}/api/profile/${user._id}`)
-      .then((res) => {
-        setProfile(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
 
   useEffect(() => {
     axios
@@ -39,7 +27,7 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
 
   const isFollow =
     profiledata &&
-    profile.following
+    profiledata.following
       ?.filter((profile) => profile.user === post.user?._id)
       .map((profile, ind) => profile.user).length > 0;
 
@@ -91,7 +79,7 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
                     </a>
                   ) : (
                     <>
-                      <a href={`/user/${post.user?._id}`}>
+                      <a href={`/user/${post.user?.username}`}>
                         <h4>{post.username}</h4>
                       </a>
                     </>
@@ -99,7 +87,7 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
                 </>
               ) : (
                 <h4>
-                  <a href={`/user/${post.user?._id}`}>{post.username} </a>
+                  <a href={`/user/${post.user?.username}`}>{post.username} </a>
                   is playing
                   <a href={`/games/${post.game_tag[0]?.gameId}`}>
                     {' '}

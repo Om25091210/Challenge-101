@@ -14,7 +14,7 @@ const CreateTeam = ({ user, profile }) => {
       <MetaDash />
       <SignedHeader user={user} profile={profile} />
       <LeftNav user={user} />
-      <TeamCreate isClaim={true} />
+      <TeamCreate isClaim={true} user={user} />
       <AllScript />
       <script></script>
     </>

@@ -133,6 +133,12 @@ export const tournamentformvalidate = (values) => {
   } else if (values.description.length > 250) {
     errors.description = 'Description Cannot exceed more than 250 characters.';
   }
+  if (values.playType === 'TEAMS') {
+    if (values.teamSize === '') {
+      errors.teamSize = 'Please Select a Team Size';
+    }
+  }
+
   return errors;
 };
 
@@ -217,6 +223,8 @@ export const teamEditFormValidate = (values) => {
   const errors = {};
   if (values.teamname.length === 0) {
     errors.teamName = 'Team Required';
+  } else if (values.teamName.length > 30) {
+    errors.teamName = 'Team Name cannot exceed 30 characters';
   }
 
   if (values.about.length === 0) {

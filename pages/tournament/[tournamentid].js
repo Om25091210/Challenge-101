@@ -124,7 +124,14 @@ const TournamentDetail = ({
               <div className="profile_dp_box">
                 <div className="profile_pic">
                   {' '}
-                  <img src="/assets/media/tournament/1.png" alt="" />{' '}
+                  <img
+                    src={
+                      data.tournament.imgUrl
+                        ? data.tournament.imgUrl
+                        : '/assets/media/tournament/1.png'
+                    }
+                    alt=""
+                  />{' '}
                 </div>
                 <div className="profile_details">
                   <div className="top_details">
@@ -203,16 +210,13 @@ const TournamentDetail = ({
                         <p> {data.tournament?.followers.length} Followers</p>
                       </span>
                       <span className="name loc_date">
-                        {data.tournament?.address &&
-                        data.tournament?.address?.length > 0 ? (
+                        {data.tournament.category !== 'LAN' ? null : (
                           <>
                             <i className="fa fa-map-marker"></i>
-                            {data.tournament?.address}
+                            {data.tournament?.address},{' '}
                           </>
-                        ) : (
-                          <p>Address Unavailable</p>
                         )}
-                        , {data.tournament.location}{' '}
+                        {data.tournament.location}{' '}
                         <span className="tour_time">
                           <i className="fa fa-clock-o"></i>{' '}
                           {Moment(data.tournament.startDate).format('MMM DD')} -
@@ -234,9 +238,11 @@ const TournamentDetail = ({
                       profile={profile}
                       teams={teams}
                     />
-                    <a href="#" className="btn">
-                      BOOK TICKETS
-                    </a>
+                    {data.tournament.category === 'LAN' ? (
+                      <a href="#" className="btn">
+                        BOOK TICKETS
+                      </a>
+                    ) : null}
                   </div>
                 </div>
               </div>
@@ -493,6 +499,27 @@ const TournamentDetail = ({
                         ))}
                     </>
                   </div>
+
+                  <div className="games">
+                    <h2>Eligible Countries:</h2>
+                    <>
+                      {data.tournament.eligibleCountries &&
+                        data.tournament.eligibleCountries.map((cty, index) => (
+                          <span key={index}>
+                            <ReactCountryFlag
+                              countryCode={cty.iso}
+                              svg
+                              style={{
+                                width: '2em',
+                                height: '2em'
+                              }}
+                            />
+                            <p>{cty.name}</p>
+                          </span>
+                        ))}
+                    </>
+                  </div>
+
                   <div className="internet">
                     <ul>
                       <li>

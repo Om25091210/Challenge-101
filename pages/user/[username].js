@@ -44,14 +44,14 @@ const Profile = ({ user, Userdata, games, player, products, teams }) => {
 };
 
 export const getServerSideProps = async (context, query) => {
-  const { id } = context.params;
+  const { username } = context.params;
   const page = query ? query.page || 1 : 1;
   const category = query ? query.category || 'all' : 'all';
   const sort = query ? query.sort || '' : '';
   const search = query ? query.search || 'all' : 'all';
 
   try {
-    const response = await fetch(`${baseURL}/api/profile/${id}`);
+    const response = await fetch(`${baseURL}/api/profile/${username}`);
     const Userdata = await response.json();
 
     const res = await fetch(`${baseURL}/api/all/games`);

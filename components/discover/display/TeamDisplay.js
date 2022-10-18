@@ -498,7 +498,8 @@ const TeamDisplay = ({
                               className="fa fa-sort-asc"
                               aria-hidden="true"
                             ></i>
-                            {team.attribute.rank}
+                            {/* {team.attribute.rank} */}
+                            --
                           </span>
                           {/* <span className="were">
                           Winning: {team.team.teamrank?.winning}{' '}
@@ -540,7 +541,7 @@ const TeamDisplay = ({
                     )}
                   </div>
                   <div className="other">
-                    <h4>From</h4>
+                    <h4>Form</h4>
                     <p>
                       <span className="red round"></span>{' '}
                       <span className="green round"></span>{' '}

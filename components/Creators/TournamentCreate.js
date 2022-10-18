@@ -16,7 +16,7 @@ const TournamentCreate = ({ user, isClaim }) => {
   const [organizers, setOrganizers] = useState([]);
   const [tournaments, setTournaments] = useState([]);
   const [sponsors, setSponsors] = useState([]);
-  const [series, setSeries] = useState([]);
+  // const [series, setSeries] = useState([]);
   const [step1, setStep1] = useState(false);
   const [showbtn, setShowbtn] = useState(true);
   const [formErrors, setFormErrors] = useState({});
@@ -41,8 +41,8 @@ const TournamentCreate = ({ user, isClaim }) => {
     category: '',
     tournamentType: '',
     Type: '',
-    participants: null,
-    minParticipants: null,
+    participants: '',
+    minParticipants: '',
     entranceFee: null,
     startDate: '',
     startTime: '',
@@ -62,13 +62,15 @@ const TournamentCreate = ({ user, isClaim }) => {
     youtube: '',
     discord: '',
     file: null,
-    series: null,
+    // series: null,
     numberOfTeam: null,
     playType: '',
     minTeams: null,
     platform: '',
     isClaim,
-    checkIn: ''
+    checkIn: '',
+    teamSize: '',
+    eligibleCountries: ''
   });
 
   const options = useMemo(() => countryList().getData(), []);
@@ -93,7 +95,7 @@ const TournamentCreate = ({ user, isClaim }) => {
       .then((res) => setSponsors(res.data));
 
     //Series
-    axios.get(`${baseURL}/api/all/series`).then((res) => setSeries(res.data));
+    // axios.get(`${baseURL}/api/all/series`).then((res) => setSeries(res.data));
   }, []);
 
   const handleSubmit = async (e) => {
@@ -128,13 +130,15 @@ const TournamentCreate = ({ user, isClaim }) => {
       formdata.append('instagram', state.instagram);
       formdata.append('youtube', state.youtube);
       formdata.append('discord', state.discord);
-      formdata.append('series', Number(state.series));
+      // formdata.append('series', Number(state.series));
       formdata.append('numberOfTeam', Number(state.numberOfTeam));
       formdata.append('playType', state.playType);
       formdata.append('minTeams', Number(state.minTeams));
       formdata.append('platform', state.platform);
       formdata.append('isClaim', state.isClaim);
       formdata.append('checkIn', state.checkIn);
+      formdata.append('teamSize', state.teamSize);
+      formdata.append('eligibleCountries', state.eligibleCountries);
 
       try {
         await axios
@@ -198,6 +202,10 @@ const TournamentCreate = ({ user, isClaim }) => {
   };
 
   let gamePlatform = games.filter((game) => game._id === selectGames.game);
+
+  if (gamePlatform[0]?.platform.length === 1) {
+    state.platform = gamePlatform[0]?.platform[0];
+  }
 
   const handleGame = (e, gameId) => {
     e.preventDefault();
@@ -265,12 +273,12 @@ const TournamentCreate = ({ user, isClaim }) => {
                       </div>
 
                       <div className="big_btn">
-                        <span class="form-check-label terms"> Competition</span>
+                        <span class="form-check-label terms"> Challenge</span>
                         <input
                           type="radio"
                           name="Type"
                           id=""
-                          value="Competition"
+                          value="Challenge"
                           onChange={handleChangeCheck}
                         />
                       </div>
@@ -294,6 +302,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                         type="Tournament"
                         handleChange={handleChange}
                         isSearchOnly={false}
+                        user={user}
                       />
                       <p>{formErrors.name}</p>
                       {state.name && state.name.length > 64 ? (
@@ -343,7 +352,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                       ))}
                     </ul>
 
-                    <div className="form-group">
+                    {/* <div className="form-group">
                       <label for="exampleFormControlInput1">
                         Series (Optional)
                       </label>
@@ -361,7 +370,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                             </option>
                           ))}
                       </select>
-                    </div>
+                    </div> */}
 
                     <div className="form-group">
                       <label for="exampleFormControlInput1">Prize Pool</label>
@@ -466,59 +475,6 @@ const TournamentCreate = ({ user, isClaim }) => {
                     </div>
                     <div className="form-group">
                       <label for="exampleFormControlTextarea1">
-                        Tourament Type
-                      </label>
-                      <div className="btn_selection">
-                        <div className="big_btn">
-                          <span class="form-check-label terms">
-                            {' '}
-                            Leaderboard
-                          </span>
-                          <input
-                            type="radio"
-                            name="tournamentType"
-                            id=""
-                            value="Leaderboard"
-                            onChange={handleChangeCheck}
-                          />
-                        </div>
-
-                        <div className="big_btn">
-                          <span class="form-check-label terms">
-                            {' '}
-                            Single Elimination
-                          </span>
-                          <input
-                            type="radio"
-                            name="tournamentType"
-                            id=""
-                            value="Single Elimination"
-                            onChange={handleChangeCheck}
-                          />
-                        </div>
-
-                        <div className="big_btn">
-                          <span class="form-check-label terms">
-                            {' '}
-                            Double Elimination
-                          </span>
-                          <input
-                            type="radio"
-                            name="tournamentType"
-                            id=""
-                            value="Double Elimination"
-                            onChange={handleChangeCheck}
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    <h2>Step2</h2>
-
-                    <div className="form-group">
-                      <label for="exampleFormControlTextarea1">
                         Tournament Format
                       </label>
                       <div className="btn_selection">
@@ -541,6 +497,20 @@ const TournamentCreate = ({ user, isClaim }) => {
                             onChange={handleChangeCheck}
                           />
                         </div>
+                        {state.playType === 'TEAMS' ? (
+                          <select
+                            name="teamSize"
+                            id="teamSize"
+                            onClick={handleChangeCheck}
+                          >
+                            <option value="">Select Team Size</option>
+                            <option value="1v1">1v1</option>
+                            <option value="2v2">2v2</option>
+                            <option value="4v4">4v4</option>
+                            <option value="5v5">5v5</option>
+                          </select>
+                        ) : null}
+                        <p>{formErrors.teamSize}</p>
                       </div>
                     </div>
                     {state.playType === 'SOLO' ? (
@@ -609,6 +579,60 @@ const TournamentCreate = ({ user, isClaim }) => {
                         </div>
                       </>
                     ) : null}
+                  </>
+                ) : (
+                  <>
+                    <h2>Step2</h2>
+
+                    <div className="form-group">
+                      <label for="exampleFormControlTextarea1">
+                        Tourament Type
+                      </label>
+                      <div className="btn_selection">
+                        <div className="big_btn">
+                          <span class="form-check-label terms">
+                            {' '}
+                            Single Elimination
+                          </span>
+                          <input
+                            type="radio"
+                            name="tournamentType"
+                            id=""
+                            value="Single Elimination"
+                            onChange={handleChangeCheck}
+                          />
+                        </div>
+
+                        <div className="big_btn">
+                          <span class="form-check-label terms">
+                            {' '}
+                            Double Elimination
+                          </span>
+                          <input
+                            type="radio"
+                            name="tournamentType"
+                            id=""
+                            value="Double Elimination"
+                            onChange={handleChangeCheck}
+                          />
+                        </div>
+
+                        <div className="big_btn">
+                          <span class="form-check-label terms">
+                            {' '}
+                            Round Robin
+                          </span>
+                          <input
+                            type="radio"
+                            name="tournamentType"
+                            id=""
+                            value="Round Robin"
+                            onChange={handleChangeCheck}
+                          />
+                        </div>
+                      </div>
+                    </div>
+
                     <div className="form-group">
                       <div className="date_time">
                         <div className="date_box">
@@ -749,19 +773,23 @@ const TournamentCreate = ({ user, isClaim }) => {
                         <p>{formErrors.location}</p>
                       </div>
 
-                      {/* <div className="colm">
+                      <div className="colm">
                         <label for="exampleFormControlInput1">
-                          Add Cohosts (Optional)
+                          Eligible Countries (Optional)
                         </label>
-                        <input
-                          type="text"
-                          name="cohosts"
-                          className="form-control"
-                          placeholder="Add Cohosts"
+                        <select
+                          name="eligibleCountries"
                           onChange={handleChange}
-                          value={state.cohosts}
-                        />
-                      </div> */}
+                          multiple={true}
+                        >
+                          {options &&
+                            options.map((opt) => (
+                              <>
+                                <option value={opt.value}>{opt.label}</option>
+                              </>
+                            ))}
+                        </select>
+                      </div>
 
                       <div className="colm">
                         <label for="exampleFormControlInput1">

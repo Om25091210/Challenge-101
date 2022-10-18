@@ -4,6 +4,7 @@ import baseURL from '../../utils/baseURL';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 import { regionsData } from '../../utils/functionsHelper';
+import { LanguageData } from '../../utils/functionsHelper';
 
 const AttributeCard = ({ type, attributeId, profile }) => {
   const [allgames, setAllgames] = useState([]);
@@ -117,7 +118,7 @@ const AttributeCard = ({ type, attributeId, profile }) => {
 
               <div className="inner_model_box">
                 <div className="">
-                  <h3> RECRUITED </h3>
+                  <h3> RECRUITEMENT CARD </h3>
                   <form
                     onSubmit={handleSubmitAttribute}
                     className="common_form"
@@ -257,10 +258,10 @@ const AttributeCard = ({ type, attributeId, profile }) => {
                         value={states.language}
                         className="form-control"
                       >
-                        <option value="English">English</option>
-                        <option value="Hindi">Hindi</option>
-                        <option value="Tamil">Tamil</option>
-                        <option value="Bengali">Bengali</option>
+                        {LanguageData &&
+                          LanguageData.map((lang) => (
+                            <option value={lang}>{lang}</option>
+                          ))}
                       </select>
                     </div>
 

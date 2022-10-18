@@ -30,7 +30,7 @@ const SignedMainContent = ({ posts, user }) => {
   const shareUrl = `${process.env.NEXT_PUBLIC_ESPORTS_API_BASE_URL}/signup`;
   useEffect(() => {
     axios
-      .get(`${baseURL}/api/profile/${user._id}`)
+      .get(`${baseURL}/api/profile/${user.username}`)
       .then((res) => setProfileData(res.data));
   }, []);
 

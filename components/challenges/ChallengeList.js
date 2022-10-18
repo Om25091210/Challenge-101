@@ -1,6 +1,3 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import baseURL from '@utils/baseURL';
 import ChallengeApprove from '../discover/invites/ChallengeApprove';
 import ChallengeDecline from '../discover/invites/ChallengeDecline';
 

@@ -13,7 +13,7 @@ import countryList from 'react-select-country-list';
 import TeamAddSearch from '../team/TeamAddSearch';
 import SearchName from './SearchName';
 
-const TeamCreate = ({ isClaim }) => {
+const TeamCreate = ({ isClaim, user }) => {
   const showSecond = true;
   const str = showSecond ? 'HH:mm:ss' : 'HH:mm';
 
@@ -175,6 +175,7 @@ const TeamCreate = ({ isClaim }) => {
                       type="Team"
                       handleChange={handleChange}
                       isSearchOnly={false}
+                      user={user}
                     />
                     <div className="form-group">
                       <div className="style_file_upload">

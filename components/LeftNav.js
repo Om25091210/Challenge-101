@@ -80,6 +80,16 @@ function LeftNav({ user }) {
               </a>
             </Link>
           </li>
+          <li className={router.pathname == '/battlepass' ? 'active' : ''}>
+            <Link href="/battlepass">
+              <a className="">
+                <span className="iconbg">
+                  {/* <img src="/assets/media/icons/Challenge.png" alt="" /> */}
+                </span>{' '}
+                <span className="title">Battlepass</span>
+              </a>
+            </Link>
+          </li>
           {user?.isSuperAdmin === true || user?.isSupportAdmin === true ? (
             <li>
               <Link href="/adminpage">
