@@ -188,8 +188,8 @@ const TournamentCreate = ({ user, isClaim }) => {
       toast.info('please select a prizepool');
     } else if (state.category === '') {
       toast.info('Please select a category');
-    } else if (state.tournamentType === '') {
-      toast.info('please select a Tournament Type');
+    } else if (state.playType === '') {
+      toast.info('please select a Tournament Format');
     } else {
       setStep1(true);
       setShowbtn(false);

@@ -500,25 +500,31 @@ const TournamentDetail = ({
                     </>
                   </div>
 
-                  <div className="games">
-                    <h2>Eligible Countries:</h2>
+                  {data.tournament.eligibleCountries.length > 0 ? (
                     <>
-                      {data.tournament.eligibleCountries &&
-                        data.tournament.eligibleCountries.map((cty, index) => (
-                          <span key={index}>
-                            <ReactCountryFlag
-                              countryCode={cty.iso}
-                              svg
-                              style={{
-                                width: '2em',
-                                height: '2em'
-                              }}
-                            />
-                            <p>{cty.name}</p>
-                          </span>
-                        ))}
+                      <div className="games">
+                        <h2>Eligible Countries:</h2>
+                        <>
+                          {data.tournament.eligibleCountries &&
+                            data.tournament.eligibleCountries.map(
+                              (cty, index) => (
+                                <span key={index}>
+                                  <ReactCountryFlag
+                                    countryCode={cty.iso}
+                                    svg
+                                    style={{
+                                      width: '2em',
+                                      height: '2em'
+                                    }}
+                                  />
+                                  <p>{cty.name}</p>
+                                </span>
+                              )
+                            )}
+                        </>
+                      </div>
                     </>
-                  </div>
+                  ) : null}
 
                   <div className="internet">
                     <ul>
