@@ -21,7 +21,6 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
 
   const [coverPic, setCoverPic] = useState(null);
   const [userIgn, setUserIgn] = useState(null);
-  const [follow, setFollow] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
   let [tabData, setTabData] = useState([]);
 
@@ -30,6 +29,12 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
   const refreshData = () => {
     router.replace(router.asPath);
   };
+
+  const isFollow =
+    Userdata.followers?.filter((x) => x.user === user._id).map((x) => x.user)
+      .length > 0;
+
+  const [follow, setFollow] = useState(isFollow);
 
   const followhandlesubmit = async (e) => {
     e.preventDefault();
@@ -50,10 +55,6 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
 
   const SrhUser = Userdata.profile?.user;
   const isLoggedInUser = user._id === SrhUser?._id;
-
-  const isFollow = Userdata.followers
-    ?.filter((x) => x.user === user._id)
-    .map((x) => x.user);
 
   const mutation = useMutation(
     async (formdata) =>
@@ -284,7 +285,7 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
               {isLoggedInUser ? null : (
                 <div className="button">
                   <button className="btn" onClick={followhandlesubmit}>
-                    {isFollow.length === 0 ? 'Follow' : 'Unfollow'}
+                    {follow === true ? 'Unfollow' : 'Follow'}
                   </button>{' '}
                   <a href="#" className="btn">
                     Message
