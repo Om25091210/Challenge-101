@@ -158,7 +158,10 @@ const SignedMainContent = ({ posts, user }) => {
         vertical: true,
         verticalSwiping: true,
         slidesToShow: 1,
-        slidesToScroll: 1
+        slidesToScroll: 1,
+        arrows: true,
+        prevArrow: $('.slick-prev'),
+        nextArrow: $('.slick-next')
       });
     }, 4000);
   }, []);
@@ -315,6 +318,8 @@ const SignedMainContent = ({ posts, user }) => {
               </li>
             ))}
           </ul>
+          <div class="slick-prev slick-arrow">Prev</div>
+          <div class="slick-next slick-arrow">Next</div>
         </div>
 
         <textarea
