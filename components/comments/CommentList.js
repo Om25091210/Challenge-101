@@ -117,7 +117,11 @@ const CommentList = ({ post, user, comments }) => {
               : commentsData.slice(0, next).map((comment) => (
                   <div key={comment._id} className="single_comment_sec">
                     <div className="comments_point">
-                      <LikeComment postId={postId} comment={comment} />
+                      <LikeComment
+                        postId={postId}
+                        comment={comment}
+                        user={user}
+                      />
                       <div className="comment_round_box">
                         <div className="user">
                           <img src={comment.user?.profilePicUrl} alt="" />

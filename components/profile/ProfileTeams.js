@@ -251,7 +251,7 @@ const ProfileTeams = ({ Userdata, user, teamsData, allGames, teamroles }) => {
                   <div className="right_data">
                     <div className="card_games_tit">
                       <h3>
-                        <a href={`/team/${team.team.name}`}>
+                        <a href={`/team/${team.team._id}`}>
                           Team {team.team.name} <br />{' '}
                         </a>
                         {Moment(team.team.founded).format('MMM YYYY')}

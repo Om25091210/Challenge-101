@@ -54,7 +54,7 @@ const TeamDisplay = ({
                   <div className="role_pic">
                     <img src={team.team.imgUrl} alt="" />
                   </div>
-                  <a href={`/team/${team.team.name}`}>
+                  <a href={`/team/${team.team._id}`}>
                     <h3>{team.team.name}</h3>
                   </a>
                   <ReactCountryFlag
@@ -220,7 +220,7 @@ const TeamDisplay = ({
                   <div className="role_pic">
                     <img src={team.team.imgUrl} alt="" />
                   </div>
-                  <a href={`/team/${team.team.name}`}>
+                  <a href={`/team/${team.team._id}`}>
                     <h3>{team.team.name}</h3>
                   </a>
                   <ReactCountryFlag
@@ -396,7 +396,7 @@ const TeamDisplay = ({
                   <div className="role_pic">
                     <img src={team.team.imgUrl} alt="" />
                   </div>
-                  <a href={`/team/${team.team.name}`}>
+                  <a href={`/team/${team.team._id}`}>
                     <h3>{team.team.name}</h3>
                   </a>
                   <ReactCountryFlag

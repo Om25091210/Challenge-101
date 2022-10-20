@@ -31,6 +31,16 @@ const Team = ({ user, data, products, profile, teams }) => {
       (emp) => emp.role === 'Admin' && emp.employeeId._id === user._id
     ).length > 0;
 
+  const isOwner =
+    data?.team?.employees.filter(
+      (emp) => emp.role === 'Owner' && emp.employeeId._id === user._id
+    ).length > 0;
+
+  const isCEO =
+    data?.team?.employees.filter(
+      (emp) => emp.role === 'CEO' && emp.employeeId._id === user._id
+    ).length > 0;
+
   if (data) {
     return (
       <>
@@ -46,6 +56,8 @@ const Team = ({ user, data, products, profile, teams }) => {
             data={data}
             isManager={isManager}
             isAdmin={isAdmin}
+            isOwner={isOwner}
+            isCEO={isCEO}
             teams={teams}
             profile={profile}
           />
@@ -56,6 +68,8 @@ const Team = ({ user, data, products, profile, teams }) => {
             products={products}
             isManager={isManager}
             isAdmin={isAdmin}
+            isOwner={isOwner}
+            isCEO={isCEO}
             profile={profile}
           />
         </div>
@@ -69,14 +83,14 @@ const Team = ({ user, data, products, profile, teams }) => {
 };
 
 export const getServerSideProps = async (context, query) => {
-  const { teamname } = context.params;
+  const { teamId } = context.params;
   const page = query ? query.page || 1 : 1;
   const category = query ? query.category || 'all' : 'all';
   const sort = query ? query.sort || '' : '';
   const search = query ? query.search || 'all' : 'all';
 
   try {
-    const response = await fetch(`${baseURL}/api/teams/${teamname}`);
+    const response = await fetch(`${baseURL}/api/teams/${teamId}`);
     const data = await response.json();
 
     const res = await getData(

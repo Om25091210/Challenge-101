@@ -279,7 +279,7 @@ const SignedHeader = ({ user, profile }) => {
             <div className="drop_down_bg profile_drop_down">
               <ul>
                 <li>
-                  <Link href={`/user/${user?._id}`}>
+                  <Link href={`/user/${user?.username}`}>
                     <a>My Profile</a>
                   </Link>
                 </li>

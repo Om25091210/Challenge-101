@@ -146,7 +146,7 @@ const TeamCreate = ({ isClaim, user }) => {
   };
 
   if (newTeam) {
-    isClaim === true ? router.push(`/team/${newTeam.name}`) : null;
+    isClaim === true ? router.push(`/team/${newTeam._id}`) : null;
   }
 
   return (
@@ -330,6 +330,8 @@ const TeamCreate = ({ isClaim, user }) => {
                           <option value="">Select Role...</option>
                           <option value="Admin">Admin</option>
                           <option value="Manager">Manager</option>
+                          <option value="Owner">Owner</option>
+                          <option value="CEO">CEO</option>
                         </select>
                       </div>
 
