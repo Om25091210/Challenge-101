@@ -397,7 +397,7 @@ const ProfileTournament = ({
                     />
                   </span>
                   <span>
-                    <a href={`/tournament/${tournament.tournament._id}`}>
+                    <a href={`/tournament/${tournament.tournament.name}`}>
                       <h4>{tournament.tournament.name}</h4>
                     </a>
                     <p>

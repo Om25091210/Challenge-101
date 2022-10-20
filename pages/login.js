@@ -109,7 +109,7 @@ const SignIn = () => {
         <div className="left_banner">
           <span className="logo">
             {' '}
-            <img src="/assets/media/login/logo.png" alt="" />
+            <img src="/assets/media/logo-new.png" alt="Logo" />
           </span>
 
           <h1>
@@ -281,7 +281,7 @@ const SignIn = () => {
               <div className="join_box">
                 <div>
                   <button
-                    className="join_btn btn"
+                    className="btn"
                     onClick={() => setIsWaiting(!isWaiting)}
                   >
                     {' '}

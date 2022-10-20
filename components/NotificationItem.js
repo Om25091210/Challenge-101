@@ -67,7 +67,7 @@ export const NotificationItem = ({ user }) => {
                           </span>{' '}
                           <span className="notif_name">
                             <a
-                              href={`/user/${notification.user?._id}`}
+                              href={`/user/${notification.user?.username}`}
                               onClick={handleClick}
                             >
                               {notification.user?.username}
@@ -108,7 +108,7 @@ export const NotificationItem = ({ user }) => {
                           </span>{' '}
                           <span className="notif_name">
                             <a
-                              href={`/user/${notification.user?._id}`}
+                              href={`/user/${notification.user?.username}`}
                               onClick={handleClick}
                             >
                               {notification.user?.username}
@@ -149,7 +149,7 @@ export const NotificationItem = ({ user }) => {
                           </span>{' '}
                           <span className="notif_name">
                             <a
-                              href={`/user/${notification.user?._id}`}
+                              href={`/user/${notification.user?.username}`}
                               onClick={handleClick}
                             >
                               {notification.user?.username}
@@ -172,7 +172,7 @@ export const NotificationItem = ({ user }) => {
                           </span>{' '}
                           <span className="notif_name">
                             <Link
-                              href={`/user/${notification.user?._id}`}
+                              href={`/user/${notification.user?.username}`}
                               onClick={handleClick}
                             >
                               <a>{notification.user?.username}</a>

@@ -3,8 +3,9 @@ import Moment from 'moment';
 import ChallengeApprove from '../discover/invites/ChallengeApprove';
 import ChallengeDecline from '../discover/invites/ChallengeDecline';
 import OpenChallengeApprove from '../discover/invites/OpenChallengeApprove';
+import RoomDetails from '../adminfiles/RoomDetails';
 
-const ChallengesDisplay = ({ chall, user, profile }) => {
+const ChallengesDisplay = ({ chall, user, profile, type }) => {
   const isInvite =
     profile.playergames.filter((pro) => {
       return chall.invites.some((chall) => {
@@ -81,7 +82,9 @@ const ChallengesDisplay = ({ chall, user, profile }) => {
             {Moment(chall?.startDate).format('DD MMM YYYY')}-{chall?.startTime}
           </span>
 
-          {chall.isOpenMatch === false ? (
+          {type === 'SupportAdmin' ? (
+            <RoomDetails data={chall} type="challenges" />
+          ) : chall.isOpenMatch === false ? (
             isInvite === true ? (
               <>
                 <ChallengeApprove

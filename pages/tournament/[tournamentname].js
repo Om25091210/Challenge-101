@@ -1216,7 +1216,7 @@ const TournamentDetail = ({
 };
 
 export const getServerSideProps = async (context, query) => {
-  const { tournamentid } = context.params;
+  const { tournamentname } = context.params;
   const page = query ? query.page || 1 : 1;
   const category = query ? query.category || 'all' : 'all';
   const sort = query ? query.sort || '' : '';
@@ -1224,7 +1224,7 @@ export const getServerSideProps = async (context, query) => {
   // const response = await fetch(`${baseEsportsAPIURL}/esport/tournaments/${tournamentid}`, {method:'GET',
   // headers: {'Authorization': 'Basic ' + Buffer.from('multiplyr' + ":" + 'Multiplyr123$').toString('base64')}});
   const { token } = parseCookies(context);
-  const response = await fetch(`${baseURL}/api/tournaments/${tournamentid}`, {
+  const response = await fetch(`${baseURL}/api/tournaments/${tournamentname}`, {
     headers: {
       Authorization: token
     }

@@ -5,6 +5,7 @@ import {
   isSameSenderMargin,
   isSameUser
 } from '../../utils/chat';
+import Moment from 'moment';
 
 const ScrollableChat = ({ messages, user }) => {
   const messagesEndRef = useRef(null);
@@ -40,11 +41,15 @@ const ScrollableChat = ({ messages, user }) => {
             {m.sender._id === user._id ? (
               <div className="sender_box">
                 <span className="sender">{m.message}</span>{' '}
-                <span className="msg_time">8:40 AM, Today</span>
+                <span className="msg_time">
+                  {Moment(m.createdAt).format('hh:mm A')}
+                </span>
               </div>
             ) : (
               <div className="receiver_box">
-                <span className="msg_time">8:40 AM, Today</span>
+                <span className="msg_time">
+                  {Moment(m.createdAt).format('hh:mm A')}
+                </span>
                 <span className="receiver">{m.message}</span>
               </div>
             )}

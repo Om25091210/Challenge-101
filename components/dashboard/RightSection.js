@@ -109,7 +109,7 @@ const RightSection = ({ user, suggestedplayers, teams, profile }) => {
             {teams.length > 0 ? (
               teams.slice(0, 2).map((tm, idx) => (
                 <li key={idx}>
-                  <Link href={`/team/${tm._id}`}>
+                  <Link href={`/team/${tm.name}`}>
                     <div>
                       <img src={tm.imgUrl} alt={tm.name} />
                       <p> {tm.name}</p>
@@ -139,7 +139,7 @@ const RightSection = ({ user, suggestedplayers, teams, profile }) => {
                   {teams &&
                     teams.map((tm, idx) => (
                       <li key={idx}>
-                        <Link href={`/team/${tm._id}`}>
+                        <Link href={`/team/${tm.name}`}>
                           <div className="game_pic">
                             <img src={tm.imgUrl} alt={tm.name} />
                             <p> {tm.name}</p>
@@ -168,7 +168,7 @@ const RightSection = ({ user, suggestedplayers, teams, profile }) => {
                     <img src={req.teamId.imgUrl} alt={req.teamId.name} />
                     <p>
                       You have been invited to join{' '}
-                      <a href={`team/${req.teamId._id}`}>{req.teamId.name}</a>
+                      <a href={`team/${req.teamId.name}`}>{req.teamId.name}</a>
                     </p>
                   </div>
                   <ApproveRequest player={req} team={req.teamId} />
@@ -191,7 +191,7 @@ const RightSection = ({ user, suggestedplayers, teams, profile }) => {
                 <li key={idx}>
                   <Link
                     href={`/${page.logoUrl ? 'brand' : 'tournament'}/${
-                      page._id
+                      page.logoUrl ? page._id : page.name
                     }`}
                   >
                     <div>
@@ -228,7 +228,7 @@ const RightSection = ({ user, suggestedplayers, teams, profile }) => {
                       <li key={idx}>
                         <Link
                           href={`/${page.logoUrl ? 'brand' : 'tournament'}/${
-                            page._id
+                            page.logoUrl ? page._id : page.name
                           }`}
                         >
                           <div className="game_pic">

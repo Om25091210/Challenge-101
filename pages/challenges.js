@@ -15,8 +15,9 @@ const challenges = ({ user, teams, profile, games }) => {
   const [challenges, setChallenges] = useState([]);
   const [selectedGame, setSelectedGame] = useState(null);
   const [playergames, setPlayergames] = useState([]);
+  const [type, setType] = useState('All Challenges');
 
-  let type = 'opponent_team';
+  let challengeType = 'All Challenges';
 
   useEffect(() => {
     if (selectedGame != null) {
@@ -27,7 +28,9 @@ const challenges = ({ user, teams, profile, games }) => {
         });
     } else {
       axios
-        .get(`${baseURL}/api/challenges/userchallenges/${type}/${profile._id}`)
+        .get(
+          `${baseURL}/api/challenges/userchallenges/${challengeType}/${profile._id}`
+        )
         .then((res) => {
           setChallenges(res.data.Challe);
           setPlayergames(res.data.games);
@@ -35,9 +38,17 @@ const challenges = ({ user, teams, profile, games }) => {
     }
   }, [selectedGame]);
 
+  const handleShow = async (type) => {
+    setType(type);
+    await axios
+      .get(`${baseURL}/api/challenges/userchallenges/${type}/${profile._id}`)
+      .then((res) => {
+        setChallenges(res.data.Challe);
+      });
+  };
+
   const handleSelectGame = async (obj) => {
     setSelectedGame(obj);
-    //myState.setFilteredResults([]);
     $('a.model_close').parent().removeClass('show_model');
   };
 
@@ -116,12 +127,21 @@ const challenges = ({ user, teams, profile, games }) => {
                 <div className="overlay"></div>
               </div>
             </div>
-            {/* <div className="filter_btns">
-              <button className="btn">Challenge Invites</button>
-              <button className="btn">Open Matches</button>
-              <button className="btn">My Challenges</button>
-              <button className="btn">Bounty</button>
-              <div className="advance">
+            <div className="filter_btns">
+              <button
+                className="btn"
+                onClick={() => handleShow('All Challenges')}
+              >
+                All Challenges
+              </button>
+              <button
+                className="btn"
+                onClick={() => handleShow('My Challenges')}
+              >
+                My Challenges
+              </button>
+              {/* <button className="btn">Bounty</button> */}
+              {/* <div className="advance">
                 <h3>online matches</h3>
                 <div className="custom-control custom-switch">
                   <input
@@ -136,27 +156,49 @@ const challenges = ({ user, teams, profile, games }) => {
                 </div>
               </div>
               <h3>Sort By:</h3> <button className="btn">Day left</button>{' '}
-              <button className="btn">Reward</button>
-            </div> */}
+              <button className="btn">Reward</button> */}
+            </div>
           </div>
 
           <div className="white_bg challenge_card_box">
             <ul className="challenge_card">
-              {!challenges || challenges.length === 0 ? (
-                <div>
-                  <span>
-                    No Challenges for {selectedGame ? selectedGame.name : 'you'}
-                  </span>
-                </div>
-              ) : (
-                challenges.map((chall) => (
-                  <ChallengesDisplay
-                    user={user}
-                    chall={chall}
-                    profile={profile}
-                  />
-                ))
-              )}
+              {type === 'All Challenges' ? (
+                !challenges || challenges.length === 0 ? (
+                  <div>
+                    <span>
+                      No Challenges for{' '}
+                      {selectedGame ? selectedGame.name : 'you'}
+                    </span>
+                  </div>
+                ) : (
+                  challenges.map((chall) => (
+                    <ChallengesDisplay
+                      user={user}
+                      chall={chall}
+                      profile={profile}
+                      type="Challenges"
+                    />
+                  ))
+                )
+              ) : type === 'My Challenges' ? (
+                !challenges || challenges.length === 0 ? (
+                  <div>
+                    <span>
+                      No Challenges for{' '}
+                      {selectedGame ? selectedGame.name : 'you'}
+                    </span>
+                  </div>
+                ) : (
+                  challenges.map((chall) => (
+                    <ChallengesDisplay
+                      user={user}
+                      chall={chall}
+                      profile={profile}
+                      type="Challenges"
+                    />
+                  ))
+                )
+              ) : null}
             </ul>
 
             {/* <p>Similar players you can challenge.</p>

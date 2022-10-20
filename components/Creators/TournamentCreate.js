@@ -153,7 +153,7 @@ const TournamentCreate = ({ user, isClaim }) => {
   };
 
   if (newTour) {
-    isClaim === true ? Router.push(`/tournament/${newTour._id}`) : null;
+    isClaim === true ? Router.push(`/tournament/${newTour.name}`) : null;
   }
 
   function handleChange(e) {

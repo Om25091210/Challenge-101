@@ -76,7 +76,7 @@ function LeftNav({ user }) {
                 <span className="iconbg">
                   {/* <img src="/assets/media/icons/Challenge.png" alt="" /> */}
                 </span>{' '}
-                <span className="title">Challenges</span>
+                <span className="title">Wagers</span>
               </a>
             </Link>
           </li>
