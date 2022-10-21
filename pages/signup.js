@@ -52,6 +52,7 @@ const Signup = ({ games, avatars }) => {
 
   const { state, dispatch } = useContext(DataContext);
   const { auth } = state;
+  const [coverPic, setCoverPic] = useState([]);
 
   const { firstname, lastname, email, password, phone_number, gender } = user;
 
@@ -99,25 +100,26 @@ const Signup = ({ games, avatars }) => {
 
     try {
       var name = firstname + ' ' + lastname;
-      console.log(name);
 
       try {
-        var avatarImage = avatar.image;
+        var avatarImage = avatar?.image;
         var gameId = selectedGame._id;
-        const res = await axios.post(`${baseURL}/api/signup`, {
-          name,
-          username,
-          email,
-          password,
-          phone_number,
-          gender,
-          avatarImage,
-          gameId,
-          userign,
-          country: country
-        });
+        const formdata = new FormData();
 
-        console.log(res);
+        formdata.append('name', name);
+        formdata.append('username', username);
+        formdata.append('email', email);
+        formdata.append('password', password);
+        formdata.append('phone_number', phone_number);
+        formdata.append('gender', gender);
+        formdata.append('avatarImage', avatarImage);
+        formdata.append('gameId', gameId);
+        formdata.append('userign', userign);
+        formdata.append('coverPic', coverPic);
+        formdata.append('country', country);
+
+        const res = await axios.post(`${baseURL}/api/signup`, formdata);
+
         setVerificationToken(res?.data?.verificationToken);
         dispatch({ type: 'NOTIFY', payload: { success: res.msg } });
         toast.info(res.data.msg);
@@ -168,7 +170,12 @@ const Signup = ({ games, avatars }) => {
   }, [user]);
 
   var gameId = selectedGame?._id;
-  var avatarImage = avatar?.image;
+  var avatarImage;
+  if (avatar?.image) {
+    avatarImage = avatar?.image;
+  } else if (coverPic) {
+    avatarImage = coverPic;
+  }
   useEffect(() => {
     const isUser = Object.values({
       avatarImage,
@@ -571,7 +578,6 @@ const Signup = ({ games, avatars }) => {
                               className="inputfile"
                               onChange={(e) => {
                                 setCoverPic(e.target.files[0]);
-                                handleCoverSubmit(e);
                               }}
                             />
                             <label htmlFor="coverPhoto">

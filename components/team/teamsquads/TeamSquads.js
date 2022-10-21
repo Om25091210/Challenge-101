@@ -2,7 +2,14 @@ import TeamSquadAdd from './TeamSquadAdd';
 import TeamSquadDelete from './TeamSquadDelete';
 import TeamSquadEdit from './TeamSquadEdit';
 
-const TeamSquads = ({ squadsData, team, isManager, isAdmin }) => {
+const TeamSquads = ({
+  squadsData,
+  team,
+  isManager,
+  isAdmin,
+  isOwner,
+  isCEO
+}) => {
   return (
     <>
       <TeamSquadAdd
@@ -10,6 +17,8 @@ const TeamSquads = ({ squadsData, team, isManager, isAdmin }) => {
         team={team}
         isManager={isManager}
         isAdmin={isAdmin}
+        isOwner={isOwner}
+        isCEO={isCEO}
       />
       <div className="squads_box">
         <ul>
@@ -26,11 +35,15 @@ const TeamSquads = ({ squadsData, team, isManager, isAdmin }) => {
                     squad={squad}
                     isManager={isManager}
                     isAdmin={isAdmin}
+                    isOwner={isOwner}
+                    isCEO={isCEO}
                   />
                   <TeamSquadDelete
                     squad={squad}
                     isManager={isManager}
                     isAdmin={isAdmin}
+                    isOwner={isOwner}
+                    isCEO={isCEO}
                   />
                 </div>
                 <div className="squad_img">

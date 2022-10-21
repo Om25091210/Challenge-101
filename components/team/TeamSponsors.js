@@ -5,7 +5,15 @@ import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 import TournamentAddSponsor from '../tournament/TournamentAddSponsor';
 
-const TeamSponsors = ({ user, data, isManager, isAdmin, teamSponsors }) => {
+const TeamSponsors = ({
+  user,
+  data,
+  isManager,
+  isAdmin,
+  isOwner,
+  isCEO,
+  teamSponsors
+}) => {
   const [sponsors, setSponsors] = useState([]);
 
   const [state, setState] = useState({
@@ -67,7 +75,7 @@ const TeamSponsors = ({ user, data, isManager, isAdmin, teamSponsors }) => {
         <span>
           <div className="loc_box">
             {' '}
-            {isManager || isAdmin ? (
+            {isManager || isAdmin || isOwner || isCEO ? (
               <a href="#!" className="model_show_btn">
                 <button className="btn">
                   <i className="fa fa-plus-circle" aria-hidden="true"></i> Add

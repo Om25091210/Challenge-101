@@ -8,7 +8,7 @@ import { teamEditFormValidate } from '@utils/valid';
 import TeamAbtAdd from './TeamAbtAdd';
 import Moment from 'moment';
 
-const TeamEdit = ({ isAdmin, isManager, team }) => {
+const TeamEdit = ({ isAdmin, isManager, isOwner, isCEO, team }) => {
   const [allarena, setAllarena] = useState([]);
   const [allgames, setAllgames] = useState([]);
   const [empData, setEmpData] = useState([]);
@@ -84,7 +84,7 @@ const TeamEdit = ({ isAdmin, isManager, team }) => {
   return (
     <>
       <div className="loc_box edit_pof">
-        {isAdmin || isManager ? (
+        {isAdmin || isManager || isOwner || isCEO ? (
           <a href="#!" className="model_show_btn">
             <button className="btn">
               {' '}

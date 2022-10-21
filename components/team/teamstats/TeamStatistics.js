@@ -4,7 +4,13 @@ import TeamStatAdd from './TeamStatAdd';
 import TeamStatDelete from './TeamStatDelete';
 import TeamStatEdit from './TeamStatEdit';
 
-const TeamStatistics = ({ tournamentStatData, isManager, isAdmin }) => {
+const TeamStatistics = ({
+  tournamentStatData,
+  isManager,
+  isAdmin,
+  isOwner,
+  isCEO
+}) => {
   const [showform, setShowForm] = useState(false);
   const [editContactId, setEditContactId] = useState(null);
 

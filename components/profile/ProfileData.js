@@ -127,6 +127,9 @@ const ProfileData = ({ user, Userdata, products, teams }) => {
                   post.user._id !== user._id ? (
                     <>
                       {/* <p>You Shared</p> */}
+                      <p>
+                        {user.name} has shared {post.user.name}'s post
+                      </p>
                       <AllPosts
                         post={post}
                         user={user}

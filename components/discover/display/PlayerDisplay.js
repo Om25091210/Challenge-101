@@ -35,7 +35,7 @@ const PlayerDisplay = ({ isLoading, playerData, user }) => {
                     style={{ width: '150px' }}
                   />
                 )}
-                <a href="#!">
+                <a href={`/user/${plyr?.players?.user?.username}`}>
                   <h3>
                     {plyr?.players.name
                       ? plyr.players.name

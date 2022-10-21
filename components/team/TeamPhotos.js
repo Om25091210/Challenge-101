@@ -2,10 +2,10 @@ import Moment from 'moment';
 import PhotosDelete from './PhotosDelete';
 import AddImage from '../common/AddImage';
 
-const TeamPhotos = ({ user, team, isManager, isAdmin }) => {
+const TeamPhotos = ({ user, team, isManager, isAdmin, isOwner, isCEO }) => {
   return (
     <div className="gallery_box">
-      {isManager || isAdmin ? (
+      {isManager || isAdmin || isOwner || isCEO ? (
         <>
           <div className="add_photos">
             <a href="#!" className="model_show_btn">

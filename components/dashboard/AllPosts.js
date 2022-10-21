@@ -69,11 +69,16 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
               {post.game_tag[0]?.gameId === null ? (
                 <>
                   {post.post_type === 'Team' ||
-                  post.post_type === 'Tournament' ? (
+                  post.post_type === 'Tournament' ||
+                  post.post_type === 'Brand' ? (
                     <a
                       href={`/${
                         post.post_type === 'Team' ? 'team' : 'tournament'
-                      }/${post?.teamId}`}
+                      }/${
+                        post.post_type === 'Team'
+                          ? post?.teamId
+                          : post?.username
+                      }`}
                     >
                       <h4>{post.username}</h4>
                     </a>

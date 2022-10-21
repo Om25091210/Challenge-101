@@ -34,7 +34,11 @@ const RankingTable = ({ teamranking }) => {
                     <div className="cols">
                       {result.rank ? result.rank : 'Not Ranked'}
                     </div>
-                    <div className="cols">{result.team.name} </div>
+                    <div className="cols">
+                      <a href={`/team/${result.team._id}`}>
+                        {result.team.name}
+                      </a>
+                    </div>
                     <div className="cols">
                       {result.points ? result.points : 'Not Defined'}
                     </div>

@@ -9,7 +9,14 @@ import { useRouter } from 'next/router';
 import countryList from 'react-select-country-list';
 import TeamSquadFilter from './TeamSquadFilter';
 
-const TeamSquadAdd = ({ teamplayers, team, isManager, isAdmin }) => {
+const TeamSquadAdd = ({
+  teamplayers,
+  team,
+  isManager,
+  isAdmin,
+  isOwner,
+  isCEO
+}) => {
   const [playerData, setPlayerData] = useState([]);
   const [count, setCount] = useState(0);
 
@@ -87,7 +94,7 @@ const TeamSquadAdd = ({ teamplayers, team, isManager, isAdmin }) => {
   return (
     <>
       {/* isManager or Admin */}
-      {isManager || isAdmin ? (
+      {isManager || isAdmin || isOwner || isCEO ? (
         <a href="#!" className="model_show_btn btn add_sqd">
           <i className="fa fa-plus-circle" aria-hidden="true"></i> Add Squad
         </a>

@@ -284,6 +284,7 @@ const TournamentDetail = ({
                       {data.tournament.social?.facebook ? (
                         <a
                           href={`https://www.facebook.com/${data.tournament.social?.facebook}`}
+                          target="_blank"
                         >
                           <i
                             className="fa fa-facebook-official"
@@ -294,6 +295,7 @@ const TournamentDetail = ({
                       {data.tournament.social?.instagram ? (
                         <a
                           href={`https://www.instagram.com/${data.tournament.social?.instagram}`}
+                          target="_blank"
                         >
                           <i className="fa fa-instagram" aria-hidden="true"></i>
                         </a>
@@ -302,6 +304,7 @@ const TournamentDetail = ({
                       {data.tournament.social?.twitch ? (
                         <a
                           href={`https://www.twitch.tv/${data.tournament.social?.twitch}`}
+                          target="_blank"
                         >
                           <i className="fa fa-twitch" aria-hidden="true"></i>
                         </a>
@@ -310,13 +313,17 @@ const TournamentDetail = ({
                       {data.tournament.social?.youtube ? (
                         <a
                           href={`https://www.youtube.com/c/${data.tournament.social?.youtube}`}
+                          target="_blank"
                         >
                           <i className="fa fa-youtube" aria-hidden="true"></i>
                         </a>
                       ) : null}
 
                       {data.tournament.social?.discord ? (
-                        <a href={`https://${data.tournament.social?.discord}`}>
+                        <a
+                          href={`https://${data.tournament.social?.discord}`}
+                          target="_blank"
+                        >
                           <img
                             src="/assets/media/social/discord.png"
                             height="20px"
@@ -326,7 +333,10 @@ const TournamentDetail = ({
                       ) : null}
 
                       {data.tournament?.website ? (
-                        <a href={`https://${data.tournament?.website}`}>
+                        <a
+                          href={`https://${data.tournament?.website}`}
+                          target="_blank"
+                        >
                           <i className="fa fa-globe" aria-hidden="true"></i>
                         </a>
                       ) : null}

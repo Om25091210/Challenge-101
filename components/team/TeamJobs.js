@@ -8,13 +8,22 @@ import { useRouter } from 'next/router';
 import TeamJobCreate from './TeamJobCreate';
 import ReactCountryFlag from 'react-country-flag';
 
-const TeamJobs = ({ jobs, team, isManager, isAdmin, user, profile }) => {
+const TeamJobs = ({
+  jobs,
+  team,
+  isManager,
+  isAdmin,
+  isOwner,
+  isCEO,
+  user,
+  profile
+}) => {
   return (
     <>
       <span>
         <div className="loc_box">
           {' '}
-          {isManager || isAdmin ? (
+          {isManager || isAdmin || isOwner || isCEO ? (
             <a href="#!" className="model_show_btn">
               <button className="btn">
                 <i className="fa fa-plus-circle" aria-hidden="true"></i> Add

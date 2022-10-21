@@ -8,7 +8,15 @@ import { toast } from 'react-toastify';
 import cookie from 'js-cookie';
 import TeamAbtAdd from './TeamAbtAdd';
 
-const TeamAbout = ({ Data, isManager, isAdmin, user, teamAbout }) => {
+const TeamAbout = ({
+  Data,
+  isManager,
+  isAdmin,
+  isOwner,
+  isCEO,
+  user,
+  teamAbout
+}) => {
   const [rolData, setRolData] = useState([]);
   const [count, setCount] = useState(0);
 
@@ -95,7 +103,7 @@ const TeamAbout = ({ Data, isManager, isAdmin, user, teamAbout }) => {
           <div className="loc_box">
             {' '}
             <a href="#!" className="model_show_btn">
-              {isManager || isAdmin ? (
+              {isManager || isAdmin || isOwner || isCEO ? (
                 <button className="btn">
                   <i className="fa fa-plus-circle" aria-hidden="true"></i> Add
                   Members
@@ -139,7 +147,7 @@ const TeamAbout = ({ Data, isManager, isAdmin, user, teamAbout }) => {
         <div className="about">
           <h2>
             OUR TEAM{' '}
-            {isManager || isAdmin ? (
+            {isManager || isAdmin || isOwner || isCEO ? (
               <button className="bio_edit" onClick={toggleShowform}>
                 <i className="fa fa-pencil" aria-hidden="true"></i>
               </button>
@@ -194,9 +202,9 @@ const TeamAbout = ({ Data, isManager, isAdmin, user, teamAbout }) => {
                 <h4>{emp?.employeeId.name} </h4>
 
                 <div className="two_btn">
-                  {isManager || isAdmin ? (
+                  {emp.role === 'Owner' ? null : (
                     <>
-                      {emp._id === user._id && emp.role === 'Manager' ? null : (
+                      {isManager || isAdmin || isOwner || isCEO ? (
                         <>
                           <button
                             className="btn"
@@ -205,14 +213,16 @@ const TeamAbout = ({ Data, isManager, isAdmin, user, teamAbout }) => {
                             Delete
                           </button>
                         </>
-                      )}
+                      ) : null}
                     </>
-                  ) : null}
+                  )}
                   <TeamAboutEdit
                     employeeData={emp}
                     team={Data.team}
                     isManager={isManager}
                     isAdmin={isAdmin}
+                    isOwner={isOwner}
+                    isCEO={isCEO}
                   />
                 </div>
               </li>

@@ -6,7 +6,14 @@ import baseURL from '../../utils/baseURL';
 import AttributeCard from '../common/AttributeCard';
 import RecruitEdit from '../profile/RecruitEdit';
 
-const TeamGameDetails = ({ user, team, isManager, isAdmin }) => {
+const TeamGameDetails = ({
+  user,
+  team,
+  isManager,
+  isAdmin,
+  isOwner,
+  isCEO
+}) => {
   const [attributeData, setAttributeData] = useState([]);
 
   const router = useRouter();
@@ -82,22 +89,22 @@ const TeamGameDetails = ({ user, team, isManager, isAdmin }) => {
           {/* <div className="chart_box">
             <img src="/assets/media/profilechart.jpg" alt="" />
           </div> */}
-          {isManager || isAdmin ? (
+          {isManager || isAdmin || isOwner || isCEO ? (
             <button className="btn" onClick={handleDelete}>
               Delete
             </button>
           ) : null}
-          {isManager || isAdmin ? (
+          {isManager || isAdmin || isOwner || isCEO ? (
             <RecruitEdit attributeData={attributeData} />
           ) : null}
-          {isManager || isAdmin ? null : (
+          {isManager || isAdmin || isOwner || isCEO ? null : (
             <button className="game_btn">INVITE TO TEAM</button>
           )}
         </div>
       )}
       {attributeData?.attributeId == team._id ? null : (
         <>
-          {isManager || isAdmin ? (
+          {isManager || isAdmin || isOwner || isCEO ? (
             <AttributeCard type="TEAM" attributeId={team._id} user={user} />
           ) : null}
         </>

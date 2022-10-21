@@ -5,7 +5,14 @@ import cookie from 'js-cookie';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 
-const TeamAboutEdit = ({ employeeData, team, isManager, isAdmin }) => {
+const TeamAboutEdit = ({
+  employeeData,
+  team,
+  isManager,
+  isAdmin,
+  isOwner,
+  isCEO
+}) => {
   const [aboutData, setAboutData] = useState({
     username: employeeData.employeeId?.name,
     employeeId: employeeData.employeeId?._id,
@@ -47,7 +54,7 @@ const TeamAboutEdit = ({ employeeData, team, isManager, isAdmin }) => {
           }
         }
       );
-      toast.success('The Record has been Updated.');
+      toast.success('Please Refresh the page for the update to reflect.');
     } catch (err) {
       console.log(err);
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
@@ -63,7 +70,7 @@ const TeamAboutEdit = ({ employeeData, team, isManager, isAdmin }) => {
   }, []);
   return (
     <div>
-      {isManager || isAdmin ? (
+      {isManager || isAdmin || isOwner || isCEO ? (
         <a href="#!" className="model_show_btn btn">
           Edit
         </a>

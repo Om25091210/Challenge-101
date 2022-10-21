@@ -11,7 +11,16 @@ import TeamRequest from '../discover/invites/TeamRequest';
 import TeamChallenge from '../challenges/TeamChallenge';
 import TeamEdit from './TeamEdit';
 
-const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
+const TeamProfileBox = ({
+  user,
+  data,
+  isManager,
+  isAdmin,
+  isOwner,
+  isCEO,
+  profile,
+  teams
+}) => {
   const [attr, setAttr] = useState(data.team?.attributes);
   const [sociallinks, setSociallinks] = useState(data.team?.social);
   const [later, setLater] = useState(false);
@@ -233,7 +242,7 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
                 className="custom-file-input"
                 onChange={handleCoverSubmit}
               />
-              {isManager || isAdmin ? (
+              {isManager || isAdmin || isOwner || isCEO ? (
                 <label htmlFor="coverPhoto">
                   <span>
                     <i className="fa fa-camera" aria-hidden="true"></i> Upload
@@ -256,7 +265,7 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
               src={data.team.imgUrl}
               alt=""
             />
-            {isManager || isAdmin ? (
+            {isManager || isAdmin || isOwner || isCEO ? (
               <div className="edit_photo">
                 <label htmlFor="user-photo" className="edit_label">
                   <i className="fa fa-picture-o" aria-hidden="true"></i>
@@ -306,7 +315,7 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
                 </span>
               )}
             </div>
-            {isManager || isAdmin ? null : (
+            {isManager || isAdmin || isOwner || isCEO ? null : (
               <>
                 {isPlayer ? (
                   <>
@@ -346,6 +355,8 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
             <TeamEdit
               isAdmin={isAdmin}
               isManager={isManager}
+              isOwner={isOwner}
+              isCEO={isCEO}
               team={data.team}
             />
 
@@ -414,6 +425,7 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
               {data.team.social?.facebook ? (
                 <a
                   href={`https://www.facebook.com/${data.team.social?.facebook}`}
+                  target="_blank"
                 >
                   <i className="fa fa-facebook-official" aria-hidden="true"></i>
                 </a>
@@ -421,13 +433,17 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
               {data.team.social?.instagram ? (
                 <a
                   href={`https://www.instagram.com/${data.team.social?.instagram}`}
+                  target="_blank"
                 >
                   <i className="fa fa-instagram" aria-hidden="true"></i>
                 </a>
               ) : null}
 
               {data.team.social?.twitch ? (
-                <a href={`https://www.twitch.tv/${data.team.social?.twitch}`}>
+                <a
+                  href={`https://www.twitch.tv/${data.team.social?.twitch}`}
+                  target="_blank"
+                >
                   <i className="fa fa-twitch" aria-hidden="true"></i>
                 </a>
               ) : null}
@@ -435,13 +451,17 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
               {data.team.social?.youtube ? (
                 <a
                   href={`https://www.youtube.com/c/${data.team.social?.youtube}`}
+                  target="_blank"
                 >
                   <i className="fa fa-youtube" aria-hidden="true"></i>
                 </a>
               ) : null}
 
               {data.team.social?.discord ? (
-                <a href={`https://${data.team.social?.discord}`}>
+                <a
+                  href={`https://${data.team.social?.discord}`}
+                  target="_blank"
+                >
                   <img
                     src="/assets/media/social/discord.png"
                     height="20px"
@@ -451,7 +471,10 @@ const TeamProfileBox = ({ user, data, isManager, isAdmin, profile, teams }) => {
               ) : null}
 
               {data.team.social?.website ? (
-                <a href={`https://${data.team.social?.website}`}>
+                <a
+                  href={`https://${data.team.social?.website}`}
+                  target="_blank"
+                >
                   <i className="fa fa-globe" aria-hidden="true"></i>
                 </a>
               ) : null}
