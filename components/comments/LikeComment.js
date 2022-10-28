@@ -4,7 +4,9 @@ import { useMutation } from 'react-query';
 import cookie from 'js-cookie';
 
 const Like_Comment = ({ postId, comment, user }) => {
-  const [likecomment, setLikeComment] = useState(false);
+  const isLiked =
+    user && comment.likes.filter((like) => like.user === user._id).length > 0;
+  const [likecomment, setLikeComment] = useState(isLiked);
 
   const likehandlesubmit = async (e) => {
     e.preventDefault();
@@ -12,8 +14,6 @@ const Like_Comment = ({ postId, comment, user }) => {
     setLikeComment(true);
   };
 
-  const isLiked =
-    user && comment.likes.filter((like) => like.user === user._id).length > 0;
   const addLikeComment = async () => {
     const { data } = await fetch(
       `${baseURL}/api/comments/like/${postId}/${comment._id}`,

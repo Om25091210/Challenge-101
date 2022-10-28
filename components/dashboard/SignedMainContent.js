@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 import AllPosts from './AllPosts';
 import { TwitterShareButton } from 'react-share';
+import { PersonaHelper } from '../../utils/functionsHelper';
 
 const SignedMainContent = ({ posts, user }) => {
   const [description, setDescription] = useState('');
@@ -17,7 +18,6 @@ const SignedMainContent = ({ posts, user }) => {
   const [personas, setPersonas] = useState({});
   const [allgames, setAllGames] = useState([]);
   const [postType, setPostType] = useState('User');
-  const [teamId, setTeamId] = useState('');
   const [gameTag, setGameTag] = useState({
     name: '',
     gameId: ''
@@ -51,6 +51,14 @@ const SignedMainContent = ({ posts, user }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const result = PersonaHelper(
+      count,
+      personas,
+      username,
+      profilepic,
+      postType
+    );
+
     const formdata = new FormData();
 
     if (description.trim() === '') {
@@ -59,10 +67,9 @@ const SignedMainContent = ({ posts, user }) => {
 
     formdata.append('description', description);
     formdata.append('image', image);
-    formdata.append('profilepic', profilepic);
-    formdata.append('username', username);
-    formdata.append('postType', postType);
-    formdata.append('teamId', teamId);
+    formdata.append('profilepic', result.profilepic);
+    formdata.append('username', result.username);
+    formdata.append('postType', result.postType);
     formdata.append('gameTagName', gameTag.name);
     formdata.append('gameTagId', gameTag.gameId);
 
@@ -133,15 +140,6 @@ const SignedMainContent = ({ posts, user }) => {
     $('a.model_close').parent().removeClass('show_model');
   };
 
-  const personaHandle = (username, profilepic, postType, teamId) => {
-    setUsername(username);
-    setProfilePic(profilepic);
-    setPostType(postType);
-    if (teamId > 0) {
-      setTeamId(teamId);
-    }
-  };
-
   var settings = {
     infinite: false,
     vertical: true,
@@ -175,6 +173,16 @@ const SignedMainContent = ({ posts, user }) => {
       $(this).parent().removeClass('show_model');
     });
   }, []);
+  const [count, setCount] = useState(-1);
+
+  const changeCount = (e, value) => {
+    e.preventDefault();
+    if (value === 'Next') {
+      setCount(count + 1);
+    } else if (value === 'Prev') {
+      setCount(count - 1);
+    }
+  };
 
   return (
     <div className="main_middle">
@@ -238,13 +246,7 @@ const SignedMainContent = ({ posts, user }) => {
         <div className="team_slider">
           <ul className="user_slider">
             <li>
-              <img
-                src={user?.profilePicUrl}
-                alt=""
-                onClick={() =>
-                  personaHandle(user.name, user?.profilePicUrl, 'User')
-                }
-              />
+              <img src={user?.profilePicUrl} alt="" />
             </li>
             {personas.personas?.map((persona, index) => (
               <li key={index}>
@@ -256,70 +258,33 @@ const SignedMainContent = ({ posts, user }) => {
                         : '/assets/media/dash/user.jpg'
                     }
                     alt=""
-                    onClick={() =>
-                      personaHandle(
-                        persona.teamId.name,
-                        persona.teamId.imgUrl,
-                        'Team',
-                        persona.teamId._id
-                      )
-                    }
                   />
                 ) : persona.type === 'tournament' ? (
-                  <img
-                    src={persona.tournamentId?.imgUrl}
-                    alt=""
-                    onClick={() =>
-                      personaHandle(
-                        persona.tournamentId.name,
-                        persona.tournamentId.imgUrl,
-                        'Tournament',
-                        persona.tournamentId._id
-                      )
-                    }
-                  />
+                  <img src={persona.tournamentId?.imgUrl} alt="" />
                 ) : persona.type === 'brand' ? (
-                  <img
-                    src={persona.brandId?.logoUrl}
-                    alt=""
-                    onClick={() =>
-                      personaHandle(
-                        persona.brandId.name,
-                        persona.brandId.logoUrl,
-                        'Brand'
-                      )
-                    }
-                  />
+                  <img src={persona.brandId?.logoUrl} alt="" />
                 ) : persona.type === 'company' ? (
-                  <img
-                    src={persona.companyId?.logoUrl}
-                    alt=""
-                    onClick={() =>
-                      personaHandle(
-                        persona.companyId.name,
-                        persona.companyId.logoUrl,
-                        'Company'
-                      )
-                    }
-                  />
+                  <img src={persona.companyId?.logoUrl} alt="" />
                 ) : persona.type === 'community' ? (
-                  <img
-                    src={persona.communityId?.logoUrl}
-                    alt=""
-                    onClick={() =>
-                      personaHandle(
-                        persona.communityId.name,
-                        persona.communityId.logoUrl,
-                        'Community'
-                      )
-                    }
-                  />
+                  <img src={persona.communityId?.logoUrl} alt="" />
                 ) : null}
               </li>
             ))}
           </ul>
-          <div class="slick-prev slick-arrow">Prev</div>
-          <div class="slick-next slick-arrow">Next</div>
+          <div
+            className="slick-prev slick-arrow"
+            onClick={(e) => changeCount(e, 'Prev')}
+            disabled={count === -1 ? true : false}
+          >
+            Prev
+          </div>
+          <div
+            className="slick-next slick-arrow"
+            onClick={(e) => changeCount(e, 'Next')}
+            disabled={count === personas.personas?.length ? true : false}
+          >
+            Next
+          </div>
         </div>
 
         <textarea

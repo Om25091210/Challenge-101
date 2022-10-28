@@ -134,3 +134,44 @@ export const LanguageData = [
   'Konkani',
   'Tulu'
 ];
+
+export const PersonaHelper = (
+  count,
+  personas,
+  username,
+  profilepic,
+  postType
+) => {
+  if (count > -1) {
+    let x = personas.personas[count];
+    switch (x?.type) {
+      case 'team':
+        username = x.teamId?.name;
+        profilepic = x.teamId?.imgUrl;
+        postType = 'Team';
+        break;
+      case 'tournament':
+        username = x.tournamentId?.name;
+        profilepic = x.tournamentId?.imgUrl;
+        postType = 'Tournament';
+        break;
+      case 'brand':
+        username = x.brandId?.name;
+        profilepic = x.brandId?.logoUrl;
+        postType = 'Brand';
+        break;
+
+      default:
+        username = user.name;
+        profilepic = user.profilePicUrl;
+        postType = 'User';
+        break;
+    }
+  } else if (count === -1) {
+    username = user.name;
+    profilepic = user.profilePicUrl;
+    postType = 'User';
+  }
+
+  return { username, profilepic, postType };
+};
