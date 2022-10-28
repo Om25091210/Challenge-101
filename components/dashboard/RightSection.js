@@ -191,7 +191,7 @@ const RightSection = ({ user, suggestedplayers, teams, profile }) => {
                 <li key={idx}>
                   <Link
                     href={`/${page.logoUrl ? 'brand' : 'tournament'}/${
-                      page._id
+                      page.logoUrl ? page._id : page.name
                     }`}
                   >
                     <div>
@@ -228,7 +228,7 @@ const RightSection = ({ user, suggestedplayers, teams, profile }) => {
                       <li key={idx}>
                         <Link
                           href={`/${page.logoUrl ? 'brand' : 'tournament'}/${
-                            page._id
+                            page.logoUrl ? page._id : page.name
                           }`}
                         >
                           <div className="game_pic">

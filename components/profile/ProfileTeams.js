@@ -76,7 +76,7 @@ const ProfileTeams = ({ Userdata, user, teamsData, allGames, teamroles }) => {
     e.preventDefault();
     if (Object.keys(formErrors).length === 0) {
       try {
-        axios.post(`${baseURL}/api/profile/team/${profile?._id}`, team);
+        axios.post(`${baseURL}/api/profile/team/${Userdata?._id}`, team);
         toast.success('Added Team Successfully');
         $('a.model_close').parent().removeClass('show_model');
       } catch (err) {

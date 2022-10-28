@@ -76,7 +76,7 @@ const CommentList = ({ post, user, comments }) => {
                           <img src={comment.user?.profilePicUrl} alt="" />
                         </div>
                         <div className="create">
-                          <a href={`/user/${comment?.user?._id}`} className="">
+                          <a href={`/user/${comment?.user?.name}`} className="">
                             {comment.user != null
                               ? comment.user?.name
                               : 'NOT DEFINED'}
@@ -127,7 +127,7 @@ const CommentList = ({ post, user, comments }) => {
                           <img src={comment.user?.profilePicUrl} alt="" />
                         </div>
                         <div className="create">
-                          <a href={`/user/${comment?.user?._id}`} className="">
+                          <a href={`/user/${comment?.user?.name}`} className="">
                             {comment.user != null
                               ? comment.user?.name
                               : 'NOT DEFINED'}

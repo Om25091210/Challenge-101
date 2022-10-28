@@ -201,7 +201,7 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
                                 alt={ppl.user?.name}
                               />
                             </div>
-                            <a href={`/user/${ppl.user._id}`}>
+                            <a href={`/user/${ppl.user.username}`}>
                               <p>{ppl.user.name}</p>
                             </a>
                           </li>
@@ -213,9 +213,14 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
 
                 <span className="others">
                   {post.shares &&
-                    post.shares
-                      .slice(0, 2)
-                      .map((share) => <span>{share.user.username},</span>)}{' '}
+                    post.shares.slice(0, 2).map((share) => (
+                      <span>
+                        <a href={`/user/${share.user.username}`}>
+                          {share.user.username}
+                        </a>
+                        ,
+                      </span>
+                    ))}{' '}
                   {post.shares.length > 2 ? (
                     <span>
                       and <b>{post.shares.length - 2}</b> others
