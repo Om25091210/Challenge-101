@@ -16,7 +16,7 @@ import draftToHtml from 'draftjs-to-html';
 import { useRouter } from 'next/router';
 import { jobformvalidate } from '@utils/valid';
 
-const TeamJobCreate = ({ user, profile }) => {
+const TeamJobCreate = ({ user, profile, teams }) => {
   const [formErrors, setFormErrors] = useState({});
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
   let edited2 = draftToHtml(convertToRaw(editorState.getCurrentContent()));
@@ -130,9 +130,10 @@ const TeamJobCreate = ({ user, profile }) => {
               onChange={handleChangeCheck}
             >
               <option value="">Select Job Owner...</option>
-              <option value={profile?.current_team?._id}>
-                {profile?.current_team?.name}
-              </option>
+              {teams &&
+                teams.map((team) => (
+                  <option value={team._id}>{team?.name}</option>
+                ))}
             </select>
             <p>{formErrors.owner}</p>
           </div>

@@ -71,6 +71,7 @@ const Team = ({ user, data, products, profile, teams }) => {
             isOwner={isOwner}
             isCEO={isCEO}
             profile={profile}
+            teams={teams}
           />
         </div>
 

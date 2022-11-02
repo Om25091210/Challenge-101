@@ -10,7 +10,7 @@ import 'rc-time-picker/assets/index.css';
 import { toast } from 'react-toastify';
 import TeamJobCreate from '../../components/team/TeamJobCreate';
 
-const CreateJobs = ({ user, profile }) => {
+const CreateJobs = ({ user, profile, teams }) => {
   return (
     <>
       <MetaDash />
@@ -32,7 +32,7 @@ const CreateJobs = ({ user, profile }) => {
             </div>
 
             <div className="create_tournament">
-              <TeamJobCreate user={user} profile={profile} />
+              <TeamJobCreate user={user} profile={profile} teams={teams} />
             </div>
           </div>
         </div>

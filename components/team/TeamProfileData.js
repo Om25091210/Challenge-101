@@ -25,7 +25,8 @@ const TeamProfileData = ({
   profile,
   isAdmin,
   isOwner,
-  isCEO
+  isCEO,
+  teams
 }) => {
   const [jobs, setJobs] = useState([]);
   const [teamposts, setTeamPosts] = useState([]);
@@ -313,7 +314,7 @@ const TeamProfileData = ({
         <div className="tab hide" id="jobs">
           <TeamJobs
             jobs={jobs}
-            team={data.team}
+            team={teams}
             isManager={isManager}
             isAdmin={isAdmin}
             isOwner={isOwner}

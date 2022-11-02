@@ -56,6 +56,8 @@ const Tournament_Reg = ({ user, tournament, profile, groups, teams }) => {
         axios.put(
           `${baseURL}/api/tournaments/register/team/${tournament._id}/${selectedTeam}`
         );
+        toast.success('registered Successfully');
+        $('a.model_close').parent().removeClass('show_model');
       }
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');

@@ -40,7 +40,7 @@ const TeamJobs = ({
               <h3>Job Detail's</h3>
 
               <div className="">
-                <TeamJobCreate user={user} profile={profile} />
+                <TeamJobCreate user={user} profile={profile} teams={team} />
               </div>
             </div>
             <div className="overlay"></div>
