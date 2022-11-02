@@ -1,18 +1,17 @@
 import { useState } from 'react';
 import baseURL from '../../../utils/baseURL';
-import { useMutation } from 'react-query';
 import cookie from 'js-cookie';
 
-const Like_Reply = ({ postId, commentId, reply }) => {
-  const [likereplies, setLikeReplies] = useState(false);
+const Like_Reply = ({ postId, commentId, reply, user }) => {
+  const isLiked =
+    user && reply.likes.filter((rpy) => rpy.user === user._id).length > 0;
+
+  const [likereplies, setLikeReplies] = useState(isLiked);
+  const [likeReplyCount, setLikeReplyCount] = useState(reply.likes.length);
 
   const likehandlesubmit = async (e) => {
     e.preventDefault();
-    mutate({ likereplies });
-    setLikeReplies(true);
-  };
-  const addLikeComment = async () => {
-    await fetch(
+    const res = await fetch(
       `${baseURL}/api/comments/like/${postId}/${commentId}/${reply._id}`,
       {
         method: 'PUT',
@@ -21,16 +20,24 @@ const Like_Reply = ({ postId, commentId, reply }) => {
         }
       }
     );
+    const data = await res.json();
+    setLikeReplies(!likereplies);
+    setLikeReplyCount(data);
   };
 
-  const { mutate } = useMutation(addLikeComment);
-
   return (
-    <div className="reply_like">
-      <button onClick={likehandlesubmit}>
-        <img src="/assets/media/dash/fire.png" alt="" />{' '}
-        <span>{reply.likes.length}</span>
-      </button>
+    <div className="reply_like" onClick={likehandlesubmit}>
+      {likereplies ? (
+        <button>
+          <img src="/assets/media/dash/fire.png" alt="" />
+          <span>{likeReplyCount}</span>
+        </button>
+      ) : (
+        <button>
+          <img src="/assets/media/dash/fire.png" alt="" />
+          <span>{likeReplyCount}</span>
+        </button>
+      )}
     </div>
   );
 };

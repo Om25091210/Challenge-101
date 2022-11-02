@@ -74,9 +74,6 @@ export const teamformvalidate = (values) => {
   if (!year_regex.test(values.founded)) {
     errors.founded = 'Invalid Year Format';
   }
-  if (!values.game) {
-    errors.game = 'Select Atleast one game';
-  }
   if (!values.region) {
     errors.region = 'Region is required';
   }

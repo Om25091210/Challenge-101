@@ -22,7 +22,7 @@ const TeamCreate = ({ isClaim, user }) => {
   const [games, setGames] = useState([]);
   const [arenas, setArenas] = useState([]);
   const [sponsors, setSponsors] = useState([]);
-
+  const [selectedGame, setSelectedGame] = useState([]);
   const [formErrors, setFormErrors] = useState({});
   const router = useRouter();
   const [rigsData, setRigsData] = useState([]);
@@ -31,7 +31,6 @@ const TeamCreate = ({ isClaim, user }) => {
     imgUrl: '/assets/media/default/tournament.jpg',
     coverPhoto: '/assets/media/profile/cover_bg.jpg',
     founded: '',
-    game: '',
     prizepool: null,
     region: '',
     description: '',
@@ -133,7 +132,7 @@ const TeamCreate = ({ isClaim, user }) => {
       Object.entries(state).map(([key, value]) => {
         formdata.append(key, value);
       });
-
+      formdata.append('games', selectedGame);
       try {
         await mutation.mutateAsync(formdata);
         toast.success('Your Team has been successfully created! ');
@@ -148,6 +147,10 @@ const TeamCreate = ({ isClaim, user }) => {
   if (newTeam) {
     isClaim === true ? router.push(`/team/${newTeam._id}`) : null;
   }
+
+  const handlemultiplegames = (game) => {
+    selectedGame.push(game._id);
+  };
 
   return (
     <>
@@ -217,22 +220,21 @@ const TeamCreate = ({ isClaim, user }) => {
                       />
                       <p className="error">{formErrors.founded}</p>
                     </div>
-                    <div className="form-group">
-                      <label htmlFor="exampleFormControlInput1">Games</label>
-                      <select
-                        className="form-control game_search_result"
-                        multiple={true}
-                        name="game"
-                        value={state.game}
-                        onChange={handleChange}
-                      >
-                        {games.map((game, idx) => (
-                          <option key={idx} value={game._id}>
-                            {game.name}
-                          </option>
-                        ))}
-                      </select>
-                      <p className="error">{formErrors.game}</p>
+                    <div className="pick_game">
+                      <h2>Games</h2>
+                      <ul>
+                        {games &&
+                          games.slice(0, 4).map((game) => (
+                            <li>
+                              <a
+                                href="#!"
+                                onClick={() => handlemultiplegames(game)}
+                              >
+                                <img src={game.imgUrl} alt={game.name} />
+                              </a>
+                            </li>
+                          ))}
+                      </ul>
                     </div>
                   </>
                 ) : (

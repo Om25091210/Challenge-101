@@ -40,7 +40,7 @@ const ReplyList = ({ post, comment, user }) => {
                   </a>
                   <div className="comments_data">
                     <div className="member_profile">
-                      <a href={`/user/${reply?.user?.name}`}>
+                      <a href={`/user/${reply?.user?.username}`}>
                         <h3>
                           {reply.user != null
                             ? reply.user?.name
