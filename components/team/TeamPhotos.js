@@ -72,7 +72,14 @@ const TeamPhotos = ({ user, team, isManager, isAdmin, isOwner, isCEO }) => {
                   {Moment(imgg.createdAt).format('MMMM, DD, YYYY hh:mm A')}
                 </span>
               </h2>
-              <PhotosDelete collectionId={imgg._id} team={team} />
+              <PhotosDelete
+                collectionId={imgg._id}
+                team={team}
+                isManager={isManager}
+                isAdmin={isAdmin}
+                isOwner={isOwner}
+                isCEO={isCEO}
+              />
             </div>
           </div>
         ))

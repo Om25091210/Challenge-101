@@ -458,14 +458,6 @@ export const jobformvalidate = (values) => {
   if (values.experience.length === 0) {
     errors.experience = 'Experience is required';
   }
-  if (values.description.length === 0) {
-    errors.description = 'Description is Required';
-  } else if (values.description.length < 51) {
-    errors.description =
-      'Description should contain a minimum of 50 characters';
-  } else if (values.description.length > 250) {
-    errors.description = 'Description Cannot exceed more than 250 characters';
-  }
   return errors;
 };
 

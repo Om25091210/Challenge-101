@@ -4,7 +4,14 @@ import baseURL from '../../utils/baseURL';
 import cookie from 'js-cookie';
 import { toast } from 'react-toastify';
 
-const PhotosDelete = ({ collectionId, team }) => {
+const PhotosDelete = ({
+  collectionId,
+  team,
+  isManager,
+  isAdmin,
+  isOwner,
+  isCEO
+}) => {
   const refreshData = () => {
     setTimeout(function () {
       window.location.reload(false);
@@ -28,9 +35,11 @@ const PhotosDelete = ({ collectionId, team }) => {
   };
   return (
     <>
-      <button className="btn" onClick={handleDeleteSubmit}>
-        <i className="fa fa-trash-o" aria-hidden="true"></i>
-      </button>
+      {isManager || isAdmin || isOwner || isCEO ? (
+        <button className="btn" onClick={handleDeleteSubmit}>
+          <i className="fa fa-trash-o" aria-hidden="true"></i>
+        </button>
+      ) : null}
     </>
   );
 };

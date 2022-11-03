@@ -356,7 +356,15 @@ const TeamProfileData = ({
           />
         </div>
         <div className="tab hide" id="joines">
-          <TeamJoines data={data.team} user={user} profile={profile} />
+          <TeamJoines
+            data={data.team}
+            user={user}
+            profile={profile}
+            isAdmin={isAdmin}
+            isManager={isManager}
+            isOwner={isOwner}
+            isCEO={isCEO}
+          />
         </div>
       </div>
     </>

@@ -134,7 +134,14 @@ const TeamVideos = ({ user, team, isManager, isAdmin, isOwner, isCEO }) => {
                   <span className="comments">
                     <i className="fa fa-comment" aria-hidden="true"></i>18
                   </span>{' '} */}
-                  <VideosDelete collectionId={vid._id} team={team} />
+                  <VideosDelete
+                    collectionId={vid._id}
+                    team={team}
+                    isManager={isManager}
+                    isAdmin={isAdmin}
+                    isOwner={isOwner}
+                    isCEO={isCEO}
+                  />
                 </div>
               </li>
             ))}

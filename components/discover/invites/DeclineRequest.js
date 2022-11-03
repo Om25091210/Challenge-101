@@ -13,7 +13,7 @@ export default function DeclineRequest({ player, team }) {
   );
 }
 
-const Decline_Req = ({ player, team }) => {
+const Decline_Req = ({ player, team, type }) => {
   const [request, setRequest] = useState(false);
 
   const playerId = player?.teamId ? player.playerId : player.playerId._id;
@@ -32,7 +32,7 @@ const Decline_Req = ({ player, team }) => {
 
   const sendRequest = async () => {
     const { data } = await fetch(
-      `${baseURL}/api/teams/decline/${team._id}/${playerId}`,
+      `${baseURL}/api/teams/decline/${team._id}/${playerId}/${type}`,
       {
         method: 'PUT'
       }

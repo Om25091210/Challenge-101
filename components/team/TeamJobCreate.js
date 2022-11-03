@@ -247,7 +247,6 @@ const TeamJobCreate = ({ user, profile, teams }) => {
                 }
               }}
             />
-            <p>{formErrors.description}</p>
           </div>
 
           <input

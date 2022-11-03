@@ -172,7 +172,11 @@ const RightSection = ({ user, suggestedplayers, teams, profile }) => {
                     </p>
                   </div>
                   <ApproveRequest player={req} team={req.teamId} />
-                  <DeclineRequest player={req} team={req.teamId} />
+                  <DeclineRequest
+                    player={req}
+                    team={req.teamId}
+                    type="PROFILE"
+                  />
                 </>
               ))}
           </>
