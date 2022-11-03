@@ -149,7 +149,7 @@ const TeamProfileData = ({
         </li> */}
         {isManager || isAdmin || isOwner || isCEO ? (
           <li>
-            <a href="#!" rel="joines">
+            <a href="#!" rel="joines" onClick={() => handleTabs('JOINES')}>
               Joines
             </a>
           </li>
@@ -357,13 +357,14 @@ const TeamProfileData = ({
         </div>
         <div className="tab hide" id="joines">
           <TeamJoines
-            data={data.team}
+            data={tabData}
             user={user}
             profile={profile}
             isAdmin={isAdmin}
             isManager={isManager}
             isOwner={isOwner}
             isCEO={isCEO}
+            team={data.team}
           />
         </div>
       </div>

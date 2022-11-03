@@ -1,50 +1,21 @@
-import { QueryClient, QueryClientProvider, useMutation } from 'react-query';
 import React, { useState } from 'react';
 import baseURL from '@utils/baseURL';
 import { toast } from 'react-toastify';
 
-const queryClient = new QueryClient();
-
-export default function DeclineRequest({ player, team }) {
-  return (
-    <QueryClientProvider client={queryClient} contextSharing={true}>
-      <Decline_Req team={team} player={player} />
-    </QueryClientProvider>
-  );
-}
-
-const Decline_Req = ({ player, team, type }) => {
-  const [request, setRequest] = useState(false);
-
+const DeclineRequest = ({ player, team, handleJoines, type }) => {
   const playerId = player?.teamId ? player.playerId : player.playerId._id;
 
   const reqhandlesubmit = async (e) => {
     e.preventDefault();
-    try {
-      mutate({ request });
-      setRequest(true);
-      toast.success('The request has been declined.');
-    } catch (err) {
-      console.log(err);
-      toast.error(err.response?.data?.msg || 'Please recheck your inputs');
-    }
-  };
-
-  const sendRequest = async () => {
-    const { data } = await fetch(
+    const res = await fetch(
       `${baseURL}/api/teams/decline/${team._id}/${playerId}/${type}`,
       {
         method: 'PUT'
       }
     );
-    return data;
+    const data = await res.json();
+    handleJoines(data.joines);
   };
-
-  const { mutate } = useMutation(sendRequest, {
-    onSuccess: (data) => {
-      console.log(data);
-    }
-  });
 
   return (
     <>
@@ -54,3 +25,5 @@ const Decline_Req = ({ player, team, type }) => {
     </>
   );
 };
+
+export default DeclineRequest;

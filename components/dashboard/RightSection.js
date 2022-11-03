@@ -11,6 +11,15 @@ const RightSection = ({ user, suggestedplayers, teams, profile }) => {
   const [matches, setMatches] = useState([]);
   const [later, setLater] = useState(false);
   const [myPageData, setMypageData] = useState([]);
+  const [requestData, setRequestData] = useState(profile.request);
+
+  useEffect(() => {
+    setRequestData(profile.request);
+  }, [profile.request]);
+
+  const handleJoines = (data) => {
+    setRequestData(data);
+  };
 
   useEffect(() => {
     axios
@@ -161,8 +170,8 @@ const RightSection = ({ user, suggestedplayers, teams, profile }) => {
             + Create a team
           </a>
           <>
-            {profile.request &&
-              profile.request.map((req) => (
+            {requestData &&
+              requestData.map((req) => (
                 <>
                   <div className="grey_bg">
                     <img src={req.teamId.imgUrl} alt={req.teamId.name} />
@@ -171,11 +180,17 @@ const RightSection = ({ user, suggestedplayers, teams, profile }) => {
                       <a href={`team/${req.teamId._id}`}>{req.teamId.name}</a>
                     </p>
                   </div>
-                  <ApproveRequest player={req} team={req.teamId} />
+                  <ApproveRequest
+                    player={req}
+                    team={req.teamId}
+                    handleJoines={handleJoines}
+                    type="PROFILE"
+                  />
                   <DeclineRequest
                     player={req}
                     team={req.teamId}
                     type="PROFILE"
+                    handleJoines={handleJoines}
                   />
                 </>
               ))}
