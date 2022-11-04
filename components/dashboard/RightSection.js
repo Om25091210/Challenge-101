@@ -209,7 +209,7 @@ const RightSection = ({ user, suggestedplayers, teams, profile }) => {
               myPageData.slice(0, 2).map((page, idx) => (
                 <li key={idx}>
                   <Link
-                    href={`/${page.logoUrl ? 'brand' : 'tournament'}/${
+                    href={`/${page.logoUrl ? 'brand' : 'tour'}/${
                       page.logoUrl ? page._id : page.name
                     }`}
                   >
@@ -246,7 +246,7 @@ const RightSection = ({ user, suggestedplayers, teams, profile }) => {
                     myPageData.map((page, idx) => (
                       <li key={idx}>
                         <Link
-                          href={`/${page.logoUrl ? 'brand' : 'tournament'}/${
+                          href={`/${page.logoUrl ? 'brand' : 'tour'}/${
                             page.logoUrl ? page._id : page.name
                           }`}
                         >
@@ -269,7 +269,7 @@ const RightSection = ({ user, suggestedplayers, teams, profile }) => {
           <a href={`/brand/create`} className="create_team">
             + Create a brand
           </a>
-          <a href={`/tournament/create`} className="create_team">
+          <a href={`/tour/create`} className="create_team">
             + Create Tournament
           </a>
         </div>

@@ -64,7 +64,7 @@ const TournamentDisplay = ({
                 <div className="top_game">
                   <div className="date">
                     <div>
-                      <Link href={`/tournament/${result.name}`}>
+                      <Link href={`/tour/${result.name}`}>
                         <a>
                           <h3>{result.name}</h3>
                         </a>
@@ -218,7 +218,7 @@ const TournamentDisplay = ({
                 <div className="top_game">
                   <div className="date">
                     <div>
-                      <Link href={`/tournament/${result.tournament.name}`}>
+                      <Link href={`/tour/${result.tournament.name}`}>
                         <a>
                           <h3>{result.tournament.name}</h3>
                         </a>
@@ -382,7 +382,7 @@ const TournamentDisplay = ({
                 <div className="top_game">
                   <div className="date">
                     <div>
-                      <Link href={`/tournament/${result.tournament.name}`}>
+                      <Link href={`/tour/${result.tournament.name}`}>
                         <a>
                           <h3>{result.tournament.name}</h3>
                         </a>

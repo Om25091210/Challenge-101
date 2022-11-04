@@ -125,7 +125,7 @@ const SignedHeader = ({ user, profile }) => {
                   </a>
                 </li>
                 <li>
-                  <a href="/tournament/create">
+                  <a href="/tour/create">
                     <span>
                       {' '}
                       <i className="fa fa-trophy" aria-hidden="true"></i>{' '}
