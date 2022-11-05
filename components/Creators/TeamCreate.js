@@ -222,7 +222,7 @@ const TeamCreate = ({ isClaim, user }) => {
                     </div>
                     <div className="pick_game">
                       <h2>Games</h2>
-                      <ul>
+                      <ul className="game_search_result">
                         {games &&
                           games.slice(0, 4).map((game) => (
                             <li>

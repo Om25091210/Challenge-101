@@ -164,7 +164,7 @@ img {
 }
 
 :focus {
-	outline: 0;
+	outline: 0 !important;
 }
 
 a {
@@ -1875,7 +1875,7 @@ ul.top_menu .drop_down_bg.create_pages p {
 }
 
 .edit_post .btn {
-	background: #7239ea !important
+	background: var(--yellow) !important;
 }
 
 .delete_post_div {
@@ -3382,6 +3382,7 @@ article .social_bar img {
 	font-size: 13px;
 	line-height: 20px;
 	font-weight: 400;
+	float: left; width: 100%;
 }
 
 .bio_box .left_bio .bio_edit {
@@ -3810,6 +3811,9 @@ article .social_bar img {
 	margin-left: 5px;
 }
 
+.profile_left_post .users_share_box .shere a span{   vertical-align: middle;
+    display: inline-block;}
+
 .profile_left_post .users_share_box .shere a i {
 	font-size: 16px;
 }
@@ -3910,6 +3914,8 @@ article .social_bar img {
 .profile_match_details .games_details {
 	margin-top: 0 !important;
 }
+
+.profile_match_details .games_details .btn{ margin-right: 10px;}
 
 .games_details {
 	background: #fff;
@@ -5031,6 +5037,8 @@ article .social_bar img {
 	align-items: center;
 }
 
+
+
 .team_row span,
 .team_row .logo_box {
 	display: flex;
@@ -5101,6 +5109,7 @@ article .social_bar img {
 .team_row .logo_box h3 {
 	margin: 0 20px;
 	display: block;
+	width: 100px;
 }
 
 .team_row .logo_box .thumb_img {
@@ -8524,6 +8533,7 @@ ul.game_search_result li.slc_img:after {
 	text-align: left;
 	cursor: pointer;
 }
+.btn_selection #teamSize{ width: 33%;}
 
 .btn_selection .big_btn span {
 	position: absolute;
@@ -8575,6 +8585,8 @@ ul.game_search_result li.slc_img:after {
 	margin-bottom: 30px;
 	position: relative;
 }
+
+.create_tournament form .form-group .colm100{ width: 100%;}
 
 .create_tournament form .form-group .colm .form-group{ margin-bottom: 0;}
 
@@ -10854,7 +10866,7 @@ form.common_form .btn {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	flex-direction: column;
+	flex-direction: column; cursor: pointer;
 }
 
 #share_prof ul li .game_pic img {

@@ -52,7 +52,7 @@ const TeamFav = ({ team, profile }) => {
   return (
     <>
       {isFav === true ? (
-        <div className="stars">
+        <div className="stars active">
           <i className="fa fa-star" aria-hidden="true" onClick={handleAdd}></i>
         </div>
       ) : (

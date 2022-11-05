@@ -1,5 +1,7 @@
 /* ---------------------- Dark Themes----------------------------- */
 
+body.DarkPage textarea:focus{ box-shadow: inset 0px 0px 2px #b5fe1b;}
+
 
 body.DarkPage {
     color: #fff !important;
@@ -40,6 +42,9 @@ body.DarkPage .white_bg {
 body.DarkPage .write_post textarea {
     color: #fff;
 }
+
+
+
 body.DarkPage .post {
     background: var(--bgcolor1);
 }
@@ -121,6 +126,9 @@ body.DarkPage .delete_comment, body.DarkPage .delete_btn {
 body.DarkPage .post_comments button {
     color: #fff;
 }
+
+body.DarkPage  .comments_point .pinned{ color: #000;}
+
 body.DarkPage .reply_cancel {
     background: #7239ea;
     margin-left: 10px;
@@ -210,6 +218,14 @@ body.DarkPage .overview_box h2 {
 body.DarkPage .team_row .stars {
     color: #fff;
 }
+
+body.DarkPage .team_row .stars.active {
+    color: #000;
+    background: var(--yellow);
+    padding-top: 15px;
+    top: -5px;
+}
+
 body.DarkPage .team_row span.remarks h4 b {
     color: #fff;
 }

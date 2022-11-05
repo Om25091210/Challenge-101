@@ -818,7 +818,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                           value={state.tickets}
                         />
                       </div> */}
-                      <div className="colm">
+                      <div className="colm colm100">
                         <label for="exampleFormControlInput1">
                           Website (Optional)
                         </label>

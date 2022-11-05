@@ -52,7 +52,7 @@ const VerifyToken = ({ verificationToken, finishsubmit }) => {
       <button
         type="submit"
         id="kt_sign_up_submit"
-        className="model_show_btn"
+        className="model_show_btn btn"
         disabled={finishsubmit}
       >
         {' '}

@@ -66,8 +66,8 @@ display: flex; align-items: center; justify-content: center; position: relative;
 .game_sect{ float: left; width: 100%; position: relative;}
 .game_sect select{    -webkit-appearance: auto;-moz-appearance: auto;appearance: auto;}
 .game_sect .two_btn{ display: flex; justify-content: end;}
-.game_sect button{ width: 200px  !important; background: #1da1f3 !important; display:inline-block;}
-.signup2 #kt_sign_up_submit{ width: 200px  !important; flex-grow: 0; border-radius: 5px;}
+.game_sect button{ width: 200px  !important; background: #f6e52e; display:inline-block;}
+.signup2 #kt_sign_up_submit{ width: 200px  !important; flex-grow: 0; border-radius: 30px;}
 
 .signup2 button{ flex:0 0 200px; flex-grow: 0 !important;}
 
