@@ -33,23 +33,65 @@ const ForgotPassword = () => {
   };
 
   return (
-    <main id="kt_body" className="bg-body">
+    <div id="kt_body" className="bg-body">
       <Meta />
 
-      <div className="d-flex flex-column flex-root">
-        <div
-          className="d-flex flex-column flex-column-fluid bgi-position-y-bottom position-x-center bgi-no-repeat bgi-size-contain bgi-attachment-fixed"
-          style={{ backgroundImage: 'url(/assets/media/illustrations/14.png)' }}
-        >
-          <div className="p-10 d-flex flex-center flex-column flex-column-fluid pb-lg-20">
-            <a href="#" className="mb-12">
-              <img
-                alt="Logo"
-                src="/assets/media/logos/logo.png"
-                className="h-40px"
-              />
-            </a>
-            <div className="p-10 mx-auto rounded shadow-sm w-lg-500px bg-body p-lg-15">
+      <div className="singup_page_box forget-pass-box">
+        <div className="left_banner">
+          <span className="logo">
+            {' '}
+            <img src="/assets/media/logo.png" alt="Logo" />
+          </span>
+
+          <h1>
+            A true Esports <br />
+            platform that brings <br />
+            all of Esports ecosystem <br />
+            in one place.
+          </h1>
+
+          <span className="props1 props">
+            {' '}
+            <img src="/assets/media/login/1.png" alt="" />
+          </span>
+          <span className="props2 props">
+            {' '}
+            <img src="/assets/media/login/2.png" alt="" />
+          </span>
+          <span className="props3 props">
+            {' '}
+            <img src="/assets/media/login/3.png" alt="" />
+          </span>
+          <span className="props4 props">
+            {' '}
+            <img src="/assets/media/login/4.png" alt="" />
+          </span>
+          <span className="props5 props">
+            {' '}
+            <img src="/assets/media/login/5.png" alt="" />
+          </span>
+          <span className="props6 props">
+            {' '}
+            <img src="/assets/media/login/6.png" alt="" />
+          </span>
+          <span className="props7 props">
+            {' '}
+            <img src="/assets/media/login/7.png" alt="" />
+          </span>
+          <span className="props8 props">
+            {' '}
+            <img src="/assets/media/login/8.png" alt="" />
+          </span>
+          <span className="props9 props">
+            {' '}
+            <img src="/assets/media/login/9.png" alt="" />
+          </span>
+        </div>
+
+        <div className="right_form">
+          <div className="d-flex flex-center flex-column flex-column-fluid">
+            <h2>Forgot Password ?</h2>
+            <div className="form_box">
               <form
                 className="form w-100"
                 noValidate="novalidate"
@@ -57,7 +99,6 @@ const ForgotPassword = () => {
                 onSubmit={handleSubmit}
               >
                 <div className="mb-10 text-center">
-                  <h1 className="mb-3 text-dark">Forgot Password ?</h1>
                   <div className="text-gray-400 fw-bold fs-4">
                     Enter your email to reset your password.
                   </div>
@@ -77,7 +118,7 @@ const ForgotPassword = () => {
                     autoComplete="off"
                   />
                 </div>
-                <div className="flex-wrap d-flex justify-content-center pb-lg-0">
+                <div className="two_btn">
                   <button
                     type="submit"
                     className="btn btn-lg btn-primary fw-bolder me-4"
@@ -99,14 +140,12 @@ const ForgotPassword = () => {
               </form>
             </div>
           </div>
-
-          <FooterMain> </FooterMain>
-
-          <script src="/assets/plugins/global/plugins.bundle.js" />
-          <script src="/assets/js/scripts.bundle.js" />
         </div>
       </div>
-    </main>
+
+      <script src="/assets/plugins/global/plugins.bundle.js" />
+      <script src="/assets/js/scripts.bundle.js" />
+    </div>
   );
 };
 

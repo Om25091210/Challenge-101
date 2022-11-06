@@ -1191,6 +1191,16 @@ ul.top_menu .drop_down_bg.create_pages p {
 
 }
 
+.left_side li:nth-child(9) .iconbg {
+	background-image: url(/assets/media/icons/user.png) !important;
+
+}
+
+.left_side li:nth-child(9):hover .iconbg, .left_side li:nth-child(9).active .iconbg {
+	background-image: url(/assets/media/icons/user-b.png) !important;
+
+}
+
 
 /* ------- middle css -------------- */
 .team_slider .slick-list {

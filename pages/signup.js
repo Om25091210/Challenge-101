@@ -366,7 +366,7 @@ const Signup = ({ games, avatars }) => {
                       <div className="fv-row mb-7">
                         <label className="form-label"> Gender</label>
                         <select
-                          className="form-control form-control-lg form-control-solid"
+                          className="select"
                           name="gender"
                           value={gender}
                           onChange={handleChange}

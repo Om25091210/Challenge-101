@@ -91,7 +91,7 @@ function LeftNav({ user }) {
             </Link>
           </li>
           {user?.isSuperAdmin === true || user?.isSupportAdmin === true ? (
-            <li>
+            <li className={router.pathname == '/adminpage' ? 'active' : ''}>
               <Link href="/adminpage">
                 <a className="">
                   <span className="iconbg">

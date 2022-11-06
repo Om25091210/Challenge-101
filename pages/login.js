@@ -109,7 +109,7 @@ const SignIn = () => {
         <div className="left_banner">
           <span className="logo">
             {' '}
-            <img src="/assets/media/logo-new.png" alt="Logo" />
+            <img src="/assets/media/logo.png" alt="Logo" />
           </span>
 
           <h1>
