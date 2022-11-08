@@ -86,7 +86,7 @@ const SignedHeader = ({ user, profile }) => {
     <header>
       <div className="logo">
         <a href="#">
-          <img src="/assets/media/logo-new.png" alt="Logo" />
+          <img src="/assets/media/logo.png" alt="Logo" />
         </a>
       </div>
 

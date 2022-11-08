@@ -23,8 +23,7 @@ const challenges = ({ user, profile }) => {
             <div className="premium_top">
               <div className="left_top">
                 <span>
-                  <img src="/assets/media/logo-new.png" alt="" />{' '}
-                  <b>MULTIPLAYR</b>{' '}
+                  <img src="/assets/media/logo.png" alt="" /> <b>MULTIPLAYR</b>{' '}
                   <img src="/assets/media/buypremium/prem.png" alt="" />
                 </span>
 
