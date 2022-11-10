@@ -8,10 +8,19 @@ import cookie from 'js-cookie';
 import { useMutation } from 'react-query';
 import { toast } from 'react-toastify';
 import ReactCountryFlag from 'react-country-flag';
+import { searchJobs } from '@utils/functionsHelper';
 
 const Jobs = ({ user, profile, myState }) => {
   const [jobs, setJobs] = useState([]);
   const [files, setFiles] = useState([]);
+  const [error, setError] = useState(null);
+  const [formLoading, setFormLoading] = useState(false);
+  const [status, setStatus] = useState('confirm');
+  const [searchObj, setSearchObj] = useState({ search: '', type: 'JOB' });
+  const [searchData, setSearchData] = useState([]);
+
+  const { search, type } = searchObj;
+  var sdata;
 
   var ftype = 'JOBS';
 
@@ -39,6 +48,26 @@ const Jobs = ({ user, profile, myState }) => {
     }
   };
 
+  const handleChange = (e) => {
+    setSearchObj((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    sdata = await searchJobs(
+      searchObj,
+      setError,
+      setFormLoading,
+      toast,
+      setStatus,
+      type
+    );
+    setSearchData(sdata);
+  };
+
   useEffect(() => {
     console.log(myState.filteredResults);
     if (myState.filteredResults.length > 0) {
@@ -55,8 +84,22 @@ const Jobs = ({ user, profile, myState }) => {
           <div className="team_search">
             <div className="searchbox">
               <h3>Search</h3>
-              <input type="search" placeholder="Search" />
-              <input type="submit" />
+              <form
+                className="form w-100"
+                noValidate="noValidate"
+                onSubmit={handleSubmit}
+              >
+                <input
+                  type="search"
+                  placeholder="Search For Jobs..."
+                  id="search"
+                  name="search"
+                  value={search}
+                  onChange={handleChange}
+                  autoComplete="off"
+                />
+                <input type="submit" />
+              </form>
             </div>
             <div className="advance">
               <div className="views">
@@ -74,7 +117,7 @@ const Jobs = ({ user, profile, myState }) => {
                   ></label>
                 </div>
               </div>
-              <h3>Favourite</h3>
+              {/* <h3>Favourite</h3>
               <div className="custom-control custom-switch">
                 <input
                   type="checkbox"
@@ -85,7 +128,7 @@ const Jobs = ({ user, profile, myState }) => {
                   className="custom-control-label"
                   htmlFor="customSwitch1"
                 ></label>
-              </div>
+              </div> */}
             </div>
           </div>
 
@@ -98,13 +141,15 @@ const Jobs = ({ user, profile, myState }) => {
               No active jobs found. Please visit later.
             </div>
           </div>
-        ) : (
-          jobs &&
-          jobs.map((job, idx) => (
+        ) : searchData.length > 0 ? (
+          searchData &&
+          searchData.map((job, idx) => (
             <div className="team_row arena_team_row" key={idx}>
               <div className="inner_team">
                 <div className="mores jobss">
-                  <h3> {job.title}</h3>
+                  <a href={`/jobs/${job?._id}`}>
+                    <h3> {job.title}</h3>
+                  </a>
 
                   <p>
                     {job.experience && job.experience > 0 ? (
@@ -135,7 +180,66 @@ const Jobs = ({ user, profile, myState }) => {
                   )}
                 </div>
                 <div className="logo_box jobs_img">
-                  <a href={`jobs/${job._id}`}>
+                  <a href={`/team/${job.job_owner._id}`}>
+                    <img src={job.job_owner?.imgUrl} alt="" />
+                    <h3>
+                      {job.job_owner ? job.job_owner.name : 'Not Available'}
+                    </h3>
+                  </a>
+                </div>
+                <a
+                  href={`/jobs/${job._id}`}
+                  // onClick={onSubmit}
+                  className="btn btn_width"
+                >
+                  APPLY NOW{' '}
+                </a>
+              </div>
+            </div>
+          ))
+        ) : (
+          jobs &&
+          jobs.map((job, idx) => (
+            <div className="team_row arena_team_row" key={idx}>
+              <div className="inner_team">
+                <div className="mores jobss">
+                  <a href={`/jobs/${job?._id}`}>
+                    <h3> {job.title}</h3>
+                  </a>
+
+                  <p>
+                    {job.experience && job.experience > 0 ? (
+                      <b>
+                        EXPERIENCE: {job?.experience}{' '}
+                        {job?.experience === 1 ? 'Year' : 'Years'}{' '}
+                      </b>
+                    ) : (
+                      <b>EXPERIENCE: -- </b>
+                    )}
+                  </p>
+                  <p>
+                    <b> LOCATION:</b> <p>{job.location.name}</p>
+                    <ReactCountryFlag
+                      countryCode={job.location.iso}
+                      svg
+                      style={{
+                        width: '2em',
+                        height: '2em'
+                      }}
+                    />
+                  </p>
+                  {job.salary === 0 ? (
+                    <p>
+                      <b>SALARY:</b> Not Disclosed
+                    </p>
+                  ) : (
+                    <p>
+                      <b>SALARY:</b> {job?.currency} {job.salary}
+                    </p>
+                  )}
+                </div>
+                <div className="logo_box jobs_img">
+                  <a href={`/team/${job.job_owner._id}`}>
                     <img src={job.job_owner?.imgUrl} alt="" />
                     <h3>
                       {job.job_owner ? job.job_owner.name : 'Not Available'}

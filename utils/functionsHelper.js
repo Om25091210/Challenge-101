@@ -53,6 +53,30 @@ export const searchTeams = async (
   setLoading(false);
 };
 
+export const searchJobs = async (
+  { search, filters },
+  setError,
+  setLoading,
+  toast,
+  setStatus
+) => {
+  setLoading(true);
+  try {
+    const res = await axios.post(`${baseURL}/api/jobs/search`, {
+      search,
+      filters
+    });
+    toast.info(res.data.msg);
+    setStatus('confirm');
+    return res.data;
+  } catch (error) {
+    const errorMsg = catchErrors(error);
+    setError(errorMsg);
+    toast.error(errorMsg);
+  }
+  setLoading(false);
+};
+
 export const logoutUser = () => {
   const router = useRouter();
   cookie.remove('token');

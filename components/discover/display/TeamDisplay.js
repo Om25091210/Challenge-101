@@ -255,7 +255,7 @@ const TeamDisplay = ({
                 <div className="mores plateform">
                   {' '}
                   <span>
-                    {team.attribute.platform === 'PC' ? (
+                    {team.attribute?.platform === 'PC' ? (
                       <img src="/assets/media/discover/desk.png" alt="" />
                     ) : team.attribute?.platform === 'Console' ? (
                       <img src="/assets/media/discover/console.png" alt="" />
@@ -269,7 +269,7 @@ const TeamDisplay = ({
                     )}
                   </span>{' '}
                   <span className="ml10">
-                    {team.attribute.mic ? (
+                    {team.attribute?.mic ? (
                       <>
                         <img src="/assets/media/discover/mice.png" alt="" />{' '}
                         <b>On</b>
@@ -284,11 +284,14 @@ const TeamDisplay = ({
                   </span>{' '}
                   <span className="ml10">
                     <img src="/assets/media/discover/translator.png" alt="" />{' '}
-                    {team.attribute.language?.length > 0 ? (
+                    {team.attribute?.language?.length > 0 ? (
                       <>
-                        {team.attribute.language.map((tem, idxx) => (
-                          <b key={idxx}>{tem.substring(0, 2).toUpperCase()}</b>
-                        ))}
+                        {team.attribute?.language &&
+                          team.attribute?.language.map((tem, idxx) => (
+                            <b key={idxx}>
+                              {tem.substring(0, 2).toUpperCase()}
+                            </b>
+                          ))}
                       </>
                     ) : (
                       <p>No Language Available</p>

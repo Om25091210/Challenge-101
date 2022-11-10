@@ -33,7 +33,8 @@ const TeamJobCreate = ({ user, profile, teams }) => {
     salary: 0,
     description: '',
     currency: 'Rs',
-    experience: ''
+    experience: '',
+    category: ''
   });
 
   const options = useMemo(() => countryList().getData(), []);
@@ -119,6 +120,32 @@ const TeamJobCreate = ({ user, profile, teams }) => {
               <option value="SMGs">SMGs</option>
             </select>
             <p>{formErrors.role}</p>
+          </div>
+
+          <div className="form-group">
+            <label for="exampleFormControlInput1">Job Category</label>
+            <select
+              name="category"
+              className="form-control"
+              onChange={handleChangeCheck}
+              value={state.category}
+            >
+              <option value="">Select Category Type...</option>
+              <option value="Editor">Editor</option>
+              <option value="Movie Maker">Movie Maker</option>
+              <option value="Web Designer">Web Designer</option>
+              <option value="Nutritionist">Nutritionist</option>
+              <option value="Staff">Staff</option>
+              <option value="Shoutcaster">Shoutcaster</option>
+              <option value="Manager">Manager</option>
+              <option value="Psychologist">Psychologist</option>
+              <option value="CXO">CXO</option>
+              <option value="Game Tester">Game Tester</option>
+              <option value="Game Developer">Game Developer</option>
+              <option value="Game Designer">Game Designer</option>
+              <option value="Others">Others</option>
+            </select>
+            <p>{formErrors.category}</p>
           </div>
 
           <div className="form-group">

@@ -437,11 +437,14 @@ export const jobformvalidate = (values) => {
   const errors = {};
   if (values.name.length === 0) {
     errors.name = 'Job Title is Required';
-  } else if (values.name.length > 20) {
-    errors.name = 'Job Title cannot exceed 20 characters';
+  } else if (values.name.length > 40) {
+    errors.name = 'Job Title cannot exceed 40 characters';
   }
   if (values.role.length === 0) {
     errors.role = 'Select a Job Type';
+  }
+  if (values.category.length === 0) {
+    errors.category = 'Select a Job Category';
   }
   if (values.owner.length === 0) {
     errors.owner = 'Select Job Owner';
