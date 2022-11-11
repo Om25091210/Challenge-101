@@ -6397,6 +6397,8 @@ article .social_bar img {
 	margin-bottom: 20px;
 }
 
+.squads_box li .btn{ color: #fff;}
+
 .squads_box li:nth-child(2n) {
 	float: right;
 }

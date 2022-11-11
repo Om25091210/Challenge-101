@@ -84,7 +84,7 @@ const TeamAboutEdit = ({
           <h3>Edit Team Member</h3>
 
           <form className="common_form" onSubmit={handleEditAbout}>
-            <p>{aboutData.username}</p>
+            <h2>{aboutData.username}</h2>
             <label htmlFor="exampleFormControlInput1">Roles</label>
             <select
               name="value"

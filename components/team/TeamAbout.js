@@ -153,21 +153,6 @@ const TeamAbout = ({
               </button>
             ) : null}
           </h2>
-
-          {!showform ? (
-            <p> {Data.team.about ? Data.team.about.description : ''} </p>
-          ) : null}
-
-          {showform ? (
-            <form onSubmit={(e) => e.preventDefault()}>
-              <textarea name="text" value={desc} onChange={onChange}></textarea>
-              <button onClick={handleButtonForm} className="btn">
-                Update
-              </button>
-            </form>
-          ) : (
-            ''
-          )}
         </div>
 
         {Data.about &&
@@ -180,6 +165,22 @@ const TeamAbout = ({
               <a href="#">{itm.emailaddress}</a>{' '}
             </div>
           ))}
+      </div>
+      <div className="">
+        {!showform ? (
+          <p> {Data.team.about ? Data.team.about.description : ''} </p>
+        ) : null}
+
+        {showform ? (
+          <form onSubmit={(e) => e.preventDefault()}>
+            <textarea name="text" value={desc} onChange={onChange}></textarea>
+            <button onClick={handleButtonForm} className="btn">
+              Update
+            </button>
+          </form>
+        ) : (
+          ''
+        )}
       </div>
       <div className="team_member">
         <ul>

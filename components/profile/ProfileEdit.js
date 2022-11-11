@@ -659,6 +659,7 @@ const ProfileEdit = ({ Userdata, user, games, allteams }) => {
                   <input
                     type="checkbox"
                     // className="custom-control-input"
+                    checked={profile?.online_status ? true : false}
                     className={
                       profile?.online_status
                         ? 'Online custom-control-input'
