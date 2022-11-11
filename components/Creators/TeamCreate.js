@@ -224,7 +224,7 @@ const TeamCreate = ({ isClaim, user }) => {
                       <h2>Games</h2>
                       <ul className="game_search_result">
                         {games &&
-                          games.slice(0, 4).map((game) => (
+                          games.map((game) => (
                             <li>
                               <a
                                 href="#!"

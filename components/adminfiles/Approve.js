@@ -51,7 +51,7 @@ const Approve_Req = ({ user, Id, type }) => {
 
   return (
     <>
-      <button className="btn" onClick={reqhandlesubmit}>
+      <button className="btn ml20" onClick={reqhandlesubmit}>
         Approve
       </button>
     </>

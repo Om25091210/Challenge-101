@@ -11858,6 +11858,11 @@ form.common_form .btn {
 	box-shadow: 0 0 20px #fff;
 }
 
+/* ------------- 08/11/22-------------------- */
+
+.proof-box{  float: left; width: 100%; text-align: center;}
+.proof-box h2{ padding: 10px 0;}
+
 @keyframes animateC {
 	0% {
 		transform: rotate(0deg);
