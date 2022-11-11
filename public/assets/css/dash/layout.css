@@ -1951,6 +1951,8 @@ ul.top_menu .drop_down_bg.create_pages p {
 	height: 50;
 }
 
+.profile_left_post .add_comment_box .add_comments textarea{ width: 90%;}
+
 .add_comment_box .add_comments .user {
 	width: 33px;
 	height: 33px;
@@ -2317,8 +2319,8 @@ article .social_bar img {
 .likes {
     background-image: url(/assets/media/icons/Love.png);
     background-repeat: no-repeat;
-    width: 33px;
-    height: 33px;
+    width: 28px;
+    height:28px;
     display: block;
     background-position: 0;
     background-size: 100%;
@@ -2327,8 +2329,8 @@ article .social_bar img {
 .liked {
     background-image: url(/assets/media/icons/Likeafter.png);
     background-repeat: no-repeat;
-    width: 21px;
-    height: 21px;
+    width: 30px;
+    height: 30px;
     display: block;
     background-position: 0;
     background-size: 100%;
@@ -3539,6 +3541,9 @@ article .social_bar img {
 	width: 800px;
 }
 
+
+#big_poup p{ float: left; width: 100%;}
+
 #big_poup .common_form .form-group {
 	float: left;
 	width: 48%;
@@ -3637,7 +3642,8 @@ article .social_bar img {
 
 #big_poup input[type="text"],
 #big_poup input[type="time"],
-#big_poup input[type="date"] {
+#big_poup input[type="date"],
+#big_poup input[type="search"] {
 	background-color: #2c2c36 !important;
 }
 
@@ -9675,6 +9681,7 @@ form.common_form .colm {
 	margin-bottom: 20px;
 	position: relative;
 }
+
 
 form.common_form .colm.rows {
 	width: 100%;

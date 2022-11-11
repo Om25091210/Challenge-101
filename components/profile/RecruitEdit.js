@@ -85,7 +85,7 @@ const RecruitEdit = ({ attributeData, profile }) => {
         <button className="btn">Edit</button>
       </a>
 
-      <div className="common_model_box" id="big_poup">
+      <div className="common_model_box edit_profile" id="big_poup">
         <a href="#!" className="model_close">
           X
         </a>

@@ -86,34 +86,37 @@ const Tournament_Reg = ({ user, tournament, profile, groups, teams }) => {
                     >
                       Register
                     </a>
-                    <div
-                      className="common_model_box edit_profile"
-                      id="big_poup"
-                    >
+                    <div className="common_model_box" id="big_poup">
                       <a href="#!" className="model_close">
                         X
                       </a>
                       <div className="inner_model_box">
                         <div className="add_job_height">
                           <h3>Register</h3>
+                          <form className="common_form">
+                            <div className="colm rows">
+                              <label htmlFor="exampleFormControlInput1">
+                                Challenge with the team
+                              </label>
+                              <select
+                                name="selectedTeam"
+                                value={selectedTeam}
+                                onChange={(e) =>
+                                  setSelectedTeam(e.target.value)
+                                }
+                              >
+                                <option value="--">--</option>
+                                {teams &&
+                                  teams.map((tem) => (
+                                    <option value={tem._id}>{tem.name}</option>
+                                  ))}
+                              </select>
+                              <button className="btn" onClick={reghandlesubmit}>
+                                Confirm
+                              </button>
+                            </div>
+                          </form>
                         </div>
-                        <label htmlFor="exampleFormControlInput1">
-                          Challenge with the team
-                        </label>
-                        <select
-                          name="selectedTeam"
-                          value={selectedTeam}
-                          onChange={(e) => setSelectedTeam(e.target.value)}
-                        >
-                          <option value="--">--</option>
-                          {teams &&
-                            teams.map((tem) => (
-                              <option value={tem._id}>{tem.name}</option>
-                            ))}
-                        </select>
-                        <button className="btn" onClick={reghandlesubmit}>
-                          Confirm
-                        </button>
                       </div>
                       <div className="overlay"></div>
                     </div>
