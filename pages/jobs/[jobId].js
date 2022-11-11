@@ -38,8 +38,9 @@ const Job = ({ data, user, profile }) => {
                   }}
                 />
               </span>
-              <i className="fa fa-money" aria-hidden="true"></i>
+
               <span className="">
+                <i className="fa fa-money" aria-hidden="true"></i>
                 {data.salary === 0 ? (
                   'Not Disclosed'
                 ) : (
@@ -49,7 +50,7 @@ const Job = ({ data, user, profile }) => {
                   />
                 )}
               </span>
-              <span> Status: {data.status ? 'Available' : 'Closed'}</span>
+              <b> Status: {data.status ? 'Available' : 'Closed'}</b>
             </div>
 
             <h2>Job Description</h2>

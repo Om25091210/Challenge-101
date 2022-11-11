@@ -93,7 +93,7 @@ html {
 }
 
 :root {
-    --yellow: #f6e52e;
+    --yellow: #d2fe24;
 	--bgcolor1:#242731;
 
   }
@@ -767,7 +767,7 @@ ul.top_menu li.profile>a .dps {
 	width: 45px;
 	height: 45px;
 	overflow: hidden;
-	border-radius: 50%;
+	border-radius:15px;
 	background: #000;
 }
 
@@ -1613,6 +1613,7 @@ ul.top_menu .drop_down_bg.create_pages p {
 .post .title_follow {
 	display: flex;
 	align-items: center;
+	width: 70%;
 }
 
 .post .title_follow button {
@@ -1744,9 +1745,8 @@ ul.top_menu .drop_down_bg.create_pages p {
 }
 
 .users_share_box .shere {
-    width: 250px;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
 }
 
 .users_share_box .shere>a {
@@ -1767,14 +1767,16 @@ ul.top_menu .drop_down_bg.create_pages p {
 	color: red;
 }
 
-.users_share_box .shere .three_dots {
+.user_name_disc .three_dots {
 	display: inline-block;
 	vertical-align: middle;
 	margin: 0 0 0 10px;
 	position: relative;
 }
 
-.users_share_box .shere .three_dots_dropdown {
+.user_name_disc .three_dots .fa{ font-size: 20px;}
+
+.user_name_disc .three_dots_dropdown {
 	position: absolute;
 	width: 100px;
 	display: none;
@@ -1787,11 +1789,11 @@ ul.top_menu .drop_down_bg.create_pages p {
 	border-radius: 5px;
 }
 
-.users_share_box .shere .three_dots:hover .three_dots_dropdown {
+.user_name_disc .three_dots:hover .three_dots_dropdown {
 	display: block;
 }
 
-.users_share_box .shere .three_dots_dropdown li a {
+.user_name_disc.three_dots_dropdown li a {
 	float: left;
 	width: 100%;
 	padding: 3px 0;
@@ -1800,11 +1802,11 @@ ul.top_menu .drop_down_bg.create_pages p {
 	font-weight: 400;
 }
 
-.users_share_box .shere .three_dots_dropdown li a:hover {
+.user_name_disc .three_dots_dropdown li a:hover {
 	color: #7239ea;
 }
 
-.users_share_box .shere .three_dots_dropdown button {
+.user_name_disc .three_dots_dropdown button {
 	background: none;
 	border: 0;
 	font-size: 13px;
@@ -1927,7 +1929,7 @@ ul.top_menu .drop_down_bg.create_pages p {
 
 .add_comment_box .add_comments {
 	border-radius: 5px;
-	padding: 3px 10px;
+	padding: 3px 0px 3px 10px;
 	background: #f3f6f9;
 	display: flex;
 	width: 100%;
@@ -1937,10 +1939,9 @@ ul.top_menu .drop_down_bg.create_pages p {
 
 .add_comment_box .add_comments textarea {
 	background: none;
-	width: 90%;
+	width: 92%;
 	border: 0;
 	resize: none;
-	margin: 0px 10px;
 	font-size: 14px;
 	font-family: 'Rubik', sans-serif;
 	font-weight: 400;
@@ -2073,7 +2074,10 @@ ul.top_menu .drop_down_bg.create_pages p {
 	border-radius: 5px;
 	margin-left: 10px;
 	flex-grow: 0;
+	align-items: center;
 }
+
+.comments_point .comment_round_box:hover .pinned{ display: block;}
 
 .comments_point .like_btn img {
 	display: inline-block;
@@ -2109,7 +2113,7 @@ ul.top_menu .drop_down_bg.create_pages p {
 	background: #e1e1e1;
 	padding: 9px;
 	border-radius: 5px;
-	background: #202028;
+	background: #373744;
 }
 
 .comments_point .days {
@@ -2121,12 +2125,13 @@ ul.top_menu .drop_down_bg.create_pages p {
 
 .comments_point .pinned {
 	font-size: 11px;
-	margin-right: 10px;
+	margin-left: 10px;
 	color: #000;
 	font-weight: 500;
 	background: var(--yellow);
 	padding: 3px 10px;
 	border-radius: 5px;
+	display: none;
 }
 
 .comments_point .pinned .fa{ color: #000;}
@@ -2310,10 +2315,10 @@ article .social_bar img {
 .left_details .likes{ margin-right: 0;}
 
 .likes {
-    background-image: url(/assets/media/icons/Likebefore.png);
+    background-image: url(/assets/media/icons/Love.png);
     background-repeat: no-repeat;
-    width: 21px;
-    height: 21px;
+    width: 33px;
+    height: 33px;
     display: block;
     background-position: 0;
     background-size: 100%;
@@ -2329,6 +2334,29 @@ article .social_bar img {
     background-size: 100%;
     margin-right: 10px;
 }
+
+
+.eyes {
+    background-image: url(/assets/media/icons/impressions.png);
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+    display: block;
+    background-position: 0;
+    background-size: 100%;
+
+}
+.eyesd {
+    background-image: url(/assets/media/icons/impressions.png);
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+    display: block;
+    background-position: 0;
+    background-size: 100%;
+
+}
+
 
 .shared{background-image: url(/assets/media/icons/Shared.png);
     background-repeat: no-repeat;
@@ -3719,12 +3747,6 @@ article .social_bar img {
 	margin-right: 20px;
 }
 
-/* ------------ Editor----------------- */
-.rdw-editor-wrapper {
-	background-color: #2c2c36 !important;
-	border-radius: 5px;
-	padding: 10px;
-}
 
 /* --------- Challange poup ---------------- */
 #big_poup.team_chal a {
@@ -10474,10 +10496,14 @@ form.common_form .btn {
 .job_profile1 {
 	display: flex;
 	justify-content: left;
+	align-items: center;
 }
 
-.job_profile1 span {
-	margin-right: 30px;
+.job_profile1 span:first-child{ margin-right: 20px;}
+.job_profile1 b{ font-weight: normal; margin-left: 20px;}
+
+.job_profile1 span .fa {
+	margin-right: 5px;
 }
 
 .left_jobs .emp_type {
@@ -11862,6 +11888,16 @@ form.common_form .btn {
 
 .proof-box{  float: left; width: 100%; text-align: center;}
 .proof-box h2{ padding: 10px 0;}
+/* ------------ Editor----------------- */
+.rdw-editor-wrapper {
+	background-color: #222f41 !important;
+	border-radius: 5px;
+	padding: 10px;
+}
+
+.rdw-editor-toolbar{background: none!important; border:0 !important;
+    border-bottom: 1px solid #344860 !important;}
+
 
 @keyframes animateC {
 	0% {

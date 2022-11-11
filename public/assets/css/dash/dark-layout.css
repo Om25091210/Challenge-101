@@ -73,7 +73,7 @@ body.DarkPage .suggested_player li a .name {
     color: #fff;
 }
 body.DarkPage .add_comment_box .add_comments {
-    background: #2b2b35;
+    background: #373744;
 }
 
 body.DarkPage .post_comments{ background: none;}
@@ -116,7 +116,7 @@ body.DarkPage .style_file_upload span {
     color: #fff;
 }
 body.DarkPage .post_comments .pop_comment, body.DarkPage .reply_comment_item .comments_data {
-    background: #61616d;
+    background: #373744;
     color: #fff;
 }
 body.DarkPage .delete_comment, body.DarkPage .delete_btn {
@@ -418,7 +418,7 @@ body.DarkPage .game_list_page li a:hover span {
     color: #fff;
 }
 body.DarkPage .add_comment_box button {
-    background: #2b2b35;
+    background: #373744;
 }
 
 body.DarkPage .add_comment_box button:hover {
@@ -429,11 +429,11 @@ body.DarkPage .my_team .create_team {
     background: #2b2b35;
     color: #fff;
 }
-body.DarkPage .users_share_box .shere .three_dots_dropdown {
+body.DarkPage .user_name_disc  .three_dots_dropdown {
     background: #000;
     color: #fff;
 }
-body.DarkPage .users_share_box .shere .three_dots_dropdown button {
+body.DarkPage .user_name_disc .three_dots_dropdown button {
     color: #fff;
 }
 body.DarkPage ul.top_menu .drop_down_bg {
@@ -508,7 +508,7 @@ body.DarkPage ul.top_menu .drop_down_bg.profile_drop_down li:last-child a img {
 }
 body.DarkPage .post_comments .pop_comment select {
     color: #fff;
-    background: #62626e;
+    background: #373744;
     border: 0;
 }
 body.DarkPage .suggested_player .all, body.DarkPage .my_team .mng {
@@ -560,8 +560,8 @@ body.DarkPage .rigs li .lft_prod_det .prod_name {
     color: #62626e;
 }
 body.DarkPage .searchbox input[type="search"] {
-    background: #18171d;
-    border-bottom: 1px solid #18171d;
+    background: #1f2128;
+    border-bottom: 1px solid #1f2128;
 }
 body.DarkPage .add_money input {
     background: #18171d;

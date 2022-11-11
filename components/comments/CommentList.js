@@ -86,12 +86,13 @@ const CommentList = ({ post, user, comments }) => {
                           </a>{' '}
                           <h3>{comment.text}</h3>
                         </div>
+                        <PinnedComments
+                          user={user}
+                          comment={comment}
+                          post={post}
+                        />
                       </div>
-                      <PinnedComments
-                        user={user}
-                        comment={comment}
-                        post={post}
-                      />
+
                       {(post.user?._id === user._id &&
                         comment.user?._id === user._id) ||
                       comment.user?._id === user._id ? null : (
@@ -140,12 +141,13 @@ const CommentList = ({ post, user, comments }) => {
                           </a>{' '}
                           <h3>{comment.text}</h3>
                         </div>
+                        <PinnedComments
+                          user={user}
+                          comment={comment}
+                          post={post}
+                        />
                       </div>
-                      <PinnedComments
-                        user={user}
-                        comment={comment}
-                        post={post}
-                      />
+
                       {(post.user?._id === user._id &&
                         comment.user?._id === user._id) ||
                       comment.user?._id === user._id ? null : (

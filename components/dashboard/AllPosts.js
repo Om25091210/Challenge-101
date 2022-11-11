@@ -114,6 +114,13 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
             <div className="date">
               <p> {Moment(post.createdAt).format('MMMM, DD, YYYY hh:mm A')} </p>
             </div>
+            <div className="three_dots">
+              <a href="#!">
+                {' '}
+                <i className="fa fa-ellipsis-v" aria-hidden="true"></i>
+              </a>
+              <CustomPost post={post} />
+            </div>
           </div>
 
           {post.images.toString().length === 0 ? null : (
@@ -141,7 +148,8 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
             <ReactTooltip id="toolTip1" html={true} />
             <a href="#">
               {' '}
-              <i className="fa fa-eye" aria-hidden="true"></i>{' '}
+              {/* <i className="fa fa-eye" aria-hidden="true"></i> */}
+              <span className="eyes"></span>
               <span>{post.views}</span>{' '}
             </a>{' '}
             <a href="#">
@@ -235,13 +243,6 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
                 {' '}
                 <SharePost postId={post._id} isShared={isShared} />
               </a>
-              <div className="three_dots">
-                <a href="#!">
-                  {' '}
-                  <i className="fa fa-ellipsis-v" aria-hidden="true"></i>
-                </a>
-                <CustomPost post={post} />
-              </div>
             </div>
           </div>
 

@@ -107,6 +107,7 @@ const SearchName = ({ data, type, handleChange, isSearchOnly, user }) => {
           onChange={handleFilter}
           autoComplete="off"
         />
+        <input type="submit" value=""></input>
         {searchText.length !== 0 ? (
           <>
             {filteredData.length > 0 ? (

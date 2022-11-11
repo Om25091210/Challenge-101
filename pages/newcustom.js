@@ -196,6 +196,11 @@ function Customjs() {
       console.log(options);
       return false;
     });
+
+    $('.comment_round_box').hover(function () {
+      $(this).find('.pinned').addClass('ajay');
+    });
+
     // $('#coverPhoto').change(function (e) {
     //   var img = e.target.files[0];
 
