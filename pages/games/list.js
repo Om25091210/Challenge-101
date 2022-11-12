@@ -21,7 +21,7 @@ const Games = ({ user, games, profile }) => {
                 <li key={games._id}>
                   <a href={`/games/${games._id}`}>
                     <img
-                      src={games?.coverphoto}
+                      src={games?.windowImg}
                       className="game_bg_img"
                       alt=""
                     />

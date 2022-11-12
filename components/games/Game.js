@@ -51,10 +51,7 @@ const Game = ({ user, data }) => {
         <div className="profile_box tournament_dp_box games_page">
           <div className="profile_cover_photo">
             {' '}
-            <img
-              src="/assets/media/profile/cover_bg.jpg"
-              alt="cover image"
-            />{' '}
+            <img src={game?.coverphoto} alt="cover image" />{' '}
           </div>
           <div className="profile_dp_box">
             <div className="profile_pic">

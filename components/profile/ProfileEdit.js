@@ -33,7 +33,7 @@ const ProfileEdit = ({ Userdata, user, games, allteams }) => {
     username: user.username,
     bio: profile.bio,
     Online: profile?.online_status || false,
-    team: '',
+    team: profile?.current_team || '',
     role: profile?.headline?.inGameRole,
     b_role: profile?.headline?.business_role,
     startDate: Moment(profile?.headline.startDate).format('yyyy-MM-DD') || '',
@@ -150,6 +150,7 @@ const ProfileEdit = ({ Userdata, user, games, allteams }) => {
   const handleSelectedTeam = (data) => {
     setSearchText(data.name);
     states.team = data._id;
+    setFilteredData([]);
   };
 
   useEffect(() => {
@@ -320,34 +321,38 @@ const ProfileEdit = ({ Userdata, user, games, allteams }) => {
                         autoComplete="off"
                       />
                       {searchText.length !== 0 ? (
-                        <div className="custom-rig-tag">
-                          <div className="rigs_items">
-                            {!filteredData || filteredData.length === 0 ? (
-                              <p>No team found..</p>
-                            ) : (
-                              filteredData.map((data) => (
-                                <div
-                                  onClick={() => handleSelectedTeam(data)}
-                                  key={data._id}
-                                  className="items"
-                                >
-                                  <span>
-                                    <img
-                                      src={data?.imgUrl}
-                                      height={50}
-                                      width={50}
-                                    />
-                                  </span>
-                                  <p>
-                                    {data.name.length > 20
-                                      ? data.name.substring(0, 20) + '...'
-                                      : data.name}
-                                  </p>
-                                </div>
-                              ))
-                            )}
-                          </div>
-                        </div>
+                        <>
+                          {filteredData.length > 0 ? (
+                            <div className="custom-rig-tag">
+                              <div className="rigs_items">
+                                {!filteredData || filteredData.length === 0 ? (
+                                  <p>No team found..</p>
+                                ) : (
+                                  filteredData.map((data) => (
+                                    <div
+                                      onClick={() => handleSelectedTeam(data)}
+                                      key={data._id}
+                                      className="items"
+                                    >
+                                      <span>
+                                        <img
+                                          src={data?.imgUrl}
+                                          height={50}
+                                          width={50}
+                                        />
+                                      </span>
+                                      <p>
+                                        {data.name.length > 20
+                                          ? data.name.substring(0, 20) + '...'
+                                          : data.name}
+                                      </p>
+                                    </div>
+                                  ))
+                                )}
+                              </div>
+                            </div>
+                          ) : null}
+                        </>
                       ) : null}
                       <p>{formErrors.Cteam}</p>
                     </div>
@@ -370,8 +375,8 @@ const ProfileEdit = ({ Userdata, user, games, allteams }) => {
                               </option>
                             ))}
                         </select>
-                        <p>{formErrors.Ggame}</p>
-                        <p>{formErrors.Cgame}</p>
+                        <p>{formErrors?.Ggame}</p>
+                        <p>{formErrors?.Cgame}</p>
                       </div>
                     </>
                   ) : states.profileType === 'Streamer' ? (
