@@ -2329,13 +2329,15 @@ article .social_bar img {
 .liked {
     background-image: url(/assets/media/icons/Likeafter.png);
     background-repeat: no-repeat;
-    width: 30px;
-    height: 30px;
+    width: 28px;
+    height: 28px;
     display: block;
     background-position: 0;
     background-size: 100%;
     margin-right: 10px;
 }
+
+.width50{ width: 50px;}
 
 
 .eyes {
@@ -2456,7 +2458,7 @@ article .social_bar img {
 	float: left;
 	width: 100%;
 	padding: 20px;
-	border-radius: 5px;
+	border-radius: 15px;
 	background: #fff;
 	margin: 0 0 20px 0;
 }

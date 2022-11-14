@@ -43,12 +43,12 @@ const AddLike = ({ postId, isLiked }) => {
             style={{ color: 'red' }}
           ></i> */}
           <span className="liked"></span>
-          <span>Liked</span>
+          <span className="width50">Liked</span>
         </>
       ) : (
         <>
           <span className="likes"></span>
-          <span>Like</span>
+          <span className="width50">Like</span>
         </>
       )}
     </a>

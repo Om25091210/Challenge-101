@@ -1,6 +1,6 @@
 /* ---------------------- Dark Themes----------------------------- */
 
-body.DarkPage textarea:focus, body.DarkPage input[type='text']:focus, select:focus{ box-shadow: inset 0px 0px 2px #b5fe1b !important}
+body.DarkPage textarea:focus, body.DarkPage input[type='text']:focus, select:focus{ box-shadow: inset 0px 0px 0px #b5fe1b !important; }
 
 
 body.DarkPage {
@@ -41,6 +41,7 @@ body.DarkPage .white_bg {
 
 body.DarkPage .write_post textarea {
     color: #fff;
+    border:1px solid #36363c;
 }
 
 
