@@ -120,27 +120,24 @@ const ProfileData = ({ user, Userdata, products, teams }) => {
       <div className="prfoile_tab_data">
         <div className="tab" id="feed">
           <div className="profile_left_post">
-            <div className="">
-              {' '}
-              {Userdata.posts.length !== 0 &&
-                Userdata.posts.map((post) =>
-                  post.user._id !== user._id ? (
-                    <>
-                      {/* <p>You Shared</p> */}
-                      <p>
-                        {user.name} has shared {post.user.name}'s post
-                      </p>
-                      <AllPosts
-                        post={post}
-                        user={user}
-                        profiledata={Userdata.profile}
-                      />
-                    </>
-                  ) : (
-                    <AllPosts post={post} user={user} />
-                  )
-                )}{' '}
-            </div>
+            {' '}
+            {Userdata.posts.length !== 0 &&
+              Userdata.posts.map((post) =>
+                post.user._id !== user._id ? (
+                  <>
+                    <p>
+                      {user.name} has shared {post.user.name}'s post
+                    </p>
+                    <AllPosts
+                      post={post}
+                      user={user}
+                      profiledata={Userdata.profile}
+                    />
+                  </>
+                ) : (
+                  <AllPosts post={post} user={user} />
+                )
+              )}{' '}
           </div>
           <div className="profile_match_details">
             {' '}

@@ -82,7 +82,9 @@ const RecruitEdit = ({ attributeData, profile }) => {
   return (
     <>
       <a href="#!" className="model_show_btn">
-        <button className="btn">Edit</button>
+        <button className="btn">
+          <i class="fa fa-pencil" aria-hidden="true"></i>
+        </button>
       </a>
 
       <div className="common_model_box edit_profile" id="big_poup">

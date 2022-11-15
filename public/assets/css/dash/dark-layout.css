@@ -42,6 +42,7 @@ body.DarkPage .white_bg {
 body.DarkPage .write_post textarea {
     color: #fff;
     border:1px solid #36363c;
+    background: #1f2128;
 }
 
 
@@ -789,7 +790,7 @@ body.DarkPage .common_model_box#product_details .inner_model_box {
     background: #fff;
 }
 body.DarkPage .profile_dp_box .profile_pic {
-    border: 5px solid #20202a;
+    border: 5px solid var(--bgcolor1);
 }
 body.DarkPage .discovery_page .tit span .icon {
     background: #000;
@@ -804,8 +805,11 @@ body.DarkPage .online_icon {
     border: 3px solid #20202a;
 }
 body.DarkPage .stats_card li {
-    background: #2b2b35;
+    background: var(--bgcolor1); position: relative;
 }
+
+body.DarkPage .stats_card li .btn{ position: absolute; right: 10px; top:10px}
+
 body.DarkPage .squads_details {
     background: #2b2b35;
 }
@@ -814,7 +818,4 @@ body.DarkPage .squads_details .table td a {
 }
 body.DarkPage .squads_details .table td {
     border-top: 1px solid #636363;
-}
-body.DarkPage .stats_card li {
-    background: #1c1d2f;
 }

@@ -95,6 +95,7 @@ html {
 :root {
     --yellow: #d2fe24;
 	--bgcolor1:#242731;
+	--br15: 15px;
 
   }
 
@@ -1214,7 +1215,7 @@ ul.top_menu .drop_down_bg.create_pages p {
 }
 
 .write_post {
-	border-radius: 5px;
+	border-radius: var(--br15);
 	padding: 3px 10px;
 	background: #fff;
 	display: flex;
@@ -1261,6 +1262,8 @@ ul.top_menu .drop_down_bg.create_pages p {
 	cursor: pointer;
 	z-index: 10;
 }
+
+.write_post .team_slider .slick-prev:hover, .write_post .team_slider .slick-next:hover{ background: var(--yellow)  !important;}
 
 .write_post .team_slider .slick-prev:before {
 	content: "";
@@ -1481,7 +1484,7 @@ ul.top_menu .drop_down_bg.create_pages p {
 	float: left;
 	width: 100%;
 	background: #fff;
-	border-radius: 5px;
+	border-radius:var(--br15);
 	border: 1px solid #ddd;
 	padding: 20px;
 }
@@ -1553,7 +1556,7 @@ ul.top_menu .drop_down_bg.create_pages p {
 	position: relative;
 	background: #fff;
 	padding: 20px;
-	border-radius: 15px;
+	border-radius:var(--br15);
 	margin-bottom: 20px;
 }
 
@@ -1778,7 +1781,7 @@ ul.top_menu .drop_down_bg.create_pages p {
 
 .user_name_disc .three_dots_dropdown {
 	position: absolute;
-	width: 100px;
+	width: 130px;
 	display: none;
 	z-index: 10;
 	background: #fff;
@@ -1811,6 +1814,7 @@ ul.top_menu .drop_down_bg.create_pages p {
 	border: 0;
 	font-size: 13px;
 	margin-left: 14px;
+	padding-bottom: 5px;
 }
 
 .edit_post,
@@ -2016,7 +2020,7 @@ ul.top_menu .drop_down_bg.create_pages p {
 
 .post_comments {
 	border-radius: 5px;
-	padding: 20px 10px 10px 10px;
+	padding: 20px 10px 10px 0px;
 	background: #f3f6f9;
 	float: left;
 	width: 100%;
@@ -2458,7 +2462,7 @@ article .social_bar img {
 	float: left;
 	width: 100%;
 	padding: 20px;
-	border-radius: 15px;
+	border-radius: var(--br15);
 	background: #fff;
 	margin: 0 0 20px 0;
 }
@@ -3377,12 +3381,11 @@ article .social_bar img {
 	float: left;
 	width: 100%;
 	background: #fff;
-	padding: 20px;
+	padding:10px 20px;
 	margin-top: 10px;
 	display: flex;
 	justify-content: space-between;
 	border-top: 1px solid #ddd;
-	padding-top: 20px;
 }
 
 .bio_box .left_bio {
@@ -3461,7 +3464,7 @@ article .social_bar img {
 	display: flex;
 	align-items: center;
 	margin-right: 10px;
-	padding: 10px;
+	padding: 2px;
 }
 
 .bio_box .games span b {
@@ -3959,10 +3962,15 @@ article .social_bar img {
 
 .games_details {
 	background: #fff;
-	border-radius: 5px;
+	border-radius: var(--br15);
 	padding: 20px;
 	margin-top: 50px;
+	float: left;
+	position: relative;
 }
+.top_btn{ position: absolute;
+    right: 10px;
+    top: 10px;}
 
 .games_details li {
 	float: left;
@@ -6848,7 +6856,7 @@ article .social_bar img {
 	margin-right: 1%;
 	margin-bottom: 30px;
 	background: #ddd;
-	border-radius: 5px;
+	border-radius: var(--br15);
 	height: 380px;
 	overflow: hidden;
 }
@@ -7437,7 +7445,7 @@ article .social_bar img {
 	width: 32%;
 	margin-bottom: 20px;
 	background: #ddd;
-	border-radius: 5px;
+	border-radius: var(--br15);
 	overflow: hidden;
 	margin-right: 1%;
 	height: 400px;
@@ -11426,7 +11434,7 @@ form.common_form .btn {
 }
 
 .tournamnet_new_row .btn {
-	padding: 20px 20px;
+	padding:7px 20px;
 	text-transform: uppercase;
 }
 

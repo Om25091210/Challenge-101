@@ -135,17 +135,19 @@ const GamesDetails = ({ user, Userdata, teams }) => {
           {/* <div className="chart_box">
             <img src="/assets/media/profile/chart.jpg" alt="" />
           </div> */}
-          {attributeData.attributeId === user._id ? (
-            <button className="btn" onClick={handleDelete}>
-              Delete
-            </button>
-          ) : null}
-          {attributeData.attributeId === user._id ? (
-            <RecruitEdit
-              attributeData={attributeData}
-              profile={Userdata?.gender}
-            />
-          ) : null}
+          <div className="top_btn">
+            {attributeData.attributeId === user._id ? (
+              <button className="btn" onClick={handleDelete}>
+                <i class="fa fa-trash-o" aria-hidden="true"></i>
+              </button>
+            ) : null}
+            {attributeData.attributeId === user._id ? (
+              <RecruitEdit
+                attributeData={attributeData}
+                profile={Userdata?.gender}
+              />
+            ) : null}
+          </div>
           {attributeData.attributeId === user._id ? null : (
             <>
               {request ? (
