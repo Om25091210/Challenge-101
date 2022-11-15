@@ -2048,6 +2048,8 @@ ul.top_menu .drop_down_bg.create_pages p {
 	height: 30px;
 }
 
+.post_comments .pop_comment select
+
 .post_comments .pop_comment select:focus {
 	box-shadow: none;
 }
