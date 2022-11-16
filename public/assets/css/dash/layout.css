@@ -1183,12 +1183,12 @@ ul.top_menu .drop_down_bg.create_pages p {
 }
 
 .left_side li:nth-child(8) .iconbg {
-	background-image: url(/assets/media/icons/Dashboard.png) !important;
+	background-image: url(/assets/media/icons/Battlepass.png) !important;
 
 }
 
 .left_side li:nth-child(8):hover .iconbg, .left_side li:nth-child(8).active .iconbg {
-	background-image: url(/assets/media/icons/Dashboard-b.png) !important;
+	background-image: url(/assets/media/icons/Battlepass-b.png) !important;
 
 }
 

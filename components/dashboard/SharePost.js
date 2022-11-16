@@ -43,12 +43,12 @@ const Post_share = ({ postId, isShared }) => {
     <a onClick={handleShare}>
       {share ? (
         <>
-          <span className="shares"></span>
+          <span className="shared"></span>
           <span>Shared</span>
         </>
       ) : (
         <>
-          <span className="shared"></span>
+          <span className="shares"></span>
           <span>Share</span>
         </>
       )}
