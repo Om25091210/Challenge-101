@@ -20,7 +20,10 @@ const Job = ({ data, user, profile }) => {
 
             <div>
               {data.experience && data.experience > 0 ? (
-                <p>EXPERIENCE: {data?.experience} Year(s) </p>
+                <p>
+                  EXPERIENCE: {data?.experience}{' '}
+                  {data?.experience === 1 ? 'Year' : 'Years'}{' '}
+                </p>
               ) : (
                 <p>EXPERIENCE: -- </p>
               )}

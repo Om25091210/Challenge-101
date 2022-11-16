@@ -72,7 +72,7 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
                   post.post_type === 'Tournament' ||
                   post.post_type === 'Brand' ? (
                     <a
-                      href={`/${post.post_type.toLowerCase()}/${
+                      href={`/${post.post_type === 'Team' ? 'team' : 'tour'}/${
                         post.post_type === 'Team'
                           ? post?.teamId
                           : post?.username

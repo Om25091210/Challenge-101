@@ -186,14 +186,14 @@ export const PersonaHelper = (
         break;
 
       default:
-        username = user.name;
-        profilepic = user.profilePicUrl;
+        username = username;
+        profilepic = profilepic;
         postType = 'User';
         break;
     }
   } else if (count === -1) {
-    username = user.name;
-    profilepic = user.profilePicUrl;
+    username = username;
+    profilepic = profilepic;
     postType = 'User';
   }
 
