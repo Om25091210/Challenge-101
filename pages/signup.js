@@ -442,14 +442,56 @@ const Signup = ({ games, avatars }) => {
                             className="d-flex align-items-center mb-3"
                             data-kt-password-meter-control="highlight"
                           >
-                            <div className="flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
-                            <div className="flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
-                            <div className="flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
-                            <div className="flex-grow-1 bg-secondary bg-active-success rounded h-5px"></div>
+                            {mediumRegex.test(password) ? (
+                              <>
+                                {' '}
+                                {strongRegex.test(password) ? (
+                                  <>
+                                    <div className=" active flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
+                                    <div className=" active flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
+                                    <div className=" active flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
+                                    <div className=" active flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
+                                    <div className=" active flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
+                                  </>
+                                ) : (
+                                  <>
+                                    {' '}
+                                    {password.length === 0 ? null : (
+                                      <>
+                                        <div className=" active flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
+                                        <div className=" active flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
+                                        <div className=" active flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
+                                        <div className="  flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
+                                        <div className="  flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
+                                      </>
+                                    )}
+                                  </>
+                                )}
+                              </>
+                            ) : (
+                              <>
+                                {password.length > 0 && password.length < 8 ? (
+                                  <>
+                                    <div className=" active flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
+                                    <div className="  flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
+                                    <div className="  flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
+                                    <div className="  flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
+                                    <div className="  flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
+                                  </>
+                                ) : (
+                                  <>
+                                    <div className="  flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
+                                    <div className="  flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
+                                    <div className="  flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
+                                    <div className="  flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
+                                    <div className="  flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
+                                  </>
+                                )}
+                              </>
+                            )}
                           </div>
                         </div>
                         <p>
-                          Password Strength:
                           {mediumRegex.test(password) ? (
                             <>
                               {' '}
