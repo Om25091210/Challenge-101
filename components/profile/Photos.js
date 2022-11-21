@@ -72,7 +72,6 @@ const Photos = ({ Userdata, user, photosData }) => {
                 <h2>
                   {imgg.title}
                   <span className="update">
-                    Updated:{' '}
                     {Moment(imgg.createdAt).format('MMMM, DD, YYYY hh:mm A')}
                   </span>
                 </h2>

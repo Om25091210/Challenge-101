@@ -509,10 +509,14 @@ const Signup = ({ games, avatars }) => {
                             </>
                           )}
                         </p>
-                        <div className="text-muted">
+                        <div
+                          className="text-muted"
+                          style={{ fontSize: '10px' }}
+                        >
                           {' '}
-                          Use 8 or more characters with a mix of letters,
-                          numbers &amp; symbols.{' '}
+                          Use 8 or more characters with a mix of atleast 1
+                          Uppercase,1 Lowercase, numbers &amp; and symbols[
+                          @$!%*# ].{' '}
                         </div>
                       </div>
                       <div className="fv-row mb-10">
@@ -545,7 +549,7 @@ const Signup = ({ games, avatars }) => {
                           Continue
                         </button>
                       </div>
-                      <div className="d-flex align-items-center mt-5 mb-5">
+                      {/* <div className="d-flex align-items-center mt-5 mb-5">
                         <div className="border-bottom border-gray-300 mw-50 w-100"></div>
                         <span className="fw-bold text-gray-400 fs-7 mx-2">
                           OR
@@ -575,7 +579,7 @@ const Signup = ({ games, avatars }) => {
                           {' '}
                           <img src="https://img.icons8.com/fluency/48/000000/discord.png" />
                         </a>
-                      </div>
+                      </div> */}
 
                       <div className="mb-10 text-center">
                         <div className="text-gray-400 already">

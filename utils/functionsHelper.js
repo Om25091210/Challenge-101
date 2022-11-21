@@ -164,7 +164,8 @@ export const PersonaHelper = (
   personas,
   username,
   profilepic,
-  postType
+  postType,
+  teamId
 ) => {
   if (count > -1) {
     let x = personas.personas[count];
@@ -172,6 +173,7 @@ export const PersonaHelper = (
       case 'team':
         username = x.teamId?.name;
         profilepic = x.teamId?.imgUrl;
+        teamId = x.teamId?._id;
         postType = 'Team';
         break;
       case 'tournament':
@@ -195,7 +197,8 @@ export const PersonaHelper = (
     username = username;
     profilepic = profilepic;
     postType = 'User';
+    teamId = '';
   }
 
-  return { username, profilepic, postType };
+  return { username, profilepic, postType, teamId };
 };

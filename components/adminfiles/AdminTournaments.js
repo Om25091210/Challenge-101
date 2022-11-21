@@ -1,3 +1,4 @@
+import moment from 'moment';
 import React from 'react';
 import RoomDetails from './RoomDetails';
 
@@ -27,8 +28,13 @@ const AdminTournaments = ({ tournaments }) => {
               <div className="cols_box">
                 <div className="cols">{result._id}</div>
                 <div className="cols">{result.name}</div>
-                <div className="cols">{result.startDate} </div>
-                <div className="cols">{result.endDate}</div>
+                <div className="cols">
+                  {moment(result.startDate).format('DD/MM/YYYY')}{' '}
+                  {result.startTime}{' '}
+                </div>
+                <div className="cols">
+                  {moment(result.endDate).format('DD/MM/YYYY')} {result.endTime}
+                </div>
                 <div className="cols">Teams</div>
                 <div className="cols">
                   {result.platform ? result.platform : '---'}

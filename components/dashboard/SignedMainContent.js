@@ -27,6 +27,8 @@ const SignedMainContent = ({ posts, user }) => {
   const [profiledata, setProfileData] = useState([]);
   const [topmenu, setTopmenu] = useState(true);
 
+  let teamId = '';
+
   const shareUrl = `${process.env.NEXT_PUBLIC_ESPORTS_API_BASE_URL}/signup`;
   useEffect(() => {
     axios
@@ -56,7 +58,8 @@ const SignedMainContent = ({ posts, user }) => {
       personas,
       username,
       profilepic,
-      postType
+      postType,
+      teamId
     );
 
     const formdata = new FormData();
@@ -72,6 +75,7 @@ const SignedMainContent = ({ posts, user }) => {
     formdata.append('postType', result.postType);
     formdata.append('gameTagName', gameTag.name);
     formdata.append('gameTagId', gameTag.gameId);
+    formdata.append('teamId', result.teamId);
 
     //    for (const key of Object.keys(images)) {
     //      formdata.append('images', images[key]);

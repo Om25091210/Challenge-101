@@ -236,15 +236,15 @@ const SignIn = () => {
                     </span>
                   </button>
 
-                  <div className="d-flex align-items-center mt-5 mb-5">
+                  {/* <div className="d-flex align-items-center mt-5 mb-5">
                     <div className="border-bottom border-gray-300 mw-50 w-100"></div>
                     <span className="fw-bold text-gray-400 fs-7 mx-2">OR</span>
                     <div className="border-bottom border-gray-300 mw-50 w-100"></div>
-                  </div>
+                  </div> */}
 
-                  <h4>Log in with</h4>
+                  {/* <h4>Log in with</h4> */}
 
-                  <div className="singup_icons">
+                  {/* <div className="singup_icons">
                     <a href="#">
                       {' '}
                       <i className="fa fa-google" aria-hidden="true"></i>
@@ -264,7 +264,7 @@ const SignIn = () => {
                       {' '}
                       <img src="https://img.icons8.com/fluency/48/000000/discord.png" />
                     </a>
-                  </div>
+                  </div> */}
 
                   <div className="mb-10 text-center">
                     <div className="text-gray-400 already">

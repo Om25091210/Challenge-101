@@ -109,13 +109,13 @@ const ProfileEdit = ({ Userdata, user, games, allteams }) => {
     e.preventDefault();
     if (Object.keys(formErrors).length === 0) {
       try {
-        axios.put(`${baseURL}/api/profile/type/${profile?._id}`, states);
+        await axios.put(`${baseURL}/api/profile/type/${profile?._id}`, states);
         toast.success('Profile Updated');
         $('a.model_close').parent().removeClass('show_model');
+        router.push(`/dashboard`);
       } catch (err) {
         toast.error(err.response?.data?.msg || 'Please recheck your inputs');
       }
-      refreshData();
     }
   };
 
@@ -305,7 +305,7 @@ const ProfileEdit = ({ Userdata, user, games, allteams }) => {
                               </option>
                             ))}
                         </select>
-                        <p>{formErrors.team}</p>
+                        {/* <p>{formErrors.team}</p> */}
                       </div>
                     </>
                   ) : states.profileType === 'Coach' ? (
@@ -354,7 +354,7 @@ const ProfileEdit = ({ Userdata, user, games, allteams }) => {
                           ) : null}
                         </>
                       ) : null}
-                      <p>{formErrors.Cteam}</p>
+                      {/* <p>{formErrors.Cteam}</p> */}
                     </div>
                   ) : null}
                   {states.profileType === 'Gamer' ||
@@ -441,7 +441,7 @@ const ProfileEdit = ({ Userdata, user, games, allteams }) => {
                               <option value={role}>{role}</option>
                             ))}
                         </select>
-                        <p>{formErrors.Grole}</p>
+                        {/* <p>{formErrors.Grole}</p> */}
                       </div>
                     </>
                   ) : states.profileType === 'Business' ? (
@@ -461,9 +461,7 @@ const ProfileEdit = ({ Userdata, user, games, allteams }) => {
                         <p>{formErrors.b_role}</p>
                       </div>
                     </>
-                  ) : (
-                    <></>
-                  )}
+                  ) : null}
 
                   <div className="form-group">
                     <input

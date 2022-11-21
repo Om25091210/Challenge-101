@@ -84,13 +84,16 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
                     <>
                       <a href={`/user/${post.user?.username}`}>
                         <h4>{post.username}</h4>
+                        <p>@{post.user?.username}</p>
                       </a>
                     </>
                   )}
                 </>
               ) : (
                 <h4>
-                  <a href={`/user/${post.user?.username}`}>{post.username} </a>
+                  <a href={`/user/${post.user?.username}`}>
+                    {post.username} <p>@{post.user?.username}</p>
+                  </a>
                   is playing
                   <a href={`/games/${post.game_tag[0]?.gameId}`}>
                     {' '}

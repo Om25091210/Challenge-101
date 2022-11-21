@@ -170,25 +170,25 @@ export const profileformvalidate = (values) => {
     errors.startDate = 'Start Date Required';
   }
 
-  if (values.profileType === 'Gamer' && values.team.length === 0) {
-    errors.team = 'Team is Required';
-  }
+  // if (values.profileType === 'Gamer' && values.team.length === 0) {
+  //   errors.team = 'Team is Required';
+  // }
 
-  if (values.profileType === 'Coach' && values.team.length === 0) {
-    errors.Cteam = 'Team is Required';
-  }
+  // if (values.profileType === 'Coach' && values.team.length === 0) {
+  //   errors.Cteam = 'Team is Required';
+  // }
 
-  if (values.profileType === 'Gamer' && values.role.length === 0) {
-    errors.Grole = 'Role Required';
-  }
+  // if (values.profileType === 'Gamer' && values.role.length === 0) {
+  //   errors.Grole = 'Role Required';
+  // }
 
-  if (values.profileType === 'Gamer' && values.game.length === 0) {
-    errors.Ggame = 'Game Required';
-  }
+  // if (values.profileType === 'Gamer' && values.game.length === 0) {
+  //   errors.Ggame = 'Game Required';
+  // }
 
-  if (values.profileType === 'Coach' && values.game.length === 0) {
-    errors.Cgame = 'Game Required';
-  }
+  // if (values.profileType === 'Coach' && values.game.length === 0) {
+  //   errors.Cgame = 'Game Required';
+  // }
 
   if (values.profileType === 'Streamer' && values.game.length === 0) {
     errors.Sgame = 'Game Required';
@@ -220,7 +220,7 @@ export const teamEditFormValidate = (values) => {
   const errors = {};
   if (values.teamname.length === 0) {
     errors.teamName = 'Team Required';
-  } else if (values.teamName.length > 30) {
+  } else if (values.teamname.length > 30) {
     errors.teamName = 'Team Name cannot exceed 30 characters';
   }
 
