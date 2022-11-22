@@ -71,10 +71,13 @@ export const teamformvalidate = (values) => {
   if (values.name.length === 0) {
     errors.name = 'Team Name is requried';
   }
+  if (values.name.length < 7) {
+    errors.name = 'Team Should be 8 characters long.';
+  }
   if (!year_regex.test(values.founded)) {
     errors.founded = 'Invalid Year Format';
   }
-  if (!values.region) {
+  if (values.region === '') {
     errors.region = 'Region is required';
   }
   if (!values.description) {

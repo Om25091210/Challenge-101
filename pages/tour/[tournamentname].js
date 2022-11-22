@@ -138,7 +138,7 @@ const TournamentDetail = ({
                         <span className="game_name">
                           {' '}
                           {data.tournament
-                            ? data.tournament._id
+                            ? data.tournament.name
                             : 'Not Defined'}{' '}
                         </span>
                         <div className="flag"></div>

@@ -61,9 +61,6 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
   return (
     <div key={post._id}>
       <div className="post">
-        <p className="user_shared">
-          {user.name} has shared {post.user.name}'s post
-        </p>
         <div className="heads">
           <div className="user">
             <img src={post?.profilepic} alt="" />
@@ -87,7 +84,7 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
                   ) : (
                     <>
                       <a href={`/user/${post.user?.username}`}>
-                        <h4>{post.username}</h4>
+                        <h4>{post.user?.name}</h4>
                         <p>@{post.user?.username}</p>
                       </a>
                     </>
@@ -96,7 +93,7 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
               ) : (
                 <h4>
                   <a href={`/user/${post.user?.username}`}>
-                    {post.username}
+                    {post.user?.name}
                     {/* <p>@{post.user?.username}</p> */}
                   </a>
                   is playing
@@ -106,15 +103,27 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
                   </a>
                 </h4>
               )}
-              {post?.post_type === 'Team' ? (
-                <button>
-                  <Follow username={post.username} type="Team" user={user} />
-                </button>
-              ) : post?.post_type === 'Tournament' ? (
+              {post?.post_type === 'team' ? (
                 <button>
                   <Follow
                     username={post.username}
-                    type="Tournament"
+                    type={post.post_type}
+                    user={user}
+                  />
+                </button>
+              ) : post?.post_type === 'tour' ? (
+                <button>
+                  <Follow
+                    username={post.username}
+                    type={post.post_type}
+                    user={user}
+                  />
+                </button>
+              ) : post?.post_type === 'brand' ? (
+                <button>
+                  <Follow
+                    username={post.username}
+                    type={post.post_type}
                     user={user}
                   />
                 </button>

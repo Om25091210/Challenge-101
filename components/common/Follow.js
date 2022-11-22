@@ -4,6 +4,7 @@ import Cookies from 'js-cookie';
 import { useState } from 'react';
 import axios from 'axios';
 import { QueryClient, QueryClientProvider, useMutation } from 'react-query';
+import { toast } from 'react-toastify';
 
 const queryClient = new QueryClient();
 
@@ -46,6 +47,7 @@ const PostFollow = ({ type, username, user }) => {
         Authorization: Cookies.get('token')
       }
     });
+    toast.success(`Started Following ${username}`);
   };
 
   const { mutate } = useMutation(addingfollow);

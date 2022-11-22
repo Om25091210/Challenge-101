@@ -403,10 +403,9 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
             <p> {Userdata.profile ? Userdata.profile.bio : ''} </p>
 
             <div className="prof_games">
-              {isLoggedInUser ? (
-                <div className="games">
-                  <h3>GAMES</h3>
-
+              <div className="games">
+                <h3>GAMES</h3>
+                {Userdata.profile.playergames.length !== 0 ? (
                   <div className="tit">
                     {Userdata.profile.playergames.map((game) => (
                       <>
@@ -420,8 +419,10 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
                       </>
                     ))}
                   </div>
-                </div>
-              ) : null}
+                ) : (
+                  <p>No Games yet.</p>
+                )}
+              </div>
             </div>
           </div>
 

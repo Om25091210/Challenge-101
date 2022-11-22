@@ -53,7 +53,7 @@ const ClaimCard = ({ data }) => {
                       : item.teamId
                       ? `/team/${item.teamId._id}`
                       : item.tournamentId
-                      ? `/tournament/${item.tournamentId._id}`
+                      ? `/tour/${item.tournamentId.name}`
                       : null
                   }
                 >
