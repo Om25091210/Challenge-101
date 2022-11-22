@@ -125,9 +125,11 @@ const ProfileEdit = ({ Userdata, user, games, allteams }) => {
       return tem.team?._id === parseInt(states.team);
     });
 
-  const addgames = games.filter(
-    ({ _id }) => !profile.playergames.some((x) => x.game._id == _id)
-  );
+  const addgames =
+    games &&
+    games.filter(
+      ({ _id }) => !profile.playergames.some((x) => x.game?._id == _id)
+    );
 
   const [filteredData, setFilteredData] = useState([]);
   const [searchText, setSearchText] = useState('');
@@ -498,8 +500,8 @@ const ProfileEdit = ({ Userdata, user, games, allteams }) => {
                               <span>
                                 {' '}
                                 <img
-                                  src={game.game.imgUrl}
-                                  alt={game.game.name}
+                                  src={game.game?.imgUrl}
+                                  alt={game.game?.name}
                                 />
                               </span>
                             </>

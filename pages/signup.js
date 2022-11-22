@@ -103,7 +103,7 @@ const Signup = ({ games, avatars }) => {
 
       try {
         var avatarImage = avatar?.image;
-        var gameId = selectedGame._id;
+        var gameId = selectedGame ? selectedGame._id : '';
         const formdata = new FormData();
 
         formdata.append('name', name);
@@ -179,11 +179,15 @@ const Signup = ({ games, avatars }) => {
   useEffect(() => {
     const isUser = Object.values({
       avatarImage,
-      gameId,
+      // gameId,
       country: country
     }).every((item) => Boolean(item));
     isUser ? setFinishSubmit(false) : setFinishSubmit(true);
-  }, [country, avatarImage, gameId]);
+  }, [
+    country,
+    avatarImage
+    // , gameId
+  ]);
 
   useEffect(() => {
     username === '' ? setUsernameAvailable(false) : checkUsername();
@@ -656,7 +660,7 @@ const Signup = ({ games, avatars }) => {
                     </div>
 
                     <div className="pick_game">
-                      <h2>Games</h2>
+                      <h2>Games (Optional) </h2>
                       <ul>
                         {games &&
                           games.slice(0, 4).map((game) => (
@@ -742,6 +746,7 @@ const Signup = ({ games, avatars }) => {
                     <div className="form-group">
                       <h2>Country</h2>
                       <select name="country" onChange={changeHandler}>
+                        <option value="">Select Country...</option>
                         {options.map((opt) => (
                           <>
                             <option value={opt.value}>{opt.label}</option>

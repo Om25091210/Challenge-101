@@ -6,9 +6,9 @@ import cookie from 'js-cookie';
 
 const ProfileGameStat = ({ user, games }) => {
   const [stat, setStat] = useState(null);
-  const [selectedGame, setSelectedGame] = useState({});
+  const [selectedGame, setSelectedGame] = useState(null);
 
-  const handleSelectGame = (e) => {
+  const handleSelectGame = async (e) => {
     setSelectedGame(e.target.value);
     var game = games.find((val) => val.userign === selectedGame);
     var qstat = 'totals';
@@ -28,6 +28,7 @@ const ProfileGameStat = ({ user, games }) => {
         {games?.length === 0 ? (
           <div>No Games for {user.name}</div>
         ) : (
+          games &&
           games?.map((item, index) => (
             <>
               <div
@@ -37,11 +38,12 @@ const ProfileGameStat = ({ user, games }) => {
               >
                 <select name="selectedGame" onClick={handleSelectGame}>
                   <option value="">Select Your IGN...</option>
-                  {games.map((game, index) => (
-                    <option value={game.userign}>
-                      {game.game.name}-{game.userign}
-                    </option>
-                  ))}
+                  {games &&
+                    games.map((game, index) => (
+                      <option value={game.player}>
+                        {game.game?.name}-{game.userign}
+                      </option>
+                    ))}
                 </select>
 
                 <ul>
