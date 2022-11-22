@@ -68,18 +68,6 @@ const TournamentDetail = ({
       );
     });
 
-    const refreshData = () => {
-      router.replace(router.asPath);
-    };
-
-    function handleChangeSocial(e) {
-      setSociallinks({ ...sociallinks, [e.target.name]: e.target.value });
-    }
-
-    function handleChangeWebsite(e) {
-      setWebsitelink({ ...websitelink, [e.target.name]: e.target.value });
-    }
-
     const handleDeleteSubmit = async (e) => {
       e.preventDefault();
       axios.delete(
@@ -105,6 +93,15 @@ const TournamentDetail = ({
       .slice(0, 3);
     let daysLeft = Math.floor(Number(x));
 
+    const handleSetMatches = async () => {
+      try {
+        axios
+          .get(`${baseURL}/api/tournaments/matches/${data.tournament._id}`)
+          .then((res) => console.log(res.data));
+      } catch (err) {
+        toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+      }
+    };
     return (
       <>
         <MetaDash />
@@ -141,7 +138,7 @@ const TournamentDetail = ({
                         <span className="game_name">
                           {' '}
                           {data.tournament
-                            ? data.tournament.name
+                            ? data.tournament._id
                             : 'Not Defined'}{' '}
                         </span>
                         <div className="flag"></div>
@@ -704,29 +701,35 @@ const TournamentDetail = ({
                 <TournamentSeries user={user} tournament={data.tournament} />
               </div>
               <div className="tab hide" id="points">
-                <button className="btn">Start Grouping</button>
+                <button className="btn" onClick={() => handleSetMatches()}>
+                  Set Matches
+                </button>
                 <div className="points_table">
                   <div className="groupds_box">
                     {data.tournament.playType === 'SOLO' ? (
                       <>
                         <TournamentGroups
                           group={data.tourGroups[0]}
-                          type="participants"
+                          playType={data.tournament.playType}
+                          tournamentType={data.tournament.tournamentType}
                         />
                         <TournamentGroups
                           group={data.tourGroups[1]}
-                          type="participants"
+                          playType={data.tournament.playType}
+                          tournamentType={data.tournament.tournamentType}
                         />
                       </>
                     ) : (
                       <>
                         <TournamentGroups
                           group={data.tourGroups[0]}
-                          type="teams"
+                          playType={data.tournament.playType}
+                          tournamentType={data.tournament.tournamentType}
                         />
                         <TournamentGroups
                           group={data.tourGroups[1]}
-                          type="teams"
+                          playType={data.tournament.playType}
+                          tournamentType={data.tournament.tournamentType}
                         />
                       </>
                     )}

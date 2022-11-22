@@ -12,7 +12,8 @@ const TournamentFilters = ({
   showfavs,
   profile,
   searchData,
-  user
+  user,
+  teams
 }) => {
   const [data, setData] = useState(null);
 
@@ -292,6 +293,7 @@ const TournamentFilters = ({
         profile={profile}
         searchData={searchData}
         user={user}
+        teams={teams}
       />
     </>
   );

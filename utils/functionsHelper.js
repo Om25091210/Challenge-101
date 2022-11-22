@@ -174,29 +174,29 @@ export const PersonaHelper = (
         username = x.teamId?.name;
         profilepic = x.teamId?.imgUrl;
         teamId = x.teamId?._id;
-        postType = 'Team';
+        postType = 'team';
         break;
       case 'tournament':
         username = x.tournamentId?.name;
         profilepic = x.tournamentId?.imgUrl;
-        postType = 'Tournament';
+        postType = 'tour';
         break;
       case 'brand':
         username = x.brandId?.name;
         profilepic = x.brandId?.logoUrl;
-        postType = 'Brand';
+        postType = 'brand';
         break;
 
       default:
         username = username;
         profilepic = profilepic;
-        postType = 'User';
+        postType = 'user';
         break;
     }
   } else if (count === -1) {
     username = username;
     profilepic = profilepic;
-    postType = 'User';
+    postType = 'user';
     teamId = '';
   }
 
