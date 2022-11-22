@@ -128,7 +128,7 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
               ) : null}
             </div>
             <div className="date">
-              <p> {Moment(post.createdAt).format('MMMM, DD, YYYY hh:mm A')} </p>
+              <p> {Moment(post.createdAt).format('MMM, DD, YYYY hh:mm A')} </p>
             </div>
             <div className="three_dots">
               <a href="#!">

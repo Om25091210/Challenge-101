@@ -17,6 +17,15 @@ function Customjs() {
     // $('.tab_data_scroll').mCustomScrollbar({
     //   autoHideScrollbar: true
     // });
+    $(window).scroll(function () {
+      var scroll = $(window).scrollTop();
+
+      if (scroll >= 200) {
+        $('.right_side').addClass('fixed');
+      } else {
+        $('.right_side').removeClass('fixed');
+      }
+    });
 
     /* ----------- create post slider ----------------- */
 

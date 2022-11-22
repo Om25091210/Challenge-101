@@ -46,7 +46,7 @@ const RightSection = ({ user, suggestedplayers, teams, profile }) => {
   }, []);
 
   return (
-    <div className="right_side overhight">
+    <div className="right_side">
       {/* <RecentActivity user={user} /> */}
 
       <div className="recent_activity">
