@@ -6,7 +6,7 @@ import TournamentRows from '@components/tournament/TournamentRows';
 import AllScript from './AllScript';
 import baseURL from '@utils/baseURL';
 
-const Tournament = ({ user, games, profile }) => {
+const Tournament = ({ user, games, profile, teams }) => {
   const [selectedGame, setSelectedGame] = useState(null);
 
   const handleSelectGame = async (obj) => {
@@ -102,6 +102,7 @@ const Tournament = ({ user, games, profile }) => {
               user={user}
               profile={profile}
               selectedGame={selectedGame}
+              teams={teams}
             />
           </div>
         </div>

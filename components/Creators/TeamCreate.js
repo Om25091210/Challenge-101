@@ -149,7 +149,12 @@ const TeamCreate = ({ isClaim, user }) => {
   }
 
   const handlemultiplegames = (game) => {
-    selectedGame.push(game._id);
+    let isGamePresent = selectedGame.indexOf(game._id);
+    if (isGamePresent < 0) {
+      selectedGame.push(game._id);
+    } else {
+      selectedGame.splice(isGamePresent, 1);
+    }
   };
 
   return (
@@ -225,13 +230,11 @@ const TeamCreate = ({ isClaim, user }) => {
                       <ul className="game_search_result">
                         {games &&
                           games.map((game) => (
-                            <li>
-                              <a
-                                href="#!"
-                                onClick={() => handlemultiplegames(game)}
-                              >
-                                <img src={game.imgUrl} alt={game.name} />
-                              </a>
+                            <li
+                              style={{ cursor: 'pointer' }}
+                              onClick={() => handlemultiplegames(game)}
+                            >
+                              <img src={game.imgUrl} alt={game.name} />
                             </li>
                           ))}
                       </ul>

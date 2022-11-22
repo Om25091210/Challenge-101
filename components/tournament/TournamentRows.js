@@ -3,7 +3,7 @@ import TournamentFilters from './TournamentFilters';
 import { searchTournaments } from '@utils/functionsHelper';
 import { toast } from 'react-toastify';
 
-const TournamentRows = ({ user, selectedGame, profile }) => {
+const TournamentRows = ({ user, selectedGame, profile, teams }) => {
   let myState = {};
 
   const [selectedFilters, setSelectedFilters] = useState([]);
@@ -99,6 +99,7 @@ const TournamentRows = ({ user, selectedGame, profile }) => {
           profile={profile}
           searchData={searchData}
           user={user}
+          teams={teams}
         />
       </div>
     </>

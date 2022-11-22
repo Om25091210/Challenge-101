@@ -9,10 +9,11 @@ import TeamCreate from '../Creators/TeamCreate';
 import ClaimCard from './ClaimCard';
 import baseURL from '../../utils/baseURL';
 import ChallengesDisplay from '../challenges/ChallengesDisplay';
+import BracketCard from './BracketCard';
 
 const SupportAdmin = ({ user, data, profile }) => {
   const [show, setShow] = useState(false);
-  const [type, setType] = useState();
+  const [type, setType] = useState('TEAMS');
   let [tabData, setTabData] = useState([]);
 
   const handleShow = (type) => {
@@ -122,6 +123,15 @@ const SupportAdmin = ({ user, data, profile }) => {
           </a>
         </li>
         <li>
+          <a
+            href="#!"
+            rel="TournamentBracket"
+            onClick={() => handleTabs('TOUR BRACKET')}
+          >
+            Tour Bracket Management
+          </a>
+        </li>
+        <li>
           <a href="#!" rel="Challenges">
             Wagers
           </a>
@@ -148,6 +158,13 @@ const SupportAdmin = ({ user, data, profile }) => {
           <div className="white_bg challenge_card_box">
             <ul className="challenge_card">
               <ClaimCard data={tabData} user={user} />
+            </ul>
+          </div>
+        </div>
+        <div className="tab" id="TournamentBracket">
+          <div className="white_bg challenge_card_box">
+            <ul className="challenge_card">
+              <BracketCard tournaments={tabData} user={user} />
             </ul>
           </div>
         </div>

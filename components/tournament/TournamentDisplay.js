@@ -15,7 +15,8 @@ const TournamentDisplay = ({
   profile,
   showfavs,
   searchData,
-  user
+  user,
+  teams
 }) => {
   const [favouriteTournaments, setfavouriteTournaments] = useState([]);
 
@@ -96,7 +97,11 @@ const TournamentDisplay = ({
                   </div>
 
                   <div className="reg">
-                    <Tournament_Reg tournament={result} user={user} />
+                    <Tournament_Reg
+                      tournament={result}
+                      user={user}
+                      teams={teams}
+                    />
                   </div>
                 </div>
                 <div className="bottom_game">
@@ -257,6 +262,7 @@ const TournamentDisplay = ({
                       tournament={result.tournament}
                       user={user}
                       profile={profile}
+                      teams={teams}
                     />
                   </div>
                 </div>
@@ -421,6 +427,7 @@ const TournamentDisplay = ({
                       tournament={result.tournament}
                       user={user}
                       profile={profile}
+                      teams={teams}
                     />
                   </div>
                 </div>

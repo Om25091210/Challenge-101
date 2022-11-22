@@ -2,10 +2,8 @@ import React, { useEffect, useState } from 'react';
 import baseURL from '@utils/baseURL';
 import { toast } from 'react-toastify';
 import axios from 'axios';
-import { useRouter } from 'next/router';
 
-const Tournament_Reg = ({ user, tournament, profile, groups, teams }) => {
-  const router = useRouter();
+const Tournament_Reg = ({ user, tournament, profile, teams }) => {
   const [isGamePlayer, setIsGamePlayer] = useState();
   const [trigger, setTrigger] = useState(true);
   const [selectedTeam, setSelectedTeam] = useState();

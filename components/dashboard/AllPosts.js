@@ -10,6 +10,7 @@ import axios from 'axios';
 import SharePost from './SharePost';
 import TeamFollow from '../team/TeamFollow';
 import { toast } from 'react-toastify';
+import Follow from '../common/Follow';
 
 const AllPosts = ({ post, user, profiledata, type, team }) => {
   const [comments, setComments] = useState([]);
@@ -71,12 +72,12 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
             <div className="title_follow">
               {post.game_tag[0]?.gameId === null ? (
                 <>
-                  {post.post_type === 'Team' ||
-                  post.post_type === 'Tournament' ||
-                  post.post_type === 'Brand' ? (
+                  {post.post_type === 'team' ||
+                  post.post_type === 'tour' ||
+                  post.post_type === 'brand' ? (
                     <a
-                      href={`/${post.post_type === 'Team' ? 'team' : 'tour'}/${
-                        post.post_type === 'Team'
+                      href={`/${post.post_type}/${
+                        post.post_type === 'team'
                           ? post?.teamId
                           : post?.username
                       }`}
@@ -87,13 +88,17 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
                     <>
                       <a href={`/user/${post.user?.username}`}>
                         <h4>{post.username}</h4>
+                        <p>@{post.user?.username}</p>
                       </a>
                     </>
                   )}
                 </>
               ) : (
                 <h4>
-                  <a href={`/user/${post.user?.username}`}>{post.username} </a>
+                  <a href={`/user/${post.user?.username}`}>
+                    {post.username}
+                    {/* <p>@{post.user?.username}</p> */}
+                  </a>
                   is playing
                   <a href={`/games/${post.game_tag[0]?.gameId}`}>
                     {' '}
@@ -101,9 +106,17 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
                   </a>
                 </h4>
               )}
-              {type === 'TeamPost' ? (
+              {post?.post_type === 'Team' ? (
                 <button>
-                  <TeamFollow team={team} user={user} />
+                  <Follow username={post.username} type="Team" user={user} />
+                </button>
+              ) : post?.post_type === 'Tournament' ? (
+                <button>
+                  <Follow
+                    username={post.username}
+                    type="Tournament"
+                    user={user}
+                  />
                 </button>
               ) : isLoggedInUser === false ? (
                 <button
