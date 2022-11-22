@@ -60,6 +60,9 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
   return (
     <div key={post._id}>
       <div className="post">
+        <p className="user_shared">
+          {user.name} has shared {post.user.name}'s post
+        </p>
         <div className="heads">
           <div className="user">
             <img src={post?.profilepic} alt="" />

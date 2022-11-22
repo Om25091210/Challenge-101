@@ -186,7 +186,7 @@ display: flex; align-items: center; justify-content: center; position: relative;
 }
 .style_file_upload1 .inputfile + label {
     margin-left: 0;
-    width: 63px;
+    width: 84px;
     text-align: center;
     align-items: center;
     justify-content: center;

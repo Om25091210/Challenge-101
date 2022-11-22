@@ -1560,6 +1560,17 @@ ul.top_menu .drop_down_bg.create_pages p {
 	margin-bottom: 20px;
 }
 
+.post .user_shared {
+    position: relative;
+    top: 4px;
+    right: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    float: right;
+    text-align: right;
+    color: #f6e52e;
+}
+
 .post .heads {
 	display: flex;
 	width: 100%;
@@ -1956,6 +1967,8 @@ ul.top_menu .drop_down_bg.create_pages p {
 }
 
 .profile_left_post .add_comment_box .add_comments textarea{ width: 90%;}
+.profile_left_post  .post .title_follow{ width: 65%;}
+.profile_left_post .post .heads h4{ font-size: 14px;}
 
 .add_comment_box .add_comments .user {
 	width: 33px;
@@ -3827,6 +3840,7 @@ article .social_bar img {
 	float: left;
 	width: 100%;
 	min-height: 200px;
+	margin-top: 20px;
 }
 
 .prfoile_tab_data .hide {
