@@ -9,6 +9,9 @@ import countryList from 'react-select-country-list';
 
 const TournamentEdit = ({ data, user }) => {
   const gameList = data.tournament.games.map((game) => game.gameId._id);
+  const organizerList = data.tournament.organizers.map(
+    (org) => org.organizerId
+  );
   const countryNames = data.tournament.eligibleCountries.map((cty) => cty.iso);
   const [states, setStates] = useState({
     tourType: 'Tournament',
@@ -24,7 +27,7 @@ const TournamentEdit = ({ data, user }) => {
     endTime: data.tournament?.endTime || '',
     location: data.tournament.location,
     address: data.tournament?.address,
-    organizer: '',
+    organizer: organizerList || '',
     description: data.tournament.description,
     games: gameList,
     category: data.tournament.category,
@@ -143,15 +146,15 @@ const TournamentEdit = ({ data, user }) => {
                     </div>
 
                     <div className="big_btn">
-                      <span class="form-check-label terms">Competition</span>
+                      <span class="form-check-label terms">Challenge</span>
                       <input
                         type="radio"
                         name="tourType"
-                        value="Competition"
+                        value="Challenge"
                         onChange={handleChangeCheck}
                       />
                     </div>
-                    <div className="big_btn">
+                    {/* <div className="big_btn">
                       <span class="form-check-label terms">League</span>
                       <input
                         type="radio"
@@ -159,7 +162,7 @@ const TournamentEdit = ({ data, user }) => {
                         value="League"
                         onChange={handleChangeCheck}
                       />
-                    </div>
+                    </div> */}
                   </div>
 
                   <div className="form-group">
@@ -258,6 +261,7 @@ const TournamentEdit = ({ data, user }) => {
                       name="teamSize"
                       id="teamSize"
                       onClick={handleChangeCheck}
+                      value={states.teamSize}
                     >
                       <option value="">Select Team Size</option>
                       <option value="1v1">1v1</option>

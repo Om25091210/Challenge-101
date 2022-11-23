@@ -14,6 +14,7 @@ const TeamAboutEdit = ({
   isCEO
 }) => {
   const [aboutData, setAboutData] = useState({
+    _id: employeeData?._id,
     username: employeeData.employeeId?.name,
     employeeId: employeeData.employeeId?._id,
     value: employeeData.role

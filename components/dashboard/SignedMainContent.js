@@ -200,7 +200,7 @@ const SignedMainContent = ({ posts, user }) => {
               </a>
             </li>
             <li>
-              <a href="/tournament/create">
+              <a href="/tour/create">
                 <i className="fa fa-trophy" aria-hidden="true"></i>
                 <p> create a Tournament</p>
               </a>

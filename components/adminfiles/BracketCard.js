@@ -41,7 +41,7 @@ const BracketCard = ({ tournaments, user }) => {
                     alt={tour.tour ? tour.tour.name : null}
                   />
                 </div>
-                <a href={`/tournament/${tour.tour?._id}`}>
+                <a href={`/tour/${tour.tour?.name}`}>
                   {tour.tour ? tour.tour.name : null}
                 </a>
               </div>

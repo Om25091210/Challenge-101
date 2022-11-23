@@ -95,74 +95,75 @@ const ClaimCard = ({ data }) => {
                     <div className="add_job_height">
                       <h3>Proof</h3>
                       <div className="proof-box">
-                        {item.imageproof.map((imgg, idx) => (
-                          <>
-                            <div className="" key={idx}>
-                              {imgg.images &&
-                                imgg.images.map((imag, idex) => (
-                                  <a
-                                    className="fancybox"
-                                    href={imag.path}
-                                    data-fancybox-group="idex"
-                                    title={imag.originalname}
-                                    key={idex}
-                                  >
-                                    <img
-                                      src={imag.path}
-                                      alt={imag.originalname}
-                                    />{' '}
-                                  </a>
-                                ))}
+                        {item.imageproof &&
+                          item.imageproof.map((imgg, idx) => (
+                            <>
+                              <div className="" key={idx}>
+                                {imgg.images &&
+                                  imgg.images.map((imag, idex) => (
+                                    <a
+                                      className="fancybox"
+                                      href={imag.path}
+                                      data-fancybox-group="idex"
+                                      title={imag.originalname}
+                                      key={idex}
+                                    >
+                                      <img
+                                        src={imag.path}
+                                        alt={imag.originalname}
+                                      />{' '}
+                                    </a>
+                                  ))}
 
-                              <h2>
-                                <span className="update">
-                                  Updated:
-                                  {Moment(imgg.createdAt).format(
-                                    'MMMM, DD, YYYY hh:mm A'
-                                  )}
-                                </span>
-                              </h2>
+                                <h2>
+                                  <span className="update">
+                                    Updated:
+                                    {Moment(imgg.createdAt).format(
+                                      'MMMM, DD, YYYY hh:mm A'
+                                    )}
+                                  </span>
+                                </h2>
 
-                              <h2>
-                                Applied By: {item.user.name} - {item.user._id}
-                              </h2>
-                              <Deny
-                                user={item.user}
-                                Id={
-                                  item.brandId
-                                    ? item.brandId._id
-                                    : item.teamId
-                                    ? item.teamId._id
-                                    : item.tournamentId._id
-                                }
-                                type={
-                                  item.brandId
-                                    ? 'Brands'
-                                    : item.teamId
-                                    ? 'Teams'
-                                    : 'Tournaments'
-                                }
-                              />
-                              <Approve
-                                user={item.user}
-                                Id={
-                                  item.brandId
-                                    ? item.brandId._id
-                                    : item.teamId
-                                    ? item.teamId._id
-                                    : item.tournamentId._id
-                                }
-                                type={
-                                  item.brandId
-                                    ? 'Brands'
-                                    : item.teamId
-                                    ? 'Teams'
-                                    : 'Tournaments'
-                                }
-                              />
-                            </div>
-                          </>
-                        ))}
+                                <h2>
+                                  Applied By: {item.user.name} - {item.user._id}
+                                </h2>
+                                <Deny
+                                  user={item.user}
+                                  Id={
+                                    item.brandId
+                                      ? item.brandId._id
+                                      : item.teamId
+                                      ? item.teamId._id
+                                      : item.tournamentId._id
+                                  }
+                                  type={
+                                    item.brandId
+                                      ? 'Brands'
+                                      : item.teamId
+                                      ? 'Teams'
+                                      : 'Tournaments'
+                                  }
+                                />
+                                <Approve
+                                  user={item.user}
+                                  Id={
+                                    item.brandId
+                                      ? item.brandId._id
+                                      : item.teamId
+                                      ? item.teamId._id
+                                      : item.tournamentId._id
+                                  }
+                                  type={
+                                    item.brandId
+                                      ? 'Brands'
+                                      : item.teamId
+                                      ? 'Teams'
+                                      : 'Tournaments'
+                                  }
+                                />
+                              </div>
+                            </>
+                          ))}
                       </div>
                     </div>
                   </div>
