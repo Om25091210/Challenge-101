@@ -66,7 +66,7 @@ const battlepass = ({ user, data, profile }) => {
 
       <LeftNav user={user} />
 
-      <div className="main_middle profile_middle">
+      <div className="main_middle battlepass_box">
         <div className="season_box">
           <div className="season_header">
             <div>
@@ -76,17 +76,23 @@ const battlepass = ({ user, data, profile }) => {
             </div>
             <div>
               <img src="/assets/media/season/pass-btn.png" alt="" />
-              {pricingMonthly.map((pM) => (
-                <>
-                  <p>{pM.title}</p>
-                  <SubcriptionCard
-                    user={user}
-                    id={pM.id}
-                    title={pM.title}
-                    price={pM.price}
-                  />
-                </>
-              ))}
+
+              <div className="buy_btn_box">
+                {pricingMonthly.map((pM) => (
+                  <>
+                    <div className="buy_btn">
+                      <p>{pM.title}</p>
+                      <SubcriptionCard
+                        user={user}
+                        id={pM.id}
+                        title={pM.title}
+                        price={pM.price}
+                      />
+                    </div>
+                  </>
+                ))}
+              </div>
+
               <ul>
                 <li>Access to Multiplayr Premium Tournaments/Ladders.</li>
                 <li>Access to unlimited number of tournaments</li>

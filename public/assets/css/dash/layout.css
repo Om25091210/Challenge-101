@@ -11611,10 +11611,13 @@ form.common_form .btn {
 }
 
 /* ---------- Season page ----------------- */
+
+.battlepass_box{ width: 85%; }
+
 .season_box {
 	float: left;
 	width: 100%;
-	background: #202028;
+	background: var(--bgcolor1);
 	padding: 40px;
 	border-radius: 20px;
 }
@@ -11624,6 +11627,12 @@ form.common_form .btn {
 	justify-content: space-between;
 	margin: 10px 0 80px 0;
 }
+
+.buy_btn_box{display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 20px 0;
+    text-align: center;}
 
 .season_header h1 {
 	font-size: 60px;
@@ -11693,14 +11702,14 @@ form.common_form .btn {
 }
 
 .left_season .top_raw .pages span {
-	background: #2d343d;
+	background: none;
 	padding: 10px;
 	margin-left: 10px;
 	cursor: pointer;
 }
 
 .left_season .top_raw .pages span:last-child {
-	background: #dc5c26;
+	background: none;
 }
 
 .bottom_raw {
@@ -11813,11 +11822,12 @@ form.common_form .btn {
 }
 
 .steps_box ul.step_line li.active {
-	background: #713cfa;
+	background: var(--yellow);
 }
 
 .steps_box ul.step_line li.active span {
-	background: #713cfa;
+	background: var(--yellow);
+	color:#000;
 }
 
 .right_season {
@@ -11833,7 +11843,7 @@ form.common_form .btn {
 .right_season .profile_tab_btn li {
 	background: #2d343d;
 	margin-right: 0;
-	padding: 20px 50px 20px 20px;
+	padding: 20px 38px 20px 20px;
 	border-radius: 10px 10px 0px 0px;
 }
 
@@ -11841,7 +11851,7 @@ form.common_form .btn {
 	content: "";
 	position: absolute;
 	width: 100%;
-	border-bottom: 4px solid #7239ea;
+	border-bottom: 4px solid var(--yellow);
 	left: 0;
 	bottom: -1px;
 }
@@ -11850,6 +11860,7 @@ form.common_form .btn {
 	background: #2d343d;
 	padding: 20px;
 	border-radius: 0 0 10px 10px;
+	margin-top: 0;
 }
 
 .right_season .prfoile_tab_data li {

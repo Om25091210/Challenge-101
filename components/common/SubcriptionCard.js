@@ -141,7 +141,7 @@ const SubcriptionCard = ({ user, id, title, price }) => {
   };
   return (
     <>
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit} className="">
         <button className="btn">BUY NOW</button>
       </Form>
     </>
