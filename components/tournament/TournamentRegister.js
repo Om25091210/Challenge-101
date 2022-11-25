@@ -79,7 +79,7 @@ const Tournament_Reg = ({ user, tournament, profile, teams }) => {
                   <div className="loc_box edit_pof">
                     <a
                       href="#!"
-                      className="model_show_btn"
+                      className="model_show_btn btn"
                       onClick={() => setTrigger(!trigger)}
                     >
                       Register

@@ -196,9 +196,9 @@ const TeamAbout = ({
                   {' '}
                   <img src={emp?.employeeId.profilePicUrl} alt="" />{' '}
                 </div>
-                <h3>{emp.role.toUpperCase()}</h3>
 
                 <h4>{emp?.name} </h4>
+                <h3>{emp.role.toUpperCase()}</h3>
 
                 <h4>{emp?.employeeId.name} </h4>
 

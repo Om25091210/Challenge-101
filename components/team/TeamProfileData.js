@@ -155,7 +155,7 @@ const TeamProfileData = ({
           </li>
         ) : null}
       </ul>
-      <div className="prfoile_tab_data white_bg">
+      <div className="prfoile_tab_data">
         <div className="tab" id="overview">
           {' '}
           <div className="profile_left_post">
