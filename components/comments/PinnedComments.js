@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import baseURL from '../../utils/baseURL';
 import { useMutation } from 'react-query';
 import cookie from 'js-cookie';
+import { toast } from 'react-toastify';
 
 const PinnedComments = ({ post, comment, user }) => {
   const [pinnedcomment, setPinnedComment] = useState(false);
@@ -40,10 +41,18 @@ const PinnedComments = ({ post, comment, user }) => {
     }
   });
 
+  const handleUser = (e) => {
+    e.preventDefault();
+    toast.info('UnAuthorized to unpin the comment');
+  };
+
   return (
     <>
       {isPinned ? (
-        <button className="pinned" onClick={pincommenthandlesubmit}>
+        <button
+          className="pinned"
+          onClick={isAuthorized ? pincommenthandlesubmit : handleUser}
+        >
           <span>Pinned By Creator</span>
         </button>
       ) : (

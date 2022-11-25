@@ -44,13 +44,13 @@ const TeamCreate = ({ isClaim, user }) => {
     instagram: '',
     youtube: '',
     discord: '',
-    isClaim,
-    keyboard: '',
-    mouse: '',
-    monitor: '',
-    graphicsCard: '',
-    headphone: '',
-    processor: ''
+    isClaim
+    // keyboard: '',
+    // mouse: '',
+    // monitor: '',
+    // graphicsCard: '',
+    // headphone: '',
+    // processor: ''
   });
 
   useEffect(() => {
@@ -305,19 +305,19 @@ const TeamCreate = ({ isClaim, user }) => {
                         {/* <p>{formErrors.achievements}</p> */}
                       </div>
 
-                      <TeamAddSearch
+                      {/* <TeamAddSearch
                         sponsors={rigsData}
                         type="KEYBOARD"
                         states={state}
                         val="Keyboard"
-                      />
+                      /> */}
 
-                      <TeamAddSearch
+                      {/* <TeamAddSearch
                         sponsors={rigsData}
                         type="MOUSE"
                         states={state}
                         val="Mouse"
-                      />
+                      /> */}
 
                       <TeamAddSearch sponsors={sponsors} states={state} />
 

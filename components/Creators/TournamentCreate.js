@@ -7,6 +7,7 @@ import axios from 'axios';
 import countryList from 'react-select-country-list';
 import TournamentAddSponsor from '../tournament/TournamentAddSponsor';
 import SearchName from './SearchName';
+import GameMaps from './GameMaps';
 
 const TournamentCreate = ({ user, isClaim }) => {
   const showSecond = false;
@@ -27,6 +28,7 @@ const TournamentCreate = ({ user, isClaim }) => {
   });
 
   const [selectGames, setSelectGames] = useState({
+    selectedMaps: [],
     game: ''
   });
 
@@ -139,6 +141,7 @@ const TournamentCreate = ({ user, isClaim }) => {
       formdata.append('checkIn', state.checkIn);
       formdata.append('teamSize', state.teamSize);
       formdata.append('eligibleCountries', state.eligibleCountries);
+      formdata.append('maps', selectGames.selectedMaps);
 
       try {
         await axios
@@ -203,15 +206,23 @@ const TournamentCreate = ({ user, isClaim }) => {
 
   let gamePlatform = games.filter((game) => game._id === selectGames.game);
 
-  if (gamePlatform[0]?.platform.length === 1) {
+  if (gamePlatform[0]?.platform.length > 0) {
     state.platform = gamePlatform[0]?.platform[0];
   }
 
   const handleGame = (e, gameId) => {
     e.preventDefault();
-    setSelectGames({ game: gameId });
+    setSelectGames({ game: gameId, selectedMaps: [] });
     state.game = gameId;
   };
+
+  const [gotMaps, setGotMaps] = useState([]);
+
+  useEffect(async () => {
+    await axios
+      .get(`${baseURL}/api/maps/${selectGames.game}`)
+      .then((res) => setGotMaps(res.data));
+  }, [selectGames.game]);
 
   const handleSelect = (e, plt) => {
     e.preventDefault();
@@ -444,6 +455,19 @@ const TournamentCreate = ({ user, isClaim }) => {
                         />
                       </div>
                       <p>{formErrors.prizepool}</p>
+                    </div>
+
+                    <div className="form-group">
+                      {selectGames.game === 20 || selectGames.game === 3 ? (
+                        <label htmlFor="exampleFormControlTextarea1">Map</label>
+                      ) : null}
+                      {selectGames.game === 20 || selectGames.game === 3 ? (
+                        <GameMaps
+                          gameId={selectGames.game}
+                          maps={gotMaps}
+                          states={selectGames}
+                        />
+                      ) : null}
                     </div>
 
                     <div className="form-group">

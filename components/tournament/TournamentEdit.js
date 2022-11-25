@@ -9,6 +9,7 @@ import countryList from 'react-select-country-list';
 
 const TournamentEdit = ({ data, user }) => {
   const gameList = data.tournament.games.map((game) => game.gameId._id);
+  const mapList = data.tournament?.maps.map((map) => map.mapId);
   const organizerList = data.tournament.organizers.map(
     (org) => org.organizerId
   );
@@ -39,7 +40,8 @@ const TournamentEdit = ({ data, user }) => {
     instagram: data.tournament.social?.instagram || '',
     twitch: data.tournament.social?.twitch || '',
     youtube: data.tournament.social?.youtube || '',
-    discord: data.tournament.social?.discord || ''
+    discord: data.tournament.social?.discord || '',
+    maps: mapList || ''
   });
   const [allorganizer, setAllorganizer] = useState([]);
   const [allgames, setAllgames] = useState([]);
@@ -55,6 +57,13 @@ const TournamentEdit = ({ data, user }) => {
     //   .get(`${baseURL}/api/all/series`)
     //   .then((res) => setAllseries(res.data));
   }, []);
+
+  const [gotMaps, setGotMaps] = useState([]);
+  useEffect(async () => {
+    await axios
+      .get(`${baseURL}/api/maps/${states.games[0]}`)
+      .then((res) => setGotMaps(res.data));
+  }, [states.games]);
 
   const options = useMemo(() => countryList().getData(), []);
 
@@ -351,6 +360,24 @@ const TournamentEdit = ({ data, user }) => {
                       {allgames &&
                         allgames.map((game) => (
                           <option value={game._id}>{game.name}</option>
+                        ))}
+                    </select>
+                    <p>{formErrors.games}</p>
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="exampleFormControlInput1">Maps</label>
+                    <select
+                      name="maps"
+                      id="team"
+                      multiple={true}
+                      value={states.maps}
+                      onChange={handleSubmit}
+                    >
+                      <option value="">Select Map...</option>
+                      {gotMaps &&
+                        gotMaps.map((map) => (
+                          <option value={map._id}>{map.name}</option>
                         ))}
                     </select>
                     <p>{formErrors.games}</p>
