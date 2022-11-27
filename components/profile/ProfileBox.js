@@ -117,16 +117,9 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
     }
   };
 
-  // useEffect(() => {
-  //   $('.common_poup').fancybox({
-  //     wrapCSS: 'common_poup_wrap',
-
-  //     minHeight: 450,
-  //     fitToView: true,
-  //     autoSize: true,
-  //     autoScale: true
-  //   });
-  // }, []);
+  useEffect(() => {
+    $('.fancybox').fancybox();
+  }, []);
 
   const handleSelectGame = async (obj) => {
     setSelectedGame({ game: obj });
@@ -199,7 +192,7 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
             ) : null}
           </form>
         </div>
-        )
+
         {isLoggedInUser ? (
           <>
             {deleteModal && (
