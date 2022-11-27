@@ -117,9 +117,16 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
     }
   };
 
-  useEffect(() => {
-    $('.fancybox').fancybox();
-  }, []);
+  // useEffect(() => {
+  //   $('.common_poup').fancybox({
+  //     wrapCSS: 'common_poup_wrap',
+
+  //     minHeight: 450,
+  //     fitToView: true,
+  //     autoSize: true,
+  //     autoScale: true
+  //   });
+  // }, []);
 
   const handleSelectGame = async (obj) => {
     setSelectedGame({ game: obj });

@@ -597,6 +597,15 @@ body.DarkPage .rdrMonthAndYearPickers select {
 body.DarkPage .rdrMonthAndYearWrapper {
     border-bottom: 1px solid #69696a;
 }
+
+/* body.DarkPage .rdrDateDisplayItemActive{ border:1px solid #fff}
+body.DarkPage .rdrInRange{ background: var(--bgcolor1);}
+
+body.DarkPage .rdrDayToday .rdrStartEdge{background: #000;}
+.rdrDayToday .rdrDayNumber span:after{background: #000;}
+.rdrStartEdge.rdrEndEdge, .rdrEndEdge, .rdrStartEdge{background: #000 !important;} */
+
+
 body.DarkPage .checkout_strip {
     background: var(--bgcolor1);
     color: #fff;

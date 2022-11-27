@@ -10,7 +10,7 @@ import { DateRangePicker } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 
-const DateCal = ({gameId}) => {
+const DateCal = ({ gameId }) => {
   const [startDate1, setStartDate] = useState(new Date());
   const [endDate1, setEndDate] = useState(null);
   const [tournaments, setTournaments] = useState([]);
@@ -45,7 +45,11 @@ const DateCal = ({gameId}) => {
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ startDate: startDate, endDate: endDate , gameId: gameId})
+      body: JSON.stringify({
+        startDate: startDate,
+        endDate: endDate,
+        gameId: gameId
+      })
     };
     return fetch(
       `${baseURL}/api/tournaments/tournamentsbydate`,
@@ -77,24 +81,22 @@ const DateCal = ({gameId}) => {
           ranges={state}
           direction="horizontal"
           showNeighboringMonth={true}
+          rangeColors={['#000', '#000', '#00000']}
         />
       </div>
 
-
-
-        {tournaments.length === 0 ? (
+      {tournaments.length === 0 ? (
         <div className="all_matches">
           <p>
             No Tournaments are scheduled between selected dates. Please change
             the dates and check again!{' '}
           </p>
-        </div>  
-        ) : (
-          
-            tournaments.map((tour) => (
-              <div className="all_matches">
-              <h2>{tour.name}</h2>
-              <div className="match_box">
+        </div>
+      ) : (
+        tournaments.map((tour) => (
+          <div className="all_matches">
+            <h2>{tour.name}</h2>
+            <div className="match_box">
               <div className="match_table" key={tour._id}>
                 <div className="head_row">
                   <div className="tm">11:00PCT</div>
@@ -137,16 +139,10 @@ const DateCal = ({gameId}) => {
                   </a>{' '}
                 </div>
               </div>
-            
-              </div>
-             </div> 
-            
-            )
-
-            )
-          
-        )}
-     
+            </div>
+          </div>
+        ))
+      )}
     </>
   );
 };
