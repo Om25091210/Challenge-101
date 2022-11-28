@@ -828,3 +828,6 @@ body.DarkPage .squads_details .table td a {
 body.DarkPage .squads_details .table td {
     border-top: 1px solid #636363;
 }
+
+
+.form-check.form-check-solid .form-check-input:checked{ background-color: #000 !important;}
