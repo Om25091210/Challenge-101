@@ -458,10 +458,14 @@ const TournamentCreate = ({ user, isClaim }) => {
                     </div>
 
                     <div className="form-group">
-                      {selectGames.game === 20 || selectGames.game === 3 ? (
+                      {selectGames.game === 20 ||
+                      selectGames.game === 3 ||
+                      selectGames.game === 26 ? (
                         <label htmlFor="exampleFormControlTextarea1">Map</label>
                       ) : null}
-                      {selectGames.game === 20 || selectGames.game === 3 ? (
+                      {selectGames.game === 20 ||
+                      selectGames.game === 3 ||
+                      selectGames.game === 26 ? (
                         <GameMaps
                           gameId={selectGames.game}
                           maps={gotMaps}

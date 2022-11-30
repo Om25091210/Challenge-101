@@ -92,10 +92,24 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
                 </>
               ) : (
                 <h4>
-                  <a href={`/user/${post.user?.username}`}>
-                    {post.user?.name}
-                    {/* <p>@{post.user?.username}</p> */}
-                  </a>
+                  {post.post_type === 'team' ||
+                  post.post_type === 'tour' ||
+                  post.post_type === 'brand' ? (
+                    <a
+                      href={`/${post.post_type}/${
+                        post.post_type === 'team'
+                          ? post?.teamId
+                          : post?.username
+                      }`}
+                    >
+                      <h4>{post.username}</h4>
+                    </a>
+                  ) : (
+                    <a href={`/user/${post.user?.username}`}>
+                      {post.user?.name}
+                      {/* <p>@{post.user?.username}</p> */}
+                    </a>
+                  )}
                   is playing
                   <a href={`/games/${post.game_tag[0]?.gameId}`}>
                     {' '}

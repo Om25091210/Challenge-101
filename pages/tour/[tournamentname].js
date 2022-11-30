@@ -507,6 +507,22 @@ const TournamentDetail = ({
                     </>
                   </div>
 
+                  <div className="games">
+                    <>
+                      <h2>Maps: </h2>
+                      {data.tournament.maps &&
+                        data.tournament.maps.map((item, index) => (
+                          <span key={index}>
+                            <img
+                              src={item.mapId.imgUrl}
+                              alt={item.mapId.name}
+                            />
+                            <p>{item.mapId.name}</p>
+                          </span>
+                        ))}
+                    </>
+                  </div>
+
                   {data.tournament.eligibleCountries.length > 0 ? (
                     <>
                       <div className="games">

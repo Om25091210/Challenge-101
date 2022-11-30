@@ -49,7 +49,7 @@ const TeamJoines = ({
                           .platformUserHandle
                       : req.playerId?.name}
                   </h2>
-                  <p>Sent you a Friend Request!</p>
+                  <p>Sent Request To Join!</p>
                   <div className="two_btn">
                     <ApproveRequest
                       player={req}

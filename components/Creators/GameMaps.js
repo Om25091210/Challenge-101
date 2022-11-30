@@ -12,7 +12,7 @@ const GameMaps = ({ gameId, maps, states }) => {
 
   return (
     <>
-      {gameId === 20 || gameId === 3 ? (
+      {gameId === 20 || gameId === 3 || gameId === 26 ? (
         <div style={{ display: 'flex' }}>
           {maps &&
             maps.map((map) => (
