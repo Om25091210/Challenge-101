@@ -157,6 +157,12 @@ const TeamCreate = ({ isClaim, user }) => {
     }
   };
 
+  useEffect(() => {
+    $('.create_team_thumb li').click(function () {
+      $(this).toggleClass('slc_img');
+    });
+  });
+
   return (
     <>
       <div className="main_middle create_main_middle">
@@ -227,14 +233,13 @@ const TeamCreate = ({ isClaim, user }) => {
                     </div>
                     <div className="pick_game">
                       <h2>Games</h2>
-                      <ul className="game_search_result">
+                      <ul className="game_search_result create_team_thumb">
                         {games &&
                           games.map((game) => (
-                            <li
-                              style={{ cursor: 'pointer' }}
-                              onClick={() => handlemultiplegames(game)}
-                            >
+                            <li onClick={() => handlemultiplegames(game)}>
                               <img src={game.imgUrl} alt={game.name} />
+
+                              <i className="fa fa-check" aria-hidden="true"></i>
                             </li>
                           ))}
                       </ul>

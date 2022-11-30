@@ -3563,7 +3563,7 @@ article .social_bar img {
 	font-size: 13px;
 }
 
-#big_poup {
+#big_poup, #share_prof {
 	width: 800px;
 }
 
@@ -3697,7 +3697,7 @@ article .social_bar img {
 }
 
 #big_poup .big_btn input[type='checkbox']:checked {
-	background-color: #1da1f2;
+	background-color: var(--yellow);
 }
 
 #big_poup.edit_profile h2 {
@@ -8300,7 +8300,7 @@ main {
 .create_tournament h2 {
 	text-transform: uppercase;
 	padding: 20px 0;
-	color: #1da1f2;
+	color: var(--yellow);
 }
 
 .create_tournament .rgtside {
@@ -8466,7 +8466,7 @@ ul.game_search_result li {
 	position: relative;
 	border-radius: 5px;
 	overflow: hidden;
-	background: #fff;
+	background: #fff; cursor: pointer;
 }
 
 ul.game_search_result li img {
@@ -8542,7 +8542,7 @@ ul.game_search_result li.slc_img:after {
 }
 
 .create_bg .type_btn:hover {
-	background: #1da1f2;
+	background: var(--yellow);;
 }
 
 .create_bg .type_btn.active {
@@ -8568,8 +8568,8 @@ ul.game_search_result li.slc_img:after {
 }
 
 .prize_boxs .console_bg.active {
-	background: #1da1f2;
-	border: 1px solid #1da1f2;
+	background: var(--yellow);;
+	border: 1px solid var(--yellow);;
 }
 
 .prize_boxs .console_bg img {
@@ -10924,6 +10924,8 @@ form.common_form .btn {
 	float: left;
 	width: 100%;
 }
+
+#share_prof .inner_model_box{ height: 500px; overflow-y: auto;}
 
 #share_prof ul li {
 	float: left;

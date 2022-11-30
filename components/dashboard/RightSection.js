@@ -231,37 +231,39 @@ const RightSection = ({ user, suggestedplayers, teams, profile }) => {
             View All
           </a>
 
-          <div className="common_model_box" id="share_prof">
+          <div className="common_model_box share_prof" id="share_prof">
             <a href="#!" className="model_close">
               X
             </a>
 
             <div className="inner_model_box">
-              <h3>Brands/Tournaments</h3>
-              {myPageData.length === 0 ? (
-                <p>No Brands/Tournament Available </p>
-              ) : (
-                <ul>
-                  {myPageData &&
-                    myPageData.map((page, idx) => (
-                      <li key={idx}>
-                        <Link
-                          href={`/${page.logoUrl ? 'brand' : 'tour'}/${
-                            page.logoUrl ? page._id : page.name
-                          }`}
-                        >
-                          <div className="game_pic">
-                            <img
-                              src={page.logoUrl ? page.logoUrl : page.imgUrl}
-                              alt={page.name}
-                            />
-                            <p> {page.name}</p>
-                          </div>
-                        </Link>
-                      </li>
-                    ))}
-                </ul>
-              )}
+              <div className="add_job_height">
+                <h3>Brands/Tournaments</h3>
+                {myPageData.length === 0 ? (
+                  <p>No Brands/Tournament Available </p>
+                ) : (
+                  <ul>
+                    {myPageData &&
+                      myPageData.map((page, idx) => (
+                        <li key={idx}>
+                          <Link
+                            href={`/${page.logoUrl ? 'brand' : 'tour'}/${
+                              page.logoUrl ? page._id : page.name
+                            }`}
+                          >
+                            <div className="game_pic">
+                              <img
+                                src={page.logoUrl ? page.logoUrl : page.imgUrl}
+                                alt={page.name}
+                              />
+                              <p> {page.name}</p>
+                            </div>
+                          </Link>
+                        </li>
+                      ))}
+                  </ul>
+                )}
+              </div>
             </div>
             <div className="overlay"></div>
           </div>

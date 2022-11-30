@@ -132,8 +132,9 @@ body.DarkPage .post_comments button {
 body.DarkPage  .comments_point .pinned{ color: #000;}
 
 body.DarkPage .reply_cancel {
-    background: #7239ea;
+    background: var(--yellow);
     margin-left: 10px;
+    color: #000 !important;
 }
 body.DarkPage .ranking_table, body.DarkPage .team_search {
     background: var(--bgcolor1);
@@ -710,10 +711,10 @@ body.DarkPage .custom-checkbox .custom-control-label::before {
     border: #525355 solid 1px;
 }
 body.DarkPage .team_row .mores .fa-star-o {
-    color: #7239ea;
+    color: var(--yellow);
 }
 body.DarkPage .team_overview .fa-star {
-    color: #7239ea;
+    color: var(--yellow);
 }
 body.DarkPage .sponsers_box ul li .sponser_name {
     background: #0d0c12;
