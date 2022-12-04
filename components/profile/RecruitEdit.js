@@ -94,7 +94,7 @@ const RecruitEdit = ({ attributeData, profile }) => {
         <div className="inner_model_box">
           <div className="add_job_height">
             <h3>Edit recruitement Card</h3>
-            <form onSubmit={handleEdit}>
+            <form onSubmit={handleEdit} className="common_form">
               <div className="form-group">
                 <label htmlFor="exampleFormControlInput1">Game</label>
                 <select
@@ -190,29 +190,27 @@ const RecruitEdit = ({ attributeData, profile }) => {
                     </select>
                   </div>
                 )}
+              </div>
+              <div className="form-group">
+                <div className="custom-control custom-switch">
+                  <label htmlFor="exampleFormControlTextarea1">&nbsp;</label>
 
-                <div className="form-group">
-                  <div className="custom-control custom-switch">
-                    <label htmlFor="exampleFormControlTextarea1">&nbsp;</label>
+                  <input
+                    type="checkbox"
+                    className="custom-control-input"
+                    id="customSwitch1"
+                    onClick={() => handleMic()}
+                    value={states.Mic}
+                  />
 
-                    <input
-                      type="checkbox"
-                      className="custom-control-input"
-                      id="customSwitch1"
-                      onClick={() => handleMic()}
-                      value={states.Mic}
-                    />
-
-                    <label
-                      className="custom-control-label"
-                      htmlFor="customSwitch1"
-                    >
-                      Mic
-                    </label>
-                  </div>
+                  <label
+                    className="custom-control-label"
+                    htmlFor="customSwitch1"
+                  >
+                    Mic
+                  </label>
                 </div>
               </div>
-
               <div className="form-group">
                 <label htmlFor="exampleFormControlInput1">Language</label>
                 <select

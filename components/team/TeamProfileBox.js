@@ -344,9 +344,8 @@ const TeamProfileBox = ({
                         isReqSent={isReqSent}
                       />
                     </a>
-                    <a href="#" className="">
-                      <TeamChallenge team={data.team} teams={teams} />
-                    </a>
+
+                    <TeamChallenge team={data.team} teams={teams} />
                   </div>
                 )}
               </>

@@ -153,7 +153,9 @@ const SearchName = ({ data, type, handleChange, isSearchOnly, user }) => {
                                 <div className="add_job_height">
                                   <h3>Claim {data.name}</h3>
                                 </div>
-                                <ImageDropzone setImages={setImages} />
+                                <div className="gallery_box claim-gallery">
+                                  <ImageDropzone setImages={setImages} />
+                                </div>
                                 <div className="upload_btn">
                                   <button
                                     onClick={(e) => handleClaim(e, data)}

@@ -111,7 +111,10 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
                     </a>
                   )}
                   is playing
-                  <a href={`/games/${post.game_tag[0]?.gameId}`}>
+                  <a
+                    href={`/games/${post.game_tag[0]?.gameId}`}
+                    className="game-name"
+                  >
                     {' '}
                     {post.game_tag[0]?.name}
                   </a>

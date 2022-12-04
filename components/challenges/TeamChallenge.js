@@ -67,7 +67,7 @@ const TeamChallenge = ({ teams, team }) => {
 
   return (
     <>
-      <a href="#!" className="model_show_btn">
+      <a href="#!" className="model_show_btn btn">
         Challenge
       </a>
       <div className="common_model_box team_chal" id="big_poup">

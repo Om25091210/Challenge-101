@@ -322,7 +322,7 @@ const SignedHeader = ({ user, profile }) => {
                   <div className="delete_post">
                     <form onSubmit={sendEmail} id="refForm">
                       <div className="delete_post_div">
-                        <h3 className="black">
+                        <h3 className="">
                           Enter your friend's email to invite
                         </h3>
                         <input

@@ -5057,7 +5057,7 @@ article .social_bar img {
 .filters .close1 {
 	background: var(--yellow);
 	font-size: 15px;
-	color: #fff;
+	color: #000;
 	margin-right: 20px;
 	border-radius: 5px;
 	padding: 5px 10px;
@@ -6454,10 +6454,11 @@ article .social_bar img {
 }
 
 .squad_img .squad_bg {
-	display: block;
-	height: 300px;
+    display: block;
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
 }
-
 .squad_img:after {
 	content: "";
 	background: rgba(0, 0, 0, 0.8);
@@ -6477,19 +6478,21 @@ article .social_bar img {
 	right: 0;
 	color: #fff;
 	z-index: 10;
+	font-size: 24px;
 }
 
 .squad_img .plyars {
-	float: left;
-	width: 100%;
-	position: absolute;
-	bottom: 0;
-	height: 50%;
-	left: 0;
-	right: 0;
-	text-align: center;
-	padding-top: 9%;
-	z-index: 10;
+    float: left;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    height: 40%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding-top: 6%;
+    z-index: 10;
+    background: var(--bgcolor1);
 }
 
 .squad_img .plyars a {
@@ -7560,7 +7563,7 @@ article .social_bar img {
 	width: 50px;
 	height: 50px;
 	border-radius: 50%;
-	border: 5px solid #00ff5b;
+	border: 5px solid var(--yellow);
 	text-align: center;
 }
 
@@ -7644,6 +7647,17 @@ article .social_bar img {
 	resize: none;
 	color: #000;
 }
+
+.claim-gallery{ text-align: center;}
+.claim-gallery span {
+    width: auto !important;
+    border: 0 !important;
+}
+
+.upload_btn{float: left;
+    width: 100%;
+    text-align: center; margin-top: 20px;}
+	.upload_btn .btn{ float: none  !important}
 
 /* -------------- Tournament page -------------------- */
 .tournament_sponsers {
@@ -8103,6 +8117,8 @@ main {
 .games_data .hide1 {
 	display: none;
 }
+
+.game-name{ display: block; color: var(--yellow);}
 
 /* ----------------Create Tournament page -------------------- */
 .tournament_dp_box .profile_dp_box {
@@ -9611,11 +9627,14 @@ ul.game_search_result li.slc_img:after {
 }
 
 #more_games ul li img {
-	object-fit: cover;
-	height: 75px;
-	height: 75px;
-	display: inline-block;
+    object-fit: cover;
+    width: 75px !important;
+    height: 75px !important;
+    display: inline-block;
+    max-width: 75px !important;
 }
+
+#more_games ul li a{ width: 75px; padding: 0 !important;}
 
 #more_games ul li p {
 	font-size: 14px;
@@ -9770,6 +9789,7 @@ form.common_form input {
 	width: 100%;
 	border-radius: 5px;
 	text-transform: capitalize;
+	box-shadow: none !important;
 }
 
 form.common_form .pphone {
@@ -11406,6 +11426,8 @@ form.common_form .btn {
 	color: #fff !important;
 	font-size: 10px; padding: 0 10px;
 }
+
+.rigs_items .items a{ font-size: 10px;}
 
 .tournamnet_new_row {
 	float: left;

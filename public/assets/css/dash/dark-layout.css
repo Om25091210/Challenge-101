@@ -381,6 +381,7 @@ body.DarkPage .create_tournament form input[type="text"], body.DarkPage .create_
     color: #707088;
     border: 1px solid #344860;
     border-radius: 5px;
+    box-shadow: 0 0 0 var(--yellow);
 }
 .create_tournament form textarea {
     height: 60px;
@@ -726,7 +727,7 @@ body.DarkPage .sponsers_box .sponser_data {
 }
 body.DarkPage .edit_post form, body.DarkPage .delete_post form {
     background: var(--bgcolor1);
-    border: 10px solid #000;
+    border: 10px solid var(--yellow);
 }
 body.DarkPage .edit_post form h4, body.DarkPage .delete_post form h4 {
     color: #858585;

@@ -231,9 +231,7 @@ const TournamentCreate = ({ user, isClaim }) => {
 
   useEffect(() => {
     $('.game_search_result li').click(function () {
-      $('.game_search_result li').removeClass('slc_img');
-
-      $(this).addClass('slc_img');
+      $(this).toggleClass('slc_img');
     });
 
     $('.big_btn input[type="radio"]').click(function () {
