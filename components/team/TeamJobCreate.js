@@ -183,7 +183,6 @@ const TeamJobCreate = ({ user, profile, teams }) => {
                 </>
               ))}
             </select>
-            <p>{formErrors.location}</p>
           </div>
 
           <div className="edit_four">

@@ -15,11 +15,8 @@ import baseURL from '@utils/baseURL';
 import { useRouter } from 'next/router';
 import cookie from 'js-cookie';
 import { useQuery, useMutation } from 'react-query';
-import {
-  searchTournaments,
-  getTeamsRankingTournaments
-} from '@utils/functionsHelper';
 import Filters from '@components/common/Filters';
+import { searchTeams } from '@utils/functionsHelper';
 
 const Ranking = ({ user, games, profile }) => {
   const [searchObj, setSearchObj] = useState({
@@ -54,7 +51,7 @@ const Ranking = ({ user, games, profile }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    sdata = await searchTournaments(
+    sdata = await searchTeams(
       searchObj,
       setError,
       setFormLoading,
@@ -161,8 +158,22 @@ const Ranking = ({ user, games, profile }) => {
               <div className="team_search">
                 <div className="searchbox">
                   <h3>Search</h3>
-                  <input type="search" placeholder="Search" />
-                  <input type="submit" />
+                  <form
+                    className="form w-100"
+                    noValidate="noValidate"
+                    onSubmit={handleSubmit}
+                  >
+                    <input
+                      type="search"
+                      placeholder="Search For Team..."
+                      id="search"
+                      name="search"
+                      value={search}
+                      onChange={handleChange}
+                      autoComplete="off"
+                    />
+                    <input type="submit" />
+                  </form>
                 </div>
               </div>
 
@@ -171,7 +182,10 @@ const Ranking = ({ user, games, profile }) => {
           */}
             </div>
           </div>
-          <RankingTable teamranking={teamsRanks} />
+          <RankingTable
+            teamranking={teamsRanks}
+            searchResults={searchResults}
+          />
         </div>
       </div>
 

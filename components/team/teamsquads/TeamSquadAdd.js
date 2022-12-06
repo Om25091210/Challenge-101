@@ -142,9 +142,11 @@ const TeamSquadAdd = ({
                   </>
                 ))}
               </select>
+              <p>{formErrors.country}</p>
             </div>
 
             <TeamSquadFilter playerData={playerData} players={teamplayers} />
+            <p>{formErrors.players}</p>
             <TeamSquadFilter playerData={playerData} players={teamplayers} />
 
             {[...Array(count)].map((e, index) => (

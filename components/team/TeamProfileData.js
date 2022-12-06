@@ -29,7 +29,6 @@ const TeamProfileData = ({
   teams
 }) => {
   const [jobs, setJobs] = useState([]);
-  const [teamposts, setTeamPosts] = useState([]);
   const [tournamentStatData, setTournamentStatData] = useState([]);
 
   useEffect(() => {
@@ -48,22 +47,11 @@ const TeamProfileData = ({
       .get(`${baseURL}/api/teams/jobs/${data.team._id}`)
       .then((res) => setJobs(res.data));
 
-    //Posts
-    axios
-      .get(`${baseURL}/api/posts/`)
-      .then((res) => setTeamPosts(res.data.posts));
-
     // Tournament Stats
     axios
       .get(`${baseURL}/api/tournamentstat/`)
       .then((res) => setTournamentStatData(res.data));
   }, []);
-
-  let Filteredteamposts = teamposts.filter((teampost) => {
-    return (
-      teampost.post_type === 'Team' && teampost.username === data.team.name
-    );
-  });
 
   let [tabData, setTabData] = useState([]);
 
@@ -159,17 +147,12 @@ const TeamProfileData = ({
         <div className="tab" id="overview">
           {' '}
           <div className="profile_left_post">
-            {Filteredteamposts.length === 0 ? (
+            {data.teamPosts.length === 0 ? (
               <h6>No Posts Under This Team</h6>
             ) : (
-              Filteredteamposts.length !== 0 &&
-              Filteredteamposts.map((post, index) => (
-                <AllPosts
-                  post={post}
-                  user={user}
-                  type="TeamPost"
-                  team={data.team}
-                />
+              data.teamPosts.length !== 0 &&
+              data.teamPosts.map((post, index) => (
+                <AllPosts post={post} user={user} />
               ))
             )}
           </div>

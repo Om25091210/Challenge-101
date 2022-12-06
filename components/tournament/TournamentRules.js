@@ -6,8 +6,9 @@ import { toast } from 'react-toastify';
 import baseURL from '../../utils/baseURL';
 import { tournamentRules } from '../../utils/valid';
 
-const TournamentRules = ({ tourRules }) => {
+const TournamentRules = ({ tourRules, tournament }) => {
   const [formErrors, setFormErrors] = useState({});
+  const countryNames = tournament.eligibleCountries.map((cty) => cty.iso);
   const [states, setStates] = useState({
     check_in: tourRules?.check_in || '',
     forfeit: tourRules?.forfeit || '',
@@ -17,7 +18,7 @@ const TournamentRules = ({ tourRules }) => {
     compete: tourRules?.compete || '',
     cusRuleHead: tourRules?.cusRuleHead || '',
     cusRuleBody: tourRules?.cusRuleBody || '',
-    country: tourRules?.country || '',
+    country: countryNames || '',
     admins: tourRules?.admins?._id || '',
     contact: tourRules?.contact || ''
   });

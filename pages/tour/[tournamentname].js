@@ -48,25 +48,7 @@ const TournamentDetail = ({
   if (data) {
     const isUser = data.tournament?.user?._id === user._id;
     const router = useRouter();
-    const [sociallinks, setSociallinks] = useState(data.tournament.social);
-    const [websitelink, setWebsitelink] = useState(data.tournament);
-    const [tournamentPosts, setTournamentPosts] = useState([]);
     const [later, setLater] = useState(false);
-
-    useEffect(() => {
-      axios
-        .get(`${baseURL}/api/posts/`)
-        .then((res) => setTournamentPosts(res.data.posts));
-
-      //Get the Tournament Rules
-    }, []);
-
-    let Filteredtournamentposts = tournamentPosts.filter((tourpost) => {
-      return (
-        tourpost.post_type === 'Tournament' &&
-        tourpost?.username === data.tournament.name
-      );
-    });
 
     const handleDeleteSubmit = async (e) => {
       e.preventDefault();
@@ -510,16 +492,23 @@ const TournamentDetail = ({
                   <div className="games">
                     <>
                       <h2>Maps: </h2>
-                      {data.tournament.maps &&
-                        data.tournament.maps.map((item, index) => (
-                          <span key={index}>
-                            <img
-                              src={item.mapId.imgUrl}
-                              alt={item.mapId.name}
-                            />
-                            <p>{item.mapId.name}</p>
-                          </span>
-                        ))}
+                      {data.tournament.games[0].gameId._id ===
+                      data.tournament.maps[0].mapId.game ? (
+                        <>
+                          {data.tournament.maps &&
+                            data.tournament.maps.map((item, index) => (
+                              <span key={index}>
+                                <img
+                                  src={item.mapId.imgUrl}
+                                  alt={item.mapId.name}
+                                />
+                                <p>{item.mapId.name}</p>
+                              </span>
+                            ))}
+                        </>
+                      ) : (
+                        <p>No Maps For The Game</p>
+                      )}
                     </>
                   </div>
 
@@ -647,25 +636,22 @@ const TournamentDetail = ({
             </ul>
             <div className="prfoile_tab_data">
               <div className="tab" id="overview">
-                {Filteredtournamentposts.length === 0 ? (
-                  <h6>No Posts Under This Team</h6>
-                ) : (
-                  Filteredtournamentposts.length !== 0 &&
-                  Filteredtournamentposts.map((post, index) => (
-                    <AllPosts
-                      post={post}
-                      user={user}
-                      type="TournamentPost"
-                      team={data.team}
-                    />
-                  ))
-                )}
+                <div className="profile_left_post">
+                  {data.tourPosts.length === 0 ? (
+                    <h6>No Posts Under This Team</h6>
+                  ) : (
+                    data.tourPosts.length !== 0 &&
+                    data.tourPosts.map((post, index) => (
+                      <AllPosts post={post} user={user} />
+                    ))
+                  )}
+                </div>
               </div>
 
               <div className="tab hide" id="rules">
                 {data.tournament.user?._id === user._id ? (
                   <TournamentRules
-                    tournamentId={data.tournament._id}
+                    tournament={data.tournament}
                     tourRules={tourRules}
                   />
                 ) : null}
@@ -691,18 +677,19 @@ const TournamentDetail = ({
                   <div className="rules_row">
                     <h2> ELIGIBLE COUNTRIES</h2>
                     <ul>
-                      {tourRules?.country?.map((cty) => (
-                        <li>
-                          <ReactCountryFlag
-                            countryCode={cty}
-                            svg
-                            style={{
-                              width: '2em',
-                              height: '2em'
-                            }}
-                          />
-                        </li>
-                      ))}
+                      {data.tournament.eligibleCountries &&
+                        data.tournament.eligibleCountries?.map((cty) => (
+                          <li>
+                            <ReactCountryFlag
+                              countryCode={cty.iso}
+                              svg
+                              style={{
+                                width: '2em',
+                                height: '2em'
+                              }}
+                            />
+                          </li>
+                        ))}
                     </ul>
                   </div>
                 </div>

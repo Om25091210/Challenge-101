@@ -133,10 +133,8 @@ export const tournamentformvalidate = (values) => {
   } else if (values.description.length > 250) {
     errors.description = 'Description Cannot exceed more than 250 characters.';
   }
-  if (values.playType === 'TEAMS') {
-    if (values.teamSize === '') {
-      errors.teamSize = 'Please Select a Team Size';
-    }
+  if (values.tournamentType === '') {
+    errors.tournamentType = 'Please select a tournament type';
   }
 
   return errors;
@@ -452,9 +450,6 @@ export const jobformvalidate = (values) => {
   if (values.owner.length === 0) {
     errors.owner = 'Select Job Owner';
   }
-  if (values.location.length === 0) {
-    errors.location = 'Select Your Location';
-  }
   if (values.startDate.length === 0) {
     errors.startDate = 'Application start date is required';
   }
@@ -469,11 +464,14 @@ export const jobformvalidate = (values) => {
 
 export const teamsquadformvalidate = (values) => {
   const errors = {};
-  // if (!values.game) {
-  //   errors.game = 'Game is requried';
-  // }
-  // if (!values.players) {
-  //   errors.players = 'Atleast One player is required';
-  // }
+  if (!values.game) {
+    errors.game = 'Game is requried';
+  }
+  if (!values.country) {
+    errors.country = 'Country is required';
+  }
+  if (values.playerData.length === 0) {
+    errors.players = 'Atleast One player is required';
+  }
   return errors;
 };

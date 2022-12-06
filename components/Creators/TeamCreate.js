@@ -95,7 +95,7 @@ const TeamCreate = ({ isClaim, user }) => {
   }
 
   const showstep2 = () => {
-    if (state.name === '' || state.name < 7) {
+    if (state.name === '' || state.name.length < 7) {
       toast.info('Team name should be atleast 8 characters long!');
     } else if (state.founded === '') {
       toast.info('Year is incorrect');

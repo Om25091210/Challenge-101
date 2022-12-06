@@ -181,7 +181,9 @@ const TournamentCreate = ({ user, isClaim }) => {
   };
 
   const showstep2 = () => {
-    if (state.name === '' || state.name < 8) {
+    if (state.Type === '') {
+      toast.info('Select a Type');
+    } else if (state.name === '' || state.name.length < 7) {
       toast.info('Tournament Name should have 8 characters minimum');
     } else if (state.game.length === 0) {
       toast.info('Please select a game');
@@ -193,6 +195,20 @@ const TournamentCreate = ({ user, isClaim }) => {
       toast.info('Please select a category');
     } else if (state.playType === '') {
       toast.info('please select a Tournament Format');
+    } else if (state.playType === 'TEAMS' && state.teamSize === '') {
+      toast.info('Please select a team size');
+    } else if (
+      state.playType === 'TEAMS' &&
+      state.numberOfTeam === null &&
+      state.minTeams === null
+    ) {
+      toast.info('Total Number of Teams and Minimum teams required!');
+    } else if (
+      state.playType === 'SOLO' &&
+      state.participants === '' &&
+      state.minParticipants === ''
+    ) {
+      toast.info('Total Number of Players and Minimum players required!');
     } else {
       setStep1(true);
       setShowbtn(false);
@@ -657,6 +673,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                           />
                         </div>
                       </div>
+                      <p>{formErrors?.tournamentType}</p>
                     </div>
 
                     <div className="form-group">
