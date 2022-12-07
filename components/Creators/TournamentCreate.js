@@ -246,8 +246,9 @@ const TournamentCreate = ({ user, isClaim }) => {
   };
 
   useEffect(() => {
-    $('.game_search_result li').click(function () {
-      $(this).toggleClass('slc_img');
+    $('.game-selection li').click(function () {
+      $('.game-selection li').removeClass('slc_img');
+      $(this).addClass('slc_img');
     });
 
     $('.big_btn input[type="radio"]').click(function () {
@@ -366,7 +367,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                     </div>
 
                     <label for="exampleFormControlInput1">Games</label>
-                    <ul className="game_search_result">
+                    <ul className="game_search_result game-selection">
                       {games.map((game) => (
                         <>
                           <li onClick={(e) => handleGame(e, game._id)}>

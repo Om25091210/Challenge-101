@@ -1,34 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const GameMaps = ({ gameId, maps, states }) => {
   const handleMapSubmit = async (mapName) => {
     let isMapPresent = states.selectedMaps.indexOf(mapName);
     if (isMapPresent < 0) {
       states.selectedMaps.push(mapName);
+      $('#' + mapName).addClass('slc_img');
     } else {
       states.selectedMaps.splice(isMapPresent, 1);
+      $('#' + mapName).removeClass('slc_img');
     }
   };
 
   return (
     <>
       {gameId === 20 || gameId === 3 || gameId === 26 ? (
-        <div style={{ display: 'flex' }}>
+        <ul
+          className="game_search_result map-slection"
+          style={{ display: 'flex' }}
+        >
           {maps &&
             maps.map((map) => (
-              <div
-                style={{ margin: '0 10px', cursor: 'pointer' }}
-                onClick={() => handleMapSubmit(map._id)}
-              >
-                <img
-                  src={map.imgUrl}
-                  alt={map.name}
-                  style={{ height: '60px', width: '90px' }}
-                />
+              <li onClick={() => handleMapSubmit(map._id)} id={map._id}>
+                <img src={map.imgUrl} alt={map.name} />
+                <i class="fa fa-check" aria-hidden="true"></i>
                 <p>{map.name}</p>
-              </div>
+              </li>
             ))}
-        </div>
+        </ul>
       ) : (
         'No map for selected game'
       )}
