@@ -30,7 +30,7 @@ const TeamSquadFilter = ({ playerData, players }) => {
     const newFilter = players?.filter((value) => {
       return (
         value.name?.toLowerCase().includes(searchWord.toLowerCase()) ||
-        value.apidata?.data.platformInfo?.platformUserHandle
+        value.apidata?.data?.platformInfo?.platformUserHandle
           .toLowerCase()
           .includes(searchWord.toLowerCase())
       );
@@ -43,8 +43,8 @@ const TeamSquadFilter = ({ playerData, players }) => {
   };
 
   const handleSelectedRig = (data) => {
-    if (data.apidata) {
-      setSearchText(data.apidata.data.platformInfo.platformUserHandle);
+    if (data.apidata?.data?.platformInfo) {
+      setSearchText(data.apidata?.data?.platformInfo.platformUserHandle);
     } else {
       setSearchText(data.name);
     }
@@ -94,7 +94,7 @@ const TeamSquadFilter = ({ playerData, players }) => {
                           onClick={() => handleSelectedRig(data)}
                           key={data._id}
                         >
-                          {data.apidata ? (
+                          {data.apidata?.data.platformInfo ? (
                             <img
                               src={data.apidata?.data.platformInfo?.avatarUrl}
                               height={50}
@@ -104,7 +104,7 @@ const TeamSquadFilter = ({ playerData, players }) => {
                             <img src={data?.imgUrl} height={50} width={50} />
                           )}
                           <p>
-                            {data.apidata
+                            {data.apidata?.data?.platformInfo
                               ? data.apidata.data.platformInfo
                                   .platformUserHandle
                               : data.name}

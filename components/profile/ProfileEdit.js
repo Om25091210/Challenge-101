@@ -296,7 +296,7 @@ const ProfileEdit = ({ Userdata, user, games, allteams }) => {
                           name="team"
                           id="team"
                           value={states.team}
-                          onChange={handleSubmit}
+                          onChange={handleChangeCheck}
                           placeholder="Team Name"
                         >
                           <option value="">Select Team...</option>

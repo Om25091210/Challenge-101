@@ -646,7 +646,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                           />
                         </div>
 
-                        <div className="big_btn">
+                        {/* <div className="big_btn">
                           <span class="form-check-label terms">
                             {' '}
                             Double Elimination
@@ -672,7 +672,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                             value="Round Robin"
                             onChange={handleChangeCheck}
                           />
-                        </div>
+                        </div> */}
                       </div>
                       <p>{formErrors?.tournamentType}</p>
                     </div>

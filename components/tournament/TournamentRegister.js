@@ -40,16 +40,19 @@ const Tournament_Reg = ({ user, tournament, profile, teams }) => {
           .put(
             `${baseURL}/api/tournaments/register/${tournament._id}/${user._id}`
           )
-          .then((res) => setIsGamePlayer(res.data));
-        if (!isGamePlayer) {
-          toast.warning(
-            `Please connect ${tournament.games[0].gameId.name} to your profile.`
-          );
-        } else if (isRegistered === false || isTeamRegistered === false) {
-          toast.success('Registered Successfully');
-        } else {
-          toast.success('Left Tournament');
-        }
+          .then((res) => {
+            if (res.data === false) {
+              toast.warning(
+                `Please connect ${tournament.games[0].gameId.name} to your profile.`
+              );
+            } else {
+              if (isRegistered === false || isTeamRegistered === false) {
+                toast.success('Registered Successfully');
+              } else {
+                toast.success('Left Tournament');
+              }
+            }
+          });
       } else {
         axios.put(
           `${baseURL}/api/tournaments/register/team/${tournament._id}/${selectedTeam}`
