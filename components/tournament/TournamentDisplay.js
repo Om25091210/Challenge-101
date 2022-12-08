@@ -420,6 +420,7 @@ const TournamentDisplay = ({
                         />
                       </span>
                     ) : null}
+                    <p>Type: {result.tournament?.playType}</p>
                   </div>
 
                   <div className="reg">

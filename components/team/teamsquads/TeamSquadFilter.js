@@ -30,7 +30,7 @@ const TeamSquadFilter = ({ playerData, players }) => {
     const newFilter = players?.filter((value) => {
       return (
         value.name?.toLowerCase().includes(searchWord.toLowerCase()) ||
-        value.apidata?.data.platformInfo.platformUserHandle
+        value.apidata?.data.platformInfo?.platformUserHandle
           .toLowerCase()
           .includes(searchWord.toLowerCase())
       );

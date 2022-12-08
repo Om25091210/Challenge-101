@@ -76,7 +76,7 @@ function LeftNav({ user }) {
                 <span className="iconbg">
                   {/* <img src="/assets/media/icons/Challenge.png" alt="" /> */}
                 </span>{' '}
-                <span className="title">Wagers</span>
+                <span className="title">WAGERS</span>
               </a>
             </Link>
           </li>
@@ -86,7 +86,7 @@ function LeftNav({ user }) {
                 <span className="iconbg">
                   {/* <img src="/assets/media/icons/Challenge.png" alt="" /> */}
                 </span>{' '}
-                <span className="title">Battlepass</span>
+                <span className="title">BATTLEPASS</span>
               </a>
             </Link>
           </li>

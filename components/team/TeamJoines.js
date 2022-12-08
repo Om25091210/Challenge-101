@@ -33,19 +33,19 @@ const TeamJoines = ({
                   <div className="dp">
                     <img
                       src={
-                        req?.playerId.apidata?.data.platformInfo.avatarUrl
-                          ? req?.playerId.apidata.data.platformInfo.avatarUrl
+                        req?.playerId.apidata?.data?.platformInfo.avatarUrl
+                          ? req?.playerId.apidata.data?.platformInfo.avatarUrl
                           : req?.playerId.imgUrl
                       }
                       alt={
-                        req?.playerId.apidata?.data.platformInfo
+                        req?.playerId.apidata?.data?.platformInfo
                           .platformUserHandle
                       }
                     />
                   </div>
                   <h2>
-                    {req.playerId?.apidata
-                      ? req.playerId.apidata.data.platformInfo
+                    {req.playerId?.apidata.data?.platformInfo
+                      ? req.playerId.apidata.data?.platformInfo
                           .platformUserHandle
                       : req.playerId?.name}
                   </h2>

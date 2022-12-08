@@ -217,14 +217,18 @@ const TeamAbout = ({
                       ) : null}
                     </>
                   )}
-                  <TeamAboutEdit
-                    employeeData={emp}
-                    team={Data.team}
-                    isManager={isManager}
-                    isAdmin={isAdmin}
-                    isOwner={isOwner}
-                    isCEO={isCEO}
-                  />
+                  {emp.role === 'Owner' ? null : (
+                    <>
+                      <TeamAboutEdit
+                        employeeData={emp}
+                        team={Data.team}
+                        isManager={isManager}
+                        isAdmin={isAdmin}
+                        isOwner={isOwner}
+                        isCEO={isCEO}
+                      />
+                    </>
+                  )}
                 </div>
               </li>
             ))

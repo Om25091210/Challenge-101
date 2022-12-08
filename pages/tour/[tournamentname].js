@@ -352,7 +352,7 @@ const TournamentDetail = ({
                         ))}
                     </>
                   </div>
-
+                  <p>TYPE: {data.tournament?.playType} </p>
                   <div className="games">
                     <h3>
                       {data.tournament.playType === 'TEAMS'
@@ -493,7 +493,7 @@ const TournamentDetail = ({
                     <>
                       <h2>Maps: </h2>
                       {data.tournament.games[0].gameId._id ===
-                      data.tournament.maps[0].mapId.game ? (
+                      data.tournament.maps[0]?.mapId.game ? (
                         <>
                           {data.tournament.maps &&
                             data.tournament.maps.map((item, index) => (
