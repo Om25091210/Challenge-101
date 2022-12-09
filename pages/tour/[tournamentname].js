@@ -352,7 +352,7 @@ const TournamentDetail = ({
                         ))}
                     </>
                   </div>
-                  <p>TYPE: {data.tournament?.playType} </p>
+                  <p>FORMAT: {data.tournament?.playType} </p>
                   <div className="games">
                     <h3>
                       {data.tournament.playType === 'TEAMS'
@@ -486,6 +486,7 @@ const TournamentDetail = ({
                             />
                           </span>
                         ))}
+                      <p>Type: {data.tournament?.teamSize}</p>
                     </>
                   </div>
 
@@ -586,11 +587,11 @@ const TournamentDetail = ({
                   Rules
                 </a>
               </li>
-              {/* <li>
+              <li>
                 <a href="#!" rel="result">
                   Prizes/Result
                 </a>
-              </li> */}
+              </li>
               {/* <li>
                 <a href="#!" rel="series">
                   TOURNAMENT SERIES

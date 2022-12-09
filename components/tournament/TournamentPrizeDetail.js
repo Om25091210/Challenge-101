@@ -54,7 +54,7 @@ const TournamentPrizeDetail = ({ tournament }) => {
 
         <div className="more_prizes">
           {tournament &&
-            tournament.prizes.slice(0, 3).map((tourPrize) => (
+            tournament.prizes.slice(3).map((tourPrize) => (
               <div className="prize_box">
                 <div className="first_symb">
                   {tourPrize.place ? (
