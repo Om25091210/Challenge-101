@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import React, { Fragment, useContext, useState, useEffect } from 'react';
 
-import { logoutUser } from '@utils/auth';
 import NotificationItem from './NotificationItem';
 import ChatSection from './chats/ChatSection';
 import Link from 'next/link';
@@ -50,7 +49,7 @@ const SignedHeader = ({ user, profile }) => {
   const [filterType, setFilterType] = useState('JOBS');
 
   const getUserBalance = () => {
-    API.getAddressBalance(user.phone_number).then((res) => {
+    API.getAddressBalance(user?.phone_number).then((res) => {
       setCoin(res.data);
       getINR();
     });
@@ -60,6 +59,10 @@ const SignedHeader = ({ user, profile }) => {
       const value = res.data * coin;
       setINR(value.toFixed(2));
     });
+  };
+
+  const logoutUser = () => {
+    cookie.remove('token');
   };
 
   const sendEmail = (e) => {
@@ -313,7 +316,7 @@ const SignedHeader = ({ user, profile }) => {
                 </li>
 
                 <li>
-                  <a href="#!" onClick={logoutUser}>
+                  <a href="/login" onClick={logoutUser}>
                     <img src="/assets/media/login/logout.png" alt="" />
                     Logout
                   </a>

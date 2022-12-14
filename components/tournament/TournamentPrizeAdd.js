@@ -43,6 +43,7 @@ const TournamentPrizeAdd = ({ prizes, prizesData }) => {
     setSearchText(data.name);
     states.prize_sponsor = data._id;
     prizesData.push(states);
+    setFilteredData([]);
   };
 
   return (
@@ -90,30 +91,34 @@ const TournamentPrizeAdd = ({ prizes, prizesData }) => {
           autoComplete="off"
         />
         {searchText.length !== 0 ? (
-          <div className="custom-rig-tag">
-            <div className="rigs_items">
-              {!filteredData || filteredData.length === 0 ? (
-                <p>No Sponsor found..</p>
-              ) : (
-                filteredData.map((data) => (
-                  <div
-                    onClick={() => handleSelectedRig(data)}
-                    key={data._id}
-                    className="items"
-                  >
-                    <span>
-                      <img src={data?.imgUrl} height={50} width={50} />
-                    </span>
-                    <p>
-                      {data.name.length > 20
-                        ? data.name.substring(0, 20) + '...'
-                        : data.name}
-                    </p>
-                  </div>
-                ))
-              )}
-            </div>
-          </div>
+          <>
+            {filteredData.length > 0 ? (
+              <div className="custom-rig-tag">
+                <div className="rigs_items">
+                  {!filteredData || filteredData.length === 0 ? (
+                    <p>No Sponsor found..</p>
+                  ) : (
+                    filteredData.map((data) => (
+                      <div
+                        onClick={() => handleSelectedRig(data)}
+                        key={data._id}
+                        className="items"
+                      >
+                        <span>
+                          <img src={data?.imgUrl} height={50} width={50} />
+                        </span>
+                        <p>
+                          {data.name.length > 20
+                            ? data.name.substring(0, 20) + '...'
+                            : data.name}
+                        </p>
+                      </div>
+                    ))
+                  )}
+                </div>
+              </div>
+            ) : null}
+          </>
         ) : null}
       </div>
     </>
