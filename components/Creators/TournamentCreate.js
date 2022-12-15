@@ -72,7 +72,8 @@ const TournamentCreate = ({ user, isClaim }) => {
     isClaim,
     checkIn: '',
     teamSize: '',
-    eligibleCountries: ''
+    eligibleCountries: '',
+    mode: ''
   });
 
   const options = useMemo(() => countryList().getData(), []);
@@ -142,6 +143,7 @@ const TournamentCreate = ({ user, isClaim }) => {
       formdata.append('teamSize', state.teamSize);
       formdata.append('eligibleCountries', state.eligibleCountries);
       formdata.append('maps', selectGames.selectedMaps);
+      formdata.append('mode', state.mode);
 
       try {
         await axios
@@ -488,6 +490,34 @@ const TournamentCreate = ({ user, isClaim }) => {
                         />
                       ) : null}
                     </div>
+
+                    {state.game === 20 ? (
+                      <div className="form-group">
+                        <label for="exampleFormControlTextarea1">Mode</label>
+                        <div className="btn_selection">
+                          <div className="big_btn">
+                            <span class="form-check-label terms"> FPP</span>
+                            <input
+                              type="radio"
+                              name="mode"
+                              id=""
+                              value="FPP"
+                              onChange={handleChangeCheck}
+                            />
+                          </div>
+
+                          <div className="big_btn">
+                            <span class="form-check-label terms"> TPP</span>
+                            <input
+                              type="radio"
+                              name="mode"
+                              value="TPP"
+                              onChange={handleChangeCheck}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    ) : null}
 
                     <div className="form-group">
                       <label for="exampleFormControlTextarea1">

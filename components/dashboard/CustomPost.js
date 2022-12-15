@@ -17,8 +17,9 @@ import {
 } from 'react-share';
 import { useRouter } from 'next/router';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+import Report from '../comments/report';
 
-const CustomPost = ({ post }) => {
+const CustomPost = ({ post, user }) => {
   const [posts, setPosts] = useState([post]);
   const [description, setDescription] = useState(posts[0].description);
   const [image, setImage] = useState(posts[0].images);
@@ -104,12 +105,16 @@ const CustomPost = ({ post }) => {
     <>
       <div className="three_dots_dropdown">
         <ul>
-          <li>
-            <button onClick={() => setEditModal(true)}>Edit</button>
-          </li>
-          <li>
-            <button onClick={() => setDeleteModal(true)}>Delete</button>
-          </li>
+          {post.user?._id === user._id ? (
+            <>
+              <li>
+                <button onClick={() => setEditModal(true)}>Edit</button>
+              </li>
+              <li>
+                <button onClick={() => setDeleteModal(true)}>Delete</button>
+              </li>
+            </>
+          ) : null}
           <li>
             <button onClick={() => setShareToModal(true)}>Share to</button>
           </li>
@@ -117,6 +122,9 @@ const CustomPost = ({ post }) => {
             <CopyToClipboard onCopy={onCopy} text={`${shareUrl}/${post._id}`}>
               <button>Copy Link</button>
             </CopyToClipboard>
+          </li>
+          <li>
+            <Report type="Post" />
           </li>
         </ul>
       </div>

@@ -12,9 +12,11 @@ import TeamFollow from '../team/TeamFollow';
 import { toast } from 'react-toastify';
 import Follow from '../common/Follow';
 
-const AllPosts = ({ post, user, profiledata, type, team }) => {
+const AllPosts = ({ post, user, profiledata, followData, type, team }) => {
   const [comments, setComments] = useState([]);
-
+  const [showModal, setShowModal] = useState(false);
+  var followerList =
+    followData && followData.map((follow) => follow.user?.username);
   useEffect(() => {
     axios
       .get(`${baseURL}/api/comments/${post._id}`)
@@ -25,6 +27,11 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
         console.log(err);
       });
   }, [post._id]);
+
+  const toggleModal = (e) => {
+    e.preventDefault();
+    setShowModal(!showModal);
+  };
 
   const isFollow =
     profiledata &&
@@ -58,10 +65,53 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
       return share.user?._id === user._id;
     }).length > 0;
 
+  var filtered = post.shares?.filter(function (item) {
+    return followerList?.indexOf(item.user?.username) !== -1;
+  });
+
   return (
     <div key={post._id}>
       <div className="post">
         <div className="heads">
+          <p className="user_shared">
+            {filtered.length > 0 ? (
+              <>
+                {filtered &&
+                  filtered
+                    .slice(0, 1)
+                    .map((usr) => (
+                      <a href={`/user/${usr.user.username}`}>
+                        {usr.user.username}
+                      </a>
+                    ))}
+                {filtered.length >= 2 ? (
+                  <p>
+                    {' '}
+                    and{' '}
+                    <a href="#!" onClick={toggleModal}>
+                      {filtered.length - 1} others{' '}
+                    </a>{' '}
+                  </p>
+                ) : null}
+
+                <p> has shared {post.user?.name}'s post </p>
+              </>
+            ) : null}
+            {showModal && (
+              <>
+                <p onClick={toggleModal}>X</p>
+                {filtered &&
+                  filtered
+                    .slice(1)
+                    .map((usr) => (
+                      <a href={`/user/${usr.user.username}`}>
+                        {' '}
+                        {usr.user.username}{' '}
+                      </a>
+                    ))}
+              </>
+            )}
+          </p>
           <div className="user">
             <img src={post?.profilepic} alt="" />
           </div>
@@ -161,7 +211,7 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
                 {' '}
                 <i className="fa fa-ellipsis-v" aria-hidden="true"></i>
               </a>
-              <CustomPost post={post} />
+              <CustomPost post={post} user={user} />
             </div>
           </div>
 
@@ -249,8 +299,8 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
                                 alt={ppl.user?.name}
                               />
                             </div>
-                            <a href={`/user/${ppl.user.username}`}>
-                              <p>{ppl.user.name}</p>
+                            <a href={`/user/${ppl.user?.username}`}>
+                              <p>{ppl.user?.name}</p>
                             </a>
                           </li>
                         ))}
@@ -263,8 +313,8 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
                   {post.shares &&
                     post.shares.slice(0, 2).map((share) => (
                       <span>
-                        <a href={`/user/${share.user.username}`}>
-                          {share.user.username}
+                        <a href={`/user/${share.user?.username}`}>
+                          {share.user?.username}
                         </a>
                         ,
                       </span>
@@ -274,7 +324,8 @@ const AllPosts = ({ post, user, profiledata, type, team }) => {
                       and <b>{post.shares.length - 2}</b> others
                     </span>
                   ) : null}{' '}
-                  have shared your post.
+                  have shared {post.user?._id === user._id ? 'your' : 'this'}{' '}
+                  post.
                 </span>
               </div>
             )}

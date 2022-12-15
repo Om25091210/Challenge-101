@@ -41,7 +41,8 @@ const TournamentEdit = ({ data, user }) => {
     twitch: data.tournament.social?.twitch || '',
     youtube: data.tournament.social?.youtube || '',
     discord: data.tournament.social?.discord || '',
-    maps: mapList || ''
+    maps: mapList || '',
+    mode: data.tournament?.mode || ''
   });
   const [allorganizer, setAllorganizer] = useState([]);
   const [allgames, setAllgames] = useState([]);
@@ -382,6 +383,24 @@ const TournamentEdit = ({ data, user }) => {
                     </select>
                     <p>{formErrors.games}</p>
                   </div>
+
+                  {states.games[0] == 20 ? (
+                    <>
+                      <div className="form-group">
+                        <label htmlFor="exampleFormControlInput1">Mode</label>
+                        <select
+                          name="mode"
+                          id="mode"
+                          onClick={handleChangeCheck}
+                          value={states.mode}
+                        >
+                          <option value="">Select Game Mode</option>
+                          <option value="FPP">FPP</option>
+                          <option value="TPP">TPP</option>
+                        </select>
+                      </div>
+                    </>
+                  ) : null}
 
                   <div className="form-group">
                     <div className="colm">

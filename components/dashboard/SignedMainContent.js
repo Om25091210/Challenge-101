@@ -26,6 +26,7 @@ const SignedMainContent = ({ posts, user }) => {
   const router = useRouter();
   const [profiledata, setProfileData] = useState([]);
   const [topmenu, setTopmenu] = useState(true);
+  const [followData, setFollowData] = useState([]);
 
   let teamId = '';
 
@@ -95,8 +96,21 @@ const SignedMainContent = ({ posts, user }) => {
     }
   };
 
-  useEffect(() => {
-    axios
+  useEffect(async () => {
+    await axios
+      .get(`${baseURL}/api/all/personas`, {
+        headers: {
+          Authorization: cookie.get('token')
+        }
+      })
+      .then((res) => {
+        setPersonas(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    await axios
       .get(`${baseURL}/api/posts/feed`, {
         headers: {
           Authorization: cookie.get('token')
@@ -109,25 +123,8 @@ const SignedMainContent = ({ posts, user }) => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
 
-  useEffect(() => {
-    axios
-      .get(`${baseURL}/api/all/personas`, {
-        headers: {
-          Authorization: cookie.get('token')
-        }
-      })
-      .then((res) => {
-        setPersonas(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-
-  useEffect(() => {
-    axios
+    await axios
       .get(`${baseURL}/api/all/games`)
       .then((res) => {
         setAllGames(res.data);
@@ -135,6 +132,10 @@ const SignedMainContent = ({ posts, user }) => {
       .catch((err) => {
         console.log(err);
       });
+
+    await axios
+      .get(`${baseURL}/api/profile/${user.username}/followers`)
+      .then((res) => setFollowData(res.data));
   }, []);
 
   const selectgameTag = (x) => {
@@ -407,7 +408,12 @@ const SignedMainContent = ({ posts, user }) => {
         <div className="tab" id="Discover">
           <div>
             {posts.map((post) => (
-              <AllPosts user={user} post={post} profiledata={profiledata} />
+              <AllPosts
+                user={user}
+                post={post}
+                profiledata={profiledata}
+                followData={followData}
+              />
             ))}
           </div>
         </div>

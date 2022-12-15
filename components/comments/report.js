@@ -1,7 +1,7 @@
 import ReactTooltip from 'react-tooltip';
 import { useEffect, useState } from 'react';
 
-const ReportsComments = () => {
+const ReportsComments = ({ type }) => {
   useEffect(() => {
     $('a.model_show_btn').click(function () {
       $(this).next().addClass('show_model');
@@ -15,7 +15,11 @@ const ReportsComments = () => {
   return (
     <>
       <a href="#!" className="report_link model_show_btn">
-        <i className="fa fa-ellipsis-h" aria-hidden="true"></i>
+        {type === 'Post' ? (
+          'Report'
+        ) : (
+          <i className="fa fa-ellipsis-h" aria-hidden="true"></i>
+        )}
       </a>
 
       <div className="common_model_box">
