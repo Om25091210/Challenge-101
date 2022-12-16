@@ -6,6 +6,7 @@ import baseURL from '../../utils/baseURL';
 import { tournamentEditValidate } from '../../utils/valid';
 import Moment from 'moment';
 import countryList from 'react-select-country-list';
+import { handleMatchType } from '../../utils/functionsHelper';
 
 const TournamentEdit = ({ data, user }) => {
   const gameList = data.tournament.games.map((game) => game.gameId._id);
@@ -42,12 +43,14 @@ const TournamentEdit = ({ data, user }) => {
     youtube: data.tournament.social?.youtube || '',
     discord: data.tournament.social?.discord || '',
     maps: mapList || '',
-    mode: data.tournament?.mode || ''
+    mode: data.tournament?.mode || '',
+    matchType: data.tournament?.matchType || ''
   });
   const [allorganizer, setAllorganizer] = useState([]);
   const [allgames, setAllgames] = useState([]);
   // const [allseries, setAllseries] = useState([]);
   const [formErrors, setFormErrors] = useState({});
+  const [matchData, setmatchData] = useState('');
 
   useEffect(() => {
     axios
@@ -64,6 +67,8 @@ const TournamentEdit = ({ data, user }) => {
     await axios
       .get(`${baseURL}/api/maps/${states.games[0]}`)
       .then((res) => setGotMaps(res.data));
+
+    setmatchData(handleMatchType(Number(states.games[0])));
   }, [states.games]);
 
   const options = useMemo(() => countryList().getData(), []);
@@ -383,6 +388,32 @@ const TournamentEdit = ({ data, user }) => {
                     </select>
                     <p>{formErrors.games}</p>
                   </div>
+
+                  {states.games[0] == 20 ||
+                  states.games[0] == 23 ||
+                  states.games[0] == 3 ||
+                  states.games[0] == 26 ||
+                  states.games[0] == 1 ? (
+                    <>
+                      <div className="form-group">
+                        <label htmlFor="exampleFormControlInput1">
+                          Match type
+                        </label>
+                        <select
+                          name="matchType"
+                          id="matchType"
+                          value={states.matchType}
+                          onChange={handleChangeCheck}
+                        >
+                          <option value="">Select Match Type...</option>
+                          {matchData &&
+                            matchData.map((match) => (
+                              <option value={match}>{match}</option>
+                            ))}
+                        </select>
+                      </div>
+                    </>
+                  ) : null}
 
                   {states.games[0] == 20 ? (
                     <>

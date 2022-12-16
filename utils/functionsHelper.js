@@ -107,6 +107,59 @@ export const getTournament = async (tournamentid) => {
   return data;
 };
 
+const matchTypes = {
+  pubgMatchType: ['Team Deathmatch', 'Zombies', 'War', 'Conquest'],
+  codMatchType: [
+    'Team Deathmatch',
+    'Frontline',
+    'Hardpoint',
+    'Search and Destroy',
+    'Free for All',
+    '10 V 10',
+    'Domination'
+  ],
+  lolMatchType: ["Summoner's Rift", 'ARAM', 'Teamfight Tactics'],
+  valorantMatchType: [
+    'Unrated',
+    'Spike Rush',
+    'Competitive',
+    'Premier',
+    'Deathmatch',
+    'Escalation',
+    'Replication',
+    'Snowball Fight'
+  ],
+  csgoMatchType: [
+    'Competitive',
+    'Casual',
+    'Deathmatch',
+    'Arms Race',
+    'Demolition',
+    'Wingman',
+    'Flying Scoutsman',
+    'Retakes',
+    'Danger Zone'
+  ]
+};
+
+export const handleMatchType = (selectGames) => {
+  let matchData;
+  if (selectGames === 20) {
+    matchData = matchTypes.pubgMatchType;
+  } else if (selectGames === 23) {
+    matchData = matchTypes.codMatchType;
+  } else if (selectGames === 1) {
+    matchData = matchTypes.lolMatchType;
+  } else if (selectGames === 26) {
+    matchData = matchTypes.valorantMatchType;
+  } else if (selectGames === 3) {
+    matchData = matchTypes.csgoMatchType;
+  } else {
+    matchData = [];
+  }
+  return matchData;
+};
+
 export const regionsData = [
   'Andhra Pradesh',
   'Arunachal Pradesh',

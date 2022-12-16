@@ -8,6 +8,7 @@ import countryList from 'react-select-country-list';
 import TournamentAddSponsor from '../tournament/TournamentAddSponsor';
 import SearchName from './SearchName';
 import GameMaps from './GameMaps';
+import { handleMatchType } from '../../utils/functionsHelper';
 
 const TournamentCreate = ({ user, isClaim }) => {
   const showSecond = false;
@@ -73,10 +74,16 @@ const TournamentCreate = ({ user, isClaim }) => {
     checkIn: '',
     teamSize: '',
     eligibleCountries: '',
-    mode: ''
+    mode: '',
+    matchType: ''
   });
 
   const options = useMemo(() => countryList().getData(), []);
+
+  const [matchData, setmatchData] = useState('');
+  useEffect(() => {
+    setmatchData(handleMatchType(selectGames.game));
+  }, [selectGames]);
 
   useEffect(() => {
     //Games
@@ -144,6 +151,7 @@ const TournamentCreate = ({ user, isClaim }) => {
       formdata.append('eligibleCountries', state.eligibleCountries);
       formdata.append('maps', selectGames.selectedMaps);
       formdata.append('mode', state.mode);
+      formdata.append('matchType', state.matchType);
 
       try {
         await axios
@@ -490,6 +498,27 @@ const TournamentCreate = ({ user, isClaim }) => {
                         />
                       ) : null}
                     </div>
+
+                    {state.game === 20 ||
+                    state.game === 23 ||
+                    state.game === 3 ||
+                    state.game === 26 ||
+                    state.game === 1 ? (
+                      <div className="colm">
+                        <label for="exampleFormControlInput1">Match type</label>
+                        <select
+                          name="matchType"
+                          value={state.matchType}
+                          onChange={handleChangeCheck}
+                        >
+                          <option value="">Select Match Type...</option>
+                          {matchData &&
+                            matchData.map((match) => (
+                              <option value={match}>{match}</option>
+                            ))}
+                        </select>
+                      </div>
+                    ) : null}
 
                     {state.game === 20 ? (
                       <div className="form-group">
