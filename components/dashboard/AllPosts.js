@@ -73,7 +73,7 @@ const AllPosts = ({ post, user, profiledata, followData, type, team }) => {
     <div key={post._id}>
       <div className="post">
         <div className="heads">
-          <p className="user_shared">
+          <div className="user_shared">
             {filtered.length > 0 ? (
               <>
                 {filtered &&
@@ -85,33 +85,45 @@ const AllPosts = ({ post, user, profiledata, followData, type, team }) => {
                       </a>
                     ))}
                 {filtered.length >= 2 ? (
-                  <p>
+                  <>
                     {' '}
                     and{' '}
-                    <a href="#!" onClick={toggleModal}>
+                    <a href="#!" className="model_show_btn more">
                       {filtered.length - 1} others{' '}
                     </a>{' '}
-                  </p>
+                    <div className="common_model_box" id="share_prof">
+                      <a href="#!" className="model_close">
+                        X
+                      </a>
+
+                      <div className="inner_model_box">
+                        <h3>Shares User</h3>
+                        <ul>
+                          {filtered &&
+                            filtered.slice(1).map((usr) => (
+                              <li>
+                                <img
+                                  src={usr.user.profilePicUrl}
+                                  alt={usr.user.username}
+                                />
+                                <a href={`/user/${usr.user.username}`}>
+                                  {' '}
+                                  {usr.user.username}{' '}
+                                </a>
+                              </li>
+                            ))}
+                        </ul>
+                      </div>
+                      <div className="overlay"></div>
+                    </div>
+                  </>
                 ) : null}
 
                 <p> has shared {post.user?.name}'s post </p>
               </>
             ) : null}
-            {showModal && (
-              <>
-                <p onClick={toggleModal}>X</p>
-                {filtered &&
-                  filtered
-                    .slice(1)
-                    .map((usr) => (
-                      <a href={`/user/${usr.user.username}`}>
-                        {' '}
-                        {usr.user.username}{' '}
-                      </a>
-                    ))}
-              </>
-            )}
-          </p>
+            {showModal && <></>}
+          </div>
           <div className="user">
             <img src={post?.profilepic} alt="" />
           </div>

@@ -352,7 +352,9 @@ const TournamentDetail = ({
                         ))}
                     </>
                   </div>
-                  <p>FORMAT: {data.tournament?.playType} </p>
+                  <div className="games">
+                    <h3>FORMAT:</h3> <span>{data.tournament?.playType}</span>{' '}
+                  </div>
                   <div className="games">
                     <h3>
                       {data.tournament.playType === 'TEAMS'
@@ -498,13 +500,15 @@ const TournamentDetail = ({
                         <>
                           {data.tournament.maps &&
                             data.tournament.maps.map((item, index) => (
-                              <span key={index}>
-                                <img
-                                  src={item.mapId.imgUrl}
-                                  alt={item.mapId.name}
-                                />
+                              <>
+                                <span key={index}>
+                                  <img
+                                    src={item.mapId.imgUrl}
+                                    alt={item.mapId.name}
+                                  />
+                                </span>
                                 <p>{item.mapId.name}</p>
-                              </span>
+                              </>
                             ))}
                         </>
                       ) : (
@@ -521,17 +525,19 @@ const TournamentDetail = ({
                           {data.tournament.eligibleCountries &&
                             data.tournament.eligibleCountries.map(
                               (cty, index) => (
-                                <span key={index}>
-                                  <ReactCountryFlag
-                                    countryCode={cty.iso}
-                                    svg
-                                    style={{
-                                      width: '2em',
-                                      height: '2em'
-                                    }}
-                                  />
+                                <>
+                                  <span key={index}>
+                                    <ReactCountryFlag
+                                      countryCode={cty.iso}
+                                      svg
+                                      style={{
+                                        width: '2em',
+                                        height: '2em'
+                                      }}
+                                    />
+                                  </span>
                                   <p>{cty.name}</p>
-                                </span>
+                                </>
                               )
                             )}
                         </>

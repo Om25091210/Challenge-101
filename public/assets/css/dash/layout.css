@@ -1561,14 +1561,19 @@ ul.top_menu .drop_down_bg.create_pages p {
 }
 
 .post .user_shared {
-    position: relative;
-    top: 4px;
-    right: 10px;
+	position: relative;
     padding-bottom: 10px;
     width: 100%;
     float: right;
     text-align: right;
     color: #f6e52e;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.post .user_shared a {
+    color: #fff;
+    margin: 0 5px;
 }
 
 .post .heads {
@@ -3499,6 +3504,8 @@ article .social_bar img {
 
 .bio_box .games h2 {
 	margin-right: 20px;
+    width: 73px;
+    text-transform: uppercase;
 }
 
 .bio_box .games a {
