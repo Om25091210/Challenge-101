@@ -74,10 +74,10 @@ const TeamEdit = ({ isAdmin, isManager, isOwner, isCEO, team }) => {
         axios.put(`${baseURL}/api/teams/edit/${team?._id}`, states);
         toast.success('teams Updated');
         $('a.model_close').parent().removeClass('show_model');
+        router.push('/dashboard');
       } catch (err) {
         toast.error(err.response?.data?.msg || 'Please recheck your inputs');
       }
-      refreshData();
     }
   };
 

@@ -49,6 +49,13 @@ const TournamentDetail = ({
     const isUser = data.tournament?.user?._id === user._id;
     const router = useRouter();
     const [later, setLater] = useState(false);
+    const [followData, setFollowData] = useState([]);
+
+    useEffect(async () => {
+      await axios
+        .get(`${baseURL}/api/tournaments/${data.tournament.name}/followers`)
+        .then((res) => setFollowData(res.data));
+    }, []);
 
     const handleDeleteSubmit = async (e) => {
       e.preventDefault();
@@ -645,11 +652,15 @@ const TournamentDetail = ({
               <div className="tab" id="overview">
                 <div className="profile_left_post">
                   {data.tourPosts.length === 0 ? (
-                    <h6>No Posts Under This Team</h6>
+                    <h6>No Posts Under This Tournament</h6>
                   ) : (
                     data.tourPosts.length !== 0 &&
                     data.tourPosts.map((post, index) => (
-                      <AllPosts post={post} user={user} />
+                      <AllPosts
+                        post={post}
+                        user={user}
+                        followData={followData.followers}
+                      />
                     ))
                   )}
                 </div>

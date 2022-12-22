@@ -119,7 +119,12 @@ const AllPosts = ({ post, user, profiledata, followData, type, team }) => {
                   </>
                 ) : null}
 
-                <p> has shared {post.user?.name}'s post </p>
+                <p>
+                  {' '}
+                  has shared{' '}
+                  {post.post_type === 'user' ? post.user?.name : post.username}
+                  's post{' '}
+                </p>
               </>
             ) : null}
             {showModal && <></>}

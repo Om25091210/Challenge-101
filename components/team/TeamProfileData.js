@@ -30,6 +30,7 @@ const TeamProfileData = ({
 }) => {
   const [jobs, setJobs] = useState([]);
   const [tournamentStatData, setTournamentStatData] = useState([]);
+  const [followData, setFollowData] = useState([]);
 
   useEffect(() => {
     $('a.model_show_btn').click(function () {
@@ -51,6 +52,11 @@ const TeamProfileData = ({
     axios
       .get(`${baseURL}/api/tournamentstat/`)
       .then((res) => setTournamentStatData(res.data));
+
+    //Followers
+    axios
+      .get(`${baseURL}/api/teams/${data.team._id}/followers`)
+      .then((res) => setFollowData(res.data));
   }, []);
 
   let [tabData, setTabData] = useState([]);
@@ -152,7 +158,11 @@ const TeamProfileData = ({
             ) : (
               data.teamPosts.length !== 0 &&
               data.teamPosts.map((post, index) => (
-                <AllPosts post={post} user={user} />
+                <AllPosts
+                  post={post}
+                  user={user}
+                  followData={followData.followers}
+                />
               ))
             )}
           </div>

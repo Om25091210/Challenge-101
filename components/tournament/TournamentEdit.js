@@ -111,10 +111,10 @@ const TournamentEdit = ({ data, user }) => {
         );
         $('a.model_close').parent().removeClass('show_model');
         toast.success('Tournament Details Updated Successfully');
+        router.push('/dashboard');
       } catch (err) {
         toast.error(err.response?.data?.msg || 'Please recheck your inputs');
       }
-      refreshData();
     }
   };
 
