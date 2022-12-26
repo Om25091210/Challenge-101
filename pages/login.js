@@ -92,10 +92,16 @@ const SignIn = () => {
         .post(`${baseURL}/api/all/waitinglist`, {
           waitingMail
         })
+        .then((res) => {
+          if (res.data.msg === 'Mail Already Exists') {
+            toast.error(res.data.msg);
+          } else {
+            toast.success(res.data.msg);
+          }
+        })
         .catch((err) => {
           console.log(err);
         });
-      toast.success('Thank You for the support!');
     } catch (error) {
       toast.info('Sorry Please Enter valid Email.');
     }
