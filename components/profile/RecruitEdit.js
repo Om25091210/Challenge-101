@@ -9,7 +9,7 @@ import { LanguageData } from '../../utils/functionsHelper';
 const RecruitEdit = ({ attributeData, profile }) => {
   const [allgames, setAllgames] = useState([]);
   const [states, setStates] = useState({
-    games: attributeData.games[0].gameId._id,
+    games: attributeData.games[0]?.gameId._id,
     role: attributeData.role[0],
     regions: attributeData.regions,
     Mic: attributeData.mic || false,

@@ -299,7 +299,7 @@ body.DarkPage .features li {
     background: #1c1f24;
 }
 body.DarkPage .create_bg {
-    background: #1b2737;
+    background: var(--bgcolor1);
     padding: 0;
 }
 body.DarkPage .create_bg input {

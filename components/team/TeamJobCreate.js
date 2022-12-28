@@ -100,7 +100,7 @@ const TeamJobCreate = ({ user, profile, teams }) => {
               onChange={handleChange}
               value={state.name}
             />
-            <p>{formErrors.name}</p>
+            <p className="error">{formErrors.name}</p>
           </div>
 
           <div className="form-group">
@@ -119,7 +119,7 @@ const TeamJobCreate = ({ user, profile, teams }) => {
               <option value="Marksman Rifle">Marksman Rifle</option>
               <option value="SMGs">SMGs</option>
             </select>
-            <p>{formErrors.role}</p>
+            <p className="error">{formErrors.role}</p>
           </div>
 
           <div className="form-group">
@@ -145,7 +145,7 @@ const TeamJobCreate = ({ user, profile, teams }) => {
               <option value="Game Designer">Game Designer</option>
               <option value="Others">Others</option>
             </select>
-            <p>{formErrors.category}</p>
+            <p className="error">{formErrors.category}</p>
           </div>
 
           <div className="form-group">
@@ -162,7 +162,7 @@ const TeamJobCreate = ({ user, profile, teams }) => {
                   <option value={team._id}>{team?.name}</option>
                 ))}
             </select>
-            <p>{formErrors.owner}</p>
+            <p className="error">{formErrors.owner}</p>
           </div>
 
           <div className="form-group">
@@ -196,7 +196,7 @@ const TeamJobCreate = ({ user, profile, teams }) => {
                 value={state.startDate}
                 className="form-control"
               />
-              <p>{formErrors.startDate}</p>
+              <p className="error">{formErrors.startDate}</p>
             </div>
 
             <div className="form-group">
@@ -209,7 +209,7 @@ const TeamJobCreate = ({ user, profile, teams }) => {
                 value={state.endDate}
                 className="form-control"
               />
-              <p>{formErrors.endDate}</p>
+              <p className="error">{formErrors.endDate}</p>
             </div>
 
             <div className="form-group" style={{ height: '70px' }}>
@@ -247,7 +247,7 @@ const TeamJobCreate = ({ user, profile, teams }) => {
                 value={state.experience}
                 className="form-control"
               />
-              <p>{formErrors.experience}</p>
+              <p className="error">{formErrors.experience}</p>
             </div>
           </div>
 

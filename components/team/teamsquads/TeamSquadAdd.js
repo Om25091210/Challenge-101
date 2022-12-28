@@ -99,80 +99,82 @@ const TeamSquadAdd = ({
           <i className="fa fa-plus-circle" aria-hidden="true"></i> Add Squad
         </a>
       ) : null}
-      <div className="common_model_box" id="big_poup">
+      <div className="common_model_box team_squad" id="big_poup">
         <a href="#!" className="model_close">
           X
         </a>
 
         <div className="inner_model_box">
-          <h3>Add a Squad</h3>
+          <div className="add_job_height">
+            <h3>Add a Squad</h3>
 
-          <form className="common_form" onSubmit={handleEditStat}>
-            <div className="form-group">
-              <label htmlFor="search">Games</label>
-              <select
-                className="form-control text-capitalize"
-                multiple={false}
-                name="game"
-                value={squadData.game}
-                onChange={onChange}
-              >
-                <option value="">--</option>
-                {games.map((game, idx) => (
-                  <option key={idx} value={game._id}>
-                    {' '}
-                    {game.name}{' '}
-                  </option>
-                ))}
-              </select>
-              <p>{formErrors.game}</p>
-            </div>
-            <div className="form-group">
-              <label htmlFor="search">Country</label>
-              <select
-                className="form-control text-capitalize"
-                name="country"
-                id=""
-                onChange={onChange}
-              >
-                <option value="">--</option>
-                {options.map((opt) => (
-                  <>
-                    <option value={opt.value}>{opt.label}</option>
-                  </>
-                ))}
-              </select>
-              <p>{formErrors.country}</p>
-            </div>
-
-            <TeamSquadFilter playerData={playerData} players={teamplayers} />
-            <p>{formErrors.players}</p>
-            <TeamSquadFilter playerData={playerData} players={teamplayers} />
-
-            {[...Array(count)].map((e, index) => (
-              <div key={index}>
-                <TeamSquadFilter
-                  playerData={playerData}
-                  players={teamplayers}
-                />
+            <form className="common_form" onSubmit={handleEditStat}>
+              <div className="form-group">
+                <label htmlFor="search">Games</label>
+                <select
+                  className="form-control text-capitalize"
+                  multiple={false}
+                  name="game"
+                  value={squadData.game}
+                  onChange={onChange}
+                >
+                  <option value="">--</option>
+                  {games.map((game, idx) => (
+                    <option key={idx} value={game._id}>
+                      {' '}
+                      {game.name}{' '}
+                    </option>
+                  ))}
+                </select>
+                <p>{formErrors.game}</p>
               </div>
-            ))}
+              <div className="form-group">
+                <label htmlFor="search">Country</label>
+                <select
+                  className="form-control text-capitalize"
+                  name="country"
+                  id=""
+                  onChange={onChange}
+                >
+                  <option value="">--</option>
+                  {options.map((opt) => (
+                    <>
+                      <option value={opt.value}>{opt.label}</option>
+                    </>
+                  ))}
+                </select>
+                <p>{formErrors.country}</p>
+              </div>
 
-            <div className="form-group">
-              <label htmlFor="">Add More Players</label>
-              <span onClick={(e) => handleRoleForm(e)}>
-                <i className="fa fa-life-ring" aria-hidden="true"></i>
-              </span>
-            </div>
+              <TeamSquadFilter playerData={playerData} players={teamplayers} />
+              {/* <p>{formErrors.players}</p> */}
+              <TeamSquadFilter playerData={playerData} players={teamplayers} />
 
-            <button
-              onClick={() => setFormErrors(teamsquadformvalidate(squadData))}
-              className="btn"
-              // type="submit"
-            >
-              Submit
-            </button>
-          </form>
+              {[...Array(count)].map((e, index) => (
+                <div key={index}>
+                  <TeamSquadFilter
+                    playerData={playerData}
+                    players={teamplayers}
+                  />
+                </div>
+              ))}
+
+              <div className="form-group">
+                <label htmlFor="">Add More Players</label>
+                <span onClick={(e) => handleRoleForm(e)}>
+                  <i className="fa fa-life-ring" aria-hidden="true"></i>
+                </span>
+              </div>
+
+              <button
+                onClick={() => setFormErrors(teamsquadformvalidate(squadData))}
+                className="btn"
+                // type="submit"
+              >
+                Submit
+              </button>
+            </form>
+          </div>
         </div>
         <div className="overlay"></div>
       </div>
