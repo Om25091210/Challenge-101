@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import baseURL from '@utils/baseURL';
 import { toast } from 'react-toastify';
 import axios from 'axios';
+import Moment from 'moment';
 
 const Tournament_Reg = ({ user, tournament, profile, teams }) => {
   const [isGamePlayer, setIsGamePlayer] = useState();
@@ -80,13 +81,15 @@ const Tournament_Reg = ({ user, tournament, profile, teams }) => {
               {isTeamRegFull !== true ? (
                 <>
                   <div className="loc_box edit_pof">
-                    <a
-                      href="#!"
-                      className="model_show_btn btn"
-                      onClick={() => setTrigger(!trigger)}
-                    >
-                      Register
-                    </a>
+                    {Moment(tournament.startDate).isBefore() ? null : (
+                      <a
+                        href="#!"
+                        className="model_show_btn btn"
+                        onClick={() => setTrigger(!trigger)}
+                      >
+                        Register
+                      </a>
+                    )}
                     <div className="common_model_box" id="big_poup">
                       <a href="#!" className="model_close">
                         X
@@ -143,9 +146,11 @@ const Tournament_Reg = ({ user, tournament, profile, teams }) => {
             <>
               {isRegFull !== true ? (
                 <>
-                  <button onClick={reghandlesubmit} className="join">
-                    REGISTER
-                  </button>
+                  {Moment(tournament.startDate).isBefore() ? null : (
+                    <button onClick={reghandlesubmit} className="join">
+                      REGISTER
+                    </button>
+                  )}
                 </>
               ) : (
                 <>
