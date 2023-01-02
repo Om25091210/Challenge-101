@@ -9,8 +9,106 @@ import Arenas from '@components/discover/Arenas';
 import Jobs from '@components/discover/Jobs';
 import baseURL from '@utils/baseURL';
 import AllScript from '../AllScript';
+import Link from 'next/link';
+import axios from 'axios';
+import Cookies from 'js-cookie';
+import { toast } from 'react-toastify';
+import { useRouter } from 'next/router';
+import ToggleButton from 'react-toggle-button';
 
 const General = ({ user, profile, games }) => {
+  const [state, setState] = useState({
+    currentPassword: '',
+    newPassword: '',
+    retryPassword: '',
+    isStatVisible: profile?.isStatVisible || false,
+    isWagerVisible: profile?.isWagerVisible || false
+  });
+  const [passwordShown, setPasswordShown] = useState(false);
+  const [newPasswordShown, setNewPasswordShown] = useState(false);
+  const [blockData, setBlockData] = useState(profile.blockList);
+
+  let passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#^?&_-])[A-Za-z\d@$!%*#^?&_-]{8,}$/;
+
+  const router = useRouter();
+
+  function handleChange(e) {
+    setState({ ...state, [e.target.name]: e.target.value });
+  }
+
+  const togglePassword = (e, type) => {
+    e.preventDefault();
+    if (type === 'new') {
+      setNewPasswordShown(!newPasswordShown);
+    } else {
+      setPasswordShown(!passwordShown);
+    }
+  };
+
+  const handleDelectAccount = async (e) => {
+    e.preventDefault();
+    try {
+      await axios
+        .delete(`${baseURL}/api/profile/`, {
+          headers: {
+            Authorization: Cookies.get('token')
+          }
+        })
+        .then(Cookies.remove('token'));
+      toast.success('Account Deleted!');
+      router.push('/login');
+    } catch (err) {
+      toast.error('Error Deleting');
+    }
+  };
+
+  const handleUnblock = async (e, userId) => {
+    e.preventDefault();
+    try {
+      await axios
+        .put(
+          `${baseURL}/api/profile/block/UNBLOCK`,
+          { userId },
+          {
+            headers: {
+              Authorization: Cookies.get('token')
+            }
+          }
+        )
+        .then((res) => setBlockData(res.data));
+      $('a.model_close').parent().removeClass('show_model');
+      toast.success('Unblocked User');
+    } catch (err) {
+      console.log(err);
+      toast.error('Error Unblocking User');
+    }
+  };
+
+  const handleUpdate = (e) => {
+    e.preventDefault();
+    try {
+      if (passwordRegex.test(state.newPassword)) {
+        axios
+          .put(`${baseURL}/api/profile/settings/SECURITY`, state, {
+            headers: {
+              Authorization: Cookies.get('token')
+            }
+          })
+          .then((res) =>
+            res.data.msg === 'Success'
+              ? toast.success('User Updated')
+              : toast.error(res.data.msg)
+          );
+      } else {
+        toast.warn(
+          'Use 8 or more characters with a mix of atleast 1 Uppercase,1 Lowercase, numbers and symbols[@$!%*#]'
+        );
+      }
+    } catch (err) {
+      toast.error('Cannot update user');
+    }
+  };
+
   useEffect(() => {
     $('a.model_show_btn').click(function () {
       $(this).next().addClass('show_model');
@@ -34,101 +132,187 @@ const General = ({ user, profile, games }) => {
           <div className="white_bg">
             <div className="left_setting_menu">
               <div className="menu_bloc">
-                <a href="#">
-                  <i class="fa fa-cog" aria-hidden="true"></i> General
-                </a>
+                <i class="fa fa-cog" aria-hidden="true"></i>
+                <Link href="/settings/general" className="active">
+                  General
+                </Link>
                 <ul>
                   <li>
                     {' '}
-                    <a href="#">Profile</a>
+                    <Link href={`/settings/general#profile`}>Profile</Link>
                   </li>
                   <li>
-                    <a href="#">Personal Information</a>
+                    <Link href={`/settings/general#personal`}>
+                      Personal Information
+                    </Link>
                   </li>
                   <li>
-                    <a href="#">Contact Details</a>
+                    <Link href={`/settings/general#contact`}>
+                      Contact Details
+                    </Link>
                   </li>
                 </ul>
               </div>
 
               <div className="menu_bloc">
-                <a href="#">
-                  <i class="fa fa-user" aria-hidden="true"></i> Accounts
-                </a>
+                <i class="fa fa-user" aria-hidden="true"></i>
+                <Link href="/settings/accounts">Accounts</Link>
                 <ul>
                   <li>
                     {' '}
-                    <a href="#">Gaming Accounts</a>
+                    <Link href={`/settings/accounts#gaming`}>
+                      Gaming Accounts
+                    </Link>
                   </li>
                   <li>
-                    <a href="#">Social Links</a>
+                    <Link href={`/settings/accounts#social`}>Social Links</Link>
                   </li>
                 </ul>
               </div>
 
               <div className="menu_bloc">
-                <a href="#" className="active">
-                  <i class="fa fa-shield" aria-hidden="true"></i> Security &
-                  Privacy
-                </a>
+                <i class="fa fa-shield" aria-hidden="true"></i>
+                <Link href={`/settings/security`} className="active">
+                  Security & Privacy
+                </Link>
                 <ul>
                   <li>
                     {' '}
-                    <a href="#">Change Password</a>
+                    <Link href={`/settings/security#change`}>
+                      Change Password
+                    </Link>
+                  </li>
+                  {/* <li>
+                    <Link href={`/settings/`}>Two-factor Authentication</Link>
+                  </li> */}
+                  <li>
+                    <Link href={`/settings/security#block`}>Blocked Users</Link>
                   </li>
                   <li>
-                    <a href="#">Two-factor Authentication</a>
+                    <Link href={`/settings/security#privacy`}>Privacy</Link>
                   </li>
+                  {/* <li>
+                    <Link href={`/settings/`}>Cookies</Link>
+                  </li> */}
                   <li>
-                    <a href="#">Blocked Users</a>
-                  </li>
-                  <li>
-                    <a href="#">Privacy</a>
-                  </li>
-                  <li>
-                    <a href="#">Cookies</a>
-                  </li>
-                  <li>
-                    <a href="#">Delete Account</a>
+                    <Link href={`/settings/security#delete`}>
+                      Delete Account
+                    </Link>
                   </li>
                 </ul>
               </div>
             </div>
 
             <div className="right_setting_data">
-              <h1>Change Password</h1>
+              <h1 id="change">Change Password</h1>
               <form className="common_form">
                 <div className="form-group">
-                  <input type="text" className="form-control" value="" />
+                  <input
+                    type={passwordShown ? 'text' : 'password'}
+                    className="form-control"
+                    name="currentPassword"
+                    onChange={handleChange}
+                    value={state.currentPassword}
+                  />
+                  <p className="btn" onClick={togglePassword}>
+                    Show Password
+                  </p>
                 </div>
                 <div className="form-group">
-                  <input type="text" className="form-control" value="" />
+                  <input
+                    type={newPasswordShown ? 'text' : 'password'}
+                    className="form-control"
+                    name="newPassword"
+                    onChange={handleChange}
+                    value={state.newPassword}
+                  />
+                  <p className="btn" onClick={(e) => togglePassword(e, 'new')}>
+                    Show New Password
+                  </p>
                 </div>
                 <div className="form-group">
-                  <input type="text" className="form-control" value="" />
+                  <input
+                    type={newPasswordShown ? 'text' : 'password'}
+                    className="form-control"
+                    name="retryPassword"
+                    onChange={handleChange}
+                    value={state.retryPassword}
+                  />
                 </div>
               </form>
 
               <div className="blokes">
-                <h2>Blocked Users</h2>
+                <h2 id="block">Blocked Users</h2>
 
                 <div className="flex1">
                   <p>
                     View the users you have blocked. You can unblock them here.
                   </p>
                   <div className="rightBox">
-                    <button className="btn">View Blocked Users</button>
+                    <a href="#!" className="model_show_btn">
+                      <button className="btn"> View Blocked Users</button>
+                    </a>
+
+                    <div
+                      className="common_model_box edit_profile"
+                      id="big_poup"
+                    >
+                      <a href="#!" className="model_close">
+                        X
+                      </a>
+                      <div className="inner_model_box">
+                        <div className="add_job_height">
+                          <h3>Blocked User's</h3>
+                          <form className="common_form" onSubmit="">
+                            {blockData && blockData.length > 0 ? (
+                              <>
+                                {blockData &&
+                                  blockData.map((block) => (
+                                    <>
+                                      <img
+                                        src={block.user.profilePicUrl}
+                                        alt={block.user.name}
+                                        style={{
+                                          height: '40px',
+                                          width: '40px'
+                                        }}
+                                      />
+                                      <a href={`/user/${block.user.username}`}>
+                                        <h6>{block.user.name}</h6>
+                                        <p>@{block.user.username}</p>
+                                      </a>
+                                      <button
+                                        className="btn"
+                                        onClick={(e) =>
+                                          handleUnblock(e, block.user._id)
+                                        }
+                                      >
+                                        Unblock
+                                      </button>
+                                    </>
+                                  ))}
+                              </>
+                            ) : (
+                              <p>No Data Found</p>
+                            )}
+                          </form>
+                        </div>
+                      </div>
+                      <div className="overlay"></div>
+                    </div>
                   </div>
                 </div>
               </div>
 
               <div className="blokes">
-                <h2>Privacy</h2>
+                <h2 id="privacy">Privacy</h2>
 
                 <div className="flex1 mb-5">
                   <p>Review our Teams of Service</p>
                   <div className="rightBox">
-                    <button className="btn">Review</button>
+                    <a href="/legal/terms">
+                      <button className="btn">Review</button>
+                    </a>
                   </div>
                 </div>
 
@@ -138,20 +322,30 @@ const General = ({ user, profile, games }) => {
                     team statistics on teams page.
                   </p>
                   <div className="rightBox">
-                    <input type="checkbox" value="" />
+                    <ToggleButton
+                      value={state.isStatVisible || false}
+                      onToggle={(value) => {
+                        setState({ ...state, isStatVisible: !value });
+                      }}
+                    />
                   </div>
                 </div>
 
                 <div className="flex1 mb-5">
                   <p>Deactivate 1v1 wager challenges</p>
                   <div className="rightBox">
-                    <input type="checkbox" value="" />
+                    <ToggleButton
+                      value={state.isWagerVisible || false}
+                      onToggle={(value) => {
+                        setState({ ...state, isWagerVisible: !value });
+                      }}
+                    />
                   </div>
                 </div>
               </div>
 
               <div className="blokes">
-                <h2>Delete Account</h2>
+                <h2 id="delete">Delete Account</h2>
 
                 <div className="flex1">
                   <p>
@@ -160,9 +354,14 @@ const General = ({ user, profile, games }) => {
                     deletion, after that it will be permanently deleted.
                   </p>
                   <div className="rightBox">
-                    <button className="btn red">Delete Account</button>
+                    <button className="btn red" onClick={handleDelectAccount}>
+                      Delete Account
+                    </button>
                   </div>
                 </div>
+                <button className="btn" onClick={handleUpdate}>
+                  Update
+                </button>
               </div>
             </div>
           </div>

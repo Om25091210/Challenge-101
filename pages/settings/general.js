@@ -1,16 +1,61 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import MetaDash from '@components/MetaDash';
 import SignedHeader from '@components/SignedHeader';
 import LeftNav from '@components/LeftNav';
-import Teams from '@components/discover/Teams';
-import Coaches from '@components/discover/Coaches';
-import Players from '@components/discover/Players';
-import Arenas from '@components/discover/Arenas';
-import Jobs from '@components/discover/Jobs';
-import baseURL from '@utils/baseURL';
 import AllScript from '../AllScript';
+import Link from 'next/link';
+import baseURL from '../../utils/baseURL';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import Cookies from 'js-cookie';
+import countryList from 'react-select-country-list';
+import { useMutation } from 'react-query';
+import moment from 'moment';
 
 const General = ({ user, profile, games }) => {
+  const name = user.name.split(' ');
+  const [avatar, setAvatar] = useState({ image: user?.profilePicUrl });
+
+  var avatarImage;
+  if (!avatar?.image.includes('res')) {
+    avatarImage = avatar?.image;
+  } else {
+    avatarImage = user?.profilePicUrl;
+  }
+
+  const [states, setStates] = useState({
+    firstName: name[0],
+    lastName: name[1],
+    username: user.username,
+    profilePicUrl: avatar.image,
+    bio: profile.bio,
+    country: user.country || '',
+    gender: profile.gender || '',
+    DOB: moment(profile?.DOB).format('yyyy-MM-DD') || '',
+    timeZone: '',
+    phoneNumber: user.phone_number || null,
+    email: user.email || ''
+  });
+
+  const handleSelectAvatar = (avatar) => {
+    setAvatar({ image: avatar?.image });
+    setStates({ ...states, profilePicUrl: avatar?.image });
+
+    $('.gamer_photo li').click(function () {
+      $('.gamer_photo li').removeClass('active');
+      $(this).addClass('active');
+    });
+  };
+
+  const [avatars, setAvatars] = useState([]);
+  const [country, setCountry] = useState('');
+
+  const options = useMemo(() => countryList().getData(), []);
+
+  const changeHandler = (e) => {
+    setCountry(e.target.value);
+  };
+
   useEffect(() => {
     $('a.model_show_btn').click(function () {
       $(this).next().addClass('show_model');
@@ -20,6 +65,72 @@ const General = ({ user, profile, games }) => {
       $(this).parent().removeClass('show_model');
     });
   }, []);
+
+  const handleChangeCheck = (e) => {
+    setStates({ ...states, [e.target.name]: e.target.value });
+  };
+
+  useEffect(() => {
+    axios.get(`${baseURL}/api/all/avatars`).then((res) => setAvatars(res.data));
+  }, []);
+
+  const handleCoverSubmit = async (e) => {
+    e.preventDefault();
+    var img = e.target.files[0];
+    const formdata = new FormData();
+    formdata.append('coverPic', img);
+    try {
+      await axios.put(`${baseURL}/api/auth/coverPic`, formdata, {
+        headers: {
+          Authorization: Cookies.get('token'),
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+
+      toast.success('User settings have been updated');
+    } catch (err) {
+      toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+    }
+  };
+
+  const mutation = useMutation(
+    async (formdata) =>
+      await axios.post(`${baseURL}/api/auth/profilePic`, formdata, {
+        headers: {
+          Authorization: Cookies.get('token'),
+          'Content-Type': 'multipart/form-data'
+        }
+      })
+  );
+
+  const handleProfilePic = async (e) => {
+    e.preventDefault();
+    const [file] = e.target.files;
+    const formdata = new FormData();
+    formdata.append('profilePic', file);
+
+    try {
+      await mutation.mutateAsync(formdata);
+      toast.success('User settings have been updated');
+    } catch (err) {
+      toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+    }
+  };
+
+  const handleUpdate = (e) => {
+    e.preventDefault();
+    try {
+      axios
+        .put(`${baseURL}/api/profile/settings/GENERAL`, states, {
+          headers: {
+            Authorization: Cookies.get('token')
+          }
+        })
+        .then(toast.success('Updated User'));
+    } catch (err) {
+      toast.error('Cannot Update User');
+    }
+  };
 
   return (
     <>
@@ -34,135 +145,295 @@ const General = ({ user, profile, games }) => {
           <div className="white_bg">
             <div className="left_setting_menu">
               <div className="menu_bloc">
-                <a href="#" className="active">
-                  <i class="fa fa-cog" aria-hidden="true"></i> General
-                </a>
+                <i class="fa fa-cog" aria-hidden="true"></i>
+                <Link href="/settings/general" className="active">
+                  General
+                </Link>
                 <ul>
                   <li>
                     {' '}
-                    <a href="#">Profile</a>
+                    <Link href={`/settings/general#profile`}>Profile</Link>
                   </li>
                   <li>
-                    <a href="#">Personal Information</a>
+                    <Link href={`/settings/general#personal`}>
+                      Personal Information
+                    </Link>
                   </li>
                   <li>
-                    <a href="#">Contact Details</a>
+                    <Link href={`/settings/general#contact`}>
+                      Contact Details
+                    </Link>
                   </li>
                 </ul>
               </div>
 
               <div className="menu_bloc">
-                <a href="#">
-                  <i class="fa fa-user" aria-hidden="true"></i> Accounts
-                </a>
+                <i class="fa fa-user" aria-hidden="true"></i>
+                <Link href="/settings/accounts">Accounts</Link>
                 <ul>
                   <li>
                     {' '}
-                    <a href="#">Gaming Accounts</a>
+                    <Link href={`/settings/accounts#gaming`}>
+                      Gaming Accounts
+                    </Link>
                   </li>
                   <li>
-                    <a href="#">Social Links</a>
+                    <Link href={`/settings/accounts#social`}>Social Links</Link>
                   </li>
                 </ul>
               </div>
 
               <div className="menu_bloc">
-                <a href="#">
-                  <i class="fa fa-shield" aria-hidden="true"></i> Security &
-                  Privacy
-                </a>
+                <i class="fa fa-shield" aria-hidden="true"></i>
+                <Link href={`/settings/security`}>Security & Privacy</Link>
                 <ul>
                   <li>
                     {' '}
-                    <a href="#">Change Password</a>
+                    <Link href={`/settings/security#change`}>
+                      Change Password
+                    </Link>
+                  </li>
+                  {/* <li>
+                    <Link href={`/settings/`}>Two-factor Authentication</Link>
+                  </li> */}
+                  <li>
+                    <Link href={`/settings/security#block`}>Blocked Users</Link>
                   </li>
                   <li>
-                    <a href="#">Two-factor Authentication</a>
+                    <Link href={`/settings/security#privacy`}>Privacy</Link>
                   </li>
+                  {/* <li>
+                    <Link href={`/settings/`}>Cookies</Link>
+                  </li> */}
                   <li>
-                    <a href="#">Blocked Users</a>
-                  </li>
-                  <li>
-                    <a href="#">Privacy</a>
-                  </li>
-                  <li>
-                    <a href="#">Cookies</a>
-                  </li>
-                  <li>
-                    <a href="#">Delete Account</a>
+                    <Link href={`/settings/security#delete`}>
+                      Delete Account
+                    </Link>
                   </li>
                 </ul>
               </div>
             </div>
 
             <div className="right_setting_data">
-              <h2>Profile</h2>
+              <h2 id="#profile">Profile</h2>
               <form className="common_form">
                 <div className="form-group">
                   <label for="">Avatar</label>
-                  <input type="text" className="form-control" value="" />
+                  <div className="gamer_photo">
+                    <div className="gamer_dp">
+                      {avatar ? (
+                        <img
+                          style={{ height: '80px', width: '80px' }}
+                          src={avatar.image}
+                          alt=""
+                        />
+                      ) : (
+                        <img
+                          style={{ height: '80px', width: '80px' }}
+                          src="/assets/media/login/left_game.jpg"
+                          alt=""
+                        />
+                      )}
+                    </div>
+                    <ul>
+                      <li className="uploads active">
+                        <div className="style_file_upload1">
+                          <input
+                            id="user-photo"
+                            name="user-photo"
+                            type="file"
+                            className="custom-file-input"
+                            onChange={handleProfilePic}
+                            accept="image/*"
+                          />
+                          <label htmlFor="user-photo">
+                            <span>
+                              {' '}
+                              <i
+                                className="fa fa-cloud-upload"
+                                aria-hidden="true"
+                              ></i>
+                              <p> Upload</p>
+                            </span>
+                          </label>
+                        </div>
+                      </li>
+
+                      {avatars &&
+                        avatars.map((avatar) => (
+                          <li className="">
+                            <div className="form-group">
+                              <a
+                                href="#!"
+                                onClick={() => handleSelectAvatar(avatar)}
+                              >
+                                <img
+                                  src={avatar.image}
+                                  alt={avatar.title}
+                                  style={{ height: '50px', width: '50px' }}
+                                />
+                              </a>
+                            </div>
+                          </li>
+                        ))}
+                    </ul>
+                  </div>
                 </div>
 
                 <div className="form-group">
                   <label for="">Background</label>
-                  <textarea type="text" className="form-control" value="" />
+                  <span className="edit_cover_photo ">
+                    <div className="style_file_upload">
+                      <input
+                        type="file"
+                        name="coverPhoto"
+                        id="coverPhoto"
+                        className="custom-file-input"
+                        onChange={handleCoverSubmit}
+                      />
+                      <label htmlFor="coverPhoto">
+                        <span>
+                          {' '}
+                          <i
+                            className="fa fa-camera"
+                            aria-hidden="true"
+                          ></i>{' '}
+                          Upload Cover Photo
+                        </span>
+                      </label>
+                    </div>
+                  </span>
                 </div>
               </form>
 
-              <h2>Personal</h2>
+              <h2 id="personal">Personal</h2>
               <form className="common_form">
                 <div className="two_btn">
                   <div className="form-group">
                     <label for="">First name</label>
-                    <input type="text" className="form-control" value="" />
+                    <input
+                      type="text"
+                      className="form-control"
+                      name="firstName"
+                      onChange={handleChangeCheck}
+                      value={states.firstName}
+                    />
                   </div>
                   <div className="form-group">
                     <label for=""> Last Name</label>
-                    <input type="text" className="form-control" value="" />
+                    <input
+                      type="text"
+                      className="form-control"
+                      name="lastName"
+                      onChange={handleChangeCheck}
+                      value={states.lastName}
+                    />
                   </div>
                 </div>
                 <div className="form-group">
                   <label for="">Username</label>
-                  <input type="text" className="form-control" value="" />
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="username"
+                    onChange={handleChangeCheck}
+                    value={states.username}
+                  />
                 </div>
 
                 <div className="form-group">
                   <label for="">Bio</label>
-                  <input type="text" className="form-control" value="" />
+                  <textarea
+                    type="textarea"
+                    className="form-control"
+                    name="bio"
+                    onChange={handleChangeCheck}
+                    value={states.bio}
+                  />
                 </div>
 
                 <div className="form-group">
                   <label for="">Gender</label>
-                  <input type="text" className="form-control" value="" />
+                  <select
+                    name="gender"
+                    id="gender"
+                    className="select"
+                    onChange={handleChangeCheck}
+                    value={states.gender}
+                  >
+                    <option value="">Select Gender...</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Others">Others</option>
+                  </select>
                 </div>
 
                 <div className="form-group">
                   <label for="">Date of Birth</label>
-                  <input type="text" className="form-control" value="" />
+                  <input
+                    type="date"
+                    className="form-control"
+                    name="DOB"
+                    onChange={handleChangeCheck}
+                    value={states.DOB}
+                  />
                 </div>
 
                 <div className="form-group">
                   <label for="">Country</label>
-                  <input type="text" className="form-control" value="" />
+                  <select
+                    value={states.country}
+                    name="country"
+                    onChange={changeHandler}
+                  >
+                    <option value="">Select Country...</option>
+                    {options &&
+                      options.map((opt) => (
+                        <>
+                          <option value={opt.value}>{opt.label}</option>
+                        </>
+                      ))}
+                  </select>
                 </div>
 
                 <div className="form-group">
                   <label for="">Timezone</label>
-                  <input type="text" className="form-control" value="" />
+                  <input
+                    disabled={true}
+                    type="text"
+                    className="form-control"
+                    value=""
+                  />
                 </div>
               </form>
 
-              <h2>Contact Details</h2>
+              <h2 id="contact">Contact Details</h2>
               <form className="common_form">
                 <div className="form-group">
                   <label for="">Phone No.</label>
-                  <input type="text" className="form-control" value="" />
+                  <input
+                    type="number"
+                    className="form-control"
+                    name="phoneNumber"
+                    onChange={handleChangeCheck}
+                    value={states.phoneNumber}
+                  />
                 </div>
                 <div className="form-group">
-                  <label for="">First name</label>
-                  <input type="text" className="form-control" value="" />
+                  <label for="">Email Id:</label>
+                  <input
+                    type="text"
+                    disabled={true}
+                    className="form-control"
+                    name="email"
+                    onChange={handleChangeCheck}
+                    value={states.email}
+                  />
                 </div>
               </form>
+              <button className="btn" onClick={handleUpdate}>
+                Update
+              </button>
             </div>
           </div>
         </div>

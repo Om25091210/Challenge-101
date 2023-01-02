@@ -9,7 +9,15 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { getData } from '@utils/fetchData';
 
-const Profile = ({ user, Userdata, games, player, products, teams }) => {
+const Profile = ({
+  user,
+  profile,
+  Userdata,
+  games,
+  player,
+  products,
+  teams
+}) => {
   const router = useRouter();
 
   if (Userdata) {
@@ -26,6 +34,7 @@ const Profile = ({ user, Userdata, games, player, products, teams }) => {
             games={games}
             player={player}
             teams={teams}
+            profile={profile}
           />
           <ProfileData
             user={user}

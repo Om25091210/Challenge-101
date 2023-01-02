@@ -7,6 +7,7 @@ import cookie from 'js-cookie';
 import SocialLink from '../common/SocialLink';
 import { profileformvalidate } from '@utils/valid';
 import Moment from 'moment';
+import ToggleButton from 'react-toggle-button';
 
 const ProfileEdit = ({ Userdata, user, games, allteams }) => {
   const name = user.name.split(' ');
@@ -661,25 +662,13 @@ const ProfileEdit = ({ Userdata, user, games, allteams }) => {
                   </div>
                 </div>
                 <div className="custom-control custom-switch">
-                  <input
-                    type="checkbox"
-                    // className="custom-control-input"
-                    checked={profile?.online_status ? 'checked' : 'unchecked'}
-                    className={
-                      profile?.online_status
-                        ? 'Online custom-control-input'
-                        : 'Not_Online custom-control-input'
-                    }
-                    id="customSwitch1"
-                    onClick={() => handleOnline()}
-                    value={states.Online}
+                  <label>Online Status</label>
+                  <ToggleButton
+                    value={states.Online || false}
+                    onToggle={(value) => {
+                      setStates({ ...states, Online: !value });
+                    }}
                   />
-                  <label
-                    className="custom-control-label"
-                    htmlFor="customSwitch1"
-                  >
-                    Online Status
-                  </label>
                 </div>
                 <button
                   className="btn"

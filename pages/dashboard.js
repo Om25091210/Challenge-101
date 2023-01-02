@@ -47,11 +47,15 @@ const Dashboard = ({ user, profile, teams, posts, suggplayers }) => {
 };
 
 export const getServerSideProps = async (context) => {
-  const response = await fetch(`${baseURL}/api/posts`);
+  const { token } = parseCookies(context);
+  const response = await fetch(`${baseURL}/api/posts`, {
+    method: 'get',
+    headers: {
+      Authorization: token
+    }
+  });
   const data = await response.json();
   const posts = data.posts;
-
-  const { token } = parseCookies(context);
 
   const res = await fetch(`${baseURL}/api/profile/suggested/players`, {
     method: 'post',

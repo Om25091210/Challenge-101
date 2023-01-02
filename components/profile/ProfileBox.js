@@ -12,7 +12,7 @@ import { useRouter } from 'next/router';
 import ReactCountryFlag from 'react-country-flag';
 import ProfileEdit from './ProfileEdit';
 
-const ProfileBox = ({ user, Userdata, games, teams }) => {
+const ProfileBox = ({ user, Userdata, profile, games, teams }) => {
   const [profilePic, setProfilePic] = useState(null);
   const [selectedGame, setSelectedGame] = useState();
   const [showIgn, setShowIgn] = useState('none');
@@ -34,7 +34,12 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
     Userdata.followers?.filter((x) => x.user === user._id).map((x) => x.user)
       .length > 0;
 
+  const isBlocked =
+    profile.blockList?.filter((y) => y.user._id === Userdata.profile.user._id)
+      .length > 0;
+
   const [follow, setFollow] = useState(isFollow);
+  const [blocked, setBlocked] = useState(isBlocked);
 
   const followhandlesubmit = async (e) => {
     e.preventDefault();
@@ -156,6 +161,21 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
         }
       )
       .then((res) => setTabData(res.data));
+  };
+
+  const handleBlock = async (e) => {
+    e.preventDefault();
+    await axios.put(
+      `${baseURL}/api/profile/block/BLOCK`,
+      { userId: SrhUser._id },
+      {
+        headers: {
+          Authorization: cookie.get('token')
+        }
+      }
+    );
+    toast.success('Blocked User');
+    setBlocked(!blocked);
   };
 
   return (
@@ -290,6 +310,11 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
                   <a href="#" className="btn">
                     Message
                   </a>
+                  {follow === true ? (
+                    <a href="#" className="btn" onClick={handleBlock}>
+                      {blocked ? 'Unblock' : 'Block'}
+                    </a>
+                  ) : null}
                 </div>
               )}
             </div>
@@ -425,8 +450,9 @@ const ProfileBox = ({ user, Userdata, games, teams }) => {
               </div>
             </div>
           </div>
-
-          <ProfileGameStat user={user} games={Userdata.profile.playergames} />
+          {Userdata.profile?.isStatVisible !== true ? (
+            <ProfileGameStat user={user} games={Userdata.profile.playergames} />
+          ) : null}
         </div>
       </div>
     </>

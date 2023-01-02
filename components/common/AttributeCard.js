@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 import { regionsData } from '../../utils/functionsHelper';
 import { LanguageData } from '../../utils/functionsHelper';
+import ToggleButton from 'react-toggle-button';
 
 const AttributeCard = ({ type, attributeId, profile }) => {
   const [allgames, setAllgames] = useState([]);
@@ -23,14 +24,6 @@ const AttributeCard = ({ type, attributeId, profile }) => {
     platform: '',
     gender: ''
   });
-
-  const handleMic = () => {
-    if (states.Mic === true) {
-      states.Mic = false;
-    } else {
-      states.Mic = true;
-    }
-  };
 
   useEffect(() => {
     axios.get(`${baseURL}/api/all/games`).then((res) => setAllgames(res.data));
@@ -231,20 +224,13 @@ const AttributeCard = ({ type, attributeId, profile }) => {
                             &nbsp;
                           </label>
 
-                          <input
-                            type="checkbox"
-                            className="custom-control-input"
-                            id="customSwitch1"
-                            onClick={() => handleMic()}
-                            value={states.Mic}
+                          <label>Mic</label>
+                          <ToggleButton
+                            value={states.Mic || false}
+                            onToggle={(value) => {
+                              setStates({ ...states, Mic: !value });
+                            }}
                           />
-
-                          <label
-                            className="custom-control-label"
-                            htmlFor="customSwitch1"
-                          >
-                            Mic
-                          </label>
                         </div>
                       </div>
                     </div>
