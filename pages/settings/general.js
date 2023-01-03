@@ -48,13 +48,8 @@ const General = ({ user, profile, games }) => {
   };
 
   const [avatars, setAvatars] = useState([]);
-  const [country, setCountry] = useState('');
 
   const options = useMemo(() => countryList().getData(), []);
-
-  const changeHandler = (e) => {
-    setCountry(e.target.value);
-  };
 
   useEffect(() => {
     $('a.model_show_btn').click(function () {
@@ -384,7 +379,7 @@ const General = ({ user, profile, games }) => {
                   <select
                     value={states.country}
                     name="country"
-                    onChange={changeHandler}
+                    onChange={handleChangeCheck}
                   >
                     <option value="">Select Country...</option>
                     {options &&

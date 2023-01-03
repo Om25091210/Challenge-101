@@ -38,6 +38,10 @@ const ProfileBox = ({ user, Userdata, profile, games, teams }) => {
     profile.blockList?.filter((y) => y.user._id === Userdata.profile.user._id)
       .length > 0;
 
+  const isfollower =
+    Userdata.following?.filter((z) => z.user === user._id).map((x) => x.user)
+      .length > 0;
+
   const [follow, setFollow] = useState(isFollow);
   const [blocked, setBlocked] = useState(isBlocked);
 
@@ -310,7 +314,7 @@ const ProfileBox = ({ user, Userdata, profile, games, teams }) => {
                   <a href="#" className="btn">
                     Message
                   </a>
-                  {follow === true ? (
+                  {follow === true || isfollower ? (
                     <a href="#" className="btn" onClick={handleBlock}>
                       {blocked ? 'Unblock' : 'Block'}
                     </a>

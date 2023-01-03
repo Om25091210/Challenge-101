@@ -28,8 +28,6 @@ const General = ({ user, profile, games }) => {
   const [newPasswordShown, setNewPasswordShown] = useState(false);
   const [blockData, setBlockData] = useState(profile.blockList);
 
-  let passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#^?&_-])[A-Za-z\d@$!%*#^?&_-]{8,}$/;
-
   const router = useRouter();
 
   function handleChange(e) {
@@ -87,23 +85,17 @@ const General = ({ user, profile, games }) => {
   const handleUpdate = (e) => {
     e.preventDefault();
     try {
-      if (passwordRegex.test(state.newPassword)) {
-        axios
-          .put(`${baseURL}/api/profile/settings/SECURITY`, state, {
-            headers: {
-              Authorization: Cookies.get('token')
-            }
-          })
-          .then((res) =>
-            res.data.msg === 'Success'
-              ? toast.success('User Updated')
-              : toast.error(res.data.msg)
-          );
-      } else {
-        toast.warn(
-          'Use 8 or more characters with a mix of atleast 1 Uppercase,1 Lowercase, numbers and symbols[@$!%*#]'
+      axios
+        .put(`${baseURL}/api/profile/settings/SECURITY`, state, {
+          headers: {
+            Authorization: Cookies.get('token')
+          }
+        })
+        .then((res) =>
+          res.data.msg === 'Success'
+            ? toast.success('User Updated')
+            : toast.error(res.data.msg)
         );
-      }
     } catch (err) {
       toast.error('Cannot update user');
     }
@@ -213,6 +205,7 @@ const General = ({ user, profile, games }) => {
                     name="currentPassword"
                     onChange={handleChange}
                     value={state.currentPassword}
+                    placeholder="Enter Current Password"
                   />
                   <p className="btn" onClick={togglePassword}>
                     Show Password
@@ -225,6 +218,7 @@ const General = ({ user, profile, games }) => {
                     name="newPassword"
                     onChange={handleChange}
                     value={state.newPassword}
+                    placeholder="Enter New Password"
                   />
                   <p className="btn" onClick={(e) => togglePassword(e, 'new')}>
                     Show New Password
@@ -237,6 +231,7 @@ const General = ({ user, profile, games }) => {
                     name="retryPassword"
                     onChange={handleChange}
                     value={state.retryPassword}
+                    placeholder="Re-Enter New Password"
                   />
                 </div>
               </form>
@@ -354,9 +349,24 @@ const General = ({ user, profile, games }) => {
                     deletion, after that it will be permanently deleted.
                   </p>
                   <div className="rightBox">
-                    <button className="btn red" onClick={handleDelectAccount}>
-                      Delete Account
-                    </button>
+                    <a href="#!" className="model_show_btn more">
+                      <button className="btn red">Delete Account</button>
+                    </a>
+                    <div className="common_model_box" id="share_prof">
+                      <a href="#!" className="model_close">
+                        X
+                      </a>
+
+                      <div className="inner_model_box">
+                        <h3>Account Delete</h3>
+                        <h4>Are you sure you want to delete your account?</h4>
+                        <button className="btn">No</button>
+                        <button className="btn" onClick={handleDelectAccount}>
+                          Yes
+                        </button>
+                      </div>
+                      <div className="overlay"></div>
+                    </div>
                   </div>
                 </div>
                 <button className="btn" onClick={handleUpdate}>
