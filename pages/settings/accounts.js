@@ -2,11 +2,6 @@ import { useState, useEffect } from 'react';
 import MetaDash from '@components/MetaDash';
 import SignedHeader from '@components/SignedHeader';
 import LeftNav from '@components/LeftNav';
-import Teams from '@components/discover/Teams';
-import Coaches from '@components/discover/Coaches';
-import Players from '@components/discover/Players';
-import Arenas from '@components/discover/Arenas';
-import Jobs from '@components/discover/Jobs';
 import baseURL from '@utils/baseURL';
 import AllScript from '../AllScript';
 import Link from 'next/link';
@@ -16,9 +11,8 @@ import Cookies from 'js-cookie';
 
 const General = ({ user, profile }) => {
   const [selectedGame, setSelectedGame] = useState();
-  const [showGameBox, setShowGameBox] = useState(true);
   const [games, setGames] = useState([]);
-  const [step1, setStep1] = useState(true);
+  const [showModal, setShowModal] = useState(false);
   const [states, setStates] = useState({
     facebook: profile.social?.facebook || '',
     instagram: profile.social?.instagram || '',
@@ -30,47 +24,22 @@ const General = ({ user, profile }) => {
     gameId: selectedGame?.game._id
   });
 
+  const handleIGN = (e, gameId) => {
+    e.preventDefault();
+    setStates({ ...states, gameId });
+    setShowModal(!showModal);
+  };
+
+  const toggleModal = (e) => {
+    setShowModal(!showModal);
+  };
+
   useEffect(() => {
     axios.get(`${baseURL}/api/all/games`).then((res) => setGames(res.data));
   }, []);
 
   const handleChangeCheck = (e) => {
     setStates({ ...states, [e.target.name]: e.target.value });
-  };
-
-  function handleSubmit(e) {
-    if (e.target.options) {
-      var options = e.target.options;
-      var value = [];
-      for (var i = 0, l = options.length; i < l; i++) {
-        if (options[i].selected) {
-          value.push(options[i].value);
-        }
-      }
-      setStates({ ...states, [e.target.name]: value });
-    } else if (e.target.files) {
-      console.log(e.target.files[0]);
-      setStates({ ...states, [e.target.name]: e.target.files[0] });
-    } else {
-      setStates({ ...states, [e.target.name]: e.target.value });
-    }
-  }
-
-  const handleSelectGame = async (obj) => {
-    setStates({ ...states, gameId: obj._id });
-    setStep1(false);
-  };
-  const handleopenForm = async (data) => {
-    setOpenForm(true);
-    setType(data);
-  };
-  const handleRoleForm = (e) => {
-    setOpenForm(true);
-    setType('');
-  };
-
-  const gamehandleSubmit = async (e) => {
-    setShowGameBox(false);
   };
 
   const addgames =
@@ -88,7 +57,8 @@ const General = ({ user, profile }) => {
             Authorization: Cookies.get('token')
           }
         })
-        .then(toast.success('Updated User'));
+        .then(toast.success('Updated User'))
+        .then(setStates({ ...states, userIgn: '' }));
     } catch (err) {
       console.log(err);
       toast.error('Cannot Update User');
@@ -192,21 +162,6 @@ const General = ({ user, profile }) => {
 
               <div className="blokes">
                 <div className="flex1 accountbg">
-                  {/* <div className="gameLogo flex1">
-                    <img src="/assets/media/team1.png" alt="" />
-                    <img src="/assets/media/link.png" alt="" />
-                    <img src="/assets/media/team2.png" alt="" />
-                  </div> */}
-
-                  {/* <p>
-                    <p>
-                      {' '}
-                      <strong>Fortnite</strong>{' '}
-                    </p>
-                    Connect your Epic games account for fetching your personal
-                    Fortnite statistics.
-                  </p> */}
-
                   {profile.playergames &&
                     profile.playergames.map((game) => (
                       <>
@@ -220,157 +175,50 @@ const General = ({ user, profile }) => {
                         </span>
                       </>
                     ))}
+                </div>
+              </div>
 
-                  <div className="rightBox">
-                    <div className="form-group">
-                      <div className="prof_games">
-                        <div className="games">
-                          <div className="tit">
-                            <a href="#!" className="model_show_btn">
-                              <i
-                                className="fa fa-plus-circle btn"
-                                aria-hidden="true"
-                              >
-                                {' '}
-                                Connect
-                              </i>
-
-                              <div className="hover_games">
-                                <div className="other_logo">
-                                  <img
-                                    src={
-                                      selectedGame ? selectedGame.imgUrl : ''
-                                    }
-                                    alt={selectedGame ? selectedGame.name : ''}
-                                  />
-                                </div>
-                              </div>
-                            </a>
-                            {showGameBox ? (
-                              <div
-                                className="common_model_box prof_edit"
-                                id="more_games"
-                              >
-                                <a href="#!" className="model_close">
-                                  X
-                                </a>
-                                <div className="inner_model_box">
-                                  <div
-                                    className="form w-100 add_game_box"
-                                    noValidate="novalidate"
-                                    id="edit_pro_add_game"
-                                  >
-                                    {step1 ? (
-                                      <div className="poup_height msScroll_all">
-                                        <ul>
-                                          {addgames &&
-                                            addgames.map((game) => (
-                                              <li>
-                                                <div className="game_pic">
-                                                  <a
-                                                    href="#!"
-                                                    onClick={() =>
-                                                      handleSelectGame(game)
-                                                    }
-                                                  >
-                                                    <img
-                                                      src={game.imgUrl}
-                                                      alt={game.name}
-                                                    />
-                                                  </a>
-                                                </div>
-                                              </li>
-                                            ))}
-                                        </ul>
-                                      </div>
-                                    ) : (
-                                      <>
-                                        <button
-                                          className="btn"
-                                          onClick={() => setStep1(true)}
-                                        >
-                                          Back
-                                        </button>
-                                        <div className="add_game_poup">
-                                          <img
-                                            src={selectedGame?.game.imgUrl}
-                                            alt={selectedGame?.game.name}
-                                          />
-
-                                          <input
-                                            type="text"
-                                            name="userIgn"
-                                            onChange={handleSubmit}
-                                            value={states.userIgn}
-                                          />
-                                        </div>
-
-                                        <button
-                                          type="submit"
-                                          className="btn"
-                                          onClick={gamehandleSubmit}
-                                        >
-                                          <span className="indicator-label">
-                                            Add Game
-                                          </span>
-                                        </button>
-                                      </>
-                                    )}
-                                  </div>
-                                </div>
-                                <div className="overlay"></div>
-                              </div>
-                            ) : null}
-                          </div>
-                        </div>
+              <div className="blokes">
+                {addgames &&
+                  addgames.map((game) => (
+                    <div className="flex1 accountbg">
+                      <div className="game_pic">
+                        <a href="#!">
+                          <img
+                            style={{ height: '40px', width: '40px' }}
+                            src={game.imgUrl}
+                            alt={game.name}
+                          />
+                        </a>
                       </div>
+                      <button className="btn" onClick={toggleModal}>
+                        Connect
+                      </button>
+                    </div>
+                  ))}
+
+                {showModal && (
+                  <div>
+                    <button className="btn" onClick={toggleModal}>
+                      X
+                    </button>
+                    <div>
+                      <h3>Enter IGN</h3>
+                      <input
+                        type="text"
+                        name="userIgn"
+                        onChange={handleChangeCheck}
+                        value={states.userIgn}
+                      />
+                      <button
+                        className="btn"
+                        onClick={(e) => handleIGN(e, game._id)}
+                      >
+                        Yes
+                      </button>
                     </div>
                   </div>
-                </div>
-              </div>
-
-              <div className="blokes">
-                <div className="flex1 accountbg">
-                  <div className="gameLogo flex1">
-                    <img src="/assets/media/team1.png" alt="" />
-                    <img src="/assets/media/link.png" alt="" />
-                    <img src="/assets/media/team2.png" alt="" />
-                  </div>
-
-                  <p>
-                    <p>
-                      {' '}
-                      <strong>DOTA 2 & CS GO</strong>{' '}
-                    </p>
-                    Connect your Epic games account for fetching your personal
-                    Fortnite statistics.
-                  </p>
-                  <div className="rightBox">
-                    <button className="btn">Connect</button>
-                  </div>
-                </div>
-              </div>
-
-              <div className="blokes">
-                <div className="flex1 accountbg">
-                  <div className="gameLogo flex1">
-                    <img src="/assets/media/team1.png" alt="" />
-                    <img src="/assets/media/link.png" alt="" />
-                    <img src="/assets/media/team2.png" alt="" />
-                  </div>
-
-                  <p>
-                    <p>
-                      {' '}
-                      <strong>League of Legends</strong>{' '}
-                    </p>
-                    Connect your Epic games account for fetching your personal
-                    Fortnite statistics.
-                  </p>
-                  <div className="rightBox">
-                    <button className="btn">Connect</button>
-                  </div>
-                </div>
+                )}
               </div>
 
               <h2 id="social">Social Links</h2>
