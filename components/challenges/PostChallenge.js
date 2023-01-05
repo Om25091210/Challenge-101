@@ -5,6 +5,7 @@ import baseURL from '@utils/baseURL';
 import axios from 'axios';
 
 const PostChallenge = ({ games, teams }) => {
+  const [gotMaps, setGotMaps] = useState([]);
   const [state, setState] = useState({
     ChallType: 'Solo',
     User_team: '',
@@ -16,7 +17,8 @@ const PostChallenge = ({ games, teams }) => {
     format: '',
     entry_fee: null,
     challengeType: '',
-    isOpenMatch: true
+    isOpenMatch: true,
+    maps: ''
   });
 
   const UserTeam = teams.filter((team) => {
@@ -47,6 +49,12 @@ const PostChallenge = ({ games, teams }) => {
       setState({ ...state, [e.target.name]: e.target.value });
     }
   }
+
+  useEffect(() => {
+    axios
+      .get(`${baseURL}/api/maps/${state.game[0]}`)
+      .then((res) => setGotMaps(res.data));
+  }, [state.game]);
 
   const handleEditStat = async (e) => {
     e.preventDefault();
@@ -117,6 +125,18 @@ const PostChallenge = ({ games, teams }) => {
                   <option value="Best of 5">Best of 5</option>
                 </select>
               </div>
+
+              <div className="form-group">
+                <label htmlFor="">Maps</label>
+                <select name="maps" onChange={onChange}>
+                  <option value="">Choose Map...</option>
+                  {gotMaps &&
+                    gotMaps.map((map) => (
+                      <option value={map._id}>{map.name}</option>
+                    ))}
+                </select>
+              </div>
+
               {state.ChallType === 'Team' ? (
                 <>
                   <div className="form-group">

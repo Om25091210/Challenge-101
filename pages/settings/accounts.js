@@ -24,14 +24,16 @@ const General = ({ user, profile }) => {
     gameId: selectedGame?.game._id
   });
 
-  const handleIGN = (e, gameId) => {
+  const handleIGN = (e) => {
     e.preventDefault();
-    setStates({ ...states, gameId });
     setShowModal(!showModal);
   };
 
-  const toggleModal = (e) => {
+  const toggleModal = (e, gameId) => {
     setShowModal(!showModal);
+    if (gameId !== 'undefined') {
+      setStates({ ...states, gameId: gameId });
+    }
   };
 
   useEffect(() => {
@@ -191,36 +193,36 @@ const General = ({ user, profile }) => {
                           />
                         </a>
                       </div>
-                      <button className="btn" onClick={toggleModal}>
+                      <button
+                        className="btn"
+                        onClick={(e) => toggleModal(e, game._id)}
+                      >
                         Connect
                       </button>
                     </div>
                   ))}
-
-                {showModal && (
-                  <div className="account_model_box ">
-                    <button className="model_close" onClick={toggleModal}>
-                      X
-                    </button>
-                    <div className="inner_model_box">
-                      <h3>Enter IGN</h3>
-                      <input
-                        type="text"
-                        name="userIgn"
-                        onChange={handleChangeCheck}
-                        value={states.userIgn}
-                      />
-                      <button
-                        className="btn"
-                        onClick={(e) => handleIGN(e, game._id)}
-                      >
-                        Yes
-                      </button>
-                    </div>
-                    <div className="overlay"></div>
-                  </div>
-                )}
               </div>
+
+              {showModal && (
+                <div className="account_model_box ">
+                  <button className="model_close" onClick={toggleModal}>
+                    X
+                  </button>
+                  <div className="inner_model_box">
+                    <h3>Enter IGN</h3>
+                    <input
+                      type="text"
+                      name="userIgn"
+                      onChange={handleChangeCheck}
+                      value={states.userIgn}
+                    />
+                    <button className="btn" onClick={handleIGN}>
+                      Yes
+                    </button>
+                  </div>
+                  <div className="overlay"></div>
+                </div>
+              )}
 
               <h2 id="social">Social Links</h2>
               <form className="common_form">
