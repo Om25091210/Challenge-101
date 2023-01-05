@@ -211,23 +211,15 @@ const General = ({ user, profile, games }) => {
 
             <div className="right_setting_data">
               <h2 id="#profile">Profile</h2>
-              <form className="common_form">
+              <form className="">
+                <h4>Avatar</h4>
                 <div className="form-group">
-                  <label for="">Avatar</label>
                   <div className="gamer_photo">
                     <div className="gamer_dp">
                       {avatar ? (
-                        <img
-                          style={{ height: '80px', width: '80px' }}
-                          src={avatar.image}
-                          alt=""
-                        />
+                        <img src={avatar.image} alt="" />
                       ) : (
-                        <img
-                          style={{ height: '80px', width: '80px' }}
-                          src="/assets/media/login/left_game.jpg"
-                          alt=""
-                        />
+                        <img src="/assets/media/login/left_game.jpg" alt="" />
                       )}
                     </div>
                     <ul>
@@ -262,11 +254,7 @@ const General = ({ user, profile, games }) => {
                                 href="#!"
                                 onClick={() => handleSelectAvatar(avatar)}
                               >
-                                <img
-                                  src={avatar.image}
-                                  alt={avatar.title}
-                                  style={{ height: '50px', width: '50px' }}
-                                />
+                                <img src={avatar.image} alt={avatar.title} />
                               </a>
                             </div>
                           </li>
@@ -274,16 +262,15 @@ const General = ({ user, profile, games }) => {
                     </ul>
                   </div>
                 </div>
-
+                <h4>Background</h4>
                 <div className="form-group">
-                  <label for="">Background</label>
                   <span className="edit_cover_photo ">
                     <div className="style_file_upload">
                       <input
                         type="file"
                         name="coverPhoto"
                         id="coverPhoto"
-                        className="custom-file-input"
+                        className="inputfile"
                         onChange={handleCoverSubmit}
                       />
                       <label htmlFor="coverPhoto">
@@ -293,7 +280,7 @@ const General = ({ user, profile, games }) => {
                             className="fa fa-camera"
                             aria-hidden="true"
                           ></i>{' '}
-                          Upload Cover Photo
+                          Upload Photo
                         </span>
                       </label>
                     </div>

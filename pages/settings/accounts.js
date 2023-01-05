@@ -198,11 +198,11 @@ const General = ({ user, profile }) => {
                   ))}
 
                 {showModal && (
-                  <div>
-                    <button className="btn" onClick={toggleModal}>
+                  <div className="account_model_box ">
+                    <button className="model_close" onClick={toggleModal}>
                       X
                     </button>
-                    <div>
+                    <div className="inner_model_box">
                       <h3>Enter IGN</h3>
                       <input
                         type="text"
@@ -217,6 +217,7 @@ const General = ({ user, profile }) => {
                         Yes
                       </button>
                     </div>
+                    <div className="overlay"></div>
                   </div>
                 )}
               </div>
