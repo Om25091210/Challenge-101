@@ -14,7 +14,6 @@ import Follow from '../common/Follow';
 
 const AllPosts = ({ post, user, profiledata, followData, type, team }) => {
   const [comments, setComments] = useState([]);
-  const [showModal, setShowModal] = useState(false);
   var followerList =
     followData && followData.map((follow) => follow.user?.username);
   useEffect(() => {
@@ -27,11 +26,6 @@ const AllPosts = ({ post, user, profiledata, followData, type, team }) => {
         console.log(err);
       });
   }, [post._id]);
-
-  const toggleModal = (e) => {
-    e.preventDefault();
-    setShowModal(!showModal);
-  };
 
   const isFollow =
     profiledata &&
@@ -127,10 +121,16 @@ const AllPosts = ({ post, user, profiledata, followData, type, team }) => {
                 </p>
               </>
             ) : null}
-            {showModal && <></>}
           </div>
           <div className="user">
-            <img src={post?.profilepic} alt="" />
+            <img
+              src={
+                post.post_type === 'user'
+                  ? post?.user.profilePicUrl
+                  : post?.profilepic
+              }
+              alt={post.post_type}
+            />
           </div>
           <div className="user_name_disc">
             <div className="title_follow">

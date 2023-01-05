@@ -37,7 +37,7 @@ const TeamCreate = ({ isClaim, user }) => {
     achievements: '',
     sponsor: '',
     arena: '',
-    role: 'Admin',
+    role: 'Owner',
     facebook: '',
     twitch: '',
     website: '',

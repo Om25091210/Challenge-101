@@ -31,17 +31,28 @@ const TeamJoines = ({
               joines?.map((req) => (
                 <li>
                   <div className="dp">
-                    <img
-                      src={
-                        req?.playerId.apidata?.data?.platformInfo.avatarUrl
-                          ? req?.playerId.apidata.data?.platformInfo.avatarUrl
-                          : req?.playerId.imgUrl
-                      }
-                      alt={
-                        req?.playerId.apidata?.data?.platformInfo
-                          .platformUserHandle
-                      }
-                    />
+                    {req.playerId.apidata?.data?.platformInfo ? (
+                      <img
+                        src={
+                          req?.playerId.apidata?.data?.platformInfo.avatarUrl
+                            ? req?.playerId.apidata.data?.platformInfo.avatarUrl
+                            : req?.playerId.imgUrl
+                        }
+                        alt={
+                          req?.playerId.apidata?.data?.platformInfo
+                            .platformUserHandle
+                        }
+                      />
+                    ) : (
+                      <img
+                        src={
+                          req?.playerId.user
+                            ? req?.playerId.user?.profilePicUrl
+                            : req?.playerId.imgUrl
+                        }
+                        alt={req?.playerId.user?.username}
+                      />
+                    )}
                   </div>
                   <h2>
                     {req.playerId?.apidata.data?.platformInfo

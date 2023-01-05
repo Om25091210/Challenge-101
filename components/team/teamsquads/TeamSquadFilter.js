@@ -94,9 +94,9 @@ const TeamSquadFilter = ({ playerData, players }) => {
                           onClick={() => handleSelectedRig(data)}
                           key={data._id}
                         >
-                          {data.apidata?.data.platformInfo ? (
+                          {data.apidata?.data?.platformInfo ? (
                             <img
-                              src={data.apidata?.data.platformInfo?.avatarUrl}
+                              src={data.apidata?.data?.platformInfo?.avatarUrl}
                               height={50}
                               width={50}
                             />

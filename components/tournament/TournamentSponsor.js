@@ -107,6 +107,7 @@ const TournamentSponsor = ({ user, data, isUser }) => {
                       <SponsorCard
                         sponsors={sponsors}
                         tournamentId={data.tournament._id}
+                        states={state}
                       />
                     </div>
                   ))}

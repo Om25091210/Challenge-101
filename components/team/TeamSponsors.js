@@ -3,7 +3,7 @@ import baseURL from '@utils/baseURL';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
-import TournamentAddSponsor from '../tournament/TournamentAddSponsor';
+import SponsorCard from '../tournament/SponsorCard';
 
 const TeamSponsors = ({
   user,
@@ -49,6 +49,20 @@ const TeamSponsors = ({
     refreshData();
   };
 
+  const handleDeleteSponsor = (e, sponsorId) => {
+    e.preventDefault();
+    try {
+      axios.put(
+        `${baseURL}/api/teams/sponsordelete/${data.team._id}/${sponsorId}`
+      );
+      toast.success('Deleted Sponsor Successfully');
+      refreshData();
+    } catch (err) {
+      console.log(err);
+      toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+    }
+  };
+
   const [count, setCount] = useState(0);
   const handleRoleForm = (e) => {
     setCount(count + 1);
@@ -92,20 +106,13 @@ const TeamSponsors = ({
                 <h3>Sponsor's</h3>
 
                 <form className="common_form" onSubmit={handleSubmit}>
-                  <TournamentAddSponsor sponsors={sponsors} states={state} />
+                  <SponsorCard states={state} sponsors={sponsors} />
 
                   {[...Array(count)].map((e, index) => (
                     <div key={index}>
-                      <TournamentAddSponsor
-                        sponsors={sponsors}
-                        states={state}
-                      />
+                      <SponsorCard sponsors={sponsors} states={state} />
                     </div>
                   ))}
-                  <label htmlFor="">Add More Sponsors</label>
-                  <span onClick={(e) => handleRoleForm(e)}>
-                    <i className="fa fa-life-ring" aria-hidden="true"></i>
-                  </span>
                   <button className="btn">Update</button>
                 </form>
               </div>
@@ -128,6 +135,14 @@ const TeamSponsors = ({
                   {' '}
                   <span className="head_spons_bg">{item.name}</span>
                   <p>{item.description}</p>
+                  {isAdmin || isOwner || isCEO || isManager ? (
+                    <button
+                      className="btn"
+                      onClick={(e) => handleDeleteSponsor(e, item._id)}
+                    >
+                      <i className="fa fa-trash" />
+                    </button>
+                  ) : null}
                 </div>
               </li>
             ))
