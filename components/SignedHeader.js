@@ -291,7 +291,7 @@ const SignedHeader = ({ user, profile }) => {
                   <Link href="/dashboard">Dashboard</Link>
                 </li>
                 <li>
-                  <Link href="/settings/general">Settings and General</Link>
+                  <Link href="/settings/general">Settings</Link>
                 </li>
                 <li>
                   <Link href="/myNFTs">My NFTs</Link>
