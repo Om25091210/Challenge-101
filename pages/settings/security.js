@@ -197,7 +197,7 @@ const General = ({ user, profile, games }) => {
 
             <div className="right_setting_data">
               <h1 id="change">Change Password</h1>
-              <form className="common_form">
+              <form className="common_form changePas">
                 <div className="form-group">
                   <input
                     type={passwordShown ? 'text' : 'password'}
@@ -207,9 +207,13 @@ const General = ({ user, profile, games }) => {
                     value={state.currentPassword}
                     placeholder="Enter Current Password"
                   />
-                  <p className="btn" onClick={togglePassword}>
-                    Show Password
-                  </p>
+                  <span
+                    className={passwordShown ? 'btn' : 'btn eyehide'}
+                    onClick={togglePassword}
+                  >
+                    <i class="fa fa-eye" aria-hidden="true"></i>
+                    <i class="fa fa-eye-slash" aria-hidden="true"></i>
+                  </span>
                 </div>
                 <div className="form-group">
                   <input
@@ -220,9 +224,13 @@ const General = ({ user, profile, games }) => {
                     value={state.newPassword}
                     placeholder="Enter New Password"
                   />
-                  <p className="btn" onClick={(e) => togglePassword(e, 'new')}>
-                    Show New Password
-                  </p>
+                  <span
+                    className={newPasswordShown ? 'btn' : 'btn eyehide'}
+                    onClick={(e) => togglePassword(e, 'new')}
+                  >
+                    <i class="fa fa-eye" aria-hidden="true"></i>
+                    <i class="fa fa-eye-slash" aria-hidden="true"></i>
+                  </span>
                 </div>
                 <div className="form-group">
                   <input

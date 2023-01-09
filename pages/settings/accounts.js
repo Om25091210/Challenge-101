@@ -287,7 +287,7 @@ const General = ({ user, profile }) => {
                   />
                 </div>
               </form>
-              <button className="btn" onClick={handleUpdate}>
+              <button className="btn newbtn" onClick={handleUpdate}>
                 Update
               </button>
             </div>

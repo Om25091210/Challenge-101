@@ -413,7 +413,7 @@ const General = ({ user, profile, games }) => {
                   />
                 </div>
               </form>
-              <button className="btn" onClick={handleUpdate}>
+              <button className="btn newbtn" onClick={handleUpdate}>
                 Update
               </button>
             </div>
