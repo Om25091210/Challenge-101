@@ -15,7 +15,8 @@ const TeamSquadAdd = ({
   isManager,
   isAdmin,
   isOwner,
-  isCEO
+  isCEO,
+  isSupportAdmin
 }) => {
   const [playerData, setPlayerData] = useState([]);
   const [count, setCount] = useState(0);
@@ -94,7 +95,7 @@ const TeamSquadAdd = ({
   return (
     <>
       {/* isManager or Admin */}
-      {isManager || isAdmin || isOwner || isCEO ? (
+      {isManager || isAdmin || isOwner || isCEO || isSupportAdmin ? (
         <a href="#!" className="model_show_btn btn add_sqd">
           <i className="fa fa-plus-circle" aria-hidden="true"></i> Add Squad
         </a>

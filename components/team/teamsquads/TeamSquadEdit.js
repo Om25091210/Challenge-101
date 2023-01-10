@@ -7,7 +7,14 @@ import { teamsquadformvalidate } from '@utils/valid';
 import countryList from 'react-select-country-list';
 import { useRouter } from 'next/router';
 
-const TeamSquadEdit = ({ squad, isManager, isAdmin, isOwner, isCEO }) => {
+const TeamSquadEdit = ({
+  squad,
+  isManager,
+  isAdmin,
+  isOwner,
+  isCEO,
+  isSupportAdmin
+}) => {
   const [editSquadData, setEditSquadData] = useState({
     game: squad.game?._id,
     country: squad.country,
@@ -83,7 +90,7 @@ const TeamSquadEdit = ({ squad, isManager, isAdmin, isOwner, isCEO }) => {
 
   return (
     <div className="sqd_edit_btn">
-      {isManager || isAdmin || isOwner || isCEO ? (
+      {isManager || isAdmin || isOwner || isCEO || isSupportAdmin ? (
         <a href="#!" className="model_show_btn btn">
           <i className="fa fa-pencil" aria-hidden="true"></i>
         </a>

@@ -15,6 +15,7 @@ const TeamJobs = ({
   isAdmin,
   isOwner,
   isCEO,
+  isSupportAdmin,
   user,
   profile
 }) => {
@@ -23,7 +24,7 @@ const TeamJobs = ({
       <span>
         <div className="loc_box">
           {' '}
-          {isManager || isAdmin || isOwner || isCEO ? (
+          {isManager || isAdmin || isOwner || isCEO || isSupportAdmin ? (
             <a href="#!" className="model_show_btn">
               <button className="btn">
                 <i className="fa fa-plus-circle" aria-hidden="true"></i> Add

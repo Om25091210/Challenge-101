@@ -23,23 +23,25 @@ const Team = ({ user, data, products, profile, teams }) => {
 
   const isManager =
     data?.team?.employees.filter(
-      (emp) => emp.role === 'Manager' && emp.employeeId._id === user._id
+      (emp) => emp.role === 'Manager' && emp.employeeId?._id === user._id
     ).length > 0;
 
   const isAdmin =
     data?.team?.employees.filter(
-      (emp) => emp.role === 'Admin' && emp.employeeId._id === user._id
+      (emp) => emp.role === 'Admin' && emp.employeeId?._id === user._id
     ).length > 0;
 
   const isOwner =
     data?.team?.employees.filter(
-      (emp) => emp.role === 'Owner' && emp.employeeId._id === user._id
+      (emp) => emp.role === 'Owner' && emp.employeeId?._id === user._id
     ).length > 0;
 
   const isCEO =
     data?.team?.employees.filter(
-      (emp) => emp.role === 'CEO' && emp.employeeId._id === user._id
+      (emp) => emp.role === 'CEO' && emp.employeeId?._id === user._id
     ).length > 0;
+
+  const isSupportAdmin = data.team.isClaimed === false && user.isSupportAdmin;
 
   if (data) {
     return (
@@ -58,6 +60,7 @@ const Team = ({ user, data, products, profile, teams }) => {
             isAdmin={isAdmin}
             isOwner={isOwner}
             isCEO={isCEO}
+            isSupportAdmin={isSupportAdmin}
             teams={teams}
             profile={profile}
           />
@@ -70,6 +73,7 @@ const Team = ({ user, data, products, profile, teams }) => {
             isAdmin={isAdmin}
             isOwner={isOwner}
             isCEO={isCEO}
+            isSupportAdmin={isSupportAdmin}
             profile={profile}
             teams={teams}
           />

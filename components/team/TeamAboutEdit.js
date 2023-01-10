@@ -11,7 +11,8 @@ const TeamAboutEdit = ({
   isManager,
   isAdmin,
   isOwner,
-  isCEO
+  isCEO,
+  isSupportAdmin
 }) => {
   const [aboutData, setAboutData] = useState({
     _id: employeeData?._id,
@@ -71,7 +72,7 @@ const TeamAboutEdit = ({
   }, []);
   return (
     <div>
-      {isManager || isAdmin || isOwner || isCEO ? (
+      {isManager || isAdmin || isOwner || isCEO || isSupportAdmin ? (
         <a href="#!" className="model_show_btn btn">
           Edit
         </a>

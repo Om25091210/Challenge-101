@@ -15,6 +15,7 @@ const TeamAbout = ({
   isOwner,
   isCEO,
   user,
+  isSupportAdmin,
   teamAbout
 }) => {
   const [rolData, setRolData] = useState([]);
@@ -103,7 +104,7 @@ const TeamAbout = ({
           <div className="loc_box">
             {' '}
             <a href="#!" className="model_show_btn">
-              {isManager || isAdmin || isOwner || isCEO ? (
+              {isManager || isAdmin || isOwner || isCEO || isSupportAdmin ? (
                 <button className="btn">
                   <i className="fa fa-plus-circle" aria-hidden="true"></i> Add
                   Members
@@ -147,7 +148,7 @@ const TeamAbout = ({
         <div className="about">
           <h2>
             OUR TEAM{' '}
-            {isManager || isAdmin || isOwner || isCEO ? (
+            {isManager || isAdmin || isOwner || isCEO || isSupportAdmin ? (
               <button className="bio_edit" onClick={toggleShowform}>
                 <i className="fa fa-pencil" aria-hidden="true"></i>
               </button>
@@ -194,18 +195,22 @@ const TeamAbout = ({
               <li key={idx}>
                 <div className="dp">
                   {' '}
-                  <img src={emp?.employeeId.profilePicUrl} alt="" />{' '}
+                  <img src={emp?.employeeId?.profilePicUrl} alt="" />{' '}
                 </div>
 
                 <h4>{emp?.name} </h4>
-                <h3>{emp.role.toUpperCase()}</h3>
+                <h3>{emp?.role.toUpperCase()}</h3>
 
-                <h4>{emp?.employeeId.name} </h4>
+                <h4>{emp?.employeeId?.name} </h4>
 
                 <div className="two_btn">
                   {emp.role === 'Owner' ? null : (
                     <>
-                      {isManager || isAdmin || isOwner || isCEO ? (
+                      {isManager ||
+                      isAdmin ||
+                      isOwner ||
+                      isCEO ||
+                      isSupportAdmin ? (
                         <>
                           <button
                             className="btn"
@@ -226,6 +231,7 @@ const TeamAbout = ({
                         isAdmin={isAdmin}
                         isOwner={isOwner}
                         isCEO={isCEO}
+                        isSupportAdmin={isSupportAdmin}
                       />
                     </>
                   )}

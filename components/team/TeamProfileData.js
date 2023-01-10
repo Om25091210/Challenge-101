@@ -16,6 +16,7 @@ import AllPosts from '../dashboard/AllPosts';
 import TeamRigs from './TeamRigs';
 import TeamGameDetails from './TeamGameDetails';
 import { toast } from 'react-toastify';
+import TeamTournaments from './TeamTournaments';
 
 const TeamProfileData = ({
   user,
@@ -26,6 +27,7 @@ const TeamProfileData = ({
   isAdmin,
   isOwner,
   isCEO,
+  isSupportAdmin,
   teams
 }) => {
   const [jobs, setJobs] = useState([]);
@@ -141,13 +143,22 @@ const TeamProfileData = ({
             RIGS
           </a>
         </li> */}
-        {isManager || isAdmin || isOwner || isCEO ? (
-          <li>
+        <li>
+          <a
+            href="#!"
+            rel="tournaments"
+            onClick={() => handleTabs('TOURNAMENTS')}
+          >
+            Tournaments
+          </a>
+        </li>
+        <li>
+          {isManager || isAdmin || isOwner || isCEO || isSupportAdmin ? (
             <a href="#!" rel="joines" onClick={() => handleTabs('JOINES')}>
               Joines
             </a>
-          </li>
-        ) : null}
+          ) : null}
+        </li>
       </ul>
       <div className="prfoile_tab_data">
         <div className="tab" id="overview">
@@ -175,6 +186,7 @@ const TeamProfileData = ({
               isAdmin={isAdmin}
               isOwner={isOwner}
               isCEO={isCEO}
+              isSupportAdmin={isSupportAdmin}
             />
           </div>
         </div>
@@ -186,6 +198,7 @@ const TeamProfileData = ({
             isAdmin={isAdmin}
             isOwner={isOwner}
             isCEO={isCEO}
+            isSupportAdmin={isSupportAdmin}
           />
         </div>
         <div className="tab hide" id="achievement">
@@ -290,6 +303,7 @@ const TeamProfileData = ({
             isAdmin={isAdmin}
             isOwner={isOwner}
             isCEO={isCEO}
+            isSupportAdmin={isSupportAdmin}
           />
         </div>
 
@@ -301,6 +315,7 @@ const TeamProfileData = ({
             isAdmin={isAdmin}
             isOwner={isOwner}
             isCEO={isCEO}
+            isSupportAdmin={isSupportAdmin}
           />
         </div>
 
@@ -312,6 +327,7 @@ const TeamProfileData = ({
             isAdmin={isAdmin}
             isOwner={isOwner}
             isCEO={isCEO}
+            isSupportAdmin={isSupportAdmin}
             user={user}
             profile={profile}
           />
@@ -324,6 +340,7 @@ const TeamProfileData = ({
             isAdmin={isAdmin}
             isOwner={isOwner}
             isCEO={isCEO}
+            isSupportAdmin={isSupportAdmin}
             user={user}
           />
         </div>
@@ -335,6 +352,7 @@ const TeamProfileData = ({
           isAdmin={isAdmin}
           isOwner={isOwner}
           isCEO={isCEO}
+          isSupportAdmin={isSupportAdmin}
         />
         <div className="tab hide" id="rigs">
           <TeamRigs
@@ -346,6 +364,7 @@ const TeamProfileData = ({
             isManager={isManager}
             isOwner={isOwner}
             isCEO={isCEO}
+            isSupportAdmin={isSupportAdmin}
           />
         </div>
         <div className="tab hide" id="joines">
@@ -357,8 +376,12 @@ const TeamProfileData = ({
             isManager={isManager}
             isOwner={isOwner}
             isCEO={isCEO}
+            isSupportAdmin={isSupportAdmin}
             team={data.team}
           />
+        </div>
+        <div className="tab hide" id="tournaments">
+          <TeamTournaments data={tabData} />
         </div>
       </div>
     </>

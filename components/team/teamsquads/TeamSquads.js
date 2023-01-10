@@ -8,7 +8,8 @@ const TeamSquads = ({
   isManager,
   isAdmin,
   isOwner,
-  isCEO
+  isCEO,
+  isSupportAdmin
 }) => {
   return (
     <>
@@ -19,6 +20,7 @@ const TeamSquads = ({
         isAdmin={isAdmin}
         isOwner={isOwner}
         isCEO={isCEO}
+        isSupportAdmin={isSupportAdmin}
       />
       <div className="squads_box">
         <ul>
@@ -37,6 +39,7 @@ const TeamSquads = ({
                     isAdmin={isAdmin}
                     isOwner={isOwner}
                     isCEO={isCEO}
+                    isSupportAdmin={isSupportAdmin}
                   />
                   <TeamSquadDelete
                     squad={squad}
@@ -44,6 +47,7 @@ const TeamSquads = ({
                     isAdmin={isAdmin}
                     isOwner={isOwner}
                     isCEO={isCEO}
+                    isSupportAdmin={isSupportAdmin}
                   />
                 </div>
                 <div className="squad_img">

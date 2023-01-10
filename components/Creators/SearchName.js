@@ -129,11 +129,21 @@ const SearchName = ({ data, type, handleChange, isSearchOnly, user }) => {
                               <img src={data?.logoUrl} height={50} width={50} />
                             )}
                           </span>
-                          <p>
+                          <a
+                            href={`/${
+                              type === 'Team'
+                                ? 'team'
+                                : `${type === 'Brand' ? 'brand' : 'tour'}`
+                            }/${
+                              type === 'Tournament'
+                                ? `${data.name}`
+                                : `${data._id}`
+                            }`}
+                          >
                             {data.name.length > 20
                               ? data.name.substring(0, 20) + '...'
                               : data.name}
-                          </p>
+                          </a>
                           <div className="loc_box edit_pof">
                             <a
                               href="javascript:void(0);"

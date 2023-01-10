@@ -10,6 +10,8 @@ import TeamFollow from './TeamFollow';
 import TeamRequest from '../discover/invites/TeamRequest';
 import TeamChallenge from '../challenges/TeamChallenge';
 import TeamEdit from './TeamEdit';
+import ImageDropzone from '@components/common/ImageDropzone';
+import { useMutation } from 'react-query';
 
 const TeamProfileBox = ({
   user,
@@ -18,12 +20,15 @@ const TeamProfileBox = ({
   isAdmin,
   isOwner,
   isCEO,
+  isSupportAdmin,
   profile,
   teams
 }) => {
   const [attr, setAttr] = useState(data.team?.attributes);
   const [sociallinks, setSociallinks] = useState(data.team?.social);
   const [later, setLater] = useState(false);
+  const [trigger, setTrigger] = useState(true);
+  const [images, setImages] = useState([]);
 
   const router = useRouter();
   const refreshData = () => {
@@ -165,24 +170,35 @@ const TeamProfileBox = ({
     toast.success('Deleted Successfully');
     router.push('/dashboard');
   };
-
-  const handleLinksSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await axios.put(
-        `${baseURL}/api/teams/sociallinks/${data.team._id}`,
-        sociallinks,
-        {
-          headers: {
-            Authorization: cookie.get('token'),
-            'Content-Type': 'application/json'
-          }
+  let Id = '';
+  const mutation = useMutation(async (formdata) => {
+    await axios.post(
+      `${baseURL}/api/admin/team/${data.team._id}/${user._id}`,
+      formdata,
+      {
+        headers: {
+          Authorization: cookie.get('token'),
+          'Content-Type': 'application/json'
         }
-      );
-      toast.success('Links Have Been Updated');
-      refreshData();
+      }
+    );
+  });
+
+  const handleClaim = async (e, data) => {
+    e.preventDefault();
+    Id = data._id;
+    const formdata = new FormData();
+    for (const key of Object.keys(images)) {
+      formdata.append('images', images[key]);
+    }
+
+    try {
+      await mutation.mutateAsync(formdata);
+      $('a.model_close').parent().removeClass('show_model');
+      toast.success('User images have been updated');
     } catch (err) {
-      toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+      console.log(err);
+      toast.error(err.response?.data?.msg || 'Please upload your images again');
     }
   };
 
@@ -242,7 +258,7 @@ const TeamProfileBox = ({
                 className="custom-file-input"
                 onChange={handleCoverSubmit}
               />
-              {isManager || isAdmin || isOwner || isCEO ? (
+              {isManager || isAdmin || isOwner || isCEO || isSupportAdmin ? (
                 <label htmlFor="coverPhoto">
                   <span>
                     <i className="fa fa-camera" aria-hidden="true"></i> Upload
@@ -265,7 +281,7 @@ const TeamProfileBox = ({
               src={data.team.imgUrl}
               alt=""
             />
-            {isManager || isAdmin || isOwner || isCEO ? (
+            {isManager || isAdmin || isOwner || isCEO || isSupportAdmin ? (
               <div className="edit_photo">
                 <label htmlFor="user-photo" className="edit_label">
                   <i className="fa fa-picture-o" aria-hidden="true"></i>
@@ -315,7 +331,11 @@ const TeamProfileBox = ({
                 </span>
               )}
             </div>
-            {isManager || isAdmin || isOwner || isCEO ? null : (
+            {isManager ||
+            isAdmin ||
+            isOwner ||
+            isCEO ||
+            isSupportAdmin ? null : (
               <>
                 {isPlayer ? (
                   <>
@@ -337,15 +357,55 @@ const TeamProfileBox = ({
                       user={user}
                       isFollow={isFollow}
                     />
-                    <a href="#" className="btn">
-                      <TeamRequest
-                        team={data.team}
-                        profile={profile}
-                        isReqSent={isReqSent}
-                      />
-                    </a>
+                    {data.team.isClaimed === false ? (
+                      <>
+                        <a
+                          href="javascript:void(0);"
+                          className="model_show_btn"
+                          onClick={() => setTrigger(!trigger)}
+                        >
+                          Claim
+                        </a>
 
-                    <TeamChallenge team={data.team} teams={teams} />
+                        <div
+                          className="common_model_box edit_profile"
+                          id="big_poup"
+                        >
+                          <a href="#!" className="model_close">
+                            X
+                          </a>
+                          <div className="inner_model_box">
+                            <div className="add_job_height">
+                              <h3>Claim {data.name}</h3>
+                            </div>
+                            <div className="gallery_box claim-gallery">
+                              <ImageDropzone setImages={setImages} />
+                            </div>
+                            <div className="upload_btn">
+                              <button
+                                onClick={(e) => handleClaim(e, data)}
+                                className="btn"
+                              >
+                                UPLOAD NOW
+                              </button>
+                            </div>
+                          </div>
+                          <div className="overlay"></div>
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <a href="#" className="btn">
+                          <TeamRequest
+                            team={data.team}
+                            profile={profile}
+                            isReqSent={isReqSent}
+                            isAdmin={isAdmin}
+                          />
+                        </a>
+                        <TeamChallenge team={data.team} teams={teams} />
+                      </>
+                    )}
                   </div>
                 )}
               </>
@@ -356,6 +416,7 @@ const TeamProfileBox = ({
               isManager={isManager}
               isOwner={isOwner}
               isCEO={isCEO}
+              isSupportAdmin={isSupportAdmin}
               team={data.team}
             />
 

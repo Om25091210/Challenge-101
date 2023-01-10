@@ -10,7 +10,8 @@ const VideosDelete = ({
   isManager,
   isAdmin,
   isOwner,
-  isCEO
+  isCEO,
+  isSupportAdmin
 }) => {
   const refreshPage = () => {
     setTimeout(function () {
@@ -35,7 +36,7 @@ const VideosDelete = ({
   };
   return (
     <>
-      {isManager || isAdmin || isOwner || isCEO ? (
+      {isManager || isAdmin || isOwner || isCEO || isSupportAdmin ? (
         <button className="btn" onClick={handleDeleteSubmit}>
           <i className="fa fa-trash-o" aria-hidden="true"></i>
         </button>

@@ -10,6 +10,7 @@ const TeamJoines = ({
   isManager,
   isAdmin,
   isCEO,
+  isSupportAdmin,
   isOwner,
   team
 }) => {
@@ -25,7 +26,7 @@ const TeamJoines = ({
   return (
     <>
       <div className="team_member no-bdr">
-        {isAdmin || isOwner || isCEO || isManager ? (
+        {isAdmin || isOwner || isCEO || isManager || isSupportAdmin ? (
           <ul>
             {joines &&
               joines?.map((req) => (

@@ -5,7 +5,15 @@ import cookie from 'js-cookie';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 
-const TeamRigsDel = ({ rigId, team, isAdmin, isManager, isOwner, isCEO }) => {
+const TeamRigsDel = ({
+  rigId,
+  team,
+  isAdmin,
+  isManager,
+  isOwner,
+  isCEO,
+  isSupportAdmin
+}) => {
   const router = useRouter();
 
   const refreshData = () => {
@@ -30,7 +38,7 @@ const TeamRigsDel = ({ rigId, team, isAdmin, isManager, isOwner, isCEO }) => {
 
   return (
     <>
-      {isAdmin || isManager || isOwner || isCEO ? (
+      {isAdmin || isManager || isOwner || isCEO || isSupportAdmin ? (
         <button className="btn" onClick={handleDeleteSubmit}>
           <i className="fa fa-trash-o" aria-hidden="true"></i>
         </button>

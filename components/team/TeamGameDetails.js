@@ -12,7 +12,8 @@ const TeamGameDetails = ({
   isManager,
   isAdmin,
   isOwner,
-  isCEO
+  isCEO,
+  isSupportAdmin
 }) => {
   const [attributeData, setAttributeData] = useState([]);
 
@@ -89,22 +90,22 @@ const TeamGameDetails = ({
           {/* <div className="chart_box">
             <img src="/assets/media/profilechart.jpg" alt="" />
           </div> */}
-          {isManager || isAdmin || isOwner || isCEO ? (
+          {isManager || isAdmin || isOwner || isCEO || isSupportAdmin ? (
             <button className="btn" onClick={handleDelete}>
               Delete
             </button>
           ) : null}
-          {isManager || isAdmin || isOwner || isCEO ? (
+          {isManager || isAdmin || isOwner || isCEO || isSupportAdmin ? (
             <RecruitEdit attributeData={attributeData} />
           ) : null}
-          {isManager || isAdmin || isOwner || isCEO ? null : (
+          {isManager || isAdmin || isOwner || isCEO || isSupportAdmin ? null : (
             <button className="game_btn">INVITE TO TEAM</button>
           )}
         </div>
       )}
       {attributeData?.attributeId == team._id ? null : (
         <>
-          {isManager || isAdmin || isOwner || isCEO ? (
+          {isManager || isAdmin || isOwner || isCEO || isSupportAdmin ? (
             <AttributeCard type="TEAM" attributeId={team._id} user={user} />
           ) : null}
         </>

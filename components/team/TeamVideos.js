@@ -8,7 +8,15 @@ import VideoDropzone from '@components/common/VideosDropzone';
 import { Video } from 'cloudinary-react';
 import VideosDelete from './VideosDelete';
 
-const TeamVideos = ({ user, team, isManager, isAdmin, isOwner, isCEO }) => {
+const TeamVideos = ({
+  user,
+  team,
+  isManager,
+  isAdmin,
+  isOwner,
+  isCEO,
+  isSupportAdmin
+}) => {
   const [videos, setVideos] = useState([]);
   const [videodisc, setVideodisc] = useState();
 
@@ -51,7 +59,7 @@ const TeamVideos = ({ user, team, isManager, isAdmin, isOwner, isCEO }) => {
 
   return (
     <div className="video_box">
-      {isManager || isAdmin || isOwner || isCEO ? (
+      {isManager || isAdmin || isOwner || isCEO || isSupportAdmin ? (
         <>
           <div className="add_photos">
             <a href="#!" className="model_show_btn">
@@ -141,6 +149,7 @@ const TeamVideos = ({ user, team, isManager, isAdmin, isOwner, isCEO }) => {
                     isAdmin={isAdmin}
                     isOwner={isOwner}
                     isCEO={isCEO}
+                    isSupportAdmin={isSupportAdmin}
                   />
                 </div>
               </li>

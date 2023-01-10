@@ -13,18 +13,13 @@ export default function TeamRequest({ profile, team, user }) {
   );
 }
 
-const Team_Req = ({ profile, team, user }) => {
+const Team_Req = ({ profile, team, user, isAdmin }) => {
   const playerId = profile.playergames[0]?.player?._id;
 
   const isReqSent =
     team.request?.filter((plyr) => plyr.playerId._id === playerId).length > 0;
 
   const [request, setRequest] = useState(isReqSent);
-
-  const isAdmin =
-    team.employees?.filter(
-      (emp) => emp.role === 'Admin' && emp.employeeId._id === user?._id
-    ).length > 0;
 
   const isPlayer =
     team.players?.filter((plyr) => plyr.playerId === playerId).length > 0;

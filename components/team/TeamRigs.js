@@ -6,7 +6,15 @@ import { useRouter } from 'next/router';
 import RigsFilter from '../profile/RigsFilter';
 import TeamRigsDel from './TeamRigsDel';
 
-const TeamRigs = ({ data, isAdmin, isOwner, isCEO, isManager, teamRigs }) => {
+const TeamRigs = ({
+  data,
+  isAdmin,
+  isOwner,
+  isCEO,
+  isSupportAdmin,
+  isManager,
+  teamRigs
+}) => {
   const [rigsData, setRigsData] = useState([]);
   const [states, setStates] = useState({
     Keyboard: '',
@@ -53,7 +61,7 @@ const TeamRigs = ({ data, isAdmin, isOwner, isCEO, isManager, teamRigs }) => {
     <>
       <div className="sponser_btn">
         {' '}
-        {isAdmin || isOwner || isCEO || isManager ? (
+        {isAdmin || isOwner || isCEO || isManager || isSupportAdmin ? (
           <a href="#!" className="model_show_btn">
             <button className="btn">
               {' '}
@@ -203,6 +211,7 @@ const TeamRigs = ({ data, isAdmin, isOwner, isCEO, isManager, teamRigs }) => {
                   isAdmin={isAdmin}
                   isOwner={isOwner}
                   isCEO={isCEO}
+                  isSupportAdmin={isSupportAdmin}
                   isManager={isManager}
                 />
                 <div className="lft_prod_det">

@@ -12,6 +12,7 @@ const TeamSponsors = ({
   isAdmin,
   isOwner,
   isCEO,
+  isSupportAdmin,
   teamSponsors
 }) => {
   const [sponsors, setSponsors] = useState([]);
@@ -89,7 +90,7 @@ const TeamSponsors = ({
         <span>
           <div className="loc_box">
             {' '}
-            {isManager || isAdmin || isOwner || isCEO ? (
+            {isManager || isAdmin || isOwner || isCEO || isSupportAdmin ? (
               <a href="#!" className="model_show_btn">
                 <button className="btn">
                   <i className="fa fa-plus-circle" aria-hidden="true"></i> Add
@@ -135,7 +136,11 @@ const TeamSponsors = ({
                   {' '}
                   <span className="head_spons_bg">{item.name}</span>
                   <p>{item.description}</p>
-                  {isAdmin || isOwner || isCEO || isManager ? (
+                  {isAdmin ||
+                  isOwner ||
+                  isCEO ||
+                  isManager ||
+                  isSupportAdmin ? (
                     <button
                       className="btn"
                       onClick={(e) => handleDeleteSponsor(e, item._id)}

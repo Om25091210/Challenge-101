@@ -2,10 +2,18 @@ import Moment from 'moment';
 import PhotosDelete from './PhotosDelete';
 import AddImage from '../common/AddImage';
 
-const TeamPhotos = ({ user, team, isManager, isAdmin, isOwner, isCEO }) => {
+const TeamPhotos = ({
+  user,
+  team,
+  isManager,
+  isAdmin,
+  isOwner,
+  isCEO,
+  isSupportAdmin
+}) => {
   return (
     <div className="gallery_box">
-      {isManager || isAdmin || isOwner || isCEO ? (
+      {isManager || isAdmin || isOwner || isCEO || isSupportAdmin ? (
         <>
           <div className="add_photos">
             <a href="#!" className="model_show_btn">
@@ -78,6 +86,7 @@ const TeamPhotos = ({ user, team, isManager, isAdmin, isOwner, isCEO }) => {
                 isAdmin={isAdmin}
                 isOwner={isOwner}
                 isCEO={isCEO}
+                isSupportAdmin={isSupportAdmin}
               />
             </div>
           </div>
