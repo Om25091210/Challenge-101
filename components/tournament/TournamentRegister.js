@@ -55,10 +55,16 @@ const Tournament_Reg = ({ user, tournament, profile, teams }) => {
             }
           });
       } else {
-        axios.put(
-          `${baseURL}/api/tournaments/register/team/${tournament._id}/${selectedTeam}`
-        );
-        toast.success('registered Successfully');
+        axios
+          .put(
+            `${baseURL}/api/tournaments/register/team/${tournament._id}/${selectedTeam}`,
+            { user: user._id }
+          )
+          .then((res) =>
+            res.data.msg === 'Registered Successfully'
+              ? toast.success(res.data.msg)
+              : toast.warning(res.data.msg)
+          );
         $('a.model_close').parent().removeClass('show_model');
       }
     } catch (err) {

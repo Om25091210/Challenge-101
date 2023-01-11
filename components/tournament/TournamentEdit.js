@@ -216,6 +216,7 @@ const TournamentEdit = ({ data, user }) => {
                       type="text"
                       className="form-control"
                       name="username"
+                      disabled={true}
                       onChange={handleChangeCheck}
                       value={states.username}
                     />
@@ -371,23 +372,27 @@ const TournamentEdit = ({ data, user }) => {
                     <p>{formErrors.games}</p>
                   </div>
 
-                  <div className="form-group">
-                    <label htmlFor="exampleFormControlInput1">Maps</label>
-                    <select
-                      name="maps"
-                      id="team"
-                      multiple={true}
-                      value={states.maps}
-                      onChange={handleSubmit}
-                    >
-                      <option value="">Select Map...</option>
-                      {gotMaps &&
-                        gotMaps.map((map) => (
-                          <option value={map._id}>{map.name}</option>
-                        ))}
-                    </select>
-                    <p>{formErrors.games}</p>
-                  </div>
+                  {states.games[0] === 20 ||
+                  states.games[0] === 26 ||
+                  states.games[0] === 3 ? (
+                    <div className="form-group">
+                      <label htmlFor="exampleFormControlInput1">Maps</label>
+                      <select
+                        name="maps"
+                        id="team"
+                        multiple={true}
+                        value={states.maps}
+                        onChange={handleSubmit}
+                      >
+                        <option value="">Select Map...</option>
+                        {gotMaps &&
+                          gotMaps.map((map) => (
+                            <option value={map._id}>{map.name}</option>
+                          ))}
+                      </select>
+                      <p>{formErrors.games}</p>
+                    </div>
+                  ) : null}
 
                   {states.games[0] == 20 ||
                   states.games[0] == 23 ||
@@ -471,13 +476,13 @@ const TournamentEdit = ({ data, user }) => {
                         onChange={handleChangeCheck}
                       >
                         <option value="">Select Playout...</option>
-                        <option value="RoundRobin">Round Robin</option>
                         <option value="Single Elimination">
                           Single Elimination
                         </option>
-                        <option value="Double Elimination">
+                        {/* <option value="Double Elimination">
                           Double Elimination
-                        </option>
+                        </option> */}
+                        {/* <option value="RoundRobin">Round Robin</option> */}
                       </select>
                     </div>
                     <div className="colm">
@@ -494,10 +499,10 @@ const TournamentEdit = ({ data, user }) => {
                         <option value="Single Elimination">
                           Single Elimination
                         </option>
-                        <option value="Double Elimination">
+                        {/* <option value="Double Elimination">
                           Double Elimination
                         </option>
-                        <option value="Leaderboard">Leaderboard</option>
+                        <option value="Leaderboard">Leaderboard</option> */}
                       </select>
                     </div>
                   </div>

@@ -109,7 +109,7 @@ const TournamentDisplay = ({
                     {result?.playType === 'SOLO' ||
                     result.registered.length > 0 ? (
                       <>
-                        {result.registered.map((ppl) => (
+                        {result.registered.splice(0, 4).map((ppl) => (
                           <li>
                             {' '}
                             <img
@@ -271,18 +271,20 @@ const TournamentDisplay = ({
                     {result.tournament?.playType === 'SOLO' ||
                     result.tournament.registered.length > 0 ? (
                       <>
-                        {result.tournament.registered.map((ppl) => (
-                          <li>
-                            {' '}
-                            <img
-                              src={ppl.user?.profilePicUrl}
-                              alt={ppl.user?.name}
-                            />
-                            {/* <a href={`/user/${ppl.user?._id}`}>
+                        {result.tournament.registered
+                          .splice(0, 4)
+                          .map((ppl) => (
+                            <li>
+                              {' '}
+                              <img
+                                src={ppl.user?.profilePicUrl}
+                                alt={ppl.user?.name}
+                              />
+                              {/* <a href={`/user/${ppl.user?._id}`}>
                               {ppl.user?.name}
                             </a> */}
-                          </li>
-                        ))}
+                            </li>
+                          ))}
                       </>
                     ) : (
                       <>
@@ -437,18 +439,20 @@ const TournamentDisplay = ({
                     {result.tournament?.playType === 'SOLO' ||
                     result.tournament.registered.length > 0 ? (
                       <>
-                        {result.tournament.registered.map((ppl) => (
-                          <li>
-                            {' '}
-                            <img
-                              src={ppl.user?.profilePicUrl}
-                              alt={ppl.user?.name}
-                            />
-                            {/* <a href={`/user/${ppl.user?._id}`}>
+                        {result.tournament.registered
+                          .splice(0, 4)
+                          .map((ppl) => (
+                            <li>
+                              {' '}
+                              <img
+                                src={ppl.user?.profilePicUrl}
+                                alt={ppl.user?.name}
+                              />
+                              {/* <a href={`/user/${ppl.user?._id}`}>
                               {ppl.user?.name}
                             </a> */}
-                          </li>
-                        ))}
+                            </li>
+                          ))}
                       </>
                     ) : (
                       <>

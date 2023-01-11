@@ -147,7 +147,7 @@ const TeamSquadEdit = ({
               {editSquadData.players.map((ply, idx) => (
                 <option key={idx} value={ply._id}>
                   {' '}
-                  {ply.apidata.data?.platformInfo
+                  {ply?.apidata?.data.platformInfo
                     ? ply.apidata.data?.platformInfo.platformUserIdentifier
                     : ply?.user?.name}{' '}
                 </option>

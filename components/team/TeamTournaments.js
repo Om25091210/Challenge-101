@@ -5,7 +5,7 @@ const TeamTournaments = ({ data }) => {
     <>
       <div className="team_member no-bdr">
         <ul>
-          {data.tournament &&
+          {data.tournament && data.tournament.length > 0 ? (
             data.tournament.map((tournament) => (
               <li>
                 <div className="dp">
@@ -17,7 +17,10 @@ const TeamTournaments = ({ data }) => {
                   </a>
                 </h2>
               </li>
-            ))}
+            ))
+          ) : (
+            <p>No Tournament's Registered.</p>
+          )}
         </ul>
       </div>
     </>
