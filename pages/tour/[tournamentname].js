@@ -87,6 +87,7 @@ const TournamentDetail = ({
         axios
           .get(`${baseURL}/api/tournaments/matches/${data.tournament._id}`)
           .then((res) => console.log(res.data));
+        toast.success('Created Matches Successfully');
       } catch (err) {
         toast.error(err.response?.data?.msg || 'Please recheck your inputs');
       }
@@ -238,12 +239,15 @@ const TournamentDetail = ({
                   <h5>SPONSORS</h5>
 
                   <>
-                    {data.sponsors &&
+                    {data.sponsors && data.sponsors.length > 0 ? (
                       data.sponsors.map((item, index) => (
                         <span key={index}>
                           <img src={item.imgUrl} alt={item.sponsorId} />
                         </span>
-                      ))}
+                      ))
+                    ) : (
+                      <p>No Sponsor's Yet </p>
+                    )}
                   </>
                 </div>
 
