@@ -504,7 +504,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                     state.game === 3 ||
                     state.game === 26 ||
                     state.game === 1 ? (
-                      <div className="colm">
+                      <div className="form-group">
                         <label for="exampleFormControlInput1">Match type</label>
                         <select
                           name="matchType"

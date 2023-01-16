@@ -1046,6 +1046,7 @@ ul.top_menu .drop_down_bg.create_pages p {
 	font-weight: 400;
 	display: none;
 	transition: 0.5s ease-in-out;
+	text-transform: uppercase;
 }
 
 .left_side:hover .title {
@@ -1270,7 +1271,7 @@ ul.top_menu .drop_down_bg.create_pages p {
 	/* box-shadow:0 0 10px #eee;
 	*/
 	cursor: pointer;
-	z-index: 10;
+	z-index: 5;
 }
 
 .write_post .team_slider .slick-prev:hover, .write_post .team_slider .slick-next:hover{ background: var(--yellow)  !important;}
@@ -1303,7 +1304,7 @@ ul.top_menu .drop_down_bg.create_pages p {
 	/* box-shadow:0 0 10px #eee;
 	*/
 	cursor: pointer;
-	z-index: 10;
+	z-index: 5;
 }
 
 .write_post .team_slider .slick-next:before {
@@ -3309,8 +3310,8 @@ article .social_bar img {
 	color: #000;
 	font-size: 12px;
 	text-align: center;
-	padding: 5px 17px;
-	border-radius: 20px;
+	padding: 8px 17px;
+	border-radius: 8px;
 	text-transform: uppercase;
 }
 
@@ -3468,6 +3469,7 @@ article .social_bar img {
 	font-size: 13px;
 	line-height: 20px;
 	font-weight: 400;
+	word-break: break-all;
 
 }
 
@@ -3706,6 +3708,7 @@ article .social_bar img {
 
 #big_poup.edit_profile .custom-switch {
 	float: left;
+	padding-left: 0 !important;
 }
 
 #big_poup.edit_profile .socail button {
@@ -7487,6 +7490,8 @@ article .social_bar img {
 	margin-top: 20px;
 	font-size: 14px;
 	line-height: 30px;
+	display: inline-block;
+    word-break: break-word;
 }
 
 /* -----------------Gallery ------------ */

@@ -186,8 +186,6 @@ const RecruitEdit = ({ attributeData, profile }) => {
               </div>
               <div className="form-group">
                 <div className="custom-control custom-switch">
-                  <label htmlFor="exampleFormControlTextarea1">&nbsp;</label>
-
                   <label>Mic</label>
                   <ToggleButton
                     value={states.Mic || false}
