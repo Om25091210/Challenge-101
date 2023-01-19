@@ -7490,7 +7490,6 @@ article .social_bar img {
 	margin-top: 20px;
 	font-size: 14px;
 	line-height: 30px;
-	display: inline-block;
     word-break: break-word;
 }
 
@@ -11999,6 +11998,17 @@ form.common_form .btn {
     align-items: center;
     justify-content: space-between;
 }
+
+.right_setting_data select, .right_setting_data input[type='date']{     background: var(--bgcolor1)!important;
+    border: 1px solid #737373;
+    color: #707088;}
+
+.right_setting_data .common_form .form-group.eyesbox{ position: relative;}
+.right_setting_data .common_form .form-group.eyesbox span {
+    position: absolute;
+    left: 57%;
+}
+
  .right_setting_data .common_form .two_btn {
     width: 100%;
     display: flex;
@@ -12061,9 +12071,9 @@ form.common_form .btn {
     top: 11px;
 }
 
-.right_setting_data .changePas .btn.eyehide .fa-eye{display: none;}
-.right_setting_data .changePas .btn.eyehide .fa-eye-slash{display: block;}
-.right_setting_data .changePas .btn .fa-eye-slash{ display: none; }
+.right_setting_data .changePas .eyehide .fa-eye{display: none;}
+.right_setting_data .changePas .eyehide .fa-eye-slash{display: block;}
+.right_setting_data .changePas  .fa-eye-slash{ display: none; }
 
 .right_setting_data .newbtn{ margin: 20px 0 0 104px;
     width: 200px;}
@@ -12141,6 +12151,18 @@ form.common_form .btn {
 .rdw-editor-toolbar{background: none!important; border:0 !important;
     border-bottom: 1px solid #344860 !important;}
 
+
+	.unblock li {
+		display: flex;
+		width: 100%;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.unblock li img{ width: 40px; height: 40px;}
+	.unblock li a{ margin-left: 20px;}
+
+	.unblock li .btn{ width: 200px;}
 
 @keyframes animateC {
 	0% {

@@ -198,7 +198,7 @@ const General = ({ user, profile, games }) => {
             <div className="right_setting_data">
               <h1 id="change">Change Password</h1>
               <form className="common_form changePas">
-                <div className="form-group">
+                <div className="form-group eyesbox">
                   <input
                     type={passwordShown ? 'text' : 'password'}
                     className="form-control"
@@ -208,14 +208,14 @@ const General = ({ user, profile, games }) => {
                     placeholder="Enter Current Password"
                   />
                   <span
-                    className={passwordShown ? 'btn' : 'btn eyehide'}
+                    className={passwordShown ? '' : ' eyehide'}
                     onClick={togglePassword}
                   >
                     <i class="fa fa-eye" aria-hidden="true"></i>
                     <i class="fa fa-eye-slash" aria-hidden="true"></i>
                   </span>
                 </div>
-                <div className="form-group">
+                <div className="form-group eyesbox">
                   <input
                     type={newPasswordShown ? 'text' : 'password'}
                     className="form-control"
@@ -225,7 +225,7 @@ const General = ({ user, profile, games }) => {
                     placeholder="Enter New Password"
                   />
                   <span
-                    className={newPasswordShown ? 'btn' : 'btn eyehide'}
+                    className={newPasswordShown ? '' : ' eyehide'}
                     onClick={(e) => togglePassword(e, 'new')}
                   >
                     <i class="fa fa-eye" aria-hidden="true"></i>
@@ -269,31 +269,35 @@ const General = ({ user, profile, games }) => {
                           <form className="common_form" onSubmit="">
                             {blockData && blockData.length > 0 ? (
                               <>
-                                {blockData &&
-                                  blockData.map((block) => (
-                                    <>
-                                      <img
-                                        src={block.user.profilePicUrl}
-                                        alt={block.user.name}
-                                        style={{
-                                          height: '40px',
-                                          width: '40px'
-                                        }}
-                                      />
-                                      <a href={`/user/${block.user.username}`}>
-                                        <h6>{block.user.name}</h6>
-                                        <p>@{block.user.username}</p>
-                                      </a>
-                                      <button
-                                        className="btn"
-                                        onClick={(e) =>
-                                          handleUnblock(e, block.user._id)
-                                        }
-                                      >
-                                        Unblock
-                                      </button>
-                                    </>
-                                  ))}
+                                <ul className="unblock">
+                                  {blockData &&
+                                    blockData.map((block) => (
+                                      <>
+                                        <li>
+                                          <div className="flex">
+                                            <img
+                                              src={block.user.profilePicUrl}
+                                              alt={block.user.name}
+                                            />
+                                            <a
+                                              href={`/user/${block.user.username}`}
+                                            >
+                                              <h6>{block.user.name}</h6>
+                                              <p>@{block.user.username}</p>
+                                            </a>
+                                          </div>
+                                          <button
+                                            className="btn"
+                                            onClick={(e) =>
+                                              handleUnblock(e, block.user._id)
+                                            }
+                                          >
+                                            Unblock
+                                          </button>
+                                        </li>
+                                      </>
+                                    ))}
+                                </ul>
                               </>
                             ) : (
                               <p>No Data Found</p>
