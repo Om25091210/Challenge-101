@@ -5919,6 +5919,8 @@ article .social_bar img {
 	font-size: 15px;
 }
 
+.prize span::first-letter{ margin-right: 10px; border:1px solid  #000; display: block;}
+
 .prize.leagues h3 {
 	width: auto;
 	font-size: 14px;
@@ -11210,7 +11212,7 @@ form.common_form .btn {
 .rules_details .rules_row {
 	float: left;
 	width: 100%;
-	background: #202028;
+    background: var(--bgcolor1);
 	min-height: 200px;
 	margin-bottom: 10px;
 }

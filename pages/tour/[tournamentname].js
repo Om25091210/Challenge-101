@@ -165,7 +165,7 @@ const TournamentDetail = ({
                                       <i
                                         className="fa fa-trash"
                                         aria-hidden="true"
-                                        style={{ color: 'white' }}
+                                        style={{ color: '#000' }}
                                       ></i>
                                     </button>
                                   </a>
@@ -179,13 +179,15 @@ const TournamentDetail = ({
                                 <div className="inner_model_box">
                                   <h3>Are You Sure?</h3>
 
-                                  <button className="btn">No</button>
-                                  <button
-                                    className="btn"
-                                    onClick={handleDeleteSubmit}
-                                  >
-                                    Yes
-                                  </button>
+                                  <div className="two_btn">
+                                    <button className="btn">No</button>
+                                    <button
+                                      className="btn"
+                                      onClick={handleDeleteSubmit}
+                                    >
+                                      Yes
+                                    </button>
+                                  </div>
                                 </div>
                                 <div className="overlay"></div>
                               </div>

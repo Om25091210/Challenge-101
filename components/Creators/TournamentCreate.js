@@ -420,7 +420,7 @@ const TournamentCreate = ({ user, isClaim }) => {
 
                               {game.platform.map((plt) => (
                                 <>
-                                  <div className="console_bg">
+                                  <div className="console_bg active">
                                     {' '}
                                     {plt === 'PC' ? (
                                       <a
