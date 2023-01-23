@@ -36,6 +36,7 @@ import TournamentPrizeDetail from '../../components/tournament/TournamentPrizeDe
 import TournamentSlots from '../../components/tournament/TournamentSlots';
 import { parseCookies } from 'nookies';
 import TournamentGroups from '../../components/tournament/TournamentGroups';
+import { isMember } from '../../utils/functionsHelper';
 
 const TournamentDetail = ({
   user,
@@ -50,6 +51,7 @@ const TournamentDetail = ({
     const router = useRouter();
     const [later, setLater] = useState(false);
     const [followData, setFollowData] = useState([]);
+    const isRegisteredMember = isMember(data, user);
 
     useEffect(async () => {
       await axios
@@ -669,6 +671,15 @@ const TournamentDetail = ({
                       />
                     ))
                   )}
+                </div>
+                <div>
+                  {data.tournament.room && isRegisteredMember === user._id ? (
+                    <>
+                      <p>Room ID and Password</p>
+                      <p>ID: {data.tournament?.room?.roomId}</p>
+                      <p>Password: {data.tournament?.room?.roompwd}</p>
+                    </>
+                  ) : null}
                 </div>
               </div>
 

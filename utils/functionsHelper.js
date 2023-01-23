@@ -212,6 +212,33 @@ export const LanguageData = [
   'Tulu'
 ];
 
+export const isMember = (data, user) => {
+  let smtg = '';
+  if (data.tournament.playType === 'TEAMS') {
+    for (let i = 0; i < data.tournament.teams.length; i++) {
+      const newTT = data.tournament.teams[i];
+
+      for (let j = 0; j < newTT.teamId.employees.length; j++) {
+        if (
+          (newTT.teamId.employees[j].role === 'Owner' ||
+            newTT.teamId.employees[j].role === 'Captain') &&
+          newTT.teamId.employees[j].employeeId == user._id
+        ) {
+          smtg = newTT.teamId.employees[j].employeeId;
+        }
+      }
+    }
+  } else if (data.tournament.playType === 'SOLO') {
+    for (let i = 0; i < data.tournament.registered.length; i++) {
+      if (data.tournament.registered[i].user._id == user._id) {
+        smtg = data.tournament.registered[i].user._id;
+      }
+    }
+  }
+
+  return smtg;
+};
+
 export const PersonaHelper = (
   count,
   personas,
