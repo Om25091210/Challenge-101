@@ -3,9 +3,15 @@ import Moment from 'moment';
 import axios from 'axios';
 import baseURL from '../../utils/baseURL';
 import { toast } from 'react-toastify';
+import Cookies from 'js-cookie';
 
 const BracketCard = ({ tournaments, user }) => {
   const [trigger, setTrigger] = useState(true);
+  const [steps, setSteps] = useState({
+    step1: true,
+    step2: false
+  });
+  const [tabData, setTabData] = useState([]);
 
   useEffect(() => {
     $('a.model_show_btn').click(function () {
@@ -20,12 +26,28 @@ const BracketCard = ({ tournaments, user }) => {
   const handleShuffleMatches = async (tourId) => {
     try {
       axios
-        .get(`${baseURL}/api/tournaments/shuffle/matches/${tourId}`)
-        .then((res) => console.log(res.data));
+        .get(`${baseURL}/api/admin/shuffle/${tourId}`, tabData)
+        .then((res) => setTabData(res.data));
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }
   };
+
+  const handleTabs = async (Type, tourId, finalData) => {
+    if (Type === 'SEED') {
+      setSteps({ ...steps, step1: false, step2: true });
+    } else {
+      setSteps({ ...steps, step1: true, step2: false });
+    }
+    await axios
+      .put(`${baseURL}/api/admin/bracketData/${Type}/${tourId}`, finalData, {
+        headers: {
+          Authorization: Cookies.get('token')
+        }
+      })
+      .then((res) => setTabData(res.data));
+  };
+
   return (
     <>
       {tournaments && tournaments.length === 0 ? (
@@ -66,6 +88,7 @@ const BracketCard = ({ tournaments, user }) => {
                 >
                   View Match Details
                 </a>
+
                 <div className="common_model_box edit_profile" id="big_poup">
                   <a href="#!" className="model_close">
                     X
@@ -73,87 +96,102 @@ const BracketCard = ({ tournaments, user }) => {
                   <div className="inner_model_box">
                     <div className="add_job_height">
                       <h3>{tour.tour ? tour.tour.name : null} Matches</h3>
-                      <button
-                        className="btn"
-                        style={{ marginBottom: '10px' }}
-                        onClick={() => handleShuffleMatches(tour?.tour._id)}
-                      >
-                        Shuffle Seeds
-                      </button>
-                      <div className="next_matches">
-                        <div className="stats_table">
-                          <table className="table">
-                            <thead>
-                              <tr>
-                                <th>Opponent 1</th>
-                                <th>V</th>
-                                <th>Opponent 2</th>
-                                <th>Instance</th>
-                                <th>Date</th>
-                                <th>Time</th>
-                                <th>Score</th>
-                                <th>Actions</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              {tour.matches &&
-                                tour.matches.map((match, index) => {
-                                  return (
-                                    <>
-                                      <tr key={index}>
-                                        <td>
-                                          {match.participants[0]?.isByes ===
-                                          true
-                                            ? 'Byes'
-                                            : '---'}
-                                        </td>
-                                        <td>V</td>
-                                        <td>
-                                          {match.participants[1]?.isByes ===
-                                          true
-                                            ? 'Byes'
-                                            : '---'}
-                                        </td>
-                                        <td>{match.instance}</td>
-                                        <td>
-                                          {match.startDate
-                                            ? Moment(match.startDate).format(
-                                                'DD-MM-YYYY'
-                                              )
-                                            : '---'}
-                                        </td>
-                                        <td>
-                                          {match.startDate
-                                            ? Moment(match.startDate).format(
-                                                'h:m'
-                                              )
-                                            : '---'}
-                                        </td>
-                                        <td>
-                                          {match.results[0]
-                                            ? match.results[0]
-                                            : 0}{' '}
-                                          -{' '}
-                                          {match.results[1]
-                                            ? match.results[1]
-                                            : 0}
-                                        </td>
-                                        <td>
-                                          <button className="btn">
-                                            Add Details
-                                          </button>
-                                        </td>
-                                      </tr>
-                                    </>
-                                  );
-                                })}
-                            </tbody>
-                          </table>
-                        </div>
+
+                      <ul className="profile_tab_btn">
+                        <li>
+                          <a
+                            href="#!"
+                            className="active"
+                            onClick={() => handleTabs('SEED', tour.tour._id)}
+                            rel="feed"
+                          >
+                            Seeds
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href="#!"
+                            className="active"
+                            rel="teams"
+                            onClick={() => handleTabs('MATCHES', tour.tour._id)}
+                          >
+                            Matches
+                          </a>
+                        </li>
+                      </ul>
+
+                      <div className="prfoile_tab_data">
+                        {steps.step1 && (
+                          <>
+                            {tabData.length > 0 &&
+                              tabData.map((data) => (
+                                <>
+                                  <img
+                                    style={{ height: '50px', width: '50px' }}
+                                    src={
+                                      data.teamId
+                                        ? data.teamId.imgUrl
+                                        : data.user.profilePicUrl
+                                    }
+                                    alt={data.name}
+                                  />
+                                  <p>
+                                    {data.teamId
+                                      ? data.teamId.name
+                                      : data.user.name}
+                                  </p>
+                                </>
+                              ))}
+                          </>
+                        )}
+
+                        {steps.step2 && (
+                          <>
+                            {tabData.length > 0 &&
+                              tabData.map((data) => (
+                                <>
+                                  <img
+                                    style={{ height: '50px', width: '50px' }}
+                                    src={
+                                      data.teamId
+                                        ? data.teamId.imgUrl
+                                        : data.user.profilePicUrl
+                                    }
+                                    alt={data.name}
+                                  />
+                                  <p>
+                                    {data.teamId
+                                      ? data.teamId.name
+                                      : data.user.name}
+                                  </p>
+                                </>
+                              ))}
+
+                            <button
+                              className="btn"
+                              style={{ marginBottom: '10px' }}
+                              onClick={() =>
+                                handleShuffleMatches(tour?.tour._id)
+                              }
+                            >
+                              Shuffle Seeds
+                            </button>
+                            <button
+                              className="btn"
+                              style={{ marginBottom: '10px' }}
+                              onClick={() =>
+                                handleTabs('FINAL', tour?.tour._id, tabData)
+                              }
+                            >
+                              Update Matches
+                            </button>
+                          </>
+                        )}
                       </div>
                     </div>
                   </div>
                 </div>
+
                 <div className="overlay"></div>
               </div>
             </div>
