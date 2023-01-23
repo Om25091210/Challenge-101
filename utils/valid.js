@@ -399,6 +399,10 @@ export const teamTournaments = (values) => {
     errors.tournamentId = 'Tournament is Required';
   }
 
+  if (values.organizer.length === 0) {
+    errors.organizer = 'Please Select a Organizer';
+  }
+
   if (values.games.length === 0) {
     errors.games = 'Games are Required';
   }

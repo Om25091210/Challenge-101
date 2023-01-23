@@ -225,6 +225,7 @@ const TeamTournaments = ({
                       </option>
                     ))}
                 </select>
+                <p>{formErrors.organizer}</p>
               </div>
 
               <div className="form-group">
