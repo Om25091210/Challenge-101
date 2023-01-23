@@ -392,6 +392,32 @@ export const profileTournaments = (values) => {
   return errors;
 };
 
+export const teamTournaments = (values) => {
+  const errors = {};
+
+  if (values.tournamentId.length === 0) {
+    errors.tournamentId = 'Tournament is Required';
+  }
+
+  if (values.games.length === 0) {
+    errors.games = 'Games are Required';
+  }
+
+  if (values.year.length === 0) {
+    errors.year = 'Year is Required';
+  }
+
+  if (values.team_ranking === null) {
+    errors.team_ranking = 'Team Ranking is Required';
+  }
+
+  if (values.winnings === null) {
+    errors.winnings = 'Winnings is Required';
+  }
+
+  return errors;
+};
+
 export const brandfromvalidate = (values) => {
   const errors = {};
   if (values.name.length === 0) {

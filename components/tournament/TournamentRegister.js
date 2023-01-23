@@ -7,7 +7,11 @@ import Moment from 'moment';
 const Tournament_Reg = ({ user, tournament, profile, teams }) => {
   const [isGamePlayer, setIsGamePlayer] = useState();
   const [trigger, setTrigger] = useState(true);
-  const [selectedTeam, setSelectedTeam] = useState();
+  const [selectedTeam, setSelectedTeam] = useState({
+    teamId: '',
+    type: '',
+    user: user._id
+  });
 
   useEffect(() => {
     $('a.model_show_btn').click(function () {
@@ -33,6 +37,15 @@ const Tournament_Reg = ({ user, tournament, profile, teams }) => {
 
   const isTeamRegFull = tournament.numberOfTeam === tournament.teams?.length;
 
+  const handleChange = (e, type) => {
+    e.preventDefault();
+    if (type === 'REG') {
+      setSelectedTeam({ ...selectedTeam, teamId: e.target.value, type });
+    } else {
+      setSelectedTeam({ ...selectedTeam, teamId: e.target.value, type });
+    }
+  };
+
   const reghandlesubmit = async (e) => {
     e.preventDefault();
     try {
@@ -47,7 +60,7 @@ const Tournament_Reg = ({ user, tournament, profile, teams }) => {
                 `Please connect ${tournament.games[0].gameId.name} to your profile.`
               );
             } else {
-              if (isRegistered === false || isTeamRegistered === false) {
+              if (isRegistered === false) {
                 toast.success('Registered Successfully');
               } else {
                 toast.success('Left Tournament');
@@ -57,11 +70,12 @@ const Tournament_Reg = ({ user, tournament, profile, teams }) => {
       } else {
         axios
           .put(
-            `${baseURL}/api/tournaments/register/team/${tournament._id}/${selectedTeam}`,
-            { user: user._id }
+            `${baseURL}/api/tournaments/register/team/${tournament._id}/new`,
+            { selectedTeam }
           )
           .then((res) =>
-            res.data.msg === 'Registered Successfully'
+            res.data.msg === 'Registered Successfully' ||
+            res.data.msg === 'Left the Tournament'
               ? toast.success(res.data.msg)
               : toast.warning(res.data.msg)
           );
@@ -78,9 +92,49 @@ const Tournament_Reg = ({ user, tournament, profile, teams }) => {
         <>
           {isTeamRegistered ? (
             <>
-              <button className="join" onClick={reghandlesubmit}>
-                REGISTERED
-              </button>
+              <div className="loc_box edit_pof">
+                {Moment(tournament.startDate).isBefore() ? null : (
+                  <a
+                    href="#!"
+                    className="model_show_btn btn"
+                    onClick={() => setTrigger(!trigger)}
+                  >
+                    REGISTERED
+                  </a>
+                )}
+                <div className="common_model_box" id="big_poup">
+                  <a href="#!" className="model_close">
+                    X
+                  </a>
+                  <div className="inner_model_box">
+                    <div className="add_job_height">
+                      <h3>Unregister a team</h3>
+                      <form className="common_form">
+                        <div className="colm rows">
+                          <label htmlFor="exampleFormControlInput1">
+                            Your Teams
+                          </label>
+                          <select
+                            name="selectedTeam"
+                            value={selectedTeam.teamId}
+                            onChange={(e) => handleChange(e, 'UNREG')}
+                          >
+                            <option value="--">--</option>
+                            {teams &&
+                              teams.map((tem) => (
+                                <option value={tem._id}>{tem.name}</option>
+                              ))}
+                          </select>
+                          <button className="btn" onClick={reghandlesubmit}>
+                            Confirm
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  <div className="overlay"></div>
+                </div>
+              </div>
             </>
           ) : (
             <>
@@ -106,14 +160,12 @@ const Tournament_Reg = ({ user, tournament, profile, teams }) => {
                           <form className="common_form">
                             <div className="colm rows">
                               <label htmlFor="exampleFormControlInput1">
-                                Challenge with the team
+                                Your Teams
                               </label>
                               <select
                                 name="selectedTeam"
-                                value={selectedTeam}
-                                onChange={(e) =>
-                                  setSelectedTeam(e.target.value)
-                                }
+                                value={selectedTeam.teamId}
+                                onChange={(e) => handleChange(e, 'REG')}
                               >
                                 <option value="--">--</option>
                                 {teams &&

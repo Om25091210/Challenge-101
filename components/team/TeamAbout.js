@@ -123,6 +123,7 @@ const TeamAbout = ({
                   <TeamAbtAdd role="Manager" rolesData={rolData} />
                   <TeamAbtAdd role="Coach" rolesData={rolData} />
                   <TeamAbtAdd role="PR Manager" rolesData={rolData} />
+                  <TeamAbtAdd role="Captain" rolesData={rolData} />
 
                   {[...Array(count)].map((e, index) => (
                     <div className="form-group add_more_role" key={index}>

@@ -21,7 +21,6 @@ const ProfileTournament = ({
 }) => {
   const [allTournaments, setAllTournaments] = useState([]);
   const [organizer, setOrganizer] = useState([]);
-  const [title, setTitle] = useState('');
   const [searchText, setSearchText] = useState('');
   const [images, setImages] = useState([]);
   const [formErrors, setFormErrors] = useState({});
@@ -33,6 +32,7 @@ const ProfileTournament = ({
     team: null,
     role: '',
     year: '',
+    image: [],
     team_ranking: null,
     winnings: null,
     currency: 'Rs'
@@ -55,11 +55,22 @@ const ProfileTournament = ({
 
   const handleAddTournamentSubmit = async (e) => {
     e.preventDefault();
+    const formdata = new FormData();
     if (Object.keys(formErrors).length === 0) {
+      formdata.append('tournamentId', tournament.tournamentId);
+      formdata.append('organizer', tournament.organizer);
+      formdata.append('games', tournament.games);
+      formdata.append('team', tournament.team);
+      formdata.append('role', tournament.role);
+      formdata.append('year', tournament.year);
+      formdata.append('image', tournament.image);
+      formdata.append('team_ranking', tournament.team_ranking);
+      formdata.append('winnings', tournament.winnings);
+      formdata.append('currency', tournament.currency);
       try {
         axios.post(
           `${baseURL}/api/profile/tournaments/${profile?._id}`,
-          tournament
+          formdata
         );
         toast.success('Tournament Added Successfully, Our Team Will Verify.');
         $('a.model_close').parent().removeClass('show_model');
@@ -91,7 +102,7 @@ const ProfileTournament = ({
     tournament.tournamentId = data._id;
     setFilteredData([]);
   };
-  function handleAddTournament(e) {
+  const handleAddTournament = (e) => {
     if (e.target.options) {
       var options = e.target.options;
       var value = [];
@@ -106,21 +117,16 @@ const ProfileTournament = ({
     } else {
       setTournament({ ...tournament, [e.target.name]: e.target.value });
     }
-  }
+  };
   const onChangeTour = (e) => {
     setTournament({ ...tournament, [e.target.name]: e.target.value });
   };
   const handlePhotoSubmit = async (e) => {
     e.preventDefault();
     for (const key of Object.keys(images)) {
-      setImages({ images: images[key] });
+      setTournament({ ...tournament, image: images[key] });
     }
-    axios.put(`${baseURL}/api/uploads/uploadImages`, images, {
-      headers: {
-        Authorization: cookie.get('token'),
-        'Content-Type': 'application/json'
-      }
-    });
+    toast.success('Proof Uploaded');
   };
 
   return (
@@ -349,23 +355,13 @@ const ProfileTournament = ({
                     <ImageDropzone setImages={setImages} />
                     {images.length > 0 ? (
                       <div className="upload_btn">
-                        <form onSubmit={handlePhotoSubmit}>
-                          <textarea
-                            type="text"
-                            placeholder="Add a Description"
-                            id="title"
-                            name="title"
-                            value={title}
-                            onChange={(e) => setTitle(e.target.value)}
-                          />
-                          <a
-                            href="#!"
-                            className="btn"
-                            onClick={handlePhotoSubmit}
-                          >
-                            UPLOAD NOW{' '}
-                          </a>
-                        </form>
+                        <a
+                          href="#!"
+                          className="btn"
+                          onClick={handlePhotoSubmit}
+                        >
+                          UPLOAD NOW{' '}
+                        </a>
                       </div>
                     ) : (
                       ''
