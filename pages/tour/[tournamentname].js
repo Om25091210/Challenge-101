@@ -37,6 +37,7 @@ import TournamentSlots from '../../components/tournament/TournamentSlots';
 import { parseCookies } from 'nookies';
 import TournamentGroups from '../../components/tournament/TournamentGroups';
 import { isMember } from '../../utils/functionsHelper';
+import BracketSystem from '../../components/tournament/BracketSystem';
 
 const TournamentDetail = ({
   user,
@@ -776,7 +777,10 @@ const TournamentDetail = ({
               </div>
 
               <div className="tab hide" id="matches">
-                <Matches teamMatches={data.tournamentMatches} />
+                <Matches
+                  teamMatches={data.tournamentMatches.matches}
+                  isMatchPlayersSet={data.tournamentMatches.isMatchPlayersSet}
+                />
               </div>
 
               <div className="tab hide" id="participants">
@@ -833,7 +837,7 @@ const TournamentDetail = ({
                     </div>
                   </div>
                   <div className="group_stage_box">
-                    <h2>Group Stage</h2>
+                    {/* <h2>Group Stage</h2>
                     <div className="group_stage">
                       <div className="match_date">
                         <ul>
@@ -961,278 +965,8 @@ const TournamentDetail = ({
                           <p>@ Statstics At 5;45PM / Group Stage1</p>
                         </div>
                       </div>
-                    </div>
-                    <div className="knockout_matches">
-                      <h2>Knowckout-Bracket</h2>
-                      <ul>
-                        <li>
-                          <h4>Round1</h4>
-                          <p>April 21 18:00</p>
-                        </li>
-                        <li>
-                          <h4>Round2</h4>
-                          <p>April 21 18:00</p>
-                        </li>
-                        <li>
-                          <h4>Semifinals</h4>
-                          <p>April 21 18:00</p>
-                        </li>
-                        <li className="active">
-                          <h4>Final</h4>
-                          <p>April 21 18:00</p>
-                        </li>
-                      </ul>
-                    </div>
-                    <div className="matches_postitions">
-                      <div className="section section1">
-                        <ul>
-                          <li>
-                            <div className="team_name">
-                              {' '}
-                              <span className="dp">
-                                <img
-                                  src="/assets/media/result/team1.png"
-                                  alt=""
-                                />
-                              </span>{' '}
-                              <span className="dp_name">
-                                FayeDBebop<b>United State</b>
-                              </span>{' '}
-                            </div>
-                            <div className="points">7</div>
-                          </li>
-                          <li>
-                            <div className="team_name">
-                              {' '}
-                              <span className="dp">
-                                <img
-                                  src="/assets/media/result/team2.png"
-                                  alt=""
-                                />
-                              </span>{' '}
-                              <span className="dp_name">
-                                FayeDBebop<b>UK</b>
-                              </span>{' '}
-                            </div>
-                            <div className="points">7</div>
-                          </li>
-                          <li>
-                            <div className="team_name">
-                              {' '}
-                              <span className="dp">
-                                <img
-                                  src="/assets/media/result/team3.png"
-                                  alt=""
-                                />
-                              </span>{' '}
-                              <span className="dp_name">
-                                FayeDBebop<b>Sarah Valentine</b>
-                              </span>{' '}
-                            </div>
-                            <div className="points">7</div>
-                          </li>
-                          <li>
-                            <div className="team_name">
-                              {' '}
-                              <span className="dp">
-                                <img
-                                  src="/assets/media/result/team4.png"
-                                  alt=""
-                                />
-                              </span>{' '}
-                              <span className="dp_name">
-                                FayeDBebop<b>Sarah Valentine</b>
-                              </span>{' '}
-                            </div>
-                            <div className="points">1</div>
-                          </li>
-                          <li>
-                            <div className="team_name">
-                              {' '}
-                              <span className="dp">
-                                <img
-                                  src="/assets/media/result/team5.png"
-                                  alt=""
-                                />
-                              </span>{' '}
-                              <span className="dp_name">
-                                FayeDBebop<b>Sarah Valentine</b>
-                              </span>{' '}
-                            </div>
-                            <div className="points">7</div>
-                          </li>
-                          <li>
-                            <div className="team_name">
-                              {' '}
-                              <span className="dp">
-                                <img
-                                  src="/assets/media/result/team6.png"
-                                  alt=""
-                                />
-                              </span>{' '}
-                              <span className="dp_name">
-                                FayeDBebop<b>Sarah Valentine</b>
-                              </span>{' '}
-                            </div>
-                            <div className="points">6</div>
-                          </li>
-                          <li>
-                            <div className="team_name">
-                              {' '}
-                              <span className="dp">
-                                <img
-                                  src="/assets/media/result/team1.png"
-                                  alt=""
-                                />
-                              </span>{' '}
-                              <span className="dp_name">
-                                FayeDBebop<b>Sarah Valentine</b>
-                              </span>{' '}
-                            </div>
-                            <div className="points">3</div>
-                          </li>
-                          <li>
-                            <div className="team_name">
-                              {' '}
-                              <span className="dp">
-                                <img
-                                  src="/assets/media/result/team2.png"
-                                  alt=""
-                                />
-                              </span>{' '}
-                              <span className="dp_name">
-                                FayeDBebop<b>Sarah Valentine</b>
-                              </span>{' '}
-                            </div>
-                            <div className="points">4</div>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="section section2">
-                        <ul>
-                          <li>
-                            <div className="team_name">
-                              {' '}
-                              <span className="dp">
-                                <img
-                                  src="/assets/media/result/team6.png"
-                                  alt=""
-                                />
-                              </span>{' '}
-                              <span className="dp_name">
-                                FayeDBebop<b>Sarah Valentine</b>
-                              </span>{' '}
-                            </div>
-                            <div className="points">4</div>
-                          </li>
-                          <li>
-                            <div className="team_name">
-                              {' '}
-                              <span className="dp">
-                                <img
-                                  src="/assets/media/result/team5.png"
-                                  alt=""
-                                />
-                              </span>{' '}
-                              <span className="dp_name">
-                                FayeDBebop<b>Sarah Valentine</b>
-                              </span>{' '}
-                            </div>
-                            <div className="points">4</div>
-                          </li>
-                        </ul>
-                        <ul>
-                          <li>
-                            <div className="team_name">
-                              {' '}
-                              <span className="dp">
-                                <img
-                                  src="/assets/media/result/team4.png"
-                                  alt=""
-                                />
-                              </span>{' '}
-                              <span className="dp_name">
-                                FayeDBebop<b>Sarah Valentine</b>
-                              </span>{' '}
-                            </div>
-                            <div className="points">4</div>
-                          </li>
-                          <li>
-                            <div className="team_name">
-                              {' '}
-                              <span className="dp">
-                                <img
-                                  src="/assets/media/result/team2.png"
-                                  alt=""
-                                />
-                              </span>{' '}
-                              <span className="dp_name">
-                                FayeDBebop<b>Sarah Valentine</b>
-                              </span>{' '}
-                            </div>
-                            <div className="points">4</div>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="section section3">
-                        <ul>
-                          <li>
-                            <div className="team_name">
-                              {' '}
-                              <span className="dp">
-                                <img
-                                  src="/assets/media/result/team1.png"
-                                  alt=""
-                                />
-                              </span>{' '}
-                              <span className="dp_name">
-                                FayeDBebop<b>Sarah Valentine</b>
-                              </span>{' '}
-                            </div>
-                            <div className="points">4</div>
-                          </li>
-                          <li>
-                            <div className="team_name">
-                              {' '}
-                              <span className="dp">
-                                <img
-                                  src="/assets/media/result/team2.png"
-                                  alt=""
-                                />
-                              </span>{' '}
-                              <span className="dp_name">
-                                FayeDBebop<b>Sarah Valentine</b>
-                              </span>{' '}
-                            </div>
-                            <div className="points">4</div>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="section section4">
-                        <ul>
-                          <li>
-                            <div className="team_name">
-                              {' '}
-                              <span className="dp">
-                                <img
-                                  src="/assets/media/result/team3.png"
-                                  alt=""
-                                />
-                              </span>{' '}
-                              <span className="dp_name">
-                                FayeDBebop<b>Sarah Valentine</b>
-                              </span>{' '}
-                            </div>
-                            <div className="final_cup">
-                              <i
-                                className="fa fa-trophy"
-                                aria-hidden="true"
-                              ></i>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
+                    </div> */}
+                    <BracketSystem data={data.tournamentMatches.matches} />
                   </div>
                 </div>
               </div>

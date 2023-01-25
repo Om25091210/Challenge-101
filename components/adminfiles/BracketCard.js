@@ -4,6 +4,7 @@ import axios from 'axios';
 import baseURL from '../../utils/baseURL';
 import { toast } from 'react-toastify';
 import Cookies from 'js-cookie';
+import Matches from '../team/Matches';
 
 const BracketCard = ({ tournaments, user }) => {
   const [trigger, setTrigger] = useState(true);
@@ -12,6 +13,7 @@ const BracketCard = ({ tournaments, user }) => {
     step2: false
   });
   const [tabData, setTabData] = useState([]);
+  const [matchesTrigger, setMatchesTrigger] = useState(true);
 
   useEffect(() => {
     $('a.model_show_btn').click(function () {
@@ -33,19 +35,32 @@ const BracketCard = ({ tournaments, user }) => {
     }
   };
 
-  const handleTabs = async (Type, tourId, finalData) => {
+  const handleTabs = async (Type, tourId) => {
     if (Type === 'SEED') {
-      setSteps({ ...steps, step1: false, step2: true });
-    } else {
       setSteps({ ...steps, step1: true, step2: false });
+    } else {
+      setSteps({ ...steps, step1: false, step2: true });
     }
     await axios
-      .put(`${baseURL}/api/admin/bracketData/${Type}/${tourId}`, finalData, {
+      .get(`${baseURL}/api/admin/bracketData/${Type}/${tourId}`, {
         headers: {
           Authorization: Cookies.get('token')
         }
       })
-      .then((res) => setTabData(res.data));
+      .then((res) => {
+        setTabData(res.data.data),
+          setMatchesTrigger(res.data.isMatchPlayersSet);
+      });
+  };
+
+  const handleMatchesData = async (tourId, data) => {
+    console.log(data);
+    await axios
+      .put(`${baseURL}/api/admin/setMatchesWithPlayers/${tourId}`, data)
+      .then((res) => {
+        setTabData(res.data.matches),
+          setMatchesTrigger(res.data.isMatchPlayersSet);
+      });
   };
 
   return (
@@ -59,13 +74,11 @@ const BracketCard = ({ tournaments, user }) => {
               <div className="card_img">
                 <div className="img">
                   <img
-                    src={tour.tour ? tour.tour.imgUrl : null}
-                    alt={tour.tour ? tour.tour.name : null}
+                    src={tour ? tour.imgUrl : null}
+                    alt={tour ? tour.name : null}
                   />
                 </div>
-                <a href={`/tour/${tour.tour?.name}`}>
-                  {tour.tour ? tour.tour.name : null}
-                </a>
+                <a href={`/tour/${tour?.name}`}>{tour ? tour.name : null}</a>
               </div>
             </div>
             <div className="row1">
@@ -76,7 +89,7 @@ const BracketCard = ({ tournaments, user }) => {
 
               <span>
                 <b>PlayType</b>
-                <p>{tour.tour ? tour.tour.playType : null}</p>
+                <p>{tour ? tour.playType : null}</p>
               </span>
             </div>
             <div className="row1">
@@ -95,14 +108,14 @@ const BracketCard = ({ tournaments, user }) => {
                   </a>
                   <div className="inner_model_box">
                     <div className="add_job_height">
-                      <h3>{tour.tour ? tour.tour.name : null} Matches</h3>
+                      <h3>{tour ? tour.name : null} Matches</h3>
 
                       <ul className="profile_tab_btn">
                         <li>
                           <a
                             href="#!"
                             className="active"
-                            onClick={() => handleTabs('SEED', tour.tour._id)}
+                            onClick={() => handleTabs('SEED', tour._id)}
                             rel="feed"
                           >
                             Seeds
@@ -113,7 +126,7 @@ const BracketCard = ({ tournaments, user }) => {
                             href="#!"
                             className="active"
                             rel="teams"
-                            onClick={() => handleTabs('MATCHES', tour.tour._id)}
+                            onClick={() => handleTabs('MATCHES', tour._id)}
                           >
                             Matches
                           </a>
@@ -121,31 +134,16 @@ const BracketCard = ({ tournaments, user }) => {
                       </ul>
 
                       <div className="prfoile_tab_data">
-                        {steps.step1 && (
+                        {steps.step2 ? (
                           <>
-                            {tabData.length > 0 &&
-                              tabData.map((data) => (
-                                <>
-                                  <img
-                                    style={{ height: '50px', width: '50px' }}
-                                    src={
-                                      data.teamId
-                                        ? data.teamId.imgUrl
-                                        : data.user.profilePicUrl
-                                    }
-                                    alt={data.name}
-                                  />
-                                  <p>
-                                    {data.teamId
-                                      ? data.teamId.name
-                                      : data.user.name}
-                                  </p>
-                                </>
-                              ))}
+                            <Matches
+                              teamMatches={tabData}
+                              isMatchPlayersSet={matchesTrigger}
+                            />
                           </>
-                        )}
+                        ) : null}
 
-                        {steps.step2 && (
+                        {steps.step1 ? (
                           <>
                             {tabData.length > 0 &&
                               tabData.map((data) => (
@@ -153,26 +151,23 @@ const BracketCard = ({ tournaments, user }) => {
                                   <img
                                     style={{ height: '50px', width: '50px' }}
                                     src={
-                                      data.teamId
-                                        ? data.teamId.imgUrl
-                                        : data.user.profilePicUrl
+                                      data?.teamId
+                                        ? data?.teamId?.imgUrl
+                                        : data?.user?.profilePicUrl
                                     }
-                                    alt={data.name}
+                                    alt={data?.name}
                                   />
                                   <p>
-                                    {data.teamId
-                                      ? data.teamId.name
-                                      : data.user.name}
+                                    {data?.teamId
+                                      ? data?.teamId?.name
+                                      : data?.user?.name}
                                   </p>
                                 </>
                               ))}
-
                             <button
                               className="btn"
                               style={{ marginBottom: '10px' }}
-                              onClick={() =>
-                                handleShuffleMatches(tour?.tour._id)
-                              }
+                              onClick={() => handleShuffleMatches(tour?._id)}
                             >
                               Shuffle Seeds
                             </button>
@@ -180,13 +175,13 @@ const BracketCard = ({ tournaments, user }) => {
                               className="btn"
                               style={{ marginBottom: '10px' }}
                               onClick={() =>
-                                handleTabs('FINAL', tour?.tour._id, tabData)
+                                handleMatchesData(tour?._id, tabData)
                               }
                             >
                               Update Matches
                             </button>
                           </>
-                        )}
+                        ) : null}
                       </div>
                     </div>
                   </div>
