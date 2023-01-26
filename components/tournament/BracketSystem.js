@@ -14,6 +14,11 @@ const BracketSystem = ({ data }) => {
     return match.instance === 'Final';
   });
 
+  const middleIndex = Math.ceil(roundTwoMatches.length / 2);
+
+  const firstHalf = roundTwoMatches.splice(0, middleIndex);
+  const secondHalf = roundTwoMatches.splice(-middleIndex);
+
   return (
     <>
       <div className="knockout_matches">
@@ -66,7 +71,7 @@ const BracketSystem = ({ data }) => {
         <div className="section section2">
           <ul>
             {roundTwoMatches &&
-              roundTwoMatches.map((match) =>
+              firstHalf.map((match) =>
                 match.opponents && match.opponents.length === 2 ? (
                   match.opponents.map((opponent) => (
                     <li>
@@ -80,7 +85,6 @@ const BracketSystem = ({ data }) => {
                           <b></b>
                         </span>{' '}
                       </div>
-                      {/* <div className="points">7</div> */}
                     </li>
                   ))
                 ) : (
@@ -100,7 +104,6 @@ const BracketSystem = ({ data }) => {
                             <b></b>
                           </span>{' '}
                         </div>
-                        {/* <div className="points">7</div> */}
                       </li>
                     ) : null}
                     {match.opponents[1] ? null : (
@@ -114,7 +117,61 @@ const BracketSystem = ({ data }) => {
                             ---<b></b>
                           </span>{' '}
                         </div>
-                        {/* <div className="points">7</div> */}
+                      </li>
+                    )}
+                  </>
+                )
+              )}
+          </ul>
+
+          <ul>
+            {roundTwoMatches &&
+              secondHalf.map((match) =>
+                match.opponents && match.opponents.length === 2 ? (
+                  match.opponents.map((opponent) => (
+                    <li>
+                      <div className="team_name">
+                        {' '}
+                        <span className="dp">
+                          <img src={opponent.opponent.image_url} alt="" />
+                        </span>{' '}
+                        <span className="dp_name">
+                          {opponent.opponent.name}
+                          <b></b>
+                        </span>{' '}
+                      </div>
+                    </li>
+                  ))
+                ) : (
+                  <>
+                    {match.opponents[0] ? (
+                      <li>
+                        <div className="team_name">
+                          {' '}
+                          <span className="dp">
+                            <img
+                              src={match.opponents[0].opponent.image_url}
+                              alt=""
+                            />
+                          </span>{' '}
+                          <span className="dp_name">
+                            {match.opponents[0].opponent.name}
+                            <b></b>
+                          </span>{' '}
+                        </div>
+                      </li>
+                    ) : null}
+                    {match.opponents[1] ? null : (
+                      <li>
+                        <div className="team_name">
+                          {' '}
+                          <span className="dp">
+                            <img src="/assets/media/user.jpg" alt="" />
+                          </span>{' '}
+                          <span className="dp_name">
+                            ---<b></b>
+                          </span>{' '}
+                        </div>
                       </li>
                     )}
                   </>

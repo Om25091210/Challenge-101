@@ -3317,7 +3317,7 @@ article .social_bar img {
 
 .profile_dp_box .top_details .button button {
 	text-transform: uppercase;
-	border-radius: 20px;
+	height: 34px;
 	font-size: 12px;
 }
 
@@ -9150,33 +9150,71 @@ ul.game_search_result.map-slection li .fa-check{ top:8%;}
 	flex-direction: column;
 	justify-content: space-around;
 	height: 630px;
+	position: relative;
 }
 
 .section2 ul {
 	position: relative;
 }
 
-.section2 ul:after {
-	content: "";
-	width: 25px;
-	height: 100%;
-	position: absolute;
-	border: 1px solid #3a2d49;
-	left: -40px;
-	top: 0;
-	border-left: 0;
+.section1{ position: relative;}
+.section1:after {
+    content: "";
+    width: 25px;
+    height: 5px;
+    position: absolute;
+    border: 1px solid #3a2d49;
+    right: -19px;
+    top: 50%;
+    border-left: 0;
+    height: 242px;
+    border-bottom: 0;
 }
 
-.section2 ul:before {
-	content: "";
-	width: 16px;
-	height: 1px;
-	position: absolute;
-	border-bottom: 1px solid #3a2d49;
-	left: -16px;
-	top: 50%;
-	border-left: 0;
+.section1:before {
+    content: "";
+    width: 25px;
+    height: 5px;
+    position: absolute;
+    border-bottom: 1px solid #3a2d49;
+    right: -44px;
+    top: 317px;
+    /* border-left: 0; */
 }
+
+.section2:after {
+    content: "";
+    width: 25px;
+    height: 5px;
+    position: absolute;
+    border-bottom: 1px solid #3a2d49;
+    right: -41px;
+    top: 62%;
+    /* border-left: 0; */
+}
+
+.section2:before {
+    content: "";
+    width: 25px;
+    height: 5px;
+    position: absolute;
+    border-bottom: 1px solid #3a2d49;
+    right: -41px;
+    top: 37%;
+    /* border-left: 0; */
+}
+
+.section2 ul:after {
+    content: "";
+    width: 25px;
+    height: 100%;
+    position: absolute;
+    border: 1px solid #3a2d49;
+    right: -18px;
+    top: 0;
+    border-left: 0;
+}
+
 
 .section3 ul {
 	position: relative;
@@ -9188,32 +9226,30 @@ ul.game_search_result.map-slection li .fa-check{ top:8%;}
 }
 
 .section3 ul:after {
-	content: "";
-	width: 25px;
-	height: 100%;
-	position: absolute;
-	border: 1px solid #3a2d49;
-	left: -40px;
-	top: 0;
-	border-left: 0;
+    content: "";
+    width: 25px;
+    height: 50%;
+    position: absolute;
+    border: 1px solid #3a2d49;
+    right: -17px;
+    top: 79px;
+    border-left: 0;
 }
-
 .section3 ul:before {
-	content: "";
-	width: 16px;
-	height: 1px;
-	position: absolute;
-	border-bottom: 1px solid #3a2d49;
-	left: -16px;
-	top: 50%;
-	border-left: 0;
+    content: "";
+    width: 33px;
+    height: 1px;
+    position: absolute;
+    border-bottom: 1px solid #3a2d49;
+    right: -50px;
+    top: 50%;
+    border-left: 0;
 }
-
 .section4 ul {
 	position: relative;
 }
 
-.section4 ul:after {
+/* .section4 ul:after {
 	content: "";
 	width: 25px;
 	height: 40px;
@@ -9221,7 +9257,7 @@ ul.game_search_result.map-slection li .fa-check{ top:8%;}
 	border-bottom: 1px solid #3a2d49;
 	left: -40px;
 	top: 0;
-}
+} */
 
 .section4 .final_cup {
 	position: absolute;

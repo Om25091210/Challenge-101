@@ -271,21 +271,23 @@ const TournamentEdit = ({ data, user }) => {
                       value={states.address}
                     />
                   </div>
-
-                  {states.playType === 'TEAMS' ? (
-                    <select
-                      name="teamSize"
-                      id="teamSize"
-                      onClick={handleChangeCheck}
-                      value={states.teamSize}
-                    >
-                      <option value="">Select Team Size</option>
-                      <option value="1v1">1v1</option>
-                      <option value="2v2">2v2</option>
-                      <option value="4v4">4v4</option>
-                      <option value="5v5">5v5</option>
-                    </select>
-                  ) : null}
+                  <div className="form-group">
+                    <label htmlFor="exampleFormControlInput1">Team Size</label>
+                    {states.playType === 'TEAMS' ? (
+                      <select
+                        name="teamSize"
+                        id="teamSize"
+                        onClick={handleChangeCheck}
+                        value={states.teamSize}
+                      >
+                        <option value="">Select Team Size</option>
+                        <option value="1v1">1v1</option>
+                        <option value="2v2">2v2</option>
+                        <option value="4v4">4v4</option>
+                        <option value="5v5">5v5</option>
+                      </select>
+                    ) : null}
+                  </div>
 
                   <div className="colm">
                     <label for="exampleFormControlInput1">
