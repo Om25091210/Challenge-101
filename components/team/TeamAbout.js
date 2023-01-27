@@ -25,6 +25,7 @@ const TeamAbout = ({
   const [desc, setDesc] = useState(
     Data.team.about ? Data.team.about.description : null
   );
+  const [members, setMembers] = useState(teamAbout?.employees);
 
   const router = useRouter();
 
@@ -69,7 +70,9 @@ const TeamAbout = ({
   const handleSubmitAbout = async (e) => {
     e.preventDefault();
     try {
-      axios.post(`${baseURL}/api/teams/ins/about/${Data.team?._id}`, rolData);
+      axios
+        .post(`${baseURL}/api/teams/ins/about/${Data.team?._id}`, rolData)
+        .then((res) => handleMembers(res.data));
       $('a.model_close').parent().removeClass('show_model');
       toast.success('Member Added Successfully');
       refreshData();
@@ -79,16 +82,26 @@ const TeamAbout = ({
     }
   };
 
+  useEffect(() => {
+    setMembers(teamAbout?.employees);
+  }, [teamAbout?.employees]);
+
+  const handleMembers = (data) => {
+    setMembers(data);
+  };
+
   const handleDelete = async (employeeId) => {
     try {
-      axios.delete(
-        `${baseURL}/api/teams/del/about/${Data.team?._id}/${employeeId}`,
-        {
-          headers: {
-            Authorization: cookie.get('token')
+      axios
+        .delete(
+          `${baseURL}/api/teams/del/about/${Data.team?._id}/${employeeId}`,
+          {
+            headers: {
+              Authorization: cookie.get('token')
+            }
           }
-        }
-      );
+        )
+        .then((res) => handleMembers(res.data));
       toast.success('The member has been removed.');
       refreshData();
     } catch (err) {
@@ -170,7 +183,13 @@ const TeamAbout = ({
       </div>
       <div className="">
         {!showform ? (
-          <p> {Data.team.about ? Data.team.about.description : ''} </p>
+          <>
+            {Data.team.about.description ? (
+              <p>{Data.team.about.description}</p>
+            ) : (
+              <p>No Description available</p>
+            )}
+          </>
         ) : null}
 
         {showform ? (
@@ -192,7 +211,8 @@ const TeamAbout = ({
             </li>
           ) : (
             teamAbout.type === 'ABOUT' &&
-            teamAbout.employees.map((emp, idx) => (
+            members &&
+            members.map((emp, idx) => (
               <li key={idx}>
                 <div className="dp">
                   {' '}
@@ -200,7 +220,7 @@ const TeamAbout = ({
                 </div>
 
                 <h4>{emp?.name} </h4>
-                <h3>{emp?.role.toUpperCase()}</h3>
+                <h3>{emp.role.toUpperCase()}</h3>
 
                 <h4>{emp?.employeeId?.name} </h4>
 
@@ -227,6 +247,7 @@ const TeamAbout = ({
                     <>
                       <TeamAboutEdit
                         employeeData={emp}
+                        handleMembers={handleMembers}
                         team={Data.team}
                         isManager={isManager}
                         isAdmin={isAdmin}

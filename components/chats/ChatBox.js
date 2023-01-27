@@ -170,7 +170,7 @@ const ChatBox = ({ user }) => {
                                   <img
                                     src={resultuser?.profilePicUrl}
                                     className="rounded-circle user_img"
-                                    alt=""
+                                    alt={resultuser.name}
                                   />
                                   <span className="online_icon"></span>
                                 </div>

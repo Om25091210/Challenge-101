@@ -4,7 +4,7 @@ import { useAppContext } from './ChatProvider';
 // import GroupChatModal from "./GroupChatModal";
 import { toast } from 'react-toastify';
 import { getUserFromLocalStorage } from '../../utils/localStorage';
-import { getSender } from '../../utils/chat';
+import { getSender, getSenderImg } from '../../utils/chat';
 import cookie from 'js-cookie';
 import axios from 'axios';
 import LoadingSpinner from '../LoadingSpinner';
@@ -42,7 +42,11 @@ const MyChats = ({ fetchAgain, user }) => {
               <div className="d-flex bd-highlight">
                 <div className="img_cont">
                   <img
-                    src="/assets/media/avatar/1.png"
+                    src={
+                      !chat?.isGroupChat
+                        ? `${getSenderImg(user, chat?.users)}`
+                        : `/assets/media/avatar/1.png`
+                    }
                     className="rounded-circle user_img mCS_img_loaded"
                     alt=""
                   />

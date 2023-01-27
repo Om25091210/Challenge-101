@@ -12,7 +12,8 @@ const TeamAboutEdit = ({
   isAdmin,
   isOwner,
   isCEO,
-  isSupportAdmin
+  isSupportAdmin,
+  handleMembers
 }) => {
   const [aboutData, setAboutData] = useState({
     _id: employeeData?._id,
@@ -46,17 +47,15 @@ const TeamAboutEdit = ({
     e.preventDefault();
 
     try {
-      await axios.patch(
-        `${baseURL}/api/teams/upd/about/${team._id}`,
-        aboutData,
-        {
+      await axios
+        .patch(`${baseURL}/api/teams/upd/about/${team._id}`, aboutData, {
           headers: {
             Authorization: cookie.get('token'),
             'Content-Type': 'application/json'
           }
-        }
-      );
-      toast.success('Please Refresh the page for the update to reflect.');
+        })
+        .then((res) => handleMembers(res.data));
+      toast.success('Updated Successfully');
     } catch (err) {
       console.log(err);
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');

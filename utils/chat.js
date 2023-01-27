@@ -5,6 +5,15 @@ export const getSender = (loggedUser, users) => {
   );
 };
 
+export const getSenderImg = (loggedUser, users) => {
+  return (
+    users &&
+    (users[0]._id === loggedUser._id
+      ? users[1]?.profilePicUrl
+      : users[0].profilePicUrl)
+  );
+};
+
 export const getSenderFull = (loggedUser, users) => {
   return users[0]._id === loggedUser._id ? users[1] : users[0];
 };

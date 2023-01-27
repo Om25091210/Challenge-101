@@ -9,7 +9,7 @@ import AllPosts from './AllPosts';
 import { TwitterShareButton } from 'react-share';
 import { PersonaHelper } from '../../utils/functionsHelper';
 
-const SignedMainContent = ({ posts, user }) => {
+const SignedMainContent = ({ posts, user, profile }) => {
   const [description, setDescription] = useState('');
   const [image, setImage] = useState(null);
   const [followingPosts, setFollowingPosts] = useState([]);
@@ -25,8 +25,8 @@ const SignedMainContent = ({ posts, user }) => {
   const [showGame, setShowGame] = useState('');
   const router = useRouter();
   const [profiledata, setProfileData] = useState([]);
-  const [topmenu, setTopmenu] = useState(true);
   const [followData, setFollowData] = useState([]);
+  const [topMenu, setTopMenu] = useState(profile?.isShortcutVisible);
 
   let teamId = '';
 
@@ -46,11 +46,6 @@ const SignedMainContent = ({ posts, user }) => {
         }
       })
   );
-
-  const menu_close = (e) => {
-    e.preventDefault();
-    setTopmenu(false);
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -189,9 +184,26 @@ const SignedMainContent = ({ posts, user }) => {
     }
   };
 
+  const menu_close = async (e) => {
+    e.preventDefault();
+    setTopMenu(!topMenu);
+    await axios
+      .put(
+        `${baseURL}/api/profile/settings/SECURITY`,
+        { isShortcutVisible: false },
+        {
+          headers: {
+            Authorization: cookie.get('token'),
+            'Content-Type': 'application/json'
+          }
+        }
+      )
+      .then((res) => toast.success(res.data.msg));
+  };
+
   return (
     <div className="main_middle">
-      {topmenu ? (
+      {topMenu ? (
         <div className="create_menu">
           <ul>
             <li>
@@ -243,9 +255,7 @@ const SignedMainContent = ({ posts, user }) => {
             <i class="fa fa-times-circle" aria-hidden="true"></i>
           </a>
         </div>
-      ) : (
-        ''
-      )}
+      ) : null}
 
       <form className="write_post" onSubmit={handleSubmit}>
         <div className="team_slider">

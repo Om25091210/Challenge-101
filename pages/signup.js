@@ -1,24 +1,18 @@
-import Head from 'next/head';
-import Image from 'next/image';
 import Meta from '@components/Meta';
-import FooterMain from '@components/FooterMain';
 import { useState, useEffect, useContext, useMemo } from 'react';
 import { toast } from 'react-toastify';
-import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import baseURL from '@utils/baseURL';
 import valid from '@utils/valid';
 import { useRouter } from 'next/router';
 import { DataContext } from '@store/GlobalState';
-import { postData } from '@utils/fetchData';
-import Select from 'react-select';
 import countryList from 'react-select-country-list';
 import VerifyToken from '../components/VerifyToken';
 import AllScript from './AllScript';
 
 const usernameRegex = /^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{0,29}$/;
 let cancel;
-const strongRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#^?&_-])[A-Za-z\d@$!%*#^?&_-]{8,}$/;
+const strongRegex = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?!.* ).{8,}$/;
 const mediumRegex = /^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{4,7})/;
 
 const Signup = ({ games, avatars }) => {
@@ -519,8 +513,7 @@ const Signup = ({ games, avatars }) => {
                         >
                           {' '}
                           Use 8 or more characters with a mix of atleast 1
-                          Uppercase,1 Lowercase, numbers &amp; and symbols[
-                          @$!%*# ].{' '}
+                          Uppercase,1 Lowercase and numbers.{' '}
                         </div>
                       </div>
                       <div className="fv-row mb-10">

@@ -13,13 +13,12 @@ const ProfileGameStat = ({ user, games }) => {
     var game = games.find((val) => val.userign === selectedGame);
     var qstat = 'totals';
     var gameId = game?.game?._id;
-    var userign = game?.userign;
 
-    axios
-      .get(`${baseURL}/api/extapi/player/stats/${gameId}/${userign}/${qstat}`)
-      .then((res) => {
-        setStat(res.data);
-      });
+    if (e.target.value !== '') {
+      await axios
+        .get(`${baseURL}/api/player/getstats/${e.target.value}`)
+        .then((res) => setStat(res.data));
+    }
   };
 
   return (

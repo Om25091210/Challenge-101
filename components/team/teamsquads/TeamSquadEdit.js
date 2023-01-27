@@ -144,14 +144,15 @@ const TeamSquadEdit = ({
               value={editSquadData.players}
               onChange={onChange}
             >
-              {editSquadData.players.map((ply, idx) => (
-                <option key={idx} value={ply._id}>
-                  {' '}
-                  {ply?.apidata?.data.platformInfo
-                    ? ply.apidata.data?.platformInfo.platformUserIdentifier
-                    : ply?.user?.name}{' '}
-                </option>
-              ))}
+              {editSquadData.players &&
+                editSquadData.players.map((ply, idx) => (
+                  <option key={idx} value={ply?._id}>
+                    {' '}
+                    {ply?.apidata?.data.platformInfo
+                      ? ply.apidata.data?.platformInfo.platformUserIdentifier
+                      : ply?.user?.name}{' '}
+                  </option>
+                ))}
             </select>
             <p>{formErrors.players}</p>
             <button
