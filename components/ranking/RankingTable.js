@@ -40,13 +40,13 @@ const RankingTable = ({ teamranking, searchResults }) => {
                       </a>
                     </div>
                     <div className="cols">
-                      {result.points ? result.points : 'Not Defined'}
+                      {result.team_points ? result.team_points : 'Not Defined'}
                     </div>
                     <div className="cols">
                       {result.tournament ? result.tournament.length : 0}
                     </div>
                     <div className="cols">
-                      {result.points ? result.points : '0'}/ 0
+                      {result.team_points ? result.team_points : '0'}/ 0
                     </div>
                     <div className="cols">tdb</div>
                     <div className="cols">

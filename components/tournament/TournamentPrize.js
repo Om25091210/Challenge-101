@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import baseURL from '../../utils/baseURL';
 import TournamentPrizeAdd from './TournamentPrizeAdd';
 
-const TournamentPrize = ({ tournamentId }) => {
+const TournamentPrize = ({ tournamentId, tournamentTier }) => {
   const [count, setCount] = useState(0);
   const [prizeData, setPrizeData] = useState([]);
   const [prizeCount, setPrizeCount] = useState(3);
@@ -25,7 +25,7 @@ const TournamentPrize = ({ tournamentId }) => {
     e.preventDefault();
     try {
       axios.put(
-        `${baseURL}/api/tournaments/tourPrize/${tournamentId}`,
+        `${baseURL}/api/tournaments/tourPrize/${tournamentId}/${tournamentTier}`,
         prizeData
       );
       toast.success('Prize added successfully');

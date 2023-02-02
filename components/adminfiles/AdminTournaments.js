@@ -1,5 +1,6 @@
 import moment from 'moment';
 import React from 'react';
+import Category from './Category';
 import RoomDetails from './RoomDetails';
 
 const AdminTournaments = ({ tournaments }) => {
@@ -16,6 +17,7 @@ const AdminTournaments = ({ tournaments }) => {
           <div className="heads">Platform</div>
           <div className="heads">Status</div>
           <div className="heads">Room Details</div>
+          <div className="heads">Category</div>
           <div className="heads">Actions</div>
         </div>
         {!tournaments || tournaments.length === 0 ? (
@@ -48,6 +50,7 @@ const AdminTournaments = ({ tournaments }) => {
                   Room Password:{' '}
                   {result.room?.roompwd ? result.room.roompwd : '---'}
                 </div>
+                <Category data={result} />
                 <RoomDetails data={result} type="tournaments" />
               </div>
             </div>

@@ -23,12 +23,12 @@ const Matches = ({ teamMatches, isMatchPlayersSet }) => {
                   <div className="team_a">
                     {' '}
                     <img
-                      src={tm.opponents[0].opponent.image_url}
+                      src={tm.opponents[0].opponent?.image_url}
                       alt=""
                       className="team_logo"
                     />
                     <div className="team_name">
-                      <h3>{tm.opponents[0].opponent.name}</h3>
+                      <h3>{tm.opponents[0].opponent?.name}</h3>
                       <a href="#">
                         <img src="/assets/media/teams/user1.png" alt="" />
                       </a>{' '}
@@ -70,12 +70,12 @@ const Matches = ({ teamMatches, isMatchPlayersSet }) => {
                   <div className="team_b">
                     {' '}
                     <img
-                      src={tm.opponents[1].opponent.image_url}
+                      src={tm.opponents[1].opponent?.image_url}
                       alt=""
                       className="team_logo"
                     />
                     <div className="team_name">
-                      <h3>{tm.opponents[1].opponent.name}</h3>
+                      <h3>{tm.opponents[1].opponent?.name}</h3>
                       <a href="#">
                         <img src="/assets/media/teams/user1.png" alt="" />
                       </a>{' '}
@@ -163,7 +163,7 @@ const Matches = ({ teamMatches, isMatchPlayersSet }) => {
                 {tm.opponents[0] ? (
                   <div className="team_a">
                     {tm.opponents[0].opponent ? (
-                      <img src={tm.opponents[0].opponent.image_url} alt="" />
+                      <img src={tm.opponents[0].opponent?.image_url} alt="" />
                     ) : (
                       <img
                         src="/assets/media/user.jpg"
@@ -174,7 +174,7 @@ const Matches = ({ teamMatches, isMatchPlayersSet }) => {
                     <div className="team_name">
                       <h3>
                         {tm.opponents[0].opponent
-                          ? tm.opponents[0].opponent.name
+                          ? tm.opponents[0].opponent?.name
                           : tm.instance === 'Semifinals'
                           ? 'Semi-Final Player'
                           : 'Final Player'}
@@ -211,7 +211,7 @@ const Matches = ({ teamMatches, isMatchPlayersSet }) => {
                   <div className="team_b">
                     {' '}
                     {tm.opponents[1].opponent ? (
-                      <img src={tm.opponents[1].opponent.image_url} alt="" />
+                      <img src={tm.opponents[1].opponent?.image_url} alt="" />
                     ) : (
                       <img
                         src="/assets/media/user.jpg"
@@ -222,7 +222,7 @@ const Matches = ({ teamMatches, isMatchPlayersSet }) => {
                     <div className="team_name">
                       <h3>
                         {tm.opponents[1].opponent
-                          ? tm.opponents[1].opponent.name
+                          ? tm.opponents[1].opponent?.name
                           : tm.instance === 'Semifinals'
                           ? 'Semi-Final Player'
                           : 'Final Player'}

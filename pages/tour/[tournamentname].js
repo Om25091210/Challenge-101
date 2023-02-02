@@ -732,7 +732,10 @@ const TournamentDetail = ({
               </div>
 
               <div className="tab hide" id="result">
-                <TournamentPrize tournamentId={data.tournament._id} />
+                <TournamentPrize
+                  tournamentId={data.tournament._id}
+                  tournamentTier={data.tournament?.tournament_tier}
+                />
                 <TournamentPrizeDetail tournament={data.tournament} />
               </div>
 

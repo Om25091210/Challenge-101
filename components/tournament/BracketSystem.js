@@ -54,10 +54,10 @@ const BracketSystem = ({ data }) => {
                       <div className="team_name">
                         {' '}
                         <span className="dp">
-                          <img src={opponent.opponent.image_url} alt="" />
+                          <img src={opponent.opponent?.image_url} alt="" />
                         </span>{' '}
                         <span className="dp_name">
-                          {opponent.opponent.name}
+                          {opponent.opponent?.name}
                           <b></b>
                         </span>{' '}
                       </div>
@@ -78,10 +78,10 @@ const BracketSystem = ({ data }) => {
                       <div className="team_name">
                         {' '}
                         <span className="dp">
-                          <img src={opponent.opponent.image_url} alt="" />
+                          <img src={opponent.opponent?.image_url} alt="" />
                         </span>{' '}
                         <span className="dp_name">
-                          {opponent.opponent.name}
+                          {opponent.opponent?.name}
                           <b></b>
                         </span>{' '}
                       </div>
@@ -95,12 +95,12 @@ const BracketSystem = ({ data }) => {
                           {' '}
                           <span className="dp">
                             <img
-                              src={match.opponents[0].opponent.image_url}
+                              src={match.opponents[0].opponent?.image_url}
                               alt=""
                             />
                           </span>{' '}
                           <span className="dp_name">
-                            {match.opponents[0].opponent.name}
+                            {match.opponents[0].opponent?.name}
                             <b></b>
                           </span>{' '}
                         </div>
@@ -133,10 +133,10 @@ const BracketSystem = ({ data }) => {
                       <div className="team_name">
                         {' '}
                         <span className="dp">
-                          <img src={opponent.opponent.image_url} alt="" />
+                          <img src={opponent.opponent?.image_url} alt="" />
                         </span>{' '}
                         <span className="dp_name">
-                          {opponent.opponent.name}
+                          {opponent.opponent?.name}
                           <b></b>
                         </span>{' '}
                       </div>
@@ -150,12 +150,12 @@ const BracketSystem = ({ data }) => {
                           {' '}
                           <span className="dp">
                             <img
-                              src={match.opponents[0].opponent.image_url}
+                              src={match.opponents[0].opponent?.image_url}
                               alt=""
                             />
                           </span>{' '}
                           <span className="dp_name">
-                            {match.opponents[0].opponent.name}
+                            {match.opponents[0].opponent?.name}
                             <b></b>
                           </span>{' '}
                         </div>
@@ -208,10 +208,10 @@ const BracketSystem = ({ data }) => {
                         <div className="team_name">
                           {' '}
                           <span className="dp">
-                            <img src={opponent.opponent.image_url} alt="" />
+                            <img src={opponent.opponent?.image_url} alt="" />
                           </span>{' '}
                           <span className="dp_name">
-                            {opponent.opponent.name}
+                            {opponent.opponent?.name}
                             <b></b>
                           </span>{' '}
                         </div>
@@ -251,10 +251,10 @@ const BracketSystem = ({ data }) => {
                         <div className="team_name">
                           {' '}
                           <span className="dp">
-                            <img src={opponent.opponent.image_url} alt="" />
+                            <img src={opponent.opponent?.image_url} alt="" />
                           </span>{' '}
                           <span className="dp_name">
-                            {opponent.opponent.name}
+                            {opponent.opponent?.name}
                             <b></b>
                           </span>{' '}
                         </div>
