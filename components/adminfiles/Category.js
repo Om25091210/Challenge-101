@@ -30,7 +30,7 @@ const Category = ({ data }) => {
         name="category"
         id="category"
         value={data?.tournament_tier}
-        disabled={data?.tournament_tier !== '' ? false : true}
+        disabled={data?.tournament_tier === '' ? false : true}
         onChange={(e) => handleChange(e)}
       >
         <option value="">Select Category</option>
