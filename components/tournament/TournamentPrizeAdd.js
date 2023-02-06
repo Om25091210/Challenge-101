@@ -2,19 +2,27 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import baseURL from '../../utils/baseURL';
 
-const TournamentPrizeAdd = ({ prizes, prizesData }) => {
-  const [addPrizes, setAddPrizes] = useState('');
+const TournamentPrizeAdd = ({ prizes, prizesData, tournament }) => {
   const [states, setStates] = useState({
     prizeName: '',
     goodies: '',
     prize_sponsor: '',
-    place: prizes
+    place: prizes,
+    winnings: null,
+    winner_img: ''
   });
   const [allsponsor, setAllsponsor] = useState([]);
 
   const handleChange = (e) => {
     setStates({ ...states, [e.target.name]: e.target.value });
   };
+
+  let searchData = '';
+  if (tournament.playType === 'SOLO') {
+    searchData = tournament.registered;
+  } else if (tournament.playType === 'TEAMS') {
+    searchData = tournament.teams;
+  }
 
   useEffect(() => {
     axios
@@ -23,27 +31,65 @@ const TournamentPrizeAdd = ({ prizes, prizesData }) => {
   }, []);
 
   const [filteredData, setFilteredData] = useState([]);
+  const [playersData, setPlayersData] = useState([]);
   const [searchText, setSearchText] = useState('');
 
-  const handleFilter = (event) => {
+  const handleFilter = (event, type) => {
     const searchWord = event.target.value;
-
-    setSearchText(searchWord);
-    const newFilter = allsponsor?.filter((value) => {
-      return value.name.toLowerCase().includes(searchWord.toLowerCase());
-    });
-    if (searchText === '') {
+    if (type === 'PLAYER') {
+      setStates({ ...states, prizeName: event.target.value });
+    } else {
+      setSearchText(searchWord);
+    }
+    let newFilter = '';
+    if (type === 'PLAYER') {
+      newFilter = searchData?.filter((value) => {
+        if (value.user) {
+          return value.user.name
+            .toLowerCase()
+            .includes(states.prizeName.toLowerCase());
+        } else {
+          return value.teamId.name
+            .toLowerCase()
+            .includes(states.prizeName.toLowerCase());
+        }
+      });
+    } else {
+      newFilter = allsponsor?.filter((value) => {
+        return value.name.toLowerCase().includes(searchWord.toLowerCase());
+      });
+    }
+    if (searchText === '' && !type) {
       setFilteredData([]);
+    } else if (type === 'PLAYER') {
+      setPlayersData(newFilter);
     } else {
       setFilteredData(newFilter);
     }
   };
 
-  const handleSelectedRig = (data) => {
-    setSearchText(data.name);
-    states.prize_sponsor = data._id;
-    prizesData.push(states);
-    setFilteredData([]);
+  const handleSelectedRig = (data, type) => {
+    if (type === 'PLAYER') {
+      if (data.user) {
+        setStates({
+          ...states,
+          prizeName: data.user.name,
+          winner_img: data.user.profilePicUrl
+        });
+      } else {
+        setStates({
+          ...states,
+          prizeName: data.teamId.name,
+          winner_img: data.teamId.imgUrl
+        });
+      }
+      setPlayersData([]);
+    } else {
+      setSearchText(data.name);
+      states.prize_sponsor = data._id;
+      prizesData.push(states);
+      setFilteredData([]);
+    }
   };
 
   return (
@@ -54,8 +100,71 @@ const TournamentPrizeAdd = ({ prizes, prizesData }) => {
           type="text"
           class="form-control"
           value={states.prizeName}
-          onChange={handleChange}
+          onChange={(e) => handleFilter(e, 'PLAYER')}
           name="prizeName"
+        />
+        {states.prizeName.length !== 0 ? (
+          <>
+            {playersData.length > 0 ? (
+              <div className="custom-rig-tag">
+                <div className="rigs_items">
+                  {!playersData || playersData.length === 0 ? (
+                    <p>No Player found..</p>
+                  ) : (
+                    playersData.map((data) => (
+                      <div
+                        onClick={() => handleSelectedRig(data, 'PLAYER')}
+                        key={data?._id}
+                        className="items"
+                      >
+                        <span>
+                          {data.user ? (
+                            <img
+                              src={data?.user?.profilePicUrl}
+                              height={50}
+                              width={50}
+                            />
+                          ) : (
+                            <img
+                              src={data?.teamId?.imgUrl}
+                              height={50}
+                              width={50}
+                            />
+                          )}
+                        </span>
+                        <p>
+                          {data.teamId ? (
+                            <>
+                              {data.teamId?.name.length > 20
+                                ? data.teamId?.name.substring(0, 20) + '...'
+                                : data.teamId?.name}
+                            </>
+                          ) : (
+                            <>
+                              {data.user?.name.length > 20
+                                ? data.user?.name.substring(0, 20) + '...'
+                                : data.user?.name}
+                            </>
+                          )}
+                        </p>
+                      </div>
+                    ))
+                  )}
+                </div>
+              </div>
+            ) : null}
+          </>
+        ) : null}
+      </div>
+
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Prize Won</label>
+        <input
+          type="number"
+          class="form-control"
+          name="winnings"
+          value={states.winnings}
+          onChange={handleChange}
         />
       </div>
 

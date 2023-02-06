@@ -129,9 +129,7 @@ const RankingTable = ({ teamranking, searchResults }) => {
                     <div className="cols">
                       {result.points ? result.points : 'Not Defined'}
                     </div>
-                    <div className="cols">
-                      {result.tournament ? result.tournament.length : 0}
-                    </div>
+                    <div className="cols">{result.totalTournaments}</div>
                     <div className="cols">
                       {result.points ? result.points : '0'}/ 0
                     </div>
@@ -144,7 +142,13 @@ const RankingTable = ({ teamranking, searchResults }) => {
                       <span className="round red"></span>{' '}
                       <span className="round green"></span>{' '}
                     </div>
-                    <div className="cols">$45,000</div>
+                    {result.team.team_winnings ? (
+                      <div className="cols">
+                        Rs: {result.team.team_winnings}
+                      </div>
+                    ) : (
+                      'No Winnings Yet'
+                    )}
                   </div>
 
                   {!result.tournament || result.tournament.length === 0 ? (

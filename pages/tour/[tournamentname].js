@@ -735,6 +735,7 @@ const TournamentDetail = ({
                 <TournamentPrize
                   tournamentId={data.tournament._id}
                   tournamentTier={data.tournament?.tournament_tier}
+                  tournament={data.tournament}
                 />
                 <TournamentPrizeDetail tournament={data.tournament} />
               </div>

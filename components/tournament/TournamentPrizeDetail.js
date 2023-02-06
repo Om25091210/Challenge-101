@@ -8,7 +8,10 @@ const TournamentPrizeDetail = ({ tournament }) => {
               <div className="prize_box">
                 <div className="first_symb">
                   {tourPrize.place ? (
-                    <>{tourPrize?.place}</>
+                    <>
+                      {tourPrize?.place}
+                      <img src={tourPrize?.winner_img} alt={tourPrize?.place} />
+                    </>
                   ) : (
                     'No place Assigned'
                   )}
@@ -20,18 +23,18 @@ const TournamentPrizeDetail = ({ tournament }) => {
                     'No Image'
                   )}
                   <div className="money">
-                    {tourPrize.goodies ? (
-                      <>{tourPrize?.goodies}</>
+                    {tourPrize.winnings ? (
+                      <>{tourPrize?.winnings}</>
                     ) : (
                       'No Prize Yet'
                     )}
                     <span>+</span>
-                    {tourPrize.prizeName ? (
+                    {tourPrize.goodies ? (
                       <>
-                        <p>{tourPrize?.prizeName}</p>
+                        <p>{tourPrize?.goodies}</p>
                       </>
                     ) : (
-                      'No Trophy Yet'
+                      'No Goodies Yet'
                     )}
                   </div>
                 </div>
@@ -58,25 +61,28 @@ const TournamentPrizeDetail = ({ tournament }) => {
               <div className="prize_box">
                 <div className="first_symb">
                   {tourPrize.place ? (
-                    <>{tourPrize?.place}</>
+                    <>
+                      {tourPrize?.place}
+                      <img src={tourPrize?.winner_img} alt={tourPrize?.place} />
+                    </>
                   ) : (
                     'No place Assigned'
                   )}
                 </div>
                 <div className="prize_money">
                   <div className="money">
-                    {tourPrize.goodies ? (
-                      <>{tourPrize?.goodies}</>
+                    {tourPrize.winnings ? (
+                      <>{tourPrize?.winnings}</>
                     ) : (
                       'No Prize Yet'
                     )}
                     <span>+</span>
-                    {tourPrize.prizeName ? (
+                    {tourPrize.goodies ? (
                       <>
-                        <p>{tourPrize?.prizeName}</p>
+                        <p>{tourPrize?.goodies}</p>
                       </>
                     ) : (
-                      'No Trophy Yet'
+                      'No Goodies Yet'
                     )}
                   </div>
                 </div>

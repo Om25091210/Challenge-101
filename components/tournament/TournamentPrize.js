@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import baseURL from '../../utils/baseURL';
 import TournamentPrizeAdd from './TournamentPrizeAdd';
 
-const TournamentPrize = ({ tournamentId, tournamentTier }) => {
+const TournamentPrize = ({ tournamentId, tournamentTier, tournament }) => {
   const [count, setCount] = useState(0);
   const [prizeData, setPrizeData] = useState([]);
   const [prizeCount, setPrizeCount] = useState(3);
@@ -24,11 +24,12 @@ const TournamentPrize = ({ tournamentId, tournamentTier }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     try {
-      axios.put(
-        `${baseURL}/api/tournaments/tourPrize/${tournamentId}/${tournamentTier}`,
-        prizeData
-      );
-      toast.success('Prize added successfully');
+      axios
+        .put(
+          `${baseURL}/api/tournaments/tourPrize/${tournamentId}/${tournamentTier}/${tournament.playType}`,
+          prizeData
+        )
+        .then((res) => toast.success(res.data.msg));
     } catch (err) {
       console.log(err);
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
@@ -55,15 +56,28 @@ const TournamentPrize = ({ tournamentId, tournamentTier }) => {
 
         <form className="common_form" onSubmit={handleSubmit}>
           <div className="prize1">
-            <TournamentPrizeAdd prizes={'1st'} prizesData={prizeData} />
-            <TournamentPrizeAdd prizes={'2nd'} prizesData={prizeData} />
-            <TournamentPrizeAdd prizes={'3rd'} prizesData={prizeData} />
+            <TournamentPrizeAdd
+              prizes={'1st'}
+              prizesData={prizeData}
+              tournament={tournament}
+            />
+            <TournamentPrizeAdd
+              prizes={'2nd'}
+              prizesData={prizeData}
+              tournament={tournament}
+            />
+            <TournamentPrizeAdd
+              prizes={'3rd'}
+              prizesData={prizeData}
+              tournament={tournament}
+            />
 
             {[...Array(count)].map((e, index) => (
               <div key={index} className="prize1">
                 <TournamentPrizeAdd
-                  prizes={`${prizeCount} th`}
+                  prizes={`${prizeCount}th`}
                   prizesData={prizeData}
+                  tournament={tournament}
                 />
               </div>
             ))}
