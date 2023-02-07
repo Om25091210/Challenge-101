@@ -8,10 +8,10 @@ import ImageDropzone from '@components/common/ImageDropzone';
 import Moment from 'moment';
 import AddImage from '../common/AddImage';
 
-const TournamentPhotos = ({ user, tournament, isUser }) => {
+const TournamentPhotos = ({ user, tournament, isUser, isSupportAdmin }) => {
   return (
     <div className="gallery_box">
-      {isUser ? (
+      {isUser || isSupportAdmin ? (
         <>
           <div className="add_photos">
             <a href="#!" className="model_show_btn">

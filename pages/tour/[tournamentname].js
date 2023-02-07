@@ -49,7 +49,12 @@ const TournamentDetail = ({
 }) => {
   if (data) {
     const isUser = data.tournament?.user?._id === user._id;
+    const isSupportAdmin =
+      data.tournament.isClaimed === false && user.isSupportAdmin;
     const router = useRouter();
+    const refreshData = () => {
+      router.replace(router.asPath);
+    };
     const [later, setLater] = useState(false);
     const [followData, setFollowData] = useState([]);
     const isRegisteredMember = isMember(data, user);
@@ -95,6 +100,33 @@ const TournamentDetail = ({
         toast.error(err.response?.data?.msg || 'Please recheck your inputs');
       }
     };
+
+    const handleCoverSubmit = async (e) => {
+      var img = e.target.files[0];
+
+      e.preventDefault();
+      const formdata = new FormData();
+      formdata.append('coverPhoto', img);
+      try {
+        await axios
+          .put(
+            `${baseURL}/api/tournaments/coverPic/${data.tournament._id}`,
+            formdata,
+            {
+              headers: {
+                Authorization: cookie.get('token'),
+                'Content-Type': 'multipart/form-data'
+              }
+            }
+          )
+          .then((res) => toast.success(res.data.msg));
+        refreshData();
+      } catch (err) {
+        console.log(err);
+        toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+      }
+    };
+
     return (
       <>
         <MetaDash />
@@ -106,10 +138,7 @@ const TournamentDetail = ({
             <div className="profile_box tournament_dp_box">
               <div className="profile_cover_photo">
                 {' '}
-                <img
-                  src="/assets/media/profile/cover_bg.jpg"
-                  alt="cover image"
-                />{' '}
+                <img src={data.tournament.coverPhoto} alt="cover image" />{' '}
               </div>
               <div className="profile_dp_box">
                 <div className="profile_pic">
@@ -147,7 +176,7 @@ const TournamentDetail = ({
                             </>
                           )}
                         </div>
-                        {isUser ? null : (
+                        {isUser || isSupportAdmin ? null : (
                           <div className="button">
                             <a href="#" className="btn">
                               <TournamentFollow
@@ -157,7 +186,7 @@ const TournamentDetail = ({
                             </a>
                           </div>
                         )}
-                        {isUser ? (
+                        {isUser || isSupportAdmin ? (
                           <span>
                             <div className="loc_box">
                               {' '}
@@ -234,6 +263,24 @@ const TournamentDetail = ({
                       <a href="#" className="btn">
                         BOOK TICKETS
                       </a>
+                    ) : null}
+                    {isUser || isSupportAdmin ? (
+                      <>
+                        <input
+                          type="file"
+                          name="coverPhoto"
+                          id="coverPhoto"
+                          className="custom-file-input"
+                          onChange={handleCoverSubmit}
+                        />
+
+                        <label htmlFor="coverPhoto">
+                          <span>
+                            <i className="fa fa-camera" aria-hidden="true"></i>{' '}
+                            Upload Cover Photo
+                          </span>
+                        </label>
+                      </>
                     ) : null}
                   </div>
                 </div>
@@ -339,7 +386,7 @@ const TournamentDetail = ({
                     <span>
                       <div className="loc_box">
                         {' '}
-                        {data.tournament.user?._id === user._id ? (
+                        {isUser || isSupportAdmin ? (
                           <div>
                             <TournamentEdit data={data} user={user} />
                           </div>
@@ -685,7 +732,7 @@ const TournamentDetail = ({
               </div>
 
               <div className="tab hide" id="rules">
-                {data.tournament.user?._id === user._id ? (
+                {isUser || isSupportAdmin ? (
                   <TournamentRules
                     tournament={data.tournament}
                     tourRules={tourRules}
@@ -732,11 +779,13 @@ const TournamentDetail = ({
               </div>
 
               <div className="tab hide" id="result">
-                <TournamentPrize
-                  tournamentId={data.tournament._id}
-                  tournamentTier={data.tournament?.tournament_tier}
-                  tournament={data.tournament}
-                />
+                {isUser || isSupportAdmin ? (
+                  <TournamentPrize
+                    tournamentId={data.tournament._id}
+                    tournamentTier={data.tournament?.tournament_tier}
+                    tournament={data.tournament}
+                  />
+                ) : null}
                 <TournamentPrizeDetail tournament={data.tournament} />
               </div>
 
@@ -744,9 +793,11 @@ const TournamentDetail = ({
                 <TournamentSeries user={user} tournament={data.tournament} />
               </div>
               <div className="tab hide" id="points">
-                <button className="btn" onClick={() => handleSetMatches()}>
-                  Set Matches
-                </button>
+                {isUser || isSupportAdmin ? (
+                  <button className="btn" onClick={() => handleSetMatches()}>
+                    Set Matches
+                  </button>
+                ) : null}
                 <div className="points_table">
                   <div className="groupds_box">
                     {data.tournament.playType === 'SOLO' ? (
@@ -982,6 +1033,7 @@ const TournamentDetail = ({
                   user={user}
                   tournament={data}
                   isUser={isUser}
+                  isSupportAdmin={isSupportAdmin}
                 />
               </div>
               <div className="tab hide" id="media">
@@ -989,9 +1041,15 @@ const TournamentDetail = ({
                   user={user}
                   tournament={data}
                   isUser={isUser}
+                  isSupportAdmin={isSupportAdmin}
                 />
               </div>
-              <TournamentSponsor user={user} data={data} isUser={isUser} />
+              <TournamentSponsor
+                user={user}
+                data={data}
+                isUser={isUser}
+                isSupportAdmin={isSupportAdmin}
+              />
             </div>
           </div>
         </div>

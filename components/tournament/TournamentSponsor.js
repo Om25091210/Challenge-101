@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import TournamentAddSponsor from './TournamentAddSponsor';
 import SponsorCard from './SponsorCard';
 
-const TournamentSponsor = ({ user, data, isUser }) => {
+const TournamentSponsor = ({ user, data, isUser, isSupportAdmin }) => {
   useEffect(() => {
     $('a.model_show_btn').click(function () {
       $(this).next().addClass('show_model');
@@ -82,7 +82,7 @@ const TournamentSponsor = ({ user, data, isUser }) => {
           <div className="loc_box">
             {' '}
             <a href="#!" className="model_show_btn">
-              {isUser ? (
+              {isUser || isSupportAdmin ? (
                 <button className="btn">
                   <i className="fa fa-plus-circle" aria-hidden="true" />
                   Add Sponsor
@@ -135,7 +135,7 @@ const TournamentSponsor = ({ user, data, isUser }) => {
                   {' '}
                   <span className="head_spons_bg">{spons.name}</span>
                   <p>{spons.description}</p>
-                  {isUser ? (
+                  {isUser || isSupportAdmin ? (
                     <button
                       className="btn"
                       onClick={(e) => handleDeleteSponsor(e, spons._id)}

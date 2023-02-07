@@ -53,7 +53,7 @@ const TournamentDisplay = ({
               <div className="game_pos">
                 <div className="game_loc">
                   {' '}
-                  <img src="/assets/media/category/game_loc.jpg" alt="" />
+                  <img src={result.coverPhoto} alt={result.name} />
                 </div>
 
                 <span className="tour_logo">
@@ -211,7 +211,10 @@ const TournamentDisplay = ({
               <div className="game_pos">
                 <div className="game_loc">
                   {' '}
-                  <img src="/assets/media/category/game_loc.jpg" alt="" />
+                  <img
+                    src={result.tournament.coverPhoto}
+                    alt={result.tournament.name}
+                  />
                 </div>
 
                 <span className="tour_logo">
@@ -376,7 +379,10 @@ const TournamentDisplay = ({
               <div className="game_pos">
                 <div className="game_loc">
                   {' '}
-                  <img src="/assets/media/category/game_loc.jpg" alt="" />
+                  <img
+                    src={result.tournament.coverPhoto}
+                    alt={result.tournament.name}
+                  />
                 </div>
 
                 <span className="tour_logo">

@@ -341,13 +341,6 @@ const TournamentCreate = ({ user, isClaim }) => {
                         user={user}
                       />
                       <p>{formErrors.name}</p>
-                      {state.name && state.name.length > 64 ? (
-                        <p className="char_limit reds">
-                          {state.name.length} / 64
-                        </p>
-                      ) : (
-                        <p className="char_limit ">{state.name.length} / 64</p>
-                      )}
                     </div>
                     <div className="form-group">
                       <div className="style_file_upload">

@@ -8,7 +8,7 @@ import VideoDropzone from '@components/common/VideosDropzone';
 import { Video } from 'cloudinary-react';
 import TournamentVidDel from './TournamentVidDel';
 
-const TournamentVideos = ({ user, tournament, isUser }) => {
+const TournamentVideos = ({ user, tournament, isUser, isSupportAdmin }) => {
   const [videos, setVideos] = useState([]);
   const [videodisc, setVideodisc] = useState();
 
@@ -52,7 +52,7 @@ const TournamentVideos = ({ user, tournament, isUser }) => {
 
   return (
     <div className="video_box">
-      {isUser ? (
+      {isUser || isSupportAdmin ? (
         <>
           <a href="#!" className="model_show_btn">
             <button className="btn">
@@ -136,6 +136,7 @@ const TournamentVideos = ({ user, tournament, isUser }) => {
                     collectionId={vid._id}
                     tournamentId={tournament.tournament._id}
                     isUser={isUser}
+                    isSupportAdmin={isSupportAdmin}
                   />
                 </div>
               </li>
