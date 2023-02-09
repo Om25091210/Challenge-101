@@ -784,6 +784,7 @@ const TournamentDetail = ({
                     tournamentId={data.tournament._id}
                     tournamentTier={data.tournament?.tournament_tier}
                     tournament={data.tournament}
+                    isSupportAdmin={isSupportAdmin}
                   />
                 ) : null}
                 <TournamentPrizeDetail tournament={data.tournament} />

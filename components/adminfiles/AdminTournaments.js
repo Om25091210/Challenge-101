@@ -1,9 +1,25 @@
 import moment from 'moment';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Category from './Category';
 import RoomDetails from './RoomDetails';
+import ReactPaginate from 'react-paginate';
 
-const AdminTournaments = ({ tournaments }) => {
+const AdminTournaments = ({ tournaments, numberOfTournament }) => {
+  const [currentItems, setCurrentItems] = useState(null);
+  const [pageCount, setPageCount] = useState(0);
+  const [itemOffset, setItemOffset] = useState(0);
+
+  useEffect(() => {
+    const endOffset = itemOffset + numberOfTournament;
+    setCurrentItems(tournaments.slice(itemOffset, endOffset));
+    setPageCount(Math.ceil(tournaments.length / numberOfTournament));
+  }, [itemOffset, numberOfTournament]);
+
+  const handlePageClick = (event) => {
+    const newOffset =
+      (event.selected * numberOfTournament) % tournaments.length;
+    setItemOffset(newOffset);
+  };
   return (
     <>
       <h2>Latest Tournaments</h2>
@@ -25,7 +41,8 @@ const AdminTournaments = ({ tournaments }) => {
             <span className="act_name">No tournaments are ranked yet ...</span>
           </div>
         ) : (
-          tournaments.map((result, idx) => (
+          currentItems &&
+          currentItems.map((result, idx) => (
             <div className="row_box" key={idx}>
               <div className="cols_box">
                 <div className="cols">{result._id}</div>
@@ -57,6 +74,27 @@ const AdminTournaments = ({ tournaments }) => {
           ))
         )}
       </div>
+
+      <ReactPaginate
+        nextLabel="next >"
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={3}
+        marginPagesDisplayed={2}
+        pageCount={pageCount}
+        previousLabel="< previous"
+        pageClassName="page-item"
+        pageLinkClassName="page-link"
+        previousClassName="page-item"
+        previousLinkClassName="page-link"
+        nextClassName="page-item"
+        nextLinkClassName="page-link"
+        breakLabel="..."
+        breakClassName="page-item"
+        breakLinkClassName="page-link"
+        containerClassName="pagination"
+        activeClassName="active"
+        renderOnZeroPageCount={null}
+      />
     </>
   );
 };

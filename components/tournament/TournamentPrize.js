@@ -5,7 +5,12 @@ import { toast } from 'react-toastify';
 import baseURL from '../../utils/baseURL';
 import TournamentPrizeAdd from './TournamentPrizeAdd';
 
-const TournamentPrize = ({ tournamentId, tournamentTier, tournament }) => {
+const TournamentPrize = ({
+  tournamentId,
+  tournamentTier,
+  tournament,
+  isSupportAdmin
+}) => {
   const [count, setCount] = useState(0);
   const [prizeData, setPrizeData] = useState([]);
   const [prizeCount, setPrizeCount] = useState(3);
@@ -21,10 +26,10 @@ const TournamentPrize = ({ tournamentId, tournamentTier, tournament }) => {
     router.replace(router.asPath);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      axios
+      await axios
         .put(
           `${baseURL}/api/tournaments/tourPrize/${tournamentId}/${tournamentTier}/${tournament.playType}`,
           prizeData
@@ -60,16 +65,19 @@ const TournamentPrize = ({ tournamentId, tournamentTier, tournament }) => {
               prizes={'1st'}
               prizesData={prizeData}
               tournament={tournament}
+              isSupportAdmin={isSupportAdmin}
             />
             <TournamentPrizeAdd
               prizes={'2nd'}
               prizesData={prizeData}
               tournament={tournament}
+              isSupportAdmin={isSupportAdmin}
             />
             <TournamentPrizeAdd
               prizes={'3rd'}
               prizesData={prizeData}
               tournament={tournament}
+              isSupportAdmin={isSupportAdmin}
             />
 
             {[...Array(count)].map((e, index) => (
@@ -78,6 +86,7 @@ const TournamentPrize = ({ tournamentId, tournamentTier, tournament }) => {
                   prizes={`${prizeCount}th`}
                   prizesData={prizeData}
                   tournament={tournament}
+                  isSupportAdmin={isSupportAdmin}
                 />
               </div>
             ))}

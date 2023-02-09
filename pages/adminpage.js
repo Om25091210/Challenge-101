@@ -21,7 +21,10 @@ const Adminpage = ({ user, data, profile }) => {
           <>
             <AdminChallenges challenges={data.challenges} />
             <br /> <br />
-            <AdminTournaments tournaments={data.tournaments} />
+            <AdminTournaments
+              tournaments={data.tournaments}
+              numberOfTournament={7}
+            />
           </>
         ) : (
           <>

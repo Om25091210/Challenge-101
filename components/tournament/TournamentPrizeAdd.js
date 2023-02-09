@@ -2,7 +2,12 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import baseURL from '../../utils/baseURL';
 
-const TournamentPrizeAdd = ({ prizes, prizesData, tournament }) => {
+const TournamentPrizeAdd = ({
+  prizes,
+  prizesData,
+  tournament,
+  isSupportAdmin
+}) => {
   const [states, setStates] = useState({
     prizeName: '',
     goodies: '',
@@ -12,23 +17,31 @@ const TournamentPrizeAdd = ({ prizes, prizesData, tournament }) => {
     winner_img: ''
   });
   const [allsponsor, setAllsponsor] = useState([]);
-
-  const handleChange = (e) => {
-    setStates({ ...states, [e.target.name]: e.target.value });
-  };
-
-  let searchData = '';
-  if (tournament.playType === 'SOLO') {
-    searchData = tournament.registered;
-  } else if (tournament.playType === 'TEAMS') {
-    searchData = tournament.teams;
-  }
+  const [allTeams, setAllTeams] = useState([]);
 
   useEffect(() => {
     axios
       .get(`${baseURL}/api/all/sponsors`)
       .then((res) => setAllsponsor(res.data));
+    if (isSupportAdmin) {
+      axios
+        .get(`${baseURL}/api/all/allteams`)
+        .then((res) => setAllTeams(res.data));
+    }
   }, []);
+
+  const handleChange = (e) => {
+    setStates({ ...states, [e.target.name]: e.target.value });
+  };
+  let searchData = '';
+
+  if (isSupportAdmin) {
+    searchData = allTeams;
+  } else if (tournament.playType === 'SOLO') {
+    searchData = tournament.registered;
+  } else if (tournament.playType === 'TEAMS') {
+    searchData = tournament.teams;
+  }
 
   const [filteredData, setFilteredData] = useState([]);
   const [playersData, setPlayersData] = useState([]);
