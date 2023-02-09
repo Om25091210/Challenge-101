@@ -193,8 +193,8 @@ const TournamentCreate = ({ user, isClaim }) => {
   const showstep2 = () => {
     if (state.Type === '') {
       toast.info('Select a Type');
-    } else if (state.name === '' || state.name.length < 7) {
-      toast.info('Tournament Name should have 8 characters minimum');
+    } else if (state.name === '' || state.name.length <= 1) {
+      toast.info('Tournament Name should have 2 characters minimum');
     } else if (state.game.length === 0) {
       toast.info('Please select a game');
     } else if (state.platform.length === 0) {
