@@ -34,7 +34,7 @@ const TournamentEdit = ({ data, user }) => {
     games: gameList,
     category: data.tournament.category,
     registration: data.tournament.entranceFee,
-    playout: data.tournament.playout,
+    playout: data.tournament.playout || '',
     elimination: data.tournament.tournamentType,
     website: data.tournament.website || '',
     facebook: data.tournament.social?.facebook || '',
@@ -283,6 +283,7 @@ const TournamentEdit = ({ data, user }) => {
                         <option value="">Select Team Size</option>
                         <option value="1v1">1v1</option>
                         <option value="2v2">2v2</option>
+                        <option value="3v3">3v3</option>
                         <option value="4v4">4v4</option>
                         <option value="5v5">5v5</option>
                       </select>
@@ -481,10 +482,10 @@ const TournamentEdit = ({ data, user }) => {
                         <option value="Single Elimination">
                           Single Elimination
                         </option>
-                        {/* <option value="Double Elimination">
+                        <option value="Double Elimination">
                           Double Elimination
-                        </option> */}
-                        {/* <option value="RoundRobin">Round Robin</option> */}
+                        </option>
+                        <option value="RoundRobin">Round Robin</option>
                       </select>
                     </div>
                     <div className="colm">
@@ -501,10 +502,10 @@ const TournamentEdit = ({ data, user }) => {
                         <option value="Single Elimination">
                           Single Elimination
                         </option>
-                        {/* <option value="Double Elimination">
+                        <option value="Double Elimination">
                           Double Elimination
                         </option>
-                        <option value="Leaderboard">Leaderboard</option> */}
+                        <option value="Leaderboard">Leaderboard</option>
                       </select>
                     </div>
                   </div>

@@ -632,7 +632,7 @@ const TournamentDetail = ({
                       </li>
                       <li>
                         {' '}
-                        <b>PLAYOUT </b> ROUND ROBIN{' '}
+                        <b>PLAYOUT </b> {data.tournament?.playout}{' '}
                       </li>
                       <li>
                         <b>ELIMINATION </b>

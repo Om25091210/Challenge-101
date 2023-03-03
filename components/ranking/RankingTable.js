@@ -131,7 +131,9 @@ const RankingTable = ({ teamranking, searchResults }) => {
                     </div>
                     <div className="cols">{result.totalTournaments}</div>
                     <div className="cols">
-                      {result.points ? result.points : '0'}/ 0
+                      {/* {result.points ? result.points : '0'} */}
+                      ---
+                      {/* / 0 */}
                     </div>
                     <div className="cols">tdb</div>
                     <div className="cols">
