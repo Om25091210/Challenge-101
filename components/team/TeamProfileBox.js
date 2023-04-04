@@ -278,7 +278,7 @@ const TeamProfileBox = ({
           <form>
             <img
               className="rounded-full h-full w-full object-cover"
-              src={data.team.imgUrl}
+              src={data.team?.imgUrl}
               alt=""
             />
             {isManager || isAdmin || isOwner || isCEO || isSupportAdmin ? (
@@ -598,7 +598,7 @@ const TeamProfileBox = ({
                 data.games &&
                 data.games.map((item, index) => (
                   <li key={index}>
-                    <img src={item.imgUrl} alt={item.name} />{' '}
+                    <img src={item?.imgUrl} alt={item.name} />{' '}
                   </li>
                 ))
               )}
@@ -614,7 +614,7 @@ const TeamProfileBox = ({
               ) : (
                 sponsors.map((item, index) => (
                   <li key={index}>
-                    <img src={item.imgUrl} alt="" />{' '}
+                    <img src={item?.imgUrl} alt="" />{' '}
                   </li>
                 ))
               )}
