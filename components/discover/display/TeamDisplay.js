@@ -52,13 +52,13 @@ const TeamDisplay = ({
                 <div className="logo_box">
                   {' '}
                   <div className="role_pic">
-                    <img src={team.team.imgUrl} alt="" />
+                    <img src={team.team?.imgUrl} alt="" />
                   </div>
-                  <a href={`/team/${team.team._id}`}>
-                    <h3>{team.team.name}</h3>
+                  <a href={`/team/${team.team?._id}`}>
+                    <h3>{team.team?.name}</h3>
                   </a>
                   <ReactCountryFlag
-                    countryCode={team.team.region}
+                    countryCode={team.team?.region}
                     svg
                     style={{
                       width: '2em',
@@ -138,7 +138,7 @@ const TeamDisplay = ({
                   <div className="over_prof">
                     <div className="pics">
                       {' '}
-                      <img src={team.team.imgUrl} alt="" />{' '}
+                      <img src={team.team?.imgUrl} alt="" />{' '}
                     </div>
                     <h3>{team.team.name}</h3>
                   </div>
@@ -218,7 +218,7 @@ const TeamDisplay = ({
                 <div className="logo_box">
                   {' '}
                   <div className="role_pic">
-                    <img src={team.team.imgUrl} alt="" />
+                    <img src={team.team?.imgUrl} alt="" />
                   </div>
                   <a href={`/team/${team.team._id}`}>
                     <h3>{team.team.name}</h3>
@@ -307,7 +307,7 @@ const TeamDisplay = ({
                   <div className="over_prof">
                     <div className="pics">
                       {' '}
-                      <img src={team.team.imgUrl} alt="" />{' '}
+                      <img src={team.team?.imgUrl} alt="" />{' '}
                     </div>
                     <h3>{team.team.name}</h3>
                   </div>
@@ -397,7 +397,7 @@ const TeamDisplay = ({
                 <div className="logo_box">
                   {' '}
                   <div className="role_pic">
-                    <img src={team.team.imgUrl} alt="" />
+                    <img src={team.team?.imgUrl} alt="" />
                   </div>
                   <a href={`/team/${team.team._id}`}>
                     <h3>{team.team.name}</h3>
@@ -483,7 +483,7 @@ const TeamDisplay = ({
                   <div className="over_prof">
                     <div className="pics">
                       {' '}
-                      <img src={team.team.imgUrl} alt="" />{' '}
+                      <img src={team.team?.imgUrl} alt="" />{' '}
                     </div>
                     <h3>{team.team.name}</h3>
                   </div>

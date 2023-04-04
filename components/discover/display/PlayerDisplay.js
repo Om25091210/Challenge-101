@@ -19,9 +19,9 @@ const PlayerDisplay = ({ isLoading, playerData, user }) => {
               <div className="inner_team">
                 <div className="logo_box">
                   {' '}
-                  {plyr.players.imgUrl ? (
+                  {plyr.players?.imgUrl ? (
                     <img
-                      src={plyr.players.imgUrl}
+                      src={plyr.players?.imgUrl}
                       alt="Player"
                       style={{ width: '70px' }}
                     />
@@ -30,7 +30,7 @@ const PlayerDisplay = ({ isLoading, playerData, user }) => {
                       src={
                         plyr?.players.apidata
                           ? plyr?.players.apidata?.data?.platformInfo.avatarUrl
-                          : plyr?.players.imgUrl
+                          : plyr?.players?.imgUrl
                       }
                       alt=""
                       style={{ width: '150px' }}
@@ -58,7 +58,7 @@ const PlayerDisplay = ({ isLoading, playerData, user }) => {
                     <img
                       src={
                         plyr.players.current_videogame
-                          ? plyr.players.current_videogame.imgUrl
+                          ? plyr.players.current_videogame?.imgUrl
                           : '/assets/media/discover/team1.png'
                       }
                       alt="NO GAME"

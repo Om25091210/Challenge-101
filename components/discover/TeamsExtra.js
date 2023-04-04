@@ -187,7 +187,7 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
               <div className="logo_box">
                 {' '}
                 <div className="role_pic">
-                  <img src={team.imgUrl} alt="" />
+                  <img src={team?.imgUrl} alt="" />
                 </div>
                 <a href={`/team/${team._id}`}>
                   <h3>{team.name}</h3>
@@ -271,7 +271,7 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
                 <div className="over_prof">
                   <div className="pics">
                     {' '}
-                    <img src={team.imgUrl} alt="" />{' '}
+                    <img src={team?.imgUrl} alt="" />{' '}
                   </div>
                   <h3>{team.name}</h3>
                 </div>
@@ -351,7 +351,7 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
               <div className="logo_box">
                 {' '}
                 <div className="role_pic">
-                  <img src={team.imgUrl} alt="" />
+                  <img src={team?.imgUrl} alt="" />
                 </div>
                 <a href={`/team/${team._id}`}>
                   <h3>{team.name}</h3>
@@ -440,7 +440,7 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
                 <div className="over_prof">
                   <div className="pics">
                     {' '}
-                    <img src={team.imgUrl} alt="" />{' '}
+                    <img src={team?.imgUrl} alt="" />{' '}
                   </div>
                   <h3>{team.name}</h3>
                 </div>
