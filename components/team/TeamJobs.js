@@ -91,8 +91,8 @@ const TeamJobs = ({
               <div className="logo_box">
                 <img
                   src={
-                    job.job_owner.imgUrl != ''
-                      ? job.job_owner.imgUrl
+                    job?.job_owner?.imgUrl != ''
+                      ? job.job_owner?.imgUrl
                       : '/assets/media/discover/lxg.png'
                   }
                   className="thumb_img"

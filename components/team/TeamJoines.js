@@ -37,7 +37,7 @@ const TeamJoines = ({
                         src={
                           req?.playerId.apidata?.data?.platformInfo.avatarUrl
                             ? req?.playerId.apidata.data?.platformInfo.avatarUrl
-                            : req?.playerId.imgUrl
+                            : req?.playerId?.imgUrl
                         }
                         alt={
                           req?.playerId.apidata?.data?.platformInfo
@@ -49,7 +49,7 @@ const TeamJoines = ({
                         src={
                           req?.playerId.user
                             ? req?.playerId.user?.profilePicUrl
-                            : req?.playerId.imgUrl
+                            : req?.playerId?.imgUrl
                         }
                         alt={req?.playerId.user?.username}
                       />
