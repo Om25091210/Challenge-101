@@ -17,9 +17,9 @@ const RankingTable = ({ teamranking, searchResults }) => {
               <div className="heads">team</div>
               <div className="heads">Points</div>
               <div className="heads">TOURNAMENTS </div>
-              <div className="heads">MATCHES WON</div>
+              {/* <div className="heads">MATCHES WON</div>
               <div className="heads">win%</div>
-              <div className="heads">form</div>
+              <div className="heads">form</div> */}
               <div className="heads">PRIZE MONEY</div>
             </div>
 
@@ -130,12 +130,12 @@ const RankingTable = ({ teamranking, searchResults }) => {
                       {result.points ? result.points : 'Not Defined'}
                     </div>
                     <div className="cols">{result.totalTournaments}</div>
-                    <div className="cols">
-                      {/* {result.points ? result.points : '0'} */}
+                    {/* <div className="cols">
+                      {result.points ? result.points : '0'}
                       ---
-                      {/* / 0 */}
-                    </div>
-                    <div className="cols">tdb</div>
+                      / 0
+                    </div> */}
+                    {/* <div className="cols">tdb</div>
                     <div className="cols">
                       {' '}
                       <span className="round green"></span>{' '}
@@ -143,7 +143,7 @@ const RankingTable = ({ teamranking, searchResults }) => {
                       <span className="round red"></span>{' '}
                       <span className="round red"></span>{' '}
                       <span className="round green"></span>{' '}
-                    </div>
+                    </div> */}
                     {result.team.team_winnings ? (
                       <div className="cols">
                         Rs: {result.team.team_winnings}

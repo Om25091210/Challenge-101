@@ -729,7 +729,25 @@ const TournamentCreate = ({ user, isClaim }) => {
                       </div>
                       <p>{formErrors?.tournamentType}</p>
                     </div>
-
+                    {/* {state.tournamentType === 'Single Elimination' ? (
+                      <>
+                        <div className="form-group">
+                          <div className="colm">
+                            <label for="exampleFormControlTextarea1">
+                              Number of Participants
+                            </label>
+                            <input
+                              type="number"
+                              name="participants"
+                              className="form-control"
+                              onChange={handleChange}
+                              value={state.participants}
+                              placeholder="Group Should be of Even Numbers"
+                            />
+                          </div>
+                        </div>
+                      </>
+                    ) : null} */}
                     <div className="form-group">
                       <div className="date_time">
                         <div className="date_box">
@@ -771,6 +789,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                           <input
                             type="date"
                             name="startDate"
+                            max="9999-12-31"
                             onChange={handleChange}
                             value={state.startDate}
                           />
@@ -799,6 +818,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                           <input
                             type="date"
                             name="endDate"
+                            max="9999-12-31"
                             onChange={handleChange}
                             value={state.endDate}
                           />

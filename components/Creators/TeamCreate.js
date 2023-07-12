@@ -223,6 +223,7 @@ const TeamCreate = ({ isClaim, user }) => {
                       </label>
                       <input
                         type="date"
+                        max="9999-12-31"
                         className="form-control"
                         placeholder="Year founded"
                         name="founded"

@@ -106,6 +106,7 @@ const SearchName = ({ data, type, handleChange, isSearchOnly, user }) => {
           value={searchText}
           onChange={handleFilter}
           autoComplete="off"
+          style={{ color: 'whitesmoke !important' }}
         />
 
         {searchText.length !== 0 ? (

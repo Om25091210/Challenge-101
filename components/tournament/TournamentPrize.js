@@ -12,8 +12,8 @@ const TournamentPrize = ({
   isSupportAdmin
 }) => {
   const [count, setCount] = useState(0);
-  const [prizeData, setPrizeData] = useState([]);
   const [prizeCount, setPrizeCount] = useState(3);
+  const [prizeData, setPrizeData] = useState([]);
 
   const handleRoleForm = (e) => {
     setCount(count + 1);
@@ -63,19 +63,19 @@ const TournamentPrize = ({
           <div className="prize1">
             <TournamentPrizeAdd
               prizes={'1st'}
-              prizesData={prizeData}
+              prizeData={prizeData}
               tournament={tournament}
               isSupportAdmin={isSupportAdmin}
             />
             <TournamentPrizeAdd
               prizes={'2nd'}
-              prizesData={prizeData}
+              prizeData={prizeData}
               tournament={tournament}
               isSupportAdmin={isSupportAdmin}
             />
             <TournamentPrizeAdd
               prizes={'3rd'}
-              prizesData={prizeData}
+              prizeData={prizeData}
               tournament={tournament}
               isSupportAdmin={isSupportAdmin}
             />
@@ -84,7 +84,7 @@ const TournamentPrize = ({
               <div key={index} className="prize1">
                 <TournamentPrizeAdd
                   prizes={`${prizeCount}th`}
-                  prizesData={prizeData}
+                  prizeData={prizeData}
                   tournament={tournament}
                   isSupportAdmin={isSupportAdmin}
                 />

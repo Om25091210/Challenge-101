@@ -4,7 +4,7 @@ import baseURL from '../../utils/baseURL';
 
 const TournamentPrizeAdd = ({
   prizes,
-  prizesData,
+  prizeData,
   tournament,
   isSupportAdmin
 }) => {
@@ -32,6 +32,7 @@ const TournamentPrizeAdd = ({
 
   const handleChange = (e) => {
     setStates({ ...states, [e.target.name]: e.target.value });
+    setTrigger(!trigger);
   };
   let searchData = '';
 
@@ -46,6 +47,7 @@ const TournamentPrizeAdd = ({
   const [filteredData, setFilteredData] = useState([]);
   const [playersData, setPlayersData] = useState([]);
   const [searchText, setSearchText] = useState('');
+  const [trigger, setTrigger] = useState(null);
 
   const handleFilter = (event, type) => {
     const searchWord = event.target.value;
@@ -97,13 +99,20 @@ const TournamentPrizeAdd = ({
         });
       }
       setPlayersData([]);
+      states.prizeName = data.teamId.name;
+      states.winner_img = data.teamId.imgUrl;
+      prizeData.push(states);
     } else {
       setSearchText(data.name);
       states.prize_sponsor = data._id;
-      prizesData.push(states);
+      prizeData.push(states);
       setFilteredData([]);
     }
   };
+
+  useEffect(() => {
+    prizeData.push(states);
+  }, [trigger]);
 
   return (
     <>
