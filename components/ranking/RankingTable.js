@@ -17,6 +17,7 @@ const RankingTable = ({ teamranking, searchResults }) => {
               <div className="heads">team</div>
               <div className="heads">Points</div>
               <div className="heads">TOURNAMENTS </div>
+              <div className="heads">TOURNAMENTS WON </div>
               {/* <div className="heads">MATCHES WON</div>
               <div className="heads">win%</div>
               <div className="heads">form</div> */}
@@ -130,6 +131,7 @@ const RankingTable = ({ teamranking, searchResults }) => {
                       {result.points ? result.points : 'Not Defined'}
                     </div>
                     <div className="cols">{result.totalTournaments}</div>
+                    <div className="cols">{result.teamWinCount}</div>
                     {/* <div className="cols">
                       {result.points ? result.points : '0'}
                       ---

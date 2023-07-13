@@ -598,7 +598,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                             id="teamSize"
                             onClick={handleChangeCheck}
                           >
-                            <option value="">Select Team Size</option>
+                            <option value="">Select Team Size*</option>
                             <option value="1v1">1v1</option>
                             <option value="2v2">2v2</option>
                             <option value="3v3">3v3</option>
@@ -752,7 +752,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                       <div className="date_time">
                         <div className="date_box">
                           <label for="exampleFormControlTextarea1">
-                            Entrance fee
+                            Entrance fee*
                           </label>
                           <input
                             type="number"
@@ -766,7 +766,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                         </div>
                         <div className="time_box">
                           <label for="exampleFormControlTextarea1">
-                            Check-in period
+                            Check-in period*
                           </label>
                           <input
                             type="number"
@@ -784,7 +784,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                       <div className="date_time">
                         <div className="date_box">
                           <label for="exampleFormControlTextarea1">
-                            Session Start Date
+                            Session Start Date*
                           </label>
                           <input
                             type="date"
@@ -797,7 +797,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                         </div>
                         <div className="time_box">
                           <label for="exampleFormControlTextarea1">
-                            Session Start Time
+                            Session Start Time*
                           </label>
                           <input
                             type="time"
@@ -813,7 +813,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                       <div className="date_time">
                         <div className="date_box">
                           <label for="exampleFormControlTextarea1">
-                            Session End Date
+                            Session End Date*
                           </label>
                           <input
                             type="date"
@@ -826,7 +826,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                         </div>
                         <div className="time_box">
                           <label for="exampleFormControlTextarea1">
-                            Session End Time
+                            Session End Time*
                           </label>
                           <input
                             type="time"
@@ -863,7 +863,7 @@ const TournamentCreate = ({ user, isClaim }) => {
 
                       <div className="colm">
                         <label htmlFor="exampleFormControlInput1">
-                          Address{' '}
+                          Address*
                           {state.category === 'Online' ? '(Optional)' : null}
                         </label>
                         <input
@@ -877,7 +877,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                       </div>
 
                       <div className="colm">
-                        <label for="exampleFormControlInput1">Location</label>
+                        <label for="exampleFormControlInput1">Location*</label>
                         <select name="location" onChange={handleChangeCheck}>
                           <option value="">Select Location...</option>
                           {options &&
@@ -910,7 +910,7 @@ const TournamentCreate = ({ user, isClaim }) => {
 
                       <div className="colm">
                         <label for="exampleFormControlInput1">
-                          Description
+                          Description*
                         </label>
                         <input
                           type="text"

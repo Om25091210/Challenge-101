@@ -129,20 +129,37 @@ const Discover = ({ user, profile, games }) => {
                   Free Agents
                 </a>
               </li>
-              <li className={filterType == 'COACHES' ? 'active' : ''}>
-                <a href="#!" onClick={() => handleFType('COACHES')}>
+              <li
+                className={filterType == 'COACHES' ? '' : ''}
+                style={{ background: '#4c4e57', pointerEvents: 'none' }}
+              >
+                <a href="#!" style={{ color: 'whitesmoke' }}>
                   {' '}
                   COACHES{' '}
                 </a>
               </li>
-              <li className={filterType == 'ARENAS' ? 'active' : ''}>
-                <a href="#!" onClick={() => handleFType('ARENAS')}>
+              <li
+                className={filterType == 'ARENAS' ? '' : ''}
+                style={{ background: '#4c4e57', pointerEvents: 'none' }}
+              >
+                <a
+                  href="#!"
+                  style={{ color: 'whitesmoke' }}
+                  // onClick={() => handleFType('ARENAS')}
+                >
                   {' '}
                   ARENAS
                 </a>
               </li>
-              <li className={filterType == 'JOBS' ? 'active' : ''}>
-                <a href="#!" onClick={() => handleFType('JOBS')}>
+              <li
+                className={filterType == 'JOBS' ? '' : ''}
+                style={{ background: '#4c4e57', pointerEvents: 'none' }}
+              >
+                <a
+                  href="#!"
+                  style={{ color: 'whitesmoke' }}
+                  // onClick={() => handleFType('JOBS')}
+                >
                   {' '}
                   JOBS{' '}
                 </a>

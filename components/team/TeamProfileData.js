@@ -83,8 +83,13 @@ const TeamProfileData = ({
             OVERVIEW
           </a>
         </li>
-        <li>
-          <a href="#!" rel="squads" onClick={() => handleTabs('SQUADS')}>
+        <li style={{ pointerEvents: 'none' }}>
+          <a
+            href="#!"
+            rel="squads"
+            // onClick={() => handleTabs('SQUADS')}
+            style={{ color: '#4c4e57' }}
+          >
             Squads
           </a>
         </li>
@@ -110,18 +115,18 @@ const TeamProfileData = ({
             CLAN STORE{' '}
           </a>
         </li> */}
-        <li>
-          <a href="#!" rel="photos">
+        <li style={{ pointerEvents: 'none' }}>
+          <a href="#!" rel="photos" style={{ color: '#4c4e57' }}>
             PHOTOS
           </a>
         </li>
-        <li>
-          <a href="#!" rel="media">
+        <li style={{ pointerEvents: 'none' }}>
+          <a href="#!" rel="media" style={{ color: '#4c4e57' }}>
             MEDIA
           </a>
         </li>
-        <li>
-          <a href="#!" rel="jobs">
+        <li style={{ pointerEvents: 'none' }}>
+          <a href="#!" rel="jobs" style={{ color: '#4c4e57' }}>
             JOBS
           </a>
         </li>

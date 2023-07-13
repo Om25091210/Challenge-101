@@ -693,8 +693,8 @@ const TournamentDetail = ({
                   Store
                 </a>
               </li> */}
-              <li>
-                <a href="#!" rel="video">
+              <li style={{ pointerEvents: 'none' }}>
+                <a href="#!" rel="video" style={{ color: '#4c4e57' }}>
                   Streams/Media
                 </a>
               </li>

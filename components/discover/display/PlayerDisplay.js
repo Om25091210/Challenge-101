@@ -163,20 +163,19 @@ const PlayerDisplay = ({ isLoading, playerData, user }) => {
                       />
                     </div>
                     <h4>MMR Rating</h4>
-                    <p>4790</p>
+                    <p>No Data</p>
                     <h4>Experience:</h4>
-                    <p>Local Lans, Competitive</p>
+                    <p>No Data</p>
                   </div>
                   <div className="match">
                     <h4>Matches Played</h4>
                     <p>
-                      {plyr.players ? plyr.players.total_games_played : '0'}{' '}
-                      Games
+                      {plyr.players ? plyr.players.total_games_played : '0'}
                     </p>
                     <h4>Matches Won</h4>
                     <p>{plyr.players ? plyr.players.won : '0'} Victories</p>
                     <h4>Trophies</h4>
-                    <p>78</p>
+                    <p>No Data</p>
                   </div>
                   {/* <div className="percentage">
                   {' '}

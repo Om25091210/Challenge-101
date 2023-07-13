@@ -373,8 +373,8 @@ const TeamTournaments = ({
                   </ul>
                 ) : (
                   <ul>
-                    <li>Ranking: --</li>
-                    <li>Winnings: --</li>
+                    {/* <li>Ranking: --</li>
+                    <li>Winnings: --</li> */}
                   </ul>
                 )}
               </div>
