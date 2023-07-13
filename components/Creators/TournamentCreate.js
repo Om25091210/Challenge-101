@@ -160,6 +160,7 @@ const TournamentCreate = ({ user, isClaim }) => {
 
         toast.success('Your Tournament has been successfully created!');
       } catch (err) {
+        console.log('Errr', err);
         toast.error(err.response?.data?.msg || 'Please recheck your inputs');
       }
     }
@@ -863,7 +864,7 @@ const TournamentCreate = ({ user, isClaim }) => {
 
                       <div className="colm">
                         <label htmlFor="exampleFormControlInput1">
-                          Address*
+                          Address
                           {state.category === 'Online' ? '(Optional)' : null}
                         </label>
                         <input
