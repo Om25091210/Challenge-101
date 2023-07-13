@@ -142,7 +142,7 @@ const SignedHeader = ({ user, profile }) => {
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a href="#!" style={{ color: '#4c4e57' }}>
                     <span>
                       {' '}
                       <i
@@ -171,7 +171,7 @@ const SignedHeader = ({ user, profile }) => {
                   </a>
                 </li>
                 <li>
-                  <a href="/arena/create">
+                  <a href="#!" style={{ color: '#4c4e57' }}>
                     <span>
                       <i className="fa fa-sign-out" aria-hidden="true"></i>{' '}
                     </span>
@@ -193,7 +193,7 @@ const SignedHeader = ({ user, profile }) => {
 
               <ul className="">
                 <li>
-                  <a href="/">
+                  <a href="#!" style={{ color: '#4c4e57' }}>
                     <span>
                       <i className="fa fa-shopping-cart" aria-hidden="true"></i>
                     </span>
@@ -205,7 +205,11 @@ const SignedHeader = ({ user, profile }) => {
                   </a>
                 </li>
                 <li>
-                  <a href="/jobs/create" onClick={() => setFilterType('JOBS')}>
+                  <a
+                    href="#!"
+                    style={{ color: '#4c4e57' }}
+                    // onClick={() => setFilterType('JOBS')}
+                  >
                     <span>
                       {' '}
                       <i className="fa fa-briefcase" aria-hidden="true"></i>
@@ -219,7 +223,7 @@ const SignedHeader = ({ user, profile }) => {
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a href="#!" style={{ color: '#4c4e57' }}>
                     <span>
                       {' '}
                       <i className="fa fa-university" aria-hidden="true"></i>
