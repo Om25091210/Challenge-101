@@ -126,7 +126,7 @@ const TournamentDetail = ({
         toast.error(err.response?.data?.msg || 'Please recheck your inputs');
       }
     };
-
+    console.log('TTTT', data);
     return (
       <>
         <MetaDash />
@@ -261,7 +261,7 @@ const TournamentDetail = ({
                     />
                     {data.tournament.category === 'LAN' ? (
                       <a href="#" className="btn">
-                        BOOK TICKETS
+                        BOOK TICKETSS
                       </a>
                     ) : null}
                     {isUser || isSupportAdmin ? (
